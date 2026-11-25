@@ -174,6 +174,12 @@ def main(d, split="practice"):
     elif e["kind"] in ("anchor", "step"):
         print(f"{e['kind']} proposal: shape OK. Not scored by the test; it goes on the record as a proposal "
               + ("and needs two people to confirm it on the scan." if e["kind"] == "anchor" else "and appears on the desk once merged."))
+    elif e["kind"] == "picture":
+        pic = json.load(open(os.path.join(d, "picture.json")))
+        objs = pic["objects"]
+        print(f"picture annotation: shape OK. Folio {pic['folio']}, {len(objs)} objects, "
+              f"{sum(1 for o in objs if o.get('label'))} with a label line. Not scored by the test; "
+              "a second independent seat's annotation of the same folio makes it AGREED or DISAGREE.")
     elif e["kind"] == "attack":
         from . import redteam
         spec = json.load(open(os.path.join(d, "attack.json")))
