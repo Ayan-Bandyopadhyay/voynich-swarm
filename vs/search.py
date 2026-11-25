@@ -15,7 +15,25 @@ from collections import Counter
 from . import ivtff, lm, refcorpus
 
 BUDGET = {"restarts": 4, "iterations": 6000, "seed": 1404, "bpe_merges": 30,
-          "verbose_segmentations": ["bpe-greedy", "fixed-2"]}
+          "verbose_segmentations": ["bpe-greedy", "fixed-2"], "verbose_min_unit_share": 0.0005}
+
+
+def prune_rare(tri, share):
+    """Drop unit trigrams that contain a unit rarer than `share` of all unit tokens.
+
+    Under transcription noise a verbose segmentation spawns many junk units (a single-glyph
+    error shifts every later cut in the word): on the 2% noise Latin control, fixed-2 yields
+    ~205 units for 24 true ones, the junk covering ~2% of tokens. The climb then spends its
+    budget on junk and stalls far below the true key's objective. Rare units are left out of
+    the key and decode as nulls, as uncovered glyphs already do (families/verbose.py)."""
+    if not share:
+        return tri
+    f = Counter()
+    for (_x, _y, z), c in tri.items():
+        f[z] += c
+    tot = sum(v for u, v in f.items() if u != lm.WB)
+    keep = {u for u, v in f.items() if u == lm.WB or v >= share * tot}
+    return Counter({t: c for t, c in tri.items() if set(t) <= keep})
 
 
 def trigram_table(lang):
@@ -167,7 +185,7 @@ def search_cell(lang, family, train_pages, budget=BUDGET, tag="cell"):
                 segf = lambda w, n=int(segname.split("-")[1]): fixed_width(w, n)
             else:
                 raise ValueError(segname)
-            tri = unit_trigrams(train_pages, segf)
+            tri = prune_rare(unit_trigrams(train_pages, segf), budget.get("verbose_min_unit_share", 0))
             suffix = "" if segname == "bpe-greedy" else "/" + segname
             m, s = climb(tri, table, letters, f"{budget['seed']}/{lang}/{family}/{tag}{suffix}", budget)
             per = s / max(1, sum(tri.values()))
