@@ -1,0 +1,10 @@
+{
+  "language": "russian",
+  "title": "Russian Synodal Bible (1876), full Bible, one verse per line",
+  "period": "19th century (1876), modern Russian",
+  "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/RusSynodal.txt",
+  "sha256": "09fee23d7e7b6cbb44f9e0e358f10df43689494d929a63870ab6c29a1f289d44",
+  "license": "public-domain",
+  "encoding": "utf-8",
+  "notes": "License stated as 'Public Domain' in the source README at https://github.com/scrollmapper/bible_databases/blob/59b18c5af5845728c275d5b7178ad0d024172b1f/sources/ru/RusSynodal/README.md (scrollmapper/bible_databases, files from the CrossWire SWORD module RusSynodal). The url pins a fixed commit, so the bytes do not change. 7,519,943 bytes; one verse per line as '[c:v] text' with '### Book' headings in English (66 short headings, negligible). vs/refcorpus.normalize(..., 'russian') gives 3,882,528 characters."
+}
