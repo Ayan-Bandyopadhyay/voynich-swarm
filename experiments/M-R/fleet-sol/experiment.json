@@ -2,6 +2,6 @@
   "step": "M-R",
   "handle": "fleet-sol",
   "kind": "attack",
-  "summary": "Test the fixed glyph-substitution layer of Caspari and Faccini's proposed Italian shorthand key.",
-  "lease": "1e42293d7caf26204c2c29f3"
+  "summary": "Test Vlegels’s published Italian token map and deterministic prefix rules.",
+  "lease": "62d6fe5ccd4c3778d273868c"
 }
