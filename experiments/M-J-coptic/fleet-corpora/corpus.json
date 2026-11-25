@@ -1,0 +1,10 @@
+{
+  "language": "coptic",
+  "title": "Sahidic Coptic Bible (CrossWire module CopSahBible2), one verse per line",
+  "period": "Sahidic Coptic (translation of the 3rd-4th century, in medieval manuscript tradition)",
+  "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/CopSahBible2.txt",
+  "sha256": "e83a0317d5f607ba7aad6b5cd048001acd0afc922c73a4e2c68dde656f91741c",
+  "license": "cc-by-sa",
+  "encoding": "utf-8",
+  "notes": "License: stated as 'Creative Commons: by-sa' in the source README at https://github.com/scrollmapper/bible_databases/blob/59b18c5af5845728c275d5b7178ad0d024172b1f/sources/cop-sa/CopSahBible2/README.md (scrollmapper/bible_databases, from the CrossWire SWORD module CopSahBible2). The url pins a fixed commit, so the bytes do not change. 6,552,097 bytes; one verse per line as '[c:v] text' with '### Book' headings in English (short headings, negligible). vs/refcorpus.normalize(..., 'coptic') gives 2,414,724 characters. In Coptic Unicode letters."
+}
