@@ -1,0 +1,10 @@
+{
+  "language": "norwegian",
+  "title": "Norwegian Bible (Bibelen på norsk, 1930), full Bible, one verse per line",
+  "period": "20th century (1930), Norwegian (riksmål/bokmål)",
+  "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/Norsk.txt",
+  "sha256": "c561de1800099e6d50757b75d05a3276617497844ed225a2b1a789e2d80a22be",
+  "license": "public-domain",
+  "encoding": "utf-8",
+  "notes": "License stated as 'Public Domain' in the source README at https://github.com/scrollmapper/bible_databases/blob/59b18c5af5845728c275d5b7178ad0d024172b1f/sources/nb/Norsk/README.md (scrollmapper/bible_databases, files from the CrossWire SWORD module Norsk). The url pins a fixed commit, so the bytes do not change. 4,003,587 bytes; one verse per line as '[c:v] text' with '### Book' headings in English (66 short headings, negligible). vs/refcorpus.normalize(..., 'norwegian') gives 3,591,250 characters."
+}
