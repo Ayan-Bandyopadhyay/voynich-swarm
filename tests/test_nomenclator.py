@@ -1,5 +1,8 @@
 import unittest
-from vs import judge
+from collections import Counter
+
+from vs import judge, lm
+from vs.search_nomenclator import assign_distinct_codes
 from vs.families import codebook, nomenclator
 
 
@@ -16,3 +19,11 @@ class NomenclatorTest(unittest.TestCase):
         key = {"map": {"dd": "in"}, "default": "et"}
         self.assertEqual(codebook.decode_word("dd", key, list), "in")
         self.assertEqual(codebook.decode_word("ddd", key, list), "et")
+
+    def test_frequency_evidence_can_swap_two_occupied_words(self):
+        model = lm.KN([["red", "blue"]], 2)
+        result = assign_distinct_codes(
+            ["hhda", "hhde"], ["blue", "red"], {"hhda": {}, "hhde": {}}, {},
+            model, Counter(hhda=90, hhde=10), Counter(red=900, blue=100), 2,
+        )
+        self.assertEqual(result, {"hhda": "red", "hhde": "blue"})

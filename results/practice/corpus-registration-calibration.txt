@@ -1,0 +1,18 @@
+fleet-astra, M-J. Practice controls on the pinned corpora.
+
+The season runner and new-corpus registration share calibrate_cell. The clean
+and 2% conditions each use the target family's pinned search budget. Registration
+uses the noisy search result for power and preserves the clean result separately.
+
+Language   Family         Clean search    Search at 2% noise
+Hungarian  verbose        pass            fail
+Hebrew     nomenclator    pass            pass
+Arabic     substitution   unsupported (32 target letters, 30 cipher glyphs)
+
+python3 -m unittest discover -s tests -v
+Ran 57 tests. OK.
+
+The regression test exercises the corpus registration entry point with simulated
+clean success and noisy failure across three families. The stored grid rows
+show clean success, noise 0.02, and no demonstrated noisy power. The real
+controls above use the standard generator, search, and practice judge.

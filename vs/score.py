@@ -56,7 +56,7 @@ def _public_fetch(url, limit):
 def _score_corpus(c, e):
     """Download, verify, check, calibrate. Returns (item, ledger kind) or (None, refusal)."""
     import hashlib, urllib.request, urllib.parse
-    from . import refcorpus, controls, judge, search
+    from . import refcorpus, season
     try:
         raw = _public_fetch(c["url"], MAX_BYTES + 1)
     except ValueError as ex:
@@ -88,21 +88,19 @@ def _score_corpus(c, e):
         return None, {"verdict": "REFUSED", "errors": [f"only {chars} characters of {lang} after cleaning (need {MIN_CHARS})"]}
     # calibration: does the test have power in this language?
     power = {}
-    for fam, kind in (("substitution", "homophonic"), ("verbose", "verbose")):
+    calibrated = []
+    for fam in season.FAMILIES:
         try:
-            tr, ev, true = controls.make(lang, kind)
-            rt = judge.evaluate(true, tr, ev, "control")
-            rs = judge.evaluate(search.search_cell(lang, fam, tr, tag="control"), tr, ev, "control")
-            ok = lambda r: r["a_compresses"]["pass"] and r["b_reads"]["pass"] and r["kill_tests"]["pass"]
-            power[fam] = {"true_key_passes": ok(rt), "search_cracks_control": ok(rs)}
+            row = season.calibrate_cell(lang, fam)
         except Exception as ex:
             power[fam] = {"error": str(ex)[:200]}
+            continue
+        power[fam] = {name: row[name] for name in ("true_key_passes", "search_cracks_control_clean",
+                      "noise", "true_key_passes_noisy", "search_cracks_control")}
+        calibrated.append({**row, "added_with": pid})
     cfn = path("results", "heldout", "controls.json")
     rows = [r for r in json.load(open(cfn)) if r["language"] != lang]
-    for fam, pw in power.items():
-        if "error" not in pw:
-            rows.append({"language": lang, "family": fam, "control": "homophonic" if fam == "substitution" else "verbose",
-                         "true_key_passes": pw["true_key_passes"], "search_cracks_control": pw["search_cracks_control"], "added_with": pid})
+    rows.extend(calibrated)
     json.dump(rows, open(cfn, "w"), indent=1)
     item = {"id": registry.next_id("C"), "type": "corpus", "title": f"{lang.title()}: {c['title']}"[:160],
             "statement": f"{c['title']} ({c['period']}), {chars:,} characters after cleaning, {c['license']}.",
@@ -203,6 +201,11 @@ def score(d, pr=None):
             verdict = f"{r['reproduced']}/{r['of']}"
             if spec.get("hypothesis") in ("invented_language", "meaningless"):
                 r["hypothesis"] = spec["hypothesis"]
+                if spec.get("hypothesis") == "invented_language":
+                    from .season import GRID_FAMILIES
+                    enc = spec.get("encoding", "plain")
+                    r["encoding"] = enc if enc in GRID_FAMILIES or enc == "plain" else "plain"
+                    r["language_name"] = str(spec.get("language_name") or spec.get("title") or "")[:60]
         typ = "audit" if spec["attack"] == "claim" else "attack"
         item = {"id": registry.next_id("A" if typ == "audit" else "R"), "type": typ,
                 "title": (spec.get("claimant") or ((f"Invented-language test: {spec.get('title') or 'a constructed language'}, against every established fact" if spec.get("hypothesis") == "invented_language" else f"Generator test: {spec.get('title') or 'a procedure'}, against every established fact") if spec["attack"] == "generator" else f"{spec['attack']} attack on {r.get('target')}"))[:160],
@@ -280,7 +283,7 @@ def score(d, pr=None):
     item["submitted"] = {os.path.basename(f): json.load(open(f)) for f in files if f.endswith(".json")}
     if item["type"] == "attack":
         # hidden-page values would leak layout information; keep the outcome and the reason only
-        item["detail"] = {k: v for k, v in item["detail"].items() if k in ("attack", "target", "success", "why", "refused", "decoy", "shared_type_share", "cut", "reproduced", "of", "per_fact", "hypothesis")}
+        item["detail"] = {k: v for k, v in item["detail"].items() if k in ("attack", "target", "success", "why", "refused", "decoy", "shared_type_share", "cut", "reproduced", "of", "per_fact", "hypothesis", "encoding", "language_name")}
     try:
         registry.add(item)
     except SystemExit as ex:

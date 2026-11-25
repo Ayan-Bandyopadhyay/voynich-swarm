@@ -16,6 +16,8 @@ CIPHER_GLYPHS = ["o", "e", "y", "a", "d", "i", "k", "l", "r", "s", "t", "n", "q"
                  "x", "v", "j", "u", "z", "b", "w", "ch", "sh", "cth", "ckh", "cph", "cfh"]
 
 
+ABBREVIATION_SIGNS = ("cth", "ckh", "cph", "cfh")
+
 NOISE = 0.02  # transcription noise used for power (after Schwartz 2026: power at 2% noise)
 
 
@@ -32,14 +34,29 @@ def make(lang, kind="simple", seed=0, words_per_line=8, lines_per_page=10, homop
         words = " ".join(refcorpus.control_text(lang)).split()
     letters = refcorpus.alphabet(lang)
     glyphs = CIPHER_GLYPHS[:]
+    if kind == "abbreviation":
+        glyphs = [g for g in glyphs if g not in ABBREVIATION_SIGNS]
+    if kind == "abbreviation" and len(letters) > len(glyphs):
+        raise ValueError(f"target alphabet exceeds the abbreviation glyph inventory")
+    if kind == "syllabic":
+        glyphs.remove("q")
+        if len(letters) > len(glyphs):
+            raise ValueError("target alphabet exceeds the syllabic spelling inventory")
     if kind == "nomenclator" and len(letters) > len(glyphs):
         raise ValueError(f"target alphabet exceeds the nomenclator glyph inventory")
+    if kind == "table-cipher" and len(letters) > len(glyphs):
+        raise ValueError(f"target alphabet exceeds the table-cipher glyph inventory")
     rng.shuffle(glyphs)
-    if kind == "simple":
+    if kind == "table-cipher":
+        # A periodic tabula recta uses the public alphabet order and secret column shifts.
+        glyphs = sorted(CIPHER_GLYPHS[:len(letters)])
+        shifts = [rng.randrange(len(letters)) for _ in range(3)]
+        enc = {c: [g] for c, g in zip(letters, glyphs)}
+    elif kind == "simple":
         enc = {l: [glyphs[i]] for i, l in enumerate(letters)}
     elif kind == "codebook":
         enc = {}
-    elif kind in ("homophonic", "nomenclator"):
+    elif kind in ("homophonic", "nomenclator", "abbreviation", "syllabic"):
         # the most frequent letters get `homophones` glyphs, the rest one; needs few letters
         freq = sorted(letters, key=lambda l: -sum(w.count(l) for w in words[:5000]))
         enc, i = {}, 0
@@ -58,6 +75,27 @@ def make(lang, kind="simple", seed=0, words_per_line=8, lines_per_page=10, homop
     dec = {g: l for l, gs in enc.items() for g in gs}
 
     noise_pool = sorted({g for gs in enc.values() for g in gs} | set(CIPHER_GLYPHS[:10]))
+
+    abbreviated = {}
+    if kind == "abbreviation":
+        from collections import Counter
+        endings = Counter(w[-n:] for block in refcorpus.train_text(lang) for w in block.split()
+                          for n in (2, 3) if len(w) > n)
+        signs = list(ABBREVIATION_SIGNS)
+        rng.shuffle(signs)
+        abbreviated = dict(zip((s for s, _ in endings.most_common(len(signs))), signs))
+        noise_pool = sorted(set(noise_pool) | set(signs))
+    sign_map = {}
+    if kind == "syllabic":
+        from collections import Counter
+        frequencies = Counter(a + b for block in refcorpus.train_text(lang) for w in block.split()
+                              for a, b in zip(w, w[1:]) if a not in "aeiou" and b in "aeiou")
+        if not frequencies:
+            raise ValueError(f"no supported written CV syllables in {lang}")
+        labels = [g for g in glyphs if len(g) == 1]
+        rng.shuffle(labels)
+        for i, (syllable, _) in enumerate(frequencies.most_common(10)):
+            sign_map[syllable] = labels[2*i:2*i+2]
 
     marker = ""
     word_codes = {}
@@ -87,7 +125,29 @@ def make(lang, kind="simple", seed=0, words_per_line=8, lines_per_page=10, homop
         if w in word_codes:
             return "".join(rng.choice([x for x in CIPHER_GLYPHS if x != c]) if rng.random() < noise else c
                            for c in word_codes[w])
-        units = [rng.choice(enc[c]) for c in w if c in enc]
+        suffix = next((s for s in sorted(abbreviated, key=len, reverse=True)
+                       if len(w) > len(s) and w.endswith(s)), None) if kind == "abbreviation" else None
+        if suffix:
+            w = w[:-len(suffix)]
+        if kind == "table-cipher":
+            units = [glyphs[(letters.index(c) + shifts[i % len(shifts)]) % len(letters)]
+                     for i, c in enumerate(w) if c in enc]
+        elif kind == "syllabic":
+            units = []
+            i = 0
+            while i < len(w):
+                pair = w[i:i + 2]
+                if pair in sign_map:
+                    units.extend(["q", rng.choice(sign_map[pair])])
+                    i += 2
+                else:
+                    if w[i] in enc:
+                        units.append(rng.choice(enc[w[i]]))
+                    i += 1
+        else:
+            units = [rng.choice(enc[c]) for c in w if c in enc]
+        if suffix:
+            units.append(abbreviated[suffix])
         if noise:
             units = [rng.choice([x for x in noise_pool if x != u]) if rng.random() < noise else u for u in units]
         return "".join(units)
@@ -115,6 +175,15 @@ def make(lang, kind="simple", seed=0, words_per_line=8, lines_per_page=10, homop
         if kind == "nomenclator":
             true_key["key"]["marker"] = marker
         true_key["key"]["map"].update({code: word for word, code in word_codes.items()})
+    if kind == "table-cipher":
+        true_key.update(family=kind, key={"map": dict(zip(glyphs, letters)), "shifts": shifts})
+    if kind == "abbreviation":
+        true_key["family"] = kind
+        true_key["key"]["map"].update({g + "$": s for s, g in abbreviated.items()})
+    if kind == "syllabic":
+        true_key["family"] = kind
+        true_key["key"]["marker"] = "q"
+        true_key["key"]["map"].update({"q" + label: syllable for syllable, labels in sign_map.items() for label in labels})
     return tr, ev, true_key
 
 

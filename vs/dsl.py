@@ -31,6 +31,9 @@ statistics:
                                                            across-line count (10 fixed draws) so both carry equal bias
   {"line_repeat_excess": true}                              share of words repeated on the previous numbered line minus the share
                                                            repeated four lines back, within a page, excluding one-character words
+  {"line_near_excess": {"min_length": L}}                  the same comparison for similar words (Timm 2014): share of words of
+                                                           length >= L (default 4) with a word at edit distance exactly 1 on the
+                                                           previous numbered line, minus the share with one four lines back
   {"repeat_ngram": n}                                      share of word n-grams (n<=6) that occur at least twice
   {"hapax_share": true} | {"zipf_slope": ranks} | {"mean_length": true}
   {"near_copy": {"window": k, "min_length": L}}            share of words of length >= L within edit distance exactly 1
@@ -40,6 +43,11 @@ statistics:
                                                            farther apart; pages with fewer than m (default 40) selected words
                                                            are left out. Distance is counted in the manuscript's page order,
                                                            so it stays meaningful on a sample of pages
+  {"page_group_similarity": {"by": B, "min_words": m}}     median cosine of word-count vectors of two pages that share B
+                                                           (section | language | hand) minus the median for two pages that
+                                                           differ in it; pages with fewer than m (default 40) selected words
+                                                           or without that label are left out. Every page stays whole, so page-level reuse cancels;
+                                                           test it against shuffle_page_labels and rotate_page_labels
   {"page_reuse": {"min_length": L}}                        share of words of length >= L already written earlier on the page
   {"context_mi": {"feature": F, "by": B}}                  MI between the feature and where the word stands; B is
                                                            page | section | unit | line_position (initial/mid/final).
@@ -53,13 +61,19 @@ compare (one to four; all must pass; a spec with none is refused):
        fewer words than the selection are left out; at least three must remain. Only for statistics whose
        features carry over to another script (not rate, ratio or context_mi).
   {"null": "shuffle_within_line" | "shuffle_within_page" | "shuffle_within_section" | "shuffle_across_pages"
-           | "shuffle_labels" | "shuffle_labels_within_page",
+           | "shuffle_labels" | "shuffle_labels_within_page" | "shuffle_page_labels" | "rotate_page_labels",
    "perms": N (<= 400), "p": alpha (<= 0.05), "direction": "greater" | "less"}
        the statistic must be extreme against the null (one-sided permutation p-value, ties count against).
        shuffle_labels reassigns which words of a section are the labels (labels trade places with words
        of running text of the same section; all other words stay where they are, so word order elsewhere is
        untouched). shuffle_labels_within_page does the same inside each page (stricter; labels on pages
        without running text cannot move).
+       shuffle_page_labels keeps every page's text whole and deals the pages' labels (section, language and
+       hand, together) among the pages. rotate_page_labels is stricter: the labels keep their order and their
+       runs and are shifted along the page order by every possible offset (perms is ignored: all n-1 shifts
+       of the n pages are tried, so p cannot be below 1/n), which a text that merely changes slowly from
+       front to back does not beat. Both leave the words where they are: they test only statistics that read
+       the labels (page_group_similarity, context_mi by section).
 
 Rules that keep a pass from being hollow (each has a test in tests/test_dsl.py):
   - unknown keys anywhere are refused (a misspelt "scope" or "select" used to be silently ignored);
@@ -141,7 +155,7 @@ def tokens(pages, scope=None):
             n = len(ln.words)
             for k, w in enumerate(ln.words):
                 out.append({"w": w, "page": pi, "section": p.section, "line": (pi, ln.n), "k": k, "n": n,
-                            "language": p.language, "unit": ln.unit, "pfl": pfl, "pinit": pfl and k == 0,
+                            "language": p.language, "hand": str(p.hand), "unit": ln.unit, "pfl": pfl, "pinit": pfl and k == 0,
                             "order": p.order})
             first_line = ln.para_end if ln.unit == "P" else first_line
     return out
@@ -294,6 +308,25 @@ def _page_similarity(toks, within, min_words):
     return med(near) - med(far)
 
 
+def _page_group_similarity(toks, by, min_words):
+    """Median cosine of word counts for two pages with the same label, minus pages with different labels."""
+    pages, label = {}, {}
+    for t in toks:
+        pages.setdefault(t["page"], Counter())[t["w"]] += 1
+        label[t["page"]] = t[by]
+    vec = sorted((pg, c, math.sqrt(sum(v * v for v in c.values()))) for pg, c in pages.items()
+                 if sum(c.values()) >= min_words and label[pg] not in (None, "", "None"))   # unlabelled pages are left out
+    same, diff = [], []
+    for i, (p1, c1, n1) in enumerate(vec):
+        for p2, c2, n2 in vec[i + 1:]:
+            cos = sum(v * c2[w] for w, v in c1.items() if w in c2) / (n1 * n2)
+            (same if label[p1] == label[p2] else diff).append(cos)
+    if len(same) < MIN_TOKENS or len(diff) < MIN_TOKENS:
+        return NAN
+    med = lambda xs: (lambda s: (s[(len(s) - 1) // 2] + s[len(s) // 2]) / 2)(sorted(xs))
+    return med(same) - med(diff)
+
+
 def _edit1(a, b):
     if a == b or abs(len(a) - len(b)) > 1:
         return False
@@ -337,6 +370,9 @@ def check_statistic(st):
     elif name in ("edge_mi", "edge_mi_break", "hapax_share", "mean_length", "line_repeat_excess"):
         if arg is not True:
             raise SpecError(f"{name} takes true")
+    elif name == "line_near_excess":
+        _keys(arg, {"min_length"}, name)
+        _int(arg.get("min_length", 4), 1, 40, "line_near_excess min_length")
     elif name == "near_copy":
         _keys(arg, {"window", "min_length"}, name)
         _int(arg.get("window", 10), 1, 50, "near_copy window")
@@ -345,6 +381,11 @@ def check_statistic(st):
         _keys(arg, {"within", "min_words"}, name, ("within",))
         _int(arg["within"], 1, 50, "page_similarity within")
         _int(arg.get("min_words", 40), 10, 10_000, "page_similarity min_words")
+    elif name == "page_group_similarity":
+        _keys(arg, {"by", "min_words"}, name, ("by",))
+        if arg["by"] not in ("section", "language", "hand"):
+            raise SpecError("page_group_similarity.by is section | language | hand")
+        _int(arg.get("min_words", 40), 10, 10_000, "page_group_similarity min_words")
     elif name == "page_reuse":
         _keys(arg, {"min_length"}, name)
         _int(arg.get("min_length", 1), 1, 40, "page_reuse min_length")
@@ -414,22 +455,28 @@ def statistic(st, toks, all_toks):
         return sum(v for v in c.values() if v >= 2) / tot if tot >= MIN_TOKENS else NAN
     if name == "page_similarity":
         return _page_similarity(toks, int(arg["within"]), int(arg.get("min_words", 40)))
-    if name == "line_repeat_excess":
+    if name == "page_group_similarity":
+        return _page_group_similarity(toks, arg["by"], int(arg.get("min_words", 40)))
+    if name in ("line_repeat_excess", "line_near_excess"):
         # Use the same current words for both lags. Require five consecutive
         # selected lines on one page so gaps do not become spurious neighbors.
         words = {}
         for t in toks:
             words.setdefault(t["line"], []).append(t["w"])
         vocabulary = {line: set(ws) for line, ws in words.items()}
+        if name == "line_repeat_excess":
+            L, on = 2, lambda word, voc: word in voc
+        else:
+            L, on = int(arg.get("min_length", 4)), lambda word, voc: any(_edit1(word, u) for u in voc)
         hits = eligible = 0
         for (page, line), ws in words.items():
             if not all((page, line - lag) in words for lag in range(1, 5)):
                 continue
             near, far = vocabulary[page, line - 1], vocabulary[page, line - 4]
             for word in ws:
-                if len(word) > 1:
+                if len(word) >= L:
                     eligible += 1
-                    hits += (word in near) - (word in far)
+                    hits += on(word, near) - on(word, far)
         return hits / eligible if eligible >= MIN_TOKENS else NAN
     if name == "hapax_share":
         c = Counter(t["w"] for t in toks)
@@ -476,18 +523,39 @@ def statistic(st, toks, all_toks):
 
 # statistics whose features mean the same thing in another script, so a reference language can be measured
 LAYOUT_FREE = {"entropy", "hapax_share", "zipf_slope", "mean_length", "repeat_ngram", "cond_entropy", "adjacent_mi",
-               "edge_mi", "near_copy", "glyph_cond_entropy", "page_reuse", "line_repeat_excess"}
+               "edge_mi", "near_copy", "glyph_cond_entropy", "page_reuse", "line_repeat_excess",
+               "line_near_excess"}
 MIN_REFERENCES = 3
 
 _NULL_KEY = {"shuffle_within_line": lambda t: t["line"], "shuffle_within_page": lambda t: t["page"],
              "shuffle_within_section": lambda t: t["section"], "shuffle_across_pages": lambda t: 0,
-             "shuffle_labels": lambda t: t["section"], "shuffle_labels_within_page": lambda t: t["page"]}
+             "shuffle_labels": lambda t: t["section"], "shuffle_labels_within_page": lambda t: t["page"],
+             "shuffle_page_labels": None, "rotate_page_labels": None}
+_PAGE_LABELS = ("section", "language", "hand")
+
+
+def _relabelled(all_toks, order, labels):
+    """The same words on the same pages; page i (in page order) now carries labels[i]."""
+    new = dict(zip(order, labels))
+    return [dict(t, **dict(zip(_PAGE_LABELS, new[t["page"]]))) for t in all_toks]
+
+
+def _page_labels(all_toks):
+    lab = {}
+    for t in all_toks:
+        lab[t["page"]] = tuple(t[k] for k in _PAGE_LABELS)
+    order = sorted(lab)
+    return order, [lab[p] for p in order]
 
 
 def _shuffled(all_toks, how, rng):
-    key = _NULL_KEY.get(how)
-    if key is None:
+    if how not in _NULL_KEY:
         raise SpecError(f"unknown null {how!r}")
+    if how == "shuffle_page_labels":
+        order, labels = _page_labels(all_toks)
+        rng.shuffle(labels)
+        return _relabelled(all_toks, order, labels)
+    key = _NULL_KEY[how]
     groups = {}
     for i, t in enumerate(all_toks):
         groups.setdefault(key(t), []).append(i)
@@ -596,6 +664,10 @@ def canonical(spec):
         arg = {"window": arg.get("window", 10), "min_length": arg.get("min_length", 6)}
     elif name == "page_reuse":
         arg = {"min_length": arg.get("min_length", 1)}
+    elif name == "line_near_excess":
+        arg = {"min_length": arg.get("min_length", 4)}
+    elif name == "page_group_similarity":
+        arg = {"by": arg["by"], "min_words": arg.get("min_words", 40)}
     tests = set()
     for c in spec["compare"]:
         if "op" in c:
@@ -643,8 +715,16 @@ def evaluate(spec, pages):
             rng = random.Random(408)
             more, moved = 0, False
             greater = c.get("direction", "greater") == "greater"
-            for _ in range(perms):
-                sh = _shuffled(all_toks, c["null"], rng)
+            if c["null"] == "rotate_page_labels":
+                order, labels = _page_labels(all_toks)
+                perms = len(order) - 1          # every shift of the labels along the page order, once
+                if perms < 1:
+                    raise SpecError("rotate_page_labels needs at least two pages")
+            for k in range(perms):
+                if c["null"] == "rotate_page_labels":
+                    sh = _relabelled(all_toks, order, labels[k + 1:] + labels[:k + 1])
+                else:
+                    sh = _shuffled(all_toks, c["null"], rng)
                 sv = statistic(st, select(sh, spec.get("select")), sh)
                 moved |= sv == sv and abs(sv - v) > 1e-12 if finite else sv != v
                 # an undefined permuted value counts against the claim

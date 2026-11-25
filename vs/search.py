@@ -196,6 +196,16 @@ def climb(tri, table, letters, seed, budget=BUDGET, init=None, group_swap=0.0):
 
 
 def cell_budget(lang, family):
+    if family == "nomenclator" and lang in ("english", "latin", "spanish"):
+        from .search_nomenclator import SETTINGS
+        return {**BUDGET, **SETTINGS, "homophone_ranked_restarts": 1, "homophone_word_sweeps": 5,
+                "nomenclator_unique_word_sweeps": 6}
+    if family in ("abbreviation",):
+        from .search_abbreviation import SETTINGS
+        return {**BUDGET, **SETTINGS}
+    if family in ("syllabic",):
+        from .search_syllabic import SETTINGS
+        return {**BUDGET, **SETTINGS}
     if (lang, family) == ("nahuatl", "substitution"):
         return {**BUDGET, "homophone_ranked_restarts": 1, "homophone_word_sweeps": 5}
     if family == "verbose" and lang in ("french", "german"):
@@ -207,6 +217,9 @@ def cell_budget(lang, family):
     if family in ("nomenclator", "codebook"):
         from .search_nomenclator import SETTINGS
         return dict(SETTINGS) if family == "codebook" else {**BUDGET, **SETTINGS}
+    if family == "table-cipher":
+        from .search_table_cipher import BUDGET as table_budget
+        return table_budget
     return BUDGET
 
 
@@ -316,6 +329,9 @@ def fit_singletons(pages, mapping, reference, table, letters, limit):
 def search_cell(lang, family, train_pages, budget=None, tag="cell"):
     if budget is None:
         budget = cell_budget(lang, family)
+    if family == "table-cipher":
+        from . import search_table_cipher
+        return search_table_cipher.search(lang, train_pages, budget, tag)
     table, sy = trigram_table(lang)
     letters = [l for l in sy if l != lm.WB]
     if family in ("nomenclator", "codebook"):
@@ -327,6 +343,14 @@ def search_cell(lang, family, train_pages, budget=None, tag="cell"):
         return {"id": f"grid-{lang}-{family}-{tag}", "family": family, "segmentation": "eva-basic",
                 "target": {"language": lang, "period": "grid search"}, "key": key,
                 "search": {"budget": dict(budget)}}
+    if family == "abbreviation":
+        from .search_abbreviation import search_abbreviations, SETTINGS
+        budget = {**SETTINGS, **budget}
+        return search_abbreviations(lang, train_pages, budget, tag, table, letters)
+    if family == "syllabic":
+        from .search_syllabic import search_syllabic, SETTINGS
+        budget = {**SETTINGS, **budget}
+        return search_syllabic(lang, train_pages, budget, tag, table, letters)
     if family == "substitution":
         segf = lambda w: ivtff.segment(w, "eva-basic")
         tri = unit_trigrams(train_pages, segf)

@@ -9,14 +9,14 @@ uses it is scored on the held-out pages.
 """
 import importlib, os
 
-FAMILIES = ["substitution", "verbose", "codebook", "nomenclator", "constant", "hashlex"]
+FAMILIES = ["substitution", "verbose", "codebook", "nomenclator", "table-cipher", "abbreviation", "syllabic", "constant", "hashlex"]
 
 
 def load(name):
     if name not in FAMILIES:
         raise SystemExit(f"unknown family {name!r}: families must be merged before use")
-    return importlib.import_module(f"vs.families.{name}")
+    return importlib.import_module("vs.families." + name.replace("-", "_"))
 
 
 def source_file(name):
-    return os.path.join(os.path.dirname(__file__), f"{name}.py")
+    return os.path.join(os.path.dirname(__file__), name.replace("-", "_") + ".py")
