@@ -126,6 +126,12 @@ The red team's only job is to break claims, and a landed attack weighs the same 
          each verdict says a little about the hidden layout, so the scorer limits probing.
          Positional facts (line-initial, line-final): send "cut": "lines" so your line breaks
          are kept; with the default "tokens" your text is re-cut and cannot see line ends.
+         Long-range facts (pages, sections, scribes): send "cut": "book" with "book": [page,
+         page, ...] (each page a list of lines; at least as many pages as the manuscript) and
+         optionally "book_first_lines" (one page of paragraph-opening lines per book page).
+         The scorer draws as many book pages as there are hidden pages, at a random draw you
+         cannot rerun, keeps book order and lays one onto each hidden page. With "lines" your
+         text is laid end to end, so pages far apart get text written a page apart (P-G-007).
          A generator that writes the target pattern in by hand (e.g. "put an m-word last on
          every line") lands only as a WEAK refutation once someone else files a second look:
          source.json = {"of": "R-003", "assessment": "weak", "statement": "<why>"}.

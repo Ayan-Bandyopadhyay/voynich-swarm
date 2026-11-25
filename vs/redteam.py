@@ -109,7 +109,17 @@ def _manuscript_4grams():
     return out
 
 
-def fact_attack(fact_id, lines, split, fact_item=None, cut="tokens", first_lines=None):
+def _book_seed(split):
+    """Which book pages a 'book' attack is scored on. On the held-out split the draw comes from the
+    season seed, so an attacker cannot rerun the draw to choose favourable pages; on practice it is fixed."""
+    if split == "heldout":
+        import hashlib
+        from . import split as _split
+        return int(hashlib.sha256(("book-sample:" + (_split.load_seed() or "")).encode()).hexdigest(), 16)
+    return 0
+
+
+def fact_attack(fact_id, lines, split, fact_item=None, cut="tokens", first_lines=None, book=None, book_first_lines=None):
     """lines: list of lists of words (the attacker's synthetic text). fact_item: the
     registry item for the target fact (its detail holds the metric and params).
 
@@ -127,9 +137,26 @@ def fact_attack(fact_id, lines, split, fact_item=None, cut="tokens", first_lines
                paragraph. Each evaluation line that opens a paragraph (the measurement language's
                para_first_line) takes the next of these instead of the next of `lines`. A writer
                knows when a paragraph begins, as it knows when a line does; without this no text
-               can meet a fact about paragraph first lines except by making every line alike."""
-    lines = [[str(w) for w in l if str(w)] for l in lines if l]
-    first_lines = [[str(w) for w in l if str(w)] for l in (first_lines or []) if l]
+               can meet a fact about paragraph first lines except by making every line alike.
+      "book":  the procedure writes a whole book (P-G-007, form B): `book` is a list of pages, each a
+               list of lines, at least as many pages as the manuscript has, in the writer's own order.
+               The scorer draws as many book pages as there are evaluation pages, at random with a
+               seed the attacker cannot try in advance (on the held-out split it is derived from the
+               season seed), keeps them in book order and lays each onto one evaluation page as
+               "lines" does; a book page that runs out continues into the next page of the book.
+               `book_first_lines` (optional) is a parallel list of pages of paragraph-opening lines.
+               Under "lines" the text is laid end to end onto the sampled pages, so pages that stand
+               far apart in the manuscript receive text written a page apart, and any procedure with
+               a memory of a few hundred words meets the long-range facts by construction (P-G-007).
+               `lines` is ignored with "book"."""
+    clean = lambda ls: [[str(w) for w in l if str(w)] for l in (ls or []) if l]
+    if cut == "book":
+        book = [clean(pg) for pg in (book or [])]
+        book_first_lines = [clean(pg) for pg in (book_first_lines or [])]
+        lines = [l for pg in book for l in pg]
+        first_lines = [l for pg in book_first_lines for l in pg]
+    else:
+        lines, first_lines = clean(lines), clean(first_lines)
     toks = [w for l in lines + first_lines for w in l]
     ms4 = _manuscript_4grams()
     copied = sum(tuple(l[i:i + 4]) in ms4 for l in lines + first_lines for i in range(len(l) - 3))
@@ -144,15 +171,24 @@ def fact_attack(fact_id, lines, split, fact_item=None, cut="tokens", first_lines
     if marked:
         guard.append(f"{marked} tokens carry uncertainty markers (? or *): synthetic text may not use them "
                      "(they are a transcription convention, and metrics skip them; found by the red team, R-003)")
-    if cut not in ("tokens", "lines"):
-        guard.append(f"cut must be 'tokens' or 'lines', got {cut!r}")
+    if cut not in ("tokens", "lines", "book"):
+        guard.append(f"cut must be 'tokens', 'lines' or 'book', got {cut!r}")
+    elif cut == "book":
+        n_pages = len(corpus.pages())
+        if len(book) < n_pages:
+            guard.append(f"cut 'book' needs a book of at least {n_pages} pages (the manuscript's count), got {len(book)}")
+        if book_first_lines and len(book_first_lines) != len(book):
+            guard.append("book_first_lines must have one page per book page")
+        need_lines = sum(1 for p in ev for ln in p.lines if ln.words)
+        if len(lines) < need_lines:
+            guard.append(f"cut 'book' needs at least {need_lines} lines in all, got {len(lines)}")
     elif cut == "lines":
         need_lines = sum(1 for p in ev for ln in p.lines if ln.words)
         if len(lines) < need_lines:
             guard.append(f"cut 'lines' needs at least {need_lines} lines to fill the evaluation pages, got {len(lines)}")
         if first_lines and len(first_lines) < need_lines:
             guard.append(f"first_lines needs at least {need_lines} lines (any line may open a paragraph), got {len(first_lines)}")
-    if first_lines and cut != "lines":
+    if first_lines and cut not in ("lines", "book"):
         guard.append("first_lines needs cut 'lines'")
     elif len(toks) < need:
         guard.append(f"needs at least {need} tokens to fill the evaluation pages, got {len(toks)}")
@@ -161,17 +197,24 @@ def fact_attack(fact_id, lines, split, fact_item=None, cut="tokens", first_lines
     it = iter(toks)
     lit = iter(lines)
     fit = iter(first_lines)
+    if cut == "book":
+        picks = sorted(random.Random(_book_seed(split)).sample(range(len(book)), len(ev)))
     fake = []
-    for p in ev:
+    for pi, p in enumerate(ev):
+        if cut == "book":   # this page's text starts at its drawn book page and runs on through the book
+            b = picks[pi]
+            lit = iter([l for pg in book[b:] for l in pg] + [l for pg in book[:b] for l in pg])
+            if first_lines:
+                fit = iter([l for pg in book_first_lines[b:] for l in pg] + [l for pg in book_first_lines[:b] for l in pg])
         q = Page(p.id, p.order, dict(p.meta))
         first_line = True                      # as vs/dsl.py tokens(): para_first_line
         for ln in p.lines:
             opens = bool(ln.words) and ln.unit == "P" and (ln.para_start or first_line)
             if ln.words:
                 first_line = ln.para_end if ln.unit == "P" else first_line
-            if cut == "lines" and first_lines and opens:
+            if cut in ("lines", "book") and first_lines and opens:
                 ws = list(next(fit))
-            elif cut == "lines":
+            elif cut in ("lines", "book"):
                 ws = list(next(lit)) if ln.words else []
             else:
                 ws = [next(it) for _ in ln.words]
@@ -214,11 +257,13 @@ def run_attack(spec, split):
             key = json.load(open(tk)) if isinstance(tk, str) else tk
         return key_attack(key, spec["decoy"], spec.get("params", {}), split)
     if kind == "fact":
-        return fact_attack(spec["target_fact"], spec["lines"], split, spec.get("target_fact_item"),
-                           cut=spec.get("cut", "tokens"), first_lines=spec.get("first_lines"))
+        return fact_attack(spec["target_fact"], spec.get("lines", []), split, spec.get("target_fact_item"),
+                           cut=spec.get("cut", "tokens"), first_lines=spec.get("first_lines"),
+                           book=spec.get("book"), book_first_lines=spec.get("book_first_lines"))
     if kind == "generator":
-        return generator_test(spec["lines"], split, cut=spec.get("cut", "lines"), facts_on_record=spec.get("facts_on_record"),
-                              first_lines=spec.get("first_lines"))
+        return generator_test(spec.get("lines", []), split, cut=spec.get("cut", "lines"), facts_on_record=spec.get("facts_on_record"),
+                              first_lines=spec.get("first_lines"), book=spec.get("book"),
+                              book_first_lines=spec.get("book_first_lines"))
     if kind == "claim":
         train, ev = corpus.split_pages(split)
         r = judge.evaluate(spec["key"], train, ev, split)
@@ -227,7 +272,7 @@ def run_attack(spec, split):
     raise SystemExit("attack must be key, fact, generator or claim")
 
 
-def generator_test(lines, split, cut="lines", facts_on_record=None, first_lines=None):
+def generator_test(lines, split, cut="lines", facts_on_record=None, first_lines=None, book=None, book_first_lines=None):
     """Program G's scoreboard: one body of synthetic text from one procedure, run against EVERY
     established fact at once. The score is how many it reproduces. A procedure that reproduces
     them all is strong evidence the text needs no language; facts no general procedure can
@@ -238,7 +283,8 @@ def generator_test(lines, split, cut="lines", facts_on_record=None, first_lines=
         facts_on_record = [i for i in registry.read("fact") if i["verdict"] == "ESTABLISHED"]
     per = {}
     for f in facts_on_record:
-        r = fact_attack(f["id"], lines, split, f, cut=cut, first_lines=first_lines)
+        r = fact_attack(f["id"], lines, split, f, cut=cut, first_lines=first_lines, book=book,
+                        book_first_lines=book_first_lines)
         if r.get("refused"):
             text_problem = [g for g in r["refused"] if not g.startswith("positional attack")]
             if text_problem:
