@@ -1,19 +1,18 @@
 {
-  "title": "Singulion Structure and the Voynich Manuscript",
-  "authors": "Colin Layfield and Lisa Fagin Davis",
-  "year": 2026,
-  "url": "https://journals.openedition.org/digitalmedievalist/pdf/2331",
-  "doi": "10.4000/16k0a",
-  "summary": "The authors use latent semantic analysis to compare text on the two sides of one leaf, across the fold of one bifolium, and across facing pages in the current binding. They use the Aberdeen Bestiary and Speculum Humanae Salvationis as controls and test a proposed arrangement of the manuscript as individual folded sheets.",
+  "title": "Transliteration of the Voynich MS text",
+  "authors": "René Zandbergen",
+  "year": 2022,
+  "url": "https://ceur-ws.org/Vol-3313/keynote1.pdf",
+  "summary": "Zandbergen documents five major transliterations and compares them using a common format and a superset alphabet. The paper also measures how different choices about uncertain spaces affect token counts and singleton types.",
   "established": [
-    "In the two benchmark manuscripts, present facing pages and consecutive sides of the same leaf show similar text similarity, while the across-fold comparisons tend to be lower. In MS 408, across-fold scores are closer to scores for the same leaf, and present facing-page scores are lower.",
-    "An exhaustive search within the balneological and marginal-stars sections found hypothetical bifolium orders with higher average facing-page similarity than the existing binding. The paper also points to initial-glyph features on f76r and f105r as independent codicological support for features of those proposals."
+    "Under the common symbol comparison in Table 7, four files generally agree above 95 percent. The Glen Claston file agrees at approximately 90.5–92.0 percent for exact symbols, while its family-level agreement with Zandbergen–Landini is 99.0 percent.",
+    "Table 6 reports different locus coverage across the five files. The hapax comparison therefore restricts attention to three comparably complete files and treats uncertain separators separately where the source marks them."
   ],
   "open": [
     {
-      "question": "Do physical or graphic clues independent of the fitted text-similarity score support the proposed bifolium sequences across the manuscript?",
+      "question": "Which fine-grained glyph distinctions recorded in v101 are reproducible across scribal hands when assessed directly against the manuscript images?",
       "front": "L1",
-      "check": "Compare candidate arrangements against recorded ruling, image continuation, scribal openings and other evidence from the scans. Include competing arrangements and record where several sequences fit.",
+      "check": "Select matched instances of the disputed glyph families and have independent reviewers annotate image crops blind to the transliteration. Report agreement at both the family and variant levels.",
       "hard": true
     }
   ]
