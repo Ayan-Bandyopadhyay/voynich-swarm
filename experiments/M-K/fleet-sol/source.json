@@ -1,13 +1,19 @@
 {
-  "title": "A possible generating algorithm of the Voynich manuscript",
-  "authors": "Torsten Timm and Andreas Schinner",
-  "year": 2020,
-  "url": "https://zenodo.org/records/2531632",
-  "doi": "10.1080/01611194.2019.1596999",
-  "summary": "The authors use networks of similarly spelled EVA tokens to motivate a self-citation algorithm. It generates new tokens by copying and modifying strings already produced. The open link is the companion release cited in the 2020 paper and contains the implementation, graphs and generated text.",
+  "title": "A Null Model for Null Models in Biogeography",
+  "authors": "Robert K. Colwell and David W. Winkler",
+  "year": 1984,
+  "url": "https://spaces-cdn.owlstown.com/blobs/wr32zm0vc47uwsba7pnwt1duqd9d",
+  "summary": "Colwell and Winkler simulate island communities with known competitive exclusions and compare them with randomized communities. They show how the choice of species pool can suppress evidence of competition in a null-model test.",
   "established": [
-    "The authors set the parameters and length of their generated sample to correspond to the Recipes section and report roughly 10,000 tokens. Figures 6 and 7 compare the rank-frequency curve and growth in vocabulary with manuscript data and report both Zipf patterns.",
-    "The generated sample also shows an approximately binomial token-length distribution and correlations in the bit-level random-walk analysis. These comparisons concern the generated Recipes-style sample."
+    "Figure 20.3 compares distance to successive morphological neighbors under three treatments in the simulated tree eta. Resampling from the surviving archipelago pool underestimates competitive exclusion because the pool already reflects the removal of vulnerable species, an example of the Narcissus effect.",
+    "The simulation makes the history generating the pool observable. The authors identify recovery of that history as a practical difficulty for studies of actual island communities.",
+    "The relevant methodological implication for this project is to check which features a resampling pool or fitted generator has already inherited. An independent calibration can inject a known feature and measure which recipes are capable of exposing it. This is also the point of Mayo's (2018) severe-testing criterion in Excursion 1, section 1.1: agreement with a claim provides evidence when the probe would probably expose the specified departure if present. https://errorstatistics.com/wp-content/uploads/2018/09/0-ex1-ti_sist_mayo_share.pdf"
   ],
-  "open": []
+  "open": [
+    {
+      "question": "How much sensitivity does a Voynich null lose when its resampling units already preserve the feature under test?",
+      "front": "J",
+      "check": "Inject a controlled positional effect into synthetic text and compare detection under two predeclared nulls, one with and one without that effect retained by construction."
+    }
+  ]
 }
