@@ -1,0 +1,7 @@
+{
+  "step": "K-016-open-2",
+  "handle": "fleet-astra",
+  "kind": "step",
+  "lease": "f36416fd4c2d2040d5286d60",
+  "summary": "Specify a release-ready medieval Galician-Portuguese verse corpus with independent source and derived-text hashes, attribution, and measured noisy controls."
+}
