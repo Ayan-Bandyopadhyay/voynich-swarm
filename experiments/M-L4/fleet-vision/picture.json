@@ -1,0 +1,310 @@
+{
+ "folio": "f71r",
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006202",
+ "blind": true,
+ "statement": "Circular diagram: in the centre a four-legged hoofed animal with two backward-curving horns, ink only, facing left with its mouth at a green leafy sprig, standing on a green scalloped mound, with a short word in another script on its body (not read). Around it an inner ring of 5 and an outer ring of 10 women, each clothed (red, pink or green dresses, several with red or pale caps) and standing or set in a box-shaped tub (washed blue or green, hatched, striped or a dotted basket), each holding or tied to an eight-pointed star; figures in the lower half are upside down, feet toward the centre. Beside the striped tub at about 9 o'clock on the outer ring there are two small hatched rectangular blocks. The transcription's label lines between circular lines fall in blocks of 10 (f71r.2-11) and 5 (f71r.13-17), matching the 10 outer and 5 inner figures. Each figure carries its ring's block as label_group; which line goes with which figure cannot be fixed from line ids without reading the words, so labels are null. Clock positions are from the centre of the diagram, 12 = top of the scan. Filed under the M-L4 mandate because no PIC step was open for f71r; it is meant as the first of the folio's two independent annotations.",
+ "objects": [
+  {
+   "id": "o1",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "12",
+    "posture": "upright",
+    "container": "tub",
+    "container_shape": "dotted basket, uncoloured",
+    "clothing": "dressed",
+    "dress_colour": "red with dots",
+    "headwear": "pale blue cap",
+    "star": "attached",
+    "label_group": "f71r.2-11"
+   },
+   "label": null
+  },
+  {
+   "id": "o2",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "1",
+    "posture": "upright",
+    "container": "tub",
+    "container_shape": "box",
+    "clothing": "dressed",
+    "dress_colour": "red",
+    "headwear": "red hair or hat",
+    "star": "attached",
+    "label_group": "f71r.2-11",
+    "note": "tub washed blue"
+   },
+   "label": null
+  },
+  {
+   "id": "o3",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "2",
+    "posture": "upright",
+    "container": "tub",
+    "container_shape": "hatched, uncoloured",
+    "clothing": "dressed",
+    "dress_colour": "green",
+    "headwear": "none",
+    "star": "attached",
+    "label_group": "f71r.2-11"
+   },
+   "label": null
+  },
+  {
+   "id": "o4",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "3",
+    "posture": "upright",
+    "container": "tub",
+    "container_shape": "hatched",
+    "clothing": "dressed",
+    "dress_colour": "red-pink",
+    "headwear": "none",
+    "star": "attached",
+    "label_group": "f71r.2-11",
+    "note": "tub hatched red"
+   },
+   "label": null
+  },
+  {
+   "id": "o5",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "4",
+    "posture": "inverted",
+    "container": "tub",
+    "container_shape": "box",
+    "clothing": "dressed",
+    "dress_colour": "pink",
+    "headwear": "none",
+    "star": "attached",
+    "label_group": "f71r.2-11",
+    "note": "tub washed green"
+   },
+   "label": null
+  },
+  {
+   "id": "o6",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "6",
+    "posture": "inverted",
+    "container": "tub",
+    "container_shape": "box",
+    "clothing": "dressed",
+    "dress_colour": "green",
+    "headwear": "none",
+    "star": "attached",
+    "label_group": "f71r.2-11",
+    "note": "tub washed blue"
+   },
+   "label": null
+  },
+  {
+   "id": "o7",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "7",
+    "posture": "inverted",
+    "container": "tub",
+    "container_shape": "box",
+    "clothing": "dressed",
+    "dress_colour": "pink-red",
+    "headwear": "none",
+    "star": "attached",
+    "label_group": "f71r.2-11",
+    "note": "tub washed green"
+   },
+   "label": null
+  },
+  {
+   "id": "o8",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "8",
+    "posture": "upright",
+    "container": "tub",
+    "container_shape": "box",
+    "clothing": "dressed",
+    "dress_colour": "red",
+    "headwear": "red cap",
+    "star": "attached",
+    "label_group": "f71r.2-11",
+    "note": "tub green on top, red below"
+   },
+   "label": null
+  },
+  {
+   "id": "o9",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "10",
+    "posture": "upright",
+    "container": "tub",
+    "container_shape": "box with diagonal stripes",
+    "clothing": "dressed",
+    "dress_colour": "red-pink",
+    "headwear": "pale cap",
+    "star": "attached",
+    "label_group": "f71r.2-11",
+    "note": "tub striped blue; two small hatched rectangular blocks beside it, one floating near the star"
+   },
+   "label": null
+  },
+  {
+   "id": "o10",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "11",
+    "posture": "upright",
+    "container": "tub",
+    "container_shape": "box",
+    "clothing": "dressed",
+    "dress_colour": "red",
+    "headwear": "none",
+    "star": "attached",
+    "label_group": "f71r.2-11",
+    "note": "tub washed green"
+   },
+   "label": null
+  },
+  {
+   "id": "i1",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock": "11",
+    "posture": "upright",
+    "container": "tub",
+    "container_shape": "box with vertical stripes",
+    "clothing": "dressed",
+    "dress_colour": "red",
+    "headwear": "red cap",
+    "star": "attached",
+    "label_group": "f71r.13-17",
+    "note": "tub striped blue and white"
+   },
+   "label": null
+  },
+  {
+   "id": "i2",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock": "1",
+    "posture": "upright",
+    "container": "tub",
+    "container_shape": "box",
+    "clothing": "dressed",
+    "dress_colour": "red",
+    "headwear": "pale cap",
+    "star": "attached",
+    "label_group": "f71r.13-17",
+    "note": "tub washed blue"
+   },
+   "label": null
+  },
+  {
+   "id": "i3",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock": "3",
+    "posture": "lying",
+    "container": "tub",
+    "container_shape": "box",
+    "clothing": "dressed",
+    "dress_colour": "red-pink",
+    "headwear": "red cap",
+    "star": "attached",
+    "label_group": "f71r.13-17",
+    "note": "tub washed blue, scalloped rim; head area stained"
+   },
+   "label": null
+  },
+  {
+   "id": "i4",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock": "5",
+    "posture": "inverted",
+    "container": "tub",
+    "container_shape": "box",
+    "clothing": "dressed",
+    "dress_colour": "green",
+    "headwear": "none",
+    "star": "attached",
+    "label_group": "f71r.13-17",
+    "note": "tub washed blue"
+   },
+   "label": null
+  },
+  {
+   "id": "i5",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock": "8",
+    "posture": "lying",
+    "container": "tub",
+    "container_shape": "box",
+    "clothing": "dressed",
+    "dress_colour": "uncoloured",
+    "headwear": "none",
+    "star": "attached",
+    "label_group": "f71r.13-17",
+    "note": "tub washed green"
+   },
+   "label": null
+  },
+  {
+   "id": "animal",
+   "kind": "animal",
+   "features": {
+    "ring": "centre",
+    "body": "four-legged, hoofed, textured back",
+    "horns": "two, curving backward",
+    "facing": "left",
+    "colour": "uncoloured",
+    "note": "its mouth is at a green leafy sprig; a short word in a non-Voynich script is written on its body (not read)",
+    "count": "1"
+   },
+   "label": null
+  },
+  {
+   "id": "sprig",
+   "kind": "plant",
+   "features": {
+    "ring": "centre",
+    "shape": "short upright stem with a few leaves at the animal's mouth",
+    "colour": "green"
+   },
+   "label": null
+  },
+  {
+   "id": "ground",
+   "kind": "other",
+   "features": {
+    "ring": "centre",
+    "shape": "mound with a scalloped edge under the animal",
+    "colour": "green"
+   },
+   "label": null
+  }
+ ]
+}
