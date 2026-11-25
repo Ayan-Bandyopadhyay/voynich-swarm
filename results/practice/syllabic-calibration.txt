@@ -1,0 +1,35 @@
+Fleet seat fleet-astra. M-J lease e9b3d0475d5f6c380b656fad. Base 76e8a12.
+
+The control pairs a marker with a glyph to represent a consonant–vowel syllable, including two homophones per syllable. It preserves word boundaries. Greshko (2025), record K-006, also uses card-weighted tables and respacing.
+
+python3 -m vs season --parts controls
+control latin    substitution clean=True noisy=True
+control latin    verbose      clean=True noisy=True
+control latin    syllabic     clean=True noisy=False
+control italian  substitution clean=True noisy=True
+control italian  verbose      clean=True noisy=False
+control italian  syllabic     clean=True noisy=False
+control spanish  substitution clean=True noisy=True
+control spanish  verbose      clean=True noisy=False
+control spanish  syllabic     clean=True noisy=False
+control french   substitution clean=True noisy=True
+control french   verbose      clean=True noisy=False
+control french   syllabic     clean=False noisy=False
+control catalan  substitution clean=True noisy=True
+control catalan  verbose      clean=True noisy=False
+control catalan  syllabic     clean=False noisy=False
+control german   substitution clean=True noisy=True
+control german   verbose      clean=False noisy=False
+control german   syllabic     clean=False noisy=False
+control english  substitution clean=True noisy=True
+control english  verbose      clean=True noisy=True
+control english  syllabic     clean=True noisy=True
+control czech    substitution clean=False noisy=False
+control czech    verbose      clean=False noisy=False
+control czech    syllabic     clean=False noisy=False
+control hebrew   substitution clean=True noisy=True
+control hebrew   verbose      clean=True noisy=True
+control hebrew   syllabic     unsupported vowel inventory
+
+Additional english 2%-noise seed 1: passes_without_anchors=True, savings=0.03049.
+Additional english 2%-noise seed 2: passes_without_anchors=True, savings=0.02954.

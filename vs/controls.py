@@ -32,10 +32,14 @@ def make(lang, kind="simple", seed=0, words_per_line=8, lines_per_page=10, homop
         words = " ".join(refcorpus.control_text(lang)).split()
     letters = refcorpus.alphabet(lang)
     glyphs = CIPHER_GLYPHS[:]
+    if kind == "syllabic":
+        glyphs.remove("q")
+        if len(letters) > len(glyphs):
+            raise ValueError("target alphabet exceeds the syllabic spelling inventory")
     rng.shuffle(glyphs)
     if kind == "simple":
         enc = {l: [glyphs[i]] for i, l in enumerate(letters)}
-    elif kind == "homophonic":
+    elif kind in ("homophonic", "syllabic"):
         # the most frequent letters get `homophones` glyphs, the rest one; needs few letters
         freq = sorted(letters, key=lambda l: -sum(w.count(l) for w in words[:5000]))
         enc, i = {}, 0
@@ -55,8 +59,33 @@ def make(lang, kind="simple", seed=0, words_per_line=8, lines_per_page=10, homop
 
     noise_pool = sorted({g for gs in enc.values() for g in gs} | set(CIPHER_GLYPHS[:10]))
 
+    sign_map = {}
+    if kind == "syllabic":
+        from collections import Counter
+        frequencies = Counter(a + b for block in refcorpus.train_text(lang) for w in block.split()
+                              for a, b in zip(w, w[1:]) if a not in "aeiou" and b in "aeiou")
+        if not frequencies:
+            raise ValueError(f"no supported written CV syllables in {lang}")
+        labels = [g for g in glyphs if len(g) == 1]
+        rng.shuffle(labels)
+        for i, (syllable, _) in enumerate(frequencies.most_common(10)):
+            sign_map[syllable] = labels[2*i:2*i+2]
+
     def cipher(w):
-        units = [rng.choice(enc[c]) for c in w if c in enc]
+        if kind == "syllabic":
+            units = []
+            i = 0
+            while i < len(w):
+                pair = w[i:i + 2]
+                if pair in sign_map:
+                    units.extend(["q", rng.choice(sign_map[pair])])
+                    i += 2
+                else:
+                    if w[i] in enc:
+                        units.append(rng.choice(enc[w[i]]))
+                    i += 1
+        else:
+            units = [rng.choice(enc[c]) for c in w if c in enc]
         if noise:
             units = [rng.choice([x for x in noise_pool if x != u]) if rng.random() < noise else u for u in units]
         return "".join(units)
@@ -79,6 +108,10 @@ def make(lang, kind="simple", seed=0, words_per_line=8, lines_per_page=10, homop
     tr = [p for p in pages if int(p.id[1:]) % 7 != 3]
     true_key = {"id": f"control-{lang}-{kind}", "family": "verbose" if kind == "verbose" else "substitution", "segmentation": "eva-basic",
                 "target": {"language": lang, "period": "control"}, "key": {"map": dec}}
+    if kind == "syllabic":
+        true_key["family"] = kind
+        true_key["key"]["marker"] = "q"
+        true_key["key"]["map"].update({"q" + label: syllable for syllable, labels in sign_map.items() for label in labels})
     return tr, ev, true_key
 
 
