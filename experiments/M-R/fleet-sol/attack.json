@@ -1,0 +1,39 @@
+{
+  "attack": "claim",
+  "claimant": "Gino Caspari and Agnese Faccini (2025), A Key to the Voynich Manuscript, Table 1 and Figures 1–2. Open preprint: https://pure.mpg.de/rest/items/item_3644902_2/component/file_3644903/content",
+  "method": "This is the fixed glyph layer of the proposed key. EVA units were aligned with Table 1's glyph images and the Zandbergen–Landini transcription of the authors' addressed examples. In particular, f2r.1–2 gives ypchol → expol, ckholsy → dfolie, dorchory → torpore, chkar → pdn, and shor → fior. For glyphs with alternative outputs, fix ch to P as in torpore, sh to FI as in fior, p to X as in expol, and ckh to DF as in dfolie. Greedy longest-match segmentation treats ar and aiin as single units. Glyphs without a secure EVA alignment are omitted from the map. The test covers this fixed reading layer, with no contextual F/P alternation or conjectural shorthand expansion. The authors give examples of these choices, but no deterministic expansion rule for unseen passages.",
+  "key": {
+    "id": "caspari-faccini-2025-fixed-glyph-layer",
+    "family": "verbose",
+    "segmentation": "eva-basic",
+    "target": {"language": "italian", "period": "medieval"},
+    "transliteration": "zl",
+    "key": {
+      "map": {
+        "a": "a",
+        "aiin": "mo",
+        "ar": "n",
+        "cfh": "sp",
+        "ch": "p",
+        "ckh": "df",
+        "cph": "xp",
+        "cth": "cp",
+        "d": "t",
+        "e": "u",
+        "ee": "v",
+        "f": "s",
+        "k": "d",
+        "l": "l",
+        "o": "o",
+        "p": "x",
+        "q": "q",
+        "r": "r",
+        "s": "i",
+        "sh": "fi",
+        "t": "c",
+        "y": "e"
+      }
+    },
+    "search": {"budget": 0}
+  }
+}
