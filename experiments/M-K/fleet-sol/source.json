@@ -1,0 +1,29 @@
+{
+  "title": "A Glyph Is Not a Letter, a Token Is Not a Word, a Space Is Not a Space: What the Units of Voynichese Are Not",
+  "authors": "Liudmila Rozanova and Alexander Temerev",
+  "year": 2026,
+  "url": "https://arxiv.org/html/2608.17096v1",
+  "doi": "10.48550/arXiv.2608.17096",
+  "summary": "This preprint compares Zandbergen–Landini EVA with matched prose, cipher and pseudotext controls using quire-level resampling. It measures the structure carried by adjacent glyphs, token identities, and graded separators and publishes the analysis code and data.",
+  "established": [
+    "In the tested corpus, the preceding token identity explains 0.79% of capped token entropy after shuffle correction, while the last and first glyphs across adjacent tokens share 0.197 bits of shuffle-corrected mutual information.",
+    "Uncertain separators have higher cross-boundary cohesion and narrower image-coordinate gaps than certain separators. Manually drawn coordinate boxes distinguished the two classes with AUC 0.905 among matched boundaries. A smaller blind measurement of the ink gave the same direction and weaker discrimination.",
+    "After erasing every space before learning the units, the 64-merge segmentation crossed 2.5% of certain and 20.3% of uncertain separators. The direction held in each of the 16 analyzed quires.",
+    "Byte-pair merges identify an early multi-symbol scale of reduced adjacent dependence, with a minimum at 32 merges when scored on omitted quires and at 64 in the pooled fit.",
+    "The tested Naibbe and self-citation outputs approximate the manuscript's low glyph entropy, early merge scale, weak token order and null substitution-attack differential. Their tested outputs have substantially weaker edge-glyph dependence and fewer singleton types than the manuscript at matched token counts."
+  ],
+  "open": [
+    {
+      "question": "Can the graded separator distinction be reproduced with independently segmented image measurements at manuscript scale?",
+      "front": "L1",
+      "check": "Measure ink-to-ink gap widths blind to the transcription labels, matching the neighboring glyph pair and accounting for page or quire clustering.",
+      "hard": true
+    },
+    {
+      "question": "Can a candidate text-production procedure reproduce both the strong cross-token edge dependence and the singleton-rich vocabulary at the manuscript's sample size?",
+      "front": "G",
+      "check": "At matched token counts and with fixed generator settings, compare shuffle-corrected edge-glyph mutual information and singleton-type fraction jointly against the manuscript and the published controls.",
+      "hard": true
+    }
+  ]
+}
