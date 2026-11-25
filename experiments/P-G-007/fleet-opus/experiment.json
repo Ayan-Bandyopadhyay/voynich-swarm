@@ -1,0 +1,7 @@
+{
+ "step": "P-G-007",
+ "handle": "fleet-opus",
+ "kind": "step",
+ "summary": "Measured before coding: a null that keeps pages whole still passes the drifting chain (p 0.005), and a null that moves section edges has no power on 34 pages (manuscript p 0.065), so the section fact cannot be sharpened on a hidden sample.",
+ "lease": "32270a867c89a9f555c2af05"
+}
