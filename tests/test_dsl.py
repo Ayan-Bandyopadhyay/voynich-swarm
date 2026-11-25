@@ -77,6 +77,21 @@ class HollowPassTest(unittest.TestCase):
         self.assertTrue(all(len(r) == 1 for r in runs))
         self.refused({"statistic": {"repeat_ngram": 2}, "compare": [{"op": ">=", "value": 0.9}]}, pages)
 
+    def test_ratio_can_compare_dialects_within_a_shared_shuffle(self):
+        a = page("a", [["ol", "ol", "or", "or"]] * 20)
+        b = page("b", [["ol", "ol", "ol", "ol"]] * 20)
+        b.meta["L"] = "B"
+        arg = {"feature": "word", "in": ["ol"], "of": {"language": "A"}, "to": {"language": "B"}}
+        spec = {"statistic": {"ratio": arg}, "compare": [{"null": "shuffle_across_pages", "direction": "less",
+                                                          "perms": 99, "p": 0.01}]}
+        result = dsl.evaluate(spec, [a, b])
+        self.assertTrue(result["pass"])
+        self.assertEqual(result["value"], 0.5)
+        self.assertEqual(dsl.canonical(spec)["statistic"]["ratio"]["of"]["language"], "A")
+        self.assertNotIn("language", dsl.canonical(spec)["select"])
+        arg["of"]["language"] = "unknown"
+        self.refused(spec, [a, b])
+
     def test_null_that_cannot_move_the_statistic_is_refused(self):
         self.refused({"statistic": {"entropy": "word"}, "compare": [{"null": "shuffle_within_line", "perms": 99}]})
 
