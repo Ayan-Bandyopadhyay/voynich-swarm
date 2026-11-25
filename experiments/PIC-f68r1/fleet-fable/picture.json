@@ -1,0 +1,422 @@
+{
+ "folio": "f68r1",
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006196",
+ "blind": true,
+ "statement": "Annotated from the Beinecke scan alone (the left-hand panel of the three-panel '68r' canvas, with one crop). Under a few lines of text there is a sun at the top, a round face ringed by flame-like rays with three short words inside its circle; a moon at the bottom, a face inside a blue and yellow crescent with a ring of text around it; and between them twenty-nine scattered stars, each with a short label beside it (to its right, except one near the lower left whose label is on its left). Eight stars have a small ring at the centre, two a dark dot, four are drawn in outline with little or no yellow, and one near the middle is larger than the rest. The transcription has twenty-nine star-unit label lines (f68r1.8 to f68r1.36), which matches my count of stars. Their order is not known to me: I numbered the stars from top to bottom (left to right where two are level) and paired the label lines in that order, which is an assumption made from the line ids alone, so the star-to-label pairing may be wrong for any star and should not be relied on without a check against the label positions. The sun and moon are not paired with a label line.",
+ "objects": [
+  {
+   "id": "sun",
+   "kind": "sun",
+   "features": {
+    "position": "top centre",
+    "shape": "round face in a circle ringed by short curved flame-like rays",
+    "face": true,
+    "hair": "yellow, braided band around the head",
+    "colour": "yellow",
+    "words_inside": "three short words inside the circle beside and below the face"
+   },
+   "label": null
+  },
+  {
+   "id": "moon",
+   "kind": "moon",
+   "features": {
+    "position": "bottom centre",
+    "shape": "round face inside a crescent",
+    "face": true,
+    "colour": "blue and yellow crescent",
+    "surround": "ring of text around it"
+   },
+   "label": null
+  },
+  {
+   "id": "star_1",
+   "kind": "star",
+   "features": {
+    "position": "upper left, star 1 of 29 counted top to bottom",
+    "points": "7 or 8",
+    "colour": "yellow",
+    "centre_mark": "none",
+    "size": "ordinary",
+    "label_side": "right"
+   },
+   "label": "f68r1.8"
+  },
+  {
+   "id": "star_2",
+   "kind": "star",
+   "features": {
+    "position": "upper centre, star 2 of 29 counted top to bottom",
+    "points": "7 or 8",
+    "colour": "yellow",
+    "centre_mark": "none",
+    "size": "ordinary",
+    "label_side": "right"
+   },
+   "label": "f68r1.9"
+  },
+  {
+   "id": "star_3",
+   "kind": "star",
+   "features": {
+    "position": "upper left, star 3 of 29 counted top to bottom",
+    "points": "7 or 8",
+    "colour": "outline",
+    "centre_mark": "none",
+    "size": "ordinary",
+    "label_side": "right"
+   },
+   "label": "f68r1.10"
+  },
+  {
+   "id": "star_4",
+   "kind": "star",
+   "features": {
+    "position": "upper centre, star 4 of 29 counted top to bottom",
+    "points": "7 or 8",
+    "colour": "yellow",
+    "centre_mark": "none",
+    "size": "ordinary",
+    "label_side": "right"
+   },
+   "label": "f68r1.11"
+  },
+  {
+   "id": "star_5",
+   "kind": "star",
+   "features": {
+    "position": "upper right, star 5 of 29 counted top to bottom",
+    "points": "7 or 8",
+    "colour": "yellow",
+    "centre_mark": "ring",
+    "size": "ordinary",
+    "label_side": "right"
+   },
+   "label": "f68r1.12"
+  },
+  {
+   "id": "star_6",
+   "kind": "star",
+   "features": {
+    "position": "upper left, star 6 of 29 counted top to bottom",
+    "points": "7 or 8",
+    "colour": "yellow",
+    "centre_mark": "none",
+    "size": "ordinary",
+    "label_side": "right"
+   },
+   "label": "f68r1.13"
+  },
+  {
+   "id": "star_7",
+   "kind": "star",
+   "features": {
+    "position": "upper centre, star 7 of 29 counted top to bottom",
+    "points": "7 or 8",
+    "colour": "outline",
+    "centre_mark": "none",
+    "size": "ordinary",
+    "label_side": "right"
+   },
+   "label": "f68r1.14"
+  },
+  {
+   "id": "star_8",
+   "kind": "star",
+   "features": {
+    "position": "upper centre, star 8 of 29 counted top to bottom",
+    "points": "7 or 8",
+    "colour": "yellow",
+    "centre_mark": "ring",
+    "size": "ordinary",
+    "label_side": "right"
+   },
+   "label": "f68r1.15"
+  },
+  {
+   "id": "star_9",
+   "kind": "star",
+   "features": {
+    "position": "middle right, star 9 of 29 counted top to bottom",
+    "points": "7 or 8",
+    "colour": "yellow",
+    "centre_mark": "ring",
+    "size": "ordinary",
+    "label_side": "right"
+   },
+   "label": "f68r1.16"
+  },
+  {
+   "id": "star_10",
+   "kind": "star",
+   "features": {
+    "position": "middle left, star 10 of 29 counted top to bottom",
+    "points": "7 or 8",
+    "colour": "yellow",
+    "centre_mark": "none",
+    "size": "ordinary",
+    "label_side": "right"
+   },
+   "label": "f68r1.17"
+  },
+  {
+   "id": "star_11",
+   "kind": "star",
+   "features": {
+    "position": "middle left, star 11 of 29 counted top to bottom",
+    "points": "7 or 8",
+    "colour": "yellow",
+    "centre_mark": "ring",
+    "size": "ordinary",
+    "label_side": "right"
+   },
+   "label": "f68r1.18"
+  },
+  {
+   "id": "star_12",
+   "kind": "star",
+   "features": {
+    "position": "middle centre, star 12 of 29 counted top to bottom",
+    "points": "7 or 8",
+    "colour": "yellow",
+    "centre_mark": "none",
+    "size": "ordinary",
+    "label_side": "right"
+   },
+   "label": "f68r1.19"
+  },
+  {
+   "id": "star_13",
+   "kind": "star",
+   "features": {
+    "position": "middle centre, star 13 of 29 counted top to bottom",
+    "points": "7 or 8",
+    "colour": "yellow",
+    "centre_mark": "none",
+    "size": "ordinary",
+    "label_side": "right"
+   },
+   "label": "f68r1.20"
+  },
+  {
+   "id": "star_14",
+   "kind": "star",
+   "features": {
+    "position": "middle right, star 14 of 29 counted top to bottom",
+    "points": "7 or 8",
+    "colour": "yellow",
+    "centre_mark": "ring",
+    "size": "ordinary",
+    "label_side": "right"
+   },
+   "label": "f68r1.21"
+  },
+  {
+   "id": "star_15",
+   "kind": "star",
+   "features": {
+    "position": "middle left, star 15 of 29 counted top to bottom",
+    "points": "7 or 8",
+    "colour": "yellow",
+    "centre_mark": "none",
+    "size": "ordinary",
+    "label_side": "right"
+   },
+   "label": "f68r1.22"
+  },
+  {
+   "id": "star_16",
+   "kind": "star",
+   "features": {
+    "position": "middle left, star 16 of 29 counted top to bottom",
+    "points": "7 or 8",
+    "colour": "yellow",
+    "centre_mark": "dark dot",
+    "size": "ordinary",
+    "label_side": "right"
+   },
+   "label": "f68r1.23"
+  },
+  {
+   "id": "star_17",
+   "kind": "star",
+   "features": {
+    "position": "middle left, star 17 of 29 counted top to bottom",
+    "points": "7 or 8",
+    "colour": "yellow",
+    "centre_mark": "none",
+    "size": "ordinary",
+    "label_side": "right"
+   },
+   "label": "f68r1.24"
+  },
+  {
+   "id": "star_18",
+   "kind": "star",
+   "features": {
+    "position": "middle centre, star 18 of 29 counted top to bottom",
+    "points": "7 or 8",
+    "colour": "outline",
+    "centre_mark": "none",
+    "size": "large",
+    "label_side": "right"
+   },
+   "label": "f68r1.25"
+  },
+  {
+   "id": "star_19",
+   "kind": "star",
+   "features": {
+    "position": "middle left, star 19 of 29 counted top to bottom",
+    "points": "7 or 8",
+    "colour": "yellow",
+    "centre_mark": "none",
+    "size": "ordinary",
+    "label_side": "right"
+   },
+   "label": "f68r1.26"
+  },
+  {
+   "id": "star_20",
+   "kind": "star",
+   "features": {
+    "position": "middle centre, star 20 of 29 counted top to bottom",
+    "points": "7 or 8",
+    "colour": "yellow",
+    "centre_mark": "none",
+    "size": "ordinary",
+    "label_side": "right"
+   },
+   "label": "f68r1.27"
+  },
+  {
+   "id": "star_21",
+   "kind": "star",
+   "features": {
+    "position": "middle right, star 21 of 29 counted top to bottom",
+    "points": "7 or 8",
+    "colour": "yellow",
+    "centre_mark": "ring",
+    "size": "ordinary",
+    "label_side": "right"
+   },
+   "label": "f68r1.28"
+  },
+  {
+   "id": "star_22",
+   "kind": "star",
+   "features": {
+    "position": "lower left, star 22 of 29 counted top to bottom",
+    "points": "7 or 8",
+    "colour": "yellow",
+    "centre_mark": "none",
+    "size": "ordinary",
+    "label_side": "right"
+   },
+   "label": "f68r1.29"
+  },
+  {
+   "id": "star_23",
+   "kind": "star",
+   "features": {
+    "position": "lower left, star 23 of 29 counted top to bottom",
+    "points": "7 or 8",
+    "colour": "yellow",
+    "centre_mark": "none",
+    "size": "ordinary",
+    "label_side": "right"
+   },
+   "label": "f68r1.30"
+  },
+  {
+   "id": "star_24",
+   "kind": "star",
+   "features": {
+    "position": "lower left, star 24 of 29 counted top to bottom",
+    "points": "7 or 8",
+    "colour": "yellow",
+    "centre_mark": "dark dot",
+    "size": "ordinary",
+    "label_side": "right"
+   },
+   "label": "f68r1.31"
+  },
+  {
+   "id": "star_25",
+   "kind": "star",
+   "features": {
+    "position": "lower centre, star 25 of 29 counted top to bottom",
+    "points": "7 or 8",
+    "colour": "yellow",
+    "centre_mark": "none",
+    "size": "ordinary",
+    "label_side": "right"
+   },
+   "label": "f68r1.32"
+  },
+  {
+   "id": "star_26",
+   "kind": "star",
+   "features": {
+    "position": "lower right, star 26 of 29 counted top to bottom",
+    "points": "7 or 8",
+    "colour": "yellow",
+    "centre_mark": "ring",
+    "size": "ordinary",
+    "label_side": "right"
+   },
+   "label": "f68r1.33"
+  },
+  {
+   "id": "star_27",
+   "kind": "star",
+   "features": {
+    "position": "lower left, star 27 of 29 counted top to bottom",
+    "points": "7 or 8",
+    "colour": "yellow",
+    "centre_mark": "ring",
+    "size": "ordinary",
+    "label_side": "right"
+   },
+   "label": "f68r1.34"
+  },
+  {
+   "id": "star_28",
+   "kind": "star",
+   "features": {
+    "position": "lower left, star 28 of 29 counted top to bottom",
+    "points": "7 or 8",
+    "colour": "outline",
+    "centre_mark": "none",
+    "size": "ordinary",
+    "label_side": "left"
+   },
+   "label": "f68r1.35"
+  },
+  {
+   "id": "star_29",
+   "kind": "star",
+   "features": {
+    "position": "lower centre, star 29 of 29 counted top to bottom",
+    "points": "7 or 8",
+    "colour": "yellow",
+    "centre_mark": "none",
+    "size": "ordinary",
+    "label_side": "right"
+   },
+   "label": "f68r1.36"
+  },
+  {
+   "id": "field",
+   "kind": "diagram",
+   "features": {
+    "shape": "scattered stars between a sun above and a moon below, with a faint arc at the right edge",
+    "count_stars": 29,
+    "count_ring_centred_stars": 8,
+    "count_dark_dot_stars": 2,
+    "background": "faint blue green shape behind the middle, show-through from the other side"
+   },
+   "label": null
+  }
+ ]
+}
