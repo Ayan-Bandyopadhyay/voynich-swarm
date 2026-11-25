@@ -1,0 +1,528 @@
+{
+ "folio": "f72r3",
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006203",
+ "blind": true,
+ "statement": "Rightmost circular panel of the 71v-72r foldout: three concentric rings of nude human figures (13 outer, 11 middle, 7 inner; 31 in all), nearly all tied by a line from a hand to an eight-pointed star with an ochre centre, drawn radially with feet toward the centre (standing at the top, lying at the sides, upside down at the bottom); in the central disc two segmented clawed animals with many thin legs, the upper pale green, the lower red. The transcription's label lines fall in three blocks of 12, 11 and 7 lines between circular lines; matching the block sizes to the ring figure counts puts f72r3.2-13 on the outer ring, 15-25 on the middle and 27-33 on the inner, and each figure carries that block as label_group. Which line within a block belongs to which figure cannot be fixed from line ids without reading the words, so every label is null rather than guessed. Clock positions are measured from the panel centre, 12 = top of the scan.",
+ "objects": [
+  {
+   "id": "o1",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "12",
+    "posture": "standing",
+    "clothing": "nude",
+    "star": "attached",
+    "headwear": "none",
+    "colour": "uncoloured",
+    "label_group": "f72r3.2-13"
+   },
+   "label": null
+  },
+  {
+   "id": "o2",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "1",
+    "posture": "standing",
+    "clothing": "nude",
+    "star": "attached",
+    "headwear": "none",
+    "colour": "uncoloured",
+    "label_group": "f72r3.2-13",
+    "note": "one hand on hip, other hand to star"
+   },
+   "label": null
+  },
+  {
+   "id": "o3",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "1",
+    "posture": "unclear",
+    "clothing": "nude",
+    "star": "attached",
+    "headwear": "none",
+    "colour": "uncoloured",
+    "label_group": "f72r3.2-13",
+    "note": "faint, mostly lost in a stain on the fold; head visible"
+   },
+   "label": null
+  },
+  {
+   "id": "o4",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "2",
+    "posture": "lying",
+    "clothing": "nude",
+    "star": "attached",
+    "headwear": "none",
+    "colour": "uncoloured",
+    "label_group": "f72r3.2-13"
+   },
+   "label": null
+  },
+  {
+   "id": "o5",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "4",
+    "posture": "lying",
+    "clothing": "nude",
+    "star": "attached",
+    "headwear": "none",
+    "colour": "uncoloured",
+    "label_group": "f72r3.2-13"
+   },
+   "label": null
+  },
+  {
+   "id": "o6",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "5",
+    "posture": "inverted",
+    "clothing": "nude",
+    "star": "attached",
+    "headwear": "none",
+    "colour": "uncoloured",
+    "label_group": "f72r3.2-13"
+   },
+   "label": null
+  },
+  {
+   "id": "o7",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "6",
+    "posture": "inverted",
+    "clothing": "nude",
+    "star": "attached",
+    "headwear": "none",
+    "colour": "uncoloured",
+    "label_group": "f72r3.2-13"
+   },
+   "label": null
+  },
+  {
+   "id": "o8",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "7",
+    "posture": "inverted",
+    "clothing": "nude",
+    "star": "unclear",
+    "headwear": "none",
+    "colour": "uncoloured",
+    "label_group": "f72r3.2-13",
+    "note": "no star clearly tied to this figure"
+   },
+   "label": null
+  },
+  {
+   "id": "o9",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "8",
+    "posture": "lying",
+    "clothing": "nude",
+    "star": "attached",
+    "headwear": "none",
+    "colour": "uncoloured",
+    "label_group": "f72r3.2-13"
+   },
+   "label": null
+  },
+  {
+   "id": "o10",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "9",
+    "posture": "lying",
+    "clothing": "nude",
+    "star": "attached",
+    "headwear": "none",
+    "colour": "uncoloured",
+    "label_group": "f72r3.2-13",
+    "note": "at the left edge, beside the fold; red cheeks"
+   },
+   "label": null
+  },
+  {
+   "id": "o11",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "10",
+    "posture": "lying",
+    "clothing": "nude",
+    "star": "attached",
+    "headwear": "none",
+    "colour": "uncoloured",
+    "label_group": "f72r3.2-13"
+   },
+   "label": null
+  },
+  {
+   "id": "o12",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "11",
+    "posture": "lying",
+    "clothing": "nude",
+    "star": "attached",
+    "headwear": "none",
+    "colour": "uncoloured",
+    "label_group": "f72r3.2-13"
+   },
+   "label": null
+  },
+  {
+   "id": "o13",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "11",
+    "posture": "standing",
+    "clothing": "nude",
+    "star": "attached",
+    "headwear": "none",
+    "colour": "uncoloured",
+    "label_group": "f72r3.2-13"
+   },
+   "label": null
+  },
+  {
+   "id": "m1",
+   "kind": "human_figure",
+   "features": {
+    "ring": "middle",
+    "clock": "12",
+    "posture": "standing",
+    "clothing": "nude",
+    "star": "attached",
+    "headwear": "none",
+    "colour": "uncoloured",
+    "label_group": "f72r3.15-25",
+    "note": "shown from the hips up, lower body hidden behind a short horizontal bar on the ring line"
+   },
+   "label": null
+  },
+  {
+   "id": "m2",
+   "kind": "human_figure",
+   "features": {
+    "ring": "middle",
+    "clock": "1",
+    "posture": "standing",
+    "clothing": "nude",
+    "star": "attached",
+    "headwear": "none",
+    "colour": "uncoloured",
+    "label_group": "f72r3.15-25",
+    "note": "one hand on hip"
+   },
+   "label": null
+  },
+  {
+   "id": "m3",
+   "kind": "human_figure",
+   "features": {
+    "ring": "middle",
+    "clock": "2",
+    "posture": "lying",
+    "clothing": "nude",
+    "star": "attached",
+    "headwear": "none",
+    "colour": "uncoloured",
+    "label_group": "f72r3.15-25"
+   },
+   "label": null
+  },
+  {
+   "id": "m4",
+   "kind": "human_figure",
+   "features": {
+    "ring": "middle",
+    "clock": "2",
+    "posture": "lying",
+    "clothing": "nude",
+    "star": "attached",
+    "headwear": "none",
+    "colour": "uncoloured",
+    "label_group": "f72r3.15-25",
+    "note": "feet drawn as an inverted V at the fold"
+   },
+   "label": null
+  },
+  {
+   "id": "m5",
+   "kind": "human_figure",
+   "features": {
+    "ring": "middle",
+    "clock": "3",
+    "posture": "lying",
+    "clothing": "nude",
+    "star": "unclear",
+    "headwear": "none",
+    "colour": "uncoloured",
+    "label_group": "f72r3.15-25",
+    "note": "long hair; nearest star sits between this figure and the previous one"
+   },
+   "label": null
+  },
+  {
+   "id": "m6",
+   "kind": "human_figure",
+   "features": {
+    "ring": "middle",
+    "clock": "5",
+    "posture": "inverted",
+    "clothing": "nude",
+    "star": "attached",
+    "headwear": "none",
+    "colour": "uncoloured",
+    "label_group": "f72r3.15-25"
+   },
+   "label": null
+  },
+  {
+   "id": "m7",
+   "kind": "human_figure",
+   "features": {
+    "ring": "middle",
+    "clock": "7",
+    "posture": "inverted",
+    "clothing": "nude",
+    "star": "attached",
+    "headwear": "none",
+    "colour": "uncoloured",
+    "label_group": "f72r3.15-25"
+   },
+   "label": null
+  },
+  {
+   "id": "m8",
+   "kind": "human_figure",
+   "features": {
+    "ring": "middle",
+    "clock": "8",
+    "posture": "lying",
+    "clothing": "nude",
+    "star": "attached",
+    "headwear": "none",
+    "colour": "uncoloured",
+    "label_group": "f72r3.15-25"
+   },
+   "label": null
+  },
+  {
+   "id": "m9",
+   "kind": "human_figure",
+   "features": {
+    "ring": "middle",
+    "clock": "9",
+    "posture": "lying",
+    "clothing": "nude",
+    "star": "attached",
+    "headwear": "none",
+    "colour": "uncoloured",
+    "label_group": "f72r3.15-25"
+   },
+   "label": null
+  },
+  {
+   "id": "m10",
+   "kind": "human_figure",
+   "features": {
+    "ring": "middle",
+    "clock": "10",
+    "posture": "lying",
+    "clothing": "nude",
+    "star": "attached",
+    "headwear": "none",
+    "colour": "uncoloured",
+    "label_group": "f72r3.15-25"
+   },
+   "label": null
+  },
+  {
+   "id": "m11",
+   "kind": "human_figure",
+   "features": {
+    "ring": "middle",
+    "clock": "11",
+    "posture": "standing",
+    "clothing": "nude",
+    "star": "attached",
+    "headwear": "none",
+    "colour": "uncoloured",
+    "label_group": "f72r3.15-25",
+    "note": "hand on hip"
+   },
+   "label": null
+  },
+  {
+   "id": "i1",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock": "12",
+    "posture": "standing",
+    "clothing": "nude",
+    "star": "attached",
+    "headwear": "none",
+    "colour": "uncoloured",
+    "label_group": "f72r3.27-33",
+    "note": "hand on hip, other hand to star"
+   },
+   "label": null
+  },
+  {
+   "id": "i2",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock": "2",
+    "posture": "lying",
+    "clothing": "nude",
+    "star": "attached",
+    "headwear": "none",
+    "colour": "uncoloured",
+    "label_group": "f72r3.27-33",
+    "note": "reclining, arm over head"
+   },
+   "label": null
+  },
+  {
+   "id": "i3",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock": "3",
+    "posture": "lying",
+    "clothing": "nude",
+    "star": "attached",
+    "headwear": "crown",
+    "colour": "uncoloured",
+    "label_group": "f72r3.27-33",
+    "note": "pointed crown-like headdress"
+   },
+   "label": null
+  },
+  {
+   "id": "i4",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock": "6",
+    "posture": "inverted",
+    "clothing": "nude",
+    "star": "attached",
+    "headwear": "none",
+    "colour": "uncoloured",
+    "label_group": "f72r3.27-33"
+   },
+   "label": null
+  },
+  {
+   "id": "i5",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock": "7",
+    "posture": "lying",
+    "clothing": "nude",
+    "star": "attached",
+    "headwear": "none",
+    "colour": "uncoloured",
+    "label_group": "f72r3.27-33"
+   },
+   "label": null
+  },
+  {
+   "id": "i6",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock": "9",
+    "posture": "standing",
+    "clothing": "nude",
+    "star": "attached",
+    "headwear": "none",
+    "colour": "uncoloured",
+    "label_group": "f72r3.27-33"
+   },
+   "label": null
+  },
+  {
+   "id": "i7",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock": "11",
+    "posture": "lying",
+    "clothing": "nude",
+    "star": "attached",
+    "headwear": "none",
+    "colour": "uncoloured",
+    "label_group": "f72r3.27-33",
+    "note": "drawn larger than the others, body crossing toward the middle ring line"
+   },
+   "label": null
+  },
+  {
+   "id": "c1",
+   "kind": "animal",
+   "features": {
+    "ring": "centre",
+    "position": "upper",
+    "body": "segmented, elongated",
+    "claws": "2",
+    "legs": "many thin vertical strokes",
+    "colour": "pale green with red-brown tips",
+    "count": "1",
+    "label_group": "none"
+   },
+   "label": null
+  },
+  {
+   "id": "c2",
+   "kind": "animal",
+   "features": {
+    "ring": "centre",
+    "position": "lower",
+    "body": "segmented, elongated",
+    "claws": "2",
+    "legs": "many thin vertical strokes",
+    "colour": "red",
+    "count": "1",
+    "note": "a short word in a non-Voynich script is written beneath it",
+    "label_group": "none"
+   },
+   "label": null
+  },
+  {
+   "id": "x1",
+   "kind": "other",
+   "features": {
+    "ring": "middle",
+    "clock": "9",
+    "shape": "small rectangle containing three rows of tiny marks",
+    "colour": "uncoloured"
+   },
+   "label": null
+  }
+ ]
+}
