@@ -1,20 +1,5 @@
 {
-  "title": "The Application of Latent Semantic Analysis to the Voynich Manuscript",
-  "authors": "Colin Layfield and Lisa Fagin Davis",
-  "year": 2026,
-  "url": "https://dhq.digitalhumanities.org/vol/20/1/000857/000857.html",
-  "doi": "10.63744/2ezxpskcezq4",
-  "summary": "The authors apply latent semantic analysis to short manuscript segments under three term-weighting schemes and compare adjacent with shuffled segment orders. A separate sliding-window analysis locates abrupt changes within the manuscript.",
-  "established": [
-    "Adjacent segments showed greater cosine similarity than shuffled segment orders in the manuscript and the comparison texts. The artificial self-citation text also produced this basic pattern, with a different score distribution.",
-    "The lowest five percent of sliding-window scores included many Herbal page boundaries and disproportionate Currier A-to-B transitions. The Biological, Pharmaceutical, Zodiac and Stars sections had relatively few scores below this cutoff."
-  ],
-  "open": [
-    {
-      "question": "Can a self-citation or other nonlinguistic process with prespecified changes at page and section boundaries reproduce the distribution of the manuscript's local similarities and transition scores?",
-      "front": "G",
-      "check": "Compare the full score distribution and the fraction of low scores at section and Currier transitions under identical preprocessing and matched block layouts.",
-      "hard": true
-    }
-  ]
+  "of": "K-004",
+  "assessment": "dissent",
+  "statement": "The core summary is accurate, but the benchmark description in the Spanish follow-up needs correction. Section 4.4 and Table 2 use fifty 500-character Wikipedia extracts across five languages, with substitution followed by intra-word anagramming. They report 93.8% token recovery for the combined two-stage pipeline. They did not inject 2% transcription noise. That level is a new test setting for the swarm. Section 5.3's 0.996 and 2.454 are fitted average inversion counts under separate glyph or letter orders, equivalent to minimum adjacent swaps to reach those orders. Section 6 proposes extending the anagram model to reorder whole words within lines, and suggests softened emissions for noise generally. The Spanish and English reversal checks are narrower swarm variants. Primary source: https://aclanthology.org/Q16-1006.pdf"
 }
