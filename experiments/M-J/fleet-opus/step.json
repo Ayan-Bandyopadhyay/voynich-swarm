@@ -1,0 +1,8 @@
+{
+  "title": "German × substitution: get the key search out of the ch/sch trap",
+  "statement": "In results/heldout/controls.json the German homophonic control is the one substitution cell where the true key passes at 2% noise but the pinned search fails, clean and noisy: the search, not the hypothesis, is what stops German from being ruled in or out. Measured on the practice controls (fleet-opus): the search's best key scores far worse on its own trigram objective than the true key (clean -114447 vs -103058 bits; at 2% noise -121486, while a climb started from the true key reaches -111999 and passes (a) with +0.061), and its errors sit on h and c (German ch/sch). It is not a budget problem: 16 restarts x 6000 iterations, 4 x 12000, 4 x 24000 at noise, a letter-frequency rank start and simulated annealing (start temperatures 10, 30, 100 bits) all end in the same basin; one clean run at 4 x 24000 escaped. Try larger moves (swap the letters of two whole homophone groups, move a unit together with its most frequent neighbour, or restarts seeded from bigram rather than unigram rank) and report the German row with python3 -m vs season --parts controls, with the other languages' rows to show nothing regressed.",
+  "program": "J",
+  "check": "code PR to vs/search.py with python3 -m vs season --parts controls output: german substitution search_cracks_control true, no other row worse",
+  "on_path": true,
+  "hard": true
+}
