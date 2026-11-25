@@ -1,0 +1,27 @@
+{
+ "title": "Pages close together in the manuscript share more words than pages far apart",
+ "statement": "In paragraph text, two pages at most 15 pages apart in manuscript order have more similar word counts (median cosine) than two pages farther apart, and the difference exceeds what is left when the words are dealt out at random across pages.",
+ "source": "Registers the first half of step P-G-002 (after Layfield and Davis 2026, K-003: adjacent segments are more alike than shuffled ones), using the page_similarity statistic merged in #100. It is a simpler stand-in for the paper's latent semantic analysis: raw word counts, pages with at least 40 certain words. Public practice split: 0.074 (near minus far median cosine) on the evaluation pages and 0.077 on the training pages, both p = 0.005 against 199 shuffles; Takahashi 0.072 and RF 0.068 on the evaluation pages, both passing. The window is 15 pages so a sample of pages still has enough near pairs (60 on the 34 practice evaluation pages; a window of 3 or 5 leaves fewer than 30 there and is undefined). No absolute threshold: the cosine grows with page length, and long pages sit together, so only the shuffle null (which keeps every page's length) is a fair yardstick. What carries it, on the training pages: the difference is 0.026 and -0.006 inside the first two blocks of 48 pages (herbal, Currier A), 0.32 in the third (where language and section change), 0.041 in the fourth; scoped to Currier A alone it still passes (0.044, p = 0.01, 99 shuffles) and scoped to Currier B it does not (0.149, p = 0.09). So most of the effect is the change of vocabulary between Currier languages and sections, with a smaller gradient inside A. Not evidence of language: any text whose word stock changes along its length passes, and ordinary books would. It is a target for generators. On the practice split a line-restarting glyph chain with one table gives -0.034 and fails; the P-G-003 candidate (the same chain with a table drifting over a window of 12 public pages and nearby copying) gives -0.026 and 0.004 on two seeds and fails too, because its drift is spread over a text five times longer than the evaluation pages take. A procedure passes only if its tables change at about the pace of the pages. The second half of P-G-002 (low scores falling at section and Currier transitions) is not registered here: the 5% tail is 9 pairs on the training pages and fewer on a sample.",
+ "spec": {
+  "select": {
+   "unit": [
+    "P"
+   ],
+   "certain": true
+  },
+  "statistic": {
+   "page_similarity": {
+    "within": 15,
+    "min_words": 40
+   }
+  },
+  "compare": [
+   {
+    "null": "shuffle_across_pages",
+    "direction": "greater",
+    "perms": 199,
+    "p": 0.01
+   }
+  ]
+ }
+}
