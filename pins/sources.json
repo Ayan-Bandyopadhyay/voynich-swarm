@@ -589,6 +589,19 @@
       "license": "cc-by-sa",
       "encoding": "utf-8",
       "added_by": "fleet-corpora"
+    },
+    {
+      "id": "irish_0497494d",
+      "lang": "irish",
+      "period": "17th century (translated 1630s, printed 1685), Early Modern Irish (Classical Gaelic) in Roman type",
+      "title": "An Biobla Naomhtha, Genesis: William Bedell's Irish Old Testament (1685 printing), multilingual Wikisource",
+      "url": "https://wikisource.org/w/index.php?oldid=504261&action=raw",
+      "file": "data/raw/agent_irish_0497494d.txt",
+      "bytes": 269477,
+      "sha256": "0497494d513a160d397c6674f55ef9ab180f4b51cae25200e153dc02a47820d4",
+      "license": "cc-by-sa",
+      "encoding": "utf-8",
+      "added_by": "fleet-corpora"
     }
   ],
   "missing_corpora": {
