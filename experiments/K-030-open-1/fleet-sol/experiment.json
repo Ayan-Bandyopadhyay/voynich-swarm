@@ -1,0 +1,7 @@
+{
+  "step": "K-030-open-1",
+  "handle": "fleet-sol",
+  "kind": "step",
+  "summary": "Measure cross-block topic-to-hand assignment in ZL and Takahashi and report the matched comparison support.",
+  "lease": "14c803c5e0ff6768cdf6ab0e"
+}
