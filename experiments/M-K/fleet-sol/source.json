@@ -1,20 +1,26 @@
 {
-  "title": "Topic Modeling in the Voynich Manuscript",
-  "authors": "Rachel Sterneck, Annie Polish and Claire Bowern",
-  "year": 2021,
-  "url": "https://arxiv.org/abs/2107.02858v1",
-  "doi": "10.48550/arXiv.2107.02858",
-  "summary": "The authors fit LDA, LSA and nonnegative matrix factorization to the Takahashi transcription and compare the inferred token clusters with illustrated sections, Currier language and scribal hands. Their strongest associations were qualitative comparisons from the NMF and multiple correspondence analyses.",
+  "title": "The Voynich manuscript: Symbol roles revisited",
+  "authors": "Vladimír Matlach, Barbora Anna Janečková and Daniel Dostál",
+  "year": 2022,
+  "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0260948",
+  "doi": "10.1371/journal.pone.0260948",
+  "summary": "The authors measure autocorrelation of successive intervals between occurrences of the same EVA symbol. They separately propose a heuristic for possible ligatures and discuss a hypothetical numeric encoding.",
   "established": [
-    "In the full-page analyses, the NMF topics align more closely with hand and illustration groupings than the LDA or LSA topics. The authors report a close association between the astrology grouping, hand 4 and one NMF topic.",
-    "The 20- and 40-word experiments sample words within pages at fixed document lengths. They exclude the predominantly label-based astrological pages and other pages below the stated length cutoff. Some associations persist, and certain links change with the sampling choice.",
-    "The five-topic and two-topic analyses do not produce complete one-to-one correspondences with the five hands or two Currier categories. The authors discuss spelling, encipherment and word choice as possible contributors to what NMF captures."
+    "In the processed Takahashi transcript, the authors report positive and individually significant estimates for 90.1% of 760 lag-by-symbol tests over lags 1 to 40. The reported confidence limits are pointwise.",
+    "A Timm–Schinner generated sample comes closest to the manuscript by mean autocorrelation among the compared texts. The manuscript remains the maximum in that comparison.",
+    "The ligature loss weights were adjusted on Latin and Arabic examples, then fixed for an Armenian example and planted English and Czech examples. Each designated held-apart triplet ranked inside the authors' fifth-percentile criterion. The manuscript candidates remain hypotheses and in some cases the authors manually inspect discrepant occurrences."
   ],
   "open": [
     {
-      "question": "How much of the NMF association with scribal hand survives comparison within illustrated sections and at matched lengths and folio distances?",
+      "question": "How much of the long-lag symbol-gap autocorrelation survives after controlling for local rates and the line layout?",
       "front": "L2",
-      "check": "Fit an NMF topic space and any topic-to-hand mapping on contiguous public training blocks. Evaluate on separate public blocks using both ZL and Takahashi and compare prediction within shared-section, length- and distance-matched sets. Include a fixed copying-generator comparison on the same layout.",
+      "check": "Use paired public ZL and Takahashi samples. Freeze symbol preprocessing and measure Pearson gap autocorrelations over lags 1 to 40. Compare a global token-word shuffle with matched within-page line and paragraph-word shuffles, and with pinned self-citation and fitted stationary whole-copy controls on the same public layout. Report coefficients and an aggregate lag statistic against each null before interpreting pointwise significance. Estimate sensitivity with known rate changes and with known dependence at constant rates.",
+      "hard": true
+    },
+    {
+      "question": "Can the published glyph-triplet score distinguish proposed ligatures from ordinary compound-like distributions in matched controls?",
+      "front": "L1",
+      "check": "Fix the published loss weights and candidate threshold. Evaluate all triplets both in public natural text with and without independent planted ligatures and in a stationary line-chain control. Record false-positive ranks, then check fixed manuscript candidates across ZL and Takahashi and use a separate public scan sample to evaluate disputed occurrences.",
       "hard": true
     }
   ]
