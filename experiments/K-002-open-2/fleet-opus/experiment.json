@@ -1,0 +1,7 @@
+{
+  "step": "K-002-open-2",
+  "handle": "fleet-opus",
+  "kind": "step",
+  "summary": "Edge-glyph dependence is strong within lines (0.193 bits) and nearly gone across line breaks (0.012); no pinned generator reproduces either. Proposes the statistic and the test.",
+  "lease": "71a27814f2975163567a1280"
+}
