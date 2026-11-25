@@ -12,7 +12,7 @@ Findings about the manuscript are never produced here: they come only from agent
 requests, through vs/score.py, onto the record (registry/items.jsonl).
 """
 import json, os, time
-from . import path, corpus, judge, controls, search
+from . import path, corpus, judge, controls, search, refcorpus
 
 def _langs():
     from . import refcorpus
@@ -21,8 +21,8 @@ def _langs():
 
 
 LANGS = _langs()
-FAMILIES = ["substitution", "verbose"]
-CONTROL_FOR = {"substitution": "homophonic", "verbose": "verbose"}
+FAMILIES = ["substitution", "verbose", "abbreviation"]
+CONTROL_FOR = {"substitution": "homophonic", "verbose": "verbose", "abbreviation": "abbreviation"}
 GRID_FAMILIES = ["substitution", "verbose", "nomenclator", "table-cipher", "abbreviation"]
 
 
@@ -48,6 +48,9 @@ def run(split, log=print, parts=("controls", "redteam")):
         rows = []
         for lang in LANGS:
             for fam in FAMILIES:
+                if fam == "abbreviation" and len(refcorpus.alphabet(lang)) > len(controls.CIPHER_GLYPHS) - len(controls.ABBREVIATION_SIGNS):
+                    log(f"control {lang:8s} {fam:12s} unsupported alphabet size")
+                    continue
                 res = {}
                 for noise in (0.0, controls.NOISE):
                     ctr, cev, true = controls.make(lang, CONTROL_FOR[fam], noise=noise)

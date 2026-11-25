@@ -195,9 +195,22 @@ def climb(tri, table, letters, seed, budget=BUDGET, init=None, group_swap=0.0):
     return best_m, best_s
 
 
-def search_cell(lang, family, train_pages, budget=BUDGET, tag="cell"):
+def cell_budget(lang, family):
+    if family in ("abbreviation",):
+        from .search_abbreviation import SETTINGS
+        return {**BUDGET, **SETTINGS}
+    return BUDGET
+
+
+def search_cell(lang, family, train_pages, budget=None, tag="cell"):
+    if budget is None:
+        budget = cell_budget(lang, family)
     table, sy = trigram_table(lang)
     letters = [l for l in sy if l != lm.WB]
+    if family == "abbreviation":
+        from .search_abbreviation import search_abbreviations, SETTINGS
+        budget = {**SETTINGS, **budget}
+        return search_abbreviations(lang, train_pages, budget, tag, table, letters)
     if family == "substitution":
         segf = lambda w: ivtff.segment(w, "eva-basic")
         tri = unit_trigrams(train_pages, segf)

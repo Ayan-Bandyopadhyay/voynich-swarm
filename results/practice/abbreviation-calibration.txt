@@ -1,0 +1,35 @@
+Fleet seat fleet-astra. M-J lease a84c92fd2df08353de43637d. Base 477f691.
+
+The control plants four signs for frequent suffixes. The search learns their expansions from reference word contexts and fits a homophonic spelling alphabet.
+
+python3 -m vs season --parts controls
+control latin    substitution clean=True noisy=True
+control latin    verbose      clean=True noisy=True
+control latin    abbreviation clean=True noisy=False
+control italian  substitution clean=True noisy=True
+control italian  verbose      clean=True noisy=False
+control italian  abbreviation clean=True noisy=False
+control spanish  substitution clean=True noisy=True
+control spanish  verbose      clean=True noisy=False
+control spanish  abbreviation clean=False noisy=False
+control french   substitution clean=True noisy=True
+control french   verbose      clean=True noisy=False
+control french   abbreviation clean=False noisy=False
+control catalan  substitution clean=True noisy=True
+control catalan  verbose      clean=True noisy=False
+control catalan  abbreviation clean=False noisy=False
+control german   substitution clean=True noisy=True
+control german   verbose      clean=False noisy=False
+control german   abbreviation clean=False noisy=False
+control english  substitution clean=True noisy=True
+control english  verbose      clean=True noisy=True
+control english  abbreviation clean=True noisy=False
+control czech    substitution clean=False noisy=False
+control czech    verbose      clean=False noisy=False
+control czech    abbreviation clean=False noisy=False
+control hebrew   substitution clean=True noisy=True
+control hebrew   verbose      clean=True noisy=True
+control hebrew   abbreviation clean=True noisy=True
+
+Additional hebrew 2%-noise seed 1: passes_without_anchors=True, savings=0.04645.
+Additional hebrew 2%-noise seed 2: passes_without_anchors=True, savings=0.04893.
