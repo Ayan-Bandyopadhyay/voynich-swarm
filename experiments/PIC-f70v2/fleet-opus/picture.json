@@ -1,0 +1,631 @@
+{
+ "folio": "f70v2",
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006200",
+ "blind": true,
+ "statement": "Annotated blind from the Beinecke scan only (canvas 1006200, labelled '70v (part)'; the one of the two '70v (part)' canvases whose ring counts, 19 outer figures, 10 inner figures and one central scene, match the label-line structure of f70v2: label lines .2-.20, .22-.31 and .33 between circular text lines .1, .21, .32). Three rings: an outer ring of 19 bare-breasted female figures emerging from patterned tubs or garments, each with a star (six of them, at 12 to 4 o'clock, wear blue caps); an inner ring of 10 nude female figures with tubs, most tubs tinted green, each with a star; a centre disc with two cross-hatched fish facing opposite ways above a blue-edged curved line, plus two eight-pointed stars. Every figure has a short written label beside it on the scan, but no label line id is assigned to any figure: the label line ids carry no position, and tying an id to a figure would mean reading the label words in the transcription, which a blind annotation must not do. Each figure instead carries its ring, clock position and clockwise order, and the label line ids of its ring as candidates; a scorer or second annotator who knows where ZL starts each ring's numbering can map order to id. The centre has words beside the upper star and between the fish; which of them is f70v2.33 cannot be told blind.",
+ "objects": [
+  {
+   "id": "outer-01",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock_position": 11,
+    "order_clockwise_from_top_left": 1,
+    "sex_shown": "female (breasts drawn)",
+    "nude": "upper body bare",
+    "posture": "upper body emerging from a tub or garment, head toward the outer rim",
+    "container": "plain tub with dotted lower band",
+    "headgear": "none, light hair",
+    "star": true,
+    "notes": "star upper right, tethered",
+    "colour": "ink only",
+    "label_ring_candidates": "f70v2.2-f70v2.20"
+   },
+   "label": null
+  },
+  {
+   "id": "outer-02",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock_position": 12,
+    "order_clockwise_from_top_left": 2,
+    "sex_shown": "female (breasts drawn)",
+    "nude": "upper body bare",
+    "posture": "upper body emerging from a tub or garment, head toward the outer rim",
+    "container": "tall barrel, vertical hatching with dots",
+    "headgear": "none, light hair",
+    "star": true,
+    "notes": "star upper right",
+    "colour": "ink only",
+    "label_ring_candidates": "f70v2.2-f70v2.20"
+   },
+   "label": null
+  },
+  {
+   "id": "outer-03",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock_position": 12,
+    "order_clockwise_from_top_left": 3,
+    "sex_shown": "female (breasts drawn)",
+    "nude": "upper body bare",
+    "posture": "upper body emerging from a tub or garment, head toward the outer rim",
+    "container": "tall barrel, vertical hatching with dots",
+    "headgear": "none, yellowish hair",
+    "star": true,
+    "notes": "star right",
+    "colour": "ink only",
+    "label_ring_candidates": "f70v2.2-f70v2.20"
+   },
+   "label": null
+  },
+  {
+   "id": "outer-04",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock_position": 12,
+    "order_clockwise_from_top_left": 4,
+    "sex_shown": "female (breasts drawn)",
+    "nude": "upper body bare",
+    "posture": "upper body emerging from a tub or garment, head toward the outer rim",
+    "container": "tub with vertical stripes",
+    "headgear": "blue cap",
+    "star": true,
+    "notes": "star right on a line from the hand",
+    "colour": "ink; blue on cap",
+    "label_ring_candidates": "f70v2.2-f70v2.20"
+   },
+   "label": null
+  },
+  {
+   "id": "outer-05",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock_position": 1,
+    "order_clockwise_from_top_left": 5,
+    "sex_shown": "female (breasts drawn)",
+    "nude": "upper body bare",
+    "posture": "upper body emerging from a tub or garment, head toward the outer rim",
+    "container": "tub with dotted pattern",
+    "headgear": "none, curly brown hair",
+    "star": true,
+    "notes": "star right held by a line",
+    "colour": "ink only",
+    "label_ring_candidates": "f70v2.2-f70v2.20"
+   },
+   "label": null
+  },
+  {
+   "id": "outer-06",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock_position": 1,
+    "order_clockwise_from_top_left": 6,
+    "sex_shown": "female (breasts drawn)",
+    "nude": "upper body bare",
+    "posture": "upper body emerging from a tub or garment, head toward the outer rim",
+    "container": "tub with wavy horizontal lines at the base",
+    "headgear": "blue cap",
+    "star": true,
+    "notes": "hand to face; star right",
+    "colour": "ink; blue on cap",
+    "label_ring_candidates": "f70v2.2-f70v2.20"
+   },
+   "label": null
+  },
+  {
+   "id": "outer-07",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock_position": 2,
+    "order_clockwise_from_top_left": 7,
+    "sex_shown": "female (breasts drawn)",
+    "nude": "upper body bare",
+    "posture": "upper body emerging from a tub or garment, head toward the outer rim",
+    "container": "garment or tub with horizontal stripes",
+    "headgear": "blue cap",
+    "star": true,
+    "notes": "star right",
+    "colour": "ink; blue on cap",
+    "label_ring_candidates": "f70v2.2-f70v2.20"
+   },
+   "label": null
+  },
+  {
+   "id": "outer-08",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock_position": 3,
+    "order_clockwise_from_top_left": 8,
+    "sex_shown": "female (breasts drawn)",
+    "nude": "upper body bare",
+    "posture": "upper body emerging from a tub or garment, head toward the outer rim",
+    "container": "garment with chevron/triangular stripes",
+    "headgear": "blue cap",
+    "star": true,
+    "notes": "eyes closed; star below",
+    "colour": "ink; blue on cap",
+    "label_ring_candidates": "f70v2.2-f70v2.20"
+   },
+   "label": null
+  },
+  {
+   "id": "outer-09",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock_position": 3,
+    "order_clockwise_from_top_left": 9,
+    "sex_shown": "female (breasts drawn)",
+    "nude": "upper body bare",
+    "posture": "upper body emerging from a tub or garment, head toward the outer rim",
+    "container": "barrel with horizontal bands of dots",
+    "headgear": "blue cap",
+    "star": true,
+    "notes": "eyes closed; star below",
+    "colour": "ink; blue on cap",
+    "label_ring_candidates": "f70v2.2-f70v2.20"
+   },
+   "label": null
+  },
+  {
+   "id": "outer-10",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock_position": 4,
+    "order_clockwise_from_top_left": 10,
+    "sex_shown": "female (breasts drawn)",
+    "nude": "upper body bare",
+    "posture": "upper body emerging from a tub or garment, head toward the outer rim",
+    "container": "barrel patterned with small circles",
+    "headgear": "blue cap",
+    "star": true,
+    "notes": "star below on a line",
+    "colour": "ink; blue on cap",
+    "label_ring_candidates": "f70v2.2-f70v2.20"
+   },
+   "label": null
+  },
+  {
+   "id": "outer-11",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock_position": 5,
+    "order_clockwise_from_top_left": 11,
+    "sex_shown": "female (breasts drawn)",
+    "nude": "upper body bare",
+    "posture": "upper body emerging from a tub or garment, head toward the outer rim",
+    "container": "pointed, cone-shaped hatched garment",
+    "headgear": "none",
+    "star": true,
+    "notes": "star at the head end",
+    "colour": "ink only",
+    "label_ring_candidates": "f70v2.2-f70v2.20"
+   },
+   "label": null
+  },
+  {
+   "id": "outer-12",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock_position": 6,
+    "order_clockwise_from_top_left": 12,
+    "sex_shown": "female (breasts drawn)",
+    "nude": "upper body bare",
+    "posture": "upper body emerging from a tub or garment, head toward the outer rim",
+    "container": "tub patterned with small circles",
+    "headgear": "none",
+    "star": true,
+    "notes": "star at the head end",
+    "colour": "ink only",
+    "label_ring_candidates": "f70v2.2-f70v2.20"
+   },
+   "label": null
+  },
+  {
+   "id": "outer-13",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock_position": 7,
+    "order_clockwise_from_top_left": 13,
+    "sex_shown": "female (breasts drawn)",
+    "nude": "upper body bare",
+    "posture": "upper body emerging from a tub or garment, head toward the outer rim",
+    "container": "tub with dotted grid",
+    "headgear": "none",
+    "star": true,
+    "notes": "star at the head end",
+    "colour": "ink only",
+    "label_ring_candidates": "f70v2.2-f70v2.20"
+   },
+   "label": null
+  },
+  {
+   "id": "outer-14",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock_position": 7,
+    "order_clockwise_from_top_left": 14,
+    "sex_shown": "female (breasts drawn)",
+    "nude": "upper body bare",
+    "posture": "upper body emerging from a tub or garment, head toward the outer rim",
+    "container": "tall tub with vertical hatching",
+    "headgear": "none",
+    "star": true,
+    "notes": "star beside the head",
+    "colour": "ink only",
+    "label_ring_candidates": "f70v2.2-f70v2.20"
+   },
+   "label": null
+  },
+  {
+   "id": "outer-15",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock_position": 8,
+    "order_clockwise_from_top_left": 15,
+    "sex_shown": "female (breasts drawn)",
+    "nude": "upper body bare",
+    "posture": "upper body emerging from a tub or garment, head toward the outer rim",
+    "container": "tub with dotted rim",
+    "headgear": "none",
+    "star": true,
+    "notes": "star beyond the head",
+    "colour": "ink only",
+    "label_ring_candidates": "f70v2.2-f70v2.20"
+   },
+   "label": null
+  },
+  {
+   "id": "outer-16",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock_position": 9,
+    "order_clockwise_from_top_left": 16,
+    "sex_shown": "female (breasts drawn)",
+    "nude": "upper body bare",
+    "posture": "upper body emerging from a tub or garment, head toward the outer rim",
+    "container": "short barrel with vertical bars",
+    "headgear": "none",
+    "star": true,
+    "notes": "star beyond the head",
+    "colour": "ink only",
+    "label_ring_candidates": "f70v2.2-f70v2.20"
+   },
+   "label": null
+  },
+  {
+   "id": "outer-17",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock_position": 10,
+    "order_clockwise_from_top_left": 17,
+    "sex_shown": "female (breasts drawn)",
+    "nude": "upper body bare",
+    "posture": "upper body emerging from a tub or garment, head toward the outer rim",
+    "container": "tub with vertical stripes and scalloped rim",
+    "headgear": "none",
+    "star": true,
+    "notes": "star beyond the head",
+    "colour": "ink only",
+    "label_ring_candidates": "f70v2.2-f70v2.20"
+   },
+   "label": null
+  },
+  {
+   "id": "outer-18",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock_position": 10,
+    "order_clockwise_from_top_left": 18,
+    "sex_shown": "female (breasts drawn)",
+    "nude": "upper body bare",
+    "posture": "upper body emerging from a tub or garment, head toward the outer rim",
+    "container": "tub with horizontal ladder bands",
+    "headgear": "none",
+    "star": true,
+    "notes": "star near the hand",
+    "colour": "ink only",
+    "label_ring_candidates": "f70v2.2-f70v2.20"
+   },
+   "label": null
+  },
+  {
+   "id": "outer-19",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock_position": 11,
+    "order_clockwise_from_top_left": 19,
+    "sex_shown": "female (breasts drawn)",
+    "nude": "upper body bare",
+    "posture": "upper body emerging from a tub or garment, head toward the outer rim",
+    "container": "tall tub with fish-scale pattern",
+    "headgear": "none, long hair",
+    "star": true,
+    "notes": "hand to face; star above",
+    "colour": "ink only",
+    "label_ring_candidates": "f70v2.2-f70v2.20"
+   },
+   "label": null
+  },
+  {
+   "id": "inner-01",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock_position": 11,
+    "order_clockwise_from_top_left": 1,
+    "sex_shown": "female",
+    "nude": "nude",
+    "posture": "figure in or leaning out of a tub, head toward the outer rim",
+    "container": "green-tinted tub, tilted",
+    "headgear": "none",
+    "star": true,
+    "notes": "arm raised toward a star",
+    "colour": "green on the tub",
+    "label_ring_candidates": "f70v2.22-f70v2.31"
+   },
+   "label": null
+  },
+  {
+   "id": "inner-02",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock_position": 12,
+    "order_clockwise_from_top_left": 2,
+    "sex_shown": "female",
+    "nude": "nude",
+    "posture": "figure in or leaning out of a tub, head toward the outer rim",
+    "container": "dotted tub",
+    "headgear": "none",
+    "star": true,
+    "notes": "both arms raised, star above",
+    "colour": "ink only",
+    "label_ring_candidates": "f70v2.22-f70v2.31"
+   },
+   "label": null
+  },
+  {
+   "id": "inner-03",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock_position": 1,
+    "order_clockwise_from_top_left": 3,
+    "sex_shown": "female",
+    "nude": "nude",
+    "posture": "figure in or leaning out of a tub, head toward the outer rim",
+    "container": "green-tinted dotted tub",
+    "headgear": "none",
+    "star": true,
+    "notes": "holding a horizontal stick or pipe",
+    "colour": "green on the tub",
+    "label_ring_candidates": "f70v2.22-f70v2.31"
+   },
+   "label": null
+  },
+  {
+   "id": "inner-04",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock_position": 3,
+    "order_clockwise_from_top_left": 4,
+    "sex_shown": "female",
+    "nude": "nude",
+    "posture": "figure in or leaning out of a tub, head toward the outer rim",
+    "container": "green-tinted dotted tub",
+    "headgear": "none",
+    "star": true,
+    "notes": "arm raised toward a star",
+    "colour": "green on the tub",
+    "label_ring_candidates": "f70v2.22-f70v2.31"
+   },
+   "label": null
+  },
+  {
+   "id": "inner-05",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock_position": 4,
+    "order_clockwise_from_top_left": 5,
+    "sex_shown": "female",
+    "nude": "nude",
+    "posture": "figure in or leaning out of a tub, head toward the outer rim",
+    "container": "green-tinted dotted tub",
+    "headgear": "none",
+    "star": true,
+    "notes": "arm raised toward a star",
+    "colour": "green on the tub",
+    "label_ring_candidates": "f70v2.22-f70v2.31"
+   },
+   "label": null
+  },
+  {
+   "id": "inner-06",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock_position": 5,
+    "order_clockwise_from_top_left": 6,
+    "sex_shown": "female",
+    "nude": "nude",
+    "posture": "figure in or leaning out of a tub, head toward the outer rim",
+    "container": "green-tinted dotted tub",
+    "headgear": "none",
+    "star": true,
+    "notes": "star beside",
+    "colour": "green on the tub",
+    "label_ring_candidates": "f70v2.22-f70v2.31"
+   },
+   "label": null
+  },
+  {
+   "id": "inner-07",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock_position": 6,
+    "order_clockwise_from_top_left": 7,
+    "sex_shown": "female",
+    "nude": "nude",
+    "posture": "figure in or leaning out of a tub, head toward the outer rim",
+    "container": "green-tinted dotted tub",
+    "headgear": "none",
+    "star": true,
+    "notes": "star beside",
+    "colour": "green on the tub",
+    "label_ring_candidates": "f70v2.22-f70v2.31"
+   },
+   "label": null
+  },
+  {
+   "id": "inner-08",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock_position": 8,
+    "order_clockwise_from_top_left": 8,
+    "sex_shown": "female",
+    "nude": "nude",
+    "posture": "figure in or leaning out of a tub, head toward the outer rim",
+    "container": "green-tinted dotted tub",
+    "headgear": "none",
+    "star": true,
+    "notes": "star beside",
+    "colour": "green on the tub",
+    "label_ring_candidates": "f70v2.22-f70v2.31"
+   },
+   "label": null
+  },
+  {
+   "id": "inner-09",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock_position": 9,
+    "order_clockwise_from_top_left": 9,
+    "sex_shown": "female",
+    "nude": "nude",
+    "posture": "figure in or leaning out of a tub, head toward the outer rim",
+    "container": "green-tinted dotted tub",
+    "headgear": "none",
+    "star": true,
+    "notes": "star beside",
+    "colour": "green on the tub",
+    "label_ring_candidates": "f70v2.22-f70v2.31"
+   },
+   "label": null
+  },
+  {
+   "id": "inner-10",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock_position": 10,
+    "order_clockwise_from_top_left": 10,
+    "sex_shown": "female",
+    "nude": "nude",
+    "posture": "figure in or leaning out of a tub, head toward the outer rim",
+    "container": "tub, partly hidden",
+    "headgear": "none",
+    "star": true,
+    "notes": "star beside",
+    "colour": "ink only",
+    "label_ring_candidates": "f70v2.22-f70v2.31"
+   },
+   "label": null
+  },
+  {
+   "id": "centre-fish-upper",
+   "kind": "animal",
+   "features": {
+    "shape": "fish, elongated, pointed snout",
+    "facing": "left",
+    "body": "cross-hatched scale pattern",
+    "fins": "forked tail at right, dorsal fins",
+    "colour": "ink with blue on a fin",
+    "count_in_scene": 2,
+    "ring": "centre"
+   },
+   "label": null
+  },
+  {
+   "id": "centre-fish-lower",
+   "kind": "animal",
+   "features": {
+    "shape": "fish, elongated, pointed snout",
+    "facing": "right",
+    "body": "cross-hatched scale pattern",
+    "fins": "tail at left with blue tint",
+    "colour": "ink with blue on tail and fins",
+    "count_in_scene": 2,
+    "ring": "centre"
+   },
+   "label": null
+  },
+  {
+   "id": "centre-water-line",
+   "kind": "other",
+   "features": {
+    "shape": "curved line under the lower fish, rising at the right into a long loop enclosing the fish",
+    "colour": "blue lower edge, ink loop",
+    "ring": "centre"
+   },
+   "label": null
+  },
+  {
+   "id": "centre-star-upper",
+   "kind": "star",
+   "features": {
+    "points": 8,
+    "colour": "yellow centre",
+    "position": "above the fish, near 12 o'clock of the centre disc",
+    "has_word_beside": true,
+    "ring": "centre"
+   },
+   "label": null
+  },
+  {
+   "id": "centre-star-lower",
+   "kind": "star",
+   "features": {
+    "points": 8,
+    "colour": "yellow centre",
+    "position": "below the fish, near 5 o'clock of the centre disc",
+    "has_word_beside": false,
+    "ring": "centre"
+   },
+   "label": null
+  },
+  {
+   "id": "hatched-band",
+   "kind": "diagram",
+   "features": {
+    "shape": "concentric band of dense radial hatching/ladder strokes between the inner figure ring and the centre disc, with a line of text along it",
+    "colour": "ink",
+    "ring": "between inner ring and centre"
+   },
+   "label": null
+  }
+ ]
+}
