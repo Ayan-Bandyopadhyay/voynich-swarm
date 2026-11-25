@@ -1,0 +1,10 @@
+{
+  "language": "finnish",
+  "title": "Finnish Biblia (1776 edition), full Bible, one verse per line",
+  "period": "18th century (1776; text going back to the 1642 Finnish Bible), early-modern Finnish",
+  "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/FinBiblia.txt",
+  "sha256": "0b723e5459f91f3bda57b353cbb3668b2a46971594180a18ce578c3da39dc485",
+  "license": "public-domain",
+  "encoding": "utf-8",
+  "notes": "License stated as 'Public Domain' in the source README at https://github.com/scrollmapper/bible_databases/blob/59b18c5af5845728c275d5b7178ad0d024172b1f/sources/fi/FinBiblia/README.md (scrollmapper/bible_databases, files from the CrossWire SWORD module FinBiblia). The url pins a fixed commit, so the bytes do not change. 5,142,166 bytes; one verse per line as '[c:v] text' with '### Book' headings in English (66 short headings, negligible). vs/refcorpus.normalize(..., 'finnish') gives 4,483,059 characters."
+}
