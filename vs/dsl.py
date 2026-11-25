@@ -22,6 +22,10 @@ statistics:
   {"adjacent_mi": F}                                       adjacent mutual information minus the same after shuffling
                                                            each line (so page and section vocabulary cancel)
   {"edge_mi": true}                                        MI between a word's last glyph and the next word's first glyph
+  {"edge_mi_break": true}                                  edge MI within lines minus edge MI across line breaks (a line's
+                                                           last word with the next line's first word, same page); each
+                                                           shuffle-corrected, within-line pairs subsampled to the
+                                                           across-line count (10 fixed draws) so both carry equal bias
   {"repeat_ngram": n}                                      share of word n-grams (n<=6) that occur at least twice
   {"hapax_share": true} | {"zipf_slope": ranks} | {"mean_length": true}
   {"near_copy": {"window": k, "min_length": L}}            share of words of length >= L within edit distance exactly 1
@@ -231,6 +235,28 @@ def _mi(pairs):
     return sum(v / n * math.log2(v * n / (a[x] * b[y])) for (x, y), v in pc.items()) if n else 0.0
 
 
+def _edge_break(toks, draws=10):
+    """Edge-glyph MI within lines minus across line breaks, each corrected by its shuffled value."""
+    edge = lambda x, y: (SEG(x["w"])[-1], SEG(y["w"])[0])
+    within = [edge(x, y) for r in runs_of(toks) for x, y in zip(r, r[1:])]
+    lns = lines_of(toks)
+    across = [edge(a[-1], b[0]) for a, b in zip(lns, lns[1:])
+              if a[-1]["line"][0] == b[0]["line"][0] and a[-1]["k"] == a[-1]["n"] - 1 and b[0]["k"] == 0]
+    n = len(across)
+    if n < MIN_TOKENS or len(within) < n:
+        return NAN
+
+    def corrected(pairs, rng):
+        ys = [y for _x, y in pairs]
+        rng.shuffle(ys)
+        return _mi(pairs) - _mi(list(zip([x for x, _y in pairs], ys)))
+
+    rng = random.Random(1)
+    w = sum(corrected(rng.sample(within, n), rng) for _ in range(draws)) / draws
+    a = sum(corrected(list(across), rng) for _ in range(draws)) / draws
+    return w - a
+
+
 def _edit1(a, b):
     if a == b or abs(len(a) - len(b)) > 1:
         return False
@@ -271,7 +297,7 @@ def check_statistic(st):
         _int(arg, 1, 6, "repeat_ngram n")
     elif name == "zipf_slope":
         _int(arg, 3, 100_000, "zipf_slope ranks")
-    elif name in ("edge_mi", "hapax_share", "mean_length"):
+    elif name in ("edge_mi", "edge_mi_break", "hapax_share", "mean_length"):
         if arg is not True:
             raise SpecError(f"{name} takes true")
     elif name == "near_copy":
@@ -327,6 +353,8 @@ def statistic(st, toks, all_toks):
             rng.shuffle(ws)
             spairs += [(fw(x), fw(y)) for x, y in zip(ws, ws[1:])]
         return _mi(pairs) - _mi(spairs)
+    if name == "edge_mi_break":
+        return _edge_break(toks)
     if name == "glyph_cond_entropy":
         k = int(arg)
         ctx, full = Counter(), Counter()
