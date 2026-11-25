@@ -38,6 +38,10 @@ def make(lang, kind="simple", seed=0, words_per_line=8, lines_per_page=10, homop
         glyphs = [g for g in glyphs if g not in ABBREVIATION_SIGNS]
     if kind == "abbreviation" and len(letters) > len(glyphs):
         raise ValueError(f"target alphabet exceeds the abbreviation glyph inventory")
+    if kind == "syllabic":
+        glyphs.remove("q")
+        if len(letters) > len(glyphs):
+            raise ValueError("target alphabet exceeds the syllabic spelling inventory")
     if kind == "nomenclator" and len(letters) > len(glyphs):
         raise ValueError(f"target alphabet exceeds the nomenclator glyph inventory")
     if kind == "table-cipher" and len(letters) > len(glyphs):
@@ -52,7 +56,7 @@ def make(lang, kind="simple", seed=0, words_per_line=8, lines_per_page=10, homop
         enc = {l: [glyphs[i]] for i, l in enumerate(letters)}
     elif kind == "codebook":
         enc = {}
-    elif kind in ("homophonic", "nomenclator", "abbreviation"):
+    elif kind in ("homophonic", "nomenclator", "abbreviation", "syllabic"):
         # the most frequent letters get `homophones` glyphs, the rest one; needs few letters
         freq = sorted(letters, key=lambda l: -sum(w.count(l) for w in words[:5000]))
         enc, i = {}, 0
@@ -81,6 +85,17 @@ def make(lang, kind="simple", seed=0, words_per_line=8, lines_per_page=10, homop
         rng.shuffle(signs)
         abbreviated = dict(zip((s for s, _ in endings.most_common(len(signs))), signs))
         noise_pool = sorted(set(noise_pool) | set(signs))
+    sign_map = {}
+    if kind == "syllabic":
+        from collections import Counter
+        frequencies = Counter(a + b for block in refcorpus.train_text(lang) for w in block.split()
+                              for a, b in zip(w, w[1:]) if a not in "aeiou" and b in "aeiou")
+        if not frequencies:
+            raise ValueError(f"no supported written CV syllables in {lang}")
+        labels = [g for g in glyphs if len(g) == 1]
+        rng.shuffle(labels)
+        for i, (syllable, _) in enumerate(frequencies.most_common(10)):
+            sign_map[syllable] = labels[2*i:2*i+2]
 
     marker = ""
     word_codes = {}
@@ -117,6 +132,18 @@ def make(lang, kind="simple", seed=0, words_per_line=8, lines_per_page=10, homop
         if kind == "table-cipher":
             units = [glyphs[(letters.index(c) + shifts[i % len(shifts)]) % len(letters)]
                      for i, c in enumerate(w) if c in enc]
+        elif kind == "syllabic":
+            units = []
+            i = 0
+            while i < len(w):
+                pair = w[i:i + 2]
+                if pair in sign_map:
+                    units.extend(["q", rng.choice(sign_map[pair])])
+                    i += 2
+                else:
+                    if w[i] in enc:
+                        units.append(rng.choice(enc[w[i]]))
+                    i += 1
         else:
             units = [rng.choice(enc[c]) for c in w if c in enc]
         if suffix:
@@ -153,6 +180,10 @@ def make(lang, kind="simple", seed=0, words_per_line=8, lines_per_page=10, homop
     if kind == "abbreviation":
         true_key["family"] = kind
         true_key["key"]["map"].update({g + "$": s for s, g in abbreviated.items()})
+    if kind == "syllabic":
+        true_key["family"] = kind
+        true_key["key"]["marker"] = "q"
+        true_key["key"]["map"].update({"q" + label: syllable for syllable, labels in sign_map.items() for label in labels})
     return tr, ev, true_key
 
 

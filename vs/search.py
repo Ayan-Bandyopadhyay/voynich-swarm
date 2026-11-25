@@ -203,6 +203,9 @@ def cell_budget(lang, family):
     if family in ("abbreviation",):
         from .search_abbreviation import SETTINGS
         return {**BUDGET, **SETTINGS}
+    if family in ("syllabic",):
+        from .search_syllabic import SETTINGS
+        return {**BUDGET, **SETTINGS}
     if (lang, family) == ("nahuatl", "substitution"):
         return {**BUDGET, "homophone_ranked_restarts": 1, "homophone_word_sweeps": 5}
     if family == "verbose" and lang in ("french", "german"):
@@ -344,6 +347,10 @@ def search_cell(lang, family, train_pages, budget=None, tag="cell"):
         from .search_abbreviation import search_abbreviations, SETTINGS
         budget = {**SETTINGS, **budget}
         return search_abbreviations(lang, train_pages, budget, tag, table, letters)
+    if family == "syllabic":
+        from .search_syllabic import search_syllabic, SETTINGS
+        budget = {**SETTINGS, **budget}
+        return search_syllabic(lang, train_pages, budget, tag, table, letters)
     if family == "substitution":
         segf = lambda w: ivtff.segment(w, "eva-basic")
         tri = unit_trigrams(train_pages, segf)

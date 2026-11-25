@@ -23,9 +23,9 @@ def _langs():
 
 
 LANGS = _langs()
-FAMILIES = ["substitution", "verbose", "nomenclator", "table-cipher", "abbreviation"]
-CONTROL_FOR = {"substitution": "homophonic", "verbose": "verbose", "nomenclator": "nomenclator", "table-cipher": "table-cipher", "abbreviation": "abbreviation"}
-GRID_FAMILIES = ["substitution", "verbose", "nomenclator", "table-cipher", "abbreviation"]
+FAMILIES = ["substitution", "verbose", "nomenclator", "table-cipher", "abbreviation", "syllabic"]
+CONTROL_FOR = {"substitution": "homophonic", "verbose": "verbose", "nomenclator": "nomenclator", "table-cipher": "table-cipher", "abbreviation": "abbreviation", "syllabic": "syllabic"}
+GRID_FAMILIES = ["substitution", "verbose", "nomenclator", "table-cipher", "abbreviation", "syllabic"]
 
 
 def _save(split, name, obj):
@@ -97,6 +97,10 @@ def run(split, log=print, parts=("controls", "redteam")):
             for fam in FAMILIES:
                 if (fam in ("nomenclator", "table-cipher") and len(refcorpus.alphabet(lang)) > len(controls.CIPHER_GLYPHS)) or (fam == "nomenclator" and len(refcorpus.alphabet(lang)) > len(controls.CIPHER_GLYPHS) or ( fam == "abbreviation" and len(refcorpus.alphabet(lang)) > len(controls.CIPHER_GLYPHS) - len(controls.ABBREVIATION_SIGNS))):
                     log(f"control {lang:8s} {fam:12s} unsupported alphabet size")
+                    continue
+                if fam == "syllabic" and (not set(refcorpus.alphabet(lang)) & set("aeiou")
+                                          or len(refcorpus.alphabet(lang)) >= len(controls.CIPHER_GLYPHS)):
+                    log(f"control {lang:8s} {fam:12s} unsupported spelling or vowel inventory")
                     continue
                 try:
                     row = calibrate_cell(lang, fam)
