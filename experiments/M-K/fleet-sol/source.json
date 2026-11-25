@@ -1,19 +1,13 @@
 {
-  "title": "Keywords and Co-Occurrence Patterns in the Voynich Manuscript: An Information-Theoretic Analysis",
-  "authors": "Marcelo A. Montemurro and Damián H. Zanette",
-  "year": 2013,
-  "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0066344",
-  "doi": "10.1371/journal.pone.0066344",
-  "summary": "The authors compare how EVA word tokens are distributed across contiguous blocks with their expected distribution after global token shuffling. They group folios by illustration-defined section and also compare word-frequency profiles across those sections.",
+  "title": "Replicating the Voynich Manuscript (open companion to the 2004 table-and-grille paper)",
+  "authors": "Gordon Rugg",
+  "year": 2004,
+  "url": "https://web.archive.org/web/20160823155350/http://www.scm.keele.ac.uk/staff/g_rugg/voynich/mySolution.html",
+  "doi": "10.1080/0161-110491892755",
+  "summary": "Rugg's archived Keele site outlines the method introduced in his January 2004 Cryptologia paper. A perforated card selects fragments from a structured table to make text that resembles the manuscript without using a plaintext.",
   "established": [
-    "The word-distribution information statistic peaks at a block size of 807 tokens, close to the peak scales reported for the English, Latin, and Chinese examples. The shuffle baseline preserves each word type's total count.",
-    "Among the 100 highest-ranked words, several pairs with similar section-frequency profiles share visible EVA prefixes or suffixes. The link significance calculation shuffles section indices independently for each word's frequency vector."
+    "Rugg's open worked explanation uses repeating sets of prefix, middle and suffix columns and a grille whose holes reveal selected cells. Blank cells permit shorter strings. Example and procedure at https://hydeandrugg.wordpress.com/2014/03/02/hoaxing-the-voynich-manuscript-part-7-producing-the-text/.",
+    "The paper reports preliminary production-time estimates, and the companion site documents a feasibility demonstration. Rugg's proposed dating and attribution are historical hypotheses."
   ],
-  "open": [
-    {
-      "question": "Can a fixed table-and-grille or self-citation procedure match the observed word-distribution information curve against global shuffles?",
-      "front": "G",
-      "check": "Freeze the generator and block sizes using public pages, then compare the curve on matched token counts with the published frequency-preserving shuffle statistic."
-    }
-  ]
+  "open": []
 }
