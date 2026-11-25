@@ -1,0 +1,8 @@
+{
+  "title": "Test French substitution at the budget calibrated on three noisy planted keys",
+  "program": "L3",
+  "on_path": true,
+  "hard": false,
+  "statement": "Search French substitution at the pinned budget on ZL, Takahashi and RF, using normal order, glyphs reversed within words and words reversed within lines. Select one key using public-practice compression savings. Report the three independently seeded 2%-noise homophonic control outcomes alongside the selected practice result.",
+  "check": "One key.json with a declared transliteration, reading_order and search budget. The experiment summary must disclose the best practice savings and the number of passing controls out of three."
+}
