@@ -161,7 +161,7 @@
   "search_cracks_control_clean": true,
   "noise": 0.02,
   "true_key_passes_noisy": false,
-  "search_cracks_control": false
+  "search_cracks_control": true
  },
  {
   "language": "spanish",
@@ -237,13 +237,13 @@
     "c_pictures"
    ],
    "passes_without_anchors": true,
-   "savings": 0.06085,
+   "savings": 0.06853,
    "killed_by": []
   },
   "search_cracks_control_clean": true,
   "noise": 0.02,
   "true_key_passes_noisy": true,
-  "search_cracks_control": false
+  "search_cracks_control": true
  },
  {
   "language": "french",
@@ -319,13 +319,13 @@
     "c_pictures"
    ],
    "passes_without_anchors": true,
-   "savings": 0.03328,
+   "savings": 0.04796,
    "killed_by": []
   },
   "search_cracks_control_clean": true,
   "noise": 0.02,
   "true_key_passes_noisy": false,
-  "search_cracks_control": false
+  "search_cracks_control": true
  },
  {
   "language": "german",
@@ -487,6 +487,457 @@
    ],
    "passes_without_anchors": true,
    "savings": 0.06644,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "hebrew",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 4595,
+  "true_key": {
+   "submission": "control-hebrew-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "hebrew",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07423,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-hebrew-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "hebrew",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07423,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "english",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 6000,
+  "true_key": {
+   "submission": "control-english-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "english",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05787,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-english-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "english",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05787,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "english",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 6000,
+  "true_key": {
+   "submission": "control-english-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "english",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07807,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-english-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "english",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07807,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "spanish",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 3440,
+  "true_key": {
+   "submission": "control-spanish-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "spanish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07607,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-spanish-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "spanish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07606,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "latin",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 2320,
+  "true_key": {
+   "submission": "control-latin-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "latin",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.09772,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-latin-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "latin",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.09772,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "english",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 6000,
+  "true_key": {
+   "submission": "control-english-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "english",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06019,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-english-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "english",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06019,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "french",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 2080,
+  "true_key": {
+   "submission": "control-french-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "french",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05498,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-french-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "french",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05498,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "spanish",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 3440,
+  "true_key": {
+   "submission": "control-spanish-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "spanish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06168,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-spanish-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "spanish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06168,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "italian",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 2560,
+  "true_key": {
+   "submission": "control-italian-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "italian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04103,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-italian-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "italian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04103,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "latin",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 2320,
+  "true_key": {
+   "submission": "control-latin-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "latin",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05983,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-latin-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "latin",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05983,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "hebrew",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 4595,
+  "true_key": {
+   "submission": "control-hebrew-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "hebrew",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08759,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-hebrew-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "hebrew",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08759,
    "killed_by": []
   },
   "search_cracks_control_clean": true,
