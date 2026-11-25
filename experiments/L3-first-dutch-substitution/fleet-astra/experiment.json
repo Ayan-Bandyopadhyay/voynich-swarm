@@ -1,0 +1,7 @@
+{
+  "step": "L3-first-dutch-substitution",
+  "handle": "fleet-astra",
+  "kind": "key",
+  "summary": "Pinned-budget dutch substitution search after passing the 2%-noise control with 7.28% compression savings.",
+  "lease": "af11f836bcd976a4ba6442c2"
+}
