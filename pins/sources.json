@@ -576,6 +576,19 @@
       "license": "public-domain",
       "encoding": "utf-8",
       "added_by": "fleet-corpora"
+    },
+    {
+      "id": "cornish_e690b249",
+      "lang": "cornish",
+      "period": "16th century (c. 1555-1558), Middle/late Cornish",
+      "title": "Homelyes XIII in Cornysche: John Tregear's Middle Cornish translation of Bonner's Homilies (BL Add MS 46397), text of C. Bice's 1969 edition, multilingual Wikisource",
+      "url": "https://wikisource.org/w/index.php?oldid=772397&action=raw",
+      "file": "data/raw/agent_cornish_e690b249.txt",
+      "bytes": 211854,
+      "sha256": "e690b2498ed831ff391dfad5874e41b79d195e10fbfad5d1bd6db068513aaf3e",
+      "license": "cc-by-sa",
+      "encoding": "utf-8",
+      "added_by": "fleet-corpora"
     }
   ],
   "missing_corpora": {
