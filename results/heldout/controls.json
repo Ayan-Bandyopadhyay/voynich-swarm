@@ -1133,5 +1133,21 @@
   "true_key_passes": false,
   "search_cracks_control": false,
   "added_with": "estonian_63de1b3f"
+ },
+ {
+  "language": "old_norse",
+  "family": "substitution",
+  "control": "homophonic",
+  "true_key_passes": false,
+  "search_cracks_control": false,
+  "added_with": "old_norse_25dfa5f0"
+ },
+ {
+  "language": "old_norse",
+  "family": "verbose",
+  "control": "verbose",
+  "true_key_passes": false,
+  "search_cracks_control": false,
+  "added_with": "old_norse_25dfa5f0"
  }
 ]

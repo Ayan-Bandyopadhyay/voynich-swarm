@@ -849,6 +849,19 @@
       "license": "cc-by-sa",
       "encoding": "utf-8",
       "added_by": "fleet-corpora"
+    },
+    {
+      "id": "old_norse_25dfa5f0",
+      "lang": "old_norse",
+      "period": "13th-century Old Norse/Old Icelandic law text (Grágás manuscripts c. 1250-1280), printed in modernized Icelandic spelling",
+      "title": "Grágás (laws of the Icelandic Commonwealth), Landabrigðisþáttur (section on land claims), Icelandic Wikisource",
+      "url": "https://is.wikisource.org/w/index.php?oldid=24446&action=raw",
+      "file": "data/raw/agent_old_norse_25dfa5f0.txt",
+      "bytes": 202810,
+      "sha256": "25dfa5f0028acf7aaddbcf4a62588abe49295d6111b13816e4213caf36ac5972",
+      "license": "cc-by-sa",
+      "encoding": "utf-8",
+      "added_by": "fleet-corpora"
     }
   ],
   "missing_corpora": {
