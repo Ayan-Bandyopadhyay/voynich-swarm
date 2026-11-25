@@ -1,0 +1,10 @@
+{
+  "language": "welsh",
+  "title": "I'r Aifft ac yn ol (To Egypt and back), travel book by D. Rhagfyr Jones (Wrexham: Hughes a'i Fab, 1904), Project Gutenberg #56275",
+  "period": "20th century (1904), modern literary Welsh",
+  "url": "https://gutenberg.pglaf.org/5/6/2/7/56275/56275-0.txt",
+  "sha256": "8aa20d4ebf6e4cd9f1276d8a824c8665671bc4e7963e2e6405da6c25e5500ffc",
+  "license": "public-domain",
+  "encoding": "utf-8",
+  "notes": "License: Project Gutenberg ebook #56275, released as public domain in the USA (Gutenberg licence header/footer in the file; https://www.gutenberg.org/ebooks/56275). The url is the pglaf.org Gutenberg mirror (gutenberg.org itself was returning 503). 221,937 bytes; Gutenberg plain text; after vs/refcorpus.strip_gutenberg removes the licence header and footer, normalization gives 193,129 characters. Wikisource's period Welsh Bibles (1588/1620) are split by book and every book page is under 150,000 characters, so a modern prose text was taken for now."
+}
