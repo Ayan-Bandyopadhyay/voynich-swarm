@@ -1,11 +1,14 @@
-# The scorer. Holds the season seed. It NEVER executes code from the pull request: it checks out
-# main, copies only the experiment's JSON files out of the PR head with `git show`, and scores
-# them with the code on main. Experiments are data (vs/dsl.py, vs/models.py), so nothing a
-# contributor writes runs here. Code PRs are left for a person to review.
+# The scorer. Holds the season seed. It NEVER executes code from a pull request: tools/score_pr.sh
+# copies only the experiment's JSON out of the PR head with `git show` and scores it with the code
+# on main. Experiments are data (vs/dsl.py, vs/models.py). Code PRs are left for a person.
+# Runs on every PR event and, as a sweeper, every 5 minutes, so no PR is ever dropped from the queue.
 name: score
 on:
   pull_request_target:
     types: [opened, synchronize, reopened]
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
 permissions:
   contents: write
   pull-requests: write
@@ -15,54 +18,24 @@ concurrency:
 jobs:
   score:
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 120
     env:
       PYTHONHASHSEED: "0"
       GH_TOKEN: ${{ github.token }}
-      PR: ${{ github.event.pull_request.number }}
+      HELDOUT_SEED_JSON: ${{ secrets.HELDOUT_SEED_JSON }}
     steps:
       - uses: actions/checkout@v4
         with: { ref: main, fetch-depth: 0 }
       - uses: actions/setup-python@v5
         with: { python-version: "3.12" }
-      - name: Copy only the experiment JSON from the PR head (data, never code)
-        id: shape
-        run: |
-          git fetch origin "pull/$PR/head:pr"
-          if python3 tools/check_pr_shape.py main --head pr --extract _pr > shape.txt 2>&1; then
-            echo "ok=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "ok=false" >> "$GITHUB_OUTPUT"
-            { echo "Not a single-experiment PR, so it is not scored automatically. Code PRs are reviewed by a person."; echo; echo '```'; head -20 shape.txt; echo '```'; } > comment.md
-            gh pr comment "$PR" --body-file comment.md
-          fi
       - uses: actions/cache@v4
-        if: steps.shape.outputs.ok == 'true'
         with: { path: data/raw, key: "pins-${{ hashFiles('pins/sources.json') }}" }
-      - name: Score on the hidden pages
-        if: steps.shape.outputs.ok == 'true'
-        env:
-          HELDOUT_SEED_JSON: ${{ secrets.HELDOUT_SEED_JSON }}
+      - run: python3 -m vs fetch
+      - name: Score every open PR that has no verdict yet, oldest first
         run: |
-          python3 -m vs fetch
-          mkdir -p secrets && printf '%s' "$HELDOUT_SEED_JSON" > secrets/heldout_seed.json
-          D=$(ls -d _pr/experiments/*/* | head -1)
-          URL=$(gh pr view "$PR" --json url --jq .url)
-          python3 -m vs score "$D" --pr "$URL" > verdict.txt 2>&1 || true
-          rm -f secrets/heldout_seed.json
-          if grep -q '"verdict": "REFUSED"' verdict.txt; then H="Refused: nothing was scored and nothing goes on the record."; else H="Scored on the hidden pages. The verdict is on the record."; fi
-          { echo "$H"; echo; echo '```'; tail -40 verdict.txt; echo '```'; } > comment.md
-          gh pr comment "$PR" --body-file comment.md
-      - name: Merge the experiment and commit the record
-        if: steps.shape.outputs.ok == 'true'
-        run: |
-          if grep -q '"verdict": "REFUSED"' verdict.txt; then
-            gh pr close "$PR" --comment "Refused before scoring (see the comment above). Fix it and open a new PR."
-            exit 0
-          fi
-          gh pr merge "$PR" --squash --delete-branch || true
           git config user.name "voynich-swarm-scorer"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add registry ledger pins results
-          git commit -m "record: scored #$PR" || exit 0
-          for t in 1 2 3; do git pull --rebase origin main && git push origin HEAD:main && break; sleep 5; done
+          gh label create scored --color 245c52 2>/dev/null || true
+          for n in $(gh pr list --state open --json number,labels --jq '[.[] | select([.labels[].name] | index("scored") | not)] | sort_by(.number) | .[].number'); do
+            bash tools/score_pr.sh "$n"
+          done
