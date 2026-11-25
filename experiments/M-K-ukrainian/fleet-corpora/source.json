@@ -1,0 +1,21 @@
+{
+  "title": "Letters to God's Eye: The Voynich Manuscript for the First Time Deciphered and Translated into English",
+  "authors": "John Stojko",
+  "year": 1978,
+  "url": "https://www.voynich.nu/solvers.html",
+  "venue": "Book (New York: Vantage Press, 1978); not openly available. The url is René Zandbergen's open summary and critique of the proposal (voynich.nu, 'History of research of the MS', section John Stojko), which cites the book as its reference 34.",
+  "proposes_language": "Ukrainian (Old Ukrainian / Ruthenian, written without vowels)",
+  "summary": "Stojko proposed that the manuscript is a copy of a series of letters written in Ukrainian, enciphered by dropping all vowels and writing the consonants in a secret alphabet. Zandbergen's summary records why it found little acceptance: the background history departs from the accepted history of Ukraine, the letters' text does not relate to the illustrations, and the plaintext is produced by inserting vowels and word spaces freely, so cipher-text and plain-text word spaces are mostly unrelated.",
+  "established": [
+    "The proposal is a vowelless Ukrainian plaintext under a consonant-only secret alphabet; vowels and word divisions are supplied by the decipherer (Zandbergen's summary).",
+    "As summarised, no fixed key with a single reading per glyph is given in open form; the freedom to insert vowels and re-segment words is the main criticism."
+  ],
+  "open": [
+    {
+      "question": "Does a consonant-skeleton Ukrainian reading have power on the grid at all? Openly licensed Ukrainian text exists: the 1905 Kulish-Puluj-Nechui-Levytskyi Bible (public domain, about 3.2M characters after normalization), proposed as corpus M-J-ukrainian; a vowel-dropping view of it would be the matching control.",
+      "front": "J",
+      "check": "Once Ukrainian is pinned, measure whether the search cracks a vowel-stripped Ukrainian control (a 'consonant skeleton' view would be a code PR); until then any Stojko-style key is INCONCLUSIVE by rule.",
+      "hard": true
+    }
+  ]
+}
