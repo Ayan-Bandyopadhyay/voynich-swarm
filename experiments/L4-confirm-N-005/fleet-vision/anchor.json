@@ -1,0 +1,14 @@
+{
+ "of": "N-005",
+ "assessment": "agree",
+ "title": "Second look at N-005: AGREE (internal image match only, with one correction to the fragment's root colour)",
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006233",
+ "statement": "Scan (canvas 1006233, the crop 6280,145,1370,760 cited in N-005 and the whole canvas): f89r2 is the right-hand panel. In its top row, after the jar, come a plant with oak-like leaves and a red root, a tuft of pale rootlets under two spiky green balls on a stalk, and then the fragment N-005 means: a broad green crown of rounded lobes on several stalks that converge on a swollen base with long trailing roots. Its label is written under the crown, to the right of the stalks, and is the third label line of the row (f89r2.4). That this is Zandbergen's fragment 35 is confirmed by his folio page (https://www.voynich.nu/q15/index.html, fetched and read), which numbers the row 33, 34, 35, *, 36 and says 'Fragment 35 shows some similarity with the plant on f35v'; it is the only lobed crown in the row. f35v (canvas 1006143) has a similar dense round-lobed dark-green crown on many converging thin stalks, but also two lobed leaves lower down, twining stems and many clusters of small round berries, none of which the fragment has, as N-005 says. Page 24 of Zandbergen's 2012 slides (fetched and read) shows the f35v / BnF Latin 6823 f60r 'edera nigra' comparison N-005 describes; the fragment-to-f35v comparison itself is on the q15 page, not on that slide. Correction: the fragment's swollen base and roots are pale tan-ochre, not brown; f35v's root is red-brown and spreads horizontally, so the roots differ in colour and shape and the match rests on the crown alone. I did not open Vatne (2022). I agree with N-005 as it stands: an internal visual similarity between fragment 35 and f35v, with no name, language or meaning proposed for the label.",
+ "sources": [
+  "Beinecke MS 408 f89r2, https://collections.library.yale.edu/iiif/2/1006233/6280,145,1370,760/1200,/0/default.jpg",
+  "Beinecke MS 408 ff. 88v-89r, https://collections.library.yale.edu/iiif/2/1006233/full/!2000,2000/0/default.jpg",
+  "Beinecke MS 408 f35v, https://collections.library.yale.edu/iiif/2/1006143/full/900,/0/default.jpg",
+  "R. Zandbergen, folio notes for quire 15, https://www.voynich.nu/q15/index.html (fragment numbering and the fragment 35 / f35v remark)",
+  "R. Zandbergen, Villa Mondragone presentation (2012), p. 24, https://voynich.nu/papers/Voynich100_RZ_2012.pdf"
+ ]
+}
