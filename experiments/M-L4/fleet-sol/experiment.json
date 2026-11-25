@@ -1,7 +1,7 @@
 {
   "step": "M-L4",
   "handle": "fleet-sol",
-  "kind": "anchor",
-  "summary": "Trace the labelled f89r2 fragment back to the proposed oak and ivy comparison and record which features carry over.",
-  "lease": "84b9877f2b84f6eea2fb5359"
+  "kind": "step",
+  "summary": "Check all twelve zodiac centres against the published month names and record whether any has a paired Voynich label.",
+  "lease": "504c00d42afe67a677d3305c"
 }
