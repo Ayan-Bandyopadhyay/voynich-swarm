@@ -1,21 +1,18 @@
 {
-  "title": "The Naibbe cipher: a substitution cipher that encrypts Latin and Italian as Voynich Manuscript-like ciphertext",
-  "authors": "Michael A. Greshko",
-  "year": 2025,
-  "url": "https://github.com/greshko/naibbe-cipher",
-  "doi": "10.1080/01611194.2025.2566408",
-  "publication_url": "https://www.tandfonline.com/doi/pdf/10.1080/01611194.2025.2566408",
-  "summary": "Greshko publishes a hand-executable verbose homophonic cipher with reproducible tables, code and reference ciphertexts. The cipher respaces a plaintext letter stream into units of one or two letters and substitutes glyph strings selected from six tables.",
+  "title": "Voynich Paleography",
+  "authors": "Lisa Fagin Davis",
+  "year": 2022,
+  "url": "https://ceur-ws.org/Vol-3313/keynote2.pdf",
+  "summary": "Davis explains how to apply Latin paleographic methods to the manuscript's recurring glyph shapes, stroke construction and spacing. The conference paper relates scribal attributions to codicology and proposes possible expansions of complex glyphs.",
   "established": [
-    "Across multiple Latin and Italian inputs, the published cipher produces reversible ciphertext with a number of Voynich-like local statistics, including low conditional character entropy and similar token lengths.",
-    "The reference tables were designed from aggregate Currier B frequencies. The construction has limited vocabulary coverage, lacks an explicit line- or paragraph-position rule, and misses the manuscript's long-range correlations in the reported random-walk test."
+    "The analysis distinguishes five hands using shape and stroke differences in EVA k and n and cross-checks them with f. The long, low n flourishes on f66r prompted a reassignment from hand 3 to hand 5.",
+    "Differences in n flourish direction, extent and endpoint complement k crossbar construction and loop shape. Assignments rely on recurring combinations of features observed in image annotations."
   ],
   "open": [
     {
-      "question": "Can a fixed Naibbe-style procedure generate the manuscript's line- and paragraph-position preferences while retaining reversible encryption and its local statistical match?",
-      "front": "L3",
-      "check": "Declare the cipher and layout rules first, then measure glyph-position effects on independent historical plaintexts and report ambiguity and any losses in the other metrics.",
-      "hard": true
+      "question": "Do the proposed component sequences for rare bridge-gallows give a consistent account of independently transcribed examples across writing contexts?",
+      "front": "L1",
+      "check": "Freeze Davis's candidate decomposition rules, then compare the predicted component shapes and placements with blinded annotations of further bridge-gallows images."
     }
   ]
 }
