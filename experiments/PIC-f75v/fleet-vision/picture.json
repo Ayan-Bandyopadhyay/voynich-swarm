@@ -1,0 +1,377 @@
+{
+ "folio": "f75v",
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006209",
+ "blind": true,
+ "statement": "A long tube with wavy markings and a round blue cap at its top-right end runs down between the two top text columns and coils into a long blue basin with a looped border, holding two bursts of radiating lines. Ten pipes hang from the basin, each touching the head of one of ten nude women standing half-length in a long green tub; nine pipes widen into a jar-like section holding a two-line label, the tenth (rightmost) is a thin tube with its label beside it. A thin blue tube runs from the green tub down the left margin into a lower blue pool of two joined basins with hatched rims, holding about 19 nude women; a blue tube leaves its bottom and runs to the page edge. The ten two-line label pairs (f75v.18-37) are given to the ten women left to right, each by its first line (18, 20, ..., 36), assuming the transcription lists them in left-to-right order; this was not checked against the words. The labels f75v.50-56 float around the lower pool without a clear single target and are not attached. The label lines f75v.2-11 are single marks at the right ends of the top text lines, not labels of drawings.",
+ "objects": [
+  {
+   "id": "pipe_main",
+   "kind": "pipe",
+   "features": {
+    "shape": "long vertical tube, top bent to the right",
+    "pattern": "wavy cross-strokes along its whole length",
+    "top_end": "round blue cap",
+    "bottom_end": "coils into a spiral where it meets the upper basin",
+    "position": "top centre, between the two text columns",
+    "colour": "uncoloured, blue cap"
+   },
+   "label": null
+  },
+  {
+   "id": "basin_upper",
+   "kind": "pool",
+   "features": {
+    "shape": "long horizontal band with a looped (scalloped) border",
+    "colour": "blue",
+    "contents": "two bursts of fine radiating lines",
+    "outlets": "10",
+    "position": "across the page below the top text"
+   },
+   "label": null
+  },
+  {
+   "id": "burst_left",
+   "kind": "other",
+   "features": {
+    "shape": "fine lines radiating from a point",
+    "colour": "uncoloured",
+    "position": "left half of the upper basin"
+   },
+   "label": null
+  },
+  {
+   "id": "burst_right",
+   "kind": "other",
+   "features": {
+    "shape": "fine lines radiating from a small cross-like centre",
+    "colour": "uncoloured",
+    "position": "right half of the upper basin"
+   },
+   "label": null
+  },
+  {
+   "id": "tube1",
+   "kind": "pipe",
+   "features": {
+    "position": "1",
+    "shape": "widens into a jar-like section with a wavy top band, narrows to a thin striped tube",
+    "contains_label": "yes",
+    "touches": "head of the figure below",
+    "colour": "uncoloured, blue streaks inside"
+   },
+   "label": null
+  },
+  {
+   "id": "tube2",
+   "kind": "pipe",
+   "features": {
+    "position": "2",
+    "shape": "widens into a jar-like section with a wavy top band, narrows to a thin striped tube",
+    "contains_label": "yes",
+    "touches": "head of the figure below",
+    "colour": "uncoloured, blue streaks inside"
+   },
+   "label": null
+  },
+  {
+   "id": "tube3",
+   "kind": "pipe",
+   "features": {
+    "position": "3",
+    "shape": "widens into a jar-like section with a wavy top band, narrows to a thin striped tube",
+    "contains_label": "yes",
+    "touches": "head of the figure below",
+    "colour": "uncoloured, blue streaks inside"
+   },
+   "label": null
+  },
+  {
+   "id": "tube4",
+   "kind": "pipe",
+   "features": {
+    "position": "4",
+    "shape": "widens into a jar-like section with a wavy top band, narrows to a thin striped tube",
+    "contains_label": "yes",
+    "touches": "head of the figure below",
+    "colour": "uncoloured, blue streaks inside"
+   },
+   "label": null
+  },
+  {
+   "id": "tube5",
+   "kind": "pipe",
+   "features": {
+    "position": "5",
+    "shape": "widens into a jar-like section with a wavy top band, narrows to a thin striped tube",
+    "contains_label": "yes",
+    "touches": "head of the figure below",
+    "colour": "uncoloured, blue streaks inside"
+   },
+   "label": null
+  },
+  {
+   "id": "tube6",
+   "kind": "pipe",
+   "features": {
+    "position": "6",
+    "shape": "widens into a jar-like section with a wavy top band, narrows to a thin striped tube",
+    "contains_label": "yes",
+    "touches": "head of the figure below",
+    "colour": "uncoloured, blue streaks inside"
+   },
+   "label": null
+  },
+  {
+   "id": "tube7",
+   "kind": "pipe",
+   "features": {
+    "position": "7",
+    "shape": "widens into a jar-like section with a wavy top band, narrows to a thin striped tube",
+    "contains_label": "yes",
+    "touches": "head of the figure below",
+    "colour": "uncoloured, blue streaks inside"
+   },
+   "label": null
+  },
+  {
+   "id": "tube8",
+   "kind": "pipe",
+   "features": {
+    "position": "8",
+    "shape": "widens into a jar-like section with a wavy top band, narrows to a thin striped tube",
+    "contains_label": "yes",
+    "touches": "head of the figure below",
+    "colour": "uncoloured, blue streaks inside"
+   },
+   "label": null
+  },
+  {
+   "id": "tube9",
+   "kind": "pipe",
+   "features": {
+    "position": "9",
+    "shape": "widens into a jar-like section with a wavy top band, narrows to a thin striped tube",
+    "contains_label": "yes",
+    "touches": "head of the figure below",
+    "colour": "uncoloured, blue streaks inside"
+   },
+   "label": null
+  },
+  {
+   "id": "tube10",
+   "kind": "pipe",
+   "features": {
+    "position": "10",
+    "shape": "thin striped tube only, no wide section",
+    "contains_label": "no, label written to its right",
+    "touches": "head of the figure below",
+    "colour": "uncoloured, blue streaks inside"
+   },
+   "label": null
+  },
+  {
+   "id": "nymph1",
+   "kind": "human_figure",
+   "features": {
+    "position": "1",
+    "row": "green pool, left to right",
+    "clothing": "nude",
+    "posture": "half-length, standing in the pool",
+    "hair": "loose",
+    "cheeks": "red",
+    "pipe": "touches head",
+    "colour": "uncoloured"
+   },
+   "label": "f75v.18"
+  },
+  {
+   "id": "nymph2",
+   "kind": "human_figure",
+   "features": {
+    "position": "2",
+    "row": "green pool, left to right",
+    "clothing": "nude",
+    "posture": "half-length, standing in the pool",
+    "hair": "loose",
+    "cheeks": "red",
+    "pipe": "touches head",
+    "colour": "uncoloured"
+   },
+   "label": "f75v.20"
+  },
+  {
+   "id": "nymph3",
+   "kind": "human_figure",
+   "features": {
+    "position": "3",
+    "row": "green pool, left to right",
+    "clothing": "nude",
+    "posture": "half-length, standing in the pool",
+    "hair": "bound",
+    "cheeks": "red",
+    "pipe": "touches head",
+    "colour": "uncoloured"
+   },
+   "label": "f75v.22"
+  },
+  {
+   "id": "nymph4",
+   "kind": "human_figure",
+   "features": {
+    "position": "4",
+    "row": "green pool, left to right",
+    "clothing": "nude",
+    "posture": "half-length, standing in the pool",
+    "hair": "bound",
+    "cheeks": "red",
+    "pipe": "touches head",
+    "colour": "uncoloured"
+   },
+   "label": "f75v.24"
+  },
+  {
+   "id": "nymph5",
+   "kind": "human_figure",
+   "features": {
+    "position": "5",
+    "row": "green pool, left to right",
+    "clothing": "nude",
+    "posture": "half-length, standing in the pool",
+    "hair": "loose",
+    "cheeks": "red",
+    "pipe": "touches head",
+    "colour": "uncoloured"
+   },
+   "label": "f75v.26"
+  },
+  {
+   "id": "nymph6",
+   "kind": "human_figure",
+   "features": {
+    "position": "6",
+    "row": "green pool, left to right",
+    "clothing": "nude",
+    "posture": "half-length, standing in the pool",
+    "hair": "bound",
+    "cheeks": "red",
+    "pipe": "touches head",
+    "colour": "uncoloured"
+   },
+   "label": "f75v.28"
+  },
+  {
+   "id": "nymph7",
+   "kind": "human_figure",
+   "features": {
+    "position": "7",
+    "row": "green pool, left to right",
+    "clothing": "nude",
+    "posture": "half-length, standing in the pool",
+    "hair": "bound",
+    "cheeks": "red",
+    "pipe": "touches head",
+    "colour": "uncoloured"
+   },
+   "label": "f75v.30"
+  },
+  {
+   "id": "nymph8",
+   "kind": "human_figure",
+   "features": {
+    "position": "8",
+    "row": "green pool, left to right",
+    "clothing": "nude",
+    "posture": "half-length, standing in the pool",
+    "hair": "bound",
+    "cheeks": "red",
+    "pipe": "touches head",
+    "colour": "uncoloured"
+   },
+   "label": "f75v.32"
+  },
+  {
+   "id": "nymph9",
+   "kind": "human_figure",
+   "features": {
+    "position": "9",
+    "row": "green pool, left to right",
+    "clothing": "nude",
+    "posture": "half-length, standing in the pool",
+    "hair": "bound",
+    "cheeks": "red",
+    "pipe": "touches head",
+    "colour": "uncoloured"
+   },
+   "label": "f75v.34"
+  },
+  {
+   "id": "nymph10",
+   "kind": "human_figure",
+   "features": {
+    "position": "10",
+    "row": "green pool, left to right",
+    "clothing": "nude",
+    "posture": "half-length, standing in the pool",
+    "hair": "bound",
+    "cheeks": "red",
+    "pipe": "touches head",
+    "colour": "uncoloured"
+   },
+   "label": "f75v.36"
+  },
+  {
+   "id": "pool_green",
+   "kind": "pool",
+   "features": {
+    "shape": "long horizontal tub, irregular rim, narrowing to the right",
+    "colour": "green",
+    "figures": "10",
+    "position": "middle of page"
+   },
+   "label": null
+  },
+  {
+   "id": "pipe_left",
+   "kind": "pipe",
+   "features": {
+    "shape": "thin tube running from the left end of the green pool down the left margin into the lower pool",
+    "colour": "blue"
+   },
+   "label": null
+  },
+  {
+   "id": "pool_lower",
+   "kind": "pool",
+   "features": {
+    "shape": "two joined basins, small lobe on the left and a larger one on the right, rims hatched with short strokes",
+    "colour": "blue",
+    "figures": "19",
+    "position": "bottom left"
+   },
+   "label": null
+  },
+  {
+   "id": "figures_lower",
+   "kind": "human_figure",
+   "features": {
+    "count": "19",
+    "clothing": "nude",
+    "posture": "half-length, crowded in the water",
+    "hair": "mostly bound in braids or caps",
+    "cheeks": "red",
+    "colour": "uncoloured",
+    "position": "lower pool, 3 in the small left lobe and 16 in the large basin"
+   },
+   "label": null
+  },
+  {
+   "id": "pipe_bottom",
+   "kind": "pipe",
+   "features": {
+    "shape": "thin wavy tube leaving the bottom of the lower pool and running down to the page edge, splitting into a few strands at its end",
+    "colour": "blue"
+   },
+   "label": null
+  }
+ ]
+}
