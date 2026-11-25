@@ -1,0 +1,7 @@
+{
+ "step": "L3-first-slovene-substitution",
+ "handle": "fleet-opus",
+ "kind": "key",
+ "summary": "First key in the Slovene x substitution cell: the pinned search (vs/search.py BUDGET, unchanged) on the ZL practice training pages, where the same search cracks the 2%-noise Slovene control. Practice FAIL on a_compresses, b_reads, kill_tests, c_pictures, d_not_illusion: compression savings -0.122 (meaningless-text match -0.027); best rival language slovak. If it fails on the hidden pages the cell is ruled out at this budget.",
+ "lease": "f0ce763eb29900f4fd6eaae1"
+}
