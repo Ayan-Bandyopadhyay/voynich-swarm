@@ -1,0 +1,1141 @@
+{
+  "title": "Test a nominal f69v length alignment with independent evidence for its origin",
+  "statement": "The Yale scan has 28 labeled radial loci and 28 green-ended bars in alternating dark and pale styles. Two known historical mansion diagrams use different arrangements of sectors and celestial signs. Under 56 circular alignments, neither the Bundahishn names nor the two Arabic nomenclature witnesses have unexpectedly ordered initials or lengths in the two complete transcriptions. The Henry Bate Latin table gives a nominal length-rank association of 0.637 to 0.685 in three transcriptions, with the same reverse alignment and P values 0.011, 0.005 and 0.01325. Conditioning on four quarters of seven weakens it. The adjacent Latin prose list reaches its own maximum at a shift two slots away. Across the twelve planned scores per edition the smallest Holm-adjusted P is 0.060. The length result is exploratory, with no independent starting cue or name correspondence.",
+  "program": "L4",
+  "on_path": true,
+  "hard": true,
+  "check": "First find a scan-based marker or independent astronomical correspondence that fixes a starting slot and direction. Freeze a different historical witness with published spelling rules before testing that single alignment. Distinguish lexical length from the effects of definite articles, spelling variants, and multiword names. An independent observer should also apply the visual rubric with source headings masked. Require evidence beyond the shared count or an optimized length correlation before proposing an anchor.",
+  "evidence": {
+    "plan_sha256": "ea79507aef6b34600c756408f9dda03ddc5bb2c7b23ce8549ab8983fa7e8f4a5",
+    "plan": "# P-L4-002 geometry and ordered-feature check\n\nPast exposure: f69v and the two Bodleian lunar mansion pages, and chapter II opening of the Greater Bundahišn while cataloguing Herrmann. This pass scores by fixed criteria with source-aware preparation and one observer. Three manuscript editions are frozen before retrieving the comparator name lists. Preserve one radial locus per green-ended bar in clockwise ZL locus order. Compare candidate lists in official source order, with all 28 rotations and both directions. No fit of source-specific glyph values. All 28 supports known from previous exposure. The prior has no public mapping for the 20 reported correspondences.\n\nOrder-sensitive measures fixed before source extraction. First-symbol equality pattern is a binary partition of the 378 unordered pairs of index positions. Score the Pearson correlation of the manuscript and comparator partitions, maximizing over the identical 56 alignments. A constant vector is uninformative. Use both Arabic orthographic names with articles and bare names stripping only an explicitly specified Arabic definite article (or Latin spellings that directly render it when the edition makes this possible). Report alternative treatment as sensitivity. Phrase lengths count retained glyphs across the locus. Compare normalized average ranks to the comparator's normalized grapheme counts, taking the positive Pearson correlation maximum over the same alignments. Word boundaries, diacritics and source-specific digraphs are conventions to record. Test both scores independently against 3,999 whole-name shuffles of the comparator, holding names with their grapheme counts and initials intact. Treat the families of views as exploratory. Include fixed random-prefix controls and an exact circular rotation positive check. Match the source-label count, per-letter class sizes and lengths through name permutations, with no weight for the shared count of 28.\n\nVisual checks fixed before retrieving additional plate images. Record one visible legend or text group per sector, regularly alternating radial styles, radial separators making enclosed compartments, isolated star groups with variable dot counts, identifiable grouping marks at a different level and a fixed start cue. List unknown where any region is missing or not shown in a documentary text witness. Caption masks are meaningful for images that can be paired to the same criteria. The already recognized Voynich and Bodleian pages provide no independent blinded evaluation of provenance.\n\nScope: these are structural comparisons applicable only to hypotheses that preserve some first-symbol grouping or length order. No text interpretation and no anchor unless a separately frozen per-slot prediction gains external corroboration.\n",
+    "frozen_transcriptions_sha256": "ed10f04212673f8da09fd81bf652f2bd5c45075f1d3899707956eeb2676f04f9",
+    "after_initial_result_plan": "After the nominal Henry Bate table length signal, check the name forms in the preceding prose section 5.2 of the same critical edition, taking the first name at each numbered definition and skipping alternatives and glosses. This is a post-result sensitivity test. Compare both the originally selected alignment (reverse index 5) and a fresh search. Independently, retain the table and condition the shuffle on four consecutive quarters of seven names. This holds quarter-specific length profiles fixed while destroying the ordering within those quarters. Both sensitivities will be reported whatever direction they take. No separate positive result is inferred from the shared table/prose witness or the three transcriptions of the same drawing.\n",
+    "source_tables": [
+      {
+        "source": "https://www.avesta.org/mp/grb1.htm",
+        "locus": "Greater Bundahišn II.2, Anklesaria names in Peterson’s digital edition",
+        "normalization": "Use the ordered printed names as transcribed into the English translation. Count Roman letters and strip spaces or hyphens. This is a spelling witness, with no claim that the editor reproduces medieval Pahlavi letter counts."
+      },
+      {
+        "source": "https://www.loc.gov/resource/gdcwdl.wdl_10687/?sp=49",
+        "locus": "Al-Farghānī, Golius 1669 edition, printed Arabic pp. 77–79 (LOC scan pages 49–50)",
+        "normalization": "Use head terms and their immediate lexical modifiers, omitting glosses and alternative names. Keep unpointed Arabic letters, treating hamza-bearing letters as one each. Sensitivity removes a leading written definite article from the first word only."
+      },
+      {
+        "source": "https://ismi.mpiwg-berlin.mpg.de/static/resources/Muiniyya_2020_vol2/000-Muiniyya-vol2-full.pdf",
+        "locus": "Naṣīr al-Dīn al-Ṭūsī, al-Muʿīniyya II.3[11], Ragep et al. English translation p. 45",
+        "normalization": "The reported Arabic nomenclature appears in a Persian astronomical work. Use the translation’s romanized terms as printed. Strip combining marks, preserve ʿ and ʾ, count sh, gh, dh, th and kh as single graphemes, and count the written connector in phrases."
+      },
+      {
+        "source": "https://journals.uco.es/index.php/mediterranea/article/download/12257/11554",
+        "locus": "Sela et al. 2020 edition of Pal. lat. 1407, chapter 5.2 prose pp. 247–248 and table pp. 249–250",
+        "normalization": "Use only the first edited name on each of 28 numbered lines, without editorial apparatus or Latin glosses. Count letters and keep letters restored by the editors. The table supplies the primary Latin list. Remove initial al in one mechanical sensitivity. Many of these Latin manuscript names render Arabic terms, so language of the witness and origin of the names are distinct."
+      }
+    ],
+    "geometry": {
+      "voynich_canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006199",
+      "reference_crop": "https://collections.library.yale.edu/iiif/2/1006199/pct:6,15,27,61/1000,/0/default.jpg",
+      "reference_crop_dimensions": [
+        1000,
+        985
+      ],
+      "cap_centers_xy_in_clockwise_order": [
+        [
+          400,
+          431
+        ],
+        [
+          392,
+          372
+        ],
+        [
+          450,
+          349
+        ],
+        [
+          460,
+          290
+        ],
+        [
+          516,
+          307
+        ],
+        [
+          545,
+          258
+        ],
+        [
+          590,
+          290
+        ],
+        [
+          632,
+          261
+        ],
+        [
+          669,
+          310
+        ],
+        [
+          725,
+          312
+        ],
+        [
+          721,
+          362
+        ],
+        [
+          766,
+          381
+        ],
+        [
+          746,
+          438
+        ],
+        [
+          789,
+          481
+        ],
+        [
+          747,
+          513
+        ],
+        [
+          771,
+          555
+        ],
+        [
+          722,
+          574
+        ],
+        [
+          721,
+          627
+        ],
+        [
+          662,
+          635
+        ],
+        [
+          635,
+          672
+        ],
+        [
+          587,
+          649
+        ],
+        [
+          539,
+          676
+        ],
+        [
+          506,
+          638
+        ],
+        [
+          450,
+          651
+        ],
+        [
+          440,
+          598
+        ],
+        [
+          385,
+          567
+        ],
+        [
+          401,
+          516
+        ],
+        [
+          366,
+          479
+        ]
+      ],
+      "first_locus": "f69v.4",
+      "last_locus": "f69v.31",
+      "comments": "Three editions have the same 28 loci and 33, 34 and 33 word tokens, respectively. The full-locus count is the unit. RF leaves five loci uncertain, which are omitted only from its score denominators. Physical cap centers are approximate annotations from the displayed public crop, ordered from the pale cap in the upper-left. The cap style alternates and provides no unique origin.",
+      "rubric_order": [
+        "one label area per marked slot",
+        "periodic alternating bar style",
+        "enclosed radially separated sectors",
+        "variable isolated groups of star dots per marked slot",
+        "separate closed zodiac-sign sectors",
+        "unique visual origin for the same label ring"
+      ],
+      "plates": [
+        {
+          "name": "Yale f69v",
+          "codes": [
+            "yes",
+            "yes",
+            "no",
+            "no",
+            "no",
+            "unverified"
+          ],
+          "note": "The three outer bands contain running text. Pale radial traces do not visibly partition them into twelve named constellations."
+        },
+        {
+          "name": "Oxford Bodl. Or. 133 ff117v–118r",
+          "codes": [
+            "yes",
+            "no",
+            "yes",
+            "yes",
+            "yes",
+            "unverified"
+          ],
+          "sources": [
+            "https://iiif.bodleian.ox.ac.uk/iiif/canvas/6021232e-d3e1-4fcb-b57c-9bfb88b8b69f.json",
+            "https://iiif.bodleian.ox.ac.uk/iiif/canvas/99500391-88eb-4eb2-83f8-dd5e0a620368.json"
+          ],
+          "note": "The lunar-mansion compartments contain varying numbers and arrangements of red dots. Several sectors are abraded. The neighboring zodiac sectors form a separate band."
+        },
+        {
+          "name": "TİEM 1973, Zubdat al-Tawarikh, 1583",
+          "codes": [
+            "yes",
+            "no",
+            "yes",
+            "no",
+            "yes",
+            "unverified"
+          ],
+          "source": "https://commons.wikimedia.org/wiki/File:Celestial_map,_signs_of_the_Zodiac_and_lunar_mansions..JPG",
+          "note": "A later illustrated witness. Linked decorated compartments and graduated lunar disks surround the discrete zodiac wheel. The successive phase fills differ from both alternating bars and isolated uneven stellar dots."
+        }
+      ]
+    },
+    "score_details": "Compute the Pearson correlation between the 378-element binary equality vectors for initial-class membership, and separately between the average-rank length vectors. A missing RF locus excludes the relevant point and all its initial-class pairs. Candidate length ranks are computed on the complete witness before applying the RF mask. For each score maximize over 56 alignments. Forward index k maps manuscript position i to source (i+k) modulo 28. Reverse index k maps i to 27-((i+k) modulo 28). Thus reverse index 5 maps f69v.4 to the table’s 23rd entry. NumPy random seed 69128 and 3,999 whole-name permutations hold the letter class and length of each candidate entry together. Ties count in the upper tail and the reported P adds one to its numerator and denominator.",
+    "scope": "This is one-source-aware-observer work with no independent blind annotator. The historical signals are conditional on simple length or first-class preservation. The six spellings or lists and two scores per edition were exploratory, and the three transcriptions represent the same manuscript. The Henry Bate prose and quarter tests followed the initial finding. A result at the table-selected fixed shift does not substitute for an independent fixation of the shift.",
+    "latin_sensitivity": {
+      "zl": {
+        "table_conditioned_on_quarters": {
+          "fixed_reverse_index_5": [
+            0.6374708649864483,
+            0.0085
+          ],
+          "searched_all_56": [
+            0.6374708649864483,
+            0.036,
+            33
+          ]
+        },
+        "prose": {
+          "fixed_reverse_index_5": [
+            0.3884220034079533,
+            0.01475
+          ],
+          "searched_all_56": [
+            0.6648594372849844,
+            0.0045,
+            31
+          ]
+        },
+        "prose_without_al": {
+          "fixed_reverse_index_5": [
+            0.41511483930788606,
+            0.0105
+          ],
+          "searched_all_56": [
+            0.6249291637874625,
+            0.01425,
+            31
+          ]
+        }
+      },
+      "it": {
+        "table_conditioned_on_quarters": {
+          "fixed_reverse_index_5": [
+            0.667482856633407,
+            0.00575
+          ],
+          "searched_all_56": [
+            0.667482856633407,
+            0.02225,
+            33
+          ]
+        },
+        "prose": {
+          "fixed_reverse_index_5": [
+            0.40212723266677636,
+            0.01225
+          ],
+          "searched_all_56": [
+            0.6619001624036343,
+            0.00575,
+            31
+          ]
+        },
+        "prose_without_al": {
+          "fixed_reverse_index_5": [
+            0.4286440434155396,
+            0.009
+          ],
+          "searched_all_56": [
+            0.6245373512186894,
+            0.01575,
+            31
+          ]
+        }
+      },
+      "rf": {
+        "table_conditioned_on_quarters": {
+          "fixed_reverse_index_5": [
+            0.6846297595641144,
+            0.00825
+          ],
+          "searched_all_56": [
+            0.6846297595641144,
+            0.0575,
+            33
+          ]
+        },
+        "prose": {
+          "fixed_reverse_index_5": [
+            0.4489505403208134,
+            0.013
+          ],
+          "searched_all_56": [
+            0.7139178762097035,
+            0.007,
+            31
+          ]
+        },
+        "prose_without_al": {
+          "fixed_reverse_index_5": [
+            0.4872559703476594,
+            0.009
+          ],
+          "searched_all_56": [
+            0.6643183269290447,
+            0.0225,
+            31
+          ]
+        }
+      }
+    },
+    "tests": {
+      "zl": {
+        "bundahishn_anklesaria": {
+          "initial_partition": {
+            "score": 0.10559464513536546,
+            "p_ge": 0.81,
+            "winning_alignment": {
+              "index": 20,
+              "direction": "forward"
+            },
+            "null_median": 0.12655828791959128,
+            "null_p95": 0.16848557348804535
+          },
+          "length_ranks": {
+            "score": 0.436029420156491,
+            "p_ge": 0.46775,
+            "winning_alignment": {
+              "index": 11,
+              "direction": "forward"
+            },
+            "null_median": 0.4291897429775656,
+            "null_p95": 0.5745484277505903
+          }
+        },
+        "henry_bate_table": {
+          "initial_partition": {
+            "score": 0.3452552545168881,
+            "p_ge": 0.317,
+            "winning_alignment": {
+              "index": 6,
+              "direction": "forward"
+            },
+            "null_median": 0.33322700694016943,
+            "null_p95": 0.5497354633210823
+          },
+          "length_ranks": {
+            "score": 0.6374708649864483,
+            "p_ge": 0.011,
+            "winning_alignment": {
+              "index": 5,
+              "direction": "reverse"
+            },
+            "null_median": 0.42926652901031565,
+            "null_p95": 0.5667061769850367
+          }
+        },
+        "henry_bate_table_without_al": {
+          "initial_partition": {
+            "score": 0.10795912380986127,
+            "p_ge": 0.6175,
+            "winning_alignment": {
+              "index": 14,
+              "direction": "forward"
+            },
+            "null_median": 0.10795912380986138,
+            "null_p95": 0.15778641172210542
+          },
+          "length_ranks": {
+            "score": 0.6338761036702902,
+            "p_ge": 0.01225,
+            "winning_alignment": {
+              "index": 5,
+              "direction": "reverse"
+            },
+            "null_median": 0.4284417727212094,
+            "null_p95": 0.5707684189623894
+          }
+        },
+        "farghani_golius_arabic": {
+          "initial_partition": {
+            "score": 0.289470384406206,
+            "p_ge": 0.4655,
+            "winning_alignment": {
+              "index": 6,
+              "direction": "forward"
+            },
+            "null_median": 0.2787492590578282,
+            "null_p95": 0.4502872646318745
+          },
+          "length_ranks": {
+            "score": 0.4654922631089742,
+            "p_ge": 0.31925,
+            "winning_alignment": {
+              "index": 13,
+              "direction": "reverse"
+            },
+            "null_median": 0.4286969632652664,
+            "null_p95": 0.5682812020258143
+          }
+        },
+        "farghani_golius_arabic_without_al": {
+          "initial_partition": {
+            "score": 0.16884679403296507,
+            "p_ge": 0.38675,
+            "winning_alignment": {
+              "index": 1,
+              "direction": "forward"
+            },
+            "null_median": 0.1424949822474743,
+            "null_p95": 0.16884679403296693
+          },
+          "length_ranks": {
+            "score": 0.5034988858177796,
+            "p_ge": 0.17875,
+            "winning_alignment": {
+              "index": 26,
+              "direction": "forward"
+            },
+            "null_median": 0.42851637925047364,
+            "null_p95": 0.5690496305527201
+          }
+        },
+        "tusi_english_edition_headword_form": {
+          "initial_partition": {
+            "score": 0.2020264108869547,
+            "p_ge": 0.2375,
+            "winning_alignment": {
+              "index": 1,
+              "direction": "forward"
+            },
+            "null_median": 0.1788641472183873,
+            "null_p95": 0.20202641088695558
+          },
+          "length_ranks": {
+            "score": 0.5028632491713876,
+            "p_ge": 0.18375,
+            "winning_alignment": {
+              "index": 5,
+              "direction": "reverse"
+            },
+            "null_median": 0.43012003096474805,
+            "null_p95": 0.5762562434012234
+          }
+        }
+      },
+      "it": {
+        "bundahishn_anklesaria": {
+          "initial_partition": {
+            "score": 0.10559464513536546,
+            "p_ge": 0.81,
+            "winning_alignment": {
+              "index": 20,
+              "direction": "forward"
+            },
+            "null_median": 0.12655828791959128,
+            "null_p95": 0.16848557348804535
+          },
+          "length_ranks": {
+            "score": 0.4343548905510406,
+            "p_ge": 0.4695,
+            "winning_alignment": {
+              "index": 11,
+              "direction": "forward"
+            },
+            "null_median": 0.42824604066590155,
+            "null_p95": 0.5723522430845662
+          }
+        },
+        "henry_bate_table": {
+          "initial_partition": {
+            "score": 0.3452552545168881,
+            "p_ge": 0.317,
+            "winning_alignment": {
+              "index": 6,
+              "direction": "forward"
+            },
+            "null_median": 0.33322700694016943,
+            "null_p95": 0.5497354633210823
+          },
+          "length_ranks": {
+            "score": 0.667482856633407,
+            "p_ge": 0.005,
+            "winning_alignment": {
+              "index": 5,
+              "direction": "reverse"
+            },
+            "null_median": 0.42693302453048837,
+            "null_p95": 0.5705604745745477
+          }
+        },
+        "henry_bate_table_without_al": {
+          "initial_partition": {
+            "score": 0.10795912380986127,
+            "p_ge": 0.6175,
+            "winning_alignment": {
+              "index": 14,
+              "direction": "forward"
+            },
+            "null_median": 0.10795912380986138,
+            "null_p95": 0.15778641172210542
+          },
+          "length_ranks": {
+            "score": 0.6650549006466285,
+            "p_ge": 0.00625,
+            "winning_alignment": {
+              "index": 5,
+              "direction": "reverse"
+            },
+            "null_median": 0.42749052049104674,
+            "null_p95": 0.5708753541601479
+          }
+        },
+        "farghani_golius_arabic": {
+          "initial_partition": {
+            "score": 0.289470384406206,
+            "p_ge": 0.4655,
+            "winning_alignment": {
+              "index": 6,
+              "direction": "forward"
+            },
+            "null_median": 0.2787492590578282,
+            "null_p95": 0.4502872646318745
+          },
+          "length_ranks": {
+            "score": 0.472092141116149,
+            "p_ge": 0.283,
+            "winning_alignment": {
+              "index": 13,
+              "direction": "reverse"
+            },
+            "null_median": 0.42638518364857336,
+            "null_p95": 0.569946581876277
+          }
+        },
+        "farghani_golius_arabic_without_al": {
+          "initial_partition": {
+            "score": 0.16884679403296507,
+            "p_ge": 0.38675,
+            "winning_alignment": {
+              "index": 1,
+              "direction": "forward"
+            },
+            "null_median": 0.1424949822474743,
+            "null_p95": 0.16884679403296693
+          },
+          "length_ranks": {
+            "score": 0.5124220134553714,
+            "p_ge": 0.153,
+            "winning_alignment": {
+              "index": 26,
+              "direction": "forward"
+            },
+            "null_median": 0.42688634505787504,
+            "null_p95": 0.5699526704219837
+          }
+        },
+        "tusi_english_edition_headword_form": {
+          "initial_partition": {
+            "score": 0.2020264108869547,
+            "p_ge": 0.2375,
+            "winning_alignment": {
+              "index": 1,
+              "direction": "forward"
+            },
+            "null_median": 0.1788641472183873,
+            "null_p95": 0.20202641088695558
+          },
+          "length_ranks": {
+            "score": 0.5118229755790168,
+            "p_ge": 0.153,
+            "winning_alignment": {
+              "index": 5,
+              "direction": "reverse"
+            },
+            "null_median": 0.42894118951801524,
+            "null_p95": 0.5754455258038778
+          }
+        }
+      },
+      "rf": {
+        "bundahishn_anklesaria": {
+          "initial_partition": {
+            "score": 0.10920795915448427,
+            "p_ge": 0.8955,
+            "winning_alignment": {
+              "index": 1,
+              "direction": "forward"
+            },
+            "null_median": 0.1482711620699685,
+            "null_p95": 0.20354722991568683
+          },
+          "length_ranks": {
+            "score": 0.5116992527369852,
+            "p_ge": 0.32325,
+            "winning_alignment": {
+              "index": 11,
+              "direction": "forward"
+            },
+            "null_median": 0.47488645923286005,
+            "null_p95": 0.6266654739823322
+          }
+        },
+        "henry_bate_table": {
+          "initial_partition": {
+            "score": 0.44954957448535465,
+            "p_ge": 0.2935,
+            "winning_alignment": {
+              "index": 6,
+              "direction": "forward"
+            },
+            "null_median": 0.422978510821746,
+            "null_p95": 0.5939956757166363
+          },
+          "length_ranks": {
+            "score": 0.6846297595641144,
+            "p_ge": 0.01325,
+            "winning_alignment": {
+              "index": 5,
+              "direction": "reverse"
+            },
+            "null_median": 0.4746731143405236,
+            "null_p95": 0.6247797991975677
+          }
+        },
+        "henry_bate_table_without_al": {
+          "initial_partition": {
+            "score": 0.1957088322371785,
+            "p_ge": 0.01725,
+            "winning_alignment": {
+              "index": 14,
+              "direction": "forward"
+            },
+            "null_median": 0.1318956015344783,
+            "null_p95": 0.17739902038273778
+          },
+          "length_ranks": {
+            "score": 0.680204991872562,
+            "p_ge": 0.016,
+            "winning_alignment": {
+              "index": 5,
+              "direction": "reverse"
+            },
+            "null_median": 0.47559844761180586,
+            "null_p95": 0.6261763240498495
+          }
+        },
+        "farghani_golius_arabic": {
+          "initial_partition": {
+            "score": 0.3251209836332589,
+            "p_ge": 0.7975,
+            "winning_alignment": {
+              "index": 15,
+              "direction": "reverse"
+            },
+            "null_median": 0.4135655634380424,
+            "null_p95": 0.5710924449614405
+          },
+          "length_ranks": {
+            "score": 0.47807750383048603,
+            "p_ge": 0.4655,
+            "winning_alignment": {
+              "index": 26,
+              "direction": "forward"
+            },
+            "null_median": 0.47166081570487967,
+            "null_p95": 0.6187203902369944
+          }
+        },
+        "farghani_golius_arabic_without_al": {
+          "initial_partition": {
+            "score": 0.1957088322371794,
+            "p_ge": 0.2195,
+            "winning_alignment": {
+              "index": 24,
+              "direction": "forward"
+            },
+            "null_median": 0.17739902038273786,
+            "null_p95": 0.21227233208190827
+          },
+          "length_ranks": {
+            "score": 0.51505726141591,
+            "p_ge": 0.30125,
+            "winning_alignment": {
+              "index": 26,
+              "direction": "forward"
+            },
+            "null_median": 0.4721873324107828,
+            "null_p95": 0.6210801325486781
+          }
+        },
+        "tusi_english_edition_headword_form": {
+          "initial_partition": {
+            "score": 0.21966459589515488,
+            "p_ge": 0.24925,
+            "winning_alignment": {
+              "index": 7,
+              "direction": "reverse"
+            },
+            "null_median": 0.20412414523193168,
+            "null_p95": 0.24273401821882
+          },
+          "length_ranks": {
+            "score": 0.5497705835995903,
+            "p_ge": 0.192,
+            "winning_alignment": {
+              "index": 8,
+              "direction": "reverse"
+            },
+            "null_median": 0.4722140890461298,
+            "null_p95": 0.6273277669589602
+          }
+        }
+      }
+    },
+    "exact_rotation_positive": {
+      "initial_partition": {
+        "score": 0.9999999999999997,
+        "p_ge": 0.00025,
+        "winning_alignment": {
+          "index": 19,
+          "direction": "forward"
+        },
+        "null_median": 0.3296551724137928,
+        "null_p95": 0.4999014778325128
+      },
+      "length_ranks": {
+        "score": 0.9999999999999999,
+        "p_ge": 0.00025,
+        "winning_alignment": {
+          "index": 19,
+          "direction": "forward"
+        },
+        "null_median": 0.43289606458123125,
+        "null_p95": 0.5812310797174572
+      }
+    },
+    "randomly_permuted_independent_matched_marginals": {
+      "initial_partition": {
+        "n": 32,
+        "p_le_05": 0
+      },
+      "length_ranks": {
+        "n": 32,
+        "p_le_05": 1
+      }
+    },
+    "source_signatures": {
+      "bundahishn_anklesaria": {
+        "initial_classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          2,
+          3,
+          4,
+          1,
+          5,
+          6,
+          1,
+          6,
+          7,
+          8,
+          7,
+          5,
+          9,
+          9,
+          10,
+          9,
+          9,
+          6,
+          2,
+          11,
+          10,
+          6,
+          11
+        ],
+        "lengths": [
+          7,
+          10,
+          6,
+          4,
+          6,
+          5,
+          7,
+          6,
+          5,
+          4,
+          5,
+          5,
+          7,
+          4,
+          5,
+          4,
+          3,
+          4,
+          7,
+          6,
+          3,
+          3,
+          4,
+          5,
+          7,
+          4,
+          5,
+          4
+        ]
+      },
+      "henry_bate_table": {
+        "initial_classes": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          2,
+          2,
+          0,
+          0,
+          0
+        ],
+        "lengths": [
+          8,
+          7,
+          6,
+          9,
+          7,
+          7,
+          5,
+          6,
+          6,
+          8,
+          7,
+          7,
+          6,
+          8,
+          7,
+          8,
+          8,
+          6,
+          6,
+          6,
+          7,
+          10,
+          9,
+          11,
+          11,
+          8,
+          12,
+          5
+        ]
+      },
+      "henry_bate_table_without_al": {
+        "initial_classes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          4,
+          5,
+          0,
+          2,
+          6,
+          7,
+          7,
+          5,
+          8,
+          6,
+          7,
+          9,
+          10,
+          11,
+          0,
+          1,
+          12,
+          12,
+          8,
+          8,
+          13,
+          13,
+          4
+        ],
+        "lengths": [
+          6,
+          5,
+          4,
+          7,
+          5,
+          5,
+          5,
+          4,
+          4,
+          6,
+          5,
+          5,
+          4,
+          6,
+          5,
+          6,
+          6,
+          4,
+          4,
+          4,
+          5,
+          10,
+          9,
+          11,
+          11,
+          6,
+          10,
+          3
+        ]
+      },
+      "farghani_golius_arabic": {
+        "initial_classes": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          2,
+          0,
+          0,
+          0,
+          3,
+          3,
+          3,
+          3,
+          4,
+          0,
+          0
+        ],
+        "lengths": [
+          7,
+          6,
+          6,
+          7,
+          6,
+          6,
+          6,
+          6,
+          5,
+          6,
+          6,
+          6,
+          5,
+          12,
+          5,
+          11,
+          7,
+          9,
+          6,
+          7,
+          6,
+          9,
+          6,
+          9,
+          10,
+          14,
+          11,
+          5
+        ]
+      },
+      "farghani_golius_arabic_without_al": {
+        "initial_classes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          9,
+          14,
+          15,
+          0,
+          6,
+          1,
+          12,
+          12,
+          12,
+          12,
+          16,
+          16,
+          17
+        ],
+        "lengths": [
+          5,
+          4,
+          4,
+          5,
+          4,
+          4,
+          4,
+          4,
+          3,
+          4,
+          4,
+          4,
+          3,
+          10,
+          3,
+          11,
+          5,
+          9,
+          4,
+          5,
+          4,
+          9,
+          6,
+          9,
+          10,
+          14,
+          9,
+          3
+        ]
+      },
+      "tusi_english_edition_headword_form": {
+        "initial_classes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          10,
+          12,
+          9,
+          13,
+          14,
+          0,
+          6,
+          1,
+          10,
+          10,
+          10,
+          10,
+          15,
+          15,
+          16
+        ],
+        "lengths": [
+          8,
+          6,
+          7,
+          7,
+          5,
+          5,
+          5,
+          5,
+          4,
+          5,
+          5,
+          5,
+          5,
+          5,
+          4,
+          6,
+          5,
+          4,
+          5,
+          7,
+          5,
+          10,
+          10,
+          10,
+          11,
+          12,
+          12,
+          4
+        ]
+      }
+    },
+    "reference_locus_counts": {
+      "zl": 28,
+      "it": 28,
+      "rf": 23
+    },
+    "minimum_holm_adjusted_p_by_edition": {
+      "zl": 0.132,
+      "it": 0.06,
+      "rf": 0.159
+    }
+  }
+}
