@@ -1,0 +1,1003 @@
+{
+  "title": "Record a ring-aware replication of the zodiac label test",
+  "statement": "The pooled ZL page test reproduces 0.18% exact same-position agreement and gives 40 exact and 110 one-edit agreements after optimizing rotation across 66 pairs. Its 999-permutation P values are 0.246 and 0.312. Takahashi’s flattened exact-word result is nominally unusual at P=0.016 but moves to P=0.081 when the shorter and longer page can each be rotated. The historical layouts contain distinct rings and some partial rows. Using 285 figure-label loci and comparing equal ring positions under independent rotations and both relative directions, the exact whole-label P values are 0.887, 0.846 and 0.899 across the three editions. Planting two repeated positions in both full-ring groups gives detections in 24 of 24 simulations, while one repeated position gives 0 of 24. The result weighs against a broadly shared ordered roster that uses the same visible labels at comparable positions across the rings.",
+  "program": "L4",
+  "check": "Repeat using the named label blocks and the same count convention per locus. An independent extension should recover calibrated positions directly from the scans, tag unclear figure-to-word associations, preserve missing slots, and test an explicitly different roster with sign-specific or split-ring predictions against its own planted controls.",
+  "on_path": true,
+  "hard": false,
+  "evidence": {
+    "previous": "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/331",
+    "inputs": "The pinned ZL3b-n.txt, IT2a-n.txt and RF1b-e.txt contain the same 12 Zodiac panels. P-L4-007 flattens label words per panel, producing 350 ZL words, 367 Takahashi words and 343 RF words. The same set of physical Lz identifiers is used when moving to a locus-level test. Alternatives are parsed according to vs.ivtff and uncertain spaces split.",
+    "panel_order": "f70v1 f70v2 f71r f71v f72r1 f72r2 f72r3 f72v1 f72v2 f72v3 f73r f73v",
+    "legacy_method": "For each pair i<j in the supplied order, score the prefix overlap at equal ordinal positions. To optimize alignment, cyclically rotate j by each offset, then truncate the two sequences to the shorter length and sum exact or at-most-one raw EVA character edit matches. Use the best per pair and sum across the 66 pairs. The sensitivity also permits rotating i individually. The original reports 41 and 115; our explicit convention gives 40 and 110. Allowing either side gives 40 and 117. The sample and the unchanged 0.1787% original exact-match fraction are reproducible; the exact optimum depends on unequal-length conventions and the edit unit.",
+    "ring_method": "Interpret each ZL @Lz group as one block of labels following the scan and ZL ring headers. Keep the innermost and outermost full figure rings as separate comparison groups. Cancer has a middle full ring with no primary homologous partner. Exclude four groups from primary comparisons: the Pisces central star and the Gemini, Scorpius and Sagittarius partial rows. One full-locus label joins all its words with an explicit separator. The first-word view retains just its first token. Both are segmented with EVA-basic and label loci containing uncertain or absent tokens retain their geometric slot as a missing observation. Missing observations never match, including another missing observation. Fuzzy similarity is at most one insertion, deletion or substitution of an EVA-basic unit.",
+    "alignment": "For each homologous pair, take the highest exact score and the highest fuzzy score over all rotations of the second ring in each direction. The ordinal view compares the first min(n,m) positions. The primary equal-arc view compares the midpoints of min(n,m) equal fractions of a ring by projecting each midpoint to both respective slot counts using floor, then advances the second ring through all of its rotations. The method uses ordinal ranks as geometry proxies and makes no claim of exact angular equality. Sensitivity comparisons apply literal clock sorting of the locally anomalous Libra block, or include all full rings on different panels.",
+    "null_and_power": "Use NumPy RNG seed 61304 and 999 permutations. Shuffle labels independently within the applicable page or ring, with missing ring slots fixed. P is the upper-tail add-one rank with ties. For power, use 24 seeds 2401–2424 and 199 shuffles per simulated instance. For each full-ring group independently choose k positions in its shortest ring and project to each ring by the same fractional construction. Rotate each ring’s planted positions independently, keep the original unknowns, then substitute one distinct shared pseudolabel per position where available. Test exact agreement for the same main comparison. Sign-dependent renamings, variable mappings between ring layers and hypotheses with just one stable position are outside this power result.",
+    "scan_checks": [
+      {
+        "folio": "f72v1",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006205",
+        "detail": "https://collections.library.yale.edu/iiif/2/1006205/1180,550,1570,980/1570,/0/default.jpg",
+        "observation": "The outer-band oees glyph group is immediately clockwise from the crowned figure’s longer label and before the next longer label. This supports the edition order around .8–.10 over a literal 01:45 tag for .8. Literal time sorting is included as a sensitivity."
+      },
+      {
+        "folio": "f72r3",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006203",
+        "detail": "https://collections.library.yale.edu/iiif/2/1006203/5900,1800,1280,1000/1280,/180/default.jpg",
+        "observation": "Cancer has three full bands. The approximate 07:00 comments coincide for distinct adjacent outer loci .11 and .12. The primary data keep their edition order and do not merge them."
+      },
+      {
+        "folio": "f73r",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006206",
+        "observation": "Four figures above the outer ring form a separate partial group; the full rings remain distinct."
+      },
+      {
+        "folio": "f73v",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006207",
+        "observation": "Four figures sit in a short outer group. The two larger circles can be separately aligned."
+      }
+    ],
+    "interpretation": "The exploratory IT flattened exact result varies across editions and loses significance when the comparison uses physical rings and whole labels. Label meanings remain open. The assay can miss a roster if ring segmentation varies by sign, if corresponding slots are displaced by unequal gaps, or if the same category uses divergent word forms.",
+    "geometry": {
+      "f70v2 outer": {
+        "label_loci": 19,
+        "first": "f70v2.2",
+        "last": "f70v2.20"
+      },
+      "f70v2 inner": {
+        "label_loci": 10,
+        "first": "f70v2.22",
+        "last": "f70v2.31"
+      },
+      "f70v2 centre": {
+        "label_loci": 1,
+        "first": "f70v2.33",
+        "last": "f70v2.33"
+      },
+      "f70v1 outer": {
+        "label_loci": 10,
+        "first": "f70v1.2",
+        "last": "f70v1.11"
+      },
+      "f70v1 inner": {
+        "label_loci": 5,
+        "first": "f70v1.13",
+        "last": "f70v1.17"
+      },
+      "f71r outer": {
+        "label_loci": 10,
+        "first": "f71r.2",
+        "last": "f71r.11"
+      },
+      "f71r inner": {
+        "label_loci": 5,
+        "first": "f71r.13",
+        "last": "f71r.17"
+      },
+      "f71v outer": {
+        "label_loci": 10,
+        "first": "f71v.2",
+        "last": "f71v.11"
+      },
+      "f71v inner": {
+        "label_loci": 5,
+        "first": "f71v.13",
+        "last": "f71v.17"
+      },
+      "f72r1 outer": {
+        "label_loci": 10,
+        "first": "f72r1.2",
+        "last": "f72r1.11"
+      },
+      "f72r1 inner": {
+        "label_loci": 5,
+        "first": "f72r1.13",
+        "last": "f72r1.17"
+      },
+      "f72r2 partial": {
+        "label_loci": 5,
+        "first": "f72r2.1",
+        "last": "f72r2.5"
+      },
+      "f72r2 outer": {
+        "label_loci": 15,
+        "first": "f72r2.7",
+        "last": "f72r2.21"
+      },
+      "f72r2 inner": {
+        "label_loci": 9,
+        "first": "f72r2.23",
+        "last": "f72r2.31"
+      },
+      "f72r3 outer": {
+        "label_loci": 12,
+        "first": "f72r3.2",
+        "last": "f72r3.13"
+      },
+      "f72r3 middle": {
+        "label_loci": 11,
+        "first": "f72r3.15",
+        "last": "f72r3.25"
+      },
+      "f72r3 inner": {
+        "label_loci": 7,
+        "first": "f72r3.27",
+        "last": "f72r3.33"
+      },
+      "f72v3 outer": {
+        "label_loci": 18,
+        "first": "f72v3.2",
+        "last": "f72v3.19"
+      },
+      "f72v3 inner": {
+        "label_loci": 12,
+        "first": "f72v3.21",
+        "last": "f72v3.32"
+      },
+      "f72v2 outer": {
+        "label_loci": 18,
+        "first": "f72v2.2",
+        "last": "f72v2.19"
+      },
+      "f72v2 inner": {
+        "label_loci": 12,
+        "first": "f72v2.21",
+        "last": "f72v2.32"
+      },
+      "f72v1 outer": {
+        "label_loci": 20,
+        "first": "f72v1.2",
+        "last": "f72v1.21"
+      },
+      "f72v1 inner": {
+        "label_loci": 10,
+        "first": "f72v1.23",
+        "last": "f72v1.32"
+      },
+      "f73r partial": {
+        "label_loci": 4,
+        "first": "f73r.1",
+        "last": "f73r.4"
+      },
+      "f73r outer": {
+        "label_loci": 16,
+        "first": "f73r.6",
+        "last": "f73r.21"
+      },
+      "f73r inner": {
+        "label_loci": 10,
+        "first": "f73r.23",
+        "last": "f73r.32"
+      },
+      "f73v partial": {
+        "label_loci": 4,
+        "first": "f73v.1",
+        "last": "f73v.4"
+      },
+      "f73v outer": {
+        "label_loci": 16,
+        "first": "f73v.6",
+        "last": "f73v.21"
+      },
+      "f73v inner": {
+        "label_loci": 10,
+        "first": "f73v.23",
+        "last": "f73v.32"
+      }
+    },
+    "cases": {
+      "zl": {
+        "legacy_counts": [
+          25,
+          35,
+          17,
+          22,
+          23,
+          31,
+          41,
+          30,
+          31,
+          34,
+          30,
+          31
+        ],
+        "legacy": {
+          "n_pairs": 66,
+          "observed": [
+            40,
+            110
+          ],
+          "mean": [
+            38.293293293293296,
+            107.70370370370371
+          ],
+          "range": [
+            [
+              33,
+              96
+            ],
+            [
+              43,
+              120
+            ]
+          ],
+          "p_ge": [
+            0.246,
+            0.312
+          ],
+          "without_offset_exact": 0.001786777843954735
+        },
+        "whole_locus": {
+          "equal_arc_rank": {
+            "n_pairs": 132,
+            "observed": [
+              16,
+              65
+            ],
+            "mean": [
+              17.03103103103103,
+              64.12412412412412
+            ],
+            "range": [
+              [
+                12,
+                55
+              ],
+              [
+                20,
+                73
+              ]
+            ],
+            "p_ge": [
+              0.887,
+              0.437
+            ]
+          },
+          "certain_labels": 279,
+          "marked_unknown": 6,
+          "transcription_order": {
+            "n_pairs": 132,
+            "observed": [
+              18,
+              69
+            ],
+            "mean": [
+              17.044044044044043,
+              63.86386386386386
+            ],
+            "range": [
+              [
+                12,
+                54
+              ],
+              [
+                21,
+                73
+              ]
+            ],
+            "p_ge": [
+              0.402,
+              0.058
+            ]
+          }
+        },
+        "first_word": {
+          "equal_arc_rank": {
+            "n_pairs": 132,
+            "observed": [
+              23,
+              89
+            ],
+            "mean": [
+              23.333333333333332,
+              86.68268268268268
+            ],
+            "range": [
+              [
+                18,
+                75
+              ],
+              [
+                28,
+                97
+              ]
+            ],
+            "p_ge": [
+              0.748,
+              0.287
+            ]
+          },
+          "certain_labels": 279,
+          "marked_unknown": 6,
+          "transcription_order": {
+            "n_pairs": 132,
+            "observed": [
+              24,
+              86
+            ],
+            "mean": [
+              23.30730730730731,
+              86.46746746746747
+            ],
+            "range": [
+              [
+                18,
+                76
+              ],
+              [
+                27,
+                98
+              ]
+            ],
+            "p_ge": [
+              0.494,
+              0.619
+            ]
+          }
+        },
+        "sensitivity": {
+          "literal_clock_sort_and_same_start": {
+            "n_pairs": 132,
+            "observed": [
+              16,
+              64
+            ],
+            "mean": [
+              17.03103103103103,
+              64.08508508508508
+            ],
+            "range": [
+              [
+                12,
+                56
+              ],
+              [
+                20,
+                72
+              ]
+            ],
+            "p_ge": [
+              0.887,
+              0.573
+            ],
+            "without_offset_exact": 0.0
+          },
+          "all_full_rings_different_folios": {
+            "n_pairs": 286,
+            "observed": [
+              25,
+              131
+            ],
+            "mean": [
+              25.69269269269269,
+              130.1041041041041
+            ],
+            "range": [
+              [
+                20,
+                116
+              ],
+              [
+                31,
+                145
+              ]
+            ],
+            "p_ge": [
+              0.775,
+              0.462
+            ],
+            "without_offset_exact": 0.0007861635220125787
+          },
+          "legacy_rotating_either_page": {
+            "n_pairs": 66,
+            "observed": [
+              40,
+              117
+            ],
+            "mean": [
+              40.409409409409406,
+              113.93493493493493
+            ],
+            "range": [
+              [
+                37,
+                103
+              ],
+              [
+                46,
+                127
+              ]
+            ],
+            "p_ge": [
+              0.699,
+              0.258
+            ],
+            "without_offset_exact": 0.001786777843954735
+          },
+          "power_fixed_unknown_slots": {
+            "1": {
+              "rejection_count": 0,
+              "n": 24,
+              "p_values": [
+                0.055,
+                0.835,
+                0.625,
+                0.41,
+                0.75,
+                0.91,
+                0.855,
+                0.775,
+                0.88,
+                0.165,
+                0.545,
+                0.145,
+                0.315,
+                0.475,
+                0.745,
+                0.39,
+                0.56,
+                0.5,
+                0.425,
+                0.12,
+                0.285,
+                0.875,
+                0.27,
+                0.99
+              ]
+            },
+            "2": {
+              "rejection_count": 24,
+              "n": 24,
+              "p_values": [
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005
+              ]
+            },
+            "3": {
+              "rejection_count": 24,
+              "n": 24,
+              "p_values": [
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005
+              ]
+            },
+            "4": {
+              "rejection_count": 24,
+              "n": 24,
+              "p_values": [
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005,
+                0.005
+              ]
+            }
+          }
+        }
+      },
+      "it": {
+        "legacy_counts": [
+          26,
+          37,
+          19,
+          22,
+          24,
+          32,
+          47,
+          30,
+          33,
+          36,
+          30,
+          31
+        ],
+        "legacy": {
+          "n_pairs": 66,
+          "observed": [
+            48,
+            117
+          ],
+          "mean": [
+            43.511511511511515,
+            118.81781781781781
+          ],
+          "range": [
+            [
+              38,
+              106
+            ],
+            [
+              49,
+              132
+            ]
+          ],
+          "p_ge": [
+            0.016,
+            0.711
+          ],
+          "without_offset_exact": 0.004036908881199538
+        },
+        "whole_locus": {
+          "equal_arc_rank": {
+            "n_pairs": 132,
+            "observed": [
+              12,
+              58
+            ],
+            "mean": [
+              12.616616616616616,
+              59.63963963963964
+            ],
+            "range": [
+              [
+                9,
+                52
+              ],
+              [
+                15,
+                69
+              ]
+            ],
+            "p_ge": [
+              0.846,
+              0.799
+            ]
+          },
+          "certain_labels": 281,
+          "marked_unknown": 4,
+          "transcription_order": {
+            "n_pairs": 132,
+            "observed": [
+              14,
+              59
+            ],
+            "mean": [
+              12.612612612612613,
+              59.56256256256256
+            ],
+            "range": [
+              [
+                8,
+                52
+              ],
+              [
+                15,
+                68
+              ]
+            ],
+            "p_ge": [
+              0.218,
+              0.646
+            ]
+          }
+        },
+        "first_word": {
+          "equal_arc_rank": {
+            "n_pairs": 132,
+            "observed": [
+              18,
+              94
+            ],
+            "mean": [
+              18.814814814814813,
+              93.14914914914915
+            ],
+            "range": [
+              [
+                15,
+                83
+              ],
+              [
+                22,
+                104
+              ]
+            ],
+            "p_ge": [
+              0.88,
+              0.447
+            ]
+          },
+          "certain_labels": 281,
+          "marked_unknown": 4,
+          "transcription_order": {
+            "n_pairs": 132,
+            "observed": [
+              20,
+              92
+            ],
+            "mean": [
+              18.81081081081081,
+              93.18218218218219
+            ],
+            "range": [
+              [
+                14,
+                82
+              ],
+              [
+                22,
+                103
+              ]
+            ],
+            "p_ge": [
+              0.306,
+              0.696
+            ]
+          }
+        },
+        "sensitivity": {
+          "literal_clock_sort_and_same_start": {
+            "n_pairs": 132,
+            "observed": [
+              12,
+              57
+            ],
+            "mean": [
+              12.616616616616616,
+              59.63863863863864
+            ],
+            "range": [
+              [
+                9,
+                52
+              ],
+              [
+                15,
+                69
+              ]
+            ],
+            "p_ge": [
+              0.846,
+              0.894
+            ],
+            "without_offset_exact": 0.0
+          },
+          "all_full_rings_different_folios": {
+            "n_pairs": 286,
+            "observed": [
+              21,
+              121
+            ],
+            "mean": [
+              20.24224224224224,
+              123.63963963963964
+            ],
+            "range": [
+              [
+                16,
+                111
+              ],
+              [
+                24,
+                136
+              ]
+            ],
+            "p_ge": [
+              0.44,
+              0.778
+            ],
+            "without_offset_exact": 0.0007861635220125787
+          },
+          "legacy_rotating_either_page": {
+            "n_pairs": 66,
+            "observed": [
+              49,
+              128
+            ],
+            "mean": [
+              46.28328328328328,
+              126.50150150150151
+            ],
+            "range": [
+              [
+                43,
+                115
+              ],
+              [
+                52,
+                140
+              ]
+            ],
+            "p_ge": [
+              0.081,
+              0.398
+            ],
+            "without_offset_exact": 0.004036908881199538
+          }
+        }
+      },
+      "rf": {
+        "legacy_counts": [
+          25,
+          34,
+          18,
+          21,
+          21,
+          31,
+          39,
+          30,
+          30,
+          34,
+          30,
+          30
+        ],
+        "legacy": {
+          "n_pairs": 66,
+          "observed": [
+            34,
+            96
+          ],
+          "mean": [
+            32.254254254254256,
+            94.24324324324324
+          ],
+          "range": [
+            [
+              28,
+              83
+            ],
+            [
+              37,
+              106
+            ]
+          ],
+          "p_ge": [
+            0.16,
+            0.354
+          ],
+          "without_offset_exact": 0.0012106537530266344
+        },
+        "whole_locus": {
+          "equal_arc_rank": {
+            "n_pairs": 132,
+            "observed": [
+              12,
+              48
+            ],
+            "mean": [
+              12.79079079079079,
+              47.73873873873874
+            ],
+            "range": [
+              [
+                9,
+                41
+              ],
+              [
+                14,
+                54
+              ]
+            ],
+            "p_ge": [
+              0.899,
+              0.541
+            ]
+          },
+          "certain_labels": 233,
+          "marked_unknown": 52,
+          "transcription_order": {
+            "n_pairs": 132,
+            "observed": [
+              13,
+              50
+            ],
+            "mean": [
+              12.684684684684685,
+              47.3953953953954
+            ],
+            "range": [
+              [
+                9,
+                40
+              ],
+              [
+                14,
+                55
+              ]
+            ],
+            "p_ge": [
+              0.584,
+              0.185
+            ]
+          }
+        },
+        "first_word": {
+          "equal_arc_rank": {
+            "n_pairs": 132,
+            "observed": [
+              18,
+              66
+            ],
+            "mean": [
+              18.79079079079079,
+              63.605605605605604
+            ],
+            "range": [
+              [
+                15,
+                57
+              ],
+              [
+                20,
+                71
+              ]
+            ],
+            "p_ge": [
+              0.899,
+              0.202
+            ]
+          },
+          "certain_labels": 233,
+          "marked_unknown": 52,
+          "transcription_order": {
+            "n_pairs": 132,
+            "observed": [
+              19,
+              66
+            ],
+            "mean": [
+              18.684684684684683,
+              63.349349349349346
+            ],
+            "range": [
+              [
+                15,
+                56
+              ],
+              [
+                20,
+                72
+              ]
+            ],
+            "p_ge": [
+              0.584,
+              0.185
+            ]
+          }
+        },
+        "sensitivity": {
+          "literal_clock_sort_and_same_start": {
+            "n_pairs": 132,
+            "observed": [
+              12,
+              48
+            ],
+            "mean": [
+              12.79079079079079,
+              47.747747747747745
+            ],
+            "range": [
+              [
+                9,
+                41
+              ],
+              [
+                14,
+                54
+              ]
+            ],
+            "p_ge": [
+              0.899,
+              0.54
+            ],
+            "without_offset_exact": 0.0
+          },
+          "all_full_rings_different_folios": {
+            "n_pairs": 286,
+            "observed": [
+              18,
+              96
+            ],
+            "mean": [
+              19.45845845845846,
+              97.97897897897897
+            ],
+            "range": [
+              [
+                15,
+                87
+              ],
+              [
+                22,
+                110
+              ]
+            ],
+            "p_ge": [
+              0.923,
+              0.775
+            ],
+            "without_offset_exact": 0.00039308176100628933
+          },
+          "legacy_rotating_either_page": {
+            "n_pairs": 66,
+            "observed": [
+              35,
+              99
+            ],
+            "mean": [
+              33.707707707707705,
+              98.85185185185185
+            ],
+            "range": [
+              [
+                32,
+                87
+              ],
+              [
+                38,
+                110
+              ]
+            ],
+            "p_ge": [
+              0.237,
+              0.535
+            ],
+            "without_offset_exact": 0.0012106537530266344
+          }
+        }
+      }
+    }
+  }
+}
