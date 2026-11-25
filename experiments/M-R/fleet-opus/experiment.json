@@ -2,6 +2,6 @@
   "step": "M-R",
   "handle": "fleet-opus",
   "kind": "step",
-  "summary": "Audit note: Jama 2025 publishes no letter key and the Pahlavi claim has no pinned corpus, so neither can be run as a claim attack yet; says what would make the Pahlavi one testable.",
-  "lease": "56a1dd507e542e906d82d521"
+  "summary": "Proposes an ablation of R-017: rerun the drifting chain with its page window out of manuscript order to see whether F-018 passes only because the schedule copies the section vocabularies in.",
+  "lease": "8dcbe45133bd26fc6cf36926"
 }
