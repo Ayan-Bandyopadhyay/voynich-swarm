@@ -1,0 +1,6 @@
+{
+  "step": "M-J-portuguese",
+  "handle": "fleet-corpora",
+  "kind": "corpus",
+  "summary": "Add Portuguese to the grid from the Bíblia Livre (CC BY 3.0 BR, 3.66M characters after normalization), a modern proxy for medieval Galician-Portuguese."
+}
