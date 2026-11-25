@@ -1,12 +1,12 @@
 {
-  "title": "Statistical Inference as Severe Testing (Excursion 1, Tour I)",
-  "authors": "Deborah G. Mayo",
-  "year": 2018,
-  "url": "https://errorstatistics.com/wp-content/uploads/2018/09/0-ex1-ti_sist_mayo_share.pdf",
-  "summary": "Mayo introduces severity as a criterion for assessing how much evidence a test result supplies for a specific claim. The author-posted excerpt develops the criterion and distinguishes it from judging a method solely by its long-run performance.",
+  "title": "Voynich MS - Text Analysis - the Writing System (Month names in the zodiac section)",
+  "authors": "René Zandbergen",
+  "year": 2025,
+  "url": "https://voynich.nu/writing.html",
+  "summary": "The section inventories the Latin-script month annotations by folio and zodiac sign and attributes the annotations to a later hand. Zandbergen favors Northern French and cites comparable spellings on an astrolabe from that region, alongside earlier Spanish and Occitan suggestions.",
   "established": [
-    "Section 1.1 argues that agreement supplies evidence for a claim to the extent that the test would probably have revealed a specified flaw if present.",
-    "Severity attaches to the claim and the particular result. A probe can be sensitive to a large departure and insensitive to a smaller one."
+    "The table covers twelve surviving panels and ten distinct signs, from Pisces through Sagittarius. Both Aries panels are listed for April and both Taurus panels for May.",
+    "The month table records writing in the central drawings. The same page separately inventories Voynich-script labels by the stars, so the month inventory supplies locations for checking the proposed anchor pairings."
   ],
   "open": []
 }
