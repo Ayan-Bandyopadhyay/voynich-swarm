@@ -1,0 +1,10 @@
+{
+  "language": "old_norse",
+  "title": "Grágás (laws of the Icelandic Commonwealth), Landabrigðisþáttur (section on land claims), Icelandic Wikisource",
+  "period": "13th-century Old Norse/Old Icelandic law text (Grágás manuscripts c. 1250-1280), printed in modernized Icelandic spelling",
+  "url": "https://is.wikisource.org/w/index.php?oldid=24446&action=raw",
+  "sha256": "25dfa5f0028acf7aaddbcf4a62588abe49295d6111b13816e4213caf36ac5972",
+  "license": "cc-by-sa",
+  "encoding": "utf-8",
+  "notes": "License: the medieval text is public domain; the Wikisource page (pinned revision 24446) is published under Wikisource's terms, CC BY-SA 4.0 (https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use). The url pins a fixed page revision (oldid), so the bytes do not change. 202,810 bytes; wikitext with little markup (a header template and chapter headings). vs/refcorpus.normalize(..., 'old_norse') gives 177,696 characters. Spelling is normalized to modern Icelandic (og, það), so letter statistics are those of a normalized edition, not of the manuscripts. Kept apart from the modern-Icelandic corpus (M-J-icelandic) by its language name. Caveat for reviewers: the page header gives the edition year as 1992 (the normalized-spelling Grágás edition published in Reykjavík that year); the medieval text itself is public domain and Wikisource hosts this edition under its CC BY-SA terms, but the spelling normalization is a modern editorial act."
+}
