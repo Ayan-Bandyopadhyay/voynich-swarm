@@ -1,0 +1,10 @@
+{
+  "language": "swedish",
+  "title": "Swedish Charles XII Bible (Karl XII:s bibel, 1703), one verse per line",
+  "period": "18th century (1703), early-modern Swedish",
+  "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/SweKarlXII.txt",
+  "sha256": "3bd1675ecf0f32e6bd0add6a05abcf1cab2d97e3f0a388d3c3ab818f2536aa6a",
+  "license": "public-domain",
+  "encoding": "utf-8",
+  "notes": "License stated as 'Public Domain' in the source README at https://github.com/scrollmapper/bible_databases/blob/59b18c5af5845728c275d5b7178ad0d024172b1f/sources/sv/SweKarlXII/README.md (scrollmapper/bible_databases, files from the CrossWire SWORD module SweKarlXII). The url pins a fixed commit, so the bytes do not change. 3,108,585 bytes; one verse per line as '[c:v] text' with '### Book' headings in English (66 short headings, negligible). vs/refcorpus.normalize(..., 'swedish') gives 2,671,239 characters."
+}
