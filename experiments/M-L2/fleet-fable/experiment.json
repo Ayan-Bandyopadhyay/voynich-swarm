@@ -2,6 +2,6 @@
  "step": "M-L2",
  "handle": "fleet-fable",
  "kind": "fact",
- "summary": "Registers section vocabularies (word-by-section mutual information 1.18 bits on the practice split, above words dealt across pages) as a generator target; a one-table chain fails it and a drifting-table chain passes, and it is not independent of F-009 and F-011.",
- "lease": "dfd53ae59662ae240f12ee8c"
+ "summary": "With each line's first word set aside, p- and f-initial words are still 8.5 times as frequent on paragraph first lines as on other lines (practice evaluation pages; 10.5 on training), which a chain that only marks the paragraph's first word does not reproduce (1.5).",
+ "lease": "fd161c886305624575999850"
 }

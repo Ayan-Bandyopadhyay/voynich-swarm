@@ -1,23 +1,47 @@
 {
- "title": "Sections have their own vocabulary: which word is written depends on the section",
- "statement": "In paragraph text, the mutual information between a certain word and the illustration section of its page is greater than when the words are dealt out at random across pages.",
- "source": "Registers the section vocabularies (Currier 1976; Layfield and Davis 2026, K-003) with the context_mi statistic, as a long-range target for generators next to F-009 (page) and F-011 (neighbouring pages). Public practice split (Zandbergen-Landini): 1.183 bits on the evaluation pages and 0.814 on the training pages, both p = 0.005 against 199 shuffles; Takahashi 1.207 and RF 1.220 on the evaluation pages, both passing. The plug-in value is biased upward and grows as the sample shrinks, so no level is registered, only the comparison with the shuffle. What it does and does not add. The null deals words across all pages, so it also destroys page-level vocabulary: a text whose pages differ but whose sections do not would pass as well, and this fact is therefore not independent of F-009 and F-011. A null that keeps pages whole and moves them between sections would isolate the section; the measurement language has none (shuffling words within a section leaves the statistic unchanged by construction, p = 0.96). Not evidence of language: any book whose parts treat different matter passes. As a generator target, on the practice split: a line-restarting glyph chain with one table gives 0.95 and fails (two seeds); the same chain with a table that drifts through the public pages at the pace of the book and reuse of recent and familiar words gives 1.11 to 1.13 and passes (three runs). So it separates one-table procedures from those whose tables change along the book, as F-011 does, and is not expected to resist the procedure already on the record.",
+ "title": "Words opening with p or f gather on paragraph first lines even with each line's first word set aside",
+ "statement": "In paragraph text, leaving out the first word of every line, certain words that begin with p or f are at least three times as frequent on a paragraph's first line as on its other lines, and more so than when the words of each page are shuffled.",
+ "source": "A sharper form of F-008, using the positions para_first_line_rest and not_para_first_line_rest (code merged in 15afd1a). Why it is needed: R-011 landed on F-008 with a plain line chain that has a separate opening mark for a paragraph's first line. That text passed F-008 only through the paragraph's first word (F-003 again): with first words set aside its ratio is about 1.5. The manuscript's is not: on the public practice split the ratio is 8.46 on the evaluation pages (839 first-line words counted) and 10.48 on the training pages, both p = 0.005 against 199 within-page shuffles. So the p and f words spread along the whole first line, which a writer who only marks the paragraph's first word does not produce. Other transliterations, practice evaluation pages: Takahashi 8.83, passing. The pinned RF file fails (1.38), and for a reason that is not a disagreement about the text: it carries no paragraph marks, so there a 'first line' is only the top line of a page (198 words counted, 2 of them opening with p or f); the comparison is not measurable on RF, and the same holds, less visibly, for F-003 and F-008. Not evidence of language: an ornamental habit for a paragraph's top line (tall gallows have room there) would do it, and so does the generator behind R-012 to R-016, whose first lines reuse words only from the same line: 4.3 to 7.0 on six local runs (four seeds and two fits on half the public pages), all passing. Registered so that the generator scoreboard separates procedures that know the first line from those that know only the first word. Threshold 3 as in F-008, far below both public values because the count of p and f words off first lines is small (rate about 0.3%) and the ratio is noisy on a sample of pages.",
  "spec": {
   "select": {
    "unit": [
     "P"
    ],
+   "position": "para_first_line_rest",
    "certain": true
   },
   "statistic": {
-   "context_mi": {
-    "feature": "word",
-    "by": "section"
+   "ratio": {
+    "feature": {
+     "glyph_at": 0
+    },
+    "in": [
+     "p",
+     "f"
+    ],
+    "of": {
+     "unit": [
+      "P"
+     ],
+     "position": "para_first_line_rest",
+     "certain": true
+    },
+    "to": {
+     "unit": [
+      "P"
+     ],
+     "position": "not_para_first_line_rest",
+     "certain": true
+    }
    }
   },
   "compare": [
    {
-    "null": "shuffle_across_pages",
+    "op": ">=",
+    "value": 3
+   },
+   {
+    "null": "shuffle_within_page",
     "direction": "greater",
     "perms": 199,
     "p": 0.01
