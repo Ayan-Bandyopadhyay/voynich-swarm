@@ -667,6 +667,19 @@
       "license": "public-domain",
       "encoding": "utf-8",
       "added_by": "fleet-corpora"
+    },
+    {
+      "id": "norwegian_c561de18",
+      "lang": "norwegian",
+      "period": "20th century (1930), Norwegian (riksmål/bokmål)",
+      "title": "Norwegian Bible (Bibelen på norsk, 1930), full Bible, one verse per line",
+      "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/Norsk.txt",
+      "file": "data/raw/agent_norwegian_c561de18.txt",
+      "bytes": 4003587,
+      "sha256": "c561de1800099e6d50757b75d05a3276617497844ed225a2b1a789e2d80a22be",
+      "license": "public-domain",
+      "encoding": "utf-8",
+      "added_by": "fleet-corpora"
     }
   ],
   "missing_corpora": {
