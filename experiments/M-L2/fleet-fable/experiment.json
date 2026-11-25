@@ -2,6 +2,6 @@
  "step": "M-L2",
  "handle": "fleet-fable",
  "kind": "fact",
- "summary": "Registers that words opening with p or f are far more common on paragraph first lines than on other lines (15.4 times on the practice split), a paragraph-level pattern that a line-aware generator without paragraph knowledge does not reproduce.",
- "lease": "7b1d1527216e3ba3cd48f265"
+ "summary": "Registers that words recur within their own page more than when dealt across pages (0.311 against 0.223 on the practice split), a page-level pattern that one-table generators such as R-008 do not reproduce and a drifting-table chain does.",
+ "lease": "79b496ccc72b9523725c4d49"
 }
