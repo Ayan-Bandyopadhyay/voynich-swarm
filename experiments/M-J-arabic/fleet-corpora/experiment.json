@@ -1,0 +1,6 @@
+{
+  "step": "M-J-arabic",
+  "handle": "fleet-corpora",
+  "kind": "corpus",
+  "summary": "Add Arabic to the grid from Arabic Bible (public-domain, 2,300,811 characters after normalization; 19th century (1865), Modern Standard Arabic of the Smith-Van Dyck Bible)."
+}
