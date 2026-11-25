@@ -1,0 +1,288 @@
+{
+ "folio": "f75v",
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006209",
+ "blind": true,
+ "statement": "Annotated from the Beinecke scan alone (full page and three strips). The page has a patterned tube at the top, a blue scalloped band with two ray bursts, ten nude female figures standing in a green tub, each joined by a tube from the head to a panel holding two label lines, and below left a blue two-lobed pool crowded with about nineteen nude female figures, drained by a stream. Label lines f75v.18 to f75v.37 were paired with the ten upper figures left to right, two lines per panel, from the line ids and unit codes only; that pairing assumes the transcription lists the panels left to right. Lines f75v.50 to f75v.56 stand around the lower pool and are not tied to single figures. Lines f75v.2, 4, 6, 8, 9, 11 are taken to be the isolated single glyphs at the right edge of the top right text column; they point at no drawn object. The count of lower figures is uncertain by one or two.",
+ "objects": [
+  {
+   "id": "pipe_top",
+   "kind": "pipe",
+   "features": {
+    "position": "top centre, between the two text columns",
+    "shape": "vertical tube bending right at the top",
+    "pattern": "wavy scale-like strokes",
+    "colour": "uncoloured",
+    "end": "blue blob at the right end",
+    "lower_end": "scalloped knob entering the canopy"
+   },
+   "label": null
+  },
+  {
+   "id": "canopy",
+   "kind": "other",
+   "features": {
+    "position": "upper middle, above the upper pool",
+    "shape": "wide horizontal band with scalloped edge",
+    "colour": "blue",
+    "count_ray_bursts": 2,
+    "detail": "two star-like bursts of radiating lines, each with a small spout at the centre"
+   },
+   "label": null
+  },
+  {
+   "id": "upper_figure_1",
+   "kind": "human_figure",
+   "features": {
+    "position": "upper pool, 1 of 10 from the left",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing",
+    "facing": "right",
+    "hair": "long loose",
+    "headdress": "none",
+    "hair_colour": "yellow",
+    "cheeks": "red",
+    "immersed": "to the hips in green",
+    "attachment": "tube from the head up to a labelled panel",
+    "second_label_line": "f75v.19"
+   },
+   "label": "f75v.18"
+  },
+  {
+   "id": "upper_figure_2",
+   "kind": "human_figure",
+   "features": {
+    "position": "upper pool, 2 of 10 from the left",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing",
+    "facing": "right",
+    "hair": "long loose",
+    "headdress": "none",
+    "hair_colour": "yellow",
+    "cheeks": "red",
+    "immersed": "to the hips in green",
+    "attachment": "tube from the head up to a labelled panel",
+    "second_label_line": "f75v.21"
+   },
+   "label": "f75v.20"
+  },
+  {
+   "id": "upper_figure_3",
+   "kind": "human_figure",
+   "features": {
+    "position": "upper pool, 3 of 10 from the left",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing",
+    "facing": "right",
+    "hair": "up",
+    "headdress": "wreath",
+    "hair_colour": "yellow",
+    "cheeks": "red",
+    "immersed": "to the hips in green",
+    "attachment": "tube from the head up to a labelled panel",
+    "second_label_line": "f75v.23"
+   },
+   "label": "f75v.22"
+  },
+  {
+   "id": "upper_figure_4",
+   "kind": "human_figure",
+   "features": {
+    "position": "upper pool, 4 of 10 from the left",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing",
+    "facing": "right",
+    "hair": "short",
+    "headdress": "band",
+    "hair_colour": "yellow",
+    "cheeks": "red",
+    "immersed": "to the hips in green",
+    "attachment": "tube from the head up to a labelled panel",
+    "second_label_line": "f75v.25"
+   },
+   "label": "f75v.24"
+  },
+  {
+   "id": "upper_figure_5",
+   "kind": "human_figure",
+   "features": {
+    "position": "upper pool, 5 of 10 from the left",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing",
+    "facing": "front",
+    "hair": "long loose",
+    "headdress": "band",
+    "hair_colour": "yellow",
+    "cheeks": "red",
+    "immersed": "to the hips in green",
+    "attachment": "tube from the head up to a labelled panel",
+    "second_label_line": "f75v.27"
+   },
+   "label": "f75v.26"
+  },
+  {
+   "id": "upper_figure_6",
+   "kind": "human_figure",
+   "features": {
+    "position": "upper pool, 6 of 10 from the left",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing",
+    "facing": "left",
+    "hair": "up",
+    "headdress": "wreath",
+    "hair_colour": "yellow",
+    "cheeks": "red",
+    "immersed": "to the hips in green",
+    "attachment": "tube from the head up to a labelled panel",
+    "second_label_line": "f75v.29"
+   },
+   "label": "f75v.28"
+  },
+  {
+   "id": "upper_figure_7",
+   "kind": "human_figure",
+   "features": {
+    "position": "upper pool, 7 of 10 from the left",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing",
+    "facing": "left",
+    "hair": "up",
+    "headdress": "band",
+    "hair_colour": "yellow",
+    "cheeks": "red",
+    "immersed": "to the hips in green",
+    "attachment": "tube from the head up to a labelled panel",
+    "second_label_line": "f75v.31"
+   },
+   "label": "f75v.30"
+  },
+  {
+   "id": "upper_figure_8",
+   "kind": "human_figure",
+   "features": {
+    "position": "upper pool, 8 of 10 from the left",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing",
+    "facing": "left",
+    "hair": "up",
+    "headdress": "band",
+    "hair_colour": "yellow",
+    "cheeks": "red",
+    "immersed": "to the hips in green",
+    "attachment": "tube from the head up to a labelled panel",
+    "second_label_line": "f75v.33"
+   },
+   "label": "f75v.32"
+  },
+  {
+   "id": "upper_figure_9",
+   "kind": "human_figure",
+   "features": {
+    "position": "upper pool, 9 of 10 from the left",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing",
+    "facing": "left",
+    "hair": "short",
+    "headdress": "cap",
+    "hair_colour": "yellow",
+    "cheeks": "red",
+    "immersed": "to the hips in green",
+    "attachment": "tube from the head up to a labelled panel",
+    "second_label_line": "f75v.35"
+   },
+   "label": "f75v.34"
+  },
+  {
+   "id": "upper_figure_10",
+   "kind": "human_figure",
+   "features": {
+    "position": "upper pool, 10 of 10 from the left",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing",
+    "facing": "left",
+    "hair": "short",
+    "headdress": "none",
+    "hair_colour": "yellow",
+    "cheeks": "red",
+    "immersed": "to the hips in green",
+    "attachment": "tube from the head up to a labelled panel",
+    "second_label_line": "f75v.37"
+   },
+   "label": "f75v.36"
+  },
+  {
+   "id": "upper_pool",
+   "kind": "pool",
+   "features": {
+    "position": "middle of the page",
+    "shape": "long shallow tub, lower edge curved",
+    "colour": "green",
+    "count_figures": 10,
+    "outlet": "thin line from the left end running down the left margin to the lower pool"
+   },
+   "label": null
+  },
+  {
+   "id": "panels",
+   "kind": "container",
+   "features": {
+    "position": "between canopy and figures",
+    "count": 10,
+    "shape": "tall narrow compartments with a wavy top edge, narrowing to a tube at the bottom",
+    "colour": "uncoloured",
+    "contents": "two short label lines each"
+   },
+   "label": null
+  },
+  {
+   "id": "lower_pool",
+   "kind": "pool",
+   "features": {
+    "position": "lower left",
+    "shape": "two joined lobes, a small left one and a large rounded right one, with a hatched rim",
+    "colour": "blue",
+    "count_figures": 19,
+    "count_uncertain": true,
+    "outlet": "blue stream leaving the bottom right and running off the page foot",
+    "labels_around": "f75v.50 to f75v.56 stand above and to the left of the pool with no line or position tying any of them to one figure"
+   },
+   "label": "f75v.50"
+  },
+  {
+   "id": "lower_figures",
+   "kind": "human_figure",
+   "features": {
+    "position": "in the lower pool",
+    "count": 19,
+    "count_uncertain": true,
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing or wading, crowded and overlapping",
+    "hair": "mixed: long loose, braided, up",
+    "headdress": "some with band or wreath",
+    "hair_colour": "yellow",
+    "immersed": "to the waist or chest in blue"
+   },
+   "label": null
+  },
+  {
+   "id": "outflow",
+   "kind": "pipe",
+   "features": {
+    "position": "bottom centre",
+    "shape": "wavy stream narrowing downward",
+    "colour": "blue"
+   },
+   "label": null
+  }
+ ]
+}
