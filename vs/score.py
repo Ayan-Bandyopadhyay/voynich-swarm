@@ -17,22 +17,52 @@ def _steps():
     return {s["id"]: s for s in json.load(open(fn))["steps"]} if os.path.exists(fn) else {}
 
 
-ALLOWED_HOSTS = ("gutenberg.pglaf.org", "www.gutenberg.org", "gutenberg.org", "mirrors.xmission.com",
-                 "wikisource.org", "archive.org", "www.thelatinlibrary.com", "raw.githubusercontent.com",
-                 "ebible.org", "menota.org", "quod.lib.umich.edu", "textcreationpartnership.org", "mhdbdb.sbg.ac.at")
+# Corpora may come from any public website. The license must be declared open (checked by the
+# validator, open to dissent on the record) and the file must be served publicly over http(s).
+# The scorer holds the season seed, so the download is fenced: http(s) only, public addresses
+# only (no loopback, private, link-local or cloud-metadata hosts, re-checked on every redirect),
+# no credentials in the url, a size cap, and the bytes are only ever treated as text.
 MAX_BYTES = 12 * 1024 * 1024
 MIN_CHARS = 150_000
+
+
+def _public_url(url):
+    """Refuse anything but a plain http(s) url on a public internet address."""
+    import ipaddress, socket, urllib.parse
+    u = urllib.parse.urlparse(url)
+    if u.scheme not in ("http", "https") or not u.hostname or u.username or u.password:
+        raise ValueError("corpus url must be a plain public http(s) url")
+    port = u.port or (443 if u.scheme == "https" else 80)
+    for info in socket.getaddrinfo(u.hostname, port, proto=socket.IPPROTO_TCP):
+        ip = ipaddress.ip_address(info[4][0])
+        if not ip.is_global or ip.is_multicast:
+            raise ValueError(f"corpus url resolves to a non-public address ({ip})")
+
+
+def _public_fetch(url, limit):
+    import urllib.request
+
+    class Checked(urllib.request.HTTPRedirectHandler):
+        def redirect_request(self, req, fp, code, msg, headers, newurl):
+            _public_url(newurl)
+            return super().redirect_request(req, fp, code, msg, headers, newurl)
+    _public_url(url)
+    opener = urllib.request.build_opener(Checked)
+    req = urllib.request.Request(url, headers={"User-Agent": "voynichswarm-scorer/1"})
+    with opener.open(req, timeout=120) as r:
+        return r.read(limit)
 
 
 def _score_corpus(c, e):
     """Download, verify, check, calibrate. Returns (item, ledger kind) or (None, refusal)."""
     import hashlib, urllib.request, urllib.parse
     from . import refcorpus, controls, judge, search
-    host = urllib.parse.urlparse(c["url"]).hostname or ""
-    if not any(host == h or host.endswith("." + h) for h in ALLOWED_HOSTS):
-        return None, {"verdict": "REFUSED", "errors": [f"host {host} not on the open-source list {ALLOWED_HOSTS}; propose adding it in a code PR"]}
-    req = urllib.request.Request(c["url"], headers={"User-Agent": "voynichswarm-scorer/1"})
-    raw = urllib.request.urlopen(req, timeout=120).read(MAX_BYTES + 1)
+    try:
+        raw = _public_fetch(c["url"], MAX_BYTES + 1)
+    except ValueError as ex:
+        return None, {"verdict": "REFUSED", "errors": [str(ex)]}
+    except Exception as ex:
+        return None, {"verdict": "REFUSED", "errors": [f"could not download the url ({str(ex)[:120]})"]}
     if len(raw) > MAX_BYTES:
         return None, {"verdict": "REFUSED", "errors": ["file larger than 12 MB"]}
     if hashlib.sha256(raw).hexdigest() != c["sha256"]:
