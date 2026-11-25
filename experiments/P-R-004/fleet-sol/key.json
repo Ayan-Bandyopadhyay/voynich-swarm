@@ -1,0 +1,20 @@
+{
+  "id": "wells-bennett-2019-table1-zl-reversed-hebrew",
+  "family": "substitution",
+  "segmentation": "eva-basic",
+  "transliteration": "zl",
+  "reading_order": "glyphs_reversed",
+  "target": {
+    "language": "hebrew",
+    "period": "Pinned biblical and historical Hebrew reference pool as a proxy for the proposed Hebrew"
+  },
+  "key": {
+    "map": {
+      "o": "הא", "t": "ח", "a": "ע", "y": "ו", "sh": "ס", "k": "ל",
+      "ch": "תה", "q": "ב", "r": "מ", "p": "פ", "s": "ד", "i": "",
+      "l": "ש", "f": "נ", "m": "ג", "d": "רה", "n": "ן", "e": "כ"
+    }
+  },
+  "source": "Stephen Wells-Bennett (2019), V Script, section 2 and Table One. https://zenodo.org/records/3370418/files/V%20Script%201.0.1.pdf",
+  "notes": "Use the paper's 17 letter-bearing rows directly as EVA units and choose the first listed output for each branching row. Table One gives the i row only as an apostrophe. Its printed Hebrew punctuation carries no letter in the pinned normalization, so i emits an empty string. Reference normalization folds final forms to the corresponding base letters. The paper's Hebrew digraphs stay in the listed internal order after reversing the segmented source units. Unlisted glyph units are nulls. The prose motivates reversal, while the printed Hebrew letter sequences for okeo, cheo and okchol agree exactly with the forward logical-order map. The reversed scoring condition tests the literal glyph-order interpretation of the prose. The regular key entry point applies the requested view on both partitions. It rejoins reversed EVA units before segmentation. A public training check found one resulting output discrepancy in 32,142 certain token occurrences, on chefalchhs, where reparsing the new boundary gives sh instead of separate s and h."
+}
