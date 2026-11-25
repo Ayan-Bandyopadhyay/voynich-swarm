@@ -34,8 +34,15 @@ def make(lang, kind="simple", seed=0, words_per_line=8, lines_per_page=10, homop
     glyphs = CIPHER_GLYPHS[:]
     if kind == "nomenclator" and len(letters) > len(glyphs):
         raise ValueError(f"target alphabet exceeds the nomenclator glyph inventory")
+    if kind == "table-cipher" and len(letters) > len(glyphs):
+        raise ValueError(f"target alphabet exceeds the table-cipher glyph inventory")
     rng.shuffle(glyphs)
-    if kind == "simple":
+    if kind == "table-cipher":
+        # A periodic tabula recta uses the public alphabet order and secret column shifts.
+        glyphs = sorted(CIPHER_GLYPHS[:len(letters)])
+        shifts = [rng.randrange(len(letters)) for _ in range(3)]
+        enc = {c: [g] for c, g in zip(letters, glyphs)}
+    elif kind == "simple":
         enc = {l: [glyphs[i]] for i, l in enumerate(letters)}
     elif kind == "codebook":
         enc = {}
@@ -87,7 +94,11 @@ def make(lang, kind="simple", seed=0, words_per_line=8, lines_per_page=10, homop
         if w in word_codes:
             return "".join(rng.choice([x for x in CIPHER_GLYPHS if x != c]) if rng.random() < noise else c
                            for c in word_codes[w])
-        units = [rng.choice(enc[c]) for c in w if c in enc]
+        if kind == "table-cipher":
+            units = [glyphs[(letters.index(c) + shifts[i % len(shifts)]) % len(letters)]
+                     for i, c in enumerate(w) if c in enc]
+        else:
+            units = [rng.choice(enc[c]) for c in w if c in enc]
         if noise:
             units = [rng.choice([x for x in noise_pool if x != u]) if rng.random() < noise else u for u in units]
         return "".join(units)
@@ -115,6 +126,8 @@ def make(lang, kind="simple", seed=0, words_per_line=8, lines_per_page=10, homop
         if kind == "nomenclator":
             true_key["key"]["marker"] = marker
         true_key["key"]["map"].update({code: word for word, code in word_codes.items()})
+    if kind == "table-cipher":
+        true_key.update(family=kind, key={"map": dict(zip(glyphs, letters)), "shifts": shifts})
     return tr, ev, true_key
 
 

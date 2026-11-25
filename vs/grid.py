@@ -36,7 +36,7 @@ def cell_status(lang, fam, items=None, power=None):
         if not b:
             return False
         for k, v in pinned.items():
-            if k in ("restarts", "iterations"):
+            if k in ("restarts", "iterations", "max_period", "sweeps"):
                 if (b.get(k) or 0) < v:
                     return False
             elif k.startswith("verbose_"):

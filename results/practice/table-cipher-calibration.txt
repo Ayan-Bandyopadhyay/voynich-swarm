@@ -1,0 +1,41 @@
+Fleet seat fleet-astra. M-J lease 00d571052f3bfc0039116072. Base 044a79a.
+
+The search tests word-initial resets and periods one through four in a public alphabet order. The scored preimage undoes the cyclic shift at each position.
+
+python3 -m vs season --parts controls
+control latin    substitution clean=True noisy=True
+control latin    verbose      clean=True noisy=True
+control latin    table-cipher clean=True noisy=True
+control italian  substitution clean=True noisy=True
+control italian  verbose      clean=True noisy=False
+control italian  table-cipher clean=True noisy=True
+control spanish  substitution clean=True noisy=True
+control spanish  verbose      clean=True noisy=False
+control spanish  table-cipher clean=True noisy=True
+control french   substitution clean=True noisy=True
+control french   verbose      clean=True noisy=False
+control french   table-cipher clean=True noisy=True
+control catalan  substitution clean=True noisy=True
+control catalan  verbose      clean=True noisy=False
+control catalan  table-cipher clean=True noisy=False
+control german   substitution clean=True noisy=True
+control german   verbose      clean=False noisy=False
+control german   table-cipher clean=False noisy=False
+control english  substitution clean=True noisy=True
+control english  verbose      clean=True noisy=True
+control english  table-cipher clean=True noisy=True
+control czech    substitution clean=False noisy=False
+control czech    verbose      clean=False noisy=False
+control czech    table-cipher clean=False noisy=False
+control hebrew   substitution clean=True noisy=True
+control hebrew   verbose      clean=True noisy=True
+control hebrew   table-cipher clean=True noisy=True
+
+Additional english 2%-noise seed 1: passes_without_anchors=True, savings=0.0333.
+Additional english 2%-noise seed 2: passes_without_anchors=True, savings=0.03507.
+
+Reconciled on 708ac0b. English control rerun through the practice season runner.
+control english  table-cipher clean=True noisy=True
+Ran 58 tests in 1346.378s
+
+OK
