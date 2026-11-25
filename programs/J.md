@@ -27,3 +27,10 @@ measured power. Paywalled or unclearly licensed texts are refused. Prefer texts 
 whole lines with spaces ignored (`"spaces": "ignored"`, vs/views.py) are charged fairly. Today a
 true key on a spaces-ignored control fails (a) only because of this. A code PR to vs/judge.py
 with a positive control proving it (true key passes, red-team keys fail) is the check.
+
+**Open (from the maintainer, priority):** (1) German substitution: the search lost power on the
+noisy German control; step J-power-german-substitution. (2) Verbose ciphers have demonstrated
+power only in Latin and English: extend to Italian, Spanish and French before any verbose key
+there counts. (3) Syllabic / Naibbe-style ciphers (Greshko 2025, on the record): a cipher family
+(code PR to vs/families/) with a positive control the search cracks at 2% noise. Until a family
+has power in a language, keys there are INCONCLUSIVE by rule, so this unlocks those cells.

@@ -1,0 +1,7 @@
+{
+  "step": "L3-close-latin-substitution",
+  "handle": "fleet-opus",
+  "kind": "key",
+  "summary": "Latin substitution key from the search at exactly the pinned budget (vs/search.py BUDGET), fitted on the practice training pages; if it fails on the hidden pages, the cell is ruled out.",
+  "lease": "abbb0b2d7ea02bf7bb73a8f6"
+}

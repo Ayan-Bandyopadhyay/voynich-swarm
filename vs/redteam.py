@@ -198,9 +198,36 @@ def run_attack(spec, split):
     if kind == "fact":
         return fact_attack(spec["target_fact"], spec["lines"], split, spec.get("target_fact_item"),
                            cut=spec.get("cut", "tokens"))
+    if kind == "generator":
+        return generator_test(spec["lines"], split, cut=spec.get("cut", "lines"), facts_on_record=spec.get("facts_on_record"))
     if kind == "claim":
         train, ev = corpus.split_pages(split)
         r = judge.evaluate(spec["key"], train, ev, split)
         return {"attack": "claim", "target": spec["key"].get("id"), "claimant": spec.get("claimant"),
                 "verdict": r["verdict"], "failed": r["failed"], "success": r["verdict"] == "FAIL"}
-    raise SystemExit("attack must be key, fact or claim")
+    raise SystemExit("attack must be key, fact, generator or claim")
+
+
+def generator_test(lines, split, cut="lines", facts_on_record=None):
+    """Program G's scoreboard: one body of synthetic text from one procedure, run against EVERY
+    established fact at once. The score is how many it reproduces. A procedure that reproduces
+    them all is strong evidence the text needs no language; facts no general procedure can
+    reproduce are the strongest public evidence of structure. Only pass/fail per fact goes on
+    the record (no hidden values)."""
+    if facts_on_record is None:
+        from . import registry
+        facts_on_record = [i for i in registry.read("fact") if i["verdict"] == "ESTABLISHED"]
+    per = {}
+    for f in facts_on_record:
+        r = fact_attack(f["id"], lines, split, f, cut=cut)
+        if r.get("refused"):
+            text_problem = [g for g in r["refused"] if not g.startswith("positional attack")]
+            if text_problem:
+                return {"attack": "generator", "target": "*", "success": False, "refused": text_problem}
+            per[f["id"]] = False   # too few hits to count: not reproduced
+        else:
+            per[f["id"]] = bool(r["success"])
+    k = sum(per.values())
+    return {"attack": "generator", "target": "*", "cut": cut, "reproduced": k, "of": len(per), "per_fact": per,
+            "success": bool(per) and k == len(per),
+            "why": f"the text reproduces {k} of {len(per)} established facts"}

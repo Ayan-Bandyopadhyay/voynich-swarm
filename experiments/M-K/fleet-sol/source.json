@@ -1,18 +1,20 @@
 {
-  "title": "Voynich Paleography",
-  "authors": "Lisa Fagin Davis",
-  "year": 2022,
-  "url": "https://ceur-ws.org/Vol-3313/keynote2.pdf",
-  "summary": "Davis explains how to apply Latin paleographic methods to the manuscript's recurring glyph shapes, stroke construction and spacing. The conference paper relates scribal attributions to codicology and proposes possible expansions of complex glyphs.",
+  "title": "Character Entropy in Modern and Historical Texts: Comparison Metrics for an Undeciphered Manuscript",
+  "authors": "Luke Lindemann and Claire Bowern",
+  "year": 2020,
+  "url": "https://lukelindemann.com/docs/voy_entropy_wp_2020.pdf",
+  "doi": "10.48550/arXiv.2010.14697",
+  "summary": "The authors compile three public corpora: Voynich texts stratified by transcription, Currier variety and scribal hand, Wikipedia samples in 294 languages, and 18 historical texts in eight languages. They use these corpora to estimate conditional character entropy and examine the contribution of transcription choices and word-position constraints.",
   "established": [
-    "The analysis distinguishes five hands using shape and stroke differences in EVA k and n and cross-checks them with f. The long, low n flourishes on f66r prompted a reassignment from hand 3 to hand 5.",
-    "Differences in n flourish direction, extent and endpoint complement k crossbar construction and loop shape. Assignments rely on recurring combinations of features observed in image annotations."
+    "The study reports first-order conditional character entropy of 2.159 bits for full Voynich in Maximal EVA and 2.475 bits in the Minimal representation. Changing the representation moved the estimate, while comparison with the corpora still highlighted unusually tight restrictions on where frequent symbols appear within tokens.",
+    "In the three tested representations, Appendix A reports lower conditional character entropy for Currier B than for Currier A. The historical comparisons examine paired diplomatic and normalized transcriptions to assess the effect of abbreviation and orthography."
   ],
   "open": [
     {
-      "question": "Do the proposed component sequences for rare bridge-gallows give a consistent account of independently transcribed examples across writing contexts?",
-      "front": "L1",
-      "check": "Freeze Davis's candidate decomposition rules, then compare the predicted component shapes and placements with blinded annotations of further bridge-gallows images."
+      "question": "Can a historically motivated encoding that collapses sound distinctions reproduce the low conditional entropy and the associated pattern of strongly position-restricted bigrams?",
+      "front": "L3",
+      "check": "Use a fixed encoding rule and matched-length historical texts. Compare the entropy and position-stratified bigram profiles jointly under more than one Voynich glyph representation.",
+      "hard": true
     }
   ]
 }

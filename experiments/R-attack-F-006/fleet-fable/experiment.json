@@ -1,0 +1,7 @@
+{
+ "step": "R-attack-F-006",
+ "handle": "fleet-fable",
+ "kind": "attack",
+ "summary": "A table text whose first word in each line comes from a separate line-initial word list reproduces the longer line-initial words of F-006 on the practice split (4.90 against 4.83 glyphs), so the fact needs a line-aware writer, not language.",
+ "lease": "3f4c42b2a45d8b8df313813d"
+}

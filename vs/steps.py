@@ -41,6 +41,15 @@ def derived_steps():
     """Routine coordination done by rules, not by a model (no tokens): every item on the record
     opens the obvious next step, credited to the rule and pointing at the item it came from."""
     out = []
+    from . import grid
+    grid_items, power, seen_cells = registry.read("grid"), grid._power(), set()
+    established = [i["id"] for i in registry.read("fact") if i["verdict"] == "ESTABLISHED"]
+    if established:
+        out.append({"id": "G-every-fact", "program": "G", "kind": "step",
+                    "title": f"Generator test: one procedure against all {len(established)} established facts",
+                    "statement": "Write meaningless text with ONE historically plausible procedure (tables, grilles, dice, copying nearby words; fitted on public pages only) and send it once as attack.json {\"attack\": \"generator\", \"title\", \"method\", \"cut\": \"lines\", \"lines\": [...]}. The scorer runs it against every established fact and records how many it reproduces. The procedure may not contain a rule that names a target pattern (that is a weak refutation). Reproducing all of them would be strong evidence the text needs no language; a fact no general procedure reproduces is the strongest public evidence of structure. One generator test per contributor per day.",
+                    "check": 'attack.json {"attack": "generator", ...}', "on_path": True, "hard": True,
+                    "added_by": "rule:established-fact", "how": "rule", "from": established[-1], "status": "open"})
     for it in registry.read():
         if it["type"] == "fact" and it["verdict"] == "ESTABLISHED":
             out.append({"id": f"R-attack-{it['id']}", "program": "R", "kind": "step",
@@ -49,10 +58,26 @@ def derived_steps():
                         "check": f'attack.json {{"attack": "fact", "target_fact": "{it["id"]}", ...}}', "on_path": False, "hard": False,
                         "added_by": "rule:established-fact", "how": "rule", "from": it["id"], "status": "open"})
         if it["type"] == "grid" and it["verdict"] in ("FAIL", "OPEN"):
-            out.append({"id": f"L3-again-{it['id']}", "program": "L3", "kind": "step",
-                        "title": f"{it.get('language', '').title()} × {it.get('family', '')}: beat {it['id']}",
-                        "statement": f"A key in this cell was judged {it['verdict']}. Prove your search cracks the {it.get('language')} control, then submit a better key, or document why the cell is closed at your budget.",
-                        "check": "key.json", "on_path": True, "hard": True,
+            # one step per cell, not per key; none once the cell is ruled out (closed cells are not
+            # re-opened by rule: a new idea for one is proposed as a step and argued for)
+            lang, fam = it.get("language"), it.get("family")
+            if (lang, fam) in seen_cells:
+                continue
+            seen_cells.add((lang, fam))
+            status, _ = grid.cell_status(lang, fam, items=grid_items, power=power)
+            if status in ("RULED OUT", "PASS"):
+                continue
+            if not power.get((lang, fam)):
+                out.append({"id": f"J-power-{lang}-{fam}", "program": "J", "kind": "step",
+                            "title": f"{lang.title()} × {fam}: the search cannot crack this cell's control yet",
+                            "statement": f"Keys in {lang} × {fam} fail, but the pinned search has no demonstrated power here (results/heldout/controls.json), so failing keys say nothing. Make the search crack the 2%-noise {lang} {fam} control at a published budget (code PR to vs/search.py with `python3 -m vs season --parts controls` output). No more keys in this cell until then.",
+                            "check": "code PR + controls output", "on_path": True, "hard": True,
+                            "added_by": "rule:no-power", "how": "rule", "from": it["id"], "status": "open"})
+                continue
+            out.append({"id": f"L3-close-{lang}-{fam}", "program": "L3", "kind": "step",
+                        "title": f"{lang.title()} × {fam}: close the cell at the pinned budget",
+                        "statement": f"Keys in this cell failed, and the search has power here, but no failing key used the pinned budget, so the cell is INCONCLUSIVE rather than RULED OUT. Run the key search at the pinned budget (vs/search.py BUDGET, or more) and submit its best key: if it fails, the cell is ruled out.",
+                        "check": "key.json with search.budget at least the pinned one", "on_path": True, "hard": False,
                         "added_by": "rule:judged-key", "how": "rule", "from": it["id"], "status": "open"})
         if it["type"] == "source" and it["verdict"] == "CATALOGUED":
             for n, q in enumerate(it["detail"].get("open", []), 1):

@@ -6,6 +6,7 @@ No agent code is ever executed by the scorer. A spec is JSON:
    "statistic": {...one of the forms below...},
    "compare":   [ ...one to four tests, all must pass... ]}
 
+Selections may also set language to A or B to compare the two dialects within a shared scope.
 positions: any | line_initial | line_final | mid_line | para_initial (first word of a paragraph)
            | para_first_line (any word on a paragraph's first line)
            | not_para_first_line (paragraph text that is not on a first line; never labels or rings)
@@ -22,6 +23,12 @@ statistics:
   {"adjacent_mi": F}                                       adjacent mutual information minus the same after shuffling
                                                            each line (so page and section vocabulary cancel)
   {"edge_mi": true}                                        MI between a word's last glyph and the next word's first glyph
+  {"edge_mi_break": true}                                  edge MI within lines minus edge MI across line breaks (a line's
+                                                           last word with the next line's first word, same page); each
+                                                           shuffle-corrected, within-line pairs subsampled to the
+                                                           across-line count (10 fixed draws) so both carry equal bias
+  {"line_repeat_excess": true}                              share of words repeated on the previous numbered line minus the share
+                                                           repeated four lines back, within a page, excluding one-character words
   {"repeat_ngram": n}                                      share of word n-grams (n<=6) that occur at least twice
   {"hapax_share": true} | {"zipf_slope": ranks} | {"mean_length": true}
   {"near_copy": {"window": k, "min_length": L}}            share of words of length >= L within edit distance exactly 1
@@ -126,14 +133,16 @@ def tokens(pages, scope=None):
             n = len(ln.words)
             for k, w in enumerate(ln.words):
                 out.append({"w": w, "page": pi, "section": p.section, "line": (pi, ln.n), "k": k, "n": n,
-                            "unit": ln.unit, "pfl": pfl, "pinit": pfl and k == 0})
+                            "language": p.language, "unit": ln.unit, "pfl": pfl, "pinit": pfl and k == 0})
             first_line = ln.para_end if ln.unit == "P" else first_line
     return out
 
 
 def check_select(sel, what="select"):
     sel = sel or {}
-    _keys(sel, {"unit", "position", "certain"}, what)
+    _keys(sel, {"unit", "position", "certain", "language"}, what)
+    if "language" in sel and sel["language"] not in ("A", "B"):
+        raise SpecError(f"{what}.language must be A or B")
     u = sel.get("unit") or []
     if not isinstance(u, list) or set(u) - UNITS:
         raise SpecError(f"{what}.unit is a list from {sorted(UNITS)}")
@@ -149,8 +158,11 @@ def select(toks, sel):
     units = set(sel.get("unit") or [])
     pos = sel.get("position", "any")
     certain = sel.get("certain", True)
+    language = sel.get("language")
     keep = []
     for t in toks:
+        if language and t["language"] != language:
+            continue
         if units and t["unit"] not in units:
             continue
         if certain and UNCERTAIN(t["w"]):
@@ -231,6 +243,28 @@ def _mi(pairs):
     return sum(v / n * math.log2(v * n / (a[x] * b[y])) for (x, y), v in pc.items()) if n else 0.0
 
 
+def _edge_break(toks, draws=10):
+    """Edge-glyph MI within lines minus across line breaks, each corrected by its shuffled value."""
+    edge = lambda x, y: (SEG(x["w"])[-1], SEG(y["w"])[0])
+    within = [edge(x, y) for r in runs_of(toks) for x, y in zip(r, r[1:])]
+    lns = lines_of(toks)
+    across = [edge(a[-1], b[0]) for a, b in zip(lns, lns[1:])
+              if a[-1]["line"][0] == b[0]["line"][0] and a[-1]["k"] == a[-1]["n"] - 1 and b[0]["k"] == 0]
+    n = len(across)
+    if n < MIN_TOKENS or len(within) < n:
+        return NAN
+
+    def corrected(pairs, rng):
+        ys = [y for _x, y in pairs]
+        rng.shuffle(ys)
+        return _mi(pairs) - _mi(list(zip([x for x, _y in pairs], ys)))
+
+    rng = random.Random(1)
+    w = sum(corrected(rng.sample(within, n), rng) for _ in range(draws)) / draws
+    a = sum(corrected(list(across), rng) for _ in range(draws)) / draws
+    return w - a
+
+
 def _edit1(a, b):
     if a == b or abs(len(a) - len(b)) > 1:
         return False
@@ -271,7 +305,7 @@ def check_statistic(st):
         _int(arg, 1, 6, "repeat_ngram n")
     elif name == "zipf_slope":
         _int(arg, 3, 100_000, "zipf_slope ranks")
-    elif name in ("edge_mi", "hapax_share", "mean_length"):
+    elif name in ("edge_mi", "edge_mi_break", "hapax_share", "mean_length", "line_repeat_excess"):
         if arg is not True:
             raise SpecError(f"{name} takes true")
     elif name == "near_copy":
@@ -327,6 +361,8 @@ def statistic(st, toks, all_toks):
             rng.shuffle(ws)
             spairs += [(fw(x), fw(y)) for x, y in zip(ws, ws[1:])]
         return _mi(pairs) - _mi(spairs)
+    if name == "edge_mi_break":
+        return _edge_break(toks)
     if name == "glyph_cond_entropy":
         k = int(arg)
         ctx, full = Counter(), Counter()
@@ -343,6 +379,23 @@ def statistic(st, toks, all_toks):
         c = Counter(tuple(t["w"] for t in r[i:i + n]) for r in runs_of(toks) for i in range(len(r) - n + 1))
         tot = sum(c.values())
         return sum(v for v in c.values() if v >= 2) / tot if tot >= MIN_TOKENS else NAN
+    if name == "line_repeat_excess":
+        # Use the same current words for both lags. Require five consecutive
+        # selected lines on one page so gaps do not become spurious neighbors.
+        words = {}
+        for t in toks:
+            words.setdefault(t["line"], []).append(t["w"])
+        vocabulary = {line: set(ws) for line, ws in words.items()}
+        hits = eligible = 0
+        for (page, line), ws in words.items():
+            if not all((page, line - lag) in words for lag in range(1, 5)):
+                continue
+            near, far = vocabulary[page, line - 1], vocabulary[page, line - 4]
+            for word in ws:
+                if len(word) > 1:
+                    eligible += 1
+                    hits += (word in near) - (word in far)
+        return hits / eligible if eligible >= MIN_TOKENS else NAN
     if name == "hapax_share":
         c = Counter(t["w"] for t in toks)
         return sum(1 for v in c.values() if v == 1) / len(c)
@@ -388,7 +441,7 @@ def statistic(st, toks, all_toks):
 
 # statistics whose features mean the same thing in another script, so a reference language can be measured
 LAYOUT_FREE = {"entropy", "hapax_share", "zipf_slope", "mean_length", "repeat_ngram", "cond_entropy", "adjacent_mi",
-               "edge_mi", "near_copy", "glyph_cond_entropy", "page_reuse"}
+               "edge_mi", "near_copy", "glyph_cond_entropy", "page_reuse", "line_repeat_excess"}
 MIN_REFERENCES = 3
 
 _NULL_KEY = {"shuffle_within_line": lambda t: t["line"], "shuffle_within_page": lambda t: t["page"],
@@ -491,8 +544,14 @@ def canonical(spec):
     thresholds, margins, alpha and the permutation count. Two specs with the same canonical form are
     the same claim for the record (vs/registry.py), however their JSON is ordered or defaulted."""
     check(spec)
-    sel = lambda s: {"unit": sorted(set((s or {}).get("unit") or [])), "position": (s or {}).get("position", "any"),
-                     "certain": (s or {}).get("certain", True)}
+    def sel(selection):
+        selection = selection or {}
+        result = {"unit": sorted(set(selection.get("unit") or [])), "position": selection.get("position", "any"),
+                  "certain": selection.get("certain", True)}
+        if "language" in selection:
+            result["language"] = selection["language"]
+        return result
+
     (name, arg), = spec["statistic"].items()
     if name in ("rate", "ratio"):
         arg = dict(arg, **{"in": sorted(set(arg["in"]), key=str)})

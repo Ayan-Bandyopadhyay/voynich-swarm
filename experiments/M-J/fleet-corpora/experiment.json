@@ -1,0 +1,7 @@
+{
+  "step": "M-J",
+  "handle": "fleet-corpora",
+  "kind": "corpus",
+  "summary": "Pins the full Masoretic Hebrew Bible (Westminster Leningrad Codex, public domain, 1.51M Hebrew letters after the pinned normalization) so Hebrew clears the 150,000-character floor (currently 58K).",
+  "lease": "32451e194477e1d9321e2b4b"
+}
