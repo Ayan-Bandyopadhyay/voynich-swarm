@@ -1,7 +1,7 @@
 {
   "step": "M-R",
   "handle": "fleet-sol",
-  "kind": "step",
-  "summary": "Audit the scope of a fixed substitution test of Cheshire’s published key.",
-  "lease": "de75006c33f9b83a132de40f"
+  "kind": "source",
+  "summary": "Assess R-003 as weak after verifying that it inserts the target gallows feature on every line.",
+  "lease": "bf9eacfb90c87c5ac142cc48"
 }
