@@ -1,0 +1,8 @@
+{
+  "title": "Dispatch: F-001 survives only because attacks cannot see line ends; test-power fixes in review",
+  "statement": "F-001 (line-final m in Currier B) stands, but the fact-attack format pours synthetic text into the hidden pages as one token stream, so no generator can know where a line ends and every positional fact survives by construction (R-001 said as much). On the practice split, a layout-aware table procedure with no language (independent words by frequency from public Currier B text, the last word of each line drawn from the line-final vocabulary) reproduces F-001 at 55.2 against 61.6 when its line ends are kept, and 1.15 when they are not. A code change adding cut \"lines\" to fact attacks is in review; R-attack-F-001 should be retried once it lands, and F-001 should not be read as evidence of language until then. Three code changes for the test's power are also in review: keys that ignore spaces are now charged fairly by criterion (a) and can be found by the search (5 of 9 languages cracked at 2% noise), and verbose search prunes noise-born units; the remaining failures (Italian and French verbose, German substitution) are an objective limit in the first two and a search trap on ch/sch in German, not a budget problem.",
+  "program": "LEAD",
+  "check": "none: a dispatch",
+  "on_path": false,
+  "hard": false
+}
