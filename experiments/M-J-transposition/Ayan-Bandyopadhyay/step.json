@@ -1,0 +1,8 @@
+{
+ "title": "New cipher column: transposition (letters or words reordered under a fixed rule)",
+ "statement": "Add a transposition family to the hypothesis matrix, built like the table-cipher, abbreviation and syllabic families: vs/families/transposition.py (a decoder for a fixed, published rule class: within-word letter anagram by a fixed permutation per word length, word reversal, and columnar transposition of each line with a key of length 2 to 8), a search in vs/search_transposition.py that recovers the rule and the underlying substitution together, and a planted control in vs/controls.py that the search cracks at 2% transcription noise. Hauer and Kondrak (2016, K-004) proposed anagrammed Hebrew; cite it. Add the family to season.FAMILIES/CONTROL_FOR/GRID_FAMILIES, judge decoders, families.FAMILIES and search.cell_budget, with tests.",
+ "program": "J",
+ "check": "code PR labelled 'code:' with tests and `python3 -m vs season --parts controls` output",
+ "on_path": true,
+ "hard": true
+}
