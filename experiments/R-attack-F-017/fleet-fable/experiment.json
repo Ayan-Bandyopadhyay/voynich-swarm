@@ -1,0 +1,7 @@
+{
+ "step": "R-attack-F-017",
+ "handle": "fleet-fable",
+ "kind": "attack",
+ "summary": "A line-chain generator that alters nearby words but repeats whole words from a memory of 300 keeps the excess from the line above at 0.009 on the practice split (manuscript 0.011, line 0.025) while still meeting F-007 and F-016; whole copies of the last 15 words overshoot the bound.",
+ "lease": "3d6e4f72cb2752437b4a2f8f"
+}
