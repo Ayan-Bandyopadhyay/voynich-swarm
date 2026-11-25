@@ -784,6 +784,19 @@
       "license": "public-domain",
       "encoding": "utf-8",
       "added_by": "fleet-corpora"
+    },
+    {
+      "id": "neapolitan_e6d5d646",
+      "lang": "neapolitan",
+      "period": "17th century (1628), Neapolitan",
+      "title": "Il pastor fido in lingua napolitana: Guarini's Pastor fido in Neapolitan (17th-century translation, attributed to Domenico Basile), Project Gutenberg #17835",
+      "url": "https://gutenberg.pglaf.org/1/7/8/3/17835/17835-0.txt",
+      "file": "data/raw/agent_neapolitan_e6d5d646.txt",
+      "bytes": 250429,
+      "sha256": "e6d5d6469059725d57b58dd8cc22205cc82856bf920f35788852970826034dd9",
+      "license": "public-domain",
+      "encoding": "utf-8",
+      "added_by": "fleet-corpora"
     }
   ],
   "missing_corpora": {
