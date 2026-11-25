@@ -1,0 +1,518 @@
+{
+ "folio": "f72v1",
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006205",
+ "blind": true,
+ "statement": "Circular diagram on canvas 1006205 (72v, part). Centre: a balance (upright post, horizontal beam, two pans on cords) with blue wash, and a short word in another script below it (not read). Inner ring: 10 nude women; outer ring: 20 nude women; none stands in a tub. All are drawn radially with feet toward the centre (standing at the top, lying at the sides, upside down at the bottom), and each holds or is tied to an eight-pointed star; several inner stars have blue centres. One outer figure near the top wears a tall pointed crown and has a star on each side. A hole in the vellum right of centre takes most of one inner figure. Choosing the panel: the three 72v wheels are spread over canvases 1006204 and 1006205; this wheel's counts (20 outer, 10 inner) match only f72v1's label blocks (f72v1.2-21: 20 lines; 23-32: 10 lines), while f72v2 and f72v3 both have 18 and 12. Each figure carries its ring's block as label_group; which line goes with which figure cannot be fixed from line ids without reading the words, so labels are null. Clock positions are from the wheel's centre, 12 = top of the scan.",
+ "objects": [
+  {
+   "id": "o1",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "12",
+    "posture": "standing",
+    "clothing": "nude",
+    "container": "none",
+    "headwear": "crown",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f72v1.2-21",
+    "note": "tall pointed crown; a star on each side"
+   },
+   "label": null
+  },
+  {
+   "id": "o2",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "1",
+    "posture": "standing",
+    "clothing": "nude",
+    "container": "none",
+    "headwear": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f72v1.2-21",
+    "note": "long hair, striding"
+   },
+   "label": null
+  },
+  {
+   "id": "o3",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "2",
+    "posture": "standing",
+    "clothing": "nude",
+    "container": "none",
+    "headwear": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f72v1.2-21"
+   },
+   "label": null
+  },
+  {
+   "id": "o4",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "2",
+    "posture": "lying",
+    "clothing": "nude",
+    "container": "none",
+    "headwear": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f72v1.2-21"
+   },
+   "label": null
+  },
+  {
+   "id": "o5",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "3",
+    "posture": "lying",
+    "clothing": "nude",
+    "container": "none",
+    "headwear": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f72v1.2-21"
+   },
+   "label": null
+  },
+  {
+   "id": "o6",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "3",
+    "posture": "lying",
+    "clothing": "nude",
+    "container": "none",
+    "headwear": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f72v1.2-21"
+   },
+   "label": null
+  },
+  {
+   "id": "o7",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "4",
+    "posture": "lying",
+    "clothing": "nude",
+    "container": "none",
+    "headwear": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f72v1.2-21"
+   },
+   "label": null
+  },
+  {
+   "id": "o8",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "4",
+    "posture": "lying",
+    "clothing": "nude",
+    "container": "none",
+    "headwear": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f72v1.2-21"
+   },
+   "label": null
+  },
+  {
+   "id": "o9",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "5",
+    "posture": "inverted",
+    "clothing": "nude",
+    "container": "none",
+    "headwear": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f72v1.2-21"
+   },
+   "label": null
+  },
+  {
+   "id": "o10",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "6",
+    "posture": "inverted",
+    "clothing": "nude",
+    "container": "none",
+    "headwear": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f72v1.2-21"
+   },
+   "label": null
+  },
+  {
+   "id": "o11",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "6",
+    "posture": "inverted",
+    "clothing": "nude",
+    "container": "none",
+    "headwear": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f72v1.2-21"
+   },
+   "label": null
+  },
+  {
+   "id": "o12",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "7",
+    "posture": "inverted",
+    "clothing": "nude",
+    "container": "none",
+    "headwear": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f72v1.2-21"
+   },
+   "label": null
+  },
+  {
+   "id": "o13",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "8",
+    "posture": "inverted",
+    "clothing": "nude",
+    "container": "none",
+    "headwear": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f72v1.2-21"
+   },
+   "label": null
+  },
+  {
+   "id": "o14",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "8",
+    "posture": "lying",
+    "clothing": "nude",
+    "container": "none",
+    "headwear": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f72v1.2-21"
+   },
+   "label": null
+  },
+  {
+   "id": "o15",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "9",
+    "posture": "lying",
+    "clothing": "nude",
+    "container": "none",
+    "headwear": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f72v1.2-21"
+   },
+   "label": null
+  },
+  {
+   "id": "o16",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "10",
+    "posture": "lying",
+    "clothing": "nude",
+    "container": "none",
+    "headwear": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f72v1.2-21"
+   },
+   "label": null
+  },
+  {
+   "id": "o17",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "10",
+    "posture": "lying",
+    "clothing": "nude",
+    "container": "none",
+    "headwear": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f72v1.2-21"
+   },
+   "label": null
+  },
+  {
+   "id": "o18",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "11",
+    "posture": "standing",
+    "clothing": "nude",
+    "container": "none",
+    "headwear": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f72v1.2-21",
+    "note": "seated or reclining, arm raised to star"
+   },
+   "label": null
+  },
+  {
+   "id": "o19",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "11",
+    "posture": "standing",
+    "clothing": "nude",
+    "container": "none",
+    "headwear": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f72v1.2-21"
+   },
+   "label": null
+  },
+  {
+   "id": "o20",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "12",
+    "posture": "standing",
+    "clothing": "nude",
+    "container": "none",
+    "headwear": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f72v1.2-21"
+   },
+   "label": null
+  },
+  {
+   "id": "i1",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock": "12",
+    "posture": "standing",
+    "clothing": "nude",
+    "container": "none",
+    "headwear": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f72v1.23-32",
+    "note": "star with a blue centre"
+   },
+   "label": null
+  },
+  {
+   "id": "i2",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock": "1",
+    "posture": "standing",
+    "clothing": "nude",
+    "container": "none",
+    "headwear": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f72v1.23-32"
+   },
+   "label": null
+  },
+  {
+   "id": "i3",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock": "3",
+    "posture": "unclear",
+    "clothing": "nude",
+    "container": "none",
+    "headwear": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f72v1.23-32",
+    "note": "partly lost in a hole in the vellum"
+   },
+   "label": null
+  },
+  {
+   "id": "i4",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock": "4",
+    "posture": "inverted",
+    "clothing": "nude",
+    "container": "none",
+    "headwear": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f72v1.23-32"
+   },
+   "label": null
+  },
+  {
+   "id": "i5",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock": "5",
+    "posture": "inverted",
+    "clothing": "nude",
+    "container": "none",
+    "headwear": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f72v1.23-32"
+   },
+   "label": null
+  },
+  {
+   "id": "i6",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock": "7",
+    "posture": "inverted",
+    "clothing": "nude",
+    "container": "none",
+    "headwear": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f72v1.23-32"
+   },
+   "label": null
+  },
+  {
+   "id": "i7",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock": "8",
+    "posture": "lying",
+    "clothing": "nude",
+    "container": "none",
+    "headwear": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f72v1.23-32",
+    "note": "star with a blue centre"
+   },
+   "label": null
+  },
+  {
+   "id": "i8",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock": "9",
+    "posture": "lying",
+    "clothing": "nude",
+    "container": "none",
+    "headwear": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f72v1.23-32"
+   },
+   "label": null
+  },
+  {
+   "id": "i9",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock": "10",
+    "posture": "lying",
+    "clothing": "nude",
+    "container": "none",
+    "headwear": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f72v1.23-32",
+    "note": "reclining; star with a blue centre"
+   },
+   "label": null
+  },
+  {
+   "id": "i10",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock": "11",
+    "posture": "standing",
+    "clothing": "nude",
+    "container": "none",
+    "headwear": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f72v1.23-32",
+    "note": "star with a blue centre"
+   },
+   "label": null
+  },
+  {
+   "id": "balance",
+   "kind": "other",
+   "features": {
+    "ring": "centre",
+    "shape": "balance: upright post with a horizontal beam and two pans hanging on cords",
+    "colour": "ink with blue wash on the post, beam and pan contents",
+    "note": "a short word in a non-Voynich script is written below it (not read)"
+   },
+   "label": null
+  },
+  {
+   "id": "blot",
+   "kind": "other",
+   "features": {
+    "ring": "outer",
+    "clock": "12",
+    "shape": "small dark scribbled patch beside the outer circular text, right of the crowned figure",
+    "colour": "dark ink"
+   },
+   "label": null
+  }
+ ]
+}
