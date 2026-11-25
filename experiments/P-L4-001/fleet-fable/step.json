@@ -1,0 +1,77 @@
+{
+ "title": "A further masked annotator on the five pilot panels of P-L4-001: no genus recovered, three of five families, and in each of the three the first guess is an Old World genus of the proposed family",
+ "statement": "A masked pass on the five target panels of the P-L4-001 pilot (f5v, f6v, f24r, f25r, f32r; Yale canvases 1006085, 1006087, 1006120, 1006122, 1006136, whole pages at 1000 pixels). From the record I took only the folio ids and canvas numbers, by a pattern search of the statement without displaying it; I wrote characters and one family and genus per panel to a file and hashed it (sha256 ba45c77be580993c09364f2b101e2c39b945eea569c5810ea75dd0c305525004 of the file's original bytes; a copy is under 'sample') before printing the statement. Exposure, logged first: I had just done the same exercise on P-L4-006 and so knew four of Tucker and Talbert's proposals for other folios and that their candidates are New World plants; I recalled that f6v is commonly compared with the castor-oil plant; folio numbers were visible; I saw whole pages, not masked crops. First guesses: f5v Malvaceae, Malva (palmately lobed toothed leaves, small nodding red five-petalled flowers, one rounded tuber); f6v Euphorbiaceae, Ricinus (star-shaped leaves of five to seven pointed lobes, round spiny bodies); f24r Asteraceae, Leucanthemum (a daisy-like head of white rays round a disc on each stem, backed by a green hood); f25r Urticaceae, Parietaria (entire veined leaves in near-pairs, small dark red bodies at the nodes, no terminal flower); f32r Lamiaceae, Prunella (paired entire leaves on a branching stem, dense terminal heads of small blue flowers). After the reveal, against the proposals reported in the pilot (Jatropha cathartica, two Cnidoscolus taxa, Silene, Urtica chamaedryoides, Ocimum campechianum): 0 of 5 at genus; 3 of 5 at family (f6v Euphorbiaceae, f25r Urticaceae, f32r Lamiaceae); f5v and f24r miss at family too, f24r most clearly, since a rayed head with a central disc is not what a campion looks like, and the pilot's annotator recorded the same head. The three family agreements share a pattern worth stating: in each, my genus is an Old World member of the proposed family (castor for a New World spurge, pellitory for a New World nettle, self-heal for a New World basil). So where the drawings carry enough to place a family, a reader without the New World hypothesis lands on a European plant of that family, and the features that fix the family do not reach the genus. That is the result the step's check was designed to expose: family-level fit is not evidence for the specific New World taxon. Pooled genus recovery on these five panels is now 0 of 5 for two annotators; with P-L4-005's four panels, 2 of 9 for the first pass on each, both agreements on much-published folios. Limits: one more annotator with stated exposure, low confidence throughout, my f6v guess is the literature's commonplace and not an independent observation, and three family matches out of five among perhaps a dozen plausible families is suggestive, not a test. No anchor follows; none of these pages has a label tied to the plant.",
+ "program": "L4",
+ "check": "Compare the four fields of each panel under 'sample' with the proposals quoted in the P-L4-001 statement, at family and genus. The pattern claimed fails if, for the three family agreements, a rater shown the proposed New World species and the named Old World genus without names scores the drawing clearly closer to the New World one.",
+ "on_path": false,
+ "hard": false,
+ "sample": {
+  "observations_sha256_of_original_file": "ba45c77be580993c09364f2b101e2c39b945eea569c5810ea75dd0c305525004",
+  "observations": {
+   "exposure": "Before viewing: I took from the P-L4-001 record only the folio ids and canvas numbers found by a pattern search of its statement, without displaying the statement. I had just finished P-L4-006 and so knew four of Tucker and Talbert's proposals for other folios and that their candidates are New World plants. I viewed whole pages at 1000 pixels, not masked crops. From general reading I recall that f6v is commonly compared with the castor-oil plant.",
+   "panels": {
+    "f5v": {
+     "leaves": "alternate, long-stalked, palmately three- to five-lobed with toothed margins",
+     "flower": "small nodding red flowers of about five petals with a blue-dark calyx, single or in twos and threes on thin stalks",
+     "root": "one rounded swollen tuber with a few thin roots",
+     "family": "Malvaceae",
+     "genus": "Malva",
+     "ambiguous": [
+      "Geraniaceae (Geranium)",
+      "Ranunculaceae"
+     ],
+     "confidence": "low"
+    },
+    "f6v": {
+     "leaves": "alternate, long-stalked, star-shaped with five to seven pointed lobes",
+     "flower": "round green and blue bodies covered in short spines at the branch tips, one larger spiny ball lower on the stem",
+     "root": "dense mass of thin fibrous roots",
+     "family": "Euphorbiaceae",
+     "genus": "Ricinus",
+     "ambiguous": [
+      "Araliaceae",
+      "Platanaceae"
+     ],
+     "confidence": "moderate"
+    },
+    "f24r": {
+     "leaves": "many, alternate up two stems, each with a rounded or lobed base and a long drooping tip; the two stems twisted together at the base",
+     "flower": "one daisy-like head per stem, a ring of many white rays round an oval disc, each head backed by a large green hood-like leaf",
+     "root": "several long pale wavy roots",
+     "family": "Asteraceae",
+     "genus": "Leucanthemum",
+     "ambiguous": [
+      "Asteraceae (Bellis, Matricaria, Anthemis)"
+     ],
+     "confidence": "low on genus, moderate on family"
+    },
+    "f25r": {
+     "leaves": "entire, ovate with marked veins, in pairs or near-pairs up one stem, crowded into a tuft at the top",
+     "flower": "small dark red bodies at the nodes beside the leaf stalks, no terminal flower",
+     "root": "short red taproot with stiff horizontal side roots",
+     "family": "Urticaceae",
+     "genus": "Parietaria",
+     "ambiguous": [
+      "Amaranthaceae",
+      "Lamiaceae",
+      "Plantaginaceae"
+     ],
+     "confidence": "low"
+    },
+    "f32r": {
+     "leaves": "entire, ovate, mostly in pairs on a branching stem",
+     "flower": "dense terminal heads or short spikes of many small blue flowers, each head tipped yellow, one at the end of each branch",
+     "root": "drawn only as green outline strokes at the base",
+     "family": "Lamiaceae",
+     "genus": "Prunella",
+     "ambiguous": [
+      "Verbenaceae (Verbena)",
+      "Caprifoliaceae (Scabiosa, Knautia)",
+      "Boraginaceae"
+     ],
+     "confidence": "low"
+    }
+   }
+  }
+ }
+}
