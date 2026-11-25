@@ -1,0 +1,106 @@
+Nahuatl substitution calibration on the pinned Luke and Florentine Codex Book 11 texts
+Practice controls only. Seat fleet-astra. Desk step J-power-nahuatl-substitution.
+Lease 0a6428a07397585a1f77dfb2
+
+Add one frequency-ranked homophone initialization to the existing four 6,000-iteration restarts. Allocate extra candidate signs to frequent target letters and rank expected sign frequencies after splitting each letter’s mass across its candidate homophones. Refine both fitted maps on target reference word counts for up to five coordinate sweeps. Select by the training word objective. The recorded search budget distinguishes these keys from older manuscript submissions.
+
+Target-cell output from the stock season.run routine, with the language and family lists restricted to this one cell and the JSON written to a scratch directory:
+control nahuatl  substitution clean=True noisy=True
+
+{
+  "language": "nahuatl",
+  "family": "substitution",
+  "control": "homophonic",
+  "control_tokens": 1360,
+  "true_key": {
+    "submission": "control-nahuatl-homophonic",
+    "family": "substitution",
+    "target": {
+      "language": "nahuatl",
+      "period": "control"
+    },
+    "verdict": "FAIL",
+    "failed": [
+      "c_pictures"
+    ],
+    "passes_without_anchors": true,
+    "savings": 0.1156,
+    "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+    "submission": "grid-nahuatl-substitution-control",
+    "family": "substitution",
+    "target": {
+      "language": "nahuatl",
+      "period": "grid search"
+    },
+    "verdict": "FAIL",
+    "failed": [
+      "c_pictures"
+    ],
+    "passes_without_anchors": true,
+    "savings": 0.11347,
+    "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+}
+
+Independently generated controls at two additional seeds, evaluated with the submitted code:
+{"seed": 1, "key": "planted", "evaluation_tokens": 1360, "passes_without_anchors": true, "savings": 0.08189, "failed": ["c_pictures"]}
+{"seed": 1, "key": "search", "evaluation_tokens": 1360, "passes_without_anchors": true, "savings": 0.08084, "failed": ["c_pictures"]}
+{"seed": 2, "key": "planted", "evaluation_tokens": 1360, "passes_without_anchors": true, "savings": 0.07382, "failed": ["c_pictures"]}
+{"seed": 2, "key": "search", "evaluation_tokens": 1360, "passes_without_anchors": true, "savings": 0.07296, "failed": ["c_pictures"]}
+Seed 0 fitted search savings: 7.523%. Before this change the pinned search saved -11.807% at seed 0 on the expanded corpus.
+
+Unfiltered command output: python3 -m vs season --parts controls
+control latin    substitution clean=True noisy=True
+control latin    verbose      clean=True noisy=True
+control italian  substitution clean=True noisy=True
+control italian  verbose      clean=True noisy=False
+control spanish  substitution clean=True noisy=True
+control spanish  verbose      clean=True noisy=False
+control french   substitution clean=True noisy=True
+control french   verbose      clean=True noisy=False
+control catalan  substitution clean=True noisy=True
+control catalan  verbose      clean=True noisy=False
+control german   substitution clean=True noisy=True
+control german   verbose      clean=False noisy=False
+control english  substitution clean=True noisy=True
+control english  verbose      clean=True noisy=True
+control czech    substitution clean=False noisy=False
+control czech    verbose      clean=True noisy=False
+control hebrew   substitution clean=True noisy=True
+control hebrew   verbose      clean=True noisy=True
+control albanian substitution clean=True noisy=True
+control albanian verbose      clean=True noisy=False
+control ancient_greek substitution clean=True noisy=False
+control ancient_greek verbose      clean=True noisy=True
+Traceback (most recent call last):
+  File "<frozen runpy>", line 201, in _run_module_as_main
+  File "<frozen runpy>", line 87, in _run_code
+  File "/private/tmp/fleet-astra-nahuatl-power/vs/__main__.py", line 91, in <module>
+    main()
+    ~~~~^^
+  File "/private/tmp/fleet-astra-nahuatl-power/vs/__main__.py", line 61, in main
+    season.run(a.split, parts=tuple(a.parts.split(",")))
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/fleet-astra-nahuatl-power/vs/season.py", line 53, in run
+    ctr, cev, true = controls.make(lang, CONTROL_FOR[fam], noise=noise)
+                     ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/fleet-astra-nahuatl-power/vs/controls.py", line 69, in make
+    ws = [cipher(w) for w in words[i:i + words_per_line]]
+          ~~~~~~^^^
+  File "/private/tmp/fleet-astra-nahuatl-power/vs/controls.py", line 59, in cipher
+    units = [rng.choice(enc[c]) for c in w if c in enc]
+             ~~~~~~~~~~^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/random.py", line 353, in choice
+    raise IndexError('Cannot choose from an empty sequence')
+IndexError: Cannot choose from an empty sequence
+
+The unfiltered run reached the existing Arabic homophonic generator failure before it could reach Nahuatl. The stock generator can emit an empty list of signs when the target alphabet exceeds its inventory. Arabic reproduces the failure directly on the unmodified checkout. The target-cell run above exercised the complete standard clean and 2% noisy evaluations.
+
+The new budget regression test passed. Fifty of 51 suite tests passed. The one failure, test_dsl.ReferenceTest.test_reference_is_matched_in_size, also failed on the unmodified checkout. Its expectation that too few sufficiently long references exist no longer holds for the expanded corpus set.
