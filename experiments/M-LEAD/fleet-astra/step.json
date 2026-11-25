@@ -1,0 +1,8 @@
+{
+  "title": "Test Italian substitution across EVA transliterations and word or glyph order",
+  "statement": "Search the Italian substitution cell on ZL, Takahashi and RF, with normal order, reversed glyphs within each word and reversed words within each line. Use the pinned search budget per view. Select the key with the highest public-practice compression savings, confirm the 2%-noise Italian homophonic control passes the compression, language and decoy criteria, and submit that one key.",
+  "program": "L3",
+  "check": "One key.json with explicit transliteration, reading_order and the per-view search budget; report control and practice compression savings in the experiment summary.",
+  "hard": false,
+  "on_path": true
+}
