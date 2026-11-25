@@ -1,8 +1,125 @@
 {
-  "title": "Audit the glyph and word-boundary rules in Aboulfotouh's Abjd-rank proposal",
-  "statement": "Hossam M. K. Aboulfotouh (2024), On the Pythagorean Cipher, the Seven Concealment Tricks, and the Underlying Language of Voynich Manuscript, https://zenodo.org/records/11180632. Tables 1 and 2 give glyph drawings and rank assignments. Table 1 gives Perso-Arabic, Devanagari and Roman values, and Table 3 provides folio examples with transliteration and glosses. Rank 1 alone encompasses multiple vowels, including ā, u, i and ī, so a rank sequence would need a glyph-variant layer to become reproducible. On pp. 13–15, the paper describes vowel diacritics supplied in transliteration, joins and splits of apparent words, and movement of a final letter onto the next word. It gives a typical ordering for compound forms, with an exception for final rank 1. The examples illustrate these decisions and the paper describes using several dictionaries and speakers to refine them. The published material supplies a testable glyph inventory. A whole-text claim also requires fixed rules for resolving those choices and a reference corpus corresponding to the specified Hindi or Urdu proxy.",
+  "title": "Audit the Trithemius-inspired three-digit encoding in Matlach et al. (2022)",
+  "statement": "In the open PLOS ONE paper, Matlach, Janečková and Dostál propose a numeric encoding family after their symbol and ligature analyses. I reproduced the published toy demonstration: YZXAKJCCJBXX gives 222, 133, 113, 122 and the stated English word. The demonstration fixes a toy digit partition of nine Latin letters and a sequential three-digit alphabet. The paper's manuscript discussion leaves the EVA-to-digit partition, full glyph-expansion table, fixed reset boundaries, error policy and language open. The supplements provide an incidence matrix, discrepancy examples, ligature illustrations and a comparison-text list. I tested a narrow consequence of exact line resets: with decorative spaces ignored and no padding, every complete line must have digit length divisible by three after fixed glyph expansion. Among 615 shared certain paragraph lines on 31 public practice pages, the five highlighted decompositions give 201 divisible lengths in ZL and 213 in Takahashi. Expanded variants give at most 229 in ZL and 213 in Takahashi. The exploratory extended variant gives a one-sided p of 0.025 in ZL and 0.350 in Takahashi, before adjustment for the variants tested. The strict line-reset variants leave most lines with an incomplete triplet. This check applies to the fixed expansions and exact line reset. Continuous streams, other resets and an explicit padding or repair policy remain distinct hypotheses. A manuscript verdict requires a specified key.",
   "program": "R",
-  "check": "First prepare a crosswalk between the pictured inventory and explicit canvas coordinates on public examples, withholding the proposed glosses from a second annotator. Measure whether the same glyph variants and compound ordering can be marked independently, especially for the rank-1 variants. Freeze a one-script glyph projection and list the vowels and boundaries it can specify. Score it against a period-relevant pinned Hindi or Urdu reference with standard decoys when a suitable corpus is on the grid. Testing the full proposal separately requires a fixed parser for the stated restorations and cross-token movement.",
+  "check": "Locate a public manuscript-specific key or get a versioned one from the authors before scoring a claimed application. Require a fixed EVA expansion and digit partition, a stated mapping of triples to symbols, a language, and a deterministic policy for spaces, synchronization, framing and errors. Verify any given folio examples without retuning. Separately, on controls with known partitions, test whether a fixed three-digit family can recover plaintext across deliberately planted uncertain breaks and variable ligature patterns. Only test a manuscript key after a fixed family demonstrates power.",
   "on_path": false,
-  "hard": false
+  "hard": true,
+  "source": {
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0260948",
+    "where": "Discussion, paragraphs following the ligature summary, and supplements S1–S3 Figures and S1 Table"
+  },
+  "practice": {
+    "selection": "Public practice only. P lines with nonempty words and no uncertain words, limited to the EVA character subset used for the diagnostic (acdefghiklmnopqrsty), then intersected by page and line ID across ZL and Takahashi before counting.",
+    "rules": {
+      "raw": {},
+      "five": {
+        "f": "id",
+        "m": "id",
+        "q": "ie",
+        "n": "i",
+        "g": "cd"
+      },
+      "extended_additions": {
+        "p": "qd",
+        "t": "ql",
+        "d": "ey",
+        "r": "si",
+        "k": "il"
+      },
+      "extended_with_e_changes": {
+        "f": "ide",
+        "p": "qde"
+      }
+    },
+    "interpretation": "Apply expansions recursively. The n expansion is i plus a separator in the paper, with the separator ignored here. Count one digit per resulting character. Reset the grouping on each line. Diagnostic null allocates expanded word lengths at random among the same word slots within each page, with Python Random(408) and 199 shuffles per condition. Add one in numerator and denominator and include ties. Exploratory p-values are unadjusted.",
+    "results": {
+      "zl": {
+        "public_clean_lines": 619,
+        "matched_clean_lines": 615,
+        "matched_pages": 31,
+        "matched": {
+          "raw": {
+            "remainders": [
+              193,
+              202,
+              220
+            ],
+            "within_page_shuffle_mean_zero": 205.181,
+            "within_page_shuffle_p_ge": 0.84
+          },
+          "five": {
+            "remainders": [
+              201,
+              225,
+              189
+            ],
+            "within_page_shuffle_mean_zero": 205.387,
+            "within_page_shuffle_p_ge": 0.66
+          },
+          "extended": {
+            "remainders": [
+              229,
+              207,
+              179
+            ],
+            "within_page_shuffle_mean_zero": 203.352,
+            "within_page_shuffle_p_ge": 0.025
+          },
+          "extended with e": {
+            "remainders": [
+              225,
+              200,
+              190
+            ],
+            "within_page_shuffle_mean_zero": 204.231,
+            "within_page_shuffle_p_ge": 0.045
+          }
+        }
+      },
+      "it": {
+        "public_clean_lines": 646,
+        "matched_clean_lines": 615,
+        "matched_pages": 31,
+        "matched": {
+          "raw": {
+            "remainders": [
+              196,
+              205,
+              214
+            ],
+            "within_page_shuffle_mean_zero": 204.07,
+            "within_page_shuffle_p_ge": 0.795
+          },
+          "five": {
+            "remainders": [
+              213,
+              217,
+              185
+            ],
+            "within_page_shuffle_mean_zero": 205.211,
+            "within_page_shuffle_p_ge": 0.21
+          },
+          "extended": {
+            "remainders": [
+              209,
+              206,
+              200
+            ],
+            "within_page_shuffle_mean_zero": 204.854,
+            "within_page_shuffle_p_ge": 0.35
+          },
+          "extended with e": {
+            "remainders": [
+              213,
+              200,
+              202
+            ],
+            "within_page_shuffle_mean_zero": 205.256,
+            "within_page_shuffle_p_ge": 0.255
+          }
+        }
+      }
+    }
+  }
 }
