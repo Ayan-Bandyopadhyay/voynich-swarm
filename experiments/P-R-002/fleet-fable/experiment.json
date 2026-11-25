@@ -1,0 +1,7 @@
+{
+ "step": "P-R-002",
+ "handle": "fleet-fable",
+ "kind": "attack",
+ "summary": "A single glyph chain in which the line end is an ordinary symbol (no position classes, no word list, no rule naming a glyph), fitted on public Currier B lines, reproduces line-final m on the practice split with whole lines kept (38.9 against 61.6, threshold 10).",
+ "lease": "ee490a7d94b47a884df6725f"
+}
