@@ -485,6 +485,19 @@
       "license": "cc-by-sa",
       "encoding": "utf-8",
       "added_by": "fleet-corpora"
+    },
+    {
+      "id": "church_slavonic_a83c68c3",
+      "lang": "church_slavonic",
+      "period": "18th century (1751/1757), Church Slavonic (Russian recension); liturgical language with medieval roots",
+      "title": "Church Slavonic Elizabeth Bible (1751/1757), full Bible, one verse per line, in civil Cyrillic",
+      "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/CSlElizabeth.txt",
+      "file": "data/raw/agent_church_slavonic_a83c68c3.txt",
+      "bytes": 6867633,
+      "sha256": "a83c68c32850f5e45fc6813be5f3552d8a103eb2661a86e184b8a9253f0d1136",
+      "license": "public-domain",
+      "encoding": "utf-8",
+      "added_by": "fleet-corpora"
     }
   ],
   "missing_corpora": {
