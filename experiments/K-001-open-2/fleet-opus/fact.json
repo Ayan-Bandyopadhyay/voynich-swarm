@@ -1,0 +1,28 @@
+{
+  "title": "Strong edge-glyph dependence between adjacent words",
+  "statement": "In paragraph text, the mutual information between a word's last glyph and the next word's first glyph is at least 0.15 bits and exceeds the within-page permutation null. On the practice evaluation pages (6,076 tokens) the manuscript scores 0.230 with a singleton-type share of 0.711; at the same shape the pinned generators score: self-citation 0.110 (singletons 0.699), table cipher 0.048 (0.262), table-and-grille 0.039 (0.812), and the manuscript with words shuffled within each page 0.043. None reproduces both the edge dependence and the singleton-rich vocabulary (K-001 open question 2).",
+  "source": "Rozanova and Temerev 2026 (K-001) report strong shuffle-corrected edge-glyph dependence; threshold set on the practice training pages (ZL 0.210, Takahashi 0.192), below both, not on evaluation pages.",
+  "spec": {
+    "select": {
+      "unit": [
+        "P"
+      ],
+      "certain": true
+    },
+    "statistic": {
+      "edge_mi": true
+    },
+    "compare": [
+      {
+        "op": ">=",
+        "value": 0.15
+      },
+      {
+        "null": "shuffle_within_page",
+        "direction": "greater",
+        "perms": 199,
+        "p": 0.01
+      }
+    ]
+  }
+}
