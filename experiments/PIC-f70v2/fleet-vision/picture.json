@@ -1,0 +1,499 @@
+{
+ "folio": "f70v2",
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006200",
+ "blind": true,
+ "statement": "Circular diagram on canvas 1006200 (70v, part): in the centre two scaled fish one above the other (upper facing left, lower facing right with a blue water line under it and a short word in another script between them), with an eight-pointed star above and one below. Around the centre a thick ring of hatched blocks, then an inner ring of 10 nude women, most standing in tubs washed green, and an outer ring of 19 women, each in a patterned tub (dotted, striped, wavy, scaled, circles) or wrapped in a striped cloth, six of them with blue caps on the right-hand side; every figure holds or is tied to a star. The transcription's label lines fall in blocks of 19 (f70v2.2-20), 10 (22-31) and 1 (33), matching the outer ring, the inner ring and the centre. Each figure carries its ring's block as label_group; which line within a block belongs to which figure cannot be fixed from line ids without reading the words, so those labels are null. The single centre line f70v2.33 is given to the upper centre star, beside which the only Voynich word in the centre is written. Clock positions are from the panel centre, 12 = top of the scan.",
+ "objects": [
+  {
+   "id": "o1",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "12",
+    "clothing": "nude above the container",
+    "container": "tub",
+    "container_pattern": "dotted",
+    "headwear": "none",
+    "star": "attached",
+    "label_group": "f70v2.2-20"
+   },
+   "label": null
+  },
+  {
+   "id": "o2",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "1",
+    "clothing": "nude above the container",
+    "container": "tub",
+    "container_pattern": "vertical strokes",
+    "headwear": "blue cap",
+    "star": "attached",
+    "label_group": "f70v2.2-20"
+   },
+   "label": null
+  },
+  {
+   "id": "o3",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "1",
+    "clothing": "nude above the container",
+    "container": "tub",
+    "container_pattern": "dotted",
+    "headwear": "none",
+    "star": "attached",
+    "label_group": "f70v2.2-20"
+   },
+   "label": null
+  },
+  {
+   "id": "o4",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "2",
+    "clothing": "nude above the container",
+    "container": "tub",
+    "container_pattern": "wavy",
+    "headwear": "blue cap",
+    "star": "attached",
+    "label_group": "f70v2.2-20"
+   },
+   "label": null
+  },
+  {
+   "id": "o5",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "2",
+    "clothing": "nude above the container",
+    "container": "wrap",
+    "container_pattern": "striped",
+    "headwear": "blue cap",
+    "star": "attached",
+    "label_group": "f70v2.2-20"
+   },
+   "label": null
+  },
+  {
+   "id": "o6",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "3",
+    "clothing": "nude above the container",
+    "container": "wrap",
+    "container_pattern": "striped",
+    "headwear": "blue cap",
+    "star": "attached",
+    "label_group": "f70v2.2-20"
+   },
+   "label": null
+  },
+  {
+   "id": "o7",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "3",
+    "clothing": "nude above the container",
+    "container": "tub",
+    "container_pattern": "striped",
+    "headwear": "blue cap",
+    "star": "attached",
+    "label_group": "f70v2.2-20"
+   },
+   "label": null
+  },
+  {
+   "id": "o8",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "4",
+    "clothing": "nude above the container",
+    "container": "tub",
+    "container_pattern": "small circles",
+    "headwear": "blue cap",
+    "star": "attached",
+    "label_group": "f70v2.2-20"
+   },
+   "label": null
+  },
+  {
+   "id": "o9",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "5",
+    "clothing": "nude above the container",
+    "container": "wrap",
+    "container_pattern": "striped",
+    "headwear": "none",
+    "star": "attached",
+    "label_group": "f70v2.2-20"
+   },
+   "label": null
+  },
+  {
+   "id": "o10",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "5",
+    "clothing": "nude above the container",
+    "container": "tub",
+    "container_pattern": "dotted",
+    "headwear": "none",
+    "star": "attached",
+    "label_group": "f70v2.2-20"
+   },
+   "label": null
+  },
+  {
+   "id": "o11",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "6",
+    "clothing": "nude above the container",
+    "container": "tub",
+    "container_pattern": "dotted",
+    "headwear": "none",
+    "star": "attached",
+    "label_group": "f70v2.2-20"
+   },
+   "label": null
+  },
+  {
+   "id": "o12",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "7",
+    "clothing": "nude above the container",
+    "container": "tub",
+    "container_pattern": "checked",
+    "headwear": "none",
+    "star": "attached",
+    "label_group": "f70v2.2-20"
+   },
+   "label": null
+  },
+  {
+   "id": "o13",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "8",
+    "clothing": "nude above the container",
+    "container": "tub",
+    "container_pattern": "wavy",
+    "headwear": "none",
+    "star": "attached",
+    "label_group": "f70v2.2-20"
+   },
+   "label": null
+  },
+  {
+   "id": "o14",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "8",
+    "clothing": "nude above the container",
+    "container": "tub",
+    "container_pattern": "vertical bars",
+    "headwear": "none",
+    "star": "attached",
+    "label_group": "f70v2.2-20"
+   },
+   "label": null
+  },
+  {
+   "id": "o15",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "9",
+    "clothing": "nude above the container",
+    "container": "tub",
+    "container_pattern": "vertical strokes",
+    "headwear": "none",
+    "star": "attached",
+    "label_group": "f70v2.2-20"
+   },
+   "label": null
+  },
+  {
+   "id": "o16",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "10",
+    "clothing": "nude above the container",
+    "container": "tub",
+    "container_pattern": "striped band",
+    "headwear": "none",
+    "star": "attached",
+    "label_group": "f70v2.2-20"
+   },
+   "label": null
+  },
+  {
+   "id": "o17",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "11",
+    "clothing": "nude above the container",
+    "container": "tub",
+    "container_pattern": "scales",
+    "headwear": "none",
+    "star": "attached",
+    "label_group": "f70v2.2-20"
+   },
+   "label": null
+  },
+  {
+   "id": "o18",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "11",
+    "clothing": "nude above the container",
+    "container": "tub",
+    "container_pattern": "dotted",
+    "headwear": "none",
+    "star": "attached",
+    "label_group": "f70v2.2-20"
+   },
+   "label": null
+  },
+  {
+   "id": "o19",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "clock": "12",
+    "clothing": "nude above the container",
+    "container": "tub",
+    "container_pattern": "vertical strokes",
+    "headwear": "none",
+    "star": "attached",
+    "label_group": "f70v2.2-20"
+   },
+   "label": null
+  },
+  {
+   "id": "i1",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock": "12",
+    "clothing": "nude",
+    "container": "tub",
+    "container_colour": "uncoloured",
+    "headwear": "none",
+    "star": "attached",
+    "label_group": "f70v2.22-31"
+   },
+   "label": null
+  },
+  {
+   "id": "i2",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock": "1",
+    "clothing": "nude",
+    "container": "tub",
+    "container_colour": "green",
+    "headwear": "none",
+    "star": "attached",
+    "label_group": "f70v2.22-31"
+   },
+   "label": null
+  },
+  {
+   "id": "i3",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock": "3",
+    "clothing": "nude",
+    "container": "tub",
+    "container_colour": "green",
+    "headwear": "none",
+    "star": "attached",
+    "label_group": "f70v2.22-31"
+   },
+   "label": null
+  },
+  {
+   "id": "i4",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock": "4",
+    "clothing": "nude",
+    "container": "tub",
+    "container_colour": "green",
+    "headwear": "none",
+    "star": "attached",
+    "label_group": "f70v2.22-31"
+   },
+   "label": null
+  },
+  {
+   "id": "i5",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock": "5",
+    "clothing": "nude",
+    "container": "tub",
+    "container_colour": "green",
+    "headwear": "none",
+    "star": "attached",
+    "label_group": "f70v2.22-31"
+   },
+   "label": null
+  },
+  {
+   "id": "i6",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock": "6",
+    "clothing": "nude",
+    "container": "tub",
+    "container_colour": "green",
+    "headwear": "none",
+    "star": "attached",
+    "label_group": "f70v2.22-31"
+   },
+   "label": null
+  },
+  {
+   "id": "i7",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock": "7",
+    "clothing": "nude",
+    "container": "tub",
+    "container_colour": "green",
+    "headwear": "none",
+    "star": "attached",
+    "label_group": "f70v2.22-31"
+   },
+   "label": null
+  },
+  {
+   "id": "i8",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock": "9",
+    "clothing": "nude",
+    "container": "tub",
+    "container_colour": "green",
+    "headwear": "none",
+    "star": "attached",
+    "label_group": "f70v2.22-31"
+   },
+   "label": null
+  },
+  {
+   "id": "i9",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock": "10",
+    "clothing": "nude",
+    "container": "unclear",
+    "container_colour": "unclear",
+    "headwear": "none",
+    "star": "attached",
+    "label_group": "f70v2.22-31"
+   },
+   "label": null
+  },
+  {
+   "id": "i10",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "clock": "11",
+    "clothing": "nude",
+    "container": "tub",
+    "container_colour": "green",
+    "headwear": "none",
+    "star": "attached",
+    "label_group": "f70v2.22-31"
+   },
+   "label": null
+  },
+  {
+   "id": "fish_upper",
+   "kind": "animal",
+   "features": {
+    "ring": "centre",
+    "body": "fish, scaled",
+    "facing": "left",
+    "colour": "uncoloured",
+    "count": "1"
+   },
+   "label": null
+  },
+  {
+   "id": "fish_lower",
+   "kind": "animal",
+   "features": {
+    "ring": "centre",
+    "body": "fish, scaled",
+    "facing": "right",
+    "colour": "uncoloured with blue on fins",
+    "note": "a blue arc (water line) runs under it; a short word in a non-Voynich script is written between the two fish (not read)",
+    "count": "1"
+   },
+   "label": null
+  },
+  {
+   "id": "star_centre_top",
+   "kind": "star",
+   "features": {
+    "ring": "centre",
+    "points": "8",
+    "colour": "ochre centre",
+    "position": "above the fish"
+   },
+   "label": "f70v2.33"
+  },
+  {
+   "id": "star_centre_bottom",
+   "kind": "star",
+   "features": {
+    "ring": "centre",
+    "points": "8",
+    "colour": "ochre centre",
+    "position": "below the fish"
+   },
+   "label": null
+  },
+  {
+   "id": "band",
+   "kind": "diagram",
+   "features": {
+    "shape": "thick ring of hatched blocks (like a wall or rim) between the centre and the inner ring of figures",
+    "colour": "ink"
+   },
+   "label": null
+  }
+ ]
+}
