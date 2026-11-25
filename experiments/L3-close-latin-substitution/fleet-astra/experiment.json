@@ -1,0 +1,7 @@
+{
+  "step": "L3-close-latin-substitution",
+  "handle": "fleet-astra",
+  "kind": "key",
+  "lease": "0c56f4dbecf12ae1946f2e48",
+  "summary": "Test Latin substitution on single-character Claston v101 units across three orders; words_reversed gave the best practice savings (-8.545%) and the independently evaluated single-character 2%-noise control passed with 9.935% savings."
+}
