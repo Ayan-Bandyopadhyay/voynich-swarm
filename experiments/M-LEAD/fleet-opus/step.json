@@ -1,18 +1,16 @@
 {
- "title": "Dispatch: 21 picture annotations and none AGREED; seats agree on what is drawn (kind 90%) but not on how they word it (features 35%): close the vocabulary before annotating more",
- "statement": "The route to evidence for language now runs through the drawings (text statistics are reproduced by a one-table reuse chain, P-G-007, P-G-009). State: 21 blind picture annotations of six folios are on the record (V-001..V-021) and none is AGREED; the best is f70v2 at 0.747, and f66r, f72r3 and f99r are DISAGREE. Measured over every pair of seats on the same folio, using the scorer's own pairing (vs/registry.py picture_agreement): kind agrees on 537 of 596 paired objects (0.90); shared feature values agree on 688 of 1977 (0.35); on average only 0.29 of the feature keys two seats used are in common; and of label line ids used by either seat, 212 of 535 are used by both. So seats see the same objects and largely disagree on wording, which no amount of re-annotation fixes. Next, in order: (1) a code: change adding a closed feature vocabulary to picture.json (per kind, a short list of keys with enumerated values; free text kept in a notes field that agreement ignores) and pairing objects by position (ring and angle, or reading order) rather than list order; (2) re-annotate the folios with it (the PIC-<folio> steps); (3) only then run the picture-text statistics (branch code-P-L4-013-fleet-opus adds them to vs/dsl.py; they refuse until AGREED objects exist). Label assignment on zodiac rings stays a blind-annotation limit: ids carry no position, so labels should be joined by a position map made by a non-annotator.",
+ "title": "Dispatch: annotation is done for now; the picture route waits on a vocabulary review, the picture-text statistics review and a label-position map",
+ "statement": "Evidence for language has to come from outside the text's statistics (P-G-007, P-G-009), and the drawings are the route. Status: every PIC folio offered so far (f66r, f67r2, f68r1, f70v2, f72r3, f72v1, f72v2, f72v3, f73r, f73v, f75v, f99r) has blind annotations from three or more seats on the record or on branches, and none is AGREED. Across the 21 scored pairs, seats agree on object kind 90% of the time but on free-text feature values only 35%, so the agreement measure, not the annotators, is the bottleneck. Three things now unblock the route, and none of them is more annotation: (1) review the closed feature vocabulary and ring convention (branch M-L4-picture-vocab-fleet-fable) and re-annotate with it; (2) review the picture-text statistics (branch code-P-L4-013-fleet-opus: picture_label with same_object_label, feature_label_share, label_in_page_text, null shuffle_picture_labels, refusing below 20 AGREED labelled objects); (3) take the label-position-map step (M-L4, fleet-opus): a seat that did not annotate a folio records where each label line sits, so ring labels can be joined to figures by position. Two folios already give labels tied without a position map: f75v (ten tags on drawn lines) and f73r/f73v (four figures in a row above the circle, one word each, ids f73x.1-.4). Until AGREED objects exist, the picture-text facts cannot be registered.",
  "program": "LEAD",
- "check": "None: a dispatch. Numbers computed from registry/items.jsonl on origin/main (picture items V-001..V-021) with the pairing in vs/registry.py picture_agreement.",
+ "check": "None: a dispatch. Sources: registry picture items V-001..V-021; branches M-L4-picture-vocab-fleet-fable, code-P-L4-013-fleet-opus, M-L4-fleet-opus; PIC-f73r and PIC-f73v annotations.",
  "on_path": false,
  "hard": false,
  "top": [
   "P-L4-013",
-  "PIC-f72v1",
+  "M-L4",
   "PIC-f73r",
   "PIC-f73v",
-  "PIC-f72v2",
-  "PIC-f72v3",
-  "PIC-f68r1",
+  "PIC-f75v",
   "P-L4-006",
   "P-L4-008"
  ]
