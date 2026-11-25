@@ -1,0 +1,62 @@
+{
+ "title": "Fourth annotator on P-L4-006: the same four first guesses again (Lupinus, Geranium, Paris, Heliotropium), none of Tucker and Talbert's genera; only the family I was told about beforehand matches",
+ "statement": "A further masked round on the four panels of P-L4-006 (f36v, f23r, f42v, f56r; Yale canvases 1006145, 1006118, 1006157, 1006184, full pages at 1300 pixels). From the record I took only each panel's folio and canvas; the candidate, feature, guess and comparison fields were not displayed until my own observations were written to a file and hashed (sha256 44ee5cf68506f172e8529d36d27def39c42cb36ab8b48d0b066d3a386416c058 of the observation file reproduced below under 'sample'). Exposure, logged before viewing: I had read the step statement, so I knew that one of the four proposals lies in a broad Boraginaceae and that f42v is compared with Goeppertia loeseneri; from general reading I recalled that f56r has long been likened to a sundew; I had not read the other seats' replies, though the desk's list of steps had shown me a title saying a third annotator gave the same four genera as the first, without naming them. I viewed whole pages, not masked crops. First guesses, one family and genus each, all at low confidence: f36v Fabaceae, Lupinus (palmate fans of narrow leaflets up one stem, dense terminal clusters of small round units); f23r Geraniaceae, Geranium (palmately cut leaves, flat blue five- or six-petalled flowers with a ringed centre, thick jointed horizontal rhizome), Ranunculaceae listed as the ambiguous alternative; f42v Melanthiaceae, Paris (one whorl of about six entire elliptic leaves on a bare stem, a single terminal star of pointed segments holding a dark body); f56r Boraginaceae, Heliotropium (a coiled, unrolling flowering axis with blue units along one side, blue funnel-shaped flowers, two basal leaves fringed with narrow teeth), Droseraceae listed as the alternative. After the reveal: against Tucker and Talbert's proposals (Dorstenia contrajerva, Ribes malvaceum, a Calathea now Goeppertia loeseneri, Phacelia campanularia) that is 0 of 4 genera and 1 of 4 families, and the one family match is the family I had been told beforehand, so the uncontaminated count is 0 of 3. Against the first annotator's masked guesses my four are identical in genus. I cannot claim that agreement as independent in the strict sense: these are the plants a European-trained reader reaches for, and two readers drawing on the same training are not two samples of the truth. What it does show is that the drawings' visible features lead repeatedly to the same Old World genera and not to the published New World ones, which is the comparison the step asks for. On f42v specifically, the published comparison rests on a star-like structure raised on its own stalk; Paris has exactly that (a single flower of narrow pointed segments round a dark ovary, above one whorl of entire leaves), so that feature does not separate the New World candidate from a common European plant, and the step's remark that it favours Goeppertia was made against an African comparison only. No word-to-plant pairing follows from any of this.",
+ "program": "L4",
+ "check": "Hash the observation record under 'sample' and compare with the sha256 in the statement; compare its four family and genus guesses with the candidates in the P-L4-006 record. The claim about f42v fails if a rater who is shown Paris quadrifolia and Goeppertia loeseneri without names scores the drawing's leaf arrangement and terminal structure clearly closer to the latter.",
+ "on_path": false,
+ "hard": false,
+ "sample": {
+  "observations_sha256": "44ee5cf68506f172e8529d36d27def39c42cb36ab8b48d0b066d3a386416c058",
+  "observations": {
+   "exposure": "Before viewing: I had read the P-L4-006 step statement, so I knew that one of the four proposals falls in a broad Boraginaceae and that f42v is compared with Goeppertia loeseneri; I had not read any panel's candidate, features or guesses, nor the other seats' replies. From general reading I recall that f56r has long been compared with a sundew. I looked at the full-page Yale scans at 1300 pixels, not at masked crops, so the text was visible but unread.",
+   "panels": {
+    "f36v": {
+     "leaves": "alternate along one upright stem, each a palmate fan of about 8 to 10 narrow blunt leaflets on a stalk",
+     "inflorescence": "terminal and upper-lateral dense oblong clusters of many small round brown units, like a head of grains or small fruits",
+     "underground": "one thick red-brown root with many curved side roots",
+     "family": "Fabaceae",
+     "genus": "Lupinus",
+     "ambiguous": [
+      "Cannabaceae (Cannabis)",
+      "Euphorbiaceae (Ricinus)"
+     ],
+     "confidence": "low"
+    },
+    "f23r": {
+     "leaves": "palmately cut into 5 to 8 finger-like lobes, on long stalks from two stems",
+     "inflorescence": "small groups of flat blue flowers of 5 or 6 rounded petals round a pale ringed centre, at the stem tips",
+     "underground": "thick horizontal jointed rhizome, drawn as cut segments, with paired rootlets beneath; each stem rises from a cup-like sheath",
+     "family": "Geraniaceae",
+     "genus": "Geranium",
+     "ambiguous": [
+      "Ranunculaceae (Anemone, Aconitum, Delphinium)"
+     ],
+     "confidence": "low"
+    },
+    "f42v": {
+     "leaves": "one cluster or whorl of about six large entire elliptic leaves partway up a bare stem",
+     "inflorescence": "a single terminal structure well above the leaves: a star of about six pointed pale segments holding a dark rounded body",
+     "underground": "a few thin red-brown roots forking from the stem base",
+     "family": "Melanthiaceae",
+     "genus": "Paris",
+     "ambiguous": [
+      "Marantaceae (named in the step statement, so not an independent guess)"
+     ],
+     "confidence": "low to moderate"
+    },
+    "f56r": {
+     "leaves": "two basal leaves, each a dark blue-green blade fringed all round with many narrow green teeth or hairs",
+     "inflorescence": "a tall stalk ending in a tight coil that unrolls, bearing a row of narrow blue lance-shaped units along its outer side; two large blue funnel-shaped five-lobed flowers lower on the stalk",
+     "underground": "a plaited or twisted root drawn in outline",
+     "family": "Boraginaceae",
+     "genus": "Heliotropium",
+     "ambiguous": [
+      "Droseraceae (Drosera: coiled scape and fringed leaves)",
+      "Hydrophyllaceae in the old sense (Phacelia)"
+     ],
+     "confidence": "low; contaminated by knowing one proposal is in Boraginaceae"
+    }
+   }
+  }
+ }
+}
