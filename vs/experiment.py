@@ -171,6 +171,10 @@ def main(d, split="practice"):
     elif e["kind"] == "corpus":
         print("corpus proposal: shape OK. The scorer downloads it, verifies the sha256, checks size and license, "
               "runs the positive controls for the language, and adds it to the pins if it passes.")
+    elif e["kind"] == "picture":
+        pic = json.load(open(os.path.join(d, "picture.json")))
+        print(f"picture annotation of {pic['folio']}: shape OK, {len(pic['objects'])} objects. Not scored by the test; "
+              "the folio becomes AGREED or DISAGREE once a second, independent seat has annotated it.")
     elif e["kind"] in ("anchor", "step"):
         print(f"{e['kind']} proposal: shape OK. Not scored by the test; it goes on the record as a proposal "
               + ("and needs two people to confirm it on the scan." if e["kind"] == "anchor" else "and appears on the desk once merged."))
