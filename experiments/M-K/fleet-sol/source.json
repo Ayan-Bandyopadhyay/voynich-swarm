@@ -1,21 +1,20 @@
 {
-  "title": "Voynich Manuscript v3.1 Confirmatory Self-Citation Test Results",
-  "authors": "Amy Laird",
-  "year": 2026,
-  "url": "https://zenodo.org/records/23073034",
-  "doi": "10.5281/zenodo.23073034",
-  "summary": "This public results release reports a preregistered test of the Timm–Schinner generator. The study compares simulations against four manuscript statistics covering CHEDY and QOK adjacency, combined family abundance and the frequency of close neighbors of common words.",
+  "title": "Gibberish after all? Voynichese is statistically similar to human-produced samples of meaningless text",
+  "authors": "Daniel E. Gaskell and Claire L. Bowern",
+  "year": 2022,
+  "url": "https://ceur-ws.org/Vol-3313/paper4.pdf",
+  "summary": "The authors compare short handwritten pseudotexts from 42 volunteers with several Voynich transliterations and a broader corpus of meaningful text. This makes structured human pseudotext available as a comparison for manuscript statistics.",
   "established": [
-    "Across 300 preregistered configurations and three fixed seeds per configuration, no configuration matched more than two of the four target metrics. Sixteen matched two, 183 matched one, and 101 matched zero.",
-    "The preregistered sensitivity analyses using wider reference bands and interior token positions also produced no complete matches. The result is scoped to the registered configuration sampling distribution."
+    "Across samples, the human pseudotexts covered Voynich-like values for almost all tested low-level measures, including some commonly used as indicators of natural language.",
+    "The main uncovered Voynich feature was the magnitude of glyph-position bias within words. The volunteers wrote in lowercase Latin characters, limiting tests of position-specific visual forms.",
+    "The classifier trained on these data put most Voynich renderings closer to the human pseudotext samples. The authors limit the inference to the corpus and features studied."
   ],
   "open": [
     {
-      "question": "Can a related copying mechanism outside the sampled subspace match the four registered family and neighbor metrics simultaneously under a fresh, fixed evaluation?",
+      "question": "Can human-produced pseudotext over a longer writing session reproduce manuscript-scale clustering of vocabulary across pages and sections?",
       "front": "G",
-      "check": "Declare the rule and sampling plan first, then evaluate all four statistics on fixed seeds and report how often they fall inside the registered bands jointly.",
+      "check": "Collect independent long samples or test a frozen model motivated by the documented volunteer strategies. Match lengths and layout and compare local clustering and cross-section drift jointly.",
       "hard": true
     }
-  ],
-  "results_manifest_url": "https://zenodo.org/records/23073034/files/RESULTS_MANIFEST.txt?download=1"
+  ]
 }
