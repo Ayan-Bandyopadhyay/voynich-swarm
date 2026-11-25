@@ -1,0 +1,61 @@
+{
+ "id": "grid-nahuatl-substitution-cell",
+ "family": "substitution",
+ "segmentation": "eva-basic",
+ "target": {
+  "language": "nahuatl",
+  "period": "grid search"
+ },
+ "key": {
+  "map": {
+   "o": "i",
+   "e": "i",
+   "y": "i",
+   "a": "i",
+   "d": "l",
+   "i": "t",
+   "ch": "t",
+   "l": "n",
+   "k": "t",
+   "r": "n",
+   "n": "a",
+   "t": "t",
+   "q": "m",
+   "sh": "t",
+   "s": "n",
+   "m": "n",
+   "p": "l",
+   "cth": "l",
+   "ckh": "l",
+   "f": "t",
+   "h": "l",
+   "cph": "t",
+   "?": "i",
+   "c": "i",
+   "*": "i",
+   "g": "i",
+   "cfh": "t",
+   "x": "i",
+   "v": "n",
+   "j": "l",
+   "b": "i",
+   "z": "l",
+   "u": "o"
+  }
+ },
+ "search": {
+  "budget": {
+   "restarts": 4,
+   "iterations": 6000,
+   "seed": 1404,
+   "bpe_merges": 30,
+   "verbose_segmentations": [
+    "bpe-greedy",
+    "fixed-2"
+   ],
+   "verbose_min_unit_share": 0.0005,
+   "substitution_group_swap": 0.2
+  },
+  "objective_bits": 587120.7
+ }
+}

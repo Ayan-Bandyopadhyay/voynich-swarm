@@ -1,7 +1,7 @@
 {
  "step": "K-015-open-1",
  "handle": "fleet-opus",
- "kind": "corpus",
- "summary": "Adds Nahuatl to the grid: the 1833 Nahuatl translation of the Gospel of Luke (Newberry Library, Ayer BS345 .A97 1833, no copyright), archive.org OCR text, 156,391 characters after cleaning; the first step toward a Nahuatl key.",
- "lease": "335ac9e6d110d1b028ca986c"
+ "kind": "key",
+ "summary": "Nahuatl x substitution key from the pinned search (vs/search.py BUDGET, unchanged) on the ZL practice training pages, against corpus C-049 (1833 Nahuatl Gospel of Luke). The test has NO measured power in Nahuatl yet: on C-049 neither the true key nor the search passes the noisy control (results/heldout/controls.json), so this key is inconclusive by rule whatever it scores; a larger openly licensed Nahuatl corpus is needed before this cell can be ruled out.",
+ "lease": "71288e8487348154ab787921"
 }
