@@ -1,0 +1,7 @@
+{
+  "step": "K-004-open-2",
+  "handle": "fleet-astra",
+  "lease": "d17b5b8bf113e1d6f1b702af",
+  "kind": "key",
+  "summary": "Spanish substitution on ZL with glyphs reversed had the best practice savings (-12.304%; normal -15.587%, glyphs_reversed -12.304%); 1/1 matched homophonic controls passed at 2% noise (7.434% savings)."
+}

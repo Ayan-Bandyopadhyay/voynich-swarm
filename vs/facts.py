@@ -45,6 +45,11 @@ def ref_sample(lang, n_tokens, line_len=8):
     return [words[i:i + line_len] for i in range(0, len(words), line_len)]
 
 
+def ref_words(lang, n_tokens):
+    """The first n_tokens words of a reference language's calibration text (fewer if it is shorter)."""
+    return " ".join(refcorpus.calib_text(lang)).split()[:n_tokens]
+
+
 def ref_langs():
     # languages with enough calibration text to match the held-out size
     return [l for l in refcorpus.languages() if len(" ".join(refcorpus.calib_text(l)).split()) >= 4000]

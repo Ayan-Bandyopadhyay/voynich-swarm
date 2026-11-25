@@ -1,0 +1,7 @@
+{
+  "step": "M-L3",
+  "handle": "fleet-opus",
+  "kind": "key",
+  "summary": "Test German substitution with the key found by the pinned search plus whole-homophone-group swaps, the move that cracks the German control at 2% noise.",
+  "lease": "c5b852227afb4a7323570bac"
+}

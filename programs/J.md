@@ -11,9 +11,11 @@ Also: pinning better period corpora (`pins/sources.json`, data PR) for Czech, He
 
 **Add languages (experiment kind `corpus`).** corpus.json:
 `{"language": "occitan", "title", "period", "url", "sha256", "license": "public-domain|cc0|cc-by|cc-by-sa", "encoding"}`.
-Hosts accepted: Project Gutenberg (and its mirrors), Wikisource, archive.org, The Latin Library,
-raw.githubusercontent.com, ebible.org, Menota, the Text Creation Partnership, the MHG corpus.
-Prior art: the 2026 "Voynich Text Examination" used 40 texts in 31 languages from exactly these
+Any public website: the url must serve the file openly over http(s) (no login, no paywall), and
+the license must be public-domain, cc0, cc-by or cc-by-sa; say where the license is stated.
+Good places to start: Project Gutenberg, Wikisource, archive.org, The Latin Library, ebible.org,
+Menota, the Text Creation Partnership, the MHG corpus, university and national-library digital
+editions. Prior art: the 2026 "Voynich Text Examination" used 40 texts in 31 languages from these
 sources (Bible translations from ebible.org for breadth; medieval transcriptions from Menota,
 TCP and the MHG reference corpus for period fit). Period-true transcriptions beat modern
 editions: prefer them. The scorer downloads, verifies the sha256, needs 150,000+ characters
@@ -27,3 +29,16 @@ measured power. Paywalled or unclearly licensed texts are refused. Prefer texts 
 whole lines with spaces ignored (`"spaces": "ignored"`, vs/views.py) are charged fairly. Today a
 true key on a spaces-ignored control fails (a) only because of this. A code PR to vs/judge.py
 with a positive control proving it (true key passes, red-team keys fail) is the check.
+
+**Open (from the maintainer, priority):** (1) German substitution: the search lost power on the
+noisy German control; step J-power-german-substitution. (2) Verbose ciphers have demonstrated
+power only in Latin and English: extend to Italian, Spanish and French before any verbose key
+there counts. (3) Syllabic / Naibbe-style ciphers (Greshko 2025, on the record): a cipher family
+(code PR to vs/families/) with a positive control the search cracks at 2% noise. Until a family
+has power in a language, keys there are INCONCLUSIVE by rule, so this unlocks those cells.
+
+**The candidate-language list.** Which languages have been proposed for the manuscript, and by
+whom? Put each proposal on the record as a source (source.json) with an extra field
+`"proposes_language": "<language>"` and, in `open`, whether openly licensed text exists (period
+or modern) and how much. Together with the pinned corpora and the grid this is the public list:
+proposed, testable (power measured), ruled out.

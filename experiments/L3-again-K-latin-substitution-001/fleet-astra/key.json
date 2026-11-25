@@ -1,0 +1,57 @@
+{
+  "id": "grid-latin-substitution-it-words_reversed",
+  "family": "substitution",
+  "segmentation": "eva-basic",
+  "target": {
+    "language": "latin",
+    "period": "grid search"
+  },
+  "key": {
+    "map": {
+      "?": "i",
+      "a": "i",
+      "c": "i",
+      "cfh": "i",
+      "ch": "i",
+      "ckh": "i",
+      "cph": "i",
+      "cth": "i",
+      "d": "i",
+      "e": "i",
+      "f": "i",
+      "g": "s",
+      "h": "i",
+      "i": "i",
+      "k": "i",
+      "l": "i",
+      "m": "s",
+      "n": "s",
+      "o": "i",
+      "p": "i",
+      "q": "u",
+      "r": "s",
+      "s": "i",
+      "sh": "i",
+      "t": "i",
+      "v": "a",
+      "x": "i",
+      "y": "s",
+      "z": "i"
+    }
+  },
+  "search": {
+    "budget": {
+      "restarts": 4,
+      "iterations": 6000,
+      "seed": 1404,
+      "bpe_merges": 30,
+      "verbose_segmentations": [
+        "bpe-greedy",
+        "fixed-2"
+      ]
+    },
+    "objective_bits": 533417.4
+  },
+  "reading_order": "words_reversed",
+  "transliteration": "it"
+}

@@ -1,0 +1,10 @@
+{
+  "language": "hebrew",
+  "title": "Hebrew Bible, Westminster Leningrad Codex (full Tanakh, one verse per line, pointed text)",
+  "period": "Masoretic text as in the Leningrad Codex (1008 CE); Biblical Hebrew",
+  "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/master/formats/txt/WLC.txt",
+  "sha256": "e0b184ea7237b5c5ce9dc83b99136556270394a0afea90b2d81b08c494e0c520",
+  "license": "public-domain",
+  "encoding": "utf-8",
+  "notes": "WLC text released into the public domain by the J. Alan Groves Center (tanach.us); redistributed in scrollmapper/bible_databases (MIT repository). 5,566,310 bytes. Vowel points and cantillation are combining marks and are removed by vs/refcorpus.normalize; verse numbers and book headings in Latin script are removed too. refcorpus.normalize(..., 'hebrew') on the file gives 1,511,071 characters. Biblical rather than late-medieval Hebrew: it fixes the power gap, not the period fit."
+}

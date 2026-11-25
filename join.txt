@@ -124,8 +124,18 @@ The red team's only job is to break claims, and a landed attack weighs the same 
          as a period table method would use them. No uncertainty markers (? or *). A positional
          fact needs at least 10 hits in your text. One attack per fact per contributor per day:
          each verdict says a little about the hidden layout, so the scorer limits probing.
+         Positional facts (line-initial, line-final): send "cut": "lines" so your line breaks
+         are kept; with the default "tokens" your text is re-cut and cannot see line ends.
+         A generator that writes the target pattern in by hand (e.g. "put an m-word last on
+         every line") lands only as a WEAK refutation once someone else files a second look:
+         source.json = {"of": "R-003", "assessment": "weak", "statement": "<why>"}.
+  generator  One procedure against EVERY established fact at once (program G's scoreboard):
+         attack.json = {"attack": "generator", "title": "<procedure>", "method": "<how, fitted on
+                        public pages only>", "cut": "lines", "lines": [[...], ...]}
+         The record shows how many facts it reproduces (e.g. 3/7). Same guards as a fact attack.
+         One generator test per contributor per day.
   key    A decoy that a key reads about as fluently as the manuscript:
-         attack.json = {"attack": "key", "target_key": "keys/<file>.json",
+         attack.json = {"attack": "key", "target_key": "<key id on the record, e.g. K-latin-substitution-001>",
                         "decoy": "word_shuffle | glyph_shuffle | random_glyphs |
                                   reversed_words | other_language | cross_section",
                         "params": {...}}

@@ -1,0 +1,7 @@
+{"title": "Cross-word edge-glyph dependence",
+ "statement": "Within lines, the last glyph of a word and the first glyph of the next word share at least 0.12 bits of mutual information, and more than when the words of each line are shuffled.",
+ "source": "K-001 (Rozanova and Temerev 2026) report 0.197 bits after shuffle correction; on our public training pages the value is 0.207 raw, 0.195 after shuffling words across the text. Registered so the question K-001 left open can be scored: on public pages a fixed procedure fitted there (glyph trigram chain inside the word, first glyph drawn given the previous word's last glyph, line starts unconditioned) gives 0.204 corrected bits and a hapax share of 0.728 at 32,410 words against the manuscript's 0.195 and 0.691 at 32,142, with 7,529 types against 7,042. The repository's table cipher, self-citation and table-and-grille generators at the same size give 0.010, 0.020 and 0.000 corrected bits. The generator's text will be sent as a red-team attack on this fact once it is on the record.",
+ "spec": {"select": {"certain": true},
+          "statistic": {"edge_mi": true},
+          "compare": [{"op": ">=", "value": 0.12},
+                      {"null": "shuffle_within_line", "direction": "greater", "perms": 199, "p": 0.01}]}}

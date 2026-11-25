@@ -17,22 +17,52 @@ def _steps():
     return {s["id"]: s for s in json.load(open(fn))["steps"]} if os.path.exists(fn) else {}
 
 
-ALLOWED_HOSTS = ("gutenberg.pglaf.org", "www.gutenberg.org", "gutenberg.org", "mirrors.xmission.com",
-                 "wikisource.org", "archive.org", "www.thelatinlibrary.com", "raw.githubusercontent.com",
-                 "ebible.org", "menota.org", "quod.lib.umich.edu", "textcreationpartnership.org", "mhdbdb.sbg.ac.at")
+# Corpora may come from any public website. The license must be declared open (checked by the
+# validator, open to dissent on the record) and the file must be served publicly over http(s).
+# The scorer holds the season seed, so the download is fenced: http(s) only, public addresses
+# only (no loopback, private, link-local or cloud-metadata hosts, re-checked on every redirect),
+# no credentials in the url, a size cap, and the bytes are only ever treated as text.
 MAX_BYTES = 12 * 1024 * 1024
 MIN_CHARS = 150_000
+
+
+def _public_url(url):
+    """Refuse anything but a plain http(s) url on a public internet address."""
+    import ipaddress, socket, urllib.parse
+    u = urllib.parse.urlparse(url)
+    if u.scheme not in ("http", "https") or not u.hostname or u.username or u.password:
+        raise ValueError("corpus url must be a plain public http(s) url")
+    port = u.port or (443 if u.scheme == "https" else 80)
+    for info in socket.getaddrinfo(u.hostname, port, proto=socket.IPPROTO_TCP):
+        ip = ipaddress.ip_address(info[4][0])
+        if not ip.is_global or ip.is_multicast:
+            raise ValueError(f"corpus url resolves to a non-public address ({ip})")
+
+
+def _public_fetch(url, limit):
+    import urllib.request
+
+    class Checked(urllib.request.HTTPRedirectHandler):
+        def redirect_request(self, req, fp, code, msg, headers, newurl):
+            _public_url(newurl)
+            return super().redirect_request(req, fp, code, msg, headers, newurl)
+    _public_url(url)
+    opener = urllib.request.build_opener(Checked)
+    req = urllib.request.Request(url, headers={"User-Agent": "voynichswarm-scorer/1"})
+    with opener.open(req, timeout=120) as r:
+        return r.read(limit)
 
 
 def _score_corpus(c, e):
     """Download, verify, check, calibrate. Returns (item, ledger kind) or (None, refusal)."""
     import hashlib, urllib.request, urllib.parse
     from . import refcorpus, controls, judge, search
-    host = urllib.parse.urlparse(c["url"]).hostname or ""
-    if not any(host == h or host.endswith("." + h) for h in ALLOWED_HOSTS):
-        return None, {"verdict": "REFUSED", "errors": [f"host {host} not on the open-source list {ALLOWED_HOSTS}; propose adding it in a code PR"]}
-    req = urllib.request.Request(c["url"], headers={"User-Agent": "voynichswarm-scorer/1"})
-    raw = urllib.request.urlopen(req, timeout=120).read(MAX_BYTES + 1)
+    try:
+        raw = _public_fetch(c["url"], MAX_BYTES + 1)
+    except ValueError as ex:
+        return None, {"verdict": "REFUSED", "errors": [str(ex)]}
+    except Exception as ex:
+        return None, {"verdict": "REFUSED", "errors": [f"could not download the url ({str(ex)[:120]})"]}
     if len(raw) > MAX_BYTES:
         return None, {"verdict": "REFUSED", "errors": ["file larger than 12 MB"]}
     if hashlib.sha256(raw).hexdigest() != c["sha256"]:
@@ -100,7 +130,10 @@ def score(d, pr=None):
         robust = {}
         if "spec" in f:
             from . import dsl
-            r = dsl.evaluate(f["spec"], ev)
+            try:
+                r = dsl.evaluate(f["spec"], ev)
+            except dsl.SpecError as ex:   # e.g. the scope or selection is too small on the hidden pages
+                return {"verdict": "REFUSED", "errors": [f"spec: {ex}"]}
             det = dict(r["detail"], spec=f["spec"])
             # robustness: the claim must also hold on an independent transliteration (Takahashi)
             for t in ("it", "rf"):
@@ -154,15 +187,22 @@ def score(d, pr=None):
                 and i["provenance"]["added_by"] == _ow(e["handle"]) and str(i["provenance"].get("at", "")).startswith(day)
                 for i in registry.read()):
             return {"verdict": "REFUSED", "errors": ["one attack per fact per contributor per day (the hidden layout must not be probed)"]}
+        if spec.get("attack") == "generator" and any(
+                i["type"] == "attack" and i.get("target") == "*"
+                and i["provenance"]["added_by"] == _ow(e["handle"]) and str(i["provenance"].get("at", "")).startswith(day)
+                for i in registry.read()):
+            return {"verdict": "REFUSED", "errors": ["one generator test per contributor per day (each verdict carries a bit per fact about the hidden pages)"]}
         if spec.get("attack") == "key" and isinstance(spec.get("target_key"), str):
             spec["target_key"] = path(os.path.normpath(spec["target_key"]))
         if spec.get("attack") == "fact":
             spec["target_fact_item"] = registry.get(spec["target_fact"])
         r = redteam.run_attack(spec, "heldout")
         verdict = "SUCCEEDED" if r["success"] else "FAILED"
+        if spec["attack"] == "generator" and not r.get("refused"):
+            verdict = f"{r['reproduced']}/{r['of']}"
         typ = "audit" if spec["attack"] == "claim" else "attack"
         item = {"id": registry.next_id("A" if typ == "audit" else "R"), "type": typ,
-                "title": (spec.get("claimant") or f"{spec['attack']} attack on {r.get('target')}")[:160],
+                "title": (spec.get("claimant") or (f"Generator test: {spec.get('title') or 'a procedure'}, against every established fact" if spec["attack"] == "generator" else f"{spec['attack']} attack on {r.get('target')}"))[:160],
                 "statement": spec.get("method") or e.get("summary", ""), "verdict": verdict if typ == "attack" else ("FAIL" if r["success"] else "PASS"),
                 "value": None, "detail": {k: v for k, v in r.items() if k != "lines"}, "program": "R", "target": r.get("target")}
         kind = "attack_succeeded" if r["success"] else "attack_failed"
@@ -190,7 +230,14 @@ def score(d, pr=None):
         src = load("source.json")
         if src.get("of"):
             tgt = registry.get(src["of"])
-            if not tgt or tgt["type"] != "source":
+            if src.get("assessment") == "weak":
+                # a weak refutation: the attack's generator writes the target pattern in by hand
+                from .identity import owner as _ow2
+                if not tgt or tgt["type"] != "attack" or tgt["verdict"] != "SUCCEEDED":
+                    return {"verdict": "REFUSED", "errors": [f"{src['of']} is not a succeeded attack on the record"]}
+                if tgt["provenance"]["added_by"] == _ow2(e["handle"]):
+                    return {"verdict": "REFUSED", "errors": ["a second look must come from someone other than the attacker"]}
+            elif not tgt or tgt["type"] != "source":
                 return {"verdict": "REFUSED", "errors": [f"{src['of']} is not a source on the record"]}
             item = {"id": registry.next_id("Q"), "type": "source", "title": f"Second look at {src['of']}: {src['assessment'].upper()}",
                     "statement": src.get("statement", ""), "verdict": src["assessment"].upper(), "value": None,
@@ -226,7 +273,15 @@ def score(d, pr=None):
                 "check": st["check"], "on_path": bool(st.get("on_path")), "hard": bool(st.get("hard"))}
         kind = "step_proposed"
     item["provenance"] = prov
-    registry.add(item)
+    # snapshot of exactly what was submitted (the folder may be reused by later submissions)
+    item["submitted"] = {os.path.basename(f): json.load(open(f)) for f in files if f.endswith(".json")}
+    if item["type"] == "attack":
+        # hidden-page values would leak layout information; keep the outcome and the reason only
+        item["detail"] = {k: v for k, v in item["detail"].items() if k in ("attack", "target", "success", "why", "refused", "decoy", "shared_type_share", "cut", "reproduced", "of", "per_fact")}
+    try:
+        registry.add(item)
+    except SystemExit as ex:
+        return {"verdict": "REFUSED", "errors": [str(ex)]}
     rec = {"handle": e["handle"], "step": e["step"], "program": item["program"], "kind": kind, "on_path": on_path,
            "ref": pr or d, "item": item["id"], "summary": e.get("summary", "")[:200]}
     ledger.append(rec)

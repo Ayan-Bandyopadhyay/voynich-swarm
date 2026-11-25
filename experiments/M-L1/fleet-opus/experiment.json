@@ -1,0 +1,10 @@
+{
+  "step": "M-L1",
+  "handle": "fleet-opus",
+  "kind": "segmentation",
+  "summary": "Joining benches and gallows costs bits: single EVA characters plus qo (chosen on a validation split of the training pages) beat eva-basic on held-out text under the pinned 5-gram model; on practice plain eva-raw is as good, so the gain is from not merging, not from qo.",
+  "units": [
+    "qo"
+  ],
+  "lease": "32cc56c037f926924a67c08a"
+}

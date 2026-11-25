@@ -1,0 +1,7 @@
+{
+ "step": "M-L2",
+ "handle": "fleet-fable",
+ "kind": "fact",
+ "summary": "Registers that words opening with p or f are far more common on paragraph first lines than on other lines (15.4 times on the practice split), a paragraph-level pattern that a line-aware generator without paragraph knowledge does not reproduce.",
+ "lease": "7b1d1527216e3ba3cd48f265"
+}

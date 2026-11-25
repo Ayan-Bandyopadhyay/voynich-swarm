@@ -24,7 +24,7 @@ language and period, and a glyph segmentation. Given training pages T and evalua
 
 All parameters are pinned below for season S1. A change to any of them is a new season.
 """
-import hashlib, json, lzma, math, os, platform, random, subprocess, sys
+import hashlib, json, lzma, math, os, platform, random, re, subprocess, sys
 from collections import Counter, defaultdict
 from functools import lru_cache
 from . import path, SEASON, ivtff, lm, refcorpus, families
@@ -261,6 +261,55 @@ def preimage_bits(units, plain, m, ufreq):
     return bits
 
 
+def unit_output_keep_spaces(v, lang):
+    """A unit's plaintext output, normalized like the decoder's output but keeping the spaces it
+    emits (normalize() strips a lone ' ' to '')."""
+    n = refcorpus.normalize(v, lang)
+    if not n:
+        return " " if v and not v.isalpha() else ""
+    return (" " if not v[:1].isalpha() else "") + n + (" " if not v[-1:].isalpha() else "")
+
+
+def line_preimage_bits(units, plain, m, ufreq):
+    """preimage_bits for keys that read a whole line as one glyph stream ("spaces": "ignored").
+
+    The decoded plaintext of such a line carries its word breaks, so a unit that emits a space
+    is only a candidate where the plaintext has one. One flag bit per line picks the mode:
+    strict (the units' outputs concatenate to the plaintext exactly, so a space unit fits only
+    at a space the plaintext still has), else collapsing (the receiver replays the decoder's
+    normalization: runs of spaces collapse and line ends are stripped, so space units also fit
+    after a space). Each step chooses among the fitting units (nulls always fit), weighted by
+    training unit frequency, then a stop once the stream equals the plaintext. A deterministic
+    prefix code, so an honest upper bound. Returns None if the line cannot be coded this way."""
+    pool = [h for h in ufreq if h != "<stop>"]
+
+    def code(strict):
+        raw, bits = "", 0.0
+        if strict:
+            fits = lambda t: plain.startswith(t)
+            done = lambda t: t == plain
+        else:
+            def fits(t):
+                t = re.sub(" +", " ", t).lstrip()
+                return plain.startswith(t) or (t.endswith(" ") and (plain + " ").startswith(t))
+            done = lambda t: re.sub(" +", " ", t).strip() == plain
+        for g in units + ["<stop>"]:
+            cands = [h for h in pool if fits(raw + m.get(h, ""))]
+            if done(raw):
+                cands.append("<stop>")
+            if g not in cands:
+                return None
+            bits -= math.log2(ufreq[g] / sum(ufreq[h] for h in cands))
+            if g != "<stop>":
+                raw += m.get(g, "")
+        return bits
+
+    b = code(True)
+    if b is None:
+        b = code(False)
+    return None if b is None else b + 1.0
+
+
 def description_length(dec, base, train_pages, eval_pages, lang):
     """Bits to transmit the evaluation pages' Voynich text through the decipherment.
 
@@ -269,7 +318,8 @@ def description_length(dec, base, train_pages, eval_pages, lang):
     the baseline's right to learn from the training pages: a character KN model, and a word
     unigram with escapes into it. The Voynich words are then recovered from the plaintext by
     the cheaper of two codes (one flag bit): adaptive choice among the training words with
-    the same reading, or, for substitution keys, an exact glyph-by-glyph preimage code."""
+    the same reading, or, for substitution keys, an exact glyph-by-glyph preimage code (line-level,
+    space-aware, for keys that ignore the manuscript's spaces)."""
     fam = dec.sub["family"]
     prog_bits = program_bits(families.source_file(fam))
     key_bits = compressed_bits(canonical(dec.key))
@@ -306,7 +356,11 @@ def description_length(dec, base, train_pages, eval_pages, lang):
     # recovering the Voynich words: an exact unit preimage code where the family has one
     cut = key_units(dec.sub, dec.seg)
     if cut is not None:
-        umap = {g: refcorpus.normalize(v, lang).replace(" ", "") for g, v in dec.key["map"].items()}
+        lines_mode = dec.sub.get("spaces") == "ignored"
+        if lines_mode:
+            umap = {g: unit_output_keep_spaces(v, lang) for g, v in dec.key["map"].items()}
+        else:
+            umap = {g: refcorpus.normalize(v, lang).replace(" ", "") for g, v in dec.key["map"].items()}
         ufreq = Counter(g for w in base.dev_words for g in cut(w))
         ufreq["<stop>"] = len(base.dev_words)
     # code 1: adaptive choice among same-reading training words
@@ -324,7 +378,7 @@ def description_length(dec, base, train_pages, eval_pages, lang):
                 if cut is not None:
                     us = cut(w)
                     if all(u in ufreq for u in us):
-                        pb = preimage_bits(us, p, umap, ufreq)
+                        pb = (line_preimage_bits if lines_mode else preimage_bits)(us, p, umap, ufreq)
                 b2 += pb if pb is not None else base.spell_bits(w) + 1.0
                 st = state.setdefault(p, [{}, 0, 0])
                 counts_p, Np, Tp = st

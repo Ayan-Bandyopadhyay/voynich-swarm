@@ -1,0 +1,61 @@
+{
+ "id": "grid-latin-substitution-pinned-fleet-opus",
+ "family": "substitution",
+ "segmentation": "eva-basic",
+ "target": {
+  "language": "latin",
+  "period": "grid search"
+ },
+ "key": {
+  "map": {
+   "*": "n",
+   "?": "i",
+   "a": "e",
+   "b": "s",
+   "c": "a",
+   "cfh": "u",
+   "ch": "u",
+   "ckh": "u",
+   "cph": "u",
+   "cth": "u",
+   "d": "u",
+   "e": "i",
+   "f": "t",
+   "g": "s",
+   "h": "i",
+   "i": "r",
+   "j": "a",
+   "k": "u",
+   "l": "r",
+   "m": "t",
+   "n": "a",
+   "o": "e",
+   "p": "t",
+   "q": "d",
+   "r": "t",
+   "s": "s",
+   "sh": "u",
+   "t": "t",
+   "u": "s",
+   "v": "a",
+   "x": "a",
+   "y": "s",
+   "z": "r"
+  }
+ },
+ "search": {
+  "budget": {
+   "restarts": 4,
+   "iterations": 6000,
+   "seed": 1404,
+   "bpe_merges": 30,
+   "verbose_segmentations": [
+    "bpe-greedy",
+    "fixed-2"
+   ],
+   "verbose_min_unit_share": 0.0005,
+   "substitution_group_swap": 0.2
+  },
+  "objective_bits": 590092.8
+ }
+}

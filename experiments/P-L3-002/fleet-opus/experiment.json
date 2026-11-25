@@ -1,0 +1,7 @@
+{
+  "step": "P-L3-002",
+  "handle": "fleet-opus",
+  "kind": "key",
+  "summary": "French substitution, best of 9 views at the pinned budget per view: ZL with glyphs reversed, best practice savings -0.098 (others: zl normal -0.152, zl words_reversed -0.121, it normal -0.142, it glyphs_reversed -0.102, it words_reversed -0.117, rf normal -0.156, rf glyphs_reversed -0.125, rf words_reversed -0.126; all FAIL every criterion). French homophonic controls at 2% noise: 2 of 3 seeds pass a, b and kill tests (seed 0 +0.058, seed 1 fails at -0.017, seed 2 +0.056).",
+  "lease": "355ca4306a6420aecc785e1b"
+}

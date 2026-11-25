@@ -1,0 +1,66 @@
+{
+  "id": "grid-latin-substitution-it-words-reversed-currier-b-recovery-cost",
+  "family": "substitution",
+  "segmentation": "eva-basic",
+  "target": {
+    "language": "latin",
+    "period": "grid search"
+  },
+  "key": {
+    "map": {
+      "?": "i",
+      "a": "i",
+      "c": "p",
+      "cfh": "u",
+      "ch": "i",
+      "ckh": "i",
+      "cph": "u",
+      "cth": "i",
+      "d": "i",
+      "e": "i",
+      "f": "i",
+      "g": "s",
+      "h": "i",
+      "i": "s",
+      "k": "u",
+      "l": "s",
+      "m": "t",
+      "n": "e",
+      "o": "i",
+      "p": "l",
+      "q": "d",
+      "r": "s",
+      "s": "s",
+      "sh": "u",
+      "t": "u",
+      "x": "n",
+      "y": "s"
+    }
+  },
+  "search": {
+    "budget": {
+      "restarts": 16,
+      "iterations": 6000,
+      "seed": 1404,
+      "bpe_merges": 30,
+      "verbose_segmentations": [
+        "bpe-greedy",
+        "fixed-2"
+      ],
+      "verbose_min_unit_share": 0.0005
+    },
+    "objective_bits": 345913.7,
+    "refinement": {
+      "objective": "training trigram log likelihood minus unigram glyph preimage bits",
+      "order": "decreasing training glyph frequency, then glyph",
+      "preimage_weight": 0.25,
+      "max_coordinate_sweeps": 8,
+      "sweeps": 5
+    }
+  },
+  "transliteration": "it",
+  "reading_order": "words_reversed",
+  "scope": {
+    "language": "B"
+  }
+}

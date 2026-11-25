@@ -1,0 +1,7 @@
+{
+ "step": "R-attack-F-007",
+ "handle": "fleet-fable",
+ "kind": "attack",
+ "summary": "A copy-and-modify table text (one word in four is a recent word with one glyph changed) reproduces the near-copy share of F-007 on the practice split (0.266 against 0.210), while a plain glyph chain does not (0.120).",
+ "lease": "ddd4463e79a6a31c69e8063d"
+}

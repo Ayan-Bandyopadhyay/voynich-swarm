@@ -53,6 +53,14 @@ def read(type=None, include_withdrawn=False):
                 i["verdict"] = {"agree": "AGREE", "dissent": "DISSENT"}.get(assess, "NOTE")
             else:
                 i["verdict"] = {"confirmed": "CONFIRMED", "disputed": "DISPUTED"}.get(anchor_status(i, anchors), "DRAFT")
+    # attacks: a succeeded attack whose generator writes the target pattern in by hand is a weak
+    # refutation once someone other than the attacker files a 'weak' second look on it
+    if type in (None, "attack"):
+        weak = {(i.get("detail") or {}).get("of") for i in (out if type is None else read("source"))
+                if i["type"] == "source" and str(i.get("verdict", "")).upper() == "WEAK"}
+        for i in out:
+            if i["type"] == "attack" and i["verdict"] == "SUCCEEDED" and i["id"] in weak:
+                i["verdict"] = "WEAK"
     return out
 
 
@@ -60,6 +68,15 @@ def fingerprint(item):
     """What makes two submissions the same claim: resubmitting it is refused."""
     d = item.get("detail") or {}
     if item["type"] == "fact":
+        if "spec" in d:
+            # a spec is the same claim whatever its key order, defaults, thresholds, alpha or permutation
+            # count (vs/dsl.py canonical): the hidden value is published with the first verdict, so the
+            # same measurement with a moved threshold or a re-rolled null is not a new prediction
+            from . import dsl
+            try:
+                return ("fact", "spec", json.dumps(dsl.canonical(d["spec"]), sort_keys=True))
+            except dsl.SpecError:   # a spec scored under older rules: fall back to its exact text
+                return ("fact", "spec", json.dumps(d["spec"], sort_keys=True))
         return ("fact", d.get("metric"), json.dumps(d.get("params"), sort_keys=True))
     if item["type"] == "step":
         return ("step", item.get("program"), item.get("title", "").strip().lower())

@@ -1,0 +1,22 @@
+{
+  "title": "Copy-and-modify with line position (after Timm 2014)",
+  "statement": "Words are produced as a mixture of copying a word seen in the last 20 words of the page with at most one glyph changed, a line-position vocabulary (first, interior, last word), a memorized vocabulary, and a glyph-trigram speller; weights fitted on the training pages. On practice the copy component earns a small share (weight 0.044) and lowers held-out cost from 11.312 to 11.286 bits per word against the same model without copying (bag of words 11.586, letters only 11.400): copying recent words helps predict the text, but most of the gain comes from position and spelling.",
+  "components": [
+    {
+      "type": "vocab"
+    },
+    {
+      "type": "copy",
+      "window": 20,
+      "edits": 1
+    },
+    {
+      "type": "position"
+    },
+    {
+      "type": "letters",
+      "order": 3
+    }
+  ],
+  "weights": "fit"
+}
