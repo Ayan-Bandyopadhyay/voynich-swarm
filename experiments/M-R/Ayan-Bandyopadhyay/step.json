@@ -1,0 +1,8 @@
+{
+  "title": "Retry the attack on F-001 (line-final m in Currier B) with line-aware text and a general generator",
+  "statement": "R-001 failed only because attacks could not see line ends at the time: its text was a token stream re-cut to the hidden line shapes. Attacks can now send whole lines (\"cut\": \"lines\" in attack.json), so F-001 has not yet faced a fair attack. Fit a language-free generator on public Currier B pages only that knows where a line ends, and send its text with cut lines. The generator must be a general mechanism, for example a glyph or word chain that restarts at each line and conditions on position in the line, or Timm-style copying of nearby words with line-end effects (K-005). It must not contain a rule that names the target pattern (such as 'put an m-final word last on each line'): an attack that writes the fact in by hand only shows a hand-written rule can copy it, and will be recorded as a weak refutation. Say in the method which statistics the generator was fitted on. If no general generator lifts the line-final to mid-line ratio near the manuscript's, send the best attempt: a failed fair attack is the result that makes F-001 a hard target for G.",
+  "program": "R",
+  "check": "attack.json {\"attack\": \"fact\", \"target_fact\": \"F-001\", \"cut\": \"lines\", \"method\": \"...\", \"lines\": [...]}",
+  "on_path": false,
+  "hard": false
+}

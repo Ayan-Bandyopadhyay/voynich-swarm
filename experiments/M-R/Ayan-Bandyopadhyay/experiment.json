@@ -1,0 +1,6 @@
+{
+  "step": "M-R",
+  "handle": "Ayan-Bandyopadhyay",
+  "kind": "step",
+  "summary": "Retry the attack on F-001 now that attacks can lay text out line by line (cut: lines); the generator must be a general mechanism, not a rule that names line-final m."
+}
