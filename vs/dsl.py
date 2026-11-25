@@ -6,6 +6,7 @@ No agent code is ever executed by the scorer. A spec is JSON:
    "statistic": {...one of the forms below...},
    "compare":   [ ...one to four tests, all must pass... ]}
 
+Selections may also set language to A or B to compare the two dialects within a shared scope.
 positions: any | line_initial | line_final | mid_line | para_initial (first word of a paragraph)
            | para_first_line (any word on a paragraph's first line)
            | not_para_first_line (paragraph text that is not on a first line; never labels or rings)
@@ -126,14 +127,16 @@ def tokens(pages, scope=None):
             n = len(ln.words)
             for k, w in enumerate(ln.words):
                 out.append({"w": w, "page": pi, "section": p.section, "line": (pi, ln.n), "k": k, "n": n,
-                            "unit": ln.unit, "pfl": pfl, "pinit": pfl and k == 0})
+                            "language": p.language, "unit": ln.unit, "pfl": pfl, "pinit": pfl and k == 0})
             first_line = ln.para_end if ln.unit == "P" else first_line
     return out
 
 
 def check_select(sel, what="select"):
     sel = sel or {}
-    _keys(sel, {"unit", "position", "certain"}, what)
+    _keys(sel, {"unit", "position", "certain", "language"}, what)
+    if "language" in sel and sel["language"] not in ("A", "B"):
+        raise SpecError(f"{what}.language must be A or B")
     u = sel.get("unit") or []
     if not isinstance(u, list) or set(u) - UNITS:
         raise SpecError(f"{what}.unit is a list from {sorted(UNITS)}")
@@ -149,8 +152,11 @@ def select(toks, sel):
     units = set(sel.get("unit") or [])
     pos = sel.get("position", "any")
     certain = sel.get("certain", True)
+    language = sel.get("language")
     keep = []
     for t in toks:
+        if language and t["language"] != language:
+            continue
         if units and t["unit"] not in units:
             continue
         if certain and UNCERTAIN(t["w"]):
@@ -491,8 +497,14 @@ def canonical(spec):
     thresholds, margins, alpha and the permutation count. Two specs with the same canonical form are
     the same claim for the record (vs/registry.py), however their JSON is ordered or defaulted."""
     check(spec)
-    sel = lambda s: {"unit": sorted(set((s or {}).get("unit") or [])), "position": (s or {}).get("position", "any"),
-                     "certain": (s or {}).get("certain", True)}
+    def sel(selection):
+        selection = selection or {}
+        result = {"unit": sorted(set(selection.get("unit") or [])), "position": selection.get("position", "any"),
+                  "certain": selection.get("certain", True)}
+        if "language" in selection:
+            result["language"] = selection["language"]
+        return result
+
     (name, arg), = spec["statistic"].items()
     if name in ("rate", "ratio"):
         arg = dict(arg, **{"in": sorted(set(arg["in"]), key=str)})
