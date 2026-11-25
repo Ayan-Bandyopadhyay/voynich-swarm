@@ -1,19 +1,18 @@
 {
-  "title": "Gibberish after all? Voynichese is statistically similar to human-produced samples of meaningless text",
-  "authors": "Daniel E. Gaskell and Claire L. Bowern",
+  "title": "‘I beg your grace that you suppress this chapter or else allow it to be written in secret letters’: The emotions of encipherment in late-medieval gynaecology",
+  "authors": "Keagan Brewer",
   "year": 2022,
-  "url": "https://ceur-ws.org/Vol-3313/paper4.pdf",
-  "summary": "The authors compare short handwritten pseudotexts from 42 volunteers with several Voynich transliterations and a broader corpus of meaningful text. This makes structured human pseudotext available as a comparison for manuscript statistics.",
+  "url": "https://ceur-ws.org/Vol-3313/paper3.pdf",
+  "summary": "Brewer documents medieval examples of physicians suppressing or obscuring material about sex and reproduction. The paper uses Voynich imagery as a prompt for comparing practices of concealment in late-medieval medical writing.",
   "established": [
-    "Across samples, the human pseudotexts covered Voynich-like values for almost all tested low-level measures, including some commonly used as indicators of natural language.",
-    "The main uncovered Voynich feature was the magnitude of glyph-position bias within words. The volunteers wrote in lowercase Latin characters, limiting tests of position-specific visual forms.",
-    "The classifier trained on these data put most Voynich renderings closer to the human pseudotext samples. The authors limit the inference to the corpus and features studied."
+    "Historical texts record self-censorship, erasure and encipherment of some reproductive and sexual material. Johannes Hartlieb explicitly proposed hiding certain recipes through secret letters.",
+    "The documented examples differ from MS 408 in scope. The manuscript's figures, including the gesture on f80r, motivate comparison but leave the objects and the manuscript's purpose open."
   ],
   "open": [
     {
-      "question": "Can human-produced pseudotext over a longer writing session reproduce manuscript-scale clustering of vocabulary across pages and sections?",
-      "front": "G",
-      "check": "Collect independent long samples or test a frozen model motivated by the documented volunteer strategies. Match lengths and layout and compare local clustering and cross-section drift jointly.",
+      "question": "Can the object and gesture on f80r be tied to independently dated medical illustrations that depict a comparable instrument or action?",
+      "front": "L4",
+      "check": "Give scan and folio citations for the Voynich image and each comparator. Specify the visual features used and include plausible nonmedical comparators.",
       "hard": true
     }
   ]
