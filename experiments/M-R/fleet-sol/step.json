@@ -1,125 +1,243 @@
 {
-  "title": "Audit the Trithemius-inspired three-digit encoding in Matlach et al. (2022)",
-  "statement": "In the open PLOS ONE paper, Matlach, Janečková and Dostál propose a numeric encoding family after their symbol and ligature analyses. I reproduced the published toy demonstration: YZXAKJCCJBXX gives 222, 133, 113, 122 and the stated English word. The demonstration fixes a toy digit partition of nine Latin letters and a sequential three-digit alphabet. The paper's manuscript discussion leaves the EVA-to-digit partition, full glyph-expansion table, fixed reset boundaries, error policy and language open. The supplements provide an incidence matrix, discrepancy examples, ligature illustrations and a comparison-text list. I tested a narrow consequence of exact line resets: with decorative spaces ignored and no padding, every complete line must have digit length divisible by three after fixed glyph expansion. Among 615 shared certain paragraph lines on 31 public practice pages, the five highlighted decompositions give 201 divisible lengths in ZL and 213 in Takahashi. Expanded variants give at most 229 in ZL and 213 in Takahashi. The exploratory extended variant gives a one-sided p of 0.025 in ZL and 0.350 in Takahashi, before adjustment for the variants tested. The strict line-reset variants leave most lines with an incomplete triplet. This check applies to the fixed expansions and exact line reset. Continuous streams, other resets and an explicit padding or repair policy remain distinct hypotheses. A manuscript verdict requires a specified key.",
+  "title": "Audit folio evidence and statistical controls in Jama’s 2025 structural proposal",
+  "statement": "I audited the full version of arXiv:2505.02261v1, extending the abstract-level P-R-001 note. The illustrated validation reports a three-branch plant on f74r and reports claimed properties of f74v in Test 10. Folio 74 is excised. The pinned Yale manifest passes from f73v to f75r, and the public folio study documents the cut stub. These reported results need corrected folio identifiers and traceable crops. Test 1 reports seven radial spiral arms on f57v. On the public Yale scan I count four circular text bands and four short radial writing loci. ZL, Takahashi and Friedman each have four circular and four radial loci. Their radial word counts are 1,1,1,2. The paper leaves the boundaries of its seven asserted clusters unspecified. The chi-square section gives worked illustrations. Test 1’s printed counts yield 51.9, while the paper gives 54.2, and both exceed the ordinary five-category uniform critical value. I tested that uniform check and a fixed-marginal transition permutation control on toy random symbol sequences. All 32 nonuniform independent samples reject uniformity, and all 32 sticky Markov samples reject transition independence. The paper’s statistical comparisons can detect these generic forms of structure. An adjudicable test of the particular proposal requires fixed definitions of symbol roles, glyph groups and folio regions, as well as observed counts and a matched baseline.",
   "program": "R",
-  "check": "Locate a public manuscript-specific key or get a versioned one from the authors before scoring a claimed application. Require a fixed EVA expansion and digit partition, a stated mapping of triples to symbols, a language, and a deterministic policy for spaces, synchronization, framing and errors. Verify any given folio examples without retuning. Separately, on controls with known partitions, test whether a fixed three-digit family can recover plaintext across deliberately planted uncertain breaks and variable ligature patterns. Only test a manuscript key after a fixed family demonstrates power.",
+  "check": "Publish a versioned list of extant folio canvas IDs with image coordinates for each tested group and a deterministic annotation and segmentation procedure. Recompute the claims on that list and freeze predictions for previously unused public scans before inspecting them. Report each observed and expected table, the test statistic and unit of replication. Compare symbol rates and transition structure with frequency-matched independent texts and line-chain controls. A lexical claim verdict would require a specific mapping and language, which this proposal leaves outside its scope.",
   "on_path": false,
   "hard": true,
-  "source": {
-    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0260948",
-    "where": "Discussion, paragraphs following the ligature summary, and supplements S1–S3 Figures and S1 Table"
-  },
+  "source": [
+    {
+      "url": "https://arxiv.org/pdf/2505.02261v1",
+      "where": "Boolean Tests 1, 2, 9 and 10, and Chi-Squared Tests, PDF pp. 16–29"
+    },
+    {
+      "url": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006187",
+      "where": "f57v scan"
+    },
+    {
+      "url": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006208",
+      "where": "f75r scan"
+    },
+    {
+      "url": "https://voynich.nu/origin.html",
+      "where": "Physical evidence of the missing f74"
+    },
+    {
+      "url": "https://www.nsa.gov/portals/75/documents/news-features/declassified-documents/voynich/the-voynich-manuscript.pdf",
+      "where": "Folio 74 entry"
+    }
+  ],
   "practice": {
-    "selection": "Public practice only. P lines with nonempty words and no uncertain words, limited to the EVA character subset used for the diagnostic (acdefghiklmnopqrsty), then intersected by page and line ID across ZL and Takahashi before counting.",
-    "rules": {
-      "raw": {},
-      "five": {
-        "f": "id",
-        "m": "id",
-        "q": "ie",
-        "n": "i",
-        "g": "cd"
+    "method": "Generate 640 symbols per run from A–E using Python Random for seeds 2025–2056. For independent controls choose uniformly or with weights .40,.35,.10,.08,.07. For the sticky control use those same weighted draws with a 0.55 chance to replace each subsequent draw with the preceding output. Compare one-symbol counts to uniform expected counts using chi-square with four degrees of freedom at alpha .05. For the transition statistic compute Pearson over the adjacent pair table using the product of observed row and column marginals. Use 199 whole-sequence permutations seeded with replicate seed plus 5717, and count ties with the plus-one correction. This transition permutation preserves global marginal frequencies and is a concrete control interpretation of the paper’s illustrative transition comparison.",
+    "arithmetic": {
+      "Test 1": "519/10",
+      "Test 2 single-cell contribution": "40",
+      "Test 3 exact expected counts": "65/4",
+      "Test 4 single-cell contribution": "49/10",
+      "Test 6 single-cell contribution": "45",
+      "Test 7 single-cell contribution": "125/3",
+      "Test 7 marking binary outcomes (overall rate treated as fixed)": "2500/51",
+      "Test 9 exact rates per hundred in two equal groups as illustrative counts": "64",
+      "Test 10": "11"
+    },
+    "simulation": {
+      "uniform iid": {
+        "reps": 32,
+        "median_uniform_statistic": 3.46875,
+        "median_transition_statistic": 15.831847631164088,
+        "uniform_chisq4_rejections": 2,
+        "transition_permutation_rejections": 1
       },
-      "extended_additions": {
-        "p": "qd",
-        "t": "ql",
-        "d": "ey",
-        "r": "si",
-        "k": "il"
+      "nonuniform iid": {
+        "reps": 32,
+        "median_uniform_statistic": 325.0390625,
+        "median_transition_statistic": 16.64739917003932,
+        "uniform_chisq4_rejections": 32,
+        "transition_permutation_rejections": 1
       },
-      "extended_with_e_changes": {
-        "f": "ide",
-        "p": "qde"
+      "sticky Markov": {
+        "reps": 32,
+        "median_uniform_statistic": 340.8671875,
+        "median_transition_statistic": 757.0284792937274,
+        "uniform_chisq4_rejections": 32,
+        "transition_permutation_rejections": 32
       }
     },
-    "interpretation": "Apply expansions recursively. The n expansion is i plus a separator in the paper, with the separator ignored here. Count one digit per resulting character. Reset the grouping on each line. Diagnostic null allocates expanded word lengths at random among the same word slots within each page, with Python Random(408) and 199 shuffles per condition. Add one in numerator and denominator and include ties. Exploratory p-values are unadjusted.",
-    "results": {
-      "zl": {
-        "public_clean_lines": 619,
-        "matched_clean_lines": 615,
-        "matched_pages": 31,
-        "matched": {
-          "raw": {
-            "remainders": [
-              193,
-              202,
-              220
-            ],
-            "within_page_shuffle_mean_zero": 205.181,
-            "within_page_shuffle_p_ge": 0.84
-          },
-          "five": {
-            "remainders": [
-              201,
-              225,
-              189
-            ],
-            "within_page_shuffle_mean_zero": 205.387,
-            "within_page_shuffle_p_ge": 0.66
-          },
-          "extended": {
-            "remainders": [
-              229,
-              207,
-              179
-            ],
-            "within_page_shuffle_mean_zero": 203.352,
-            "within_page_shuffle_p_ge": 0.025
-          },
-          "extended with e": {
-            "remainders": [
-              225,
-              200,
-              190
-            ],
-            "within_page_shuffle_mean_zero": 204.231,
-            "within_page_shuffle_p_ge": 0.045
-          }
+    "f57v_records": {
+      "zl": [
+        {
+          "id": "f57v.2",
+          "unit": "C",
+          "words": 54,
+          "raw_characters": 164,
+          "eva_basic": 157
+        },
+        {
+          "id": "f57v.3",
+          "unit": "C",
+          "words": 68,
+          "raw_characters": 72,
+          "eva_basic": 72
+        },
+        {
+          "id": "f57v.4",
+          "unit": "C",
+          "words": 31,
+          "raw_characters": 107,
+          "eva_basic": 102
+        },
+        {
+          "id": "f57v.5",
+          "unit": "C",
+          "words": 35,
+          "raw_characters": 61,
+          "eva_basic": 60
+        },
+        {
+          "id": "f57v.10",
+          "unit": "R",
+          "words": 1,
+          "raw_characters": 7,
+          "eva_basic": 7
+        },
+        {
+          "id": "f57v.11",
+          "unit": "R",
+          "words": 1,
+          "raw_characters": 8,
+          "eva_basic": 8
+        },
+        {
+          "id": "f57v.12",
+          "unit": "R",
+          "words": 1,
+          "raw_characters": 6,
+          "eva_basic": 6
+        },
+        {
+          "id": "f57v.13",
+          "unit": "R",
+          "words": 2,
+          "raw_characters": 11,
+          "eva_basic": 9
         }
-      },
-      "it": {
-        "public_clean_lines": 646,
-        "matched_clean_lines": 615,
-        "matched_pages": 31,
-        "matched": {
-          "raw": {
-            "remainders": [
-              196,
-              205,
-              214
-            ],
-            "within_page_shuffle_mean_zero": 204.07,
-            "within_page_shuffle_p_ge": 0.795
-          },
-          "five": {
-            "remainders": [
-              213,
-              217,
-              185
-            ],
-            "within_page_shuffle_mean_zero": 205.211,
-            "within_page_shuffle_p_ge": 0.21
-          },
-          "extended": {
-            "remainders": [
-              209,
-              206,
-              200
-            ],
-            "within_page_shuffle_mean_zero": 204.854,
-            "within_page_shuffle_p_ge": 0.35
-          },
-          "extended with e": {
-            "remainders": [
-              213,
-              200,
-              202
-            ],
-            "within_page_shuffle_mean_zero": 205.256,
-            "within_page_shuffle_p_ge": 0.255
-          }
+      ],
+      "it": [
+        {
+          "id": "f57v.2",
+          "unit": "C",
+          "words": 51,
+          "raw_characters": 164,
+          "eva_basic": 156
+        },
+        {
+          "id": "f57v.3",
+          "unit": "C",
+          "words": 69,
+          "raw_characters": 69,
+          "eva_basic": 69
+        },
+        {
+          "id": "f57v.4",
+          "unit": "C",
+          "words": 31,
+          "raw_characters": 106,
+          "eva_basic": 100
+        },
+        {
+          "id": "f57v.5",
+          "unit": "C",
+          "words": 33,
+          "raw_characters": 60,
+          "eva_basic": 58
+        },
+        {
+          "id": "f57v.10",
+          "unit": "R",
+          "words": 1,
+          "raw_characters": 7,
+          "eva_basic": 7
+        },
+        {
+          "id": "f57v.11",
+          "unit": "R",
+          "words": 1,
+          "raw_characters": 8,
+          "eva_basic": 8
+        },
+        {
+          "id": "f57v.12",
+          "unit": "R",
+          "words": 1,
+          "raw_characters": 6,
+          "eva_basic": 5
+        },
+        {
+          "id": "f57v.13",
+          "unit": "R",
+          "words": 2,
+          "raw_characters": 11,
+          "eva_basic": 9
         }
-      }
+      ],
+      "rf": [
+        {
+          "id": "f57v.2",
+          "unit": "C",
+          "words": 50,
+          "raw_characters": 164,
+          "eva_basic": 157
+        },
+        {
+          "id": "f57v.3",
+          "unit": "C",
+          "words": 68,
+          "raw_characters": 72,
+          "eva_basic": 72
+        },
+        {
+          "id": "f57v.4",
+          "unit": "C",
+          "words": 31,
+          "raw_characters": 107,
+          "eva_basic": 102
+        },
+        {
+          "id": "f57v.5",
+          "unit": "C",
+          "words": 35,
+          "raw_characters": 61,
+          "eva_basic": 60
+        },
+        {
+          "id": "f57v.10",
+          "unit": "R",
+          "words": 1,
+          "raw_characters": 7,
+          "eva_basic": 7
+        },
+        {
+          "id": "f57v.11",
+          "unit": "R",
+          "words": 1,
+          "raw_characters": 8,
+          "eva_basic": 8
+        },
+        {
+          "id": "f57v.12",
+          "unit": "R",
+          "words": 1,
+          "raw_characters": 6,
+          "eva_basic": 6
+        },
+        {
+          "id": "f57v.13",
+          "unit": "R",
+          "words": 2,
+          "raw_characters": 11,
+          "eva_basic": 9
+        }
+      ]
     }
   }
 }
