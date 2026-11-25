@@ -58,7 +58,7 @@ def derived_steps():
     # every cell the search can provably crack but no key has been judged in: an open step
     judged = {(i.get("language"), i.get("family")) for i in grid_items}
     for (lang, fam), ok in sorted(power.items()):
-        if ok and (lang, fam) not in judged:
+        if ok and (lang, fam) not in judged and not str(lang).startswith("conlang_"):   # references, not candidates (P-J-004)
             out.append({"id": f"L3-first-{lang}-{fam}", "program": "L3", "kind": "step",
                         "title": f"{lang.title()} × {fam}: first key (the search has power here)",
                         "statement": f"The pinned search cracks the 2%-noise {lang} {fam} control, but no key has been judged in this cell. Run the key search at the pinned budget (vs/search.py BUDGET, or more) on the manuscript and submit its best key: if it fails, the cell is ruled out.",
