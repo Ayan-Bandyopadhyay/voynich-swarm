@@ -1,0 +1,6 @@
+{
+  "step": "M-J-romanian",
+  "handle": "fleet-corpora",
+  "kind": "corpus",
+  "summary": "Add Romanian to the grid from Romanian New Testament (public-domain, 884,041 characters after normalization; modern Romanian)."
+}
