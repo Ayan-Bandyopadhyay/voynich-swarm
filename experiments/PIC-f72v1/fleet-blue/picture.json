@@ -1,0 +1,560 @@
+{
+ "folio": "f72v1",
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006205",
+ "blind": true,
+ "statement": "Blind annotation from the Beinecke scan alone (the canvas labelled '72v (part)' that shows a single wheel with a pair of scales; full page and one full-resolution crop of the inner part). I took this wheel to be f72v1 because I count 10 figures in its inner ring, and of the three f72v pages only f72v1 has 10 label lines in its second group (20 in the first); the other two wheels are on the neighbouring canvas. Centre: a balance with two hanging pans and blue touches, a short word in another script beneath. Two rings of nude standing figures without tubs, each with a star and a short label: 10 inner (counted), 20 outer (from the label group; not securely counted on the faint drawing). One outer figure near the top wears a crown. A round hole in the vellum cuts the right side. Labels assigned from line ids and unit codes only, words not read; clockwise from the figure at the top by my assumption, so ids may be rotated by a constant within a ring. Ring figures carry generic features only.",
+ "objects": [
+  {
+   "id": "centre-scales",
+   "kind": "zodiac_figure",
+   "features": {
+    "animal": "none, a pair of scales",
+    "count": 1,
+    "colour": "uncoloured with blue touches",
+    "position": "centre",
+    "note": "a balance: a horizontal beam hanging from a small upright frame with a blue pointer, and a round pan or bucket hanging on cords from each end, each with a blue spot inside; a dark word in a different, Latin-like script is written below; no star in the centre"
+   },
+   "label": null
+  },
+  {
+   "id": "outer-1",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing full length",
+    "container": "none",
+    "headdress": "no",
+    "star": "yes",
+    "cheeks": "red",
+    "colour": "uncoloured",
+    "ring": "outer",
+    "position": "outer ring, 1 of 20 clockwise from the top",
+    "note": "nude figure standing on the ring line with feet toward the centre, one arm toward a star, a short label beside it; faint ink"
+   },
+   "label": "f72v1.2"
+  },
+  {
+   "id": "outer-2",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing full length",
+    "container": "none",
+    "headdress": "no",
+    "star": "yes",
+    "cheeks": "red",
+    "colour": "uncoloured",
+    "ring": "outer",
+    "position": "outer ring, 2 of 20 clockwise from the top",
+    "note": "nude figure standing on the ring line with feet toward the centre, one arm toward a star, a short label beside it; faint ink"
+   },
+   "label": "f72v1.3"
+  },
+  {
+   "id": "outer-3",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing full length",
+    "container": "none",
+    "headdress": "no",
+    "star": "yes",
+    "cheeks": "red",
+    "colour": "uncoloured",
+    "ring": "outer",
+    "position": "outer ring, 3 of 20 clockwise from the top",
+    "note": "nude figure standing on the ring line with feet toward the centre, one arm toward a star, a short label beside it; faint ink"
+   },
+   "label": "f72v1.4"
+  },
+  {
+   "id": "outer-4",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing full length",
+    "container": "none",
+    "headdress": "no",
+    "star": "yes",
+    "cheeks": "red",
+    "colour": "uncoloured",
+    "ring": "outer",
+    "position": "outer ring, 4 of 20 clockwise from the top",
+    "note": "nude figure standing on the ring line with feet toward the centre, one arm toward a star, a short label beside it; faint ink; among the outer figures near the top one wears a spiked crown, which I place at about the fourth clockwise but could not fix exactly"
+   },
+   "label": "f72v1.5"
+  },
+  {
+   "id": "outer-5",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing full length",
+    "container": "none",
+    "headdress": "no",
+    "star": "yes",
+    "cheeks": "red",
+    "colour": "uncoloured",
+    "ring": "outer",
+    "position": "outer ring, 5 of 20 clockwise from the top",
+    "note": "nude figure standing on the ring line with feet toward the centre, one arm toward a star, a short label beside it; faint ink"
+   },
+   "label": "f72v1.6"
+  },
+  {
+   "id": "outer-6",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing full length",
+    "container": "none",
+    "headdress": "no",
+    "star": "yes",
+    "cheeks": "red",
+    "colour": "uncoloured",
+    "ring": "outer",
+    "position": "outer ring, 6 of 20 clockwise from the top",
+    "note": "nude figure standing on the ring line with feet toward the centre, one arm toward a star, a short label beside it; faint ink"
+   },
+   "label": "f72v1.7"
+  },
+  {
+   "id": "outer-7",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing full length",
+    "container": "none",
+    "headdress": "no",
+    "star": "yes",
+    "cheeks": "red",
+    "colour": "uncoloured",
+    "ring": "outer",
+    "position": "outer ring, 7 of 20 clockwise from the top",
+    "note": "nude figure standing on the ring line with feet toward the centre, one arm toward a star, a short label beside it; faint ink"
+   },
+   "label": "f72v1.8"
+  },
+  {
+   "id": "outer-8",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing full length",
+    "container": "none",
+    "headdress": "no",
+    "star": "yes",
+    "cheeks": "red",
+    "colour": "uncoloured",
+    "ring": "outer",
+    "position": "outer ring, 8 of 20 clockwise from the top",
+    "note": "nude figure standing on the ring line with feet toward the centre, one arm toward a star, a short label beside it; faint ink"
+   },
+   "label": "f72v1.9"
+  },
+  {
+   "id": "outer-9",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing full length",
+    "container": "none",
+    "headdress": "no",
+    "star": "yes",
+    "cheeks": "red",
+    "colour": "uncoloured",
+    "ring": "outer",
+    "position": "outer ring, 9 of 20 clockwise from the top",
+    "note": "nude figure standing on the ring line with feet toward the centre, one arm toward a star, a short label beside it; faint ink"
+   },
+   "label": "f72v1.10"
+  },
+  {
+   "id": "outer-10",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing full length",
+    "container": "none",
+    "headdress": "no",
+    "star": "yes",
+    "cheeks": "red",
+    "colour": "uncoloured",
+    "ring": "outer",
+    "position": "outer ring, 10 of 20 clockwise from the top",
+    "note": "nude figure standing on the ring line with feet toward the centre, one arm toward a star, a short label beside it; faint ink"
+   },
+   "label": "f72v1.11"
+  },
+  {
+   "id": "outer-11",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing full length",
+    "container": "none",
+    "headdress": "no",
+    "star": "yes",
+    "cheeks": "red",
+    "colour": "uncoloured",
+    "ring": "outer",
+    "position": "outer ring, 11 of 20 clockwise from the top",
+    "note": "nude figure standing on the ring line with feet toward the centre, one arm toward a star, a short label beside it; faint ink"
+   },
+   "label": "f72v1.12"
+  },
+  {
+   "id": "outer-12",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing full length",
+    "container": "none",
+    "headdress": "no",
+    "star": "yes",
+    "cheeks": "red",
+    "colour": "uncoloured",
+    "ring": "outer",
+    "position": "outer ring, 12 of 20 clockwise from the top",
+    "note": "nude figure standing on the ring line with feet toward the centre, one arm toward a star, a short label beside it; faint ink"
+   },
+   "label": "f72v1.13"
+  },
+  {
+   "id": "outer-13",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing full length",
+    "container": "none",
+    "headdress": "no",
+    "star": "yes",
+    "cheeks": "red",
+    "colour": "uncoloured",
+    "ring": "outer",
+    "position": "outer ring, 13 of 20 clockwise from the top",
+    "note": "nude figure standing on the ring line with feet toward the centre, one arm toward a star, a short label beside it; faint ink"
+   },
+   "label": "f72v1.14"
+  },
+  {
+   "id": "outer-14",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing full length",
+    "container": "none",
+    "headdress": "no",
+    "star": "yes",
+    "cheeks": "red",
+    "colour": "uncoloured",
+    "ring": "outer",
+    "position": "outer ring, 14 of 20 clockwise from the top",
+    "note": "nude figure standing on the ring line with feet toward the centre, one arm toward a star, a short label beside it; faint ink"
+   },
+   "label": "f72v1.15"
+  },
+  {
+   "id": "outer-15",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing full length",
+    "container": "none",
+    "headdress": "no",
+    "star": "yes",
+    "cheeks": "red",
+    "colour": "uncoloured",
+    "ring": "outer",
+    "position": "outer ring, 15 of 20 clockwise from the top",
+    "note": "nude figure standing on the ring line with feet toward the centre, one arm toward a star, a short label beside it; faint ink"
+   },
+   "label": "f72v1.16"
+  },
+  {
+   "id": "outer-16",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing full length",
+    "container": "none",
+    "headdress": "no",
+    "star": "yes",
+    "cheeks": "red",
+    "colour": "uncoloured",
+    "ring": "outer",
+    "position": "outer ring, 16 of 20 clockwise from the top",
+    "note": "nude figure standing on the ring line with feet toward the centre, one arm toward a star, a short label beside it; faint ink"
+   },
+   "label": "f72v1.17"
+  },
+  {
+   "id": "outer-17",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing full length",
+    "container": "none",
+    "headdress": "no",
+    "star": "yes",
+    "cheeks": "red",
+    "colour": "uncoloured",
+    "ring": "outer",
+    "position": "outer ring, 17 of 20 clockwise from the top",
+    "note": "nude figure standing on the ring line with feet toward the centre, one arm toward a star, a short label beside it; faint ink"
+   },
+   "label": "f72v1.18"
+  },
+  {
+   "id": "outer-18",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing full length",
+    "container": "none",
+    "headdress": "no",
+    "star": "yes",
+    "cheeks": "red",
+    "colour": "uncoloured",
+    "ring": "outer",
+    "position": "outer ring, 18 of 20 clockwise from the top",
+    "note": "nude figure standing on the ring line with feet toward the centre, one arm toward a star, a short label beside it; faint ink"
+   },
+   "label": "f72v1.19"
+  },
+  {
+   "id": "outer-19",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing full length",
+    "container": "none",
+    "headdress": "no",
+    "star": "yes",
+    "cheeks": "red",
+    "colour": "uncoloured",
+    "ring": "outer",
+    "position": "outer ring, 19 of 20 clockwise from the top",
+    "note": "nude figure standing on the ring line with feet toward the centre, one arm toward a star, a short label beside it; faint ink"
+   },
+   "label": "f72v1.20"
+  },
+  {
+   "id": "outer-20",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing full length",
+    "container": "none",
+    "headdress": "no",
+    "star": "yes",
+    "cheeks": "red",
+    "colour": "uncoloured",
+    "ring": "outer",
+    "position": "outer ring, 20 of 20 clockwise from the top",
+    "note": "nude figure standing on the ring line with feet toward the centre, one arm toward a star, a short label beside it; faint ink"
+   },
+   "label": "f72v1.21"
+  },
+  {
+   "id": "inner-1",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing full length",
+    "container": "none",
+    "headdress": "no",
+    "star": "yes",
+    "cheeks": "red",
+    "colour": "uncoloured",
+    "ring": "inner",
+    "position": "inner ring, 1 of 10 clockwise from the top",
+    "note": "nude figure standing on the ring line with feet toward the centre, one arm toward a star, a short label beside it; faint ink"
+   },
+   "label": "f72v1.23"
+  },
+  {
+   "id": "inner-2",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing full length",
+    "container": "none",
+    "headdress": "no",
+    "star": "yes",
+    "cheeks": "red",
+    "colour": "uncoloured",
+    "ring": "inner",
+    "position": "inner ring, 2 of 10 clockwise from the top",
+    "note": "nude figure standing on the ring line with feet toward the centre, one arm toward a star, a short label beside it; faint ink"
+   },
+   "label": "f72v1.24"
+  },
+  {
+   "id": "inner-3",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing full length",
+    "container": "none",
+    "headdress": "no",
+    "star": "yes",
+    "cheeks": "red",
+    "colour": "uncoloured",
+    "ring": "inner",
+    "position": "inner ring, 3 of 10 clockwise from the top",
+    "note": "nude figure standing on the ring line with feet toward the centre, one arm toward a star, a short label beside it; faint ink"
+   },
+   "label": "f72v1.25"
+  },
+  {
+   "id": "inner-4",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing full length",
+    "container": "none",
+    "headdress": "no",
+    "star": "yes",
+    "cheeks": "red",
+    "colour": "uncoloured",
+    "ring": "inner",
+    "position": "inner ring, 4 of 10 clockwise from the top",
+    "note": "nude figure standing on the ring line with feet toward the centre, one arm toward a star, a short label beside it; faint ink"
+   },
+   "label": "f72v1.26"
+  },
+  {
+   "id": "inner-5",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing full length",
+    "container": "none",
+    "headdress": "no",
+    "star": "yes",
+    "cheeks": "red",
+    "colour": "uncoloured",
+    "ring": "inner",
+    "position": "inner ring, 5 of 10 clockwise from the top",
+    "note": "nude figure standing on the ring line with feet toward the centre, one arm toward a star, a short label beside it; faint ink"
+   },
+   "label": "f72v1.27"
+  },
+  {
+   "id": "inner-6",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing full length",
+    "container": "none",
+    "headdress": "no",
+    "star": "yes",
+    "cheeks": "red",
+    "colour": "uncoloured",
+    "ring": "inner",
+    "position": "inner ring, 6 of 10 clockwise from the top",
+    "note": "nude figure standing on the ring line with feet toward the centre, one arm toward a star, a short label beside it; faint ink"
+   },
+   "label": "f72v1.28"
+  },
+  {
+   "id": "inner-7",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing full length",
+    "container": "none",
+    "headdress": "no",
+    "star": "yes",
+    "cheeks": "red",
+    "colour": "uncoloured",
+    "ring": "inner",
+    "position": "inner ring, 7 of 10 clockwise from the top",
+    "note": "nude figure standing on the ring line with feet toward the centre, one arm toward a star, a short label beside it; faint ink"
+   },
+   "label": "f72v1.29"
+  },
+  {
+   "id": "inner-8",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing full length",
+    "container": "none",
+    "headdress": "no",
+    "star": "yes",
+    "cheeks": "red",
+    "colour": "uncoloured",
+    "ring": "inner",
+    "position": "inner ring, 8 of 10 clockwise from the top",
+    "note": "nude figure standing on the ring line with feet toward the centre, one arm toward a star, a short label beside it; faint ink"
+   },
+   "label": "f72v1.30"
+  },
+  {
+   "id": "inner-9",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing full length",
+    "container": "none",
+    "headdress": "no",
+    "star": "yes",
+    "cheeks": "red",
+    "colour": "uncoloured",
+    "ring": "inner",
+    "position": "inner ring, 9 of 10 clockwise from the top",
+    "note": "nude figure standing on the ring line with feet toward the centre, one arm toward a star, a short label beside it; faint ink"
+   },
+   "label": "f72v1.31"
+  },
+  {
+   "id": "inner-10",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing full length",
+    "container": "none",
+    "headdress": "no",
+    "star": "yes",
+    "cheeks": "red",
+    "colour": "uncoloured",
+    "ring": "inner",
+    "position": "inner ring, 10 of 10 clockwise from the top",
+    "note": "nude figure standing on the ring line with feet toward the centre, one arm toward a star, a short label beside it; faint ink"
+   },
+   "label": "f72v1.32"
+  }
+ ]
+}
