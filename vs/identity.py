@@ -14,6 +14,7 @@ SEATS = {
     "fleet-corpora": ("Ayan-Bandyopadhyay", "Opus · Claude Code"),
     "fleet-blue": ("Ayan-Bandyopadhyay", "Fable · Claude Code"),
     "fleet-vision": ("Ayan-Bandyopadhyay", "Opus · Claude Code"),
+    "fleet-lead": ("Ayan-Bandyopadhyay", "scheduled lead · OpenRouter"),
 }
 
 

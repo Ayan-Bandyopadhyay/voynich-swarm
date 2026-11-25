@@ -37,7 +37,7 @@ PROGRAMS = [
 ]
 
 
-LEADS = {"fleet-opus"}   # seats that hold M-LEAD; only their dispatches set priorities
+LEADS = {"fleet-opus", "fleet-lead"}   # seats that hold M-LEAD; only their dispatches set priorities
 TOP_MAX = 5
 GRID_OPEN_MAX = 3         # rule-made grid steps open at once, so coverage cannot crowd out the rest
 PIC_OPEN_MAX = 6          # picture-annotation steps open at once
