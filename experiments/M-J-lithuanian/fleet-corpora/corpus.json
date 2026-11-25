@@ -1,0 +1,10 @@
+{
+  "language": "lithuanian",
+  "title": "Lithuanian Bible portions, 'Tikinčiųjų paveldo vertimas' (Believers' heritage translation), one verse per line",
+  "period": "modern Lithuanian (21st-century translation)",
+  "url": "https://raw.githubusercontent.com/BibleNLP/ebible/2bde52b4c2cfd7056cf4ed07c48969647df79744/corpus/lit-lit.txt",
+  "sha256": "08449f123d2aa04464828788eaa2faa82a3bcfcfce5037a30923b820de06e7c9",
+  "license": "cc-by-sa",
+  "encoding": "utf-8",
+  "notes": "License: 'cc-by-sa' is stated for translation id 'lit' in the eBible corpus licence table https://github.com/BibleNLP/ebible/blob/2bde52b4c2cfd7056cf4ed07c48969647df79744/metadata/licences.tsv (taken from eBible.org's copyright page, https://ebible.org/lit/copr.htm). The url pins a fixed commit, so the bytes do not change. 861,996 bytes; eBible corpus format: one verse per line aligned to a fixed versification (empty lines for verses the translation lacks; '<range>' marks merged verses, a few letters each). vs/refcorpus.normalize(..., 'lithuanian') gives 736,057 characters. Only part of the Bible carries text (7,099 non-empty verses)."
+}
