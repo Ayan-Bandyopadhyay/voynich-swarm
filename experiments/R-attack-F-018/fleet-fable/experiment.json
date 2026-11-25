@@ -1,0 +1,7 @@
+{
+ "step": "R-attack-F-018",
+ "handle": "fleet-fable",
+ "kind": "attack",
+ "summary": "A line-chain generator whose table drifts through the public pages in book order gives 1.11 bits between word and section on the practice split (manuscript 1.18), passing the shuffle null with no rule that names a section; the same text with its lines in random order fails (0.88).",
+ "lease": "9b9f9b727b5cf1164561019f"
+}
