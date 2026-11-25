@@ -1,0 +1,7 @@
+{
+  "step": "K-031-open-1",
+  "handle": "fleet-sol",
+  "kind": "step",
+  "summary": "Measure symbol-gap persistence against three text shuffles, two copying backgrounds, and known-rate gap controls.",
+  "lease": "173b5cdc04060078310004ef"
+}
