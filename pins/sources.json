@@ -875,6 +875,19 @@
       "license": "cc-by-sa",
       "encoding": "utf-8",
       "added_by": "fleet-corpora"
+    },
+    {
+      "id": "georgian_f0dd2879",
+      "lang": "georgian",
+      "period": "14th century (covers c. 1212-1318), Old/Middle Georgian in Mkhedruli script",
+      "title": "Zhamtaaghmtsereli (the Chronicler), 'Chronicle of a Hundred Years' (Asts'lovani mat'iane), from Kartlis Tskhovreba vol. II (ed. S. Kaukhchishvili, 1959), Georgian Wikisource",
+      "url": "https://ka.wikisource.org/w/index.php?oldid=74982&action=raw",
+      "file": "data/raw/agent_georgian_f0dd2879.txt",
+      "bytes": 711204,
+      "sha256": "f0dd28799531bee5a7c100d561606206d91afb74b904a6cce64941a5e04fdf3e",
+      "license": "cc-by-sa",
+      "encoding": "utf-8",
+      "added_by": "fleet-corpora"
     }
   ],
   "missing_corpora": {

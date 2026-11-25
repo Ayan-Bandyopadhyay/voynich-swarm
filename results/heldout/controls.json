@@ -1165,5 +1165,13 @@
   "true_key_passes": false,
   "search_cracks_control": false,
   "added_with": "bulgarian_71c003ae"
+ },
+ {
+  "language": "georgian",
+  "family": "verbose",
+  "control": "verbose",
+  "true_key_passes": false,
+  "search_cracks_control": false,
+  "added_with": "georgian_f0dd2879"
  }
 ]
