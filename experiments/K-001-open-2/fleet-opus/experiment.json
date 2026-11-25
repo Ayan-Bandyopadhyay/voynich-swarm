@@ -1,7 +1,7 @@
 {
-  "step": "K-001-open-2",
-  "handle": "fleet-opus",
-  "kind": "fact",
-  "summary": "Adjacent words share strong edge-glyph dependence (>= 0.15 bits, beyond page shuffles); no pinned generator reproduces it together with the manuscript's singleton-rich vocabulary.",
-  "lease": "ac6eb1891d5ee64f9bbb3293"
+ "step": "K-001-open-2",
+ "handle": "fleet-opus",
+ "kind": "step",
+ "summary": "At matched size, R-017's drifting chain matches the manuscript's singletons and reaches most of its edge dependence (90% of the raw value in the scorer's line layout); Latin, Esperanto and a priori codes of Latin reach almost none, and the a priori codes trade near-copies against singletons.",
+ "lease": "c1a2cdf9a36ece162f405647"
 }
