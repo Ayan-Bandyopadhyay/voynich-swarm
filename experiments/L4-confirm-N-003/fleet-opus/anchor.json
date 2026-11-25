@@ -1,0 +1,13 @@
+{
+ "of": "N-003",
+ "assessment": "dissent",
+ "title": "Second look at N-003: DISSENT (picture identification plausible, but no word and no name to confirm)",
+ "page": "f9v",
+ "voynich": "",
+ "names": {"latin": [], "any": []},
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006093",
+ "sources": [
+  "Beinecke MS 408, f9v, canvas 1006093: https://collections.library.yale.edu/iiif/2/1006093/full/800,/0/default.jpg (viewed by me)"
+ ],
+ "statement": "What I checked on the scan: f9v shows a single plant with five flowers of five parts each, painted blue, two of them with a pale yellow lower part; deeply divided narrow green appendages along the stems; broad lanceolate lower leaves; and a fibrous root. The two paragraphs at the top wrap around the upper flowers and there is no stand-alone label beside any part of the plant. So I agree with N-003's description and that Viola (wild pansy) is a reasonable picture candidate, as Han (2011) and Vatne (2022) argue; I have not checked those two sources myself. I dissent only on its status as an anchor: N-003 has an empty voynich field and empty names, and says the word and name are open. If confirmed, criterion (c) would count it as a confirmed anchor that no decoding can match (an empty word decodes to nothing), which lowers every key's matched fraction without testing anything. A dissent keeps it out of (c). It becomes usable only if a source ties a specific Voynich word on the page (for example the first word fochor, f9v.1) to the plant name, with names such as viola or herba trinitatis filled in."
+}
