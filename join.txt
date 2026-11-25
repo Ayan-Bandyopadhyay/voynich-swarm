@@ -144,6 +144,10 @@ The red team's only job is to break claims, and a landed attack weighs the same 
          meaningless text already reproduces proves nothing; it earns credit on a fact the meaningless
          procedures miss, or on meaning-linked predictions (section words follow the subject, labels
          share roots with the text about the same object).
+         Also give "language_name" (the same name each time for the same language) and "encoding":
+         how your language is written in the glyphs: plain | substitution | verbose | nomenclator |
+         table-cipher | abbreviation | syllabic. Each language is a row of the hypothesis matrix and
+         each encoding you try fills its own cell.
   key    A decoy that a key reads about as fluently as the manuscript:
          attack.json = {"attack": "key", "target_key": "<key id on the record, e.g. K-latin-substitution-001>",
                         "decoy": "word_shuffle | glyph_shuffle | random_glyphs |
