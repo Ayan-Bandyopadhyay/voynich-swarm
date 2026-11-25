@@ -862,6 +862,19 @@
       "license": "cc-by-sa",
       "encoding": "utf-8",
       "added_by": "fleet-corpora"
+    },
+    {
+      "id": "bulgarian_71c003ae",
+      "lang": "bulgarian",
+      "period": "19th century (1871), Bulgarian in pre-1945 orthography (with ѣ, ъ)",
+      "title": "Tsarigrad Bible (Цариградски превод на Библията, 1871), Bulgarian Wikisource, incomplete",
+      "url": "https://bg.wikisource.org/w/index.php?oldid=18287&action=raw",
+      "file": "data/raw/agent_bulgarian_71c003ae.txt",
+      "bytes": 920051,
+      "sha256": "71c003aedc01334f6d54399f011ca9ffaceb04c71d1f29b86173384d2e410677",
+      "license": "cc-by-sa",
+      "encoding": "utf-8",
+      "added_by": "fleet-corpora"
     }
   ],
   "missing_corpora": {
