@@ -1,0 +1,7 @@
+{
+  "step": "L3-first-old_occitan-substitution",
+  "handle": "fleet-astra",
+  "kind": "key",
+  "summary": "Pinned-budget old_occitan substitution search after passing the 2%-noise control with 2.12% compression savings.",
+  "lease": "f30c0a42c0bc9540aa10a491"
+}
