@@ -1,0 +1,25 @@
+{
+  "title": "Near-copies of recent words far above natural languages",
+  "statement": "In paragraph text, the share of certain words of at least four glyphs that are within one glyph edit of one of the previous ten words exceeds the same statistic in every reference language, poured into the same layout, by at least 0.1. On a hidden-sized subset of the practice training pages (every fifth page, about 6,100 words) the manuscript scores 0.209 (ZL) and 0.208 (Takahashi) against 0.004 to 0.030 for Catalan, English, French, German, Italian, Latin and Spanish.",
+  "source": "Timm 2014 (K-005) reports raised repetition between consecutive lines; window and threshold set on practice training pages only, not on evaluation pages.",
+  "spec": {
+    "select": {
+      "unit": [
+        "P"
+      ],
+      "certain": true
+    },
+    "statistic": {
+      "near_copy": {
+        "window": 10,
+        "min_length": 4
+      }
+    },
+    "compare": [
+      {
+        "reference": "above_all",
+        "margin": 0.1
+      }
+    ]
+  }
+}
