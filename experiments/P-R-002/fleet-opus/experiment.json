@@ -1,0 +1,7 @@
+{
+  "step": "P-R-002",
+  "handle": "fleet-opus",
+  "kind": "attack",
+  "summary": "A general position-aware word chain (line lengths, position-class word frequencies, one glyph of memory), fitted on public Currier B pages and sent with whole lines, reproduces F-001 without language (27.1, threshold 10).",
+  "lease": "9aa30de0bdb7842c625ef1df"
+}
