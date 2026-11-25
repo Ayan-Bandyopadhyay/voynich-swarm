@@ -11,7 +11,11 @@ model.json:
                                                               possibly with one glyph changed ("edits": 0 | 1)
                    {"type": "template", "prefix": 2, "suffix": 2},   prefix + core + suffix from small inventories
                    {"type": "letters", "order": 3},           glyph by glyph (also spells words never seen before)
-                   {"type": "position"} ],                    vocabulary conditioned on line position (initial/final/mid)
+                   {"type": "position"},                      vocabulary conditioned on line position (initial/final/mid)
+                   {"type": "position_letters", "order": 3},  glyph by glyph, one glyph model per line position
+                   {"type": "boundary_letters", "order": 3} ],glyph by glyph, one glyph model per last glyph of the
+                                                              word before (falls back to letters when that glyph is rare
+                                                              or the word starts a page)
    "weights": "fit" | [w1, w2, ...]}                          mixture weights: fitted by EM on part of the training
                                                               pages, or given
 
@@ -65,6 +69,43 @@ class Letters:
 
     def p(self, w, ctx):
         return 2 ** -self.m.bits(lm.char_stream([w], SEG))
+
+
+class PositionLetters:
+    """One glyph model per line position (initial / final / mid): spelling that depends on where
+    in the line the word stands. A proper distribution over words in every context."""
+    def __init__(self, streams, order=3):
+        by = defaultdict(list)
+        for s in streams:
+            for w, pos in s:
+                by[pos].append(w)
+        o = max(2, min(int(order), 6))
+        self.m = {k: lm.KN([lm.char_stream([w], SEG) for w in v], o) for k, v in by.items()}
+        self.all = lm.KN([lm.char_stream([w], SEG) for v in by.values() for w in v], o)
+
+    def p(self, w, ctx):
+        return 2 ** -self.m.get(ctx["pos"], self.all).bits(lm.char_stream([w], SEG))
+
+
+class BoundaryLetters:
+    """One glyph model per last glyph of the preceding word (within a page): spelling that
+    depends on how the word before ended. Contexts seen fewer than MIN times, and the first
+    word of a page, use the plain glyph model."""
+    MIN = 200
+
+    def __init__(self, streams, letters, order=3):
+        by = defaultdict(list)
+        for s in streams:
+            for (a, _), (b, _) in zip(s, s[1:]):
+                by[SEG(a)[-1]].append(b)
+        o = max(2, min(int(order), 6))
+        self.m = {k: lm.KN([lm.char_stream([w], SEG) for w in v], o) for k, v in by.items() if len(v) >= self.MIN}
+        self.letters = letters
+
+    def p(self, w, ctx):
+        prev = ctx["prev"]
+        m = self.m.get(SEG(prev)[-1]) if prev else None
+        return 2 ** -m.bits(lm.char_stream([w], SEG)) if m else self.letters.p(w, ctx)
 
 
 class Vocab:
@@ -198,6 +239,10 @@ def build(spec, train_pages):
             built.append(Chain(streams, vocab))
         elif t == "position":
             built.append(Position(streams, vocab))
+        elif t == "position_letters":
+            built.append(PositionLetters(streams, c.get("order", 3)))
+        elif t == "boundary_letters":
+            built.append(BoundaryLetters(streams, letters, c.get("order", 3)))
         elif t == "copy":
             built.append(Copy(c.get("window", 20), c.get("edits", 1), glyphs, vocab))
         elif t == "template":

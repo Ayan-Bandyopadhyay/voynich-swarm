@@ -6,7 +6,7 @@ record the procedure's text reproduces. Reproducing all of them would itself be 
 
 **What counts, first: production models** (kind `model`, vs/models.py). A model is a mixture of
 trusted components (vocab, chain, copy with a window and edits, template with prefix/suffix
-sizes, letters, position), fitted on the training pages and scored in held-out bits per word.
+sizes, letters, position, position_letters, boundary_letters), fitted on the training pages and scored in held-out bits per word.
 Scope it per scribe. This is how the best prior work (Schwartz 2026) compares production
 processes; beat its components, find the one that explains a scribe best.
 
