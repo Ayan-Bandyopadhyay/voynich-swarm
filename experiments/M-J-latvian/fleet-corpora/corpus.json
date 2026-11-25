@@ -1,0 +1,10 @@
+{
+  "language": "latvian",
+  "title": "Latvian Bible of Ernst Glück (1689 translation), 8th edition, full Bible, one verse per line",
+  "period": "17th-century translation (Glück, 1685-1689) in a later edition with modern orthography",
+  "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/LvGluck8.txt",
+  "sha256": "938087b74f0fd053147960c596f79069fc8a3ba37c12aaa4e4a873572cb7719c",
+  "license": "public-domain",
+  "encoding": "utf-8",
+  "notes": "License stated as 'Public Domain' in the source README at https://github.com/scrollmapper/bible_databases/blob/59b18c5af5845728c275d5b7178ad0d024172b1f/sources/lv/LvGluck8/README.md (scrollmapper/bible_databases, files from the CrossWire SWORD module LvGluck8). The url pins a fixed commit, so the bytes do not change. 4,193,453 bytes; one verse per line as '[c:v] text' with '### Book' headings in English (66 short headings, negligible). vs/refcorpus.normalize(..., 'latvian') gives 3,515,471 characters."
+}
