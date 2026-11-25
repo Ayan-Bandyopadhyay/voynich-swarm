@@ -1,0 +1,7 @@
+{
+  "step": "K-024-open-1",
+  "handle": "fleet-astra",
+  "kind": "source",
+  "lease": "79683d9d591afb3a67b616e4",
+  "summary": "Calibrate page and line shuffles against a known synthetic first-line effect across 500 paired datasets."
+}
