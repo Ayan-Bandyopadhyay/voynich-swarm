@@ -1,7 +1,7 @@
 {
-  "step": "M-L2",
-  "handle": "fleet-opus",
-  "kind": "fact",
-  "summary": "Paragraphs open with the gallows p or f far more often than line interiors do: at least ten times the mid-line rate, beyond the within-page shuffle.",
-  "lease": "3a5bd5eeb8e37b969068cef5"
+ "step": "M-L2",
+ "handle": "fleet-opus",
+ "kind": "step",
+ "summary": "Proposes a fact tied to the drawings: pharmaceutical labels beside jars and beside plant parts differ in first glyph, last glyph and length on the same page (p 0.005 to 0.01 on public pages), which no text-only generator can know.",
+ "lease": "507cff705128d85a6f583296"
 }
