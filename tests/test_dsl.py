@@ -208,6 +208,36 @@ class NewPrimitivesTest(unittest.TestCase):
             dsl.evaluate(dict(spec, compare=[{"reference": "above_all"}]), pages)
 
 
+    def test_page_group_similarity_needs_more_than_drift(self):
+        """Pages that share a label share words: the statistic sees it with every page kept whole, and the
+        rotation null is not beaten by a text that only changes slowly from front to back."""
+        rng = random.Random(3)
+        def pg(i, sec, vocab):
+            return page(f"f{i}r", [[rng.choice(vocab) for _ in range(8)] for _ in range(10)], section=sec, order=i)
+        va, vb = [f"a{k}" for k in range(12)], [f"b{k}" for k in range(12)]
+        # labels come and go along the book and no shift of them repeats the pattern
+        pattern = "AABABBABAABBBABAABABBBAA"
+        grouped = [pg(i, s, va if s == "A" else vb) for i, s in enumerate(pattern)]
+        spec = {"statistic": {"page_group_similarity": {"by": "section"}},
+                "compare": [{"null": "shuffle_page_labels", "perms": 199, "p": 0.01},
+                            {"null": "rotate_page_labels", "p": 0.05}]}
+        r = dsl.evaluate(spec, grouped)
+        self.assertTrue(r["pass"], r)
+        self.assertEqual(r["detail"]["rotate_page_labels"]["perms"], len(pattern) - 1)
+        # a drifting text: the vocabulary slides along the book, the labels sit in two halves
+        vocab = [f"w{k}" for k in range(60)]
+        drift = [pg(i, "A" if i < 12 else "B", vocab[i * 2:i * 2 + 14]) for i in range(24)]
+        d = dsl.evaluate(spec, drift)
+        self.assertGreater(d["value"], 0)                       # same-label pages are closer, hence more alike
+        self.assertFalse(d["pass"], d)                           # but no more than under shifted labels
+        # the nulls leave every word on its page
+        toks = dsl.tokens(grouped)
+        sh = dsl._shuffled(toks, "shuffle_page_labels", random.Random(1))
+        self.assertEqual([(t["w"], t["page"]) for t in toks], [(t["w"], t["page"]) for t in sh])
+        with self.assertRaises(dsl.SpecError):                   # a statistic that does not read the labels cannot be moved
+            dsl.evaluate({"statistic": {"hapax_share": True}, "compare": [{"null": "shuffle_page_labels", "perms": 99, "p": 0.01}]}, grouped)
+
+
 class FingerprintTest(unittest.TestCase):
     def item(self, spec):
         return {"type": "fact", "detail": {"spec": spec}, "provenance": {}}
