@@ -1,0 +1,1815 @@
+{
+  "title": "Resolve the published ligature loss and require specificity on conditional controls",
+  "statement": "The printed Rule 6 in Matlach, Janečková and Dostál has a loss of at least 1 for distinct candidates, since the largest symbol probability and the smaller candidate probability sum to at most 1. Table 5 reports smaller Rule 6 values, including 0.299, with Rule 6 weight 1. In Rule 3 the equation sums probability in shared contexts and the prose describes the mass in unmatched contexts. I retained all eight weights and compared the literal equations with one plausible reconstruction of Rules 3 and 6. In both calculations five of six fully planted triplets that remained in the eligible alphabet ranked below the fifth percentile across matched English, Latin and Italian controls. Three other plants could not enter the candidate universe because the replacement or a component fell below frequency support. In unmodified natural controls 9–12 candidate symbols acquired a fifth-percentile triplet even though no ligatures were inserted. In six stationary whole-copy line-chain controls 10–13 of 17 symbols did so. More specifically, m with components i,d and q with i,e rank below the fifth percentile in both public ZL and Takahashi and in all six line-chain controls under both reconstructions. Those control glyphs are emitted directly without the tested pair-to-glyph substitutions. Three separate Yale scan checks also confirm real differences across the pinned transcriptions at disputed raw pair occurrences. The published percentile measures the rank among scored candidates and can be low for an explicitly unfused symbol.",
+  "program": "L1",
+  "check": "Recover the authors' original executable specification or reconcile Table 5 with the equations before claiming numerical reproduction. Calibrate a fixed candidate-level error criterion against text controls matched for rare transitions and word position, with independently planted ligatures across several rates and replacement probabilities. Test shared triplets in separate ZL and Takahashi blocks and adjudicate disputed appearances on scans with glyph candidates masked.",
+  "on_path": false,
+  "hard": true,
+  "source": {
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0260948",
+    "where": "Detecting the ligatures, Rules 3 and 6, Table 5 and S2 Fig"
+  },
+  "practice": {
+    "score": "Use the printed weighted sum and exactly 1,100,1,1,100,1,1,10 as the eight weights. Estimate joint adjacent symbol frequencies with single spaces and zero a transition whose share of the originating row or receiving column is less than 0.002. For literal Rule 3, sum rarer-sign left-context mass where the commoner sign is observed. For the reconstruction sum the complementary mass, and replace Rule 6 (1−minimum candidate probability)/maximum symbol probability by 1−(minimum candidate probability/maximum symbol probability). The alternative is an explicit reconstruction. For Rule 4 with fewer than two realized contexts set loss zero, and treat other undefined Pearson coefficients as zero correlation. Score all ordered triples with C distinct from either component. Retain the same-symbol penalty when A equals B.",
+    "eligibility": "Candidate universe uses non-space symbols with relative incidence greater than 500/229431, matching the published absolute threshold after scaling to this sample length. Space remains in the transition matrix. For the special n → i plus space test and below-threshold signs, calculate their percentile against the same universe and mark them as noncompeting. Count ranks at or below the candidate score, including ties. An outsider below every competing score receives empirical percentile zero.",
+    "data": "Manuscript comparison uses shared certain paragraph-line IDs from official public practice ZL and Takahashi with all certain words as transcribed. Each pinned natural control is a cleaned lowercase ASCII prefix of 31,350 symbols including spaces. For each preselected pair, replace every nonoverlapping occurrence by a new atomic symbol X in a separate copy of the control. At most one such substitution process is planted per sample. The copying controls use the P-R-009 stationary line chain fit on public practice-training ZL, seeds 421–426, over the public practice layout. The line chain emits EVA-basic units directly. The reported fixed manuscript candidates occur as separate emitted EVA units where relevant to the cited false positives.",
+    "scan_checks": [
+      {
+        "locus": "f27v.4",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006127",
+        "crop": "https://collections.library.yale.edu/iiif/2/1006127/2250,710,430,170/full/0/default.jpg",
+        "statement": "The two final signs on the right reproduce S2 A’s first detail. The last has a small upper loop and a thin descending stroke. ZL has final sg, while Takahashi and Friedman have sm. The scan provides the locus and graphic shape without fixing a universal transcription rule."
+      },
+      {
+        "locus": "f93r.29",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006238",
+        "crop": "https://collections.library.yale.edu/iiif/2/1006238/795,2375,375,185/full/0/default.jpg",
+        "statement": "The line-final bench word at the edge of the painted area reproduces S2 A’s second detail. The final shape is looped with a hooked tail. ZL joins sg, Takahashi joins sm, and Friedman separates the final g."
+      },
+      {
+        "locus": "f68r2.4",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006196",
+        "crop": "https://collections.library.yale.edu/iiif/2/1006196/3090,590,235,210/full/0/default.jpg",
+        "statement": "The disputed third token corresponds to S2 E. The final figure-eight is clear. Two low strokes before it are hard to classify by this crop. Takahashi gives oriid and both ZL and Friedman give oreed. This split affects naked id counts."
+      }
+    ],
+    "reference_length": 31350,
+    "natural": {
+      "english": {
+        "unmodified": {
+          "literal": {
+            "candidate_symbols": 22,
+            "universe": 9702,
+            "flagged_symbols": [
+              "a",
+              "b",
+              "f",
+              "g",
+              "h",
+              "i",
+              "k",
+              "m",
+              "u",
+              "v",
+              "w",
+              "y"
+            ],
+            "fixed_triplets": {}
+          },
+          "prose": {
+            "candidate_symbols": 22,
+            "universe": 9702,
+            "flagged_symbols": [
+              "a",
+              "b",
+              "f",
+              "g",
+              "h",
+              "i",
+              "k",
+              "m",
+              "u",
+              "v",
+              "w",
+              "y"
+            ],
+            "fixed_triplets": {}
+          }
+        },
+        "ea": {
+          "literal": {
+            "candidate_symbols": 23,
+            "universe": 11132,
+            "flagged_symbols": [
+              "X",
+              "a",
+              "b",
+              "g",
+              "h",
+              "i",
+              "k",
+              "m",
+              "u",
+              "v",
+              "w",
+              "y"
+            ],
+            "fixed_triplets": {
+              "X|e|a": {
+                "loss": 6.012426107126285,
+                "percentile": 0.00017966223499820338,
+                "competed_in_universe": true
+              }
+            }
+          },
+          "prose": {
+            "candidate_symbols": 23,
+            "universe": 11132,
+            "flagged_symbols": [
+              "X",
+              "a",
+              "b",
+              "g",
+              "h",
+              "i",
+              "k",
+              "m",
+              "u",
+              "v",
+              "w",
+              "y"
+            ],
+            "fixed_triplets": {
+              "X|e|a": {
+                "loss": 1.806954147634958,
+                "percentile": 0.00017966223499820338,
+                "competed_in_universe": true
+              }
+            }
+          },
+          "replaced_occurrences": 157
+        },
+        "th": {
+          "literal": {
+            "candidate_symbols": 23,
+            "universe": 11132,
+            "flagged_symbols": [
+              "X",
+              "a",
+              "b",
+              "c",
+              "f",
+              "g",
+              "h",
+              "i",
+              "k",
+              "m",
+              "u",
+              "v",
+              "w",
+              "y"
+            ],
+            "fixed_triplets": {
+              "X|t|h": {
+                "loss": 11.686023688509758,
+                "percentile": 0.05470715055695293,
+                "competed_in_universe": true
+              }
+            }
+          },
+          "prose": {
+            "candidate_symbols": 23,
+            "universe": 11132,
+            "flagged_symbols": [
+              "X",
+              "a",
+              "b",
+              "c",
+              "f",
+              "g",
+              "h",
+              "i",
+              "k",
+              "m",
+              "u",
+              "v",
+              "w",
+              "y"
+            ],
+            "fixed_triplets": {
+              "X|t|h": {
+                "loss": 7.5765143169144675,
+                "percentile": 0.054437657204455626,
+                "competed_in_universe": true
+              }
+            }
+          },
+          "replaced_occurrences": 874
+        },
+        "in": {
+          "literal": {
+            "candidate_symbols": 23,
+            "universe": 11132,
+            "flagged_symbols": [
+              "X",
+              "a",
+              "b",
+              "f",
+              "g",
+              "h",
+              "i",
+              "k",
+              "m",
+              "u",
+              "v",
+              "w",
+              "y"
+            ],
+            "fixed_triplets": {
+              "X|i|n": {
+                "loss": 9.334738628989339,
+                "percentile": 0.015900107797341,
+                "competed_in_universe": true
+              }
+            }
+          },
+          "prose": {
+            "candidate_symbols": 23,
+            "universe": 11132,
+            "flagged_symbols": [
+              "X",
+              "a",
+              "b",
+              "f",
+              "g",
+              "h",
+              "i",
+              "k",
+              "m",
+              "u",
+              "v",
+              "w",
+              "y"
+            ],
+            "fixed_triplets": {
+              "X|i|n": {
+                "loss": 5.153910876962909,
+                "percentile": 0.015900107797341,
+                "competed_in_universe": true
+              }
+            }
+          },
+          "replaced_occurrences": 340
+        }
+      },
+      "latin": {
+        "unmodified": {
+          "literal": {
+            "candidate_symbols": 20,
+            "universe": 7220,
+            "flagged_symbols": [
+              "a",
+              "b",
+              "d",
+              "e",
+              "g",
+              "h",
+              "o",
+              "q",
+              "x"
+            ],
+            "fixed_triplets": {}
+          },
+          "prose": {
+            "candidate_symbols": 20,
+            "universe": 7220,
+            "flagged_symbols": [
+              "a",
+              "b",
+              "d",
+              "e",
+              "g",
+              "h",
+              "o",
+              "q",
+              "x"
+            ],
+            "fixed_triplets": {}
+          }
+        },
+        "pa": {
+          "literal": {
+            "candidate_symbols": 20,
+            "universe": 7220,
+            "flagged_symbols": [
+              "a",
+              "b",
+              "d",
+              "e",
+              "g",
+              "h",
+              "o",
+              "q",
+              "x"
+            ],
+            "fixed_triplets": {
+              "X|p|a": {
+                "loss": 7.431931153477765,
+                "percentile": 0.002770083102493075,
+                "competed_in_universe": false
+              }
+            }
+          },
+          "prose": {
+            "candidate_symbols": 20,
+            "universe": 7220,
+            "flagged_symbols": [
+              "a",
+              "b",
+              "d",
+              "e",
+              "g",
+              "h",
+              "o",
+              "q",
+              "x"
+            ],
+            "fixed_triplets": {
+              "X|p|a": {
+                "loss": 1.9097675889841583,
+                "percentile": 0.002770083102493075,
+                "competed_in_universe": false
+              }
+            }
+          },
+          "replaced_occurrences": 42
+        },
+        "qu": {
+          "literal": {
+            "candidate_symbols": 20,
+            "universe": 7220,
+            "flagged_symbols": [
+              "X",
+              "a",
+              "b",
+              "d",
+              "e",
+              "g",
+              "h",
+              "o",
+              "x"
+            ],
+            "fixed_triplets": {}
+          },
+          "prose": {
+            "candidate_symbols": 20,
+            "universe": 7220,
+            "flagged_symbols": [
+              "X",
+              "a",
+              "b",
+              "d",
+              "e",
+              "g",
+              "h",
+              "o",
+              "x"
+            ],
+            "fixed_triplets": {}
+          },
+          "replaced_occurrences": 431
+        },
+        "en": {
+          "literal": {
+            "candidate_symbols": 21,
+            "universe": 8400,
+            "flagged_symbols": [
+              "X",
+              "a",
+              "b",
+              "d",
+              "e",
+              "g",
+              "h",
+              "o",
+              "q",
+              "x"
+            ],
+            "fixed_triplets": {
+              "X|e|n": {
+                "loss": 8.796292480889408,
+                "percentile": 0.010476190476190476,
+                "competed_in_universe": true
+              }
+            }
+          },
+          "prose": {
+            "candidate_symbols": 21,
+            "universe": 8400,
+            "flagged_symbols": [
+              "X",
+              "a",
+              "b",
+              "d",
+              "e",
+              "g",
+              "h",
+              "o",
+              "q",
+              "x"
+            ],
+            "fixed_triplets": {
+              "X|e|n": {
+                "loss": 3.3305373401158924,
+                "percentile": 0.010357142857142856,
+                "competed_in_universe": true
+              }
+            }
+          },
+          "replaced_occurrences": 364
+        }
+      },
+      "italian": {
+        "unmodified": {
+          "literal": {
+            "candidate_symbols": 21,
+            "universe": 8400,
+            "flagged_symbols": [
+              "a",
+              "d",
+              "e",
+              "h",
+              "i",
+              "o",
+              "q",
+              "u",
+              "v"
+            ],
+            "fixed_triplets": {}
+          },
+          "prose": {
+            "candidate_symbols": 21,
+            "universe": 8400,
+            "flagged_symbols": [
+              "a",
+              "d",
+              "e",
+              "h",
+              "i",
+              "o",
+              "q",
+              "u",
+              "v"
+            ],
+            "fixed_triplets": {}
+          }
+        },
+        "ch": {
+          "literal": {
+            "candidate_symbols": 21,
+            "universe": 8400,
+            "flagged_symbols": [
+              "X",
+              "a",
+              "d",
+              "e",
+              "i",
+              "o",
+              "q",
+              "u",
+              "v"
+            ],
+            "fixed_triplets": {
+              "X|c|h": {
+                "loss": 25.704607107161664,
+                "percentile": 0.4194047619047619,
+                "competed_in_universe": false
+              }
+            }
+          },
+          "prose": {
+            "candidate_symbols": 21,
+            "universe": 8400,
+            "flagged_symbols": [
+              "X",
+              "a",
+              "d",
+              "e",
+              "i",
+              "o",
+              "q",
+              "u",
+              "v"
+            ],
+            "fixed_triplets": {
+              "X|c|h": {
+                "loss": 21.828967707595325,
+                "percentile": 0.41928571428571426,
+                "competed_in_universe": false
+              }
+            }
+          },
+          "replaced_occurrences": 421
+        },
+        "de": {
+          "literal": {
+            "candidate_symbols": 22,
+            "universe": 9702,
+            "flagged_symbols": [
+              "X",
+              "a",
+              "d",
+              "e",
+              "h",
+              "i",
+              "o",
+              "q",
+              "u",
+              "v"
+            ],
+            "fixed_triplets": {
+              "X|d|e": {
+                "loss": 7.022422003283538,
+                "percentile": 0.0041228612657184084,
+                "competed_in_universe": true
+              }
+            }
+          },
+          "prose": {
+            "candidate_symbols": 22,
+            "universe": 9702,
+            "flagged_symbols": [
+              "X",
+              "a",
+              "d",
+              "e",
+              "h",
+              "i",
+              "o",
+              "q",
+              "u",
+              "v"
+            ],
+            "fixed_triplets": {
+              "X|d|e": {
+                "loss": 3.118447739474712,
+                "percentile": 0.0041228612657184084,
+                "competed_in_universe": true
+              }
+            }
+          },
+          "replaced_occurrences": 194
+        },
+        "to": {
+          "literal": {
+            "candidate_symbols": 22,
+            "universe": 9702,
+            "flagged_symbols": [
+              "X",
+              "a",
+              "d",
+              "e",
+              "h",
+              "i",
+              "o",
+              "q",
+              "u",
+              "v"
+            ],
+            "fixed_triplets": {
+              "X|t|o": {
+                "loss": 7.648393854750267,
+                "percentile": 0.0041228612657184084,
+                "competed_in_universe": true
+              }
+            }
+          },
+          "prose": {
+            "candidate_symbols": 22,
+            "universe": 9702,
+            "flagged_symbols": [
+              "X",
+              "a",
+              "d",
+              "e",
+              "h",
+              "i",
+              "o",
+              "q",
+              "u",
+              "v"
+            ],
+            "fixed_triplets": {
+              "X|t|o": {
+                "loss": 3.75449494779782,
+                "percentile": 0.0041228612657184084,
+                "competed_in_universe": true
+              }
+            }
+          },
+          "replaced_occurrences": 276
+        }
+      }
+    },
+    "copy_controls": {
+      "421": {
+        "literal": {
+          "candidate_symbols": 17,
+          "universe": 4352,
+          "flagged_symbols": [
+            "a",
+            "c",
+            "d",
+            "k",
+            "l",
+            "m",
+            "n",
+            "p",
+            "q",
+            "r",
+            "s",
+            "t",
+            "y"
+          ],
+          "fixed_triplets": {
+            "f|i|d": {
+              "loss": 6.961469491155912,
+              "percentile": 0.00390625,
+              "competed_in_universe": false
+            },
+            "m|i|d": {
+              "loss": 6.968677434406542,
+              "percentile": 0.004365808823529412,
+              "competed_in_universe": true
+            },
+            "q|i|e": {
+              "loss": 8.137316557260274,
+              "percentile": 0.029871323529411766,
+              "competed_in_universe": true
+            },
+            "n|i| ": {
+              "loss": 7.219691904335279,
+              "percentile": 0.008501838235294117,
+              "competed_in_universe": false
+            },
+            "g|c|d": {
+              "loss": 5.57787433780884,
+              "percentile": 0.0,
+              "competed_in_universe": false
+            },
+            "p|q|d": {
+              "loss": 9.416851117395826,
+              "percentile": 0.09030330882352941,
+              "competed_in_universe": true
+            },
+            "r|s|i": {
+              "loss": 12.567264414931875,
+              "percentile": 0.39246323529411764,
+              "competed_in_universe": true
+            },
+            "t|q|l": {
+              "loss": 13.30481455613571,
+              "percentile": 0.4572610294117647,
+              "competed_in_universe": true
+            },
+            "d|e|y": {
+              "loss": 37.49610522053459,
+              "percentile": 0.8409926470588235,
+              "competed_in_universe": true
+            },
+            "d|y|e": {
+              "loss": 8.557617217645994,
+              "percentile": 0.04480698529411765,
+              "competed_in_universe": true
+            },
+            "k|i|l": {
+              "loss": 11.301894478169789,
+              "percentile": 0.24310661764705882,
+              "competed_in_universe": true
+            }
+          }
+        },
+        "prose": {
+          "candidate_symbols": 17,
+          "universe": 4352,
+          "flagged_symbols": [
+            "a",
+            "c",
+            "d",
+            "k",
+            "l",
+            "m",
+            "n",
+            "p",
+            "q",
+            "r",
+            "s",
+            "t",
+            "y"
+          ],
+          "fixed_triplets": {
+            "f|i|d": {
+              "loss": 2.1480786103963743,
+              "percentile": 0.004136029411764706,
+              "competed_in_universe": false
+            },
+            "m|i|d": {
+              "loss": 2.1508838971288347,
+              "percentile": 0.004365808823529412,
+              "competed_in_universe": true
+            },
+            "q|i|e": {
+              "loss": 3.3453419887162417,
+              "percentile": 0.03079044117647059,
+              "competed_in_universe": true
+            },
+            "n|i| ": {
+              "loss": 2.376788300644616,
+              "percentile": 0.008042279411764705,
+              "competed_in_universe": false
+            },
+            "g|c|d": {
+              "loss": 0.763774554728579,
+              "percentile": 0.0,
+              "competed_in_universe": false
+            },
+            "p|q|d": {
+              "loss": 4.603199062097074,
+              "percentile": 0.08984375,
+              "competed_in_universe": true
+            },
+            "r|s|i": {
+              "loss": 7.738949274788709,
+              "percentile": 0.39108455882352944,
+              "competed_in_universe": true
+            },
+            "t|q|l": {
+              "loss": 8.468589558519222,
+              "percentile": 0.45565257352941174,
+              "competed_in_universe": true
+            },
+            "d|e|y": {
+              "loss": 32.632606138894516,
+              "percentile": 0.8409926470588235,
+              "competed_in_universe": true
+            },
+            "d|y|e": {
+              "loss": 3.689864722081592,
+              "percentile": 0.042738970588235295,
+              "competed_in_universe": true
+            },
+            "k|i|l": {
+              "loss": 6.475258317207282,
+              "percentile": 0.24379595588235295,
+              "competed_in_universe": true
+            }
+          }
+        }
+      },
+      "422": {
+        "literal": {
+          "candidate_symbols": 17,
+          "universe": 4352,
+          "flagged_symbols": [
+            "a",
+            "c",
+            "k",
+            "l",
+            "m",
+            "n",
+            "p",
+            "q",
+            "r",
+            "s",
+            "t",
+            "y"
+          ],
+          "fixed_triplets": {
+            "f|i|d": {
+              "loss": 5.890283944854324,
+              "percentile": 0.0,
+              "competed_in_universe": false
+            },
+            "m|i|d": {
+              "loss": 7.085609737526548,
+              "percentile": 0.007123161764705882,
+              "competed_in_universe": true
+            },
+            "q|i|e": {
+              "loss": 8.02799643608778,
+              "percentile": 0.027113970588235295,
+              "competed_in_universe": true
+            },
+            "n|i| ": {
+              "loss": 7.263697606039819,
+              "percentile": 0.009191176470588236,
+              "competed_in_universe": false
+            },
+            "g|c|d": {
+              "loss": 5.697356620897207,
+              "percentile": 0.0,
+              "competed_in_universe": false
+            },
+            "p|q|d": {
+              "loss": 9.345442057961272,
+              "percentile": 0.08432904411764706,
+              "competed_in_universe": true
+            },
+            "r|s|i": {
+              "loss": 12.590799967938093,
+              "percentile": 0.36213235294117646,
+              "competed_in_universe": true
+            },
+            "t|q|l": {
+              "loss": 13.787410636417034,
+              "percentile": 0.4820772058823529,
+              "competed_in_universe": true
+            },
+            "d|e|y": {
+              "loss": 37.797269489395376,
+              "percentile": 0.8414522058823529,
+              "competed_in_universe": true
+            },
+            "d|y|e": {
+              "loss": 9.665656555362867,
+              "percentile": 0.10477941176470588,
+              "competed_in_universe": true
+            },
+            "k|i|l": {
+              "loss": 11.611865525902303,
+              "percentile": 0.25344669117647056,
+              "competed_in_universe": true
+            }
+          }
+        },
+        "prose": {
+          "candidate_symbols": 17,
+          "universe": 4352,
+          "flagged_symbols": [
+            "a",
+            "c",
+            "k",
+            "l",
+            "m",
+            "n",
+            "p",
+            "q",
+            "r",
+            "s",
+            "t",
+            "y"
+          ],
+          "fixed_triplets": {
+            "f|i|d": {
+              "loss": 1.054014425664148,
+              "percentile": 0.0,
+              "competed_in_universe": false
+            },
+            "m|i|d": {
+              "loss": 2.2452386969173155,
+              "percentile": 0.007123161764705882,
+              "competed_in_universe": true
+            },
+            "q|i|e": {
+              "loss": 3.213952255185481,
+              "percentile": 0.028722426470588234,
+              "competed_in_universe": true
+            },
+            "n|i| ": {
+              "loss": 2.397735876234765,
+              "percentile": 0.008961397058823529,
+              "competed_in_universe": false
+            },
+            "g|c|d": {
+              "loss": 0.8612623804001518,
+              "percentile": 0.0,
+              "competed_in_universe": false
+            },
+            "p|q|d": {
+              "loss": 4.50976848632771,
+              "percentile": 0.08547794117647059,
+              "competed_in_universe": true
+            },
+            "r|s|i": {
+              "loss": 7.736161241708722,
+              "percentile": 0.36144301470588236,
+              "competed_in_universe": true
+            },
+            "t|q|l": {
+              "loss": 8.929196224847974,
+              "percentile": 0.4811580882352941,
+              "competed_in_universe": true
+            },
+            "d|e|y": {
+              "loss": 32.90817097209821,
+              "percentile": 0.8414522058823529,
+              "competed_in_universe": true
+            },
+            "d|y|e": {
+              "loss": 4.773683467498498,
+              "percentile": 0.10363051470588236,
+              "competed_in_universe": true
+            },
+            "k|i|l": {
+              "loss": 6.7680940786465005,
+              "percentile": 0.25390625,
+              "competed_in_universe": true
+            }
+          }
+        }
+      },
+      "423": {
+        "literal": {
+          "candidate_symbols": 17,
+          "universe": 4352,
+          "flagged_symbols": [
+            "a",
+            "c",
+            "d",
+            "k",
+            "l",
+            "m",
+            "n",
+            "p",
+            "q",
+            "r",
+            "s",
+            "t"
+          ],
+          "fixed_triplets": {
+            "f|i|d": {
+              "loss": 7.012840913572728,
+              "percentile": 0.005284926470588236,
+              "competed_in_universe": false
+            },
+            "m|i|d": {
+              "loss": 7.216518233414681,
+              "percentile": 0.00942095588235294,
+              "competed_in_universe": true
+            },
+            "q|i|e": {
+              "loss": 8.531513339440723,
+              "percentile": 0.04457720588235294,
+              "competed_in_universe": true
+            },
+            "n|i| ": {
+              "loss": 7.413195491814867,
+              "percentile": 0.012408088235294117,
+              "competed_in_universe": false
+            },
+            "g|c|d": {
+              "loss": 5.69280719609341,
+              "percentile": 0.0,
+              "competed_in_universe": false
+            },
+            "p|q|d": {
+              "loss": 9.320534504017278,
+              "percentile": 0.08478860294117647,
+              "competed_in_universe": true
+            },
+            "r|s|i": {
+              "loss": 13.243900000830259,
+              "percentile": 0.4508272058823529,
+              "competed_in_universe": true
+            },
+            "t|q|l": {
+              "loss": 13.491555643088041,
+              "percentile": 0.4756433823529412,
+              "competed_in_universe": true
+            },
+            "d|e|y": {
+              "loss": 35.73528483011678,
+              "percentile": 0.8391544117647058,
+              "competed_in_universe": true
+            },
+            "d|y|e": {
+              "loss": 8.481543322600434,
+              "percentile": 0.04113051470588235,
+              "competed_in_universe": true
+            },
+            "k|i|l": {
+              "loss": 12.332612470491334,
+              "percentile": 0.3596047794117647,
+              "competed_in_universe": true
+            }
+          }
+        },
+        "prose": {
+          "candidate_symbols": 17,
+          "universe": 4352,
+          "flagged_symbols": [
+            "a",
+            "c",
+            "d",
+            "k",
+            "l",
+            "m",
+            "n",
+            "p",
+            "q",
+            "r",
+            "s",
+            "t"
+          ],
+          "fixed_triplets": {
+            "f|i|d": {
+              "loss": 2.1269419239504983,
+              "percentile": 0.005284926470588236,
+              "competed_in_universe": false
+            },
+            "m|i|d": {
+              "loss": 2.326144188728297,
+              "percentile": 0.00942095588235294,
+              "competed_in_universe": true
+            },
+            "q|i|e": {
+              "loss": 3.6693531184791226,
+              "percentile": 0.04526654411764706,
+              "competed_in_universe": true
+            },
+            "n|i| ": {
+              "loss": 2.499537176247806,
+              "percentile": 0.012178308823529412,
+              "competed_in_universe": false
+            },
+            "g|c|d": {
+              "loss": 0.8058943268082083,
+              "percentile": 0.0,
+              "competed_in_universe": false
+            },
+            "p|q|d": {
+              "loss": 4.434530630291983,
+              "percentile": 0.08547794117647059,
+              "competed_in_universe": true
+            },
+            "r|s|i": {
+              "loss": 8.343841657294105,
+              "percentile": 0.45059742647058826,
+              "competed_in_universe": true
+            },
+            "t|q|l": {
+              "loss": 8.580099893685368,
+              "percentile": 0.4735753676470588,
+              "competed_in_universe": true
+            },
+            "d|e|y": {
+              "loss": 30.82812932893982,
+              "percentile": 0.8391544117647058,
+              "competed_in_universe": true
+            },
+            "d|y|e": {
+              "loss": 3.5403354492946737,
+              "percentile": 0.03998161764705882,
+              "competed_in_universe": true
+            },
+            "k|i|l": {
+              "loss": 7.432414281484425,
+              "percentile": 0.35822610294117646,
+              "competed_in_universe": true
+            }
+          }
+        }
+      },
+      "424": {
+        "literal": {
+          "candidate_symbols": 17,
+          "universe": 4352,
+          "flagged_symbols": [
+            "a",
+            "c",
+            "d",
+            "k",
+            "l",
+            "m",
+            "n",
+            "p",
+            "q",
+            "r",
+            "s",
+            "t",
+            "y"
+          ],
+          "fixed_triplets": {
+            "f|i|d": {
+              "loss": 6.41781634384224,
+              "percentile": 0.0,
+              "competed_in_universe": false
+            },
+            "m|i|d": {
+              "loss": 7.2668703132717685,
+              "percentile": 0.008272058823529412,
+              "competed_in_universe": true
+            },
+            "q|i|e": {
+              "loss": 8.18282746425196,
+              "percentile": 0.028722426470588234,
+              "competed_in_universe": true
+            },
+            "n|i| ": {
+              "loss": 7.188344734499228,
+              "percentile": 0.006893382352941176,
+              "competed_in_universe": false
+            },
+            "g|c|d": {
+              "loss": 5.586685844503984,
+              "percentile": 0.0,
+              "competed_in_universe": false
+            },
+            "p|q|d": {
+              "loss": 9.774614677518233,
+              "percentile": 0.1091452205882353,
+              "competed_in_universe": true
+            },
+            "r|s|i": {
+              "loss": 12.923521641432092,
+              "percentile": 0.40625,
+              "competed_in_universe": true
+            },
+            "t|q|l": {
+              "loss": 12.933801728228786,
+              "percentile": 0.40808823529411764,
+              "competed_in_universe": true
+            },
+            "d|e|y": {
+              "loss": 38.607243538992506,
+              "percentile": 0.8451286764705882,
+              "competed_in_universe": true
+            },
+            "d|y|e": {
+              "loss": 9.490784018346988,
+              "percentile": 0.09122242647058823,
+              "competed_in_universe": true
+            },
+            "k|i|l": {
+              "loss": 11.586864487975665,
+              "percentile": 0.25574448529411764,
+              "competed_in_universe": true
+            }
+          }
+        },
+        "prose": {
+          "candidate_symbols": 17,
+          "universe": 4352,
+          "flagged_symbols": [
+            "a",
+            "c",
+            "d",
+            "k",
+            "l",
+            "m",
+            "n",
+            "p",
+            "q",
+            "r",
+            "s",
+            "t",
+            "y"
+          ],
+          "fixed_triplets": {
+            "f|i|d": {
+              "loss": 1.6550810159026956,
+              "percentile": 0.0,
+              "competed_in_universe": false
+            },
+            "m|i|d": {
+              "loss": 2.4992297530844927,
+              "percentile": 0.008272058823529412,
+              "competed_in_universe": true
+            },
+            "q|i|e": {
+              "loss": 3.4423158415980515,
+              "percentile": 0.03056066176470588,
+              "competed_in_universe": true
+            },
+            "n|i| ": {
+              "loss": 2.398213517611472,
+              "percentile": 0.006893382352941176,
+              "competed_in_universe": false
+            },
+            "g|c|d": {
+              "loss": 0.8234166137347538,
+              "percentile": 0.0,
+              "competed_in_universe": false
+            },
+            "p|q|d": {
+              "loss": 5.0122464077740965,
+              "percentile": 0.11052389705882353,
+              "competed_in_universe": true
+            },
+            "r|s|i": {
+              "loss": 8.142500141575834,
+              "percentile": 0.40739889705882354,
+              "competed_in_universe": true
+            },
+            "t|q|l": {
+              "loss": 8.147774889344232,
+              "percentile": 0.40831801470588236,
+              "competed_in_universe": true
+            },
+            "d|e|y": {
+              "loss": 33.792586160866094,
+              "percentile": 0.8451286764705882,
+              "competed_in_universe": true
+            },
+            "d|y|e": {
+              "loss": 4.6754592616834705,
+              "percentile": 0.08731617647058823,
+              "competed_in_universe": true
+            },
+            "k|i|l": {
+              "loss": 6.811715919245943,
+              "percentile": 0.2562040441176471,
+              "competed_in_universe": true
+            }
+          }
+        }
+      },
+      "425": {
+        "literal": {
+          "candidate_symbols": 17,
+          "universe": 4352,
+          "flagged_symbols": [
+            "a",
+            "c",
+            "d",
+            "k",
+            "l",
+            "m",
+            "n",
+            "p",
+            "q",
+            "r",
+            "s",
+            "t",
+            "y"
+          ],
+          "fixed_triplets": {
+            "f|i|d": {
+              "loss": 6.213512938629302,
+              "percentile": 0.0,
+              "competed_in_universe": false
+            },
+            "m|i|d": {
+              "loss": 7.258232432104558,
+              "percentile": 0.008731617647058824,
+              "competed_in_universe": true
+            },
+            "q|i|e": {
+              "loss": 8.335941966938313,
+              "percentile": 0.03400735294117647,
+              "competed_in_universe": true
+            },
+            "n|i| ": {
+              "loss": 7.2909193745918675,
+              "percentile": 0.00942095588235294,
+              "competed_in_universe": false
+            },
+            "g|c|d": {
+              "loss": 5.6694326206451935,
+              "percentile": 0.0,
+              "competed_in_universe": false
+            },
+            "p|q|d": {
+              "loss": 9.92328590128471,
+              "percentile": 0.1213235294117647,
+              "competed_in_universe": true
+            },
+            "r|s|i": {
+              "loss": 12.890179936604937,
+              "percentile": 0.4255514705882353,
+              "competed_in_universe": true
+            },
+            "t|q|l": {
+              "loss": 13.145702522687248,
+              "percentile": 0.4460018382352941,
+              "competed_in_universe": true
+            },
+            "d|e|y": {
+              "loss": 36.34454291595795,
+              "percentile": 0.8382352941176471,
+              "competed_in_universe": true
+            },
+            "d|y|e": {
+              "loss": 8.610842498793664,
+              "percentile": 0.04457720588235294,
+              "competed_in_universe": true
+            },
+            "k|i|l": {
+              "loss": 11.460941654125063,
+              "percentile": 0.25919117647058826,
+              "competed_in_universe": true
+            }
+          }
+        },
+        "prose": {
+          "candidate_symbols": 17,
+          "universe": 4352,
+          "flagged_symbols": [
+            "a",
+            "c",
+            "d",
+            "k",
+            "l",
+            "m",
+            "n",
+            "p",
+            "q",
+            "r",
+            "s",
+            "t",
+            "y"
+          ],
+          "fixed_triplets": {
+            "f|i|d": {
+              "loss": 1.3842747259353716,
+              "percentile": 0.0,
+              "competed_in_universe": false
+            },
+            "m|i|d": {
+              "loss": 2.4243788870048855,
+              "percentile": 0.008731617647058824,
+              "competed_in_universe": true
+            },
+            "q|i|e": {
+              "loss": 3.52899988211624,
+              "percentile": 0.03469669117647059,
+              "competed_in_universe": true
+            },
+            "n|i| ": {
+              "loss": 2.4346678928172705,
+              "percentile": 0.009191176470588236,
+              "competed_in_universe": false
+            },
+            "g|c|d": {
+              "loss": 0.8399907903451285,
+              "percentile": 0.0,
+              "competed_in_universe": false
+            },
+            "p|q|d": {
+              "loss": 5.095405139298352,
+              "percentile": 0.12316176470588236,
+              "competed_in_universe": true
+            },
+            "r|s|i": {
+              "loss": 8.042616139358797,
+              "percentile": 0.4241727941176471,
+              "competed_in_universe": true
+            },
+            "t|q|l": {
+              "loss": 8.293693074373811,
+              "percentile": 0.4455422794117647,
+              "competed_in_universe": true
+            },
+            "d|e|y": {
+              "loss": 31.46121029256731,
+              "percentile": 0.8380055147058824,
+              "competed_in_universe": true
+            },
+            "d|y|e": {
+              "loss": 3.727102640190751,
+              "percentile": 0.04296875,
+              "competed_in_universe": true
+            },
+            "k|i|l": {
+              "loss": 6.620538409361359,
+              "percentile": 0.26034007352941174,
+              "competed_in_universe": true
+            }
+          }
+        }
+      },
+      "426": {
+        "literal": {
+          "candidate_symbols": 17,
+          "universe": 4352,
+          "flagged_symbols": [
+            "a",
+            "c",
+            "d",
+            "m",
+            "n",
+            "p",
+            "q",
+            "r",
+            "s",
+            "t"
+          ],
+          "fixed_triplets": {
+            "f|i|d": {
+              "loss": 6.315847579929104,
+              "percentile": 0.0,
+              "competed_in_universe": false
+            },
+            "m|i|d": {
+              "loss": 7.165365838588558,
+              "percentile": 0.009880514705882353,
+              "competed_in_universe": true
+            },
+            "q|i|e": {
+              "loss": 8.461400223664091,
+              "percentile": 0.04342830882352941,
+              "competed_in_universe": true
+            },
+            "n|i| ": {
+              "loss": 7.342204184773545,
+              "percentile": 0.011948529411764705,
+              "competed_in_universe": false
+            },
+            "g|c|d": {
+              "loss": 5.684567133157161,
+              "percentile": 0.0,
+              "competed_in_universe": false
+            },
+            "p|q|d": {
+              "loss": 9.152401552781772,
+              "percentile": 0.07743566176470588,
+              "competed_in_universe": true
+            },
+            "r|s|i": {
+              "loss": 13.425164656899486,
+              "percentile": 0.4678308823529412,
+              "competed_in_universe": true
+            },
+            "t|q|l": {
+              "loss": 12.816259359842677,
+              "percentile": 0.40027573529411764,
+              "competed_in_universe": true
+            },
+            "d|e|y": {
+              "loss": 37.73262946207144,
+              "percentile": 0.8432904411764706,
+              "competed_in_universe": true
+            },
+            "d|y|e": {
+              "loss": 8.251404006974166,
+              "percentile": 0.035845588235294115,
+              "competed_in_universe": true
+            },
+            "k|i|l": {
+              "loss": 11.394633935416785,
+              "percentile": 0.24080882352941177,
+              "competed_in_universe": true
+            }
+          }
+        },
+        "prose": {
+          "candidate_symbols": 17,
+          "universe": 4352,
+          "flagged_symbols": [
+            "a",
+            "c",
+            "d",
+            "m",
+            "n",
+            "p",
+            "q",
+            "r",
+            "s",
+            "t"
+          ],
+          "fixed_triplets": {
+            "f|i|d": {
+              "loss": 1.4745881193381014,
+              "percentile": 0.0,
+              "competed_in_universe": false
+            },
+            "m|i|d": {
+              "loss": 2.3201122709423916,
+              "percentile": 0.009880514705882353,
+              "competed_in_universe": true
+            },
+            "q|i|e": {
+              "loss": 3.6442690983161725,
+              "percentile": 0.04572610294117647,
+              "competed_in_universe": true
+            },
+            "n|i| ": {
+              "loss": 2.475965185796554,
+              "percentile": 0.011948529411764705,
+              "competed_in_universe": false
+            },
+            "g|c|d": {
+              "loss": 0.8427183780826107,
+              "percentile": 0.0,
+              "competed_in_universe": false
+            },
+            "p|q|d": {
+              "loss": 4.312287942575449,
+              "percentile": 0.0778952205882353,
+              "competed_in_universe": true
+            },
+            "r|s|i": {
+              "loss": 8.567110303527343,
+              "percentile": 0.4664522058823529,
+              "competed_in_universe": true
+            },
+            "t|q|l": {
+              "loss": 7.9500858380305255,
+              "percentile": 0.39889705882352944,
+              "competed_in_universe": true
+            },
+            "d|e|y": {
+              "loss": 32.86743809773188,
+              "percentile": 0.8432904411764706,
+              "competed_in_universe": true
+            },
+            "d|y|e": {
+              "loss": 3.354783603511991,
+              "percentile": 0.034466911764705885,
+              "competed_in_universe": true
+            },
+            "k|i|l": {
+              "loss": 6.505838053152841,
+              "percentile": 0.23736213235294118,
+              "competed_in_universe": true
+            }
+          }
+        }
+      }
+    },
+    "manuscript": {
+      "zl": {
+        "literal": {
+          "candidate_symbols": 17,
+          "universe": 4352,
+          "flagged_symbols": [
+            "a",
+            "c",
+            "d",
+            "k",
+            "m",
+            "n",
+            "p",
+            "q",
+            "r",
+            "s",
+            "t"
+          ],
+          "fixed_triplets": {
+            "f|i|d": {
+              "loss": 6.44676321451869,
+              "percentile": 0.0,
+              "competed_in_universe": false
+            },
+            "m|i|d": {
+              "loss": 7.226285416297567,
+              "percentile": 0.007352941176470588,
+              "competed_in_universe": true
+            },
+            "q|i|e": {
+              "loss": 8.68427414807024,
+              "percentile": 0.042738970588235295,
+              "competed_in_universe": true
+            },
+            "n|i| ": {
+              "loss": 7.429481234552689,
+              "percentile": 0.011488970588235295,
+              "competed_in_universe": false
+            },
+            "g|c|d": {
+              "loss": 5.796532434757813,
+              "percentile": 0.0,
+              "competed_in_universe": false
+            },
+            "p|q|d": {
+              "loss": 9.648301830030112,
+              "percentile": 0.09627757352941177,
+              "competed_in_universe": true
+            },
+            "r|s|i": {
+              "loss": 11.99279246855357,
+              "percentile": 0.2711397058823529,
+              "competed_in_universe": true
+            },
+            "t|q|l": {
+              "loss": 12.279050241128399,
+              "percentile": 0.3076746323529412,
+              "competed_in_universe": true
+            },
+            "d|e|y": {
+              "loss": 35.845406164987665,
+              "percentile": 0.8322610294117647,
+              "competed_in_universe": true
+            },
+            "d|y|e": {
+              "loss": 8.93183280890546,
+              "percentile": 0.055376838235294115,
+              "competed_in_universe": true
+            },
+            "k|i|l": {
+              "loss": 11.466010707713654,
+              "percentile": 0.21897977941176472,
+              "competed_in_universe": true
+            }
+          }
+        },
+        "prose": {
+          "candidate_symbols": 17,
+          "universe": 4352,
+          "flagged_symbols": [
+            "a",
+            "c",
+            "d",
+            "k",
+            "m",
+            "n",
+            "p",
+            "q",
+            "r",
+            "s",
+            "t",
+            "y"
+          ],
+          "fixed_triplets": {
+            "f|i|d": {
+              "loss": 1.5221006546817963,
+              "percentile": 0.0,
+              "competed_in_universe": false
+            },
+            "m|i|d": {
+              "loss": 2.2971313582251907,
+              "percentile": 0.007352941176470588,
+              "competed_in_universe": true
+            },
+            "q|i|e": {
+              "loss": 3.784699814091546,
+              "percentile": 0.04411764705882353,
+              "competed_in_universe": true
+            },
+            "n|i| ": {
+              "loss": 2.4750464578405964,
+              "percentile": 0.010799632352941176,
+              "competed_in_universe": false
+            },
+            "g|c|d": {
+              "loss": 0.871549053618386,
+              "percentile": 0.0,
+              "competed_in_universe": false
+            },
+            "p|q|d": {
+              "loss": 4.724826309012597,
+              "percentile": 0.0978860294117647,
+              "competed_in_universe": true
+            },
+            "r|s|i": {
+              "loss": 7.044838282152675,
+              "percentile": 0.27136948529411764,
+              "competed_in_universe": true
+            },
+            "t|q|l": {
+              "loss": 7.328786141349255,
+              "percentile": 0.3053768382352941,
+              "competed_in_universe": true
+            },
+            "d|e|y": {
+              "loss": 30.9023926266458,
+              "percentile": 0.8318014705882353,
+              "competed_in_universe": true
+            },
+            "d|y|e": {
+              "loss": 3.9581487540412983,
+              "percentile": 0.05376838235294118,
+              "competed_in_universe": true
+            },
+            "k|i|l": {
+              "loss": 6.53621500703621,
+              "percentile": 0.22081801470588236,
+              "competed_in_universe": true
+            }
+          }
+        },
+        "length": 31171
+      },
+      "it": {
+        "literal": {
+          "candidate_symbols": 17,
+          "universe": 4352,
+          "flagged_symbols": [
+            "a",
+            "c",
+            "d",
+            "m",
+            "n",
+            "p",
+            "q",
+            "r",
+            "s",
+            "t"
+          ],
+          "fixed_triplets": {
+            "f|i|d": {
+              "loss": 6.507998925390407,
+              "percentile": 0.0,
+              "competed_in_universe": false
+            },
+            "m|i|d": {
+              "loss": 7.328557954248798,
+              "percentile": 0.0078125,
+              "competed_in_universe": true
+            },
+            "q|i|e": {
+              "loss": 8.758829022494066,
+              "percentile": 0.04090073529411765,
+              "competed_in_universe": true
+            },
+            "n|i| ": {
+              "loss": 7.52460396055026,
+              "percentile": 0.011259191176470588,
+              "competed_in_universe": false
+            },
+            "g|c|d": {
+              "loss": 5.815360498102512,
+              "percentile": 0.0,
+              "competed_in_universe": false
+            },
+            "p|q|d": {
+              "loss": 9.651914906294078,
+              "percentile": 0.0939797794117647,
+              "competed_in_universe": true
+            },
+            "r|s|i": {
+              "loss": 12.331758696493043,
+              "percentile": 0.30193014705882354,
+              "competed_in_universe": true
+            },
+            "t|q|l": {
+              "loss": 12.36009760243052,
+              "percentile": 0.3069852941176471,
+              "competed_in_universe": true
+            },
+            "d|e|y": {
+              "loss": 35.711420658127906,
+              "percentile": 0.8315716911764706,
+              "competed_in_universe": true
+            },
+            "d|y|e": {
+              "loss": 8.99050979980592,
+              "percentile": 0.054917279411764705,
+              "competed_in_universe": true
+            },
+            "k|i|l": {
+              "loss": 11.429494680228654,
+              "percentile": 0.21300551470588236,
+              "competed_in_universe": true
+            }
+          }
+        },
+        "prose": {
+          "candidate_symbols": 17,
+          "universe": 4352,
+          "flagged_symbols": [
+            "a",
+            "c",
+            "d",
+            "m",
+            "n",
+            "p",
+            "q",
+            "r",
+            "s",
+            "t",
+            "y"
+          ],
+          "fixed_triplets": {
+            "f|i|d": {
+              "loss": 1.5076451904183585,
+              "percentile": 0.0,
+              "competed_in_universe": false
+            },
+            "m|i|d": {
+              "loss": 2.3236704572188716,
+              "percentile": 0.0078125,
+              "competed_in_universe": true
+            },
+            "q|i|e": {
+              "loss": 3.7836842907374506,
+              "percentile": 0.042738970588235295,
+              "competed_in_universe": true
+            },
+            "n|i| ": {
+              "loss": 2.4942502255782117,
+              "percentile": 0.010569852941176471,
+              "competed_in_universe": false
+            },
+            "g|c|d": {
+              "loss": 0.8147173740629396,
+              "percentile": 0.0,
+              "competed_in_universe": false
+            },
+            "p|q|d": {
+              "loss": 4.6527508819329615,
+              "percentile": 0.09466911764705882,
+              "competed_in_universe": true
+            },
+            "r|s|i": {
+              "loss": 7.3015014245435035,
+              "percentile": 0.2998621323529412,
+              "competed_in_universe": true
+            },
+            "t|q|l": {
+              "loss": 7.334084703471333,
+              "percentile": 0.30422794117647056,
+              "competed_in_universe": true
+            },
+            "d|e|y": {
+              "loss": 30.69299618360602,
+              "percentile": 0.8315716911764706,
+              "competed_in_universe": true
+            },
+            "d|y|e": {
+              "loss": 3.9410242320364444,
+              "percentile": 0.05284926470588235,
+              "competed_in_universe": true
+            },
+            "k|i|l": {
+              "loss": 6.4238354790186625,
+              "percentile": 0.21369485294117646,
+              "competed_in_universe": true
+            }
+          }
+        },
+        "length": 31101
+      }
+    }
+  }
+}
