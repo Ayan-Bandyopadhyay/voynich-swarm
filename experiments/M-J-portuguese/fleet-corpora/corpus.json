@@ -1,0 +1,10 @@
+{
+  "language": "portuguese",
+  "title": "Bíblia Livre (Portuguese Bible, full Old and New Testament, one verse per line), plain-text export in scrollmapper/bible_databases",
+  "period": "modern (21st-century Portuguese translation); a distant proxy for medieval Galician-Portuguese",
+  "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/PorBLivre.txt",
+  "sha256": "da8d8b1fed3ebee38de257fed6a490094006a7edac60620a16910d1ab0aca15f",
+  "license": "cc-by",
+  "encoding": "utf-8",
+  "notes": "License stated as 'Creative Commons Attribution 3.0 Brazil' in the source README at https://github.com/scrollmapper/bible_databases/blob/59b18c5af5845728c275d5b7178ad0d024172b1f/sources/pt/PorBLivre/README.md (the text is the CrossWire SWORD module PorBLivre; translator Diego Santos, Bíblia Livre project). The url pins a fixed commit, so the bytes do not change. 4,110,053 bytes; one verse per line as '[c:v] text' with '### Book' headings in English (66 short headings, negligible). vs/refcorpus.normalize(..., 'portuguese') gives 3,660,618 characters. Modern Portuguese, not the 13th-15th-century Galician-Portuguese Cheshire's proposal leans on: it gives the Ibero-Romance west measured power on the grid now; a period cancioneiro or chronicle text should replace it when one is found in a single open file."
+}
