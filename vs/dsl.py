@@ -31,6 +31,9 @@ statistics:
                                                            across-line count (10 fixed draws) so both carry equal bias
   {"line_repeat_excess": true}                              share of words repeated on the previous numbered line minus the share
                                                            repeated four lines back, within a page, excluding one-character words
+  {"line_near_excess": {"min_length": L}}                  the same comparison for similar words (Timm 2014): share of words of
+                                                           length >= L (default 4) with a word at edit distance exactly 1 on the
+                                                           previous numbered line, minus the share with one four lines back
   {"repeat_ngram": n}                                      share of word n-grams (n<=6) that occur at least twice
   {"hapax_share": true} | {"zipf_slope": ranks} | {"mean_length": true}
   {"near_copy": {"window": k, "min_length": L}}            share of words of length >= L within edit distance exactly 1
@@ -337,6 +340,9 @@ def check_statistic(st):
     elif name in ("edge_mi", "edge_mi_break", "hapax_share", "mean_length", "line_repeat_excess"):
         if arg is not True:
             raise SpecError(f"{name} takes true")
+    elif name == "line_near_excess":
+        _keys(arg, {"min_length"}, name)
+        _int(arg.get("min_length", 4), 1, 40, "line_near_excess min_length")
     elif name == "near_copy":
         _keys(arg, {"window", "min_length"}, name)
         _int(arg.get("window", 10), 1, 50, "near_copy window")
@@ -414,22 +420,26 @@ def statistic(st, toks, all_toks):
         return sum(v for v in c.values() if v >= 2) / tot if tot >= MIN_TOKENS else NAN
     if name == "page_similarity":
         return _page_similarity(toks, int(arg["within"]), int(arg.get("min_words", 40)))
-    if name == "line_repeat_excess":
+    if name in ("line_repeat_excess", "line_near_excess"):
         # Use the same current words for both lags. Require five consecutive
         # selected lines on one page so gaps do not become spurious neighbors.
         words = {}
         for t in toks:
             words.setdefault(t["line"], []).append(t["w"])
         vocabulary = {line: set(ws) for line, ws in words.items()}
+        if name == "line_repeat_excess":
+            L, on = 2, lambda word, voc: word in voc
+        else:
+            L, on = int(arg.get("min_length", 4)), lambda word, voc: any(_edit1(word, u) for u in voc)
         hits = eligible = 0
         for (page, line), ws in words.items():
             if not all((page, line - lag) in words for lag in range(1, 5)):
                 continue
             near, far = vocabulary[page, line - 1], vocabulary[page, line - 4]
             for word in ws:
-                if len(word) > 1:
+                if len(word) >= L:
                     eligible += 1
-                    hits += (word in near) - (word in far)
+                    hits += on(word, near) - on(word, far)
         return hits / eligible if eligible >= MIN_TOKENS else NAN
     if name == "hapax_share":
         c = Counter(t["w"] for t in toks)
@@ -476,7 +486,8 @@ def statistic(st, toks, all_toks):
 
 # statistics whose features mean the same thing in another script, so a reference language can be measured
 LAYOUT_FREE = {"entropy", "hapax_share", "zipf_slope", "mean_length", "repeat_ngram", "cond_entropy", "adjacent_mi",
-               "edge_mi", "near_copy", "glyph_cond_entropy", "page_reuse", "line_repeat_excess"}
+               "edge_mi", "near_copy", "glyph_cond_entropy", "page_reuse", "line_repeat_excess",
+               "line_near_excess"}
 MIN_REFERENCES = 3
 
 _NULL_KEY = {"shuffle_within_line": lambda t: t["line"], "shuffle_within_page": lambda t: t["page"],
@@ -596,6 +607,8 @@ def canonical(spec):
         arg = {"window": arg.get("window", 10), "min_length": arg.get("min_length", 6)}
     elif name == "page_reuse":
         arg = {"min_length": arg.get("min_length", 1)}
+    elif name == "line_near_excess":
+        arg = {"min_length": arg.get("min_length", 4)}
     tests = set()
     for c in spec["compare"]:
         if "op" in c:
