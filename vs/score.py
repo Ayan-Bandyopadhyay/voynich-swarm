@@ -100,7 +100,10 @@ def score(d, pr=None):
         robust = {}
         if "spec" in f:
             from . import dsl
-            r = dsl.evaluate(f["spec"], ev)
+            try:
+                r = dsl.evaluate(f["spec"], ev)
+            except dsl.SpecError as ex:   # e.g. the scope or selection is too small on the hidden pages
+                return {"verdict": "REFUSED", "errors": [f"spec: {ex}"]}
             det = dict(r["detail"], spec=f["spec"])
             # robustness: the claim must also hold on an independent transliteration (Takahashi)
             for t in ("it", "rf"):

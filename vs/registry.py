@@ -60,6 +60,15 @@ def fingerprint(item):
     """What makes two submissions the same claim: resubmitting it is refused."""
     d = item.get("detail") or {}
     if item["type"] == "fact":
+        if "spec" in d:
+            # a spec is the same claim whatever its key order, defaults, thresholds, alpha or permutation
+            # count (vs/dsl.py canonical): the hidden value is published with the first verdict, so the
+            # same measurement with a moved threshold or a re-rolled null is not a new prediction
+            from . import dsl
+            try:
+                return ("fact", "spec", json.dumps(dsl.canonical(d["spec"]), sort_keys=True))
+            except dsl.SpecError:   # a spec scored under older rules: fall back to its exact text
+                return ("fact", "spec", json.dumps(d["spec"], sort_keys=True))
         return ("fact", d.get("metric"), json.dumps(d.get("params"), sort_keys=True))
     if item["type"] == "step":
         return ("step", item.get("program"), item.get("title", "").strip().lower())
