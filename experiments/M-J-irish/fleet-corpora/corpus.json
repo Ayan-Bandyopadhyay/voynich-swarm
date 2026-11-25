@@ -1,0 +1,10 @@
+{
+  "language": "irish",
+  "title": "An Biobla Naomhtha, Genesis: William Bedell's Irish Old Testament (1685 printing), multilingual Wikisource",
+  "period": "17th century (translated 1630s, printed 1685), Early Modern Irish (Classical Gaelic) in Roman type",
+  "url": "https://wikisource.org/w/index.php?oldid=504261&action=raw",
+  "sha256": "0497494d513a160d397c6674f55ef9ab180f4b51cae25200e153dc02a47820d4",
+  "license": "cc-by-sa",
+  "encoding": "utf-8",
+  "notes": "License: the 17th-century text is public domain; the Wikisource page (pinned revision 504261) is published under Wikisource's terms, CC BY-SA 4.0 (https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use). The url pins a fixed commit, so the bytes do not change. 269,477 bytes; wikitext; verse templates add the English words 'chapter' and 'verse' at each verse (about 1,500 verses, roughly 5% of the letters after normalization). vs/refcorpus.normalize(..., 'irish') gives 234,775 characters. A Goidelic Celtic language in its classical written form, close to the medieval literary standard."
+}
