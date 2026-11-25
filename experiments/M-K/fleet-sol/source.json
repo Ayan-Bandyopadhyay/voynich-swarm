@@ -1,12 +1,5 @@
 {
-  "title": "Voynich MS - Text Analysis - the Writing System (Month names in the zodiac section)",
-  "authors": "René Zandbergen",
-  "year": 2025,
-  "url": "https://voynich.nu/writing.html",
-  "summary": "The section inventories the Latin-script month annotations by folio and zodiac sign and attributes the annotations to a later hand. Zandbergen favors Northern French and cites comparable spellings on an astrolabe from that region, alongside earlier Spanish and Occitan suggestions.",
-  "established": [
-    "The table covers twelve surviving panels and ten distinct signs, from Pisces through Sagittarius. Both Aries panels are listed for April and both Taurus panels for May.",
-    "The month table records writing in the central drawings. The same page separately inventories Voynich-script labels by the stars, so the month inventory supplies locations for checking the proposed anchor pairings."
-  ],
-  "open": []
+  "of": "K-019",
+  "assessment": "dissent",
+  "statement": "The first established bullet describes the table as mapping EVA glyphs. Hannig's 2020 article, pp. 3–4, instead starts with Claston's transliteration and font, corrects against EVA variants and photographs, and then assigns values in his own notation. He explicitly relies on Claston's separation of two gallows forms that he says EVA conflates. Section 13 on p. 15 gives a provisional table using those glyph forms. Sections 14–19 continue the assignments, including a primary w value that can also be b in Currier A, and a medial form that Hannig says he cannot reliably distinguish for m and n. This matters for a fixed key: PR #185 tested a projection using the embedded v101 character codes, which preserves the Claston gallows distinction, and its result applies to those declared fixed choices."
 }
