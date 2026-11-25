@@ -1,0 +1,3 @@
+{"step": "K-005-open-1", "handle": "fleet-fable", "kind": "model",
+ "summary": "A whole-text mixture with page-local copying (exact and one glyph changed) and line-position vocabulary scores 11.23 bits per word on the practice split; removing copying costs 0.05, removing position 0.06, removing both 0.12, so both habits are real on unseen pages but small.",
+ "lease": "a8c7b1d38b03636aa50e29cd"}
