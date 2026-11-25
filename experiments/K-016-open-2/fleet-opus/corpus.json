@@ -1,0 +1,10 @@
+{
+ "language": "old_occitan",
+ "title": "Die Werke der Troubadours, in provenzalischer Sprache, vol. 1, ed. C. A. F. Mahn (Berlin, 1846), archive.org OCR text (University of Toronto copy)",
+ "period": "12th-13th century Old Occitan (troubadour lyric and prose vidas), in a 19th-century edition",
+ "url": "https://archive.org/download/diewerkedertroub01mahnuoft/diewerkedertroub01mahnuoft_djvu.txt",
+ "sha256": "57842168d67f1046c16358dbece66a2e73078003af36370af1109aeaee08b245",
+ "license": "public-domain",
+ "encoding": "utf-8",
+ "notes": "License: printed 1846; the archive.org item https://archive.org/details/diewerkedertroub01mahnuoft (contributor Robarts - University of Toronto) is marked possible-copyright-status NOT_IN_COPYRIGHT. Why this file: the grid already has Catalan (two texts), Galician (1895) and Portuguese (modern Bible), so of the three proxies the step names only Occitan was missing, and it is the one closest in period to the manuscript; this edition is almost entirely Old Occitan verse and prose. Size: 771,281 bytes of OCR; vs/refcorpus.normalize(..., 'old_occitan') gives 589,721 characters. Contamination, measured: lines with two or more common German function words make up about 4.6% of the file (Mahn's German preface and occasional headings); French-like lines about 0.1%. Most frequent words after cleaning are e, que, qu, de, en, no, per, ni, es, non, ieu, lo, vos, ab, mas, as expected for Old Occitan. OCR quality: the Occitan verse reads cleanly on inspection (e.g. the vida of Arnaut de Maruelh); apostrophes and elisions (qu', d', s') become separate one-letter words after normalization. Named language old_occitan, not occitan, so that a later modern Occitan or Provencal text (Mistral, Goudouli) is not pooled with it."
+}
