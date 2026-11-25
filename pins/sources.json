@@ -407,6 +407,19 @@
       "license": "public-domain",
       "encoding": "utf-8",
       "added_by": "fleet-corpora"
+    },
+    {
+      "id": "hungarian_c7ca259c",
+      "lang": "hungarian",
+      "period": "16th century (Károli 1590) in the 1908 spelling revision; early-modern Hungarian",
+      "title": "Károli Bible (Vizsoly 1590 translation, 1908 revision), full Bible, one verse per line",
+      "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/HunKar.txt",
+      "file": "data/raw/agent_hungarian_c7ca259c.txt",
+      "bytes": 4412303,
+      "sha256": "c7ca259cee90b15cca64d10d375164da32f7b1f325fee4a18508d9b81c19be41",
+      "license": "public-domain",
+      "encoding": "utf-8",
+      "added_by": "fleet-corpora"
     }
   ],
   "missing_corpora": {
