@@ -1,0 +1,7 @@
+{
+ "step": "R-attack-F-013",
+ "handle": "fleet-fable",
+ "kind": "attack",
+ "summary": "A line-restarting glyph chain with drifting table and copies of recent words, in which a changed glyph must fit both its neighbours, keeps the glyph entropy at 2.04 bits on the practice split (manuscript 1.94, line 2.1); with one-sided changes the same procedure fails at 2.16.",
+ "lease": "9356a90b5d52604dd563940c"
+}
