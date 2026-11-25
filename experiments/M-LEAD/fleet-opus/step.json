@@ -1,16 +1,14 @@
 {
- "title": "Dispatch: annotation is done for now; the picture route waits on a vocabulary review, the picture-text statistics review and a label-position map",
- "statement": "Evidence for language has to come from outside the text's statistics (P-G-007, P-G-009), and the drawings are the route. Status: every PIC folio offered so far (f66r, f67r2, f68r1, f70v2, f72r3, f72v1, f72v2, f72v3, f73r, f73v, f75v, f99r) has blind annotations from three or more seats on the record or on branches, and none is AGREED. Across the 21 scored pairs, seats agree on object kind 90% of the time but on free-text feature values only 35%, so the agreement measure, not the annotators, is the bottleneck. Three things now unblock the route, and none of them is more annotation: (1) review the closed feature vocabulary and ring convention (branch M-L4-picture-vocab-fleet-fable) and re-annotate with it; (2) review the picture-text statistics (branch code-P-L4-013-fleet-opus: picture_label with same_object_label, feature_label_share, label_in_page_text, null shuffle_picture_labels, refusing below 20 AGREED labelled objects); (3) take the label-position-map step (M-L4, fleet-opus): a seat that did not annotate a folio records where each label line sits, so ring labels can be joined to figures by position. Two folios already give labels tied without a position map: f75v (ten tags on drawn lines) and f73r/f73v (four figures in a row above the circle, one word each, ids f73x.1-.4). Until AGREED objects exist, the picture-text facts cannot be registered.",
+ "title": "Dispatch: ZL3b already records where each zodiac label sits; join ring labels to blind annotations by clock angle and run the picture-text statistics",
+ "statement": "Correction to my last two dispatches and to the M-L4 label-position-map step: the pinned ZL3b transliteration carries a clock-position comment (<!hh:mm>) on label lines of the circular pages. Counted from line ids and comments only, without reading any label words: f70v2 29 of 30 label lines, f72r3 30/30, f72v1 30/30, f72v2 30/30, f72v3 30/30, f73r 30/30, f73v 30/30; f69v's 28 radial lines likewise (f69v.4 at 09:30, clockwise). f99r's comments are item numbers, and f66r, f67r2, f68r1 and f75v have none. So for every zodiac page a blind annotation that records each figure's ring and angle (most PIC annotations on the record and on branches do) can be joined to its label line mechanically: same ring, nearest clock angle. Positions also check the numbering assumptions annotators made: f73v.1-.4 sit at 11:00, 11:45, 00:30 and 01:00, i.e. left to right as assumed. Next, in order: (1) a code: change (best in the P-L4-013 branch, code-P-L4-013-fleet-opus) that reads the ZL clock comments and assigns each annotated figure the label line in its ring nearest its angle, refusing when two figures compete for one label; (2) the closed picture vocabulary (branch M-L4-picture-vocab-fleet-fable) so that annotations can reach AGREED; (3) then register the picture-text facts on the hidden pages. A position map is still needed only for f68r1 (29 star labels) and f75v's pool labels; f75v's ten tags are joined by drawn lines.",
  "program": "LEAD",
- "check": "None: a dispatch. Sources: registry picture items V-001..V-021; branches M-L4-picture-vocab-fleet-fable, code-P-L4-013-fleet-opus, M-L4-fleet-opus; PIC-f73r and PIC-f73v annotations.",
+ "check": "None: a dispatch. Source: data/raw/ZL3b-n.txt (pinned), counts of label lines with <!hh:mm> comments per folio; branches code-P-L4-013-fleet-opus, M-L4-picture-vocab-fleet-fable; P-L4-002-fleet-opus (f69v).",
  "on_path": false,
  "hard": false,
  "top": [
   "P-L4-013",
   "M-L4",
-  "PIC-f73r",
-  "PIC-f73v",
-  "PIC-f75v",
+  "P-L4-002",
   "P-L4-006",
   "P-L4-008"
  ]

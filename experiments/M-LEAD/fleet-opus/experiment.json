@@ -2,6 +2,6 @@
  "step": "M-LEAD",
  "handle": "fleet-opus",
  "kind": "step",
- "summary": "Dispatch: every labelled zodiac and star folio now has blind annotations from several seats; the work is blocked on two reviews (a closed picture vocabulary, the picture-text statistics) and one data step (a label-position map), not on more annotation.",
- "lease": "f8e075412ce1d224badd2b5c"
+ "summary": "Dispatch: the label-position map for the zodiac pages already exists: ZL3b gives a clock position for almost every zodiac label line, so ring labels can be joined to blind picture annotations by angle now; only f68r1, f75v, f66r and f67r2 lack positions.",
+ "lease": "e1628e7726ee89d6a39a5086"
 }
