@@ -1,50 +1,33 @@
 {
-  "title": "Paragraph-initial p and f gallows",
-  "statement": "In paragraph text, the share of certain words beginning with EVA p or f is at least ten times greater for the first word of a paragraph than for words in line interiors, and exceeds the within-page permutation null.",
-  "source": "The paragraph-initial gallows pattern is described on voynich.nu (Zandbergen); threshold set on the practice training pages (ZL ratio 69.4, Takahashi 63.9), not on evaluation pages.",
+  "title": "Similar words, not identical ones, gather on the line directly above, by a bounded amount",
+  "statement": "In paragraph text, the share of certain words of four or more glyphs that have a word exactly one glyph edit away on the previous line, minus the share that have one four lines up (same current words, five consecutive lines on one page), is at least 0.012, at most 0.045, and greater than when words are shuffled within their page.",
+  "source": "Timm 2014 (K-005, https://arxiv.org/abs/1407.6639) and Timm and Schinner 2020 describe similar words, differing in one or two glyphs, in nearby and especially consecutive lines. The record has tested only identical words (line_repeat_excess): F-012 (excess over within-page shuffles) and F-015 (above every reference language) were refuted on the hidden pages, and F-017 bounds the excess at 0.025, so the manuscript repeats whole words from the line above no more than ordinary prose does. This fact tests the claim with Timm's own unit, the one-glyph variant, using the new line_near_excess statistic (the line_repeat_excess layout, edit distance exactly 1, words of at least min_length characters). Public practice split, evaluation pages: Zandbergen-Landini 0.0296 (19.5% of words have a variant on the line above, 16.6% four lines up; within-page shuffle p = 0.005, 199 perms), Takahashi 0.0308 (p = 0.005), RF 0.0204 (p = 0.015); training pages 0.0248 (Takahashi 0.0263). Against reference languages poured into the same layout (the comparison K-005-open-2 asks for, reported here rather than registered): on the training layout the manuscript (0.0248) is above all 25 languages long enough (range -0.0014 to 0.0134, median 0.0054); on the evaluation layout (0.0296) it is above all 46 natural languages, nearest Hebrew 0.0237, Latvian 0.0160, Coptic 0.0151, and above the constructed-language reference added since (conlang_esperanto, 0.0052). With identical words the order is reversed: the manuscript's exact-copy excess (0.0092 training) is below all 25 references (0.011 to 0.039). So Timm's observation holds in his terms and fails in the record's earlier terms: copies from the line above are altered, not whole. Why the registered test is a floor and a null and not above_all: on 30 random samples of 34 training pages the value ranges 0.011 to 0.037 (median 0.024), and the highest reference was 0.013 on the training layout but 0.024 on the evaluation layout, so above_all would fail on a hidden-sized sample often, from noise alone; 28 of 30 samples clear 0.012, and the within-page shuffle null reaches 0.015 at its 95th percentile on the evaluation layout, so about one sample in eight may miss p = 0.05. Settings (min_length 4, lags 1 and 4 as in line_repeat_excess) were fixed from the earlier facts, not tuned; min_length 2 gives the same picture (0.025 training). Not evidence of language, and nearer the opposite: ordinary texts do not show it. The upper bound is there for generators. The drifting line chain of R-016 and R-017 (one-glyph copies of the last 15 words, whole copies from a memory of 300), which meets all 17 established facts on the practice split, gives 0.051 (min_length 4) and 0.055 (min_length 2) when the scorer lays its R-017 text onto the practice evaluation pages, against 0.030 for the manuscript; no hidden-sized sample of the manuscript went above 0.038 (30 samples), so 0.045 leaves the manuscript a wide margin and that generator a narrow one. The tension it sets: F-007 needs many one-glyph copies of the last ten words, and such copies land on the line above; the manuscript has the copies but only a modest excess on the line above, so its near-copies must mostly stay within the line or reach further back. With F-017 it fixes what a copying procedure must do: alter what it takes from nearby, keep the alterations from piling onto the line directly above, and repeat whole words only from much further back. Thresholds were set on public pages with this generator in view. Registered under M-L2 because K-005-open-2, which asked this question, was closed on the desk before the line_near_excess statistic was merged.",
   "spec": {
     "select": {
       "unit": [
         "P"
       ],
-      "position": "para_initial",
       "certain": true
     },
     "statistic": {
-      "ratio": {
-        "feature": {
-          "glyph_at": 0
-        },
-        "in": [
-          "p",
-          "f"
-        ],
-        "of": {
-          "unit": [
-            "P"
-          ],
-          "position": "para_initial",
-          "certain": true
-        },
-        "to": {
-          "unit": [
-            "P"
-          ],
-          "position": "mid_line",
-          "certain": true
-        }
+      "line_near_excess": {
+        "min_length": 4
       }
     },
     "compare": [
       {
         "op": ">=",
-        "value": 10
+        "value": 0.012
+      },
+      {
+        "op": "<=",
+        "value": 0.045
       },
       {
         "null": "shuffle_within_page",
-        "direction": "greater",
         "perms": 199,
-        "p": 0.01
+        "p": 0.05,
+        "direction": "greater"
       }
     ]
   }
