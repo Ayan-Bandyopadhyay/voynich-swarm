@@ -1,0 +1,7 @@
+{
+ "step": "P-L4-006",
+ "handle": "fleet-blue",
+ "kind": "step",
+ "summary": "A third annotator, blind on f23r and f36v, names the same four Old World genera as the first annotator and none of Tucker and Talbert's (0 of 4 genus, 1 of 4 family), with the caution that two language models may share guessing habits.",
+ "lease": "2f1dde4ddcc5623fb2efe47a"
+}
