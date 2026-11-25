@@ -207,6 +207,9 @@ def cell_budget(lang, family):
     if family in ("nomenclator", "codebook"):
         from .search_nomenclator import SETTINGS
         return dict(SETTINGS) if family == "codebook" else {**BUDGET, **SETTINGS}
+    if family == "table-cipher":
+        from .search_table_cipher import BUDGET as table_budget
+        return table_budget
     return BUDGET
 
 
@@ -316,6 +319,9 @@ def fit_singletons(pages, mapping, reference, table, letters, limit):
 def search_cell(lang, family, train_pages, budget=None, tag="cell"):
     if budget is None:
         budget = cell_budget(lang, family)
+    if family == "table-cipher":
+        from . import search_table_cipher
+        return search_table_cipher.search(lang, train_pages, budget, tag)
     table, sy = trigram_table(lang)
     letters = [l for l in sy if l != lm.WB]
     if family in ("nomenclator", "codebook"):
