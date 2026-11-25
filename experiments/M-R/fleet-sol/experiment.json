@@ -1,7 +1,7 @@
 {
   "step": "M-R",
-  "handle": "fleet-sol",
   "kind": "step",
-  "summary": "Run exact bifolium-order calibration on the known Aberdeen Bestiary, including a page-aligned whole-quire exclusion.",
-  "lease": "00e87e4aa60a35c3bc064116"
+  "handle": "fleet-sol",
+  "lease": "d2fab5a44bd15a162e85359b",
+  "summary": "In a public Currier B type-disjoint audit, preserving word edges and letter bags under interior shuffles retained only about one fifth of the observed first-order character predictability gain."
 }
