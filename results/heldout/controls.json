@@ -941,5 +941,21 @@
   "true_key_passes": true,
   "search_cracks_control": true,
   "added_with": "norwegian_c561de18"
+ },
+ {
+  "language": "romanian",
+  "family": "substitution",
+  "control": "homophonic",
+  "true_key_passes": true,
+  "search_cracks_control": true,
+  "added_with": "romanian_027bf7fb"
+ },
+ {
+  "language": "romanian",
+  "family": "verbose",
+  "control": "verbose",
+  "true_key_passes": true,
+  "search_cracks_control": true,
+  "added_with": "romanian_027bf7fb"
  }
 ]
