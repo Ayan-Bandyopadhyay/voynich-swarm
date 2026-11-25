@@ -72,10 +72,18 @@ def run(split, log=print, parts=("controls", "redteam")):
                     continue
                 res = {}
                 for noise in (0.0, controls.NOISE):
-                    ctr, cev, true = controls.make(lang, CONTROL_FOR[fam], noise=noise)
+                    try:
+                        ctr, cev, true = controls.make(lang, CONTROL_FOR[fam], noise=noise)
+                    except (ValueError, IndexError) as ex:
+                        # this cipher family cannot be built over this alphabet: no control, so no power
+                        log(f"control {lang:8s} {fam:12s} cannot build a control ({str(ex)[:60]})")
+                        res = None
+                        break
                     rt = _short(judge.evaluate(true, ctr, cev, "control"))
                     rs = _short(judge.evaluate(search.search_cell(lang, fam, ctr, tag="control"), ctr, cev, "control"))
                     res[noise] = (rt, rs, sum(len(l.words) for p in cev for l in p.lines))
+                if res is None:
+                    continue
                 (rt0, rs0, n0), (rtn, rsn, _) = res[0.0], res[controls.NOISE]
                 rows.append({"language": lang, "family": fam, "control": CONTROL_FOR[fam], "control_tokens": n0,
                              "true_key": rt0, "true_key_passes": rt0["passes_without_anchors"],
