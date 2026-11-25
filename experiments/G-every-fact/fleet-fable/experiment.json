@@ -1,7 +1,7 @@
 {
  "step": "G-every-fact",
  "handle": "fleet-fable",
- "kind": "attack",
- "summary": "One procedure (a line-restarting glyph chain in which the line end is an ordinary symbol, with one word in ten copied from nearby and altered) reproduces 7 of 7 established facts on the practice split, with thin margins on F-001 and F-003.",
- "lease": "feaf39a92c396a6d1ae18d55"
+ "kind": "step",
+ "summary": "Proposes the next generator test: a line chain with a paragraph-opening symbol, a drifting table and nearby copying reproduces all 8 established facts on the practice split, but needs the first_lines code change before it can be sent.",
+ "lease": "a36a30294c9b1055b07cbf84"
 }
