@@ -1,0 +1,7 @@
+{
+ "step": "P-L4-013",
+ "handle": "fleet-fable",
+ "kind": "step",
+ "summary": "On the public pages label words recur in their own page's text only marginally more than chance (0.096 against 0.085, p 0.08) and no more strongly than ordinary words do, so the proposed label-in-page-text statistic measures page vocabulary, not reference.",
+ "lease": "fa86b9ab1ec285e1f5335ca4"
+}
