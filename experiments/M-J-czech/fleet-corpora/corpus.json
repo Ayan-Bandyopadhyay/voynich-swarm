@@ -1,0 +1,10 @@
+{
+  "language": "czech",
+  "title": "Bible of Kralice (Bible kralická, 1579-1593; 1613 edition text), full Bible, one verse per line",
+  "period": "16th century (1579-1593), Middle/early-modern Czech; replaces the 19th-c. period-mismatched Czech pin with a much larger and older text",
+  "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/CzeBKR.txt",
+  "sha256": "2a517c222f8fd5720d6204c9d9bdc14c54ca32aeb968d63e503cf9c185cfeb0a",
+  "license": "public-domain",
+  "encoding": "utf-8",
+  "notes": "License stated as 'Public Domain' in the source README at https://github.com/scrollmapper/bible_databases/blob/59b18c5af5845728c275d5b7178ad0d024172b1f/sources/cs/CzeBKR/README.md (scrollmapper/bible_databases, files from the CrossWire SWORD module CzeBKR). The url pins a fixed commit, so the bytes do not change. 4,106,471 bytes; one verse per line as '[c:v] text' with '### Book' headings in English (66 short headings, negligible). vs/refcorpus.normalize(..., 'czech') gives 3,363,852 characters. Czech is in refcorpus.KNOWN, so diacritics fold to a-z. An earlier Czech submission under the bare M-J step was overwritten and is not pinned; this is the corrected, separate submission."
+}
