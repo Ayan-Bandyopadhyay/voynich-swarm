@@ -1,0 +1,509 @@
+{
+ "folio": "f72v3",
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006204",
+ "blind": true,
+ "statement": "Annotated blind from the Beinecke scan only: canvas 1006204 ('72v (part)') shows two circles; I take the LEFT one (centre near x=2270, y=1820) as f72v3 because the book block lies at the right of this view and the folded flap at the left, so the left circle is the panel farthest from the binding, as f72r3 is on the recto. f72v2 and f72v3 have the same line structure (18 outer, 12 inner label lines), so the counts cannot settle this; if the panels are the other way round this annotation belongs to f72v2. Drawn: an outer ring of nude female figures without tubs, of which I can resolve 15 (the line structure implies 18; three near the bottom and right edge are too faint or overlapped by the neighbouring circle to place), and an inner ring of 12 nude female figures, matching the 12 inner label lines; eight-pointed stars beside many figures; in the centre a four-legged animal facing left with blue speckles and a red patch, a small sprig behind it, and a word beneath it that has no label line of its own. No label line id is assigned to a figure: the ids carry no position and the blind rule forbids reading the words; each figure carries ring, angle, clockwise order and its ring's line ids as candidates.",
+ "objects": [
+  {
+   "id": "outer-01",
+   "kind": "human_figure",
+   "label": null,
+   "features": {
+    "ring": "outer",
+    "angle_deg_clockwise_from_top": 330,
+    "clock_position": 11,
+    "order_clockwise_from_top": 1,
+    "nude": "nude",
+    "sex_shown": "female",
+    "container": "none (no tub or barrel)",
+    "posture": "standing upright, long hair, head toward the rim",
+    "colour": "ink only",
+    "label_ring_candidates": "f72v3.2-f72v3.19",
+    "star_notes": "star beside"
+   }
+  },
+  {
+   "id": "outer-02",
+   "kind": "human_figure",
+   "label": null,
+   "features": {
+    "ring": "outer",
+    "angle_deg_clockwise_from_top": 346,
+    "clock_position": 12,
+    "order_clockwise_from_top": 2,
+    "nude": "nude",
+    "sex_shown": "female",
+    "container": "none (no tub or barrel)",
+    "posture": "standing upright, head toward the rim",
+    "colour": "ink only",
+    "label_ring_candidates": "f72v3.2-f72v3.19"
+   }
+  },
+  {
+   "id": "outer-03",
+   "kind": "human_figure",
+   "label": null,
+   "features": {
+    "ring": "outer",
+    "angle_deg_clockwise_from_top": 1,
+    "clock_position": 12,
+    "order_clockwise_from_top": 3,
+    "nude": "nude",
+    "sex_shown": "female",
+    "container": "none (no tub or barrel)",
+    "posture": "standing upright, dark ink at the hips, head toward the rim",
+    "colour": "ink only",
+    "label_ring_candidates": "f72v3.2-f72v3.19"
+   }
+  },
+  {
+   "id": "outer-04",
+   "kind": "human_figure",
+   "label": null,
+   "features": {
+    "ring": "outer",
+    "angle_deg_clockwise_from_top": 15,
+    "clock_position": 12,
+    "order_clockwise_from_top": 4,
+    "nude": "nude",
+    "sex_shown": "female",
+    "container": "none (no tub or barrel)",
+    "posture": "standing, long hair, head toward the rim",
+    "colour": "ink only",
+    "label_ring_candidates": "f72v3.2-f72v3.19",
+    "star_notes": "star beside"
+   }
+  },
+  {
+   "id": "outer-05",
+   "kind": "human_figure",
+   "label": null,
+   "features": {
+    "ring": "outer",
+    "angle_deg_clockwise_from_top": 33,
+    "clock_position": 1,
+    "order_clockwise_from_top": 5,
+    "nude": "nude",
+    "sex_shown": "female",
+    "container": "none (no tub or barrel)",
+    "posture": "bending forward, head toward the rim",
+    "colour": "ink only",
+    "label_ring_candidates": "f72v3.2-f72v3.19"
+   }
+  },
+  {
+   "id": "outer-06",
+   "kind": "human_figure",
+   "label": null,
+   "features": {
+    "ring": "outer",
+    "angle_deg_clockwise_from_top": 48,
+    "clock_position": 2,
+    "order_clockwise_from_top": 6,
+    "nude": "nude",
+    "sex_shown": "female",
+    "container": "none (no tub or barrel)",
+    "posture": "lying along the ring, long hair, head toward the rim",
+    "colour": "ink only",
+    "label_ring_candidates": "f72v3.2-f72v3.19",
+    "star_notes": "star beside"
+   }
+  },
+  {
+   "id": "outer-07",
+   "kind": "human_figure",
+   "label": null,
+   "features": {
+    "ring": "outer",
+    "angle_deg_clockwise_from_top": 68,
+    "clock_position": 2,
+    "order_clockwise_from_top": 7,
+    "nude": "nude",
+    "sex_shown": "female",
+    "container": "none (no tub or barrel)",
+    "posture": "lying along the ring, head toward the rim",
+    "colour": "ink only",
+    "label_ring_candidates": "f72v3.2-f72v3.19"
+   }
+  },
+  {
+   "id": "outer-08",
+   "kind": "human_figure",
+   "label": null,
+   "features": {
+    "ring": "outer",
+    "angle_deg_clockwise_from_top": 97,
+    "clock_position": 3,
+    "order_clockwise_from_top": 8,
+    "nude": "nude",
+    "sex_shown": "female",
+    "container": "none (no tub or barrel)",
+    "posture": "lying along the ring, head toward the rim",
+    "colour": "ink only",
+    "label_ring_candidates": "f72v3.2-f72v3.19"
+   }
+  },
+  {
+   "id": "outer-09",
+   "kind": "human_figure",
+   "label": null,
+   "features": {
+    "ring": "outer",
+    "angle_deg_clockwise_from_top": 126,
+    "clock_position": 4,
+    "order_clockwise_from_top": 9,
+    "nude": "nude",
+    "sex_shown": "female",
+    "container": "none (no tub or barrel)",
+    "posture": "inverted relative to the page, head toward the rim",
+    "colour": "ink only",
+    "label_ring_candidates": "f72v3.2-f72v3.19"
+   }
+  },
+  {
+   "id": "outer-10",
+   "kind": "human_figure",
+   "label": null,
+   "features": {
+    "ring": "outer",
+    "angle_deg_clockwise_from_top": 157,
+    "clock_position": 5,
+    "order_clockwise_from_top": 10,
+    "nude": "nude",
+    "sex_shown": "female",
+    "container": "none (no tub or barrel)",
+    "posture": "inverted relative to the page, head toward the rim",
+    "colour": "ink only",
+    "label_ring_candidates": "f72v3.2-f72v3.19",
+    "star_notes": "star beside"
+   }
+  },
+  {
+   "id": "outer-11",
+   "kind": "human_figure",
+   "label": null,
+   "features": {
+    "ring": "outer",
+    "angle_deg_clockwise_from_top": 214,
+    "clock_position": 7,
+    "order_clockwise_from_top": 11,
+    "nude": "nude",
+    "sex_shown": "female",
+    "container": "none (no tub or barrel)",
+    "posture": "inverted relative to the page, head toward the rim",
+    "colour": "ink only",
+    "label_ring_candidates": "f72v3.2-f72v3.19"
+   }
+  },
+  {
+   "id": "outer-12",
+   "kind": "human_figure",
+   "label": null,
+   "features": {
+    "ring": "outer",
+    "angle_deg_clockwise_from_top": 240,
+    "clock_position": 8,
+    "order_clockwise_from_top": 12,
+    "nude": "nude",
+    "sex_shown": "female",
+    "container": "none (no tub or barrel)",
+    "posture": "lying along the ring, head toward the rim",
+    "colour": "ink only",
+    "label_ring_candidates": "f72v3.2-f72v3.19",
+    "star_notes": "star beside"
+   }
+  },
+  {
+   "id": "outer-13",
+   "kind": "human_figure",
+   "label": null,
+   "features": {
+    "ring": "outer",
+    "angle_deg_clockwise_from_top": 257,
+    "clock_position": 9,
+    "order_clockwise_from_top": 13,
+    "nude": "nude",
+    "sex_shown": "female",
+    "container": "none (no tub or barrel)",
+    "posture": "lying along the ring, head toward the rim",
+    "colour": "ink only",
+    "label_ring_candidates": "f72v3.2-f72v3.19",
+    "star_notes": "star beside"
+   }
+  },
+  {
+   "id": "outer-14",
+   "kind": "human_figure",
+   "label": null,
+   "features": {
+    "ring": "outer",
+    "angle_deg_clockwise_from_top": 275,
+    "clock_position": 9,
+    "order_clockwise_from_top": 14,
+    "nude": "nude",
+    "sex_shown": "female",
+    "container": "none (no tub or barrel)",
+    "posture": "lying along the ring, head toward the rim",
+    "colour": "ink only",
+    "label_ring_candidates": "f72v3.2-f72v3.19",
+    "star_notes": "star beside"
+   }
+  },
+  {
+   "id": "outer-15",
+   "kind": "human_figure",
+   "label": null,
+   "features": {
+    "ring": "outer",
+    "angle_deg_clockwise_from_top": 294,
+    "clock_position": 10,
+    "order_clockwise_from_top": 15,
+    "nude": "nude",
+    "sex_shown": "female",
+    "container": "none (no tub or barrel)",
+    "posture": "lying along the ring, head toward the rim",
+    "colour": "ink only",
+    "label_ring_candidates": "f72v3.2-f72v3.19",
+    "star_notes": "star beside"
+   }
+  },
+  {
+   "id": "inner-01",
+   "kind": "human_figure",
+   "label": null,
+   "features": {
+    "ring": "inner",
+    "angle_deg_clockwise_from_top": 325,
+    "clock_position": 11,
+    "order_clockwise_from_top": 1,
+    "nude": "nude",
+    "sex_shown": "female",
+    "container": "none (no tub or barrel)",
+    "posture": "seated or crouching, long hair, head toward the rim",
+    "colour": "ink only",
+    "label_ring_candidates": "f72v3.21-f72v3.32"
+   }
+  },
+  {
+   "id": "inner-02",
+   "kind": "human_figure",
+   "label": null,
+   "features": {
+    "ring": "inner",
+    "angle_deg_clockwise_from_top": 351,
+    "clock_position": 12,
+    "order_clockwise_from_top": 2,
+    "nude": "nude",
+    "sex_shown": "female",
+    "container": "none (no tub or barrel)",
+    "posture": "standing upright, head toward the rim",
+    "colour": "ink only",
+    "label_ring_candidates": "f72v3.21-f72v3.32",
+    "star_notes": "star above"
+   }
+  },
+  {
+   "id": "inner-03",
+   "kind": "human_figure",
+   "label": null,
+   "features": {
+    "ring": "inner",
+    "angle_deg_clockwise_from_top": 12,
+    "clock_position": 12,
+    "order_clockwise_from_top": 3,
+    "nude": "nude",
+    "sex_shown": "female",
+    "container": "none (no tub or barrel)",
+    "posture": "standing upright, long hair, head toward the rim",
+    "colour": "ink only",
+    "label_ring_candidates": "f72v3.21-f72v3.32"
+   }
+  },
+  {
+   "id": "inner-04",
+   "kind": "human_figure",
+   "label": null,
+   "features": {
+    "ring": "inner",
+    "angle_deg_clockwise_from_top": 36,
+    "clock_position": 1,
+    "order_clockwise_from_top": 4,
+    "nude": "nude",
+    "sex_shown": "female",
+    "container": "none (no tub or barrel)",
+    "posture": "standing, long hair, head toward the rim",
+    "colour": "ink only",
+    "label_ring_candidates": "f72v3.21-f72v3.32",
+    "star_notes": "star beside"
+   }
+  },
+  {
+   "id": "inner-05",
+   "kind": "human_figure",
+   "label": null,
+   "features": {
+    "ring": "inner",
+    "angle_deg_clockwise_from_top": 60,
+    "clock_position": 2,
+    "order_clockwise_from_top": 5,
+    "nude": "nude",
+    "sex_shown": "female",
+    "container": "none (no tub or barrel)",
+    "posture": "lying along the ring, head toward the rim",
+    "colour": "ink only",
+    "label_ring_candidates": "f72v3.21-f72v3.32"
+   }
+  },
+  {
+   "id": "inner-06",
+   "kind": "human_figure",
+   "label": null,
+   "features": {
+    "ring": "inner",
+    "angle_deg_clockwise_from_top": 80,
+    "clock_position": 3,
+    "order_clockwise_from_top": 6,
+    "nude": "nude",
+    "sex_shown": "female",
+    "container": "none (no tub or barrel)",
+    "posture": "lying, a red mark at the head, head toward the rim",
+    "colour": "ink only; red at the head",
+    "label_ring_candidates": "f72v3.21-f72v3.32",
+    "star_notes": "star beside"
+   }
+  },
+  {
+   "id": "inner-07",
+   "kind": "human_figure",
+   "label": null,
+   "features": {
+    "ring": "inner",
+    "angle_deg_clockwise_from_top": 115,
+    "clock_position": 4,
+    "order_clockwise_from_top": 7,
+    "nude": "nude",
+    "sex_shown": "female",
+    "container": "none (no tub or barrel)",
+    "posture": "lying along the ring, head toward the rim",
+    "colour": "ink only",
+    "label_ring_candidates": "f72v3.21-f72v3.32"
+   }
+  },
+  {
+   "id": "inner-08",
+   "kind": "human_figure",
+   "label": null,
+   "features": {
+    "ring": "inner",
+    "angle_deg_clockwise_from_top": 152,
+    "clock_position": 5,
+    "order_clockwise_from_top": 8,
+    "nude": "nude",
+    "sex_shown": "female",
+    "container": "none (no tub or barrel)",
+    "posture": "inverted relative to the page, head toward the rim",
+    "colour": "ink only",
+    "label_ring_candidates": "f72v3.21-f72v3.32"
+   }
+  },
+  {
+   "id": "inner-09",
+   "kind": "human_figure",
+   "label": null,
+   "features": {
+    "ring": "inner",
+    "angle_deg_clockwise_from_top": 192,
+    "clock_position": 6,
+    "order_clockwise_from_top": 9,
+    "nude": "nude",
+    "sex_shown": "female",
+    "container": "none (no tub or barrel)",
+    "posture": "inverted relative to the page, head toward the rim",
+    "colour": "ink only",
+    "label_ring_candidates": "f72v3.21-f72v3.32",
+    "star_notes": "star beside"
+   }
+  },
+  {
+   "id": "inner-10",
+   "kind": "human_figure",
+   "label": null,
+   "features": {
+    "ring": "inner",
+    "angle_deg_clockwise_from_top": 236,
+    "clock_position": 8,
+    "order_clockwise_from_top": 10,
+    "nude": "nude",
+    "sex_shown": "female",
+    "container": "none (no tub or barrel)",
+    "posture": "lying along the ring, head toward the rim",
+    "colour": "ink only",
+    "label_ring_candidates": "f72v3.21-f72v3.32"
+   }
+  },
+  {
+   "id": "inner-11",
+   "kind": "human_figure",
+   "label": null,
+   "features": {
+    "ring": "inner",
+    "angle_deg_clockwise_from_top": 265,
+    "clock_position": 9,
+    "order_clockwise_from_top": 11,
+    "nude": "nude",
+    "sex_shown": "female",
+    "container": "none (no tub or barrel)",
+    "posture": "lying along the ring, head toward the rim",
+    "colour": "ink only",
+    "label_ring_candidates": "f72v3.21-f72v3.32"
+   }
+  },
+  {
+   "id": "inner-12",
+   "kind": "human_figure",
+   "label": null,
+   "features": {
+    "ring": "inner",
+    "angle_deg_clockwise_from_top": 288,
+    "clock_position": 10,
+    "order_clockwise_from_top": 12,
+    "nude": "nude",
+    "sex_shown": "female",
+    "container": "none (no tub or barrel)",
+    "posture": "partly drawn, a few strokes only, head toward the rim",
+    "colour": "ink only",
+    "label_ring_candidates": "f72v3.21-f72v3.32"
+   }
+  },
+  {
+   "id": "centre-animal",
+   "kind": "animal",
+   "label": null,
+   "features": {
+    "shape": "four-legged animal standing, facing left, rounded ears, heavy head with open jaw, long body",
+    "colour": "ink, blue speckles on the forequarters, a red patch on a hind leg",
+    "ring": "centre",
+    "word_beneath": true
+   }
+  },
+  {
+   "id": "centre-sprig",
+   "kind": "plant",
+   "label": null,
+   "features": {
+    "shape": "small upright sprig or tree with a few branches, behind the animal's back",
+    "colour": "ink",
+    "ring": "centre"
+   }
+  },
+  {
+   "id": "stars",
+   "kind": "star",
+   "label": null,
+   "features": {
+    "shape": "eight-pointed stars with a yellow-tan centre, one beside many figures, in both rings",
+    "colour": "ink, tan centre"
+   }
+  }
+ ]
+}
