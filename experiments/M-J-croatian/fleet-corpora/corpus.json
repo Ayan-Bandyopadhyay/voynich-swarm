@@ -1,0 +1,10 @@
+{
+  "language": "croatian",
+  "title": "Croatian Bible 'Sveta Biblija' (eBible id hrv), full Bible, one verse per line",
+  "period": "modern Croatian (20th-century translation)",
+  "url": "https://raw.githubusercontent.com/BibleNLP/ebible/2bde52b4c2cfd7056cf4ed07c48969647df79744/corpus/hrv-hrv.txt",
+  "sha256": "47b76faa21a79eb8fd49acc00c1316f59d287557abd9aa69a0c9fc8aec2f4356",
+  "license": "public-domain",
+  "encoding": "utf-8",
+  "notes": "License: 'public-domain' is stated for translation id 'hrv' in the eBible corpus licence table https://github.com/BibleNLP/ebible/blob/2bde52b4c2cfd7056cf4ed07c48969647df79744/metadata/licences.tsv (taken from eBible.org's copyright page, https://ebible.org/hrv/copr.htm). The url pins a fixed commit, so the bytes do not change. 3,863,364 bytes; eBible corpus format: one verse per line aligned to a fixed versification (empty lines for verses the translation lacks; '<range>' marks merged verses, a few letters each). vs/refcorpus.normalize(..., 'croatian') gives 3,587,049 characters."
+}
