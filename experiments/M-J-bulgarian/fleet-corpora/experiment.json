@@ -1,0 +1,7 @@
+{
+  "step": "M-J-bulgarian",
+  "handle": "fleet-corpora",
+  "kind": "corpus",
+  "summary": "Add Bulgarian to the grid from Tsarigrad Bible (cc-by-sa, 488,913 characters after normalization; 19th century (1871), Bulgarian in pre-1945 orthography (with ѣ, ъ)).",
+  "lease": "0138e0daf91615d195ba14e8"
+}

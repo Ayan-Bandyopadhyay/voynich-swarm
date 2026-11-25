@@ -1,0 +1,10 @@
+{
+  "language": "bulgarian",
+  "title": "Tsarigrad Bible (Цариградски превод на Библията, 1871), Bulgarian Wikisource, incomplete",
+  "period": "19th century (1871), Bulgarian in pre-1945 orthography (with ѣ, ъ)",
+  "url": "https://bg.wikisource.org/w/index.php?oldid=18287&action=raw",
+  "sha256": "71c003aedc01334f6d54399f011ca9ffaceb04c71d1f29b86173384d2e410677",
+  "license": "cc-by-sa",
+  "encoding": "utf-8",
+  "notes": "License: the underlying text is public domain (see period); the Wikisource page (pinned revision in the url) is published under Wikisource's terms, CC BY-SA 4.0 (https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use). The url pins a fixed page revision (oldid), so the bytes do not change. 920,051 bytes; wikitext; section headings and verse numbers (digits, dropped by normalization). vs/refcorpus.normalize(..., 'bulgarian') gives 488,913 characters. The page marks itself incomplete; it still gives 488,913 characters."
+}
