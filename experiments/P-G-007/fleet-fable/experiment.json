@@ -1,0 +1,7 @@
+{
+ "step": "P-G-007",
+ "handle": "fleet-fable",
+ "kind": "step",
+ "summary": "Correction: with whole-word reuse raised from 0.25 to 0.45, a one-table chain with no drift meets all 17 established facts on 3 of 3 seeds when written as a whole book (F-011 0.04 to 0.06 against 0.074), so self-citation needs no changes fixed in advance; it stays negative on the dialect contrast (-0.02 to -0.04 against 0.122).",
+ "lease": "9db33bed62eb752b8e4b63ca"
+}
