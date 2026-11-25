@@ -823,6 +823,19 @@
       "license": "public-domain",
       "encoding": "utf-8",
       "added_by": "fleet-corpora"
+    },
+    {
+      "id": "galician_b7a291e0",
+      "lang": "galician",
+      "period": "19th century (1895), literary Galician in pre-standard spelling (set in 1378); the modern descendant of medieval Galician-Portuguese",
+      "title": "O Castelo de Pambre, historical novel by Antonio López Ferreiro (1895), Galician Wikisource",
+      "url": "https://gl.wikisource.org/w/index.php?oldid=21789&action=raw",
+      "file": "data/raw/agent_galician_b7a291e0.txt",
+      "bytes": 256226,
+      "sha256": "b7a291e099f55f018dc194185277709fc39f14127fa295a155d938a8cc60c110",
+      "license": "cc-by-sa",
+      "encoding": "utf-8",
+      "added_by": "fleet-corpora"
     }
   ],
   "missing_corpora": {
