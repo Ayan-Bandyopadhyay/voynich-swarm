@@ -9,7 +9,7 @@ uses it is scored on the held-out pages.
 """
 import importlib, os
 
-FAMILIES = ["substitution", "verbose", "codebook", "nomenclator", "table-cipher", "constant", "hashlex"]
+FAMILIES = ["substitution", "verbose", "codebook", "nomenclator", "table-cipher", "abbreviation", "constant", "hashlex"]
 
 
 def load(name):
