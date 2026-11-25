@@ -1,0 +1,196 @@
+{
+ "folio": "f67r2",
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006194",
+ "blind": true,
+ "statement": "Right panel of canvas 1006194 (67r): concentric circular diagram. Centre: an eight-rayed star with long narrow dotted ochre rays laid over a scalloped rosette on a blue-green square wash; one ray on the left trails a dotted line outward. Around the inner disc: 12 small round faces, each beside a crescent, 6 crescents red and 6 yellow (clockwise from about 12 o'clock: red, yellow, red, yellow, yellow, red, red, yellow, red, yellow, red, yellow). Outside: a ring of 12 radial sectors holding text, then a band of hatch-stroke groups with some ochre-washed segments, with 12 red labels written around it. The transcription's label blocks match these counts (f67r2.1-12: 12 lines; 52-63: 12 lines; 64-71: 8 lines around the star), so each object carries its block as label_group. Which line goes with which face cannot be fixed from line ids without reading the words, so labels are null.",
+ "objects": [
+  {
+   "id": "star",
+   "kind": "star",
+   "features": {
+    "points": "8",
+    "shape": "long narrow pointed rays, dotted along their length",
+    "colour": "ochre",
+    "position": "centre",
+    "note": "one ray on the left continues as a dotted line toward the ring of faces",
+    "label_group": "f67r2.64-71"
+   },
+   "label": null
+  },
+  {
+   "id": "rosette",
+   "kind": "rosette",
+   "features": {
+    "shape": "scalloped circle with petal-like inner lobes",
+    "colour": "uncoloured on a blue-green square wash",
+    "position": "centre, under the star"
+   },
+   "label": null
+  },
+  {
+   "id": "face1",
+   "kind": "moon",
+   "features": {
+    "shape": "small circle with a face beside a crescent",
+    "crescent_colour": "red",
+    "clock": "12",
+    "ring": "faces ring around the inner disc",
+    "label_group": "f67r2.52-63"
+   },
+   "label": null
+  },
+  {
+   "id": "face2",
+   "kind": "moon",
+   "features": {
+    "shape": "small circle with a face beside a crescent",
+    "crescent_colour": "yellow",
+    "clock": "1",
+    "ring": "faces ring around the inner disc",
+    "label_group": "f67r2.52-63"
+   },
+   "label": null
+  },
+  {
+   "id": "face3",
+   "kind": "moon",
+   "features": {
+    "shape": "small circle with a face beside a crescent",
+    "crescent_colour": "red",
+    "clock": "2",
+    "ring": "faces ring around the inner disc",
+    "label_group": "f67r2.52-63"
+   },
+   "label": null
+  },
+  {
+   "id": "face4",
+   "kind": "moon",
+   "features": {
+    "shape": "small circle with a face beside a crescent",
+    "crescent_colour": "yellow",
+    "clock": "3",
+    "ring": "faces ring around the inner disc",
+    "label_group": "f67r2.52-63"
+   },
+   "label": null
+  },
+  {
+   "id": "face5",
+   "kind": "moon",
+   "features": {
+    "shape": "small circle with a face beside a crescent",
+    "crescent_colour": "yellow",
+    "clock": "4",
+    "ring": "faces ring around the inner disc",
+    "label_group": "f67r2.52-63"
+   },
+   "label": null
+  },
+  {
+   "id": "face6",
+   "kind": "moon",
+   "features": {
+    "shape": "small circle with a face beside a crescent",
+    "crescent_colour": "red",
+    "clock": "5",
+    "ring": "faces ring around the inner disc",
+    "label_group": "f67r2.52-63"
+   },
+   "label": null
+  },
+  {
+   "id": "face7",
+   "kind": "moon",
+   "features": {
+    "shape": "small circle with a face beside a crescent",
+    "crescent_colour": "red",
+    "clock": "6",
+    "ring": "faces ring around the inner disc",
+    "label_group": "f67r2.52-63"
+   },
+   "label": null
+  },
+  {
+   "id": "face8",
+   "kind": "moon",
+   "features": {
+    "shape": "small circle with a face beside a crescent",
+    "crescent_colour": "yellow",
+    "clock": "7",
+    "ring": "faces ring around the inner disc",
+    "label_group": "f67r2.52-63"
+   },
+   "label": null
+  },
+  {
+   "id": "face9",
+   "kind": "moon",
+   "features": {
+    "shape": "small circle with a face beside a crescent",
+    "crescent_colour": "red",
+    "clock": "8",
+    "ring": "faces ring around the inner disc",
+    "label_group": "f67r2.52-63"
+   },
+   "label": null
+  },
+  {
+   "id": "face10",
+   "kind": "moon",
+   "features": {
+    "shape": "small circle with a face beside a crescent",
+    "crescent_colour": "yellow",
+    "clock": "9",
+    "ring": "faces ring around the inner disc",
+    "label_group": "f67r2.52-63"
+   },
+   "label": null
+  },
+  {
+   "id": "face11",
+   "kind": "moon",
+   "features": {
+    "shape": "small circle with a face beside a crescent",
+    "crescent_colour": "red",
+    "clock": "9",
+    "ring": "faces ring around the inner disc",
+    "label_group": "f67r2.52-63"
+   },
+   "label": null
+  },
+  {
+   "id": "face12",
+   "kind": "moon",
+   "features": {
+    "shape": "small circle with a face beside a crescent",
+    "crescent_colour": "yellow",
+    "clock": "11",
+    "ring": "faces ring around the inner disc",
+    "label_group": "f67r2.52-63"
+   },
+   "label": null
+  },
+  {
+   "id": "sectors",
+   "kind": "diagram",
+   "features": {
+    "shape": "ring divided by radial lines into 12 sectors, each holding a block of text",
+    "count": "12",
+    "colour": "uncoloured"
+   },
+   "label": null
+  },
+  {
+   "id": "outer_band",
+   "kind": "diagram",
+   "features": {
+    "shape": "outermost ring of groups of short radial hatch strokes, some segments washed ochre, small forked marks between groups",
+    "colour": "ochre and ink",
+    "red_labels_inside": "12",
+    "label_group": "f67r2.1-12"
+   },
+   "label": null
+  }
+ ]
+}
