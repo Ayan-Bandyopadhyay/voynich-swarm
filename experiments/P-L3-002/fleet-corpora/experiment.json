@@ -1,0 +1,7 @@
+{
+  "step": "P-L3-002",
+  "handle": "fleet-corpora",
+  "kind": "key",
+  "summary": "French substitution at the pinned budget (4 restarts x 6000 iterations) on ZL, IT and RF in normal, glyphs-reversed and words-reversed order: best practice savings IT glyphs reversed -0.097 (ZL -0.152/-0.116/-0.122, IT -0.138/-0.097/-0.116, RF -0.154/-0.131/-0.126 for normal/glyphs/words), all nine FAIL; 3/3 independently seeded 2%-noise French homophonic controls pass compression, language and kill tests (seeds 0, 1, 2: +0.058, +0.047, +0.048).",
+  "lease": "6d0b3c1a76a5e0e15a4d50d1"
+}
