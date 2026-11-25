@@ -1,0 +1,809 @@
+{
+  "title": "Test cyclic section controls across layouts and paragraph-stream assignments",
+  "statement": "I ran the P-J-005 planted-effect calibration on 20 stationary whole-copy backgrounds per layout. At alpha 0.05, token shuffles and intact-page label permutations each rejected all 20 unplanted cases at each page count. Cyclic offsets rejected 20 of 20 unplanted cases at 31 pages, 2 of 20 at 62, and 0 of 20 at 124. Across placebo marker fractions, the cyclic rejection counts were 20 of 20 at 31 pages, 1–3 of 20 at 62, and 0 of 20 at 124. For section-exclusive marker replacement of 2.5%, 5%, 10% and 20% of eligible words, the cyclic rejection counts were 7, 18, 20 and 20 at 62 pages, and 0, 0, 14 and 20 at 124. The 31-page layout rejected all planted cases at every dose. Each page count uses one fixed layout, and the layouts are nested. They vary in section balance, ordering and paragraph structure. The calibration measures uncertainty across text-generation seeds conditional on these layouts. Differences across sizes combine page count with changes in layout.",
+  "program": "J",
+  "check": "Freeze additional public layouts covering multiple section-label run patterns at each page count. Cross the original two independently generated line streams with a single shared stream and a condition that fixes the paragraph-opening fraction across sections. Keep the generator stationary and the known effect and matched placebos from P-J-005. For every layout report the three nulls' rejection rates for both placebo and plant, as well as the rank of the unshifted assignment among all cyclic offsets. Compare the results at fixed page counts before recommending any null as a specificity check.",
+  "on_path": true,
+  "hard": true,
+  "practice": {
+    "design": {
+      "seeds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "fit_pages": 68,
+      "effect_fractions": [
+        0.025,
+        0.05,
+        0.1,
+        0.2
+      ],
+      "markers_per_length": 4,
+      "sections": {
+        "31": {
+          "B": 3,
+          "H": 20,
+          "P": 6,
+          "S": 1,
+          "T": 1
+        },
+        "62": {
+          "B": 4,
+          "C": 2,
+          "H": 40,
+          "P": 6,
+          "S": 8,
+          "T": 2
+        },
+        "124": {
+          "A": 4,
+          "B": 13,
+          "C": 4,
+          "H": 74,
+          "P": 11,
+          "S": 15,
+          "T": 3
+        }
+      }
+    },
+    "provenance": "P-R-009 stationary whole-copy condition on ZL. The fitter uses the 68 pages remaining after reserving 124 from the public practice-training pool. The layout draws candidate pages with certain P words in the original corpus order using Python Random(408).sample and sorts prefixes of 31, 62 and 124 by original page order. The official practice-evaluation pages are unused. Streams preserve line order, with ordinary and paragraph-opening lines selected by the fact-attack rule and a four-word guard.",
+    "effect": "At least four characters per eligible P word. Rank eligible positions independently per section with Python Random(26791 + 200 * background seed + page count), replace the rounded dose prefix in each section, and sample from four novel markers of the same length per section. Select one uniform marker slot per eligible index before applying any dose. The exact affected locations and marker multiplicities are paired with each placebo, created by shuffling marker assignments within length across affected locations using Random(78821 + 200 * background seed + page count). Fixed synthetic token counts and lengths within background and layout. Planted and placebo instances were shuffled within background and layout, scored under blind case IDs, and unblinded for aggregation after the score file was written.",
+    "statistic": "F-018 mutual information of certain P-word identity and section. Verified to 1e-12 against the registered statistic on one unplanted seed of each layout. Token null shuffles all tokens before evaluating the P-position selection, as the registered DSL does. Whole-page permutations move only labels. Cyclic offsets include identity. Monte Carlo p-values add one to both numerator and denominator. Alpha is 0.05 for this calibration. NumPy default_rng with background seed plus 11091 for 199 token shuffles, plus 22291 for 199 label permutations. All three comparisons count ties toward the null.",
+    "result_order": [
+      "token shuffle",
+      "whole-page label permutations",
+      "cyclic label offsets"
+    ],
+    "runs_per_case": 20,
+    "uncertainty": "Wilson 95% intervals across the 20 backgrounds per case. For example, 0/20 yields 0–0.161, 2/20 yields 0.028–0.301, and 20/20 yields 0.839–1.",
+    "results": [
+      {
+        "pages": 31,
+        "condition": "base",
+        "eligible_fraction": 0.0,
+        "token_median": 3635.0,
+        "changed_share_of_paragraph_tokens_median": 0.0,
+        "bits_median": 0.88578,
+        "rejections": [
+          20,
+          20,
+          20
+        ],
+        "wilson_95": [
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ]
+        ]
+      },
+      {
+        "pages": 31,
+        "condition": "placebo",
+        "eligible_fraction": 0.025,
+        "token_median": 3635.0,
+        "changed_share_of_paragraph_tokens_median": 0.01898,
+        "bits_median": 0.89548,
+        "rejections": [
+          20,
+          20,
+          20
+        ],
+        "wilson_95": [
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ]
+        ]
+      },
+      {
+        "pages": 31,
+        "condition": "placebo",
+        "eligible_fraction": 0.05,
+        "token_median": 3635.0,
+        "changed_share_of_paragraph_tokens_median": 0.03796,
+        "bits_median": 0.89733,
+        "rejections": [
+          20,
+          20,
+          20
+        ],
+        "wilson_95": [
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ]
+        ]
+      },
+      {
+        "pages": 31,
+        "condition": "placebo",
+        "eligible_fraction": 0.1,
+        "token_median": 3635.0,
+        "changed_share_of_paragraph_tokens_median": 0.07587,
+        "bits_median": 0.88155,
+        "rejections": [
+          19,
+          20,
+          20
+        ],
+        "wilson_95": [
+          [
+            0.764,
+            0.991
+          ],
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ]
+        ]
+      },
+      {
+        "pages": 31,
+        "condition": "placebo",
+        "eligible_fraction": 0.2,
+        "token_median": 3635.0,
+        "changed_share_of_paragraph_tokens_median": 0.15188,
+        "bits_median": 0.8373,
+        "rejections": [
+          17,
+          20,
+          20
+        ],
+        "wilson_95": [
+          [
+            0.64,
+            0.948
+          ],
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ]
+        ]
+      },
+      {
+        "pages": 31,
+        "condition": "plant",
+        "eligible_fraction": 0.025,
+        "token_median": 3635.0,
+        "changed_share_of_paragraph_tokens_median": 0.01898,
+        "bits_median": 0.90615,
+        "rejections": [
+          20,
+          20,
+          20
+        ],
+        "wilson_95": [
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ]
+        ]
+      },
+      {
+        "pages": 31,
+        "condition": "plant",
+        "eligible_fraction": 0.05,
+        "token_median": 3635.0,
+        "changed_share_of_paragraph_tokens_median": 0.03796,
+        "bits_median": 0.92572,
+        "rejections": [
+          20,
+          20,
+          20
+        ],
+        "wilson_95": [
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ]
+        ]
+      },
+      {
+        "pages": 31,
+        "condition": "plant",
+        "eligible_fraction": 0.1,
+        "token_median": 3635.0,
+        "changed_share_of_paragraph_tokens_median": 0.07587,
+        "bits_median": 0.96634,
+        "rejections": [
+          20,
+          20,
+          20
+        ],
+        "wilson_95": [
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ]
+        ]
+      },
+      {
+        "pages": 31,
+        "condition": "plant",
+        "eligible_fraction": 0.2,
+        "token_median": 3635.0,
+        "changed_share_of_paragraph_tokens_median": 0.15188,
+        "bits_median": 1.0528,
+        "rejections": [
+          20,
+          20,
+          20
+        ],
+        "wilson_95": [
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ]
+        ]
+      },
+      {
+        "pages": 62,
+        "condition": "base",
+        "eligible_fraction": 0.0,
+        "token_median": 8708.5,
+        "changed_share_of_paragraph_tokens_median": 0.0,
+        "bits_median": 0.74705,
+        "rejections": [
+          20,
+          20,
+          2
+        ],
+        "wilson_95": [
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.028,
+            0.301
+          ]
+        ]
+      },
+      {
+        "pages": 62,
+        "condition": "placebo",
+        "eligible_fraction": 0.025,
+        "token_median": 8708.5,
+        "changed_share_of_paragraph_tokens_median": 0.01896,
+        "bits_median": 0.75603,
+        "rejections": [
+          20,
+          20,
+          3
+        ],
+        "wilson_95": [
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.052,
+            0.36
+          ]
+        ]
+      },
+      {
+        "pages": 62,
+        "condition": "placebo",
+        "eligible_fraction": 0.05,
+        "token_median": 8708.5,
+        "changed_share_of_paragraph_tokens_median": 0.03798,
+        "bits_median": 0.75144,
+        "rejections": [
+          20,
+          20,
+          3
+        ],
+        "wilson_95": [
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.052,
+            0.36
+          ]
+        ]
+      },
+      {
+        "pages": 62,
+        "condition": "placebo",
+        "eligible_fraction": 0.1,
+        "token_median": 8708.5,
+        "changed_share_of_paragraph_tokens_median": 0.07608,
+        "bits_median": 0.73489,
+        "rejections": [
+          20,
+          20,
+          1
+        ],
+        "wilson_95": [
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.009,
+            0.236
+          ]
+        ]
+      },
+      {
+        "pages": 62,
+        "condition": "placebo",
+        "eligible_fraction": 0.2,
+        "token_median": 8708.5,
+        "changed_share_of_paragraph_tokens_median": 0.15211,
+        "bits_median": 0.69352,
+        "rejections": [
+          20,
+          20,
+          2
+        ],
+        "wilson_95": [
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.028,
+            0.301
+          ]
+        ]
+      },
+      {
+        "pages": 62,
+        "condition": "plant",
+        "eligible_fraction": 0.025,
+        "token_median": 8708.5,
+        "changed_share_of_paragraph_tokens_median": 0.01896,
+        "bits_median": 0.77257,
+        "rejections": [
+          20,
+          20,
+          7
+        ],
+        "wilson_95": [
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.181,
+            0.567
+          ]
+        ]
+      },
+      {
+        "pages": 62,
+        "condition": "plant",
+        "eligible_fraction": 0.05,
+        "token_median": 8708.5,
+        "changed_share_of_paragraph_tokens_median": 0.03798,
+        "bits_median": 0.79783,
+        "rejections": [
+          20,
+          20,
+          18
+        ],
+        "wilson_95": [
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.699,
+            0.972
+          ]
+        ]
+      },
+      {
+        "pages": 62,
+        "condition": "plant",
+        "eligible_fraction": 0.1,
+        "token_median": 8708.5,
+        "changed_share_of_paragraph_tokens_median": 0.07608,
+        "bits_median": 0.84739,
+        "rejections": [
+          20,
+          20,
+          20
+        ],
+        "wilson_95": [
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ]
+        ]
+      },
+      {
+        "pages": 62,
+        "condition": "plant",
+        "eligible_fraction": 0.2,
+        "token_median": 8708.5,
+        "changed_share_of_paragraph_tokens_median": 0.15211,
+        "bits_median": 0.95043,
+        "rejections": [
+          20,
+          20,
+          20
+        ],
+        "wilson_95": [
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ]
+        ]
+      },
+      {
+        "pages": 124,
+        "condition": "base",
+        "eligible_fraction": 0.0,
+        "token_median": 17601.0,
+        "changed_share_of_paragraph_tokens_median": 0.0,
+        "bits_median": 0.65298,
+        "rejections": [
+          20,
+          20,
+          0
+        ],
+        "wilson_95": [
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0,
+            0.161
+          ]
+        ]
+      },
+      {
+        "pages": 124,
+        "condition": "placebo",
+        "eligible_fraction": 0.025,
+        "token_median": 17601.0,
+        "changed_share_of_paragraph_tokens_median": 0.01898,
+        "bits_median": 0.65868,
+        "rejections": [
+          20,
+          20,
+          0
+        ],
+        "wilson_95": [
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0,
+            0.161
+          ]
+        ]
+      },
+      {
+        "pages": 124,
+        "condition": "placebo",
+        "eligible_fraction": 0.05,
+        "token_median": 17601.0,
+        "changed_share_of_paragraph_tokens_median": 0.038,
+        "bits_median": 0.6549,
+        "rejections": [
+          20,
+          20,
+          0
+        ],
+        "wilson_95": [
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0,
+            0.161
+          ]
+        ]
+      },
+      {
+        "pages": 124,
+        "condition": "placebo",
+        "eligible_fraction": 0.1,
+        "token_median": 17601.0,
+        "changed_share_of_paragraph_tokens_median": 0.07593,
+        "bits_median": 0.63923,
+        "rejections": [
+          20,
+          20,
+          0
+        ],
+        "wilson_95": [
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0,
+            0.161
+          ]
+        ]
+      },
+      {
+        "pages": 124,
+        "condition": "placebo",
+        "eligible_fraction": 0.2,
+        "token_median": 17601.0,
+        "changed_share_of_paragraph_tokens_median": 0.15186,
+        "bits_median": 0.599,
+        "rejections": [
+          20,
+          20,
+          0
+        ],
+        "wilson_95": [
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0,
+            0.161
+          ]
+        ]
+      },
+      {
+        "pages": 124,
+        "condition": "plant",
+        "eligible_fraction": 0.025,
+        "token_median": 17601.0,
+        "changed_share_of_paragraph_tokens_median": 0.01898,
+        "bits_median": 0.68264,
+        "rejections": [
+          20,
+          20,
+          0
+        ],
+        "wilson_95": [
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0,
+            0.161
+          ]
+        ]
+      },
+      {
+        "pages": 124,
+        "condition": "plant",
+        "eligible_fraction": 0.05,
+        "token_median": 17601.0,
+        "changed_share_of_paragraph_tokens_median": 0.038,
+        "bits_median": 0.71213,
+        "rejections": [
+          20,
+          20,
+          0
+        ],
+        "wilson_95": [
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0,
+            0.161
+          ]
+        ]
+      },
+      {
+        "pages": 124,
+        "condition": "plant",
+        "eligible_fraction": 0.1,
+        "token_median": 17601.0,
+        "changed_share_of_paragraph_tokens_median": 0.07593,
+        "bits_median": 0.77267,
+        "rejections": [
+          20,
+          20,
+          14
+        ],
+        "wilson_95": [
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.481,
+            0.855
+          ]
+        ]
+      },
+      {
+        "pages": 124,
+        "condition": "plant",
+        "eligible_fraction": 0.2,
+        "token_median": 17601.0,
+        "changed_share_of_paragraph_tokens_median": 0.15186,
+        "bits_median": 0.89135,
+        "rejections": [
+          20,
+          20,
+          20
+        ],
+        "wilson_95": [
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ],
+          [
+            0.839,
+            1.0
+          ]
+        ]
+      }
+    ]
+  }
+}
