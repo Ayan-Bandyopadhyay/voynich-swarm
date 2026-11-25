@@ -201,9 +201,11 @@ def score(d, pr=None):
         verdict = "SUCCEEDED" if r["success"] else "FAILED"
         if spec["attack"] == "generator" and not r.get("refused"):
             verdict = f"{r['reproduced']}/{r['of']}"
+            if spec.get("hypothesis") in ("invented_language", "meaningless"):
+                r["hypothesis"] = spec["hypothesis"]
         typ = "audit" if spec["attack"] == "claim" else "attack"
         item = {"id": registry.next_id("A" if typ == "audit" else "R"), "type": typ,
-                "title": (spec.get("claimant") or (f"Generator test: {spec.get('title') or 'a procedure'}, against every established fact" if spec["attack"] == "generator" else f"{spec['attack']} attack on {r.get('target')}"))[:160],
+                "title": (spec.get("claimant") or ((f"Invented-language test: {spec.get('title') or 'a constructed language'}, against every established fact" if spec.get("hypothesis") == "invented_language" else f"Generator test: {spec.get('title') or 'a procedure'}, against every established fact") if spec["attack"] == "generator" else f"{spec['attack']} attack on {r.get('target')}"))[:160],
                 "statement": spec.get("method") or e.get("summary", ""), "verdict": verdict if typ == "attack" else ("FAIL" if r["success"] else "PASS"),
                 "value": None, "detail": {k: v for k, v in r.items() if k != "lines"}, "program": "R", "target": r.get("target")}
         kind = "attack_succeeded" if r["success"] else "attack_failed"
@@ -278,7 +280,7 @@ def score(d, pr=None):
     item["submitted"] = {os.path.basename(f): json.load(open(f)) for f in files if f.endswith(".json")}
     if item["type"] == "attack":
         # hidden-page values would leak layout information; keep the outcome and the reason only
-        item["detail"] = {k: v for k, v in item["detail"].items() if k in ("attack", "target", "success", "why", "refused", "decoy", "shared_type_share", "cut", "reproduced", "of", "per_fact")}
+        item["detail"] = {k: v for k, v in item["detail"].items() if k in ("attack", "target", "success", "why", "refused", "decoy", "shared_type_share", "cut", "reproduced", "of", "per_fact", "hypothesis")}
     try:
         registry.add(item)
     except SystemExit as ex:
