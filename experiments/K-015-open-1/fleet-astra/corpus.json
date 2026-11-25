@@ -1,0 +1,72 @@
+{
+  "language": "nahuatl",
+  "title": "Florentine Codex, Book 11 (Earthly Things), Nahuatl transcription. Nahua authors and Bernardino de Sahagún, digital edition edited by Valery A. Berthoud F.",
+  "period": "Sixteenth-century colonial Nahuatl, manuscript completed 1577; 2022 digital transcription",
+  "url": "https://zenodo.org/api/records/7213020/files/Book%2011%20-%20Earthly%20Things.txt/content",
+  "sha256": "ffad7306919b7a99428381705636926c346b7b29cec4ee047bb1ef899e20b3c5",
+  "license": "cc-by",
+  "license_url": "https://zenodo.org/records/7213020",
+  "license_statement": "The Zenodo edition identifies its license as Creative Commons Attribution 4.0 International (cc-by-4.0). DOI 10.5281/zenodo.7213020.",
+  "encoding": "utf-8",
+  "notes": "This plain-text file contains the Nahuatl column. Diplomatic line breaks can divide words and the text retains folio labels and transcription marks. These affect token counts under the stock normalizer. The file predates the existing nineteenth-century Luke translation but postdates the manuscript under study.",
+  "normalized_characters": 399514,
+  "normalized_tokens": 72989,
+  "local_control_check": {
+    "prior": [
+      {
+        "seed": 0,
+        "key": "planted",
+        "evaluation_tokens": 370,
+        "passes_without_anchors": false,
+        "savings": -0.05987,
+        "failed": [
+          "a_compresses",
+          "b_reads",
+          "c_pictures"
+        ]
+      },
+      {
+        "seed": 0,
+        "key": "search",
+        "evaluation_tokens": 370,
+        "passes_without_anchors": false,
+        "savings": -0.28432,
+        "failed": [
+          "a_compresses",
+          "b_reads",
+          "kill_tests",
+          "c_pictures",
+          "d_not_illusion"
+        ]
+      }
+    ],
+    "added": [
+      {
+        "seed": 0,
+        "key": "planted",
+        "evaluation_tokens": 1360,
+        "passes_without_anchors": true,
+        "savings": 0.07809,
+        "failed": [
+          "c_pictures",
+          "d_not_illusion"
+        ]
+      },
+      {
+        "seed": 0,
+        "key": "search",
+        "evaluation_tokens": 1360,
+        "passes_without_anchors": false,
+        "savings": -0.11807,
+        "failed": [
+          "a_compresses",
+          "b_reads",
+          "kill_tests",
+          "c_pictures",
+          "d_not_illusion"
+        ]
+      }
+    ],
+    "method": "Before submission, append this text to the current Nahuatl pin list in memory, run the default homophonic generator with 2% noise at seed 0, and compare the planted and pinned search keys with the same controls on the existing pin alone."
+  }
+}
