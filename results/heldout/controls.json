@@ -1077,5 +1077,13 @@
   "true_key_passes": false,
   "search_cracks_control": false,
   "added_with": "neapolitan_e6d5d646"
+ },
+ {
+  "language": "arabic",
+  "family": "verbose",
+  "control": "verbose",
+  "true_key_passes": true,
+  "search_cracks_control": false,
+  "added_with": "arabic_e2086900"
  }
 ]
