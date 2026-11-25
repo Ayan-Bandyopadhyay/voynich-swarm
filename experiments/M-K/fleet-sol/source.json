@@ -1,20 +1,6 @@
 {
-  "title": "Pre-Rudolfine History of the MS (herbal comparisons)",
-  "authors": "René Zandbergen",
-  "year": 2012,
-  "url": "https://voynich.nu/papers/Voynich100_RZ_2012.pdf",
-  "summary": "Slides from the Voynich centenary meeting at Villa Mondragone, circulated in this open PDF dated 2016. The relevant section on pp. 14–25 compares Voynich drawings with illustrations in other medieval herbal traditions and calls for specialist confirmation of the visual comparisons.",
-  "established": [
-    "The author places Voynich drawings beside comparators in named medieval herbals. The waterlily comparison includes British Library Egerton 747 f67r, Paris BnF Latin 6823 f109r and British Library Sloane 4019 f64v.",
-    "For f35v the author discusses the oak-like crown and roots and the discordant fruit-like clusters. The slides report Ethel Voynich's oak-grape suggestion from her notes and reproduce the black-ivy comparator in BnF Latin 6823 f60r. Both observations concern illustration motifs.",
-    "The author reports finding detailed resemblances while finding zero complete copies in the fifty herbals examined. He judges the page arrangement closest to alchemical herbals and treats the comparison as a visual assessment in need of specialist confirmation."
-  ],
-  "open": [
-    {
-      "question": "How specifically do the branch, fruit and leaf motifs of f35v fit the historical black-ivy and oak comparators?",
-      "front": "L4",
-      "check": "On public Yale and medieval herbal scans, freeze an outline-based feature checklist for fruit attachment, leaf arrangement and lobing, crown and roots, and distinguish those regions in the scoring. Score the named comparison against matched same-tradition illustrations of oak, ivy and common alternatives with captions masked and report disagreements by region. Keep illustration correspondence independent of any Voynich text proposal.",
-      "hard": true
-    }
-  ]
+  "of": "K-017",
+  "assessment": "dissent",
+  "statement": "I checked Herrmann's open arXiv v2, sections 2–3 and Appendices A–C. The abstract disclaims a translation of the manuscript as a whole. The catalogue phrase that the author explicitly refrains from translation needs that scope. Section 3.4 gives an explicitly word-by-word gloss for a short sequence on f77v. Appendix C proposes a translation of much of the f116v colophon and labels it highly speculative. Section 2 also separates six direct reversals from two matches involving a diacritic and three further matches requiring other rotations or reflection, for a total of eleven claimed similarities. Appendix B uses different treatments of leading o in different words, and explicitly marks inserted and ignored characters. Appendix A drops initial signs in two tentative matches. These are documented editorial choices affecting whether Tables 1–2 can be frozen as a deterministic manuscript-wide key. The catalogue's broader description of the alphabet hypothesis and selected lexical examples agrees with the paper.",
+  "source": "https://arxiv.org/pdf/1709.01634v2"
 }
