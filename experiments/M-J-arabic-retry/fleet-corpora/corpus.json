@@ -1,0 +1,10 @@
+{
+  "language": "arabic",
+  "title": "Arabic Bible, Smith-Van Dyck translation (1865), full Bible, one verse per line",
+  "period": "19th century (1865), Modern Standard Arabic of the Smith-Van Dyck Bible",
+  "url": "https://raw.githubusercontent.com/BibleNLP/ebible/2bde52b4c2cfd7056cf4ed07c48969647df79744/corpus/arb-arb_vd.txt",
+  "sha256": "e2086900557dfeea0c1ed5e6341ac10da2cfb860acbcfc976ef86d9954df3ca8",
+  "license": "public-domain",
+  "encoding": "utf-8",
+  "notes": "License: 'public-domain' is stated for translation id 'arb_vd' in the eBible corpus licence table https://github.com/BibleNLP/ebible/blob/2bde52b4c2cfd7056cf4ed07c48969647df79744/metadata/licences.tsv (taken from eBible.org's copyright page, https://ebible.org/arb_vd/copr.htm). The url pins a fixed commit, so the bytes do not change. 7,450,127 bytes; eBible corpus format: one verse per line aligned to a fixed versification (empty lines for verses the translation lacks; '<range>' marks merged verses, a few letters each). vs/refcorpus.normalize(..., 'arabic') gives 2,300,811 characters. Vowel marks (harakat), if present, are combining marks and are stripped by the generic normalization. Resubmission: the first submission (step M-J-arabic, PR #130) passed the advisory check but was never scored; if that PR is scored later this one will be refused as already pinned."
+}
