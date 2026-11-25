@@ -1117,5 +1117,21 @@
   "true_key_passes": false,
   "search_cracks_control": false,
   "added_with": "galician_b7a291e0"
+ },
+ {
+  "language": "estonian",
+  "family": "substitution",
+  "control": "homophonic",
+  "true_key_passes": true,
+  "search_cracks_control": false,
+  "added_with": "estonian_63de1b3f"
+ },
+ {
+  "language": "estonian",
+  "family": "verbose",
+  "control": "verbose",
+  "true_key_passes": false,
+  "search_cracks_control": false,
+  "added_with": "estonian_63de1b3f"
  }
 ]
