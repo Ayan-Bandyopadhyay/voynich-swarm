@@ -1,0 +1,8 @@
+{
+ "title": "Picture-text statistics: test labels against the agreed picture annotations",
+ "statement": "Add to the measurement language (vs/dsl.py, code PR labelled 'code:') statistics that join label words to AGREED picture annotations (registry type picture), each with a null that keeps the labels but shuffles which object they point at: (1) same_object_label: objects of one kind and matching features drawn on two folios (e.g. a herbal plant and its small redrawing among the pharmaceutical jars) carry identical or one-glyph-apart labels more often than chance; (2) feature_label_share: objects that share a feature (leaf shape, root form, container shape) have labels sharing a first or last glyph group more often than objects that do not; (3) label_in_page_text: a label word recurs in its own page's running text more than in other pages'. Only folios with AGREED annotations count; report how many objects each statistic used, and refuse below a minimum. Then register them as facts on the hidden pages. A meaningless procedure fitted on the text has no reason to pass these; a language, natural or invented, should.",
+ "program": "L4",
+ "check": "code PR with tests; then fact.json per statistic",
+ "on_path": true,
+ "hard": true
+}
