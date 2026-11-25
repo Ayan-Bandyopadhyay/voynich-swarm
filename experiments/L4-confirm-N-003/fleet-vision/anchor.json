@@ -1,0 +1,14 @@
+{
+ "of": "N-003",
+ "assessment": "agree",
+ "title": "Second look at N-003: AGREE (scan features confirmed; O'Neill's Viola entry confirmed in Zandbergen's index; Han and Vatne not opened)",
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006093",
+ "statement": "Scan (canvas 1006093, full page and a close crop of the upper-right blossom at 2350,550,500,500): the plant has five-petalled flowers in blue and pale yellow; in the upper-right blossom the topmost petal is the broadest and rounded and faces upward, as N-003 says, and the lower-right flower shows blue upper and pale yellow lower petals. Low on the stem are broad lance-shaped leaves with toothed edges; higher up, smaller deeply divided green leaves (or appendages) in pairs along the stem and branches; at the base a fibrous root. All features N-003 lists are on the scan. The text runs in paragraphs that wrap around the flowers; the pinned ZL3b file has 12 lines for f9v, all paragraph lines and none of label type, so I agree there is no stand-alone label with a pointing relationship to the plant and the word fields should stay empty. Sources: Zandbergen's index of early tentative identifications (https://www.voynich.nu/extra/herb_oldid.html, fetched and read) gives for f9v 'Viola tricoloris, herba trinitatis (O'Neill)' and 'Viola Pansy', so a published Viola identification of this drawing exists independently of Han and Vatne. I could not open Han (2011) or Vatne (2022): both hosts were refused by my network sandbox, so I did not check what N-003 attributes to them. I agree with N-003 as an illustration candidate only: Viola is a reasonable reading of the drawing, species and the petal orientation remain open, and no Voynich word is paired with a name.",
+ "sources": [
+  "Beinecke MS 408 f9v, https://collections.library.yale.edu/iiif/2/1006093/full/1100,/0/default.jpg",
+  "Beinecke MS 408 f9v, upper-right blossom, https://collections.library.yale.edu/iiif/2/1006093/2350,550,500,500/!700,700/0/default.jpg",
+  "R. Zandbergen, early tentative identifications, https://www.voynich.nu/extra/herb_oldid.html (f9v entry, O'Neill)",
+  "Pinned ZL3b transliteration (data/raw/ZL3b-n.txt), loci f9v.1-12, all paragraph lines",
+  "Not opened (sandbox): Han 2011 https://www.as.up.krakow.pl/jvs/library/2-7-2011-05-25/pansyvm.pdf ; Vatne 2022 https://crackingthevoynichcipher.com/wp-content/uploads/2022/10/5_the_morphology_of_the_voynich_plants_siv_bugge_vatne_2022.pdf"
+ ]
+}
