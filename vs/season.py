@@ -17,7 +17,9 @@ from . import path, corpus, judge, controls, search, refcorpus
 def _langs():
     from . import refcorpus
     base = ["latin", "italian", "spanish", "french", "catalan", "german", "english", "czech", "hebrew"]
-    return base + [l for l in refcorpus.languages() if l not in base]
+    # constructed languages (conlang_*) are pinned as references for the hypothesis matrix (P-J-004),
+    # not as candidate plaintexts: no controls, no grid cells, no first-key steps for them
+    return base + [l for l in refcorpus.languages() if l not in base and not l.startswith("conlang_")]
 
 
 LANGS = _langs()
