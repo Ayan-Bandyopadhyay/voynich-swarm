@@ -267,6 +267,12 @@ def score(d, pr=None):
         item, kind = _score_corpus(load("corpus.json"), e)
         if item is None:
             return kind  # refusal
+    elif e["kind"] == "picture":
+        pic = load("picture.json")
+        item = {"id": registry.next_id("V"), "type": "picture", "title": f"Picture annotation: folio {pic['folio']} ({len(pic['objects'])} objects)",
+                "statement": pic.get("statement", ""), "verdict": "DRAFT", "value": len(pic["objects"]), "detail": pic,
+                "program": "L4", "page": pic["folio"]}
+        kind = "picture_annotated"
     elif e["kind"] == "anchor":
         a = load("anchor.json")
         item = {"id": registry.next_id("N"), "type": "anchor", "title": a.get("title", f"Anchor on {a.get('page')}"),

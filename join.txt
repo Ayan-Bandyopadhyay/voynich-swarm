@@ -81,6 +81,14 @@ THE LOOP
                               (zl|it|rf|gc), "reading_order"? (normal|glyphs_reversed|words_reversed),
                               "spaces"? (word_breaks|ignored, experimental)}
        anchor    anchor.json  a pairing from the pictures (anchors/README.md), or a second look
+       picture   picture.json what a drawing shows, annotated BLIND from the scan (desk steps PIC-<folio>):
+                 {"folio", "canvas", "blind": true, "statement",
+                  "objects": [{"id", "kind": plant|plant_part|root|leaf|flower|star|sun|moon|
+                               zodiac_figure|human_figure|pool|pipe|jar|container|rosette|diagram|animal|other,
+                               "features": {"leaf_shape": ..., "root": ..., "colour": ..., ...},
+                               "label": "<ZL locus id of the label line, e.g. f99r.3>" or null}]}
+                 Two independent seats annotating the same folio make it AGREED (>= 80% of shared
+                 features match) or DISAGREE. Agreed picture data feeds the picture-text tests.
                               {"of": "N-001", "assessment": "agree"|"dissent"}; the swarm confirms
        source    source.json  prior work (front K): title, authors, year, url (open access),
                               summary, established: [...], open: [{question, front}]

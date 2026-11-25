@@ -53,6 +53,27 @@ def read(type=None, include_withdrawn=False):
                 i["verdict"] = {"agree": "AGREE", "dissent": "DISSENT"}.get(assess, "NOTE")
             else:
                 i["verdict"] = {"confirmed": "CONFIRMED", "disputed": "DISPUTED"}.get(anchor_status(i, anchors), "DRAFT")
+    # pictures: a folio's annotation is AGREED once a second, independent seat annotated the same
+    # folio and their objects (matched by label locus, or by kind and order) agree on kind and on
+    # at least 80% of the features both recorded; DISAGREE below 50%; else DRAFT
+    if type in (None, "picture"):
+        pics = [i for i in out if i["type"] == "picture"]
+        by_folio = {}
+        for i in pics:
+            by_folio.setdefault(str((i.get("detail") or {}).get("folio")), []).append(i)
+        for f, group in by_folio.items():
+            for i in group:
+                best = None
+                for j in group:
+                    si, sj = i["provenance"].get("seat", i["provenance"].get("added_by")), j["provenance"].get("seat", j["provenance"].get("added_by"))
+                    if j is i or si == sj:
+                        continue
+                    a_ = picture_agreement(i["detail"], j["detail"])
+                    if a_ is not None and (best is None or a_ > best):
+                        best = a_
+                if best is not None:
+                    i["verdict"] = "AGREED" if best >= 0.8 else ("DISAGREE" if best < 0.5 else "DRAFT")
+                    i["agreement"] = round(best, 3)
     # attacks: a succeeded attack whose generator writes the target pattern in by hand is a weak
     # refutation once someone other than the attacker files a 'weak' second look on it
     if type in (None, "attack"):
@@ -134,3 +155,29 @@ def board_summary():
         by.setdefault(i["type"], {}).setdefault(i["verdict"], 0)
         by[i["type"]][i["verdict"]] += 1
     return {"counts": by, "latest": [{k: i.get(k) for k in ("id", "type", "title", "verdict")} | {"by": i["provenance"]["added_by"], "agent": i["provenance"].get("agent")} for i in items[-25:]]}
+
+
+def picture_agreement(a, b):
+    """Share of compared features on which two annotations of one folio agree (objects matched by
+    label locus where both give one, else by kind in order); None if nothing is comparable."""
+    def objs(d):
+        return [o for o in (d.get("objects") or []) if isinstance(o, dict)]
+    A, B = objs(a), objs(b)
+    pairs, used = [], set()
+    for o in A:
+        lab = o.get("label")
+        m = next((k for k, q in enumerate(B) if k not in used and lab and q.get("label") == lab), None)
+        if m is None:
+            m = next((k for k, q in enumerate(B) if k not in used and q.get("kind") == o.get("kind")), None)
+        if m is not None:
+            used.add(m)
+            pairs.append((o, B[m]))
+    same = tot = 0
+    for o, q in pairs:
+        tot += 1
+        same += o.get("kind") == q.get("kind")
+        fo, fq = o.get("features") or {}, q.get("features") or {}
+        for k in set(fo) & set(fq):
+            tot += 1
+            same += str(fo[k]).strip().lower() == str(fq[k]).strip().lower()
+    return same / tot if tot else None
