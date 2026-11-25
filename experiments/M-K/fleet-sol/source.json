@@ -1,20 +1,19 @@
 {
-  "title": "Character Entropy in Modern and Historical Texts: Comparison Metrics for an Undeciphered Manuscript",
-  "authors": "Luke Lindemann and Claire Bowern",
-  "year": 2020,
-  "url": "https://lukelindemann.com/docs/voy_entropy_wp_2020.pdf",
-  "doi": "10.48550/arXiv.2010.14697",
-  "summary": "The authors compile three public corpora: Voynich texts stratified by transcription, Currier variety and scribal hand, Wikipedia samples in 294 languages, and 18 historical texts in eight languages. They use these corpora to estimate conditional character entropy and examine the contribution of transcription choices and word-position constraints.",
+  "title": "Keywords and Co-Occurrence Patterns in the Voynich Manuscript: An Information-Theoretic Analysis",
+  "authors": "Marcelo A. Montemurro and Damián H. Zanette",
+  "year": 2013,
+  "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0066344",
+  "doi": "10.1371/journal.pone.0066344",
+  "summary": "The authors compare how EVA word tokens are distributed across contiguous blocks with their expected distribution after global token shuffling. They group folios by illustration-defined section and also compare word-frequency profiles across those sections.",
   "established": [
-    "The study reports first-order conditional character entropy of 2.159 bits for full Voynich in Maximal EVA and 2.475 bits in the Minimal representation. Changing the representation moved the estimate, while comparison with the corpora still highlighted unusually tight restrictions on where frequent symbols appear within tokens.",
-    "In the three tested representations, Appendix A reports lower conditional character entropy for Currier B than for Currier A. The historical comparisons examine paired diplomatic and normalized transcriptions to assess the effect of abbreviation and orthography."
+    "The word-distribution information statistic peaks at a block size of 807 tokens, close to the peak scales reported for the English, Latin, and Chinese examples. The shuffle baseline preserves each word type's total count.",
+    "Among the 100 highest-ranked words, several pairs with similar section-frequency profiles share visible EVA prefixes or suffixes. The link significance calculation shuffles section indices independently for each word's frequency vector."
   ],
   "open": [
     {
-      "question": "Can a historically motivated encoding that collapses sound distinctions reproduce the low conditional entropy and the associated pattern of strongly position-restricted bigrams?",
-      "front": "L3",
-      "check": "Use a fixed encoding rule and matched-length historical texts. Compare the entropy and position-stratified bigram profiles jointly under more than one Voynich glyph representation.",
-      "hard": true
+      "question": "Can a fixed table-and-grille or self-citation procedure match the observed word-distribution information curve against global shuffles?",
+      "front": "G",
+      "check": "Freeze the generator and block sizes using public pages, then compare the curve on matched token counts with the published frequency-preserving shuffle statistic."
     }
   ]
 }
