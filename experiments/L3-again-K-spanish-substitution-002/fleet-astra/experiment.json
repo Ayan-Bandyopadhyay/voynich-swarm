@@ -1,0 +1,7 @@
+{
+  "step": "L3-again-K-spanish-substitution-002",
+  "handle": "fleet-astra",
+  "kind": "key",
+  "lease": "5c559487c54b983415dae2a3",
+  "summary": "Test Spanish substitution on single-character Claston v101 units across three orders; glyphs_reversed gave the best practice savings (-8.945%) and the independently evaluated single-character 2%-noise control passed with 3.617% savings."
+}
