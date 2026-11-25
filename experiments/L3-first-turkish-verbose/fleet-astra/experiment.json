@@ -1,0 +1,7 @@
+{
+  "step": "L3-first-turkish-verbose",
+  "handle": "fleet-astra",
+  "kind": "key",
+  "summary": "Pinned-budget turkish verbose search after passing the 2%-noise control with 2.03% compression savings.",
+  "lease": "acd86d42260e78369270ec0d"
+}
