@@ -1,0 +1,59 @@
+{
+ "folio": "f66r",
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006192",
+ "blind": true,
+ "statement": "A text page whose only drawing is a small group at the bottom left: a nude human figure lying diagonally (head raised at upper right, legs toward lower left, one arm bent down to the ground), two small circles to its left (one plain, one with an irregular edge), a short open-topped cylinder with a dotted rim and ochre wash, and a few small words in a different script beside the circles (not read). One line of Voynich text sits directly above the figure; it is the folio's only Lx label line, f66r.82, given to the figure. The left-margin label lines f66r.1-49 are a column of single words and a column of single characters beside the text lines and point at no drawing. Faint green show-through of a plant from the other side of the leaf is visible behind the text and is not counted.",
+ "objects": [
+  {
+   "id": "figure",
+   "kind": "human_figure",
+   "features": {
+    "clothing": "nude",
+    "posture": "lying diagonally, head at upper right raised, legs stretched to lower left, one arm bent down with hand on the ground",
+    "colour": "uncoloured",
+    "position": "bottom left of page, below the last text block",
+    "count": "1"
+   },
+   "label": "f66r.82"
+  },
+  {
+   "id": "circle_small",
+   "kind": "other",
+   "features": {
+    "shape": "small plain circle",
+    "colour": "uncoloured",
+    "position": "left of the figure"
+   },
+   "label": null
+  },
+  {
+   "id": "circle_large",
+   "kind": "other",
+   "features": {
+    "shape": "slightly larger circle with an irregular edge and inner marks",
+    "colour": "uncoloured",
+    "position": "left of the figure, right of the small circle"
+   },
+   "label": null
+  },
+  {
+   "id": "container",
+   "kind": "container",
+   "features": {
+    "shape": "short cylinder, open top with dotted rim, short vertical strokes on the side",
+    "colour": "ochre wash on top",
+    "position": "far bottom left, below the circles"
+   },
+   "label": null
+  },
+  {
+   "id": "foreign_marks",
+   "kind": "other",
+   "features": {
+    "shape": "a few small words in a script unlike the main text, beside the circles",
+    "colour": "ink"
+   },
+   "label": null
+  }
+ ]
+}
