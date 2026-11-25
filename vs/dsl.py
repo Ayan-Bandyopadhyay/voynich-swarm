@@ -26,6 +26,8 @@ statistics:
                                                            last word with the next line's first word, same page); each
                                                            shuffle-corrected, within-line pairs subsampled to the
                                                            across-line count (10 fixed draws) so both carry equal bias
+  {"line_repeat_excess": true}                              share of words repeated on the previous numbered line minus the share
+                                                           repeated four lines back, within a page, excluding one-character words
   {"repeat_ngram": n}                                      share of word n-grams (n<=6) that occur at least twice
   {"hapax_share": true} | {"zipf_slope": ranks} | {"mean_length": true}
   {"near_copy": {"window": k, "min_length": L}}            share of words of length >= L within edit distance exactly 1
@@ -297,7 +299,7 @@ def check_statistic(st):
         _int(arg, 1, 6, "repeat_ngram n")
     elif name == "zipf_slope":
         _int(arg, 3, 100_000, "zipf_slope ranks")
-    elif name in ("edge_mi", "edge_mi_break", "hapax_share", "mean_length"):
+    elif name in ("edge_mi", "edge_mi_break", "hapax_share", "mean_length", "line_repeat_excess"):
         if arg is not True:
             raise SpecError(f"{name} takes true")
     elif name == "near_copy":
@@ -371,6 +373,23 @@ def statistic(st, toks, all_toks):
         c = Counter(tuple(t["w"] for t in r[i:i + n]) for r in runs_of(toks) for i in range(len(r) - n + 1))
         tot = sum(c.values())
         return sum(v for v in c.values() if v >= 2) / tot if tot >= MIN_TOKENS else NAN
+    if name == "line_repeat_excess":
+        # Use the same current words for both lags. Require five consecutive
+        # selected lines on one page so gaps do not become spurious neighbors.
+        words = {}
+        for t in toks:
+            words.setdefault(t["line"], []).append(t["w"])
+        vocabulary = {line: set(ws) for line, ws in words.items()}
+        hits = eligible = 0
+        for (page, line), ws in words.items():
+            if not all((page, line - lag) in words for lag in range(1, 5)):
+                continue
+            near, far = vocabulary[page, line - 1], vocabulary[page, line - 4]
+            for word in ws:
+                if len(word) > 1:
+                    eligible += 1
+                    hits += (word in near) - (word in far)
+        return hits / eligible if eligible >= MIN_TOKENS else NAN
     if name == "hapax_share":
         c = Counter(t["w"] for t in toks)
         return sum(1 for v in c.values() if v == 1) / len(c)
@@ -416,7 +435,7 @@ def statistic(st, toks, all_toks):
 
 # statistics whose features mean the same thing in another script, so a reference language can be measured
 LAYOUT_FREE = {"entropy", "hapax_share", "zipf_slope", "mean_length", "repeat_ngram", "cond_entropy", "adjacent_mi",
-               "edge_mi", "near_copy", "glyph_cond_entropy", "page_reuse"}
+               "edge_mi", "near_copy", "glyph_cond_entropy", "page_reuse", "line_repeat_excess"}
 MIN_REFERENCES = 3
 
 _NULL_KEY = {"shuffle_within_line": lambda t: t["line"], "shuffle_within_page": lambda t: t["page"],

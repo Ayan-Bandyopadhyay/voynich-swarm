@@ -77,6 +77,15 @@ class HollowPassTest(unittest.TestCase):
         self.assertTrue(all(len(r) == 1 for r in runs))
         self.refused({"statistic": {"repeat_ngram": 2}, "compare": [{"op": ">=", "value": 0.9}]}, pages)
 
+    def test_line_repeat_excess_matches_the_same_current_words_at_both_lags(self):
+        lines = [["far"], ["one"], ["two"], ["near", "near"], ["near"] * 30 + ["far"] * 10 + ["x"] * 20]
+        st = {"line_repeat_excess": True}
+        self.assertAlmostEqual(dsl.evaluate({"statistic": st, "compare": T}, [page("f1", lines)])["value"], 0.5)
+        # A page boundary or a selected-out line breaks the five-line comparison.
+        self.refused({"statistic": st, "compare": T}, [page("f1", lines[:3]), page("f2", lines[3:])])
+        lines[2] = ("L", ["label"])
+        self.refused({"select": {"unit": ["P"]}, "statistic": st, "compare": T}, [page("f1", lines)])
+
     def test_null_that_cannot_move_the_statistic_is_refused(self):
         self.refused({"statistic": {"entropy": "word"}, "compare": [{"null": "shuffle_within_line", "perms": 99}]})
 
