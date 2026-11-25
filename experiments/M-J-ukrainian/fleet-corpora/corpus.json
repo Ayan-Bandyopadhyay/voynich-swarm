@@ -1,0 +1,10 @@
+{
+  "language": "ukrainian",
+  "title": "Ukrainian Bible, translation of Panteleimon Kulish, Ivan Puluj and Ivan Nechui-Levytskyi (1905), full Bible, one verse per line",
+  "period": "late 19th century (translated 1869-1903, printed 1905), early modern Ukrainian",
+  "url": "https://raw.githubusercontent.com/BibleNLP/ebible/2bde52b4c2cfd7056cf4ed07c48969647df79744/corpus/ukr-ukr1871.txt",
+  "sha256": "92c8935debe8777b40b520a6211deaa1083837e75f6542f1749bc6670aff531b",
+  "license": "public-domain",
+  "encoding": "utf-8",
+  "notes": "License: 'public-domain' is stated for translation id 'ukr1871' in the eBible corpus licence table https://github.com/BibleNLP/ebible/blob/2bde52b4c2cfd7056cf4ed07c48969647df79744/metadata/licences.tsv (taken from eBible.org's copyright page, https://ebible.org/ukr1871/copr.htm). The url pins a fixed commit, so the bytes do not change. 6,011,776 bytes; eBible corpus format: one verse per line aligned to a fixed versification (empty lines for verses the translation lacks; '<range>' marks merged verses, a few letters each). vs/refcorpus.normalize(..., 'ukrainian') gives 3,222,031 characters. Replaces the Ohiienko text first proposed on this branch, whose public-domain status is doubtful (translator d. 1972); all three translators of this text died before 1920. Combining marks (e.g. the breve of й) are stripped by the generic normalization."
+}
