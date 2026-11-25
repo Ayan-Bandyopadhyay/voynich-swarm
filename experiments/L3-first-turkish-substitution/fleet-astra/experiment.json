@@ -1,0 +1,7 @@
+{
+  "step": "L3-first-turkish-substitution",
+  "handle": "fleet-astra",
+  "kind": "key",
+  "summary": "Pinned-budget turkish substitution search after passing the 2%-noise control with 12.74% compression savings.",
+  "lease": "5668d34bdb4e530ea91f2e34"
+}
