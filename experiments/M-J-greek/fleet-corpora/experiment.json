@@ -1,0 +1,6 @@
+{
+  "step": "M-J-greek",
+  "handle": "fleet-corpora",
+  "kind": "corpus",
+  "summary": "Add Greek to the grid from Neophytos Vamvas's Greek Bible (Public Domain, 4,076,716 characters after normalization; 19th century (1850), learned modern Greek (katharevousa-leaning))."
+}

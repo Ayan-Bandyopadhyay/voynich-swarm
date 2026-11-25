@@ -1,0 +1,10 @@
+{
+  "language": "greek",
+  "title": "Neophytos Vamvas's Greek Bible (1850), full Old and New Testament, one verse per line",
+  "period": "19th century (1850), learned modern Greek (katharevousa-leaning); a distant proxy for Byzantine Greek",
+  "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/GreVamvas.txt",
+  "sha256": "725ba4235ae8bece9df11190071437179dd410ac62df6ddbb4628e95479dcb54",
+  "license": "public-domain",
+  "encoding": "utf-8",
+  "notes": "License stated as 'Public Domain' in the source README at https://github.com/scrollmapper/bible_databases/blob/59b18c5af5845728c275d5b7178ad0d024172b1f/sources/el/GreVamvas/README.md (scrollmapper/bible_databases, files from the CrossWire SWORD module GreVamvas). The url pins a fixed commit, so the bytes do not change. 7,806,958 bytes; one verse per line as '[c:v] text' with '### Book' headings in English (66 short headings, negligible). vs/refcorpus.normalize(..., 'greek') gives 4,076,716 characters. Monotonic/polytonic accents are stripped by the generic normalization (greek is not in refcorpus.KNOWN). Chosen over the Byzantine-text Greek NT in the same repository because that one is CC BY-NC-SA (not admissible)."
+}
