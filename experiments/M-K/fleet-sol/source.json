@@ -1,19 +1,12 @@
 {
-  "title": "A Null Model for Null Models in Biogeography",
-  "authors": "Robert K. Colwell and David W. Winkler",
-  "year": 1984,
-  "url": "https://spaces-cdn.owlstown.com/blobs/wr32zm0vc47uwsba7pnwt1duqd9d",
-  "summary": "Colwell and Winkler simulate island communities with known competitive exclusions and compare them with randomized communities. They show how the choice of species pool can suppress evidence of competition in a null-model test.",
+  "title": "Statistical Inference as Severe Testing (Excursion 1, Tour I)",
+  "authors": "Deborah G. Mayo",
+  "year": 2018,
+  "url": "https://errorstatistics.com/wp-content/uploads/2018/09/0-ex1-ti_sist_mayo_share.pdf",
+  "summary": "Mayo introduces severity as a criterion for assessing how much evidence a test result supplies for a specific claim. The author-posted excerpt develops the criterion and distinguishes it from judging a method solely by its long-run performance.",
   "established": [
-    "Figure 20.3 compares distance to successive morphological neighbors under three treatments in the simulated tree eta. Resampling from the surviving archipelago pool underestimates competitive exclusion because the pool already reflects the removal of vulnerable species, an example of the Narcissus effect.",
-    "The simulation makes the history generating the pool observable. The authors identify recovery of that history as a practical difficulty for studies of actual island communities.",
-    "The relevant methodological implication for this project is to check which features a resampling pool or fitted generator has already inherited. An independent calibration can inject a known feature and measure which recipes are capable of exposing it. This is also the point of Mayo's (2018) severe-testing criterion in Excursion 1, section 1.1: agreement with a claim provides evidence when the probe would probably expose the specified departure if present. https://errorstatistics.com/wp-content/uploads/2018/09/0-ex1-ti_sist_mayo_share.pdf"
+    "Section 1.1 argues that agreement supplies evidence for a claim to the extent that the test would probably have revealed a specified flaw if present.",
+    "Severity attaches to the claim and the particular result. A probe can be sensitive to a large departure and insensitive to a smaller one."
   ],
-  "open": [
-    {
-      "question": "How much sensitivity does a Voynich null lose when its resampling units already preserve the feature under test?",
-      "front": "J",
-      "check": "Inject a controlled positional effect into synthetic text and compare detection under two predeclared nulls, one with and one without that effect retained by construction."
-    }
-  ]
+  "open": []
 }
