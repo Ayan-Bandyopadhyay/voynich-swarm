@@ -1,10 +1,10 @@
 {
-  "language": "hebrew",
-  "title": "Hebrew Bible, Westminster Leningrad Codex (full Tanakh, one verse per line, pointed text)",
-  "period": "Masoretic text as in the Leningrad Codex (1008 CE); Biblical Hebrew",
-  "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/master/formats/txt/WLC.txt",
-  "sha256": "e0b184ea7237b5c5ce9dc83b99136556270394a0afea90b2d81b08c494e0c520",
+  "language": "czech",
+  "title": "Bible kralicka (Kralice Bible), full Old and New Testament, one verse per line",
+  "period": "1579-1613 (Unity of the Brethren translation; spelling as in the 1613 edition's modern-orthography reprints)",
+  "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/master/formats/txt/CzeBKR.txt",
+  "sha256": "2a517c222f8fd5720d6204c9d9bdc14c54ca32aeb968d63e503cf9c185cfeb0a",
   "license": "public-domain",
   "encoding": "utf-8",
-  "notes": "WLC text released into the public domain by the J. Alan Groves Center (tanach.us); redistributed in scrollmapper/bible_databases (MIT repository). 5,566,310 bytes. Vowel points and cantillation are combining marks and are removed by vs/refcorpus.normalize; verse numbers and book headings in Latin script are removed too. refcorpus.normalize(..., 'hebrew') on the file gives 1,511,071 characters. Biblical rather than late-medieval Hebrew: it fixes the power gap, not the period fit."
+  "notes": "Translation published 1579-1594, revised 1613; public domain by age. Redistributed in scrollmapper/bible_databases (MIT repository). Orthography is modernized (e.g. 'Bůh', 'stvořil'), which the pinned normalization folds to a-z anyway. refcorpus.normalize(..., 'czech') gives 3,363,852 characters; English book headings (66 words) are negligible. Early-modern rather than Old Czech: closer to 1400-1450 than the 19th-century text now pinned, and enough text for the controls. A period Old Czech text (e.g. the Dresden/Olomouc Bible) is still wanted."
 }
