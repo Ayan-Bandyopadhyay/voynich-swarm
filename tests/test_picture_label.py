@@ -140,7 +140,9 @@ class PictureLabelTest(unittest.TestCase):
         """vs experiment used to fall through to the segmentation scorer on kind picture (KeyError 'units')."""
         import json, os, tempfile, io, contextlib
         from vs import experiment
-        with tempfile.TemporaryDirectory() as d:
+        with tempfile.TemporaryDirectory() as root:
+            d = os.path.join(root, "experiments", "PIC-f1r", "t")
+            os.makedirs(d)
             json.dump({"step": "PIC-f1r", "handle": "t", "kind": "picture", "summary": "s", "lease": "x"}, open(os.path.join(d, "experiment.json"), "w"))
             json.dump({"folio": "f1r", "canvas": "c", "blind": True,
                        "objects": [{"id": "a", "kind": "plant", "features": {}, "label": "f1r.1"}]}, open(os.path.join(d, "picture.json"), "w"))
