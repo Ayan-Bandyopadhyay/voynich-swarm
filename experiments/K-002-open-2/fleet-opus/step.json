@@ -1,0 +1,8 @@
+{
+  "title": "Edge-glyph dependence vanishes at line breaks; no pinned generator shows it: add an across-line statistic and test generators against it",
+  "statement": "Measured on the practice evaluation pages, paragraph text, certain words only, with the pinned generators writing the same page shapes (identical line widths and token budgets) and the mutual information between a word's last glyph and the next word's first glyph corrected by subtracting the value with the second glyph shuffled (20 subsamples of 615 pairs each, so within-line and across-line samples are the same size). Manuscript: 0.193 bits within lines, 0.012 across line breaks (line-final word to the next line's first word). Self-citation: 0.042 within, 0.066 across. Table cipher: 0.015 within, 0.026 across. Table-and-grille: -0.003 within, -0.038 across. So the manuscript has strong within-line edge dependence that almost vanishes at the line break, and none of the three generators shows either the dependence or the break. The separator part of the question (certain versus uncertain spaces) was not measured here. Next: a reviewed code change adding an across-line-break variant of edge_mi to vs/dsl.py (pairs of a line-final word and the next line's first word), so that the gap can be filed as a fact and every generator in vs/generators.py scored against it; then a generator that resets its glyph context at each line start.",
+  "program": "G",
+  "check": "code PR adding the across-line edge statistic to vs/dsl.py, then a fact.json on the within-minus-across gap; a generator counts if it reproduces both at the evaluation pages' shape",
+  "on_path": false,
+  "hard": true
+}
