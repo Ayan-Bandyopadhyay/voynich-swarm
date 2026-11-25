@@ -1,0 +1,53 @@
+{
+  "title": "Line-final m in Currier B",
+  "statement": "In Currier B paragraph text, the share of certain words ending in EVA m is at least ten times greater at line ends than in line interiors and exceeds the within-line permutation null.",
+  "source": "Public practice comparison of ZL and Takahashi (IT), following the line-position effects described in the L2 brief.",
+  "spec": {
+    "scope": {
+      "language": "B"
+    },
+    "select": {
+      "unit": [
+        "P"
+      ],
+      "position": "line_final",
+      "certain": true
+    },
+    "statistic": {
+      "ratio": {
+        "feature": {
+          "glyph_at": -1
+        },
+        "in": [
+          "m"
+        ],
+        "of": {
+          "unit": [
+            "P"
+          ],
+          "position": "line_final",
+          "certain": true
+        },
+        "to": {
+          "unit": [
+            "P"
+          ],
+          "position": "mid_line",
+          "certain": true
+        }
+      }
+    },
+    "compare": [
+      {
+        "op": ">=",
+        "value": 10
+      },
+      {
+        "null": "shuffle_within_line",
+        "direction": "greater",
+        "perms": 199,
+        "p": 0.01
+      }
+    ]
+  }
+}
