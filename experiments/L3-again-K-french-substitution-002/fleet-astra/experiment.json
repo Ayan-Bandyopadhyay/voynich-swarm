@@ -1,0 +1,7 @@
+{
+  "step": "L3-again-K-french-substitution-002",
+  "handle": "fleet-astra",
+  "kind": "key",
+  "lease": "5ff9091c6491096c792ef3db",
+  "summary": "Test French substitution on single-character Claston v101 units across three orders; words_reversed gave the best practice savings (-9.277%) and the independently evaluated single-character 2%-noise control passed with 6.029% savings."
+}
