@@ -1,0 +1,7 @@
+{
+  "step": "L3-first-polish-substitution",
+  "handle": "fleet-astra",
+  "kind": "key",
+  "summary": "Pinned-budget polish substitution search after passing the 2%-noise control with 8.24% compression savings.",
+  "lease": "418dc379535038841002e194"
+}
