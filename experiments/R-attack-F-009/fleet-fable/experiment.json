@@ -1,0 +1,7 @@
+{
+ "step": "R-attack-F-009",
+ "handle": "fleet-fable",
+ "kind": "attack",
+ "summary": "A line-restarting glyph chain whose table drifts through the public pages (no page memory, no copying) reproduces within-page word reuse on the practice split (0.299 against 0.311), so F-009 needs local tables, not language.",
+ "lease": "a831b5a3ac682aa0bd5bfe93"
+}
