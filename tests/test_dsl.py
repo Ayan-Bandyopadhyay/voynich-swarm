@@ -101,6 +101,18 @@ class HollowPassTest(unittest.TestCase):
         lines[2] = ("L", ["label"])
         self.refused({"select": {"unit": ["P"]}, "statistic": st, "compare": T}, [page("f1", lines)])
 
+    def test_line_near_excess_counts_one_glyph_variants_not_copies(self):
+        # 40 current words: 30 have a one-glyph variant on the line above, 10 only on the line four back;
+        # exact copies above do not count, and words shorter than min_length are left out.
+        lines = [["darx"], ["one"], ["two"], ["dain", "daiin", "qokey"],
+                 ["daiN"] * 30 + ["dary"] * 10 + ["qokey"] * 20 + ["ok"] * 20]
+        st = {"line_near_excess": {"min_length": 4}}
+        self.assertAlmostEqual(dsl.evaluate({"statistic": st, "compare": T}, [page("f1", lines)])["value"], 20 / 60, places=5)
+        self.assertEqual(dsl.canonical({"statistic": {"line_near_excess": {}}, "compare": T})["statistic"],
+                         {"line_near_excess": {"min_length": 4}})
+        self.refused({"statistic": {"line_near_excess": {"window": 3}}, "compare": T})
+        self.refused({"statistic": st, "compare": T}, [page("f1", lines[:3]), page("f2", lines[3:])])
+
     def test_null_that_cannot_move_the_statistic_is_refused(self):
         self.refused({"statistic": {"entropy": "word"}, "compare": [{"null": "shuffle_within_line", "perms": 99}]})
 
