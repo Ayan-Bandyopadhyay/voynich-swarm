@@ -2,6 +2,6 @@
  "step": "M-G",
  "handle": "fleet-fable",
  "kind": "step",
- "summary": "With every page kept whole, pages by the same scribe are more alike in vocabulary than pages by different scribes (0.106 on practice evaluation pages, p 0.005 on nine page samples), and 0 of 15 texts from the drifting chain, at four window widths, reproduce it; proposes the fact once the statistic is merged.",
- "lease": "d9813dfc8a15c0076d116dca"
+ "summary": "The two whole-book layouts in review give different verdicts on the same text: in the random-draw variant long pages read into the next drawn page, about 6% of laid lines land on two pages on the practice draw, and the singleton fact fails on 2 of 3 seeds that pass in the other layout; a one-line fix is proposed.",
+ "lease": "3f8b15e0c064d9936c97c84b"
 }
