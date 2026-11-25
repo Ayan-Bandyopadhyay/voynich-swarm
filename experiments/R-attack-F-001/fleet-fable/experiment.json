@@ -1,0 +1,6 @@
+{
+ "step": "R-attack-F-001",
+ "handle": "fleet-fable",
+ "kind": "attack",
+ "summary": "A layout-blind periodic generator (an m-final word every tenth word) does not reproduce line-final m on the practice split (ratio about 0.7 against 61.6), so F-001 survives attacks that cannot see line breaks."
+}
