@@ -26,7 +26,7 @@ jobs:
       HELDOUT_SEED_JSON: ${{ secrets.HELDOUT_SEED_JSON }}
     steps:
       - uses: actions/checkout@v4
-        with: { ref: main, fetch-depth: 0 }
+        with: { ref: main, fetch-depth: 0, ssh-key: "${{ secrets.SCORER_DEPLOY_KEY }}" }   # record writes go through the deploy key, the only non-admin bypass of the main ruleset
       - uses: actions/setup-python@v5
         with: { python-version: "3.12" }
       - uses: actions/cache@v4
