@@ -1,0 +1,6 @@
+{"title": "Line-initial words are longer",
+ "statement": "In paragraph text, the mean length in glyphs of the first certain word of a line is greater than when the words of each line are shuffled.",
+ "source": "K-005 (Timm 2014, after Vogt): line-initial words are longer than average, explained there by glyphs added to line-initial groups. Public practice split: line-initial mean 4.83 glyphs against 4.39 for all paragraph words (Zandbergen-Landini), 4.90 against 4.45 (Takahashi), 4.87 against 4.40 (RF); p = 0.005 against the within-line shuffle at 199 permutations in each. Registered as a target for the red team: a procedure that sees where a line starts should be able to reproduce it without language.",
+ "spec": {"select": {"unit": ["P"], "position": "line_initial", "certain": true},
+          "statistic": {"mean_length": true},
+          "compare": [{"null": "shuffle_within_line", "direction": "greater", "perms": 199, "p": 0.01}]}}
