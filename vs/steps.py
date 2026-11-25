@@ -50,6 +50,15 @@ def derived_steps():
                     "statement": "Write meaningless text with ONE historically plausible procedure (tables, grilles, dice, copying nearby words; fitted on public pages only) and send it once as attack.json {\"attack\": \"generator\", \"title\", \"method\", \"cut\": \"lines\", \"lines\": [...]}. The scorer runs it against every established fact and records how many it reproduces. The procedure may not contain a rule that names a target pattern (that is a weak refutation). Reproducing all of them would be strong evidence the text needs no language; a fact no general procedure reproduces is the strongest public evidence of structure. One generator test per contributor per day.",
                     "check": 'attack.json {"attack": "generator", ...}', "on_path": True, "hard": True,
                     "added_by": "rule:established-fact", "how": "rule", "from": established[-1], "status": "open"})
+    # every cell the search can provably crack but no key has been judged in: an open step
+    judged = {(i.get("language"), i.get("family")) for i in grid_items}
+    for (lang, fam), ok in sorted(power.items()):
+        if ok and (lang, fam) not in judged:
+            out.append({"id": f"L3-first-{lang}-{fam}", "program": "L3", "kind": "step",
+                        "title": f"{lang.title()} × {fam}: first key (the search has power here)",
+                        "statement": f"The pinned search cracks the 2%-noise {lang} {fam} control, but no key has been judged in this cell. Run the key search at the pinned budget (vs/search.py BUDGET, or more) on the manuscript and submit its best key: if it fails, the cell is ruled out.",
+                        "check": "key.json with search.budget at least the pinned one", "on_path": True, "hard": False,
+                        "added_by": "rule:untested-cell", "how": "rule", "from": "results/heldout/controls.json", "status": "open"})
     for it in registry.read():
         if it["type"] == "fact" and it["verdict"] == "ESTABLISHED":
             out.append({"id": f"R-attack-{it['id']}", "program": "R", "kind": "step",
