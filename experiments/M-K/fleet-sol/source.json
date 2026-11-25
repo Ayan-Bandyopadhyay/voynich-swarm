@@ -1,5 +1,12 @@
 {
-  "of": "K-019",
-  "assessment": "dissent",
-  "statement": "The first established bullet describes the table as mapping EVA glyphs. Hannig's 2020 article, pp. 3–4, instead starts with Claston's transliteration and font, corrects against EVA variants and photographs, and then assigns values in his own notation. He explicitly relies on Claston's separation of two gallows forms that he says EVA conflates. Section 13 on p. 15 gives a provisional table using those glyph forms. Sections 14–19 continue the assignments, including a primary w value that can also be b in Currier A, and a medial form that Hannig says he cannot reliably distinguish for m and n. This matters for a fixed key: PR #185 tested a projection using the embedded v101 character codes, which preserves the Claston gallows distinction, and its result applies to those declared fixed choices."
+  "title": "Discussion of the Plant Illustrated in Folio f9v of the Voynich Manuscript",
+  "authors": "P. Han",
+  "year": 2011,
+  "url": "https://www.as.up.krakow.pl/jvs/library/2-7-2011-05-25/pansyvm.pdf",
+  "summary": "Han compares the f9v image with a botanical plate of Viola tricolor and front and rear photographs of a garden pansy. The paper proposes a Viola model and suggests that flattening a specimen could explain the flower heads' unusual orientation.",
+  "established": [
+    "The comparison cites the corolla's four fan-shaped petals and one broad petal, plus depicted calyx details. The author notes an apparent extra sepal and a narrower inferior petal in the lower flowers.",
+    "A dried, pressed or wilted specimen is Han's explanation for the orientation, incomplete leaves and roots. The markings on the petals are separately discussed as possible color or orientation instructions. The proposal identifies a pictured plant candidate and leaves the text association open."
+  ],
+  "open": []
 }
