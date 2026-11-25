@@ -1,0 +1,420 @@
+{
+ "folio": "f68r1",
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006196",
+ "blind": true,
+ "statement": "Blind annotation from the Beinecke scan alone (canvas '68r', the left of three panels; overview and one enlarged view of the panel). A field of 29 labelled stars between a sun face at the top and a moon face at the bottom, with faint blue rays in the middle; 11 of the stars have a small dot or ring at the centre and 18 do not. The count of 29 stars equals the number of single label lines (f68r1.8 to 36). Labels assigned from line ids and unit codes only, words not read. The order is my assumption: stars taken in horizontal bands from top to bottom and left to right within a band, the n-th star given the n-th label line; because the stars are scattered rather than in rows, this order may differ from the transcription's for several stars, so each star's position is recorded as a fraction of the panel to allow re-matching. The circular line f68r1.37 is given to the moon it surrounds.",
+ "objects": [
+  {
+   "id": "sun",
+   "kind": "sun",
+   "features": {
+    "face": "yes",
+    "colour": "yellow",
+    "shape": "disc with a ring of curled flames",
+    "position": "top centre, under the text",
+    "note": "round face with plaited hair or a braided rim inside a circle, surrounded by a ring of small curled flame or leaf strokes; a few short words are written inside the circle beside and under the face"
+   },
+   "label": null
+  },
+  {
+   "id": "moon",
+   "kind": "moon",
+   "features": {
+    "face": "yes",
+    "colour": "blue and yellow",
+    "shape": "disc with crescent",
+    "position": "bottom centre",
+    "note": "round face inside a crescent painted blue on the inside and yellow on the outside, enclosed by a circle of writing (the single circular line f68r1.37)"
+   },
+   "label": "f68r1.37"
+  },
+  {
+   "id": "rays",
+   "kind": "other",
+   "features": {
+    "colour": "blue",
+    "shape": "faint lines radiating from the middle",
+    "position": "centre of the star field",
+    "note": "very pale blue strokes fanning out from near the largest star, like a washed-out burst; part of a large ink circle outline is visible along the right side of the field"
+   },
+   "label": null
+  },
+  {
+   "id": "star-1",
+   "kind": "star",
+   "features": {
+    "colour": "yellow",
+    "centre_dot": "no",
+    "tail": "no",
+    "rays": "7 or 8",
+    "position": "star 1 of 29 in reading order; at about x=0.26, y=0.21 of the panel",
+    "note": "pointed star with yellow wash and a short label beside it"
+   },
+   "label": "f68r1.8"
+  },
+  {
+   "id": "star-2",
+   "kind": "star",
+   "features": {
+    "colour": "yellow",
+    "centre_dot": "no",
+    "tail": "no",
+    "rays": "7 or 8",
+    "position": "star 2 of 29 in reading order; at about x=0.57, y=0.20 of the panel",
+    "note": "pointed star with yellow wash and a short label beside it"
+   },
+   "label": "f68r1.9"
+  },
+  {
+   "id": "star-3",
+   "kind": "star",
+   "features": {
+    "colour": "yellow",
+    "centre_dot": "no",
+    "tail": "no",
+    "rays": "7 or 8",
+    "position": "star 3 of 29 in reading order; at about x=0.18, y=0.27 of the panel",
+    "note": "pointed star with yellow wash and a short label beside it"
+   },
+   "label": "f68r1.10"
+  },
+  {
+   "id": "star-4",
+   "kind": "star",
+   "features": {
+    "colour": "yellow",
+    "centre_dot": "no",
+    "tail": "no",
+    "rays": "7 or 8",
+    "position": "star 4 of 29 in reading order; at about x=0.58, y=0.27 of the panel",
+    "note": "pointed star with yellow wash and a short label beside it"
+   },
+   "label": "f68r1.11"
+  },
+  {
+   "id": "star-5",
+   "kind": "star",
+   "features": {
+    "colour": "yellow",
+    "centre_dot": "yes",
+    "tail": "no",
+    "rays": "7 or 8",
+    "position": "star 5 of 29 in reading order; at about x=0.73, y=0.29 of the panel",
+    "note": "pointed star with yellow wash and a short label beside it"
+   },
+   "label": "f68r1.12"
+  },
+  {
+   "id": "star-6",
+   "kind": "star",
+   "features": {
+    "colour": "yellow",
+    "centre_dot": "no",
+    "tail": "no",
+    "rays": "7 or 8",
+    "position": "star 6 of 29 in reading order; at about x=0.33, y=0.30 of the panel",
+    "note": "pointed star with yellow wash and a short label beside it"
+   },
+   "label": "f68r1.13"
+  },
+  {
+   "id": "star-7",
+   "kind": "star",
+   "features": {
+    "colour": "yellow",
+    "centre_dot": "no",
+    "tail": "no",
+    "rays": "7 or 8",
+    "position": "star 7 of 29 in reading order; at about x=0.45, y=0.32 of the panel",
+    "note": "pointed star with yellow wash and a short label beside it"
+   },
+   "label": "f68r1.14"
+  },
+  {
+   "id": "star-8",
+   "kind": "star",
+   "features": {
+    "colour": "yellow",
+    "centre_dot": "no",
+    "tail": "no",
+    "rays": "7 or 8",
+    "position": "star 8 of 29 in reading order; at about x=0.13, y=0.35 of the panel",
+    "note": "pointed star with yellow wash and a short label beside it"
+   },
+   "label": "f68r1.15"
+  },
+  {
+   "id": "star-9",
+   "kind": "star",
+   "features": {
+    "colour": "yellow",
+    "centre_dot": "yes",
+    "tail": "no",
+    "rays": "7 or 8",
+    "position": "star 9 of 29 in reading order; at about x=0.28, y=0.36 of the panel",
+    "note": "pointed star with yellow wash and a short label beside it"
+   },
+   "label": "f68r1.16"
+  },
+  {
+   "id": "star-10",
+   "kind": "star",
+   "features": {
+    "colour": "yellow",
+    "centre_dot": "yes",
+    "tail": "no",
+    "rays": "7 or 8",
+    "position": "star 10 of 29 in reading order; at about x=0.56, y=0.34 of the panel",
+    "note": "pointed star with yellow wash and a short label beside it"
+   },
+   "label": "f68r1.17"
+  },
+  {
+   "id": "star-11",
+   "kind": "star",
+   "features": {
+    "colour": "yellow",
+    "centre_dot": "yes",
+    "tail": "no",
+    "rays": "7 or 8",
+    "position": "star 11 of 29 in reading order; at about x=0.73, y=0.36 of the panel",
+    "note": "pointed star with yellow wash and a short label beside it"
+   },
+   "label": "f68r1.18"
+  },
+  {
+   "id": "star-12",
+   "kind": "star",
+   "features": {
+    "colour": "yellow",
+    "centre_dot": "no",
+    "tail": "no",
+    "rays": "7 or 8",
+    "position": "star 12 of 29 in reading order; at about x=0.38, y=0.38 of the panel",
+    "note": "pointed star with yellow wash and a short label beside it"
+   },
+   "label": "f68r1.19"
+  },
+  {
+   "id": "star-13",
+   "kind": "star",
+   "features": {
+    "colour": "yellow",
+    "centre_dot": "no",
+    "tail": "no",
+    "rays": "7 or 8",
+    "position": "star 13 of 29 in reading order; at about x=0.62, y=0.41 of the panel",
+    "note": "pointed star with yellow wash and a short label beside it"
+   },
+   "label": "f68r1.20"
+  },
+  {
+   "id": "star-14",
+   "kind": "star",
+   "features": {
+    "colour": "yellow",
+    "centre_dot": "yes",
+    "tail": "no",
+    "rays": "7 or 8",
+    "position": "star 14 of 29 in reading order; at about x=0.79, y=0.41 of the panel",
+    "note": "pointed star with yellow wash and a short label beside it"
+   },
+   "label": "f68r1.21"
+  },
+  {
+   "id": "star-15",
+   "kind": "star",
+   "features": {
+    "colour": "yellow",
+    "centre_dot": "no",
+    "tail": "no",
+    "rays": "7 or 8",
+    "position": "star 15 of 29 in reading order; at about x=0.16, y=0.44 of the panel",
+    "note": "pointed star with yellow wash and a short label beside it"
+   },
+   "label": "f68r1.22"
+  },
+  {
+   "id": "star-16",
+   "kind": "star",
+   "features": {
+    "colour": "yellow",
+    "centre_dot": "yes",
+    "tail": "no",
+    "rays": "7 or 8",
+    "position": "star 16 of 29 in reading order; at about x=0.22, y=0.44 of the panel",
+    "note": "pointed star with yellow wash and a short label beside it"
+   },
+   "label": "f68r1.23"
+  },
+  {
+   "id": "star-17",
+   "kind": "star",
+   "features": {
+    "colour": "yellow",
+    "centre_dot": "no",
+    "tail": "no",
+    "rays": "7 or 8",
+    "position": "star 17 of 29 in reading order; at about x=0.29, y=0.45 of the panel",
+    "note": "pointed star with yellow wash and a short label beside it"
+   },
+   "label": "f68r1.24"
+  },
+  {
+   "id": "star-18",
+   "kind": "star",
+   "features": {
+    "colour": "yellow",
+    "centre_dot": "yes",
+    "tail": "no",
+    "rays": "7 or 8",
+    "position": "star 18 of 29 in reading order; at about x=0.44, y=0.45 of the panel",
+    "note": "largest star of the field, at its middle; pointed star with yellow wash and a short label beside it"
+   },
+   "label": "f68r1.25"
+  },
+  {
+   "id": "star-19",
+   "kind": "star",
+   "features": {
+    "colour": "yellow",
+    "centre_dot": "no",
+    "tail": "no",
+    "rays": "7 or 8",
+    "position": "star 19 of 29 in reading order; at about x=0.14, y=0.49 of the panel",
+    "note": "pointed star with yellow wash and a short label beside it"
+   },
+   "label": "f68r1.26"
+  },
+  {
+   "id": "star-20",
+   "kind": "star",
+   "features": {
+    "colour": "yellow",
+    "centre_dot": "no",
+    "tail": "no",
+    "rays": "7 or 8",
+    "position": "star 20 of 29 in reading order; at about x=0.53, y=0.50 of the panel",
+    "note": "pointed star with yellow wash and a short label beside it"
+   },
+   "label": "f68r1.27"
+  },
+  {
+   "id": "star-21",
+   "kind": "star",
+   "features": {
+    "colour": "yellow",
+    "centre_dot": "yes",
+    "tail": "no",
+    "rays": "7 or 8",
+    "position": "star 21 of 29 in reading order; at about x=0.68, y=0.50 of the panel",
+    "note": "pointed star with yellow wash and a short label beside it"
+   },
+   "label": "f68r1.28"
+  },
+  {
+   "id": "star-22",
+   "kind": "star",
+   "features": {
+    "colour": "yellow",
+    "centre_dot": "no",
+    "tail": "no",
+    "rays": "7 or 8",
+    "position": "star 22 of 29 in reading order; at about x=0.21, y=0.54 of the panel",
+    "note": "pointed star with yellow wash and a short label beside it"
+   },
+   "label": "f68r1.29"
+  },
+  {
+   "id": "star-23",
+   "kind": "star",
+   "features": {
+    "colour": "yellow",
+    "centre_dot": "no",
+    "tail": "no",
+    "rays": "7 or 8",
+    "position": "star 23 of 29 in reading order; at about x=0.36, y=0.54 of the panel",
+    "note": "pointed star with yellow wash and a short label beside it"
+   },
+   "label": "f68r1.30"
+  },
+  {
+   "id": "star-24",
+   "kind": "star",
+   "features": {
+    "colour": "yellow",
+    "centre_dot": "yes",
+    "tail": "no",
+    "rays": "7 or 8",
+    "position": "star 24 of 29 in reading order; at about x=0.14, y=0.58 of the panel",
+    "note": "pointed star with yellow wash and a short label beside it"
+   },
+   "label": "f68r1.31"
+  },
+  {
+   "id": "star-25",
+   "kind": "star",
+   "features": {
+    "colour": "yellow",
+    "centre_dot": "no",
+    "tail": "no",
+    "rays": "7 or 8",
+    "position": "star 25 of 29 in reading order; at about x=0.52, y=0.58 of the panel",
+    "note": "pointed star with yellow wash and a short label beside it"
+   },
+   "label": "f68r1.32"
+  },
+  {
+   "id": "star-26",
+   "kind": "star",
+   "features": {
+    "colour": "yellow",
+    "centre_dot": "yes",
+    "tail": "no",
+    "rays": "7 or 8",
+    "position": "star 26 of 29 in reading order; at about x=0.66, y=0.58 of the panel",
+    "note": "pointed star with yellow wash and a short label beside it"
+   },
+   "label": "f68r1.33"
+  },
+  {
+   "id": "star-27",
+   "kind": "star",
+   "features": {
+    "colour": "yellow",
+    "centre_dot": "yes",
+    "tail": "no",
+    "rays": "7 or 8",
+    "position": "star 27 of 29 in reading order; at about x=0.34, y=0.61 of the panel",
+    "note": "pointed star with yellow wash and a short label beside it"
+   },
+   "label": "f68r1.34"
+  },
+  {
+   "id": "star-28",
+   "kind": "star",
+   "features": {
+    "colour": "yellow",
+    "centre_dot": "no",
+    "tail": "no",
+    "rays": "7 or 8",
+    "position": "star 28 of 29 in reading order; at about x=0.26, y=0.63 of the panel",
+    "note": "label written to the left of the star, unlike the others; pointed star with yellow wash and a short label beside it"
+   },
+   "label": "f68r1.35"
+  },
+  {
+   "id": "star-29",
+   "kind": "star",
+   "features": {
+    "colour": "yellow",
+    "centre_dot": "no",
+    "tail": "no",
+    "rays": "7 or 8",
+    "position": "star 29 of 29 in reading order; at about x=0.60, y=0.65 of the panel",
+    "note": "pointed star with yellow wash and a short label beside it"
+   },
+   "label": "f68r1.36"
+  }
+ ]
+}
