@@ -1,19 +1,19 @@
 {
-  "title": "The Application of Latent Semantic Analysis to the Voynich Manuscript",
-  "authors": "Colin Layfield and Lisa Fagin Davis",
+  "title": "Voynich Manuscript v3.1 Confirmatory Self-Citation Test Results",
+  "authors": "Amy Laird",
   "year": 2026,
-  "url": "https://dhq.digitalhumanities.org/vol/20/1/000857/000857.html",
-  "doi": "10.63744/2ezxpskcezq4",
-  "summary": "The authors apply latent semantic analysis to short manuscript segments under three term-weighting schemes and compare adjacent with shuffled segment orders. A separate sliding-window analysis locates abrupt changes within the manuscript.",
+  "url": "https://zenodo.org/api/records/23073034/files/RESULTS_MANIFEST.txt/content",
+  "doi": "10.5281/zenodo.23073034",
+  "summary": "This public results release reports a preregistered test of the Timm–Schinner generator. The study compares simulations against four manuscript statistics covering CHEDY and QOK adjacency, combined family abundance and the frequency of close neighbors of common words.",
   "established": [
-    "Adjacent segments showed greater cosine similarity than shuffled segment orders in the manuscript and the comparison texts. The artificial self-citation text also produced this basic pattern, with a different score distribution.",
-    "The lowest five percent of sliding-window scores included many Herbal page boundaries and disproportionate Currier A-to-B transitions. The Biological, Pharmaceutical, Zodiac and Stars sections had relatively few scores below this cutoff."
+    "Across 300 preregistered configurations and three fixed seeds per configuration, no configuration matched more than two of the four target metrics. Sixteen matched two, 183 matched one, and 101 matched zero.",
+    "The preregistered sensitivity analyses using wider reference bands and interior token positions also produced no complete matches. The result is scoped to the registered configuration sampling distribution."
   ],
   "open": [
     {
-      "question": "Can a self-citation or other nonlinguistic process with prespecified changes at page and section boundaries reproduce the distribution of the manuscript's local similarities and transition scores?",
+      "question": "Can a related copying mechanism outside the sampled subspace match the four registered family and neighbor metrics simultaneously under a fresh, fixed evaluation?",
       "front": "G",
-      "check": "Compare the full score distribution and the fraction of low scores at section and Currier transitions under identical preprocessing and matched block layouts.",
+      "check": "Declare the rule and sampling plan first, then evaluate all four statistics on fixed seeds and report how often they fall inside the registered bands jointly.",
       "hard": true
     }
   ]
