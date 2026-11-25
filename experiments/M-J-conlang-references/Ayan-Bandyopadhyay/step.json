@@ -1,0 +1,3 @@
+{"title": "Pin constructed-language texts (Esperanto, Lojban and earlier a priori languages) as references",
+ "statement": "The hypothesis matrix compares the manuscript's word-level facts with natural languages but has no constructed languages to compare with. Pin openly licensed texts of constructed languages as corpora (one per language, 150,000+ characters): Esperanto (e.g. the Zamenhof Bible translation), Lojban, Volapük, and any early a priori language with enough surviving text (Wilkins 1668, Dalgarno 1661) if an open transcription exists. Name the language with the prefix conlang_ (e.g. conlang_esperanto) so the record can tell them apart.",
+ "program": "J", "check": "corpus.json per language", "on_path": false, "hard": false}
