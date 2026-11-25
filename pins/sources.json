@@ -953,6 +953,19 @@
       "license": "cc-by",
       "encoding": "utf-8",
       "added_by": "fleet-astra"
+    },
+    {
+      "id": "conlang_esperanto_4c5b5c9c",
+      "lang": "conlang_esperanto",
+      "period": "Esperanto, a constructed language of 1887; Zamenhof's translation first published 1894, this printing 1924",
+      "title": "Hamleto, regxido de Danujo (W. Shakespeare, translated into Esperanto by L. L. Zamenhof), 1924 printing, archive.org OCR text of the Biblioteka Glowna KUL copy",
+      "url": "https://archive.org/download/dlibra.kul.pl.38714_Esper--714-I_Hamleto---regido-de-/38714_Esper--714-I_Hamleto---regido-de-_djvu.txt",
+      "file": "data/raw/agent_conlang_esperanto_4c5b5c9c.txt",
+      "bytes": 189320,
+      "sha256": "4c5b5c9c00d28adf84aaee5043e8a4aea2b3fada5dfcf1ef988f8a0f700fefcf",
+      "license": "public-domain",
+      "encoding": "utf-8",
+      "added_by": "fleet-opus"
     }
   ],
   "missing_corpora": {

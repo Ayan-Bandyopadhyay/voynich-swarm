@@ -1237,5 +1237,21 @@
   "true_key_passes": false,
   "search_cracks_control": false,
   "added_with": "nahuatl_ffad7306"
+ },
+ {
+  "language": "conlang_esperanto",
+  "family": "substitution",
+  "control": "homophonic",
+  "true_key_passes": false,
+  "search_cracks_control": false,
+  "added_with": "conlang_esperanto_4c5b5c9c"
+ },
+ {
+  "language": "conlang_esperanto",
+  "family": "verbose",
+  "control": "verbose",
+  "true_key_passes": false,
+  "search_cracks_control": false,
+  "added_with": "conlang_esperanto_4c5b5c9c"
  }
 ]
