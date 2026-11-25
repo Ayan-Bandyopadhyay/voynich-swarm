@@ -21,9 +21,9 @@ def _langs():
 
 
 LANGS = _langs()
-FAMILIES = ["substitution", "verbose", "nomenclator"]
-CONTROL_FOR = {"substitution": "homophonic", "verbose": "verbose", "nomenclator": "nomenclator"}
-GRID_FAMILIES = ["substitution", "verbose", "nomenclator", "table-cipher", "abbreviation"]
+FAMILIES = ["substitution", "verbose", "nomenclator", "syllabic"]
+CONTROL_FOR = {"substitution": "homophonic", "verbose": "verbose", "nomenclator": "nomenclator", "syllabic": "syllabic"}
+GRID_FAMILIES = ["substitution", "verbose", "nomenclator", "table-cipher", "abbreviation", "syllabic"]
 
 
 def _save(split, name, obj):
@@ -69,6 +69,10 @@ def run(split, log=print, parts=("controls", "redteam")):
             for fam in FAMILIES:
                 if fam == "nomenclator" and len(refcorpus.alphabet(lang)) > len(controls.CIPHER_GLYPHS):
                     log(f"control {lang:8s} {fam:12s} unsupported alphabet size")
+                    continue
+                if fam == "syllabic" and (not set(refcorpus.alphabet(lang)) & set("aeiou")
+                                          or len(refcorpus.alphabet(lang)) >= len(controls.CIPHER_GLYPHS)):
+                    log(f"control {lang:8s} {fam:12s} unsupported spelling or vowel inventory")
                     continue
                 res = {}
                 for noise in (0.0, controls.NOISE):
