@@ -1,0 +1,7 @@
+{
+ "step": "R-attack-F-010",
+ "handle": "fleet-fable",
+ "kind": "attack",
+ "summary": "A glyph chain that starts afresh at each line (no word list, no copying) reproduces the collapse of edge-glyph dependence at line breaks on the practice split (gap 0.151 against 0.173 bits, threshold 0.08).",
+ "lease": "19d4944a4eb509f26e24d1c4"
+}

@@ -1,28 +1,28 @@
 {
-  "title": "The Language and Writing System of MS408 (Voynich) Explained",
-  "authors": "Gerard E. Cheshire",
-  "year": 2019,
-  "url": "https://research-information.bris.ac.uk/en/publications/the-language-and-writing-system-of-ms408-voynich-explained",
-  "doi": "10.1080/02639904.2019.1599566",
-  "venue": "Romance Studies 37(1): 30-67; accepted author manuscript in the University of Bristol research repository",
-  "proposes_language": "proto-Romance (an unattested ancestor of the Romance languages of Mediterranean Europe)",
-  "summary": "Cheshire argues that the manuscript is written in an extinct 'proto-Romance' language with its own alphabet of unfamiliar and familiar symbols, no dedicated punctuation, all lower case, no double consonants, and many multi-vowel abbreviations for phonetic components, with some Latin words and abbreviations. He holds that the language's lexicon survives scattered across the modern languages of Mediterranean Europe, and presents the language and writing system so that others can read the manuscript. The repository page links the open accepted author manuscript; the publisher's version is behind Taylor & Francis.",
+  "title": "ATA Elyazması ve Osmanlı Tuğrasında Hece Harflerinin Çok Heceli Yapılanışı: Yapısal Bir Karşılaştırma (Multisyllabic Structuring of Syllable-Letters in the ATA Manuscript and the Ottoman Tughra: A Structural Comparison)",
+  "authors": "Ahmet Ardıç",
+  "year": 2025,
+  "url": "https://turkkulturu.org.tr/wp-content/uploads/2026/01/Turk-Kulturu-2025-2.pdf",
+  "venue": "Türk Kültürü 18(2): 71-108 (Türk Kültürünü Araştırma Enstitüsü); the url is the full open issue PDF, the article starts on p. 71",
+  "proposes_language": "Old Turkish (Old Anatolian / early Ottoman Turkish)",
+  "summary": "Ardıç, an independent researcher who calls the manuscript the 'ATA manuscript', treats Voynich glyphs as syllable-letters with phonetic values in Turkish and argues that multi-syllable word signs are built like the Ottoman tughra, pointing to a tughra design in a childhood notebook attributed to Mehmed II and to secret alphabets of his era. He presents the work as findings at the current stage of a longer research programme (earlier readings 2018-2023, including folio 33v) and opens them to discussion; it is written in Turkish with an English abstract.",
   "established": [
-    "The paper states nine features it attributes to the text (extinct language, mixed unfamiliar and familiar symbols, no dedicated punctuation, symbol variants marking punctuation and accents, lower case only, no double consonants, diphthong-to-quintiphthong abbreviations, some Latin words); these are the author's analysis, matched by comparison of proposed readings with words in modern Romance languages and Latin, not by a held-out or controlled test.",
-    "The author proposes a sign-to-sound alphabet and word readings built from it, and names the language only as proto-Romance, an ancestor whose lexicon he says is now dispersed among the modern Mediterranean Romance languages."
+    "The article proposes visual and structural parallels between Voynich syllable-letters and Ottoman tughra construction, especially a tughra in a notebook attributed to the young Mehmed II; the evidence is side-by-side glyph comparison, not a statistical or held-out test.",
+    "It uses the author's ATA transliteration table, in which glyphs carry Turkish phonetic values; for example it chooses to show a P/B distinction in the table on the argument that P shifted to B or F in some Turkic dialects over 600 years, and says the author's exact sound inventory is not settled.",
+    "It claims that read with this table the text follows Turkish phonetic and morphological rules and that Old Turkish words, plant and animal names match in sound and meaning; the article presents these as matches for readers to examine, and does not give a complete key or a translation of a full passage."
   ],
   "open": [
     {
-      "question": "Since 'proto-Romance' has no surviving corpus, does Cheshire's alphabet, frozen as a substitution key, read the hidden pages better than its decoys against the closest attested period Romance corpora (Latin, Italian, Catalan, Occitan, Spanish, Portuguese)? Openly licensed text: no corpus exists for the proposed language itself; period proxies are openly available (e.g. Catalan: public-domain early editions of Ramon Llull, several hundred thousand characters; Old Occitan troubadour texts on Wikisource, cc-by-sa; Italian and Latin already on the grid).",
-      "front": "L3",
-      "check": "Encode the paper's alphabet as a fixed key (no search budget) and score it against each proxy language with the usual decoys.",
-      "hard": false
+      "question": "Does Ardıç's ATA transliteration table, frozen as a syllabic or substitution key, read the hidden pages better than its decoys against a Turkish corpus? Openly licensed text: I found no openly licensed Old Anatolian or 15th-century Ottoman Turkish transcription in a single plain-text file; modern Turkish is plentiful (Turkish Wikipedia, cc-by-sa, many millions of characters; public-domain modern texts) but is 600 years later. Syllabic families also lack measured power on the grid today (program J).",
+      "front": "J",
+      "check": "Pin a Turkish corpus (period if one can be found), then score the frozen ATA table as a key with the usual decoys.",
+      "hard": true
     },
     {
-      "question": "Add the missing period Romance proxies the proposal leans on (Catalan, Old Occitan, Galician-Portuguese) as corpora so the grid can test this family at measured power.",
-      "front": "J",
-      "check": "Kind corpus, >=150,000 characters each, open licence stated at the source.",
-      "hard": false
+      "question": "Are the proposed tughra parallels specific to the Voynich glyphs, or would blinded comparison find similar parallels between the tughra and other 15th-century scripts of the same stroke inventory?",
+      "front": "L4",
+      "check": "Blinded multi-annotator comparison of the cited glyph and tughra images against control scripts.",
+      "hard": true
     }
   ]
 }
