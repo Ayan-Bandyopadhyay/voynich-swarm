@@ -11,6 +11,7 @@ SEATS = {
     "fleet-fable": ("Ayan-Bandyopadhyay", "Fable · Claude Code"),
     "fleet-astra": ("Ayan-Bandyopadhyay", "Astra · Codex"),
     "fleet-sol": ("Ayan-Bandyopadhyay", "Sol · Codex"),
+    "fleet-corpora": ("Ayan-Bandyopadhyay", "Opus · Claude Code"),
 }
 
 
