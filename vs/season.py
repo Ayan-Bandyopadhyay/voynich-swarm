@@ -41,6 +41,25 @@ def _short(r):
     return keep
 
 
+def _german_verbose_sizes(pages, true_key, log):
+    """Report two additional sample sizes on disjoint synthetic training and
+    evaluation pages. The grid uses only the standard one-in-seven verdict."""
+    rows = []
+    for residues in ((3, 4), (3, 4, 5)):
+        train, evaluation = [], []
+        for page in sorted(pages, key=lambda p: int(p.id[1:])):
+            (evaluation if int(page.id[1:]) % 7 in residues else train).append(page)
+        key = search.search_cell("german", "verbose", train, tag="control")
+        planted = _short(judge.evaluate(true_key, train, evaluation, "control"))
+        fitted = _short(judge.evaluate(key, train, evaluation, "control"))
+        tokens = sum(len(line.words) for p in evaluation for line in p.lines)
+        rows.append({"evaluation_residues_mod_7": list(residues), "tokens": tokens,
+                     "true_key": planted, "search_key": fitted})
+        log(f"sample size german verbose 2% noise tokens={tokens} "
+            f"planted={planted['passes_without_anchors']} search={fitted['passes_without_anchors']}")
+    return rows
+
+
 def run(split, log=print, parts=("controls", "redteam")):
     train, ev = corpus.split_pages(split)
     t0 = time.time()
@@ -62,6 +81,8 @@ def run(split, log=print, parts=("controls", "redteam")):
                              # power counts only if the search cracks the control with transcription noise
                              "search_cracks_control": rsn["passes_without_anchors"]})
                 log(f"control {lang:8s} {fam:12s} clean={rs0['passes_without_anchors']} noisy={rsn['passes_without_anchors']}")
+                if (lang, fam) == ("german", "verbose"):
+                    rows[-1]["noisy_sample_size_checks"] = _german_verbose_sizes(ctr + cev, true, log)
         _save(split, "controls", rows)
     if "redteam" in parts:
         rows = [_short(judge.evaluate(k, train, ev, split)) for lang in ("latin", "italian") for k in controls.red_team_keys(lang)]
