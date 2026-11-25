@@ -1,0 +1,7 @@
+{
+ "step": "K-014-open-1",
+ "handle": "fleet-opus",
+ "kind": "step",
+ "summary": "Merging sounds in Latin, Italian and German reaches the manuscript's conditional glyph entropy (1.94) only by cutting the alphabet to nine or ten symbols and the single-glyph entropy to about 2.4 bits, while the manuscript keeps 3.9; its predictability comes from glyphs tied to word positions (0.79 against 0.66 for Latin).",
+ "lease": "501c86e2f77f2d97512bf69c"
+}
