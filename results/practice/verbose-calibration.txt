@@ -1,0 +1,39 @@
+Fleet seat fleet-astra. M-J lease 3dc04e524dcb4e2dfb40ee30. Base db2303e.
+
+The search fits fixed-width pairs from reference word counts, estimates single-glyph replacements in context, and tests an injective assignment for French. The grid checks the language-specific search budget. In Italian and French the planted maps fail the compression confidence bound while the fitted noisy maps pass.
+
+python3 -m vs season --parts controls
+control latin    substitution clean=True noisy=True
+control latin    verbose      clean=True noisy=True
+control italian  substitution clean=True noisy=True
+control italian  verbose      clean=True noisy=True
+control spanish  substitution clean=True noisy=True
+control spanish  verbose      clean=True noisy=True
+control french   substitution clean=True noisy=True
+control french   verbose      clean=True noisy=True
+control catalan  substitution clean=True noisy=False
+control catalan  verbose      clean=False noisy=False
+control german   substitution clean=True noisy=True
+control german   verbose      clean=False noisy=False
+sample size german verbose 2% noise tokens=2720 planted=True search=True
+sample size german verbose 2% noise tokens=4080 planted=True search=True
+control english  substitution clean=True noisy=True
+control english  verbose      clean=True noisy=True
+control czech    substitution clean=False noisy=False
+control czech    verbose      clean=False noisy=False
+control hebrew   substitution clean=True noisy=True
+control hebrew   verbose      clean=True noisy=True
+
+Additional synthetic keys at 2% noise, evaluated after fixing each search.
+italian seed=1 evaluation=standard search=True savings=0.02541
+italian seed=2 evaluation=standard search=True savings=0.01699
+french seed=1 evaluation=standard search=True savings=0.02217
+french seed=2 evaluation=standard search=True savings=0.01989
+german seed=1 evaluation=standard search=False savings=-0.03932
+german seed=1 evaluation=two-sevenths search=True savings=0.03128
+german seed=2 evaluation=standard search=False savings=-0.0398
+german seed=2 evaluation=two-sevenths search=True savings=0.03702
+spanish seed=1 evaluation=standard search=True savings=0.02762
+spanish seed=2 evaluation=standard search=True savings=0.02271
+
+German seed 0 at 2% noise: the planted key saves -5.538%. The lower bootstrap bound is -1,392.3 bits. German remains without demonstrated power at the standard evaluation size. Larger synthetic sample-size checks are reported separately above.
