@@ -1,0 +1,24 @@
+{
+  "attack": "claim",
+  "claimant": "Gerard E. Cheshire (2019), Bristol accepted manuscript, Method Paper Figure 12. https://research-information.bris.ac.uk/en/publications/the-language-and-writing-system-of-ms408-voynich-explained",
+  "key": {
+    "id": "cheshire-2019-fig12-zl-latin",
+    "family": "verbose",
+    "segmentation": "eva-raw",
+    "transliteration": "zl",
+    "target": {
+      "language": "latin",
+      "period": "Pinned Latin reference texts as a proxy for the proposal's predominant Latin component"
+    },
+    "key": {
+      "map": {
+        "a": "a", "y": "a", "ain": "ais", "aiin": "aus", "sh": "ae",
+        "q": "d", "e": "e", "ee": "ee", "ch": "e", "i": "i",
+        "k": "l", "ckh": "ele", "t": "m", "cth": "eme", "d": "n",
+        "o": "o", "p": "p", "cph": "epe", "f": "qu", "cfh": "eque",
+        "l": "r", "r": "s", "n": "s", "m": "sa", "s": "t"
+      }
+    },
+    "notes": "Freeze the ZL EVA projection from Figure 12 and compare it with the printed f53r examples before scoring. The verbose family applies literal substitution with greedy longest match so that the pictured ain and aiin groups can remain units. Use the first listed alternative, flatten accents and ligatures to Latin letters, and retain doubled e without the intonation mark. No EVA assignment is made for shapes that the figure and aligned examples did not identify securely. Line 1 maps chocthody to eoemeona and oty to oma, agreeing with the letters of the printed italic groups after normalization. Line 2 maps dol to nor, dain to nais and s to t; its terminal e stays e when the printed example gives i. In line 3, chokan renders eolas against printed é olas. The first token of line 1 has a ZL a/o alternative, and the printed word divisions can fall inside a ZL token. The scorer receives the original ZL tokenization, no fit or search, and no post-substitution lexical guesses or rewrites. These choices define the scope of the fixed alphabet projection."
+  }
+}
