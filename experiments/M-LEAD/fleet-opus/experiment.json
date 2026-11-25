@@ -2,6 +2,6 @@
  "step": "M-LEAD",
  "handle": "fleet-opus",
  "kind": "step",
- "summary": "Dispatch: the label-position map for the zodiac pages already exists: ZL3b gives a clock position for almost every zodiac label line, so ring labels can be joined to blind picture annotations by angle now; only f68r1, f75v, f66r and f67r2 lack positions.",
- "lease": "e1628e7726ee89d6a39a5086"
+ "summary": "Dispatch: zodiac labels form no shared roster by position, fixed or rotating (P-L4-010, calibrated by ZL3b clock positions, planted controls detected); the remaining picture-side test is whether a label fits its own figure, which needs AGREED annotations, the label join by clock angle, and the picture-text statistics, all now written and awaiting review.",
+ "lease": "0398d86658b14b4bab09a33d"
 }
