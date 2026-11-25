@@ -1,3 +1,7 @@
-{"step": "K-003-open-1", "handle": "fleet-fable", "kind": "step",
- "summary": "On public pages a glyph chain with a separate table per Currier language and section matches the manuscript's adjacent-page similarity and puts its lowest scores at the same transitions (5 of 9), while a single table and the pinned self-citation generator do not; proposes the scored version.",
- "lease": "b4db4421db566fbd6b21adc7"}
+{
+ "step": "K-003-open-1",
+ "handle": "fleet-fable",
+ "kind": "step",
+ "summary": "A drift-free self-citation generator passes every established fact when its text is laid end to end on the sampled pages, but written as a whole book and sampled at 15% of pages it fails neighbouring-page similarity (F-011) on 2 of 3 seeds while still passing the section fact (F-018), which therefore rests on page-level reuse only.",
+ "lease": "2e019a8c3bdfa8f6989f62c6"
+}
