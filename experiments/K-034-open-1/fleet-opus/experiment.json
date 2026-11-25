@@ -2,6 +2,6 @@
  "step": "K-034-open-1",
  "handle": "fleet-opus",
  "kind": "step",
- "summary": "No: the fall in character entropy under a reversible 2-symbol expansion is an artefact of counting per output character; per source character H2 rises (Latin 3.36 to 4.66 bits), and plain padding with a null lowers per-character H2 more than the verbose code does (2.10 vs 2.53), so the fall is not specific to encipherment.",
- "lease": "5ae463f010f2e8b8fd239ad6"
+ "summary": "No, in four languages and three codebooks each: the fall in character entropy under a reversible 2-symbol expansion is an artefact of counting per output character (per source character H2 rises, e.g. Latin 3.36 to 4.56-4.66 bits), and padding with a null lowers per-character H2 further than the verbose code, so the fall is not specific to encipherment.",
+ "lease": "795af0d50bef9f042e0ba17a"
 }
