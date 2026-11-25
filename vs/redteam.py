@@ -109,9 +109,19 @@ def _manuscript_4grams():
     return out
 
 
-def fact_attack(fact_id, lines, split, fact_item=None):
+def fact_attack(fact_id, lines, split, fact_item=None, cut="tokens"):
     """lines: list of lists of words (the attacker's synthetic text). fact_item: the
-    registry item for the target fact (its detail holds the metric and params)."""
+    registry item for the target fact (its detail holds the metric and params).
+
+    cut: how the synthetic text is laid onto the evaluation pages.
+      "tokens" (default): one token stream cut to the pages' line lengths. The attacker's line
+               breaks are lost, so no generator can know where a line ends: a positional fact
+               (line-initial, line-final) survives every such attack by construction (R-001).
+      "lines": each evaluation line takes the next synthetic line whole (its length is the
+               attacker's). This lets a procedure that sees the line end, as any scribe or
+               table method writing on a page does, be tested against positional facts.
+               Page and line metadata (section, language, unit, paragraph marks) stay the
+               evaluation pages'."""
     lines = [[str(w) for w in l if str(w)] for l in lines if l]
     toks = [w for l in lines for w in l]
     ms4 = _manuscript_4grams()
@@ -127,16 +137,27 @@ def fact_attack(fact_id, lines, split, fact_item=None):
     if marked:
         guard.append(f"{marked} tokens carry uncertainty markers (? or *): synthetic text may not use them "
                      "(they are a transcription convention, and metrics skip them; found by the red team, R-003)")
-    if len(toks) < need:
+    if cut not in ("tokens", "lines"):
+        guard.append(f"cut must be 'tokens' or 'lines', got {cut!r}")
+    elif cut == "lines":
+        need_lines = sum(1 for p in ev for ln in p.lines if ln.words)
+        if len(lines) < need_lines:
+            guard.append(f"cut 'lines' needs at least {need_lines} lines to fill the evaluation pages, got {len(lines)}")
+    elif len(toks) < need:
         guard.append(f"needs at least {need} tokens to fill the evaluation pages, got {len(toks)}")
     if guard:
         return {"attack": "fact", "target": fact_id, "success": False, "refused": guard}
     it = iter(toks)
+    lit = iter(lines)
     fake = []
     for p in ev:
         q = Page(p.id, p.order, dict(p.meta))
         for ln in p.lines:
-            q.lines.append(Line(ln.id, ln.page, ln.n, ln.unit, ln.subtype, [next(it) for _ in ln.words], ln.para_start, ln.para_end))
+            if cut == "lines":
+                ws = list(next(lit)) if ln.words else []
+            else:
+                ws = [next(it) for _ in ln.words]
+            q.lines.append(Line(ln.id, ln.page, ln.n, ln.unit, ln.subtype, ws, ln.para_start, ln.para_end))
         fake.append(q)
     if fact_item is None:
         from . import registry
@@ -156,7 +177,7 @@ def fact_attack(fact_id, lines, split, fact_item=None):
         return {"attack": "fact", "target": fact_id, "success": False,
                 "refused": ["positional attack with fewer than 10 hits: too few to reproduce a fact (P-J-001)"]}
     return {"attack": "fact", "target": fact_id, "real": {"pass": real["pass"], "value": real["value"]},
-            "synthetic": {"pass": got["pass"], "value": got["value"]}, "shared_type_share": round(shared, 3),
+            "synthetic": {"pass": got["pass"], "value": got["value"]}, "shared_type_share": round(shared, 3), "cut": cut,
             "success": bool(real["pass"] and got["pass"]),
             "why": "the fact also holds on text made without language" if (real["pass"] and got["pass"]) else "the synthetic text does not reproduce the fact"}
 
@@ -167,7 +188,8 @@ def run_attack(spec, split):
         key = json.load(open(spec["target_key"])) if isinstance(spec["target_key"], str) else spec["target_key"]
         return key_attack(key, spec["decoy"], spec.get("params", {}), split)
     if kind == "fact":
-        return fact_attack(spec["target_fact"], spec["lines"], split, spec.get("target_fact_item"))
+        return fact_attack(spec["target_fact"], spec["lines"], split, spec.get("target_fact_item"),
+                           cut=spec.get("cut", "tokens"))
     if kind == "claim":
         train, ev = corpus.split_pages(split)
         r = judge.evaluate(spec["key"], train, ev, split)
