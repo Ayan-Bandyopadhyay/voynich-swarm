@@ -1,0 +1,59 @@
+{
+  "id": "grid-latin-substitution-it-words-reversed-currier-b",
+  "family": "substitution",
+  "segmentation": "eva-basic",
+  "target": {
+    "language": "latin",
+    "period": "grid search"
+  },
+  "key": {
+    "map": {
+      "?": "i",
+      "a": "i",
+      "c": "i",
+      "cfh": "i",
+      "ch": "i",
+      "ckh": "i",
+      "cph": "i",
+      "cth": "i",
+      "d": "i",
+      "e": "i",
+      "f": "i",
+      "g": "s",
+      "h": "i",
+      "i": "s",
+      "k": "i",
+      "l": "i",
+      "m": "s",
+      "n": "e",
+      "o": "i",
+      "p": "i",
+      "q": "u",
+      "r": "s",
+      "s": "s",
+      "sh": "i",
+      "t": "i",
+      "x": "i",
+      "y": "s"
+    }
+  },
+  "search": {
+    "budget": {
+      "restarts": 16,
+      "iterations": 6000,
+      "seed": 1404,
+      "bpe_merges": 30,
+      "verbose_segmentations": [
+        "bpe-greedy",
+        "fixed-2"
+      ],
+      "verbose_min_unit_share": 0.0005
+    },
+    "objective_bits": 345913.7
+  },
+  "transliteration": "it",
+  "reading_order": "words_reversed",
+  "scope": {
+    "language": "B"
+  }
+}
