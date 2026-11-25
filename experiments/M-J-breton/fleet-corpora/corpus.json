@@ -1,0 +1,10 @@
+{
+  "language": "breton",
+  "title": "Breton Bible of Jean-François Le Gonidec (Bibl santel, c. 1827-1866), one verse per line",
+  "period": "19th century (Le Gonidec), literary Breton; a Brittonic Celtic proxy for Welsh and Cornish",
+  "url": "https://raw.githubusercontent.com/BibleNLP/ebible/2bde52b4c2cfd7056cf4ed07c48969647df79744/corpus/bre-breBRG.txt",
+  "sha256": "daa8b713ec26be5203b26f890a7d485a1f2803d88d93dcc1b01e26a84328e5ba",
+  "license": "public-domain",
+  "encoding": "utf-8",
+  "notes": "License: 'public-domain' is stated for translation id 'breBRG' in the eBible corpus licence table https://github.com/BibleNLP/ebible/blob/2bde52b4c2cfd7056cf4ed07c48969647df79744/metadata/licences.tsv (taken from eBible.org's copyright page, https://ebible.org/breBRG/copr.htm). The url pins a fixed commit, so the bytes do not change. 476,455 bytes; eBible corpus format: one verse per line aligned to a fixed versification (empty lines for verses the translation lacks; '<range>' marks merged verses, a few letters each). vs/refcorpus.normalize(..., 'breton') gives 418,070 characters. The export carries only part of the Bible (3,779 non-empty verses)."
+}
