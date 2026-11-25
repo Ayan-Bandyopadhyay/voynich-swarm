@@ -1,18 +1,22 @@
 {
-  "title": "Voynich Paleography",
-  "authors": "Lisa Fagin Davis",
-  "year": 2022,
-  "url": "https://ceur-ws.org/Vol-3313/keynote2.pdf",
-  "summary": "Davis explains how to apply Latin paleographic methods to the manuscript's recurring glyph shapes, stroke construction and spacing. The conference paper relates scribal attributions to codicology and proposes possible expansions of complex glyphs.",
+  "title": "The Generative Frontier of the Voynich Manuscript",
+  "authors": "Carmine De Stefano",
+  "year": 2026,
+  "url": "https://github.com/cadeos/voynich-frontier",
+  "doi": "10.5281/zenodo.21560144",
+  "summary": "The author compares synthetic mechanisms with matched manuscript samples using local reuse, positional rigidity, entropy and lexical productivity. The study includes parameter-matched comparisons on disjoint folio sets and a cross-check against Parisel's published positional tests.",
   "established": [
-    "The analysis distinguishes five hands using shape and stroke differences in EVA k and n and cross-checks them with f. The long, low n flourishes on f66r prompted a reassignment from hand 3 to hand 5.",
-    "Differences in n flourish direction, extent and endpoint complement k crossbar construction and loop shape. Assignments rely on recurring combinations of features observed in image annotations."
+    "A reimplementation of Timm and Schinner's similar-glyph procedure gives conditional character entropy of 2.38 bits without fitting that statistic, close to the 2.34-bit EVA manuscript estimate. The study reports that the absolute estimate shifts under the v101 alphabet.",
+    "All of the tested matched generators passed the four Parisel positional signatures under the published verifier, including the grille example, limiting those tests' power to distinguish the mechanisms in this comparison.",
+    "The proposed stock-and-flow generator falls inside the study's three folio-bootstrap intervals for reuse, rigidity and entropy and reproduces the singleton fraction. It uses character transitions learned from the manuscript, and its matched-size type-to-token ratio remains about 15 percent high."
   ],
   "open": [
     {
-      "question": "Do the proposed component sequences for rare bridge-gallows give a consistent account of independently transcribed examples across writing contexts?",
-      "front": "L1",
-      "check": "Freeze Davis's candidate decomposition rules, then compare the predicted component shapes and placements with blinded annotations of further bridge-gallows images."
+      "question": "Can an independently specified token-formation process and local reuse rule match entropy and vocabulary growth together without learning the manuscript's character-transition table?",
+      "front": "G",
+      "check": "Freeze the generator and tune no parameters on test folios. Compare local reuse, conditional entropy, singleton fraction and type-to-token ratios at multiple matched token budgets.",
+      "hard": true
     }
-  ]
+  ],
+  "publication_url": "https://zenodo.org/api/records/21560144/files/voynich_mechanism_paper_v1.pdf/content"
 }
