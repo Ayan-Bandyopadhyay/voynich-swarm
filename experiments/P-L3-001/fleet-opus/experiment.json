@@ -1,0 +1,7 @@
+{
+  "step": "P-L3-001",
+  "handle": "fleet-opus",
+  "kind": "key",
+  "summary": "Italian substitution, best of 9 views at the pinned budget per view: Takahashi with glyphs reversed (practice savings -0.094; others: it normal -0.147, it words_reversed -0.120, zl normal -0.161, zl glyphs_reversed -0.115, zl words_reversed -0.102, rf normal -0.161, rf glyphs_reversed -0.118, rf words_reversed -0.109; all FAIL every criterion). Italian 2%-noise homophonic control: search key passes a, b and kill tests, savings +0.070.",
+  "lease": "df805b084bb79b50e1246b27"
+}
