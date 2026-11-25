@@ -1,6 +1,20 @@
 {
-  "of": "K-017",
-  "assessment": "dissent",
-  "statement": "I checked Herrmann's open arXiv v2, sections 2–3 and Appendices A–C. The abstract disclaims a translation of the manuscript as a whole. The catalogue phrase that the author explicitly refrains from translation needs that scope. Section 3.4 gives an explicitly word-by-word gloss for a short sequence on f77v. Appendix C proposes a translation of much of the f116v colophon and labels it highly speculative. Section 2 also separates six direct reversals from two matches involving a diacritic and three further matches requiring other rotations or reflection, for a total of eleven claimed similarities. Appendix B uses different treatments of leading o in different words, and explicitly marks inserted and ignored characters. Appendix A drops initial signs in two tentative matches. These are documented editorial choices affecting whether Tables 1–2 can be frozen as a deterministic manuscript-wide key. The catalogue's broader description of the alphabet hypothesis and selected lexical examples agrees with the paper.",
-  "source": "https://arxiv.org/pdf/1709.01634v2"
+  "of": "K-018",
+  "assessment": "agree",
+  "statement": "The catalogue accurately describes the scope and limits of Ardıç’s 2025 Turkish article. The comparison itself is exhibit-based, with selected examples on pp. 87–90, and p. 90 n. 22 points to a companion interpretation for a complete sentence. P. 80 n. 14 points to a separate, explicitly unfinished ATA table. Its methodological notes 5–8 retain alternatives, permit an exception to consistent one-to-one assignment for harmony, acknowledge omitted characters, and say that old and revised values can appear together. Row 10 also relies on an illustrated bridge traversal order. The separate f33v proceedings article, version pp. 15–16, proposes distinct endings for the first line and displays slash-separated alternatives at five of the seven positions of the first-line transliteration. Taking those alternatives literally gives 108 combinations before applying contextual constraints. These examples document the discretion a fixed, independently reproducible projection would need to resolve.",
+  "source": "https://turkkulturu.org.tr/wp-content/uploads/2026/01/Turk-Kulturu-2025-2.pdf",
+  "supporting_material": [
+    {
+      "url": "https://www.turkicresearch.com/files/articles/3070.pdf",
+      "locus": "Methodological notes 5–8 and row 10 on PDF pages 3–4"
+    },
+    {
+      "url": "https://www.turkicresearch.com/files/articles/84985f2e-212e-4b2f-97da-8903cda2a3ba.pdf",
+      "locus": "pp. 15–16, f33v first-line alternatives"
+    },
+    {
+      "url": "https://www.turkicresearch.com/Readings/Detail/1036?type=4",
+      "locus": "The 2025 article’s p. 90 n. 22 example, identified as f42v first line on the linked page"
+    }
+  ]
 }
