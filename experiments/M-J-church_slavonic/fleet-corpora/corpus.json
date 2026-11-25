@@ -1,0 +1,10 @@
+{
+  "language": "church_slavonic",
+  "title": "Church Slavonic Elizabeth Bible (1751/1757), full Bible, one verse per line, in civil Cyrillic",
+  "period": "18th century (1751/1757), Church Slavonic (Russian recension); liturgical language with medieval roots",
+  "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/CSlElizabeth.txt",
+  "sha256": "a83c68c32850f5e45fc6813be5f3552d8a103eb2661a86e184b8a9253f0d1136",
+  "license": "public-domain",
+  "encoding": "utf-8",
+  "notes": "License stated as 'Public Domain' in the source README at https://github.com/scrollmapper/bible_databases/blob/59b18c5af5845728c275d5b7178ad0d024172b1f/sources/cu/CSlElizabeth/README.md (scrollmapper/bible_databases, files from the CrossWire SWORD module CSlElizabeth). The url pins a fixed commit, so the bytes do not change. 6,867,633 bytes; one verse per line as '[c:v] text' with '### Book' headings in English (66 short headings, negligible). vs/refcorpus.normalize(..., 'church_slavonic') gives 3,551,547 characters."
+}
