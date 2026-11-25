@@ -1,0 +1,6 @@
+{
+  "step": "M-J-sanskrit",
+  "handle": "fleet-corpora",
+  "kind": "corpus",
+  "summary": "Add Sanskrit to the grid from Sanskrit Bible (cc-by-sa, 918,815 characters after normalization; modern Sanskrit (19th-century Calcutta NT tradition, 2018 digital edition by SanskritBible.in))."
+}

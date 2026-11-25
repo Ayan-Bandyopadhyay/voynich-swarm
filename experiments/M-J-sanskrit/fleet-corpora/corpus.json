@@ -1,0 +1,10 @@
+{
+  "language": "sanskrit",
+  "title": "Sanskrit Bible (New Testament, Satyavedah), IAST romanization, one verse per line",
+  "period": "modern Sanskrit (19th-century Calcutta NT tradition, 2018 digital edition by SanskritBible.in)",
+  "url": "https://raw.githubusercontent.com/BibleNLP/ebible/2bde52b4c2cfd7056cf4ed07c48969647df79744/corpus/san-sanias.txt",
+  "sha256": "6499350aecbe06cac74396ba48092711bb0f8db68f739c7775ce248bea9fd631",
+  "license": "cc-by-sa",
+  "encoding": "utf-8",
+  "notes": "License: 'cc-by-sa' is stated for translation id 'sanias' in the eBible corpus licence table https://github.com/BibleNLP/ebible/blob/2bde52b4c2cfd7056cf4ed07c48969647df79744/metadata/licences.tsv (taken from eBible.org's copyright page, https://ebible.org/sanias/copr.htm). The url pins a fixed commit, so the bytes do not change. 1,170,216 bytes; eBible corpus format: one verse per line aligned to a fixed versification (empty lines for verses the translation lacks; '<range>' marks merged verses, a few letters each). vs/refcorpus.normalize(..., 'sanskrit') gives 918,815 characters. Copyright SanskritBible.in 2018, CC BY-SA 4.0. IAST chosen over the Devanagari file of the same text because the generic normalization drops Devanagari vowel signs; IAST diacritics fold to plain a-z (long/short vowels and retroflexes merge)."
+}
