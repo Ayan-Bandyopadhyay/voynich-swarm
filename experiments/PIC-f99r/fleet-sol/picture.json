@@ -1,0 +1,571 @@
+{
+  "folio": "f99r",
+  "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006246",
+  "blind": true,
+  "statement": "Four red jars and 27 separate plant or plant-part drawings are visible across four registers. I linked the drawings to candidate ZL locus IDs by visible inscription placement and sequence, with uncertain extra loci retained separately. The two intact leafy forms are at the right of the third register and across the large fourth register.",
+  "objects": [
+    {
+      "id": "row1-left-jar",
+      "kind": "jar",
+      "features": {
+        "colour": "red",
+        "container_shape": "cylindrical",
+        "top": "olive oval field with outline",
+        "rims": "pale rim, shoulder band and basal ring",
+        "decoration": "short pale tabs below the shoulder"
+      },
+      "label": "f99r.1",
+      "image_center": [
+        408,
+        550
+      ],
+      "label_assignment": "visible inscription within the oval top"
+    },
+    {
+      "id": "row1-upper-1",
+      "kind": "plant_part",
+      "features": {
+        "colour": "tan",
+        "orientation": "vertical",
+        "body_shape": "narrow curved shaft",
+        "root": "several thin swept strands and a long pointed continuation"
+      },
+      "label": "f99r.2",
+      "image_center": [
+        690,
+        355
+      ],
+      "label_assignment": "probable"
+    },
+    {
+      "id": "row1-upper-2",
+      "kind": "plant_part",
+      "features": {
+        "colour": "red",
+        "orientation": "vertical",
+        "body_shape": "long tapering body bent to one side",
+        "root": "fine diagonal strands along one side and below the taper"
+      },
+      "label": "f99r.3",
+      "image_center": [
+        885,
+        376
+      ],
+      "label_assignment": "probable"
+    },
+    {
+      "id": "row1-upper-3",
+      "kind": "plant_part",
+      "features": {
+        "colour": "tan",
+        "orientation": "vertical",
+        "body_shape": "narrow body with alternating edge lobes",
+        "stem": "pair of closely spaced straight lines above",
+        "base": "long thin pointed extension"
+      },
+      "label": "f99r.4",
+      "image_center": [
+        1041,
+        390
+      ],
+      "label_assignment": "probable"
+    },
+    {
+      "id": "row1-upper-4",
+      "kind": "plant_part",
+      "features": {
+        "colour": "orange",
+        "orientation": "vertical",
+        "body_shape": "central axis with pale loops along both sides",
+        "stem": "pair of tall lines above",
+        "base": "two sweeping tapering extensions"
+      },
+      "label": "f99r.5",
+      "image_center": [
+        1254,
+        424
+      ],
+      "label_assignment": "probable"
+    },
+    {
+      "id": "row1-upper-5",
+      "kind": "plant_part",
+      "features": {
+        "colour": "tan",
+        "orientation": "diagonal",
+        "body_shape": "broad curved lamina with several parallel folds",
+        "stem": "narrow lines split above the broad body",
+        "base": "small hooked extension"
+      },
+      "label": "f99r.6",
+      "image_center": [
+        1413,
+        404
+      ],
+      "label_assignment": "probable spatial match, two nearby label lines",
+      "other_nearby_loci": [
+        "f99r.7"
+      ]
+    },
+    {
+      "id": "row1-upper-6",
+      "kind": "plant_part",
+      "features": {
+        "colour": "tan",
+        "orientation": "vertical",
+        "body_shape": "forked cluster of narrow tubes",
+        "oval_openings": 7,
+        "base": "long divided pointed strands"
+      },
+      "label": "f99r.8",
+      "image_center": [
+        1598,
+        420
+      ],
+      "label_assignment": "probable"
+    },
+    {
+      "id": "row1-upper-7",
+      "kind": "plant_part",
+      "features": {
+        "colour": "orange",
+        "orientation": "vertical",
+        "body_shape": "arching side strands over central striped column",
+        "stem": "two fine straight lines above",
+        "base": "central narrow hook"
+      },
+      "label": "f99r.9",
+      "image_center": [
+        1821,
+        395
+      ],
+      "label_assignment": "probable"
+    },
+    {
+      "id": "row1-upper-8",
+      "kind": "plant_part",
+      "features": {
+        "colour": "red",
+        "orientation": "vertical",
+        "body_shape": "central taper with two pairs of recurved arms",
+        "stem": "two parallel lines above",
+        "base": "thin terminal strand points left"
+      },
+      "label": "f99r.10",
+      "image_center": [
+        2061,
+        433
+      ],
+      "label_assignment": "probable"
+    },
+    {
+      "id": "row1-upper-9",
+      "kind": "plant_part",
+      "features": {
+        "colour": "orange",
+        "orientation": "diagonal",
+        "body_shape": "rounded shoulder with long parallel curves to the right",
+        "stem": "short narrow neck",
+        "root": "multiple tapered sweeps"
+      },
+      "label": "f99r.11",
+      "image_center": [
+        2320,
+        429
+      ],
+      "label_assignment": "probable"
+    },
+    {
+      "id": "row1-lower-1",
+      "kind": "plant_part",
+      "features": {
+        "colour": "orange",
+        "orientation": "horizontal",
+        "body_shape": "flattened pointed bulb",
+        "root": "many fine tapered lines fanning to the right and one short extension to the left"
+      },
+      "label": "f99r.12",
+      "image_center": [
+        798,
+        684
+      ],
+      "label_assignment": "probable"
+    },
+    {
+      "id": "row1-lower-2",
+      "kind": "plant_part",
+      "features": {
+        "colour": "orange",
+        "orientation": "horizontal",
+        "body_shape": "long curved body with raised shoulder and hooked end",
+        "root": "short repeated bristles along both edges",
+        "stem": "narrow upward bend near the left end"
+      },
+      "label": "f99r.13",
+      "image_center": [
+        1442,
+        734
+      ],
+      "label_assignment": "probable"
+    },
+    {
+      "id": "row1-lower-3",
+      "kind": "plant_part",
+      "features": {
+        "colour": "pale green",
+        "orientation": "horizontal",
+        "body_shape": "rounded chamber and long curved tail",
+        "stem": "wide bent double outline on the left",
+        "root": "several long undulating parallel branches to the right"
+      },
+      "label": "f99r.14",
+      "image_center": [
+        2092,
+        666
+      ],
+      "label_assignment": "probable"
+    },
+    {
+      "id": "row2-left-jar",
+      "kind": "jar",
+      "features": {
+        "colour": "red",
+        "container_shape": "cylindrical",
+        "top": "olive oval field inside paired pale rings",
+        "rims": "thick shoulder and basal bands",
+        "decoration": "pale marks above base beneath shoulder and around middle inscription"
+      },
+      "label": "f99r.19",
+      "image_center": [
+        414,
+        1355
+      ],
+      "label_assignment": "visible inscription on jar wall"
+    },
+    {
+      "id": "row2-part-1",
+      "kind": "plant_part",
+      "features": {
+        "colour": "orange",
+        "orientation": "vertical",
+        "body_shape": "paired recurved lobes with a central oval opening",
+        "stem": "short narrow stem at top",
+        "root": "two tips below the crossing"
+      },
+      "label": "f99r.20",
+      "image_center": [
+        595,
+        1244
+      ],
+      "label_assignment": "probable"
+    },
+    {
+      "id": "row2-part-2",
+      "kind": "plant_part",
+      "features": {
+        "colour": "orange",
+        "orientation": "vertical",
+        "body_shape": "inverted U with two long recurved lobes",
+        "stem": "short upright stem at the center",
+        "root": "several parallel contours at the two pointed ends"
+      },
+      "label": "f99r.21",
+      "image_center": [
+        769,
+        1255
+      ],
+      "label_assignment": "probable"
+    },
+    {
+      "id": "row2-part-3",
+      "kind": "plant_part",
+      "features": {
+        "colour": "tan",
+        "orientation": "vertical",
+        "body_shape": "rounded triangular bulb with narrow base",
+        "stem": "two pale upward branches",
+        "root": "one central downward tip and two curved side tips"
+      },
+      "label": "f99r.22",
+      "image_center": [
+        966,
+        1275
+      ],
+      "label_assignment": "probable"
+    },
+    {
+      "id": "row2-part-4",
+      "kind": "plant_part",
+      "features": {
+        "colour": "orange",
+        "orientation": "diagonal",
+        "body_shape": "stack of angled pale and orange bands",
+        "stem": "thick curved end above",
+        "decoration": "short repeated hatches in the pale stripes"
+      },
+      "label": "f99r.23",
+      "image_center": [
+        1195,
+        1278
+      ],
+      "label_assignment": "probable"
+    },
+    {
+      "id": "row2-part-5",
+      "kind": "plant_part",
+      "features": {
+        "colour": "tan",
+        "orientation": "horizontal",
+        "body_shape": "curved bulb with a broad fan to the right",
+        "stem": "short straight double line at upper left",
+        "root": "multiple long tapered blades along outer side"
+      },
+      "label": "f99r.24",
+      "image_center": [
+        1588,
+        1268
+      ],
+      "label_assignment": "probable for the closer neck-side locus; other locus falls between drawings",
+      "other_nearby_loci": [
+        "f99r.25"
+      ]
+    },
+    {
+      "id": "row2-part-6",
+      "kind": "plant_part",
+      "features": {
+        "colour": "orange",
+        "orientation": "diagonal",
+        "body_shape": "tapered broad shoulder below a pale stalk",
+        "root": "short fine cords below the taper"
+      },
+      "label": "f99r.26",
+      "image_center": [
+        1924,
+        1274
+      ],
+      "label_assignment": "probable for neck-right locus; other locus falls between drawings",
+      "other_nearby_loci": [
+        "f99r.25"
+      ]
+    },
+    {
+      "id": "row2-part-7",
+      "kind": "plant_part",
+      "features": {
+        "colour": "tan",
+        "orientation": "horizontal",
+        "body_shape": "short central neck above sweeping asymmetric fan",
+        "root": "many long bent arms extend right, with shorter overlapping arms to lower left"
+      },
+      "label": "f99r.27",
+      "image_center": [
+        2274,
+        1307
+      ],
+      "label_assignment": "probable"
+    },
+    {
+      "id": "row3-left-jar",
+      "kind": "jar",
+      "features": {
+        "colour": "red",
+        "container_shape": "cylindrical",
+        "top": "olive oval field",
+        "rims": "thick pale rims and shoulder",
+        "base": "multiple curved supports spread underneath",
+        "decoration": "pale shoulder tabs and band across wall"
+      },
+      "label": "f99r.32",
+      "image_center": [
+        412,
+        1941
+      ],
+      "label_assignment": "visible inscription on jar wall"
+    },
+    {
+      "id": "row3-part-1",
+      "kind": "plant_part",
+      "features": {
+        "colour": "tan",
+        "orientation": "vertical",
+        "body_shape": "upper bulb and overlapping curved tapering bands",
+        "decoration": "spaced dark dots inside bands",
+        "stem": "pale curved narrow neck"
+      },
+      "label": "f99r.34",
+      "image_center": [
+        711,
+        1904
+      ],
+      "label_assignment": "probable neck-right locus, with second label candidate on the left",
+      "other_nearby_loci": [
+        "f99r.33"
+      ]
+    },
+    {
+      "id": "row3-part-2",
+      "kind": "plant_part",
+      "features": {
+        "colour": "red",
+        "orientation": "vertical",
+        "body_shape": "rounded dark cap",
+        "stem": "two thin lines above",
+        "root": "several slender tapering cords hang downward"
+      },
+      "label": "f99r.35",
+      "image_center": [
+        922,
+        1885
+      ],
+      "label_assignment": "probable"
+    },
+    {
+      "id": "row3-part-3",
+      "kind": "plant_part",
+      "features": {
+        "colour": "tan",
+        "orientation": "vertical",
+        "body_shape": "curved shoulder with parallel curved interior strokes",
+        "stem": "long recurved neck above",
+        "root": "several curled strands flare along the base"
+      },
+      "label": "f99r.36",
+      "image_center": [
+        1146,
+        1920
+      ],
+      "label_assignment": "probable"
+    },
+    {
+      "id": "row3-part-4",
+      "kind": "plant_part",
+      "features": {
+        "colour": "orange",
+        "orientation": "vertical",
+        "body_shape": "stacked pale and orange scalloped tiers",
+        "decoration": "rows of dark dashes along pale bands",
+        "root": "lateral narrow extensions on both sides"
+      },
+      "label": "f99r.37",
+      "image_center": [
+        1384,
+        1917
+      ],
+      "label_assignment": "probable"
+    },
+    {
+      "id": "row3-part-5",
+      "kind": "plant_part",
+      "features": {
+        "colour": "tan",
+        "orientation": "horizontal",
+        "body_shape": "sinusoidal body with an open upward curl",
+        "stem": "long narrow hooked neck at left",
+        "root": "short bristles underneath and near the left curve"
+      },
+      "label": "f99r.38",
+      "image_center": [
+        1784,
+        1925
+      ],
+      "label_assignment": "probable"
+    },
+    {
+      "id": "row3-part-6",
+      "kind": "plant_part",
+      "features": {
+        "colour": "orange",
+        "orientation": "diagonal",
+        "body_shape": "curling overlapping narrow lobes",
+        "stem": "elongated orange bar with pale diverging tip",
+        "base": "several arcing arms extend to the right"
+      },
+      "label": "f99r.39",
+      "image_center": [
+        2148,
+        1905
+      ],
+      "label_assignment": "probable"
+    },
+    {
+      "id": "row3-right-plant",
+      "kind": "plant",
+      "features": {
+        "colour": "green",
+        "secondary_colour": "tan",
+        "leaf_shape": "one large elongated leaf bending downward",
+        "stem": "two long straight lines from root crown to leaf",
+        "root": "multiple tapering strands with fine side branches"
+      },
+      "label": "f99r.40",
+      "image_center": [
+        2454,
+        1855
+      ],
+      "label_assignment": "probable"
+    },
+    {
+      "id": "row4-left-jar",
+      "kind": "jar",
+      "features": {
+        "colour": "red",
+        "container_shape": "cylindrical",
+        "top": "olive oval field",
+        "rims": "multi-line pale lip, shoulder and basal ring",
+        "decoration": "pale tabs and marked wall band"
+      },
+      "label": "f99r.45",
+      "image_center": [
+        397,
+        2721
+      ],
+      "label_assignment": "visible inscription on jar wall"
+    },
+    {
+      "id": "row4-branching-plant",
+      "kind": "plant",
+      "features": {
+        "colour": "green",
+        "secondary_colour": "orange",
+        "leaf_shape": "angular or heart-like pointed lobes",
+        "large_leaf_count": 7,
+        "pendant_cluster_count": 2,
+        "stem": "long lateral stem curving and branching right, with smaller green spur and thin trailing left extension below",
+        "root": "large orange-banded oblong structure with many transverse curved filaments",
+        "pendant_clusters": "two hanging narrow tiered bodies below branch"
+      },
+      "label": "f99r.46",
+      "image_center": [
+        1512,
+        2844
+      ],
+      "label_assignment": "isolated label beside the upper left bend of the plant"
+    }
+  ],
+  "annotation_notes": "I annotated from the Beinecke image and the ZL locus headers only, without displaying any transliterated words or other annotation. All attached motifs of one drawing are grouped into a single object. I used plant_part for isolated root-like or fragment-like specimens without deciding their anatomy or species. The green area interrupting the parchment at the top register is treated as a damaged or underlying area, not as a separate drawn object. The x,y centers are approximate in the 2702 by 3765 pixel scan with top-left origin. Labels with probable matches were inferred from scan position and the transcriber's order; the indices alone do not specify pixel positions. The extra f99r.7 line follows f99r.6 in location metadata. I retain it as neighboring the same grouped area, without choosing another drawn referent. F99r.25 lies in the gap between the large fanned part and the next slender part. F99r.33 lies near the first crossed part in row three and may be a second label; both are left without primary assignments.",
+  "scan": "https://collections.library.yale.edu/iiif/2/1006246/full/full/0/default.jpg",
+  "positions": "native_scan_pixels",
+  "label_locus_count": 34,
+  "unassigned_as_primary": [
+    {
+      "locus": "f99r.7",
+      "near": [
+        "row1-upper-5"
+      ]
+    },
+    {
+      "locus": "f99r.25",
+      "near": [
+        "row2-part-5",
+        "row2-part-6"
+      ]
+    },
+    {
+      "locus": "f99r.33",
+      "near": [
+        "row3-part-1"
+      ]
+    }
+  ]
+}
