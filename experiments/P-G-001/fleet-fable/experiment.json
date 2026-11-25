@@ -1,0 +1,7 @@
+{
+ "step": "P-G-001",
+ "handle": "fleet-fable",
+ "kind": "fact",
+ "summary": "Registers the within-line minus across-line-break gap in edge-glyph dependence (edge_mi_break) as a fact for paragraph text, so generators can be scored against it.",
+ "lease": "b71e510db1d0f7aa40865dd6"
+}

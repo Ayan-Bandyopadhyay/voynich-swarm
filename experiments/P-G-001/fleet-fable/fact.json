@@ -1,0 +1,7 @@
+{"title": "Edge-glyph dependence collapses at line breaks",
+ "statement": "In paragraph text, the dependence between a certain word's last glyph and the next word's first glyph is at least 0.08 bits greater inside a line than across a line break (a line's last word with the next line's first word on the same page), both shuffle-corrected and measured at equal sample size, and the gap exceeds what is left when the words of each page are shuffled.",
+ "source": "P-G-001 and K-001 (Rozanova and Temerev): 0.197 bits of shuffle-corrected dependence between adjacent words' edge glyphs. Registered as a target for generators: a procedure whose glyph context restarts at each line should reproduce it, one that runs through the line break should not.",
+ "spec": {"select": {"unit": ["P"], "certain": true},
+          "statistic": {"edge_mi_break": true},
+          "compare": [{"op": ">=", "value": 0.08},
+                      {"null": "shuffle_within_page", "direction": "greater", "perms": 199, "p": 0.01}]}}
