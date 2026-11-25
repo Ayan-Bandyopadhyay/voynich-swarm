@@ -204,6 +204,9 @@ def cell_budget(lang, family):
         return {**BUDGET, "verbose_lexicon_sweeps": 6, "verbose_singleton_limit": 8}
     if (lang, family) == ("spanish", "verbose"):
         return {**BUDGET, "verbose_lexicon_sweeps": 6}
+    if family in ("nomenclator", "codebook"):
+        from .search_nomenclator import SETTINGS
+        return dict(SETTINGS) if family == "codebook" else {**BUDGET, **SETTINGS}
     return BUDGET
 
 
@@ -315,6 +318,15 @@ def search_cell(lang, family, train_pages, budget=None, tag="cell"):
         budget = cell_budget(lang, family)
     table, sy = trigram_table(lang)
     letters = [l for l in sy if l != lm.WB]
+    if family in ("nomenclator", "codebook"):
+        from .search_nomenclator import search_nomenclator, SETTINGS
+        budget = {**SETTINGS, **budget}
+        key = search_nomenclator(lang, train_pages, budget, tag, table, letters, whole_words=family == "codebook")
+        if family == "codebook":
+            del key["marker"]
+        return {"id": f"grid-{lang}-{family}-{tag}", "family": family, "segmentation": "eva-basic",
+                "target": {"language": lang, "period": "grid search"}, "key": key,
+                "search": {"budget": dict(budget)}}
     if family == "substitution":
         segf = lambda w: ivtff.segment(w, "eva-basic")
         tri = unit_trigrams(train_pages, segf)

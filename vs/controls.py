@@ -32,10 +32,14 @@ def make(lang, kind="simple", seed=0, words_per_line=8, lines_per_page=10, homop
         words = " ".join(refcorpus.control_text(lang)).split()
     letters = refcorpus.alphabet(lang)
     glyphs = CIPHER_GLYPHS[:]
+    if kind == "nomenclator" and len(letters) > len(glyphs):
+        raise ValueError(f"target alphabet exceeds the nomenclator glyph inventory")
     rng.shuffle(glyphs)
     if kind == "simple":
         enc = {l: [glyphs[i]] for i, l in enumerate(letters)}
-    elif kind == "homophonic":
+    elif kind == "codebook":
+        enc = {}
+    elif kind in ("homophonic", "nomenclator"):
         # the most frequent letters get `homophones` glyphs, the rest one; needs few letters
         freq = sorted(letters, key=lambda l: -sum(w.count(l) for w in words[:5000]))
         enc, i = {}, 0
@@ -55,7 +59,34 @@ def make(lang, kind="simple", seed=0, words_per_line=8, lines_per_page=10, homop
 
     noise_pool = sorted({g for gs in enc.values() for g in gs} | set(CIPHER_GLYPHS[:10]))
 
+    marker = ""
+    word_codes = {}
+    if kind == "nomenclator":
+        # Spell ordinary words with the alphabet. Use a separate marked group
+        # for each of 24 frequent words, assigned without exposing the key to search.
+        from collections import Counter
+        candidates = Counter(w for block in refcorpus.train_text(lang) for w in block.split() if len(w) >= 2)
+        marker = rng.choice("ch") * 2
+        alphabet = "oeyadiklrstnqpmfg"
+        codes = [marker + a + b for a in alphabet for b in alphabet]
+        rng.shuffle(codes)
+        word_codes = dict(zip((w for w, _ in candidates.most_common(24)), codes))
+
+    if kind == "codebook":
+        from itertools import product
+        alphabet = "oeyadiklrstnqpmfg"
+        vocabulary = sorted(set(words))
+        width = 1
+        while len(alphabet) ** width < len(vocabulary):
+            width += 1
+        codes = ["".join(chars) for chars in product(alphabet, repeat=width)]
+        rng.shuffle(codes)
+        word_codes = dict(zip(vocabulary, codes))
+
     def cipher(w):
+        if w in word_codes:
+            return "".join(rng.choice([x for x in CIPHER_GLYPHS if x != c]) if rng.random() < noise else c
+                           for c in word_codes[w])
         units = [rng.choice(enc[c]) for c in w if c in enc]
         if noise:
             units = [rng.choice([x for x in noise_pool if x != u]) if rng.random() < noise else u for u in units]
@@ -79,6 +110,11 @@ def make(lang, kind="simple", seed=0, words_per_line=8, lines_per_page=10, homop
     tr = [p for p in pages if int(p.id[1:]) % 7 != 3]
     true_key = {"id": f"control-{lang}-{kind}", "family": "verbose" if kind == "verbose" else "substitution", "segmentation": "eva-basic",
                 "target": {"language": lang, "period": "control"}, "key": {"map": dec}}
+    if kind in ("codebook", "nomenclator"):
+        true_key["family"] = kind
+        if kind == "nomenclator":
+            true_key["key"]["marker"] = marker
+        true_key["key"]["map"].update({code: word for word, code in word_codes.items()})
     return tr, ev, true_key
 
 
