@@ -1,26 +1,19 @@
 {
-  "title": "The Voynich manuscript: Symbol roles revisited",
-  "authors": "Vladimír Matlach, Barbora Anna Janečková and Daniel Dostál",
-  "year": 2022,
-  "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0260948",
-  "doi": "10.1371/journal.pone.0260948",
-  "summary": "The authors measure autocorrelation of successive intervals between occurrences of the same EVA symbol. They separately propose a heuristic for possible ligatures and discuss a hypothetical numeric encoding.",
+  "title": "Pre-Rudolfine History of the MS (herbal comparisons)",
+  "authors": "René Zandbergen",
+  "year": 2012,
+  "url": "https://voynich.nu/papers/Voynich100_RZ_2012.pdf",
+  "summary": "Slides from the Voynich centenary meeting at Villa Mondragone, circulated in this open PDF dated 2016. The relevant section on pp. 14–25 compares Voynich drawings with illustrations in other medieval herbal traditions and calls for specialist confirmation of the visual comparisons.",
   "established": [
-    "In the processed Takahashi transcript, the authors report positive and individually significant estimates for 90.1% of 760 lag-by-symbol tests over lags 1 to 40. The reported confidence limits are pointwise.",
-    "A Timm–Schinner generated sample comes closest to the manuscript by mean autocorrelation among the compared texts. The manuscript remains the maximum in that comparison.",
-    "The ligature loss weights were adjusted on Latin and Arabic examples, then fixed for an Armenian example and planted English and Czech examples. Each designated held-apart triplet ranked inside the authors' fifth-percentile criterion. The manuscript candidates remain hypotheses and in some cases the authors manually inspect discrepant occurrences."
+    "The author places Voynich drawings beside comparators in named medieval herbals. The waterlily comparison includes British Library Egerton 747 f67r, Paris BnF Latin 6823 f109r and British Library Sloane 4019 f64v.",
+    "For f35v the author discusses the oak-like crown and roots and the discordant fruit-like clusters. The slides report Ethel Voynich's oak-grape suggestion from her notes and reproduce the black-ivy comparator in BnF Latin 6823 f60r. Both observations concern illustration motifs.",
+    "The author reports finding detailed resemblances while finding zero complete copies in the fifty herbals examined. He judges the page arrangement closest to alchemical herbals and treats the comparison as a visual assessment in need of specialist confirmation."
   ],
   "open": [
     {
-      "question": "How much of the long-lag symbol-gap autocorrelation survives after controlling for local rates and the line layout?",
-      "front": "L2",
-      "check": "Use paired public ZL and Takahashi samples. Freeze symbol preprocessing and measure Pearson gap autocorrelations over lags 1 to 40. Compare a global token-word shuffle with matched within-page line and paragraph-word shuffles, and with pinned self-citation and fitted stationary whole-copy controls on the same public layout. Report coefficients and an aggregate lag statistic against each null before interpreting pointwise significance. Estimate sensitivity with known rate changes and with known dependence at constant rates.",
-      "hard": true
-    },
-    {
-      "question": "Can the published glyph-triplet score distinguish proposed ligatures from ordinary compound-like distributions in matched controls?",
-      "front": "L1",
-      "check": "Fix the published loss weights and candidate threshold. Evaluate all triplets both in public natural text with and without independent planted ligatures and in a stationary line-chain control. Record false-positive ranks, then check fixed manuscript candidates across ZL and Takahashi and use a separate public scan sample to evaluate disputed occurrences.",
+      "question": "How specifically do the branch, fruit and leaf motifs of f35v fit the historical black-ivy and oak comparators?",
+      "front": "L4",
+      "check": "On public Yale and medieval herbal scans, freeze an outline-based feature checklist for fruit attachment, leaf arrangement and lobing, crown and roots, and distinguish those regions in the scoring. Score the named comparison against matched same-tradition illustrations of oak, ivy and common alternatives with captions masked and report disagreements by region. Keep illustration correspondence independent of any Voynich text proposal.",
       "hard": true
     }
   ]
