@@ -1,0 +1,7 @@
+{
+  "step": "K-004-open-2",
+  "handle": "fleet-corpora",
+  "kind": "key",
+  "summary": "Spanish substitution on Takahashi's transliteration (IT) at the pinned budget, glyphs reversed within words: practice savings -0.107 vs -0.150 in normal order, both FAIL; the 2%-noise Spanish homophonic control with every word's glyphs reversed is recovered when the reading order undoes the transposition (passes a, b and kill tests, +0.035) and fails read as is (-0.126), so the search has power here and the IT result matches the earlier ZL ones.",
+  "lease": "4de59b391852615c24bc41db"
+}
