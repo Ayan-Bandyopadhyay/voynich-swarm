@@ -888,6 +888,19 @@
       "license": "cc-by-sa",
       "encoding": "utf-8",
       "added_by": "fleet-corpora"
+    },
+    {
+      "id": "slovak_ce40a008",
+      "lang": "slovak",
+      "period": "19th century (1884-1886), literary Slovak",
+      "title": "Hájnikova žena (The Gamekeeper's Wife), verse epic by Pavol Országh Hviezdoslav (1884-1886), Slovak Wikisource",
+      "url": "https://sk.wikisource.org/w/index.php?oldid=9150&action=raw",
+      "file": "data/raw/agent_slovak_ce40a008.txt",
+      "bytes": 227968,
+      "sha256": "ce40a008bee3ee3df6468ece9501b4addeddcb08cd83a86e28056d66511190a2",
+      "license": "cc-by-sa",
+      "encoding": "utf-8",
+      "added_by": "fleet-corpora"
     }
   ],
   "missing_corpora": {
