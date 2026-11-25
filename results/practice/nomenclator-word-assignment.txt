@@ -1,0 +1,19 @@
+Nomenclator positive controls on public practice data
+
+python3 -m vs season --parts controls (practice runner restricted in memory to these three language/family pairs, standard fit and judge)
+control latin    nomenclator  clean=True noisy=True
+control spanish  nomenclator  clean=True noisy=True
+control english  nomenclator  clean=True noisy=True
+
+2% transcription noise, independently generated control keys. Fitting uses public reference text and synthetic training ciphertext. Pass uses the season non-picture criteria. Agreement compares the fitted and planted outputs on noisy synthetic evaluation tokens, after fitting.
+
+language seed tokens pass savings bootstrap_lower_bits agreement
+english 0 6000 True 0.03708 2660.7 0.9862
+english 1 6000 True 0.03382 2290.5 0.9822
+english 2 6000 True 0.03768 2681.2 0.9850
+latin 0 2320 True 0.05314 1916.2 0.9836
+latin 1 2320 True 0.05000 1769.4 0.9797
+latin 2 2320 True 0.05300 1863.8 0.9767
+spanish 0 3440 True 0.03168 1277.1 0.9849
+spanish 1 3440 True 0.02802 974.9 0.9823
+spanish 2 3440 True 0.02365 590.7 0.9808

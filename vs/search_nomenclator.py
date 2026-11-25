@@ -25,6 +25,10 @@ def search_nomenclator(lang, pages, budget, tag, table, letters, whole_words=Fal
                            group_swap=budget.get("substitution_group_swap", 0))
     else:
         mapping = {}
+    if (mapping and not whole_words and budget.get("homophone_ranked_restarts")
+            and budget.get("homophone_word_sweeps")):
+        from .search_homophones import refine_homophones
+        mapping = refine_homophones(lang, pages, mapping, tri, table, letters, budget, cut=cut)
     codes = [w for w, _ in words.most_common() if w.startswith(marker)][:budget["word_code_limit"]]
     blocks = [block.split() for block in refcorpus.train_text(lang)]
     freq = Counter(w for block in blocks for w in block if whole_words or len(w) >= 2)
@@ -41,6 +45,10 @@ def search_nomenclator(lang, pages, budget, tag, table, letters, whole_words=Fal
                         context[left][(True, right)] += 1
                     if right in assigned:
                         context[right][(False, left)] += 1
+        if budget.get("nomenclator_unique_word_sweeps"):
+            assigned = assign_distinct_codes(codes, candidates, context, spelled, ref, words,
+                                             freq, budget["nomenclator_unique_word_sweeps"])
+            return {"marker": marker, "map": {**mapping, **assigned}}
         for _ in range(budget["assignment_sweeps"]):
             changed = False
             for code in codes:
@@ -61,3 +69,48 @@ def search_nomenclator(lang, pages, budget, tag, table, letters, whole_words=Fal
             if not changed:
                 break
     return {"marker": marker, "map": {**mapping, **assigned}}
+
+
+def assign_distinct_codes(codes, candidates, context, spelled, model, counts, frequency, sweeps):
+    """Fit distinct words using occurrence counts and adjacent alphabetic spellings."""
+    codes = codes[:len(candidates)]
+    words = dict(zip(codes, candidates))
+    owners = {word: code for code, word in words.items()}
+    total = sum(counts.values())
+    reference_total = sum(frequency.values())
+    scores = {}
+    for code in codes:
+        known = [(before, spelled[other], n) for (before, other), n in context[code].items()
+                 if other not in words and spelled[other]]
+        weights = {}
+        for word in candidates:
+            rate = frequency[word] / reference_total
+            # Poisson count likelihood, omitting terms common to every assignment.
+            value = counts[code] * math.log2(rate) - total * rate / math.log(2)
+            for before, neighbor, n in known:
+                left, right = (word, neighbor) if before else (neighbor, word)
+                value += n * math.log2(model.prob(right, (left,)) / model.prob(right, ()))
+            weights[word] = value
+        scores[code] = weights
+    for _ in range(sweeps):
+        changed = False
+        for code in codes:
+            old = words[code]
+            best, gain = old, 0
+            for word in candidates:
+                delta = scores[code][word] - scores[code][old]
+                other = owners.get(word)
+                if other is not None:
+                    delta += scores[other][old] - scores[other][word]
+                if delta > gain:
+                    best, gain = word, delta
+            if best != old:
+                other = owners.pop(best, None)
+                del owners[old]
+                if other is not None:
+                    words[other], owners[old] = old, other
+                words[code], owners[best] = best, code
+                changed = True
+        if not changed:
+            break
+    return words

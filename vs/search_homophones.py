@@ -5,7 +5,7 @@ from collections import Counter, defaultdict
 from . import ivtff, refcorpus
 
 
-def refine_homophones(lang, pages, baseline, tri, table, letters, budget):
+def refine_homophones(lang, pages, baseline, tri, table, letters, budget, cut=None):
     from .search import climb
 
     reference = Counter(word for block in refcorpus.train_text(lang) for word in block.split())
@@ -14,7 +14,9 @@ def refine_homophones(lang, pages, baseline, tri, table, letters, budget):
         for letter in word:
             plaintext_counts[letter] += count
 
-    words = Counter(tuple(ivtff.segment(word, "eva-basic"))
+    if cut is None:
+        cut = lambda word: ivtff.segment(word, "eva-basic")
+    words = Counter(tuple(cut(word))
                     for page in pages for line in page.lines for word in line.words)
     unit_counts = Counter()
     contexts = defaultdict(list)
