@@ -1,11 +1,29 @@
-{"title": "Scribe 1: glyph trigrams + page-local copy (window 50, exact and one-glyph-changed) + line position + prefix templates + chain",
- "statement": "Components were chosen by greedy forward selection under 4-fold cross-validation over scribe 1's public training pages only (pool: vocab, chain, position, letters order 2-5, copy windows 3/5/10/20/50 with 0 or 1 edits, templates prefix 0-3 x suffix 0-3), stopping when a component gained under 0.002 bits per word. Cross-validated: 11.31 bits per word against 11.75 for the bag of words and 11.40 for glyph trigrams alone. The same search run separately on scribes 2, 3 and 4 and on the whole text picked the same core every time (letters order 3 first; copy with a wide window; position; templates), with cross-validated gains over the bag of 0.39, 0.39, 0.58 and 0.38 bits per word; scribe 5 has too few training words. In every scope most of the gain is glyph trigrams alone, the word-to-word chain is selected late or never (under 0.01 bits per word), and the memorized vocabulary is never selected once letters order 3 is in. Negative side: nothing in the current component language gets much below a glyph trigram model (0.04 to 0.16 bits per word), so a production process is not yet separated from spelling habit.",
- "scope": {"hand": "1"},
- "components": [{"type": "letters", "order": 3},
-                {"type": "copy", "window": 50, "edits": 0},
-                {"type": "position"},
-                {"type": "copy", "window": 50, "edits": 1},
-                {"type": "template", "prefix": 2, "suffix": 0},
-                {"type": "template", "prefix": 1, "suffix": 0},
-                {"type": "chain"}],
- "weights": "fit"}
+{
+ "title": "Whole text: glyph habits that depend on the line position and on the previous word's last glyph, plus page-local copying",
+ "statement": "Five components, each something a scribe could do without meaning: spell glyph by glyph with a habit that differs for the first, last and inner words of a line (order 4); spell with a habit that depends on the last glyph of the word just written (order 4); copy a word from the last 50 on the page, exactly or with one glyph changed; and plain glyph trigrams as the fallback. Chosen on the public practice split only, by comparing ten mixtures. There the mixture scores 11.003 bits per word, 0.583 below the bag of words, against 0.342 for the earlier best kind of mixture (glyph trigrams, copying, line-position vocabulary and prefix templates, as in M-003). Ablations on the same split: adding only the previous-glyph speller (order 3) to that earlier mixture gains 0.464, only the line-position speller 0.478, both 0.554; order 4 for both 0.583; order 5 is worse (0.551). With both spellers in, the line-position vocabulary, the prefix templates and the word-to-word chain add nothing measurable (under 0.001 bits per word), so they are left out. Reading: most of what line position and the previous word tell about the next word is carried by glyphs at the word's edges, not by which word it is, in line with F-001, F-002 and F-006. The score is conditional on the line breaks (the model is told whether a word is first, last or inside its line). Fitted weights on practice: line-position speller 0.45, previous-glyph speller 0.29, trigrams 0.19, exact copy 0.055, altered copy 0.013.",
+ "components": [
+  {
+   "type": "letters",
+   "order": 3
+  },
+  {
+   "type": "copy",
+   "window": 50,
+   "edits": 0
+  },
+  {
+   "type": "copy",
+   "window": 50,
+   "edits": 1
+  },
+  {
+   "type": "boundary_letters",
+   "order": 4
+  },
+  {
+   "type": "position_letters",
+   "order": 4
+  }
+ ],
+ "weights": "fit"
+}

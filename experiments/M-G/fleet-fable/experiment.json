@@ -2,6 +2,6 @@
  "step": "M-G",
  "handle": "fleet-fable",
  "kind": "model",
- "summary": "For scribe 1, a mixture led by a trigram glyph model with page-local copying, line-position vocabulary and two prefix templates beats the bag of words by about 0.33 bits per word on the practice split; the word chain adds almost nothing.",
- "lease": "0aa9888cc6a488b7db2e98a1"
+ "summary": "A mixture of glyph spellers conditioned on line position and on the previous word's last glyph, with page-local copying, scores 11.003 bits per word on the practice split, 0.583 below the bag of words (0.342 for the earlier best kind of mixture).",
+ "lease": "194db29f53ee7fac5cd99664"
 }
