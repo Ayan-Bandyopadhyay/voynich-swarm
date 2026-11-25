@@ -1,7 +1,7 @@
 {
-  "step": "M-G",
-  "handle": "fleet-opus",
-  "kind": "model",
-  "summary": "A mixture of vocabulary, habit chain, near-copying, templates, line position and a glyph-trigram speller predicts held-out words better than a bag of words.",
-  "lease": "1fdc7b618f7489de39aedc12"
+ "step": "M-G",
+ "handle": "fleet-opus",
+ "kind": "step",
+ "summary": "On public pages labels share no more words, near-words or opening glyphs with their own page's paragraph text than with other pages of the same section (p 0.37 to 0.44), so the invented-language prediction that labels share roots with the text about their object already fails.",
+ "lease": "a1ab279a120b78c8824998d5"
 }
