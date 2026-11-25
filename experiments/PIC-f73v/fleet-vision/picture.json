@@ -1,0 +1,136 @@
+{
+ "folio": "f73v",
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006207",
+ "blind": true,
+ "statement": "Circular diagram, drawn in faint ink. Centre: a standing figure facing left in a blue knee-length tunic and hose, with a broad-brimmed hat, holding a crossbow pointed down and to the left, on a small dark tufted patch of ground. Around it an inner ring of about 10 and an outer ring of about 16 nude women, drawn radially with feet toward the centre, each tied to an eight-pointed ochre star; above the outer ring at the top stand 4 more nude women with stars, outside the circular text. Upper left, just above the outer ring, a dark blot and two open C-shaped strokes; two green patches in the lower left look like stains or offset. The transcription has 4 label lines before the first circular line (f73v.1-4), then blocks of 16 (6-21) and 10 (23-32), matching the 4 top figures, the outer ring and the inner ring. Limits of this annotation: the ring figures are faint and overlap, and in the time I had I did not resolve them one by one, so each ring is recorded as one group with its approximate count and label block; the 4 top figures are recorded individually, left to right. No label is attached to a single figure, because which line goes with which figure cannot be fixed from line ids without reading the words.",
+ "objects": [
+  {
+   "id": "t1",
+   "kind": "human_figure",
+   "features": {
+    "ring": "above outer ring",
+    "position": "1",
+    "posture": "upright",
+    "clothing": "nude",
+    "container": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f73v.1-4",
+    "note": "faint, mostly unpainted outline at the far left"
+   },
+   "label": null
+  },
+  {
+   "id": "t2",
+   "kind": "human_figure",
+   "features": {
+    "ring": "above outer ring",
+    "position": "2",
+    "posture": "upright",
+    "clothing": "nude",
+    "container": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f73v.1-4",
+    "note": "star raised at upper left"
+   },
+   "label": null
+  },
+  {
+   "id": "t3",
+   "kind": "human_figure",
+   "features": {
+    "ring": "above outer ring",
+    "position": "3",
+    "posture": "upright",
+    "clothing": "nude",
+    "container": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f73v.1-4",
+    "note": "long hair; star at upper right"
+   },
+   "label": null
+  },
+  {
+   "id": "t4",
+   "kind": "human_figure",
+   "features": {
+    "ring": "above outer ring",
+    "position": "4",
+    "posture": "striding",
+    "clothing": "nude",
+    "container": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f73v.1-4",
+    "note": "arm reaching to a star at the right"
+   },
+   "label": null
+  },
+  {
+   "id": "outer_ring_figures",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "count": "about 16 (faint, overlapping outlines; not resolved one by one)",
+    "clothing": "nude",
+    "container": "none",
+    "star": "attached",
+    "posture": "radial, feet toward the centre",
+    "headwear": "one or two with a band or cap of curls",
+    "colour": "uncoloured",
+    "label_group": "f73v.6-21"
+   },
+   "label": null
+  },
+  {
+   "id": "inner_ring_figures",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "count": "about 10 (faint, overlapping outlines; not resolved one by one)",
+    "clothing": "nude",
+    "container": "none",
+    "star": "attached",
+    "posture": "radial, feet toward the centre",
+    "colour": "uncoloured",
+    "label_group": "f73v.23-32"
+   },
+   "label": null
+  },
+  {
+   "id": "centre_figure",
+   "kind": "human_figure",
+   "features": {
+    "ring": "centre",
+    "clothing": "blue knee-length tunic with flared skirt, hose",
+    "headwear": "broad-brimmed hat",
+    "holds": "crossbow, pointed down to the left",
+    "posture": "standing, facing left",
+    "ground": "small dark tufted patch under the feet",
+    "colour": "blue tunic, rest uncoloured",
+    "count": "1"
+   },
+   "label": null
+  },
+  {
+   "id": "marks_top_left",
+   "kind": "other",
+   "features": {
+    "shape": "a dark blot and two open C-shaped strokes just above the outer ring at upper left",
+    "colour": "dark ink"
+   },
+   "label": null
+  },
+  {
+   "id": "green_stains",
+   "kind": "other",
+   "features": {
+    "shape": "two irregular green patches in the lower left of the rings, apparently stains or offset rather than drawing",
+    "colour": "green"
+   },
+   "label": null
+  }
+ ]
+}
