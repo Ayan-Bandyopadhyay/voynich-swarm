@@ -1,0 +1,323 @@
+{
+ "folio": "f67r2",
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006194",
+ "blind": true,
+ "statement": "Annotated from the Beinecke scan alone (the right-hand panel of the '67r' canvas, with two crops). A wheel: an eight-pointed yellow star on a scalloped rosette at the centre with eight short words around it; a ring of twelve small moons, each a face inside a crescent, six red and six yellow, each with a short label; twelve wedge sectors holding short text, seven of them also holding a separate single word; twelve labels in red ink outside the sectors; and a rim band of tick-mark groups. Three lines of text run below the wheel, the middle one in red. Pairing used line ids and unit codes only: the twelve star-unit lines f67r2.52 to f67r2.63 to the moons and the twelve lines f67r2.1 to f67r2.12 to the sectors (as their red outer labels), both clockwise from twelve o'clock, which is an assumption about starting point and direction, so either ring may be rotated. The eight lines f67r2.64 to f67r2.71 are taken to be the words around the central star. The seven label lines that sit among the sector paragraphs (f67r2.15, 22, 28, 31, 34, 37, 47) are taken to be the single words inside sectors and are not tied to a drawn object.",
+ "objects": [
+  {
+   "id": "centre_star",
+   "kind": "star",
+   "features": {
+    "position": "centre",
+    "points": 8,
+    "colour": "yellow",
+    "rays": "long narrow rays with a row of dots along each",
+    "background": "round scalloped rosette with a faint blue green wash behind the star",
+    "extra": "dotted line running from the star to the left",
+    "words_around": 8,
+    "other_label_lines": "f67r2.65 to f67r2.71"
+   },
+   "label": "f67r2.64"
+  },
+  {
+   "id": "moon_1",
+   "kind": "moon",
+   "features": {
+    "position": "ring of moons, about 12 o'clock",
+    "shape": "round face inside a crescent",
+    "colour": "red",
+    "face": true
+   },
+   "label": "f67r2.52"
+  },
+  {
+   "id": "moon_2",
+   "kind": "moon",
+   "features": {
+    "position": "ring of moons, about 1 o'clock",
+    "shape": "round face inside a crescent",
+    "colour": "yellow",
+    "face": true
+   },
+   "label": "f67r2.53"
+  },
+  {
+   "id": "moon_3",
+   "kind": "moon",
+   "features": {
+    "position": "ring of moons, about 2 o'clock",
+    "shape": "round face inside a crescent",
+    "colour": "red",
+    "face": true
+   },
+   "label": "f67r2.54"
+  },
+  {
+   "id": "moon_4",
+   "kind": "moon",
+   "features": {
+    "position": "ring of moons, about 3 o'clock",
+    "shape": "round face inside a crescent",
+    "colour": "yellow",
+    "face": true
+   },
+   "label": "f67r2.55"
+  },
+  {
+   "id": "moon_5",
+   "kind": "moon",
+   "features": {
+    "position": "ring of moons, about 4 o'clock",
+    "shape": "round face inside a crescent",
+    "colour": "yellow",
+    "face": true
+   },
+   "label": "f67r2.56"
+  },
+  {
+   "id": "moon_6",
+   "kind": "moon",
+   "features": {
+    "position": "ring of moons, about 5 o'clock",
+    "shape": "round face inside a crescent",
+    "colour": "red",
+    "face": true
+   },
+   "label": "f67r2.57"
+  },
+  {
+   "id": "moon_7",
+   "kind": "moon",
+   "features": {
+    "position": "ring of moons, about 6 o'clock",
+    "shape": "round face inside a crescent",
+    "colour": "red",
+    "face": true
+   },
+   "label": "f67r2.58"
+  },
+  {
+   "id": "moon_8",
+   "kind": "moon",
+   "features": {
+    "position": "ring of moons, about 7 o'clock",
+    "shape": "round face inside a crescent",
+    "colour": "yellow",
+    "face": true
+   },
+   "label": "f67r2.59"
+  },
+  {
+   "id": "moon_9",
+   "kind": "moon",
+   "features": {
+    "position": "ring of moons, about 8 o'clock",
+    "shape": "round face inside a crescent",
+    "colour": "red",
+    "face": true
+   },
+   "label": "f67r2.60"
+  },
+  {
+   "id": "moon_10",
+   "kind": "moon",
+   "features": {
+    "position": "ring of moons, about 9 o'clock",
+    "shape": "round face inside a crescent",
+    "colour": "yellow",
+    "face": true
+   },
+   "label": "f67r2.61"
+  },
+  {
+   "id": "moon_11",
+   "kind": "moon",
+   "features": {
+    "position": "ring of moons, about 10 o'clock",
+    "shape": "round face inside a crescent",
+    "colour": "red",
+    "face": true
+   },
+   "label": "f67r2.62"
+  },
+  {
+   "id": "moon_12",
+   "kind": "moon",
+   "features": {
+    "position": "ring of moons, about 11 o'clock",
+    "shape": "round face inside a crescent",
+    "colour": "yellow",
+    "face": true
+   },
+   "label": "f67r2.63"
+  },
+  {
+   "id": "sector_1",
+   "kind": "diagram",
+   "features": {
+    "position": "sector at about 12 o'clock",
+    "shape": "wedge between two radial lines",
+    "contents": "two to four short lines of text",
+    "colour": "uncoloured",
+    "outer_label_colour": "red"
+   },
+   "label": "f67r2.1"
+  },
+  {
+   "id": "sector_2",
+   "kind": "diagram",
+   "features": {
+    "position": "sector at about 1 o'clock",
+    "shape": "wedge between two radial lines",
+    "contents": "two to four short lines of text",
+    "colour": "uncoloured",
+    "outer_label_colour": "red"
+   },
+   "label": "f67r2.2"
+  },
+  {
+   "id": "sector_3",
+   "kind": "diagram",
+   "features": {
+    "position": "sector at about 2 o'clock",
+    "shape": "wedge between two radial lines",
+    "contents": "two to four short lines of text",
+    "colour": "uncoloured",
+    "outer_label_colour": "red"
+   },
+   "label": "f67r2.3"
+  },
+  {
+   "id": "sector_4",
+   "kind": "diagram",
+   "features": {
+    "position": "sector at about 3 o'clock",
+    "shape": "wedge between two radial lines",
+    "contents": "two to four short lines of text",
+    "colour": "uncoloured",
+    "outer_label_colour": "red"
+   },
+   "label": "f67r2.4"
+  },
+  {
+   "id": "sector_5",
+   "kind": "diagram",
+   "features": {
+    "position": "sector at about 4 o'clock",
+    "shape": "wedge between two radial lines",
+    "contents": "two to four short lines of text",
+    "colour": "uncoloured",
+    "outer_label_colour": "red"
+   },
+   "label": "f67r2.5"
+  },
+  {
+   "id": "sector_6",
+   "kind": "diagram",
+   "features": {
+    "position": "sector at about 5 o'clock",
+    "shape": "wedge between two radial lines",
+    "contents": "two to four short lines of text",
+    "colour": "uncoloured",
+    "outer_label_colour": "red"
+   },
+   "label": "f67r2.6"
+  },
+  {
+   "id": "sector_7",
+   "kind": "diagram",
+   "features": {
+    "position": "sector at about 6 o'clock",
+    "shape": "wedge between two radial lines",
+    "contents": "two to four short lines of text",
+    "colour": "uncoloured",
+    "outer_label_colour": "red"
+   },
+   "label": "f67r2.7"
+  },
+  {
+   "id": "sector_8",
+   "kind": "diagram",
+   "features": {
+    "position": "sector at about 7 o'clock",
+    "shape": "wedge between two radial lines",
+    "contents": "two to four short lines of text",
+    "colour": "uncoloured",
+    "outer_label_colour": "red"
+   },
+   "label": "f67r2.8"
+  },
+  {
+   "id": "sector_9",
+   "kind": "diagram",
+   "features": {
+    "position": "sector at about 8 o'clock",
+    "shape": "wedge between two radial lines",
+    "contents": "two to four short lines of text",
+    "colour": "uncoloured",
+    "outer_label_colour": "red"
+   },
+   "label": "f67r2.9"
+  },
+  {
+   "id": "sector_10",
+   "kind": "diagram",
+   "features": {
+    "position": "sector at about 9 o'clock",
+    "shape": "wedge between two radial lines",
+    "contents": "two to four short lines of text",
+    "colour": "uncoloured",
+    "outer_label_colour": "red"
+   },
+   "label": "f67r2.10"
+  },
+  {
+   "id": "sector_11",
+   "kind": "diagram",
+   "features": {
+    "position": "sector at about 10 o'clock",
+    "shape": "wedge between two radial lines",
+    "contents": "two to four short lines of text",
+    "colour": "uncoloured",
+    "outer_label_colour": "red"
+   },
+   "label": "f67r2.11"
+  },
+  {
+   "id": "sector_12",
+   "kind": "diagram",
+   "features": {
+    "position": "sector at about 11 o'clock",
+    "shape": "wedge between two radial lines",
+    "contents": "two to four short lines of text",
+    "colour": "uncoloured",
+    "outer_label_colour": "red"
+   },
+   "label": "f67r2.12"
+  },
+  {
+   "id": "rim",
+   "kind": "diagram",
+   "features": {
+    "position": "outermost ring",
+    "shape": "circular band divided into groups of short tick marks",
+    "colour": "yellow wash in places"
+   },
+   "label": null
+  },
+  {
+   "id": "wheel",
+   "kind": "diagram",
+   "features": {
+    "shape": "concentric circles",
+    "count_sectors": 12,
+    "count_moons": 12,
+    "count_red_moons": 6,
+    "count_yellow_moons": 6,
+    "count_outer_labels": 12,
+    "outer_label_colour": "red"
+   },
+   "label": null
+  }
+ ]
+}
