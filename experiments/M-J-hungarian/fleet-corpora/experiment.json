@@ -1,0 +1,6 @@
+{
+  "step": "M-J-hungarian",
+  "handle": "fleet-corpora",
+  "kind": "corpus",
+  "summary": "Add Hungarian to the grid from Károli Bible (Public Domain, 3,679,257 characters after normalization; 16th century (Károli 1590) in the 1908 spelling revision)."
+}
