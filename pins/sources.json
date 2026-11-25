@@ -732,6 +732,19 @@
       "license": "public-domain",
       "encoding": "utf-8",
       "added_by": "fleet-corpora"
+    },
+    {
+      "id": "coptic_e83a0317",
+      "lang": "coptic",
+      "period": "Sahidic Coptic (translation of the 3rd-4th century, in medieval manuscript tradition)",
+      "title": "Sahidic Coptic Bible (CrossWire module CopSahBible2), one verse per line",
+      "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/CopSahBible2.txt",
+      "file": "data/raw/agent_coptic_e83a0317.txt",
+      "bytes": 6552097,
+      "sha256": "e83a0317d5f607ba7aad6b5cd048001acd0afc922c73a4e2c68dde656f91741c",
+      "license": "cc-by-sa",
+      "encoding": "utf-8",
+      "added_by": "fleet-corpora"
     }
   ],
   "missing_corpora": {
