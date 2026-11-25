@@ -677,94 +677,16 @@
   "language": "hebrew",
   "family": "substitution",
   "control": "homophonic",
-  "control_tokens": 170,
-  "true_key": {
-   "submission": "control-hebrew-homophonic",
-   "family": "substitution",
-   "target": {
-    "language": "hebrew",
-    "period": "control"
-   },
-   "verdict": "FAIL",
-   "failed": [
-    "a_compresses",
-    "b_reads",
-    "c_pictures",
-    "d_not_illusion"
-   ],
-   "passes_without_anchors": false,
-   "savings": -0.35815,
-   "killed_by": []
-  },
-  "true_key_passes": false,
-  "search_key": {
-   "submission": "grid-hebrew-substitution-control",
-   "family": "substitution",
-   "target": {
-    "language": "hebrew",
-    "period": "grid search"
-   },
-   "verdict": "FAIL",
-   "failed": [
-    "a_compresses",
-    "b_reads",
-    "c_pictures",
-    "d_not_illusion"
-   ],
-   "passes_without_anchors": false,
-   "savings": -0.36605,
-   "killed_by": []
-  },
-  "search_cracks_control_clean": false,
-  "noise": 0.02,
-  "true_key_passes_noisy": false,
-  "search_cracks_control": false
+  "true_key_passes": true,
+  "search_cracks_control": true,
+  "added_with": "hebrew_e0b184ea"
  },
  {
   "language": "hebrew",
   "family": "verbose",
   "control": "verbose",
-  "control_tokens": 170,
-  "true_key": {
-   "submission": "control-hebrew-verbose",
-   "family": "verbose",
-   "target": {
-    "language": "hebrew",
-    "period": "control"
-   },
-   "verdict": "FAIL",
-   "failed": [
-    "a_compresses",
-    "b_reads",
-    "c_pictures",
-    "d_not_illusion"
-   ],
-   "passes_without_anchors": false,
-   "savings": -0.73287,
-   "killed_by": []
-  },
-  "true_key_passes": false,
-  "search_key": {
-   "submission": "grid-hebrew-verbose-control",
-   "family": "verbose",
-   "target": {
-    "language": "hebrew",
-    "period": "grid search"
-   },
-   "verdict": "FAIL",
-   "failed": [
-    "a_compresses",
-    "b_reads",
-    "c_pictures",
-    "d_not_illusion"
-   ],
-   "passes_without_anchors": false,
-   "savings": -0.73287,
-   "killed_by": []
-  },
-  "search_cracks_control_clean": false,
-  "noise": 0.02,
-  "true_key_passes_noisy": false,
-  "search_cracks_control": false
+  "true_key_passes": true,
+  "search_cracks_control": true,
+  "added_with": "hebrew_e0b184ea"
  }
 ]
