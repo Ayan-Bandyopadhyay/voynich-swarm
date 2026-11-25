@@ -2,6 +2,6 @@
  "step": "M-L2",
  "handle": "fleet-fable",
  "kind": "fact",
- "summary": "Registers that words recur within their own page more than when dealt across pages (0.311 against 0.223 on the practice split), a page-level pattern that one-table generators such as R-008 do not reproduce and a drifting-table chain does.",
- "lease": "79b496ccc72b9523725c4d49"
+ "summary": "Registers that a line's words recur from the line directly above more than from four lines up (excess 0.011 on the practice split, p = 0.015 against within-page shuffles), a short-range pattern both line-chain generators fail and that reference languages show more strongly.",
+ "lease": "57ce2a41aa6e6e0578cc32de"
 }
