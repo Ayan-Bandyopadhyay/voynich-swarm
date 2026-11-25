@@ -877,5 +877,21 @@
   "true_key_passes": true,
   "search_cracks_control": true,
   "added_with": "croatian_47b76faa"
+ },
+ {
+  "language": "gothic",
+  "family": "substitution",
+  "control": "homophonic",
+  "true_key_passes": true,
+  "search_cracks_control": true,
+  "added_with": "gothic_ddac438d"
+ },
+ {
+  "language": "gothic",
+  "family": "verbose",
+  "control": "verbose",
+  "true_key_passes": false,
+  "search_cracks_control": false,
+  "added_with": "gothic_ddac438d"
  }
 ]

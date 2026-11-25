@@ -628,6 +628,19 @@
       "license": "public-domain",
       "encoding": "utf-8",
       "added_by": "fleet-corpora"
+    },
+    {
+      "id": "gothic_ddac438d",
+      "lang": "gothic",
+      "period": "4th century (Wulfila's translation; surviving in 6th-century manuscripts), Gothic",
+      "title": "Gothic Bible of Bishop Wulfila (surviving New Testament fragments), Gothic script, one verse per line",
+      "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/Wulfila.txt",
+      "file": "data/raw/agent_gothic_ddac438d.txt",
+      "bytes": 1701636,
+      "sha256": "ddac438d7ed6d26032a7c138cde7fb8add8e8c77e7bc4359c2478672d815aeca",
+      "license": "public-domain",
+      "encoding": "utf-8",
+      "added_by": "fleet-corpora"
     }
   ],
   "missing_corpora": {
