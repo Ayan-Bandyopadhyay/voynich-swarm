@@ -1,0 +1,8 @@
+{
+  "title": "Audit note on testing Bax's provisional sign-sound table",
+  "statement": "Stephen Bax's January 2014 paper proposes ten identifications based on a constellation and seven plants. Appendix 1, Figures 36–37, gives approximate sound values for fourteen signs and clusters. For example EVA d has four candidate sounds, while r can take a vowel, and the paper discusses supplying some vowels in plant names. Its discussion of possible language families leaves the target language open. The appendix therefore supports a finite set of local hypotheses, while a whole-text claim key would require choices about sound alternatives, omitted vowels, unlisted signs and the target language. The PDF is available at https://projectavalon.net/lib/Stephen%20Bax%20-%20A%20proposed%20partial%20decoding%20of%20the%20Voynich%20script.pdf and the author's page is https://stephenbax.net/?page_id=11.",
+  "program": "R",
+  "check": "Freeze the appendix's alternatives and distinguish the manuscript examples used to infer them from independent items. Given new independently confirmed name anchors, score whether a fixed rule predicts their candidate names more often than frequency- and length-matched decoys. Report mapping coverage and ambiguity. A whole-text claim attack requires a version with a fixed rule and a named target.",
+  "on_path": false,
+  "hard": true
+}
