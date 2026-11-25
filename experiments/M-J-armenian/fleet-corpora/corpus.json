@@ -1,0 +1,10 @@
+{
+  "language": "armenian",
+  "title": "Eastern Armenian Bible (Genesis, Exodus and the four Gospels; other books empty in this export), one verse per line",
+  "period": "modern Eastern Armenian; a distant proxy for Middle Armenian",
+  "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/ArmEastern.txt",
+  "sha256": "b964a7c35d591d6b537a969b08e478213b73422922413755c4d544e5770ecbc8",
+  "license": "public-domain",
+  "encoding": "utf-8",
+  "notes": "License stated as 'Public Domain' in the source README at https://github.com/scrollmapper/bible_databases/blob/59b18c5af5845728c275d5b7178ad0d024172b1f/sources/hy/ArmEastern/README.md (scrollmapper/bible_databases, files from the CrossWire SWORD module ArmEastern). The url pins a fixed commit, so the bytes do not change. 1,541,060 bytes; one verse per line as '[c:v] text' with '### Book' headings in English (66 short headings, negligible). vs/refcorpus.normalize(..., 'armenian') gives 682,723 characters. Only Genesis, Exodus, Matthew, Mark, Luke and John carry text (6,478 verses); the other books are empty verse markers, which normalization drops."
+}
