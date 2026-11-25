@@ -1,0 +1,22 @@
+{
+  "title": "Voynich-Hebräisch: Der Weg zur Entzifferung",
+  "authors": "Rainer Hannig",
+  "year": 2020,
+  "url": "https://www.rainer-hannig.com/app/download/15835537224/Voynich_Hebr%C3%A4isch_von_Rainer+Hannig_7_6_20.pdf?t=1702590245",
+  "venue": "Self-published online article (PDF, in German, dated 5 June 2020, posted 7 June 2020) linked from the author's page https://www.rainer-hannig.com/voynich/",
+  "proposes_language": "Hebrew (medieval / rabbinic Hebrew, with some Arabic and Yiddish words)",
+  "summary": "Hannig, an Egyptologist, argues that the manuscript's language is a form of medieval (rabbinic) Hebrew written in a vocalised alphabet of its own, and lays out step by step how he assigned Hebrew consonant and vowel values to the glyphs (vowels first from their positions, then word structure, short words, final letters and gallows signs), checking word meanings against Klein's etymological dictionary of Hebrew (1987). The article gives a working transcription table, lists glyphs he had not yet deciphered, and offers sample word readings; it is not a complete key with a full translation.",
+  "established": [
+    "The article maps EVA glyphs to Hebrew letters and vowels in a transcription table of its own; some glyphs are left explicitly undeciphered in the 2020 version.",
+    "Word readings are supported by dictionary look-ups (Klein 1987) shown as images, not by a statistical or held-out test.",
+    "The proposed plaintext is Hebrew with Arabic and rabbinic-Hebrew elements (sections 'Arabisch' and 'Rabbinisches Hebräisch' of the article)."
+  ],
+  "open": [
+    {
+      "question": "Does Hannig's 2020 glyph-to-Hebrew table, frozen as a substitution key (undeciphered glyphs left unmapped), read the hidden pages better than its decoys against the pinned Hebrew corpora? Openly licensed Hebrew is already pinned (Westminster Leningrad Codex, C-001, and a 16th-century translation), and substitution has measured power in Hebrew.",
+      "front": "L3",
+      "check": "Transcribe the table from the PDF into key.json (family substitution, target hebrew) and score it with the usual decoys.",
+      "hard": false
+    }
+  ]
+}
