@@ -1,0 +1,649 @@
+{
+ "folio": "f70v2",
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006200",
+ "blind": true,
+ "statement": "Annotated from the Beinecke scan alone (the '70v (part)' canvas that shows two fish, and four quadrant crops of it). A wheel: two fish at the centre with a word in another script between them and two stars; a band of small strokes; an inner ring of ten nude female figures in green-tinted tubs lying along the ring; an outer ring of nineteen nude female figures in upright patterned tubs, six of them with a blue cap or headband, all on the right-hand side. Every figure holds a star on a line and has a short label beside it. The label groups in the transcription have 19, 10 and 1 lines, which matches the outer ring, the inner ring and the labelled star at the centre. Within each ring I paired labels to figures clockwise starting from the figure nearest twelve o'clock; that starting point and direction are an assumption made from the line ids alone, not checked against the words, so the within-ring pairing may be rotated.",
+ "objects": [
+  {
+   "id": "centre_fish",
+   "kind": "zodiac_figure",
+   "features": {
+    "position": "centre",
+    "count": 2,
+    "animal": "fish",
+    "arrangement": "one above the other, heads pointing opposite ways, joined by a line from mouth to mouth",
+    "surface": "scales",
+    "colour": "uncoloured with blue touches",
+    "ground": "blue curved line under the lower fish",
+    "inscription": "one word in a different script between the two fish"
+   },
+   "label": null
+  },
+  {
+   "id": "centre_star_upper",
+   "kind": "star",
+   "features": {
+    "position": "centre, upper left of the fish",
+    "points": 8,
+    "colour": "yellow centre",
+    "tether": "line running down to the upper fish",
+    "labelled": true
+   },
+   "label": "f70v2.33"
+  },
+  {
+   "id": "centre_star_lower",
+   "kind": "star",
+   "features": {
+    "position": "centre, below the fish",
+    "points": 8,
+    "colour": "yellow centre",
+    "labelled": false
+   },
+   "label": null
+  },
+  {
+   "id": "outer_figure_1",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, about 12 o'clock",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "upper body rising from an upright tub",
+    "container": "tub",
+    "container_pattern": "vertical hatching",
+    "container_colour": "uncoloured",
+    "headdress": "none",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "cheeks": "red"
+   },
+   "label": "f70v2.2"
+  },
+  {
+   "id": "outer_figure_2",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, about 1 o'clock",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "upper body rising from an upright tub",
+    "container": "tub",
+    "container_pattern": "plain with faint dashes",
+    "container_colour": "uncoloured",
+    "headdress": "blue",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "cheeks": "red"
+   },
+   "label": "f70v2.3"
+  },
+  {
+   "id": "outer_figure_3",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, about 1:30 o'clock",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "upper body rising from an upright tub",
+    "container": "tub",
+    "container_pattern": "dots",
+    "container_colour": "uncoloured",
+    "headdress": "none",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "cheeks": "red"
+   },
+   "label": "f70v2.4"
+  },
+  {
+   "id": "outer_figure_4",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, about 2 o'clock",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "upper body rising from an upright tub",
+    "container": "tub",
+    "container_pattern": "wavy lines",
+    "container_colour": "uncoloured",
+    "headdress": "blue",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "cheeks": "red"
+   },
+   "label": "f70v2.5"
+  },
+  {
+   "id": "outer_figure_5",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, about 3 o'clock",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "upper body rising from an upright tub",
+    "container": "tub",
+    "container_pattern": "horizontal dashes",
+    "container_colour": "uncoloured",
+    "headdress": "blue",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "cheeks": "red"
+   },
+   "label": "f70v2.6"
+  },
+  {
+   "id": "outer_figure_6",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, about 3:30 o'clock",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "upper body rising from an upright tub",
+    "container": "tub",
+    "container_pattern": "zigzag bands",
+    "container_colour": "uncoloured",
+    "headdress": "blue",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "cheeks": "red"
+   },
+   "label": "f70v2.7"
+  },
+  {
+   "id": "outer_figure_7",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, about 4 o'clock",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "upper body rising from an upright tub",
+    "container": "tub",
+    "container_pattern": "vertical bands with dots",
+    "container_colour": "uncoloured",
+    "headdress": "blue",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "cheeks": "red"
+   },
+   "label": "f70v2.8"
+  },
+  {
+   "id": "outer_figure_8",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, about 4:30 o'clock",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "upper body rising from an upright tub",
+    "container": "tub",
+    "container_pattern": "circles",
+    "container_colour": "uncoloured",
+    "headdress": "blue",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "cheeks": "red"
+   },
+   "label": "f70v2.9"
+  },
+  {
+   "id": "outer_figure_9",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, about 5 o'clock",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "upper body rising from an upright tub",
+    "container": "tub",
+    "container_pattern": "triangles and stripes",
+    "container_colour": "uncoloured",
+    "headdress": "none",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "cheeks": "red"
+   },
+   "label": "f70v2.10"
+  },
+  {
+   "id": "outer_figure_10",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, about 5:30 o'clock",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "upper body rising from an upright tub",
+    "container": "tub",
+    "container_pattern": "circles",
+    "container_colour": "uncoloured",
+    "headdress": "none",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "cheeks": "red"
+   },
+   "label": "f70v2.11"
+  },
+  {
+   "id": "outer_figure_11",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, about 6:30 o'clock",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "upper body rising from an upright tub",
+    "container": "tub",
+    "container_pattern": "dashes",
+    "container_colour": "uncoloured",
+    "headdress": "none",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "cheeks": "red"
+   },
+   "label": "f70v2.12"
+  },
+  {
+   "id": "outer_figure_12",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, about 7 o'clock",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "upper body rising from an upright tub",
+    "container": "tub",
+    "container_pattern": "grid hatching",
+    "container_colour": "uncoloured",
+    "headdress": "none",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "cheeks": "red"
+   },
+   "label": "f70v2.13"
+  },
+  {
+   "id": "outer_figure_13",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, about 8 o'clock",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "upper body rising from an upright tub",
+    "container": "tub",
+    "container_pattern": "row of scallops over dashes",
+    "container_colour": "uncoloured",
+    "headdress": "none",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "cheeks": "red"
+   },
+   "label": "f70v2.14"
+  },
+  {
+   "id": "outer_figure_14",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, about 8:30 o'clock",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "upper body rising from an upright tub",
+    "container": "tub",
+    "container_pattern": "brick grid",
+    "container_colour": "uncoloured",
+    "headdress": "none",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "cheeks": "red"
+   },
+   "label": "f70v2.15"
+  },
+  {
+   "id": "outer_figure_15",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, about 9:30 o'clock",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "upper body rising from an upright tub",
+    "container": "tub",
+    "container_pattern": "vertical dashes under a wavy rim",
+    "container_colour": "uncoloured",
+    "headdress": "none",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "cheeks": "red"
+   },
+   "label": "f70v2.16"
+  },
+  {
+   "id": "outer_figure_16",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, about 10 o'clock",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "upper body rising from an upright tub",
+    "container": "tub",
+    "container_pattern": "horizontal bands",
+    "container_colour": "uncoloured",
+    "headdress": "none",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "cheeks": "red"
+   },
+   "label": "f70v2.17"
+  },
+  {
+   "id": "outer_figure_17",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, about 10:30 o'clock",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "upper body rising from an upright tub",
+    "container": "tub",
+    "container_pattern": "scales",
+    "container_colour": "uncoloured",
+    "headdress": "none",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "cheeks": "red"
+   },
+   "label": "f70v2.18"
+  },
+  {
+   "id": "outer_figure_18",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, about 11 o'clock",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "upper body rising from an upright tub",
+    "container": "tub",
+    "container_pattern": "dots",
+    "container_colour": "uncoloured",
+    "headdress": "none",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "cheeks": "red"
+   },
+   "label": "f70v2.19"
+  },
+  {
+   "id": "outer_figure_19",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, about 11:30 o'clock",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "upper body rising from an upright tub",
+    "container": "tub",
+    "container_pattern": "vertical hatching",
+    "container_colour": "uncoloured",
+    "headdress": "none",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "cheeks": "red"
+   },
+   "label": "f70v2.20"
+  },
+  {
+   "id": "inner_figure_1",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "position": "inner ring, about 12:30 o'clock",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "upper body rising from a tub that lies along the ring",
+    "container": "tub",
+    "container_pattern": "dots or dashes",
+    "container_colour": "green",
+    "headdress": "none",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "cheeks": "red"
+   },
+   "label": "f70v2.22"
+  },
+  {
+   "id": "inner_figure_2",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "position": "inner ring, about 2 o'clock",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "upper body rising from a tub that lies along the ring",
+    "container": "tub",
+    "container_pattern": "dots or dashes",
+    "container_colour": "green",
+    "headdress": "none",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "cheeks": "red"
+   },
+   "label": "f70v2.23"
+  },
+  {
+   "id": "inner_figure_3",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "position": "inner ring, about 3 o'clock",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "upper body rising from a tub that lies along the ring",
+    "container": "tub",
+    "container_pattern": "dots or dashes",
+    "container_colour": "green",
+    "headdress": "none",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "cheeks": "red"
+   },
+   "label": "f70v2.24"
+  },
+  {
+   "id": "inner_figure_4",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "position": "inner ring, about 4 o'clock",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "upper body rising from a tub that lies along the ring",
+    "container": "tub",
+    "container_pattern": "dots or dashes",
+    "container_colour": "green",
+    "headdress": "none",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "cheeks": "red"
+   },
+   "label": "f70v2.25"
+  },
+  {
+   "id": "inner_figure_5",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "position": "inner ring, about 5 o'clock",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "upper body rising from a tub that lies along the ring",
+    "container": "tub",
+    "container_pattern": "dots or dashes",
+    "container_colour": "green",
+    "headdress": "none",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "cheeks": "red"
+   },
+   "label": "f70v2.26"
+  },
+  {
+   "id": "inner_figure_6",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "position": "inner ring, about 6 o'clock",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "upper body rising from a tub that lies along the ring",
+    "container": "tub",
+    "container_pattern": "dots or dashes",
+    "container_colour": "green",
+    "headdress": "none",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "cheeks": "red"
+   },
+   "label": "f70v2.27"
+  },
+  {
+   "id": "inner_figure_7",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "position": "inner ring, about 7:30 o'clock",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "upper body rising from a tub that lies along the ring",
+    "container": "tub",
+    "container_pattern": "dots or dashes",
+    "container_colour": "green",
+    "headdress": "none",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "cheeks": "red"
+   },
+   "label": "f70v2.28"
+  },
+  {
+   "id": "inner_figure_8",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "position": "inner ring, about 9 o'clock",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "upper body rising from a tub that lies along the ring",
+    "container": "tub",
+    "container_pattern": "dots or dashes",
+    "container_colour": "green",
+    "headdress": "none",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "cheeks": "red"
+   },
+   "label": "f70v2.29"
+  },
+  {
+   "id": "inner_figure_9",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "position": "inner ring, about 10 o'clock",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "upper body rising from a tub that lies along the ring",
+    "container": "tub",
+    "container_pattern": "dots or dashes",
+    "container_colour": "green",
+    "headdress": "none",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "cheeks": "red"
+   },
+   "label": "f70v2.30"
+  },
+  {
+   "id": "inner_figure_10",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "position": "inner ring, about 11 o'clock",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "upper body rising from a tub that lies along the ring",
+    "container": "tub",
+    "container_pattern": "dots or dashes",
+    "container_colour": "green",
+    "headdress": "none",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "cheeks": "red"
+   },
+   "label": "f70v2.31"
+  },
+  {
+   "id": "band",
+   "kind": "diagram",
+   "features": {
+    "position": "between the inner ring of figures and the centre",
+    "shape": "circular band filled with small upright strokes and blocks",
+    "colour": "uncoloured"
+   },
+   "label": null
+  },
+  {
+   "id": "wheel",
+   "kind": "diagram",
+   "features": {
+    "shape": "concentric circles",
+    "count_text_rings": 3,
+    "count_figure_rings": 2,
+    "count_outer_figures": 19,
+    "count_inner_figures": 10,
+    "count_stars": 31
+   },
+   "label": null
+  }
+ ]
+}
