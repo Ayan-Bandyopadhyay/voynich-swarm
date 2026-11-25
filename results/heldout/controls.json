@@ -82,6 +82,665 @@
   "search_cracks_control": true
  },
  {
+  "language": "ancient_greek",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 7760,
+  "true_key": {
+   "submission": "control-ancient_greek-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "ancient_greek",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.02511,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-ancient_greek-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "ancient_greek",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.06033,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "croatian",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 9200,
+  "true_key": {
+   "submission": "control-croatian-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "croatian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06757,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-croatian-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "croatian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06757,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "czech",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 8560,
+  "true_key": {
+   "submission": "control-czech-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "czech",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04072,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-czech-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "czech",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04102,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "finnish",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 9280,
+  "true_key": {
+   "submission": "control-finnish-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "finnish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05784,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-finnish-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "finnish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05784,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "frisian",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 4880,
+  "true_key": {
+   "submission": "control-frisian-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "frisian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04805,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-frisian-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "frisian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04805,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "greek",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 10096,
+  "true_key": {
+   "submission": "control-greek-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "greek",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.03044,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-greek-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "greek",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.03044,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "hungarian",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 8560,
+  "true_key": {
+   "submission": "control-hungarian-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "hungarian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06467,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-hungarian-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "hungarian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06467,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "latvian",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 8960,
+  "true_key": {
+   "submission": "control-latvian-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "latvian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05944,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-latvian-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "latvian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05944,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "lithuanian",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 1680,
+  "true_key": {
+   "submission": "control-lithuanian-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "lithuanian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08942,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-lithuanian-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "lithuanian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08942,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "norwegian",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 10268,
+  "true_key": {
+   "submission": "control-norwegian-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "norwegian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04375,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-norwegian-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "norwegian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04375,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "polish",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 8560,
+  "true_key": {
+   "submission": "control-polish-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "polish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04957,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-polish-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "polish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04957,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "portuguese",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 10080,
+  "true_key": {
+   "submission": "control-portuguese-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "portuguese",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05139,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-portuguese-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "portuguese",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.03259,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
+ },
+ {
+  "language": "sanskrit",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 1520,
+  "true_key": {
+   "submission": "control-sanskrit-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "sanskrit",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05584,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-sanskrit-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "sanskrit",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05584,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "slovene",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 2511,
+  "true_key": {
+   "submission": "control-slovene-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "slovene",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08576,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-slovene-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "slovene",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08576,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "swedish",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 7040,
+  "true_key": {
+   "submission": "control-swedish-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "swedish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05753,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-swedish-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "swedish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05354,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "syriac",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 1596,
+  "true_key": {
+   "submission": "control-syriac-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "syriac",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.03193,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-syriac-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "syriac",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.03193,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
   "language": "italian",
   "family": "substitution",
   "control": "homophonic",
