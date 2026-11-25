@@ -33,6 +33,11 @@ statistics:
   {"hapax_share": true} | {"zipf_slope": ranks} | {"mean_length": true}
   {"near_copy": {"window": k, "min_length": L}}            share of words of length >= L within edit distance exactly 1
                                                            of one of the previous k (1..50) on the page
+  {"page_similarity": {"within": d, "min_words": m}}       median cosine of word-count vectors of two pages at most d pages
+                                                           apart in manuscript order (d 1..50), minus the median for pages
+                                                           farther apart; pages with fewer than m (default 40) selected words
+                                                           are left out. Distance is counted in the manuscript's page order,
+                                                           so it stays meaningful on a sample of pages
   {"page_reuse": {"min_length": L}}                        share of words of length >= L already written earlier on the page
   {"context_mi": {"feature": F, "by": B}}                  MI between the feature and where the word stands; B is
                                                            page | section | unit | line_position (initial/mid/final).
@@ -133,7 +138,8 @@ def tokens(pages, scope=None):
             n = len(ln.words)
             for k, w in enumerate(ln.words):
                 out.append({"w": w, "page": pi, "section": p.section, "line": (pi, ln.n), "k": k, "n": n,
-                            "language": p.language, "unit": ln.unit, "pfl": pfl, "pinit": pfl and k == 0})
+                            "language": p.language, "unit": ln.unit, "pfl": pfl, "pinit": pfl and k == 0,
+                            "order": p.order})
             first_line = ln.para_end if ln.unit == "P" else first_line
     return out
 
@@ -265,6 +271,24 @@ def _edge_break(toks, draws=10):
     return w - a
 
 
+def _page_similarity(toks, within, min_words):
+    """Median cosine of word counts for pages at most `within` apart in manuscript order, minus farther pairs."""
+    pages = {}
+    for t in toks:
+        pages.setdefault(t["order"], Counter())[t["w"]] += 1
+    vec = sorted((o, c, math.sqrt(sum(v * v for v in c.values()))) for o, c in pages.items()
+                 if sum(c.values()) >= min_words)
+    near, far = [], []
+    for i, (o1, c1, n1) in enumerate(vec):
+        for o2, c2, n2 in vec[i + 1:]:
+            cos = sum(v * c2[w] for w, v in c1.items() if w in c2) / (n1 * n2)
+            (near if o2 - o1 <= within else far).append(cos)
+    if len(near) < MIN_TOKENS or len(far) < MIN_TOKENS:
+        return NAN
+    med = lambda xs: (lambda s: (s[(len(s) - 1) // 2] + s[len(s) // 2]) / 2)(sorted(xs))
+    return med(near) - med(far)
+
+
 def _edit1(a, b):
     if a == b or abs(len(a) - len(b)) > 1:
         return False
@@ -312,6 +336,10 @@ def check_statistic(st):
         _keys(arg, {"window", "min_length"}, name)
         _int(arg.get("window", 10), 1, 50, "near_copy window")
         _int(arg.get("min_length", 6), 1, 40, "near_copy min_length")
+    elif name == "page_similarity":
+        _keys(arg, {"within", "min_words"}, name, ("within",))
+        _int(arg["within"], 1, 50, "page_similarity within")
+        _int(arg.get("min_words", 40), 10, 10_000, "page_similarity min_words")
     elif name == "page_reuse":
         _keys(arg, {"min_length"}, name)
         _int(arg.get("min_length", 1), 1, 40, "page_reuse min_length")
@@ -379,6 +407,8 @@ def statistic(st, toks, all_toks):
         c = Counter(tuple(t["w"] for t in r[i:i + n]) for r in runs_of(toks) for i in range(len(r) - n + 1))
         tot = sum(c.values())
         return sum(v for v in c.values() if v >= 2) / tot if tot >= MIN_TOKENS else NAN
+    if name == "page_similarity":
+        return _page_similarity(toks, int(arg["within"]), int(arg.get("min_words", 40)))
     if name == "line_repeat_excess":
         # Use the same current words for both lags. Require five consecutive
         # selected lines on one page so gaps do not become spurious neighbors.
