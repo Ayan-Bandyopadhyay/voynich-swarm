@@ -1,13 +1,21 @@
 {
-  "title": "What We Know About the Voynich Manuscript",
-  "authors": "Sravana Reddy and Kevin Knight",
-  "year": 2011,
-  "url": "https://aclanthology.org/W11-1511/",
-  "summary": "Reddy and Knight compare the manuscript with natural-language texts using character and word prediction and page-level statistics. Most experiments focus on the Biological and Stars sections of Currier B, with additional comparisons for the full manuscript.",
+  "title": "Topic Modeling in the Voynich Manuscript",
+  "authors": "Rachel Sterneck, Annie Polish and Claire Bowern",
+  "year": 2021,
+  "url": "https://arxiv.org/abs/2107.02858v1",
+  "doi": "10.48550/arXiv.2107.02858",
+  "summary": "The authors fit LDA, LSA and nonnegative matrix factorization to the Takahashi transcription and compare the inferred token clusters with illustrated sections, Currier language and scribal hands. Their strongest associations were qualitative comparisons from the NMF and multiple correspondence analyses.",
   "established": [
-    "In the tenfold word-type test in Table 2, the Currier B bigram letter predictor gets 40.02% correct versus 14.65% from unigrams. The bigram figures are 22.62% for English, 24.78% for Arabic and 38.92% for Pinyin.",
-    "In the whole-word test in Table 4, the Currier B unigram and bigram hit rates are 2.30% and 2.50%. Table 5 reports a 31.8% relative improvement for predicting the first character from the preceding word's last character, compared with 31.1% for English and 26.8% for Arabic in that one-character condition.",
-    "Table 6 compares page entropy with a scrambled document cut to the original page lengths. The normalized difference is 0.033 for Currier B, 0.037 for the Wall Street Journal, 0.069 for English Genesis and 0.025 for their Quran sample. The reference texts use different definitions of a page."
+    "In the full-page analyses, the NMF topics align more closely with hand and illustration groupings than the LDA or LSA topics. The authors report a close association between the astrology grouping, hand 4 and one NMF topic.",
+    "The 20- and 40-word experiments sample words within pages at fixed document lengths. They exclude the predominantly label-based astrological pages and other pages below the stated length cutoff. Some associations persist, and certain links change with the sampling choice.",
+    "The five-topic and two-topic analyses do not produce complete one-to-one correspondences with the five hands or two Currier categories. The authors discuss spelling, encipherment and word choice as possible contributors to what NMF captures."
   ],
-  "open": []
+  "open": [
+    {
+      "question": "How much of the NMF association with scribal hand survives comparison within illustrated sections and at matched lengths and folio distances?",
+      "front": "L2",
+      "check": "Fit an NMF topic space and any topic-to-hand mapping on contiguous public training blocks. Evaluate on separate public blocks using both ZL and Takahashi and compare prediction within shared-section, length- and distance-matched sets. Include a fixed copying-generator comparison on the same layout.",
+      "hard": true
+    }
+  ]
 }
