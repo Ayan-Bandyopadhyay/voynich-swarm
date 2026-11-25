@@ -1,0 +1,22 @@
+{
+ "title": "Little is repeated from the line directly above: the excess over four lines up is at most 0.025",
+ "statement": "In paragraph text, the share of a line's words (of two or more characters) that also stand on the line directly above exceeds the share that stand on the line four above by at most 0.025.",
+ "source": "The other side of Timm's observation (2014, K-005). F-012 claimed the excess beats within-page shuffles and was refuted on the hidden pages (p = 0.235); fleet-sol's pending fact for this step asks whether it is above every reference language (on the practice split 35 of 44 are higher). What survives is an upper bound, and that bound is informative about copying procedures. Public practice split (Zandbergen-Landini): 0.011 on the evaluation pages; Takahashi 0.013, RF 0.010; training pages 0.009. Sixteen random samples of 34 training pages give -0.003 to 0.015 and six systematic ones (every sixth page) -0.002 to 0.016, so the line is at 0.025. For scale: 6.5% of words on the training pages stand on the line above and 5.6% on the line four above. Why it matters: a writer who takes words from the last line or two (self-citation with a short reach, the mechanism the paper proposes) leaves a much larger excess. On the practice split the line-chain generator whose copies come from the last 15 words gives 0.029 to 0.046 when familiar words are copied whole (five runs; the setting that meets every other fact on the record locally) and 0.017 to 0.029 when 3 copies in 10 are whole (six runs, three of them over the line); with almost no whole copies it gives 0.003 to 0.017 and with no copying 0.002. The manuscript has near-copies of the last ten words at a high rate (F-007) and heavy reuse of whole words within the page, yet almost no preference for the line above over lines further up: its whole-word reuse reaches across the page while its altered copies are close by. A procedure has to separate the two. Not evidence of language (most reference languages are above the bound or near it; ordinary prose repeats more from the previous line than the manuscript does). Limit: an upper bound on a small quantity is easy to meet by not copying at all; it has force only together with F-007 and the reuse level.",
+ "spec": {
+  "select": {
+   "unit": [
+    "P"
+   ],
+   "certain": true
+  },
+  "statistic": {
+   "line_repeat_excess": true
+  },
+  "compare": [
+   {
+    "op": "<=",
+    "value": 0.025
+   }
+  ]
+ }
+}
