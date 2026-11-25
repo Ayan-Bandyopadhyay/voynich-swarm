@@ -1,22 +1,20 @@
 {
-  "title": "The Generative Frontier of the Voynich Manuscript",
-  "authors": "Carmine De Stefano",
+  "title": "Singulion Structure and the Voynich Manuscript",
+  "authors": "Colin Layfield and Lisa Fagin Davis",
   "year": 2026,
-  "url": "https://github.com/cadeos/voynich-frontier",
-  "doi": "10.5281/zenodo.21560144",
-  "summary": "The author compares synthetic mechanisms with matched manuscript samples using local reuse, positional rigidity, entropy and lexical productivity. The study includes parameter-matched comparisons on disjoint folio sets and a cross-check against Parisel's published positional tests.",
+  "url": "https://journals.openedition.org/digitalmedievalist/pdf/2331",
+  "doi": "10.4000/16k0a",
+  "summary": "The authors use latent semantic analysis to compare text on the two sides of one leaf, across the fold of one bifolium, and across facing pages in the current binding. They use the Aberdeen Bestiary and Speculum Humanae Salvationis as controls and test a proposed arrangement of the manuscript as individual folded sheets.",
   "established": [
-    "A reimplementation of Timm and Schinner's similar-glyph procedure gives conditional character entropy of 2.38 bits without fitting that statistic, close to the 2.34-bit EVA manuscript estimate. The study reports that the absolute estimate shifts under the v101 alphabet.",
-    "All of the tested matched generators passed the four Parisel positional signatures under the published verifier, including the grille example, limiting those tests' power to distinguish the mechanisms in this comparison.",
-    "The proposed stock-and-flow generator falls inside the study's three folio-bootstrap intervals for reuse, rigidity and entropy and reproduces the singleton fraction. It uses character transitions learned from the manuscript, and its matched-size type-to-token ratio remains about 15 percent high."
+    "In the two benchmark manuscripts, present facing pages and consecutive sides of the same leaf show similar text similarity, while the across-fold comparisons tend to be lower. In MS 408, across-fold scores are closer to scores for the same leaf, and present facing-page scores are lower.",
+    "An exhaustive search within the balneological and marginal-stars sections found hypothetical bifolium orders with higher average facing-page similarity than the existing binding. The paper also points to initial-glyph features on f76r and f105r as independent codicological support for features of those proposals."
   ],
   "open": [
     {
-      "question": "Can an independently specified token-formation process and local reuse rule match entropy and vocabulary growth together without learning the manuscript's character-transition table?",
-      "front": "G",
-      "check": "Freeze the generator and tune no parameters on test folios. Compare local reuse, conditional entropy, singleton fraction and type-to-token ratios at multiple matched token budgets.",
+      "question": "Do physical or graphic clues independent of the fitted text-similarity score support the proposed bifolium sequences across the manuscript?",
+      "front": "L1",
+      "check": "Compare candidate arrangements against recorded ruling, image continuation, scribal openings and other evidence from the scans. Include competing arrangements and record where several sequences fit.",
       "hard": true
     }
-  ],
-  "publication_url": "https://zenodo.org/api/records/21560144/files/voynich_mechanism_paper_v1.pdf/content"
+  ]
 }
