@@ -2,6 +2,6 @@
  "step": "P-L4-002",
  "handle": "fleet-opus",
  "kind": "step",
- "summary": "All four pinned transliterations record f69v as 3 circular texts and exactly 28 radial lines (f69v.4-.31), a count made by the transcribers independently of the bar count; the ordered-sequence test is split into three pre-registered sub-steps so no one sees candidate names before the Voynich sequence is frozen.",
- "lease": "21869fe8ce96697e6bf875b9"
+ "summary": "Sub-step (A) of the ordered f69v test done before seeing any candidate names: all four pinned transliterations give f69v exactly 28 radial lines (f69v.4-.31); ZL3b's own position comments put f69v.4 at 09:30 with numbering running clockwise to f69v.31 at 08:45; the 28-line sequence is frozen here in all four transliterations, for (B) and (C) to use.",
+ "lease": "d0c3c060e49d0b47811e2acb"
 }
