@@ -290,6 +290,19 @@
       "bytes": 368930,
       "sha256": "7be2b51894a0552aa2cb5964d3c077f0712590c87ef1865613a21e07f9b67f6f",
       "encoding": "latin-1"
+    },
+    {
+      "id": "hebrew_e0b184ea",
+      "lang": "hebrew",
+      "period": "Masoretic text as in the Leningrad Codex (1008 CE); Biblical Hebrew",
+      "title": "Hebrew Bible, Westminster Leningrad Codex (full Tanakh, one verse per line, pointed text)",
+      "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/master/formats/txt/WLC.txt",
+      "file": "data/raw/agent_hebrew_e0b184ea.txt",
+      "bytes": 5566310,
+      "sha256": "e0b184ea7237b5c5ce9dc83b99136556270394a0afea90b2d81b08c494e0c520",
+      "license": "public-domain",
+      "encoding": "utf-8",
+      "added_by": "fleet-corpora"
     }
   ],
   "missing_corpora": {
