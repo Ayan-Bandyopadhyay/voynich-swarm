@@ -1,0 +1,904 @@
+{
+  "title": "Check hand prediction on locally matched botanical pages within Currier B",
+  "statement": "I fit rank-five TF-IDF NMF and hand centroids on separate public blocks, then predicted the assignment of two known candidate hands to pairs of pages in unseen blocks. Among 2,022 eligible unfiltered pairs, correct assignments were 91–93% across both transcriptions and three fit seeds. In the 36 pairs matched on section, folio distance and length, correct assignments were 35–36 of 36 in each transcription and fit seed. All these matched pairs are botanical. The matched pinned self-citation backgrounds give 12–22 correct out of 36 in ZL and 14–25 in Takahashi across six generator seeds and three NMF fits per seed. Adding exact Currier matching leaves three pairs across five pages, all hands 2 and 5. Wider distance and length matching gives 14 hand 2 versus hand 5 pairs from 13 pages. The wider comparison gives observed rates of 57–64% in ZL and 43–64% in Takahashi, within the ranges of the self-citation controls. The dataset supports a comparison within the botanical section, with sparse support for separating hand from Currier over nearby pages.",
+  "program": "L2",
+  "check": "Identify an independent public botanical comparison of hands 2, 3 and 5 within Currier B with the same folio excluded from both sides of the fit. Freeze match tolerances from metadata, require overlap across more than two hand classes and multiple held-apart physical blocks, and report how many independent pages contribute to each contrast before scoring. If support remains sparse, record the count and scope any result to the supported hand pairs. Preserve the public copying and planted-vocabulary controls.",
+  "on_path": false,
+  "hard": true,
+  "source": {
+    "url": "https://arxiv.org/abs/2107.02858v1",
+    "where": "Analyses 3 and 5"
+  },
+  "practice": {
+    "data": "Use the intersection of public practice-training ZL and Takahashi pages with at least 40 certain P words in both and identical section, Currier and hand annotations. There are 169 pages. Ignore labels and other units in the word features. Number canonical ZL folios in first-observed order, group consecutive sets of four folios, and hold out blocks with block index modulo four equal to the current fold. Both sides of a folio remain together.",
+    "matching": "Within each test fold, use pairs with different hands and at least two training pages per candidate hand. The main match requires the same section, a folio distance of 1–12, and a ratio of longer to shorter P token counts of at most 1.25 in both transcriptions. The strict Currier check adds identical Currier annotation. The wider Currier sensitivity increases the folio distance to 24 and length ratio to 1.50 without changing the Currier and section checks. Reused pages mean the pair scores are descriptive.",
+    "model": "Fit the dictionary and smoothed IDF on training documents with document frequency at least three, L2-normalize the weighted word-count rows, and fit a rank-five Frobenius NMF by positive multiplicative updates with NumPy default_rng seeds 47, 83 and 113. Use uniform initialization between 0.1 and 1, 300 training updates, and 200 coefficient updates for test pages with the basis fixed. Normalize topic rows and then coefficient rows, and use per-hand normalized means of the training coefficients as centroids. Given two candidate hands, compare the summed cosine similarity to the centroids of the two possible assignments. Ties count half.",
+    "controls": "Pinned G-self-citation, fixed seeds 401–406, trained on public pages outside the evaluation blocks, with the same certain-token line layout. Fit NMF and hand centroids separately inside every synthetic run. For a labeled positive control, replace 10% of eligible simulated paragraph words of length at least four by same-length words from four hand-exclusive markers per length, seeded by generator seed plus 997 times page order. The generators receive no hand labels for the unplanted control.",
+    "selections": {
+      "0": {
+        "all pairs": {
+          "pairs": 510,
+          "unique_pages": 47,
+          "hand_pairs": {
+            "12": 198,
+            "13": 264,
+            "23": 48
+          },
+          "sections": {
+            "cross-section": 364,
+            "H": 146
+          }
+        },
+        "section and matched": {
+          "pairs": 9,
+          "unique_pages": 10,
+          "hand_pairs": {
+            "12": 3,
+            "13": 6
+          },
+          "sections": {
+            "H": 9
+          }
+        },
+        "section and Currier and matched": {
+          "pairs": 0,
+          "unique_pages": 0,
+          "hand_pairs": {},
+          "sections": {}
+        },
+        "section and Currier and wider match": {
+          "pairs": 0,
+          "unique_pages": 0,
+          "hand_pairs": {},
+          "sections": {}
+        }
+      },
+      "1": {
+        "all pairs": {
+          "pairs": 608,
+          "unique_pages": 45,
+          "hand_pairs": {
+            "12": 300,
+            "15": 50,
+            "13": 150,
+            "25": 24,
+            "23": 72,
+            "35": 12
+          },
+          "sections": {
+            "H": 296,
+            "cross-section": 312
+          }
+        },
+        "section and matched": {
+          "pairs": 11,
+          "unique_pages": 13,
+          "hand_pairs": {
+            "15": 3,
+            "12": 4,
+            "25": 1,
+            "13": 3
+          },
+          "sections": {
+            "H": 11
+          }
+        },
+        "section and Currier and matched": {
+          "pairs": 1,
+          "unique_pages": 2,
+          "hand_pairs": {
+            "25": 1
+          },
+          "sections": {
+            "H": 1
+          }
+        },
+        "section and Currier and wider match": {
+          "pairs": 4,
+          "unique_pages": 5,
+          "hand_pairs": {
+            "25": 4
+          },
+          "sections": {
+            "H": 4
+          }
+        }
+      },
+      "2": {
+        "all pairs": {
+          "pairs": 425,
+          "unique_pages": 37,
+          "hand_pairs": {
+            "12": 209,
+            "13": 114,
+            "15": 19,
+            "23": 66,
+            "25": 11,
+            "35": 6
+          },
+          "sections": {
+            "H": 74,
+            "cross-section": 351
+          }
+        },
+        "section and matched": {
+          "pairs": 2,
+          "unique_pages": 3,
+          "hand_pairs": {
+            "12": 2
+          },
+          "sections": {
+            "H": 2
+          }
+        },
+        "section and Currier and matched": {
+          "pairs": 0,
+          "unique_pages": 0,
+          "hand_pairs": {},
+          "sections": {}
+        },
+        "section and Currier and wider match": {
+          "pairs": 0,
+          "unique_pages": 0,
+          "hand_pairs": {},
+          "sections": {}
+        }
+      },
+      "3": {
+        "all pairs": {
+          "pairs": 479,
+          "unique_pages": 38,
+          "hand_pairs": {
+            "12": 204,
+            "15": 34,
+            "13": 119,
+            "25": 24,
+            "23": 84,
+            "35": 14
+          },
+          "sections": {
+            "H": 140,
+            "cross-section": 339
+          }
+        },
+        "section and matched": {
+          "pairs": 14,
+          "unique_pages": 15,
+          "hand_pairs": {
+            "12": 8,
+            "25": 2,
+            "15": 4
+          },
+          "sections": {
+            "H": 14
+          }
+        },
+        "section and Currier and matched": {
+          "pairs": 2,
+          "unique_pages": 3,
+          "hand_pairs": {
+            "25": 2
+          },
+          "sections": {
+            "H": 2
+          }
+        },
+        "section and Currier and wider match": {
+          "pairs": 10,
+          "unique_pages": 8,
+          "hand_pairs": {
+            "25": 10
+          },
+          "sections": {
+            "H": 10
+          }
+        }
+      }
+    },
+    "totals": {
+      "all pairs": {
+        "pairs": 2022,
+        "unique_pages": 167,
+        "hand_pairs": {
+          "12": 911,
+          "13": 647,
+          "23": 270,
+          "15": 103,
+          "25": 59,
+          "35": 32
+        },
+        "sections": {
+          "cross-section": 1366,
+          "H": 656
+        }
+      },
+      "section and matched": {
+        "pairs": 36,
+        "unique_pages": 41,
+        "hand_pairs": {
+          "12": 17,
+          "13": 9,
+          "15": 7,
+          "25": 3
+        },
+        "sections": {
+          "H": 36
+        }
+      },
+      "section and Currier and matched": {
+        "pairs": 3,
+        "unique_pages": 5,
+        "hand_pairs": {
+          "25": 3
+        },
+        "sections": {
+          "H": 3
+        }
+      },
+      "section and Currier and wider match": {
+        "pairs": 14,
+        "unique_pages": 13,
+        "hand_pairs": {
+          "25": 14
+        },
+        "sections": {
+          "H": 14
+        }
+      }
+    },
+    "scores": {
+      "zl": {
+        "all pairs": {
+          "observed_by_nmf_seed": [
+            0.92433,
+            0.93175,
+            0.92878
+          ],
+          "copy": {
+            "min": 0.46785,
+            "median": 0.533755,
+            "max": 0.60287,
+            "by_background_seed_then_nmf_seed": {
+              "401": [
+                0.50593,
+                0.50544,
+                0.5178
+              ],
+              "402": [
+                0.60287,
+                0.57715,
+                0.57567
+              ],
+              "403": [
+                0.50049,
+                0.56825,
+                0.57542
+              ],
+              "404": [
+                0.56231,
+                0.52374,
+                0.5183
+              ],
+              "405": [
+                0.47329,
+                0.58704,
+                0.46785
+              ],
+              "406": [
+                0.52176,
+                0.54402,
+                0.54377
+              ]
+            }
+          },
+          "positive": {
+            "min": 0.97774,
+            "median": 0.984915,
+            "max": 0.99555,
+            "by_background_seed_then_nmf_seed": {
+              "401": [
+                0.97774,
+                0.97824,
+                0.98022
+              ],
+              "402": [
+                0.99308,
+                0.9911,
+                0.98961
+              ],
+              "403": [
+                0.98863,
+                0.99159,
+                0.99555
+              ],
+              "404": [
+                0.98714,
+                0.98516,
+                0.98417
+              ],
+              "405": [
+                0.98368,
+                0.98368,
+                0.98022
+              ],
+              "406": [
+                0.98467,
+                0.97873,
+                0.98665
+              ]
+            }
+          }
+        },
+        "section and matched": {
+          "observed_by_nmf_seed": [
+            1.0,
+            1.0,
+            0.97222
+          ],
+          "copy": {
+            "min": 0.33333,
+            "median": 0.47222,
+            "max": 0.61111,
+            "by_background_seed_then_nmf_seed": {
+              "401": [
+                0.5,
+                0.36111,
+                0.33333
+              ],
+              "402": [
+                0.41667,
+                0.47222,
+                0.47222
+              ],
+              "403": [
+                0.47222,
+                0.38889,
+                0.61111
+              ],
+              "404": [
+                0.55556,
+                0.38889,
+                0.44444
+              ],
+              "405": [
+                0.52778,
+                0.47222,
+                0.44444
+              ],
+              "406": [
+                0.61111,
+                0.55556,
+                0.55556
+              ]
+            }
+          },
+          "positive": {
+            "min": 0.86111,
+            "median": 0.94444,
+            "max": 1.0,
+            "by_background_seed_then_nmf_seed": {
+              "401": [
+                0.97222,
+                0.94444,
+                0.94444
+              ],
+              "402": [
+                0.94444,
+                0.94444,
+                0.94444
+              ],
+              "403": [
+                0.94444,
+                0.97222,
+                0.97222
+              ],
+              "404": [
+                0.91667,
+                0.91667,
+                0.88889
+              ],
+              "405": [
+                0.86111,
+                0.88889,
+                0.88889
+              ],
+              "406": [
+                0.97222,
+                1.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "section and Currier and matched": {
+          "observed_by_nmf_seed": [
+            1.0,
+            1.0,
+            0.66667
+          ],
+          "copy": {
+            "min": 0.0,
+            "median": 0.66667,
+            "max": 1.0,
+            "by_background_seed_then_nmf_seed": {
+              "401": [
+                0.66667,
+                0.66667,
+                0.33333
+              ],
+              "402": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "403": [
+                0.0,
+                0.66667,
+                0.66667
+              ],
+              "404": [
+                0.66667,
+                0.33333,
+                0.33333
+              ],
+              "405": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "406": [
+                0.66667,
+                0.33333,
+                0.66667
+              ]
+            }
+          },
+          "positive": {
+            "min": 0.33333,
+            "median": 1.0,
+            "max": 1.0,
+            "by_background_seed_then_nmf_seed": {
+              "401": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "402": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "403": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "404": [
+                0.66667,
+                0.66667,
+                0.33333
+              ],
+              "405": [
+                0.33333,
+                0.33333,
+                0.33333
+              ],
+              "406": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "section and Currier and wider match": {
+          "observed_by_nmf_seed": [
+            0.64286,
+            0.64286,
+            0.57143
+          ],
+          "copy": {
+            "min": 0.14286,
+            "median": 0.42857,
+            "max": 0.71429,
+            "by_background_seed_then_nmf_seed": {
+              "401": [
+                0.42857,
+                0.42857,
+                0.42857
+              ],
+              "402": [
+                0.64286,
+                0.71429,
+                0.64286
+              ],
+              "403": [
+                0.21429,
+                0.57143,
+                0.35714
+              ],
+              "404": [
+                0.42857,
+                0.42857,
+                0.5
+              ],
+              "405": [
+                0.21429,
+                0.14286,
+                0.21429
+              ],
+              "406": [
+                0.57143,
+                0.64286,
+                0.57143
+              ]
+            }
+          },
+          "positive": {
+            "min": 0.64286,
+            "median": 0.92857,
+            "max": 1.0,
+            "by_background_seed_then_nmf_seed": {
+              "401": [
+                0.92857,
+                0.92857,
+                0.85714
+              ],
+              "402": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "403": [
+                0.85714,
+                0.92857,
+                1.0
+              ],
+              "404": [
+                0.92857,
+                0.85714,
+                0.85714
+              ],
+              "405": [
+                0.71429,
+                0.64286,
+                0.71429
+              ],
+              "406": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            }
+          }
+        }
+      },
+      "it": {
+        "all pairs": {
+          "observed_by_nmf_seed": [
+            0.91147,
+            0.91988,
+            0.92681
+          ],
+          "copy": {
+            "min": 0.51311,
+            "median": 0.56924,
+            "max": 0.60781,
+            "by_background_seed_then_nmf_seed": {
+              "401": [
+                0.58259,
+                0.59941,
+                0.60781
+              ],
+              "402": [
+                0.57814,
+                0.59941,
+                0.57913
+              ],
+              "403": [
+                0.55663,
+                0.54377,
+                0.51311
+              ],
+              "404": [
+                0.5361,
+                0.5366,
+                0.54402
+              ],
+              "405": [
+                0.55045,
+                0.57394,
+                0.57122
+              ],
+              "406": [
+                0.56726,
+                0.55984,
+                0.57468
+              ]
+            }
+          },
+          "positive": {
+            "min": 0.97379,
+            "median": 0.9878849999999999,
+            "max": 0.99505,
+            "by_background_seed_then_nmf_seed": {
+              "401": [
+                0.99209,
+                0.98863,
+                0.99258
+              ],
+              "402": [
+                0.98318,
+                0.98269,
+                0.98368
+              ],
+              "403": [
+                0.99505,
+                0.9911,
+                0.99209
+              ],
+              "404": [
+                0.98566,
+                0.98764,
+                0.98813
+              ],
+              "405": [
+                0.97824,
+                0.99258,
+                0.99308
+              ],
+              "406": [
+                0.97379,
+                0.97824,
+                0.97725
+              ]
+            }
+          }
+        },
+        "section and matched": {
+          "observed_by_nmf_seed": [
+            1.0,
+            0.97222,
+            1.0
+          ],
+          "copy": {
+            "min": 0.38889,
+            "median": 0.55556,
+            "max": 0.69444,
+            "by_background_seed_then_nmf_seed": {
+              "401": [
+                0.55556,
+                0.41667,
+                0.55556
+              ],
+              "402": [
+                0.38889,
+                0.58333,
+                0.5
+              ],
+              "403": [
+                0.66667,
+                0.69444,
+                0.63889
+              ],
+              "404": [
+                0.5,
+                0.55556,
+                0.47222
+              ],
+              "405": [
+                0.55556,
+                0.58333,
+                0.47222
+              ],
+              "406": [
+                0.52778,
+                0.52778,
+                0.61111
+              ]
+            }
+          },
+          "positive": {
+            "min": 0.88889,
+            "median": 0.97222,
+            "max": 1.0,
+            "by_background_seed_then_nmf_seed": {
+              "401": [
+                0.97222,
+                0.97222,
+                0.97222
+              ],
+              "402": [
+                0.88889,
+                0.88889,
+                0.88889
+              ],
+              "403": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "404": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "405": [
+                0.94444,
+                1.0,
+                1.0
+              ],
+              "406": [
+                0.94444,
+                0.94444,
+                0.94444
+              ]
+            }
+          }
+        },
+        "section and Currier and matched": {
+          "observed_by_nmf_seed": [
+            1.0,
+            0.66667,
+            1.0
+          ],
+          "copy": {
+            "min": 0.0,
+            "median": 0.66667,
+            "max": 1.0,
+            "by_background_seed_then_nmf_seed": {
+              "401": [
+                1.0,
+                0.0,
+                1.0
+              ],
+              "402": [
+                0.0,
+                0.33333,
+                0.0
+              ],
+              "403": [
+                0.66667,
+                1.0,
+                1.0
+              ],
+              "404": [
+                0.66667,
+                0.66667,
+                1.0
+              ],
+              "405": [
+                0.33333,
+                0.0,
+                0.33333
+              ],
+              "406": [
+                0.66667,
+                0.33333,
+                1.0
+              ]
+            }
+          },
+          "positive": {
+            "min": 0.33333,
+            "median": 1.0,
+            "max": 1.0,
+            "by_background_seed_then_nmf_seed": {
+              "401": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "402": [
+                0.33333,
+                0.33333,
+                0.33333
+              ],
+              "403": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "404": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "405": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "406": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "section and Currier and wider match": {
+          "observed_by_nmf_seed": [
+            0.64286,
+            0.42857,
+            0.64286
+          ],
+          "copy": {
+            "min": 0.07143,
+            "median": 0.57143,
+            "max": 0.85714,
+            "by_background_seed_then_nmf_seed": {
+              "401": [
+                0.42857,
+                0.07143,
+                0.64286
+              ],
+              "402": [
+                0.07143,
+                0.35714,
+                0.14286
+              ],
+              "403": [
+                0.71429,
+                0.78571,
+                0.85714
+              ],
+              "404": [
+                0.78571,
+                0.85714,
+                0.64286
+              ],
+              "405": [
+                0.42857,
+                0.57143,
+                0.5
+              ],
+              "406": [
+                0.57143,
+                0.28571,
+                0.78571
+              ]
+            }
+          },
+          "positive": {
+            "min": 0.78571,
+            "median": 0.92857,
+            "max": 1.0,
+            "by_background_seed_then_nmf_seed": {
+              "401": [
+                0.85714,
+                0.85714,
+                0.85714
+              ],
+              "402": [
+                0.85714,
+                0.78571,
+                0.85714
+              ],
+              "403": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "404": [
+                1.0,
+                0.92857,
+                0.92857
+              ],
+              "405": [
+                0.92857,
+                1.0,
+                1.0
+              ],
+              "406": [
+                0.85714,
+                0.92857,
+                0.92857
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
