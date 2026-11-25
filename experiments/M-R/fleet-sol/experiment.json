@@ -2,6 +2,6 @@
   "step": "M-R",
   "handle": "fleet-sol",
   "kind": "step",
-  "summary": "Audit Amancio et al.’s word-network and intermittency diagnostics against page-conditioned permutations and generated controls.",
-  "lease": "62b7cb803c9e722260f668f3"
+  "summary": "Audit how a reproduction of Gaskell and Bowern's plain-text versus human-pseudotext classifier treats known-source text transformations and different participant cohorts.",
+  "lease": "b06e65f15a4656f439441b39"
 }
