@@ -1,0 +1,11 @@
+{"title": "Scribe 1: glyph trigrams + page-local copy (window 50, exact and one-glyph-changed) + line position + prefix templates + chain",
+ "statement": "Components were chosen by greedy forward selection under 4-fold cross-validation over scribe 1's public training pages only (pool: vocab, chain, position, letters order 2-5, copy windows 3/5/10/20/50 with 0 or 1 edits, templates prefix 0-3 x suffix 0-3), stopping when a component gained under 0.002 bits per word. Cross-validated: 11.31 bits per word against 11.75 for the bag of words and 11.40 for glyph trigrams alone. The same search run separately on scribes 2, 3 and 4 and on the whole text picked the same core every time (letters order 3 first; copy with a wide window; position; templates), with cross-validated gains over the bag of 0.39, 0.39, 0.58 and 0.38 bits per word; scribe 5 has too few training words. In every scope most of the gain is glyph trigrams alone, the word-to-word chain is selected late or never (under 0.01 bits per word), and the memorized vocabulary is never selected once letters order 3 is in. Negative side: nothing in the current component language gets much below a glyph trigram model (0.04 to 0.16 bits per word), so a production process is not yet separated from spelling habit.",
+ "scope": {"hand": "1"},
+ "components": [{"type": "letters", "order": 3},
+                {"type": "copy", "window": 50, "edits": 0},
+                {"type": "position"},
+                {"type": "copy", "window": 50, "edits": 1},
+                {"type": "template", "prefix": 2, "suffix": 0},
+                {"type": "template", "prefix": 1, "suffix": 0},
+                {"type": "chain"}],
+ "weights": "fit"}

@@ -1,0 +1,2 @@
+{"step": "M-G", "handle": "fleet-fable", "kind": "model",
+ "summary": "For scribe 1, a mixture led by a trigram glyph model with page-local copying, line-position vocabulary and two prefix templates beats the bag of words by about 0.33 bits per word on the practice split; the word chain adds almost nothing."}
