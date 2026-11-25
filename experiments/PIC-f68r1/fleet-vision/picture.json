@@ -1,0 +1,454 @@
+{
+ "folio": "f68r1",
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006196",
+ "blind": true,
+ "statement": "Left panel of the three-panel 68r foldout (canvas 1006196). Below three lines of text: a face with wavy hair in a circle ringed by small flame- or crescent-shaped ochre marks (upper centre), and at the bottom a face in a circle edged by a yellow crescent and a blue ring, with writing round it. Between them a field of 29 separate ochre stars with seven or eight points, each with a one-word label beside it (all to the right except one); several stars have a small ring at the centre and two a dark dot. A faint large arc partly encloses the field and a faint pale wash lies behind its middle. Choosing the panel: the 29 stars match f68r1's 29 star-label lines (f68r1.8-36); the middle panel's five top text lines match f68r2. Each star carries that block as label_group. Every label sits next to one star, but which line id is which label cannot be fixed without reading the words, so labels are null; each star's position (full-resolution pixel coordinates on the canvas) is given so the pairing can be added later.",
+ "objects": [
+  {
+   "id": "s1",
+   "kind": "star",
+   "features": {
+    "points": "7 or 8",
+    "colour": "ochre",
+    "centre": "plain",
+    "size": "normal",
+    "label_beside": "right",
+    "position_xy_full": "710,798",
+    "label_group": "f68r1.8-36"
+   },
+   "label": null
+  },
+  {
+   "id": "s2",
+   "kind": "star",
+   "features": {
+    "points": "7 or 8",
+    "colour": "ochre",
+    "centre": "plain",
+    "size": "normal",
+    "label_beside": "right",
+    "position_xy_full": "1566,760",
+    "label_group": "f68r1.8-36"
+   },
+   "label": null
+  },
+  {
+   "id": "s3",
+   "kind": "star",
+   "features": {
+    "points": "7 or 8",
+    "colour": "ochre",
+    "centre": "plain",
+    "size": "small",
+    "label_beside": "right",
+    "position_xy_full": "480,1066",
+    "label_group": "f68r1.8-36"
+   },
+   "label": null
+  },
+  {
+   "id": "s4",
+   "kind": "star",
+   "features": {
+    "points": "7 or 8",
+    "colour": "ochre",
+    "centre": "plain",
+    "size": "normal",
+    "label_beside": "right",
+    "position_xy_full": "1604,1028",
+    "label_group": "f68r1.8-36"
+   },
+   "label": null
+  },
+  {
+   "id": "s5",
+   "kind": "star",
+   "features": {
+    "points": "7 or 8",
+    "colour": "ochre",
+    "centre": "small ring",
+    "size": "normal",
+    "label_beside": "right",
+    "position_xy_full": "2013,1117",
+    "label_group": "f68r1.8-36"
+   },
+   "label": null
+  },
+  {
+   "id": "s6",
+   "kind": "star",
+   "features": {
+    "points": "7 or 8",
+    "colour": "ochre",
+    "centre": "plain",
+    "size": "normal",
+    "label_beside": "right",
+    "position_xy_full": "914,1130",
+    "label_group": "f68r1.8-36"
+   },
+   "label": null
+  },
+  {
+   "id": "s7",
+   "kind": "star",
+   "features": {
+    "points": "7 or 8",
+    "colour": "ochre",
+    "centre": "plain",
+    "size": "normal",
+    "label_beside": "right",
+    "position_xy_full": "1208,1194",
+    "label_group": "f68r1.8-36"
+   },
+   "label": null
+  },
+  {
+   "id": "s8",
+   "kind": "star",
+   "features": {
+    "points": "7 or 8",
+    "colour": "ochre",
+    "centre": "small ring",
+    "size": "large",
+    "label_beside": "right",
+    "position_xy_full": "1553,1322",
+    "label_group": "f68r1.8-36"
+   },
+   "label": null
+  },
+  {
+   "id": "s9",
+   "kind": "star",
+   "features": {
+    "points": "7 or 8",
+    "colour": "ochre",
+    "centre": "small ring",
+    "size": "normal",
+    "label_beside": "right",
+    "position_xy_full": "2026,1360",
+    "label_group": "f68r1.8-36"
+   },
+   "label": null
+  },
+  {
+   "id": "s10",
+   "kind": "star",
+   "features": {
+    "points": "7 or 8",
+    "colour": "ochre",
+    "centre": "plain",
+    "size": "normal",
+    "label_beside": "right",
+    "position_xy_full": "365,1360",
+    "label_group": "f68r1.8-36"
+   },
+   "label": null
+  },
+  {
+   "id": "s11",
+   "kind": "star",
+   "features": {
+    "points": "7 or 8",
+    "colour": "ochre",
+    "centre": "small ring",
+    "size": "normal",
+    "label_beside": "right",
+    "position_xy_full": "786,1386",
+    "label_group": "f68r1.8-36"
+   },
+   "label": null
+  },
+  {
+   "id": "s12",
+   "kind": "star",
+   "features": {
+    "points": "7 or 8",
+    "colour": "ochre",
+    "centre": "plain",
+    "size": "normal",
+    "label_beside": "right",
+    "position_xy_full": "1042,1462",
+    "label_group": "f68r1.8-36"
+   },
+   "label": null
+  },
+  {
+   "id": "s13",
+   "kind": "star",
+   "features": {
+    "points": "7 or 8",
+    "colour": "ochre",
+    "centre": "plain",
+    "size": "normal",
+    "label_beside": "right",
+    "position_xy_full": "1719,1552",
+    "label_group": "f68r1.8-36"
+   },
+   "label": null
+  },
+  {
+   "id": "s14",
+   "kind": "star",
+   "features": {
+    "points": "7 or 8",
+    "colour": "ochre",
+    "centre": "small ring",
+    "size": "normal",
+    "label_beside": "right",
+    "position_xy_full": "2179,1578",
+    "label_group": "f68r1.8-36"
+   },
+   "label": null
+  },
+  {
+   "id": "s15",
+   "kind": "star",
+   "features": {
+    "points": "7 or 8",
+    "colour": "ochre",
+    "centre": "plain",
+    "size": "small",
+    "label_beside": "right",
+    "position_xy_full": "428,1688",
+    "label_group": "f68r1.8-36"
+   },
+   "label": null
+  },
+  {
+   "id": "s16",
+   "kind": "star",
+   "features": {
+    "points": "7 or 8",
+    "colour": "ochre",
+    "centre": "dark dot",
+    "size": "normal",
+    "label_beside": "right",
+    "position_xy_full": "594,1701",
+    "label_group": "f68r1.8-36"
+   },
+   "label": null
+  },
+  {
+   "id": "s17",
+   "kind": "star",
+   "features": {
+    "points": "7 or 8",
+    "colour": "ochre",
+    "centre": "plain",
+    "size": "normal",
+    "label_beside": "right",
+    "position_xy_full": "811,1726",
+    "label_group": "f68r1.8-36"
+   },
+   "label": null
+  },
+  {
+   "id": "s18",
+   "kind": "star",
+   "features": {
+    "points": "7 or 8",
+    "colour": "ochre",
+    "centre": "small ring",
+    "size": "large",
+    "label_beside": "right",
+    "position_xy_full": "1233,1726",
+    "label_group": "f68r1.8-36"
+   },
+   "label": null
+  },
+  {
+   "id": "s19",
+   "kind": "star",
+   "features": {
+    "points": "7 or 8",
+    "colour": "ochre",
+    "centre": "plain",
+    "size": "small",
+    "label_beside": "right",
+    "position_xy_full": "377,1879",
+    "label_group": "f68r1.8-36"
+   },
+   "label": null
+  },
+  {
+   "id": "s20",
+   "kind": "star",
+   "features": {
+    "points": "7 or 8",
+    "colour": "ochre",
+    "centre": "plain",
+    "size": "normal",
+    "label_beside": "right",
+    "position_xy_full": "1450,1930",
+    "label_group": "f68r1.8-36"
+   },
+   "label": null
+  },
+  {
+   "id": "s21",
+   "kind": "star",
+   "features": {
+    "points": "7 or 8",
+    "colour": "ochre",
+    "centre": "small ring",
+    "size": "normal",
+    "label_beside": "right",
+    "position_xy_full": "1859,1905",
+    "label_group": "f68r1.8-36"
+   },
+   "label": null
+  },
+  {
+   "id": "s22",
+   "kind": "star",
+   "features": {
+    "points": "7 or 8",
+    "colour": "ochre",
+    "centre": "plain",
+    "size": "normal",
+    "label_beside": "right",
+    "position_xy_full": "569,2071",
+    "label_group": "f68r1.8-36"
+   },
+   "label": null
+  },
+  {
+   "id": "s23",
+   "kind": "star",
+   "features": {
+    "points": "7 or 8",
+    "colour": "ochre",
+    "centre": "plain",
+    "size": "normal",
+    "label_beside": "right",
+    "position_xy_full": "965,2058",
+    "label_group": "f68r1.8-36"
+   },
+   "label": null
+  },
+  {
+   "id": "s24",
+   "kind": "star",
+   "features": {
+    "points": "7 or 8",
+    "colour": "ochre",
+    "centre": "dark dot",
+    "size": "small",
+    "label_beside": "right",
+    "position_xy_full": "377,2199",
+    "label_group": "f68r1.8-36"
+   },
+   "label": null
+  },
+  {
+   "id": "s25",
+   "kind": "star",
+   "features": {
+    "points": "7 or 8",
+    "colour": "ochre",
+    "centre": "plain",
+    "size": "normal",
+    "label_beside": "right",
+    "position_xy_full": "1424,2237",
+    "label_group": "f68r1.8-36"
+   },
+   "label": null
+  },
+  {
+   "id": "s26",
+   "kind": "star",
+   "features": {
+    "points": "7 or 8",
+    "colour": "ochre",
+    "centre": "small ring",
+    "size": "normal",
+    "label_beside": "right",
+    "position_xy_full": "1820,2237",
+    "label_group": "f68r1.8-36"
+   },
+   "label": null
+  },
+  {
+   "id": "s27",
+   "kind": "star",
+   "features": {
+    "points": "7 or 8",
+    "colour": "ochre",
+    "centre": "small ring",
+    "size": "normal",
+    "label_beside": "right",
+    "position_xy_full": "939,2339",
+    "label_group": "f68r1.8-36"
+   },
+   "label": null
+  },
+  {
+   "id": "s28",
+   "kind": "star",
+   "features": {
+    "points": "7 or 8",
+    "colour": "ochre",
+    "centre": "plain",
+    "size": "normal",
+    "label_beside": "left",
+    "position_xy_full": "722,2390",
+    "label_group": "f68r1.8-36"
+   },
+   "label": null
+  },
+  {
+   "id": "s29",
+   "kind": "star",
+   "features": {
+    "points": "7 or 8",
+    "colour": "ochre",
+    "centre": "plain",
+    "size": "normal",
+    "label_beside": "right",
+    "position_xy_full": "1641,2492",
+    "label_group": "f68r1.8-36"
+   },
+   "label": null
+  },
+  {
+   "id": "face_top",
+   "kind": "sun",
+   "features": {
+    "shape": "face with wavy hair inside a circle ringed by about 20 small flame- or crescent-shaped marks",
+    "colour": "ochre marks, uncoloured face",
+    "position": "upper centre, below the top text",
+    "note": "a few words are written inside the circle beside the face"
+   },
+   "label": null
+  },
+  {
+   "id": "face_bottom",
+   "kind": "moon",
+   "features": {
+    "shape": "face inside a circle, edged by a yellow crescent on the left and a blue ring",
+    "colour": "yellow and blue",
+    "position": "bottom centre",
+    "note": "a line of writing runs round it in an outer circle"
+   },
+   "label": null
+  },
+  {
+   "id": "arc",
+   "kind": "other",
+   "features": {
+    "shape": "faint large arc partly enclosing the star field on the right and bottom",
+    "colour": "faint ink"
+   },
+   "label": null
+  },
+  {
+   "id": "wash",
+   "kind": "other",
+   "features": {
+    "shape": "faint cloud-like wash behind the middle of the star field",
+    "colour": "pale blue-grey"
+   },
+   "label": null
+  }
+ ]
+}
