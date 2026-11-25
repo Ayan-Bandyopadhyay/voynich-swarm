@@ -1,0 +1,346 @@
+{
+ "folio": "f99r",
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006246",
+ "blind": true,
+ "statement": "Annotated from the Beinecke scan alone (full page and horizontal strips). Four rows, each opening with a red cylindrical jar at the left margin that carries a label written on it, followed by detached roots and plant parts with short labels beside their stalks; the fourth row holds one whole plant with a long striped root, green heart-shaped leaves and two hanging clusters. Label lines were paired with objects from the line ids and unit codes only: the single container-label line of each row to its jar, the remaining label lines of the row to the objects left to right (row 1: the upper line of nine first, then the three lower objects). Row 1 has one two-line label (f99r.6 and f99r.7) beside the fifth upper object. Rows 2 and 3 each have eight labels for seven objects, so one label in each row (f99r.25, f99r.34) could belong to either neighbour; I recorded them as nearby labels and the pairing around them may be shifted by one.",
+ "objects": [
+  {
+   "id": "jar_1",
+   "kind": "jar",
+   "features": {
+    "position": "left margin, row 1",
+    "shape": "cylinder",
+    "tiers": 2,
+    "colour": "red",
+    "top_colour": "olive green",
+    "bands": "white beaded bands",
+    "label_place": "written on the lid"
+   },
+   "label": "f99r.1"
+  },
+  {
+   "id": "jar_2",
+   "kind": "jar",
+   "features": {
+    "position": "left margin, row 2",
+    "shape": "cylinder",
+    "tiers": 3,
+    "colour": "red",
+    "top_colour": "olive green",
+    "bands": "white beaded bands",
+    "label_place": "written on the middle tier"
+   },
+   "label": "f99r.19"
+  },
+  {
+   "id": "jar_3",
+   "kind": "jar",
+   "features": {
+    "position": "left margin, row 3",
+    "shape": "cylinder",
+    "tiers": 3,
+    "colour": "red",
+    "top_colour": "olive green",
+    "bands": "white beaded bands",
+    "label_place": "written on the lowest tier",
+    "base": "stand with curled feet"
+   },
+   "label": "f99r.32"
+  },
+  {
+   "id": "jar_4",
+   "kind": "jar",
+   "features": {
+    "position": "left margin, row 4",
+    "shape": "cylinder",
+    "tiers": 2,
+    "colour": "red",
+    "top_colour": "olive green",
+    "bands": "white beaded bands",
+    "label_place": "written on the lower tier"
+   },
+   "label": "f99r.45"
+  },
+  {
+   "id": "r1_upper 1 of 9",
+   "kind": "root",
+   "features": {
+    "position": "row 1, upper 1 of 9",
+    "colour": "pale yellow",
+    "shape": "several thin twisted prongs"
+   },
+   "label": "f99r.2"
+  },
+  {
+   "id": "r1_upper 2 of 9",
+   "kind": "root",
+   "features": {
+    "position": "row 1, upper 2 of 9",
+    "colour": "dark red",
+    "shape": "tapering body with a fringe of fine hairs"
+   },
+   "label": "f99r.3"
+  },
+  {
+   "id": "r1_upper 3 of 9",
+   "kind": "root",
+   "features": {
+    "position": "row 1, upper 3 of 9",
+    "colour": "pale yellow",
+    "shape": "small spindle with side notches, hanging from a stalk"
+   },
+   "label": "f99r.4"
+  },
+  {
+   "id": "r1_upper 4 of 9",
+   "kind": "root",
+   "features": {
+    "position": "row 1, upper 4 of 9",
+    "colour": "red and white",
+    "shape": "spindle wrapped in spiral bands",
+    "stalk": "green wash"
+   },
+   "label": "f99r.5"
+  },
+  {
+   "id": "r1_upper 5 of 9",
+   "kind": "plant_part",
+   "features": {
+    "position": "row 1, upper 5 of 9",
+    "colour": "pale yellow with green wash",
+    "shape": "bundle of long curved parallel strands",
+    "second_label_line": "f99r.7"
+   },
+   "label": "f99r.6"
+  },
+  {
+   "id": "r1_upper 6 of 9",
+   "kind": "plant_part",
+   "features": {
+    "position": "row 1, upper 6 of 9",
+    "colour": "uncoloured",
+    "shape": "cluster of about seven short cut tubes with long trailing ends",
+    "count_tubes": 7
+   },
+   "label": "f99r.8"
+  },
+  {
+   "id": "r1_upper 7 of 9",
+   "kind": "root",
+   "features": {
+    "position": "row 1, upper 7 of 9",
+    "colour": "orange",
+    "shape": "banded neck with strands drooping to both sides"
+   },
+   "label": "f99r.9"
+  },
+  {
+   "id": "r1_upper 8 of 9",
+   "kind": "root",
+   "features": {
+    "position": "row 1, upper 8 of 9",
+    "colour": "dark red",
+    "shape": "thick body with curled arms"
+   },
+   "label": "f99r.10"
+  },
+  {
+   "id": "r1_upper 9 of 9",
+   "kind": "root",
+   "features": {
+    "position": "row 1, upper 9 of 9",
+    "colour": "pink and orange",
+    "shape": "folded lump trailing long strands to the right"
+   },
+   "label": "f99r.11"
+  },
+  {
+   "id": "r1_lower 1 of 3",
+   "kind": "root",
+   "features": {
+    "position": "row 1, lower 1 of 3",
+    "colour": "orange",
+    "shape": "long horizontal spindle covered in fine hairs"
+   },
+   "label": "f99r.12"
+  },
+  {
+   "id": "r1_lower 2 of 3",
+   "kind": "root",
+   "features": {
+    "position": "row 1, lower 2 of 3",
+    "colour": "brown",
+    "shape": "long horizontal body with a knobbed head and a row of short bristles along the tail"
+   },
+   "label": "f99r.13"
+  },
+  {
+   "id": "r1_lower 3 of 3",
+   "kind": "plant_part",
+   "features": {
+    "position": "row 1, lower 3 of 3",
+    "colour": "pale green",
+    "shape": "flat lump with a bent tube on the left and long parallel strands sweeping right"
+   },
+   "label": "f99r.14"
+  },
+  {
+   "id": "r2_1 of 7",
+   "kind": "root",
+   "features": {
+    "position": "row 2, 1 of 7",
+    "colour": "brown and orange",
+    "shape": "two strands twisted into a knot, forked below"
+   },
+   "label": "f99r.20"
+  },
+  {
+   "id": "r2_2 of 7",
+   "kind": "root",
+   "features": {
+    "position": "row 2, 2 of 7",
+    "colour": "orange and pink",
+    "shape": "arch like an inverted U with frayed ends"
+   },
+   "label": "f99r.21"
+  },
+  {
+   "id": "r2_3 of 7",
+   "kind": "root",
+   "features": {
+    "position": "row 2, 3 of 7",
+    "colour": "yellow brown",
+    "shape": "round bulb with two horns above and curled rootlets below"
+   },
+   "label": "f99r.22"
+  },
+  {
+   "id": "r2_4 of 7",
+   "kind": "root",
+   "features": {
+    "position": "row 2, 4 of 7",
+    "colour": "orange and white",
+    "shape": "stack of slanted striped segments under a hooked stalk"
+   },
+   "label": "f99r.23"
+  },
+  {
+   "id": "r2_5 of 7",
+   "kind": "root",
+   "features": {
+    "position": "row 2, 5 of 7",
+    "colour": "brown",
+    "shape": "curved body with a fan of about ten straight spikes"
+   },
+   "label": "f99r.24"
+  },
+  {
+   "id": "r2_6 of 7",
+   "kind": "root",
+   "features": {
+    "position": "row 2, 6 of 7",
+    "colour": "orange",
+    "shape": "wedge widening downward with lengthwise stripes",
+    "other_label_nearby": "f99r.25 stands left of its stalk, between this object and the one before"
+   },
+   "label": "f99r.26"
+  },
+  {
+   "id": "r2_7 of 7",
+   "kind": "root",
+   "features": {
+    "position": "row 2, 7 of 7",
+    "colour": "pale yellow",
+    "shape": "large mass of many long wavy strands spreading right"
+   },
+   "label": "f99r.27"
+  },
+  {
+   "id": "r3_1 of 7",
+   "kind": "root",
+   "features": {
+    "position": "row 3, 1 of 7",
+    "colour": "pale yellow with dots",
+    "shape": "two long prongs crossing each other",
+    "other_label_nearby": "f99r.34 stands right of its stalk"
+   },
+   "label": "f99r.33"
+  },
+  {
+   "id": "r3_2 of 7",
+   "kind": "root",
+   "features": {
+    "position": "row 3, 2 of 7",
+    "colour": "dark red",
+    "shape": "round head with strands hanging straight down"
+   },
+   "label": "f99r.35"
+  },
+  {
+   "id": "r3_3 of 7",
+   "kind": "root",
+   "features": {
+    "position": "row 3, 3 of 7",
+    "colour": "pale beige",
+    "shape": "lumpy body with a hooked stalk and long tail"
+   },
+   "label": "f99r.36"
+  },
+  {
+   "id": "r3_4 of 7",
+   "kind": "root",
+   "features": {
+    "position": "row 3, 4 of 7",
+    "colour": "orange and white",
+    "shape": "stack of banded segments with tendrils and an orange tail"
+   },
+   "label": "f99r.37"
+  },
+  {
+   "id": "r3_5 of 7",
+   "kind": "root",
+   "features": {
+    "position": "row 3, 5 of 7",
+    "colour": "brown",
+    "shape": "bent hairy body with a hooked stalk"
+   },
+   "label": "f99r.38"
+  },
+  {
+   "id": "r3_6 of 7",
+   "kind": "root",
+   "features": {
+    "position": "row 3, 6 of 7",
+    "colour": "orange and pink",
+    "shape": "folded body with fan-shaped lobes"
+   },
+   "label": "f99r.39"
+  },
+  {
+   "id": "r3_7 of 7",
+   "kind": "plant",
+   "features": {
+    "position": "row 3, 7 of 7",
+    "colour": "pale yellow root, green leaf",
+    "shape": "tuft of hairy roots under a straight stalk with one drooping green leaf"
+   },
+   "label": "f99r.40"
+  },
+  {
+   "id": "r4_plant",
+   "kind": "plant",
+   "features": {
+    "position": "row 4, across the foot of the page",
+    "root": "long thick horizontal root, orange and white slanted stripes, fine hairs along the edge",
+    "root_colour": "orange",
+    "stem": "thin pale green stem running right and then branching downward",
+    "leaf_shape": "heart or arrowhead with a notched base",
+    "leaf_colour": "green",
+    "leaf_count": 9,
+    "fruit": "two hanging red brown clusters near the bottom",
+    "fruit_count": 2
+   },
+   "label": "f99r.46"
+  }
+ ]
+}
