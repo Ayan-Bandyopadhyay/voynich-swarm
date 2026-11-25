@@ -1,14 +1,15 @@
 {
-  "title": "Uncertain herbal anchor on f9v with wild pansy as the picture candidate",
-  "page": "f9v",
-  "voynich": "",
+  "title": "UNCERTAIN: f89r2 fragment 35 has a label and shares a lobed crown with f35v",
+  "page": "f89r2",
+  "voynich": "saloiinsheol",
   "names": {"latin": [], "any": []},
-  "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006093",
+  "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006233",
   "sources": [
-    "Beinecke MS 408, f9v, https://collections.library.yale.edu/iiif/2/1006093/full/1100,/0/default.jpg.",
-    "P. Han (2011), Discussion of the plant illustrated in folio f9v of the Voynich Manuscript, https://www.as.up.krakow.pl/jvs/library/2-7-2011-05-25/pansyvm.pdf.",
-    "Siv Bugge Vatne (2022), The morphology of the Voynich plants, https://crackingthevoynichcipher.com/wp-content/uploads/2022/10/5_the_morphology_of_the_voynich_plants_siv_bugge_vatne_2022.pdf.",
-    "René Zandbergen's index of early tentative identifications gives the f9v entry from Petersen's manuscript notes and its reported attribution to O'Neill, https://www.voynich.nu/extra/herb_oldid.html."
+    "Yale crop of f89r2 fragment 35 https://collections.library.yale.edu/iiif/2/1006233/6280,145,1370,760/1200,/0/default.jpg",
+    "Yale f35v scan https://collections.library.yale.edu/iiif/2/1006143/full/900,/0/default.jpg",
+    "René Zandbergen, Villa Mondragone presentation (2012), PDF p. 24 https://voynich.nu/papers/Voynich100_RZ_2012.pdf and https://www.voynich.nu/q15/index.html",
+    "Siv Bugge Vatne, The Morphology of the Voynich Plants (2022), p. 8 https://crackingthevoynichcipher.com/wp-content/uploads/2022/10/5_the_morphology_of_the_voynich_plants_siv_bugge_vatne_2022.pdf",
+    "Pinned transliterations ZL3b, RF1b, IT2a and GC2a, locus f89r2.4"
   ],
-  "statement": "Han and Vatne each favor wild pansy (Viola tricolor) in published discussions and compare f9v with the same Lindman botanical plate. Han also photographs a modern garden pansy and demonstrates a flattening hypothesis for the apparently inverted broad petal. Vatne notes the petal orientation and emphasizes the two forms of green appendages and the branching habit. On the Beinecke scan I see five-part flowers, one broad petal facing upward in the upper right blossom, blue and pale tones, broad basal leaves, deeply divided green appendages above, and a fibrous root. These are reasons to retain Viola as an illustration candidate. Species specificity and the cause of the petal orientation remain open. The text in this area appears as paragraphs that wrap around the flowers. I found no stand-alone Voynich token with a clear pointing relationship to the plant. In the pinned ZL 3b transliteration fochor begins the first prose line at f9v.1. Treating it as the plant name would need separate evidence. The candidate here is for the illustration and the word and name fields are empty."
+  "statement": "I checked both Yale scans. Fragment 35, third plant in the top row of f89r2, has a broad rounded-lobed green crown with several stalks converging on a thick brown spreading base. The label is under the crown and to the right of its stalks. ZL3b and RF1b join it as saloiinsheol, IT2a separates saloiin.sheol, and GC2a gives saeom3coe. Zandbergen compares fragment 35 with f35v, which has a similar crown and a broad brown root. The fragment lacks the twining branches and separate berry-like clusters that make the f35v comparison with edera nigra in BnF Latin 6823 f60r plausible. I inspected that BnF illustration via the reproduction in Zandbergen's slides because the Gallica scan returned 403. Vatne endorses the f35v comparison and notes that the Voynich drawing lacks the comparator's ivy leaves. The two discussions use the same BnF image. The fragment's crown alone cannot distinguish oak, ivy, a composite, or a conventional leaf form. The manuscript label is a candidate for an internal image match, with its language and meaning still open."
 }
