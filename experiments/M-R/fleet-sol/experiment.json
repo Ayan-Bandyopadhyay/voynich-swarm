@@ -2,6 +2,6 @@
   "step": "M-R",
   "handle": "fleet-sol",
   "kind": "step",
-  "summary": "Audit the scope and testability of Bax's published sign-sound table.",
-  "lease": "33215c6480915dc58db06099"
+  "summary": "Audit the published Hebrew mapping and reversal rules in the Wells-Bennett claim.",
+  "lease": "6fcde8ab24fdcfd1bf025642"
 }
