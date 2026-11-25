@@ -1,7 +1,7 @@
 {
- "title": "Words recur from the line directly above more than from four lines up",
- "statement": "In paragraph text, the share of a line's words (of two or more characters) that also stand on the line directly above is greater than the share that stand on the line four above, and the difference exceeds what is left when the words of each page are shuffled.",
- "source": "Registers Timm's observation (2014, K-005) that word repetition is raised between consecutive lines, with the line_repeat_excess statistic already in the measurement language, as a target for generators. Public practice split (Zandbergen-Landini): excess 0.0110 on the evaluation pages (p = 0.015, 399 shuffles within page) and 0.0092 on the training pages (p = 0.0025), where 6.5% of words stand on the line above and 5.6% on the line four above. Takahashi 0.0128 (p = 0.0075) and 0.0094; RF 0.0098 (p = 0.04) and 0.0064. The effect is small and uneven, which is why alpha is 0.05 and no absolute threshold is set: training blocks of 48 pages give 0.001 (p = 0.27), 0.008 (p = 0.12), 0.015 and 0.008 (both p = 0.0025); Currier A 0.007 on training and 0.028 on evaluation pages, Currier B 0.010 and 0.004 (the last not significant, p = 0.30). A sample of the size of the hidden pages may therefore fail it. Not evidence of language, and not a contrast with language: every reference language poured into the same layout scores higher (0.016 to 0.039 on the training-page layout for 24 languages; on the smaller evaluation layout 31 of 40 are higher and 9 lower, from -0.004 to 0.050), so on this measure the manuscript's line-to-line repetition is at or below that of ordinary prose, against the paper's reading that Latin and English lack it. That is a negative answer to K-005-open-2 in this measurement. What it separates is generators: on the practice split a line-restarting glyph chain with one table gives 0.002 and the same chain with a drifting table and one-glyph-changed copies of the last ten words gives 0.005; both fail. A procedure needs short-range reuse of whole words that decays within a few lines.",
+ "title": "A quarter of the longer words on a page were already written on that page",
+ "statement": "In paragraph text, at least a quarter (0.25) of the certain words of four or more glyphs were already written earlier on the same page.",
+ "source": "F-009 says only that this share beats words dealt across pages; it sets no level, so a generator passes it with far less reuse than the manuscript has. This registers the level. Public practice split (Zandbergen-Landini): 0.311 on the evaluation pages; Takahashi 0.307, RF 0.294. Twelve random samples of 34 training pages give 0.266 to 0.317 and six systematic ones (every sixth page) 0.272 to 0.304; the line is at 0.25 because the share depends on page length and on which pages are drawn. Against language, for context only (no reference comparison is registered, since the references are continuous texts and their topical locality is not comparable): of 44 reference languages poured into the layout of the evaluation pages, one (Vietnamese, 0.42) is above the manuscript and the next are Dutch 0.29, Danish 0.28, Norwegian 0.27; the median is far lower. So heavy within-page reuse of whole words is unusual but not unknown in ordinary text. Why it is a useful target: together with the singleton share sent under K-001-open-2 (at least two word types in three occur once; manuscript 0.71) it forms a pincer. On the practice split the line-chain generator with a drifting table and copies of recent words gives, when 3 copies in 10 are exact, reuse 0.26 to 0.30 (passes) but singleton share 0.58 to 0.65 (fails); when 1 copy in 20 is exact, singleton share 0.68 to 0.71 (passes) but reuse 0.21 to 0.24 (fails). A one-table chain gives reuse 0.20 to 0.21. The manuscript repeats whole words on a page as often as the first setting while keeping as many once-only words as the second: its repeats fall on few, common words. No procedure tried here does both.",
  "spec": {
   "select": {
    "unit": [
@@ -10,14 +10,14 @@
    "certain": true
   },
   "statistic": {
-   "line_repeat_excess": true
+   "page_reuse": {
+    "min_length": 4
+   }
   },
   "compare": [
    {
-    "null": "shuffle_within_page",
-    "direction": "greater",
-    "perms": 399,
-    "p": 0.05
+    "op": ">=",
+    "value": 0.25
    }
   ]
  }
