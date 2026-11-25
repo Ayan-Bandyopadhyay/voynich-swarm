@@ -1,0 +1,6 @@
+{
+  "step": "M-J-russian",
+  "handle": "fleet-corpora",
+  "kind": "corpus",
+  "summary": "Add Russian to the grid from Russian Synodal Bible (Public Domain, 3,882,528 characters after normalization; 19th century (1876), modern Russian)."
+}
