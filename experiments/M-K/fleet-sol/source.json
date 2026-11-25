@@ -1,13 +1,13 @@
 {
-  "title": "Replicating the Voynich Manuscript (open companion to the 2004 table-and-grille paper)",
-  "authors": "Gordon Rugg",
-  "year": 2004,
-  "url": "https://web.archive.org/web/20160823155350/http://www.scm.keele.ac.uk/staff/g_rugg/voynich/mySolution.html",
-  "doi": "10.1080/0161-110491892755",
-  "summary": "Rugg's archived Keele site outlines the method introduced in his January 2004 Cryptologia paper. A perforated card selects fragments from a structured table to make text that resembles the manuscript without using a plaintext.",
+  "title": "A possible generating algorithm of the Voynich manuscript",
+  "authors": "Torsten Timm and Andreas Schinner",
+  "year": 2020,
+  "url": "https://zenodo.org/records/2531632",
+  "doi": "10.1080/01611194.2019.1596999",
+  "summary": "The authors use networks of similarly spelled EVA tokens to motivate a self-citation algorithm. It generates new tokens by copying and modifying strings already produced. The open link is the companion release cited in the 2020 paper and contains the implementation, graphs and generated text.",
   "established": [
-    "Rugg's open worked explanation uses repeating sets of prefix, middle and suffix columns and a grille whose holes reveal selected cells. Blank cells permit shorter strings. Example and procedure at https://hydeandrugg.wordpress.com/2014/03/02/hoaxing-the-voynich-manuscript-part-7-producing-the-text/.",
-    "The paper reports preliminary production-time estimates, and the companion site documents a feasibility demonstration. Rugg's proposed dating and attribution are historical hypotheses."
+    "The authors set the parameters and length of their generated sample to correspond to the Recipes section and report roughly 10,000 tokens. Figures 6 and 7 compare the rank-frequency curve and growth in vocabulary with manuscript data and report both Zipf patterns.",
+    "The generated sample also shows an approximately binomial token-length distribution and correlations in the bit-level random-walk analysis. These comparisons concern the generated Recipes-style sample."
   ],
   "open": []
 }
