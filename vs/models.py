@@ -45,7 +45,8 @@ from . import ivtff, lm
 MAX_COMPONENTS = 8
 MIN_EVAL_WORDS = 100
 COMPONENT_KEYS = {"vocab": {}, "chain": {}, "position": {}, "copy": {"window": (1, 50), "edits": (0, 1)},
-                  "template": {"prefix": (0, 4), "suffix": (0, 4)}, "letters": {"order": (2, 6)}}
+                  "template": {"prefix": (0, 4), "suffix": (0, 4)}, "letters": {"order": (2, 6)},
+                  "position_letters": {"order": (2, 6)}, "boundary_letters": {"order": (2, 6)}}
 
 
 @lru_cache(maxsize=200_000)
