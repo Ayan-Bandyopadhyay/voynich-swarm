@@ -1,0 +1,13 @@
+{
+  "of": "N-006",
+  "assessment": "dissent",
+  "title": "Second look at N-006: Bax selected the cluster-side label and left its gloss speculative",
+  "statement": "I checked the Yale scan and Bax (2014), pp. 19–20, figs. 4–5. Bax's red box encloses the same five-sign string immediately to the right of the seven small stars that ZL3b and IT2a transcribe doaro at f68r3.11. RF1b gives doary and GC2a gives 8oay9. The separate oalcheol string follows the curved line. The drawing supports associating the proposed label with the seven-star group. Bax tentatively assigns a sound sequence around taern and proposes Taurus as its referent. He cites Zandbergen for the earlier proposal. Zandbergen's current f68r3 description gives Pleiades as a common identification of the group and records seven planets as another possibility. Naming a cluster and naming the larger constellation are distinct claims. The sources and the image leave the proposed lexical target open, so I dissent from confirming the submitted list of names.",
+  "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006196",
+  "sources": [
+    "Yale detail https://collections.library.yale.edu/iiif/2/1006196/4850,1100,1300,700/1300,/0/default.jpg",
+    "Stephen Bax (2014), pp. 19–20 https://stephenbax.net/wp-content/uploads/2014/01/Voynich-a-provisional-partial-decoding-BAX.pdf",
+    "René Zandbergen, f68r3 https://www.voynich.nu/q09/#f68r3",
+    "Pinned ZL3b, IT2a, RF1b and GC2a transliterations, loci f68r3.11–12"
+  ]
+}
