@@ -1,28 +1,31 @@
 {
-  "title": "The Language and Writing System of MS408 (Voynich) Explained",
-  "authors": "Gerard E. Cheshire",
-  "year": 2019,
-  "url": "https://research-information.bris.ac.uk/en/publications/the-language-and-writing-system-of-ms408-voynich-explained",
-  "doi": "10.1080/02639904.2019.1599566",
-  "venue": "Romance Studies 37(1): 30-67; accepted author manuscript in the University of Bristol research repository",
-  "proposes_language": "proto-Romance (an unattested ancestor of the Romance languages of Mediterranean Europe)",
-  "summary": "Cheshire argues that the manuscript is written in an extinct 'proto-Romance' language with its own alphabet of unfamiliar and familiar symbols, no dedicated punctuation, all lower case, no double consonants, and many multi-vowel abbreviations for phonetic components, with some Latin words and abbreviations. He holds that the language's lexicon survives scattered across the modern languages of Mediterranean Europe, and presents the language and writing system so that others can read the manuscript. The repository page links the open accepted author manuscript; the publisher's version is behind Taylor & Francis.",
+  "title": "The Voynich Manuscript is Written in Natural Language: The Pahlavi Hypothesis",
+  "authors": "J. Michael Herrmann",
+  "year": 2017,
+  "url": "https://arxiv.org/abs/1709.01634",
+  "proposes_language": "Middle Persian (Pahlavi script)",
+  "summary": "Herrmann argues that the Voynich alphabet is derived from the Iranian Pahlavi script used for Middle Persian: many Voynich glyphs are said to be upside-down Pahlavi letters, others ligatures or additions that resolve Pahlavi's notorious letter ambiguity. He transcribes words from illustration labels and parts of the main text with the proposed letter table and matches several to terms from Zoroastrian cosmology (the Bundahishn) and a Pahlavi dictionary. He explicitly does not attempt a translation.",
   "established": [
-    "The paper states nine features it attributes to the text (extinct language, mixed unfamiliar and familiar symbols, no dedicated punctuation, symbol variants marking punctuation and accents, lower case only, no double consonants, diphthong-to-quintiphthong abbreviations, some Latin words); these are the author's analysis, matched by comparison of proposed readings with words in modern Romance languages and Latin, not by a held-out or controlled test.",
-    "The author proposes a sign-to-sound alphabet and word readings built from it, and names the language only as proto-Romance, an ancestor whose lexicon he says is now dispersed among the modern Mediterranean Romance languages."
+    "The paper proposes a glyph-to-Pahlavi letter table (Table 1) based on letter-shape comparison, with many Voynich glyphs taken as rotated Pahlavi letters; the evidence is visual similarity plus a few dozen label and text words read with the table, not a statistical or held-out test.",
+    "Several transcribed label words, mainly in the astronomical and cosmological sections, are matched to names and terms of Zoroastrian cosmology in the Bundahishn and to Pahlavi dictionary entries; the author calls the transcription tentative and says only a few words have been presented.",
+    "The author states there is no evidence that the manuscript was produced in Persia or western India, raises a Black Sea origin as possible, and leaves open whether other idioms (e.g. Parsi Gujarati) are present."
   ],
   "open": [
     {
-      "question": "Since 'proto-Romance' has no surviving corpus, does Cheshire's alphabet, frozen as a substitution key, read the hidden pages better than its decoys against the closest attested period Romance corpora (Latin, Italian, Catalan, Occitan, Spanish, Portuguese)? Openly licensed text: no corpus exists for the proposed language itself; period proxies are openly available (e.g. Catalan: public-domain early editions of Ramon Llull, several hundred thousand characters; Old Occitan troubadour texts on Wikisource, cc-by-sa; Italian and Latin already on the grid).",
-      "front": "L3",
-      "check": "Encode the paper's alphabet as a fixed key (no search budget) and score it against each proxy language with the usual decoys.",
-      "hard": false
+      "question": "Does Herrmann's glyph-to-Pahlavi table, frozen as a substitution key, read the hidden pages better than its decoys against a Middle Persian corpus? Openly licensed text: I found no Middle Persian (Pahlavi) transliteration under an explicit open licence at a stable plain-text url; the large digital transliterations (e.g. TITUS, the Bochum MPCD project) do not state cc licences, and E. W. West's 1880-1897 Pahlavi Texts (Sacred Books of the East, public domain) are English translations, not Pahlavi. So no corpus yet; modern Persian (cc-by-sa Wikipedia, many millions of characters) would only be a distant proxy.",
+      "front": "J",
+      "check": "Pin an openly licensed Middle Persian transliteration of 150,000+ characters (kind corpus), then score the frozen table as a key.",
+      "hard": true
     },
     {
-      "question": "Add the missing period Romance proxies the proposal leans on (Catalan, Old Occitan, Galician-Portuguese) as corpora so the grid can test this family at measured power.",
-      "front": "J",
-      "check": "Kind corpus, >=150,000 characters each, open licence stated at the source.",
-      "hard": false
+      "question": "Can a complete phonemic account and translation of more than a few words be given with the proposed table? The author says this needs substantial effort from Pahlavi philologists and is not attempted.",
+      "front": "L5",
+      "hard": true
+    },
+    {
+      "question": "Are the astronomical charts consistent with Bundahishn cosmology rather than Arabic or Latin astronomy, as the author suggests, when compared blind on the scans?",
+      "front": "L4",
+      "hard": true
     }
   ]
 }
