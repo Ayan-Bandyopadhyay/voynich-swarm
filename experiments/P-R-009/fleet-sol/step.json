@@ -1,0 +1,49 @@
+{
+  "title": "Calibrate the section-vocabulary test against a stationary copying generator",
+  "statement": "I tested the stationary P-R-007 reconstruction on the public practice layout. I fixed seeds 1–4 for ZL and 1–2 for an additional Takahashi check. Turning off a reuse branch returns those draws to the ordinary glyph chain. Whole-word reuse alone meets all four registered checks (F-018, F-009, F-011 and F-016) on all six runs, with F-018 values of 0.966–1.065 bits and p=0.005 under the token shuffle. Both reuse branches together meet F-018, F-009 and F-011 in all six, and F-016 in one. Editing alone meets F-009 in four of six runs. It misses F-018, F-011 and F-016 throughout. Turning both branches off misses all four. Permuting section labels among intact practice pages gives p<=0.01 even in four of six no-reuse runs. Rotating the ordered section labels over the 31 eligible pages gives p=0.0645 for the manuscript on both transliterations, and 0.0645–0.1290 for the whole-copy condition. These practice checks identify whole-word reuse as sufficient for the original section statistic in this implementation. The cyclic comparison has yet to show whether it can detect vocabulary specific to a section at this sample size.",
+  "program": "J",
+  "check": "Use the previously described stationary line-chain reconstruction on public training pages. Select the ordinary and paragraph-opening practice streams exactly as the fact-attack layout does. Freeze seeds and add a blinded planted effect in the selected words. On independently generated copying backgrounds replace a prespecified fraction of each section's words with markers drawn from disjoint, equally sized vocabulary pools chosen before the run. Use the same length distribution and token counts across effect sizes. Include placebo runs and report rejection rates at alpha 0.05 for 199 token shuffles, 199 whole-page label permutations and all cyclic label offsets. Use a separate shuffle seed and keep every page's token sequence intact when moving its section label. Report power over a range of planted fractions and numbers of pages, with uncertainty across the independent backgrounds. Do not select the test based on its rank on the observed manuscript.",
+  "on_path": true,
+  "hard": true,
+  "practice": {
+    "columns": [
+      "F-018 bits",
+      "F-009",
+      "F-011",
+      "F-016",
+      "F-018 token-shuffle p",
+      "whole-page label-shuffle p",
+      "cyclic label-rotation p"
+    ],
+    "ZL": {
+      "manuscript": [1.183019, 0.310573, 0.073983, 0.310573, 0.005, 0.005, 0.064516],
+      "both 1": [1.110193, 0.250184, 0.085522, 0.250184, 0.005, 0.005, 0.096774],
+      "both 2": [1.135192, 0.247267, 0.131524, 0.247267, 0.005, 0.005, 0.129032],
+      "both 3": [1.058799, 0.228542, 0.075672, 0.228542, 0.005, 0.01, 0.129032],
+      "both 4": [1.056134, 0.237185, 0.127911, 0.237185, 0.005, 0.005, 0.16129],
+      "edit 1": [1.163932, 0.145344, -0.030289, 0.145344, 0.09, 0.005, 0.129032],
+      "edit 2": [1.145513, 0.158917, 0.004264, 0.158917, 0.125, 0.005, 0.16129],
+      "edit 3": [1.142125, 0.151499, -0.040341, 0.151499, 0.15, 0.015, 0.096774],
+      "edit 4": [1.123002, 0.144748, 0.002672, 0.144748, 0.305, 0.02, 0.129032],
+      "copy 1": [0.975195, 0.254536, 0.06123, 0.254536, 0.005, 0.005, 0.129032],
+      "copy 2": [0.97336, 0.261596, 0.041148, 0.261596, 0.005, 0.005, 0.096774],
+      "copy 3": [0.971108, 0.255148, 0.053012, 0.255148, 0.005, 0.005, 0.096774],
+      "copy 4": [0.965947, 0.264556, 0.085553, 0.264556, 0.005, 0.005, 0.096774],
+      "neither 1": [1.033388, 0.174624, -0.007142, 0.174624, 0.64, 0.015, 0.129032],
+      "neither 2": [1.044213, 0.184688, 0.031696, 0.184688, 0.575, 0.01, 0.16129],
+      "neither 3": [1.032503, 0.181386, -0.028523, 0.181386, 0.48, 0.005, 0.16129],
+      "neither 4": [1.050593, 0.182787, -0.008807, 0.182787, 0.25, 0.005, 0.096774]
+    },
+    "Takahashi": {
+      "manuscript": [1.206529, 0.307016, 0.071557, 0.307016, 0.005, 0.005, 0.064516],
+      "both 1": [1.119041, 0.238639, 0.10291, 0.238639, 0.005, 0.005, 0.129032],
+      "both 2": [1.080569, 0.248714, 0.16734, 0.248714, 0.005, 0.005, 0.129032],
+      "edit 1": [1.188186, 0.155458, -0.017494, 0.155458, 0.26, 0.01, 0.16129],
+      "edit 2": [1.182765, 0.149933, -0.014524, 0.149933, 0.105, 0.01, 0.16129],
+      "copy 1": [1.064596, 0.254767, 0.075861, 0.254767, 0.005, 0.005, 0.064516],
+      "copy 2": [0.980426, 0.257868, 0.022925, 0.257868, 0.005, 0.005, 0.096774],
+      "neither 1": [1.058694, 0.175978, -0.026364, 0.175978, 0.17, 0.005, 0.064516],
+      "neither 2": [1.069679, 0.16587, -0.04689, 0.16587, 0.555, 0.015, 0.16129]
+    }
+  }
+}
