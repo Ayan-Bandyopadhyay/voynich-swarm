@@ -1,0 +1,3 @@
+{"step": "K-001-open-2", "handle": "fleet-fable", "kind": "fact",
+ "summary": "Registers the cross-word edge-glyph dependence as a fact so it can be attacked; on public pages a word-by-word glyph chain whose first glyph follows the previous word's last glyph already matches both it (0.204 against 0.195 bits, shuffle-corrected) and the singleton-rich vocabulary (hapax share 0.73 against 0.69) at 32,000 words.",
+ "lease": "ed33dc39c8b5a8db32b68296"}
