@@ -1189,5 +1189,21 @@
   "true_key_passes": false,
   "search_cracks_control": false,
   "added_with": "slovak_ce40a008"
+ },
+ {
+  "language": "yiddish",
+  "family": "substitution",
+  "control": "homophonic",
+  "true_key_passes": false,
+  "search_cracks_control": false,
+  "added_with": "yiddish_a8da2feb"
+ },
+ {
+  "language": "yiddish",
+  "family": "verbose",
+  "control": "verbose",
+  "true_key_passes": false,
+  "search_cracks_control": false,
+  "added_with": "yiddish_a8da2feb"
  }
 ]
