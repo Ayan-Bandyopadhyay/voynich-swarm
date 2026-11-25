@@ -1,0 +1,10 @@
+{
+  "language": "serbian",
+  "title": "Serbian Bible of Đura Daničić and Vuk Karadžić (1847/1865), ekavian, Cyrillic, one verse per line",
+  "period": "19th century (NT 1847, OT 1865), modern Serbian (ekavian)",
+  "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/SrKDEkavski.txt",
+  "sha256": "9efa0c7b53bc52d296b9e8b967ef447e015fd8e25afc42093359fba4ed1f2a2a",
+  "license": "public-domain",
+  "encoding": "utf-8",
+  "notes": "License stated as 'Public Domain' in the source README at https://github.com/scrollmapper/bible_databases/blob/59b18c5af5845728c275d5b7178ad0d024172b1f/sources/sr/SrKDEkavski/README.md (scrollmapper/bible_databases, files from the CrossWire SWORD module SrKDEkavski). The url pins a fixed commit, so the bytes do not change. 5,851,928 bytes; one verse per line as '[c:v] text' with '### Book' headings in English (66 short headings, negligible). vs/refcorpus.normalize(..., 'serbian') gives 3,055,898 characters."
+}
