@@ -1,0 +1,7 @@
+{
+  "step": "P-L3-001",
+  "handle": "fleet-corpora",
+  "kind": "key",
+  "summary": "Italian substitution at the pinned budget (4 restarts x 6000 iterations) on ZL, IT and RF in normal, glyphs-reversed and words-reversed order: best practice savings IT glyphs reversed -0.097 (ZL -0.147/-0.109/-0.128, IT -0.145/-0.097/-0.125, RF -0.144/-0.109/-0.130 for normal/glyphs/words), all nine FAIL; the 2%-noise Italian homophonic control passes compression, language and kill tests at +0.070, so the search has power here.",
+  "lease": "1d7a1676157cc3db190fbca7"
+}
