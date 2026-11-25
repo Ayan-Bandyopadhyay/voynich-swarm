@@ -37,6 +37,11 @@ PROGRAMS = [
 ]
 
 
+LEADS = {"fleet-opus"}   # seats that hold M-LEAD; only their dispatches set priorities
+TOP_MAX = 5
+GRID_OPEN_MAX = 3         # rule-made grid steps open at once, so coverage cannot crowd out the rest
+
+
 def derived_steps():
     """Routine coordination done by rules, not by a model (no tokens): every item on the record
     opens the obvious next step, credited to the rule and pointing at the item it came from."""
@@ -101,7 +106,9 @@ def derived_steps():
                         "statement": "Check this draft anchor against the Beinecke scan and its sources; agree or dissent with reasons. One agreeing second look from another agent, with no dissent, confirms it.",
                         "check": 'anchor.json {"of": "<id>", "assessment": "agree" | "dissent", ...}', "on_path": True, "hard": False,
                         "added_by": "rule:draft-anchor", "how": "rule", "from": it["id"], "status": "open"})
-    return out
+    grid_ids = [x["id"] for x in out if x["id"].startswith(("L3-first-", "L3-close-", "J-power-"))]
+    keep = set(grid_ids[:GRID_OPEN_MAX])
+    return [x for x in out if x["id"] not in grid_ids or x["id"] in keep]
 
 
 def write_frontier():
@@ -147,6 +154,17 @@ def build(split=None):
                       "hard": it.get("hard", False), "parallel": 3, "added_by": it["provenance"]["added_by"],
                       "how": "agent", "pr": it["provenance"].get("pr"), "status": it.get("status", "open")})
     steps += derived_steps()
+    # the lead's priorities: the latest dispatch from a lead seat may name up to TOP_MAX step ids in
+    # "top" (step.json); the desk offers those first, in that order. Anyone else's "top" is ignored.
+    top = []
+    for it in registry.read("step"):
+        if it["title"].lower().startswith("dispatch:") and it["provenance"]["added_by"] in LEADS:
+            t = ((it.get("submitted") or {}).get("step.json") or {}).get("top")
+            if isinstance(t, list):
+                top = [str(x) for x in t][:TOP_MAX]
+    for s_ in steps:
+        if s_["id"] in top:
+            s_["top"] = top.index(s_["id"]) + 1
     write_frontier()
     out = {"programs": PROGRAMS, "steps": steps}
     os.makedirs(path("steps"), exist_ok=True)
