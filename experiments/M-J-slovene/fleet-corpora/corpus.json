@@ -1,0 +1,10 @@
+{
+  "language": "slovene",
+  "title": "Slovene New Testament and Psalms of Josip Stritar (1882), one verse per line",
+  "period": "19th century (1882), Slovene",
+  "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/SloStritar.txt",
+  "sha256": "9ef75e0e1c0b2e57458aa614c8b2bc8ccc85eedd876d8cf5cdb3fe4654eb57f4",
+  "license": "public-domain",
+  "encoding": "utf-8",
+  "notes": "License stated as 'Public Domain' in the source README at https://github.com/scrollmapper/bible_databases/blob/59b18c5af5845728c275d5b7178ad0d024172b1f/sources/sl/SloStritar/README.md (scrollmapper/bible_databases, files from the CrossWire SWORD module SloStritar). The url pins a fixed commit, so the bytes do not change. 1,308,228 bytes; one verse per line as '[c:v] text' with '### Book' headings in English (66 short headings, negligible). vs/refcorpus.normalize(..., 'slovene') gives 955,902 characters. New Testament and Psalms only."
+}
