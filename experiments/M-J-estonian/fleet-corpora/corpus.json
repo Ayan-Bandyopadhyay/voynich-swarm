@@ -1,0 +1,10 @@
+{
+  "language": "estonian",
+  "title": "Estonian Bible portions, 'Piibel Kõigile' (Bible for everyone), one verse per line",
+  "period": "modern Estonian (21st-century translation)",
+  "url": "https://raw.githubusercontent.com/BibleNLP/ebible/2bde52b4c2cfd7056cf4ed07c48969647df79744/corpus/ekk-ekkpkp.txt",
+  "sha256": "63de1b3fd58361e3ad1f3803183f223b182e857b36e752e9751bd2d98760b623",
+  "license": "cc-by-sa",
+  "encoding": "utf-8",
+  "notes": "License: 'cc-by-sa' is stated for translation id 'ekkpkp' in the eBible corpus licence table https://github.com/BibleNLP/ebible/blob/2bde52b4c2cfd7056cf4ed07c48969647df79744/metadata/licences.tsv (taken from eBible.org's copyright page, https://ebible.org/ekkpkp/copr.htm). The url pins a fixed commit, so the bytes do not change. 521,929 bytes; eBible corpus format: one verse per line aligned to a fixed versification (empty lines for verses the translation lacks; '<range>' marks merged verses, a few letters each). vs/refcorpus.normalize(..., 'estonian') gives 442,181 characters. Portions only (4,200 non-empty verses)."
+}
