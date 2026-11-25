@@ -82,6 +82,40 @@ def make(lang, kind="simple", seed=0, words_per_line=8, lines_per_page=10, homop
     return tr, ev, true_key
 
 
+def make_spaces_ignored(lang, seed=0, noise=0.0, words_per_line=8, lines_per_page=10):
+    """A control for keys read with "spaces": "ignored": a simple substitution whose plaintext
+    word breaks are enciphered as one more glyph, with the manuscript's own spaces put at random
+    glyph boundaries (about one per five glyphs), so they carry no information. Returns training
+    and evaluation pages already viewed one glyph stream per line (views.apply), and the true key."""
+    from . import views
+    tr, ev, true = make(lang, "simple", seed=seed, noise=noise, words_per_line=words_per_line,
+                        lines_per_page=lines_per_page)
+    m = dict(true["key"]["map"])
+    sg = [g for g in CIPHER_GLYPHS if g not in m and len(g) == 1][0]
+    m[sg] = " "
+    rng = random.Random(f"control/{lang}/spaces-ignored/{seed}/{noise}")
+
+    def respace(pages):
+        out = []
+        for p in pages:
+            q = Page(p.id, p.order, dict(p.meta))
+            for ln in p.lines:
+                ws, cur = [], ""
+                for ch in sg.join(ln.words):
+                    cur += ch
+                    if rng.random() < 0.2:
+                        ws.append(cur)
+                        cur = ""
+                if cur:
+                    ws.append(cur)
+                q.lines.append(Line(ln.id, ln.page, ln.n, ln.unit, ln.subtype, ws, ln.para_start, ln.para_end))
+            out.append(q)
+        return out
+
+    sub = dict(true, key={"map": m}, spaces="ignored", id=f"control-{lang}-spaces-ignored")
+    return views.apply(respace(tr), sub), views.apply(respace(ev), sub), sub
+
+
 def red_team_keys(lang, n_lex=2000):
     from .judge import target_models
     _cm, _wm, lex = target_models(lang)

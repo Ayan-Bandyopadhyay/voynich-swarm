@@ -4,36 +4,13 @@ A simple-substitution control whose plaintext spaces are enciphered as one more 
 manuscript's spaces put at random glyph boundaries. Read with "spaces": "ignored", the true key
 must pass (a), (b) and the kill tests; red-team and wrong keys must fail (a)."""
 import random, unittest
-from vs import controls, judge, views
-from vs.ivtff import Page, Line
+from vs import controls, judge, search
 
 
 def spaces_ignored_control(lang="latin", noise=0.0):
-    tr, ev, true = controls.make(lang, "simple", noise=noise)
-    m = dict(true["key"]["map"])
-    sg = [g for g in controls.CIPHER_GLYPHS if g not in m and len(g) == 1][0]
-    m[sg] = " "
-    rng = random.Random(7)
-
-    def respace(pages):
-        out = []
-        for p in pages:
-            q = Page(p.id, p.order, dict(p.meta))
-            for ln in p.lines:
-                ws, cur = [], ""
-                for ch in sg.join(ln.words):
-                    cur += ch
-                    if rng.random() < 0.2:
-                        ws.append(cur)
-                        cur = ""
-                if cur:
-                    ws.append(cur)
-                q.lines.append(Line(ln.id, ln.page, ln.n, ln.unit, ln.subtype, ws, ln.para_start, ln.para_end))
-            out.append(q)
-        return out
-
-    sub = dict(true, key={"map": m}, spaces="ignored", id=f"control-{lang}-spaces-ignored")
-    return views.apply(respace(tr), sub), views.apply(respace(ev), sub), sub, sg
+    tr, ev, sub = controls.make_spaces_ignored(lang, noise=noise)
+    sg = next(g for g, v in sub["key"]["map"].items() if v == " ")
+    return tr, ev, sub, sg
 
 
 def passes(r):
@@ -56,6 +33,12 @@ class LinePreimage(unittest.TestCase):
             r = judge.evaluate(k, tr, ev, "control")
             self.assertFalse(r["a_compresses"]["pass"], k["id"])
             self.assertFalse(passes(r), k["id"])
+
+    def test_search_cracks_spaces_ignored_control(self):
+        tr, ev, sub, sg = spaces_ignored_control("latin", noise=controls.NOISE)
+        k = search.search_cell("latin", "substitution", tr, tag="control", spaces="ignored")
+        self.assertEqual(k["key"]["map"].get(sg), " ")
+        self.assertTrue(passes(judge.evaluate(k, tr, ev, "control")))
 
 
 if __name__ == "__main__":

@@ -62,6 +62,23 @@ def run(split, log=print, parts=("controls", "redteam")):
                              # power counts only if the search cracks the control with transcription noise
                              "search_cracks_control": rsn["passes_without_anchors"]})
                 log(f"control {lang:8s} {fam:12s} clean={rs0['passes_without_anchors']} noisy={rsn['passes_without_anchors']}")
+        # keys that ignore the manuscript's spaces (views.py): own rows, so grid power per
+        # (language, family) is unchanged
+        for lang in LANGS:
+            res = {}
+            for noise in (0.0, controls.NOISE):
+                ctr, cev, true = controls.make_spaces_ignored(lang, noise=noise)
+                rt = _short(judge.evaluate(true, ctr, cev, "control"))
+                rs = _short(judge.evaluate(search.search_cell(lang, "substitution", ctr, tag="control", spaces="ignored"),
+                                           ctr, cev, "control"))
+                res[noise] = (rt, rs, sum(len(ln.words) for p in cev for ln in p.lines))
+            (rt0, rs0, n0), (rtn, rsn, _) = res[0.0], res[controls.NOISE]
+            rows.append({"language": lang, "family": "substitution/spaces-ignored", "control": "simple+break-glyph",
+                         "control_lines": n0, "true_key": rt0, "true_key_passes": rt0["passes_without_anchors"],
+                         "search_key": rs0, "search_cracks_control_clean": rs0["passes_without_anchors"],
+                         "noise": controls.NOISE, "true_key_passes_noisy": rtn["passes_without_anchors"],
+                         "search_cracks_control": rsn["passes_without_anchors"]})
+            log(f"control {lang:8s} subst/no-spaces clean={rs0['passes_without_anchors']} noisy={rsn['passes_without_anchors']}")
         _save(split, "controls", rows)
     if "redteam" in parts:
         rows = [_short(judge.evaluate(k, train, ev, split)) for lang in ("latin", "italian") for k in controls.red_team_keys(lang)]
