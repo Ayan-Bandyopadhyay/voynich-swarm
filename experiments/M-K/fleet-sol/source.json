@@ -1,20 +1,11 @@
 {
-  "title": "Is f33v a sunflower?",
-  "authors": "Jorge Stolfi",
-  "year": 1998,
-  "url": "https://www.ic.unicamp.br/en/~stolfi/EXPORT/voynich/98-01-17-sunflower/",
-  "summary": "Stolfi makes a feature-by-feature comparison of the f33v plant with cultivated and wild common sunflowers and with Jerusalem artichoke. The institutional web essay separates similarities in the flower heads from discordant leaves, attachment points and underground structures.",
-  "established": [
-    "Stolfi sees a comparatively flat head, small rays, visible bract-like details and diagonal stalks as possible similarities. He reports that only one of the three heads has the flat form and that the large central disk is a weaker match for wild sunflowers.",
-    "He describes the manuscript leaves as radially divided, with rounded tips and an apparently central petiole attachment. His sunflower comparators have a heart- or spade-shaped undivided blade and an edge attachment. He reports a further difference in the disk texture and grounds his rejection chiefly on the leaf morphology.",
-    "Jerusalem artichoke gives an analogy for the enlarged underground structures, with differences in shape, proportion and leaf attachment. Stolfi leaves wider Asteraceae affinity open and observes that the family is not geographically diagnostic."
-  ],
-  "open": [
-    {
-      "question": "Can early named sunflower illustrations be distinguished from f33v and matched Old World alternatives by the depicted flower heads, leaf attachments and roots?",
-      "front": "L4",
-      "check": "Compare the Yale f33v scan with dated premodern depictions under separate region codes and masks, including an early securely labeled sunflower such as Dodoens 1568 p. 295 and several premodern Old World images with disk-like heads or apparently central leaf attachment. Treat f93r as a separately proposed sunflower in the O’Neill and Tucker–Talbert tradition and never pool the two folios. Score the whole-plant and head-only matches, record missing regions and prior exposures, and require independent scoring before proposing any label anchor.",
-      "hard": true
-    }
+  "of": "R-006",
+  "assessment": "weak",
+  "statement": "R-006 retains its registered success as a constructed counterexample. Its manual rule inserts the exact positional contrast that F-006 tests. Draw word one from the empirical first-position word list and every other word from the empirical remaining-position list. These lists already encode the length contrast. With the public practice-training paragraph tokens, their EVA-basic means are 4.9359 and 4.4135 glyphs. Nine independent slots imply a first-word excess of 8/9 times their difference, or 0.4643 glyphs against exchangeable line positions. The submitted practice layout shows 0.4456 glyphs above its exact within-line permutation mean. Rotating each line by a uniform random offset preserves its composition and removes the prescribed first position. Across 999 independent rotations the median first-position mean is 4.4509, compared with 4.8988 as submitted. The registered advisory reproduces 4.898773 on the synthetic text and 4.829721 on the manuscript, both passing. A two-list construction shows the contrast is sufficient. It leaves open whether the feature can emerge from a rule whose inputs do not distinguish word one from the other positions.",
+  "citation": "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/76",
+  "reproduction": [
+    "Use the committed attack.json in experiments/R-attack-F-006/fleet-fable and run vs.redteam.run_attack with split practice.",
+    "Call corpus.split_pages('practice') and count certain P tokens with dsl.tokens and dsl.select. The training counts are 3431 line-initial tokens and 25934 other tokens. Measure length as len(dsl.SEG(word)) and compute the expectation from the two means.",
+    "Retain the publicly laid-out P lines by consuming one submitted synthetic line for every nonempty manuscript line in practice order. This leaves 652 included lines of nine tokens. The exact random-position mean is the mean of all 5868 synthetic positions. Compute 999 simulated whole-line rotations by drawing one length uniformly from each line with random.Random(4086). The 2nd and 98th percentiles are 4.3113 and 4.5767; none reaches the submitted mean."
   ]
 }
