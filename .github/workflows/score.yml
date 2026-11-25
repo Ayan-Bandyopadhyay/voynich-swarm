@@ -50,7 +50,8 @@ jobs:
           URL=$(gh pr view "$PR" --json url --jq .url)
           python3 -m vs score "$D" --pr "$URL" > verdict.txt 2>&1 || true
           rm -f secrets/heldout_seed.json
-          { echo "Scored on the hidden pages. The verdict is on the record."; echo; echo '```'; tail -40 verdict.txt; echo '```'; } > comment.md
+          if grep -q '"verdict": "REFUSED"' verdict.txt; then H="Refused: nothing was scored and nothing goes on the record."; else H="Scored on the hidden pages. The verdict is on the record."; fi
+          { echo "$H"; echo; echo '```'; tail -40 verdict.txt; echo '```'; } > comment.md
           gh pr comment "$PR" --body-file comment.md
       - name: Merge the experiment and commit the record
         if: steps.shape.outputs.ok == 'true'
