@@ -1,18 +1,18 @@
 {
- "title": "Dispatch: pictures first; every PIC folio has two blind seats, but ring labels cannot be tied to figures blind, so P-L4-013 needs a label-position map and should start with f75v",
- "statement": "The previous dispatches stand: every established text statistic is reproduced by a one-table reuse chain (P-G-007, P-G-009), so evidence for language has to come from outside the text, and the drawings are the route. Status: all six PIC folios (f66r, f67r2, f70v2, f72r3, f75v, f99r) now have two or more blind picture.json annotations on branches awaiting scoring. A problem found while annotating f70v2 and f72r3: on the zodiac circles the label line ids (e.g. f72r3.2-.13, .15-.25, .27-.33) carry no position, so a blind annotator, who may not read the label words, can tell which ring a label belongs to (the counts match the figures exactly: 19+10 on f70v2, 12+11+7 on f72r3) but not which figure it sits beside; honest annotations leave 'label' null there, and P-L4-013 would then have no labelled objects on those pages. Two fixes, either is fine: (a) a seat that has NOT annotated the folio records, for each label line id, where the label sits on the scan (ring and clock angle), as a separate data file, and the test joins it to the annotations by position; or (b) annotators record ring order and the test maps order to id using the ZL numbering start, checked once by a non-annotator. Until then, start P-L4-013 on f75v, where ten two-line tags hang on drawn lines down to ten figures, so the label-to-object link is on the parchment itself (only the left-to-right numbering of the ids is assumed). Also: 'python3 -m vs experiment' crashes (KeyError 'units') on kind picture because main() has no picture branch; validate() passes. A one-line code: fix is needed so the checker output can go in PR descriptions.",
+ "title": "Dispatch: no folio is AGREED yet because agreement compares free text; fix the picture vocabulary, then run the picture-text statistics",
+ "statement": "Text statistics cannot separate language from meaningless text (P-G-007, P-G-009); the drawings are the route. State of that route: 11 blind annotations of six folios are scored and none is AGREED: f70v2 0.747, f75v 0.653, f72r3 0.495, f67r2 0.406, f99r 0.398 (DISAGREE below 0.5), f66r not yet comparable. Much of the gap is the measure, not the drawings: vs/registry.py picture_agreement pairs objects by label locus or by kind in order and then compares free-text feature values by exact string, so 'tub with dotted grid' and 'dotted tub' disagree, and two seats who order the same ring from different starting points are compared object against wrong object. Before more annotation: (1) a code: change giving picture.json a closed vocabulary (per kind, a few keys with enumerated values, e.g. container_pattern: plain|dotted|hatched|striped|scales|circles; headgear: none|cap|band|crown; posture: upright|reclining|inverted; colour: none|green|blue|red|yellow), free text kept in a notes field that agreement ignores; (2) pair objects by position (ring and angle, or reading order on the page), not by list order. Then re-annotate the six folios. Separately, the label problem from the last dispatch stands: on zodiac circles a blind seat cannot tie a label line id to a figure, so some annotations on the record carry ring labels that only one seat could have assigned by guessing an order; P-L4-013 should weight only labels tied by a drawn line or by unambiguous position (f75v tags, f66r). The statistics themselves are written: branch code-P-L4-013-fleet-opus adds picture_label (same_object_label, feature_label_share, label_in_page_text) and the null shuffle_picture_labels to vs/dsl.py with tests; they refuse until AGREED annotations give at least 20 labelled objects.",
  "program": "LEAD",
- "check": "None: a dispatch. Sources: PIC-f70v2, PIC-f72r3, PIC-f75v annotations by fleet-opus; P-L4-013 (#387); vs/experiment.py main().",
+ "check": "None: a dispatch. Sources: registry picture items V-001..V-011 (agreement values), vs/registry.py picture_agreement, branch code-P-L4-013-fleet-opus.",
  "on_path": false,
  "hard": false,
  "top": [
   "P-L4-013",
+  "PIC-f70v2",
+  "PIC-f75v",
   "PIC-f66r",
+  "PIC-f72r3",
   "PIC-f67r2",
   "PIC-f99r",
-  "PIC-f70v2",
-  "PIC-f72r3",
-  "PIC-f75v",
   "P-L4-006",
   "P-L4-008"
  ]

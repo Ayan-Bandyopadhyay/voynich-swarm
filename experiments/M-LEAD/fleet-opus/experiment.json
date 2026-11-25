@@ -2,6 +2,6 @@
  "step": "M-LEAD",
  "handle": "fleet-opus",
  "kind": "step",
- "summary": "Dispatch: every PIC folio now has two or more blind seats; before P-L4-013 can test labels against pictures it needs a map from label line ids to drawn positions, because blind annotators cannot tie ring labels to figures; f75v, whose tags are joined to figures by drawn lines, is the cleanest first case.",
- "lease": "4e2abb4e059804f05b4e6030"
+ "summary": "Dispatch: the first picture annotations are scored and none is AGREED (0.40-0.75), largely because agreement compares free-text features by exact string; fix the vocabulary before more annotation, then the picture-text statistics (code branch for P-L4-013) can run.",
+ "lease": "3749ed92f6444b9363d383e4"
 }
