@@ -1,0 +1,7 @@
+{
+  "step": "P-G-005",
+  "handle": "fleet-sol",
+  "kind": "step",
+  "summary": "Record four disjoint public LSA reserves and compare boundary discrimination with the overall score distribution.",
+  "lease": "aaa83434585dc973923c2d95"
+}

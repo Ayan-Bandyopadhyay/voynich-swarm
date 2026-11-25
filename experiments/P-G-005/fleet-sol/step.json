@@ -1,0 +1,318 @@
+{
+  "title": "Compare boundary tails and score distributions without supplying section labels to the generator",
+  "statement": "I repeated the P-G-005 TF-IDF/SVD experiment on four disjoint outer folds of the public practice-training pool, preserving consecutive page windows and fitting each model without that fold. ZL yielded 834 windows, with 15 section or Currier label changes and 57 other page breaks as the midpoint. Takahashi yielded 820, with 13 label changes and 57 other breaks. The manuscript's fold-specific bottom 5% captures 10 of 15 label changes in ZL and 7 of 13 in Takahashi. Pairwise discrimination at page cuts is 0.838 and 0.803 respectively, measured as the share of within-fold pairs where the cross-label score is lower, with ties counting half. The grouped line chain receives these labels for selecting its table, orders all cross-label breaks below within-label breaks within each fold in both seed runs and transliterations, and has higher overall median scores than the manuscript in every fold. The label-free positional chain has the smallest mean empirical CDF distance in both transliterations among these models (0.281 ZL and 0.308 Takahashi). It captures only one or two ZL transitions and three Takahashi transitions in the low tails. The global chain and the pinned self-citation model capture at most two. The global and grouped chains exchange their order by mean CDF distance between transliterations. These comparisons cover two fixed seeds per model and retain the limits of the small number of label changes. Matching a pooled distribution and matching the timing of the low scores are distinct checks.",
+  "program": "G",
+  "check": "Repeat P-G-005's document construction, rank-75 projection and matched line layouts. In each of four folds retain public training pages satisfying floor(page order / 8) modulo 4 equal to the fold number for evaluation, and exclude any window spanning an omitted page. Fit tables and the TF-IDF projection on the other folds only. Compute the bottom floor(0.05 N) per fold and match the validity mask before comparing CDFs. Form the pairwise discrimination statistic only from pages in the same fold. For the follow-up, freeze a generator that may fit changes in public training text but chooses its evaluation table using only the fixed writing schedule, with section and Currier labels omitted from its inputs. Compare both the CDF distance and the observed median drop and low-tail rank at label changes. Calibrate those scores on separate practice controls with known scheduled table switches and a wide range of transition strengths.",
+  "on_path": false,
+  "hard": true,
+  "practice": {
+    "zl": {
+      "manuscript": {
+        "eligible_windows": 834,
+        "undefined_windows": 0,
+        "cross_label_page_breaks": 15,
+        "other_page_breaks": 57,
+        "cross_label_breaks_in_low_tail": 10,
+        "low_tail_windows": 40,
+        "median_cosine_at_cross_label_and_other_breaks": [0.523, 0.788],
+        "within_fold_pairwise_auc": 0.838,
+        "fold_quantiles_05_25_50_75_95": [
+          [0.679063, 0.789543, 0.832567, 0.869944, 0.887476],
+          [0.532377, 0.709276, 0.759227, 0.806278, 0.859006],
+          [0.629101, 0.751645, 0.801591, 0.849492, 0.888762],
+          [0.536762, 0.728764, 0.776962, 0.825915, 0.892756]
+        ]
+      },
+      "global chain 11": {
+        "eligible_windows": 834,
+        "undefined_windows": 0,
+        "cross_label_page_breaks": 15,
+        "other_page_breaks": 57,
+        "cross_label_breaks_in_low_tail": 0,
+        "low_tail_windows": 40,
+        "median_cosine_at_cross_label_and_other_breaks": [0.788, 0.786],
+        "within_fold_pairwise_auc": 0.429,
+        "fold_quantiles_05_25_50_75_95": [
+          [0.726267, 0.751822, 0.774939, 0.80055, 0.824052],
+          [0.715317, 0.757677, 0.780538, 0.796168, 0.826638],
+          [0.709979, 0.743461, 0.771804, 0.801329, 0.842633],
+          [0.711272, 0.756203, 0.781983, 0.800888, 0.8296]
+        ],
+        "fold_cdf_distances_to_manuscript": [0.5031, 0.2568, 0.2878, 0.1951]
+      },
+      "global chain 22": {
+        "eligible_windows": 834,
+        "undefined_windows": 0,
+        "cross_label_page_breaks": 15,
+        "other_page_breaks": 57,
+        "cross_label_breaks_in_low_tail": 1,
+        "low_tail_windows": 40,
+        "median_cosine_at_cross_label_and_other_breaks": [0.787, 0.769],
+        "within_fold_pairwise_auc": 0.467,
+        "fold_quantiles_05_25_50_75_95": [
+          [0.734991, 0.753033, 0.77252, 0.795511, 0.816084],
+          [0.710395, 0.74411, 0.766748, 0.791995, 0.823285],
+          [0.7053, 0.742044, 0.762812, 0.785903, 0.828539],
+          [0.715603, 0.751845, 0.777057, 0.798333, 0.831585]
+        ],
+        "fold_cdf_distances_to_manuscript": [0.5472, 0.2131, 0.3707, 0.1916]
+      },
+      "grouped chain 11": {
+        "eligible_windows": 834,
+        "undefined_windows": 0,
+        "cross_label_page_breaks": 15,
+        "other_page_breaks": 57,
+        "cross_label_breaks_in_low_tail": 14,
+        "low_tail_windows": 40,
+        "median_cosine_at_cross_label_and_other_breaks": [0.47, 0.862],
+        "within_fold_pairwise_auc": 1.0,
+        "fold_quantiles_05_25_50_75_95": [
+          [0.536274, 0.809549, 0.866983, 0.892149, 0.92219],
+          [0.576067, 0.790291, 0.824248, 0.856773, 0.890347],
+          [0.637724, 0.81017, 0.839064, 0.873025, 0.921087],
+          [0.545933, 0.802295, 0.849414, 0.89291, 0.922008]
+        ],
+        "fold_cdf_distances_to_manuscript": [0.2956, 0.4317, 0.3317, 0.3902]
+      },
+      "grouped chain 22": {
+        "eligible_windows": 834,
+        "undefined_windows": 0,
+        "cross_label_page_breaks": 15,
+        "other_page_breaks": 57,
+        "cross_label_breaks_in_low_tail": 11,
+        "low_tail_windows": 40,
+        "median_cosine_at_cross_label_and_other_breaks": [0.398, 0.86],
+        "within_fold_pairwise_auc": 1.0,
+        "fold_quantiles_05_25_50_75_95": [
+          [0.447359, 0.791684, 0.864096, 0.895768, 0.927229],
+          [0.546662, 0.803086, 0.832584, 0.856913, 0.882354],
+          [0.620593, 0.789557, 0.828355, 0.864317, 0.911374],
+          [0.54129, 0.803312, 0.848133, 0.886039, 0.921456]
+        ],
+        "fold_cdf_distances_to_manuscript": [0.2767, 0.4918, 0.1951, 0.4251]
+      },
+      "self-citation 11": {
+        "eligible_windows": 834,
+        "undefined_windows": 0,
+        "cross_label_page_breaks": 15,
+        "other_page_breaks": 57,
+        "cross_label_breaks_in_low_tail": 0,
+        "low_tail_windows": 40,
+        "median_cosine_at_cross_label_and_other_breaks": [0.404, 0.343],
+        "within_fold_pairwise_auc": 0.362,
+        "fold_quantiles_05_25_50_75_95": [
+          [0.184649, 0.302911, 0.406003, 0.495602, 0.639856],
+          [0.217287, 0.345336, 0.432155, 0.513341, 0.581618],
+          [0.08014, 0.25442, 0.372389, 0.491322, 0.690913],
+          [0.167617, 0.302821, 0.409421, 0.52003, 0.669804]
+        ],
+        "fold_cdf_distances_to_manuscript": [0.9371, 0.8798, 0.8634, 0.8467]
+      },
+      "self-citation 22": {
+        "eligible_windows": 834,
+        "undefined_windows": 0,
+        "cross_label_page_breaks": 15,
+        "other_page_breaks": 57,
+        "cross_label_breaks_in_low_tail": 1,
+        "low_tail_windows": 40,
+        "median_cosine_at_cross_label_and_other_breaks": [0.391, 0.361],
+        "within_fold_pairwise_auc": 0.404,
+        "fold_quantiles_05_25_50_75_95": [
+          [0.106028, 0.269897, 0.413668, 0.539007, 0.69171],
+          [0.244138, 0.365107, 0.497818, 0.593092, 0.688173],
+          [0.194276, 0.351388, 0.467029, 0.550418, 0.6987],
+          [0.067276, 0.241068, 0.431059, 0.544602, 0.733887]
+        ],
+        "fold_cdf_distances_to_manuscript": [0.8931, 0.7923, 0.8488, 0.7735]
+      },
+      "drifting chain 11": {
+        "eligible_windows": 834,
+        "undefined_windows": 0,
+        "cross_label_page_breaks": 15,
+        "other_page_breaks": 57,
+        "cross_label_breaks_in_low_tail": 1,
+        "low_tail_windows": 40,
+        "median_cosine_at_cross_label_and_other_breaks": [0.809, 0.827],
+        "within_fold_pairwise_auc": 0.65,
+        "fold_quantiles_05_25_50_75_95": [
+          [0.785165, 0.818757, 0.850261, 0.871864, 0.889044],
+          [0.737999, 0.773638, 0.806144, 0.843011, 0.90511],
+          [0.712962, 0.784796, 0.815416, 0.841655, 0.878369],
+          [0.762291, 0.805474, 0.82524, 0.843747, 0.896212]
+        ],
+        "fold_cdf_distances_to_manuscript": [0.2327, 0.377, 0.1756, 0.4321]
+      },
+      "drifting chain 22": {
+        "eligible_windows": 834,
+        "undefined_windows": 0,
+        "cross_label_page_breaks": 15,
+        "other_page_breaks": 57,
+        "cross_label_breaks_in_low_tail": 2,
+        "low_tail_windows": 40,
+        "median_cosine_at_cross_label_and_other_breaks": [0.817, 0.812],
+        "within_fold_pairwise_auc": 0.546,
+        "fold_quantiles_05_25_50_75_95": [
+          [0.7475, 0.811602, 0.837532, 0.857733, 0.884444],
+          [0.735711, 0.77394, 0.810892, 0.834909, 0.871748],
+          [0.711376, 0.767353, 0.808451, 0.846927, 0.883726],
+          [0.758233, 0.792692, 0.823212, 0.853602, 0.879484]
+        ],
+        "fold_cdf_distances_to_manuscript": [0.1572, 0.3661, 0.1171, 0.3937]
+      }
+    },
+    "it": {
+      "manuscript": {
+        "eligible_windows": 820,
+        "undefined_windows": 0,
+        "cross_label_page_breaks": 13,
+        "other_page_breaks": 57,
+        "cross_label_breaks_in_low_tail": 7,
+        "low_tail_windows": 39,
+        "median_cosine_at_cross_label_and_other_breaks": [0.635, 0.787],
+        "within_fold_pairwise_auc": 0.803,
+        "fold_quantiles_05_25_50_75_95": [
+          [0.668643, 0.781176, 0.823346, 0.850881, 0.882461],
+          [0.543908, 0.693108, 0.753069, 0.796173, 0.856108],
+          [0.638078, 0.761333, 0.816657, 0.85315, 0.896429],
+          [0.568741, 0.739902, 0.788402, 0.832043, 0.889899]
+        ]
+      },
+      "global chain 11": {
+        "eligible_windows": 820,
+        "undefined_windows": 0,
+        "cross_label_page_breaks": 13,
+        "other_page_breaks": 57,
+        "cross_label_breaks_in_low_tail": 0,
+        "low_tail_windows": 39,
+        "median_cosine_at_cross_label_and_other_breaks": [0.783, 0.773],
+        "within_fold_pairwise_auc": 0.457,
+        "fold_quantiles_05_25_50_75_95": [
+          [0.707502, 0.741977, 0.767326, 0.793018, 0.823502],
+          [0.712024, 0.757657, 0.778463, 0.795117, 0.824577],
+          [0.71716, 0.747832, 0.780871, 0.801469, 0.825307],
+          [0.72398, 0.761177, 0.781844, 0.805153, 0.834511]
+        ],
+        "fold_cdf_distances_to_manuscript": [0.4937, 0.3034, 0.4216, 0.2143]
+      },
+      "global chain 22": {
+        "eligible_windows": 820,
+        "undefined_windows": 0,
+        "cross_label_page_breaks": 13,
+        "other_page_breaks": 57,
+        "cross_label_breaks_in_low_tail": 1,
+        "low_tail_windows": 39,
+        "median_cosine_at_cross_label_and_other_breaks": [0.778, 0.777],
+        "within_fold_pairwise_auc": 0.481,
+        "fold_quantiles_05_25_50_75_95": [
+          [0.71706, 0.747181, 0.772717, 0.791631, 0.820008],
+          [0.722174, 0.758373, 0.777642, 0.804068, 0.84497],
+          [0.716066, 0.746837, 0.770526, 0.794223, 0.827377],
+          [0.735272, 0.764921, 0.785288, 0.804978, 0.828226]
+        ],
+        "fold_cdf_distances_to_manuscript": [0.5, 0.3202, 0.4314, 0.2393]
+      },
+      "grouped chain 11": {
+        "eligible_windows": 820,
+        "undefined_windows": 0,
+        "cross_label_page_breaks": 13,
+        "other_page_breaks": 57,
+        "cross_label_breaks_in_low_tail": 11,
+        "low_tail_windows": 39,
+        "median_cosine_at_cross_label_and_other_breaks": [0.483, 0.846],
+        "within_fold_pairwise_auc": 1.0,
+        "fold_quantiles_05_25_50_75_95": [
+          [0.52315, 0.794199, 0.862225, 0.888132, 0.912713],
+          [0.586953, 0.787516, 0.82338, 0.845882, 0.867985],
+          [0.595134, 0.780102, 0.824329, 0.865583, 0.908046],
+          [0.594239, 0.814132, 0.852032, 0.894328, 0.923153]
+        ],
+        "fold_cdf_distances_to_manuscript": [0.3291, 0.5, 0.1176, 0.4179]
+      },
+      "grouped chain 22": {
+        "eligible_windows": 820,
+        "undefined_windows": 0,
+        "cross_label_page_breaks": 13,
+        "other_page_breaks": 57,
+        "cross_label_breaks_in_low_tail": 12,
+        "low_tail_windows": 39,
+        "median_cosine_at_cross_label_and_other_breaks": [0.452, 0.852],
+        "within_fold_pairwise_auc": 1.0,
+        "fold_quantiles_05_25_50_75_95": [
+          [0.46302, 0.776772, 0.860471, 0.883736, 0.910806],
+          [0.571712, 0.775448, 0.808117, 0.846773, 0.885178],
+          [0.665611, 0.783551, 0.814207, 0.862429, 0.910098],
+          [0.539421, 0.806717, 0.854685, 0.896582, 0.937444]
+        ],
+        "fold_cdf_distances_to_manuscript": [0.3544, 0.3989, 0.1422, 0.3786]
+      },
+      "self-citation 11": {
+        "eligible_windows": 818,
+        "undefined_windows": 2,
+        "cross_label_page_breaks": 13,
+        "other_page_breaks": 57,
+        "cross_label_breaks_in_low_tail": 2,
+        "low_tail_windows": 39,
+        "median_cosine_at_cross_label_and_other_breaks": [0.32, 0.335],
+        "within_fold_pairwise_auc": 0.519,
+        "fold_quantiles_05_25_50_75_95": [
+          [0.234877, 0.329, 0.442563, 0.620483, 0.753267],
+          [0.072645, 0.270467, 0.399464, 0.49548, 0.615869],
+          [0.156816, 0.332278, 0.43748, 0.568205, 0.736838],
+          [0.13846, 0.300759, 0.421987, 0.526846, 0.699333]
+        ],
+        "fold_cdf_distances_to_manuscript": [0.8228, 0.8636, 0.8186, 0.8464]
+      },
+      "self-citation 22": {
+        "eligible_windows": 820,
+        "undefined_windows": 0,
+        "cross_label_page_breaks": 13,
+        "other_page_breaks": 57,
+        "cross_label_breaks_in_low_tail": 1,
+        "low_tail_windows": 39,
+        "median_cosine_at_cross_label_and_other_breaks": [0.28, 0.333],
+        "within_fold_pairwise_auc": 0.534,
+        "fold_quantiles_05_25_50_75_95": [
+          [0.097728, 0.228594, 0.350695, 0.468104, 0.644844],
+          [0.00648, 0.189306, 0.283683, 0.38865, 0.602792],
+          [0.131365, 0.330161, 0.472423, 0.555595, 0.644133],
+          [0.146505, 0.28879, 0.400399, 0.518862, 0.624416]
+        ],
+        "fold_cdf_distances_to_manuscript": [0.9367, 0.8933, 0.8971, 0.8821]
+      },
+      "drifting chain 11": {
+        "eligible_windows": 820,
+        "undefined_windows": 0,
+        "cross_label_page_breaks": 13,
+        "other_page_breaks": 57,
+        "cross_label_breaks_in_low_tail": 3,
+        "low_tail_windows": 39,
+        "median_cosine_at_cross_label_and_other_breaks": [0.833, 0.818],
+        "within_fold_pairwise_auc": 0.538,
+        "fold_quantiles_05_25_50_75_95": [
+          [0.781189, 0.822333, 0.849086, 0.869405, 0.891608],
+          [0.738754, 0.785617, 0.81148, 0.847439, 0.874423],
+          [0.738438, 0.782244, 0.81117, 0.848486, 0.88135],
+          [0.76655, 0.803975, 0.830761, 0.85354, 0.881631]
+        ],
+        "fold_cdf_distances_to_manuscript": [0.2595, 0.4944, 0.1471, 0.3964]
+      },
+      "drifting chain 22": {
+        "eligible_windows": 820,
+        "undefined_windows": 0,
+        "cross_label_page_breaks": 13,
+        "other_page_breaks": 57,
+        "cross_label_breaks_in_low_tail": 3,
+        "low_tail_windows": 39,
+        "median_cosine_at_cross_label_and_other_breaks": [0.805, 0.809],
+        "within_fold_pairwise_auc": 0.567,
+        "fold_quantiles_05_25_50_75_95": [
+          [0.779227, 0.807426, 0.829169, 0.852101, 0.893927],
+          [0.712603, 0.771966, 0.802949, 0.825739, 0.88681],
+          [0.743738, 0.79524, 0.814782, 0.841339, 0.873131],
+          [0.765049, 0.801138, 0.824515, 0.848392, 0.880494]
+        ],
+        "fold_cdf_distances_to_manuscript": [0.2278, 0.3933, 0.1814, 0.3679]
+      }
+    }
+  }
+}
