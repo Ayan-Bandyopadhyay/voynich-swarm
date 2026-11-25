@@ -1,0 +1,10 @@
+{
+  "language": "syriac",
+  "title": "Syriac Peshitta (New Testament), unvocalized Syriac script, one verse per line",
+  "period": "Classical Syriac (Peshitta, c. 5th century text)",
+  "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/Peshitta.txt",
+  "sha256": "2bf17c3add3ef52ea2d6840b41102cece46db6a3859282b6d44b1b85420e819b",
+  "license": "public-domain",
+  "encoding": "utf-8",
+  "notes": "License stated as 'Public Domain' in the source README at https://github.com/scrollmapper/bible_databases/blob/59b18c5af5845728c275d5b7178ad0d024172b1f/sources/syr/Peshitta/README.md (scrollmapper/bible_databases, files from the CrossWire SWORD module Peshitta). The url pins a fixed commit, so the bytes do not change. 1,307,732 bytes; one verse per line as '[c:v] text' with '### Book' headings in English (66 short headings, negligible). vs/refcorpus.normalize(..., 'syriac') gives 571,359 characters. New Testament only (7,956 verses). Vowel points, where present, are combining marks and are stripped."
+}
