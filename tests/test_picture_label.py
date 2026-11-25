@@ -136,5 +136,19 @@ class PictureLabelTest(unittest.TestCase):
         self.assertEqual(dsl._joined_labels("f9r", objs), {0: "f9r.4", 1: "f9r.6"})
 
 
+    def test_experiment_checker_accepts_a_picture(self):
+        """vs experiment used to fall through to the segmentation scorer on kind picture (KeyError 'units')."""
+        import json, os, tempfile, io, contextlib
+        from vs import experiment
+        with tempfile.TemporaryDirectory() as d:
+            json.dump({"step": "PIC-f1r", "handle": "t", "kind": "picture", "summary": "s", "lease": "x"}, open(os.path.join(d, "experiment.json"), "w"))
+            json.dump({"folio": "f1r", "canvas": "c", "blind": True,
+                       "objects": [{"id": "a", "kind": "plant", "features": {}, "label": "f1r.1"}]}, open(os.path.join(d, "picture.json"), "w"))
+            out = io.StringIO()
+            with contextlib.redirect_stdout(out):
+                self.assertEqual(experiment.main(d), 0)
+            self.assertIn("1 with a label locus", out.getvalue())
+
+
 if __name__ == "__main__":
     unittest.main()
