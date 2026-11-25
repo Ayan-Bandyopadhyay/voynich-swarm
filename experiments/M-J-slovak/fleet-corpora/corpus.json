@@ -1,0 +1,10 @@
+{
+  "language": "slovak",
+  "title": "Hájnikova žena (The Gamekeeper's Wife), verse epic by Pavol Országh Hviezdoslav (1884-1886), Slovak Wikisource",
+  "period": "19th century (1884-1886), literary Slovak",
+  "url": "https://sk.wikisource.org/w/index.php?oldid=9150&action=raw",
+  "sha256": "ce40a008bee3ee3df6468ece9501b4addeddcb08cd83a86e28056d66511190a2",
+  "license": "cc-by-sa",
+  "encoding": "utf-8",
+  "notes": "License: the underlying text is public domain (see period); the Wikisource page (pinned revision in the url) is published under Wikisource's terms, CC BY-SA 4.0 (https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use). The url pins a fixed page revision (oldid), so the bytes do not change. 227,968 bytes; wikitext inside <poem> tags; the tags and a licence template ('PD old 70', author d. 1921) add a few hundred Latin letters. vs/refcorpus.normalize(..., 'slovak') gives 191,172 characters."
+}
