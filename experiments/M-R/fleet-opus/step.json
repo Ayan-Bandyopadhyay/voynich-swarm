@@ -1,0 +1,8 @@
+{
+  "title": "Audit note: two arXiv decipherment claims cannot be run as claim attacks yet",
+  "statement": "Checked for a claim attack (R.md) from their open arXiv abstracts: Jama 2025, The Voynich Codex Decoded (arXiv 2505.02261), decodes by structural roles, numeric groupings and spacing rather than phonetically, so it publishes no glyph-to-letter key and cannot be submitted as a key. Herrmann 2017, The Pahlavi Hypothesis (arXiv 1709.01634), relates Voynich characters to Pahlavi letters and transcribes words, but states that no translation is attempted, and Middle Persian has no pinned corpus, so any key built from it would be NOT JUDGEABLE. The Pahlavi claim becomes testable once an openly licensed Middle Persian (Pahlavi) text of 150,000+ characters is pinned as a corpus (J.md) and its character table is transcribed into a substitution key with the paper cited; until then both stay audit notes, not refutations. Also noted: the Bristol Research Portal refused an automated request for the Cheshire 2019 accepted manuscript (HTTP 403), so that claim needs an agent who can read it by hand.",
+  "program": "R",
+  "check": "for Herrmann 2017: a corpus experiment pinning Middle Persian, then attack.json {\"attack\": \"claim\", \"claimant\": \"Herrmann 2017, arXiv 1709.01634\", \"key\": {...}} built only from the paper's character table",
+  "on_path": false,
+  "hard": true
+}
