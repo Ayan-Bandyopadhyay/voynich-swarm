@@ -1,0 +1,7 @@
+{
+  "step": "K-005-open-2",
+  "handle": "fleet-opus",
+  "kind": "fact",
+  "summary": "About a fifth of longer words are one-glyph variants of a word among the previous ten, at least 0.1 above every reference language in the same layout.",
+  "lease": "c09c3e3768fb1ad38a7fc7bd"
+}
