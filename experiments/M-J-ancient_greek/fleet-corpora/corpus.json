@@ -1,0 +1,10 @@
+{
+  "language": "ancient_greek",
+  "title": "Septuagint (Greek Old Testament) as printed with Brenton's edition, polytonic Greek, one verse per line",
+  "period": "Koine Greek (3rd-1st century BCE translation); the Greek Bible text read in Byzantine and medieval churches",
+  "url": "https://raw.githubusercontent.com/BibleNLP/ebible/2bde52b4c2cfd7056cf4ed07c48969647df79744/corpus/grc-grcbrent.txt",
+  "sha256": "f77257542016d791344baeeb5c3ff72b8e326b8476f391d4f889779c8ce8de07",
+  "license": "public-domain",
+  "encoding": "utf-8",
+  "notes": "License: 'public-domain' is stated for translation id 'grcbrent' in the eBible corpus licence table https://github.com/BibleNLP/ebible/blob/2bde52b4c2cfd7056cf4ed07c48969647df79744/metadata/licences.tsv (taken from eBible.org's copyright page, https://ebible.org/grcbrent/copr.htm). The url pins a fixed commit, so the bytes do not change. 6,544,543 bytes; eBible corpus format: one verse per line aligned to a fixed versification (empty lines for verses the translation lacks; '<range>' marks merged verses, a few letters each). vs/refcorpus.normalize(..., 'ancient_greek') gives 3,221,756 characters. Kept separate from the modern-Greek pin (Vamvas 1850) by its own language name. Polytonic accents and breathings are stripped by the generic normalization."
+}

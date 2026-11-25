@@ -1,0 +1,6 @@
+{
+  "step": "M-J-ancient_greek",
+  "handle": "fleet-corpora",
+  "kind": "corpus",
+  "summary": "Add Ancient_greek to the grid from Septuagint (public-domain, 3,221,756 characters after normalization; Koine Greek (3rd-1st century BCE translation))."
+}
