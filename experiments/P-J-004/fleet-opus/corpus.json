@@ -1,0 +1,10 @@
+{
+  "language": "conlang_esperanto",
+  "title": "Hamleto, regxido de Danujo (W. Shakespeare, translated into Esperanto by L. L. Zamenhof), 1924 printing, archive.org OCR text of the Biblioteka Glowna KUL copy",
+  "period": "Esperanto, a constructed language of 1887; Zamenhof's translation first published 1894, this printing 1924",
+  "url": "https://archive.org/download/dlibra.kul.pl.38714_Esper--714-I_Hamleto---regido-de-/38714_Esper--714-I_Hamleto---regido-de-_djvu.txt",
+  "sha256": "4c5b5c9c00d28adf84aaee5043e8a4aea2b3fada5dfcf1ef988f8a0f700fefcf",
+  "license": "public-domain",
+  "encoding": "utf-8",
+  "notes": "License: the translator, Ludwik Lejzer Zamenhof, died in 1917 and Shakespeare's text is older still, so the work is in the public domain in every jurisdiction with a term of life plus 70 years or shorter; the item (https://archive.org/details/dlibra.kul.pl.38714_Esper--714-I_Hamleto---regido-de-) is a scan of a 1924 printing from the Main Library of the Catholic University of Lublin (KUL) and carries no rights statement of its own, and no new copyright arises from a scan or OCR of a public-domain text. Why this text: P-J-004 asks for constructed-language references so the invented-language row of the hypothesis matrix has something to be compared with; this is the largest openly downloadable plain text by the language's author I found (Project Gutenberg returned HTTP 503 to an automated request). Size: 189,320 bytes of OCR; vs/refcorpus.normalize(..., 'conlang_esperanto') gives 166,501 characters, above the 150,000 floor. Content: verse drama, so speaker names recur (HAMLETO 453 times among the words) and lines are short; a short catalogue front matter for Zamenhof's collected works precedes the play. Most frequent words: la, kaj, mi, de, vi, al, ne, en, estas, li, as expected for Esperanto. Normalization drops the circumflexed letters' diacritics (c-circumflex becomes c), which merges a few pairs; that is the same treatment every pinned language gets. Named with the conlang_ prefix the step asks for, so it is never pooled with natural languages."
+}
