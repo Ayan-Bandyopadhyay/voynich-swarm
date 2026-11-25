@@ -1,7 +1,7 @@
 {
  "step": "K-016-open-2",
  "handle": "fleet-opus",
- "kind": "corpus",
- "summary": "Adds Old Occitan to the grid: volume 1 of Mahn's 1846 edition of the troubadours (poems and prose vidas in Old Occitan), archive.org OCR, about 590,000 characters after cleaning, about 5% of it German preface.",
- "lease": "7feadec32e4afc862cc2b5df"
+ "kind": "step",
+ "summary": "Mostly settled on the record: Catalan (C-002), Galician (C-042) and Old Occitan (C-050) are pinned corpora with substitution cells that FAIL (Catalan also verbose); only Old Occitan is a period text, so the open part is a medieval Galician-Portuguese corpus (P-J-003) and period Catalan.",
+ "lease": "b1fa8547b280f2e3ec81ab86"
 }
