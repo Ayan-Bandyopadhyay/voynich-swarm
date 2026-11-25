@@ -56,7 +56,7 @@ def _public_fetch(url, limit):
 def _score_corpus(c, e):
     """Download, verify, check, calibrate. Returns (item, ledger kind) or (None, refusal)."""
     import hashlib, urllib.request, urllib.parse
-    from . import refcorpus, controls, judge, search
+    from . import refcorpus, season
     try:
         raw = _public_fetch(c["url"], MAX_BYTES + 1)
     except ValueError as ex:
@@ -88,21 +88,19 @@ def _score_corpus(c, e):
         return None, {"verdict": "REFUSED", "errors": [f"only {chars} characters of {lang} after cleaning (need {MIN_CHARS})"]}
     # calibration: does the test have power in this language?
     power = {}
-    for fam, kind in (("substitution", "homophonic"), ("verbose", "verbose")):
+    calibrated = []
+    for fam in season.FAMILIES:
         try:
-            tr, ev, true = controls.make(lang, kind)
-            rt = judge.evaluate(true, tr, ev, "control")
-            rs = judge.evaluate(search.search_cell(lang, fam, tr, tag="control"), tr, ev, "control")
-            ok = lambda r: r["a_compresses"]["pass"] and r["b_reads"]["pass"] and r["kill_tests"]["pass"]
-            power[fam] = {"true_key_passes": ok(rt), "search_cracks_control": ok(rs)}
+            row = season.calibrate_cell(lang, fam)
         except Exception as ex:
             power[fam] = {"error": str(ex)[:200]}
+            continue
+        power[fam] = {name: row[name] for name in ("true_key_passes", "search_cracks_control_clean",
+                      "noise", "true_key_passes_noisy", "search_cracks_control")}
+        calibrated.append({**row, "added_with": pid})
     cfn = path("results", "heldout", "controls.json")
     rows = [r for r in json.load(open(cfn)) if r["language"] != lang]
-    for fam, pw in power.items():
-        if "error" not in pw:
-            rows.append({"language": lang, "family": fam, "control": "homophonic" if fam == "substitution" else "verbose",
-                         "true_key_passes": pw["true_key_passes"], "search_cracks_control": pw["search_cracks_control"], "added_with": pid})
+    rows.extend(calibrated)
     json.dump(rows, open(cfn, "w"), indent=1)
     item = {"id": registry.next_id("C"), "type": "corpus", "title": f"{lang.title()}: {c['title']}"[:160],
             "statement": f"{c['title']} ({c['period']}), {chars:,} characters after cleaning, {c['license']}.",

@@ -60,6 +60,32 @@ def _german_verbose_sizes(pages, true_key, log):
     return rows
 
 
+class ControlUnavailable(ValueError):
+    """The generator cannot build this family's control for the target language."""
+
+
+def calibrate_cell(lang, family):
+    """Measure clean and noisy controls with the same search budget used on the grid."""
+    kind = CONTROL_FOR[family]
+    results = {}
+    for noise in (0.0, controls.NOISE):
+        try:
+            train, evaluation, planted = controls.make(lang, kind, noise=noise)
+        except (ValueError, IndexError) as ex:
+            raise ControlUnavailable(str(ex)) from ex
+        fitted = search.search_cell(lang, family, train, tag="control")
+        results[noise] = (_short(judge.evaluate(planted, train, evaluation, "control")),
+                          _short(judge.evaluate(fitted, train, evaluation, "control")),
+                          sum(len(line.words) for page in evaluation for line in page.lines))
+    clean_true, clean_search, tokens = results[0.0]
+    noisy_true, noisy_search, _ = results[controls.NOISE]
+    return {"language": lang, "family": family, "control": kind, "control_tokens": tokens,
+            "true_key": clean_true, "true_key_passes": clean_true["passes_without_anchors"],
+            "search_key": clean_search, "search_cracks_control_clean": clean_search["passes_without_anchors"],
+            "noise": controls.NOISE, "true_key_passes_noisy": noisy_true["passes_without_anchors"],
+            "search_cracks_control": noisy_search["passes_without_anchors"]}
+
+
 def run(split, log=print, parts=("controls", "redteam")):
     train, ev = corpus.split_pages(split)
     t0 = time.time()
@@ -70,30 +96,17 @@ def run(split, log=print, parts=("controls", "redteam")):
                 if fam == "nomenclator" and len(refcorpus.alphabet(lang)) > len(controls.CIPHER_GLYPHS):
                     log(f"control {lang:8s} {fam:12s} unsupported alphabet size")
                     continue
-                res = {}
-                for noise in (0.0, controls.NOISE):
-                    try:
-                        ctr, cev, true = controls.make(lang, CONTROL_FOR[fam], noise=noise)
-                    except (ValueError, IndexError) as ex:
-                        # this cipher family cannot be built over this alphabet: no control, so no power
-                        log(f"control {lang:8s} {fam:12s} cannot build a control ({str(ex)[:60]})")
-                        res = None
-                        break
-                    rt = _short(judge.evaluate(true, ctr, cev, "control"))
-                    rs = _short(judge.evaluate(search.search_cell(lang, fam, ctr, tag="control"), ctr, cev, "control"))
-                    res[noise] = (rt, rs, sum(len(l.words) for p in cev for l in p.lines))
-                if res is None:
+                try:
+                    row = calibrate_cell(lang, fam)
+                except ControlUnavailable as ex:
+                    log(f"control {lang:8s} {fam:12s} cannot build a control ({str(ex)[:60]})")
                     continue
-                (rt0, rs0, n0), (rtn, rsn, _) = res[0.0], res[controls.NOISE]
-                rows.append({"language": lang, "family": fam, "control": CONTROL_FOR[fam], "control_tokens": n0,
-                             "true_key": rt0, "true_key_passes": rt0["passes_without_anchors"],
-                             "search_key": rs0, "search_cracks_control_clean": rs0["passes_without_anchors"],
-                             "noise": controls.NOISE, "true_key_passes_noisy": rtn["passes_without_anchors"],
-                             # power counts only if the search cracks the control with transcription noise
-                             "search_cracks_control": rsn["passes_without_anchors"]})
-                log(f"control {lang:8s} {fam:12s} clean={rs0['passes_without_anchors']} noisy={rsn['passes_without_anchors']}")
+                rows.append(row)
+                log(f"control {lang:8s} {fam:12s} clean={row['search_cracks_control_clean']} "
+                    f"noisy={row['search_cracks_control']}")
                 if (lang, fam) == ("german", "verbose"):
-                    rows[-1]["noisy_sample_size_checks"] = _german_verbose_sizes(ctr + cev, true, log)
+                    ctr, cev, true = controls.make(lang, CONTROL_FOR[fam], noise=controls.NOISE)
+                    row["noisy_sample_size_checks"] = _german_verbose_sizes(ctr + cev, true, log)
         _save(split, "controls", rows)
     if "redteam" in parts:
         rows = [_short(judge.evaluate(k, train, ev, split)) for lang in ("latin", "italian") for k in controls.red_team_keys(lang)]
