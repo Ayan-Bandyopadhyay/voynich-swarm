@@ -1,0 +1,8 @@
+{
+ "title": "New cipher column: nulls (meaningless filler symbols or words mixed into an enciphered text)",
+ "statement": "Add a nulls family to the hypothesis matrix: period ciphers often padded the text with nulls (symbols or whole words that mean nothing), which could explain repetitive words. vs/families/nulls.py (a decoder that drops a declared set of null glyphs or null words, then applies a substitution), a search in vs/search_nulls.py that finds the null set and the substitution together, and a planted control in vs/controls.py (a known language enciphered by substitution with 10 to 30% null words drawn from a small inventory) that the search cracks at 2% noise. Add it to season.FAMILIES/CONTROL_FOR/GRID_FAMILIES, judge decoders, families.FAMILIES and search.cell_budget, with tests.",
+ "program": "J",
+ "check": "code PR labelled 'code:' with tests and `python3 -m vs season --parts controls` output",
+ "on_path": true,
+ "hard": true
+}
