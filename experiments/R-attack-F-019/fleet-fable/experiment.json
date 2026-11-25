@@ -1,0 +1,7 @@
+{
+ "step": "R-attack-F-019",
+ "handle": "fleet-fable",
+ "kind": "attack",
+ "summary": "The general line-chain generator, whose paragraph-opening lines reuse words only from the same line, gives a first-line to other-line ratio of 6.3 for p- and f-initial words with first words set aside (manuscript 8.5, line 3) on the practice split; a chain that only marks the paragraph's opening word gives 1.5 and fails.",
+ "lease": "01445f70554434bb3b33e25b"
+}
