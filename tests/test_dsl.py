@@ -238,8 +238,16 @@ class ReferenceTest(unittest.TestCase):
         """Before: a selection larger than a reference text was compared with the whole (smaller) text."""
         from vs import corpus
         spec = {"statistic": {"hapax_share": True}, "compare": [{"reference": "below_all"}]}
-        with self.assertRaises(dsl.SpecError):
-            dsl.evaluate(spec, list(corpus.pages()))
+        # every reference used for the whole manuscript has at least as many words as the selection
+        from vs.facts import ref_words
+        pages = list(corpus.pages())
+        n = len(dsl.select(dsl.tokens(pages), None))
+        try:
+            whole = dsl.evaluate(spec, pages)
+            for lang in whole["detail"]["reference"]:
+                self.assertGreaterEqual(len(ref_words(lang, n)), n, lang)
+        except dsl.SpecError:
+            pass   # fewer than the minimum number of references are long enough: refused, also fine
         r = dsl.evaluate(spec, corpus.split_pages("practice")[1])
         self.assertTrue(all(lang in r["detail"]["reference"] for lang in ("latin", "italian", "german")))
 
