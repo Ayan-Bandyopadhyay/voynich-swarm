@@ -1,0 +1,57 @@
+{
+  "id": "grid-latin-substitution-it-glyphs-reversed",
+  "family": "substitution",
+  "segmentation": "eva-basic",
+  "target": {
+    "language": "latin",
+    "period": "grid search"
+  },
+  "key": {
+    "map": {
+      "o": "i",
+      "e": "i",
+      "y": "s",
+      "a": "i",
+      "d": "i",
+      "i": "i",
+      "ch": "i",
+      "k": "i",
+      "l": "i",
+      "r": "i",
+      "t": "i",
+      "q": "s",
+      "n": "u",
+      "sh": "i",
+      "s": "i",
+      "p": "i",
+      "m": "u",
+      "cth": "i",
+      "ckh": "i",
+      "f": "i",
+      "?": "i",
+      "cph": "i",
+      "h": "i",
+      "c": "i",
+      "g": "s",
+      "cfh": "i",
+      "x": "t",
+      "v": "a",
+      "z": "s"
+    }
+  },
+  "search": {
+    "budget": {
+      "restarts": 4,
+      "iterations": 6000,
+      "seed": 1404,
+      "bpe_merges": 30,
+      "verbose_segmentations": [
+        "bpe-greedy",
+        "fixed-2"
+      ]
+    },
+    "objective_bits": 548584.3
+  },
+  "transliteration": "it",
+  "reading_order": "glyphs_reversed"
+}
