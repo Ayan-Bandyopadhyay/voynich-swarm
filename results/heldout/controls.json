@@ -73,13 +73,13 @@
     "c_pictures"
    ],
    "passes_without_anchors": true,
-   "savings": 0.10059,
+   "savings": 0.09551,
    "killed_by": []
   },
   "search_cracks_control_clean": true,
   "noise": 0.02,
   "true_key_passes_noisy": true,
-  "search_cracks_control": false
+  "search_cracks_control": true
  },
  {
   "language": "italian",
@@ -237,7 +237,7 @@
     "c_pictures"
    ],
    "passes_without_anchors": true,
-   "savings": 0.06345,
+   "savings": 0.06085,
    "killed_by": []
   },
   "search_cracks_control_clean": true,
@@ -319,7 +319,7 @@
     "c_pictures"
    ],
    "passes_without_anchors": true,
-   "savings": 0.03309,
+   "savings": 0.03328,
    "killed_by": []
   },
   "search_cracks_control_clean": true,
@@ -403,7 +403,7 @@
     "c_pictures"
    ],
    "passes_without_anchors": false,
-   "savings": -0.05527,
+   "savings": -0.06404,
    "killed_by": []
   },
   "search_cracks_control_clean": false,
@@ -491,7 +491,7 @@
     "d_not_illusion"
    ],
    "passes_without_anchors": false,
-   "savings": -0.12301,
+   "savings": -0.12255,
    "killed_by": []
   },
   "search_cracks_control_clean": false,
@@ -573,13 +573,13 @@
     "c_pictures"
    ],
    "passes_without_anchors": true,
-   "savings": 0.06523,
+   "savings": 0.06644,
    "killed_by": []
   },
   "search_cracks_control_clean": true,
   "noise": 0.02,
   "true_key_passes_noisy": true,
-  "search_cracks_control": false
+  "search_cracks_control": true
  },
  {
   "language": "czech",
