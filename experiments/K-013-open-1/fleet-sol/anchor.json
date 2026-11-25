@@ -1,0 +1,16 @@
+{
+  "title": "Uncertain f80r anchor after comparison with medical and nonmedical images",
+  "page": "f80r",
+  "voynich": "olchdy",
+  "names": {"latin": [], "any": []},
+  "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006218",
+  "sources": [
+    "Beinecke MS 408, f80r, upper-left detail https://collections.library.yale.edu/iiif/2/1006218/130,0,740,700/900,/0/default.jpg. Zandbergen-Landini ZL 3b locus f80r.2 gives olchdy for the label above the object holder.",
+    "Keagan Brewer, 2022, https://ceur-ws.org/Vol-3313/paper3.pdf, discussion near the start. His slides show an enlarged crop of this figure on PDF page 117 at https://www.fromthelighthouse.org/uploads/9/9/7/7/99776076/brewer_seminar_slides_1.pdf.",
+    "Bayerische Staatsbibliothek Clm 337, f131r, ca. 950, clyster bag at lower right, https://api.digitale-sammlungen.de/iiif/image/v3/bsb00006544_00263/full/1000,/0/default.jpg. Identification in the MacKinney Collection record https://dp.la/item/654e924bae9b3af1ab921bf9755d4dfd.",
+    "Wellcome MS.49, catalogued ca. 1420 with a question mark, https://wellcomecollection.org/works/af6d7sm2. Compare the Caesarean scene and conversation on f38v, https://iiif.wellcomecollection.org/image/b19684915_ms_49_0080.JP2/full/854,1024/0/default.jpg, and the suffumigation scene on f39r, https://iiif.wellcomecollection.org/image/b19684915_ms_49_0081.JP2/full/854,1024/0/default.jpg.",
+    "Morgan MS G.24, f42r, ca. 1350, marginal figure with spindle and distaff, https://ica.themorgan.org/manuscript/page/64/76974.",
+    "Wellcome MS.49, f60r, allegory of Penitence with scourge, https://iiif.wellcomecollection.org/image/b19684915_ms_49_0123.JP2/full/854,1024/0/default.jpg."
+  ],
+  "statement": "The f80r scan shows the second figure from the left holding a small bulbous object with a short projection below the hand. The hand extends behind the waist. The projection angles downward and inward in the picture plane, with a visible gap between it and the body. The Clm 337 clyster has a bulbous reservoir and nozzle, which make it a partial shape comparator. Its proportions differ, and the instrument is drawn by itself. Wellcome MS.49 supplies gynaecological gestures and scenes with identifiable treatment context. The suffumigation apparatus consists of a frame and a vessel below the patient, and the Caesarean scene shows another person attending a recumbent figure. The same volume's allegory of Penitence depicts a nude youth with one arm raised holding a scourge, and Morgan G.24 depicts textile tools raised in a marginal action. Those nonmedical scenes show that a raised arm or handheld implement occurs in other contexts. Across this sample I found no dated example matching both the f80r object's outline and the way the figure holds it. The nearby word identifies the location of this note. Its referent remains open and there is no proposed word–name pairing."
+}
