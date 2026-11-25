@@ -1,10 +1,10 @@
 {
-  "language": "catalan",
-  "title": "Lo rondallayre: quentos populars catalans, tercera série (Francesc Maspons i Labrós, 1875), full text, Catalan Wikisource revision 178765 (raw wikitext)",
-  "period": "19th-century Catalan (1875), pre-normative spelling (y for i, á accents); not medieval",
-  "url": "https://ca.wikisource.org/w/index.php?oldid=178765&action=raw",
-  "sha256": "344cbde22d316a989dcbee86b55c3728ef2fab49bba978ff731e044174a4bf22",
-  "license": "public-domain",
+  "language": "portuguese",
+  "title": "Bíblia Livre (Portuguese Bible, full Old and New Testament, one verse per line), plain-text export in scrollmapper/bible_databases",
+  "period": "modern (21st-century Portuguese translation); a distant proxy for medieval Galician-Portuguese",
+  "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/PorBLivre.txt",
+  "sha256": "da8d8b1fed3ebee38de257fed6a490094006a7edac60620a16910d1ab0aca15f",
+  "license": "cc-by",
   "encoding": "utf-8",
-  "notes": "Author Francesc de Sales Maspons i Labrós, 1840-1901 (Viquipèdia), so the 1875 text is in the public domain; Wikisource serves it under its site terms (CC BY-SA 4.0, stated in the ca.wikisource page footer), and the page says the text was digitized by the Institut d'Estudis Catalans for the CTILC. The url pins a fixed revision (oldid 178765) served as raw wikitext, so the bytes do not change with later edits; fetched twice with the same sha256. 206,046 bytes; vs/refcorpus.normalize(..., 'catalan') gives 198,753 characters (wikitext headings and a few markup words such as 'big' and 'code' remain, well under 0.1%). Folk tales, not herbal or medical writing, and 19th rather than 15th century: it gives Catalan measured power on the grid now, and a medieval Catalan text (Llull, Eiximenis, Desclot) should replace it when one is found in a single open file. Large single-page medieval Catalan texts on ca.wikisource are split by chapter; Project Gutenberg was down for maintenance during this search."
+  "notes": "License stated as 'Creative Commons Attribution 3.0 Brazil' in the source README at https://github.com/scrollmapper/bible_databases/blob/59b18c5af5845728c275d5b7178ad0d024172b1f/sources/pt/PorBLivre/README.md (the text is the CrossWire SWORD module PorBLivre; translator Diego Santos, Bíblia Livre project). The url pins a fixed commit, so the bytes do not change. 4,110,053 bytes; one verse per line as '[c:v] text' with '### Book' headings in English (66 short headings, negligible). vs/refcorpus.normalize(..., 'portuguese') gives 3,660,618 characters. Modern Portuguese, not the 13th-15th-century Galician-Portuguese Cheshire's proposal leans on: it gives the Ibero-Romance west measured power on the grid now; a period cancioneiro or chronicle text should replace it when one is found in a single open file."
 }

@@ -2,6 +2,6 @@
   "step": "K-016-open-2",
   "handle": "fleet-corpora",
   "kind": "corpus",
-  "summary": "Add Catalan to the grid from a public-domain 1875 Catalan text (Maspons i Labr\u00f3s, Lo rondallayre III) pinned at a fixed Wikisource revision.",
-  "lease": "923101782f20d4d6a4fb70f9"
+  "summary": "Add Portuguese to the grid from the Bíblia Livre (CC BY 3.0 BR, 3.66M characters after normalization), a modern proxy for the Galician-Portuguese the proposal leans on.",
+  "lease": "d8394edf94ee59f9c6b3ee0d"
 }
