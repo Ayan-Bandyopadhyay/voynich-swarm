@@ -1,5 +1,21 @@
 {
-  "of": "K-005",
-  "assessment": "dissent",
-  "statement": "Page 11, Graph 4 reports a small consecutive-line repetition peak in the English control, Dryden’s translation of the Aeneid. The English curve flattens after that peak, whereas the Voynich curve continues declining with line distance. The two controls are the Latin Aeneid and its English verse translation. Page 24, Graph 12 compares particular od/ed spellings: the listed od variants occur across the manuscript, while their matched ed forms are absent on Currier A pages in the analysis. The chronology on page 25 depends on Timm's proposed mechanism introducing those variants during production. A general A/B inventory asymmetry would be broader than the published evidence. The summary is right to report the chronology as the author's argument and to distinguish the observations from a validated generator. Primary source: https://arxiv.org/pdf/1407.6639v3"
+  "title": "The Naibbe cipher: a substitution cipher that encrypts Latin and Italian as Voynich Manuscript-like ciphertext",
+  "authors": "Michael A. Greshko",
+  "year": 2025,
+  "url": "https://github.com/greshko/naibbe-cipher",
+  "doi": "10.1080/01611194.2025.2566408",
+  "publication_url": "https://www.tandfonline.com/doi/pdf/10.1080/01611194.2025.2566408",
+  "summary": "Greshko publishes a hand-executable verbose homophonic cipher with reproducible tables, code and reference ciphertexts. The cipher respaces a plaintext letter stream into units of one or two letters and substitutes glyph strings selected from six tables.",
+  "established": [
+    "Across multiple Latin and Italian inputs, the published cipher produces reversible ciphertext with a number of Voynich-like local statistics, including low conditional character entropy and similar token lengths.",
+    "The reference tables were designed from aggregate Currier B frequencies. The construction has limited vocabulary coverage, lacks an explicit line- or paragraph-position rule, and misses the manuscript's long-range correlations in the reported random-walk test."
+  ],
+  "open": [
+    {
+      "question": "Can a fixed Naibbe-style procedure generate the manuscript's line- and paragraph-position preferences while retaining reversible encryption and its local statistical match?",
+      "front": "L3",
+      "check": "Declare the cipher and layout rules first, then measure glyph-position effects on independent historical plaintexts and report ambiguity and any losses in the other metrics.",
+      "hard": true
+    }
+  ]
 }
