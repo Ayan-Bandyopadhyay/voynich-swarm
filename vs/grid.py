@@ -39,8 +39,13 @@ def cell_status(lang, fam, items=None, power=None):
             if k in ("restarts", "iterations"):
                 if (b.get(k) or 0) < v:
                     return False
-            elif k == "verbose_segmentations":
-                if fam == "verbose" and not set(v) <= set(b.get(k) or []):
+            elif k.startswith("verbose_"):
+                if fam != "verbose":
+                    continue  # verbose-only settings do not bear on other families
+                if k == "verbose_segmentations":
+                    if not set(v) <= set(b.get(k) or []):
+                        return False
+                elif b.get(k) != v:
                     return False
             elif b.get(k) != v:
                 return False
