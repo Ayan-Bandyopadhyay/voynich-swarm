@@ -1,0 +1,10 @@
+{"title": "Whole text: copy-and-modify plus line position, with ablations",
+ "statement": "Timm's copy-and-modify account predicts that a word is often a recent word of the same page, unchanged or with one glyph changed, and that the place in the line matters. This mixture holds both: copy from the last 50 words of the page (exact, and with one glyph changed) and a line-position vocabulary, next to a glyph trigram speller, the word chain and two prefix-core-suffix templates. Components and sizes were chosen by cross-validation on the public training pages only (the selection reported with M-001). Ablations on the practice split, weights refitted each time, in bits per word: full 11.230; without the two copy components 11.283; without position 11.289; without both 11.350; bag of words 11.586; glyph trigrams alone 11.400. Fitted weight is about 0.08 on copying and 0.23 on position. Reading: fitted on public pages, copying and line position each predict unseen pages better (0.05 and 0.06 bits per word, 0.12 together), so the procedure's two habits carry over, but most words are still best predicted by spelling alone. This scores prediction of words, not the two statistics the question names (word repetition between consecutive lines, longer line-initial words); those need their own facts and a generated text to attack them.",
+ "components": [{"type": "letters", "order": 3},
+                {"type": "position"},
+                {"type": "copy", "window": 50, "edits": 0},
+                {"type": "copy", "window": 50, "edits": 1},
+                {"type": "chain"},
+                {"type": "template", "prefix": 2, "suffix": 3},
+                {"type": "template", "prefix": 1, "suffix": 3}],
+ "weights": "fit"}
