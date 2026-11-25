@@ -1,0 +1,7 @@
+{
+ "step": "P-G-009",
+ "handle": "fleet-fable",
+ "kind": "step",
+ "summary": "With Currier's language as the label the page-similarity contrast holds on nine of nine page samples under both page-keeping nulls (0.122 on practice evaluation pages); laid end to end the drifting chain copies it on two of six runs, but written as a whole book neither it nor a chain with one table per dialect does (0.00 to 0.08, none of nine texts passing both nulls), because the generated dialects share their commonest words.",
+ "lease": "d1263033cac39ef404ec9a51"
+}
