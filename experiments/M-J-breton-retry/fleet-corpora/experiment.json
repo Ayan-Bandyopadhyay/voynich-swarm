@@ -1,0 +1,7 @@
+{
+  "step": "M-J-breton-retry",
+  "handle": "fleet-corpora",
+  "kind": "corpus",
+  "lease": "0138e0daf91615d195ba14e8",
+  "summary": "Resubmit the Breton corpus whose first PR was never scored (same file and sha256)."
+}
