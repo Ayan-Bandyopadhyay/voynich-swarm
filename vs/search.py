@@ -82,8 +82,11 @@ def fixed_width(word, n):
     return [word[i:i + n] for i in range(0, len(word), n)]
 
 
-def climb(tri, table, letters, seed, budget=BUDGET, init=None):
-    """Hill climbing over unit->letter maps. Returns (best map, best score)."""
+def climb(tri, table, letters, seed, budget=BUDGET, init=None, pin=None, accept=None):
+    """Hill climbing over unit->letter maps. Returns (best map, best score).
+    pin: unit->letter set at the start of every restart (still free to move).
+    accept: a restart's map may become the best only if accept(map) is true (if no restart's
+    map is accepted, the best overall is returned)."""
     units = sorted({u for t in tri for u in t if u != lm.WB})
     by = {u: [] for u in units}
     items = list(tri.items())
@@ -91,7 +94,7 @@ def climb(tri, table, letters, seed, budget=BUDGET, init=None):
         for u in {x, y, z} - {lm.WB}:
             by[u].append(i)
     rng = random.Random(seed)
-    best_m, best_s = None, -float("inf")
+    best_m, best_s, best_ok = None, -float("inf"), False
     freq = Counter()
     for (x, y, z), c in items:
         freq[z] += c
@@ -104,6 +107,8 @@ def climb(tri, table, letters, seed, budget=BUDGET, init=None):
             m = {u: lf[i % len(lf)] for i, u in enumerate(ranked)}
         else:
             m = {u: rng.choice(letters) for u in units}
+        if pin and not (r == 0 and init):
+            m.update({u: l for u, l in pin.items() if u in m})
         m[lm.WB] = lm.WB
 
         def tscore(i):
@@ -138,14 +143,44 @@ def climb(tri, table, letters, seed, budget=BUDGET, init=None):
                     s += d
                 else:
                     m[u], m[v] = m[v], m[u]
-        if s > best_s:
-            best_s, best_m = s, {u: l for u, l in m.items() if u != lm.WB}
+        mm = {u: l for u, l in m.items() if u != lm.WB}
+        ok = accept(mm) if accept else True
+        if (ok, s) > (best_ok, best_s):
+            best_ok, best_s, best_m = ok, s, mm
     return best_m, best_s
 
 
-def search_cell(lang, family, train_pages, budget=BUDGET, tag="cell"):
+def search_cell(lang, family, train_pages, budget=BUDGET, tag="cell", spaces="word_breaks"):
+    """spaces="ignored": train_pages are already viewed one glyph stream per line
+    (views.apply), so the key must emit the word breaks itself. The word break becomes one more
+    target letter (written " " in the key); every restart starts with the most frequent unit
+    on it, and only keys that emit a break can win: on spaceless lines the trigram objective
+    otherwise prefers a key with no break at all (one giant word per line), which can never
+    read; a key must spend >= 5% of glyph tokens on breaks. Restart 0 starts from frequency rank
+    against the language's letter frequencies. Measured on spaces-ignored simple-substitution controls: 0/4 -> 4/4."""
     table, sy = trigram_table(lang)
     letters = [l for l in sy if l != lm.WB]
+    if spaces == "ignored":
+        if family != "substitution":
+            raise ValueError("spaces=ignored search is implemented for substitution only")
+        segf = lambda w: ivtff.segment(w, "eva-basic")
+        tri = unit_trigrams(train_pages, segf)
+        f = Counter()
+        for (_x, _y, z), c in tri.items():
+            f[z] += c
+        ranked = sorted((u for u in f if u != lm.WB), key=lambda u: (-f[u], u))
+        lf = Counter(ch for b in refcorpus.train_text(lang) for ch in b if ch in letters)
+        lr = sorted(letters, key=lambda l: (-lf[l], l))
+        init = {ranked[0]: lm.WB, **{u: lr[i % len(lr)] for i, u in enumerate(ranked[1:])}}
+        tot = sum(f[u] for u in ranked)
+        # a key must spend >= 5% of glyph tokens on word breaks (natural text: ~15%)
+        accept = lambda mm: sum(f[u] for u, l in mm.items() if l == lm.WB) >= 0.05 * tot
+        m, s = climb(tri, table, letters + [lm.WB], f"{budget['seed']}/{lang}/{family}/{tag}/spaces-ignored", budget,
+                     init=init, pin={ranked[0]: lm.WB}, accept=accept)
+        return {"id": f"grid-{lang}-{family}-{tag}-spaces-ignored", "family": family, "segmentation": "eva-basic",
+                "target": {"language": lang, "period": "grid search"}, "spaces": "ignored",
+                "key": {"map": {u: (" " if l == lm.WB else l) for u, l in m.items()}},
+                "search": {"budget": budget, "objective_bits": round(-s, 1)}}
     if family == "substitution":
         segf = lambda w: ivtff.segment(w, "eva-basic")
         tri = unit_trigrams(train_pages, segf)
