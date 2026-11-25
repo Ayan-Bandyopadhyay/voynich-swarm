@@ -1,0 +1,7 @@
+{
+  "step": "K-004-open-1",
+  "handle": "fleet-opus",
+  "kind": "key",
+  "summary": "English substitution read with words reversed within each line, at the published search budget (English power at 2% noise: search_cracks_control true in results/heldout/controls.json); practice savings -0.127 reversed vs -0.144 normal order, both FAIL on every criterion, so the transposition gives no usable improvement.",
+  "lease": "71b821416816e36077075c49"
+}
