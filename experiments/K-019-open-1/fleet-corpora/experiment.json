@@ -1,7 +1,7 @@
 {
-  "step": "K-019-open-1",
-  "handle": "fleet-corpora",
-  "kind": "step",
-  "summary": "Hannig's table relies on v101 gallows variants that EVA merges, so the frozen key should be built on the GC transliteration; the step lists the unambiguous correspondences and the route.",
-  "lease": "b0bce44607b6fb10c32eecfc"
+ "step": "K-019-open-1",
+ "handle": "fleet-corpora",
+ "kind": "key",
+ "lease": "f5bd56fcf63898b52dbc9cd3",
+ "summary": "Hannig's 2020 glyph-to-Hebrew table, frozen as a substitution key on Claston's v101 transliteration (the alphabet he worked in; codes read from the PDF's embedded Voynich-1.01 font), vowel signs as nulls: practice FAIL on every criterion, savings -0.260 (86,067 vs 68,317 baseline bits), 23-36% of decoded words found in the Hebrew corpus. Replaces the step proposal first sent on this branch."
 }

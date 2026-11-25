@@ -1,8 +1,0 @@
-{
-  "title": "Encode Hannig's 2020 Hebrew table as a key on the Glen Claston (v101) transliteration, not EVA",
-  "statement": "Hannig's table (Voynich-Hebräisch, 2020, section 13, p. 15 of the PDF on record as K-019) is drawn in Glen Claston's v101 glyph set and depends on v101 distinctions that EVA merges: he gives two readings for each gallows (with and without dagesh: K/k for the k-gallows, T/t and ṭ for the t-gallows, B/b, G/g, D/d, P/p spread over the p- and f-gallows and their bench forms). Read from the table, the EVA-level correspondences that are unambiguous are: y = aleph, a = ayin, r = lamed, q ('4') = yod, final iin = final mem, final in = final nun, s = resh, sh = shin (section 16), o = a vowel marker with no Hebrew letter (a null), and he is not written. A faithful frozen key therefore needs the scorer's 'gc' transliteration (key.json \"transliteration\": \"gc\") with each v101 gallows code mapped as in his table, plus the later assignments in sections 14-22 (z, w, shin/sin/samekh, final tsade, het, and the still-open final kaf/pe).",
-  "program": "L3",
-  "check": "Map each glyph in Hannig's table and sections 14-22 to its v101 code (Claston's v101 font chart), write key.json with family substitution, target hebrew, transliteration gc, no search budget, leaving his undeciphered glyphs unmapped, and score it with the usual decoys.",
-  "on_path": true,
-  "hard": false
-}
