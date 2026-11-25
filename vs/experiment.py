@@ -22,8 +22,9 @@ two JSON files.
 import json, os, re, sys
 from . import path, corpus, judge, ivtff, lm
 
-ALLOWED = {"model.json", "source.json", "experiment.json", "key.json", "attack.json", "fact.json", "anchor.json", "step.json", "corpus.json"}
-KINDS = {"model": "model.json", "source": "source.json", "corpus": "corpus.json", "key": "key.json", "attack": "attack.json", "fact": "fact.json", "anchor": "anchor.json", "step": "step.json", "segmentation": None}
+ALLOWED = {"model.json", "source.json", "experiment.json", "key.json", "attack.json", "fact.json", "anchor.json", "step.json", "corpus.json", "picture.json"}
+PICTURE_KINDS = {"plant", "plant_part", "root", "leaf", "flower", "star", "sun", "moon", "zodiac_figure", "human_figure", "pool", "pipe", "jar", "container", "rosette", "diagram", "animal", "other"}
+KINDS = {"picture": "picture.json", "model": "model.json", "source": "source.json", "corpus": "corpus.json", "key": "key.json", "attack": "attack.json", "fact": "fact.json", "anchor": "anchor.json", "step": "step.json", "segmentation": None}
 STEP = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_.-]{1,80}$")
 
 
@@ -96,6 +97,20 @@ def validate(d):
             errs.append("license must be public-domain, cc0, cc-by or cc-by-sa (no paywalled or unclear sources)")
         if not re.match(r"^[a-z][a-z_-]{1,30}$", str(c.get("language", ""))):
             errs.append("language must be a lowercase name, e.g. occitan, arabic, middle_dutch")
+    if e.get("kind") == "picture":
+        pic = json.load(open(os.path.join(d, "picture.json")))
+        for k in ("folio", "canvas", "objects", "blind"):
+            if k not in pic:
+                errs.append(f"picture.json needs {k!r}")
+        if pic.get("blind") is not True:
+            errs.append("picture.json: annotate blind (\"blind\": true): from the scan alone, without reading the transcription's words or anyone else's annotation of this folio")
+        objs = pic.get("objects") or []
+        if not isinstance(objs, list) or not objs or len(objs) > 200:
+            errs.append("objects: a list of 1 to 200 drawn objects")
+        for o in objs if isinstance(objs, list) else []:
+            if not isinstance(o, dict) or not o.get("id") or o.get("kind") not in PICTURE_KINDS or not isinstance(o.get("features", {}), dict):
+                errs.append(f"each object is {{\"id\", \"kind\": one of {sorted(PICTURE_KINDS)}, \"features\": {{...}}, \"label\": ZL locus id or null}}")
+                break
     if e.get("kind") == "step":
         st = json.load(open(os.path.join(d, "step.json")))
         for k in ("title", "statement", "program", "check"):

@@ -40,6 +40,44 @@ PROGRAMS = [
 LEADS = {"fleet-opus"}   # seats that hold M-LEAD; only their dispatches set priorities
 TOP_MAX = 5
 GRID_OPEN_MAX = 3         # rule-made grid steps open at once, so coverage cannot crowd out the rest
+PIC_OPEN_MAX = 6          # picture-annotation steps open at once
+LEAD_STALE_HOURS = 2      # after this long without a lead dispatch, rules choose the top picks
+
+
+def rules_top(steps):
+    """The scripted lead: when no lead seat has posted recently, rank open steps by fixed rules.
+    1 an established fact no attack has reproduced; 2 a generator or invented-language test against
+    every fact; 3 pictures (annotations, then anchor second looks); 4 test power for a family with no
+    planted control; 5 everything else agent-proposed; grid cells last."""
+    from . import registry
+    facts = [i["id"] for i in registry.read("fact") if i["verdict"] == "ESTABLISHED"]
+    hit = set()
+    for a in registry.read("attack"):
+        if a["verdict"] == "SUCCEEDED":
+            hit.add(a.get("target"))
+        for k, v in ((a.get("detail") or {}).get("per_fact") or {}).items():
+            if v:
+                hit.add(k)
+    open_ = [s for s in steps if s.get("status", "open") == "open" and s.get("kind") != "mandate"]
+
+    def rank(s):
+        i = s["id"]
+        if i.startswith("R-attack-") and i[len("R-attack-"):] in facts and i[len("R-attack-"):] not in hit:
+            return 1
+        t = (s.get("title") or "").lower()
+        if i == "G-every-fact" or "invented-language" in t or "generator test" in t:
+            return 2
+        if i.startswith("PIC-"):
+            return 3
+        if i.startswith("L4-confirm-") or s.get("program") == "L4":
+            return 4
+        if i.startswith("M-J-") or s.get("program") == "J":
+            return 5
+        if i.startswith(("L3-first-", "L3-close-", "J-power-")):
+            return 9
+        return 6
+    ranked = sorted(open_, key=lambda s: (rank(s), s["id"]))
+    return [s["id"] for s in ranked if rank(s) < 9][:TOP_MAX]
 
 
 def derived_steps():
@@ -106,6 +144,29 @@ def derived_steps():
                         "statement": "Check this draft anchor against the Beinecke scan and its sources; agree or dissent with reasons. One agreeing second look from another agent, with no dissent, confirms it.",
                         "check": 'anchor.json {"of": "<id>", "assessment": "agree" | "dissent", ...}', "on_path": True, "hard": False,
                         "added_by": "rule:draft-anchor", "how": "rule", "from": it["id"], "status": "open"})
+    # pictures: every folio with labels needs two independent blind annotations (at most PIC_OPEN_MAX open)
+    try:
+        from . import ivtff
+        pics = registry.read("picture")
+        done = {}
+        for i in pics:
+            done.setdefault(str(i["detail"].get("folio")), set()).add(i["provenance"].get("seat", i["provenance"].get("added_by")))
+        # folios with the most labels first: pharmaceutical jars and zodiac rings name many drawn objects
+        nlab = {p.id: sum(1 for l in p.lines if l.unit == "L" and l.words) for p in ivtff.parse()}
+        labelled = sorted((f for f, n in nlab.items() if n), key=lambda f: (-nlab[f], f))
+        opened = 0
+        for f in labelled:
+            if len(done.get(f, ())) >= 2 or opened >= PIC_OPEN_MAX:
+                continue
+            opened += 1
+            nth = "a second, independent" if done.get(f) else "a first"
+            out.append({"id": f"PIC-{f}", "program": "L4", "kind": "step",
+                        "title": f"Pictures: {nth} blind annotation of folio {f}",
+                        "statement": f"Look at the Beinecke scan of folio {f} (IIIF canvas from data/raw/beinecke_ms408_manifest.json) and record every drawn object: its kind, its visible features (e.g. leaf shape, root form, flower colour, number of parts, posture, container shape) and which label points at it (the ZL locus id of the label line, e.g. f99r.3, read from the transcription's line ids only). Annotate blind: do not read the transcription's words or any other annotation of this folio first. Two independent annotations that agree make the folio's picture data usable for the picture-text tests.",
+                        "check": "picture.json {\"folio\", \"canvas\", \"blind\": true, \"objects\": [{\"id\", \"kind\", \"features\": {...}, \"label\": locus or null}]}",
+                        "on_path": True, "hard": False, "added_by": "rule:labelled-folio", "how": "rule", "from": f, "status": "open"})
+    except Exception:
+        pass
     grid_ids = [x["id"] for x in out if x["id"].startswith(("L3-first-", "L3-close-", "J-power-"))]
     keep = set(grid_ids[:GRID_OPEN_MAX])
     return [x for x in out if x["id"] not in grid_ids or x["id"] in keep]
@@ -164,11 +225,28 @@ def build(split=None):
             t = (sub.get("step.json") or {}).get("top")
             if isinstance(t, list):
                 top = [str(x) for x in t][:TOP_MAX]
+    import datetime as _dt
+    last_at = None
+    for it in registry.read("step"):
+        sub = it.get("submitted") or {}
+        if it["title"].lower().startswith("dispatch:") and (sub.get("experiment.json") or {}).get("handle") in LEADS:
+            last_at = it["provenance"].get("at")
+    stale = True
+    if last_at:
+        try:
+            stale = (_dt.datetime.now(_dt.timezone.utc) - _dt.datetime.fromisoformat(last_at)).total_seconds() > LEAD_STALE_HOURS * 3600
+        except ValueError:
+            pass
+    source = {"by": "lead", "at": last_at}
+    if stale or not top:
+        top, source = rules_top(steps), {"by": "rules", "at": _dt.datetime.now(_dt.timezone.utc).isoformat(timespec="seconds"),
+                                         "why": "no lead dispatch in the last %d hours" % LEAD_STALE_HOURS if last_at else "no lead dispatch yet"}
     for s_ in steps:
         if s_["id"] in top:
             s_["top"] = top.index(s_["id"]) + 1
+            s_["top_by"] = source["by"]
     write_frontier()
-    out = {"programs": PROGRAMS, "steps": steps}
+    out = {"programs": PROGRAMS, "steps": steps, "priorities": dict(source, top=top)}
     os.makedirs(path("steps"), exist_ok=True)
     with open(path("steps", "steps.json"), "w") as f:
         json.dump(out, f, indent=1, ensure_ascii=False)
