@@ -1,0 +1,480 @@
+{
+  "title": "Measure the manuscript opening marks and other visual constraints on the singulion proposals",
+  "statement": "I screened all 44 surviving page faces of quires 13 and 20 on the Yale scans. Folio 76r has the widest opening in the sampled traces and its face has no illustration. Folio 77r, which starts the higher-scoring published Balneology order, has a smaller extended opening. Folio 105r carries a distinctly patterned broad opening rail and stands out among the six potential initial rectos in the published sheet orientations. Wide but simpler marks also open f105v and f106v. Both f75|84 and f78|81 show large painted groups on four faces, and f82r is a third sheet's clear isolated example. The strongest possible gutter alignment is f78v with f81r, two faces of the same sheet. Fixing f76r plus the pool-sheet adjacency leaves 12 orders. Fixing f105r and the extant textual ending leaves 24. The visual features constrain the hypotheses without choosing a complete sequence.",
+  "program": "L1",
+  "check": "Give independent scorers unlabeled crops of each first continuous text block and ask them to trace the largest initial marks, distinguish complex rails from simple terminal loops, and measure scale relative to nearby writing. Separately register gutter continuations against the same sheet and the current facing pages, with trimming and scan skew accounted for. Publish how many fixed-orientation and reversed-orientation arrangements each independently scored feature excludes.",
+  "on_path": false,
+  "hard": false,
+  "source": {
+    "id": "K-009",
+    "publication": "Colin Layfield and Lisa Fagin Davis, Singulion Structure and the Voynich Manuscript",
+    "url": "https://doi.org/10.4000/16k0a",
+    "locators": "Paras. 6–7, 50–54 and 57, Table 5, Tables 14–15 and Figures 1 and 4",
+    "reported_orders": {
+      "q13_maximum": [
+        "77|82",
+        "78|81",
+        "75|84",
+        "76|83",
+        "79|80"
+      ],
+      "q13_second": [
+        "76|83",
+        "77|82",
+        "79|80",
+        "75|84",
+        "78|81"
+      ],
+      "q20_maximum": [
+        "105|114",
+        "104|115",
+        "106|113",
+        "107|112",
+        "108|111",
+        "103|116"
+      ]
+    }
+  },
+  "graphic_method": "The two named starts and the paper's hypotheses were known before scoring. I visually located the first continuous paragraph text without using a text-similarity measure. I excluded marginal notes, labels and foliation when locating the paragraph opening. All 44 scans were inspected and a 43-page opening panel was assembled, excluding f116v from first-glyph measurements. Some text on illustrated faces begins well below the upper margin. For each conspicuous extended initial and an illustrative medial control, I traced an approximate envelope and a nearby complete comparison mark on the same line. These are coordinates in a 1050-pixel-wide Yale JPEG. Add crop origin to the box coordinates in the traces. I compared a graphic group, allowing extension over other strokes where visible. I used 1.4 times the dimension of the local comparison as a descriptive flag. Both the width and the height are recorded because a long horizontal crossbar may have ordinary letter height. The detail traces are targeted by the complete visual screen. The boxes are hand-traced on a purposive subset of the screen. Faint contours, overlapping writing and an uncertain glyph boundary make the box measurements approximate.",
+  "graphic_observations": [
+    "In quire 13, the alphabetic-style opening of f75r is narrow, while f76r has a broad returning arc, two large terminal loops and long vertical body. f77r has a narrower extension. Among the more conspicuous extensions elsewhere are f76v, f78v, f80r, f81r and f83v. The short regular text under illustrations, such as at f84r, was screened on the full folio.",
+    "In quire 20, among possible initial rectos of the six extant fixed-orientation sheets (f103r–f108r), f105r has the plainly extended group. Along its bar are repeated small strokes before the terminal flourish. The broad marks beginning f105v and f106v have simpler contours. f115r has a broad mark after the first group of that line. A distinctive design or position can be stricter evidence than width alone.",
+    "The f116v image has sparse material resembling additions and no ordinary marginal-star paragraph layout. The image alone does not establish that the face was initially blank or that it fixed the original order. The count with that ending is conditional."
+  ],
+  "glyph_traces": [
+    {
+      "folio": "f76r",
+      "origin": [
+        104,
+        40
+      ],
+      "opening_group": [
+        5,
+        15,
+        108,
+        84
+      ],
+      "comparison_group": [
+        188,
+        49,
+        209,
+        82
+      ],
+      "opening_width_height": [
+        103,
+        69
+      ],
+      "comparison_width_height": [
+        21,
+        33
+      ],
+      "remark": "very wide double loop and tall main stem"
+    },
+    {
+      "folio": "f76v",
+      "origin": [
+        229,
+        77
+      ],
+      "opening_group": [
+        4,
+        18,
+        77,
+        74
+      ],
+      "comparison_group": [
+        221,
+        20,
+        244,
+        62
+      ],
+      "opening_width_height": [
+        73,
+        56
+      ],
+      "comparison_width_height": [
+        23,
+        42
+      ],
+      "remark": "wide terminal loop and return"
+    },
+    {
+      "folio": "f77r",
+      "origin": [
+        163,
+        164
+      ],
+      "opening_group": [
+        8,
+        30,
+        46,
+        63
+      ],
+      "comparison_group": [
+        161,
+        45,
+        179,
+        65
+      ],
+      "opening_width_height": [
+        38,
+        33
+      ],
+      "comparison_width_height": [
+        18,
+        20
+      ],
+      "remark": "modest terminal loop and return"
+    },
+    {
+      "folio": "f78v",
+      "origin": [
+        343,
+        90
+      ],
+      "opening_group": [
+        6,
+        20,
+        93,
+        78
+      ],
+      "comparison_group": [
+        111,
+        39,
+        128,
+        66
+      ],
+      "opening_width_height": [
+        87,
+        58
+      ],
+      "comparison_width_height": [
+        17,
+        27
+      ],
+      "remark": "multiple short strokes along the long opening bar"
+    },
+    {
+      "folio": "f80r",
+      "origin": [
+        77,
+        153
+      ],
+      "opening_group": [
+        15,
+        28,
+        74,
+        71
+      ],
+      "comparison_group": [
+        151,
+        35,
+        178,
+        68
+      ],
+      "opening_width_height": [
+        59,
+        43
+      ],
+      "comparison_width_height": [
+        27,
+        33
+      ],
+      "remark": "long opening crossbar beneath figure register"
+    },
+    {
+      "folio": "f81r",
+      "origin": [
+        161,
+        272
+      ],
+      "opening_group": [
+        9,
+        8,
+        75,
+        39
+      ],
+      "comparison_group": [
+        239,
+        20,
+        262,
+        52
+      ],
+      "opening_width_height": [
+        66,
+        31
+      ],
+      "comparison_width_height": [
+        23,
+        32
+      ],
+      "remark": "long opening crossbar beneath upper pool"
+    },
+    {
+      "folio": "f83v",
+      "origin": [
+        271,
+        65
+      ],
+      "opening_group": [
+        5,
+        25,
+        83,
+        74
+      ],
+      "comparison_group": [
+        174,
+        40,
+        195,
+        65
+      ],
+      "opening_width_height": [
+        78,
+        49
+      ],
+      "comparison_width_height": [
+        21,
+        25
+      ],
+      "remark": "long opening crossbar in text alongside figure"
+    },
+    {
+      "folio": "f105r",
+      "origin": [
+        107,
+        140
+      ],
+      "opening_group": [
+        6,
+        15,
+        88,
+        65
+      ],
+      "comparison_group": [
+        132,
+        35,
+        161,
+        66
+      ],
+      "opening_width_height": [
+        82,
+        50
+      ],
+      "comparison_width_height": [
+        29,
+        31
+      ],
+      "remark": "repeated small marks on widened opening bar"
+    },
+    {
+      "folio": "f105v",
+      "origin": [
+        161,
+        64
+      ],
+      "opening_group": [
+        4,
+        0,
+        79,
+        48
+      ],
+      "comparison_group": [
+        159,
+        5,
+        184,
+        40
+      ],
+      "opening_width_height": [
+        75,
+        48
+      ],
+      "comparison_width_height": [
+        25,
+        35
+      ],
+      "remark": "long opening crossbar with single terminal loop"
+    },
+    {
+      "folio": "f106v",
+      "origin": [
+        185,
+        51
+      ],
+      "opening_group": [
+        8,
+        5,
+        72,
+        65
+      ],
+      "comparison_group": [
+        149,
+        22,
+        175,
+        59
+      ],
+      "opening_width_height": [
+        64,
+        60
+      ],
+      "comparison_width_height": [
+        26,
+        37
+      ],
+      "remark": "long opening crossbar with single terminal loop"
+    },
+    {
+      "folio": "f115r",
+      "origin": [
+        100,
+        59
+      ],
+      "opening_group": [
+        5,
+        10,
+        26,
+        47
+      ],
+      "comparison_group": [
+        104,
+        15,
+        180,
+        52
+      ],
+      "opening_width_height": [
+        21,
+        37
+      ],
+      "comparison_width_height": [
+        76,
+        37
+      ],
+      "remark": "extended mark is medial on this opening line"
+    }
+  ],
+  "picture_constraints": {
+    "pool_rule": "Retrospective visual contrast only. Mark a face if at least five drawn people share a contiguous predominantly green or blue surrounding field. Connection between distant depicted basins is not required.",
+    "q13_positive_faces_by_sheet": {
+      "75|84": [
+        "f75r",
+        "f75v",
+        "f84r",
+        "f84v"
+      ],
+      "76|83": [],
+      "77|82": [
+        "f82r"
+      ],
+      "78|81": [
+        "f78r",
+        "f78v",
+        "f81r",
+        "f81v"
+      ],
+      "79|80": []
+    },
+    "notes": "The whole-sheet concentration supports the two sheets cited in the article on this simple visual rule. A single-face instance also appears on f82r. Folio 80v has a long blue band with four figures along its lower band. The count compares one coarse design feature and does not order either sheet relative to the other.",
+    "gutter_checks": [
+      {
+        "pair": [
+          "f78v",
+          "f81r"
+        ],
+        "crops_left_right": [
+          [
+            900,
+            660,
+            1050,
+            1130
+          ],
+          [
+            0,
+            650,
+            155,
+            1135
+          ]
+        ],
+        "observation": "On f78v two thin channel stubs reach the right fold beside and below the green pool. On f81r two thin lines emerge from the left gutter and join the longer outlined conduit. The motifs support the stronger reproduction in the article's Figure 1. Scan centers and borders vary, so the crop pair is illustrative, with variable registration across the crease."
+      },
+      {
+        "pair": [
+          "f76v",
+          "f83r"
+        ],
+        "crops_left_right": [
+          [
+            818,
+            0,
+            1050,
+            300
+          ],
+          [
+            0,
+            0,
+            230,
+            300
+          ]
+        ],
+        "observation": "The upper-margin arcs and sprinkling figures offer a compatible motif near the two folds. The gutter occludes parts of the marks. I cannot trace a particular stroke uninterrupted in these two scans."
+      }
+    ],
+    "interpretation": "A connection within a physical sheet is maintained under every reordering of sheets. It gives local illustration evidence while placing no constraint on the permutation of complete sheets."
+  },
+  "remaining_fixed_orientation_orders": {
+    "q13_all_extant": 120,
+    "q13_if_76_first": 24,
+    "q13_if_76_first_and_75_78_adjacent_either_direction": 12,
+    "q13_if_76_first_and_75_78_last_two_either_direction": 4,
+    "q20_all_extant": 720,
+    "q20_if_105_first": 120,
+    "q20_if_105_first_and_103_116_last": 24,
+    "q20_if_109_110_could_be_inserted_between_fixed_start_and_end": "120 placements/orders, if it was a separate sheet at an internal position, allowing five possible slots for each of the 24 complete extant orders.",
+    "interpretation": "All calculations follow the paper's orientation and keep each sheet intact. Adjacency is unordered. The additional assumption that the two pool sheets end quire 13 comes from considering a particular family of proposed orders, so the count of four is a sensitivity. The 109|110 calculation illustrates missing data as a placement freedom. No graphic feature is assigned to the missing sheet."
+  },
+  "canvases": {
+    "f75r": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006208",
+    "f75v": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006209",
+    "f76r": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006210",
+    "f76v": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006211",
+    "f77r": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006212",
+    "f77v": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006213",
+    "f78r": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006214",
+    "f78v": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006215",
+    "f79r": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006216",
+    "f79v": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006217",
+    "f80r": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006218",
+    "f80v": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006219",
+    "f81r": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006220",
+    "f81v": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006221",
+    "f82r": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006222",
+    "f82v": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006223",
+    "f83r": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006224",
+    "f83v": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006225",
+    "f84r": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006226",
+    "f84v": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006227",
+    "f103r": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006254",
+    "f103v": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006255",
+    "f104r": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006256",
+    "f104v": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006257",
+    "f105r": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006258",
+    "f105v": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006259",
+    "f106r": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006260",
+    "f106v": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006261",
+    "f107r": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006262",
+    "f107v": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006263",
+    "f108r": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006264",
+    "f108v": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006265",
+    "f111r": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006266",
+    "f111v": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006267",
+    "f112r": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006268",
+    "f112v": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006269",
+    "f113r": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006270",
+    "f113v": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006271",
+    "f114r": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006272",
+    "f114v": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006273",
+    "f115r": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006274",
+    "f115v": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006275",
+    "f116r": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006276",
+    "f116v": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006277"
+  },
+  "image_url_pattern": "https://collections.library.yale.edu/iiif/2/{final-canvas-path-component}/full/1050,/0/default.jpg"
+}
