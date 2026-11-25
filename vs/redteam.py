@@ -109,7 +109,7 @@ def _manuscript_4grams():
     return out
 
 
-def fact_attack(fact_id, lines, split, fact_item=None, cut="tokens"):
+def fact_attack(fact_id, lines, split, fact_item=None, cut="tokens", first_lines=None):
     """lines: list of lists of words (the attacker's synthetic text). fact_item: the
     registry item for the target fact (its detail holds the metric and params).
 
@@ -121,11 +121,18 @@ def fact_attack(fact_id, lines, split, fact_item=None, cut="tokens"):
                attacker's). This lets a procedure that sees the line end, as any scribe or
                table method writing on a page does, be tested against positional facts.
                Page and line metadata (section, language, unit, paragraph marks) stay the
-               evaluation pages'."""
+               evaluation pages'.
+
+    first_lines (optional, only with cut "lines"): lines the procedure wrote as the first line of a
+               paragraph. Each evaluation line that opens a paragraph (the measurement language's
+               para_first_line) takes the next of these instead of the next of `lines`. A writer
+               knows when a paragraph begins, as it knows when a line does; without this no text
+               can meet a fact about paragraph first lines except by making every line alike."""
     lines = [[str(w) for w in l if str(w)] for l in lines if l]
-    toks = [w for l in lines for w in l]
+    first_lines = [[str(w) for w in l if str(w)] for l in (first_lines or []) if l]
+    toks = [w for l in lines + first_lines for w in l]
     ms4 = _manuscript_4grams()
-    copied = sum(tuple(l[i:i + 4]) in ms4 for l in lines for i in range(len(l) - 3))
+    copied = sum(tuple(l[i:i + 4]) in ms4 for l in lines + first_lines for i in range(len(l) - 3))
     types = {w for p in corpus.pages() for w in p.words()}
     shared = sum(w in types for w in toks) / max(len(toks), 1)
     train, ev = corpus.split_pages(split)
@@ -143,17 +150,28 @@ def fact_attack(fact_id, lines, split, fact_item=None, cut="tokens"):
         need_lines = sum(1 for p in ev for ln in p.lines if ln.words)
         if len(lines) < need_lines:
             guard.append(f"cut 'lines' needs at least {need_lines} lines to fill the evaluation pages, got {len(lines)}")
+        if first_lines and len(first_lines) < need_lines:
+            guard.append(f"first_lines needs at least {need_lines} lines (any line may open a paragraph), got {len(first_lines)}")
+    if first_lines and cut != "lines":
+        guard.append("first_lines needs cut 'lines'")
     elif len(toks) < need:
         guard.append(f"needs at least {need} tokens to fill the evaluation pages, got {len(toks)}")
     if guard:
         return {"attack": "fact", "target": fact_id, "success": False, "refused": guard}
     it = iter(toks)
     lit = iter(lines)
+    fit = iter(first_lines)
     fake = []
     for p in ev:
         q = Page(p.id, p.order, dict(p.meta))
+        first_line = True                      # as vs/dsl.py tokens(): para_first_line
         for ln in p.lines:
-            if cut == "lines":
+            opens = bool(ln.words) and ln.unit == "P" and (ln.para_start or first_line)
+            if ln.words:
+                first_line = ln.para_end if ln.unit == "P" else first_line
+            if cut == "lines" and first_lines and opens:
+                ws = list(next(fit))
+            elif cut == "lines":
                 ws = list(next(lit)) if ln.words else []
             else:
                 ws = [next(it) for _ in ln.words]
@@ -197,9 +215,10 @@ def run_attack(spec, split):
         return key_attack(key, spec["decoy"], spec.get("params", {}), split)
     if kind == "fact":
         return fact_attack(spec["target_fact"], spec["lines"], split, spec.get("target_fact_item"),
-                           cut=spec.get("cut", "tokens"))
+                           cut=spec.get("cut", "tokens"), first_lines=spec.get("first_lines"))
     if kind == "generator":
-        return generator_test(spec["lines"], split, cut=spec.get("cut", "lines"), facts_on_record=spec.get("facts_on_record"))
+        return generator_test(spec["lines"], split, cut=spec.get("cut", "lines"), facts_on_record=spec.get("facts_on_record"),
+                              first_lines=spec.get("first_lines"))
     if kind == "claim":
         train, ev = corpus.split_pages(split)
         r = judge.evaluate(spec["key"], train, ev, split)
@@ -208,7 +227,7 @@ def run_attack(spec, split):
     raise SystemExit("attack must be key, fact, generator or claim")
 
 
-def generator_test(lines, split, cut="lines", facts_on_record=None):
+def generator_test(lines, split, cut="lines", facts_on_record=None, first_lines=None):
     """Program G's scoreboard: one body of synthetic text from one procedure, run against EVERY
     established fact at once. The score is how many it reproduces. A procedure that reproduces
     them all is strong evidence the text needs no language; facts no general procedure can
@@ -219,7 +238,7 @@ def generator_test(lines, split, cut="lines", facts_on_record=None):
         facts_on_record = [i for i in registry.read("fact") if i["verdict"] == "ESTABLISHED"]
     per = {}
     for f in facts_on_record:
-        r = fact_attack(f["id"], lines, split, f, cut=cut)
+        r = fact_attack(f["id"], lines, split, f, cut=cut, first_lines=first_lines)
         if r.get("refused"):
             text_problem = [g for g in r["refused"] if not g.startswith("positional attack")]
             if text_problem:
