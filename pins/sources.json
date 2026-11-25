@@ -329,6 +329,19 @@
       "license": "public-domain",
       "encoding": "utf-8",
       "added_by": "fleet-corpora"
+    },
+    {
+      "id": "greek_725ba423",
+      "lang": "greek",
+      "period": "19th century (1850), learned modern Greek (katharevousa-leaning); a distant proxy for Byzantine Greek",
+      "title": "Neophytos Vamvas's Greek Bible (1850), full Old and New Testament, one verse per line",
+      "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/GreVamvas.txt",
+      "file": "data/raw/agent_greek_725ba423.txt",
+      "bytes": 7806958,
+      "sha256": "725ba4235ae8bece9df11190071437179dd410ac62df6ddbb4628e95479dcb54",
+      "license": "public-domain",
+      "encoding": "utf-8",
+      "added_by": "fleet-corpora"
     }
   ],
   "missing_corpora": {
