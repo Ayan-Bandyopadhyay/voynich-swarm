@@ -105,8 +105,53 @@ def g_grille(train_pages, eval_pages, seed=3):
     return _shape_like(eval_pages, nxt)
 
 
+def g_line_chain(train_pages, eval_pages, seed=4, order=4):
+    """Line-restarting glyph chain (no word list, no word order). Each word is written glyph
+    by glyph: the next glyph is drawn given the glyphs before it in the word (counts of glyph
+    n-grams inside training words, word start and end as symbols); the first glyph of a word
+    is drawn given the last glyph of the word just written on the same line; the first word of
+    a line starts afresh from the line-initial first glyphs. Made to test the facts about
+    edge-glyph dependence between adjacent words and its collapse at line breaks."""
+    from collections import defaultdict
+    rng = random.Random(seed)
+    seg = lambda w: list(ivtff.segment(w, "eva-basic"))
+    first0, first, nxt = Counter(), defaultdict(Counter), defaultdict(Counter)
+    for p in train_pages:
+        for ln in p.lines:
+            ws = [w for w in ln.words if not ivtff.uncertain(w)]
+            for k, w in enumerate(ws):
+                g = seg(w)
+                if k == 0:
+                    first0[g[0]] += 1
+                else:
+                    first[seg(ws[k - 1])[-1]][g[0]] += 1
+                s = ["^"] + g + ["$"]
+                for i in range(2, len(s)):
+                    nxt[tuple(s[max(0, i - order + 1):i])][s[i]] += 1
+    pick = lambda c: rng.choices(list(c), list(c.values()))[0]
+    state = {"line": None, "last": None}
+
+    def word(_p, ln, _i):
+        if state["line"] != ln.id:
+            state["line"], state["last"] = ln.id, None
+        g0 = pick(first.get(state["last"]) or first0) if state["last"] else pick(first0)
+        s = ["^", g0]
+        while len(s) < 16:
+            c = nxt.get(tuple(s[-(order - 1):]))
+            if not c:
+                break
+            x = pick(c)
+            if x == "$":
+                break
+            s.append(x)
+        state["last"] = s[-1]
+        return "".join(s[1:])
+    return _shape_like(eval_pages, word)
+
+
 GENERATORS = {
     "G-table-cipher": g_table_cipher,
     "G-self-citation": g_self_citation,
     "G-grille": g_grille,
+    "G-line-chain": g_line_chain,
 }
