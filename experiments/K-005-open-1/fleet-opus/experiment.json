@@ -1,0 +1,7 @@
+{
+  "step": "K-005-open-1",
+  "handle": "fleet-opus",
+  "kind": "model",
+  "summary": "Copy-and-modify with line position: copying a recent word with one glyph changed earns weight 0.044 and lowers held-out cost by 0.026 bits/word on practice versus the same model without copying.",
+  "lease": "0c9b355db7b0ddb6e76211e1"
+}
