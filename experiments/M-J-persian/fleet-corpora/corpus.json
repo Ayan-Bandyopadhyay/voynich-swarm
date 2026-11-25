@@ -1,0 +1,10 @@
+{
+  "language": "persian",
+  "title": "Persian Old Version Bible (Tarjome-ye Ghadim, 1895), full Bible, one verse per line",
+  "period": "19th century (1895 Old Persian Version), Classical-leaning modern Persian; a distant proxy for medieval Persian",
+  "url": "https://raw.githubusercontent.com/BibleNLP/ebible/2bde52b4c2cfd7056cf4ed07c48969647df79744/corpus/pes-pesOPV.txt",
+  "sha256": "6e3cfa649c93211948c6212b505f51792782d73b7eafee48f1576bef6bebd652",
+  "license": "public-domain",
+  "encoding": "utf-8",
+  "notes": "License: 'public-domain' is stated for translation id 'pesOPV' in the eBible corpus licence table https://github.com/BibleNLP/ebible/blob/2bde52b4c2cfd7056cf4ed07c48969647df79744/metadata/licences.tsv (taken from eBible.org's copyright page, https://ebible.org/pesOPV/copr.htm). The url pins a fixed commit, so the bytes do not change. 5,670,496 bytes; eBible corpus format: one verse per line aligned to a fixed versification (empty lines for verses the translation lacks; '<range>' marks merged verses, a few letters each). vs/refcorpus.normalize(..., 'persian') gives 3,068,420 characters. eBible credits the translation to 'Wycliffe Bible Translators' in its table; the Persian Old Version is the 1895 Bruce/Glen revision."
+}
