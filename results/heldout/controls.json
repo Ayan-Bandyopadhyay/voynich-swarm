@@ -161,7 +161,7 @@
   "search_cracks_control_clean": true,
   "noise": 0.02,
   "true_key_passes_noisy": false,
-  "search_cracks_control": false
+  "search_cracks_control": true
  },
  {
   "language": "spanish",
@@ -237,13 +237,13 @@
     "c_pictures"
    ],
    "passes_without_anchors": true,
-   "savings": 0.06085,
+   "savings": 0.06853,
    "killed_by": []
   },
   "search_cracks_control_clean": true,
   "noise": 0.02,
   "true_key_passes_noisy": true,
-  "search_cracks_control": false
+  "search_cracks_control": true
  },
  {
   "language": "french",
@@ -319,13 +319,13 @@
     "c_pictures"
    ],
    "passes_without_anchors": true,
-   "savings": 0.03328,
+   "savings": 0.04796,
    "killed_by": []
   },
   "search_cracks_control_clean": true,
   "noise": 0.02,
   "true_key_passes_noisy": false,
-  "search_cracks_control": false
+  "search_cracks_control": true
  },
  {
   "language": "german",
@@ -400,17 +400,94 @@
    "verdict": "FAIL",
    "failed": [
     "a_compresses",
-    "c_pictures",
-    "d_not_illusion"
+    "c_pictures"
    ],
    "passes_without_anchors": false,
-   "savings": -0.12255,
+   "savings": -0.01946,
    "killed_by": []
   },
   "search_cracks_control_clean": false,
   "noise": 0.02,
   "true_key_passes_noisy": false,
-  "search_cracks_control": false
+  "search_cracks_control": false,
+  "noisy_sample_size_checks": [
+   {
+    "evaluation_residues_mod_7": [
+     3,
+     4
+    ],
+    "tokens": 2720,
+    "true_key": {
+     "submission": "control-german-verbose",
+     "family": "verbose",
+     "target": {
+      "language": "german",
+      "period": "control"
+     },
+     "verdict": "FAIL",
+     "failed": [
+      "c_pictures"
+     ],
+     "passes_without_anchors": true,
+     "savings": 0.01796,
+     "killed_by": []
+    },
+    "search_key": {
+     "submission": "grid-german-verbose-control",
+     "family": "verbose",
+     "target": {
+      "language": "german",
+      "period": "grid search"
+     },
+     "verdict": "FAIL",
+     "failed": [
+      "c_pictures"
+     ],
+     "passes_without_anchors": true,
+     "savings": 0.03384,
+     "killed_by": []
+    }
+   },
+   {
+    "evaluation_residues_mod_7": [
+     3,
+     4,
+     5
+    ],
+    "tokens": 4080,
+    "true_key": {
+     "submission": "control-german-verbose",
+     "family": "verbose",
+     "target": {
+      "language": "german",
+      "period": "control"
+     },
+     "verdict": "FAIL",
+     "failed": [
+      "c_pictures"
+     ],
+     "passes_without_anchors": true,
+     "savings": 0.04478,
+     "killed_by": []
+    },
+    "search_key": {
+     "submission": "grid-german-verbose-control",
+     "family": "verbose",
+     "target": {
+      "language": "german",
+      "period": "grid search"
+     },
+     "verdict": "FAIL",
+     "failed": [
+      "c_pictures",
+      "d_not_illusion"
+     ],
+     "passes_without_anchors": true,
+     "savings": 0.06404,
+     "killed_by": []
+    }
+   }
+  ]
  },
  {
   "language": "english",
@@ -498,745 +575,3936 @@
   "language": "hebrew",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 4595,
+  "true_key": {
+   "submission": "control-hebrew-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "hebrew",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.12518,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "hebrew_e0b184ea"
+  "search_key": {
+   "submission": "grid-hebrew-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "hebrew",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.12518,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
  },
  {
   "language": "hebrew",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 4595,
+  "true_key": {
+   "submission": "control-hebrew-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "hebrew",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08577,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "hebrew_e0b184ea"
+  "search_key": {
+   "submission": "grid-hebrew-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "hebrew",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08577,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
  },
  {
   "language": "catalan",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 1509,
+  "true_key": {
+   "submission": "control-catalan-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "catalan",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.10652,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "catalan_344cbde2"
+  "search_key": {
+   "submission": "grid-catalan-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "catalan",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.09444,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
  },
  {
   "language": "catalan",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 1509,
+  "true_key": {
+   "submission": "control-catalan-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "catalan",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.031,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "catalan_344cbde2"
+  "search_key": {
+   "submission": "grid-catalan-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "catalan",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.02529,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
  },
  {
   "language": "armenian",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 1680,
+  "true_key": {
+   "submission": "control-armenian-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "armenian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08775,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": false,
-  "added_with": "armenian_b964a7c3"
+  "search_key": {
+   "submission": "grid-armenian-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "armenian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "kill_tests",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.14403,
+   "killed_by": [
+    "D1_word_order_shuffled"
+   ]
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
  },
  {
   "language": "greek",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 10096,
+  "true_key": {
+   "submission": "control-greek-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "greek",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.10936,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "greek_725ba423"
+  "search_key": {
+   "submission": "grid-greek-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "greek",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.10936,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
  },
  {
   "language": "greek",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 10096,
+  "true_key": {
+   "submission": "control-greek-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "greek",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.10864,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "greek_725ba423"
+  "search_key": {
+   "submission": "grid-greek-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "greek",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.10864,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
  },
  {
   "language": "polish",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 8560,
+  "true_key": {
+   "submission": "control-polish-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "polish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.11759,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "polish_dc4e4cae"
+  "search_key": {
+   "submission": "grid-polish-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "polish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.11759,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
  },
  {
   "language": "polish",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 8560,
+  "true_key": {
+   "submission": "control-polish-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "polish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07676,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "polish_dc4e4cae"
+  "search_key": {
+   "submission": "grid-polish-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "polish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07676,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
  },
  {
   "language": "ukrainian",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 8320,
+  "true_key": {
+   "submission": "control-ukrainian-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "ukrainian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07437,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "ukrainian_92c8935d"
+  "search_key": {
+   "submission": "grid-ukrainian-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "ukrainian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07437,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
  },
  {
   "language": "ukrainian",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 8320,
+  "true_key": {
+   "submission": "control-ukrainian-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "ukrainian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.12484,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "ukrainian_92c8935d"
+  "search_key": {
+   "submission": "grid-ukrainian-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "ukrainian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.12484,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
  },
  {
   "language": "albanian",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 10800,
+  "true_key": {
+   "submission": "control-albanian-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "albanian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.10641,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "albanian_528b202d"
+  "search_key": {
+   "submission": "grid-albanian-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "albanian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.0851,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
  },
  {
   "language": "albanian",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 10800,
+  "true_key": {
+   "submission": "control-albanian-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "albanian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08898,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "albanian_528b202d"
+  "search_key": {
+   "submission": "grid-albanian-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "albanian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.02554,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
  },
  {
   "language": "czech",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 8560,
+  "true_key": {
+   "submission": "control-czech-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "czech",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.10873,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": false,
-  "added_with": "czech_2a517c22"
+  "search_key": {
+   "submission": "grid-czech-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "czech",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "kill_tests",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.00411,
+   "killed_by": [
+    "D1_word_order_shuffled"
+   ]
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
  },
  {
   "language": "czech",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 8560,
+  "true_key": {
+   "submission": "control-czech-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "czech",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.09697,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "czech_2a517c22"
+  "search_key": {
+   "submission": "grid-czech-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "czech",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.09658,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
  },
  {
   "language": "dutch",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 11040,
+  "true_key": {
+   "submission": "control-dutch-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "dutch",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.10095,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "dutch_eac2dcd0"
+  "search_key": {
+   "submission": "grid-dutch-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "dutch",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07739,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
  },
  {
   "language": "dutch",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 11040,
+  "true_key": {
+   "submission": "control-dutch-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "dutch",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04579,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "dutch_eac2dcd0"
+  "search_key": {
+   "submission": "grid-dutch-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "dutch",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04579,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
  },
  {
   "language": "hungarian",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 8560,
+  "true_key": {
+   "submission": "control-hungarian-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "hungarian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.13219,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": false,
-  "added_with": "hungarian_c7ca259c"
+  "search_key": {
+   "submission": "grid-hungarian-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "hungarian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "b_reads",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.0256,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
  },
  {
   "language": "hungarian",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 8560,
+  "true_key": {
+   "submission": "control-hungarian-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "hungarian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.13309,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "hungarian_c7ca259c"
+  "search_key": {
+   "submission": "grid-hungarian-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "hungarian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.13309,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
  },
  {
   "language": "vietnamese",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 12880,
+  "true_key": {
+   "submission": "control-vietnamese-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "vietnamese",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.03722,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": false,
-  "added_with": "vietnamese_49d38fc6"
+  "search_key": {
+   "submission": "grid-vietnamese-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "vietnamese",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "kill_tests",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.05122,
+   "killed_by": [
+    "D1_word_order_shuffled"
+   ]
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
  },
  {
   "language": "vietnamese",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 12880,
+  "true_key": {
+   "submission": "control-vietnamese-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "vietnamese",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05669,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "vietnamese_49d38fc6"
+  "search_key": {
+   "submission": "grid-vietnamese-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "vietnamese",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.0219,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
  },
  {
   "language": "persian",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 9520,
+  "true_key": {
+   "submission": "control-persian-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "persian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.12843,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "persian_6e3cfa64"
+  "search_key": {
+   "submission": "grid-persian-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "persian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.10185,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
  },
  {
   "language": "sanskrit",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 1520,
+  "true_key": {
+   "submission": "control-sanskrit-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "sanskrit",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.15011,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "sanskrit_6499350a"
+  "search_key": {
+   "submission": "grid-sanskrit-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "sanskrit",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04869,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
  },
  {
   "language": "sanskrit",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 1520,
+  "true_key": {
+   "submission": "control-sanskrit-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "sanskrit",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.09731,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": false,
-  "added_with": "sanskrit_6499350a"
+  "search_key": {
+   "submission": "grid-sanskrit-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "sanskrit",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.01549,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
  },
  {
   "language": "turkish",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 1360,
+  "true_key": {
+   "submission": "control-turkish-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "turkish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.16377,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "turkish_01d601ce"
+  "search_key": {
+   "submission": "grid-turkish-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "turkish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.16377,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
  },
  {
   "language": "turkish",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 1360,
+  "true_key": {
+   "submission": "control-turkish-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "turkish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08695,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "turkish_01d601ce"
+  "search_key": {
+   "submission": "grid-turkish-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "turkish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08695,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
  },
  {
   "language": "church_slavonic",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 9116,
+  "true_key": {
+   "submission": "control-church_slavonic-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "church_slavonic",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08084,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": false,
-  "added_with": "church_slavonic_a83c68c3"
+  "search_key": {
+   "submission": "grid-church_slavonic-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "church_slavonic",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.02242,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
  },
  {
   "language": "church_slavonic",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 9116,
+  "true_key": {
+   "submission": "control-church_slavonic-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "church_slavonic",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.12113,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "church_slavonic_a83c68c3"
+  "search_key": {
+   "submission": "grid-church_slavonic-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "church_slavonic",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.11303,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
  },
  {
   "language": "danish",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 10160,
+  "true_key": {
+   "submission": "control-danish-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "danish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.09419,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "danish_c6e4a469"
+  "search_key": {
+   "submission": "grid-danish-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "danish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.09136,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
  },
  {
   "language": "danish",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 10160,
+  "true_key": {
+   "submission": "control-danish-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "danish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06914,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "danish_c6e4a469"
+  "search_key": {
+   "submission": "grid-danish-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "danish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06914,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
  },
  {
   "language": "finnish",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 9280,
+  "true_key": {
+   "submission": "control-finnish-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "finnish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.13428,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "finnish_0b723e54"
+  "search_key": {
+   "submission": "grid-finnish-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "finnish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.10289,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
  },
  {
   "language": "finnish",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 9280,
+  "true_key": {
+   "submission": "control-finnish-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "finnish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07209,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "finnish_0b723e54"
+  "search_key": {
+   "submission": "grid-finnish-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "finnish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07209,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
  },
  {
   "language": "latvian",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 8960,
+  "true_key": {
+   "submission": "control-latvian-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "latvian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.12016,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": false,
-  "added_with": "latvian_938087b7"
+  "search_key": {
+   "submission": "grid-latvian-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "latvian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "b_reads",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.02892,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
  },
  {
   "language": "latvian",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 8960,
+  "true_key": {
+   "submission": "control-latvian-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "latvian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07247,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "latvian_938087b7"
+  "search_key": {
+   "submission": "grid-latvian-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "latvian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07247,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
  },
  {
   "language": "russian",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 9673,
+  "true_key": {
+   "submission": "control-russian-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "russian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06993,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "russian_09fee23d"
+  "search_key": {
+   "submission": "grid-russian-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "russian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06762,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
  },
  {
   "language": "russian",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 9673,
+  "true_key": {
+   "submission": "control-russian-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "russian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.12196,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "russian_09fee23d"
+  "search_key": {
+   "submission": "grid-russian-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "russian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.09167,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
  },
  {
   "language": "serbian",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 8320,
+  "true_key": {
+   "submission": "control-serbian-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "serbian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07774,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "serbian_9efa0c7b"
+  "search_key": {
+   "submission": "grid-serbian-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "serbian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.02961,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
  },
  {
   "language": "serbian",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 8320,
+  "true_key": {
+   "submission": "control-serbian-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "serbian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.09874,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": false,
-  "added_with": "serbian_9efa0c7b"
+  "search_key": {
+   "submission": "grid-serbian-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "serbian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.0089,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
  },
  {
   "language": "swedish",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 7040,
+  "true_key": {
+   "submission": "control-swedish-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "swedish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.12048,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "swedish_3bd1675e"
+  "search_key": {
+   "submission": "grid-swedish-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "swedish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07546,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
  },
  {
   "language": "swedish",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 7040,
+  "true_key": {
+   "submission": "control-swedish-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "swedish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06814,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": false,
-  "added_with": "swedish_3bd1675e"
+  "search_key": {
+   "submission": "grid-swedish-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "swedish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.01347,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
  },
  {
   "language": "cornish",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 560,
+  "true_key": {
+   "submission": "control-cornish-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "cornish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.03055,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "cornish_e690b249"
+  "search_key": {
+   "submission": "grid-cornish-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "cornish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.03055,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
  },
  {
   "language": "cornish",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 560,
+  "true_key": {
+   "submission": "control-cornish-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "cornish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.12469,
+   "killed_by": []
+  },
   "true_key_passes": false,
-  "search_cracks_control": false,
-  "added_with": "cornish_e690b249"
+  "search_key": {
+   "submission": "grid-cornish-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "cornish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.12469,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
  },
  {
   "language": "irish",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 560,
+  "true_key": {
+   "submission": "control-irish-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "irish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05088,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "irish_0497494d"
+  "search_key": {
+   "submission": "grid-irish-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "irish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05088,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
  },
  {
   "language": "irish",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 560,
+  "true_key": {
+   "submission": "control-irish-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "irish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.14115,
+   "killed_by": []
+  },
   "true_key_passes": false,
-  "search_cracks_control": false,
-  "added_with": "irish_0497494d"
+  "search_key": {
+   "submission": "grid-irish-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "irish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "kill_tests",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.40371,
+   "killed_by": [
+    "D1_word_order_shuffled"
+   ]
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
  },
  {
   "language": "welsh",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 560,
+  "true_key": {
+   "submission": "control-welsh-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "welsh",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05094,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": false,
-  "added_with": "welsh_8aa20d4e"
+  "search_key": {
+   "submission": "grid-welsh-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "welsh",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.13359,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
  },
  {
   "language": "welsh",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 560,
+  "true_key": {
+   "submission": "control-welsh-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "welsh",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.12364,
+   "killed_by": []
+  },
   "true_key_passes": false,
-  "search_cracks_control": false,
-  "added_with": "welsh_8aa20d4e"
+  "search_key": {
+   "submission": "grid-welsh-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "welsh",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.28792,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
  },
  {
   "language": "croatian",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 9200,
+  "true_key": {
+   "submission": "control-croatian-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "croatian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.1257,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "croatian_47b76faa"
+  "search_key": {
+   "submission": "grid-croatian-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "croatian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.1257,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
  },
  {
   "language": "croatian",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 9200,
+  "true_key": {
+   "submission": "control-croatian-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "croatian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07937,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "croatian_47b76faa"
+  "search_key": {
+   "submission": "grid-croatian-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "croatian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07937,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
  },
  {
   "language": "gothic",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 960,
+  "true_key": {
+   "submission": "control-gothic-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "gothic",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.1121,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "gothic_ddac438d"
+  "search_key": {
+   "submission": "grid-gothic-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "gothic",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.1121,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
  },
  {
   "language": "gothic",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 960,
+  "true_key": {
+   "submission": "control-gothic-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "gothic",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.06033,
+   "killed_by": []
+  },
   "true_key_passes": false,
-  "search_cracks_control": false,
-  "added_with": "gothic_ddac438d"
+  "search_key": {
+   "submission": "grid-gothic-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "gothic",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.06033,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
  },
  {
   "language": "lithuanian",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 1680,
+  "true_key": {
+   "submission": "control-lithuanian-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "lithuanian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.16801,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "lithuanian_08449f12"
+  "search_key": {
+   "submission": "grid-lithuanian-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "lithuanian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.16801,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
  },
  {
   "language": "lithuanian",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 1680,
+  "true_key": {
+   "submission": "control-lithuanian-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "lithuanian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07303,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "lithuanian_08449f12"
+  "search_key": {
+   "submission": "grid-lithuanian-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "lithuanian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07303,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
  },
  {
   "language": "manx",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 1200,
+  "true_key": {
+   "submission": "control-manx-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "manx",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.11382,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "manx_444c4d94"
+  "search_key": {
+   "submission": "grid-manx-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "manx",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.11382,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
  },
  {
   "language": "manx",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 1200,
+  "true_key": {
+   "submission": "control-manx-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "manx",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.02628,
+   "killed_by": []
+  },
   "true_key_passes": false,
-  "search_cracks_control": false,
-  "added_with": "manx_444c4d94"
+  "search_key": {
+   "submission": "grid-manx-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "manx",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.038,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
  },
  {
   "language": "norwegian",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 10268,
+  "true_key": {
+   "submission": "control-norwegian-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "norwegian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.10656,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": false,
-  "added_with": "norwegian_c561de18"
+  "search_key": {
+   "submission": "grid-norwegian-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "norwegian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.00135,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
  },
  {
   "language": "norwegian",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 10268,
+  "true_key": {
+   "submission": "control-norwegian-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "norwegian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06331,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "norwegian_c561de18"
+  "search_key": {
+   "submission": "grid-norwegian-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "norwegian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06331,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
  },
  {
   "language": "romanian",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 2418,
+  "true_key": {
+   "submission": "control-romanian-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "romanian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.16336,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "romanian_027bf7fb"
+  "search_key": {
+   "submission": "grid-romanian-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "romanian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.14519,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
  },
  {
   "language": "romanian",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 2418,
+  "true_key": {
+   "submission": "control-romanian-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "romanian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04544,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "romanian_027bf7fb"
+  "search_key": {
+   "submission": "grid-romanian-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "romanian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04544,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
  },
  {
   "language": "slovene",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 2511,
+  "true_key": {
+   "submission": "control-slovene-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "slovene",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.15701,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "slovene_9ef75e0e"
+  "search_key": {
+   "submission": "grid-slovene-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "slovene",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.15701,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
  },
  {
   "language": "slovene",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 2511,
+  "true_key": {
+   "submission": "control-slovene-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "slovene",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05927,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "slovene_9ef75e0e"
+  "search_key": {
+   "submission": "grid-slovene-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "slovene",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05927,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
  },
  {
   "language": "syriac",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 1596,
+  "true_key": {
+   "submission": "control-syriac-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "syriac",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.13665,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "syriac_2bf17c3a"
+  "search_key": {
+   "submission": "grid-syriac-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "syriac",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.13665,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
  },
  {
   "language": "syriac",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 1596,
+  "true_key": {
+   "submission": "control-syriac-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "syriac",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.0561,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "syriac_2bf17c3a"
+  "search_key": {
+   "submission": "grid-syriac-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "syriac",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.0561,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
  },
  {
   "language": "ancient_greek",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 7760,
+  "true_key": {
+   "submission": "control-ancient_greek-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "ancient_greek",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.11096,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "ancient_greek_f7725754"
+  "search_key": {
+   "submission": "grid-ancient_greek-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "ancient_greek",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.0267,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
  },
  {
   "language": "ancient_greek",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 7760,
+  "true_key": {
+   "submission": "control-ancient_greek-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "ancient_greek",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.1113,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "ancient_greek_f7725754"
+  "search_key": {
+   "submission": "grid-ancient_greek-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "ancient_greek",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.09476,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
  },
  {
   "language": "coptic",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 5520,
+  "true_key": {
+   "submission": "control-coptic-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "coptic",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.16096,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "coptic_e83a0317"
+  "search_key": {
+   "submission": "grid-coptic-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "coptic",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.09829,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
  },
  {
   "language": "portuguese",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 10080,
+  "true_key": {
+   "submission": "control-portuguese-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "portuguese",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.1169,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "portuguese_da8d8b1f"
+  "search_key": {
+   "submission": "grid-portuguese-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "portuguese",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.10046,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
  },
  {
   "language": "portuguese",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 10080,
+  "true_key": {
+   "submission": "control-portuguese-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "portuguese",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06815,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "portuguese_da8d8b1f"
+  "search_key": {
+   "submission": "grid-portuguese-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "portuguese",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06815,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
  },
  {
   "language": "frisian",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 4880,
+  "true_key": {
+   "submission": "control-frisian-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "frisian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.11508,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": false,
-  "added_with": "frisian_a3923cf4"
+  "search_key": {
+   "submission": "grid-frisian-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "frisian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.00588,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
  },
  {
   "language": "frisian",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 4880,
+  "true_key": {
+   "submission": "control-frisian-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "frisian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05568,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "frisian_a3923cf4"
+  "search_key": {
+   "submission": "grid-frisian-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "frisian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05568,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
  },
  {
   "language": "icelandic",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 400,
+  "true_key": {
+   "submission": "control-icelandic-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "icelandic",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.05739,
+   "killed_by": []
+  },
   "true_key_passes": false,
-  "search_cracks_control": false,
-  "added_with": "icelandic_764ba0bc"
+  "search_key": {
+   "submission": "grid-icelandic-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "icelandic",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.07055,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
  },
  {
   "language": "icelandic",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 400,
+  "true_key": {
+   "submission": "control-icelandic-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "icelandic",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.21153,
+   "killed_by": []
+  },
   "true_key_passes": false,
-  "search_cracks_control": false,
-  "added_with": "icelandic_764ba0bc"
+  "search_key": {
+   "submission": "grid-icelandic-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "icelandic",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.23253,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
  },
  {
   "language": "neapolitan",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 560,
+  "true_key": {
+   "submission": "control-neapolitan-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "neapolitan",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.02646,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": false,
-  "added_with": "neapolitan_e6d5d646"
+  "search_key": {
+   "submission": "grid-neapolitan-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "neapolitan",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.01175,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
  },
  {
   "language": "neapolitan",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 560,
+  "true_key": {
+   "submission": "control-neapolitan-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "neapolitan",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.1766,
+   "killed_by": []
+  },
   "true_key_passes": false,
-  "search_cracks_control": false,
-  "added_with": "neapolitan_e6d5d646"
+  "search_key": {
+   "submission": "grid-neapolitan-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "neapolitan",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.19528,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
  },
  {
   "language": "arabic",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 6160,
+  "true_key": {
+   "submission": "control-arabic-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "arabic",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.11464,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": false,
-  "added_with": "arabic_e2086900"
+  "search_key": {
+   "submission": "grid-arabic-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "arabic",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "kill_tests",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.12443,
+   "killed_by": [
+    "D1_word_order_shuffled"
+   ]
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
  },
  {
   "language": "breton",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 1280,
+  "true_key": {
+   "submission": "control-breton-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "breton",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.12647,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "breton_daa8b713"
+  "search_key": {
+   "submission": "grid-breton-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "breton",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.09109,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
  },
  {
   "language": "breton",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 1280,
+  "true_key": {
+   "submission": "control-breton-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "breton",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.02945,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "breton_daa8b713"
+  "search_key": {
+   "submission": "grid-breton-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "breton",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.02945,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
  },
  {
   "language": "galician",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 640,
+  "true_key": {
+   "submission": "control-galician-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "galician",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04503,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "galician_b7a291e0"
+  "search_key": {
+   "submission": "grid-galician-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "galician",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04503,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
  },
  {
   "language": "galician",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 640,
+  "true_key": {
+   "submission": "control-galician-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "galician",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.10065,
+   "killed_by": []
+  },
   "true_key_passes": false,
-  "search_cracks_control": false,
-  "added_with": "galician_b7a291e0"
+  "search_key": {
+   "submission": "grid-galician-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "galician",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.10065,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
  },
  {
   "language": "estonian",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 1040,
+  "true_key": {
+   "submission": "control-estonian-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "estonian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.16061,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": false,
-  "added_with": "estonian_63de1b3f"
+  "search_key": {
+   "submission": "grid-estonian-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "estonian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "b_reads",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.08747,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
  },
  {
   "language": "estonian",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 1040,
+  "true_key": {
+   "submission": "control-estonian-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "estonian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.00483,
+   "killed_by": []
+  },
   "true_key_passes": false,
-  "search_cracks_control": false,
-  "added_with": "estonian_63de1b3f"
+  "search_key": {
+   "submission": "grid-estonian-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "estonian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.00483,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
  },
  {
   "language": "old_norse",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 480,
+  "true_key": {
+   "submission": "control-old_norse-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "old_norse",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.02893,
+   "killed_by": []
+  },
   "true_key_passes": false,
-  "search_cracks_control": false,
-  "added_with": "old_norse_25dfa5f0"
+  "search_key": {
+   "submission": "grid-old_norse-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "old_norse",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.02893,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
  },
  {
   "language": "old_norse",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 480,
+  "true_key": {
+   "submission": "control-old_norse-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "old_norse",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.31283,
+   "killed_by": []
+  },
   "true_key_passes": false,
-  "search_cracks_control": false,
-  "added_with": "old_norse_25dfa5f0"
+  "search_key": {
+   "submission": "grid-old_norse-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "old_norse",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.31283,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
  },
  {
   "language": "bulgarian",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 1323,
+  "true_key": {
+   "submission": "control-bulgarian-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "bulgarian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07836,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "bulgarian_71c003ae"
+  "search_key": {
+   "submission": "grid-bulgarian-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "bulgarian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07354,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
  },
  {
   "language": "bulgarian",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 1323,
+  "true_key": {
+   "submission": "control-bulgarian-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "bulgarian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.01408,
+   "killed_by": []
+  },
   "true_key_passes": false,
-  "search_cracks_control": false,
-  "added_with": "bulgarian_71c003ae"
+  "search_key": {
+   "submission": "grid-bulgarian-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "bulgarian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.01408,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
  },
  {
   "language": "georgian",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 544,
+  "true_key": {
+   "submission": "control-georgian-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "georgian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.06049,
+   "killed_by": []
+  },
   "true_key_passes": false,
-  "search_cracks_control": false,
-  "added_with": "georgian_f0dd2879"
+  "search_key": {
+   "submission": "grid-georgian-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "georgian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "kill_tests",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.43445,
+   "killed_by": [
+    "D1_word_order_shuffled"
+   ]
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
  },
  {
   "language": "slovak",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 480,
+  "true_key": {
+   "submission": "control-slovak-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "slovak",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.00847,
+   "killed_by": []
+  },
   "true_key_passes": false,
-  "search_cracks_control": false,
-  "added_with": "slovak_ce40a008"
+  "search_key": {
+   "submission": "grid-slovak-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "slovak",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.10161,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
  },
  {
   "language": "slovak",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 480,
+  "true_key": {
+   "submission": "control-slovak-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "slovak",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.12256,
+   "killed_by": []
+  },
   "true_key_passes": false,
-  "search_cracks_control": false,
-  "added_with": "slovak_ce40a008"
+  "search_key": {
+   "submission": "grid-slovak-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "slovak",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.12908,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
  },
  {
   "language": "yiddish",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 800,
+  "true_key": {
+   "submission": "control-yiddish-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "yiddish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.00219,
+   "killed_by": []
+  },
   "true_key_passes": false,
-  "search_cracks_control": false,
-  "added_with": "yiddish_a8da2feb"
+  "search_key": {
+   "submission": "grid-yiddish-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "yiddish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.00725,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
  },
  {
   "language": "yiddish",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 800,
+  "true_key": {
+   "submission": "control-yiddish-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "yiddish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.13915,
+   "killed_by": []
+  },
   "true_key_passes": false,
-  "search_cracks_control": false,
-  "added_with": "yiddish_a8da2feb"
+  "search_key": {
+   "submission": "grid-yiddish-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "yiddish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.14393,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
  },
  {
   "language": "old_occitan",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 1760,
+  "true_key": {
+   "submission": "control-old_occitan-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "old_occitan",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08305,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": true,
-  "added_with": "old_occitan_57842168"
+  "search_key": {
+   "submission": "grid-old_occitan-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "old_occitan",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07064,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
  },
  {
   "language": "old_occitan",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 1760,
+  "true_key": {
+   "submission": "control-old_occitan-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "old_occitan",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.02991,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": false,
-  "added_with": "old_occitan_57842168"
+  "search_key": {
+   "submission": "grid-old_occitan-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "old_occitan",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.00483,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
  },
  {
   "language": "nahuatl",
   "family": "substitution",
   "control": "homophonic",
+  "control_tokens": 1360,
+  "true_key": {
+   "submission": "control-nahuatl-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "nahuatl",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.1156,
+   "killed_by": []
+  },
   "true_key_passes": true,
-  "search_cracks_control": false,
-  "added_with": "nahuatl_ffad7306"
+  "search_key": {
+   "submission": "grid-nahuatl-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "nahuatl",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.11347,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
  },
  {
   "language": "nahuatl",
   "family": "verbose",
   "control": "verbose",
+  "control_tokens": 1360,
+  "true_key": {
+   "submission": "control-nahuatl-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "nahuatl",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.00887,
+   "killed_by": []
+  },
   "true_key_passes": false,
-  "search_cracks_control": false,
-  "added_with": "nahuatl_ffad7306"
+  "search_key": {
+   "submission": "grid-nahuatl-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "nahuatl",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "kill_tests",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.20823,
+   "killed_by": [
+    "D1_word_order_shuffled"
+   ]
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
  },
  {
   "language": "conlang_esperanto",
@@ -1253,5 +4521,2159 @@
   "true_key_passes": false,
   "search_cracks_control": false,
   "added_with": "conlang_esperanto_05aac0f3"
+ },
+ {
+  "language": "latin",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 2320,
+  "true_key": {
+   "submission": "control-latin-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "latin",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.09772,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-latin-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "latin",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05997,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
+ },
+ {
+  "language": "italian",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 2560,
+  "true_key": {
+   "submission": "control-italian-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "italian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05544,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-italian-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "italian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05421,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "spanish",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 3440,
+  "true_key": {
+   "submission": "control-spanish-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "spanish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07607,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-spanish-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "spanish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06867,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
+ },
+ {
+  "language": "french",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 2080,
+  "true_key": {
+   "submission": "control-french-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "french",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.03799,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-french-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "french",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.02426,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "catalan",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 1509,
+  "true_key": {
+   "submission": "control-catalan-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "catalan",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.02702,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-catalan-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "catalan",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.02083,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "german",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 1360,
+  "true_key": {
+   "submission": "control-german-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "german",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.00644,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-german-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "german",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.00622,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "english",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 6000,
+  "true_key": {
+   "submission": "control-english-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "english",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07807,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-english-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "english",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.03034,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
+ },
+ {
+  "language": "czech",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 8560,
+  "true_key": {
+   "submission": "control-czech-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "czech",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08173,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-czech-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "czech",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "kill_tests",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.08653,
+   "killed_by": [
+    "D1_word_order_shuffled"
+   ]
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
+ },
+ {
+  "language": "hebrew",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 4595,
+  "true_key": {
+   "submission": "control-hebrew-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "hebrew",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08759,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-hebrew-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "hebrew",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08759,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "albanian",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 10800,
+  "true_key": {
+   "submission": "control-albanian-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "albanian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07595,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-albanian-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "albanian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06007,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
+ },
+ {
+  "language": "ancient_greek",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 7760,
+  "true_key": {
+   "submission": "control-ancient_greek-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "ancient_greek",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07284,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-ancient_greek-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "ancient_greek",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05985,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "breton",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 1280,
+  "true_key": {
+   "submission": "control-breton-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "breton",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.00476,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-breton-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "breton",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.02575,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "bulgarian",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 1323,
+  "true_key": {
+   "submission": "control-bulgarian-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "bulgarian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.03096,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-bulgarian-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "bulgarian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.03327,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "church_slavonic",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 9116,
+  "true_key": {
+   "submission": "control-church_slavonic-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "church_slavonic",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05493,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-church_slavonic-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "church_slavonic",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05493,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
+ },
+ {
+  "language": "cornish",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 560,
+  "true_key": {
+   "submission": "control-cornish-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "cornish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.15257,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-cornish-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "cornish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.22311,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "croatian",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 9200,
+  "true_key": {
+   "submission": "control-croatian-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "croatian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.09498,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-croatian-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "croatian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08791,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "danish",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 10160,
+  "true_key": {
+   "submission": "control-danish-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "danish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06573,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-danish-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "danish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06438,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
+ },
+ {
+  "language": "dutch",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 11040,
+  "true_key": {
+   "submission": "control-dutch-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "dutch",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07228,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-dutch-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "dutch",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "kill_tests",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.0337,
+   "killed_by": [
+    "D1_word_order_shuffled"
+   ]
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
+ },
+ {
+  "language": "estonian",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 1040,
+  "true_key": {
+   "submission": "control-estonian-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "estonian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05069,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-estonian-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "estonian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05048,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": true
+ },
+ {
+  "language": "finnish",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 9280,
+  "true_key": {
+   "submission": "control-finnish-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "finnish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.10391,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-finnish-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "finnish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "kill_tests",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.12541,
+   "killed_by": [
+    "D1_word_order_shuffled"
+   ]
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
+ },
+ {
+  "language": "frisian",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 4880,
+  "true_key": {
+   "submission": "control-frisian-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "frisian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07179,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-frisian-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "frisian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06628,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
+ },
+ {
+  "language": "galician",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 640,
+  "true_key": {
+   "submission": "control-galician-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "galician",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.09429,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-galician-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "galician",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.09575,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "gothic",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 960,
+  "true_key": {
+   "submission": "control-gothic-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "gothic",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.00301,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-gothic-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "gothic",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.00924,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "greek",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 10096,
+  "true_key": {
+   "submission": "control-greek-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "greek",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.0712,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-greek-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "greek",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.0712,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "hungarian",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 8560,
+  "true_key": {
+   "submission": "control-hungarian-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "hungarian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.10872,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-hungarian-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "hungarian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "kill_tests",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.00873,
+   "killed_by": [
+    "D1_word_order_shuffled"
+   ]
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
+ },
+ {
+  "language": "icelandic",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 400,
+  "true_key": {
+   "submission": "control-icelandic-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "icelandic",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.31082,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-icelandic-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "icelandic",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.28211,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "irish",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 560,
+  "true_key": {
+   "submission": "control-irish-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "irish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.14068,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-irish-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "irish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.13791,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "latvian",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 8960,
+  "true_key": {
+   "submission": "control-latvian-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "latvian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.09255,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-latvian-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "latvian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.00424,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
+ },
+ {
+  "language": "lithuanian",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 1680,
+  "true_key": {
+   "submission": "control-lithuanian-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "lithuanian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.10156,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-lithuanian-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "lithuanian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.09709,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
+ },
+ {
+  "language": "manx",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 1200,
+  "true_key": {
+   "submission": "control-manx-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "manx",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.01405,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-manx-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "manx",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.01775,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "nahuatl",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 1360,
+  "true_key": {
+   "submission": "control-nahuatl-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "nahuatl",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.03006,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-nahuatl-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "nahuatl",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.00864,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "neapolitan",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 560,
+  "true_key": {
+   "submission": "control-neapolitan-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "neapolitan",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.12986,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-neapolitan-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "neapolitan",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.14894,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "norwegian",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 10268,
+  "true_key": {
+   "submission": "control-norwegian-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "norwegian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07675,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-norwegian-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "norwegian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.00344,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "old_norse",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 480,
+  "true_key": {
+   "submission": "control-old_norse-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "old_norse",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.29473,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-old_norse-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "old_norse",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.29941,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "old_occitan",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 1760,
+  "true_key": {
+   "submission": "control-old_occitan-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "old_occitan",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.02251,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-old_occitan-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "old_occitan",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "kill_tests",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.19734,
+   "killed_by": [
+    "D1_word_order_shuffled",
+    "D2_glyphs_shuffled",
+    "D3_random_glyphs",
+    "D4_unrelated_text_enciphered"
+   ]
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "polish",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 8560,
+  "true_key": {
+   "submission": "control-polish-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "polish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08867,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-polish-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "polish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04945,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "portuguese",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 10080,
+  "true_key": {
+   "submission": "control-portuguese-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "portuguese",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08307,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-portuguese-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "portuguese",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08307,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "romanian",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 2418,
+  "true_key": {
+   "submission": "control-romanian-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "romanian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.09092,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-romanian-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "romanian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.09056,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "russian",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 9673,
+  "true_key": {
+   "submission": "control-russian-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "russian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04493,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-russian-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "russian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.00069,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
+ },
+ {
+  "language": "sanskrit",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 1520,
+  "true_key": {
+   "submission": "control-sanskrit-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "sanskrit",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.10219,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-sanskrit-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "sanskrit",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "kill_tests",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.02557,
+   "killed_by": [
+    "D1_word_order_shuffled"
+   ]
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
+ },
+ {
+  "language": "serbian",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 8320,
+  "true_key": {
+   "submission": "control-serbian-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "serbian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04798,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-serbian-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "serbian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.01343,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
+ },
+ {
+  "language": "slovak",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 480,
+  "true_key": {
+   "submission": "control-slovak-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "slovak",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.15852,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-slovak-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "slovak",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "kill_tests",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.25154,
+   "killed_by": [
+    "D1_word_order_shuffled"
+   ]
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "slovene",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 2511,
+  "true_key": {
+   "submission": "control-slovene-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "slovene",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.09338,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-slovene-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "slovene",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08779,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "swedish",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 7040,
+  "true_key": {
+   "submission": "control-swedish-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "swedish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08956,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-swedish-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "swedish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07266,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
+ },
+ {
+  "language": "syriac",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 1596,
+  "true_key": {
+   "submission": "control-syriac-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "syriac",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05819,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-syriac-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "syriac",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05739,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "turkish",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 1360,
+  "true_key": {
+   "submission": "control-turkish-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "turkish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07705,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-turkish-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "turkish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07815,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "ukrainian",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 8320,
+  "true_key": {
+   "submission": "control-ukrainian-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "ukrainian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04771,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-ukrainian-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "ukrainian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.03924,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
+ },
+ {
+  "language": "vietnamese",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 12880,
+  "true_key": {
+   "submission": "control-vietnamese-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "vietnamese",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.01266,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-vietnamese-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "vietnamese",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.00884,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "welsh",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 560,
+  "true_key": {
+   "submission": "control-welsh-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "welsh",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.12171,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-welsh-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "welsh",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.25484,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "yiddish",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 800,
+  "true_key": {
+   "submission": "control-yiddish-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "yiddish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.1836,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-yiddish-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "yiddish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.17566,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
  }
 ]
