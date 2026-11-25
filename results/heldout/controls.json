@@ -676,5 +676,21 @@
   "true_key_passes": true,
   "search_cracks_control": true,
   "added_with": "ukrainian_92c8935d"
+ },
+ {
+  "language": "albanian",
+  "family": "substitution",
+  "control": "homophonic",
+  "true_key_passes": true,
+  "search_cracks_control": true,
+  "added_with": "albanian_528b202d"
+ },
+ {
+  "language": "albanian",
+  "family": "verbose",
+  "control": "verbose",
+  "true_key_passes": true,
+  "search_cracks_control": true,
+  "added_with": "albanian_528b202d"
  }
 ]

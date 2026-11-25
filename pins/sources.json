@@ -368,6 +368,19 @@
       "license": "public-domain",
       "encoding": "utf-8",
       "added_by": "fleet-corpora"
+    },
+    {
+      "id": "albanian_528b202d",
+      "lang": "albanian",
+      "period": "modern Albanian (Tosk standard)",
+      "title": "Albanian Bible (from the Unbound Bible), full Bible, one verse per line",
+      "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/Alb.txt",
+      "file": "data/raw/agent_albanian_528b202d.txt",
+      "bytes": 4572016,
+      "sha256": "528b202d905e2bfbc40dd53531442ab406fe86e94885b624be01e50fd2b8a304",
+      "license": "public-domain",
+      "encoding": "utf-8",
+      "added_by": "fleet-corpora"
     }
   ],
   "missing_corpora": {
