@@ -1,20 +1,26 @@
 {
-  "title": "Is f33v a sunflower?",
-  "authors": "Jorge Stolfi",
-  "year": 1998,
-  "url": "https://www.ic.unicamp.br/en/~stolfi/EXPORT/voynich/98-01-17-sunflower/",
-  "summary": "Stolfi makes a feature-by-feature comparison of the f33v plant with cultivated and wild common sunflowers and with Jerusalem artichoke. The institutional web essay separates similarities in the flower heads from discordant leaves, attachment points and underground structures.",
+  "title": "Enciphered after all? Word-level text metrics are compatible with some types of encipherment",
+  "authors": "Claire L. Bowern and Daniel E. Gaskell",
+  "year": 2022,
+  "url": "https://ceur-ws.org/Vol-3313/paper6.pdf",
+  "venue": "CEUR Workshop Proceedings 3313, International Conference on the Voynich Manuscript",
+  "summary": "The open companion to K-012 applies 22 orthographic transformations to known texts and compares 42 released features. It includes reversible encipherment and deliberately lossy symbol conflation. The authors compare z-scored Euclidean distances and document how results depend on the underlying language and source text.",
   "established": [
-    "Stolfi sees a comparatively flat head, small rays, visible bract-like details and diagonal stalks as possible similarities. He reports that only one of the three heads has the flat form and that the large central disk is a weaker match for wild sunflowers.",
-    "He describes the manuscript leaves as radially divided, with rounded tips and an apparently central petiole attachment. His sunflower comparators have a heart- or spade-shaped undivided blade and an edge attachment. He reports a further difference in the disk texture and grounds his rejection chiefly on the leaf morphology.",
-    "Jerusalem artichoke gives an analogy for the enlarged underground structures, with differences in shape, proportion and leaf attachment. Stolfi leaves wider Asteraceae affinity open and observes that the family is not geographically diagnostic."
+    "Section 2 and Table 1 distinguish reversible additions or substitutions from transformations that remove information. The panel includes a Crema-inspired reversal with nulls, alternatives replacing letters with bigraphs, and reductions of vowels or consonants.",
+    "Figures 1–3 and Section 4 report that some transformations approach particular manuscript features. For instance, vowel removal in an Uzbek example comes close on some position summaries and remains far away on entropy. The distances vary across Latin sources under the same transformation, and manuscript renderings are closer to each other than the comparison items shown in Figure 2.",
+    "The exploratory comparison uses 200-word excerpts at 100 iterations and a common feature family. The discussion records that no tested transformation matches the feature set throughout, and treats altered-text comparisons as evidence that several word-level statistics can coexist with known-source text."
   ],
+  "data": {
+    "url": "https://github.com/danielgaskell/voynich/blob/d076a7d081f35098fa405928239595afd2e75927/results/metrics_enciphered.csv",
+    "detail": "The public companion matrix contains 814 transformed rows across 37 underlying source labels and 22 named transformations. The figures and Methods refer to the paper's own comparison counts."
+  },
+  "related": ["K-012", "P-R-013"],
   "open": [
     {
-      "question": "Can early named sunflower illustrations be distinguished from f33v and matched Old World alternatives by the depicted flower heads, leaf attachments and roots?",
-      "front": "L4",
-      "check": "Compare the Yale f33v scan with dated premodern depictions under separate region codes and masks, including an early securely labeled sunflower such as Dodoens 1568 p. 295 and several premodern Old World images with disk-like heads or apparently central leaf attachment. Treat f93r as a separately proposed sunflower in the O’Neill and Tucker–Talbert tradition and never pool the two folios. Score the whole-plant and head-only matches, record missing regions and prior exposures, and require independent scoring before proposing any label anchor.",
-      "hard": true
+      "question": "Does the fall in measured character entropy under reversible symbol expansion persist when normalized by the length of the original source, and does it remain unusual against matched padding and substitution controls?",
+      "front": "J",
+      "check": "Freeze reversible addB and the unambiguous suffix-addition rules from Table 1. Use known texts and report held-apart entropy in bits per output symbol and bits per source symbol at context lengths zero through eight. Keep word and line breaks unchanged. Match output alphabet and expansion rate in independent random-padding, deterministic-padding and substitution controls. Verify exact inversion and compare across disjoint source works before drawing a conclusion.",
+      "hard": false
     }
   ]
 }
