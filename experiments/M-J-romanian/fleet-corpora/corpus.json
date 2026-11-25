@@ -1,0 +1,10 @@
+{
+  "language": "romanian",
+  "title": "Romanian New Testament, 'Liber Sfânta Biblie' (Free Holy Bible), one verse per line",
+  "period": "modern Romanian",
+  "url": "https://raw.githubusercontent.com/BibleNLP/ebible/2bde52b4c2cfd7056cf4ed07c48969647df79744/corpus/ron-ronlsb.txt",
+  "sha256": "027bf7fb3d25dcb8dc65917eeefc1956847e51332115292f82fd831ae3d0996c",
+  "license": "public-domain",
+  "encoding": "utf-8",
+  "notes": "License: 'public-domain' is stated for translation id 'ronlsb' in the eBible corpus licence table https://github.com/BibleNLP/ebible/blob/2bde52b4c2cfd7056cf4ed07c48969647df79744/metadata/licences.tsv (taken from eBible.org's copyright page, https://ebible.org/ronlsb/copr.htm). The url pins a fixed commit, so the bytes do not change. 1,025,470 bytes; eBible corpus format: one verse per line aligned to a fixed versification (empty lines for verses the translation lacks; '<range>' marks merged verses, a few letters each). vs/refcorpus.normalize(..., 'romanian') gives 884,041 characters. New Testament only (7,948 non-empty verses)."
+}
