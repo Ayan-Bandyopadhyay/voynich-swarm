@@ -1045,5 +1045,21 @@
   "true_key_passes": true,
   "search_cracks_control": true,
   "added_with": "frisian_a3923cf4"
+ },
+ {
+  "language": "icelandic",
+  "family": "substitution",
+  "control": "homophonic",
+  "true_key_passes": false,
+  "search_cracks_control": false,
+  "added_with": "icelandic_764ba0bc"
+ },
+ {
+  "language": "icelandic",
+  "family": "verbose",
+  "control": "verbose",
+  "true_key_passes": false,
+  "search_cracks_control": false,
+  "added_with": "icelandic_764ba0bc"
  }
 ]

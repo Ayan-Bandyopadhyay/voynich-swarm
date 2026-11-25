@@ -771,6 +771,19 @@
       "license": "public-domain",
       "encoding": "utf-8",
       "added_by": "fleet-corpora"
+    },
+    {
+      "id": "icelandic_764ba0bc",
+      "lang": "icelandic",
+      "period": "19th century (1875), Icelandic",
+      "title": "Alaska, by Jón Ólafsson (1875), Project Gutenberg #15178",
+      "url": "https://gutenberg.pglaf.org/1/5/1/7/15178/15178-0.txt",
+      "file": "data/raw/agent_icelandic_764ba0bc.txt",
+      "bytes": 219309,
+      "sha256": "764ba0bce2e970f68333954c5832cf1aef25343b33a0f94936bf9c86cdb8febe",
+      "license": "public-domain",
+      "encoding": "utf-8",
+      "added_by": "fleet-corpora"
     }
   ],
   "missing_corpora": {
