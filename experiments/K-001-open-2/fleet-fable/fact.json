@@ -1,7 +1,22 @@
-{"title": "Cross-word edge-glyph dependence",
- "statement": "Within lines, the last glyph of a word and the first glyph of the next word share at least 0.12 bits of mutual information, and more than when the words of each line are shuffled.",
- "source": "K-001 (Rozanova and Temerev 2026) report 0.197 bits after shuffle correction; on our public training pages the value is 0.207 raw, 0.195 after shuffling words across the text. Registered so the question K-001 left open can be scored: on public pages a fixed procedure fitted there (glyph trigram chain inside the word, first glyph drawn given the previous word's last glyph, line starts unconditioned) gives 0.204 corrected bits and a hapax share of 0.728 at 32,410 words against the manuscript's 0.195 and 0.691 at 32,142, with 7,529 types against 7,042. The repository's table cipher, self-citation and table-and-grille generators at the same size give 0.010, 0.020 and 0.000 corrected bits. The generator's text will be sent as a red-team attack on this fact once it is on the record.",
- "spec": {"select": {"certain": true},
-          "statistic": {"edge_mi": true},
-          "compare": [{"op": ">=", "value": 0.12},
-                      {"null": "shuffle_within_line", "direction": "greater", "perms": 199, "p": 0.01}]}}
+{
+ "title": "A singleton-rich vocabulary: at least two word types in three occur once",
+ "statement": "In the paragraph text of a sample of pages, at least two thirds (0.667) of the distinct certain words occur exactly once in it.",
+ "source": "Step K-001-open-2 (Rozanova and Temerev 2026, K-001) asks whether one procedure reproduces both the cross-word edge-glyph dependence and the singleton-rich vocabulary at matched token counts. The edge dependence is on the record (F-002, F-005); the singleton share was not, so the generator test did not have to meet it. This registers it with the hapax_share statistic. Public practice split (Zandbergen-Landini): 0.711 on the evaluation pages (5,461 words); Takahashi 0.700, RF 0.711. Eight random samples of 34 training pages give 0.687 to 0.715. The share falls as a text grows (0.680 on all 192 training pages, 29,365 words), so the line at two thirds is for a sample of about the hidden pages' size and is not a property of the whole manuscript. Not a contrast with language: reference languages poured into the same layout run from 0.26 (Vietnamese) to 0.78 (Sanskrit) and 0.96 (Chinese), with 11 of 42 above the manuscript; no reference comparison is registered. It is a target for generators, and the joint check the step asks for comes out as follows on the practice split, synthetic text in the evaluation pages' layout so token counts match. A line-restarting glyph chain with one table fitted on all public pages: edge dependence 0.24 (manuscript 0.23, F-005 passes) and singleton share 0.671 to 0.682 over three seeds, passing both, narrowly on singletons; fitted on every other public page only, 0.616 and 0.638, failing. The chain with a drifting table and copies of recent words (the candidate for P-G-003, which meets the ten established facts locally): edge dependence 0.19 to 0.23, singleton share 0.584 to 0.647 over eight runs, failing every time. So the answer on public pages is: edge dependence yes, singletons only just and only with the full table; copying recent words, which F-007 and the repetition between lines require, costs singletons. Limits: all procedures here learn their glyph transitions from the public pages; the values are for one transliteration alphabet and one sample size; nothing here is scored on hidden pages until this fact is.",
+ "spec": {
+  "select": {
+   "unit": [
+    "P"
+   ],
+   "certain": true
+  },
+  "statistic": {
+   "hapax_share": true
+  },
+  "compare": [
+   {
+    "op": ">=",
+    "value": 0.667
+   }
+  ]
+ }
+}

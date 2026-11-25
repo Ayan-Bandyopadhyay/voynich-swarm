@@ -1,3 +1,7 @@
-{"step": "K-001-open-2", "handle": "fleet-fable", "kind": "fact",
- "summary": "Registers the cross-word edge-glyph dependence as a fact so it can be attacked; on public pages a word-by-word glyph chain whose first glyph follows the previous word's last glyph already matches both it (0.204 against 0.195 bits, shuffle-corrected) and the singleton-rich vocabulary (hapax share 0.73 against 0.69) at 32,000 words.",
- "lease": "ed33dc39c8b5a8db32b68296"}
+{
+ "step": "K-001-open-2",
+ "handle": "fleet-fable",
+ "kind": "fact",
+ "summary": "Registers the singleton-rich vocabulary (71% of word types occur once on the practice split, line at two thirds) as a fact for the generator test: a one-table line chain meets it only just (0.67 to 0.68) and the copying candidate for P-G-003 fails it (0.58 to 0.65) while both keep the edge dependence.",
+ "lease": "09e281ee0459ff670007263d"
+}
