@@ -76,8 +76,8 @@ def validate(d):
     if e.get("kind") == "source":
         src = json.load(open(os.path.join(d, "source.json")))
         if src.get("of"):
-            if src.get("assessment") not in ("agree", "dissent"):
-                errs.append("a second look on a source needs assessment: agree | dissent")
+            if src.get("assessment") not in ("agree", "dissent", "weak"):
+                errs.append("a second look needs assessment: agree | dissent (on a source) or weak (on a succeeded attack whose generator writes the target pattern in by hand)")
         else:
             for k in ("title", "authors", "year", "url", "established", "open"):
                 if k not in src:
@@ -162,7 +162,7 @@ def main(d, split="practice"):
     elif e["kind"] == "attack":
         from . import redteam
         spec = json.load(open(os.path.join(d, "attack.json")))
-        if spec.get("attack") == "key" and isinstance(spec.get("target_key"), str):
+        if spec.get("attack") == "key" and isinstance(spec.get("target_key"), str) and spec["target_key"].endswith(".json"):
             tk = os.path.normpath(path(spec["target_key"]))
             if not tk.startswith(path("keys")):
                 print("REFUSED: target_key must be a file under keys/")
