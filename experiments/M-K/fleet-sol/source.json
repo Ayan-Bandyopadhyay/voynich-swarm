@@ -1,26 +1,19 @@
 {
-  "title": "Can Statistics Tell Whether an Undeciphered Text Is Language? Calibrated Tests on the Voynich Manuscript",
-  "authors": "Xin Zhang and Victor S. Sheng",
+  "title": "The Application of Latent Semantic Analysis to the Voynich Manuscript",
+  "authors": "Colin Layfield and Lisa Fagin Davis",
   "year": 2026,
-  "url": "https://arxiv.org/html/2610.34499v2",
-  "doi": "10.48550/arXiv.2610.34499",
-  "summary": "The authors compare cipher and copying programs at equal search budgets on held-back statistics. They calibrate several solvers on planted and enciphered texts and measure the recurrence of within-line word pairs across parts of the manuscript.",
+  "url": "https://dhq.digitalhumanities.org/vol/20/1/000857/000857.html",
+  "doi": "10.63744/2ezxpskcezq4",
+  "summary": "The authors apply latent semantic analysis to short manuscript segments under three term-weighting schemes and compare adjacent with shuffled segment orders. A separate sliding-window analysis locates abrupt changes within the manuscript.",
   "established": [
-    "On the published measure of within-line word-pair replication, the manuscript scored 0.071 in Zandbergen–Landini and 0.053 in Takahashi. The 28 length- and layout-matched natural-text samples in 16 languages scored 0.139–0.411.",
-    "The tested copying procedure outperformed the tested single-key ciphers on the held-back statistics. Some two-key and word-class cipher programs performed comparably, and no tested program met the joint check across all 37 statistics.",
-    "For the tested fits of a noisy two-key open nomenclator, the solver and frequency checks supported exclusions in 14 of 16 languages. Arabic and Hebrew remained outside those exclusions, and the nomenclator solver also failed to recover its Hebrew positive controls."
+    "Adjacent segments showed greater cosine similarity than shuffled segment orders in the manuscript and the comparison texts. The artificial self-citation text also produced this basic pattern, with a different score distribution.",
+    "The lowest five percent of sliding-window scores included many Herbal page boundaries and disproportionate Currier A-to-B transitions. The Biological, Pharmaceutical, Zodiac and Stars sections had relatively few scores below this cutoff."
   ],
   "open": [
     {
-      "question": "How much power can a calibrated search obtain against open nomenclators in historical Hebrew and Arabic when planted keys include distinct tables and noisy transcription?",
-      "front": "J",
-      "check": "Freeze the solver and evaluate planted-key recovery on independently selected texts at matched layout and noise levels before interpreting manuscript results.",
-      "hard": true
-    },
-    {
-      "question": "Can a single fixed generation process reproduce within-line edge-glyph dependence, its discontinuity at line breaks, and the observed separator distribution jointly?",
+      "question": "Can a self-citation or other nonlinguistic process with prespecified changes at page and section boundaries reproduce the distribution of the manuscript's local similarities and transition scores?",
       "front": "G",
-      "check": "Use identical line widths and token budgets in synthetic and manuscript comparisons. Report the boundary and spacing statistics separately and check their sensitivity to certain versus uncertain separators.",
+      "check": "Compare the full score distribution and the fraction of low scores at section and Currier transitions under identical preprocessing and matched block layouts.",
       "hard": true
     }
   ]
