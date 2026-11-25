@@ -1,0 +1,98 @@
+[
+ {
+  "submission": "redteam-constant-latin",
+  "family": "constant",
+  "target": {
+   "language": "latin",
+   "period": "red team"
+  },
+  "verdict": "FAIL",
+  "failed": [
+   "a_compresses",
+   "b_reads",
+   "kill_tests",
+   "c_pictures",
+   "d_not_illusion"
+  ],
+  "passes_without_anchors": false,
+  "savings": -0.09882,
+  "killed_by": [
+   "D1_word_order_shuffled",
+   "D2_glyphs_shuffled",
+   "D3_random_glyphs",
+   "D4_unrelated_text_enciphered"
+  ]
+ },
+ {
+  "submission": "redteam-hashlex-latin",
+  "family": "hashlex",
+  "target": {
+   "language": "latin",
+   "period": "red team"
+  },
+  "verdict": "FAIL",
+  "failed": [
+   "a_compresses",
+   "b_reads",
+   "kill_tests",
+   "c_pictures",
+   "d_not_illusion"
+  ],
+  "passes_without_anchors": false,
+  "savings": -1.00548,
+  "killed_by": [
+   "D1_word_order_shuffled",
+   "D2_glyphs_shuffled",
+   "D3_random_glyphs",
+   "D4_unrelated_text_enciphered"
+  ]
+ },
+ {
+  "submission": "redteam-constant-italian",
+  "family": "constant",
+  "target": {
+   "language": "italian",
+   "period": "red team"
+  },
+  "verdict": "FAIL",
+  "failed": [
+   "a_compresses",
+   "b_reads",
+   "kill_tests",
+   "c_pictures",
+   "d_not_illusion"
+  ],
+  "passes_without_anchors": false,
+  "savings": -0.0987,
+  "killed_by": [
+   "D1_word_order_shuffled",
+   "D2_glyphs_shuffled",
+   "D3_random_glyphs",
+   "D4_unrelated_text_enciphered"
+  ]
+ },
+ {
+  "submission": "redteam-hashlex-italian",
+  "family": "hashlex",
+  "target": {
+   "language": "italian",
+   "period": "red team"
+  },
+  "verdict": "FAIL",
+  "failed": [
+   "a_compresses",
+   "b_reads",
+   "kill_tests",
+   "c_pictures",
+   "d_not_illusion"
+  ],
+  "passes_without_anchors": false,
+  "savings": -0.99529,
+  "killed_by": [
+   "D1_word_order_shuffled",
+   "D2_glyphs_shuffled",
+   "D3_random_glyphs",
+   "D4_unrelated_text_enciphered"
+  ]
+ }
+]

@@ -1,0 +1,26 @@
+# Advisory: any pull request, no secrets. Checks the one-experiment shape and scores the PUBLIC
+# practice split. It decides nothing.
+name: advisory
+on: pull_request
+permissions:
+  contents: read
+jobs:
+  advisory:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env: { PYTHONHASHSEED: "0" }
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - uses: actions/cache@v4
+        with: { path: data/raw, key: "pins-${{ hashFiles('pins/sources.json') }}" }
+      - run: python3 -m vs fetch
+      - name: One experiment per pull request
+        run: python3 tools/check_pr_shape.py "origin/${{ github.base_ref }}"
+      - name: Advisory verdict (practice split)
+        run: |
+          for d in $(python3 tools/check_pr_shape.py "origin/${{ github.base_ref }}" --list); do
+            python3 -m vs experiment "$d" --split practice
+          done

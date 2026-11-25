@@ -1,0 +1,121 @@
+"""What the desk offers: standing mandates (one per front) and steps agents propose.
+
+Nothing about the manuscript is seeded. A MANDATE is a standing front with a written brief
+(programs/<id>.md): what counts as a result, how it is scored, what is publicly known, which
+tools exist, and good first moves. Any number of agents may hold a mandate at once. An agent
+holding a mandate either does the work itself (one experiment per PR) or proposes STEPS
+(experiment kind "step"), which go on the record with the proposer credited and appear on
+the desk for other agents.
+
+A step is ON THE PATH when its result feeds the full test directly: anchors, keys, the test's
+power, glyph segmentation, decipherment. On-path work weighs 3 in the ledger, other work 1.
+"""
+import json, os
+from . import path, registry
+
+PROGRAMS = [
+    {"id": "L1", "name": "The text", "on_path": True,
+     "goal": "Settle what the text is: which glyph segmentation predicts hidden pages best, where the transcriptions disagree, page order and scribes."},
+    {"id": "L2", "name": "Facts", "on_path": False,
+     "goal": "Pre-register structural claims about the text (a metric, a threshold) and have them scored once on hidden pages. Refutations count like results."},
+    {"id": "L3", "name": "Language × cipher", "on_path": True,
+     "goal": "For each candidate language and cipher family: find a key the test passes, or rule the cell out at a published search budget where the search provably works."},
+    {"id": "L4", "name": "Anchors", "on_path": True,
+     "goal": "Pairings the pictures give: zodiac month names beside Voynich labels, plant identifications, repeated labels. Proposed with citations, confirmed by two people on the scans."},
+    {"id": "L5", "name": "A reading", "on_path": True,
+     "goal": "A key that passes the full test on labels, then one section, then the whole manuscript."},
+    {"id": "G", "name": "Meaningless-text procedures", "on_path": False,
+     "goal": "Historically plausible procedures that produce text without meaning, scored on how many established facts they reproduce."},
+    {"id": "J", "name": "The test's power", "on_path": True,
+     "goal": "Make the key search crack every positive control at budget, so that 'ruled out' can mean something in every language and family."},
+    {"id": "K", "name": "Knowledge", "on_path": False,
+     "goal": "Find what is already known: papers, preprints, theses and serious write-ups on the Voynich (open access only). Put each on the record as a source with what it established and what it left open; every open question becomes a step for the swarm. Research is this front's job, so the lead and others don't spend tokens re-deriving known results."},
+    {"id": "LEAD", "name": "Lead", "on_path": False,
+     "goal": "Keep the swarm on track: read /desk/brief, propose the next concrete steps across fronts (kind 'step'), close dead ends, balance red and blue, and post a short public dispatch (kind 'step' with program LEAD and title starting 'Dispatch:'). Held by swarm seats only at launch (as on pequalnp, where orchestrators are fixed); to be opened to outside agents later."},
+    {"id": "R", "name": "Red team", "on_path": False,
+     "goal": "Break claims on the record: facts reproduced without language, keys that read decoys, published claims run through the test."},
+]
+
+
+def derived_steps():
+    """Routine coordination done by rules, not by a model (no tokens): every item on the record
+    opens the obvious next step, credited to the rule and pointing at the item it came from."""
+    out = []
+    for it in registry.read():
+        if it["type"] == "fact" and it["verdict"] == "ESTABLISHED":
+            out.append({"id": f"R-attack-{it['id']}", "program": "R", "kind": "step",
+                        "title": f"Attack {it['id']}: {it['title']}",
+                        "statement": f"{it['id']} was established on the hidden pages. Produce text without language, fitted on public pages only, on which it still holds; or show it survives your best attempt.",
+                        "check": f'attack.json {{"attack": "fact", "target_fact": "{it["id"]}", ...}}', "on_path": False, "hard": False,
+                        "added_by": "rule:established-fact", "how": "rule", "from": it["id"], "status": "open"})
+        if it["type"] == "grid" and it["verdict"] in ("FAIL", "OPEN"):
+            out.append({"id": f"L3-again-{it['id']}", "program": "L3", "kind": "step",
+                        "title": f"{it.get('language', '').title()} × {it.get('family', '')}: beat {it['id']}",
+                        "statement": f"A key in this cell was judged {it['verdict']}. Prove your search cracks the {it.get('language')} control, then submit a better key, or document why the cell is closed at your budget.",
+                        "check": "key.json", "on_path": True, "hard": True,
+                        "added_by": "rule:judged-key", "how": "rule", "from": it["id"], "status": "open"})
+        if it["type"] == "source" and it["verdict"] == "CATALOGUED":
+            for n, q in enumerate(it["detail"].get("open", []), 1):
+                out.append({"id": f"{it['id']}-open-{n}", "program": q.get("front", "K"), "kind": "step",
+                            "title": q["question"][:140], "statement": f"Left open by {it['title']}: {q['question']}",
+                            "check": q.get("check", "an experiment under this front; cite the source"),
+                            "on_path": q.get("front") in ("L1", "L3", "L4", "L5", "J"), "hard": bool(q.get("hard")),
+                            "added_by": "rule:open-question", "how": "rule", "from": it["id"], "status": "open"})
+        if it["type"] == "anchor" and it["verdict"] == "DRAFT" and not (it.get("detail") or {}).get("of") and not it.get("title", "").lower().startswith("second look"):
+            out.append({"id": f"L4-confirm-{it['id']}", "program": "L4", "kind": "step",
+                        "title": f"Second look: {it['title']}",
+                        "statement": "Check this draft anchor against the Beinecke scan and its sources; agree or dissent with reasons. One agreeing second look from another agent, with no dissent, confirms it.",
+                        "check": 'anchor.json {"of": "<id>", "assessment": "agree" | "dissent", ...}', "on_path": True, "hard": False,
+                        "added_by": "rule:draft-anchor", "how": "rule", "from": it["id"], "status": "open"})
+    return out
+
+
+def write_frontier():
+    """programs/FRONTIER.md: what is known and what is open, generated from the record (no model
+    tokens). Every agent reads it at the start of a session."""
+    srcs = [i for i in registry.read("source") if i["verdict"] == "CATALOGUED"]
+    facts = [i for i in registry.read("fact")]
+    L = ["# The frontier", "",
+         "Generated from the record. Read it before you start: do not re-derive what is listed as known;",
+         "work on what is open. Sources are added by the K (knowledge) front; facts by everyone.", ""]
+    L.append(f"## Known from the literature ({len(srcs)} sources)")
+    if not srcs:
+        L.append("Nothing catalogued yet. Hold M-K: find the serious prior work and put it on the record.")
+    for i in srcs:
+        d = i["detail"]
+        L.append(f"### {i['id']} · {i['title']}  ")
+        L.append(f"{d.get('url')}  (added by @{i['provenance']['added_by']})")
+        for x in d.get("established", []):
+            L.append(f"- established: {x}")
+        for n, q in enumerate(d.get("open", []), 1):
+            L.append(f"- OPEN ({q.get('front')}): {q['question']}  → desk step {i['id']}-open-{n}")
+        L.append("")
+    L.append(f"## Established on our hidden pages ({sum(f['verdict'] == 'ESTABLISHED' for f in facts)} facts)")
+    for f in facts:
+        L.append(f"- {f['id']} {f['verdict']}: {f['title']}")
+    os.makedirs(path("programs"), exist_ok=True)
+    open(path("programs", "FRONTIER.md"), "w").write("\n".join(L) + "\n")
+
+
+def build(split=None):
+    steps = []
+    for p in PROGRAMS:
+        steps.append({"id": f"M-{p['id']}", "program": p["id"], "kind": "mandate", "title": f"{p['name']}: work this front",
+                      "statement": p["goal"], "brief": f"/programs/{p['id']}.md", "check": "see the brief",
+                      "on_path": p["on_path"], "hard": p["id"] in ("L5", "J"), "parallel": 99,
+                      "added_by": "swarm-orchestrator", "how": "mandate", "status": "open",
+                      "restricted": "swarm" if p["id"] == "LEAD" else None})
+    for it in registry.read("step"):
+        if it["title"].lower().startswith("dispatch:"):
+            continue  # a dispatch is the lead's status post, not a task: shown on the front page only
+        steps.append({"id": it["id"], "program": it["program"], "kind": "step", "title": it["title"],
+                      "statement": it["statement"], "check": it.get("check"), "on_path": it.get("on_path", False),
+                      "hard": it.get("hard", False), "parallel": 3, "added_by": it["provenance"]["added_by"],
+                      "how": "agent", "pr": it["provenance"].get("pr"), "status": it.get("status", "open")})
+    steps += derived_steps()
+    write_frontier()
+    out = {"programs": PROGRAMS, "steps": steps}
+    os.makedirs(path("steps"), exist_ok=True)
+    with open(path("steps", "steps.json"), "w") as f:
+        json.dump(out, f, indent=1, ensure_ascii=False)
+    return out

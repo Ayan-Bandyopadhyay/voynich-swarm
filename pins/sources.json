@@ -1,0 +1,300 @@
+{
+  "_comment": "Every input the judge reads. Fetched by `python3 -m vs fetch`, refused unless the sha256 matches. Raw files are not redistributed in this repo; they are downloaded from the listed URL and verified.",
+  "season": "S1",
+  "sources": [
+    {
+      "id": "zl",
+      "role": "transliteration (primary)",
+      "title": "Zandbergen-Landini (ZL) transliteration, IVTFF, EVA alphabet, version 3b of 13/05/2025",
+      "url": "https://www.voynich.nu/data/ZL3b-n.txt",
+      "file": "data/raw/ZL3b-n.txt",
+      "bytes": 411671,
+      "sha256": "bf5b6d4ac1e3a51b1847a9c388318d609020441ccd56984c901c32b09beccafc",
+      "license": "Published by R. Zandbergen at voynich.nu for research use; cited, not redistributed."
+    },
+    {
+      "id": "lsi",
+      "role": "transliteration (older interlinear, for L1 comparisons)",
+      "title": "Landini-Stolfi interlinear file in IVTFF, version 0d (beta)",
+      "url": "https://www.voynich.nu/data/beta/LSI_ivtff_0d.txt",
+      "file": "data/raw/LSI_ivtff_0d.txt",
+      "bytes": 1754295,
+      "sha256": "3f3f2af18cde10efe75c582f49b07b651c3397022fcbfa5854fecc424c121afa",
+      "license": "Published at voynich.nu; cited, not redistributed."
+    },
+    {
+      "id": "beinecke_manifest",
+      "role": "scans (IIIF manifest of Beinecke MS 408; images are fetched per page from the IIIF ids in it)",
+      "title": "Yale Beinecke Library, MS 408 'Cipher manuscript', IIIF Presentation 3 manifest, 213 canvases",
+      "url": "https://collections.library.yale.edu/manifests/2002046",
+      "file": "data/raw/beinecke_ms408_manifest.json",
+      "bytes": 403033,
+      "sha256": "317d58fd9ea90392a83d9858a91eada3d0b41416a3c835857dc0154bd123a309",
+      "license": "Beinecke digital images of MS 408 are public domain."
+    },
+    {
+      "id": "it",
+      "role": "transliteration (for robustness checks)",
+      "title": "Takahashi transliteration (IT), IVTFF EVA, version 2a of 02/02/2023 modified 25/06/2025",
+      "url": "https://www.voynich.nu/data/IT2a-n.txt",
+      "file": "data/raw/IT2a-n.txt",
+      "bytes": 342104,
+      "sha256": "7f27a8b0feed8f6de0a99900df6bf912dd1d295c38e5f830bac8b41c3f536fb5",
+      "license": "Published at voynich.nu; cited, not redistributed."
+    },
+    {
+      "id": "gc",
+      "role": "transliteration (for robustness checks)",
+      "title": "Glen Claston transliteration (GC), IVTFF v101 alphabet, version 2a of 05/02/2023 modified 25/06/2025",
+      "url": "https://www.voynich.nu/data/GC2a-n.txt",
+      "file": "data/raw/GC2a-n.txt",
+      "bytes": 314916,
+      "sha256": "b09570cb6c993bc2d87134d115e60a978650a8a6495483ddbb1f6005a586096f",
+      "license": "Published at voynich.nu; cited, not redistributed."
+    },
+    {
+      "id": "rf",
+      "role": "transliteration (for robustness checks)",
+      "title": "Reference transliteration RF1b (merge of ZL and GC, EVA)",
+      "url": "https://www.voynich.nu/data/RF1b-e.txt",
+      "file": "data/raw/RF1b-e.txt",
+      "bytes": 362373,
+      "sha256": "e7d3238e35743e06c63367a933909ec37b1e2de7ada3a1b449447eafa1918782",
+      "license": "Published at voynich.nu; cited, not redistributed."
+    }
+  ],
+  "reference_corpora": [
+    {
+      "id": "la_augustine",
+      "lang": "latin",
+      "period": "c. 400 (late antique)",
+      "title": "Augustine, Confessiones",
+      "gutenberg": 33849,
+      "url": "https://gutenberg.pglaf.org/3/3/8/4/33849/33849-0.txt",
+      "file": "data/raw/pg33849.txt",
+      "bytes": 950910,
+      "sha256": "b9d4d33de51f661deb0137d3f9f191080d81959f21ae242d12b3ab0e278e8271"
+    },
+    {
+      "id": "la_patrick",
+      "lang": "latin",
+      "period": "medieval attribution",
+      "title": "De Tribus Habitaculis Liber",
+      "gutenberg": 38708,
+      "url": "https://gutenberg.pglaf.org/3/8/7/0/38708/38708-0.txt",
+      "file": "data/raw/pg38708.txt",
+      "bytes": 40265,
+      "sha256": "676fcd0bb707ed7c20acb8f0e018d53e5da56709fab02eea980cad17faf4c511"
+    },
+    {
+      "id": "la_erasmus",
+      "lang": "latin",
+      "period": "1518",
+      "title": "Erasmus, Encomium artis medicae",
+      "gutenberg": 16561,
+      "url": "https://gutenberg.pglaf.org/1/6/5/6/16561/16561-8.txt",
+      "file": "data/raw/pg16561.txt",
+      "bytes": 56702,
+      "sha256": "dd5eca711a98d4eac5fa1d239821893ee29b4cadca01238019a90fcffee83c9c",
+      "encoding": "latin-1"
+    },
+    {
+      "id": "la_vulg_esther_a",
+      "lang": "latin",
+      "period": "Vulgate",
+      "title": "Latin Vulgate, Esther",
+      "gutenberg": 826,
+      "url": "https://gutenberg.pglaf.org/8/2/826/826.txt",
+      "file": "data/raw/pg826.txt",
+      "bytes": 70721,
+      "sha256": "46bf1d7212ad92510399a7a01a4d7225ad81d44be97d87d25c81b6808d73f707",
+      "encoding": "latin-1"
+    },
+    {
+      "id": "la_vulg_esther_b",
+      "lang": "latin",
+      "period": "Vulgate",
+      "title": "Latin Vulgate, Esther (second edition file)",
+      "gutenberg": 827,
+      "url": "https://gutenberg.pglaf.org/8/2/827/827.txt",
+      "file": "data/raw/pg827.txt",
+      "bytes": 68510,
+      "sha256": "6f390bc3daf7f7d0da4e70ed3c5ede4f6708ef9ce899a11e02c834dd7ba5dae7",
+      "encoding": "latin-1",
+      "skip_reason": "near-duplicate of 826; pinned but not used in training"
+    },
+    {
+      "id": "la_vulg_daniel",
+      "lang": "latin",
+      "period": "Vulgate",
+      "title": "Latin Vulgate, Daniel",
+      "gutenberg": 828,
+      "url": "https://gutenberg.pglaf.org/8/2/828/828.txt",
+      "file": "data/raw/pg828.txt",
+      "bytes": 107598,
+      "sha256": "d484bb3350bb25effef977c9f0e7a613bb758455b01bc257b2ffc31361094fce",
+      "encoding": "latin-1"
+    },
+    {
+      "id": "la_vulg_jonah",
+      "lang": "latin",
+      "period": "Vulgate",
+      "title": "Latin Vulgate, Jonah",
+      "gutenberg": 4317,
+      "url": "https://gutenberg.pglaf.org/4/3/1/4317/4317.txt",
+      "file": "data/raw/pg4317.txt",
+      "bytes": 26388,
+      "sha256": "32f880e7b9da7fd013ed975a84923c17b236b943ee75e4fd3f7ac7e16efa23ab",
+      "encoding": "latin-1"
+    },
+    {
+      "id": "it_dante",
+      "lang": "italian",
+      "period": "c. 1320",
+      "title": "Dante, La Divina Commedia",
+      "gutenberg": 1012,
+      "url": "https://gutenberg.pglaf.org/1/0/1/1012/1012-0.txt",
+      "file": "data/raw/pg1012.txt",
+      "bytes": 606316,
+      "sha256": "db0181a5820b1a60b93b87036351cad97b86ea3ab0d725b16dbc6017ab5ccd37"
+    },
+    {
+      "id": "it_villani",
+      "lang": "italian",
+      "period": "c. 1350",
+      "title": "Matteo Villani, Cronica vol. 1",
+      "gutenberg": 69898,
+      "url": "https://gutenberg.pglaf.org/6/9/8/9/69898/69898-0.txt",
+      "file": "data/raw/pg69898.txt",
+      "bytes": 477875,
+      "sha256": "3acf82f4b25b636048d915961bb8cec2262e9b7cf9ff860ff056ab4bf1e1fd6e"
+    },
+    {
+      "id": "de_nibelunge",
+      "lang": "german",
+      "period": "c. 1200 (Middle High German)",
+      "title": "Der Nibelunge liet",
+      "gutenberg": 48888,
+      "url": "https://gutenberg.pglaf.org/4/8/8/8/48888/48888-0.txt",
+      "file": "data/raw/pg48888.txt",
+      "bytes": 619375,
+      "sha256": "69eecd1f37ce1de573226ad6aa42c311fce7586444f71204ea6533810d5f10be"
+    },
+    {
+      "id": "de_walther",
+      "lang": "german",
+      "period": "c. 1200 (Middle High German)",
+      "title": "Walther von der Vogelweide, Gedichte",
+      "gutenberg": 35795,
+      "url": "https://gutenberg.pglaf.org/3/5/7/9/35795/35795-0.txt",
+      "file": "data/raw/pg35795.txt",
+      "bytes": 86615,
+      "sha256": "4d451650467f8bbfe9b4e553301f3587a0d0f57dc8465e40c1e079df8a69fb69"
+    },
+    {
+      "id": "fr_villon",
+      "lang": "french",
+      "period": "c. 1460 (Middle French)",
+      "title": "Villon, Oeuvres completes",
+      "gutenberg": 12246,
+      "url": "https://gutenberg.pglaf.org/1/2/2/4/12246/12246-0.txt",
+      "file": "data/raw/pg12246.txt",
+      "bytes": 360499,
+      "sha256": "d14fba6408d0b04dddc34844e9f7fea0fe8dd4fae9cf53c63e20b111cfe76196"
+    },
+    {
+      "id": "fr_rose",
+      "lang": "french",
+      "period": "13th c. (Old French)",
+      "title": "Le Roman de la rose",
+      "gutenberg": 44403,
+      "url": "https://gutenberg.pglaf.org/4/4/4/0/44403/44403-0.txt",
+      "file": "data/raw/pg44403.txt",
+      "bytes": 599395,
+      "sha256": "1491f22bc9313bc095a741e1729045e414cb7d4a3f922a34f9d02180aed03ad7"
+    },
+    {
+      "id": "es_lucanor",
+      "lang": "spanish",
+      "period": "c. 1335",
+      "title": "Don Juan Manuel, El conde Lucanor",
+      "gutenberg": 65738,
+      "url": "https://gutenberg.pglaf.org/6/5/7/3/65738/65738-0.txt",
+      "file": "data/raw/pg65738.txt",
+      "bytes": 474110,
+      "sha256": "86d4d832a39a3647fd752ed0a9953d853855136cbf061a041334ad818d199ff4"
+    },
+    {
+      "id": "es_buenamor",
+      "lang": "spanish",
+      "period": "c. 1330 (with modern editorial matter)",
+      "title": "Juan Ruiz, Libro de Buen Amor",
+      "gutenberg": 16625,
+      "url": "https://gutenberg.pglaf.org/1/6/6/2/16625/16625-0.txt",
+      "file": "data/raw/pg16625.txt",
+      "bytes": 1047690,
+      "sha256": "9ffc47ebd6593c4c0c33b7f053f7b19c3ef389e57282437d30f6050ac6bafd09"
+    },
+    {
+      "id": "en_chaucer",
+      "lang": "english",
+      "period": "c. 1390 (Middle English)",
+      "title": "Chaucer, Canterbury Tales and Other Poems",
+      "gutenberg": 2383,
+      "url": "https://gutenberg.pglaf.org/2/3/8/2383/2383-0.txt",
+      "file": "data/raw/pg2383.txt",
+      "bytes": 1729089,
+      "sha256": "5b1aa296e77d2c3dba23414d142136c6c9a762648a6470933f9190c4f1115d40"
+    },
+    {
+      "id": "en_paston",
+      "lang": "english",
+      "period": "15th c. (with modern editorial matter)",
+      "title": "The Paston Letters, vol. 1",
+      "gutenberg": 43348,
+      "url": "https://gutenberg.pglaf.org/4/3/3/4/43348/43348-0.txt",
+      "file": "data/raw/pg43348.txt",
+      "bytes": 841268,
+      "sha256": "0b06a78de75ef68f106fb4660c9e70f333b70fb4dd031a68e46500597d184f2c"
+    },
+    {
+      "id": "cs_cviceni",
+      "lang": "czech",
+      "period": "19th c. (PERIOD MISMATCH: no medieval Czech pinned yet)",
+      "title": "Cviceni malickych ve svatem nabozenstvi",
+      "gutenberg": 16843,
+      "url": "https://gutenberg.pglaf.org/1/6/8/4/16843/16843-0.txt",
+      "file": "data/raw/pg16843.txt",
+      "bytes": 49228,
+      "sha256": "abf882a9596297a8d22e260158a077f20e25d3248494dc072f483f33a8ff1051"
+    },
+    {
+      "id": "he_tselolam",
+      "lang": "hebrew",
+      "period": "16th c. translation of a 13th c. work",
+      "title": "Tsel Ha'Olam (Gossuin de Metz, tr. Delacrut)",
+      "gutenberg": 61024,
+      "url": "https://gutenberg.pglaf.org/6/1/0/2/61024/61024-0.txt",
+      "file": "data/raw/pg61024.txt",
+      "bytes": 136420,
+      "sha256": "7223955f62a72fbb7cf074b946d52be24b8d2e9f08e30a5d1a4e5d035ad6858d"
+    },
+    {
+      "id": "ca_ruyra",
+      "lang": "catalan",
+      "period": "20th c. (PERIOD MISMATCH: no medieval Catalan pinned yet)",
+      "title": "Ruyra, Pinya de Rosa vol. 2",
+      "gutenberg": 15347,
+      "url": "https://gutenberg.pglaf.org/1/5/3/4/15347/15347-8.txt",
+      "file": "data/raw/pg15347.txt",
+      "bytes": 368930,
+      "sha256": "7be2b51894a0552aa2cb5964d3c077f0712590c87ef1865613a21e07f9b67f6f",
+      "encoding": "latin-1"
+    }
+  ],
+  "missing_corpora": {
+    "occitan": "No period Occitan text pinned. Grid cells for Occitan are blocked until one is pinned by a PR.",
+    "medieval_czech": "Only a 19th-century Czech text is pinned; Czech cells are marked period-mismatched.",
+    "medieval_latin_herbal": "No herbal or medical medieval Latin pinned yet; a step on the desk."
+  }
+}

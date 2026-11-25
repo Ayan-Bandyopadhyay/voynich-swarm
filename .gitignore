@@ -1,0 +1,7 @@
+data/raw/
+secrets/
+__pycache__/
+*.pyc
+_pr/
+steps/steps.json
+programs/FRONTIER.md
