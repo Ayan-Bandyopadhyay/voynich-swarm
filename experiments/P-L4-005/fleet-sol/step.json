@@ -1,0 +1,51 @@
+{
+  "title": "Replicate the Tucker–Talbert comparison on four additional drawings with Old World alternatives",
+  "statement": "I masked Tucker and Talbert's proposed plant names and viewed eight numbered Yale scans. I recorded exposure before viewing and hashed the local observations before revealing the selection key. I excluded both earlier samples, the familiar f9v and f53r drawings, and several additional familiar folios. I had previously screened the paper and could recognize a few folio numbers and unusual features, including the animal on f25v. Four hits in the full-paper folio-string sampler were ineligible: f13v and f39r refer to the Codex Osuna and f25v and f49r are used for animal comparisons. The four actual plant proposals gave 0 of 4 genus matches and 1 of 4 family matches using Tucker and Talbert's broad Boraginaceae. With the narrower split of Boraginales the family agreement becomes 0 of 4. Guesses were low confidence and included no species. I then compared each published proposal with a morphologically relevant Old World member of its genus or family. The post-reveal comparisons find shared traits and mismatches on both sides. The elevated star-like structure on f42v favors Goeppertia loeseneri over the one African comparison, without establishing a species identification. Candidate exposure and the small sample limit the value of the agreement count. A word-to-plant pairing would require separate evidence from the scan.",
+  "program": "L4",
+  "check": "For an independent round, extract confirmed plant assertions from K-015 before sampling. Have the sampler withhold names and geography, and have the annotator log known proposals before viewing cropped numbered scans. Record leaf architecture, inflorescence structure and underground organs before guessing one family and genus. Compare the first guesses with the declared taxonomic scope and list ambiguous families separately. For the candidate comparison, use at least one same-genus or same-family Old World alternative per proposed taxon. Mask candidate provenance and ask a separate annotator to rate the same visible features, allowing unknowns and ties.",
+  "on_path": true,
+  "hard": true,
+  "sample": {
+    "method": "Sampled eight surviving Yale canvases with Python Random(53185).sample in manifest order from folio mentions in K-015 in the 2–56 range, after excluding f1r/v, f2r, f5v, f6v, f9r/v, f12v, f13r, f23v, f24r, f25r, f30v, f32r, f33v, f37v, f45r and f53r. The article was used as a location sampler, with no surrounding text visible until all guesses were written.",
+    "pre_reveal_observations_sha256": "689b3c51afac82c2c6721e36a711edc7853f8aa05cd2720bd474ded75b36f767",
+    "exposure_log_sha256": "8538757cc027885af404d0586378726ca7796f2affc7a782f70a55af6ae25644",
+    "panels": [
+      {
+        "folio": "f36v",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006145",
+        "masked_guess": "Lupinus, Fabaceae",
+        "features": "Very deeply divided palmate-looking leaves, upright and drooping clusters of small round bodies, and a central root with long lateral roots.",
+        "candidate": "Dorstenia contrajerva, Moraceae",
+        "old_world_comparison": "Dorstenia foetida, northeastern tropical Africa and Arabia. Both have a discrete flower receptacle, and the reported deeply lobed leaves of D. contrajerva fit better than the typically narrow, simple leaves of D. foetida. The drawing leaves the receptacle geometry and root comparison uncertain.",
+        "sources": ["https://www.worldfloraonline.org/taxon/wfo-0000654354", "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:851554-1/general-information"]
+      },
+      {
+        "folio": "f23r",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006118",
+        "masked_guess": "Geranium, Geraniaceae",
+        "features": "Fan-shaped deeply lobed leaves, upright branched sprays of blue five-part flowers, and a stout horizontal underground-looking axis.",
+        "candidate": "Ribes malvaceum, Grossulariaceae",
+        "old_world_comparison": "Ribes alpinum, Europe and adjacent regions. Both have palmately lobed leaves. The upright sprays in the drawing are closer in orientation to R. alpinum's erect racemes than to R. malvaceum's pendent racemes. Neither description accounts for the drawn blue corollas with round pale centers or clearly explains the depicted underground axis.",
+        "sources": ["https://www.worldfloraonline.org/taxon/wfo-0001135609", "https://hrcak.srce.hr/en/file/486144", "https://upload.wikimedia.org/wikipedia/commons/8/85/British_Flora_%28IA_in.ernet.dli.2015.47855%29.pdf"]
+      },
+      {
+        "folio": "f42v",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006157",
+        "masked_guess": "Paris, Melanthiaceae",
+        "features": "Large oval leaves clustered at one level, a solitary star-like terminal structure with a dark center, and several long diverging roots.",
+        "candidate": "Calathea allied to C. loeseneri, now Goeppertia loeseneri, Marantaceae",
+        "old_world_comparison": "Thaumatococcus daniellii, tropical Africa. Both have broad long-stalked foliage. G. loeseneri has a star-like inflorescence raised on its own stalk. T. daniellii flowers in spikes near the base. The comparison supports testing the raised star feature with more alternatives and leaves the drawn root form unresolved.",
+        "sources": ["https://www.nparks.gov.sg/florafaunaweb/flora/1/7/1749", "https://www.nparks.gov.sg/florafaunaweb/flora/2/5/2504"]
+      },
+      {
+        "folio": "f56r",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006184",
+        "masked_guess": "Heliotropium, Boraginaceae in the broad sense",
+        "features": "Paired fan-like basal organs, one-sided dark bodies on a coiled branch, two dark corollas, and overlapping narrow scales low on the stem.",
+        "candidate": "Phacelia campanularia, Boraginaceae in the broad sense",
+        "old_world_comparison": "Anchusa officinalis, native to Europe. Coiled flowering axes and blue corollas occur in both candidates. The precise outlines of the drawing's foliage and the basal scales are difficult to reconcile with an ordinary leaf arrangement in either comparison. The family match here uses the broad grouping, which includes Hydrophyllaceae and Heliotropiaceae.",
+        "sources": ["https://www.calflora.org/app/taxon?crn=6295", "https://www.washoecounty.gov/parks/files/Seed-Mix-Identifying-Guide.pdf", "https://burkeherbarium.org/imagecollection/taxon.php?Taxon=Anchusa+officinalis", "https://plants.sdsu.edu/simpson/pdfs/Luebert_etal2016-Boraginales.pdf"]
+      }
+    ]
+  }
+}
