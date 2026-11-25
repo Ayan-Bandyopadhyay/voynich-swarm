@@ -1,0 +1,61 @@
+{
+  "id": "grid-gothic-substitution-cell",
+  "family": "substitution",
+  "segmentation": "eva-basic",
+  "target": {
+    "language": "gothic",
+    "period": "grid search"
+  },
+  "key": {
+    "map": {
+      "*": "𐌽",
+      "?": "𐌹",
+      "a": "𐌰",
+      "b": "𐌿",
+      "c": "𐌹",
+      "cfh": "𐌽",
+      "ch": "𐌰",
+      "ckh": "𐌽",
+      "cph": "𐍃",
+      "cth": "𐌽",
+      "d": "𐌳",
+      "e": "𐌽",
+      "f": "𐌽",
+      "g": "𐍃",
+      "h": "𐌰",
+      "i": "𐌽",
+      "j": "𐌽",
+      "k": "𐌽",
+      "l": "𐌽",
+      "m": "𐌽",
+      "n": "𐌰",
+      "o": "𐌹",
+      "p": "𐌽",
+      "q": "𐌴",
+      "r": "𐌽",
+      "s": "𐍃",
+      "sh": "𐌰",
+      "t": "𐌽",
+      "u": "𐌰",
+      "v": "𐌰",
+      "x": "𐍃",
+      "y": "𐌰",
+      "z": "𐌽"
+    }
+  },
+  "search": {
+    "budget": {
+      "restarts": 4,
+      "iterations": 6000,
+      "seed": 1404,
+      "bpe_merges": 30,
+      "verbose_segmentations": [
+        "bpe-greedy",
+        "fixed-2"
+      ],
+      "verbose_min_unit_share": 0.0005,
+      "substitution_group_swap": 0.2
+    },
+    "objective_bits": 600396.9
+  }
+}
