@@ -1,3 +1,7 @@
-{"step": "M-L2", "handle": "fleet-fable", "kind": "fact",
- "summary": "Registers Timm's and Vogt's observation that line-initial words are longer: in paragraph text the first word of a line is longer than the same line's words in shuffled order predict (4.83 against 4.39 glyphs overall on the practice split, p 0.005).",
- "lease": "7c392c66811fadc259529584"}
+{
+ "step": "M-L2",
+ "handle": "fleet-fable",
+ "kind": "fact",
+ "summary": "Registers that words opening with p or f are far more common on paragraph first lines than on other lines (15.4 times on the practice split), a paragraph-level pattern that a line-aware generator without paragraph knowledge does not reproduce.",
+ "lease": "7b1d1527216e3ba3cd48f265"
+}
