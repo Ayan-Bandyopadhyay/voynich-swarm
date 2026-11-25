@@ -1,0 +1,14 @@
+{
+ "of": "N-002",
+ "assessment": "dissent",
+ "title": "Second look at N-002: DISSENT (observation agreed, but no word-name pairing to confirm)",
+ "page": "f80r",
+ "voynich": "olchdy",
+ "names": {"latin": [], "any": []},
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006218",
+ "sources": [
+  "Beinecke MS 408, f80r, canvas 1006218, the crop cited by N-002: https://collections.library.yale.edu/iiif/2/1006218/130,0,740,700/900,/0/default.jpg (viewed by me)",
+  "ZL 3b (pinned data/raw/ZL3b-n.txt) locus f80r.2, type =Ln: olchdy"
+ ],
+ "statement": "What I checked on the scan: in the upper-left crop of f80r the second figure from the left stands in the pool with the right arm raised and the left hand behind the hip, holding a small bulbous object with a short projection pointing down and inward, separate from the body; the label above that figure is the one ZL reads olchdy (f80r.2). So I agree with N-002's description of the drawing, and with its own conclusion that no dated comparison matches both the object and the gesture. I dissent only on its status as an anchor: N-002 proposes no name (names.latin and names.any are both empty) and says its referent remains open. If it were confirmed, criterion (c) would count it as a confirmed anchor that no decoding can ever match, which lowers the matched fraction for every key without testing anything. A dissent keeps it out of (c). It should be refiled with a name only when a published identification of the object (for example, the clyster reading Brewer discusses) is tied to this label by a source."
+}
