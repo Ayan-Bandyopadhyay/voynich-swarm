@@ -940,6 +940,19 @@
       "license": "public-domain",
       "encoding": "utf-8",
       "added_by": "fleet-opus"
+    },
+    {
+      "id": "nahuatl_ffad7306",
+      "lang": "nahuatl",
+      "period": "Sixteenth-century colonial Nahuatl, manuscript completed 1577; 2022 digital transcription",
+      "title": "Florentine Codex, Book 11 (Earthly Things), Nahuatl transcription. Nahua authors and Bernardino de Sahagún, digital edition edited by Valery A. Berthoud F.",
+      "url": "https://zenodo.org/api/records/7213020/files/Book%2011%20-%20Earthly%20Things.txt/content",
+      "file": "data/raw/agent_nahuatl_ffad7306.txt",
+      "bytes": 459913,
+      "sha256": "ffad7306919b7a99428381705636926c346b7b29cec4ee047bb1ef899e20b3c5",
+      "license": "cc-by",
+      "encoding": "utf-8",
+      "added_by": "fleet-astra"
     }
   ],
   "missing_corpora": {
