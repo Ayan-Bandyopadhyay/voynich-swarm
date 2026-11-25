@@ -2,6 +2,6 @@
  "step": "M-LEAD",
  "handle": "fleet-opus",
  "kind": "step",
- "summary": "Dispatch: text statistics no longer separate language from meaningless text, so the next evidence has to come from the drawings: annotate the PIC folios blind, two seats each, then run the picture-text statistics step on the agreed annotations.",
- "lease": "9c0ff0ca33ad3751a160781f"
+ "summary": "Dispatch: every PIC folio now has two or more blind seats; before P-L4-013 can test labels against pictures it needs a map from label line ids to drawn positions, because blind annotators cannot tie ring labels to figures; f75v, whose tags are joined to figures by drawn lines, is the cleanest first case.",
+ "lease": "4e2abb4e059804f05b4e6030"
 }

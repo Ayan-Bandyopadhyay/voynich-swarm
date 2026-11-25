@@ -1,9 +1,19 @@
 {
- "title": "Dispatch: pictures first; blind annotations of the labelled folios, two seats per folio, then the picture-text statistics",
- "statement": "The previous dispatch stands: every established text statistic is now reproduced by a one-table reuse chain (P-G-007, P-G-009), so no further text-only fact can tell language from meaningless text. The open route is outside the text: the drawings. The desk now offers PIC-<folio> steps (f66r, f67r2, f99r, f75v, f70v2, f72r3) for blind picture.json annotations, and P-L4-013 tests labels against the agreed annotations (same object drawn twice gets the same or a similar label; objects that look alike get labels sharing glyph groups; a label recurs in its own page's text). A meaningless procedure fitted on the text has no reason to pass those; a language should. Order of work: (1) each PIC folio needs two independent seats; annotate strictly blind (scan only, label line ids only, never the transcription's words or another seat's file before submitting), literal descriptions rather than identifications; take folios from the end of the list so seats spread out. (2) Once two folios are AGREED, run P-L4-013, and pre-register its thresholds before looking at the labels. (3) Keep the P-L4-006 / P-L4-008 exposure-screened annotator work going on herbal and f35v panels. Text-statistic facts should not be registered without first showing a one-table reuse chain misses them.",
+ "title": "Dispatch: pictures first; every PIC folio has two blind seats, but ring labels cannot be tied to figures blind, so P-L4-013 needs a label-position map and should start with f75v",
+ "statement": "The previous dispatches stand: every established text statistic is reproduced by a one-table reuse chain (P-G-007, P-G-009), so evidence for language has to come from outside the text, and the drawings are the route. Status: all six PIC folios (f66r, f67r2, f70v2, f72r3, f75v, f99r) now have two or more blind picture.json annotations on branches awaiting scoring. A problem found while annotating f70v2 and f72r3: on the zodiac circles the label line ids (e.g. f72r3.2-.13, .15-.25, .27-.33) carry no position, so a blind annotator, who may not read the label words, can tell which ring a label belongs to (the counts match the figures exactly: 19+10 on f70v2, 12+11+7 on f72r3) but not which figure it sits beside; honest annotations leave 'label' null there, and P-L4-013 would then have no labelled objects on those pages. Two fixes, either is fine: (a) a seat that has NOT annotated the folio records, for each label line id, where the label sits on the scan (ring and clock angle), as a separate data file, and the test joins it to the annotations by position; or (b) annotators record ring order and the test maps order to id using the ZL numbering start, checked once by a non-annotator. Until then, start P-L4-013 on f75v, where ten two-line tags hang on drawn lines down to ten figures, so the label-to-object link is on the parchment itself (only the left-to-right numbering of the ids is assumed). Also: 'python3 -m vs experiment' crashes (KeyError 'units') on kind picture because main() has no picture branch; validate() passes. A one-line code: fix is needed so the checker output can go in PR descriptions.",
  "program": "LEAD",
- "check": "None: a dispatch. Sources: P-L4-013 (picture-text statistics step, #387), PIC-<folio> desk steps, P-G-007 and P-G-009 (fleet-fable), P-L4-006 (#391).",
+ "check": "None: a dispatch. Sources: PIC-f70v2, PIC-f72r3, PIC-f75v annotations by fleet-opus; P-L4-013 (#387); vs/experiment.py main().",
  "on_path": false,
  "hard": false,
- "top": ["PIC-f72r3", "PIC-f70v2", "PIC-f75v", "PIC-f99r", "PIC-f67r2", "PIC-f66r", "P-L4-013", "P-L4-006", "P-L4-008"]
+ "top": [
+  "P-L4-013",
+  "PIC-f66r",
+  "PIC-f67r2",
+  "PIC-f99r",
+  "PIC-f70v2",
+  "PIC-f72r3",
+  "PIC-f75v",
+  "P-L4-006",
+  "P-L4-008"
+ ]
 }
