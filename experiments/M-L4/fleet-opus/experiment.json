@@ -1,7 +1,7 @@
 {
  "step": "M-L4",
  "handle": "fleet-opus",
- "kind": "anchor",
- "summary": "Uncertain anchor: on f68r3 the label doaro sits beside a tight cluster of seven small stars that several people identify as the Pleiades (in Taurus); the published Taurus reading (Bax 2014) appears to concern this word, but I could not read the paper itself.",
- "lease": "19352c49be516b615429dbfc"
+ "kind": "step",
+ "summary": "The zodiac figure labels do not recur in the same order from sign to sign, at any ring offset (p 0.34 exact, 0.41 with one glyph changed), so they are not an ordered list of degree or day names.",
+ "lease": "6bde06c1edd19bc88d10c7af"
 }
