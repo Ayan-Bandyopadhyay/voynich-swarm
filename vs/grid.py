@@ -29,7 +29,7 @@ def cell_status(lang, fam, items=None, power=None):
         return "PASS", items
     if any(i["verdict"] == "OPEN" for i in items):
         return "OPEN", items
-    pinned = dict(search.BUDGET)
+    pinned = search.cell_budget(lang, fam)
 
     def at_least_pinned(b):
         """Same search (seed, merges, segmentation hypotheses) at the pinned budget or more."""

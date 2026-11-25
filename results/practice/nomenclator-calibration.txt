@@ -1,0 +1,39 @@
+Fleet seat fleet-astra. M-J lease cc7f1b0a8d8eaa6778538024. Base db2303e.
+
+The marked control assigns 24 frequent words to independent code groups and spells other words with homophones. The whole-word-only Latin control also ran. Its planted key and its search both failed compression. The passing marked control establishes power for the mixed family only.
+
+python3 -m vs season --parts controls
+control latin    substitution clean=True noisy=True
+control latin    verbose      clean=True noisy=True
+control latin    nomenclator  clean=True noisy=False
+control italian  substitution clean=True noisy=True
+control italian  verbose      clean=True noisy=False
+control italian  nomenclator  clean=True noisy=False
+control spanish  substitution clean=True noisy=True
+control spanish  verbose      clean=True noisy=False
+control spanish  nomenclator  clean=True noisy=False
+control french   substitution clean=True noisy=True
+control french   verbose      clean=True noisy=False
+control french   nomenclator  clean=True noisy=False
+control catalan  substitution clean=True noisy=False
+control catalan  verbose      clean=False noisy=False
+control catalan  nomenclator  clean=False noisy=False
+control german   substitution clean=True noisy=True
+control german   verbose      clean=False noisy=False
+control german   nomenclator  clean=False noisy=False
+control english  substitution clean=True noisy=True
+control english  verbose      clean=True noisy=True
+control english  nomenclator  clean=True noisy=False
+control czech    substitution clean=False noisy=False
+control czech    verbose      clean=False noisy=False
+control czech    nomenclator  clean=False noisy=False
+control hebrew   substitution clean=True noisy=True
+control hebrew   verbose      clean=True noisy=True
+control hebrew   nomenclator  clean=True noisy=True
+
+Additional hebrew 2%-noise seed 1: passes_without_anchors=True, savings=0.04112.
+Additional hebrew 2%-noise seed 2: passes_without_anchors=True, savings=0.03245.
+
+latin codebook true {'submission': 'control-latin-codebook', 'family': 'codebook', 'target': {'language': 'latin', 'period': 'control'}, 'verdict': 'FAIL', 'failed': ['a_compresses', 'kill_tests', 'c_pictures'], 'passes_without_anchors': False, 'savings': -8.20619, 'killed_by': ['D2_glyphs_shuffled', 'D4_unrelated_text_enciphered']} adaptive_choice
+latin codebook search {'submission': 'grid-latin-codebook-control', 'family': 'codebook', 'target': {'language': 'latin', 'period': 'grid search'}, 'verdict': 'FAIL', 'failed': ['a_compresses', 'b_reads', 'kill_tests', 'c_pictures', 'd_not_illusion'], 'passes_without_anchors': False, 'savings': -0.00887, 'killed_by': ['D1_word_order_shuffled', 'D2_glyphs_shuffled', 'D3_random_glyphs']} adaptive_choice
+At 2% noise the planted Latin codebook has 5,715 entries. The key alone costs 274,968 bits against a 34,905.0-bit baseline.

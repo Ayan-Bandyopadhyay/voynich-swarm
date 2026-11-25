@@ -195,9 +195,27 @@ def climb(tri, table, letters, seed, budget=BUDGET, init=None, group_swap=0.0):
     return best_m, best_s
 
 
-def search_cell(lang, family, train_pages, budget=BUDGET, tag="cell"):
+def cell_budget(lang, family):
+    if family in ("nomenclator", "codebook"):
+        from .search_nomenclator import SETTINGS
+        return dict(SETTINGS) if family == "codebook" else {**BUDGET, **SETTINGS}
+    return BUDGET
+
+
+def search_cell(lang, family, train_pages, budget=None, tag="cell"):
+    if budget is None:
+        budget = cell_budget(lang, family)
     table, sy = trigram_table(lang)
     letters = [l for l in sy if l != lm.WB]
+    if family in ("nomenclator", "codebook"):
+        from .search_nomenclator import search_nomenclator, SETTINGS
+        budget = {**SETTINGS, **budget}
+        key = search_nomenclator(lang, train_pages, budget, tag, table, letters, whole_words=family == "codebook")
+        if family == "codebook":
+            del key["marker"]
+        return {"id": f"grid-{lang}-{family}-{tag}", "family": family, "segmentation": "eva-basic",
+                "target": {"language": lang, "period": "grid search"}, "key": key,
+                "search": {"budget": dict(budget)}}
     if family == "substitution":
         segf = lambda w: ivtff.segment(w, "eva-basic")
         tri = unit_trigrams(train_pages, segf)
