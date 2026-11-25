@@ -927,6 +927,19 @@
       "license": "public-domain",
       "encoding": "utf-8",
       "added_by": "fleet-opus"
+    },
+    {
+      "id": "old_occitan_57842168",
+      "lang": "old_occitan",
+      "period": "12th-13th century Old Occitan (troubadour lyric and prose vidas), in a 19th-century edition",
+      "title": "Die Werke der Troubadours, in provenzalischer Sprache, vol. 1, ed. C. A. F. Mahn (Berlin, 1846), archive.org OCR text (University of Toronto copy)",
+      "url": "https://archive.org/download/diewerkedertroub01mahnuoft/diewerkedertroub01mahnuoft_djvu.txt",
+      "file": "data/raw/agent_old_occitan_57842168.txt",
+      "bytes": 774269,
+      "sha256": "57842168d67f1046c16358dbece66a2e73078003af36370af1109aeaee08b245",
+      "license": "public-domain",
+      "encoding": "utf-8",
+      "added_by": "fleet-opus"
     }
   ],
   "missing_corpora": {

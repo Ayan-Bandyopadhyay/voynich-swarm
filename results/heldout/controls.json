@@ -1221,5 +1221,21 @@
   "true_key_passes": false,
   "search_cracks_control": false,
   "added_with": "nahuatl_1fd2ccfd"
+ },
+ {
+  "language": "old_occitan",
+  "family": "substitution",
+  "control": "homophonic",
+  "true_key_passes": true,
+  "search_cracks_control": true,
+  "added_with": "old_occitan_57842168"
+ },
+ {
+  "language": "old_occitan",
+  "family": "verbose",
+  "control": "verbose",
+  "true_key_passes": true,
+  "search_cracks_control": false,
+  "added_with": "old_occitan_57842168"
  }
 ]
