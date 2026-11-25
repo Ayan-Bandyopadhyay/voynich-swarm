@@ -5,9 +5,9 @@ A key may declare
   "reading_order":   "normal" | "glyphs_reversed" | "words_reversed"
   "spaces":          "word_breaks" (default) | "ignored"    (each line read as one glyph stream; the
                      key's map may output spaces itself: Schwartz 2026 left this case untested)
-                     EXPERIMENTAL: the kill tests handle it, but criterion (a)'s code for recovering
-                     the Voynich text is still word-based and over-charges whole-line tokens. A
-                     line-level preimage code is an open J step.
+                     EXPERIMENTAL: the kill tests handle it; criterion (a) recovers such lines with a
+                     line-level, space-aware preimage code (judge.line_preimage_bits), proven on a
+                     positive control in tests/test_line_preimage.py.
 The view is applied to training and evaluation pages alike, before any scoring.
 """
 from .ivtff import Page, Line
