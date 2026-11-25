@@ -1,0 +1,12 @@
+{
+ "of": "N-002",
+ "assessment": "agree",
+ "title": "Second look at N-002: AGREE (scan description and the uncertain status; comparison images not checked)",
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006218",
+ "statement": "I checked the f80r scan (canvas 1006218, the upper-left detail cited in N-002 and a closer crop of region 360,250,380,320). The second figure from the left stands with one arm raised and the other arm running down behind her back to the hip, where the hand grips a small rounded object from above. The object has a pale ochre wash and a short spout-like projection at its lower left, angled down and toward the body, with a clear gap of blank vellum between the spout tip and the body outline. This matches N-002's description. The label written directly above this figure is the second in the top row; its glyph shapes on the scan agree with ZL f80r.2 (olchdy), and f80r.1 stands over the first figure, so the locus is right. The scan does not show what the object is: a clyster-like reservoir with a nozzle is one reading of the outline, but nothing else in the drawing (no tube, no attendant, no second vessel) narrows it down. I therefore agree that the referent is open and that no word-name pairing should be made. Limit of this check: the comparison images (BSB Clm 337 f131r, Wellcome MS.49 ff. 38v, 39r and 60r) and the dp.la record could not be opened from my sandbox, so I did not verify N-002's statements about them. My agreement covers the scan description, the locus and the uncertain status, not those comparisons.",
+ "sources": [
+  "Beinecke MS 408, f80r, https://collections.library.yale.edu/iiif/2/1006218/130,0,740,700/900,/0/default.jpg",
+  "Beinecke MS 408, f80r, close crop https://collections.library.yale.edu/iiif/2/1006218/360,250,380,320/!900,900/0/default.jpg",
+  "Zandbergen-Landini ZL 3b (data/raw/ZL3b-n.txt), loci f80r.1-3"
+ ]
+}
