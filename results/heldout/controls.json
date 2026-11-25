@@ -909,5 +909,21 @@
   "true_key_passes": true,
   "search_cracks_control": true,
   "added_with": "lithuanian_08449f12"
+ },
+ {
+  "language": "manx",
+  "family": "substitution",
+  "control": "homophonic",
+  "true_key_passes": true,
+  "search_cracks_control": true,
+  "added_with": "manx_444c4d94"
+ },
+ {
+  "language": "manx",
+  "family": "verbose",
+  "control": "verbose",
+  "true_key_passes": false,
+  "search_cracks_control": false,
+  "added_with": "manx_444c4d94"
  }
 ]
