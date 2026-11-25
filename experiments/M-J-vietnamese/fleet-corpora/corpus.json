@@ -1,0 +1,10 @@
+{
+  "language": "vietnamese",
+  "title": "Vietnamese Bible (Kinh Thánh Tiếng Việt, 1934 Cadman translation), full Bible, one verse per line",
+  "period": "20th century (1934), modern Vietnamese in quốc ngữ",
+  "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/Viet.txt",
+  "sha256": "49d38fc67571bec3caac3bcbb2a44657b0fb1dd3bb653b3668a095c082a98443",
+  "license": "public-domain",
+  "encoding": "utf-8",
+  "notes": "License stated as 'Public Domain' in the source README at https://github.com/scrollmapper/bible_databases/blob/59b18c5af5845728c275d5b7178ad0d024172b1f/sources/vi/Viet/README.md (scrollmapper/bible_databases, files from the CrossWire SWORD module Viet). The url pins a fixed commit, so the bytes do not change. 5,335,590 bytes; one verse per line as '[c:v] text' with '### Book' headings in English (66 short headings, negligible). vs/refcorpus.normalize(..., 'vietnamese') gives 3,751,516 characters. Tone and vowel diacritics are stripped by the generic normalization, which merges many syllables."
+}
