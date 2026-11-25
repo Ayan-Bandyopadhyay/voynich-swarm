@@ -1,0 +1,21 @@
+{
+  "title": "Test which reuse mechanisms let a single-table chain meet F-018",
+  "statement": "I laid the published R-017 text onto the practice pages using the attack's two line streams and recovered its F-018 value of 1.111 bits. I independently reconstructed the stated line chain and tested ordered windows, shuffled visits to the same windows, and 20-page windows from a shuffled public training sequence, each at seeds 1 and 2. In that order the F-018 pairs were 1.128 and 1.216, 1.202 and 1.169, and 1.187 and 1.152 bits. All six gave p=0.005 against the registered token shuffle. F-009 and F-011 also passed in all six. F-016 passed both ordered seeds and seed 1 of each shuffled condition. The F-018 result persisted when every condition and the manuscript had the same 3,375 certain paragraph tokens distributed in the same counts by page. With the same chain and one global table at all positions, F-018 still passed at 1.110 and 1.135 bits (p=0.005 for each seed). The single-table runs retain recent-word variation, familiar-word reuse and paragraph-opening treatment, so the evidence so far isolates the table schedule and leaves the contribution of those mechanisms open. The registry accepts attack reviews only with the weak assessment, so this submission records the ablation as a proposed follow-up. These are practice results from an independent implementation.",
+  "program": "R",
+  "check": "Compare the stationary line chain with both reuse rules on, each alone and both off. Fit only on public training data, preserve the two line streams, and register seeds and layout before evaluation. The reconstruction uses eva-basic glyphs, four padded line-start symbols distinguishing paragraph starts, actual spaces and line ends, and 2- or 4-glyph history with probability 0.60 or 0.40. It mixes 10% global probability into each available local context distribution. It uses 40 evenly spaced window starts, a 780-line schedule split 86:14 between the line streams, and 2,000 lines per stream. It draws the two reuse branches exclusively at probabilities 0.25 and 0.25 after the first word. For mutation it uses the left and right neighbors' training counts to weight one-glyph replacements among recent words. For whole reuse it weights the eligible words by their counts in the most recent 300 words. It prefers candidates whose first glyph is supported by the preceding two glyphs and samples an end or space immediately after a reused word. Use seed s for the ordinary stream and s+4096 for the first-line stream, then reject lines containing a manuscript four-token sequence. Test F-018 against both the registered token shuffle and a null assigning section labels to whole pages, with a permutation scheme specified in advance. Report F-009, F-011 and F-016 on the same layout.",
+  "on_path": false,
+  "hard": true,
+  "practice": {
+    "fact_order": ["F-018", "F-009", "F-011", "F-016"],
+    "manuscript": [1.183019, 0.310573, 0.073983, 0.310573],
+    "published_r017": [1.111445, 0.283181, 0.143946, 0.283181],
+    "ordered_1": [1.127680, 0.290046, 0.147199, 0.290046],
+    "ordered_2": [1.216327, 0.270062, 0.154200, 0.270062],
+    "visits_shuffled_1": [1.201857, 0.251378, 0.088512, 0.251378],
+    "visits_shuffled_2": [1.169259, 0.237906, 0.126722, 0.237906],
+    "pages_shuffled_1": [1.186656, 0.257014, 0.076934, 0.257014],
+    "pages_shuffled_2": [1.152489, 0.240331, 0.128055, 0.240331],
+    "stationary_1": [1.110193, 0.250184, 0.085522, 0.250184],
+    "stationary_2": [1.135192, 0.247267, 0.131524, 0.247267]
+  }
+}
