@@ -524,6 +524,19 @@
       "license": "public-domain",
       "encoding": "utf-8",
       "added_by": "fleet-corpora"
+    },
+    {
+      "id": "latvian_938087b7",
+      "lang": "latvian",
+      "period": "17th-century translation (Glück, 1685-1689) in a later edition with modern orthography",
+      "title": "Latvian Bible of Ernst Glück (1689 translation), 8th edition, full Bible, one verse per line",
+      "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/LvGluck8.txt",
+      "file": "data/raw/agent_latvian_938087b7.txt",
+      "bytes": 4193453,
+      "sha256": "938087b74f0fd053147960c596f79069fc8a3ba37c12aaa4e4a873572cb7719c",
+      "license": "public-domain",
+      "encoding": "utf-8",
+      "added_by": "fleet-corpora"
     }
   ],
   "missing_corpora": {

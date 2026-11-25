@@ -749,5 +749,21 @@
   "true_key_passes": true,
   "search_cracks_control": true,
   "added_with": "finnish_0b723e54"
+ },
+ {
+  "language": "latvian",
+  "family": "substitution",
+  "control": "homophonic",
+  "true_key_passes": true,
+  "search_cracks_control": false,
+  "added_with": "latvian_938087b7"
+ },
+ {
+  "language": "latvian",
+  "family": "verbose",
+  "control": "verbose",
+  "true_key_passes": true,
+  "search_cracks_control": true,
+  "added_with": "latvian_938087b7"
  }
 ]
