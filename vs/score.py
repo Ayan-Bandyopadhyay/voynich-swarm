@@ -115,7 +115,8 @@ def score(d, pr=None):
     if errs:
         return {"verdict": "REFUSED", "errors": errs}
     step = _steps().get(e["step"], {})
-    program = step.get("program") or e["step"].split("-")[0].lstrip("M")
+    _sp = e["step"].split("-")
+    program = step.get("program") or (_sp[1] if _sp[0] == "M" and len(_sp) > 1 else _sp[0])
     on_path = bool(step.get("on_path"))
     files = sorted(os.path.join(d, f) for f in os.listdir(d))
     from .identity import owner as _owner, agent as _agent
