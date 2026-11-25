@@ -60,6 +60,12 @@ statistics:
                             share a first or last glyph pair (eva-basic), minus the rate for pairs sharing none
        label_in_page_text   share of labels with a word (3+ glyphs) in their own page's running text, minus the
                             mean share for the other scored pages' running text
+                            Objects with no "label" but a ring (outer | middle | inner) and an angle
+                            ("angle_deg_clockwise_from_top", or "clock_position" 1-12) are joined to the label
+                            line in that ring nearest their angle, using the clock positions ZL3b records on
+                            circular pages (<!hh:mm> comments), within 20 degrees; a line goes to the closest
+                            object only. Rings are the label runs between circular text lines, outermost first;
+                            a run before the first circular line (figures outside the circle) is not a ring.
                             Layout fields (ring, order, angle, clock, position, label, note, count, group) are not
                             looks and are ignored. n (default 20, at least 10) labelled objects are required, and 5
                             pairs in each group compared; fewer is undefined (refused). Test it against
@@ -580,6 +586,75 @@ def _looks(o):
             if not any(x in k.lower() for x in _FEATURE_SKIP) and str(v).strip()}
 
 
+LABEL_POSITIONS = None   # {folio: [[(locus, degrees), ...] per ring, outermost first]}; None reads ZL3b (tests set it)
+_POSITION_CACHE = None
+JOIN_TOLERANCE = 20.0
+
+
+def label_positions():
+    """Clock positions of label lines on circular pages, from the comments in the pinned ZL3b file."""
+    global _POSITION_CACHE
+    if LABEL_POSITIONS is not None:
+        return LABEL_POSITIONS
+    if _POSITION_CACHE is not None:
+        return _POSITION_CACHE
+    import re, os
+    from . import path
+    out, fn = {}, path("data", "raw", "ZL3b-n.txt")
+    if os.path.exists(fn):
+        line_re = re.compile(r"^<(f\d+[rv]\d*)\.(\d+),.([A-Z])(.)>\s*(?:<!(\d\d):(\d\d)>)?")
+        state = {}
+        for raw in open(fn, encoding="utf-8", errors="replace"):
+            m = line_re.match(raw)
+            if not m:
+                continue
+            folio, n, unit = m.group(1), m.group(2), m.group(3)
+            st = state.setdefault(folio, {"seen_circle": False, "runs": [], "cur": None})
+            if unit == "C":
+                st["seen_circle"] = True
+                st["cur"] = None
+            elif unit == "L" and st["seen_circle"] and m.group(5):
+                if st["cur"] is None:
+                    st["cur"] = []
+                    st["runs"].append(st["cur"])
+                hh, mm = int(m.group(5)) % 12, int(m.group(6))
+                st["cur"].append((f"{folio}.{n}", (hh * 60 + mm) / 720 * 360))
+        out = {f: st["runs"] for f, st in state.items() if st["runs"]}
+    _POSITION_CACHE = out
+    return out
+
+
+def _angle_of(o):
+    fs = o.get("features") if isinstance(o.get("features"), dict) else {}
+    a = fs.get("angle_deg_clockwise_from_top")
+    if isinstance(a, (int, float)) and not isinstance(a, bool):
+        return float(a) % 360
+    c = fs.get("clock_position")
+    if isinstance(c, (int, float)) and not isinstance(c, bool) and 1 <= c <= 12:
+        return (float(c) % 12) * 30
+    return None
+
+
+def _joined_labels(folio, objs):
+    """{object index: locus} for unlabelled ring objects, nearest label line in the same ring by angle."""
+    runs = label_positions().get(folio) or []
+    names = {2: ["outer", "inner"], 3: ["outer", "middle", "inner"]}.get(len(runs), ["outer"] if len(runs) == 1 else [])
+    rings = dict(zip(names, runs))
+    claims = {}
+    for i, o in enumerate(objs):
+        if not isinstance(o, dict) or o.get("label"):
+            continue
+        fs = o.get("features") if isinstance(o.get("features"), dict) else {}
+        ring, ang = str(fs.get("ring", "")).lower(), _angle_of(o)
+        if ring not in rings or ang is None:
+            continue
+        best = min(rings[ring], key=lambda la: min(abs(la[1] - ang), 360 - abs(la[1] - ang)))
+        d = min(abs(best[1] - ang), 360 - abs(best[1] - ang))
+        if d <= JOIN_TOLERANCE and (best[0] not in claims or d < claims[best[0]][1]):
+            claims[best[0]] = (i, d)
+    return {i: locus for locus, (i, _) in claims.items()}
+
+
 def _picture_objects(all_toks):
     """[(folio, kind, looks, label line id, label words)] for agreed objects whose label line is on these pages."""
     lines = {}
@@ -588,10 +663,11 @@ def _picture_objects(all_toks):
             lines.setdefault(t["lid"], []).append(t["w"])
     out, seen = [], set()
     for folio, objs in pictures().items():
-        for o in objs:
+        joined = _joined_labels(folio, objs)
+        for idx, o in enumerate(objs):
             if not isinstance(o, dict):
                 continue
-            lab = o.get("label")
+            lab = o.get("label") or joined.get(idx)
             if not isinstance(lab, str) or lab not in lines or lab in seen:
                 continue
             seen.add(lab)      # a label line counts once, for the first object that names it

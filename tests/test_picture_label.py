@@ -42,6 +42,7 @@ def spec(test, null=True, perms=99, p=0.05):
 class PictureLabelTest(unittest.TestCase):
     def tearDown(self):
         dsl.PICTURES = None
+        dsl.LABEL_POSITIONS = None
 
     def test_shape(self):
         with self.assertRaises(dsl.SpecError):
@@ -111,6 +112,28 @@ class PictureLabelTest(unittest.TestCase):
     def test_layout_bookkeeping_is_not_a_look(self):
         o = {"features": {"ring": "outer", "clock_position": 3, "label_ring_candidates": "x", "colour": "Blue "}}
         self.assertEqual(dsl._looks(o), {"colour": "blue"})
+
+
+    def test_join_by_clock_angle(self):
+        dsl.LABEL_POSITIONS = {"f9r": [[("f9r.2", 0.0), ("f9r.3", 90.0), ("f9r.4", 180.0)], [("f9r.6", 45.0)]]}
+        objs = [{"kind": "human_figure", "features": {"ring": "outer", "angle_deg_clockwise_from_top": 85}},
+                {"kind": "human_figure", "features": {"ring": "outer", "angle_deg_clockwise_from_top": 350}},
+                {"kind": "human_figure", "features": {"ring": "inner", "clock_position": 2}},       # 60 deg, 15 from f9r.6
+                {"kind": "human_figure", "features": {"ring": "outer", "angle_deg_clockwise_from_top": 130}},  # 40 deg off: too far
+                {"kind": "star", "features": {"ring": "outer", "angle_deg_clockwise_from_top": 180}, "label": "f9r.4"}]  # already labelled
+        self.assertEqual(dsl._joined_labels("f9r", objs), {0: "f9r.3", 1: "f9r.2", 2: "f9r.6"})
+
+    def test_join_gives_a_line_to_the_closest_object_only(self):
+        dsl.LABEL_POSITIONS = {"f9r": [[("f9r.2", 0.0), ("f9r.3", 180.0)]]}
+        objs = [{"kind": "human_figure", "features": {"ring": "outer", "angle_deg_clockwise_from_top": 10}},
+                {"kind": "human_figure", "features": {"ring": "outer", "angle_deg_clockwise_from_top": 355}}]
+        self.assertEqual(dsl._joined_labels("f9r", objs), {1: "f9r.2"})
+
+    def test_ring_names_follow_the_number_of_rings(self):
+        dsl.LABEL_POSITIONS = {"f9r": [[("f9r.2", 0.0)], [("f9r.4", 0.0)], [("f9r.6", 0.0)]]}
+        objs = [{"kind": "human_figure", "features": {"ring": "middle", "angle_deg_clockwise_from_top": 5}},
+                {"kind": "human_figure", "features": {"ring": "inner", "angle_deg_clockwise_from_top": 5}}]
+        self.assertEqual(dsl._joined_labels("f9r", objs), {0: "f9r.4", 1: "f9r.6"})
 
 
 if __name__ == "__main__":
