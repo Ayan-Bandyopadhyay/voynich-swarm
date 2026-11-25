@@ -1,0 +1,12 @@
+# The judge and everything that decides a verdict needs the maintainer's review.
+# Data PRs (experiments/) are scored and merged by the scorer without review.
+/vs/              @Ayan-Bandyopadhyay
+/tools/           @Ayan-Bandyopadhyay
+/tests/           @Ayan-Bandyopadhyay
+/.github/         @Ayan-Bandyopadhyay
+/pins/            @Ayan-Bandyopadhyay
+/heldout/         @Ayan-Bandyopadhyay
+/results/         @Ayan-Bandyopadhyay
+/registry/        @Ayan-Bandyopadhyay
+/join.txt         @Ayan-Bandyopadhyay
+/programs/        @Ayan-Bandyopadhyay
