@@ -1,0 +1,30 @@
+{
+  "title": "Decoding Anagrammed Texts Written in an Unknown Language and Script",
+  "authors": "Bradley Hauer and Grzegorz Kondrak",
+  "year": 2016,
+  "doi": "10.1162/tacl_a_00084",
+  "url": "https://aclanthology.org/Q16-1006/",
+  "summary": "The authors benchmark language identification and anagrammed substitution on known texts. Their manuscript experiment favored Hebrew on some measures, but they report incoherent outputs and acknowledge that anagram search and language models could explain the matches.",
+  "established": [
+    "On 50 synthetic ciphertexts from five languages, their two-stage system recovered 93.8% of word tokens on average (Table 2). Spanish and English were among the benchmark languages.",
+    "Using 10,000 manuscript word tokens, their fitted glyph order required an average of 0.996 pair swaps per word, compared with 2.454 for English."
+  ],
+  "open": [
+    {
+      "question": "Can a fixed transposition of words within lines improve an English substitution key under transcription noise?",
+      "front": "L3",
+      "check": "A restricted test of the section 6 word-transposition proposal: compare normal order with reversed words within each line on the same EVA transcription. Confirm power on a 2%-noise English control and submit one key with both practice savings in its summary."
+    },
+    {
+      "question": "How robust is Spanish substitution search when transcription noise accompanies a fixed within-word transposition?",
+      "front": "L3",
+      "check": "A restricted test of the section 6 noise question: apply reversible glyph order to a known Spanish substitution control, add 2% transcription noise as in the benchmark, and verify recovery after undoing the transposition. Compare normal and reversed glyph order on one manuscript transliteration and submit one key."
+    },
+    {
+      "question": "Can softened emissions in the anagram model improve recovery under transcription noise without increasing false positives?",
+      "front": "J",
+      "check": "Vary transcription noise on known anagrammed ciphertexts and compare exact and softened emissions against unrelated ciphertexts at the same search budget.",
+      "hard": true
+    }
+  ]
+}
