@@ -17,6 +17,12 @@ Three kinds of attack, each a mechanical check, so no attack is settled by argum
                  Guard: the text must not copy the manuscript's phrases (no run of 4 consecutive
                  manuscript words). Using the manuscript's own words is allowed, as period
                  table procedures would; the share is reported.
+                 Line-aware form (optional "line_final": [word, ...]): a second word stream
+                 for a writer who can SEE the line end. The last word of every line of two or
+                 more words is taken from it, in order; everything else from "lines". Without
+                 it a positional fact (line-final, F-001) cannot be attacked at all, because a
+                 stream cut blind into hidden line shapes has no line ends. Both streams are
+                 fixed before scoring; the attacker still never sees the hidden layout.
 
   claim-attack   Target: a published or submitted decipherment claim. The attacker submits
                  the claim as a key (family + key) and the judge rules. A FAIL is a
@@ -109,35 +115,50 @@ def _manuscript_4grams():
     return out
 
 
-def fact_attack(fact_id, lines, split, fact_item=None):
+def fact_attack(fact_id, lines, split, fact_item=None, line_final=None):
     """lines: list of lists of words (the attacker's synthetic text). fact_item: the
-    registry item for the target fact (its detail holds the metric and params)."""
+    registry item for the target fact (its detail holds the metric and params).
+    line_final: optional list of words; the last word of every line of 2+ words is drawn
+    from it in order (a writer who sees the line end), the rest from `lines`."""
     lines = [[str(w) for w in l if str(w)] for l in lines if l]
     toks = [w for l in lines for w in l]
+    finals = [str(w) for w in (line_final or []) if str(w)]
     ms4 = _manuscript_4grams()
     copied = sum(tuple(l[i:i + 4]) in ms4 for l in lines for i in range(len(l) - 3))
     types = {w for p in corpus.pages() for w in p.words()}
-    shared = sum(w in types for w in toks) / max(len(toks), 1)
+    shared = sum(w in types for w in toks + finals) / max(len(toks) + len(finals), 1)
     train, ev = corpus.split_pages(split)
     need = sum(len(ln.words) for p in ev for ln in p.lines)
+    need_final = sum(1 for p in ev for ln in p.lines if len(ln.words) >= 2) if finals else 0
     guard = []
     if copied:
         guard.append(f"{copied} four-word runs copied from the manuscript")
-    marked = sum(1 for w in toks if "?" in w or "*" in w)
+    marked = sum(1 for w in toks + finals if "?" in w or "*" in w)
     if marked:
         guard.append(f"{marked} tokens carry uncertainty markers (? or *): synthetic text may not use them "
                      "(they are a transcription convention, and metrics skip them; found by the red team, R-003)")
     if len(toks) < need:
         guard.append(f"needs at least {need} tokens to fill the evaluation pages, got {len(toks)}")
+    if len(finals) < need_final:
+        # no number here: the count of lines is part of the hidden layout
+        guard.append(f"line_final is too short to end every line; send at least as many words as in lines ({len(toks)})")
     if guard:
         return {"attack": "fact", "target": fact_id, "success": False, "refused": guard}
-    it = iter(toks)
+    it, fin = iter(toks), iter(finals)
     fake = []
     for p in ev:
         q = Page(p.id, p.order, dict(p.meta))
         for ln in p.lines:
-            q.lines.append(Line(ln.id, ln.page, ln.n, ln.unit, ln.subtype, [next(it) for _ in ln.words], ln.para_start, ln.para_end))
+            n = len(ln.words)
+            ws = [next(it) for _ in range(n)] if not (finals and n >= 2) else [next(it) for _ in range(n - 1)] + [next(fin)]
+            q.lines.append(Line(ln.id, ln.page, ln.n, ln.unit, ln.subtype, ws, ln.para_start, ln.para_end))
         fake.append(q)
+    if finals:
+        # the assembled text must not copy the manuscript's phrases either
+        copied = sum(tuple(l.words[i:i + 4]) in ms4 for q in fake for l in q.lines for i in range(len(l.words) - 3))
+        if copied:
+            return {"attack": "fact", "target": fact_id, "success": False,
+                    "refused": ["four-word runs copied from the manuscript once line ends are placed"]}
     if fact_item is None:
         from . import registry
         fact_item = registry.get(fact_id)
@@ -157,6 +178,7 @@ def fact_attack(fact_id, lines, split, fact_item=None):
                 "refused": ["positional attack with fewer than 10 hits: too few to reproduce a fact (P-J-001)"]}
     return {"attack": "fact", "target": fact_id, "real": {"pass": real["pass"], "value": real["value"]},
             "synthetic": {"pass": got["pass"], "value": got["value"]}, "shared_type_share": round(shared, 3),
+            "line_aware": bool(finals),
             "success": bool(real["pass"] and got["pass"]),
             "why": "the fact also holds on text made without language" if (real["pass"] and got["pass"]) else "the synthetic text does not reproduce the fact"}
 
@@ -167,7 +189,7 @@ def run_attack(spec, split):
         key = json.load(open(spec["target_key"])) if isinstance(spec["target_key"], str) else spec["target_key"]
         return key_attack(key, spec["decoy"], spec.get("params", {}), split)
     if kind == "fact":
-        return fact_attack(spec["target_fact"], spec["lines"], split, spec.get("target_fact_item"))
+        return fact_attack(spec["target_fact"], spec["lines"], split, spec.get("target_fact_item"), spec.get("line_final"))
     if kind == "claim":
         train, ev = corpus.split_pages(split)
         r = judge.evaluate(spec["key"], train, ev, split)

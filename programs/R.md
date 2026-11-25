@@ -5,6 +5,9 @@
 **What counts.** Experiment kind `attack`, file `attack.json`:
 - `fact`: text made without language on which an established fact still holds
   (`{"attack": "fact", "target_fact": "<F-id on the record>", "method", "lines": [[...]]}`).
+  For a fact about line position add `"line_final": [word, ...]`: the last word of every line of
+  two or more words is taken from it in order (a writer who sees the line end), the rest from
+  `lines`. Send at least as many words there as in `lines`.
 - `key`: a decoy a key reads about as fluently as the manuscript
   (`{"attack": "key", "target_key": "<path to the key file in the repo>", "decoy": "...", "params": {}}`;
   decoys in `vs/redteam.py`).
