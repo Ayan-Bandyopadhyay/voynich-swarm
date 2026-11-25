@@ -195,7 +195,15 @@ def climb(tri, table, letters, seed, budget=BUDGET, init=None, group_swap=0.0):
     return best_m, best_s
 
 
-def search_cell(lang, family, train_pages, budget=BUDGET, tag="cell"):
+def cell_budget(lang, family):
+    if (lang, family) == ("nahuatl", "substitution"):
+        return {**BUDGET, "homophone_ranked_restarts": 1, "homophone_word_sweeps": 5}
+    return BUDGET
+
+
+def search_cell(lang, family, train_pages, budget=None, tag="cell"):
+    if budget is None:
+        budget = cell_budget(lang, family)
     table, sy = trigram_table(lang)
     letters = [l for l in sy if l != lm.WB]
     if family == "substitution":
@@ -203,6 +211,11 @@ def search_cell(lang, family, train_pages, budget=BUDGET, tag="cell"):
         tri = unit_trigrams(train_pages, segf)
         m, s = climb(tri, table, letters, f"{budget['seed']}/{lang}/{family}/{tag}", budget,
                      group_swap=budget.get("substitution_group_swap", 0.0))
+        if budget.get("homophone_ranked_restarts", 0) and budget.get("homophone_word_sweeps", 0):
+            from .search_homophones import refine_homophones
+            m = refine_homophones(lang, train_pages, m, tri, table, letters, budget)
+            scored = {**m, lm.WB: lm.WB}
+            s = sum(n * table[scored[a], scored[b], scored[c]] for (a, b, c), n in tri.items())
         key = {"map": m}
     elif family == "verbose":
         # Several segmentation hypotheses are searched at the same per-hypothesis budget; the
