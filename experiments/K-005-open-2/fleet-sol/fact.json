@@ -1,0 +1,21 @@
+{
+  "title": "Previous-line repetition exceeds the strongest layout-matched ordinary-language reference",
+  "statement": "In certain paragraph tokens, the share of words of at least two characters repeated on the previous line minus the corresponding share four lines back exceeds the largest excess among ordinary-language references fitted to the same selected token layout.",
+  "source": "Tests the relative claim motivated by Timm (2014), https://arxiv.org/abs/1407.6639, using the pinned line_repeat_excess statistic. Eligibility requires four consecutively numbered earlier lines on the same page. Reference tokens retain order within sampled calibration blocks and are placed in the selected Voynich word slots. This matches token count and line layout while imposing Voynich breaks on the reference streams. It leaves genre and vocabulary frequencies free to differ. F-012 compared this statistic with within-page shuffles and reports public reference values in its source note. This submission registers the explicit above-all reference comparison. Public practice excess was 0.011019 across a layout of 5461 selected tokens. 35 of 44 references were higher, including Latin (0.02435) and English (0.02299). The practice comparison is advisory.",
+  "spec": {
+    "select": {
+      "unit": [
+        "P"
+      ],
+      "certain": true
+    },
+    "statistic": {
+      "line_repeat_excess": true
+    },
+    "compare": [
+      {
+        "reference": "above_all"
+      }
+    ]
+  }
+}
