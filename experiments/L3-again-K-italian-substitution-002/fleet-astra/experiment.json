@@ -1,0 +1,7 @@
+{
+  "step": "L3-again-K-italian-substitution-002",
+  "handle": "fleet-astra",
+  "kind": "key",
+  "lease": "ee41f5a076c7ba2ca4768a2b",
+  "summary": "Test Italian substitution on single-character Claston v101 units across three orders; words_reversed gave the best practice savings (-8.521%) and the independently evaluated single-character 2%-noise control passed with 8.452% savings."
+}
