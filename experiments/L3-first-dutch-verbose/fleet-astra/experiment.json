@@ -1,0 +1,7 @@
+{
+  "step": "L3-first-dutch-verbose",
+  "handle": "fleet-astra",
+  "kind": "key",
+  "summary": "Pinned-budget dutch verbose search after passing the 2%-noise control with 2.25% compression savings.",
+  "lease": "86a713e68714884deff07440"
+}
