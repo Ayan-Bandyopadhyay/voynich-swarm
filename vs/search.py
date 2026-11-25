@@ -25,7 +25,14 @@ def prune_rare(tri, share):
     error shifts every later cut in the word): on the 2% noise Latin control, fixed-2 yields
     ~205 units for 24 true ones, the junk covering ~2% of tokens. The climb then spends its
     budget on junk and stalls far below the true key's objective. Rare units are left out of
-    the key and decode as nulls, as uncovered glyphs already do (families/verbose.py)."""
+    the key and decode as nulls, as uncovered glyphs already do (families/verbose.py).
+
+    Measured limit (2% noise controls): where the pruned search still fails (Italian, French)
+    it is not under-budgeted: 8 restarts x 12000 iterations returns the same key as 4 x 6000,
+    and that key scores BETTER on this objective than the true key (Italian -216385 vs
+    -218645 bits; French -172808 vs -174427). Its errors are the rare letters (j k w x y z)
+    folded into common ones. Closing that gap needs a different objective (e.g. word-level,
+    or an injectivity prior on the unit map), not more search."""
     if not share:
         return tri
     f = Counter()
