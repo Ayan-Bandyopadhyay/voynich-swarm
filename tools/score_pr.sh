@@ -4,7 +4,7 @@
 #   tools/score_pr.sh <pr number>
 set -uo pipefail
 PR=$1
-gh pr view "$PR" --json labels --jq '[.labels[].name] | index("scored")' | grep -q null || { echo "#$PR already scored"; exit 0; }
+if [ "$(gh pr view "$PR" --json labels --jq 'any(.labels[]; .name == "scored")')" = "true" ]; then echo "#$PR already scored"; exit 0; fi
 git fetch -q origin "pull/$PR/head:pr-$PR" || exit 0
 rm -rf _pr
 if ! python3 tools/check_pr_shape.py origin/main --head "pr-$PR" --extract _pr > shape.txt 2>&1; then
