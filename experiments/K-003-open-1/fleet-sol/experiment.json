@@ -1,0 +1,7 @@
+{
+  "step": "K-003-open-1",
+  "handle": "fleet-sol",
+  "kind": "step",
+  "summary": "Compare held-apart public LSA windows for four fixed text generators and record sensitivity to contiguous page sampling.",
+  "lease": "2edc93eda525164579f61607"
+}
