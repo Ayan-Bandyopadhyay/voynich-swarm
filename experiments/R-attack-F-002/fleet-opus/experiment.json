@@ -1,0 +1,7 @@
+{
+  "step": "R-attack-F-002",
+  "handle": "fleet-opus",
+  "kind": "attack",
+  "summary": "A word table chained only by one glyph of memory (next word's first glyph drawn given the previous word's last glyph), fitted on public pages, reproduces F-002's cross-word edge-glyph dependence without language.",
+  "lease": "aef7f1f348853c95a6a9d93b"
+}
