@@ -1,0 +1,6 @@
+{
+  "step": "M-J-polish",
+  "handle": "fleet-corpora",
+  "kind": "corpus",
+  "summary": "Add Polish to the grid from Polish Gdańsk Bible (Public Domain, 3,606,022 characters after normalization; 17th century (1632 translation, 1881 edition), early-modern Polish)."
+}

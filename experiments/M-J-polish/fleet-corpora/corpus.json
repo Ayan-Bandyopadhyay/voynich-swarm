@@ -1,0 +1,10 @@
+{
+  "language": "polish",
+  "title": "Polish Gdańsk Bible (Biblia Gdańska, 1632 translation, 1881 edition), full Bible, one verse per line",
+  "period": "17th century (1632 translation, 1881 edition), early-modern Polish",
+  "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/PolGdanska.txt",
+  "sha256": "dc4e4caeacd241afde48c4e41ce36fbebb40aa733abb13d53b65c70c38a511ff",
+  "license": "public-domain",
+  "encoding": "utf-8",
+  "notes": "License stated as 'Public Domain' in the source README at https://github.com/scrollmapper/bible_databases/blob/59b18c5af5845728c275d5b7178ad0d024172b1f/sources/pl/PolGdanska/README.md (scrollmapper/bible_databases, files from the CrossWire SWORD module PolGdanska). The url pins a fixed commit, so the bytes do not change. 4,233,724 bytes; one verse per line as '[c:v] text' with '### Book' headings in English (66 short headings, negligible). vs/refcorpus.normalize(..., 'polish') gives 3,606,022 characters."
+}
