@@ -1,33 +1,28 @@
 {
-  "title": "A Preliminary Analysis of the Botany, Zoology, and Mineralogy of the Voynich Manuscript",
-  "authors": "Arthur O. Tucker and Rexford H. Talbert",
-  "year": 2013,
-  "url": "https://web.archive.org/web/20150226041323/http://cms.herbalgram.org/herbalgram/issue100/HG100-voynich-online.pdf",
-  "venue": "HerbalGram 100 (American Botanical Council)",
-  "proposes_language": "Nahuatl",
-  "summary": "Two botanists match plants, animals and a mineral in the manuscript's drawings to species of 16th-century New Spain, compare some glyphs with the Nahuatl and Spanish handwriting of the Codex Osuna (1563-1566), and propose that the text is a now-extinct dialect of Nahuatl written with a syllabary or alphabet derived from that hand. They read a handful of plant labels as Nahuatl, Mixtec or Spanish loan-word names. The original herbalgram.org copy is no longer served; the url is the Internet Archive copy of the ABC's own PDF.",
+  "title": "The Language and Writing System of MS408 (Voynich) Explained",
+  "authors": "Gerard E. Cheshire",
+  "year": 2019,
+  "url": "https://research-information.bris.ac.uk/en/publications/the-language-and-writing-system-of-ms408-voynich-explained",
+  "doi": "10.1080/02639904.2019.1599566",
+  "venue": "Romance Studies 37(1): 30-67; accepted author manuscript in the University of Bristol research repository",
+  "proposes_language": "proto-Romance (an unattested ancestor of the Romance languages of Mediterranean Europe)",
+  "summary": "Cheshire argues that the manuscript is written in an extinct 'proto-Romance' language with its own alphabet of unfamiliar and familiar symbols, no dedicated punctuation, all lower case, no double consonants, and many multi-vowel abbreviations for phonetic components, with some Latin words and abbreviations. He holds that the language's lexicon survives scattered across the modern languages of Mediterranean Europe, and presents the language and writing system so that others can read the manuscript. The repository page links the open accepted author manuscript; the publisher's version is behind Taylor & Francis.",
   "established": [
-    "The authors identify 37 plants, 6 animals and 1 mineral in the drawings with species they place in post-Conquest Mexico and neighbouring regions; the identifications are visual comparisons with 16th-century sources such as the Codex Cruz-Badianus (1552) and Hernandez, and the authors say many still need refinement.",
-    "They compare a few glyph shapes (a broken 'tl', a backward 's', a 'z') with letterforms in the Codex Osuna and propose a preliminary syllabary/alphabet from them; they state that they are botanists and horticulturists, not linguists, and that the syllabary is a first attempt.",
-    "From 'tl' and 'chi' endings in their label readings and from the mix of Classical Nahuatl, Mixtec and Spanish loan-words, they place the proposed dialect in central or northern Mexico, and suggest its speakers may have died in the 16th-century epidemics."
+    "The paper states nine features it attributes to the text (extinct language, mixed unfamiliar and familiar symbols, no dedicated punctuation, symbol variants marking punctuation and accents, lower case only, no double consonants, diphthong-to-quintiphthong abbreviations, some Latin words); these are the author's analysis, matched by comparison of proposed readings with words in modern Romance languages and Latin, not by a held-out or controlled test.",
+    "The author proposes a sign-to-sound alphabet and word readings built from it, and names the language only as proto-Romance, an ancestor whose lexicon he says is now dispersed among the modern Mediterranean Romance languages."
   ],
   "open": [
     {
-      "question": "Does a substitution or syllabic key into Nahuatl, scored on held-out pages, read the manuscript better than its decoys? The proposal names the language but gives no complete key; it needs a Nahuatl corpus on the grid first. Openly licensed text: no period transcription of the Florentine Codex or Cantares Mexicanos is known to me under an explicit open license at a stable plain-text url; public-domain 19th-century editions with Nahuatl text exist (Brinton, Ancient Nahuatl Poetry, 1887, Project Gutenberg #12219, of the order of 100,000 Nahuatl characters mixed with English), and modern Nahuatl Wikipedia (cc-by-sa, a few million characters, mixed modern orthographies) is the large fallback.",
-      "front": "J",
-      "check": "Add a Nahuatl corpus (kind corpus), then score a Nahuatl x substitution key on the hidden pages.",
+      "question": "Since 'proto-Romance' has no surviving corpus, does Cheshire's alphabet, frozen as a substitution key, read the hidden pages better than its decoys against the closest attested period Romance corpora (Latin, Italian, Catalan, Occitan, Spanish, Portuguese)? Openly licensed text: no corpus exists for the proposed language itself; period proxies are openly available (e.g. Catalan: public-domain early editions of Ramon Llull, several hundred thousand characters; Old Occitan troubadour texts on Wikisource, cc-by-sa; Italian and Latin already on the grid).",
+      "front": "L3",
+      "check": "Encode the paper's alphabet as a fixed key (no search budget) and score it against each proxy language with the usual decoys.",
       "hard": false
     },
     {
-      "question": "What are the linguistic affinities of the proposed dialect to extant Nahuatl dialects, and is it truly extinct? (The authors leave this open.)",
-      "front": "L3",
-      "hard": true
-    },
-    {
-      "question": "The authors themselves ask how parchment that may date to the first half of the 15th century came to be used over a century later for a 16th-century Mexican text. Independently of that: can the claimed New World identifications (37 of 303 plants, the six principal animals, the one mineral) be confirmed blind on the scans by independent annotators?",
-      "front": "L4",
-      "check": "Blinded identification of the cited plant folios against the proposed species, filed as anchors.",
-      "hard": true
+      "question": "Add the missing period Romance proxies the proposal leans on (Catalan, Old Occitan, Galician-Portuguese) as corpora so the grid can test this family at measured power.",
+      "front": "J",
+      "check": "Kind corpus, >=150,000 characters each, open licence stated at the source.",
+      "hard": false
     }
   ]
 }
