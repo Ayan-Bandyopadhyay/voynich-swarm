@@ -1,25 +1,23 @@
 {
- "title": "Pages have their own vocabulary: words recur within their page more than chance",
- "statement": "In paragraph text, the share of certain words of four or more glyphs that were already written earlier on the same page is greater than when the words are dealt out at random across pages.",
- "source": "Registered as a target for generators after R-008 (a one-table line chain with nearby copying reproduced 7 of 8 facts). Public practice split: 0.311 against a mean of 0.223 for words shuffled across pages (Zandbergen-Landini), 0.307 (Takahashi), 0.294 (RF); training pages 0.291; it also holds on blocks of 40 training pages taken separately. No absolute threshold is set because the share grows with the length of a page. Generators on the practice split: the R-008 text gives 0.179 and the chain alone 0.190, both failing, since one table serves every page; a chain whose table drifts along the text (fitted on a moving window of public pages) gives 0.299 and passes. So this is not evidence of language: ordinary texts with page topics would pass too, and so does a meaning-free procedure whose tables change as it goes. It separates procedures with one fixed table from those with local tables.",
+ "title": "Words recur from the line directly above more than from four lines up",
+ "statement": "In paragraph text, the share of a line's words (of two or more characters) that also stand on the line directly above is greater than the share that stand on the line four above, and the difference exceeds what is left when the words of each page are shuffled.",
+ "source": "Registers Timm's observation (2014, K-005) that word repetition is raised between consecutive lines, with the line_repeat_excess statistic already in the measurement language, as a target for generators. Public practice split (Zandbergen-Landini): excess 0.0110 on the evaluation pages (p = 0.015, 399 shuffles within page) and 0.0092 on the training pages (p = 0.0025), where 6.5% of words stand on the line above and 5.6% on the line four above. Takahashi 0.0128 (p = 0.0075) and 0.0094; RF 0.0098 (p = 0.04) and 0.0064. The effect is small and uneven, which is why alpha is 0.05 and no absolute threshold is set: training blocks of 48 pages give 0.001 (p = 0.27), 0.008 (p = 0.12), 0.015 and 0.008 (both p = 0.0025); Currier A 0.007 on training and 0.028 on evaluation pages, Currier B 0.010 and 0.004 (the last not significant, p = 0.30). A sample of the size of the hidden pages may therefore fail it. Not evidence of language, and not a contrast with language: every reference language poured into the same layout scores higher (0.016 to 0.039 on the training-page layout for 24 languages; on the smaller evaluation layout 31 of 40 are higher and 9 lower, from -0.004 to 0.050), so on this measure the manuscript's line-to-line repetition is at or below that of ordinary prose, against the paper's reading that Latin and English lack it. That is a negative answer to K-005-open-2 in this measurement. What it separates is generators: on the practice split a line-restarting glyph chain with one table gives 0.002 and the same chain with a drifting table and one-glyph-changed copies of the last ten words gives 0.005; both fail. A procedure needs short-range reuse of whole words that decays within a few lines.",
  "spec": {
   "select": {
-   "certain": true,
    "unit": [
     "P"
-   ]
+   ],
+   "certain": true
   },
   "statistic": {
-   "page_reuse": {
-    "min_length": 4
-   }
+   "line_repeat_excess": true
   },
   "compare": [
    {
-    "null": "shuffle_across_pages",
+    "null": "shuffle_within_page",
     "direction": "greater",
-    "perms": 199,
-    "p": 0.01
+    "perms": 399,
+    "p": 0.05
    }
   ]
  }
