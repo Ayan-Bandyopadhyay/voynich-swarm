@@ -1,0 +1,61 @@
+{
+  "id": "grid-catalan-substitution-cell",
+  "family": "substitution",
+  "segmentation": "eva-basic",
+  "target": {
+    "language": "catalan",
+    "period": "grid search"
+  },
+  "key": {
+    "map": {
+      "o": "e",
+      "e": "l",
+      "y": "a",
+      "a": "e",
+      "d": "s",
+      "i": "r",
+      "ch": "l",
+      "l": "s",
+      "k": "l",
+      "r": "s",
+      "n": "a",
+      "t": "l",
+      "q": "d",
+      "sh": "l",
+      "s": "s",
+      "m": "s",
+      "p": "l",
+      "cth": "l",
+      "ckh": "l",
+      "f": "l",
+      "h": "i",
+      "cph": "l",
+      "?": "i",
+      "c": "a",
+      "*": "l",
+      "g": "a",
+      "cfh": "l",
+      "x": "s",
+      "v": "a",
+      "j": "s",
+      "b": "s",
+      "z": "t",
+      "u": "a"
+    }
+  },
+  "search": {
+    "budget": {
+      "restarts": 4,
+      "iterations": 6000,
+      "seed": 1404,
+      "bpe_merges": 30,
+      "verbose_segmentations": [
+        "bpe-greedy",
+        "fixed-2"
+      ],
+      "verbose_min_unit_share": 0.0005,
+      "substitution_group_swap": 0.2
+    },
+    "objective_bits": 602838.7
+  }
+}
