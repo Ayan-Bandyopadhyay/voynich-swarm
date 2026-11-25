@@ -1,0 +1,7 @@
+{
+  "step": "M-G",
+  "handle": "fleet-opus",
+  "kind": "model",
+  "summary": "A mixture of vocabulary, habit chain, near-copying, templates, line position and a glyph-trigram speller predicts held-out words better than a bag of words.",
+  "lease": "1fdc7b618f7489de39aedc12"
+}
