@@ -1,0 +1,6 @@
+{
+  "step": "M-J-croatian",
+  "handle": "fleet-corpora",
+  "kind": "corpus",
+  "summary": "Add Croatian to the grid from Croatian Bible 'Sveta Biblija' (public-domain, 3,587,049 characters after normalization; modern Croatian (20th-century translation))."
+}
