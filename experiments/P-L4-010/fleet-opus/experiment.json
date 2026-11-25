@@ -2,6 +2,6 @@
  "step": "P-L4-010",
  "handle": "fleet-opus",
  "kind": "step",
- "summary": "Position-calibrated replication: using the clock positions ZL3b records for each zodiac label, labels at the same clock angle in the same ring on different zodiac pages agree no more than labels shuffled within their rings (0 exact, 9 one-edit matches in 1,303 comparisons; p 1.0 and 0.89), while two planted shared positions are detected at p 0.003.",
- "lease": "cf22be8e64fd4dc9eb427d22"
+ "summary": "Position-calibrated replication: with ZL3b's clock positions, zodiac labels at the same clock angle in the same ring agree across signs no more than labels shuffled within rings (0 exact, 9 near in 1,303; p 1.0 and 0.89), and still not when each page pair may rotate and reverse (17 exact, 78 near; p 0.20 and 0.54); planted fixed and rotating rosters of only two positions are both detected (p 0.003 and 0.005).",
+ "lease": "8b7447bff32581b06af11f4c"
 }
