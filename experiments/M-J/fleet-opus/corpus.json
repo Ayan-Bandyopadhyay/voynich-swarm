@@ -1,0 +1,10 @@
+{
+  "language": "conlang_esperanto",
+  "title": "La Psalmaro el la Biblio, translated from the Hebrew into Esperanto by L. L. Zamenhof, with a preface and notes by F. de Menil (Paris: Hachette, 1908), archive.org OCR text of the Biblioteka Glowna KUL copy",
+  "period": "Esperanto, a constructed language of 1887; this translation published 1908",
+  "url": "https://archive.org/download/dlibra.kul.pl.39594_Esper--510-II_La-Psalmaro-el-la-Bi/39594_Esper--510-II_La-Psalmaro-el-la-Bi_djvu.txt",
+  "sha256": "05aac0f3220a7cda9dfaab0a5f52de055859abbc19f0b5c76354c795875d3210",
+  "license": "public-domain",
+  "encoding": "utf-8",
+  "notes": "Second Esperanto text, to be pooled with C-052 (Zamenhof's Hamleto). Why it is needed: C-052 was added, but vs/facts.ref_langs() keeps only languages whose calibration blocks (every tenth block) hold at least 4,000 words, and Hamleto alone gives about 31,000 words, so Esperanto never enters a reference comparison; this text adds about 42,000 words. License: translator L. L. Zamenhof died in 1917 and the author of the preface and notes, Felicien de Menil, in 1930 (both dates from the archive.org item's creator field, https://archive.org/details/dlibra.kul.pl.39594_Esper--510-II_La-Psalmaro-el-la-Bi); the 1908 Hachette edition is public domain under any term of life plus 70 years or shorter, and the scan and OCR add no new rights. Size: 274,845 bytes of OCR; vs/refcorpus.normalize(..., 'conlang_esperanto') gives 228,336 characters, 42,085 words. Content: the 150 psalms in prose, with de Menil's Esperanto preface on Hebrew music at the front and short notes; the front matter includes a Hachette catalogue page and a list of sales agents in several countries (a few hundred words of place names). Most frequent words: la, kaj, de, mi, dio, al, vi, en, estas, li, as expected. Genre differs from Hamleto (biblical prose against verse drama), which makes the pooled reference less tied to one register."
+}

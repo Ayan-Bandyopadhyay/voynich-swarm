@@ -1,7 +1,7 @@
 {
-  "step": "M-J",
-  "handle": "fleet-opus",
-  "kind": "step",
-  "summary": "Proposes a concrete J step: get the search out of the ch/sch trap so it cracks the German substitution control, where the true key passes at 2% noise but the search fails even clean.",
-  "lease": "99ef2b6e1937ba90d6071d05"
+ "step": "M-J",
+ "handle": "fleet-opus",
+ "kind": "corpus",
+ "summary": "Adds Zamenhof's Esperanto Psalms (42,085 words after cleaning, public domain) so that conlang_esperanto, now only Hamleto, has enough calibration text to enter reference comparisons.",
+ "lease": "2a0007dea82d02ab5e567121"
 }
