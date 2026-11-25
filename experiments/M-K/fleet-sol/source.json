@@ -1,20 +1,20 @@
 {
-  "of": "K-018",
-  "assessment": "agree",
-  "statement": "The catalogue accurately describes the scope and limits of Ardıç’s 2025 Turkish article. The comparison itself is exhibit-based, with selected examples on pp. 87–90, and p. 90 n. 22 points to a companion interpretation for a complete sentence. P. 80 n. 14 points to a separate, explicitly unfinished ATA table. Its methodological notes 5–8 retain alternatives, permit an exception to consistent one-to-one assignment for harmony, acknowledge omitted characters, and say that old and revised values can appear together. Row 10 also relies on an illustrated bridge traversal order. The separate f33v proceedings article, version pp. 15–16, proposes distinct endings for the first line and displays slash-separated alternatives at five of the seven positions of the first-line transliteration. Taking those alternatives literally gives 108 combinations before applying contextual constraints. These examples document the discretion a fixed, independently reproducible projection would need to resolve.",
-  "source": "https://turkkulturu.org.tr/wp-content/uploads/2026/01/Turk-Kulturu-2025-2.pdf",
-  "supporting_material": [
+  "title": "Is f33v a sunflower?",
+  "authors": "Jorge Stolfi",
+  "year": 1998,
+  "url": "https://www.ic.unicamp.br/en/~stolfi/EXPORT/voynich/98-01-17-sunflower/",
+  "summary": "Stolfi makes a feature-by-feature comparison of the f33v plant with cultivated and wild common sunflowers and with Jerusalem artichoke. The institutional web essay separates similarities in the flower heads from discordant leaves, attachment points and underground structures.",
+  "established": [
+    "Stolfi sees a comparatively flat head, small rays, visible bract-like details and diagonal stalks as possible similarities. He reports that only one of the three heads has the flat form and that the large central disk is a weaker match for wild sunflowers.",
+    "He describes the manuscript leaves as radially divided, with rounded tips and an apparently central petiole attachment. His sunflower comparators have a heart- or spade-shaped undivided blade and an edge attachment. He reports a further difference in the disk texture and grounds his rejection chiefly on the leaf morphology.",
+    "Jerusalem artichoke gives an analogy for the enlarged underground structures, with differences in shape, proportion and leaf attachment. Stolfi leaves wider Asteraceae affinity open and observes that the family is not geographically diagnostic."
+  ],
+  "open": [
     {
-      "url": "https://www.turkicresearch.com/files/articles/3070.pdf",
-      "locus": "Methodological notes 5–8 and row 10 on PDF pages 3–4"
-    },
-    {
-      "url": "https://www.turkicresearch.com/files/articles/84985f2e-212e-4b2f-97da-8903cda2a3ba.pdf",
-      "locus": "pp. 15–16, f33v first-line alternatives"
-    },
-    {
-      "url": "https://www.turkicresearch.com/Readings/Detail/1036?type=4",
-      "locus": "The 2025 article’s p. 90 n. 22 example, identified as f42v first line on the linked page"
+      "question": "Can early named sunflower illustrations be distinguished from f33v and matched Old World alternatives by the depicted flower heads, leaf attachments and roots?",
+      "front": "L4",
+      "check": "Compare the Yale f33v scan with dated premodern depictions under separate region codes and masks, including an early securely labeled sunflower such as Dodoens 1568 p. 295 and several premodern Old World images with disk-like heads or apparently central leaf attachment. Treat f93r as a separately proposed sunflower in the O’Neill and Tucker–Talbert tradition and never pool the two folios. Score the whole-plant and head-only matches, record missing regions and prior exposures, and require independent scoring before proposing any label anchor.",
+      "hard": true
     }
   ]
 }
