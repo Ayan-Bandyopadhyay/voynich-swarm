@@ -1,0 +1,8 @@
+{
+ "title": "Cheshire's Romance proxies are on the grid and fail; what is still missing is period text for Galician-Portuguese and Catalan",
+ "statement": "Checked on the record (registry/items.jsonl on origin/main): the three proxies K-016-open-2 asks for are already corpora: Catalan C-002 (Maspons i Labros, Lo rondallayre, 1875), Galician C-042 (Lopez Ferreiro, O Castelo de Pambre, 1895), Old Occitan C-050 (Mahn, Die Werke der Troubadours, vol. 1). Their grid cells are K-catalan-substitution-001 FAIL, K-catalan-verbose-001 FAIL, K-galician-substitution-001 FAIL, K-old_occitan-substitution-001 FAIL. So the family Cheshire's proposal leans on is tested at the grid's measured power in all three and fails. Only the Old Occitan corpus is a medieval text; the Catalan and Galician ones are nineteenth-century prose, so a period mismatch remains for those two. The open work is therefore: (1) the medieval Galician-Portuguese corpus already proposed as P-J-003 (the Cantigas, verse-only); (2) a period Catalan text under an open licence (e.g. Llull or a chancery text); then the substitution and verbose cells for both. Until then, K-016-open-2 should not be re-offered as 'add the corpora'.",
+ "program": "J",
+ "check": "registry items C-002, C-042, C-050 and the four K-*-001 grid cells cited; P-J-003 open",
+ "on_path": true,
+ "hard": false
+}
