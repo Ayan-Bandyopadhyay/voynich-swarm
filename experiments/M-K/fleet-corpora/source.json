@@ -1,30 +1,27 @@
 {
-  "title": "The Voynich Manuscript is Written in Natural Language: The Pahlavi Hypothesis",
-  "authors": "J. Michael Herrmann",
-  "year": 2017,
-  "url": "https://arxiv.org/abs/1709.01634",
-  "proposes_language": "Middle Persian (Pahlavi script)",
-  "summary": "Herrmann argues that the Voynich alphabet is derived from the Iranian Pahlavi script used for Middle Persian: many Voynich glyphs are said to be upside-down Pahlavi letters, others ligatures or additions that resolve Pahlavi's notorious letter ambiguity. He transcribes words from illustration labels and parts of the main text with the proposed letter table and matches several to terms from Zoroastrian cosmology (the Bundahishn) and a Pahlavi dictionary. He explicitly does not attempt a translation.",
+  "title": "ATA Elyazması ve Osmanlı Tuğrasında Hece Harflerinin Çok Heceli Yapılanışı: Yapısal Bir Karşılaştırma (Multisyllabic Structuring of Syllable-Letters in the ATA Manuscript and the Ottoman Tughra: A Structural Comparison)",
+  "authors": "Ahmet Ardıç",
+  "year": 2025,
+  "url": "https://turkkulturu.org.tr/wp-content/uploads/2026/01/Turk-Kulturu-2025-2.pdf",
+  "venue": "Türk Kültürü 18(2): 71-108 (Türk Kültürünü Araştırma Enstitüsü); the url is the full open issue PDF, the article starts on p. 71",
+  "proposes_language": "Old Turkish (Old Anatolian / early Ottoman Turkish)",
+  "summary": "Ardıç, an independent researcher who calls the manuscript the 'ATA manuscript', treats Voynich glyphs as syllable-letters with phonetic values in Turkish and argues that multi-syllable word signs are built like the Ottoman tughra, pointing to a tughra design in a childhood notebook attributed to Mehmed II and to secret alphabets of his era. He presents the work as findings at the current stage of a longer research programme (earlier readings 2018-2023, including folio 33v) and opens them to discussion; it is written in Turkish with an English abstract.",
   "established": [
-    "The paper proposes a glyph-to-Pahlavi letter table (Table 1) based on letter-shape comparison, with many Voynich glyphs taken as rotated Pahlavi letters; the evidence is visual similarity plus a few dozen label and text words read with the table, not a statistical or held-out test.",
-    "Several transcribed label words, mainly in the astronomical and cosmological sections, are matched to names and terms of Zoroastrian cosmology in the Bundahishn and to Pahlavi dictionary entries; the author calls the transcription tentative and says only a few words have been presented.",
-    "The author states there is no evidence that the manuscript was produced in Persia or western India, raises a Black Sea origin as possible, and leaves open whether other idioms (e.g. Parsi Gujarati) are present."
+    "The article proposes visual and structural parallels between Voynich syllable-letters and Ottoman tughra construction, especially a tughra in a notebook attributed to the young Mehmed II; the evidence is side-by-side glyph comparison, not a statistical or held-out test.",
+    "It uses the author's ATA transliteration table, in which glyphs carry Turkish phonetic values; for example it chooses to show a P/B distinction in the table on the argument that P shifted to B or F in some Turkic dialects over 600 years, and says the author's exact sound inventory is not settled.",
+    "It claims that read with this table the text follows Turkish phonetic and morphological rules and that Old Turkish words, plant and animal names match in sound and meaning; the article presents these as matches for readers to examine, and does not give a complete key or a translation of a full passage."
   ],
   "open": [
     {
-      "question": "Does Herrmann's glyph-to-Pahlavi table, frozen as a substitution key, read the hidden pages better than its decoys against a Middle Persian corpus? Openly licensed text: I found no Middle Persian (Pahlavi) transliteration under an explicit open licence at a stable plain-text url; the large digital transliterations (e.g. TITUS, the Bochum MPCD project) do not state cc licences, and E. W. West's 1880-1897 Pahlavi Texts (Sacred Books of the East, public domain) are English translations, not Pahlavi. So no corpus yet; modern Persian (cc-by-sa Wikipedia, many millions of characters) would only be a distant proxy.",
+      "question": "Does Ardıç's ATA transliteration table, frozen as a syllabic or substitution key, read the hidden pages better than its decoys against a Turkish corpus? Openly licensed text: I found no openly licensed Old Anatolian or 15th-century Ottoman Turkish transcription in a single plain-text file; modern Turkish is plentiful (Turkish Wikipedia, cc-by-sa, many millions of characters; public-domain modern texts) but is 600 years later. Syllabic families also lack measured power on the grid today (program J).",
       "front": "J",
-      "check": "Pin an openly licensed Middle Persian transliteration of 150,000+ characters (kind corpus), then score the frozen table as a key.",
+      "check": "Pin a Turkish corpus (period if one can be found), then score the frozen ATA table as a key with the usual decoys.",
       "hard": true
     },
     {
-      "question": "Can a complete phonemic account and translation of more than a few words be given with the proposed table? The author says this needs substantial effort from Pahlavi philologists and is not attempted.",
-      "front": "L5",
-      "hard": true
-    },
-    {
-      "question": "Are the astronomical charts consistent with Bundahishn cosmology rather than Arabic or Latin astronomy, as the author suggests, when compared blind on the scans?",
+      "question": "Are the proposed tughra parallels specific to the Voynich glyphs, or would blinded comparison find similar parallels between the tughra and other 15th-century scripts of the same stroke inventory?",
       "front": "L4",
+      "check": "Blinded multi-annotator comparison of the cited glyph and tughra images against control scripts.",
       "hard": true
     }
   ]
