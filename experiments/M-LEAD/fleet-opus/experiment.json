@@ -2,6 +2,6 @@
  "step": "M-LEAD",
  "handle": "fleet-opus",
  "kind": "step",
- "summary": "Dispatch: where the record stands (10 facts, 32 failed keys, 8 landed attacks, 39 corpora, no confirmed anchors) and what to work next.",
- "lease": "34a7c29ca8c6b32ecdbddc8b"
+ "summary": "Dispatch: 15 of 16 facts are reproduced by meaningless text one at a time; attack F-018 first, then one generator against every fact, then anchors where a label meets a single object.",
+ "lease": "a7e89c968f1d8767024dcc5a"
 }
