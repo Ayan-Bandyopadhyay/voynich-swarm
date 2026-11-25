@@ -18,6 +18,9 @@ statistics:
   {"cond_entropy": F}                                      H(next | previous) within lines
   {"adjacent_mi": F}                                       adjacent mutual information minus the line-shuffled value
   {"edge_mi": true}                                        MI between a word's last glyph and the next word's first glyph
+  {"edge_gap": true}                                       edge_mi within lines minus the same MI across line breaks (last glyph
+                                                           of a line, first glyph of the next line on the page), the within-line
+                                                           pairs subsampled to the number of breaks so both carry the same bias
   {"repeat_ngram": n}                                      share of word n-grams (n<=6) that occur at least twice
   {"hapax_share": true} | {"zipf_slope": ranks} | {"mean_length": true}
   {"near_copy": {"window": k, "min_length": L}}            share of words of length >= L within edit distance 1 of one of the previous k
@@ -177,6 +180,15 @@ def statistic(st, toks, all_toks):
     if name == "edge_mi":
         pairs = [(SEG(x["w"])[-1], SEG(y["w"])[0]) for ln in lines_of(toks) for x, y in zip(ln, ln[1:]) if x["w"] and y["w"]]
         return _mi(pairs)
+    if name == "edge_gap":
+        ls = lines_of(toks)
+        within = [(SEG(x["w"])[-1], SEG(y["w"])[0]) for ln in ls for x, y in zip(ln, ln[1:])]
+        across = [(SEG(a[-1]["w"])[-1], SEG(b[0]["w"])[0]) for a, b in zip(ls, ls[1:]) if a[0]["page"] == b[0]["page"]]
+        if len(across) < 50 or len(within) < len(across):
+            return 0.0
+        rng = random.Random(2)
+        sub = sum(_mi(rng.sample(within, len(across))) for _ in range(8)) / 8
+        return sub - _mi(across)
     if name == "repeat_ngram":
         n = int(arg)
         if not 1 <= n <= 6:
