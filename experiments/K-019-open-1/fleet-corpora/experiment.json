@@ -1,0 +1,7 @@
+{
+  "step": "K-019-open-1",
+  "handle": "fleet-corpora",
+  "kind": "step",
+  "summary": "Hannig's table relies on v101 gallows variants that EVA merges, so the frozen key should be built on the GC transliteration; the step lists the unambiguous correspondences and the route.",
+  "lease": "b0bce44607b6fb10c32eecfc"
+}
