@@ -109,6 +109,19 @@ def _manuscript_4grams():
     return out
 
 
+def _count_openers(pages):
+    """Lines that open a paragraph, counted as vs/dsl.py tokens() marks para_first_line."""
+    n = 0
+    for p in pages:
+        first_line = True
+        for ln in p.lines:
+            if not ln.words:
+                continue
+            n += ln.unit == "P" and (ln.para_start or first_line)
+            first_line = ln.para_end if ln.unit == "P" else first_line
+    return n
+
+
 def fact_attack(fact_id, lines, split, fact_item=None, cut="tokens", first_lines=None):
     """lines: list of lists of words (the attacker's synthetic text). fact_item: the
     registry item for the target fact (its detail holds the metric and params).
@@ -122,6 +135,14 @@ def fact_attack(fact_id, lines, split, fact_item=None, cut="tokens", first_lines
                table method writing on a page does, be tested against positional facts.
                Page and line metadata (section, language, unit, paragraph marks) stay the
                evaluation pages'.
+      "book":  as "lines", but the text is laid onto EVERY page of the manuscript in order and the
+               fact is then measured on the evaluation pages only, each holding the lines that fell
+               on it. With "lines" the text runs end to end over a sample of pages, so two evaluation
+               pages that stand fifteen pages apart receive text written a page or two apart, and a
+               short memory passes for long-range structure (P-G-007: a drift-free text passes F-011
+               that way and fails it once the book is sampled). "book" asks the procedure to write
+               the whole book and reads the sampled pages of it. The line counts it needs are the whole
+               manuscript's, which are public; nothing about the evaluation pages is revealed.
 
     first_lines (optional, only with cut "lines"): lines the procedure wrote as the first line of a
                paragraph. Each evaluation line that opens a paragraph (the measurement language's
@@ -137,6 +158,8 @@ def fact_attack(fact_id, lines, split, fact_item=None, cut="tokens", first_lines
     shared = sum(w in types for w in toks) / max(len(toks), 1)
     train, ev = corpus.split_pages(split)
     need = sum(len(ln.words) for p in ev for ln in p.lines)
+    ev_ids = {p.id for p in ev}
+    target = list(corpus.pages()) if cut == "book" else ev      # the pages the text is laid onto, in order
     guard = []
     if copied:
         guard.append(f"{copied} four-word runs copied from the manuscript")
@@ -144,16 +167,24 @@ def fact_attack(fact_id, lines, split, fact_item=None, cut="tokens", first_lines
     if marked:
         guard.append(f"{marked} tokens carry uncertainty markers (? or *): synthetic text may not use them "
                      "(they are a transcription convention, and metrics skip them; found by the red team, R-003)")
-    if cut not in ("tokens", "lines"):
-        guard.append(f"cut must be 'tokens' or 'lines', got {cut!r}")
+    if cut not in ("tokens", "lines", "book"):
+        guard.append(f"cut must be 'tokens', 'lines' or 'book', got {cut!r}")
+    elif cut == "book":
+        openers = _count_openers(target)
+        total = sum(1 for p in target for ln in p.lines if ln.words)
+        need_plain = total - openers if first_lines else total
+        if len(lines) < need_plain:
+            guard.append(f"cut 'book' needs at least {need_plain} lines to fill every page of the manuscript, got {len(lines)}")
+        if first_lines and len(first_lines) < openers:
+            guard.append(f"cut 'book' needs at least {openers} first_lines (the manuscript's paragraph-opening lines), got {len(first_lines)}")
     elif cut == "lines":
         need_lines = sum(1 for p in ev for ln in p.lines if ln.words)
         if len(lines) < need_lines:
             guard.append(f"cut 'lines' needs at least {need_lines} lines to fill the evaluation pages, got {len(lines)}")
         if first_lines and len(first_lines) < need_lines:
             guard.append(f"first_lines needs at least {need_lines} lines (any line may open a paragraph), got {len(first_lines)}")
-    if first_lines and cut != "lines":
-        guard.append("first_lines needs cut 'lines'")
+    if first_lines and cut not in ("lines", "book"):
+        guard.append("first_lines needs cut 'lines' or 'book'")
     elif len(toks) < need:
         guard.append(f"needs at least {need} tokens to fill the evaluation pages, got {len(toks)}")
     if guard:
@@ -162,21 +193,22 @@ def fact_attack(fact_id, lines, split, fact_item=None, cut="tokens", first_lines
     lit = iter(lines)
     fit = iter(first_lines)
     fake = []
-    for p in ev:
+    for p in target:
         q = Page(p.id, p.order, dict(p.meta))
         first_line = True                      # as vs/dsl.py tokens(): para_first_line
         for ln in p.lines:
             opens = bool(ln.words) and ln.unit == "P" and (ln.para_start or first_line)
             if ln.words:
                 first_line = ln.para_end if ln.unit == "P" else first_line
-            if cut == "lines" and first_lines and opens:
+            if cut in ("lines", "book") and first_lines and opens:
                 ws = list(next(fit))
-            elif cut == "lines":
+            elif cut in ("lines", "book"):
                 ws = list(next(lit)) if ln.words else []
             else:
                 ws = [next(it) for _ in ln.words]
             q.lines.append(Line(ln.id, ln.page, ln.n, ln.unit, ln.subtype, ws, ln.para_start, ln.para_end))
-        fake.append(q)
+        if p.id in ev_ids:                     # with cut "book" the other pages only take up their share of the text
+            fake.append(q)
     if fact_item is None:
         from . import registry
         fact_item = registry.get(fact_id)
