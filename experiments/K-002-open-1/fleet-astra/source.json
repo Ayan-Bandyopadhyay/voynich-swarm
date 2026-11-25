@@ -1,0 +1,532 @@
+{
+  "of": "K-002",
+  "assessment": "agree",
+  "statement": "On three independently planted pairs at 2% transcription noise, a frozen pooled search recovered 0.51–1.43% of Hebrew words and 3.42–4.60% of Arabic words. Giving it table membership improved Arabic recovery to 4.15–42.46%. The planted keys themselves recovered over 91% in both languages, yet failed the judge on each stratum. These controls provide no basis for excluding historical Hebrew or Arabic nomenclators.",
+  "methods": [
+    "Freeze the solver and marked nomenclator control generator at ed0813075342fad01c4df4abdce1fdd37eb83de5 (PR 162). Fit four restarts of 6,000 iterations, seed 1404, tag control, with default family-specific settings. The pinned reference language models come from the experiment branch base, f01ff640adbf4e991eecdbbd4a6c680464fa19bb. The solver never trains its target language models on the study texts.",
+    "Select the independent 12th-century sources before running the solver. For the Hebrew text concatenate the arrays of text, remove HTML tags and normalize with vs.refcorpus.normalize. For the Arabic text discard the OpenITI metadata header, remove characters outside the Arabic Unicode block except whitespace, map wasla alif to alif and alif maqsura to ya, discard tatweel, and apply the standard Arabic normalization. Filter whole words containing out-of-alphabet letters. Use the first 19,200 surviving words per text. Restrict the Arabic encoder to the 30 target letters remaining after the two mergers. The frozen Arabic solver retains its standard alphabet.",
+    "For each run s=0,1,2 independently generate two complete marked nomenclator encryptions of the same source with controls.make, seeds 2s and 2s+1, 2% replacement noise. Supply the independent source through control_text and set the generator alphabet as above. The two codes have separate spelling and marked word tables; both have the generator's 24 frequent word entries. Select pages from the first encryption on even page orders and the second on odd orders. Fix eight words per line, ten lines per page. Reserve pages with index modulo 7 equal to 3 for synthetic evaluation. All runs use the identical plaintext, layout, and evaluation positions.",
+    "Compare one pooled search (16,480 training words) with two searches informed of table membership (8,240 each). Each search uses the same per-fit budget, so the informed comparison has twice the total fitting budget. Score each informed fit on only its own synthetic pages. Decode tokens with the family implementation, compare complete words to the pre-noise normalized plaintext, and run the standard judge independently. The pooled sample has 2,720 evaluation words, each stratum has 1,360. The planted-key results expose domain and compression limitations of the reference models. The experiment tests marked word groups and page-alternating tables only. It does not reproduce the full historical model or assess manuscript pages."
+  ],
+  "sources": [
+    {
+      "title": "Maimonides, Mishneh Torah, Sabbath. Sefaria Hebrew export, Torat Emet 363.",
+      "url": "https://storage.googleapis.com/sefaria-export/json/Halakhah/Mishneh%20Torah/Sefer%20Zemanim/Mishneh%20Torah%2C%20Sabbath/Hebrew/merged.json",
+      "sha256": "f95e9d86cc1529839464b32bb576bcfe89adee5091848ca8eae182e35cea69bb"
+    },
+    {
+      "title": "Al-Ghazali, Ihya ulum al-din. OpenITI, Shamela0009472.",
+      "url": "https://raw.githubusercontent.com/OpenITI/0525AH/6290621b58e063ed1aa47ffd0a6fc1630191e7cb/data/0505Ghazali/0505Ghazali.IhyaCulumDin/0505Ghazali.IhyaCulumDin.Shamela0009472-ara1.completed",
+      "sha256": "e60d73c72033e5ca1be5ac3bf52f5fa5057aa4a3d1c750f26b9301b6b97e8997"
+    }
+  ],
+  "results": [
+    {
+      "language": "hebrew",
+      "seed": 0,
+      "mode": "planted0",
+      "training_words": 8240,
+      "evaluation_words": 1360,
+      "exact_words": 1236,
+      "passes_without_anchors": false,
+      "savings": -0.14667,
+      "failures": [
+        "a_compresses",
+        "b_reads",
+        "kill_tests",
+        "c_pictures"
+      ]
+    },
+    {
+      "language": "hebrew",
+      "seed": 0,
+      "mode": "planted1",
+      "training_words": 8240,
+      "evaluation_words": 1360,
+      "exact_words": 1270,
+      "passes_without_anchors": false,
+      "savings": -0.14499,
+      "failures": [
+        "a_compresses",
+        "b_reads",
+        "kill_tests",
+        "c_pictures",
+        "d_not_illusion"
+      ]
+    },
+    {
+      "language": "hebrew",
+      "seed": 0,
+      "mode": "pooled",
+      "training_words": 16480,
+      "evaluation_words": 2720,
+      "exact_words": 14,
+      "passes_without_anchors": false,
+      "savings": -0.14535,
+      "failures": [
+        "a_compresses",
+        "b_reads",
+        "kill_tests",
+        "c_pictures",
+        "d_not_illusion"
+      ]
+    },
+    {
+      "language": "hebrew",
+      "seed": 0,
+      "mode": "known_table0",
+      "training_words": 8240,
+      "evaluation_words": 1360,
+      "exact_words": 20,
+      "passes_without_anchors": false,
+      "savings": -0.21624,
+      "failures": [
+        "a_compresses",
+        "b_reads",
+        "kill_tests",
+        "c_pictures",
+        "d_not_illusion"
+      ]
+    },
+    {
+      "language": "hebrew",
+      "seed": 0,
+      "mode": "known_table1",
+      "training_words": 8240,
+      "evaluation_words": 1360,
+      "exact_words": 24,
+      "passes_without_anchors": false,
+      "savings": -0.21691,
+      "failures": [
+        "a_compresses",
+        "b_reads",
+        "kill_tests",
+        "c_pictures",
+        "d_not_illusion"
+      ]
+    },
+    {
+      "language": "hebrew",
+      "seed": 1,
+      "mode": "planted0",
+      "training_words": 8240,
+      "evaluation_words": 1360,
+      "exact_words": 1253,
+      "passes_without_anchors": false,
+      "savings": -0.14433,
+      "failures": [
+        "a_compresses",
+        "b_reads",
+        "kill_tests",
+        "c_pictures"
+      ]
+    },
+    {
+      "language": "hebrew",
+      "seed": 1,
+      "mode": "planted1",
+      "training_words": 8240,
+      "evaluation_words": 1360,
+      "exact_words": 1249,
+      "passes_without_anchors": false,
+      "savings": -0.17641,
+      "failures": [
+        "a_compresses",
+        "b_reads",
+        "kill_tests",
+        "c_pictures",
+        "d_not_illusion"
+      ]
+    },
+    {
+      "language": "hebrew",
+      "seed": 1,
+      "mode": "pooled",
+      "training_words": 16480,
+      "evaluation_words": 2720,
+      "exact_words": 25,
+      "passes_without_anchors": false,
+      "savings": -0.14612,
+      "failures": [
+        "a_compresses",
+        "b_reads",
+        "kill_tests",
+        "c_pictures",
+        "d_not_illusion"
+      ]
+    },
+    {
+      "language": "hebrew",
+      "seed": 1,
+      "mode": "known_table0",
+      "training_words": 8240,
+      "evaluation_words": 1360,
+      "exact_words": 51,
+      "passes_without_anchors": false,
+      "savings": -0.22288,
+      "failures": [
+        "a_compresses",
+        "b_reads",
+        "kill_tests",
+        "c_pictures",
+        "d_not_illusion"
+      ]
+    },
+    {
+      "language": "hebrew",
+      "seed": 1,
+      "mode": "known_table1",
+      "training_words": 8240,
+      "evaluation_words": 1360,
+      "exact_words": 35,
+      "passes_without_anchors": false,
+      "savings": -0.23455,
+      "failures": [
+        "a_compresses",
+        "b_reads",
+        "kill_tests",
+        "c_pictures",
+        "d_not_illusion"
+      ]
+    },
+    {
+      "language": "hebrew",
+      "seed": 2,
+      "mode": "planted0",
+      "training_words": 8240,
+      "evaluation_words": 1360,
+      "exact_words": 1258,
+      "passes_without_anchors": false,
+      "savings": -0.14214,
+      "failures": [
+        "a_compresses",
+        "b_reads",
+        "kill_tests",
+        "c_pictures"
+      ]
+    },
+    {
+      "language": "hebrew",
+      "seed": 2,
+      "mode": "planted1",
+      "training_words": 8240,
+      "evaluation_words": 1360,
+      "exact_words": 1250,
+      "passes_without_anchors": false,
+      "savings": -0.16455,
+      "failures": [
+        "a_compresses",
+        "b_reads",
+        "kill_tests",
+        "c_pictures",
+        "d_not_illusion"
+      ]
+    },
+    {
+      "language": "hebrew",
+      "seed": 2,
+      "mode": "pooled",
+      "training_words": 16480,
+      "evaluation_words": 2720,
+      "exact_words": 39,
+      "passes_without_anchors": false,
+      "savings": -0.16152,
+      "failures": [
+        "a_compresses",
+        "b_reads",
+        "kill_tests",
+        "c_pictures",
+        "d_not_illusion"
+      ]
+    },
+    {
+      "language": "hebrew",
+      "seed": 2,
+      "mode": "known_table0",
+      "training_words": 8240,
+      "evaluation_words": 1360,
+      "exact_words": 105,
+      "passes_without_anchors": false,
+      "savings": -0.23149,
+      "failures": [
+        "a_compresses",
+        "b_reads",
+        "kill_tests",
+        "c_pictures",
+        "d_not_illusion"
+      ]
+    },
+    {
+      "language": "hebrew",
+      "seed": 2,
+      "mode": "known_table1",
+      "training_words": 8240,
+      "evaluation_words": 1360,
+      "exact_words": 27,
+      "passes_without_anchors": false,
+      "savings": -0.23287,
+      "failures": [
+        "a_compresses",
+        "b_reads",
+        "kill_tests",
+        "c_pictures",
+        "d_not_illusion"
+      ]
+    },
+    {
+      "language": "arabic",
+      "seed": 0,
+      "mode": "planted0",
+      "training_words": 8240,
+      "evaluation_words": 1360,
+      "exact_words": 1246,
+      "passes_without_anchors": false,
+      "savings": -0.23992,
+      "failures": [
+        "a_compresses",
+        "b_reads",
+        "kill_tests",
+        "c_pictures",
+        "d_not_illusion"
+      ]
+    },
+    {
+      "language": "arabic",
+      "seed": 0,
+      "mode": "planted1",
+      "training_words": 8240,
+      "evaluation_words": 1360,
+      "exact_words": 1250,
+      "passes_without_anchors": false,
+      "savings": -0.25935,
+      "failures": [
+        "a_compresses",
+        "b_reads",
+        "kill_tests",
+        "c_pictures",
+        "d_not_illusion"
+      ]
+    },
+    {
+      "language": "arabic",
+      "seed": 0,
+      "mode": "pooled",
+      "training_words": 16480,
+      "evaluation_words": 2720,
+      "exact_words": 125,
+      "passes_without_anchors": false,
+      "savings": -0.21261,
+      "failures": [
+        "a_compresses",
+        "b_reads",
+        "kill_tests",
+        "c_pictures",
+        "d_not_illusion"
+      ]
+    },
+    {
+      "language": "arabic",
+      "seed": 0,
+      "mode": "known_table0",
+      "training_words": 8240,
+      "evaluation_words": 1360,
+      "exact_words": 627,
+      "passes_without_anchors": false,
+      "savings": -0.28441,
+      "failures": [
+        "a_compresses",
+        "b_reads",
+        "kill_tests",
+        "c_pictures",
+        "d_not_illusion"
+      ]
+    },
+    {
+      "language": "arabic",
+      "seed": 0,
+      "mode": "known_table1",
+      "training_words": 8240,
+      "evaluation_words": 1360,
+      "exact_words": 528,
+      "passes_without_anchors": false,
+      "savings": -0.32396,
+      "failures": [
+        "a_compresses",
+        "b_reads",
+        "kill_tests",
+        "c_pictures",
+        "d_not_illusion"
+      ]
+    },
+    {
+      "language": "arabic",
+      "seed": 1,
+      "mode": "planted0",
+      "training_words": 8240,
+      "evaluation_words": 1360,
+      "exact_words": 1250,
+      "passes_without_anchors": false,
+      "savings": -0.23036,
+      "failures": [
+        "a_compresses",
+        "b_reads",
+        "kill_tests",
+        "c_pictures",
+        "d_not_illusion"
+      ]
+    },
+    {
+      "language": "arabic",
+      "seed": 1,
+      "mode": "planted1",
+      "training_words": 8240,
+      "evaluation_words": 1360,
+      "exact_words": 1233,
+      "passes_without_anchors": false,
+      "savings": -0.25421,
+      "failures": [
+        "a_compresses",
+        "b_reads",
+        "kill_tests",
+        "c_pictures",
+        "d_not_illusion"
+      ]
+    },
+    {
+      "language": "arabic",
+      "seed": 1,
+      "mode": "pooled",
+      "training_words": 16480,
+      "evaluation_words": 2720,
+      "exact_words": 93,
+      "passes_without_anchors": false,
+      "savings": -0.23277,
+      "failures": [
+        "a_compresses",
+        "b_reads",
+        "kill_tests",
+        "c_pictures",
+        "d_not_illusion"
+      ]
+    },
+    {
+      "language": "arabic",
+      "seed": 1,
+      "mode": "known_table0",
+      "training_words": 8240,
+      "evaluation_words": 1360,
+      "exact_words": 404,
+      "passes_without_anchors": false,
+      "savings": -0.29592,
+      "failures": [
+        "a_compresses",
+        "b_reads",
+        "kill_tests",
+        "c_pictures",
+        "d_not_illusion"
+      ]
+    },
+    {
+      "language": "arabic",
+      "seed": 1,
+      "mode": "known_table1",
+      "training_words": 8240,
+      "evaluation_words": 1360,
+      "exact_words": 524,
+      "passes_without_anchors": false,
+      "savings": -0.3192,
+      "failures": [
+        "a_compresses",
+        "b_reads",
+        "kill_tests",
+        "c_pictures",
+        "d_not_illusion"
+      ]
+    },
+    {
+      "language": "arabic",
+      "seed": 2,
+      "mode": "planted0",
+      "training_words": 8240,
+      "evaluation_words": 1360,
+      "exact_words": 1248,
+      "passes_without_anchors": false,
+      "savings": -0.24617,
+      "failures": [
+        "a_compresses",
+        "b_reads",
+        "kill_tests",
+        "c_pictures",
+        "d_not_illusion"
+      ]
+    },
+    {
+      "language": "arabic",
+      "seed": 2,
+      "mode": "planted1",
+      "training_words": 8240,
+      "evaluation_words": 1360,
+      "exact_words": 1234,
+      "passes_without_anchors": false,
+      "savings": -0.25364,
+      "failures": [
+        "a_compresses",
+        "b_reads",
+        "kill_tests",
+        "c_pictures",
+        "d_not_illusion"
+      ]
+    },
+    {
+      "language": "arabic",
+      "seed": 2,
+      "mode": "pooled",
+      "training_words": 16480,
+      "evaluation_words": 2720,
+      "exact_words": 97,
+      "passes_without_anchors": false,
+      "savings": -0.20766,
+      "failures": [
+        "a_compresses",
+        "b_reads",
+        "kill_tests",
+        "c_pictures",
+        "d_not_illusion"
+      ]
+    },
+    {
+      "language": "arabic",
+      "seed": 2,
+      "mode": "known_table0",
+      "training_words": 8240,
+      "evaluation_words": 1360,
+      "exact_words": 59,
+      "passes_without_anchors": false,
+      "savings": -0.26633,
+      "failures": [
+        "a_compresses",
+        "b_reads",
+        "kill_tests",
+        "c_pictures",
+        "d_not_illusion"
+      ]
+    },
+    {
+      "language": "arabic",
+      "seed": 2,
+      "mode": "known_table1",
+      "training_words": 8240,
+      "evaluation_words": 1360,
+      "exact_words": 54,
+      "passes_without_anchors": false,
+      "savings": -0.30629,
+      "failures": [
+        "a_compresses",
+        "b_reads",
+        "kill_tests",
+        "c_pictures",
+        "d_not_illusion"
+      ]
+    }
+  ]
+}
