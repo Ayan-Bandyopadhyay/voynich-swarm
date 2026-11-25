@@ -1242,9 +1242,9 @@
   "language": "conlang_esperanto",
   "family": "substitution",
   "control": "homophonic",
-  "true_key_passes": false,
-  "search_cracks_control": false,
-  "added_with": "conlang_esperanto_4c5b5c9c"
+  "true_key_passes": true,
+  "search_cracks_control": true,
+  "added_with": "conlang_esperanto_05aac0f3"
  },
  {
   "language": "conlang_esperanto",
@@ -1252,6 +1252,6 @@
   "control": "verbose",
   "true_key_passes": false,
   "search_cracks_control": false,
-  "added_with": "conlang_esperanto_4c5b5c9c"
+  "added_with": "conlang_esperanto_05aac0f3"
  }
 ]

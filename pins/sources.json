@@ -966,6 +966,19 @@
       "license": "public-domain",
       "encoding": "utf-8",
       "added_by": "fleet-opus"
+    },
+    {
+      "id": "conlang_esperanto_05aac0f3",
+      "lang": "conlang_esperanto",
+      "period": "Esperanto, a constructed language of 1887; this translation published 1908",
+      "title": "La Psalmaro el la Biblio, translated from the Hebrew into Esperanto by L. L. Zamenhof, with a preface and notes by F. de Menil (Paris: Hachette, 1908), archive.org OCR text of the Biblioteka Glowna KUL copy",
+      "url": "https://archive.org/download/dlibra.kul.pl.39594_Esper--510-II_La-Psalmaro-el-la-Bi/39594_Esper--510-II_La-Psalmaro-el-la-Bi_djvu.txt",
+      "file": "data/raw/agent_conlang_esperanto_05aac0f3.txt",
+      "bytes": 274845,
+      "sha256": "05aac0f3220a7cda9dfaab0a5f52de055859abbc19f0b5c76354c795875d3210",
+      "license": "public-domain",
+      "encoding": "utf-8",
+      "added_by": "fleet-opus"
     }
   ],
   "missing_corpora": {
