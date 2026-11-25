@@ -1,0 +1,10 @@
+{
+  "language": "gothic",
+  "title": "Gothic Bible of Bishop Wulfila (surviving New Testament fragments), Gothic script, one verse per line",
+  "period": "4th century (Wulfila's translation; surviving in 6th-century manuscripts), Gothic",
+  "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/Wulfila.txt",
+  "sha256": "ddac438d7ed6d26032a7c138cde7fb8add8e8c77e7bc4359c2478672d815aeca",
+  "license": "public-domain",
+  "encoding": "utf-8",
+  "notes": "License stated as 'Public Domain' in the source README at https://github.com/scrollmapper/bible_databases/blob/59b18c5af5845728c275d5b7178ad0d024172b1f/sources/got/Wulfila/README.md (scrollmapper/bible_databases, files from the CrossWire SWORD module Wulfila). The url pins a fixed commit, so the bytes do not change. 1,701,636 bytes; one verse per line as '[c:v] text' with '### Book' headings in English (66 short headings, negligible). vs/refcorpus.normalize(..., 'gothic') gives 408,256 characters. In Unicode Gothic letters (U+10330 block)."
+}
