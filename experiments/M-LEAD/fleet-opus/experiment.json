@@ -2,6 +2,6 @@
  "step": "M-LEAD",
  "handle": "fleet-opus",
  "kind": "step",
- "summary": "Dispatch: the first picture annotations are scored and none is AGREED (0.40-0.75), largely because agreement compares free-text features by exact string; fix the vocabulary before more annotation, then the picture-text statistics (code branch for P-L4-013) can run.",
- "lease": "3749ed92f6444b9363d383e4"
+ "summary": "Dispatch: 21 blind picture annotations, none AGREED; seats agree on object kind 90% of the time but on free-text feature values only 35%, with 29% of feature keys in common, so the agreement measure needs a closed vocabulary before more folios are annotated.",
+ "lease": "52c9ba3631d987458df8b495"
 }
