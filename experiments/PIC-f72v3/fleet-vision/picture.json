@@ -1,0 +1,73 @@
+{
+ "folio": "f72v3",
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006204",
+ "blind": true,
+ "statement": "Left wheel on canvas 1006204 (72v, part), drawn in faint ink; its left side runs across a fold. Centre: a heavy-chested four-legged animal facing left with large round ears, an open mouth with the tongue out, clawed feet and a long tail curving down between the hind legs, outlined in ink with light blue streaks and a round red spot on the flank; a small upright sprig above its back and a short word in another script below it (not read). Around it an inner ring of about 12 and an outer ring of about 18 nude women, drawn radially with feet toward the centre, each tied to an eight-pointed ochre star; none in tubs. A vertical line of brown spots along the fold looks like staining. Choosing the panel: the 72v wheels are f72v3, f72v2 and f72v1, and the transcription's page-position variables ($P=H, I, J) put them in that order left to right; f72v1 (J) is the separate canvas 1006205, so this left wheel of 1006204 is f72v3. Its label blocks are 18 (f72v3.2-19) and 12 (21-32), matching the outer and inner rings. Limits: the ring figures are faint and overlap, so each ring is recorded as one group with its approximate count and label block; no label is attached to a single figure, because which line goes with which figure cannot be fixed from line ids without reading the words.",
+ "objects": [
+  {
+   "id": "outer_ring_figures",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "count": "about 18 (faint, overlapping outlines, left part crossing the fold; not resolved one by one)",
+    "clothing": "nude",
+    "container": "none",
+    "star": "attached",
+    "posture": "radial, feet toward the centre",
+    "colour": "uncoloured",
+    "label_group": "f72v3.2-19"
+   },
+   "label": null
+  },
+  {
+   "id": "inner_ring_figures",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "count": "about 12 (faint, overlapping outlines; not resolved one by one)",
+    "clothing": "nude",
+    "container": "none",
+    "star": "attached",
+    "posture": "radial, feet toward the centre",
+    "colour": "uncoloured",
+    "label_group": "f72v3.21-32"
+   },
+   "label": null
+  },
+  {
+   "id": "centre_animal",
+   "kind": "animal",
+   "features": {
+    "ring": "centre",
+    "body": "four-legged, heavy-chested, clawed feet",
+    "head": "large, round ears, open mouth with tongue out",
+    "tail": "long, curved down between the hind legs",
+    "facing": "left",
+    "colour": "ink with light blue streaks",
+    "note": "a round red spot on the flank by the hind leg; a short word in a non-Voynich script below it (not read)",
+    "count": "1"
+   },
+   "label": null
+  },
+  {
+   "id": "centre_sprig",
+   "kind": "plant",
+   "features": {
+    "ring": "centre",
+    "shape": "small upright sprig of fine strokes above the animal's back",
+    "colour": "uncoloured"
+   },
+   "label": null
+  },
+  {
+   "id": "stains",
+   "kind": "other",
+   "features": {
+    "shape": "a vertical line of brown spots along the fold left of the inner ring, and scattered small ochre dots",
+    "colour": "brown and ochre",
+    "note": "appear to be stains, not drawing"
+   },
+   "label": null
+  }
+ ]
+}
