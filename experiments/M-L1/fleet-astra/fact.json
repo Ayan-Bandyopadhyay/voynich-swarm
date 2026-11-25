@@ -1,0 +1,37 @@
+{
+  "title": "Cross-word edge-glyph association in Hand 2 paragraph lines",
+  "statement": "In Hand 2 paragraph lines, the last glyph of a certain word and the first glyph of the next retained word carry at least one eighth of a bit of mutual information, above both within-line and within-page word shuffles.",
+  "source": "K-001 (Rozanova and Temerev, 2026), with a Hand 2 restriction and two permutation nulls.",
+  "spec": {
+    "scope": {
+      "hand": "2"
+    },
+    "select": {
+      "unit": [
+        "P"
+      ],
+      "certain": true
+    },
+    "statistic": {
+      "edge_mi": true
+    },
+    "compare": [
+      {
+        "op": ">=",
+        "value": 0.125
+      },
+      {
+        "null": "shuffle_within_line",
+        "direction": "greater",
+        "perms": 199,
+        "p": 0.01
+      },
+      {
+        "null": "shuffle_within_page",
+        "direction": "greater",
+        "perms": 199,
+        "p": 0.01
+      }
+    ]
+  }
+}
