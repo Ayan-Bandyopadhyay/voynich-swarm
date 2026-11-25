@@ -1,0 +1,61 @@
+{
+ "id": "grid-romanian-substitution-cell",
+ "family": "substitution",
+ "segmentation": "eva-basic",
+ "target": {
+  "language": "romanian",
+  "period": "grid search"
+ },
+ "key": {
+  "map": {
+   "*": "i",
+   "?": "i",
+   "a": "a",
+   "b": "i",
+   "c": "i",
+   "cfh": "t",
+   "ch": "s",
+   "ckh": "t",
+   "cph": "t",
+   "cth": "t",
+   "d": "t",
+   "e": "i",
+   "f": "n",
+   "g": "i",
+   "h": "i",
+   "i": "t",
+   "j": "c",
+   "k": "n",
+   "l": "i",
+   "m": "t",
+   "n": "i",
+   "o": "i",
+   "p": "n",
+   "q": "d",
+   "r": "i",
+   "s": "i",
+   "sh": "s",
+   "t": "n",
+   "u": "i",
+   "v": "a",
+   "x": "i",
+   "y": "i",
+   "z": "t"
+  }
+ },
+ "search": {
+  "budget": {
+   "restarts": 4,
+   "iterations": 6000,
+   "seed": 1404,
+   "bpe_merges": 30,
+   "verbose_segmentations": [
+    "bpe-greedy",
+    "fixed-2"
+   ],
+   "verbose_min_unit_share": 0.0005,
+   "substitution_group_swap": 0.2
+  },
+  "objective_bits": 608513.6
+ }
+}
