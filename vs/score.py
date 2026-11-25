@@ -186,11 +186,13 @@ def score(d, pr=None):
                 and i["provenance"]["added_by"] == _ow(e["handle"]) and str(i["provenance"].get("at", "")).startswith(day)
                 for i in registry.read()):
             return {"verdict": "REFUSED", "errors": ["one attack per fact per contributor per day (the hidden layout must not be probed)"]}
+        hyp = spec.get("hypothesis") if spec.get("hypothesis") in ("invented_language",) else "meaningless"
         if spec.get("attack") == "generator" and any(
                 i["type"] == "attack" and i.get("target") == "*"
+                and ((i.get("detail") or {}).get("hypothesis") if (i.get("detail") or {}).get("hypothesis") in ("invented_language",) else "meaningless") == hyp
                 and i["provenance"]["added_by"] == _ow(e["handle"]) and str(i["provenance"].get("at", "")).startswith(day)
                 for i in registry.read()):
-            return {"verdict": "REFUSED", "errors": ["one generator test per contributor per day (each verdict carries a bit per fact about the hidden pages)"]}
+            return {"verdict": "REFUSED", "errors": [f"one {hyp.replace('_', '-')} generator test per contributor per day (each verdict carries a bit per fact about the hidden pages)"]}
         if spec.get("attack") == "key" and isinstance(spec.get("target_key"), str):
             spec["target_key"] = path(os.path.normpath(spec["target_key"]))
         if spec.get("attack") == "fact":
