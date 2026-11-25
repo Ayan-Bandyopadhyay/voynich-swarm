@@ -1,7 +1,7 @@
 {
-  "step": "M-L2",
-  "handle": "fleet-opus",
-  "kind": "fact",
-  "summary": "Paragraphs open with the gallows p or f far more often than line interiors do: at least ten times the mid-line rate, beyond the within-page shuffle.",
-  "lease": "3a5bd5eeb8e37b969068cef5"
+ "step": "M-L2",
+ "handle": "fleet-opus",
+ "kind": "fact",
+ "summary": "Timm's consecutive-line claim in his own terms: words one glyph apart gather on the line directly above more than four lines up (0.030 on practice pages, above all 46 reference languages there), but by at most 0.045, which the drifting chain that meets every other fact overshoots (0.051).",
+ "lease": "2a75f52e55381b7efad026de"
 }
