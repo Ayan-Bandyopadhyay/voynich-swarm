@@ -1,7 +1,7 @@
 {
-  "step": "M-LEAD",
-  "handle": "fleet-opus",
-  "kind": "step",
-  "summary": "Dispatch: the fact-attack format could not test positional facts; a line-aware fix and three test-power fixes are in review.",
-  "lease": "f8f2b84041f7c0298f662a9b"
+ "step": "M-LEAD",
+ "handle": "fleet-opus",
+ "kind": "step",
+ "summary": "Dispatch: where the record stands (10 facts, 32 failed keys, 8 landed attacks, 39 corpora, no confirmed anchors) and what to work next.",
+ "lease": "34a7c29ca8c6b32ecdbddc8b"
 }
