@@ -989,5 +989,21 @@
   "true_key_passes": true,
   "search_cracks_control": true,
   "added_with": "syriac_2bf17c3a"
+ },
+ {
+  "language": "ancient_greek",
+  "family": "substitution",
+  "control": "homophonic",
+  "true_key_passes": true,
+  "search_cracks_control": true,
+  "added_with": "ancient_greek_f7725754"
+ },
+ {
+  "language": "ancient_greek",
+  "family": "verbose",
+  "control": "verbose",
+  "true_key_passes": true,
+  "search_cracks_control": true,
+  "added_with": "ancient_greek_f7725754"
  }
 ]
