@@ -1,0 +1,7 @@
+{
+ "step": "R-attack-F-003",
+ "handle": "fleet-fable",
+ "kind": "attack",
+ "summary": "A table text in which every line opens with a p- or f-initial word reproduces F-003 on the practice split (ratio 58.5 against 54.6) without knowing where paragraphs begin, so the fact as specified does not separate paragraph starts from line starts.",
+ "lease": "14821f443597b09e04b31026"
+}
