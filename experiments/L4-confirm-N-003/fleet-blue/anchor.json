@@ -1,0 +1,12 @@
+{
+ "of": "N-003",
+ "assessment": "dissent",
+ "title": "Second look at N-003: the f9v drawing is as described and has no label, so the entry pairs no Voynich word with any name and should stay a note, not become a confirmed anchor",
+ "statement": "I checked the Beinecke f9v scan (canvas 1006093, full page at 1500 pixels). What holds: one plant with a straight central stem and paired side branches; five flowers, three near the top and two lower, painted blue with pale areas; the upper right and lower right flowers each have one petal in pale yellow, at the bottom of the flower as it sits on the page; narrow deeply cut green appendages in pairs up the stems; four broad lance-shaped leaves near the base; a root of thin spreading fibres. Small differences from the proposer's account: the yellow petal is the lowest, not the uppermost, in both flowers that have one, and the lower left flower shows six or seven petals rather than five. On the text: twelve lines in two blocks at the upper left, the right ends of several lines broken into short pieces that step around the flower heads; nothing stands apart beside a plant part as a label. The transliteration agrees: all twelve loci of f9v are paragraph lines (unit P0), none is a label. So I agree with the proposer on what is drawn and that there is no stand-alone word pointing at the plant. Why dissent: the entry leaves the Voynich word and every name field empty by design. A confirmed anchor is counted by criterion (c) and paired with a decoding (vs/judge.py judge_anchors); an entry with no word and no name can never be matched, so confirming it would raise the count of confirmed anchors while adding a pairing no key can satisfy. I did not compare the drawing with the botanical plate the two published discussions share, and I take no position on the species; two discussions that rely on the same plate are also not two independent identifications in the sense the L4 brief asks for. The entry is a careful picture note and belongs on the record as that.",
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006093",
+ "sources": [
+  "Beinecke MS 408, f9v, https://collections.library.yale.edu/iiif/2/1006093/full/!1500,1500/0/default.jpg",
+  "Pinned transliteration ZL3b, loci f9v.1 to f9v.12 (unit codes only)",
+  "anchors/README.md and vs/judge.py (judge_anchors) in this repository"
+ ]
+}
