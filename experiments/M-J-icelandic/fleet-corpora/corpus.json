@@ -1,0 +1,10 @@
+{
+  "language": "icelandic",
+  "title": "Alaska, by Jón Ólafsson (1875), Project Gutenberg #15178",
+  "period": "19th century (1875), Icelandic",
+  "url": "https://gutenberg.pglaf.org/1/5/1/7/15178/15178-0.txt",
+  "sha256": "764ba0bce2e970f68333954c5832cf1aef25343b33a0f94936bf9c86cdb8febe",
+  "license": "public-domain",
+  "encoding": "utf-8",
+  "notes": "License: Project Gutenberg ebook #15178, public domain in the USA as stated in the Gutenberg licence header/footer of the file (https://www.gutenberg.org/ebooks/15178). The url is the pglaf.org Gutenberg mirror. 219,309 bytes; Gutenberg plain text; after vs/refcorpus.strip_gutenberg removes the licence header and footer, normalization gives 157,789 characters. Only just over the 150,000-character floor; Icelandic keeps þ, ð, æ as letters of its own in the generic normalization."
+}
