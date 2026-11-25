@@ -1,0 +1,10 @@
+{
+  "language": "manx",
+  "title": "Manx Gaelic Scripture portions (Bible translation of 1748-1775), one verse per line",
+  "period": "18th century (1748-1775), Manx Gaelic in its English-based spelling",
+  "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/ManxGaelic.txt",
+  "sha256": "444c4d9413aeae702d7abdaa400440a171aabce74763832ab0d8be25b9124562",
+  "license": "public-domain",
+  "encoding": "utf-8",
+  "notes": "License stated as 'Public Domain' in the source README at https://github.com/scrollmapper/bible_databases/blob/59b18c5af5845728c275d5b7178ad0d024172b1f/sources/gv/ManxGaelic/README.md (scrollmapper/bible_databases, files from the CrossWire SWORD module ManxGaelic). The url pins a fixed commit, so the bytes do not change. 672,663 bytes; one verse per line as '[c:v] text' with '### Book' headings in English (66 short headings, negligible). vs/refcorpus.normalize(..., 'manx') gives 403,709 characters. Portions only (3,313 non-empty verses)."
+}
