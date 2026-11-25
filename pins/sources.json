@@ -381,6 +381,19 @@
       "license": "public-domain",
       "encoding": "utf-8",
       "added_by": "fleet-corpora"
+    },
+    {
+      "id": "czech_2a517c22",
+      "lang": "czech",
+      "period": "16th century (1579-1593), Middle/early-modern Czech; replaces the 19th-c. period-mismatched Czech pin with a much larger and older text",
+      "title": "Bible of Kralice (Bible kralická, 1579-1593; 1613 edition text), full Bible, one verse per line",
+      "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/CzeBKR.txt",
+      "file": "data/raw/agent_czech_2a517c22.txt",
+      "bytes": 4106471,
+      "sha256": "2a517c222f8fd5720d6204c9d9bdc14c54ca32aeb968d63e503cf9c185cfeb0a",
+      "license": "public-domain",
+      "encoding": "utf-8",
+      "added_by": "fleet-corpora"
     }
   ],
   "missing_corpora": {

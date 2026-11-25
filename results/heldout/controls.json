@@ -495,101 +495,6 @@
   "search_cracks_control": true
  },
  {
-  "language": "czech",
-  "family": "substitution",
-  "control": "homophonic",
-  "control_tokens": 80,
-  "true_key": {
-   "submission": "control-czech-homophonic",
-   "family": "substitution",
-   "target": {
-    "language": "czech",
-    "period": "control"
-   },
-   "verdict": "FAIL",
-   "failed": [
-    "a_compresses",
-    "b_reads",
-    "c_pictures"
-   ],
-   "passes_without_anchors": false,
-   "savings": -0.75732,
-   "killed_by": []
-  },
-  "true_key_passes": false,
-  "search_key": {
-   "submission": "grid-czech-substitution-control",
-   "family": "substitution",
-   "target": {
-    "language": "czech",
-    "period": "grid search"
-   },
-   "verdict": "FAIL",
-   "failed": [
-    "a_compresses",
-    "b_reads",
-    "c_pictures",
-    "d_not_illusion"
-   ],
-   "passes_without_anchors": false,
-   "savings": -0.74753,
-   "killed_by": []
-  },
-  "search_cracks_control_clean": false,
-  "noise": 0.02,
-  "true_key_passes_noisy": false,
-  "search_cracks_control": false
- },
- {
-  "language": "czech",
-  "family": "verbose",
-  "control": "verbose",
-  "control_tokens": 80,
-  "true_key": {
-   "submission": "control-czech-verbose",
-   "family": "verbose",
-   "target": {
-    "language": "czech",
-    "period": "control"
-   },
-   "verdict": "FAIL",
-   "failed": [
-    "a_compresses",
-    "b_reads",
-    "c_pictures"
-   ],
-   "passes_without_anchors": false,
-   "savings": -1.22573,
-   "killed_by": []
-  },
-  "true_key_passes": false,
-  "search_key": {
-   "submission": "grid-czech-verbose-control",
-   "family": "verbose",
-   "target": {
-    "language": "czech",
-    "period": "grid search"
-   },
-   "verdict": "FAIL",
-   "failed": [
-    "a_compresses",
-    "b_reads",
-    "kill_tests",
-    "c_pictures",
-    "d_not_illusion"
-   ],
-   "passes_without_anchors": false,
-   "savings": -1.35217,
-   "killed_by": [
-    "D1_word_order_shuffled"
-   ]
-  },
-  "search_cracks_control_clean": false,
-  "noise": 0.02,
-  "true_key_passes_noisy": false,
-  "search_cracks_control": false
- },
- {
   "language": "hebrew",
   "family": "substitution",
   "control": "homophonic",
@@ -692,5 +597,21 @@
   "true_key_passes": true,
   "search_cracks_control": true,
   "added_with": "albanian_528b202d"
+ },
+ {
+  "language": "czech",
+  "family": "substitution",
+  "control": "homophonic",
+  "true_key_passes": true,
+  "search_cracks_control": false,
+  "added_with": "czech_2a517c22"
+ },
+ {
+  "language": "czech",
+  "family": "verbose",
+  "control": "verbose",
+  "true_key_passes": true,
+  "search_cracks_control": true,
+  "added_with": "czech_2a517c22"
  }
 ]
