@@ -1,0 +1,10 @@
+{
+ "language": "nahuatl",
+ "title": "El Evangelio de S. Lucas, del latin al mexicano o mejor nahuatl (London: S. Bagster, 1833), Newberry Library Ayer BS345 .A97 1833, archive.org OCR text",
+ "period": "19th century (1833), Nahuatl in the classical colonial orthography (hu, qu, tl, tz, c/z)",
+ "url": "https://archive.org/download/Ayer_BS345_A97_1833/Ayer_BS345_A97_1833_djvu.txt",
+ "sha256": "1fd2ccfd51523bcaf783ff2980687862187af9de4f930549aa1437ee657472c7",
+ "license": "public-domain",
+ "encoding": "utf-8",
+ "notes": "License: printed 1833; the archive.org item https://archive.org/details/Ayer_BS345_A97_1833 (contributor The Newberry Library) carries the metadata note 'No copyright.' and the Newberry open-access statement ('available for any lawful purpose, commercial or non-commercial, without licensing or permission fees'). Why this text: every Nahuatl Bible in the eBible corpus licence table (azzNT, nchBl, ncjNT, nclNT, nguNT, nheBl, nheNT, nhgNT, nhiNT, nhwBl, nhyNT, nplNT) is CC BY-NC-ND and nhx/nsu are of unknown licence, so none can be used; Project Gutenberg #21802 (Chimalpahin, Nahuatl only) is about 45 KB, under the floor; Brinton's #12219 and #14993 are mixed with English. This file is 174,785 bytes of Tesseract OCR (ocr parameters eng+lat); vs/refcorpus.normalize(..., 'nahuatl') gives 156,391 characters, just over the 150,000 floor. Caveats: (1) OCR noise: small, by inspection the verse text is clean, but the file also holds the Newberry/Ayer bookplate in English, the Spanish/Latin title page and running heads ('SAN LUCAS'), a few hundred characters in all; (2) it is one gospel, so religious vocabulary and names (jesus, dios, lucas) are frequent; (3) it is a 19th-century translation in colonial orthography, not a 16th-century text; (4) archive.org regenerates OCR rarely, but if it does the sha256 will stop matching and the corpus should be re-pinned. Word frequencies after cleaning (in, yhuan, auh, ipampa, quenami, tlacatl, itech, ipan) are as expected for classical-orthography Nahuatl."
+}
