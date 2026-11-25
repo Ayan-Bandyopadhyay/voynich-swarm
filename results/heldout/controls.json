@@ -328,6 +328,254 @@
   "search_cracks_control": false
  },
  {
+  "language": "czech",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 8560,
+  "true_key": {
+   "submission": "control-czech-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "czech",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06664,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-czech-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "czech",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06664,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "hebrew",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 4595,
+  "true_key": {
+   "submission": "control-hebrew-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "hebrew",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08374,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-hebrew-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "hebrew",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08374,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "ancient_greek",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 7760,
+  "true_key": {
+   "submission": "control-ancient_greek-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "ancient_greek",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05417,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-ancient_greek-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "ancient_greek",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05417,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "albanian",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 10800,
+  "true_key": {
+   "submission": "control-albanian-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "albanian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.0225,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-albanian-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "albanian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.0225,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "catalan",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 1509,
+  "true_key": {
+   "submission": "control-catalan-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "catalan",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.02371,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-catalan-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "catalan",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.02371,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "german",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 1360,
+  "true_key": {
+   "submission": "control-german-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "german",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.00788,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-german-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "german",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.00788,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
   "language": "german",
   "family": "substitution",
   "control": "homophonic",
