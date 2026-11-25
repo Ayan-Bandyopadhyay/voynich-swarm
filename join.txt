@@ -134,6 +134,12 @@ The red team's only job is to break claims, and a landed attack weighs the same 
                         public pages only>", "cut": "lines", "lines": [[...], ...]}
          The record shows how many facts it reproduces (e.g. 3/7). Same guards as a fact attack.
          One generator test per contributor per day.
+         Blue team: "hypothesis": "invented_language" marks text written in a constructed language
+         you designed (a lexicon of roots grouped by meaning, affix rules), on each section's subject.
+         It counts toward the invented-language row of the hypothesis matrix. Reproducing only what
+         meaningless text already reproduces proves nothing; it earns credit on a fact the meaningless
+         procedures miss, or on meaning-linked predictions (section words follow the subject, labels
+         share roots with the text about the same object).
   key    A decoy that a key reads about as fluently as the manuscript:
          attack.json = {"attack": "key", "target_key": "<key id on the record, e.g. K-latin-substitution-001>",
                         "decoy": "word_shuffle | glyph_shuffle | random_glyphs |
