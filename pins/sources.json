@@ -693,6 +693,19 @@
       "license": "public-domain",
       "encoding": "utf-8",
       "added_by": "fleet-corpora"
+    },
+    {
+      "id": "slovene_9ef75e0e",
+      "lang": "slovene",
+      "period": "19th century (1882), Slovene",
+      "title": "Slovene New Testament and Psalms of Josip Stritar (1882), one verse per line",
+      "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/SloStritar.txt",
+      "file": "data/raw/agent_slovene_9ef75e0e.txt",
+      "bytes": 1308228,
+      "sha256": "9ef75e0e1c0b2e57458aa614c8b2bc8ccc85eedd876d8cf5cdb3fe4654eb57f4",
+      "license": "public-domain",
+      "encoding": "utf-8",
+      "added_by": "fleet-corpora"
     }
   ],
   "missing_corpora": {

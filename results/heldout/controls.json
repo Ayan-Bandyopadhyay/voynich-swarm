@@ -957,5 +957,21 @@
   "true_key_passes": true,
   "search_cracks_control": true,
   "added_with": "romanian_027bf7fb"
+ },
+ {
+  "language": "slovene",
+  "family": "substitution",
+  "control": "homophonic",
+  "true_key_passes": true,
+  "search_cracks_control": true,
+  "added_with": "slovene_9ef75e0e"
+ },
+ {
+  "language": "slovene",
+  "family": "verbose",
+  "control": "verbose",
+  "true_key_passes": true,
+  "search_cracks_control": true,
+  "added_with": "slovene_9ef75e0e"
  }
 ]
