@@ -1,0 +1,129 @@
+{
+ "folio": "f73r",
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006206",
+ "blind": true,
+ "statement": "Circular diagram, drawn in faint ink. Centre: a slender four-legged green-grey animal facing left with a pointed snout and a long tail curled up in a loop over its back, a large eight-pointed ochre star above it, and a short word in another script below it (not read). Around it an inner ring of about 10 and an outer ring of about 16 nude women, drawn radially with feet toward the centre, each tied to an eight-pointed ochre star; above the outer ring at the top stand 4 more nude women with stars, outside the circular text. The transcription has 4 label lines before the first circular line (f73r.1-4), then blocks of 16 (6-21) and 10 (23-32), matching the 4 top figures, the outer ring and the inner ring. Limits: the ring figures are faint and overlap, so in the time I had I did not resolve them one by one; each ring is one group with its approximate count and label block, and the 4 top figures are recorded individually, left to right. No label is attached to a single figure, because which line goes with which figure cannot be fixed from line ids without reading the words.",
+ "objects": [
+  {
+   "id": "t1",
+   "kind": "human_figure",
+   "features": {
+    "ring": "above outer ring",
+    "position": "1",
+    "posture": "upright",
+    "clothing": "nude",
+    "container": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f73r.1-4",
+    "note": "long curly hair, star at upper right"
+   },
+   "label": null
+  },
+  {
+   "id": "t2",
+   "kind": "human_figure",
+   "features": {
+    "ring": "above outer ring",
+    "position": "2",
+    "posture": "upright",
+    "clothing": "nude",
+    "container": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f73r.1-4",
+    "note": "star raised at upper right"
+   },
+   "label": null
+  },
+  {
+   "id": "t3",
+   "kind": "human_figure",
+   "features": {
+    "ring": "above outer ring",
+    "position": "3",
+    "posture": "upright",
+    "clothing": "nude",
+    "container": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f73r.1-4",
+    "note": "long hair with a band of curls on top; star at upper right"
+   },
+   "label": null
+  },
+  {
+   "id": "t4",
+   "kind": "human_figure",
+   "features": {
+    "ring": "above outer ring",
+    "position": "4",
+    "posture": "leaning right",
+    "clothing": "nude",
+    "container": "none",
+    "star": "attached",
+    "colour": "uncoloured",
+    "label_group": "f73r.1-4",
+    "note": "long hair; reaching to a star at upper right"
+   },
+   "label": null
+  },
+  {
+   "id": "outer_ring_figures",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "count": "about 16 (faint, overlapping outlines; not resolved one by one)",
+    "clothing": "nude",
+    "container": "none",
+    "star": "attached",
+    "posture": "radial, feet toward the centre",
+    "colour": "uncoloured",
+    "note": "one at the bottom has a small band or cap of curls",
+    "label_group": "f73r.6-21"
+   },
+   "label": null
+  },
+  {
+   "id": "inner_ring_figures",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "count": "about 10 (faint, overlapping outlines; not resolved one by one)",
+    "clothing": "nude",
+    "container": "none",
+    "star": "attached",
+    "posture": "radial, feet toward the centre",
+    "colour": "uncoloured",
+    "label_group": "f73r.23-32"
+   },
+   "label": null
+  },
+  {
+   "id": "centre_animal",
+   "kind": "animal",
+   "features": {
+    "ring": "centre",
+    "body": "four-legged, slender, pointed snout",
+    "tail": "long, curled up in a loop over the back",
+    "facing": "left",
+    "colour": "green-grey",
+    "note": "a short word in a non-Voynich script is written below it (not read)",
+    "count": "1"
+   },
+   "label": null
+  },
+  {
+   "id": "centre_star",
+   "kind": "star",
+   "features": {
+    "ring": "centre",
+    "points": "8",
+    "colour": "ochre",
+    "position": "above the animal",
+    "size": "large"
+   },
+   "label": null
+  }
+ ]
+}
