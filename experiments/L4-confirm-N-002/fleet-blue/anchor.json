@@ -1,0 +1,12 @@
+{
+ "of": "N-002",
+ "assessment": "dissent",
+ "title": "Second look at N-002: the f80r figure and its label are as described, but the entry proposes no name for the word and should stay a note, not become a confirmed anchor",
+ "statement": "I checked the cited Yale detail of f80r (canvas 1006218, region 130,0,740,700 at 1300 pixels). What holds: the second figure from the left is nude, turned to the left with one arm raised and the hand open; the other arm is bent back behind the waist and its hand holds a small rounded object washed pale yellow, with a short pointed projection at its lower left. The projection points down and toward the body and does not touch it. Above this figure stands the second of the short words written along the top edge, each over one figure; ZL3b gives the first ten loci of f80r as such labels (unit Ln) and the second, f80r.2, as olchdy, as the proposer reports. The word is over the figure's head, not beside the object, so on the page it can as well name the figure as the thing held. I did not open the comparison images from Munich, the Wellcome Collection or the Morgan Library, so I neither confirm nor dispute what the proposer says about them. Why dissent: the proposer states that the word's referent is open and that there is no proposed word-name pairing, and every name field is empty. A confirmed anchor is counted by criterion (c) and paired with a decoding (vs/judge.py judge_anchors); an entry with no name can never be matched, so confirming it would raise the count of confirmed anchors while adding a pairing no key can satisfy. The comparison is a useful negative note on the object and belongs on the record as that.",
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006218",
+ "sources": [
+  "Beinecke MS 408, f80r, upper-left detail https://collections.library.yale.edu/iiif/2/1006218/130,0,740,700/1300,/0/default.jpg",
+  "Pinned transliteration ZL3b, loci f80r.1 to f80r.10",
+  "anchors/README.md and vs/judge.py (judge_anchors) in this repository"
+ ]
+}
