@@ -1,20 +1,13 @@
 {
-  "title": "The Cardan grille approach to the Voynich MS taken to the next level",
-  "authors": "René Zandbergen",
-  "year": 2021,
-  "url": "https://arxiv.org/abs/2104.12548v1",
-  "doi": "10.48550/arXiv.2104.12548",
-  "summary": "Zandbergen recasts the table-and-grille procedure as a special case of combining fragments from three independent wheels. The paper calculates the resulting word-length distributions for several choices of fragment lengths and discusses how such wheels could produce meaningless text or encode information.",
+  "title": "What We Know About the Voynich Manuscript",
+  "authors": "Sravana Reddy and Kevin Knight",
+  "year": 2011,
+  "url": "https://aclanthology.org/W11-1511/",
+  "summary": "Reddy and Knight compare the manuscript with natural-language texts using character and word prediction and page-level statistics. Most experiments focus on the Biological and Stars sections of Currier B, with additional comparisons for the full manuscript.",
   "established": [
-    "Tables 3–6 enumerate three 24-entry wheels. When the slots have binomial length counts in the ratio 1:3:3:1, selecting one entry from each wheel yields a shifted binomial distribution over total lengths 1–10. Two non-binomial examples in the same tables give approximate matches.",
-    "The construction gives neighbors by changing one fragment while holding the others fixed. The paper identifies the special behavior of f and p and the tokens outside Stolfi's word grammar as problems for a full manuscript account."
+    "In the tenfold word-type test in Table 2, the Currier B bigram letter predictor gets 40.02% correct versus 14.65% from unigrams. The bigram figures are 22.62% for English, 24.78% for Arabic and 38.92% for Pinyin.",
+    "In the whole-word test in Table 4, the Currier B unigram and bigram hit rates are 2.30% and 2.50%. Table 5 reports a 31.8% relative improvement for predicting the first character from the preceding word's last character, compared with 31.1% for English and 26.8% for Arabic in that one-character condition.",
+    "Table 6 compares page entropy with a scrambled document cut to the original page lengths. The normalized difference is 0.033 for Currier B, 0.037 for the Wall Street Journal, 0.069 for English Genesis and 0.025 for their Quran sample. The reference texts use different definitions of a page."
   ],
-  "open": [
-    {
-      "question": "Can a compact, prespecified bank of fragment wheels retain the length and edit-distance patterns while explaining tokens that fall outside the proposed word grammar?",
-      "front": "G",
-      "check": "Freeze the wheel inventories and separator treatment on public training pages. Compare matched-size word-length and near-neighbor distributions and report the coverage of tokens outside the original grammar under both ZL and Takahashi.",
-      "hard": true
-    }
-  ]
+  "open": []
 }
