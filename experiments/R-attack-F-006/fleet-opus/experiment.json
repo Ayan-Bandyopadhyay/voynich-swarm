@@ -1,0 +1,7 @@
+{
+  "step": "R-attack-F-006",
+  "handle": "fleet-opus",
+  "kind": "attack",
+  "summary": "A general position-aware word chain fitted on public pages and sent with whole lines reproduces F-006 (longer line-initial words) without language: 4.84 vs 4.83.",
+  "lease": "2f6341e158a5de35b9467dfa"
+}
