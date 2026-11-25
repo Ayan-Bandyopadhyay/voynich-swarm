@@ -1,0 +1,188 @@
+{
+ "folio": "f67r2",
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006194",
+ "blind": true,
+ "statement": "Blind annotation from the Beinecke scan alone (canvas '67r', the right-hand wheel of the two; overview and one full-resolution crop of the interior). A circle with 12 sectors of writing and a rim of 12 red labels; in the centre an eight-rayed yellow star on a scalloped rosette; between them a ring of 12 small face-discs, each with a crescent painted red or yellow. Clockwise from the top the crescent colours run red, yellow, red, yellow, yellow, red, red, yellow, red, yellow, red, yellow (6 red, 6 yellow). Labels assigned from line ids and unit codes only, words not read: the 12 Ls lines f67r2.52-63 are given to the 12 discs clockwise from the one at the top; the starting point is my assumption, so label ids may be rotated by a constant. The rim labels and the words round the star are noted on the wheel and star but point at no separate drawn object.",
+ "objects": [
+  {
+   "id": "centre-star",
+   "kind": "star",
+   "features": {
+    "points": 8,
+    "colour": "yellow",
+    "background": "scalloped rosette on a green square wash",
+    "position": "centre of the wheel",
+    "note": "eight long pointed rays, yellow-tan with a row of dots along each, laid over a round rosette of scalloped lobes with a faint blue-green square behind; a dotted line runs out to the left from one ray; a ring of about eight short words surrounds it (label lines f67r2.64-71), none tied to a separate drawing"
+   },
+   "label": null
+  },
+  {
+   "id": "wheel",
+   "kind": "diagram",
+   "features": {
+    "shape": "circle",
+    "sectors": 12,
+    "colour": "uncoloured with red writing on the rim",
+    "position": "whole right-hand page",
+    "note": "circle divided by radial lines into 12 sectors, each holding a few short lines of writing; an outer rim band carries 12 short labels in red ink (label lines f67r2.1-12, one per sector) separated by groups of tick marks; three long lines of writing below the wheel, the middle one in red"
+   },
+   "label": null
+  },
+  {
+   "id": "moon-1",
+   "kind": "moon",
+   "features": {
+    "face": "yes",
+    "shape": "disc with crescent",
+    "crescent_colour": "red",
+    "colour": "red",
+    "position": "ring of 12 round the centre, 1 of 12 clockwise from the top",
+    "note": "small round disc with a drawn human face, a crescent on one side painted red; a short label beside it"
+   },
+   "label": "f67r2.52"
+  },
+  {
+   "id": "moon-2",
+   "kind": "moon",
+   "features": {
+    "face": "yes",
+    "shape": "disc with crescent",
+    "crescent_colour": "yellow",
+    "colour": "yellow",
+    "position": "ring of 12 round the centre, 2 of 12 clockwise from the top",
+    "note": "small round disc with a drawn human face, a crescent on one side painted yellow; a short label beside it"
+   },
+   "label": "f67r2.53"
+  },
+  {
+   "id": "moon-3",
+   "kind": "moon",
+   "features": {
+    "face": "yes",
+    "shape": "disc with crescent",
+    "crescent_colour": "red",
+    "colour": "red",
+    "position": "ring of 12 round the centre, 3 of 12 clockwise from the top",
+    "note": "small round disc with a drawn human face, a crescent on one side painted red; a short label beside it"
+   },
+   "label": "f67r2.54"
+  },
+  {
+   "id": "moon-4",
+   "kind": "moon",
+   "features": {
+    "face": "yes",
+    "shape": "disc with crescent",
+    "crescent_colour": "yellow",
+    "colour": "yellow",
+    "position": "ring of 12 round the centre, 4 of 12 clockwise from the top",
+    "note": "small round disc with a drawn human face, a crescent on one side painted yellow; a short label beside it"
+   },
+   "label": "f67r2.55"
+  },
+  {
+   "id": "moon-5",
+   "kind": "moon",
+   "features": {
+    "face": "yes",
+    "shape": "disc with crescent",
+    "crescent_colour": "yellow",
+    "colour": "yellow",
+    "position": "ring of 12 round the centre, 5 of 12 clockwise from the top",
+    "note": "small round disc with a drawn human face, a crescent on one side painted yellow; a short label beside it"
+   },
+   "label": "f67r2.56"
+  },
+  {
+   "id": "moon-6",
+   "kind": "moon",
+   "features": {
+    "face": "yes",
+    "shape": "disc with crescent",
+    "crescent_colour": "red",
+    "colour": "red",
+    "position": "ring of 12 round the centre, 6 of 12 clockwise from the top",
+    "note": "small round disc with a drawn human face, a crescent on one side painted red; a short label beside it"
+   },
+   "label": "f67r2.57"
+  },
+  {
+   "id": "moon-7",
+   "kind": "moon",
+   "features": {
+    "face": "yes",
+    "shape": "disc with crescent",
+    "crescent_colour": "red",
+    "colour": "red",
+    "position": "ring of 12 round the centre, 7 of 12 clockwise from the top",
+    "note": "small round disc with a drawn human face, a crescent on one side painted red; a short label beside it"
+   },
+   "label": "f67r2.58"
+  },
+  {
+   "id": "moon-8",
+   "kind": "moon",
+   "features": {
+    "face": "yes",
+    "shape": "disc with crescent",
+    "crescent_colour": "yellow",
+    "colour": "yellow",
+    "position": "ring of 12 round the centre, 8 of 12 clockwise from the top",
+    "note": "small round disc with a drawn human face, a crescent on one side painted yellow; a short label beside it"
+   },
+   "label": "f67r2.59"
+  },
+  {
+   "id": "moon-9",
+   "kind": "moon",
+   "features": {
+    "face": "yes",
+    "shape": "disc with crescent",
+    "crescent_colour": "red",
+    "colour": "red",
+    "position": "ring of 12 round the centre, 9 of 12 clockwise from the top",
+    "note": "small round disc with a drawn human face, a crescent on one side painted red; a short label beside it"
+   },
+   "label": "f67r2.60"
+  },
+  {
+   "id": "moon-10",
+   "kind": "moon",
+   "features": {
+    "face": "yes",
+    "shape": "disc with crescent",
+    "crescent_colour": "yellow",
+    "colour": "yellow",
+    "position": "ring of 12 round the centre, 10 of 12 clockwise from the top",
+    "note": "small round disc with a drawn human face, a crescent on one side painted yellow; a short label beside it"
+   },
+   "label": "f67r2.61"
+  },
+  {
+   "id": "moon-11",
+   "kind": "moon",
+   "features": {
+    "face": "yes",
+    "shape": "disc with crescent",
+    "crescent_colour": "red",
+    "colour": "red",
+    "position": "ring of 12 round the centre, 11 of 12 clockwise from the top",
+    "note": "small round disc with a drawn human face, a crescent on one side painted red; a short label beside it"
+   },
+   "label": "f67r2.62"
+  },
+  {
+   "id": "moon-12",
+   "kind": "moon",
+   "features": {
+    "face": "yes",
+    "shape": "disc with crescent",
+    "crescent_colour": "yellow",
+    "colour": "yellow",
+    "position": "ring of 12 round the centre, 12 of 12 clockwise from the top",
+    "note": "small round disc with a drawn human face, a crescent on one side painted yellow; a short label beside it"
+   },
+   "label": "f67r2.63"
+  }
+ ]
+}
