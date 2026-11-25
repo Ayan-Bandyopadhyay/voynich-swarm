@@ -1,0 +1,7 @@
+{
+ "step": "P-G-002",
+ "handle": "fleet-fable",
+ "kind": "fact",
+ "summary": "Registers that pages at most 15 apart share more words than pages farther apart (0.074 against the shuffle null on the practice split), a long-range pattern that a one-table line chain and the drifting-table candidate both fail to reproduce.",
+ "lease": "e9497333ef008645fb832c0f"
+}
