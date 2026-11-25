@@ -32,7 +32,7 @@
     "c_pictures"
    ],
    "passes_without_anchors": true,
-   "savings": 0.15131,
+   "savings": 0.10647,
    "killed_by": []
   },
   "search_cracks_control_clean": true,
@@ -278,7 +278,7 @@
     "c_pictures"
    ],
    "passes_without_anchors": true,
-   "savings": 0.09382,
+   "savings": 0.08504,
    "killed_by": []
   },
   "search_cracks_control_clean": true,
@@ -441,19 +441,16 @@
    },
    "verdict": "FAIL",
    "failed": [
-    "a_compresses",
-    "b_reads",
-    "c_pictures",
-    "d_not_illusion"
+    "c_pictures"
    ],
-   "passes_without_anchors": false,
-   "savings": -0.01792,
+   "passes_without_anchors": true,
+   "savings": 0.08984,
    "killed_by": []
   },
-  "search_cracks_control_clean": false,
+  "search_cracks_control_clean": true,
   "noise": 0.02,
   "true_key_passes_noisy": true,
-  "search_cracks_control": false
+  "search_cracks_control": true
  },
  {
   "language": "german",
@@ -532,7 +529,7 @@
     "c_pictures"
    ],
    "passes_without_anchors": true,
-   "savings": 0.10971,
+   "savings": 0.1094,
    "killed_by": []
   },
   "search_cracks_control_clean": true,
@@ -615,10 +612,11 @@
    "failed": [
     "a_compresses",
     "b_reads",
-    "c_pictures"
+    "c_pictures",
+    "d_not_illusion"
    ],
    "passes_without_anchors": false,
-   "savings": -0.71564,
+   "savings": -0.74753,
    "killed_by": []
   },
   "search_cracks_control_clean": false,
@@ -714,7 +712,7 @@
     "d_not_illusion"
    ],
    "passes_without_anchors": false,
-   "savings": -0.37192,
+   "savings": -0.36605,
    "killed_by": []
   },
   "search_cracks_control_clean": false,
