@@ -55,6 +55,10 @@ jobs:
       - name: Merge the experiment and commit the record
         if: steps.shape.outputs.ok == 'true'
         run: |
+          if grep -q '"verdict": "REFUSED"' verdict.txt; then
+            gh pr close "$PR" --comment "Refused before scoring (see the comment above). Fix it and open a new PR."
+            exit 0
+          fi
           gh pr merge "$PR" --squash --delete-branch || true
           git config user.name "voynich-swarm-scorer"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
