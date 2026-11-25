@@ -1,0 +1,478 @@
+{
+ "folio": "f68r1",
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006196",
+ "blind": true,
+ "statement": "Annotated blind from the Beinecke scan only: canvas 1006196 ('68r', a foldout of three panels); f68r1 is the leftmost panel (canvas x about 280-2530), whose structure fits the line ids (paragraph lines at the top, 29 star labels f68r1.8-.36, one circular text f68r1.37). Drawn: 29 eight-pointed (some seven-pointed) stars with a tan/yellow wash scattered over the panel, each with one short word beside it (to its right, except one with the word to its left); seven have a small open circle at the centre and two a dark dot; one at the upper left is drawn faintly in grey. A sun-like circle with a frontal face and braided hair, ringed by about 24 small curved rays, sits under the top paragraph with words inside the circle; a crescent with a blue inner ring and a face sits at the bottom inside a ring of text. A long thin arc runs down the right side. A pale blue-green radiating shape behind the middle stars looks like show-through from the other side of the leaf and is not annotated. No star label line id is assigned to a star: the line ids carry no position and the blind rule forbids reading the words. Each star carries its position as fractions of the panel (x right, y down) and its rank in row-by-row reading order, so a position map of the label lines can join them later. The 29 stars equal the 29 star label lines.",
+ "objects": [
+  {
+   "id": "star-01",
+   "kind": "star",
+   "label": null,
+   "features": {
+    "points": "7-8 long thin rays",
+    "colour": "tan/yellow wash",
+    "centre_mark": "none",
+    "label_word_beside": "right",
+    "x_frac": 0.189,
+    "y_frac": 0.186,
+    "reading_order_rows": 1,
+    "label_candidates": "f68r1.8-f68r1.36"
+   }
+  },
+  {
+   "id": "star-02",
+   "kind": "star",
+   "label": null,
+   "features": {
+    "points": "7-8 long thin rays",
+    "colour": "tan/yellow wash",
+    "centre_mark": "none",
+    "label_word_beside": "right",
+    "x_frac": 0.572,
+    "y_frac": 0.169,
+    "reading_order_rows": 2,
+    "label_candidates": "f68r1.8-f68r1.36"
+   }
+  },
+  {
+   "id": "star-03",
+   "kind": "star",
+   "label": null,
+   "features": {
+    "points": "7-8 long thin rays",
+    "colour": "tan/yellow wash",
+    "centre_mark": "none, drawn faintly in grey",
+    "label_word_beside": "right",
+    "x_frac": 0.089,
+    "y_frac": 0.271,
+    "reading_order_rows": 3,
+    "label_candidates": "f68r1.8-f68r1.36"
+   }
+  },
+  {
+   "id": "star-04",
+   "kind": "star",
+   "label": null,
+   "features": {
+    "points": "7-8 long thin rays",
+    "colour": "tan/yellow wash",
+    "centre_mark": "none, darker ink",
+    "label_word_beside": "right",
+    "x_frac": 0.589,
+    "y_frac": 0.263,
+    "reading_order_rows": 4,
+    "label_candidates": "f68r1.8-f68r1.36"
+   }
+  },
+  {
+   "id": "star-05",
+   "kind": "star",
+   "label": null,
+   "features": {
+    "points": "7-8 long thin rays",
+    "colour": "tan/yellow wash",
+    "centre_mark": "open circle",
+    "label_word_beside": "right",
+    "x_frac": 0.772,
+    "y_frac": 0.297,
+    "reading_order_rows": 5,
+    "label_candidates": "f68r1.8-f68r1.36"
+   }
+  },
+  {
+   "id": "star-06",
+   "kind": "star",
+   "label": null,
+   "features": {
+    "points": "7-8 long thin rays",
+    "colour": "tan/yellow wash",
+    "centre_mark": "none",
+    "label_word_beside": "right",
+    "x_frac": 0.278,
+    "y_frac": 0.305,
+    "reading_order_rows": 6,
+    "label_candidates": "f68r1.8-f68r1.36"
+   }
+  },
+  {
+   "id": "star-07",
+   "kind": "star",
+   "label": null,
+   "features": {
+    "points": "7-8 long thin rays",
+    "colour": "tan/yellow wash",
+    "centre_mark": "none",
+    "label_word_beside": "right",
+    "x_frac": 0.417,
+    "y_frac": 0.322,
+    "reading_order_rows": 7,
+    "label_candidates": "f68r1.8-f68r1.36"
+   }
+  },
+  {
+   "id": "star-08",
+   "kind": "star",
+   "label": null,
+   "features": {
+    "points": "7-8 long thin rays",
+    "colour": "tan/yellow wash",
+    "centre_mark": "none",
+    "label_word_beside": "right",
+    "x_frac": 0.033,
+    "y_frac": 0.373,
+    "reading_order_rows": 8,
+    "label_candidates": "f68r1.8-f68r1.36"
+   }
+  },
+  {
+   "id": "star-09",
+   "kind": "star",
+   "label": null,
+   "features": {
+    "points": "7-8 long thin rays",
+    "colour": "tan/yellow wash",
+    "centre_mark": "open circle",
+    "label_word_beside": "right",
+    "x_frac": 0.222,
+    "y_frac": 0.386,
+    "reading_order_rows": 9,
+    "label_candidates": "f68r1.8-f68r1.36"
+   }
+  },
+  {
+   "id": "star-10",
+   "kind": "star",
+   "label": null,
+   "features": {
+    "points": "7-8 long thin rays",
+    "colour": "tan/yellow wash",
+    "centre_mark": "open circle",
+    "label_word_beside": "right",
+    "x_frac": 0.567,
+    "y_frac": 0.364,
+    "reading_order_rows": 10,
+    "label_candidates": "f68r1.8-f68r1.36"
+   }
+  },
+  {
+   "id": "star-11",
+   "kind": "star",
+   "label": null,
+   "features": {
+    "points": "7-8 long thin rays",
+    "colour": "tan/yellow wash",
+    "centre_mark": "open circle",
+    "label_word_beside": "right",
+    "x_frac": 0.772,
+    "y_frac": 0.377,
+    "reading_order_rows": 11,
+    "label_candidates": "f68r1.8-f68r1.36"
+   }
+  },
+  {
+   "id": "star-12",
+   "kind": "star",
+   "label": null,
+   "features": {
+    "points": "7-8 long thin rays",
+    "colour": "tan/yellow wash",
+    "centre_mark": "none",
+    "label_word_beside": "right",
+    "x_frac": 0.339,
+    "y_frac": 0.407,
+    "reading_order_rows": 12,
+    "label_candidates": "f68r1.8-f68r1.36"
+   }
+  },
+  {
+   "id": "star-13",
+   "kind": "star",
+   "label": null,
+   "features": {
+    "points": "7-8 long thin rays",
+    "colour": "tan/yellow wash",
+    "centre_mark": "none",
+    "label_word_beside": "right",
+    "x_frac": 0.633,
+    "y_frac": 0.441,
+    "reading_order_rows": 13,
+    "label_candidates": "f68r1.8-f68r1.36"
+   }
+  },
+  {
+   "id": "star-14",
+   "kind": "star",
+   "label": null,
+   "features": {
+    "points": "7-8 long thin rays",
+    "colour": "tan/yellow wash",
+    "centre_mark": "open circle",
+    "label_word_beside": "right",
+    "x_frac": 0.844,
+    "y_frac": 0.445,
+    "reading_order_rows": 14,
+    "label_candidates": "f68r1.8-f68r1.36"
+   }
+  },
+  {
+   "id": "star-15",
+   "kind": "star",
+   "label": null,
+   "features": {
+    "points": "7-8 long thin rays",
+    "colour": "tan/yellow wash",
+    "centre_mark": "none",
+    "label_word_beside": "right",
+    "x_frac": 0.067,
+    "y_frac": 0.487,
+    "reading_order_rows": 15,
+    "label_candidates": "f68r1.8-f68r1.36"
+   }
+  },
+  {
+   "id": "star-16",
+   "kind": "star",
+   "label": null,
+   "features": {
+    "points": "7-8 long thin rays",
+    "colour": "tan/yellow wash",
+    "centre_mark": "dark dot",
+    "label_word_beside": "right",
+    "x_frac": 0.144,
+    "y_frac": 0.492,
+    "reading_order_rows": 16,
+    "label_candidates": "f68r1.8-f68r1.36"
+   }
+  },
+  {
+   "id": "star-17",
+   "kind": "star",
+   "label": null,
+   "features": {
+    "points": "7-8 long thin rays",
+    "colour": "tan/yellow wash",
+    "centre_mark": "none",
+    "label_word_beside": "right",
+    "x_frac": 0.233,
+    "y_frac": 0.494,
+    "reading_order_rows": 17,
+    "label_candidates": "f68r1.8-f68r1.36"
+   }
+  },
+  {
+   "id": "star-18",
+   "kind": "star",
+   "label": null,
+   "features": {
+    "points": "7-8 long thin rays",
+    "colour": "tan/yellow wash",
+    "centre_mark": "none",
+    "label_word_beside": "right",
+    "x_frac": 0.422,
+    "y_frac": 0.496,
+    "reading_order_rows": 18,
+    "label_candidates": "f68r1.8-f68r1.36"
+   }
+  },
+  {
+   "id": "star-19",
+   "kind": "star",
+   "label": null,
+   "features": {
+    "points": "7-8 long thin rays",
+    "colour": "tan/yellow wash",
+    "centre_mark": "none",
+    "label_word_beside": "right",
+    "x_frac": 0.039,
+    "y_frac": 0.551,
+    "reading_order_rows": 19,
+    "label_candidates": "f68r1.8-f68r1.36"
+   }
+  },
+  {
+   "id": "star-20",
+   "kind": "star",
+   "label": null,
+   "features": {
+    "points": "7-8 long thin rays",
+    "colour": "tan/yellow wash",
+    "centre_mark": "none",
+    "label_word_beside": "right",
+    "x_frac": 0.522,
+    "y_frac": 0.568,
+    "reading_order_rows": 20,
+    "label_candidates": "f68r1.8-f68r1.36"
+   }
+  },
+  {
+   "id": "star-21",
+   "kind": "star",
+   "label": null,
+   "features": {
+    "points": "7-8 long thin rays",
+    "colour": "tan/yellow wash",
+    "centre_mark": "open circle",
+    "label_word_beside": "right",
+    "x_frac": 0.706,
+    "y_frac": 0.559,
+    "reading_order_rows": 21,
+    "label_candidates": "f68r1.8-f68r1.36"
+   }
+  },
+  {
+   "id": "star-22",
+   "kind": "star",
+   "label": null,
+   "features": {
+    "points": "7-8 long thin rays",
+    "colour": "tan/yellow wash",
+    "centre_mark": "none",
+    "label_word_beside": "right",
+    "x_frac": 0.128,
+    "y_frac": 0.614,
+    "reading_order_rows": 22,
+    "label_candidates": "f68r1.8-f68r1.36"
+   }
+  },
+  {
+   "id": "star-23",
+   "kind": "star",
+   "label": null,
+   "features": {
+    "points": "7-8 long thin rays",
+    "colour": "tan/yellow wash",
+    "centre_mark": "none",
+    "label_word_beside": "right",
+    "x_frac": 0.306,
+    "y_frac": 0.61,
+    "reading_order_rows": 23,
+    "label_candidates": "f68r1.8-f68r1.36"
+   }
+  },
+  {
+   "id": "star-24",
+   "kind": "star",
+   "label": null,
+   "features": {
+    "points": "7-8 long thin rays",
+    "colour": "tan/yellow wash",
+    "centre_mark": "dark dot",
+    "label_word_beside": "right",
+    "x_frac": 0.044,
+    "y_frac": 0.661,
+    "reading_order_rows": 24,
+    "label_candidates": "f68r1.8-f68r1.36"
+   }
+  },
+  {
+   "id": "star-25",
+   "kind": "star",
+   "label": null,
+   "features": {
+    "points": "7-8 long thin rays",
+    "colour": "tan/yellow wash",
+    "centre_mark": "open circle",
+    "label_word_beside": "right",
+    "x_frac": 0.294,
+    "y_frac": 0.703,
+    "reading_order_rows": 25,
+    "label_candidates": "f68r1.8-f68r1.36"
+   }
+  },
+  {
+   "id": "star-26",
+   "kind": "star",
+   "label": null,
+   "features": {
+    "points": "7-8 long thin rays",
+    "colour": "tan/yellow wash",
+    "centre_mark": "none",
+    "label_word_beside": "right",
+    "x_frac": 0.511,
+    "y_frac": 0.674,
+    "reading_order_rows": 26,
+    "label_candidates": "f68r1.8-f68r1.36"
+   }
+  },
+  {
+   "id": "star-27",
+   "kind": "star",
+   "label": null,
+   "features": {
+    "points": "7-8 long thin rays",
+    "colour": "tan/yellow wash",
+    "centre_mark": "open circle",
+    "label_word_beside": "right",
+    "x_frac": 0.683,
+    "y_frac": 0.674,
+    "reading_order_rows": 27,
+    "label_candidates": "f68r1.8-f68r1.36"
+   }
+  },
+  {
+   "id": "star-28",
+   "kind": "star",
+   "label": null,
+   "features": {
+    "points": "7-8 long thin rays",
+    "colour": "tan/yellow wash",
+    "centre_mark": "none",
+    "label_word_beside": "left",
+    "x_frac": 0.194,
+    "y_frac": 0.729,
+    "reading_order_rows": 28,
+    "label_candidates": "f68r1.8-f68r1.36"
+   }
+  },
+  {
+   "id": "star-29",
+   "kind": "star",
+   "label": null,
+   "features": {
+    "points": "7-8 long thin rays",
+    "colour": "tan/yellow wash",
+    "centre_mark": "none",
+    "label_word_beside": "right",
+    "x_frac": 0.6,
+    "y_frac": 0.763,
+    "reading_order_rows": 29,
+    "label_candidates": "f68r1.8-f68r1.36"
+   }
+  },
+  {
+   "id": "sun-face",
+   "kind": "sun",
+   "label": null,
+   "features": {
+    "shape": "circle containing a frontal human face with braided or bound hair, ringed by about 24 small curved flame- or crescent-shaped rays",
+    "colour": "ink, light tan",
+    "position": "upper centre, below the top paragraph",
+    "x_frac": 0.42,
+    "y_frac": 0.18,
+    "words_inside": "two or three words inside the circle, right of and below the face"
+   }
+  },
+  {
+   "id": "moon-face",
+   "kind": "moon",
+   "label": null,
+   "features": {
+    "shape": "crescent framing a round frontal face, all inside a circle of text",
+    "colour": "crescent tan/yellow, inner ring blue",
+    "position": "bottom centre",
+    "x_frac": 0.4,
+    "y_frac": 0.85,
+    "words_around": "a ring of text round it (the circular text line f68r1.37 by structure)"
+   }
+  },
+  {
+   "id": "right-arc",
+   "kind": "other",
+   "label": null,
+   "features": {
+    "shape": "long thin arc down the right side of the panel, from top right to the bottom, partly dashed",
+    "colour": "ink"
+   }
+  }
+ ]
+}
