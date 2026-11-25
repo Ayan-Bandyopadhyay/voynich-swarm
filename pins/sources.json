@@ -316,6 +316,19 @@
       "license": "public-domain",
       "encoding": "utf-8",
       "added_by": "fleet-corpora"
+    },
+    {
+      "id": "armenian_b964a7c3",
+      "lang": "armenian",
+      "period": "modern Eastern Armenian; a distant proxy for Middle Armenian",
+      "title": "Eastern Armenian Bible (Genesis, Exodus and the four Gospels; other books empty in this export), one verse per line",
+      "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/ArmEastern.txt",
+      "file": "data/raw/agent_armenian_b964a7c3.txt",
+      "bytes": 1541060,
+      "sha256": "b964a7c35d591d6b537a969b08e478213b73422922413755c4d544e5770ecbc8",
+      "license": "public-domain",
+      "encoding": "utf-8",
+      "added_by": "fleet-corpora"
     }
   ],
   "missing_corpora": {
