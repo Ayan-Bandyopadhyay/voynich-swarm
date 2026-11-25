@@ -1,0 +1,72 @@
+{
+  "title": "Register the verse-only Galician-Portuguese Cantigas corpus",
+  "program": "J",
+  "on_path": true,
+  "hard": false,
+  "statement": "K-016-open-2 has Catalan and Old Occitan corpus entries C-002 and C-050. A licensed medieval Galician-Portuguese collection is available as a versioned data table. The verified verse-only derivative contains 1,003,547 normalized characters in 218,369 words across 1,682 songs. The table also contains passage hashes and identifiers. Feeding its raw bytes to the current corpus normalizer would add 688,428 non-verse tokens. Its verse-only export needs a stable plain-text URL or a verified one-column corpus import before the scorer can admit it.",
+  "check": "Fetch the pinned UTF-8 CSV and verify its SHA-256. In Python, iterate csv.DictReader in file order, retain each unmodified Primary_Text value where value.strip() is nonempty, and join with LF including one final LF. The exported UTF-8 bytes must hash to the stated derived SHA-256. Preserve the project's citation and CC BY 4.0 attribution. Register galician_portuguese with the resulting text and compare its clean and 2%-noise substitution and verbose control outcomes. Source metadata, hashes and local seed-zero diagnostics follow.",
+  "source_url": "https://raw.githubusercontent.com/arvicco/nabu-data/00ea013deff337c8b47b2a642995a609082f56a4/roa-opt/cantigas/lines.csv",
+  "source_sha256": "bfb48769c83ffd8741682371d6f8b8be2c5e874bd3afa2613f6ba6ca33f9527f",
+  "derived_sha256": "e5366bed3213aae6fa76169357c0d254fd3190e40984ebe32035873132b4a667",
+  "license": "CC BY 4.0",
+  "license_url": "https://github.com/arvicco/nabu-data/blob/00ea013deff337c8b47b2a642995a609082f56a4/roa-opt/cantigas/README.md",
+  "attribution": "Lopes, Graça Videira; Ferreira, Manuel Pedro et al. (2011–), Cantigas Medievais Galego Portuguesas [online database]. Lisboa: Instituto de Estudos Medievais, FCSH/NOVA. [Information retrieved on 2026-11-25] Available at: cantigas.fcsh.unl.pt. CSV by Nabu Data, roa-opt/cantigas v1.",
+  "scope": "Secular Galician-Portuguese lyric, medieval songbooks. Refrains and repeated verses belong to this genre. The controls use the standard block split and may include related lyrics in different partitions. They do not establish a language attribution for the manuscript.",
+  "rows": 34162,
+  "diagnostic_method": "Register only the extracted text as an in-memory candidate corpus, run controls.make at noise=.02, seed 0 with season.CONTROL_FOR, and evaluate the planted and standard search_cell keys (tag control) using the usual synthetic evaluation pages.",
+  "diagnostics": [
+    {
+      "family": "substitution",
+      "mode": "planted",
+      "noise": 0.02,
+      "seed": 0,
+      "evaluation_tokens": 3120,
+      "passes_without_anchors": true,
+      "savings": 0.06213,
+      "failed": [
+        "c_pictures"
+      ]
+    },
+    {
+      "family": "substitution",
+      "mode": "search",
+      "noise": 0.02,
+      "seed": 0,
+      "evaluation_tokens": 3120,
+      "passes_without_anchors": false,
+      "savings": 0.03305,
+      "failed": [
+        "b_reads",
+        "c_pictures"
+      ]
+    },
+    {
+      "family": "verbose",
+      "mode": "planted",
+      "noise": 0.02,
+      "seed": 0,
+      "evaluation_tokens": 3120,
+      "passes_without_anchors": false,
+      "savings": 0.00889,
+      "failed": [
+        "a_compresses",
+        "c_pictures"
+      ]
+    },
+    {
+      "family": "verbose",
+      "mode": "search",
+      "noise": 0.02,
+      "seed": 0,
+      "evaluation_tokens": 3120,
+      "passes_without_anchors": false,
+      "savings": -0.06595,
+      "failed": [
+        "a_compresses",
+        "b_reads",
+        "c_pictures",
+        "d_not_illusion"
+      ]
+    }
+  ]
+}
