@@ -18,6 +18,7 @@ concurrency:
 jobs:
   score:
     runs-on: ubuntu-24.04
+    environment: scorer        # the seed lives in this environment, usable from main only
     timeout-minutes: 120
     env:
       PYTHONHASHSEED: "0"

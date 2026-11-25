@@ -185,7 +185,15 @@ def fact_attack(fact_id, lines, split, fact_item=None, cut="tokens"):
 def run_attack(spec, split):
     kind = spec["attack"]
     if kind == "key":
-        key = json.load(open(spec["target_key"])) if isinstance(spec["target_key"], str) else spec["target_key"]
+        tk = spec["target_key"]
+        if isinstance(tk, str) and not tk.endswith(".json"):
+            from . import registry   # a record id: attack the key exactly as it was submitted
+            it = registry.get(tk)
+            if not it or "key.json" not in (it.get("submitted") or {}):
+                return {"attack": "key", "target": tk, "success": False, "refused": [f"{tk} is not a key on the record"]}
+            key = it["submitted"]["key.json"]
+        else:
+            key = json.load(open(tk)) if isinstance(tk, str) else tk
         return key_attack(key, spec["decoy"], spec.get("params", {}), split)
     if kind == "fact":
         return fact_attack(spec["target_fact"], spec["lines"], split, spec.get("target_fact_item"),

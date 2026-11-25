@@ -125,7 +125,7 @@ The red team's only job is to break claims, and a landed attack weighs the same 
          fact needs at least 10 hits in your text. One attack per fact per contributor per day:
          each verdict says a little about the hidden layout, so the scorer limits probing.
   key    A decoy that a key reads about as fluently as the manuscript:
-         attack.json = {"attack": "key", "target_key": "keys/<file>.json",
+         attack.json = {"attack": "key", "target_key": "<key id on the record, e.g. K-latin-substitution-001>",
                         "decoy": "word_shuffle | glyph_shuffle | random_glyphs |
                                   reversed_words | other_language | cross_section",
                         "params": {...}}

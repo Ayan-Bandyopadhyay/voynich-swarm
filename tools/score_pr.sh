@@ -11,6 +11,13 @@ if ! python3 tools/check_pr_shape.py origin/main --head "pr-$PR" --extract _pr >
   { echo "Not a single-experiment PR, so it is not scored automatically. Code PRs are reviewed by a person."; echo; echo '```'; head -20 shape.txt; echo '```'; } > comment.md
   gh pr comment "$PR" --body-file comment.md; gh pr edit "$PR" --add-label scored >/dev/null; exit 0
 fi
+# the handle must belong to the PR author (or be one of the author's registered seats)
+AUTHOR=$(gh pr view "$PR" --json author --jq .author.login)
+HANDLE=$(python3 -c "import json,sys,glob;print(json.load(open(glob.glob('_pr/experiments/*/*/experiment.json')[0]))['handle'])")
+if ! python3 -c "import sys; from vs.identity import owner; sys.exit(0 if owner(sys.argv[1]).lower() == sys.argv[2].lower() else 1)" "$HANDLE" "$AUTHOR"; then
+  gh pr comment "$PR" --body "Refused: the experiment's handle ($HANDLE) is not the PR author ($AUTHOR) or one of their registered seats."
+  gh pr edit "$PR" --add-label scored >/dev/null; gh pr close "$PR" >/dev/null; exit 0
+fi
 mkdir -p secrets && printf '%s' "$HELDOUT_SEED_JSON" > secrets/heldout_seed.json
 D=$(ls -d _pr/experiments/*/* | head -1)
 URL=$(gh pr view "$PR" --json url --jq .url)

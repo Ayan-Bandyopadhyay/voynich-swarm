@@ -229,7 +229,15 @@ def score(d, pr=None):
                 "check": st["check"], "on_path": bool(st.get("on_path")), "hard": bool(st.get("hard"))}
         kind = "step_proposed"
     item["provenance"] = prov
-    registry.add(item)
+    # snapshot of exactly what was submitted (the folder may be reused by later submissions)
+    item["submitted"] = {os.path.basename(f): json.load(open(f)) for f in files if f.endswith(".json")}
+    if item["type"] == "attack":
+        # hidden-page values would leak layout information; keep the outcome and the reason only
+        item["detail"] = {k: v for k, v in item["detail"].items() if k in ("attack", "target", "success", "why", "refused", "decoy", "shared_type_share")}
+    try:
+        registry.add(item)
+    except SystemExit as ex:
+        return {"verdict": "REFUSED", "errors": [str(ex)]}
     rec = {"handle": e["handle"], "step": e["step"], "program": item["program"], "kind": kind, "on_path": on_path,
            "ref": pr or d, "item": item["id"], "summary": e.get("summary", "")[:200]}
     ledger.append(rec)
