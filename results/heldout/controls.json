@@ -644,5 +644,21 @@
   "true_key_passes": true,
   "search_cracks_control": true,
   "added_with": "greek_725ba423"
+ },
+ {
+  "language": "polish",
+  "family": "substitution",
+  "control": "homophonic",
+  "true_key_passes": true,
+  "search_cracks_control": true,
+  "added_with": "polish_dc4e4cae"
+ },
+ {
+  "language": "polish",
+  "family": "verbose",
+  "control": "verbose",
+  "true_key_passes": true,
+  "search_cracks_control": true,
+  "added_with": "polish_dc4e4cae"
  }
 ]
