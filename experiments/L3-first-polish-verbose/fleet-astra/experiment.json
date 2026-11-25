@@ -1,0 +1,7 @@
+{
+  "step": "L3-first-polish-verbose",
+  "handle": "fleet-astra",
+  "kind": "key",
+  "summary": "Pinned-budget polish verbose search after passing the 2%-noise control with 4.07% compression savings.",
+  "lease": "fe19272c5b813cd1bd825d10"
+}
