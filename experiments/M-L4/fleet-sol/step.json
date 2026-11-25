@@ -1,8 +1,383 @@
 {
-  "title": "Check the twelve zodiac centres for a Voynich word paired with a month annotation",
-  "statement": "I inspected all twelve zodiac centres in the Beinecke MS 408 Yale scans. I looked inside the innermost ring and treated its circumferential inscription as running text. Canvas IDs under https://collections.library.yale.edu/manifests/oid/2002046/canvas/ are 1006200 for f70v2, 1006201 for f70v1, 1006202 for f71r, 1006203 for f71v and f72r1–3, 1006204 for f72v3–2, 1006205 for f72v1, and 1006206–7 for f73r–v. I found a Latin-script month annotation at each emblem and only one freestanding Voynich string in the centres, next to the upper star on f70v2 and separated from mars by the upper fish. This agrees with the earlier dissent on N-001. In f73r and f73v the month writing approaches the circular text, but I saw no particular circumferential word singled out as its counterpart. Zandbergen's month-name table (https://www.voynich.nu/writing.html#zodiac) proposes a later hand and favors Northern French. Cheshire's open 2019 text, figs. 48–50 (https://research-information.bris.ac.uk/ws/files/201563069/Full_text_PDF_accepted_author_manuscript_.pdf), discusses mars, abril and may and proposes a contemporaneous annotator. My scan check addresses position. It leaves the dating and precise spellings open. None of the twelve centres yielded an image-supported pairing between an explicit Voynich word and the month name.",
+  "title": "Replicate the f33v and f93r sunflower comparisons with independent annotators",
+  "statement": "These are separate published proposals. A caption-masked comparison against ten botanical prints found three of four head features in common between f93r and Dodoens's sunflower. Gerard's sunflower agrees in eight of twelve features with f93r, with two uncertain. Fuchs's teasel agrees in nine of twelve with none uncertain. Neither sunflower print agrees in more than four known features with f33v. The two Voynich drawings and the proposals were known when I planned the comparison. I also prepared the cards and supplied the only ratings. The packet records the individual features, crop bounds, open witnesses and ambiguities.",
   "program": "L4",
-  "check": "Use the cited Yale canvases to locate each inner disk. Independently mark any text inside the disk, whatever its script, and separately mark the circumferential inscription. Record the nearest image object for every standalone Voynich label and any direct connection to the Latin-script month annotation. Have a second reviewer check each candidate on the scan before it is used as an anchor.",
+  "check": "Recruit two annotators who have not seen the scoring key. Give them the twelve-feature checklist and random caption-free crops of all eight controls and both sunflower witnesses, together with the Yale f33v and f93r figure crops. Have them score the regions independently, record ambiguities, and publish their individual scores before revealing identities. Add independent period prints of both sunflowers and comparable Old World plants before any claim of specificity. Require a separate agreed link between the illustration and a discrete manuscript string before proposing an anchor.",
   "on_path": true,
-  "hard": false
+  "hard": false,
+  "record": "# Two sunflower proposals, two different figures\n\nArdıç proposes a sunflower on f33v. Stolfi's institutional note compares f33v with sunflower, including leaf attachment and the round underground objects, and prefers another possibility. Janick's published sunflower iconography reproduces **f93r**, cites O'Neill's earlier proposal and describes the single stalk and large seed head with suggestions of rays. These are two different folios. The claims are documented in the open [Ardıç companion](https://www.turkicresearch.com/Research/SubPages/Voynich), [Stolfi note](https://www.ic.unicamp.br/en/~stolfi/EXPORT/voynich/98-01-17-sunflower/) and [Janick 2020, pp. 1123–1125, figs. 9 and 11](https://www.notulaebotanicae.ro/index.php/nbha/article/download/12015/8986/48289).\n\n## Scans and method\n\n[Beinecke f33v](https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006139) and [Beinecke f93r](https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006238) are the public target scans. Load the corresponding Yale IIIF image IDs at 1200 px wide. The botanical cards are public-domain historical illustrations, shown by open sites. The Dodoens sunflower and both Voynich targets were known before the rubric. I fixed the eight control categories and twelve binary features before viewing the newly sourced prints. I prepared the crops, saw the full pages while doing so, and scored the shuffled grayscale cards. Masking removed the captions from the comparison views. My visual recognition and memory of the sources could still affect the scores. The work has one observer.\n\nFeatures apply to the drawings as depicted. The head criteria are a densely patterned central field, distinct peripheral blades at least a quarter of the field's transverse width, a rounded outline of that field as opposed to a tapered silhouette, and a single terminal head on the plant. Buds on separate terminals count as evidence of multiple heads. In a spray of separate flowers without a shared field, the first three criteria are uncertain. Leaves are scored for a broad blade, obvious lobes or divisions, at least three major ridges spreading radially, an illustrated stalk–blade join visibly inside the margin, and a repeated opposite or near-opposite arrangement. Roots are scored for an exposed drawing below the stem join, many thin filaments and bounded round bulbs or knots. Compare agreement on known features and retain all uncertain comparisons. Color, relative figure size and dates carry no score.\n\nThe Yale f33v head fields are oval despite their perspective. The pale central marks on its leaves hint at a center attachment. The painted overlap makes the exact join and radial ridges uncertain. The three round objects visibly connect to branching underground strands. The dotted head on f93r has a tapered outline and short marginal strokes under the blade-length criterion. Its near-paired leaves are smooth curved arcs. The root join opens into many thin filaments. The paler form near the manuscript text was excluded as possible show-through.\n\n## Comparison cards\n\nCrop bounds and caption-mask coordinates in `cards.json` are pixels in the original downloads, in left, top, right, bottom order. Convert to grayscale, paint mask rectangles gray (245 of 255), and crop. The key is public for reproduction. A replication organizer can relabel the cards and hold the key until new scorers have committed their annotations.\n\n| Card | Witness | Locator |\n| --- | --- | --- |\n| C01 | Fuchs 1543, coltsfoot | [ch. 50, fig. 76](https://www.waimann.de/capitel/050.html), [scan](https://www.waimann.de/woodcut/Abb163.jpg) |\n| C02 | Dodoens 1568, sunflower | [p. 295](https://archive.org/details/BIUSante_pharma_res019124/page/n294/mode/2up), [scan](https://archive.org/download/BIUSante_pharma_res019124/page/n294.jpg) |\n| C03 | Fuchs 1543, castor | [ch. 128, fig. 192](https://www.waimann.de/capitel/128.html), [scan](https://www.waimann.de/woodcut/Abb352.jpg) |\n| C04 | Fuchs 1543, cornflower | [ch. 162, fig. 240](https://www.waimann.de/capitel/162.html), [scan](https://www.waimann.de/woodcut/Abb433.jpg) |\n| C05 | Gerard 1597, sunflower | [ch. 247 reprinted in Janick fig. 11, upper left](https://pdfs.semanticscholar.org/0c46/df4c800c9d9afbbe7d3b5e1fae8ed271b052.pdf). Use the first embedded JPEG on PDF page 10, full size 384 × 640, e.g. `pdfimages -f 10 -l 10 -j janick.pdf jan`. |\n| C06 | Fuchs 1543, calendula | [ch. 143, fig. 214](https://www.waimann.de/capitel/143.html), [scan](https://www.waimann.de/woodcut/Abb390.jpg) |\n| C07 | Fuchs 1543, common daisy | [ch. 53, fig. 80](https://www.waimann.de/capitel/053.html), [scan](https://www.waimann.de/woodcut/Abb169.jpg) |\n| C08 | Dodoens 1563, navelwort | [p. 35, top left](https://plantillustrations.org/illustration.php?id_illustration=439421&size=1), [scan](https://plantillustrations.org/ILLUSTRATIONS_FULL_SIZE/439421.jpg) |\n| C09 | Fuchs 1543, teasel | [ch. 82, fig. 126](https://www.waimann.de/capitel/082.html), [scan](https://www.waimann.de/woodcut/Abb242.jpg) |\n| C10 | Fuchs 1543, artichoke | [ch. 308, fig. 455](https://www.waimann.de/capitel/308.html), [scan](https://www.waimann.de/woodcut/Abb789.jpg). This print omits a reproductive head. |\n\n## Outcome\n\nEach cell below is **agreements / disagreements / uncertain**. The per-feature table gives the underlying observations.\n\n| Witness | f33v head | f33v total | f93r head | f93r total |\n| --- | --- | --- | --- | --- |\n| C01 coltsfoot | 3/1/0 | 6/4/2 | 2/2/0 | 7/5/0 |\n| C02 sunflower | 2/2/0 | 3/5/4 | 3/1/0 | 6/4/2 |\n| C03 castor | 1/0/3 | 5/1/6 | 0/1/3 | 3/5/4 |\n| C04 cornflower | 3/1/0 | 4/6/2 | 0/4/0 | 6/6/0 |\n| C05 sunflower | 2/1/1 | 4/4/4 | 2/1/1 | 8/2/2 |\n| C06 calendula | 3/0/1 | 5/4/3 | 0/3/1 | 7/4/1 |\n| C07 daisy | 3/0/1 | 5/4/3 | 0/3/1 | 7/4/1 |\n| C08 navelwort | 1/0/3 | 4/3/5 | 0/1/3 | 4/4/4 |\n| C09 teasel | 3/1/0 | 5/5/2 | 2/2/0 | 9/3/0 |\n| C10 artichoke | 0/0/4 | 4/2/6 | 0/0/4 | 5/3/4 |\n\nFor f33v, several controls achieve three known head agreements, where both sunflower plates achieve two. Castor agrees on the broad divided leaves, and navelwort shares one rounded root knot. Neither control depicts the specific combination of three disks, deep broad lobes and multiple ray-like heads. For f93r, Dodoens has three known head agreements (dense field, short fringe, one terminal head) but the field is rounded rather than tapered. Gerard shows the exposed filaments and eight overall agreements. Teasel agrees in nine overall, with two known head disagreements (rounded and multiple). If both uncertain Gerard comparisons are scored as matches, its score rises to ten. These rankings depend on the witness and on which body region is compared.\n\nThe panel is small and targeted. Most controls are from one herbal and the two sunflower images and Voynich drawings are from different book traditions. The counts describe the selected pictures, with no sampling inference or date estimate. Neither picture yielded a species-specific identifying combination on the observed features. This experiment offers no word–picture pairing.\n",
+  "cards": {
+    "C01": {
+      "image": "f163",
+      "crop": [
+        94,
+        75,
+        495,
+        704
+      ],
+      "label_masks": [
+        [
+          128,
+          550,
+          190,
+          580
+        ],
+        [
+          359,
+          550,
+          420,
+          580
+        ]
+      ]
+    },
+    "C02": {
+      "image": "dod",
+      "crop": [
+        145,
+        178,
+        1020,
+        1775
+      ],
+      "label_masks": []
+    },
+    "C03": {
+      "image": "f352",
+      "crop": [
+        74,
+        48,
+        494,
+        720
+      ],
+      "label_masks": [
+        [
+          139,
+          529,
+          226,
+          558
+        ],
+        [
+          292,
+          530,
+          346,
+          559
+        ]
+      ]
+    },
+    "C04": {
+      "image": "f433",
+      "crop": [
+        66,
+        37,
+        484,
+        735
+      ],
+      "label_masks": [
+        [
+          134,
+          568,
+          234,
+          594
+        ],
+        [
+          332,
+          570,
+          391,
+          597
+        ]
+      ]
+    },
+    "C05": {
+      "image": "jan-011",
+      "crop": [
+        5,
+        24,
+        182,
+        310
+      ],
+      "label_masks": []
+    },
+    "C06": {
+      "image": "f390",
+      "crop": [
+        80,
+        50,
+        486,
+        714
+      ],
+      "label_masks": [
+        [
+          176,
+          529,
+          274,
+          555
+        ],
+        [
+          351,
+          532,
+          420,
+          555
+        ]
+      ]
+    },
+    "C07": {
+      "image": "f169",
+      "crop": [
+        55,
+        112,
+        451,
+        568
+      ],
+      "label_masks": []
+    },
+    "C08": {
+      "image": "nav",
+      "crop": [
+        195,
+        160,
+        740,
+        876
+      ],
+      "label_masks": []
+    },
+    "C09": {
+      "image": "f242",
+      "crop": [
+        77,
+        42,
+        485,
+        755
+      ],
+      "label_masks": [
+        [
+          80,
+          472,
+          173,
+          498
+        ],
+        [
+          359,
+          470,
+          440,
+          495
+        ]
+      ]
+    },
+    "C10": {
+      "image": "f789",
+      "crop": [
+        58,
+        69,
+        507,
+        737
+      ],
+      "label_masks": [
+        [
+          120,
+          612,
+          192,
+          642
+        ],
+        [
+          413,
+          611,
+          480,
+          641
+        ]
+      ]
+    }
+  },
+  "ratings": [
+    {
+      "card": "f33v",
+      "pattern": "1",
+      "long_blades": "1",
+      "rounded": "1",
+      "single_terminal": "0",
+      "broad": "1",
+      "lobes": "1",
+      "radial": "?",
+      "central_attachment": "?",
+      "pairs": "1",
+      "root": "1",
+      "filaments": "0",
+      "knots": "1",
+      "note": "Two fully exposed scale fields and a partly hidden third. Pale central marks suggest axial attachment but painted overlap prevents tracing it. Three separate round disks on sparsely branching roots."
+    },
+    {
+      "card": "f93r",
+      "pattern": "1",
+      "long_blades": "0",
+      "rounded": "0",
+      "single_terminal": "1",
+      "broad": "1",
+      "lobes": "0",
+      "radial": "0",
+      "central_attachment": "0",
+      "pairs": "1",
+      "root": "1",
+      "filaments": "1",
+      "knots": "0",
+      "note": "Dotted tapered head with short marginal strokes. Broad smooth arcs in near pairs and many bare thin strands below the join."
+    },
+    {
+      "card": "C01",
+      "pattern": "1",
+      "long_blades": "0",
+      "rounded": "1",
+      "single_terminal": "0",
+      "broad": "1",
+      "lobes": "0",
+      "radial": "1",
+      "central_attachment": "0",
+      "pairs": "0",
+      "root": "1",
+      "filaments": "0",
+      "knots": "0",
+      "note": "Patterned mature head plus a bud. Basal lamina joins, one dominant curved root."
+    },
+    {
+      "card": "C02",
+      "pattern": "1",
+      "long_blades": "0",
+      "rounded": "1",
+      "single_terminal": "1",
+      "broad": "1",
+      "lobes": "0",
+      "radial": "1",
+      "central_attachment": "0",
+      "pairs": "0",
+      "root": "0",
+      "filaments": "?",
+      "knots": "?",
+      "note": "Patterned oval head and short narrow edge. Soil line without an exposed root system."
+    },
+    {
+      "card": "C03",
+      "pattern": "?",
+      "long_blades": "?",
+      "rounded": "?",
+      "single_terminal": "0",
+      "broad": "1",
+      "lobes": "1",
+      "radial": "1",
+      "central_attachment": "1",
+      "pairs": "?",
+      "root": "1",
+      "filaments": "0",
+      "knots": "0",
+      "note": "Separate fruit and flower spikes. Star-shaped broad blades, center attachments and mostly thick branching roots."
+    },
+    {
+      "card": "C04",
+      "pattern": "0",
+      "long_blades": "1",
+      "rounded": "1",
+      "single_terminal": "0",
+      "broad": "0",
+      "lobes": "0",
+      "radial": "0",
+      "central_attachment": "0",
+      "pairs": "0",
+      "root": "1",
+      "filaments": "1",
+      "knots": "0",
+      "note": "Two heads with radially spreading blades and no clearly textured central field. Narrow leaves and thin rootlets off one axis."
+    },
+    {
+      "card": "C05",
+      "pattern": "1",
+      "long_blades": "?",
+      "rounded": "1",
+      "single_terminal": "1",
+      "broad": "1",
+      "lobes": "0",
+      "radial": "1",
+      "central_attachment": "0",
+      "pairs": "?",
+      "root": "1",
+      "filaments": "1",
+      "knots": "0",
+      "note": "Dense rounded disc. Overlapping exterior leaf and head margins complicate blade lengths and leaf joints. Exposed thin roots."
+    },
+    {
+      "card": "C06",
+      "pattern": "?",
+      "long_blades": "1",
+      "rounded": "1",
+      "single_terminal": "0",
+      "broad": "1",
+      "lobes": "0",
+      "radial": "0",
+      "central_attachment": "0",
+      "pairs": "0",
+      "root": "1",
+      "filaments": "1",
+      "knots": "0",
+      "note": "Multiple rounded heads. Repeated long blades, low detail center and thin fibrous roots."
+    },
+    {
+      "card": "C07",
+      "pattern": "?",
+      "long_blades": "1",
+      "rounded": "1",
+      "single_terminal": "0",
+      "broad": "1",
+      "lobes": "0",
+      "radial": "0",
+      "central_attachment": "0",
+      "pairs": "0",
+      "root": "1",
+      "filaments": "1",
+      "knots": "0",
+      "note": "Basal rosette with several long-stemmed heads. Center detail uncertain at this scale."
+    },
+    {
+      "card": "C08",
+      "pattern": "?",
+      "long_blades": "?",
+      "rounded": "?",
+      "single_terminal": "0",
+      "broad": "1",
+      "lobes": "0",
+      "radial": "?",
+      "central_attachment": "1",
+      "pairs": "0",
+      "root": "1",
+      "filaments": "1",
+      "knots": "1",
+      "note": "Several clusters of separate small flowers. Several leaves appear attached inside the margin. A round basal knot with many filaments."
+    },
+    {
+      "card": "C09",
+      "pattern": "1",
+      "long_blades": "0",
+      "rounded": "1",
+      "single_terminal": "0",
+      "broad": "0",
+      "lobes": "0",
+      "radial": "0",
+      "central_attachment": "0",
+      "pairs": "1",
+      "root": "1",
+      "filaments": "1",
+      "knots": "0",
+      "note": "Many oval textured heads with spines rather than blades. Clearly paired leaves and many slender branches below the root join."
+    },
+    {
+      "card": "C10",
+      "pattern": "?",
+      "long_blades": "?",
+      "rounded": "?",
+      "single_terminal": "?",
+      "broad": "1",
+      "lobes": "1",
+      "radial": "0",
+      "central_attachment": "0",
+      "pairs": "0",
+      "root": "1",
+      "filaments": "0",
+      "knots": "0",
+      "note": "Reproductive head not depicted. Deep divisions follow one axis per blade. Dominant long roots with sparse thin branches and no round knot."
+    }
+  ]
 }
