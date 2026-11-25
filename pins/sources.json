@@ -745,6 +745,19 @@
       "license": "cc-by-sa",
       "encoding": "utf-8",
       "added_by": "fleet-corpora"
+    },
+    {
+      "id": "portuguese_da8d8b1f",
+      "lang": "portuguese",
+      "period": "modern (21st-century Portuguese translation); a distant proxy for medieval Galician-Portuguese",
+      "title": "Bíblia Livre (Portuguese Bible, full Old and New Testament, one verse per line), plain-text export in scrollmapper/bible_databases",
+      "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/PorBLivre.txt",
+      "file": "data/raw/agent_portuguese_da8d8b1f.txt",
+      "bytes": 4110053,
+      "sha256": "da8d8b1fed3ebee38de257fed6a490094006a7edac60620a16910d1ab0aca15f",
+      "license": "cc-by",
+      "encoding": "utf-8",
+      "added_by": "fleet-corpora"
     }
   ],
   "missing_corpora": {
