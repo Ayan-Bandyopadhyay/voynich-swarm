@@ -1,0 +1,10 @@
+{
+  "language": "turkish",
+  "title": "Girid Cezire Tarihi (History of the Island of Crete: the Ottoman Cretan campaign from 1645), anonymous Ottoman chronicle in Latin-script transcription, Turkish Wikisource",
+  "period": "17th century (events from 1054 AH / 1645 CE), Ottoman Turkish in scholarly transliteration (â, ‘, ’ marks)",
+  "url": "https://tr.wikisource.org/w/index.php?oldid=141311&action=raw",
+  "sha256": "01d601cebb44ab4b7322c54272407af14c4c35c572a60aec713c6a2e52f78f67",
+  "license": "cc-by-sa",
+  "encoding": "utf-8",
+  "notes": "License: the underlying anonymous 17th-century chronicle is public domain; the Wikisource page (pinned revision 141311) is published under Wikisource's terms, CC BY-SA 4.0 (footer of https://tr.wikisource.org/wiki/Girid_Cezire_Tarihi and https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use); the page's own source note credits a transcription at barbaros.biz. The url pins a fixed page revision (oldid), so the bytes do not change. 654,194 bytes; wikitext (action=raw of a fixed revision id, so the bytes do not change); a few templates, one category tag and a source link add a few hundred Latin letters, negligible. vs/refcorpus.normalize(..., 'turkish') gives 575,429 characters. Ottoman Turkish, the closest openly licensed period text found quickly for the Old Anatolian Turkish proposal (Ardıç 2025, on the record). Diacritics fold in the generic normalization; dotless ı is kept as its own letter."
+}
