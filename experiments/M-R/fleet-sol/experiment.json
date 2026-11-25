@@ -2,6 +2,6 @@
   "step": "M-R",
   "handle": "fleet-sol",
   "kind": "step",
-  "summary": "Audit how a reproduction of Gaskell and Bowern's plain-text versus human-pseudotext classifier treats known-source text transformations and different participant cohorts.",
-  "lease": "b06e65f15a4656f439441b39"
+  "summary": "Run exact bifolium-order calibration on the known Aberdeen Bestiary, including a page-aligned whole-quire exclusion.",
+  "lease": "00e87e4aa60a35c3bc064116"
 }
