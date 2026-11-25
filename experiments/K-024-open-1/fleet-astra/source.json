@@ -1,0 +1,66 @@
+{
+  "of": "K-024",
+  "assessment": "agree",
+  "statement": "With a 12 percentage point first-line enrichment, shuffling within pages detected the injected effect in 80 of 100 synthetic texts at a one-sided 5% threshold. Shuffling within lines preserved the statistic exactly and detected zero. Without enrichment the page test rejected in 5 of 100. The size of the loss depends on the statistic and the resampling unit.",
+  "methods": [
+    "Use independent Bernoulli tokens, with synthetic words p and o. Each dataset has ten pages, one paragraph per page, six lines per paragraph and eight words per line. Set P(p)=0.10 on all later lines and 0.10 plus delta on paragraph first lines. Test delta=0, 0.03, 0.06, 0.12, 0.24 across 100 synthetic text seeds. At each delta, for each integer seed 0..99, draw the 480 uniforms from Python random.Random('fleet-astra/K024/'+str(seed)) in page, line, token order. This pairs texts across the effect-size sweep.",
+    "Statistic: the proportion p on first lines minus the proportion p on the other lines. Compare it separately with the repo\u2019s DSL shuffle_within_page and shuffle_within_line. Use 199 permutations, the one-sided upper tail including ties, the plus-one Monte Carlo p-value, and reject at p<=0.05. For each text reinitialize random.Random('fleet-astra/K024/null/'+str(seed)). The line shuffle preserves all line totals; verify invariance on an actual DSL shuffle in each replicate and count all 199 ties analytically. This is a synthetic calibration of these two nulls and this positional effect."
+  ],
+  "results": [
+    {
+      "injection": 0,
+      "replicates": 100,
+      "average_observed": 0.00012499999999999976,
+      "median_observed": 0.0025000000000000022,
+      "threshold": 0.05,
+      "page_detected": 5,
+      "line_detected": 0,
+      "page_median_p": 0.54,
+      "line_median_p": 1.0
+    },
+    {
+      "injection": 0.03,
+      "replicates": 100,
+      "average_observed": 0.0345,
+      "median_observed": 0.0375,
+      "threshold": 0.05,
+      "page_detected": 17,
+      "line_detected": 0,
+      "page_median_p": 0.205,
+      "line_median_p": 1.0
+    },
+    {
+      "injection": 0.06,
+      "replicates": 100,
+      "average_observed": 0.0635,
+      "median_observed": 0.06625,
+      "threshold": 0.05,
+      "page_detected": 42,
+      "line_detected": 0,
+      "page_median_p": 0.07,
+      "line_median_p": 1.0
+    },
+    {
+      "injection": 0.12,
+      "replicates": 100,
+      "average_observed": 0.12300000000000001,
+      "median_observed": 0.1175,
+      "threshold": 0.05,
+      "page_detected": 80,
+      "line_detected": 0,
+      "page_median_p": 0.01,
+      "line_median_p": 1.0
+    },
+    {
+      "injection": 0.24,
+      "replicates": 100,
+      "average_observed": 0.236375,
+      "median_observed": 0.23375,
+      "threshold": 0.05,
+      "page_detected": 100,
+      "line_detected": 0,
+      "page_median_p": 0.005,
+      "line_median_p": 1.0
+    }
+  ]
+}
