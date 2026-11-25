@@ -1,0 +1,10 @@
+{
+  "language": "albanian",
+  "title": "Albanian Bible (from the Unbound Bible), full Bible, one verse per line",
+  "period": "modern Albanian (Tosk standard)",
+  "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/Alb.txt",
+  "sha256": "528b202d905e2bfbc40dd53531442ab406fe86e94885b624be01e50fd2b8a304",
+  "license": "public-domain",
+  "encoding": "utf-8",
+  "notes": "License stated as 'Public Domain' in the source README at https://github.com/scrollmapper/bible_databases/blob/59b18c5af5845728c275d5b7178ad0d024172b1f/sources/sq/Alb/README.md (scrollmapper/bible_databases, files from the CrossWire SWORD module Alb). The url pins a fixed commit, so the bytes do not change. 4,572,016 bytes; one verse per line as '[c:v] text' with '### Book' headings in English (66 short headings, negligible). vs/refcorpus.normalize(..., 'albanian') gives 3,885,938 characters. The last line carries a short Unbound Bible metadata trailer (a few dozen characters of English/Latin), negligible."
+}
