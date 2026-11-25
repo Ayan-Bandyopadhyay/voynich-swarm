@@ -1,0 +1,245 @@
+{
+ "folio": "f75v",
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006209",
+ "blind": true,
+ "statement": "Annotated blind from the Beinecke scan only (canvas 1006209, '75v'). Upper drawing: a patterned tube descends from the top margin into a long blue scalloped vessel with two radiating bursts; ten two-line label tags hang from the vessel, each on a thin line that ends on the head of one of ten bare-breasted female figures standing in a long green trough (left four face right, the fifth faces the viewer, the right five face left). Lower drawing: a blue pool of two joined basins holding about 19 nude female figures, fed by a blue tube down the left margin and drained by a blue tube to the bottom edge. Label assignment: the label line ids f75v.18-.37 come in ten @/+ pairs, and there are ten tags; I assign tag i (counted left to right on the scan) to lines f75v.(16+2i) and .(17+2i), giving the first line id as 'label'. This assumes the transcription numbers the tags left to right; I did not read any words to check it. The seven short labels around the pool (f75v.50-.56 by line structure: three on one level, then four stacked) do not point at single figures and are left unassigned. Lines f75v.2-.11 marked as labels sit level with the top paragraph lines and are not tied to any drawn object here.",
+ "objects": [
+  {
+   "id": "trough-figure-01",
+   "kind": "human_figure",
+   "features": {
+    "group": "trough row",
+    "order_left_to_right": 1,
+    "nude": "upper body bare",
+    "sex_shown": "female",
+    "headgear": "long loose hair, no cap",
+    "posture": "standing waist-deep in a green-filled trough; faces right; arm stretched toward the next figure",
+    "colour": "ink, red cheeks, green liquid around the body",
+    "string": "a thin line runs from the top of the head up to a hanging two-line label tag",
+    "label_lines": "f75v.18 and f75v.19 (one two-line tag)",
+    "position_note": "at the pointed left end of the trough"
+   },
+   "label": "f75v.18"
+  },
+  {
+   "id": "trough-figure-02",
+   "kind": "human_figure",
+   "features": {
+    "group": "trough row",
+    "order_left_to_right": 2,
+    "nude": "upper body bare",
+    "sex_shown": "female",
+    "headgear": "long loose hair, no cap",
+    "posture": "standing waist-deep in a green-filled trough; faces right",
+    "colour": "ink, red cheeks, green liquid around the body",
+    "string": "a thin line runs from the top of the head up to a hanging two-line label tag",
+    "label_lines": "f75v.20 and f75v.21 (one two-line tag)"
+   },
+   "label": "f75v.20"
+  },
+  {
+   "id": "trough-figure-03",
+   "kind": "human_figure",
+   "features": {
+    "group": "trough row",
+    "order_left_to_right": 3,
+    "nude": "upper body bare",
+    "sex_shown": "female",
+    "headgear": "cap or headband with a beaded rim",
+    "posture": "standing waist-deep in a green-filled trough; faces right",
+    "colour": "ink, red cheeks, green liquid around the body",
+    "string": "a thin line runs from the top of the head up to a hanging two-line label tag",
+    "label_lines": "f75v.22 and f75v.23 (one two-line tag)"
+   },
+   "label": "f75v.22"
+  },
+  {
+   "id": "trough-figure-04",
+   "kind": "human_figure",
+   "features": {
+    "group": "trough row",
+    "order_left_to_right": 4,
+    "nude": "upper body bare",
+    "sex_shown": "female",
+    "headgear": "light cap/band",
+    "posture": "standing waist-deep in a green-filled trough; faces right",
+    "colour": "ink, red cheeks, green liquid around the body",
+    "string": "a thin line runs from the top of the head up to a hanging two-line label tag",
+    "label_lines": "f75v.24 and f75v.25 (one two-line tag)"
+   },
+   "label": "f75v.24"
+  },
+  {
+   "id": "trough-figure-05",
+   "kind": "human_figure",
+   "features": {
+    "group": "trough row",
+    "order_left_to_right": 5,
+    "nude": "upper body bare",
+    "sex_shown": "female",
+    "headgear": "cap with beaded rim",
+    "posture": "standing waist-deep in a green-filled trough; faces the viewer",
+    "colour": "ink, red cheeks, green liquid around the body",
+    "string": "a thin line runs from the top of the head up to a hanging two-line label tag",
+    "label_lines": "f75v.26 and f75v.27 (one two-line tag)"
+   },
+   "label": "f75v.26"
+  },
+  {
+   "id": "trough-figure-06",
+   "kind": "human_figure",
+   "features": {
+    "group": "trough row",
+    "order_left_to_right": 6,
+    "nude": "upper body bare",
+    "sex_shown": "female",
+    "headgear": "beaded headband",
+    "posture": "standing waist-deep in a green-filled trough; faces left",
+    "colour": "ink, red cheeks, green liquid around the body",
+    "string": "a thin line runs from the top of the head up to a hanging two-line label tag",
+    "label_lines": "f75v.28 and f75v.29 (one two-line tag)"
+   },
+   "label": "f75v.28"
+  },
+  {
+   "id": "trough-figure-07",
+   "kind": "human_figure",
+   "features": {
+    "group": "trough row",
+    "order_left_to_right": 7,
+    "nude": "upper body bare",
+    "sex_shown": "female",
+    "headgear": "beaded headband",
+    "posture": "standing waist-deep in a green-filled trough; faces left",
+    "colour": "ink, red cheeks, green liquid around the body",
+    "string": "a thin line runs from the top of the head up to a hanging two-line label tag",
+    "label_lines": "f75v.30 and f75v.31 (one two-line tag)"
+   },
+   "label": "f75v.30"
+  },
+  {
+   "id": "trough-figure-08",
+   "kind": "human_figure",
+   "features": {
+    "group": "trough row",
+    "order_left_to_right": 8,
+    "nude": "upper body bare",
+    "sex_shown": "female",
+    "headgear": "cap/band",
+    "posture": "standing waist-deep in a green-filled trough; faces left; arm stretched left",
+    "colour": "ink, red cheeks, green liquid around the body",
+    "string": "a thin line runs from the top of the head up to a hanging two-line label tag",
+    "label_lines": "f75v.32 and f75v.33 (one two-line tag)"
+   },
+   "label": "f75v.32"
+  },
+  {
+   "id": "trough-figure-09",
+   "kind": "human_figure",
+   "features": {
+    "group": "trough row",
+    "order_left_to_right": 9,
+    "nude": "upper body bare",
+    "sex_shown": "female",
+    "headgear": "cap with darker band",
+    "posture": "standing waist-deep in a green-filled trough; faces left; arm around the neighbour",
+    "colour": "ink, red cheeks, green liquid around the body",
+    "string": "a thin line runs from the top of the head up to a hanging two-line label tag",
+    "label_lines": "f75v.34 and f75v.35 (one two-line tag)"
+   },
+   "label": "f75v.34"
+  },
+  {
+   "id": "trough-figure-10",
+   "kind": "human_figure",
+   "features": {
+    "group": "trough row",
+    "order_left_to_right": 10,
+    "nude": "upper body bare",
+    "sex_shown": "female",
+    "headgear": "band cap",
+    "posture": "standing waist-deep in a green-filled trough; faces left",
+    "colour": "ink, red cheeks, green liquid around the body",
+    "string": "a thin line runs from the top of the head up to a hanging two-line label tag",
+    "label_lines": "f75v.36 and f75v.37 (one two-line tag)",
+    "position_note": "at the rounded right end of the trough"
+   },
+   "label": "f75v.36"
+  },
+  {
+   "id": "trough",
+   "kind": "pool",
+   "label": null,
+   "features": {
+    "shape": "long narrow trough/pod, pointed at the left end, rounded hatched cap at the right end",
+    "colour": "green fill",
+    "contents": "10 figures in a row"
+   }
+  },
+  {
+   "id": "pipe-top",
+   "kind": "pipe",
+   "label": null,
+   "features": {
+    "shape": "tube entering from the top margin, turning right at the top into a horizontal end with a blue round knob or eye",
+    "pattern": "zigzag/scale lines along its length",
+    "connects_to": "the blue vessel below, ending in a knot or coil"
+   }
+  },
+  {
+   "id": "blue-vessel",
+   "kind": "container",
+   "label": null,
+   "features": {
+    "shape": "long horizontal cloud-like vessel with a scalloped (looped) border, above the trough",
+    "colour": "blue wash",
+    "inside": "two radiating bursts of rays, each with a small cross or star at its centre",
+    "hangs": "ten tags with crenellated tops hang from its underside on pairs of lines"
+   }
+  },
+  {
+   "id": "pool-left-basin",
+   "kind": "pool",
+   "label": null,
+   "features": {
+    "shape": "small rounded basin at the left, joined to the larger basin",
+    "colour": "pale blue water",
+    "figure_count": 3,
+    "nearby_label_lines": "a stack of four short labels to its left (likely f75v.53-.56 by position, not assigned)"
+   }
+  },
+  {
+   "id": "pool-right-basin",
+   "kind": "pool",
+   "label": null,
+   "features": {
+    "shape": "large rounded basin with hatched arched rims along its top edge",
+    "colour": "blue water, darker blue band along the right and bottom edge",
+    "figure_count": 16,
+    "nearby_label_lines": "a row of three short labels above (likely f75v.50-.52 by position, not assigned)"
+   }
+  },
+  {
+   "id": "pool-figures",
+   "kind": "human_figure",
+   "label": null,
+   "features": {
+    "count": 19,
+    "nude": "nude",
+    "sex_shown": "female",
+    "headgear": "most with braided hair or beaded caps",
+    "posture": "crowded, seated or standing in water, some embracing",
+    "colour": "ink, red cheeks"
+   }
+  },
+  {
+   "id": "pipe-pool",
+   "kind": "pipe",
+   "label": null,
+   "features": {
+    "shape": "tube coming down the left margin into the left side of the pool, and a second tube leaving the bottom right of the pool and winding down to the page edge",
+    "colour": "blue"
+   }
+  }
+ ]
+}
