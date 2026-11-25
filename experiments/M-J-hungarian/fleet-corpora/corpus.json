@@ -1,0 +1,10 @@
+{
+  "language": "hungarian",
+  "title": "Károli Bible (Vizsoly 1590 translation, 1908 revision), full Bible, one verse per line",
+  "period": "16th century (Károli 1590) in the 1908 spelling revision; early-modern Hungarian",
+  "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/HunKar.txt",
+  "sha256": "c7ca259cee90b15cca64d10d375164da32f7b1f325fee4a18508d9b81c19be41",
+  "license": "public-domain",
+  "encoding": "utf-8",
+  "notes": "License stated as 'Public Domain' in the source README at https://github.com/scrollmapper/bible_databases/blob/59b18c5af5845728c275d5b7178ad0d024172b1f/sources/hu/HunKar/README.md (scrollmapper/bible_databases, files from the CrossWire SWORD module HunKar). The url pins a fixed commit, so the bytes do not change. 4,412,303 bytes; one verse per line as '[c:v] text' with '### Book' headings in English (66 short headings, negligible). vs/refcorpus.normalize(..., 'hungarian') gives 3,679,257 characters. Accents are stripped by the generic normalization."
+}
