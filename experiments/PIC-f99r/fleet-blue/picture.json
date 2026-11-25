@@ -1,0 +1,399 @@
+{
+ "folio": "f99r",
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006246",
+ "blind": true,
+ "statement": "Blind annotation from the Beinecke scan alone (full page and four full-resolution strips). The page has four rows, each with a red two-tier cylindrical jar at the left margin followed by detached plant parts, nearly all roots, and a block of text. Row 1: 12 roots (9 hanging in an upper line, 3 lying lower); row 2: 7 roots; row 3: 6 roots and one root with green leaves; row 4: one whole plant. 31 objects. Labels were assigned from line ids, unit codes and line lengths only, assuming the ids run left to right and upper line before lower line; the words were not read from the transcription. Uncertain assignments: row 1 lower labels f99r.12-14 (each lies between an upper and a lower object); f99r.6-7 taken as the single two-line label; f99r.26 and f99r.34 are extra labels beside objects that already carry one (rows 2 and 3 have 8 labels for 7 objects), so their object is ambiguous. The green patch in row 1 is a hole showing the leaf behind, not a drawing.",
+ "objects": [
+  {
+   "id": "r1-jar",
+   "kind": "container",
+   "features": {
+    "shape": "cylinder",
+    "colour": "red",
+    "tiers": 2,
+    "feet": "no",
+    "top_colour": "green",
+    "position": "row 1, left margin",
+    "note": "tall cylinder in two stacked sections, upper section narrower with a dotted rim band, greenish oval top; the label is written on the top"
+   },
+   "label": "f99r.1"
+  },
+  {
+   "id": "r1-a",
+   "kind": "root",
+   "features": {
+    "colour": "yellow",
+    "form": "twisted strands",
+    "leaves": "no",
+    "position": "row 1 upper, 1st",
+    "note": "pale yellowish root of a few intertwined tapering strands, hanging vertically"
+   },
+   "label": "f99r.2"
+  },
+  {
+   "id": "r1-b",
+   "kind": "root",
+   "features": {
+    "colour": "dark red",
+    "form": "tapering with fine hairs",
+    "leaves": "no",
+    "position": "row 1 upper, 2nd",
+    "note": "dark red-brown bent root body ending in many fine parallel hair roots"
+   },
+   "label": "f99r.3"
+  },
+  {
+   "id": "r1-c",
+   "kind": "root",
+   "features": {
+    "colour": "yellow",
+    "form": "segmented taper",
+    "leaves": "no",
+    "position": "row 1 upper, 3rd",
+    "note": "pale tan tapering root with toothed or scaled edges, two short stem stubs on top"
+   },
+   "label": "f99r.4"
+  },
+  {
+   "id": "r1-d",
+   "kind": "root",
+   "features": {
+    "colour": "red",
+    "form": "braided",
+    "leaves": "no",
+    "position": "row 1 upper, 4th",
+    "note": "plait-like root, overlapping lobes on both sides of a red-brown core, thin tail curving down-left; faint green wash above"
+   },
+   "label": "f99r.5"
+  },
+  {
+   "id": "r1-e",
+   "kind": "root",
+   "features": {
+    "colour": "green",
+    "form": "curved with parallel ridges",
+    "leaves": "no",
+    "position": "row 1 upper, 5th",
+    "note": "long curved pale green-tan root with layered parallel lines along one side, three stem stubs on top; a two-line label sits at its upper left"
+   },
+   "label": "f99r.6"
+  },
+  {
+   "id": "r1-f",
+   "kind": "root",
+   "features": {
+    "colour": "uncoloured",
+    "form": "cluster of tubes",
+    "count": 7,
+    "leaves": "no",
+    "position": "row 1 upper, 6th",
+    "note": "about seven open-ended hollow cylinders of different heights standing in a bunch, long thin rootlets beneath, two stem lines on top"
+   },
+   "label": "f99r.8"
+  },
+  {
+   "id": "r1-g",
+   "kind": "root",
+   "features": {
+    "colour": "orange",
+    "form": "fringed with segmented core",
+    "leaves": "no",
+    "position": "row 1 upper, 7th",
+    "note": "orange-tan fringe of strands falling to both sides of a short ringed central column, two long legs spreading below"
+   },
+   "label": "f99r.9"
+  },
+  {
+   "id": "r1-h",
+   "kind": "root",
+   "features": {
+    "colour": "dark red",
+    "form": "body with curled arms",
+    "leaves": "no",
+    "position": "row 1 upper, 8th",
+    "note": "dark red-brown solid shape hanging from a stem: two curled arms at top, pointed tail and two short side prongs, resembles a small four-limbed animal"
+   },
+   "label": "f99r.10"
+  },
+  {
+   "id": "r1-i",
+   "kind": "root",
+   "features": {
+    "colour": "pink",
+    "form": "bent fan of long strands",
+    "leaves": "no",
+    "position": "row 1 upper, 9th (right edge)",
+    "note": "pinkish-orange bent top with many long parallel strands sweeping down to the lower right"
+   },
+   "label": "f99r.11"
+  },
+  {
+   "id": "r1-j",
+   "kind": "root",
+   "features": {
+    "colour": "orange",
+    "form": "horizontal spindle with hairs",
+    "leaves": "no",
+    "position": "row 1 lower, left",
+    "note": "horizontal orange-brown spindle with long fine hairs streaming to the right and a pointed tip to the left"
+   },
+   "label": "f99r.12"
+  },
+  {
+   "id": "r1-k",
+   "kind": "root",
+   "features": {
+    "colour": "orange",
+    "form": "horizontal with bristles",
+    "leaves": "no",
+    "position": "row 1 lower, middle",
+    "note": "long horizontal orange-brown root with a raised thick head end at left and a row of short bristles below, like a many-legged creature; thin tail to right"
+   },
+   "label": "f99r.13"
+  },
+  {
+   "id": "r1-l",
+   "kind": "root",
+   "features": {
+    "colour": "green",
+    "form": "bulb with long strands",
+    "leaves": "no",
+    "position": "row 1 lower, right",
+    "note": "pale green rounded lump with a thin stalk rising to the left and long wavy parallel strands running to the right"
+   },
+   "label": "f99r.14"
+  },
+  {
+   "id": "r2-jar",
+   "kind": "container",
+   "features": {
+    "shape": "cylinder",
+    "colour": "red",
+    "tiers": 2,
+    "feet": "no",
+    "top_colour": "green",
+    "position": "row 2, left margin",
+    "note": "red cylinder in two sections with ringed rims and tooth pattern bands; label written on the body"
+   },
+   "label": "f99r.19"
+  },
+  {
+   "id": "r2-a",
+   "kind": "root",
+   "features": {
+    "colour": "orange",
+    "form": "knotted loop",
+    "leaves": "no",
+    "position": "row 2, 1st",
+    "note": "orange-brown root twisted into a figure-eight knot, two legs below, short curled stem"
+   },
+   "label": "f99r.20"
+  },
+  {
+   "id": "r2-b",
+   "kind": "root",
+   "features": {
+    "colour": "pink",
+    "form": "arch",
+    "leaves": "no",
+    "position": "row 2, 2nd",
+    "note": "pinkish striped root bent into an inverted U, both ends fringed with small rootlets, stem at the top left"
+   },
+   "label": "f99r.21"
+  },
+  {
+   "id": "r2-c",
+   "kind": "root",
+   "features": {
+    "colour": "brown",
+    "form": "bulb with three legs",
+    "leaves": "no",
+    "position": "row 2, 3rd",
+    "note": "brown rounded bulb with a V-shaped pair of stem stubs and three curved pointed roots"
+   },
+   "label": "f99r.22"
+  },
+  {
+   "id": "r2-d",
+   "kind": "root",
+   "features": {
+    "colour": "orange",
+    "form": "stack of banded discs",
+    "leaves": "no",
+    "position": "row 2, 4th",
+    "note": "stack of about five flat discs alternately orange and uncoloured, edged with dots, hooked stem above and a tail to the lower right"
+   },
+   "label": "f99r.23"
+  },
+  {
+   "id": "r2-e",
+   "kind": "root",
+   "features": {
+    "colour": "brown",
+    "form": "curved with spikes",
+    "count": 7,
+    "leaves": "no",
+    "position": "row 2, 5th",
+    "note": "brown root curving from an upright stem to a horizontal body with about seven long pointed spikes rising in a fan"
+   },
+   "label": "f99r.24"
+  },
+  {
+   "id": "r2-f",
+   "kind": "root",
+   "features": {
+    "colour": "red",
+    "form": "wedge with strands",
+    "leaves": "no",
+    "position": "row 2, 6th",
+    "note": "small orange-red striped wedge ending in a few rootlets, cut stem above; a second label stands just right of its stem"
+   },
+   "label": "f99r.25"
+  },
+  {
+   "id": "r2-g",
+   "kind": "root",
+   "features": {
+    "colour": "yellow",
+    "form": "mass with many long strands",
+    "leaves": "no",
+    "position": "row 2, 7th (right)",
+    "note": "large pale tan root mass with many long wavy strands spreading right, small dark branching mark on its body; f99r.26 is written at its upper left and f99r.27 at its upper right"
+   },
+   "label": "f99r.27"
+  },
+  {
+   "id": "r3-jar",
+   "kind": "container",
+   "features": {
+    "shape": "cylinder",
+    "colour": "red",
+    "tiers": 2,
+    "feet": "yes",
+    "top_colour": "green",
+    "position": "row 3, left margin",
+    "note": "red cylinder in two sections with patterned bands, standing on a base with three or four curled feet; label written on the body"
+   },
+   "label": "f99r.32"
+  },
+  {
+   "id": "r3-a",
+   "kind": "root",
+   "features": {
+    "colour": "yellow",
+    "form": "two crossed strands",
+    "leaves": "no",
+    "position": "row 3, 1st",
+    "note": "two pale dotted roots crossing in an X with a loop above, a label on each side of the stem (f99r.33 left, f99r.34 right)"
+   },
+   "label": "f99r.33"
+  },
+  {
+   "id": "r3-b",
+   "kind": "root",
+   "features": {
+    "colour": "dark red",
+    "form": "rounded with prongs",
+    "count": 5,
+    "leaves": "no",
+    "position": "row 3, 2nd",
+    "note": "dark red-brown rounded body with about five straight prongs hanging down"
+   },
+   "label": "f99r.35"
+  },
+  {
+   "id": "r3-c",
+   "kind": "root",
+   "features": {
+    "colour": "brown",
+    "form": "bulb with trailing strands",
+    "leaves": "no",
+    "position": "row 3, 3rd",
+    "note": "tan bulbous root with a hooked stem and long strands trailing right, running under the next object"
+   },
+   "label": "f99r.36"
+  },
+  {
+   "id": "r3-d",
+   "kind": "root",
+   "features": {
+    "colour": "orange",
+    "form": "stack of banded discs",
+    "leaves": "no",
+    "position": "row 3, 4th",
+    "note": "rounded stack of bands alternately orange and uncoloured with dotted edges, tail to the right"
+   },
+   "label": "f99r.37"
+  },
+  {
+   "id": "r3-e",
+   "kind": "root",
+   "features": {
+    "colour": "brown",
+    "form": "zigzag with bristles",
+    "leaves": "no",
+    "position": "row 3, 5th",
+    "note": "brown horizontal root bent in a zigzag, short bristles along its edges, upright stem at left"
+   },
+   "label": "f99r.38"
+  },
+  {
+   "id": "r3-f",
+   "kind": "root",
+   "features": {
+    "colour": "pink",
+    "form": "layered fan",
+    "leaves": "no",
+    "position": "row 3, 6th",
+    "note": "pink-orange shape of overlapping curved layers like a shell or fan, with an orange-red stem"
+   },
+   "label": "f99r.39"
+  },
+  {
+   "id": "r3-g",
+   "kind": "plant",
+   "features": {
+    "colour": "green",
+    "form": "fibrous root with leaves",
+    "leaf_colour": "green",
+    "leaf_count": 2,
+    "leaves": "yes",
+    "root": "bushy fibrous, yellow",
+    "position": "row 3, 7th (right edge)",
+    "note": "the only row-3 object with foliage: two green pointed leaf shapes on a pale stalk above a bushy tan root of many downward fibres"
+   },
+   "label": "f99r.40"
+  },
+  {
+   "id": "r4-jar",
+   "kind": "container",
+   "features": {
+    "shape": "cylinder",
+    "colour": "red",
+    "tiers": 2,
+    "feet": "no",
+    "top_colour": "green",
+    "position": "row 4, left margin",
+    "note": "red cylinder in two sections, upper narrower, toothed bands, greenish open top; label on the body"
+   },
+   "label": "f99r.45"
+  },
+  {
+   "id": "r4-plant",
+   "kind": "plant",
+   "features": {
+    "colour": "green",
+    "form": "whole plant with horizontal root",
+    "root": "thick horizontal, orange stripes, hairy",
+    "leaf_shape": "heart-shaped with notched base",
+    "leaf_colour": "green",
+    "leaf_count": 8,
+    "leaves": "yes",
+    "flower": "two hanging red-brown catkin-like clusters",
+    "position": "row 4, whole width",
+    "note": "thick horizontal root striped orange with fine hairs all round; a thin stem leaves its left end, loops over the top to the right and descends, bearing eight green heart or arrowhead leaves on short stalks, then forks into thin branches ending in two hanging scaly red-brown clusters and a wavy tendril"
+   },
+   "label": "f99r.46"
+  }
+ ]
+}
