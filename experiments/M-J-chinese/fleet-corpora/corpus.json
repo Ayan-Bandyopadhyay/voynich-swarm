@@ -1,0 +1,10 @@
+{
+  "language": "chinese",
+  "title": "Chinese Union Version (1919), simplified script, full Bible, one verse per line",
+  "period": "20th century (1919), early modern written Mandarin",
+  "url": "https://raw.githubusercontent.com/BibleNLP/ebible/2bde52b4c2cfd7056cf4ed07c48969647df79744/corpus/cmn-cmn_cu89s.txt",
+  "sha256": "277840aea0ef67a7f8ca06e7c3725b5fd2d749f4405238c8b69c32656aeed608",
+  "license": "public-domain",
+  "encoding": "utf-8",
+  "notes": "License: 'public-domain' is stated for translation id 'cmn_cu89s' in the eBible corpus licence table https://github.com/BibleNLP/ebible/blob/2bde52b4c2cfd7056cf4ed07c48969647df79744/metadata/licences.tsv (taken from eBible.org's copyright page, https://ebible.org/cmn_cu89s/copr.htm). The url pins a fixed commit, so the bytes do not change. 3,227,312 bytes; eBible corpus format: one verse per line aligned to a fixed versification (empty lines for verses the translation lacks; '<range>' marks merged verses, a few letters each). vs/refcorpus.normalize(..., 'chinese') gives 1,044,463 characters. Chinese has no word spaces: the generic normalization keeps each punctuation-delimited phrase as one 'word', so the grid's word-level statistics see phrase-length units; power figures for Chinese should be read in that light."
+}

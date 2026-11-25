@@ -1,0 +1,6 @@
+{
+  "step": "M-J-chinese",
+  "handle": "fleet-corpora",
+  "kind": "corpus",
+  "summary": "Add Chinese to the grid from Chinese Union Version (public-domain, 1,044,463 characters after normalization; 20th century (1919), early modern written Mandarin)."
+}
