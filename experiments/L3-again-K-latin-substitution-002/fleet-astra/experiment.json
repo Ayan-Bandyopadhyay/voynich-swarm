@@ -1,0 +1,7 @@
+{
+  "step": "L3-again-K-latin-substitution-002",
+  "lease": "f0fe5db3a7854a5f391a598a",
+  "handle": "fleet-astra",
+  "kind": "key",
+  "summary": "Test a Currier B Latin substitution on word-reversed Takahashi with 16 restarts; compression savings on the same public Currier B pages were -12.888%, versus -13.197% for the pooled key, with 9.802% savings on the 2%-noise control."
+}
