@@ -661,5 +661,13 @@
   "true_key_passes": true,
   "search_cracks_control": true,
   "added_with": "vietnamese_49d38fc6"
+ },
+ {
+  "language": "persian",
+  "family": "verbose",
+  "control": "verbose",
+  "true_key_passes": true,
+  "search_cracks_control": true,
+  "added_with": "persian_6e3cfa64"
  }
 ]
