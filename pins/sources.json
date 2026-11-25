@@ -602,6 +602,19 @@
       "license": "cc-by-sa",
       "encoding": "utf-8",
       "added_by": "fleet-corpora"
+    },
+    {
+      "id": "welsh_8aa20d4e",
+      "lang": "welsh",
+      "period": "20th century (1904), modern literary Welsh",
+      "title": "I'r Aifft ac yn ol (To Egypt and back), travel book by D. Rhagfyr Jones (Wrexham: Hughes a'i Fab, 1904), Project Gutenberg #56275",
+      "url": "https://gutenberg.pglaf.org/5/6/2/7/56275/56275-0.txt",
+      "file": "data/raw/agent_welsh_8aa20d4e.txt",
+      "bytes": 221937,
+      "sha256": "8aa20d4ebf6e4cd9f1276d8a824c8665671bc4e7963e2e6405da6c25e5500ffc",
+      "license": "public-domain",
+      "encoding": "utf-8",
+      "added_by": "fleet-corpora"
     }
   ],
   "missing_corpora": {
