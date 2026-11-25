@@ -1,0 +1,976 @@
+{
+  "title": "Compare transformed-text entropy at matched source length",
+  "program": "J",
+  "on_path": false,
+  "hard": false,
+  "statement": "For reversible transformations used as pseudotext controls, report held-apart model code lengths on the original symbol scale alongside per-output entropy summaries. Preserve token boundaries and include padding controls so an apparent drop can be traced to deterministic redundancy, stochastic expansion, or the finite-order model.",
+  "check": "Use disjoint public training and evaluation works, verify inversion exactly, and report all orders 0–8 for identity, fixed substitution, constant letter padding, deterministic two-symbol padding, matched random two-symbol padding, and constant word suffix. Include an inverse-aware reference and both denominators.",
+  "source": "Bowern and Gaskell, Character Entropy in Historical Texts: Beyond Language, CEUR Workshop Proceedings 3313 (2022), §2 and Table 1, https://ceur-ws.org/Vol-3313/paper6.pdf. Related open-source catalogue https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/423.",
+  "methods": "Use the first 100 normalized blocks of each training work and the first 30 of each evaluation work from the pinned reference corpus. Compare Augustine/Erasmus, Dante/Villani, Lucanor/Buen Amor and Chaucer/Paston. Reset context at the existing block boundaries. Keep spaces, use fixed lowercase-ASCII support and reserve uppercase pad symbols. Use order 0–8 character models with recursive Dirichlet backoff of strength 2 and a 0.5 base pseudocount. For the two-symbol controls, choose B or D via parity of the preceding source letter index or independently via a coin estimated from those deterministic training pads. Fix independent train/test random seeds 40801/40802. The constant word suffix is a separate comparator. No manuscript data enter the test.",
+  "findings": "The addB analogue expands source length by 1.82–1.86. For Latin, Italian, Spanish and English respectively, order-8 identity rates are 3.785, 3.969, 3.677 and 3.386 bits per source symbol. At the same order, constant B padding yields 2.163, 2.368, 2.177 and 1.964 bits per output symbol, or 4.021, 4.342, 3.965 and 3.580 per source symbol. Fixed substitution preserves every measured rate. Matched random padding also reduces the order-8 per-output rate, while costing 5.442, 5.537, 5.365 and 5.151 per source symbol. At order 4 constant padding can improve even the source-normalized estimate (Italian 3.165 vs 3.516, Spanish 3.165 vs 3.219). At the best order within 0–8, constant padding costs more per source symbol in all four pairs. Those minima describe this evaluated grid only.",
+  "interpretation": "A fixed injective transformation preserves joint Shannon entropy of the whole source block. An inverse-aware encoding can model the original text and reconstruct deterministic pads for zero extra bits. Independent random pads cost the coin cross-entropy in addition to the source code. A finite-context model uses a different effective source context after insertion, so normalization alone need not make its estimates equal. This tests the denominator and transformation controls on public texts. The companion paper uses its own resampling protocol and entropy statistics.",
+  "reproduction": "Save embedded python as measure.py and run PYTHONPATH=. python3 /path/to/measure.py from the project checkout with the pinned reference corpus available. It writes rates-frozen.json next to the script.",
+  "python": "from collections import Counter\nfrom pathlib import Path\nfrom random import Random\nfrom string import ascii_lowercase\nimport hashlib\nimport json\nimport math\n\nfrom vs import refcorpus\n\nWORKS = {\n    \"latin\": (\"la_augustine\", \"la_erasmus\"),\n    \"italian\": (\"it_dante\", \"it_villani\"),\n    \"spanish\": (\"es_lucanor\", \"es_buenamor\"),\n    \"english\": (\"en_chaucer\", \"en_paston\"),\n}\nMAX_ORDER = 8\nALPHA = 2\nPAD = \"BD\"\nout = Path(__file__).parent\n\ndef make_options(train):\n    def deterministic(c):\n        return \"B\" if ascii_lowercase.index(c) % 2 else \"D\"\n\n    counts = Counter(deterministic(c) for line in train for c in line if c != \" \")\n    prob = counts[\"B\"] / (counts[\"B\"] + counts[\"D\"])\n    rng = Random(408)\n    letters = list(ascii_lowercase)\n    rng.shuffle(letters)\n    forward = str.maketrans(ascii_lowercase, \"\".join(letters))\n    backward = str.maketrans(\"\".join(letters), ascii_lowercase)\n    strip = str.maketrans(\"\", \"\", PAD)\n\n    def transform(line, mode, rng):\n        if mode == \"identity\":\n            return line\n        if mode == \"substitution\":\n            return line.translate(forward)\n        if mode == \"suffix_B\":\n            return \" \".join(word + \"B\" for word in line.split())\n        pieces = []\n        for c in line:\n            pieces.append(c)\n            if c == \" \":\n                continue\n            if mode == \"addB\":\n                pieces.append(\"B\")\n            elif mode == \"matched_deterministic\":\n                pieces.append(deterministic(c))\n            elif mode == \"matched_random\":\n                pieces.append(\"B\" if rng.random() < prob else \"D\")\n        return \"\".join(pieces)\n\n    def inverse(line, mode):\n        if mode == \"substitution\":\n            return line.translate(backward)\n        return line.translate(strip)\n\n    return transform, inverse, prob\n\ndef fit_score(train, test, alphabet):\n    counts = [{} for _ in range(MAX_ORDER + 1)]\n    counts[0][\"\"] = Counter()\n    for line in train:\n        for i, c in enumerate(line):\n            for k in range(min(i, MAX_ORDER) + 1):\n                key = line[i-k:i]\n                group = counts[k].get(key)\n                if group is None:\n                    group = Counter()\n                    counts[k][key] = group\n                group[c] += 1\n    totals = [{key:sum(group.values()) for key,group in col.items()} for col in counts]\n    result = [0.0] * (MAX_ORDER + 1)\n    n_symbols = 0\n    for line in test:\n        n_symbols += len(line)\n        for i, c in enumerate(line):\n            unconditional = counts[0][\"\"]\n            p = (unconditional[c] + .5) / (totals[0][\"\"] + .5 * len(alphabet))\n            for k in range(MAX_ORDER + 1):\n                if 0 < k <= i:\n                    ctx = line[i-k:i]\n                    group = counts[k].get(ctx)\n                    if group is not None:\n                        p = (group[c] + ALPHA * p) / (totals[k][ctx] + ALPHA)\n                result[k] -= math.log2(p)\n    return {\n        \"n_symbols\": n_symbols, \"total_bits\": result,\n        \"bits_per_output_symbol\": [score/n_symbols for score in result],\n    }\n\nmodes = (\"identity\", \"substitution\", \"addB\", \"matched_deterministic\", \"matched_random\", \"suffix_B\")\nresults = {}\nfor lang, (training_work, evaluation_work) in WORKS.items():\n    train = refcorpus.blocks_of(training_work)[:100]\n    test = refcorpus.blocks_of(evaluation_work)[:30]\n    assert len(train) == 100 and len(test) == 30, (lang,len(train),len(test))\n    assert not set(train) & set(test), lang\n    transform, inverse, prob = make_options(train)\n    base = sum(map(len,test))\n    row = {\n        \"works\": [training_work, evaluation_work],\n        \"n_training_source_symbols\": sum(map(len,train)), \"n_evaluation_source_symbols\": base,\n        \"source_space_count_in_evaluation\": sum(line.count(\" \") for line in test),\n        \"normalized_train_sha256\": hashlib.sha256(\"\\n\".join(train).encode()).hexdigest(),\n        \"normalized_test_sha256\": hashlib.sha256(\"\\n\".join(test).encode()).hexdigest(),\n        \"matched_padding_prob_B\": prob,\n        \"models\": {},\n    }\n    for mode in modes:\n        rng_train, rng_test = Random(40801), Random(40802)\n        cipher_train = [transform(line, mode, rng_train) for line in train]\n        cipher_test = [transform(line, mode, rng_test) for line in test]\n        assert all(inverse(line, mode) == plain for line, plain in zip(cipher_train,train))\n        assert all(inverse(line, mode) == plain for line, plain in zip(cipher_test,test))\n        assert [line.count(\" \") for line in cipher_test]==[line.count(\" \") for line in test]\n        alphabet = ascii_lowercase + \" \"\n        if mode in (\"addB\", \"suffix_B\"):\n            alphabet += \"B\"\n        elif mode in (\"matched_deterministic\", \"matched_random\"):\n            alphabet += PAD\n        measures = fit_score(cipher_train,cipher_test,alphabet)\n        measures[\"bits_per_source_symbol\"] = [score/base for score in measures[\"total_bits\"]]\n        measures[\"expansion\"] = measures[\"n_symbols\"] / base\n        if mode == \"matched_random\":\n            n_b = sum(line.count(\"B\") for line in cipher_test)\n            n_d = sum(line.count(\"D\") for line in cipher_test)\n            measures[\"structure_aware_extra_bits_per_source_symbol\"] = -(n_b*math.log2(prob)+n_d*math.log2(1-prob))/base\n        elif mode not in (\"identity\", \"substitution\"):\n            measures[\"structure_aware_extra_bits_per_source_symbol\"] = 0.0\n        row[\"models\"][mode] = measures\n    for order in range(MAX_ORDER+1):\n        assert abs(row[\"models\"][\"identity\"][\"total_bits\"][order]-row[\"models\"][\"substitution\"][\"total_bits\"][order])<1e-7\n    results[lang] = row\n    (out/\"rates-frozen.json\").write_text(json.dumps(results,indent=2)+\"\\n\")\n    print(lang,row[\"n_training_source_symbols\"],row[\"n_evaluation_source_symbols\"],flush=True)\n",
+  "results": {
+    "latin": {
+      "works": [
+        "la_augustine",
+        "la_erasmus"
+      ],
+      "n_training_source_symbols": 40257,
+      "n_evaluation_source_symbols": 12058,
+      "source_space_count_in_evaluation": 1704,
+      "normalized_train_sha256": "a7a20ef046612b39cff832eee050e7639f40ba7f650212f57b7ed9554b180b47",
+      "normalized_test_sha256": "46584fd086e3a0534dab1375bb9e13ecb138c0dc13d0bc6bf31fbbeb4aab6696",
+      "matched_padding_prob_B": 0.3261629786358694,
+      "models": {
+        "identity": {
+          "n_symbols": 12058,
+          "total_bits": [
+            48350.55118722904,
+            41664.51287332336,
+            38342.3324574912,
+            37526.46064888153,
+            39933.497838550786,
+            42530.13404532107,
+            44223.52632040937,
+            45173.09213559453,
+            45637.39845940336
+          ],
+          "bits_per_output_symbol": [
+            4.009831745499174,
+            3.455341920162826,
+            3.1798252162457454,
+            3.1121629332295186,
+            3.311784527993928,
+            3.527130041907536,
+            3.667567284824131,
+            3.746317145098236,
+            3.784823226024495
+          ],
+          "bits_per_source_symbol": [
+            4.009831745499174,
+            3.455341920162826,
+            3.1798252162457454,
+            3.1121629332295186,
+            3.311784527993928,
+            3.527130041907536,
+            3.667567284824131,
+            3.746317145098236,
+            3.784823226024495
+          ],
+          "expansion": 1.0
+        },
+        "substitution": {
+          "n_symbols": 12058,
+          "total_bits": [
+            48350.55118722904,
+            41664.51287332336,
+            38342.3324574912,
+            37526.46064888153,
+            39933.497838550786,
+            42530.13404532107,
+            44223.52632040937,
+            45173.09213559453,
+            45637.39845940336
+          ],
+          "bits_per_output_symbol": [
+            4.009831745499174,
+            3.455341920162826,
+            3.1798252162457454,
+            3.1121629332295186,
+            3.311784527993928,
+            3.527130041907536,
+            3.667567284824131,
+            3.746317145098236,
+            3.784823226024495
+          ],
+          "bits_per_source_symbol": [
+            4.009831745499174,
+            3.455341920162826,
+            3.1798252162457454,
+            3.1121629332295186,
+            3.311784527993928,
+            3.527130041907536,
+            3.667567284824131,
+            3.746317145098236,
+            3.784823226024495
+          ],
+          "expansion": 1.0
+        },
+        "addB": {
+          "n_symbols": 22412,
+          "total_bits": [
+            70670.0387140632,
+            47783.86990182062,
+            41895.36726340466,
+            40966.46807423951,
+            39119.17940208988,
+            40296.83384004007,
+            40990.218422218146,
+            44938.22232772728,
+            48480.608189113984
+          ],
+          "bits_per_output_symbol": [
+            3.15322321586932,
+            2.1320662993851784,
+            1.8693274702572131,
+            1.8278809599428658,
+            1.7454568714121845,
+            1.7980025807620947,
+            1.828940675629937,
+            2.005096480801681,
+            2.163154033067731
+          ],
+          "bits_per_source_symbol": [
+            5.860842487482435,
+            3.9628354537917247,
+            3.4744872502408906,
+            3.397451324783505,
+            3.2442510700024783,
+            3.3419168883761876,
+            3.3994210003498213,
+            3.726838806412944,
+            4.0206176968911915
+          ],
+          "expansion": 1.8586830320119423,
+          "structure_aware_extra_bits_per_source_symbol": 0.0
+        },
+        "matched_deterministic": {
+          "n_symbols": 22412,
+          "total_bits": [
+            80212.95792099135,
+            46296.49086532695,
+            41933.78390588204,
+            40569.94885032319,
+            39406.6687038002,
+            40396.949884909714,
+            42101.17883454937,
+            45742.60622341516,
+            49413.97967977619
+          ],
+          "bits_per_output_symbol": [
+            3.5790182902459104,
+            2.065701002379393,
+            1.8710415806658058,
+            1.8101886868786004,
+            1.758284343378556,
+            1.8024696539759824,
+            1.8785105673098952,
+            2.040987248947669,
+            2.2048000927974383
+          ],
+          "bits_per_source_symbol": [
+            6.652260567340467,
+            3.8394834023326383,
+            3.4776732381723368,
+            3.3645669970412335,
+            3.2680932744899818,
+            3.350219761561595,
+            3.4915557169140294,
+            3.7935483681717668,
+            4.098024521460954
+          ],
+          "expansion": 1.8586830320119423,
+          "structure_aware_extra_bits_per_source_symbol": 0.0
+        },
+        "matched_random": {
+          "n_symbols": 22412,
+          "total_bits": [
+            80192.27756694934,
+            57338.74761518961,
+            51490.518534261566,
+            51034.8507499503,
+            50976.52562920578,
+            55098.50646134979,
+            59115.441894207775,
+            62986.28463532138,
+            65622.47988497774
+          ],
+          "bits_per_output_symbol": [
+            3.578095554477483,
+            2.5583949498121368,
+            2.2974530846984456,
+            2.277121664730961,
+            2.2745192588437346,
+            2.458437732524977,
+            2.637669190353729,
+            2.8103821450705597,
+            2.928006419997222
+          ],
+          "bits_per_source_symbol": [
+            6.6505454940246596,
+            4.755245282400863,
+            4.270237065372497,
+            4.232447400062225,
+            4.227610352397228,
+            4.569456498702089,
+            4.902590968171154,
+            5.223609606511974,
+            5.442235850470869
+          ],
+          "expansion": 1.8586830320119423,
+          "structure_aware_extra_bits_per_source_symbol": 0.7896822454628619
+        },
+        "suffix_B": {
+          "n_symbols": 13792,
+          "total_bits": [
+            55884.22221088953,
+            41758.258555315864,
+            38448.73387983226,
+            36994.32879041563,
+            38260.06254191427,
+            41489.17966755407,
+            44251.40493482815,
+            46103.61419377456,
+            47327.694499206606
+          ],
+          "bits_per_output_symbol": [
+            4.051930264710668,
+            3.0277159625374033,
+            2.787756226785982,
+            2.6823034215788595,
+            2.7740764604056167,
+            3.0082061823922612,
+            3.2084835364579574,
+            3.3427794514047684,
+            3.4315323737823813
+          ],
+          "bits_per_source_symbol": [
+            4.6346178645620775,
+            3.463116483273832,
+            3.188649351453994,
+            3.068031911628432,
+            3.1730023670521037,
+            3.4408011003113343,
+            3.6698793278178927,
+            3.823487659128758,
+            3.925003690430138
+          ],
+          "expansion": 1.14380494277658,
+          "structure_aware_extra_bits_per_source_symbol": 0.0
+        }
+      }
+    },
+    "italian": {
+      "works": [
+        "it_dante",
+        "it_villani"
+      ],
+      "n_training_source_symbols": 40110,
+      "n_evaluation_source_symbols": 12050,
+      "source_space_count_in_evaluation": 2005,
+      "normalized_train_sha256": "b1d96579b7e3aeb7def389f614340691c0d2e7031d23607eb64ec928e5b7bcbf",
+      "normalized_test_sha256": "f78e00b88f34f5defe8b7fc72cdecd80c14243c71db7296ddf6bfe63b17c0245",
+      "matched_padding_prob_B": 0.37267603002086513,
+      "models": {
+        "identity": {
+          "n_symbols": 12050,
+          "total_bits": [
+            48061.30843233405,
+            39295.96187092797,
+            37647.51994267274,
+            38898.37575225555,
+            42369.36796432968,
+            44967.637864434895,
+            46527.39423194645,
+            47374.09677795665,
+            47820.54595066062
+          ],
+          "bits_per_output_symbol": [
+            3.988490326334776,
+            3.261075673935931,
+            3.1242755139147502,
+            3.228080975290917,
+            3.516130121521135,
+            3.731754179621153,
+            3.8611945420702445,
+            3.9314603135233734,
+            3.9685100373992217
+          ],
+          "bits_per_source_symbol": [
+            3.988490326334776,
+            3.261075673935931,
+            3.1242755139147502,
+            3.228080975290917,
+            3.516130121521135,
+            3.731754179621153,
+            3.8611945420702445,
+            3.9314603135233734,
+            3.9685100373992217
+          ],
+          "expansion": 1.0
+        },
+        "substitution": {
+          "n_symbols": 12050,
+          "total_bits": [
+            48061.30843233405,
+            39295.96187092797,
+            37647.51994267274,
+            38898.37575225555,
+            42369.36796432968,
+            44967.637864434895,
+            46527.39423194645,
+            47374.09677795665,
+            47820.54595066062
+          ],
+          "bits_per_output_symbol": [
+            3.988490326334776,
+            3.261075673935931,
+            3.1242755139147502,
+            3.228080975290917,
+            3.516130121521135,
+            3.731754179621153,
+            3.8611945420702445,
+            3.9314603135233734,
+            3.9685100373992217
+          ],
+          "bits_per_source_symbol": [
+            3.988490326334776,
+            3.261075673935931,
+            3.1242755139147502,
+            3.228080975290917,
+            3.516130121521135,
+            3.731754179621153,
+            3.8611945420702445,
+            3.9314603135233734,
+            3.9685100373992217
+          ],
+          "expansion": 1.0
+        },
+        "addB": {
+          "n_symbols": 22095,
+          "total_bits": [
+            70031.44000538872,
+            46574.47898042481,
+            39332.6408920183,
+            38752.12767379242,
+            38139.352318959034,
+            40239.93454327195,
+            42957.23964443236,
+            47880.558463591035,
+            52316.0562907587
+          ],
+          "bits_per_output_symbol": [
+            3.1695605343013677,
+            2.1079193926419917,
+            1.7801602576156734,
+            1.7538867469469301,
+            1.7261530807403953,
+            1.8212235593243697,
+            1.9442063654416095,
+            2.167031385543835,
+            2.3677780624919076
+          ],
+          "bits_per_source_symbol": [
+            5.811737759783297,
+            3.8651019900767474,
+            3.2641195761011037,
+            3.215944205293977,
+            3.165091478751787,
+            3.339413655043315,
+            3.5649161530649263,
+            3.9734903289287167,
+            4.341581434917734
+          ],
+          "expansion": 1.833609958506224,
+          "structure_aware_extra_bits_per_source_symbol": 0.0
+        },
+        "matched_deterministic": {
+          "n_symbols": 22095,
+          "total_bits": [
+            79685.84766084375,
+            44750.533707617695,
+            39324.20371394683,
+            38169.743937507315,
+            38129.94831295939,
+            40585.90054697148,
+            43990.16151805929,
+            48865.71282072836,
+            53212.39164406301
+          ],
+          "bits_per_output_symbol": [
+            3.606510416874576,
+            2.025369255832437,
+            1.7797783984587838,
+            1.7275285782985885,
+            1.7257274638135047,
+            1.8368816721869872,
+            1.9909554884842404,
+            2.211618593379876,
+            2.4083454014058843
+          ],
+          "bits_per_source_symbol": [
+            6.612933415837656,
+            3.7137372371466966,
+            3.2634193953482846,
+            3.1676136047723915,
+            3.1643110633161315,
+            3.368124526719625,
+            3.6506358106273273,
+            4.055245877238868,
+            4.415966111540499
+          ],
+          "expansion": 1.833609958506224,
+          "structure_aware_extra_bits_per_source_symbol": 0.0
+        },
+        "matched_random": {
+          "n_symbols": 22095,
+          "total_bits": [
+            79651.34442124065,
+            56203.186048368596,
+            49010.219729820936,
+            48948.071108551514,
+            50092.48013257995,
+            55221.56864372003,
+            60154.99481353729,
+            64177.466563349306,
+            66726.82492686341
+          ],
+          "bits_per_output_symbol": [
+            3.6049488310133806,
+            2.5437060895391985,
+            2.218158847242405,
+            2.215346056055737,
+            2.2671409881231024,
+            2.4992789610192365,
+            2.722561430800511,
+            2.9046149157433496,
+            3.0199966022567737
+          ],
+          "bits_per_source_symbol": [
+            6.610070076451506,
+            4.664164817292,
+            4.06723815185236,
+            4.062080589921288,
+            4.157052293160162,
+            4.582702792009961,
+            4.992115752160771,
+            5.325930835132723,
+            5.53749584455298
+          ],
+          "expansion": 1.833609958506224,
+          "structure_aware_extra_bits_per_source_symbol": 0.7983906574324995
+        },
+        "suffix_B": {
+          "n_symbols": 14085,
+          "total_bits": [
+            56495.57637059303,
+            39360.74507574062,
+            37713.81222268413,
+            38225.37228344827,
+            40417.27834021309,
+            44097.43275967086,
+            46763.701427980806,
+            48684.567818862495,
+            49957.76584331678
+          ],
+          "bits_per_output_symbol": [
+            4.011045535718355,
+            2.794515092349352,
+            2.677586952267244,
+            2.713906445399238,
+            2.8695263287336235,
+            3.1308081476514635,
+            3.320106597655719,
+            3.4564833382223994,
+            3.5468772341722956
+          ],
+          "bits_per_source_symbol": [
+            4.688429574323073,
+            3.2664518735054457,
+            3.1297769479405915,
+            3.172230065016454,
+            3.3541309825902976,
+            3.6595379883544283,
+            3.8808050977577433,
+            4.040213097001037,
+            4.145872684092679
+          ],
+          "expansion": 1.1688796680497926,
+          "structure_aware_extra_bits_per_source_symbol": 0.0
+        }
+      }
+    },
+    "spanish": {
+      "works": [
+        "es_lucanor",
+        "es_buenamor"
+      ],
+      "n_training_source_symbols": 40159,
+      "n_evaluation_source_symbols": 12061,
+      "source_space_count_in_evaluation": 2155,
+      "normalized_train_sha256": "2d6d70df7fa7eef4af55c1522fafa5779e388f5ef8301ea615982c617a04485c",
+      "normalized_test_sha256": "2344b604c60db77b6ee6bfed006ce0c8ee54306d164ea1b60f1da2538dd92b2d",
+      "matched_padding_prob_B": 0.3659826916608055,
+      "models": {
+        "identity": {
+          "n_symbols": 12061,
+          "total_bits": [
+            47831.23935472788,
+            38889.48164715566,
+            37171.94474435943,
+            37548.08036136284,
+            38826.6227305874,
+            40763.26855880491,
+            42508.67487338311,
+            43587.2270467279,
+            44352.60502841293
+          ],
+          "bits_per_output_symbol": [
+            3.9657772452307336,
+            3.224399440109084,
+            3.0819952528280767,
+            3.113181358209339,
+            3.2191876901241523,
+            3.3797586069815866,
+            3.52447349916119,
+            3.6138982710163257,
+            3.677357186668844
+          ],
+          "bits_per_source_symbol": [
+            3.9657772452307336,
+            3.224399440109084,
+            3.0819952528280767,
+            3.113181358209339,
+            3.2191876901241523,
+            3.3797586069815866,
+            3.52447349916119,
+            3.6138982710163257,
+            3.677357186668844
+          ],
+          "expansion": 1.0
+        },
+        "substitution": {
+          "n_symbols": 12061,
+          "total_bits": [
+            47831.23935472788,
+            38889.48164715566,
+            37171.94474435943,
+            37548.08036136284,
+            38826.6227305874,
+            40763.26855880491,
+            42508.67487338311,
+            43587.2270467279,
+            44352.60502841293
+          ],
+          "bits_per_output_symbol": [
+            3.9657772452307336,
+            3.224399440109084,
+            3.0819952528280767,
+            3.113181358209339,
+            3.2191876901241523,
+            3.3797586069815866,
+            3.52447349916119,
+            3.6138982710163257,
+            3.677357186668844
+          ],
+          "bits_per_source_symbol": [
+            3.9657772452307336,
+            3.224399440109084,
+            3.0819952528280767,
+            3.113181358209339,
+            3.2191876901241523,
+            3.3797586069815866,
+            3.52447349916119,
+            3.6138982710163257,
+            3.677357186668844
+          ],
+          "expansion": 1.0
+        },
+        "addB": {
+          "n_symbols": 21967,
+          "total_bits": [
+            69645.80676951066,
+            45878.829528529604,
+            38947.01186808176,
+            38613.464185861885,
+            38175.49071248783,
+            39961.19168210885,
+            41774.19521891911,
+            45068.47902223047,
+            47824.668128672994
+          ],
+          "bits_per_output_symbol": [
+            3.170474200824448,
+            2.0885341434210227,
+            1.7729781885592826,
+            1.7577941542250597,
+            1.7378563623839318,
+            1.8191465235174968,
+            1.9016795747675652,
+            2.0516446953261926,
+            2.177114222637274
+          ],
+          "bits_per_source_symbol": [
+            5.7744637069488975,
+            3.8038993059057793,
+            3.22916937800197,
+            3.201514317706814,
+            3.1652011203455626,
+            3.31325691751172,
+            3.463576421434301,
+            3.7367116343777855,
+            3.965232412625238
+          ],
+          "expansion": 1.8213249315977116,
+          "structure_aware_extra_bits_per_source_symbol": 0.0
+        },
+        "matched_deterministic": {
+          "n_symbols": 21967,
+          "total_bits": [
+            79091.22951766266,
+            44257.94675100745,
+            39018.61174736752,
+            38332.40138438757,
+            38486.60978175114,
+            40325.68089878439,
+            42731.04548006064,
+            45801.59872845745,
+            48500.756334578684
+          ],
+          "bits_per_output_symbol": [
+            3.6004565720245214,
+            2.014746972777687,
+            1.776237617670484,
+            1.7449993801787942,
+            1.752019382790146,
+            1.8357391040553734,
+            1.945238106253045,
+            2.0850183788618133,
+            2.207891670896285
+          ],
+          "bits_per_source_symbol": [
+            6.557601319763093,
+            3.669508892381017,
+            3.2351058575049763,
+            3.1782108767421917,
+            3.1909965825181277,
+            3.3434773981248975,
+            3.542910660812589,
+            3.7974959562604638,
+            4.021288146470333
+          ],
+          "expansion": 1.8213249315977116,
+          "structure_aware_extra_bits_per_source_symbol": 0.0
+        },
+        "matched_random": {
+          "n_symbols": 21967,
+          "total_bits": [
+            79082.7151230269,
+            55316.91480504342,
+            48495.84846366718,
+            48726.8802235262,
+            49722.44705650374,
+            54121.31251433893,
+            58456.25563265785,
+            62139.41779155127,
+            64707.39453536787
+          ],
+          "bits_per_output_symbol": [
+            3.6000689726875263,
+            2.518182492149289,
+            2.207668250724595,
+            2.218185470183739,
+            2.2635064895754424,
+            2.4637552926817015,
+            2.661094170012193,
+            2.8287621337256463,
+            2.9456637017056435
+          ],
+          "bits_per_source_symbol": [
+            6.556895375427153,
+            4.586428555264358,
+            4.020881225741412,
+            4.040036499753437,
+            4.1225808022969685,
+            4.487298939916999,
+            4.846717157172527,
+            5.152094999714059,
+            5.365010740018893
+          ],
+          "expansion": 1.8213249315977116,
+          "structure_aware_extra_bits_per_source_symbol": 0.782480577826736
+        },
+        "suffix_B": {
+          "n_symbols": 14246,
+          "total_bits": [
+            56640.40999345565,
+            38964.58584014264,
+            37171.33125486051,
+            37084.05531414312,
+            37970.57007646722,
+            39998.42437109224,
+            42136.70117347653,
+            44057.77292532674,
+            45735.766276067974
+          ],
+          "bits_per_output_symbol": [
+            3.97588165053037,
+            2.735124655351863,
+            2.609246894206129,
+            2.6031205471109873,
+            2.6653495771772584,
+            2.8076950983498694,
+            2.957791743189424,
+            3.092641648555857,
+            3.2104286309187122
+          ],
+          "bits_per_source_symbol": [
+            4.696162009240996,
+            3.230626468795509,
+            3.0819443872697545,
+            3.074708176282491,
+            3.1482107683000766,
+            3.3163439491826745,
+            3.4936324660871017,
+            3.6529121072321318,
+            3.792037664875879
+          ],
+          "expansion": 1.1811624243429235,
+          "structure_aware_extra_bits_per_source_symbol": 0.0
+        }
+      }
+    },
+    "english": {
+      "works": [
+        "en_chaucer",
+        "en_paston"
+      ],
+      "n_training_source_symbols": 40147,
+      "n_evaluation_source_symbols": 12062,
+      "source_space_count_in_evaluation": 2134,
+      "normalized_train_sha256": "4a999ed38d59a551c9cb4e256a0470da799789f9d0f971947b5d850365f1fef2",
+      "normalized_test_sha256": "c8893a6371cc7cad082fe1e9dd9abf38df9b3ab20228bbee4a549d99e2213520",
+      "matched_padding_prob_B": 0.4406291671717784,
+      "models": {
+        "identity": {
+          "n_symbols": 12062,
+          "total_bits": [
+            49430.04016909077,
+            41401.80725046969,
+            36227.907125717575,
+            34133.00804781573,
+            34955.45574013825,
+            36762.209092911304,
+            38539.26382856269,
+            39946.5926968762,
+            40840.288657057135
+          ],
+          "bits_per_output_symbol": [
+            4.097997029438797,
+            3.43241645253438,
+            3.0034743098754415,
+            2.829796720926524,
+            2.89798173935817,
+            3.047770609593045,
+            3.195097316246285,
+            3.311771903239612,
+            3.3858637586683082
+          ],
+          "bits_per_source_symbol": [
+            4.097997029438797,
+            3.43241645253438,
+            3.0034743098754415,
+            2.829796720926524,
+            2.89798173935817,
+            3.047770609593045,
+            3.195097316246285,
+            3.311771903239612,
+            3.3858637586683082
+          ],
+          "expansion": 1.0
+        },
+        "substitution": {
+          "n_symbols": 12062,
+          "total_bits": [
+            49430.04016909077,
+            41401.80725046969,
+            36227.907125717575,
+            34133.00804781573,
+            34955.45574013825,
+            36762.209092911304,
+            38539.26382856269,
+            39946.5926968762,
+            40840.288657057135
+          ],
+          "bits_per_output_symbol": [
+            4.097997029438797,
+            3.43241645253438,
+            3.0034743098754415,
+            2.829796720926524,
+            2.89798173935817,
+            3.047770609593045,
+            3.195097316246285,
+            3.311771903239612,
+            3.3858637586683082
+          ],
+          "bits_per_source_symbol": [
+            4.097997029438797,
+            3.43241645253438,
+            3.0034743098754415,
+            2.829796720926524,
+            2.89798173935817,
+            3.047770609593045,
+            3.195097316246285,
+            3.311771903239612,
+            3.3858637586683082
+          ],
+          "expansion": 1.0
+        },
+        "addB": {
+          "n_symbols": 21990,
+          "total_bits": [
+            71270.43187658039,
+            48082.2691971331,
+            41474.745759778096,
+            39884.570085275845,
+            36976.361274440445,
+            38383.52226770654,
+            38234.044277835266,
+            40881.17829576639,
+            43182.02262163241
+          ],
+          "bits_per_output_symbol": [
+            3.2410382845193446,
+            2.1865515778596225,
+            1.8860730222727646,
+            1.813759439985259,
+            1.6815080161182558,
+            1.7454989662440445,
+            1.7387014223663149,
+            1.8590804136319412,
+            1.963711806349814
+          ],
+          "bits_per_source_symbol": [
+            5.9086745047737015,
+            3.98626008929971,
+            3.438463418983427,
+            3.306629919190503,
+            3.0655248942497466,
+            3.182185563563799,
+            3.169793092176693,
+            3.3892537137926038,
+            3.5800051916458635
+          ],
+          "expansion": 1.8230807494611176,
+          "structure_aware_extra_bits_per_source_symbol": 0.0
+        },
+        "matched_deterministic": {
+          "n_symbols": 21990,
+          "total_bits": [
+            81100.46566353818,
+            46668.25134955507,
+            41476.30613469441,
+            39203.80658750475,
+            37299.17328014517,
+            38214.85444881742,
+            39068.477371368244,
+            41433.463192739946,
+            43749.268961440284
+          ],
+          "bits_per_output_symbol": [
+            3.688061194340072,
+            2.122248810802868,
+            1.8861439806591365,
+            1.7828015728742495,
+            1.6961879618074203,
+            1.7378287607465859,
+            1.7766474475383467,
+            1.88419568861937,
+            1.9895074561819137
+          ],
+          "bits_per_source_symbol": [
+            6.723633366235963,
+            3.869030952541458,
+            3.438592781851634,
+            3.250191227616046,
+            3.0922876206387975,
+            3.1682021595769707,
+            3.2389717601863905,
+            3.4350408881396075,
+            3.627032744274605
+          ],
+          "expansion": 1.8230807494611176,
+          "structure_aware_extra_bits_per_source_symbol": 0.0
+        },
+        "matched_random": {
+          "n_symbols": 21990,
+          "total_bits": [
+            81110.33655884945,
+            57938.6373228562,
+            51391.70367457473,
+            50629.25198390615,
+            49643.246041295206,
+            53758.14679773101,
+            57109.39155842316,
+            60039.7550682711,
+            62131.574971155
+          ],
+          "bits_per_output_symbol": [
+            3.688510075436537,
+            2.634772047424111,
+            2.3370488255832074,
+            2.302376170254941,
+            2.2575373370302505,
+            2.4446633377776723,
+            2.5970619171633995,
+            2.7303208307535742,
+            2.825446792685539
+          ],
+          "bits_per_source_symbol": [
+            6.724451712721725,
+            4.803402198877151,
+            4.2606287244714585,
+            4.197417674009795,
+            4.115672860329564,
+            4.456818670015836,
+            4.734653586339177,
+            4.977595346399528,
+            5.151017656371663
+          ],
+          "expansion": 1.8230807494611176,
+          "structure_aware_extra_bits_per_source_symbol": 0.8158150637006951
+        },
+        "suffix_B": {
+          "n_symbols": 14226,
+          "total_bits": [
+            58180.64940893294,
+            41485.10798566821,
+            36188.24732197469,
+            33280.00222690977,
+            33700.44806244657,
+            35662.36828695359,
+            37819.958109192514,
+            39834.46212546013,
+            41566.456126725294
+          ],
+          "bits_per_output_symbol": [
+            4.089740574225569,
+            2.9161470536811622,
+            2.543810440178173,
+            2.339378759096708,
+            2.36893350642813,
+            2.5068443896354276,
+            2.6585096379300235,
+            2.800116837161544,
+            2.921865325933171
+          ],
+          "bits_per_source_symbol": [
+            4.823466208666303,
+            3.439322499226348,
+            3.000186314207817,
+            2.7590782811233434,
+            2.793935339284246,
+            2.9565883176051724,
+            3.1354632821416444,
+            3.302475719238943,
+            3.4460666661188273
+          ],
+          "expansion": 1.179406400265296,
+          "structure_aware_extra_bits_per_source_symbol": 0.0
+        }
+      }
+    }
+  }
+}
