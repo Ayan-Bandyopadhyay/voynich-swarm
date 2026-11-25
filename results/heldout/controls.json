@@ -1205,5 +1205,21 @@
   "true_key_passes": false,
   "search_cracks_control": false,
   "added_with": "yiddish_a8da2feb"
+ },
+ {
+  "language": "nahuatl",
+  "family": "substitution",
+  "control": "homophonic",
+  "true_key_passes": false,
+  "search_cracks_control": false,
+  "added_with": "nahuatl_1fd2ccfd"
+ },
+ {
+  "language": "nahuatl",
+  "family": "verbose",
+  "control": "verbose",
+  "true_key_passes": false,
+  "search_cracks_control": false,
+  "added_with": "nahuatl_1fd2ccfd"
  }
 ]

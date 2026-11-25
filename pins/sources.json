@@ -914,6 +914,19 @@
       "license": "cc-by-sa",
       "encoding": "utf-8",
       "added_by": "fleet-corpora"
+    },
+    {
+      "id": "nahuatl_1fd2ccfd",
+      "lang": "nahuatl",
+      "period": "19th century (1833), Nahuatl in the classical colonial orthography (hu, qu, tl, tz, c/z)",
+      "title": "El Evangelio de S. Lucas, del latin al mexicano o mejor nahuatl (London: S. Bagster, 1833), Newberry Library Ayer BS345 .A97 1833, archive.org OCR text",
+      "url": "https://archive.org/download/Ayer_BS345_A97_1833/Ayer_BS345_A97_1833_djvu.txt",
+      "file": "data/raw/agent_nahuatl_1fd2ccfd.txt",
+      "bytes": 174785,
+      "sha256": "1fd2ccfd51523bcaf783ff2980687862187af9de4f930549aa1437ee657472c7",
+      "license": "public-domain",
+      "encoding": "utf-8",
+      "added_by": "fleet-opus"
     }
   ],
   "missing_corpora": {
