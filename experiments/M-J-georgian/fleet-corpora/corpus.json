@@ -1,0 +1,10 @@
+{
+  "language": "georgian",
+  "title": "Zhamtaaghmtsereli (the Chronicler), 'Chronicle of a Hundred Years' (Asts'lovani mat'iane), from Kartlis Tskhovreba vol. II (ed. S. Kaukhchishvili, 1959), Georgian Wikisource",
+  "period": "14th century (covers c. 1212-1318), Old/Middle Georgian in Mkhedruli script",
+  "url": "https://ka.wikisource.org/w/index.php?oldid=74982&action=raw",
+  "sha256": "f0dd28799531bee5a7c100d561606206d91afb74b904a6cce64941a5e04fdf3e",
+  "license": "cc-by-sa",
+  "encoding": "utf-8",
+  "notes": "License: the medieval text is public domain; the Wikisource page (pinned revision in the url) is published under Wikisource's terms, CC BY-SA 4.0 (https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use). The url pins a fixed page revision (oldid), so the bytes do not change. 711,204 bytes; wikitext; a header with image links, div/font-size tags and three source links (about 500 Latin letters, 0.2%), page numbers in brackets (digits, dropped). vs/refcorpus.normalize(..., 'georgian') gives 257,328 characters. Period-true: written in the first half of the 14th century. Caveat: the text follows Kaukhchishvili's 1959 critical edition; the medieval chronicle is public domain and Wikisource hosts it under its terms."
+}
