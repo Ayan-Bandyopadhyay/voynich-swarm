@@ -1,0 +1,7 @@
+{
+  "step": "K-004-open-2",
+  "handle": "fleet-opus",
+  "kind": "key",
+  "summary": "Spanish substitution with glyphs reversed within words on ZL at the pinned budget. Control: the 2%-noise Spanish homophonic control with every word's glyphs reversed is recovered when the key's reading order undoes the transposition (passes a, b and kill tests, savings +0.035) and fails when read as is (-0.120). Manuscript practice savings: glyphs reversed -0.109, normal -0.145; both FAIL every criterion.",
+  "lease": "fc91511a63ec4a4db70d8010"
+}
