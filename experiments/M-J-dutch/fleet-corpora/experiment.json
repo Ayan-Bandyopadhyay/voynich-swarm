@@ -1,0 +1,6 @@
+{
+  "step": "M-J-dutch",
+  "handle": "fleet-corpora",
+  "kind": "corpus",
+  "summary": "Add Dutch to the grid from Dutch Statenvertaling (Public Domain, 4,202,669 characters after normalization; 17th century (1637), early-modern Dutch in an older spelling)."
+}
