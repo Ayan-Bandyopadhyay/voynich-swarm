@@ -2,6 +2,6 @@
  "step": "M-L2",
  "handle": "fleet-fable",
  "kind": "fact",
- "summary": "Registers that a line's words recur from the line directly above more than from four lines up (excess 0.011 on the practice split, p = 0.015 against within-page shuffles), a short-range pattern both line-chain generators fail and that reference languages show more strongly.",
- "lease": "57ce2a41aa6e6e0578cc32de"
+ "summary": "Registers the level of within-page word reuse (0.31 on the practice split, line at a quarter), which with the singleton share forms a pincer that the best line-chain generator meets only one side of at a time.",
+ "lease": "018cbb964b9143d2e9a21d2b"
 }
