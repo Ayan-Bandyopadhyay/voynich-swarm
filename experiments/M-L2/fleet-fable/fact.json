@@ -1,50 +1,30 @@
 {
- "title": "Words opening with p or f gather on paragraph first lines even with each line's first word set aside",
- "statement": "In paragraph text, leaving out the first word of every line, certain words that begin with p or f are at least three times as frequent on a paragraph's first line as on its other lines, and more so than when the words of each page are shuffled.",
- "source": "A sharper form of F-008, using the positions para_first_line_rest and not_para_first_line_rest (code merged in 15afd1a). Why it is needed: R-011 landed on F-008 with a plain line chain that has a separate opening mark for a paragraph's first line. That text passed F-008 only through the paragraph's first word (F-003 again): with first words set aside its ratio is about 1.5. The manuscript's is not: on the public practice split the ratio is 8.46 on the evaluation pages (839 first-line words counted) and 10.48 on the training pages, both p = 0.005 against 199 within-page shuffles. So the p and f words spread along the whole first line, which a writer who only marks the paragraph's first word does not produce. Other transliterations, practice evaluation pages: Takahashi 8.83, passing. The pinned RF file fails (1.38), and for a reason that is not a disagreement about the text: it carries no paragraph marks, so there a 'first line' is only the top line of a page (198 words counted, 2 of them opening with p or f); the comparison is not measurable on RF, and the same holds, less visibly, for F-003 and F-008. Not evidence of language: an ornamental habit for a paragraph's top line (tall gallows have room there) would do it, and so does the generator behind R-012 to R-016, whose first lines reuse words only from the same line: 4.3 to 7.0 on six local runs (four seeds and two fits on half the public pages), all passing. Registered so that the generator scoreboard separates procedures that know the first line from those that know only the first word. Threshold 3 as in F-008, far below both public values because the count of p and f words off first lines is small (rate about 0.3%) and the ratio is noisy on a sample of pages.",
+ "title": "Pages of the same Currier language share more words than pages of different languages, every page kept whole",
+ "statement": "In paragraph text, for pages with at least 40 certain words and a Currier language label, the median word-count cosine of two pages of the same language exceeds that of two pages of different languages, more than when the labels are dealt at random among whole pages and more than under every shift of the labels along the page order.",
+ "source": "The dialect contrast (Currier 1976), as a long-range target that keeps pages whole, proposed in P-G-009 and its follow-ups (P-G-015, P-G-018) and checked by fleet-opus (P-G-010: inside one language the scribe adds little, so the language label is used, not the hand). Statistic page_group_similarity and both nulls from the code change merged for it. Public practice split: 0.122 on the evaluation pages (Takahashi 0.129, RF 0.103), 0.109 to 0.191 on six samples of 32 training pages; deal null p = 0.005 and rotation null at its floor of 1/n (0.029 to 0.031) in all nine cases. Read with care. (1) Currier's languages were defined from the text, so this is not evidence about scribes, only that the book has two stocks of common words that alternate along it and are not runs of neighbouring pages only. (2) The rotation null has no margin at this sample size: one shift at or above the observed value fails it, so a REFUTED verdict on the hidden pages would not show the contrast is absent. (3) Not evidence of language, and already matched on public pages: a line chain with one table and one memory per dialect reaches 0.08 to 0.13 and passes the deal null on 2 of 3 seeds while meeting every established fact; it passed the rotation on none of 3 (P-G-018). Laid end to end (cut lines) the drifting chain of R-017 passes both nulls on 2 of 6 runs, so attacks on this fact should be sent as a whole book and say so (P-G-007). A one-table reuse chain, which P-LEAD-013 asks authors to try first, gives -0.02 to -0.04 and fails.",
  "spec": {
   "select": {
    "unit": [
     "P"
    ],
-   "position": "para_first_line_rest",
    "certain": true
   },
   "statistic": {
-   "ratio": {
-    "feature": {
-     "glyph_at": 0
-    },
-    "in": [
-     "p",
-     "f"
-    ],
-    "of": {
-     "unit": [
-      "P"
-     ],
-     "position": "para_first_line_rest",
-     "certain": true
-    },
-    "to": {
-     "unit": [
-      "P"
-     ],
-     "position": "not_para_first_line_rest",
-     "certain": true
-    }
+   "page_group_similarity": {
+    "by": "language"
    }
   },
   "compare": [
    {
-    "op": ">=",
-    "value": 3
+    "null": "shuffle_page_labels",
+    "perms": 199,
+    "p": 0.01,
+    "direction": "greater"
    },
    {
-    "null": "shuffle_within_page",
-    "direction": "greater",
-    "perms": 199,
-    "p": 0.01
+    "null": "rotate_page_labels",
+    "p": 0.05,
+    "direction": "greater"
    }
   ]
  }

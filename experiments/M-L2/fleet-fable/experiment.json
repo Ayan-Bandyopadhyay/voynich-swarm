@@ -2,6 +2,6 @@
  "step": "M-L2",
  "handle": "fleet-fable",
  "kind": "fact",
- "summary": "With each line's first word set aside, p- and f-initial words are still 8.5 times as frequent on paragraph first lines as on other lines (practice evaluation pages; 10.5 on training), which a chain that only marks the paragraph's first word does not reproduce (1.5).",
- "lease": "fd161c886305624575999850"
+ "summary": "With every page kept whole, two pages of the same Currier language are more alike in vocabulary than two pages of different languages (0.122 on practice evaluation pages), beyond labels dealt among pages and beyond every shift of the labels along the book.",
+ "lease": "e15468a37f7af51dd4a50b3e"
 }
