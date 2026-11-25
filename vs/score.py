@@ -157,15 +157,22 @@ def score(d, pr=None):
                 and i["provenance"]["added_by"] == _ow(e["handle"]) and str(i["provenance"].get("at", "")).startswith(day)
                 for i in registry.read()):
             return {"verdict": "REFUSED", "errors": ["one attack per fact per contributor per day (the hidden layout must not be probed)"]}
+        if spec.get("attack") == "generator" and any(
+                i["type"] == "attack" and i.get("target") == "*"
+                and i["provenance"]["added_by"] == _ow(e["handle"]) and str(i["provenance"].get("at", "")).startswith(day)
+                for i in registry.read()):
+            return {"verdict": "REFUSED", "errors": ["one generator test per contributor per day (each verdict carries a bit per fact about the hidden pages)"]}
         if spec.get("attack") == "key" and isinstance(spec.get("target_key"), str):
             spec["target_key"] = path(os.path.normpath(spec["target_key"]))
         if spec.get("attack") == "fact":
             spec["target_fact_item"] = registry.get(spec["target_fact"])
         r = redteam.run_attack(spec, "heldout")
         verdict = "SUCCEEDED" if r["success"] else "FAILED"
+        if spec["attack"] == "generator" and not r.get("refused"):
+            verdict = f"{r['reproduced']}/{r['of']}"
         typ = "audit" if spec["attack"] == "claim" else "attack"
         item = {"id": registry.next_id("A" if typ == "audit" else "R"), "type": typ,
-                "title": (spec.get("claimant") or f"{spec['attack']} attack on {r.get('target')}")[:160],
+                "title": (spec.get("claimant") or (f"Generator test: {spec.get('title') or 'a procedure'}, against every established fact" if spec["attack"] == "generator" else f"{spec['attack']} attack on {r.get('target')}"))[:160],
                 "statement": spec.get("method") or e.get("summary", ""), "verdict": verdict if typ == "attack" else ("FAIL" if r["success"] else "PASS"),
                 "value": None, "detail": {k: v for k, v in r.items() if k != "lines"}, "program": "R", "target": r.get("target")}
         kind = "attack_succeeded" if r["success"] else "attack_failed"
@@ -193,7 +200,14 @@ def score(d, pr=None):
         src = load("source.json")
         if src.get("of"):
             tgt = registry.get(src["of"])
-            if not tgt or tgt["type"] != "source":
+            if src.get("assessment") == "weak":
+                # a weak refutation: the attack's generator writes the target pattern in by hand
+                from .identity import owner as _ow2
+                if not tgt or tgt["type"] != "attack" or tgt["verdict"] != "SUCCEEDED":
+                    return {"verdict": "REFUSED", "errors": [f"{src['of']} is not a succeeded attack on the record"]}
+                if tgt["provenance"]["added_by"] == _ow2(e["handle"]):
+                    return {"verdict": "REFUSED", "errors": ["a second look must come from someone other than the attacker"]}
+            elif not tgt or tgt["type"] != "source":
                 return {"verdict": "REFUSED", "errors": [f"{src['of']} is not a source on the record"]}
             item = {"id": registry.next_id("Q"), "type": "source", "title": f"Second look at {src['of']}: {src['assessment'].upper()}",
                     "statement": src.get("statement", ""), "verdict": src["assessment"].upper(), "value": None,
@@ -233,7 +247,7 @@ def score(d, pr=None):
     item["submitted"] = {os.path.basename(f): json.load(open(f)) for f in files if f.endswith(".json")}
     if item["type"] == "attack":
         # hidden-page values would leak layout information; keep the outcome and the reason only
-        item["detail"] = {k: v for k, v in item["detail"].items() if k in ("attack", "target", "success", "why", "refused", "decoy", "shared_type_share")}
+        item["detail"] = {k: v for k, v in item["detail"].items() if k in ("attack", "target", "success", "why", "refused", "decoy", "shared_type_share", "cut", "reproduced", "of", "per_fact")}
     try:
         registry.add(item)
     except SystemExit as ex:

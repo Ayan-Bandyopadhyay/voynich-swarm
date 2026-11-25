@@ -4,7 +4,14 @@
 nearby words) that produce text without meaning. Score: how many *established* facts on the
 record the procedure's text reproduces. Reproducing all of them would itself be a result.
 
-**What counts, first: production models** (kind `model`, vs/models.py). A model is a mixture of
+**The scoreboard: the generator test** (step `G-every-fact`). One procedure, one body of
+text, sent as attack.json `{"attack": "generator", ...}` with `"cut": "lines"`, scored against
+every established fact at once; the record shows k/n reproduced. The pinned self-citation
+generator (after Timm & Schinner) reproduces 1 of 7 on the practice pages. The targets that matter most:
+line-final m (F-001) and the collapse of edge-glyph dependence at line breaks (P-G-001). A
+procedure that names a target pattern in its rules does not count (weak refutation).
+
+**Also counts: production models** (kind `model`, vs/models.py). A model is a mixture of
 trusted components (vocab, chain, copy with a window and edits, template with prefix/suffix
 sizes, letters, position), fitted on the training pages and scored in held-out bits per word.
 Scope it per scribe. This is how the best prior work (Schwartz 2026) compares production

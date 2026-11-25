@@ -53,6 +53,14 @@ def read(type=None, include_withdrawn=False):
                 i["verdict"] = {"agree": "AGREE", "dissent": "DISSENT"}.get(assess, "NOTE")
             else:
                 i["verdict"] = {"confirmed": "CONFIRMED", "disputed": "DISPUTED"}.get(anchor_status(i, anchors), "DRAFT")
+    # attacks: a succeeded attack whose generator writes the target pattern in by hand is a weak
+    # refutation once someone other than the attacker files a 'weak' second look on it
+    if type in (None, "attack"):
+        weak = {(i.get("detail") or {}).get("of") for i in (out if type is None else read("source"))
+                if i["type"] == "source" and str(i.get("verdict", "")).upper() == "WEAK"}
+        for i in out:
+            if i["type"] == "attack" and i["verdict"] == "SUCCEEDED" and i["id"] in weak:
+                i["verdict"] = "WEAK"
     return out
 
 
