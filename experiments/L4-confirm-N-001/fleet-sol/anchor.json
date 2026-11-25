@@ -1,0 +1,12 @@
+{
+  "of": "N-001",
+  "assessment": "dissent",
+  "title": "Second look at N-001: the f70v2 Pisces centre does not pair otolal with mars",
+  "statement": "I inspected the full Yale canvas and the 900-pixel centre crop. The Voynich label begins just to the right of the upper star, at roughly the same height as its right-hand ray. The Latin-script mars sits between the two fish, about 400 crop pixels lower, with the upper fish between the labels. There is no guide line or other visible link between the two words. Nearby stars in the wheel also have adjacent Voynich labels. The layout supports the proposer's reservation about the test pairing. ZL3b and RF1b render locus f70v2.33 as otolal, IT2a as otylal and GC2a as okoeae. I found no basis in the image for identifying which star the central label might name.",
+  "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006200",
+  "sources": [
+    "Beinecke MS 408 f70v2, full scan https://collections.library.yale.edu/iiif/2/1006200/full/1200,/0/default.jpg",
+    "Beinecke MS 408 f70v2, centre crop https://collections.library.yale.edu/iiif/2/1006200/1600,1200,900,900/900,/0/default.jpg",
+    "Pinned ZL3b, RF1b, IT2a and GC2a transliterations, f70v2.33"
+  ]
+}
