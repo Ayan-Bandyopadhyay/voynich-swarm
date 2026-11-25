@@ -10,6 +10,8 @@ Selections may also set language to A or B to compare the two dialects within a 
 positions: any | line_initial | line_final | mid_line | para_initial (first word of a paragraph)
            | para_first_line (any word on a paragraph's first line)
            | not_para_first_line (paragraph text that is not on a first line; never labels or rings)
+           | para_first_line_rest / not_para_first_line_rest (the same two, leaving out the first word of
+             each line: a first-line pattern that is more than the paragraph's opening word; found by the attack on F-008)
 features:  "word" | {"glyph_at": i} (eva-basic glyphs; negative counts from the end)
            | {"prefix": n} | {"suffix": n} (in glyphs, 1..8) | "length" | "glyph" (every glyph of the word)
 
@@ -81,7 +83,8 @@ UNCERTAIN = ivtff.uncertain
 MAX_COMPARE, MAX_PERMS, MAX_ALPHA = 4, 400, 0.05
 MIN_TOKENS = 30          # selected tokens, and counted units (pairs, n-grams, long words) where a statistic counts them
 UNITS = {"P", "L", "C", "R"}
-POSITIONS = {"any", "line_initial", "line_final", "mid_line", "para_initial", "para_first_line", "not_para_first_line"}
+POSITIONS = {"any", "line_initial", "line_final", "mid_line", "para_initial", "para_first_line", "not_para_first_line",
+             "para_first_line_rest", "not_para_first_line_rest"}
 NAN = float("nan")
 
 
@@ -175,7 +178,9 @@ def select(toks, sel):
             continue
         ok = {"any": True, "line_initial": t["k"] == 0, "line_final": t["k"] == t["n"] - 1,
               "mid_line": 0 < t["k"] < t["n"] - 1, "para_initial": t["pinit"], "para_first_line": t["pfl"],
-              "not_para_first_line": t["unit"] == "P" and not t["pfl"]}[pos]
+              "not_para_first_line": t["unit"] == "P" and not t["pfl"],
+              "para_first_line_rest": t["pfl"] and t["k"] > 0,
+              "not_para_first_line_rest": t["unit"] == "P" and not t["pfl"] and t["k"] > 0}[pos]
         if ok:
             keep.append(t)
     return keep

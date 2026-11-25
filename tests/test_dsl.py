@@ -115,6 +115,14 @@ class HollowPassTest(unittest.TestCase):
         got = {t["w"] for t in dsl.select(dsl.tokens(pages), {"position": "not_para_first_line"})}
         self.assertEqual(got, {"b1", "b2"})
 
+    def test_rest_positions_leave_out_each_lines_first_word(self):
+        """A first-line fact that counts the paragraph's opening word is met by a writer who only marks that
+        word (the attack on F-008); the _rest positions measure the first line without it."""
+        pages = [page("f1r", [["a1", "a2", "a3"], ["b1", "b2"], ("L", ["lab", "lab2"])])]
+        sel = lambda pos: {t["w"] for t in dsl.select(dsl.tokens(pages), {"position": pos})}
+        self.assertEqual(sel("para_first_line_rest"), {"a2", "a3"})
+        self.assertEqual(sel("not_para_first_line_rest"), {"b2"})
+
 
 class NullsTest(unittest.TestCase):
     def _sections(self, label_o):
