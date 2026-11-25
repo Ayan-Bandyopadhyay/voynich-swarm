@@ -1,0 +1,61 @@
+{
+ "id": "grid-sanskrit-substitution-cell",
+ "family": "substitution",
+ "segmentation": "eva-basic",
+ "target": {
+  "language": "sanskrit",
+  "period": "grid search"
+ },
+ "key": {
+  "map": {
+   "o": "a",
+   "e": "r",
+   "y": "e",
+   "a": "a",
+   "d": "t",
+   "i": "n",
+   "ch": "t",
+   "l": "n",
+   "k": "t",
+   "r": "m",
+   "n": "a",
+   "t": "t",
+   "q": "t",
+   "sh": "k",
+   "s": "n",
+   "m": "m",
+   "p": "s",
+   "cth": "t",
+   "ckh": "t",
+   "f": "s",
+   "h": "r",
+   "cph": "t",
+   "?": "r",
+   "c": "i",
+   "*": "t",
+   "g": "i",
+   "cfh": "t",
+   "x": "n",
+   "v": "a",
+   "j": "t",
+   "b": "e",
+   "z": "d",
+   "u": "e"
+  }
+ },
+ "search": {
+  "budget": {
+   "restarts": 4,
+   "iterations": 6000,
+   "seed": 1404,
+   "bpe_merges": 30,
+   "verbose_segmentations": [
+    "bpe-greedy",
+    "fixed-2"
+   ],
+   "verbose_min_unit_share": 0.0005,
+   "substitution_group_swap": 0.2
+  },
+  "objective_bits": 627854.2
+ }
+}
