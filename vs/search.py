@@ -196,6 +196,10 @@ def climb(tri, table, letters, seed, budget=BUDGET, init=None, group_swap=0.0):
 
 
 def cell_budget(lang, family):
+    if family == "nomenclator" and lang in ("english", "latin", "spanish"):
+        from .search_nomenclator import SETTINGS
+        return {**BUDGET, **SETTINGS, "homophone_ranked_restarts": 1, "homophone_word_sweeps": 5,
+                "nomenclator_unique_word_sweeps": 6}
     if (lang, family) == ("nahuatl", "substitution"):
         return {**BUDGET, "homophone_ranked_restarts": 1, "homophone_word_sweeps": 5}
     if family == "verbose" and lang in ("french", "german"):
