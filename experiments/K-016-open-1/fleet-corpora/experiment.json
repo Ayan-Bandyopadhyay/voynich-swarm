@@ -1,0 +1,7 @@
+{
+  "step": "K-016-open-1",
+  "handle": "fleet-corpora",
+  "kind": "step",
+  "summary": "Cheshire's alphabet cannot yet be frozen as a faithful EVA key: 17 glyph correspondences are clear from his figures, but s/t, r, u, v and EVA l are not; this step asks for a concordance from his folio-tied worked examples first.",
+  "lease": "fc7dcbe6c8015d1df3dadb51"
+}

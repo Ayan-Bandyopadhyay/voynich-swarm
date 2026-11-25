@@ -1,0 +1,8 @@
+{
+  "title": "Build a glyph-level EVA concordance for Cheshire's 2019 alphabet before freezing it as a key",
+  "statement": "Cheshire (2019, K-016; figures 1-29 of the accepted manuscript at research-information.bris.ac.uk/ws/files/201563069/) defines his alphabet only by drawn glyphs, not by EVA. Read from the figures, these correspondences are clear: EVA a = trapped a, y = free a, q = d (the '4'), e = short e, ee = double short e, ch = long e (ee), i = i, k = l, t = m, ckh = ele, cth = eme, cph = epe, cfh = eque, p = p, f = qu, d (the '8') = n, o = o; probably sh = ae (long e with a detached crest, fig. 5) and n = sitting s (the -ais/-aus endings, figs. 3-4, 23). Not resolvable from the paper: his standing s and t (figs. 22, 24) differ only by an angled vs curved foot and both look like EVA r; his r (fig. 21, 'open-base 8') may be EVA s; his u (fig. 27) and v (fig. 28) have no clear EVA counterpart; EVA l, one of the commonest glyphs, is not described at all. A frozen key built from guesses would misstate his proposal, so the concordance should be fixed first from his own worked examples (figs. 30 onward, each tied to a folio) against the ZL transliteration of those words.",
+  "program": "L3",
+  "check": "For each worked example in the paper (folio and word given), align his reading with the ZL EVA of that word and record the glyph-to-letter pairs; resolve r/s/t/u/v/l from those alignments; publish the table, then score it as a frozen substitution key (no search budget) against Italian, Latin, Catalan, Spanish and Portuguese.",
+  "on_path": true,
+  "hard": false
+}
