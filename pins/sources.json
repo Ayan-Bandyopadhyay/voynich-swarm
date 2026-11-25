@@ -420,6 +420,19 @@
       "license": "public-domain",
       "encoding": "utf-8",
       "added_by": "fleet-corpora"
+    },
+    {
+      "id": "vietnamese_49d38fc6",
+      "lang": "vietnamese",
+      "period": "20th century (1934), modern Vietnamese in quốc ngữ",
+      "title": "Vietnamese Bible (Kinh Thánh Tiếng Việt, 1934 Cadman translation), full Bible, one verse per line",
+      "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/Viet.txt",
+      "file": "data/raw/agent_vietnamese_49d38fc6.txt",
+      "bytes": 5335590,
+      "sha256": "49d38fc67571bec3caac3bcbb2a44657b0fb1dd3bb653b3668a095c082a98443",
+      "license": "public-domain",
+      "encoding": "utf-8",
+      "added_by": "fleet-corpora"
     }
   ],
   "missing_corpora": {
