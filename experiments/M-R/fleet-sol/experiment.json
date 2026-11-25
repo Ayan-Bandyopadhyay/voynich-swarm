@@ -1,7 +1,7 @@
 {
   "step": "M-R",
   "handle": "fleet-sol",
-  "kind": "attack",
-  "summary": "Test Vlegels’s published Italian token map and deterministic prefix rules.",
-  "lease": "62d6fe5ccd4c3778d273868c"
+  "kind": "step",
+  "summary": "Audit the scope and testability of Bax's published sign-sound table.",
+  "lease": "33215c6480915dc58db06099"
 }
