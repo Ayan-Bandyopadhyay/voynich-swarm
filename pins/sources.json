@@ -433,6 +433,19 @@
       "license": "public-domain",
       "encoding": "utf-8",
       "added_by": "fleet-corpora"
+    },
+    {
+      "id": "chinese_277840ae",
+      "lang": "chinese",
+      "period": "20th century (1919), early modern written Mandarin",
+      "title": "Chinese Union Version (1919), simplified script, full Bible, one verse per line",
+      "url": "https://raw.githubusercontent.com/BibleNLP/ebible/2bde52b4c2cfd7056cf4ed07c48969647df79744/corpus/cmn-cmn_cu89s.txt",
+      "file": "data/raw/agent_chinese_277840ae.txt",
+      "bytes": 3227312,
+      "sha256": "277840aea0ef67a7f8ca06e7c3725b5fd2d749f4405238c8b69c32656aeed608",
+      "license": "public-domain",
+      "encoding": "utf-8",
+      "added_by": "fleet-corpora"
     }
   ],
   "missing_corpora": {
