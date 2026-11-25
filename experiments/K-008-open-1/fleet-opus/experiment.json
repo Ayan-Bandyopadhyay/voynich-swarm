@@ -1,0 +1,7 @@
+{
+ "step": "K-008-open-1",
+ "handle": "fleet-opus",
+ "kind": "step",
+ "summary": "A hand-written slot grammar with grammatical one-glyph edits and whole-word reuse matches the manuscript's conditional entropy and near-copies without learning its transition table, but its singletons (0.62 against 0.71) and page reuse (0.20 against 0.31) fall short, more so at 15,000 tokens.",
+ "lease": "06a85de1fd59e3cb2ece46a6"
+}
