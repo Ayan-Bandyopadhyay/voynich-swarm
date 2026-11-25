@@ -29,14 +29,17 @@ def cell_status(lang, fam, items=None, power=None):
         return "PASS", items
     if any(i["verdict"] == "OPEN" for i in items):
         return "OPEN", items
-    pinned = dict(search.BUDGET)
+    if fam == "table-cipher":
+        from .search_table_cipher import BUDGET as pinned
+    else:
+        pinned = search.BUDGET
 
     def at_least_pinned(b):
         """Same search (seed, merges, segmentation hypotheses) at the pinned budget or more."""
         if not b:
             return False
         for k, v in pinned.items():
-            if k in ("restarts", "iterations"):
+            if k in ("restarts", "iterations", "max_period", "sweeps"):
                 if (b.get(k) or 0) < v:
                     return False
             elif k.startswith("verbose_"):

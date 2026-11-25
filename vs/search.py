@@ -195,7 +195,12 @@ def climb(tri, table, letters, seed, budget=BUDGET, init=None, group_swap=0.0):
     return best_m, best_s
 
 
-def search_cell(lang, family, train_pages, budget=BUDGET, tag="cell"):
+def search_cell(lang, family, train_pages, budget=None, tag="cell"):
+    if family == "table-cipher":
+        from . import search_table_cipher
+        return search_table_cipher.search(lang, train_pages, search_table_cipher.BUDGET if budget is None else budget, tag)
+    if budget is None:
+        budget = BUDGET
     table, sy = trigram_table(lang)
     letters = [l for l in sy if l != lm.WB]
     if family == "substitution":

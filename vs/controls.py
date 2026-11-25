@@ -32,8 +32,15 @@ def make(lang, kind="simple", seed=0, words_per_line=8, lines_per_page=10, homop
         words = " ".join(refcorpus.control_text(lang)).split()
     letters = refcorpus.alphabet(lang)
     glyphs = CIPHER_GLYPHS[:]
+    if kind == "table-cipher" and len(letters) > len(glyphs):
+        raise ValueError(f"target alphabet exceeds the table-cipher glyph inventory")
     rng.shuffle(glyphs)
-    if kind == "simple":
+    if kind == "table-cipher":
+        # A periodic tabula recta uses the public alphabet order and secret column shifts.
+        glyphs = sorted(CIPHER_GLYPHS[:len(letters)])
+        shifts = [rng.randrange(len(letters)) for _ in range(3)]
+        enc = {c: [g] for c, g in zip(letters, glyphs)}
+    elif kind == "simple":
         enc = {l: [glyphs[i]] for i, l in enumerate(letters)}
     elif kind == "homophonic":
         # the most frequent letters get `homophones` glyphs, the rest one; needs few letters
@@ -56,7 +63,11 @@ def make(lang, kind="simple", seed=0, words_per_line=8, lines_per_page=10, homop
     noise_pool = sorted({g for gs in enc.values() for g in gs} | set(CIPHER_GLYPHS[:10]))
 
     def cipher(w):
-        units = [rng.choice(enc[c]) for c in w if c in enc]
+        if kind == "table-cipher":
+            units = [glyphs[(letters.index(c) + shifts[i % len(shifts)]) % len(letters)]
+                     for i, c in enumerate(w) if c in enc]
+        else:
+            units = [rng.choice(enc[c]) for c in w if c in enc]
         if noise:
             units = [rng.choice([x for x in noise_pool if x != u]) if rng.random() < noise else u for u in units]
         return "".join(units)
@@ -79,6 +90,8 @@ def make(lang, kind="simple", seed=0, words_per_line=8, lines_per_page=10, homop
     tr = [p for p in pages if int(p.id[1:]) % 7 != 3]
     true_key = {"id": f"control-{lang}-{kind}", "family": "verbose" if kind == "verbose" else "substitution", "segmentation": "eva-basic",
                 "target": {"language": lang, "period": "control"}, "key": {"map": dec}}
+    if kind == "table-cipher":
+        true_key.update(family=kind, key={"map": dict(zip(glyphs, letters)), "shifts": shifts})
     return tr, ev, true_key
 
 
