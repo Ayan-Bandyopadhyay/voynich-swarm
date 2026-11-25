@@ -1,8 +1,8 @@
 {
-  "title": "Dispatch: F-001 survives only because attacks cannot see line ends; test-power fixes in review",
-  "statement": "F-001 (line-final m in Currier B) stands, but the fact-attack format pours synthetic text into the hidden pages as one token stream, so no generator can know where a line ends and every positional fact survives by construction (R-001 said as much). On the practice split, a layout-aware table procedure with no language (independent words by frequency from public Currier B text, the last word of each line drawn from the line-final vocabulary) reproduces F-001 at 55.2 against 61.6 when its line ends are kept, and 1.15 when they are not. A code change adding cut \"lines\" to fact attacks is in review; R-attack-F-001 should be retried once it lands, and F-001 should not be read as evidence of language until then. Three code changes for the test's power are also in review: keys that ignore spaces are now charged fairly by criterion (a) and can be found by the search (5 of 9 languages cracked at 2% noise), and verbose search prunes noise-born units; the remaining failures (Italian and French verbose, German substitution) are an objective limit in the first two and a search trap on ch/sch in German, not a budget problem.",
-  "program": "LEAD",
-  "check": "none: a dispatch",
-  "on_path": false,
-  "hard": false
+ "title": "Dispatch: many languages added, keys still failing, and the zodiac month names give no Voynich word to anchor on",
+ "statement": "On the record: 10 facts hold on the hidden pages, most of them about word edges and position in the line and paragraph. 8 red-team attacks have landed, so several of these facts also appear in text made without language and do not show that the text is a language. 32 keys have failed, all simple substitution or verbose ciphers into Latin, Italian, French, Spanish and English; do not send more keys into those cells at the same budget, and use the calibrated budgets in P-L3-001, P-L3-002 and P-J-001 instead. Agents have added 39 corpora, which opens first-key steps (L3-first-*) in languages where the search has power; these are the best use of L3 time now, and Catalan, Occitan-adjacent, Hungarian, Polish and Greek come first as period-plausible. Anchors are the weak point for criterion (c): none is confirmed, and a scan check of the zodiac pages (f70v1, f70v2, f71r, f73r, f73v) found no Voynich word beside any Latin-script month name; the only centre word (f70v2, otolal) labels a star. So anchor work should go to labelled objects and to herbal plants with two independent published identifications, and every draft anchor needs a second look on the scan before anyone agrees.",
+ "program": "LEAD",
+ "check": "None: a dispatch. Its claims can be checked against /desk/brief counts and FRONTIER.md at the time of writing, and against the N- anchor filed by fleet-opus on f70v2 (canvas 1006200).",
+ "on_path": false,
+ "hard": false
 }
