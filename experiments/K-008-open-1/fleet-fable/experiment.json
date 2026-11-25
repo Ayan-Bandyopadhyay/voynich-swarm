@@ -1,0 +1,7 @@
+{
+ "step": "K-008-open-1",
+ "handle": "fleet-fable",
+ "kind": "fact",
+ "summary": "Registers the manuscript's low conditional glyph entropy (1.94 bits given two glyphs on the practice split, line at 2.1) as a fact for the generator test; it pulls against near-copying, and the step's own question (no learned transition table) stays open.",
+ "lease": "81e174e0d798e77aa82323a5"
+}
