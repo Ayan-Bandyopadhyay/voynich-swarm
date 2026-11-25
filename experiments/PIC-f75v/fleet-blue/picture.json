@@ -1,0 +1,384 @@
+{
+ "folio": "f75v",
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006209",
+ "blind": true,
+ "statement": "Blind annotation from the Beinecke scan alone (full page, four strips, one close crop). A patterned tube descends from the top into a blue cloud-edged canopy; ten compartments hang from the canopy, each holding a two-line label and linked by a line to the head of one of ten nude female figures standing in a long green pool. A thin line runs from that pool down the left margin to a smaller blue pool crowded with about nineteen nude figures, from which a stream runs off the bottom of the page. Labels assigned from line ids and unit codes only, words not read from the transcription: the twenty Ln lines f75v.18-37 are taken as ten two-line labels in left-to-right order, each given to the figure below by its first line id. The Lt lines f75v.50-56 lie around the lower pool and are not tied to single figures; the first is given to the pool. The single-glyph L0 lines stand at the right edge of the upper right text column and point at no drawing.",
+ "objects": [
+  {
+   "id": "pipe-top",
+   "kind": "pipe",
+   "features": {
+    "colour": "uncoloured",
+    "pattern": "wavy bands",
+    "orientation": "vertical",
+    "position": "top centre, between the two text columns",
+    "note": "tall tube filled with rows of small wavy strokes; its top bends right and ends in a small dark blue disc at the page edge; its foot ends in a scalloped knob inside the canopy; faint blue wash beside it"
+   },
+   "label": null
+  },
+  {
+   "id": "canopy",
+   "kind": "other",
+   "features": {
+    "colour": "blue",
+    "edge": "scalloped cloud-like border",
+    "shape": "wide horizontal band",
+    "position": "upper middle, full width",
+    "note": "long horizontal band with a wavy lobed outline, some lobes filled pale yellow, interior washed blue; two burst points with radiating lines, left and right of the central tube, the right one with a small cross-shaped spout; right end curls down in a row of lobes"
+   },
+   "label": null
+  },
+  {
+   "id": "tube-1",
+   "kind": "container",
+   "features": {
+    "colour": "uncoloured",
+    "shape": "hanging compartment with scalloped top",
+    "contents": "two lines of writing",
+    "position": "under the canopy, 1 of 10 from left",
+    "note": "narrow-necked bag or tube hanging from the canopy by a line, wavy rim at its top, a line (some wavy, some blue-tinted) running from its foot to the head of the figure below; the two-line label is written inside it"
+   },
+   "label": null
+  },
+  {
+   "id": "nymph-1",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing",
+    "facing": "right",
+    "headdress": "no",
+    "cheeks": "red",
+    "immersed": "to the thighs",
+    "pool_colour": "green",
+    "position": "upper pool, 1 of 10 from left",
+    "note": "long loose hair down the back; the two-line label f75v.18-19 sits in the compartment directly above the head"
+   },
+   "label": "f75v.18"
+  },
+  {
+   "id": "tube-2",
+   "kind": "container",
+   "features": {
+    "colour": "uncoloured",
+    "shape": "hanging compartment with scalloped top",
+    "contents": "two lines of writing",
+    "position": "under the canopy, 2 of 10 from left",
+    "note": "narrow-necked bag or tube hanging from the canopy by a line, wavy rim at its top, a line (some wavy, some blue-tinted) running from its foot to the head of the figure below; the two-line label is written inside it"
+   },
+   "label": null
+  },
+  {
+   "id": "nymph-2",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing",
+    "facing": "right",
+    "headdress": "no",
+    "cheeks": "red",
+    "immersed": "to the thighs",
+    "pool_colour": "green",
+    "position": "upper pool, 2 of 10 from left",
+    "note": "long loose hair with a veil or cloth; the two-line label f75v.20-21 sits in the compartment directly above the head"
+   },
+   "label": "f75v.20"
+  },
+  {
+   "id": "tube-3",
+   "kind": "container",
+   "features": {
+    "colour": "uncoloured",
+    "shape": "hanging compartment with scalloped top",
+    "contents": "two lines of writing",
+    "position": "under the canopy, 3 of 10 from left",
+    "note": "narrow-necked bag or tube hanging from the canopy by a line, wavy rim at its top, a line (some wavy, some blue-tinted) running from its foot to the head of the figure below; the two-line label is written inside it"
+   },
+   "label": null
+  },
+  {
+   "id": "nymph-3",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing",
+    "facing": "right",
+    "headdress": "yes",
+    "cheeks": "red",
+    "immersed": "to the thighs",
+    "pool_colour": "green",
+    "position": "upper pool, 3 of 10 from left",
+    "note": "ring-shaped braided headdress; the two-line label f75v.22-23 sits in the compartment directly above the head"
+   },
+   "label": "f75v.22"
+  },
+  {
+   "id": "tube-4",
+   "kind": "container",
+   "features": {
+    "colour": "uncoloured",
+    "shape": "hanging compartment with scalloped top",
+    "contents": "two lines of writing",
+    "position": "under the canopy, 4 of 10 from left",
+    "note": "narrow-necked bag or tube hanging from the canopy by a line, wavy rim at its top, a line (some wavy, some blue-tinted) running from its foot to the head of the figure below; the two-line label is written inside it"
+   },
+   "label": null
+  },
+  {
+   "id": "nymph-4",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing",
+    "facing": "right",
+    "headdress": "yes",
+    "cheeks": "red",
+    "immersed": "to the thighs",
+    "pool_colour": "green",
+    "position": "upper pool, 4 of 10 from left",
+    "note": "band or cap on the head; the two-line label f75v.24-25 sits in the compartment directly above the head"
+   },
+   "label": "f75v.24"
+  },
+  {
+   "id": "tube-5",
+   "kind": "container",
+   "features": {
+    "colour": "uncoloured",
+    "shape": "hanging compartment with scalloped top",
+    "contents": "two lines of writing",
+    "position": "under the canopy, 5 of 10 from left",
+    "note": "narrow-necked bag or tube hanging from the canopy by a line, wavy rim at its top, a line (some wavy, some blue-tinted) running from its foot to the head of the figure below; the two-line label is written inside it"
+   },
+   "label": null
+  },
+  {
+   "id": "nymph-5",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing",
+    "facing": "front",
+    "headdress": "yes",
+    "cheeks": "red",
+    "immersed": "to the thighs",
+    "pool_colour": "green",
+    "position": "upper pool, 5 of 10 from left",
+    "note": "long hair under a band, body turned to viewer, one arm lowered; the two-line label f75v.26-27 sits in the compartment directly above the head"
+   },
+   "label": "f75v.26"
+  },
+  {
+   "id": "tube-6",
+   "kind": "container",
+   "features": {
+    "colour": "uncoloured",
+    "shape": "hanging compartment with scalloped top",
+    "contents": "two lines of writing",
+    "position": "under the canopy, 6 of 10 from left",
+    "note": "narrow-necked bag or tube hanging from the canopy by a line, wavy rim at its top, a line (some wavy, some blue-tinted) running from its foot to the head of the figure below; the two-line label is written inside it"
+   },
+   "label": null
+  },
+  {
+   "id": "nymph-6",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing",
+    "facing": "left",
+    "headdress": "yes",
+    "cheeks": "red",
+    "immersed": "to the thighs",
+    "pool_colour": "green",
+    "position": "upper pool, 6 of 10 from left",
+    "note": "braided ring headdress; the two-line label f75v.28-29 sits in the compartment directly above the head"
+   },
+   "label": "f75v.28"
+  },
+  {
+   "id": "tube-7",
+   "kind": "container",
+   "features": {
+    "colour": "uncoloured",
+    "shape": "hanging compartment with scalloped top",
+    "contents": "two lines of writing",
+    "position": "under the canopy, 7 of 10 from left",
+    "note": "narrow-necked bag or tube hanging from the canopy by a line, wavy rim at its top, a line (some wavy, some blue-tinted) running from its foot to the head of the figure below; the two-line label is written inside it"
+   },
+   "label": null
+  },
+  {
+   "id": "nymph-7",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing",
+    "facing": "left",
+    "headdress": "yes",
+    "cheeks": "red",
+    "immersed": "to the thighs",
+    "pool_colour": "green",
+    "position": "upper pool, 7 of 10 from left",
+    "note": "braid or band; the two-line label f75v.30-31 sits in the compartment directly above the head"
+   },
+   "label": "f75v.30"
+  },
+  {
+   "id": "tube-8",
+   "kind": "container",
+   "features": {
+    "colour": "uncoloured",
+    "shape": "hanging compartment with scalloped top",
+    "contents": "two lines of writing",
+    "position": "under the canopy, 8 of 10 from left",
+    "note": "narrow-necked bag or tube hanging from the canopy by a line, wavy rim at its top, a line (some wavy, some blue-tinted) running from its foot to the head of the figure below; the two-line label is written inside it"
+   },
+   "label": null
+  },
+  {
+   "id": "nymph-8",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing",
+    "facing": "left",
+    "headdress": "yes",
+    "cheeks": "red",
+    "immersed": "to the thighs",
+    "pool_colour": "green",
+    "position": "upper pool, 8 of 10 from left",
+    "note": "band on hair, arm reaching to neighbour; the two-line label f75v.32-33 sits in the compartment directly above the head"
+   },
+   "label": "f75v.32"
+  },
+  {
+   "id": "tube-9",
+   "kind": "container",
+   "features": {
+    "colour": "uncoloured",
+    "shape": "hanging compartment with scalloped top",
+    "contents": "two lines of writing",
+    "position": "under the canopy, 9 of 10 from left",
+    "note": "narrow-necked bag or tube hanging from the canopy by a line, wavy rim at its top, a line (some wavy, some blue-tinted) running from its foot to the head of the figure below; the two-line label is written inside it"
+   },
+   "label": null
+  },
+  {
+   "id": "nymph-9",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing",
+    "facing": "left",
+    "headdress": "yes",
+    "cheeks": "red",
+    "immersed": "to the thighs",
+    "pool_colour": "green",
+    "position": "upper pool, 9 of 10 from left",
+    "note": "dark rounded cap or hair; the two-line label f75v.34-35 sits in the compartment directly above the head"
+   },
+   "label": "f75v.34"
+  },
+  {
+   "id": "tube-10",
+   "kind": "container",
+   "features": {
+    "colour": "uncoloured",
+    "shape": "hanging compartment with scalloped top",
+    "contents": "two lines of writing",
+    "position": "under the canopy, 10 of 10 from left",
+    "note": "narrow-necked bag or tube hanging from the canopy by a line, wavy rim at its top, a line (some wavy, some blue-tinted) running from its foot to the head of the figure below; the two-line label is written inside it"
+   },
+   "label": null
+  },
+  {
+   "id": "nymph-10",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing",
+    "facing": "left",
+    "headdress": "yes",
+    "cheeks": "red",
+    "immersed": "to the thighs",
+    "pool_colour": "green",
+    "position": "upper pool, 10 of 10 from left",
+    "note": "hair net or braid, rightmost; the two-line label f75v.36-37 sits in the compartment directly above the head"
+   },
+   "label": "f75v.36"
+  },
+  {
+   "id": "pool-upper",
+   "kind": "pool",
+   "features": {
+    "colour": "green",
+    "shape": "long narrow trough, curved ends",
+    "figures": 10,
+    "position": "middle of page, below the canopy",
+    "note": "long boat-like basin painted green, slanting down to the right, with ten figures standing in it in a row"
+   },
+   "label": null
+  },
+  {
+   "id": "stream-left",
+   "kind": "pipe",
+   "features": {
+    "colour": "blue",
+    "orientation": "vertical",
+    "position": "left margin, from the left end of the upper pool down to the lower pool",
+    "note": "single thin line, partly blue-tinted, curving down the left margin and entering the lower pool at its upper left"
+   },
+   "label": null
+  },
+  {
+   "id": "pool-lower",
+   "kind": "pool",
+   "features": {
+    "colour": "blue",
+    "shape": "irregular, two lobes, hatched rim",
+    "figures": 19,
+    "position": "lower left",
+    "note": "smaller pool with a rim of short hatch strokes, washed pale blue with a darker blue band along the right and bottom; a small left lobe and a larger right lobe; labels are scattered above it (f75v.50-52) and down its left side (f75v.53-56), none clearly tied to a single figure"
+   },
+   "label": "f75v.50"
+  },
+  {
+   "id": "nymphs-lower",
+   "kind": "human_figure",
+   "features": {
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing or wading, crowded",
+    "count": 19,
+    "headdress": "mixed",
+    "cheeks": "red",
+    "pool_colour": "blue",
+    "position": "in the lower pool",
+    "note": "about nineteen nude figures packed together, three in the small left lobe and the rest in the right lobe; most with braided hair or bands, one at upper right with a knotted crown-like headdress; several touch or hold each other; no individual labels"
+   },
+   "label": null
+  },
+  {
+   "id": "stream-out",
+   "kind": "pipe",
+   "features": {
+    "colour": "blue",
+    "orientation": "vertical",
+    "position": "bottom, from the lower pool to the page edge",
+    "note": "winding blue-tinted channel leaving the lower right of the pool and running down to the bottom edge, ending in a small forked tip"
+   },
+   "label": null
+  }
+ ]
+}
