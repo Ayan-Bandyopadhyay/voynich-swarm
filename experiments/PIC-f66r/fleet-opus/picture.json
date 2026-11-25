@@ -1,0 +1,62 @@
+{
+ "folio": "f66r",
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006192",
+ "blind": true,
+ "statement": "Annotated blind from the Beinecke scan only (canvas 1006192, '66r'). The page is almost all text: a long paragraph, with two narrow columns in the left margin (a column of single words and a column of single glyphs, which the line ids f66r.1-.49 mark as labels; they point at no drawn object). The only drawings are in the bottom-left margin: a small nude figure lying on its back with legs stretched to the lower left, two small circles with dotted interiors, and a small open tub, with a few Latin-script letters in a different hand beside the circles. One line of Voynich text runs directly above the figure; as the only label line after the paragraph (f66r.82), it is assigned to the figure by position. The faint blue-green shapes in the middle of the page are show-through or offset from another leaf, and the green at the left edge belongs to the facing page; neither is annotated.",
+ "objects": [
+  {
+   "id": "reclining-figure",
+   "kind": "human_figure",
+   "label": "f66r.82",
+   "features": {
+    "nude": "nude",
+    "posture": "lying on its back, head bent back at the upper right, one arm bent up over the head, the other arm reaching down to the right, legs stretched down to the lower left",
+    "colour": "ink only, uncoloured",
+    "size": "small, in the bottom margin",
+    "container": "none",
+    "label_note": "the only label line after the paragraph (f66r.82, unit Lx) runs directly above the figure, whose head touches it; assigned by that position"
+   }
+  },
+  {
+   "id": "circle-left",
+   "kind": "other",
+   "label": null,
+   "features": {
+    "shape": "small circle with a few dots inside",
+    "colour": "ink",
+    "position": "left of the figure, bottom margin",
+    "count_in_group": 2
+   }
+  },
+  {
+   "id": "circle-right",
+   "kind": "other",
+   "label": null,
+   "features": {
+    "shape": "slightly larger circle with a mottled/dotted interior",
+    "colour": "ink",
+    "position": "left of the figure, beside the other circle",
+    "count_in_group": 2
+   }
+  },
+  {
+   "id": "tub",
+   "kind": "container",
+   "label": null,
+   "features": {
+    "shape": "small open cylinder or tub with a thick rim, a few short vertical strokes at the base",
+    "colour": "ink, uncoloured",
+    "position": "bottom left corner, below the circles"
+   }
+  },
+  {
+   "id": "marginal-letters",
+   "kind": "other",
+   "label": null,
+   "features": {
+    "shape": "a few short words in Latin-script letters, in a different hand, beside the circles and tub",
+    "colour": "darker ink"
+   }
+  }
+ ]
+}
