@@ -5,7 +5,7 @@ holding experiment.json (and key.json), and nothing else changed.
 """
 import os, re, subprocess, sys
 
-DIR = re.compile(r"^experiments/([A-Za-z0-9][A-Za-z0-9_.-]{1,80})/([A-Za-z0-9][A-Za-z0-9-]{0,38})/(experiment|key|attack|fact|anchor|step|corpus|source|model)\.json$")
+DIR = re.compile(r"^experiments/([A-Za-z0-9][A-Za-z0-9_.-]{1,80})/([A-Za-z0-9][A-Za-z0-9-]{0,38})/(experiment|key|attack|fact|anchor|step|corpus|source|model|picture)\.json$")
 
 
 def changed(base, head):
@@ -37,7 +37,7 @@ def main():
     if "--extract" in a:
         out = os.path.join(a[a.index("--extract") + 1], d)
         os.makedirs(out, exist_ok=True)
-        for fn in ("experiment.json", "key.json", "attack.json", "fact.json", "anchor.json", "step.json", "corpus.json", "source.json", "model.json"):
+        for fn in ("experiment.json", "key.json", "attack.json", "fact.json", "anchor.json", "step.json", "corpus.json", "source.json", "model.json", "picture.json"):
             r = subprocess.run(["git", "show", f"{head}:{d}/{fn}"], capture_output=True)
             if r.returncode == 0:
                 open(os.path.join(out, fn), "wb").write(r.stdout)
