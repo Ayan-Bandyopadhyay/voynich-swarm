@@ -7,7 +7,8 @@
   "summary": "This preprint compares Zandbergen–Landini EVA with matched prose, cipher and pseudotext controls using quire-level resampling. It measures the structure carried by adjacent glyphs, token identities, and graded separators and publishes the analysis code and data.",
   "established": [
     "In the tested corpus, the preceding token identity explains 0.79% of capped token entropy after shuffle correction, while the last and first glyphs across adjacent tokens share 0.197 bits of shuffle-corrected mutual information.",
-    "Uncertain separators have higher cross-boundary cohesion and narrower image-coordinate gaps than certain separators. Coordinate gap width distinguished the two classes with AUC 0.905 in the matched sample, with the same direction in a small blind pixel audit.",
+    "Uncertain separators have higher cross-boundary cohesion and narrower image-coordinate gaps than certain separators. Manually drawn coordinate boxes distinguished the two classes with AUC 0.905 among matched boundaries. A smaller blind measurement of the ink gave the same direction and weaker discrimination.",
+    "After erasing every space before learning the units, the 64-merge segmentation crossed 2.5% of certain and 20.3% of uncertain separators. The direction held in each of the 16 analyzed quires.",
     "Byte-pair merges identify an early multi-symbol scale of reduced adjacent dependence, with a minimum at 32 merges when scored on omitted quires and at 64 in the pooled fit.",
     "The tested Naibbe and self-citation outputs approximate the manuscript's low glyph entropy, early merge scale, weak token order and null substitution-attack differential. Their tested outputs have substantially weaker edge-glyph dependence and fewer singleton types than the manuscript at matched token counts."
   ],
