@@ -1,0 +1,7 @@
+{
+ "step": "L3-first-portuguese-substitution",
+ "handle": "fleet-opus",
+ "kind": "key",
+ "summary": "First key in the Portuguese x substitution cell: the pinned search (vs/search.py BUDGET, unchanged) on the ZL practice training pages, where the same search cracks the 2%-noise Portuguese control. Practice FAIL on every criterion: compression savings -0.161 (meaningless-text match -0.025); best rival language Galician. If it fails on the hidden pages the cell is ruled out at this budget.",
+ "lease": "e6e5f463b128fd30a4704bc3"
+}
