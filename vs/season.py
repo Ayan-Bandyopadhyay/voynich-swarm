@@ -21,8 +21,8 @@ def _langs():
 
 
 LANGS = _langs()
-FAMILIES = ["substitution", "verbose", "nomenclator"]
-CONTROL_FOR = {"substitution": "homophonic", "verbose": "verbose", "nomenclator": "nomenclator"}
+FAMILIES = ["substitution", "verbose", "nomenclator", "abbreviation"]
+CONTROL_FOR = {"substitution": "homophonic", "verbose": "verbose", "nomenclator": "nomenclator", "abbreviation": "abbreviation"}
 GRID_FAMILIES = ["substitution", "verbose", "nomenclator", "table-cipher", "abbreviation"]
 
 
@@ -67,7 +67,8 @@ def run(split, log=print, parts=("controls", "redteam")):
         rows = []
         for lang in LANGS:
             for fam in FAMILIES:
-                if fam == "nomenclator" and len(refcorpus.alphabet(lang)) > len(controls.CIPHER_GLYPHS):
+                if fam == "nomenclator" and len(refcorpus.alphabet(lang)) > len(controls.CIPHER_GLYPHS) or (
+                        fam == "abbreviation" and len(refcorpus.alphabet(lang)) > len(controls.CIPHER_GLYPHS) - len(controls.ABBREVIATION_SIGNS)):
                     log(f"control {lang:8s} {fam:12s} unsupported alphabet size")
                     continue
                 res = {}

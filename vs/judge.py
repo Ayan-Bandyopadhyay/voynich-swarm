@@ -222,6 +222,9 @@ def key_units(sub, seg):
     if sub["family"] == "nomenclator":
         from .families import nomenclator
         return lambda w: nomenclator.units(w, sub["key"], seg)
+    if sub["family"] == "abbreviation":
+        from .families import abbreviation
+        return lambda w: abbreviation.units(w, sub["key"], seg)
     if sub["family"] == "substitution":
         return seg
     if sub["family"] == "verbose":
@@ -714,7 +717,7 @@ def not_an_illusion(sub, dec, lang, words, train_pages, eval_pages, savings):
                         "rival_bits_per_char": round(best, 4), "pass": own <= best - PARAMS["exclusive_margin"]}
     # matched freedom: the same family, searched at the same budget, on meaningless text shaped like the pages
     fam = sub["family"]
-    if fam in ("substitution", "verbose", "nomenclator") and sub.get("search", {}).get("budget"):
+    if fam in ("substitution", "verbose", "nomenclator", "abbreviation") and sub.get("search", {}).get("budget"):
         from . import search, generators
         try:
             gtr = generators.g_table_cipher(train_pages, train_pages)

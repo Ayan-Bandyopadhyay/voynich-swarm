@@ -196,6 +196,9 @@ def climb(tri, table, letters, seed, budget=BUDGET, init=None, group_swap=0.0):
 
 
 def cell_budget(lang, family):
+    if family in ("abbreviation",):
+        from .search_abbreviation import SETTINGS
+        return {**BUDGET, **SETTINGS}
     if (lang, family) == ("nahuatl", "substitution"):
         return {**BUDGET, "homophone_ranked_restarts": 1, "homophone_word_sweeps": 5}
     if family == "verbose" and lang in ("french", "german"):
@@ -327,6 +330,10 @@ def search_cell(lang, family, train_pages, budget=None, tag="cell"):
         return {"id": f"grid-{lang}-{family}-{tag}", "family": family, "segmentation": "eva-basic",
                 "target": {"language": lang, "period": "grid search"}, "key": key,
                 "search": {"budget": dict(budget)}}
+    if family == "abbreviation":
+        from .search_abbreviation import search_abbreviations, SETTINGS
+        budget = {**SETTINGS, **budget}
+        return search_abbreviations(lang, train_pages, budget, tag, table, letters)
     if family == "substitution":
         segf = lambda w: ivtff.segment(w, "eva-basic")
         tri = unit_trigrams(train_pages, segf)
