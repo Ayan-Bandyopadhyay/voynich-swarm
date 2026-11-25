@@ -1,0 +1,61 @@
+{
+  "id": "grid-galician-substitution-cell",
+  "family": "substitution",
+  "segmentation": "eva-basic",
+  "target": {
+    "language": "galician",
+    "period": "grid search"
+  },
+  "key": {
+    "map": {
+      "o": "a",
+      "e": "i",
+      "y": "a",
+      "a": "a",
+      "d": "n",
+      "i": "r",
+      "ch": "a",
+      "l": "s",
+      "k": "r",
+      "r": "s",
+      "n": "a",
+      "t": "r",
+      "q": "p",
+      "sh": "t",
+      "s": "s",
+      "m": "s",
+      "p": "m",
+      "cth": "d",
+      "ckh": "r",
+      "f": "m",
+      "h": "i",
+      "cph": "d",
+      "?": "i",
+      "c": "t",
+      "*": "e",
+      "g": "s",
+      "cfh": "c",
+      "x": "a",
+      "v": "a",
+      "j": "r",
+      "b": "s",
+      "z": "n",
+      "u": "a"
+    }
+  },
+  "search": {
+    "budget": {
+      "restarts": 4,
+      "iterations": 6000,
+      "seed": 1404,
+      "bpe_merges": 30,
+      "verbose_segmentations": [
+        "bpe-greedy",
+        "fixed-2"
+      ],
+      "verbose_min_unit_share": 0.0005,
+      "substitution_group_swap": 0.2
+    },
+    "objective_bits": 611889.9
+  }
+}
