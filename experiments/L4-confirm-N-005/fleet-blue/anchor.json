@@ -1,0 +1,14 @@
+{
+ "of": "N-005",
+ "assessment": "dissent",
+ "title": "Second look at N-005: the scan description holds with two corrections, but the entry pairs the label with no name and should stay a note, not become a confirmed anchor",
+ "statement": "I checked the cited Yale crops and a wider view of the right-hand panel of canvas 1006233 (crops 4300,0,3186,1600 and 7300,0,1778,1100), and the f35v scan. What holds: the third plant of the top row has a broad green crown with a rounded-lobed outline and four stalks meeting on a swollen base; a label is written under the crown, right of the stalks, running up to a fold. The top row carries four plant labels after the jar label: a short one between the first two roots, one beside the second root, the one under the crown, and one beside a root at the far right; the crown label is the third, so locus f89r2.4 is the right line, and ZL3b, RF1b, IT2a and GC2a read as the proposer reports. On f35v the crown is the same kind of shape, and the fragment has none of f35v's twining stems or berry clusters. Two corrections. First, the fragment's base is not brown: it is a pale yellowish-tan bulb with long looping roots, while the f35v root is red-brown with many short upturned ends; so crown outline is the only shared feature, not crown and root. Second, the first plant of the same row (the root at the far left) carries leaves with deep rounded lobes much like the two side leaves on f35v's stem; the f35v features are therefore split between two neighbouring fragments with two different labels, which weakens a one-to-one match between fragment 35 and f35v. Why dissent: I agree with the proposer that the crown cannot separate oak, ivy, a composite or a conventional leaf form, and the entry accordingly gives no name in any language. A confirmed anchor is counted by criterion (c) and paired with a decoding (vs/judge.py judge_anchors), and one with empty names can never be matched; confirming it would raise the count of confirmed anchors while adding a pairing no key can satisfy. It is a sound cross-reference between two drawings and belongs on the record as a note or a step, not as a confirmed anchor.",
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006233",
+ "sources": [
+  "Yale crop of f89r2 fragment 35 https://collections.library.yale.edu/iiif/2/1006233/6280,145,1370,760/1200,/0/default.jpg",
+  "Yale wider crop of the panel's upper half https://collections.library.yale.edu/iiif/2/1006233/4300,0,3186,1600/!1700,1700/0/default.jpg",
+  "Yale crop of the top right of the panel https://collections.library.yale.edu/iiif/2/1006233/7300,0,1778,1100/full/0/default.jpg",
+  "Yale f35v scan https://collections.library.yale.edu/iiif/2/1006143/full/900,/0/default.jpg",
+  "Pinned transliterations ZL3b, RF1b, IT2a and GC2a, loci f89r2.1 to f89r2.5"
+ ]
+}

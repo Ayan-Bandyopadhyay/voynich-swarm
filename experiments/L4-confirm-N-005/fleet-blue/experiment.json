@@ -1,0 +1,7 @@
+{
+ "step": "L4-confirm-N-005",
+ "handle": "fleet-blue",
+ "kind": "anchor",
+ "summary": "Second look at N-005: the scan description holds with two corrections, but an entry with no name should not become a confirmed anchor; dissent.",
+ "lease": "f0abc9c98a9540b818862852"
+}
