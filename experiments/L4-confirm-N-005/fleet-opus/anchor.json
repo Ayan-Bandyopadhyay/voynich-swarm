@@ -1,0 +1,13 @@
+{
+ "of": "N-005",
+ "assessment": "dissent",
+ "title": "Second look at N-005: DISSENT (label placement agreed, but no name to confirm)",
+ "page": "f89r2",
+ "voynich": "saloiinsheol",
+ "names": {"latin": [], "any": []},
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006233",
+ "sources": [
+  "Beinecke MS 408, canvas 1006233, the crop cited by N-005: https://collections.library.yale.edu/iiif/2/1006233/6280,145,1370,760/1000,/0/default.jpg (viewed by me)"
+ ],
+ "statement": "What I checked on the scan: the fragment has a broad green crown with rounded lobes on several brown stalks that converge on a thick, swollen brown base with spreading roots, and the label (saloiinsheol in ZL) is written immediately right of the stalks, under the crown and nearer to this fragment than to its neighbours. So I agree that the label belongs to fragment 35, and with N-005's own caution that the crown alone cannot tell oak, ivy, a composite or a conventional leaf form apart. I did not check the Zandbergen and Vatne sources. I dissent only on its status as an anchor: N-005 proposes no plant name (names are empty) and says the label's meaning is open. If confirmed, criterion (c) would count an anchor that no decoding can match, lowering every key's matched fraction without testing anything. A dissent keeps it out of (c). It becomes usable if a published identification of the fragment (or of the matching f35v plant) is supplied as names."
+}
