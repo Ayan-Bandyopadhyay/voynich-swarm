@@ -1,0 +1,86 @@
+{
+ "folio": "f66r",
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006192",
+ "blind": true,
+ "statement": "Annotated from the Beinecke scan alone (full page and a crop of the bottom left corner). The page is nearly all text: a block of paragraphs with, in the left margin, a column of about fifteen separate words and a column of single characters. The only drawing is a small group at the bottom left: a nude figure lying on its back with a rounded belly, two round objects, a small open cylindrical pot, and a few words in a different script. One line in the manuscript's own script stands directly above the figure; from the line ids alone this is taken to be f66r.82, the single label line that follows the paragraph text. The label lines f66r.1 to f66r.15 and f66r.16 to f66r.49 are taken to be the marginal word column and the single-character column; they are recorded as page furniture, not as labels of drawn objects, and only their first line id is given. The faint blue green shape across the page is show-through from the other side, not a drawing on this page.",
+ "objects": [
+  {
+   "id": "figure",
+   "kind": "human_figure",
+   "features": {
+    "position": "bottom left corner",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "lying on the back, head raised at the upper right, legs stretched to the lower left",
+    "arms": "one arm bent across the belly, the other resting on the ground",
+    "colour": "uncoloured",
+    "belly": "rounded",
+    "size": "small"
+   },
+   "label": "f66r.82"
+  },
+  {
+   "id": "round_1",
+   "kind": "other",
+   "features": {
+    "position": "bottom left, left of the figure",
+    "shape": "round",
+    "colour": "uncoloured",
+    "detail": "plain ring outline"
+   },
+   "label": null
+  },
+  {
+   "id": "round_2",
+   "kind": "other",
+   "features": {
+    "position": "bottom left, left of the figure, above and right of the other round object",
+    "shape": "round",
+    "colour": "uncoloured",
+    "detail": "rim marked with dots or scallops"
+   },
+   "label": null
+  },
+  {
+   "id": "pot",
+   "kind": "container",
+   "features": {
+    "position": "bottom left corner, below the round objects",
+    "shape": "short cylinder, slightly wider at the top, open",
+    "colour": "uncoloured",
+    "detail": "band below the rim"
+   },
+   "label": null
+  },
+  {
+   "id": "margin_note",
+   "kind": "other",
+   "features": {
+    "position": "bottom left, beside the round objects",
+    "detail": "three or four short words in a different script and a single letter above them",
+    "colour": "uncoloured"
+   },
+   "label": null
+  },
+  {
+   "id": "word_column",
+   "kind": "other",
+   "features": {
+    "position": "left margin beside the main text",
+    "detail": "column of about fifteen separate words",
+    "count": 15
+   },
+   "label": "f66r.1"
+  },
+  {
+   "id": "glyph_column",
+   "kind": "other",
+   "features": {
+    "position": "between the word column and the main text",
+    "detail": "column of single characters, one per text line",
+    "count": 34
+   },
+   "label": "f66r.16"
+  }
+ ]
+}
