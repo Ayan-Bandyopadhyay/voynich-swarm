@@ -1,0 +1,22 @@
+{
+ "title": "The next glyph is unusually predictable: at most 2.1 bits given the two before it",
+ "statement": "In paragraph text, the entropy of a glyph given the two glyphs before it (within lines, the word space counted as a symbol) is at most 2.1 bits.",
+ "source": "The manuscript's low conditional glyph entropy is its oldest statistical observation (Bennett 1976) and one of the four quantities step K-008-open-1 asks generators to be compared on (De Stefano 2026, K-008). It was not yet a fact on the record, so the generator test did not have to meet it; this registers it with the glyph_cond_entropy statistic. Public practice split (Zandbergen-Landini): 1.940 on the evaluation pages, 1.980 on the training pages; Takahashi 1.936 and 1.976; RF 1.949 and 2.002. Six random samples of 34 training pages give 1.89 to 1.99 and blocks of 34 consecutive pages 1.65 to 2.06, so the line is drawn at 2.1, not at 2.0. The level depends on the alphabet (basic EVA here) and on sample size, so it is a level for this transliteration and page-sample size only. Reference languages poured into the layout of the evaluation pages give 2.29 (German) to 2.72 (Arabic) for the alphabetic texts looked at, but the Chinese reference gives 1.89, below the manuscript; so no reference comparison is registered, only the level, and the fact is not a contrast with every language. Why it is a useful target: it pulls against F-007 (near-copies of recent words). On the practice split, at the evaluation pages' size: a line-restarting glyph chain alone gives 1.925 and passes, but has near-copy share 0.12 and fails F-007; the same chain with copies of recent words in which one glyph is replaced by one that fits the glyphs before it reaches near-copy 0.21 but gives 2.16 to 2.17 and fails here; when the replacement must also fit the glyph after it and the copied word must fit the word before it, 2.00 to 2.05 over nine runs, passing narrowly, still 0.05 to 0.11 above the manuscript. This does not answer the step's question: every procedure above learns its glyph transitions from the public pages, which is exactly what the question rules out. It supplies the entropy yardstick for such a comparison. On vocabulary growth at matched size (first 5,000 paragraph words of the evaluation layout) the copying procedure has type-to-token ratio 0.34 to 0.37 against the manuscript's 0.35, but only 62 to 65% of its word types occur once against 71%; that shortfall is sent separately as a fact under K-001-open-2.",
+ "spec": {
+  "select": {
+   "unit": [
+    "P"
+   ],
+   "certain": true
+  },
+  "statistic": {
+   "glyph_cond_entropy": 2
+  },
+  "compare": [
+   {
+    "op": "<=",
+    "value": 2.1
+   }
+  ]
+ }
+}
