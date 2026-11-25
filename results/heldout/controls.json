@@ -797,5 +797,21 @@
   "true_key_passes": true,
   "search_cracks_control": false,
   "added_with": "serbian_9efa0c7b"
+ },
+ {
+  "language": "swedish",
+  "family": "substitution",
+  "control": "homophonic",
+  "true_key_passes": true,
+  "search_cracks_control": true,
+  "added_with": "swedish_3bd1675e"
+ },
+ {
+  "language": "swedish",
+  "family": "verbose",
+  "control": "verbose",
+  "true_key_passes": true,
+  "search_cracks_control": false,
+  "added_with": "swedish_3bd1675e"
  }
 ]

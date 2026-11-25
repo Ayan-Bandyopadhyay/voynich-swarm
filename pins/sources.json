@@ -563,6 +563,19 @@
       "license": "public-domain",
       "encoding": "utf-8",
       "added_by": "fleet-corpora"
+    },
+    {
+      "id": "swedish_3bd1675e",
+      "lang": "swedish",
+      "period": "18th century (1703), early-modern Swedish",
+      "title": "Swedish Charles XII Bible (Karl XII:s bibel, 1703), one verse per line",
+      "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/SweKarlXII.txt",
+      "file": "data/raw/agent_swedish_3bd1675e.txt",
+      "bytes": 3108585,
+      "sha256": "3bd1675ecf0f32e6bd0add6a05abcf1cab2d97e3f0a388d3c3ab818f2536aa6a",
+      "license": "public-domain",
+      "encoding": "utf-8",
+      "added_by": "fleet-corpora"
     }
   ],
   "missing_corpora": {
