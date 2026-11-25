@@ -1,0 +1,43 @@
+{
+ "id": "hannig-2020-voynich-hebrew-v101",
+ "family": "substitution",
+ "segmentation": "eva-raw",
+ "target": {
+  "language": "hebrew",
+  "period": "medieval/rabbinic Hebrew (Hannig 2020); scored against the pinned Hebrew corpora"
+ },
+ "key": {
+  "map": {
+   "9": "א",
+   "U": "ב",
+   "u": "ב",
+   "F": "ג",
+   "f": "ג",
+   "J": "ד",
+   "j": "ד",
+   "G": "פ",
+   "g": "פ",
+   "H": "כ",
+   "h": "כ",
+   "K": "ת",
+   "k": "ת",
+   "4": "י",
+   "y": "ל",
+   "m": "מ",
+   "n": "נ",
+   "a": "ע",
+   "A": "ע",
+   "e": "ר",
+   "8": "ו",
+   "2": "ש",
+   "s": "ח",
+   "1": "מ",
+   "p": "צ",
+   "N": "פ",
+   "t": "ז"
+  }
+ },
+ "transliteration": "gc",
+ "source": "Rainer Hannig (2020), Voynich-Hebräisch: Der Weg zur Entzifferung, sections 10-22 and the table in section 13 (K-019). v101 codes read from the embedded Voynich-1.01 font of the PDF (U+F0xx = ASCII).",
+ "notes": "Frozen, no search. Consonant values only: the pinned Hebrew corpora are normalized to unpointed consonants with final forms folded to base forms, so Hannig's final letters (m, n, p, N) are written as base letters and his vowel signs (o 'vowel indicator', i = hireq, c = qibbus/modifier) map to nothing. Where his table gives one glyph two values, the value used in his own worked readings is kept: h = kaf (9hae = 'ikar, though the table also lists h for qof), k = tav (Akam = 'itim, though the table also lists k for tet), 1 = mem (his stated primary value; he also reads it as nun). N = final pe is his 'most likely' assignment; * (possibly final kaf), backslash and the remaining v101 glyphs are left unmapped (nulls), as he leaves them undeciphered. 8 = vav (his 'primary' value; in language A he also reads it as bet)."
+}
