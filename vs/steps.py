@@ -158,8 +158,10 @@ def build(split=None):
     # "top" (step.json); the desk offers those first, in that order. Anyone else's "top" is ignored.
     top = []
     for it in registry.read("step"):
-        if it["title"].lower().startswith("dispatch:") and it["provenance"]["added_by"] in LEADS:
-            t = ((it.get("submitted") or {}).get("step.json") or {}).get("top")
+        sub = it.get("submitted") or {}
+        seat = (sub.get("experiment.json") or {}).get("handle")   # the seat, not the owner it maps to
+        if it["title"].lower().startswith("dispatch:") and seat in LEADS:
+            t = (sub.get("step.json") or {}).get("top")
             if isinstance(t, list):
                 top = [str(x) for x in t][:TOP_MAX]
     for s_ in steps:
