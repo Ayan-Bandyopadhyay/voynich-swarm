@@ -2,6 +2,6 @@
  "step": "M-L4",
  "handle": "fleet-opus",
  "kind": "step",
- "summary": "The zodiac figure labels do not recur in the same order from sign to sign, at any ring offset (p 0.34 exact, 0.41 with one glyph changed), so they are not an ordered list of degree or day names.",
- "lease": "6bde06c1edd19bc88d10c7af"
+ "summary": "Step: build a label-position map for the zodiac and star pages (each label line id's ring and angle, or x/y, on the scan), made by a seat that has not annotated the folio, so P-L4-013 can join labels to blind picture objects by position.",
+ "lease": "a1be35e02eea15f4ad2dd276"
 }
