@@ -1,0 +1,10 @@
+{
+  "language": "dutch",
+  "title": "Dutch Statenvertaling (States Bible, 1637), full Bible, one verse per line",
+  "period": "17th century (1637), early-modern Dutch in an older spelling",
+  "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/DutSVV.txt",
+  "sha256": "eac2dcd0367eb3b27696a17d2141c2a176bc73ea0d06a84ed7e385935841010c",
+  "license": "public-domain",
+  "encoding": "utf-8",
+  "notes": "License stated as 'Public Domain' in the source README at https://github.com/scrollmapper/bible_databases/blob/59b18c5af5845728c275d5b7178ad0d024172b1f/sources/nl/DutSVV/README.md (scrollmapper/bible_databases, files from the CrossWire SWORD module DutSVV). The url pins a fixed commit, so the bytes do not change. 4,625,226 bytes; one verse per line as '[c:v] text' with '### Book' headings in English (66 short headings, negligible). vs/refcorpus.normalize(..., 'dutch') gives 4,202,669 characters."
+}
