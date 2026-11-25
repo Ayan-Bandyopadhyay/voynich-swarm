@@ -1,19 +1,21 @@
 {
-  "title": "Transliteration of the Voynich MS text",
-  "authors": "René Zandbergen",
-  "year": 2022,
-  "url": "https://ceur-ws.org/Vol-3313/keynote1.pdf",
-  "summary": "Zandbergen documents five major transliterations and compares them using a common format and a superset alphabet. The paper also measures how different choices about uncertain spaces affect token counts and singleton types.",
+  "title": "Voynich Manuscript v3.1 Confirmatory Self-Citation Test Results",
+  "authors": "Amy Laird",
+  "year": 2026,
+  "url": "https://zenodo.org/records/23073034",
+  "doi": "10.5281/zenodo.23073034",
+  "summary": "This public results release reports a preregistered test of the Timm–Schinner generator. The study compares simulations against four manuscript statistics covering CHEDY and QOK adjacency, combined family abundance and the frequency of close neighbors of common words.",
   "established": [
-    "Under the common symbol comparison in Table 7, four files generally agree above 95 percent. The Glen Claston file agrees at approximately 90.5–92.0 percent for exact symbols, while its family-level agreement with Zandbergen–Landini is 99.0 percent.",
-    "Table 6 reports different locus coverage across the five files. The hapax comparison therefore restricts attention to three comparably complete files and treats uncertain separators separately where the source marks them."
+    "Across 300 preregistered configurations and three fixed seeds per configuration, no configuration matched more than two of the four target metrics. Sixteen matched two, 183 matched one, and 101 matched zero.",
+    "The preregistered sensitivity analyses using wider reference bands and interior token positions also produced no complete matches. The result is scoped to the registered configuration sampling distribution."
   ],
   "open": [
     {
-      "question": "Which fine-grained glyph distinctions recorded in v101 are reproducible across scribal hands when assessed directly against the manuscript images?",
-      "front": "L1",
-      "check": "Select matched instances of the disputed glyph families and have independent reviewers annotate image crops blind to the transliteration. Report agreement at both the family and variant levels.",
+      "question": "Can a related copying mechanism outside the sampled subspace match the four registered family and neighbor metrics simultaneously under a fresh, fixed evaluation?",
+      "front": "G",
+      "check": "Declare the rule and sampling plan first, then evaluate all four statistics on fixed seeds and report how often they fall inside the registered bands jointly.",
       "hard": true
     }
-  ]
+  ],
+  "results_manifest_url": "https://zenodo.org/records/23073034/files/RESULTS_MANIFEST.txt?download=1"
 }
