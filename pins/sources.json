@@ -498,6 +498,19 @@
       "license": "public-domain",
       "encoding": "utf-8",
       "added_by": "fleet-corpora"
+    },
+    {
+      "id": "danish_c6e4a469",
+      "lang": "danish",
+      "period": "19th/early 20th century (1871/1907), Danish in pre-1948 orthography",
+      "title": "Danish Bible (Old Testament 1871, New Testament 1907) in the original orthography, one verse per line",
+      "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/DaOT1871NT1907.txt",
+      "file": "data/raw/agent_danish_c6e4a469.txt",
+      "bytes": 4122807,
+      "sha256": "c6e4a46970837b1ece3775ebc07f0ce2289b367e566d8fb5c8ef12b7c7baedf9",
+      "license": "public-domain",
+      "encoding": "utf-8",
+      "added_by": "fleet-corpora"
     }
   ],
   "missing_corpora": {
