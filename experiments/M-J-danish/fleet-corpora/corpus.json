@@ -1,0 +1,10 @@
+{
+  "language": "danish",
+  "title": "Danish Bible (Old Testament 1871, New Testament 1907) in the original orthography, one verse per line",
+  "period": "19th/early 20th century (1871/1907), Danish in pre-1948 orthography",
+  "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/DaOT1871NT1907.txt",
+  "sha256": "c6e4a46970837b1ece3775ebc07f0ce2289b367e566d8fb5c8ef12b7c7baedf9",
+  "license": "public-domain",
+  "encoding": "utf-8",
+  "notes": "License stated as 'Public Domain' in the source README at https://github.com/scrollmapper/bible_databases/blob/59b18c5af5845728c275d5b7178ad0d024172b1f/sources/da/DaOT1871NT1907/README.md (scrollmapper/bible_databases, files from the CrossWire SWORD module DaOT1871NT1907). The url pins a fixed commit, so the bytes do not change. 4,122,807 bytes; one verse per line as '[c:v] text' with '### Book' headings in English (66 short headings, negligible). vs/refcorpus.normalize(..., 'danish') gives 3,698,960 characters."
+}
