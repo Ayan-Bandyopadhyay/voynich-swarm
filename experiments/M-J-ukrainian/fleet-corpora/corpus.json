@@ -1,10 +1,10 @@
 {
   "language": "ukrainian",
-  "title": "Ukrainian Bible, translation of Ivan Ohiienko (Українська Біблія, переклад Івана Огієнка), full Bible, one verse per line",
-  "period": "20th century (Ohiienko, published 1962), modern Ukrainian",
-  "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/UkrOgienko.txt",
-  "sha256": "f252093403c48d4c5791c53973a5adf1a991287e449c809f27c088c89c122765",
+  "title": "Ukrainian Bible, translation of Panteleimon Kulish, Ivan Puluj and Ivan Nechui-Levytskyi (1905), full Bible, one verse per line",
+  "period": "late 19th century (translated 1869-1903, printed 1905), early modern Ukrainian",
+  "url": "https://raw.githubusercontent.com/BibleNLP/ebible/2bde52b4c2cfd7056cf4ed07c48969647df79744/corpus/ukr-ukr1871.txt",
+  "sha256": "92c8935debe8777b40b520a6211deaa1083837e75f6542f1749bc6670aff531b",
   "license": "public-domain",
   "encoding": "utf-8",
-  "notes": "License stated as 'Public Domain' in the source README at https://github.com/scrollmapper/bible_databases/blob/59b18c5af5845728c275d5b7178ad0d024172b1f/sources/uk/UkrOgienko/README.md (scrollmapper/bible_databases, files from the CrossWire SWORD module UkrOgienko). The url pins a fixed commit, so the bytes do not change. 6,633,481 bytes; one verse per line as '[c:v] text' with '### Book' headings in English (66 short headings, negligible). vs/refcorpus.normalize(..., 'ukrainian') gives 3,286,908 characters. Combining marks (e.g. the breve of й) are stripped by the generic normalization. Caveat for reviewers: the README (and the CrossWire module) state Public Domain; Ohiienko died in 1972 and the translation was published in 1962, so readers in life+70 jurisdictions may weigh the stated licence accordingly. The UBS has distributed it freely for decades."
+  "notes": "License: 'public-domain' is stated for translation id 'ukr1871' in the eBible corpus licence table https://github.com/BibleNLP/ebible/blob/2bde52b4c2cfd7056cf4ed07c48969647df79744/metadata/licences.tsv (taken from eBible.org's copyright page, https://ebible.org/ukr1871/copr.htm). The url pins a fixed commit, so the bytes do not change. 6,011,776 bytes; eBible corpus format: one verse per line aligned to a fixed versification (empty lines for verses the translation lacks; '<range>' marks merged verses, a few letters each). vs/refcorpus.normalize(..., 'ukrainian') gives 3,222,031 characters. Replaces the Ohiienko text first proposed on this branch, whose public-domain status is doubtful (translator d. 1972); all three translators of this text died before 1920. Combining marks (e.g. the breve of й) are stripped by the generic normalization."
 }
