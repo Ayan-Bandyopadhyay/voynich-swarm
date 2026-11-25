@@ -511,6 +511,19 @@
       "license": "public-domain",
       "encoding": "utf-8",
       "added_by": "fleet-corpora"
+    },
+    {
+      "id": "finnish_0b723e54",
+      "lang": "finnish",
+      "period": "18th century (1776; text going back to the 1642 Finnish Bible), early-modern Finnish",
+      "title": "Finnish Biblia (1776 edition), full Bible, one verse per line",
+      "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/FinBiblia.txt",
+      "file": "data/raw/agent_finnish_0b723e54.txt",
+      "bytes": 5142166,
+      "sha256": "0b723e5459f91f3bda57b353cbb3668b2a46971594180a18ce578c3da39dc485",
+      "license": "public-domain",
+      "encoding": "utf-8",
+      "added_by": "fleet-corpora"
     }
   ],
   "missing_corpora": {
