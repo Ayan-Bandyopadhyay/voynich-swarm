@@ -1,0 +1,10 @@
+{
+  "language": "galician",
+  "title": "O Castelo de Pambre, historical novel by Antonio López Ferreiro (1895), Galician Wikisource",
+  "period": "19th century (1895), literary Galician in pre-standard spelling (set in 1378); the modern descendant of medieval Galician-Portuguese",
+  "url": "https://gl.wikisource.org/w/index.php?oldid=21789&action=raw",
+  "sha256": "b7a291e099f55f018dc194185277709fc39f14127fa295a155d938a8cc60c110",
+  "license": "cc-by-sa",
+  "encoding": "utf-8",
+  "notes": "License: the 1895 novel is public domain (author d. 1910); the Wikisource page (pinned revision 21789) is published under Wikisource's terms, CC BY-SA 4.0 (https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use). The url pins a fixed page revision (oldid), so the bytes do not change. 256,226 bytes; wikitext; a header template, one image link and a few div tags add a few dozen Latin letters, negligible. vs/refcorpus.normalize(..., 'galician') gives 243,267 characters. Proxy for the Galician-Portuguese leg of Cheshire's proto-Romance proposal (step K-016-open-2), next to the Catalan pin (C-002) and the pending modern Portuguese corpus (M-J-portuguese)."
+}
