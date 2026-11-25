@@ -328,90 +328,6 @@
   "search_cracks_control": false
  },
  {
-  "language": "catalan",
-  "family": "substitution",
-  "control": "homophonic",
-  "control_tokens": 880,
-  "true_key": {
-   "submission": "control-catalan-homophonic",
-   "family": "substitution",
-   "target": {
-    "language": "catalan",
-    "period": "control"
-   },
-   "verdict": "FAIL",
-   "failed": [
-    "c_pictures"
-   ],
-   "passes_without_anchors": true,
-   "savings": 0.05952,
-   "killed_by": []
-  },
-  "true_key_passes": true,
-  "search_key": {
-   "submission": "grid-catalan-substitution-control",
-   "family": "substitution",
-   "target": {
-    "language": "catalan",
-    "period": "grid search"
-   },
-   "verdict": "FAIL",
-   "failed": [
-    "c_pictures"
-   ],
-   "passes_without_anchors": true,
-   "savings": 0.05473,
-   "killed_by": []
-  },
-  "search_cracks_control_clean": true,
-  "noise": 0.02,
-  "true_key_passes_noisy": false,
-  "search_cracks_control": false
- },
- {
-  "language": "catalan",
-  "family": "verbose",
-  "control": "verbose",
-  "control_tokens": 880,
-  "true_key": {
-   "submission": "control-catalan-verbose",
-   "family": "verbose",
-   "target": {
-    "language": "catalan",
-    "period": "control"
-   },
-   "verdict": "FAIL",
-   "failed": [
-    "a_compresses",
-    "c_pictures"
-   ],
-   "passes_without_anchors": false,
-   "savings": -0.05296,
-   "killed_by": []
-  },
-  "true_key_passes": false,
-  "search_key": {
-   "submission": "grid-catalan-verbose-control",
-   "family": "verbose",
-   "target": {
-    "language": "catalan",
-    "period": "grid search"
-   },
-   "verdict": "FAIL",
-   "failed": [
-    "a_compresses",
-    "c_pictures"
-   ],
-   "passes_without_anchors": false,
-   "savings": -0.06404,
-   "killed_by": []
-  },
-  "search_cracks_control_clean": false,
-  "noise": 0.02,
-  "true_key_passes_noisy": false,
-  "search_cracks_control": false
- },
- {
   "language": "german",
   "family": "substitution",
   "control": "homophonic",
@@ -688,5 +604,21 @@
   "true_key_passes": true,
   "search_cracks_control": true,
   "added_with": "hebrew_e0b184ea"
+ },
+ {
+  "language": "catalan",
+  "family": "substitution",
+  "control": "homophonic",
+  "true_key_passes": true,
+  "search_cracks_control": true,
+  "added_with": "catalan_344cbde2"
+ },
+ {
+  "language": "catalan",
+  "family": "verbose",
+  "control": "verbose",
+  "true_key_passes": true,
+  "search_cracks_control": true,
+  "added_with": "catalan_344cbde2"
  }
 ]

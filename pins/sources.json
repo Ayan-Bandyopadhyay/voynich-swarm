@@ -303,6 +303,19 @@
       "license": "public-domain",
       "encoding": "utf-8",
       "added_by": "fleet-corpora"
+    },
+    {
+      "id": "catalan_344cbde2",
+      "lang": "catalan",
+      "period": "19th-century Catalan (1875), pre-normative spelling (y for i, á accents); not medieval",
+      "title": "Lo rondallayre: quentos populars catalans, tercera série (Francesc Maspons i Labrós, 1875), full text, Catalan Wikisource revision 178765 (raw wikitext)",
+      "url": "https://ca.wikisource.org/w/index.php?oldid=178765&action=raw",
+      "file": "data/raw/agent_catalan_344cbde2.txt",
+      "bytes": 216296,
+      "sha256": "344cbde22d316a989dcbee86b55c3728ef2fab49bba978ff731e044174a4bf22",
+      "license": "public-domain",
+      "encoding": "utf-8",
+      "added_by": "fleet-corpora"
     }
   ],
   "missing_corpora": {
