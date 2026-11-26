@@ -1,0 +1,21 @@
+{
+ "title": "Fewer repeated three-word sequences than every ordinary-language reference",
+ "statement": "In certain paragraph tokens, the share of three-word sequences that occur more than once is lower than in every one of the 48 ordinary-language references fitted to the same selected token layout.",
+ "source": "Tests the claim Timm (2014, https://arxiv.org/abs/1407.6639) makes in passing, that repeated sequences longer than five words are missing from the manuscript, and gives it a layout-matched comparison it did not have. Uses the pinned repeat_ngram statistic at n=3, which no established fact uses: F-012, F-015, F-017 and F-022 all measure repetition at the single-word or one-edit level, so the multi-word level was open. Reference tokens keep the order they have in sampled calibration blocks and are poured into the selected Voynich word slots, so token count and line layout match while genre and vocabulary frequency are left free to differ. Public practice: manuscript 0.00290 against a reference range of 0.00532 (chinese, the lowest) to 0.15080 (breton), so the manuscript sits below all 48; on the IT2a and RF1b transliterations the value is 0.00098 and 0.00129 against minima of 0.00440 and 0.00517, so the direction does not depend on the transcription. At n=2 the manuscript (0.10634) is NOT below all references (chinese 0.01626 is lower), so the effect is specific to the longer sequence and is not an artefact of the layout. This is the expected footprint of a procedure that never writes a long run twice, and it is the mirror image of F-007 and F-021, which record that SIMILAR words do gather on the line above. The practice comparison is advisory; only the hidden pages decide.",
+ "spec": {
+  "select": {
+   "unit": [
+    "P"
+   ],
+   "certain": true
+  },
+  "statistic": {
+   "repeat_ngram": 3
+  },
+  "compare": [
+   {
+    "reference": "below_all"
+   }
+  ]
+ }
+}
