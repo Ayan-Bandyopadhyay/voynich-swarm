@@ -1,0 +1,44 @@
+{
+ "title": "Fix the AGREED-annotation pick and the picture-label sample before any label fact is registered: all three picture_label tests are currently undefined",
+ "statement": "P-G-020 asks for label_in_page_text and feature_label_share to be registered as facts before further invented languages are designed. None of the three picture_label tests can be evaluated today, for three independent reasons, each checked on the pinned record. (1) pictures() picks the wrong AGREED annotation. On f72v1 two seats filed an AGREED annotation with the same agreement 0.833: V-026 carries label null on all 32 objects, V-043 carries 30 real ZL label loci (f72v1.2 through f72v1.32, all present as unit L lines in ZL3b). pictures() keeps the first seen at equal agreement, so it returns V-026 and _picture_objects() finds 0 labelled objects on any page. (2) Even when V-043 is forced, the statistic is still undefined: f72v1 is not among the practice evaluation pages, so the value on the practice split is 0 labelled objects, and a fact scored on the hidden pages would depend on a folio the split does not sample. (3) On the whole book V-043 yields 30 labelled objects, but all are human_figure on one folio and they are near-identical: the first two agree on 9 of 10 features. feature_label_share therefore receives 435 alike pairs and 0 not-alike, and _rate_diff returns NaN because it needs at least 5 in each group; same_object_label compares across folios only, so with one folio it has 0 pairs by construction. Fix each in that order and the label facts become measurable; until then P-G-020 and P-G-006 have no discriminating target.",
+ "program": "G",
+ "check": "(a) Code PR to vs/dsl.py: pictures() must break a tie in agreement in favour of the annotation carrying more non-null labels, and prove it with a unit test that feeds V-026 and V-043 in both orders and asserts the labelled one is returned; show _picture_objects() returning 30 objects on the whole book where it now returns 0. (b) State which sampled folios carry AGREED annotations with labels, and whether that folio count is non-zero on the practice split; if it is zero, the picture-label fact cannot be registered and the step must say so instead of being re-offered. (c) For feature_label_share, report the alike/not-alike pair counts per test before registering a threshold: a single folio of one kind and near-identical looks gives an empty comparison group. (d) Once a sample exists, register fact.json per statistic with thresholds fixed before looking, and check that a one-table reuse chain does NOT meet them. A second AGREED annotation on a folio with a different object kind, or a folio set spanning at least two kinds, is the minimum that makes (c) possible.",
+ "on_path": true,
+ "hard": true,
+ "evidence": {
+  "agreed_annotations_on_f72v1": {
+   "V-026": {
+    "agreement": 0.833,
+    "objects": 32,
+    "labels": 0
+   },
+   "V-043": {
+    "agreement": 0.833,
+    "objects": 32,
+    "labels": 30
+   }
+  },
+  "pictures_returns": "V-026 (0 labelled objects)",
+  "labelled_objects_whole_book_as_is": 0,
+  "labelled_objects_whole_book_with_V-043": 30,
+  "labelled_objects_practice_split_with_V-043": 0,
+  "pair_counts_with_V-043": {
+   "total": 435,
+   "alike": 435,
+   "not_alike": 0
+  },
+  "min_pairs_per_group": 5,
+  "record_picture_totals": {
+   "DRAFT": 32,
+   "DISAGREE": 16,
+   "AGREED": 2
+  },
+  "zl_label_lines_on_f72v1": 30
+ },
+ "sources": {
+  "annotation_records": "registry items V-026 and V-043, both AGREED, folio f72v1",
+  "label_loci": "ZL3b-n.txt unit L lines f72v1.2 .. f72v1.32, all present",
+  "code": "vs/dsl.py pictures(), _picture_objects(), _rate_diff(), _picture_label()",
+  "statistic_doc": "vs/dsl.py header, picture_label entry"
+ }
+}
