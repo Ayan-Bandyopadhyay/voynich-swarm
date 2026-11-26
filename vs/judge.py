@@ -192,10 +192,57 @@ class Baseline:
 
 # ------------------------------------------------------------- decoding
 
+def validate_nulls_key(sub):
+    """Raise ValueError if the key cannot be used by the word-level nulls family."""
+    from .families.nulls import NULL_WORD_PREFIX
+
+    if sub.get("spaces", "word_breaks") != "word_breaks":
+        raise ValueError("nulls requires spaces='word_breaks'")
+    key = sub.get("key")
+    if not isinstance(key, dict) or not isinstance(key.get("map"), dict):
+        raise ValueError("nulls key needs a map object")
+
+    scheme = sub.get("segmentation", "eva-basic")
+    if not isinstance(scheme, str) or scheme not in ivtff.SEGMENTATIONS:
+        raise ValueError(f"unknown nulls segmentation {scheme!r}")
+
+    def is_token(value):
+        return isinstance(value, str) and bool(value) and not any(char.isspace() for char in value)
+
+    def is_glyph(value):
+        return is_token(value) and ivtff.segment(value, scheme) == [value]
+
+    language = sub.get("target", {}).get("language")
+    word_edge = "א" if language == "hebrew" else "a"
+    mapping = key["map"]
+    for glyph, plain in mapping.items():
+        if isinstance(glyph, str) and glyph.startswith(NULL_WORD_PREFIX):
+            raise ValueError(f"nulls reserves map keys starting with {NULL_WORD_PREFIX!r}")
+        if not is_glyph(glyph):
+            raise ValueError(f"nulls map key {glyph!r} must be one segmented glyph")
+        if not isinstance(plain, str) or (plain and not plain.isalpha()):
+            raise ValueError(f"nulls map value for {glyph!r} must contain only letters or be empty")
+        # Surround the output so normalization cannot hide a word break at its edges.
+        if plain and not refcorpus.normalize(word_edge + plain + word_edge, language).isalpha():
+            raise ValueError(f"nulls map value for {glyph!r} must retain one word after normalization")
+
+    null_words = key.get("null_words", [])
+    if not isinstance(null_words, list) or not all(is_token(word) for word in null_words):
+        raise ValueError("null_words must be a list of nonempty ciphertext words")
+    null_glyphs = key.get("null_glyphs", [])
+    if not isinstance(null_glyphs, list) or not all(is_glyph(glyph) for glyph in null_glyphs):
+        raise ValueError("null_glyphs must be a list of single segmented glyphs")
+    for glyph in null_glyphs:
+        if mapping.get(glyph, ""):
+            raise ValueError(f"null glyph {glyph!r} has a nonempty map value")
+
+
 class Decoder:
     def __init__(self, sub, lang):
         self.sub = sub
         self.fam = families.load(sub["family"])
+        if sub["family"] == "nulls":
+            validate_nulls_key(sub)
         self.seg = seg_fn(sub.get("segmentation", "eva-basic"))
         self.lang = lang
         self.key = sub["key"]
@@ -231,6 +278,9 @@ def key_units(sub, seg):
     if sub["family"] == "syllabic":
         from .families import syllabic
         return lambda w: syllabic.units(w, sub["key"], seg)
+    if sub["family"] == "nulls":
+        from .families import nulls
+        return lambda w: nulls.units(w, sub["key"], seg)
     if sub["family"] == "substitution":
         return seg
     if sub["family"] == "verbose":
@@ -271,6 +321,12 @@ def preimage_bits(units, plain, m, ufreq):
         if g != "<stop>":
             pos += len(m.get(g, ""))
     return bits
+
+
+def _literal_word_bits(word):
+    """A UTF-8 byte string with its length plus one Elias-gamma coded first."""
+    size = len(word.encode("utf-8"))
+    return 8 * size + 2 * (size + 1).bit_length() - 1
 
 
 def unit_output_keep_spaces(v, lang):
@@ -331,8 +387,10 @@ def description_length(dec, base, train_pages, eval_pages, lang):
     unigram with escapes into it. The Voynich words are then recovered from the plaintext by
     the cheaper of two codes (one flag bit): adaptive choice among the training words with
     the same reading, or, for substitution keys, an exact glyph-by-glyph preimage code (line-level,
-    space-aware, for keys that ignore the manuscript's spaces)."""
+    space-aware, for keys that ignore the manuscript's spaces). The nulls family also
+    codes where raw words with no plaintext reading occur."""
     fam = dec.sub["family"]
+    has_word_nulls = fam == "nulls"
     prog_bits = program_bits(families.source_file(fam))
     key_bits = compressed_bits(canonical(dec.key))
     tr_plain = [dec.words(ln.words) for p in train_pages for ln in p.lines if ln.words]
@@ -373,8 +431,17 @@ def description_length(dec, base, train_pages, eval_pages, lang):
             umap = {g: unit_output_keep_spaces(v, lang) for g, v in dec.key["map"].items()}
         else:
             umap = {g: refcorpus.normalize(v, lang).replace(" ", "") for g, v in dec.key["map"].items()}
-        ufreq = Counter(g for w in base.dev_words for g in cut(w))
-        ufreq["<stop>"] = len(base.dev_words)
+        unit_words = base.dev_words
+        if has_word_nulls:
+            for g in dec.key.get("null_glyphs", ()):
+                umap.pop(g, None)
+            # Omitted words use a separate adaptive identity code. Their reserved
+            # whole-word symbols cannot occur in a surviving word's glyph stream.
+            unit_words = [w for w in unit_words if dec.raw(w)]
+            escape = 0.5 / (len(unit_words) + 1)
+            literal_prefix, physical_prefix = -math.log2(escape), -math.log2(1 - escape)
+        ufreq = Counter(g for w in unit_words for g in cut(w))
+        ufreq["<stop>"] = len(unit_words)
     # code 1: adaptive choice among same-reading training words
     pre = defaultdict(dict)
     for u, c in base.train_counts.items():
@@ -386,12 +453,23 @@ def description_length(dec, base, train_pages, eval_pages, lang):
         for ln in pg.lines:
             for w in ln.words:
                 p = dec.raw(w)
+                dropped = has_word_nulls and not p
                 pb = None
-                if cut is not None:
+                if cut is not None and not dropped:
                     us = cut(w)
                     if all(u in ufreq for u in us):
                         pb = (line_preimage_bits if lines_mode else preimage_bits)(us, p, umap, ufreq)
-                b2 += pb if pb is not None else base.spell_bits(w) + 1.0
+                if has_word_nulls:
+                    if dropped:
+                        pb = _literal_word_bits(w)
+                    else:
+                        # The prefix distinguishes a physical preimage from a literal,
+                        # including words with a glyph the training pool never saw.
+                        pb = physical_prefix + pb if pb is not None else literal_prefix + _literal_word_bits(w)
+                        b2 += pb
+                else:
+                    b2 += pb if pb is not None else base.spell_bits(w) + 1.0
+                previous = b1
                 st = state.setdefault(p, [{}, 0, 0])
                 counts_p, Np, Tp = st
                 c = counts_p.get(w, 0)
@@ -404,12 +482,32 @@ def description_length(dec, base, train_pages, eval_pages, lang):
                     st[2] = Tp + 1
                 counts_p[w] = c + 1
                 st[1] = Np + 1
+                if dropped:
+                    # The positions stream tells both identity codes when to use this
+                    # adaptive distribution, including its escape to a raw literal.
+                    b2 += b1 - previous
         ch_adapt[pg.id], ch_pre[pg.id] = b1, b2
     choice = ch_adapt if cut is None or sum(ch_adapt.values()) <= sum(ch_pre.values()) else ch_pre
     choice_model = "adaptive_choice" if choice is ch_adapt else "unit_preimage"
     page_bits = {pid: plain_cost[pid] + choice[pid] for pid in plain_by_page}
     info = {"plaintext_model": plain_model, "plaintext_bits": round(sum(plain_cost.values()), 1),
             "choice_code": choice_model, "choice_bits": round(sum(choice.values()), 1)}
+    if has_word_nulls:
+        train_kept = sum(map(len, tr_plain))
+        train_dropped = sum(len(ln.words) for pg in train_pages for ln in pg.lines) - train_kept
+        # One geometric run before each survivor, plus one trailing run per raw line.
+        # The identity code above also pays for which dropped words fill these runs.
+        q = (train_dropped + 0.5) / (train_dropped + train_kept + len(tr_plain) + 1)
+        drop_bits, stop_bits = -math.log2(q), -math.log2(1 - q)
+        side_bits = 0.0
+        for pg in eval_pages:
+            decoded_lines = plain_by_page[pg.id]
+            kept = sum(map(len, decoded_lines))
+            dropped = sum(len(ln.words) for ln in pg.lines) - kept
+            b = dropped * drop_bits + (kept + len(decoded_lines)) * stop_bits
+            page_bits[pg.id] += b
+            side_bits += b
+        info["null_position_bits"] = round(side_bits, 1)
     return prog_bits + 2, key_bits, page_bits, plain_by_page, info
 
 
@@ -723,7 +821,8 @@ def not_an_illusion(sub, dec, lang, words, train_pages, eval_pages, savings):
                         "rival_bits_per_char": round(best, 4), "pass": own <= best - PARAMS["exclusive_margin"]}
     # matched freedom: the same family, searched at the same budget, on meaningless text shaped like the pages
     fam = sub["family"]
-    if fam in ("substitution", "verbose", "nomenclator", "table-cipher", "abbreviation", "syllabic") and sub.get("search", {}).get("budget"):
+    if (fam in ("substitution", "verbose", "nomenclator", "table-cipher", "abbreviation", "syllabic", "nulls")
+            and sub.get("search", {}).get("budget")):
         from . import search, generators
         try:
             gtr = generators.g_table_cipher(train_pages, train_pages)
