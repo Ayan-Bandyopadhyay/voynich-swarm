@@ -1,0 +1,1615 @@
+{
+  "title": "Masked figure comparisons separate the sunflower proposals for f33v and f93r",
+  "statement": "On the sampled drawings f33v shares a bounded oval disk and projecting rays with the named sunflower prints. Both head readers distinguish their simple ray tips from the divided f33v tips, and the 1479 Calendula head matches f33v on all five coded features. Whole-plant readers agree on deeply divided f33v blades and rounded lower bodies, while both named sunflower prints show simple blades and lack a below-ground region. They leave f33v leaf insertion unknown. The separate f93r head is tapered, punctate and lacks a discrete ray fringe in these views. Its head scores are higher against the 1542 Petasites illustration than against either sunflower, although f93r has a closer whole-plant score with Dodoens. These comparisons do not establish either plant identity or a word-to-picture anchor.",
+  "program": "L4",
+  "check": "Recreate the separately coded grayscale head and whole-plant masks from the source images, using the coordinates below. Have two new readers for each region apply the fixed five-feature rubric, recording missing regions and prior exposure before unmasking. Compare each folio separately to both named sunflower prints and the Old World controls using agreement counts and comparable-feature denominators. Include a close root-detail recheck and leave any anatomical contact unresolved when stroke overlap hides it.",
+  "on_path": true,
+  "hard": true,
+  "question": "K-033-open-1; Stolfi 1998 open question about f33v. These are completed observations attached to the desk step.",
+  "historical_claims": [
+    {
+      "source": "https://www.ic.unicamp.br/~stolfi/EXPORT/00-EXPORT/98-01-17-sunflower/",
+      "note": "Stolfi discusses f33v, including disk, rays and possible bracts, and objections from leaf division, apparent insertion, divided ray tips and rounded underground forms."
+    },
+    {
+      "source": "https://doi.org/10.2307/2856859",
+      "page": 126,
+      "note": "O’Neill 1944 says fol. 93, identified as Helianthus annuus and supported by six botanists, without listing diagnostic sunflower characters there."
+    },
+    {
+      "source": "https://umb.herbalgram.org/media/3jojkmox/issue100.pdf",
+      "printed_page": 79,
+      "note": "Tucker and Talbert 2013 specify f93r for O’Neill’s sunflower, discuss compression of a tall plant, and propose Psacalium peltigerum separately for f33v. The latter identification is outside these coded comparisons."
+    },
+    {
+      "source": "https://www.notulaebotanicae.ro/index.php/nbha/article/download/12015/8986/48289",
+      "page": 1125,
+      "note": "Janick 2020 records that the surviving Hernández 1651 sunflower plates use substituted European images, one reversed from the 1633 Gerard edition. We do not count that illustration as an independent comparator."
+    }
+  ],
+  "sources": {
+    "f33v": {
+      "reference": "Yale Beinecke MS 408, f33v, image 1006139",
+      "url": "https://collections.library.yale.edu/iiif/2/1006139/full/1400,/0/default.jpg",
+      "role": "Stolfi target"
+    },
+    "f93r": {
+      "reference": "Yale Beinecke MS 408, f93r, image 1006238",
+      "url": "https://collections.library.yale.edu/iiif/2/1006238/full/1400,/0/default.jpg",
+      "role": "O’Neill / Tucker and Talbert target"
+    },
+    "dodoens": {
+      "reference": "Rembert Dodoens, Florum, et coronariarum odoratarumque nonnullarum herbarum historia, 1568, p. 295, CHRYSANTH. PERVVIANVM.",
+      "record": "https://archive.org/details/BIUSante_pharma_res019124/page/n294/mode/2up",
+      "url": "https://iiif.archive.org/iiif/BIUSante_pharma_res019124$294/full/1000,/0/default.jpg",
+      "role": "Named Helianthus annuus woodcut, one prominent head, no below-ground view"
+    },
+    "besler": {
+      "reference": "Basilius Besler, Hortus Eystettensis, 1613, summer order V, plate 2, Flos Solis prolifer",
+      "record": "https://nbn-resolving.org/urn:nbn:de:bvb:824-dtl-0000150670#213",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Hortus_Eystettensis%2C_1613_%28KU_2894-2_212%29_-Aestiva%2C5%2C2.jpg",
+      "role": "Independent named Helianthus annuus engraving with several developed heads and exposed bracts; image stops at the stems"
+    },
+    "calendula": {
+      "reference": "Auslasser, 1479, BSB Clm 5905 f282r, Calendula",
+      "record": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00092488/canvas/567",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/a/a0/282_Auslasser_Calendula_officinalis.jpg",
+      "role": "Rayed head and drawn root; catalogue and derivative differ on species, so comparison is at genus level"
+    },
+    "scabious": {
+      "reference": "Auslasser, 1479, BSB Clm 5905 f255r, identified as Scabiosa in the derivative",
+      "record": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00092488/canvas/513",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/8/83/255_Auslasser_Scabiosa_columbaria.jpg",
+      "role": "Clustered heads and lobed leaves; the exact modern species attribution is secondary"
+    },
+    "nymphaea": {
+      "reference": "Auslasser, 1479, BSB Clm 5905 f264r, water lily",
+      "record": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00092488/canvas/531",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/4/40/264_Auslasser_Nymphaea_alba.jpg",
+      "role": "Broad blades with a deep marginal notch and a radiate flower; lower stalk tails omitted, no discernible root on source"
+    },
+    "butterbur": {
+      "reference": "Leonhart Fuchs, De historia stirpium, 1542, p. 644, PETASITES",
+      "record": "https://www.biodiversitylibrary.org/page/41534617",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/6/6d/De_historia_stirpium_commentarii_insignes_%28Page_644%29_%289365076379%29.jpg",
+      "role": "Pointed compact head, radially veined broad blades, thick lower axis"
+    },
+    "cyclamen": {
+      "reference": "British Library Sloane MS 4016, c. 1440, f31r, cyclamen root detail",
+      "record": "https://bl.digirati.io/images/ark:/81055/vdc_100165751215.0x00003f/canvas/c/71",
+      "url": "https://bl.digirati.io/images/ark:/81055/vdc_100165751215.0x00003f/full/1300,/0/default.jpg",
+      "role": "Root-shape illustration only; organ relation and other characters scored unknown in the short mask"
+    },
+    "oxeye": {
+      "reference": "Auslasser, 1479, BSB Clm 5905 f241r, white daisy form",
+      "record": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00092488/canvas/485",
+      "url": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00092488_00485/full/1300,/0/default.jpg",
+      "role": "Three rayed heads with discrete disks and an illustrated root; no dependence on exact species identification"
+    },
+    "egerton_cyclamen": {
+      "reference": "British Library Egerton MS 747 f18v, c. 1280–1350, De ciclamine",
+      "record": "https://bl.digirati.io/images/ark:/81055/vdc_100058663074.0x00002c/canvas/c/44",
+      "url": "https://bl.digirati.io/images/ark:/81055/vdc_100058663074.0x00002c/full/1100,/0/default.jpg",
+      "role": "Second rounded root detail, from a related illustrated tradition to Sloane MS 4016"
+    }
+  },
+  "source_coordinate_convention": "Fractional boxes are xyxy fractions of source dimensions, rounded to nearest pixel before grayscale crop. Control pixel boxes are xyxy in the indicated original file frames. Controls used a first resize to fit 880×1070; the common final ceiling was 500×650, then small separate contact sheets for inspection. Rectangular fills cover external captions, numerals or portions of writing where separate from plant strokes.",
+  "panels": {
+    "heads": {
+      "H12": {
+        "specimen": "besler",
+        "source_size": [
+          808,
+          1000
+        ],
+        "source_sha256": "3d03efcf0ea944e7fdafe4762aa48f335645b7439468682c5d7f3aa1067ac2ae",
+        "panel_sha256": "dfc1c8bd85f93a426a5e1be7d8e9e8d956998c0e7274d1ef715c32e9db9b570b",
+        "fractional_crop": [
+          0.3,
+          0.035,
+          0.716,
+          0.364
+        ],
+        "fractional_redactions": []
+      },
+      "H19": {
+        "specimen": "oxeye",
+        "source_size": [
+          1300,
+          1752
+        ],
+        "source_sha256": "810b69e143d727ec03a07b2ae14e0a4bd515cdc5c26eacc23286d5cfec825248",
+        "panel_sha256": "9f1a06847f5f14626955113433a3d02c62b899dc1a0735130316fe3f4390ec31",
+        "fractional_crop": [
+          0.24,
+          0.049,
+          0.426,
+          0.197
+        ],
+        "fractional_redactions": []
+      },
+      "H26": {
+        "specimen": "nymphaea",
+        "source_size": [
+          2510,
+          2930
+        ],
+        "source_sha256": "ee4517bc1ff4ca954a6a7fd4d66f833c2a10cb0f87276ca1c7ef85b940a885cf",
+        "panel_sha256": "d28a7c82541364fc6058bae74a35bfa89af1b949b323ec9df4e9a849f79ca480",
+        "fractional_crop": [
+          0.2,
+          0.109,
+          0.458,
+          0.32
+        ],
+        "fractional_redactions": []
+      },
+      "H33": {
+        "specimen": "f33v_repeat",
+        "source_size": [
+          1400,
+          1838
+        ],
+        "source_sha256": "fb26e60fc59d1c75deb1629e0f65c945aee2b9ce40b28b8c2d1105fb0fe6287a",
+        "panel_sha256": "8fb3931b8a2d3c1908470a52bc2e627e5633f8e1c5da15279fc91a03bbf915de",
+        "fractional_crop": [
+          0.655,
+          0.024,
+          0.99,
+          0.258
+        ],
+        "fractional_redactions": []
+      },
+      "H40": {
+        "specimen": "f93r",
+        "source_size": [
+          1400,
+          1936
+        ],
+        "source_sha256": "df1b69e48e63581834a0e6cc06079340f4053f2bc115c6619464bea2224be466",
+        "panel_sha256": "181802b8d88706bc2e9a5968eab9024fc5088f7181b4108f17369081458992cc",
+        "fractional_crop": [
+          0.391,
+          0.1,
+          0.868,
+          0.325
+        ],
+        "fractional_redactions": []
+      },
+      "H47": {
+        "specimen": "dodoens",
+        "source_size": [
+          1000,
+          1635
+        ],
+        "source_sha256": "a6780f62fb0877eb29ad23751b71b514bc8f0655392ab2c684443d56dc019615",
+        "panel_sha256": "ff94d452db1e8fb529a45e246929a37957c35fc2a92a5b7c37e011fe3e7fd93c",
+        "fractional_crop": [
+          0.438,
+          0.09,
+          0.719,
+          0.295
+        ],
+        "fractional_redactions": []
+      },
+      "H54": {
+        "specimen": "butterbur",
+        "source_size": [
+          1360,
+          2367
+        ],
+        "source_sha256": "cc65709fc24b6c01140c96c2d3ca09d7df3f68effb85205276ed6a837d3e9a8b",
+        "panel_sha256": "03d42bcd8eae10a5d16c7c7a422accc46c09a748f8ffdf54b10309d0beb51b0f",
+        "fractional_crop": [
+          0.622,
+          0.036,
+          0.787,
+          0.21
+        ],
+        "fractional_redactions": []
+      },
+      "H61": {
+        "specimen": "f33v",
+        "source_size": [
+          1400,
+          1838
+        ],
+        "source_sha256": "fb26e60fc59d1c75deb1629e0f65c945aee2b9ce40b28b8c2d1105fb0fe6287a",
+        "panel_sha256": "e2e9fa7f6aa9a3005cd40873a4d9775a21bee0aa438f9221b3ce44a643deadef",
+        "fractional_crop": [
+          0.343,
+          0.026,
+          0.608,
+          0.305
+        ],
+        "fractional_redactions": []
+      },
+      "H68": {
+        "specimen": "calendula",
+        "source_size": [
+          2805,
+          3374
+        ],
+        "source_sha256": "9d177f8517ec08ae394c19718d48e9749dcb4477ac2bf15499b883f80044225b",
+        "panel_sha256": "d1fccd9dea6f1f00f9d766b00e25991fa8961549f8b08722a88301450303e0c9",
+        "fractional_crop": [
+          0.308,
+          0.069,
+          0.451,
+          0.158
+        ],
+        "fractional_redactions": []
+      },
+      "H75": {
+        "specimen": "scabious",
+        "source_size": [
+          2751,
+          3282
+        ],
+        "source_sha256": "24544625ab1471ffe27ae0d5e611a0bcb796f256ba6291d0761ab809e8e79079",
+        "panel_sha256": "2f9902e5e139e749333a5a87486d747b028bf9f9b7186508790b0a224248c889",
+        "fractional_crop": [
+          0.534,
+          0.077,
+          0.674,
+          0.171
+        ],
+        "fractional_redactions": []
+      }
+    },
+    "whole": {
+      "W12": {
+        "specimen": "calendula",
+        "source_size": [
+          2805,
+          3374
+        ],
+        "source_sha256": "9d177f8517ec08ae394c19718d48e9749dcb4477ac2bf15499b883f80044225b",
+        "panel_sha256": "9a98d336777789beabd7292e8d03ab398ac36848e52355b5e7db6bca8e42f390",
+        "pixel_crop": [
+          311,
+          199,
+          1594,
+          3214
+        ],
+        "pixel_redactions": [
+          [
+            303,
+            869,
+            757,
+            1133
+          ],
+          [
+            1155,
+            168,
+            1379,
+            343
+          ]
+        ]
+      },
+      "W19": {
+        "specimen": "dodoens",
+        "source_size": [
+          1000,
+          1635
+        ],
+        "source_sha256": "a6780f62fb0877eb29ad23751b71b514bc8f0655392ab2c684443d56dc019615",
+        "panel_sha256": "89b2225cbd13be2e81b622497581ebcc7e0db91324c0f676f44144c06f0f4387",
+        "fractional_crop": [
+          0.135,
+          0.09,
+          0.865,
+          0.882
+        ],
+        "fractional_redactions": []
+      },
+      "W26": {
+        "specimen": "f33v",
+        "source_size": [
+          1400,
+          1838
+        ],
+        "source_sha256": "fb26e60fc59d1c75deb1629e0f65c945aee2b9ce40b28b8c2d1105fb0fe6287a",
+        "panel_sha256": "3212aae6589cb3df769d2ec89cf56baf263984c7ab46a9c065c47a21110c4bfb",
+        "fractional_crop": [
+          0.16,
+          0.023,
+          0.997,
+          0.982
+        ],
+        "fractional_redactions": [
+          [
+            0.16,
+            0.18,
+            0.343,
+            0.43
+          ]
+        ]
+      },
+      "W33": {
+        "specimen": "besler",
+        "source_size": [
+          808,
+          1000
+        ],
+        "source_sha256": "3d03efcf0ea944e7fdafe4762aa48f335645b7439468682c5d7f3aa1067ac2ae",
+        "panel_sha256": "50da1887d2d8a641c4b504d6bb02c00f19c45404203d3344ae7e0671d708fded",
+        "fractional_crop": [
+          0.02,
+          0.034,
+          0.981,
+          0.976
+        ],
+        "fractional_redactions": [
+          [
+            0.362,
+            0.94,
+            0.655,
+            0.975
+          ]
+        ]
+      },
+      "W40": {
+        "specimen": "f93r",
+        "source_size": [
+          1400,
+          1936
+        ],
+        "source_sha256": "df1b69e48e63581834a0e6cc06079340f4053f2bc115c6619464bea2224be466",
+        "panel_sha256": "fa0dd2657c631b3ca0c4d6fe0a2cd79c4ee41e30055289ec828ef5bd599a1ce0",
+        "fractional_crop": [
+          0.34,
+          0.093,
+          0.918,
+          0.971
+        ],
+        "fractional_redactions": [
+          [
+            0.34,
+            0.29,
+            0.387,
+            0.732
+          ]
+        ]
+      },
+      "W47": {
+        "specimen": "cyclamen",
+        "source_size": [
+          1300,
+          1732
+        ],
+        "source_sha256": "eb6f67963b87518c818691f846a94c03f0c4d31cdc87461f9037b699f8655f67",
+        "panel_sha256": "0940198c57b7ad670c8b927bf3397f91dc9348b3c31f24ff1b4f26ddf6b29c24",
+        "pixel_crop": [
+          96,
+          580,
+          480,
+          824
+        ],
+        "pixel_redactions": []
+      },
+      "W54": {
+        "specimen": "scabious",
+        "source_size": [
+          2751,
+          3282
+        ],
+        "source_sha256": "24544625ab1471ffe27ae0d5e611a0bcb796f256ba6291d0761ab809e8e79079",
+        "panel_sha256": "f2fbdc56d0c126949b8f87107018bf5ac588c6e2eb967bc09647693e56941bf2",
+        "pixel_crop": [
+          289,
+          203,
+          2016,
+          3134
+        ],
+        "pixel_redactions": [
+          [
+            344,
+            2532,
+            899,
+            2688
+          ],
+          [
+            938,
+            133,
+            1188,
+            305
+          ]
+        ]
+      },
+      "W61": {
+        "specimen": "nymphaea",
+        "source_size": [
+          2510,
+          2930
+        ],
+        "source_sha256": "ee4517bc1ff4ca954a6a7fd4d66f833c2a10cb0f87276ca1c7ef85b940a885cf",
+        "panel_sha256": "2d11beb40f0480b44c4257bc575133e9c4dd9255f558cfbd6a50524b26237a44",
+        "pixel_crop": [
+          257,
+          328,
+          2025,
+          1796
+        ],
+        "pixel_redactions": [
+          [
+            221,
+            1704,
+            513,
+            1818
+          ]
+        ]
+      },
+      "W68": {
+        "specimen": "butterbur",
+        "source_size": [
+          1360,
+          2367
+        ],
+        "source_sha256": "cc65709fc24b6c01140c96c2d3ca09d7df3f68effb85205276ed6a837d3e9a8b",
+        "panel_sha256": "ee55e5d20a6b15f5f8f6173cff525c03ab18eaef9c46c1abfbdf002ede5b8443",
+        "pixel_crop": [
+          0,
+          57,
+          1355,
+          2253
+        ],
+        "pixel_redactions": [
+          [
+            753,
+            1865,
+            1199,
+            2021
+          ]
+        ]
+      },
+      "W75": {
+        "specimen": "oxeye",
+        "source_size": [
+          1300,
+          1752
+        ],
+        "source_sha256": "810b69e143d727ec03a07b2ae14e0a4bd515cdc5c26eacc23286d5cfec825248",
+        "panel_sha256": "b19d82c15dc9b906af1b2a1109975555896e350c1f58906d2fd6f85f4ebbc3b4",
+        "pixel_crop": [
+          118,
+          103,
+          901,
+          1490
+        ],
+        "pixel_redactions": [
+          [
+            561,
+            67,
+            687,
+            152
+          ],
+          [
+            129,
+            1090,
+            273,
+            1201
+          ]
+        ]
+      }
+    }
+  },
+  "method": {
+    "head_sampling": "Top-left f33v head used as primary; upper-right scored separately as a crop sensitivity, sharing one page and artist. f93r is a distinct target. Dodoens single head and Besler largest central open head. Old World controls chosen for disk, compact head or ambiguous attachment; credits below. The right scabious crop and the water lily crop omit part of the ray perimeter. The Dodoens crop cuts some peripheral tip strokes. Retain uncertainty codes and inspect original when coverage matters.",
+    "whole_sampling": "Show full plant and the root region when present. Nymphaea shows only two separate leaf/flower shapes in the mask and cyclamen is a deliberately restricted root-only comparison. The latter cannot enter whole-plant rankings. The root systems of Dodoens and Besler, and one concealed f33v attachment, cannot be compared.",
+    "rubrics": {
+      "heads": {
+        "distinct disk": [
+          "distinct",
+          "confluent"
+        ],
+        "ray length": [
+          "absent",
+          "short",
+          "long"
+        ],
+        "ray tip": [
+          "simple",
+          "split_notched"
+        ],
+        "disk or core texture": [
+          "smooth",
+          "fine_dots",
+          "coarse_cells",
+          "other"
+        ],
+        "outline": [
+          "flat_round_oval",
+          "tapered_pyramidal",
+          "other"
+        ]
+      },
+      "whole": {
+        "architecture": [
+          "single_axis",
+          "branched",
+          "basal_cluster",
+          "other"
+        ],
+        "developed head count": [
+          "one",
+          "multiple"
+        ],
+        "blade division and breadth": [
+          "simple_broad",
+          "simple_narrow",
+          "deep_radial",
+          "other_lobed"
+        ],
+        "blade attachment": [
+          "edge",
+          "interior",
+          "sessile",
+          "mixed"
+        ],
+        "root structure": [
+          "fine_branching",
+          "rounded_enlargement",
+          "thick_axis",
+          "other"
+        ]
+      }
+    },
+    "coding": "A ray is long at or above half the local disk radius, short below, absent if no distinct rays, and U if the relation is not clear. Margin or open basal notch is edge and attachment directly to a stem is sessile. Multiple means two or more visibly developed heads. All categories describe drawn structures. U means obscure, inapplicable, or not shown, with reasons below.",
+    "scores": "All matches use number of equal non-U categories followed by number of jointly visible categories, separately for each reader, no weighting. At least three comparisons are required for ranking; tables also retain the smaller denominators. Readers were given rubric and independent codes before seeing the source map. Sample is purposive; ranks are descriptive.",
+    "prior_exposure": [
+      "The organizer knew all sources and the original arguments before mask preparation and did not enter the independent ratings.",
+      "Four model reader instances scored separate panels, two per region. All report no previous viewing they could recall of the exact masked images or each other’s ratings. They received anonymous IDs and no identity key or literature.",
+      "The sunflower topic was inferable from the task or folder. Some readers recognized engraving, manuscript writing and sunflower-like silhouettes, and one head reader noticed the likely repeat. This was label masking with independent scoring, with incomplete provenance blinding.",
+      "The readers are model instances in one agent session, with shared model family and some general manuscript context. Four votes are not four independent botanical assessments."
+    ]
+  },
+  "reader_ratings": {
+    "head_A": {
+      "H12": [
+        "distinct",
+        "long",
+        "simple",
+        "fine_dots",
+        "flat_round_oval"
+      ],
+      "H19": [
+        "distinct",
+        "long",
+        "simple",
+        "coarse_cells",
+        "flat_round_oval"
+      ],
+      "H26": [
+        "distinct",
+        "long",
+        "simple",
+        "other",
+        "flat_round_oval"
+      ],
+      "H33": [
+        "distinct",
+        "long",
+        "split_notched",
+        "coarse_cells",
+        "flat_round_oval"
+      ],
+      "H40": [
+        "confluent",
+        "absent",
+        "U",
+        "fine_dots",
+        "tapered_pyramidal"
+      ],
+      "H47": [
+        "distinct",
+        "long",
+        "simple",
+        "coarse_cells",
+        "flat_round_oval"
+      ],
+      "H54": [
+        "confluent",
+        "absent",
+        "U",
+        "coarse_cells",
+        "tapered_pyramidal"
+      ],
+      "H61": [
+        "distinct",
+        "long",
+        "split_notched",
+        "coarse_cells",
+        "flat_round_oval"
+      ],
+      "H68": [
+        "distinct",
+        "long",
+        "split_notched",
+        "coarse_cells",
+        "flat_round_oval"
+      ],
+      "H75": [
+        "U",
+        "long",
+        "split_notched",
+        "other",
+        "U"
+      ]
+    },
+    "head_B": {
+      "H12": [
+        "distinct",
+        "long",
+        "simple",
+        "fine_dots",
+        "flat_round_oval"
+      ],
+      "H19": [
+        "distinct",
+        "long",
+        "simple",
+        "other",
+        "flat_round_oval"
+      ],
+      "H26": [
+        "distinct",
+        "long",
+        "simple",
+        "other",
+        "flat_round_oval"
+      ],
+      "H33": [
+        "distinct",
+        "long",
+        "split_notched",
+        "coarse_cells",
+        "flat_round_oval"
+      ],
+      "H40": [
+        "confluent",
+        "absent",
+        "U",
+        "fine_dots",
+        "tapered_pyramidal"
+      ],
+      "H47": [
+        "distinct",
+        "long",
+        "simple",
+        "coarse_cells",
+        "flat_round_oval"
+      ],
+      "H54": [
+        "confluent",
+        "absent",
+        "U",
+        "coarse_cells",
+        "tapered_pyramidal"
+      ],
+      "H61": [
+        "distinct",
+        "long",
+        "split_notched",
+        "coarse_cells",
+        "flat_round_oval"
+      ],
+      "H68": [
+        "distinct",
+        "long",
+        "split_notched",
+        "coarse_cells",
+        "flat_round_oval"
+      ],
+      "H75": [
+        "confluent",
+        "U",
+        "split_notched",
+        "other",
+        "U"
+      ]
+    },
+    "whole_A": {
+      "W12": [
+        "single_axis",
+        "multiple",
+        "simple_narrow",
+        "sessile",
+        "thick_axis"
+      ],
+      "W19": [
+        "single_axis",
+        "one",
+        "simple_broad",
+        "edge",
+        "U"
+      ],
+      "W26": [
+        "branched",
+        "multiple",
+        "deep_radial",
+        "U",
+        "rounded_enlargement"
+      ],
+      "W33": [
+        "single_axis",
+        "multiple",
+        "simple_broad",
+        "edge",
+        "U"
+      ],
+      "W40": [
+        "single_axis",
+        "one",
+        "simple_broad",
+        "sessile",
+        "fine_branching"
+      ],
+      "W47": [
+        "U",
+        "U",
+        "U",
+        "U",
+        "U"
+      ],
+      "W54": [
+        "branched",
+        "multiple",
+        "other_lobed",
+        "edge",
+        "thick_axis"
+      ],
+      "W61": [
+        "U",
+        "multiple",
+        "simple_broad",
+        "edge",
+        "U"
+      ],
+      "W68": [
+        "basal_cluster",
+        "one",
+        "simple_broad",
+        "interior",
+        "thick_axis"
+      ],
+      "W75": [
+        "branched",
+        "multiple",
+        "simple_narrow",
+        "sessile",
+        "fine_branching"
+      ]
+    },
+    "whole_B": {
+      "W12": [
+        "single_axis",
+        "multiple",
+        "simple_narrow",
+        "sessile",
+        "thick_axis"
+      ],
+      "W19": [
+        "single_axis",
+        "one",
+        "simple_broad",
+        "edge",
+        "U"
+      ],
+      "W26": [
+        "branched",
+        "multiple",
+        "deep_radial",
+        "U",
+        "rounded_enlargement"
+      ],
+      "W33": [
+        "branched",
+        "multiple",
+        "simple_broad",
+        "edge",
+        "U"
+      ],
+      "W40": [
+        "single_axis",
+        "one",
+        "simple_narrow",
+        "sessile",
+        "fine_branching"
+      ],
+      "W47": [
+        "U",
+        "U",
+        "U",
+        "U",
+        "U"
+      ],
+      "W54": [
+        "branched",
+        "multiple",
+        "other_lobed",
+        "sessile",
+        "thick_axis"
+      ],
+      "W61": [
+        "U",
+        "multiple",
+        "simple_broad",
+        "edge",
+        "U"
+      ],
+      "W68": [
+        "basal_cluster",
+        "one",
+        "simple_broad",
+        "edge",
+        "thick_axis"
+      ],
+      "W75": [
+        "branched",
+        "multiple",
+        "simple_narrow",
+        "sessile",
+        "fine_branching"
+      ]
+    }
+  },
+  "reader_agreement": {
+    "heads": {
+      "same-known": 44,
+      "different-known": 1,
+      "both-unknown": 3,
+      "one-unknown": 2
+    },
+    "whole": {
+      "same-known": 36,
+      "both-unknown": 10,
+      "different-known": 4
+    }
+  },
+  "scores_head_only": {
+    "f33v": {
+      "dodoens": [
+        [
+          4,
+          5
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "besler": [
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "calendula": [
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "scabious": [
+        [
+          2,
+          3
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "nymphaea": [
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "butterbur": [
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          4
+        ]
+      ],
+      "oxeye": [
+        [
+          4,
+          5
+        ],
+        [
+          3,
+          5
+        ]
+      ]
+    },
+    "f93r": {
+      "dodoens": [
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          4
+        ]
+      ],
+      "besler": [
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          4
+        ]
+      ],
+      "calendula": [
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          4
+        ]
+      ],
+      "scabious": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "nymphaea": [
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          4
+        ]
+      ],
+      "butterbur": [
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "oxeye": [
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    "f33v_repeat": {
+      "dodoens": [
+        [
+          4,
+          5
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "besler": [
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "calendula": [
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "scabious": [
+        [
+          2,
+          3
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "nymphaea": [
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "butterbur": [
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          4
+        ]
+      ],
+      "oxeye": [
+        [
+          4,
+          5
+        ],
+        [
+          3,
+          5
+        ]
+      ]
+    }
+  },
+  "scores_whole_drawings": {
+    "f33v": {
+      "dodoens": [
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "besler": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "calendula": [
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          4
+        ]
+      ],
+      "scabious": [
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "nymphaea": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "butterbur": [
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          4
+        ]
+      ],
+      "cyclamen": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "oxeye": [
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          4
+        ]
+      ]
+    },
+    "f93r": {
+      "dodoens": [
+        [
+          3,
+          4
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "besler": [
+        [
+          2,
+          4
+        ],
+        [
+          0,
+          4
+        ]
+      ],
+      "calendula": [
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "scabious": [
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ]
+      ],
+      "nymphaea": [
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "butterbur": [
+        [
+          2,
+          5
+        ],
+        [
+          1,
+          5
+        ]
+      ],
+      "cyclamen": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "oxeye": [
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ]
+      ]
+    }
+  },
+  "sensitivity": {
+    "f33v_tip_texture_only": {
+      "dodoens": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "besler": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "calendula": [
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "oxeye": [
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "nymphaea": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "scabious": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    "f33v_repeat_tip_texture_only": {
+      "dodoens": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "besler": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "calendula": [
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "oxeye": [
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "nymphaea": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "scabious": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    "interpretation": "Dropping disk boundary, outer ray length and silhouette retains two more specific head features. Both f33v views remain closer to the sampled Calendula than to either sunflower in this subset. Crosshatched textures can arise from different drawing conventions, so this is not a biological identification."
+  },
+  "qualitative_checks": [
+    {
+      "feature": "f33v blade attachment",
+      "observation": "Pale interior marks and inward-running veins are visible in several blades. Neither whole reader could trace a clear petiole-to-blade junction through the opaque fill. Nymphaea offers a visible marginal notch comparator; Petasites attachment was disputed between readers."
+    },
+    {
+      "feature": "f33v roots",
+      "observation": "Both readers marked round enlargements attached to branches on f33v. Both coded the cropped cyclamen root U because the organ context was insufficient, and neither historical sunflower prints the root. The c. 1280–1350 Egerton MS 747 f18v (https://bl.digirati.io/images/ark:/81055/vdc_100058663074.0x00002c/canvas/c/44) also offers a round body with radiating fine strokes, but the two herbal cyclamen images may be descended from a related illustrated tradition. Root specificity remains unresolved."
+    },
+    {
+      "feature": "f33v habit in independent print",
+      "observation": "Besler shows several heads with side branches and exposed pointed structures, so those characters can occur in historical sunflower illustrations. Whole readers split on whether its main stem dominates."
+    },
+    {
+      "feature": "f93r independent proposal",
+      "observation": "The pointed, continuous head has fine dots. Both head readers recorded absent outer rays and unknown ray-tip shape. Whole readers agree on one dominant upright and one head, direct-looking blade contacts, and fine root strands. They disagree on broad/narrow. There is no combined f33v/f93r score."
+    },
+    {
+      "feature": "sample limits",
+      "observation": "No taxon can be rejected reliably from this small purposive image sample. Historical images can inherit other images and visual features are correlated. Head masks and whole drawings answer different questions and cannot be combined as independent evidence. There is no held-out score and no text pairing."
+    },
+    {
+      "feature": "Peltation visibility control outside rankings",
+      "source": "https://archive.org/details/PetriAndreaMatt00Matt/page/n1293/mode/1up",
+      "crop": [
+        749,
+        272,
+        2211,
+        2739
+      ],
+      "description": "Mattioli 1565 p.1122, named Umbilicus Veneris. The organizer observed clear interior blade dimples and underside views on the Old World navelwort plate. The two whole readers kept the corresponding f33v contact unknown. This is a supplementary unmasked illustration check without points."
+    }
+  ],
+  "root_crop_sensitivity": {
+    "method": "Two head readers independently rated a new six-panel grayscale root-only sheet after storing head results, with a separate code map. They saw no whole panels, though prior head exposure and recognizable illustration conventions could indicate the context. Dodoens and Besler cannot be rated because their plates omit the root region. Radius-like lines can be visible without proving anatomical type.",
+    "features": [
+      "gross below-stem form",
+      "short radiating marks around round form",
+      "approach of visible connecting strokes"
+    ],
+    "panels": {
+      "R13": {
+        "specimen": "f33v",
+        "size": [
+          1400,
+          1838
+        ],
+        "crop": [
+          0.13,
+          0.786,
+          0.996,
+          0.981
+        ],
+        "source_sha256": "fb26e60fc59d1c75deb1629e0f65c945aee2b9ce40b28b8c2d1105fb0fe6287a",
+        "panel_sha256": "bdc0ec06e0298717ba45285b8e67a837568888e5df2b1d9c9d043876ea43583a"
+      },
+      "R20": {
+        "specimen": "petasites",
+        "size": [
+          1360,
+          2367
+        ],
+        "crop": [
+          0.005,
+          0.6,
+          0.62,
+          0.96
+        ],
+        "source_sha256": "cc65709fc24b6c01140c96c2d3ca09d7df3f68effb85205276ed6a837d3e9a8b",
+        "panel_sha256": "d3fa0d67cebfa94fb4128938138f802180d6492bd4eb60cd69d071575168594d",
+        "redaction_fraction_in_panel": [
+          [
+            0.88,
+            0.52,
+            1,
+            0.7
+          ]
+        ]
+      },
+      "R27": {
+        "specimen": "calendula",
+        "size": [
+          2805,
+          3374
+        ],
+        "crop": [
+          0.185,
+          0.754,
+          0.463,
+          0.952
+        ],
+        "source_sha256": "9d177f8517ec08ae394c19718d48e9749dcb4477ac2bf15499b883f80044225b",
+        "panel_sha256": "0b188bf0ff46943c5d9b87a5b533a9759f567e4f254c2917da4820b8bbdd4ec3"
+      },
+      "R34": {
+        "specimen": "f93r",
+        "size": [
+          1400,
+          1936
+        ],
+        "crop": [
+          0.32,
+          0.735,
+          0.915,
+          0.972
+        ],
+        "source_sha256": "df1b69e48e63581834a0e6cc06079340f4053f2bc115c6619464bea2224be466",
+        "panel_sha256": "14e2966ab399bf73de01253080ef6c5a1a36003b388ea63cefd1e79098ed3a89"
+      },
+      "R41": {
+        "specimen": "egerton_cyclamen",
+        "size": [
+          1100,
+          1633
+        ],
+        "crop": [
+          0.502,
+          0.648,
+          0.89,
+          0.872
+        ],
+        "source_sha256": "b6933feffaa4f1c299d9a0be039cd8363383ff002da73ed049d631d3cf540376",
+        "panel_sha256": "9721e37a578d287ba8a59fe02ece2ab01f1dca0d976758bfb0dd5aa76b4ba407",
+        "redaction_fraction_in_panel": [
+          [
+            0.185,
+            0.511,
+            0.463,
+            0.592
+          ],
+          [
+            0.635,
+            0.527,
+            0.938,
+            0.602
+          ]
+        ]
+      },
+      "R48": {
+        "specimen": "sloane_cyclamen",
+        "size": [
+          1300,
+          1732
+        ],
+        "crop": [
+          0.055,
+          0.291,
+          0.401,
+          0.5
+        ],
+        "source_sha256": "eb6f67963b87518c818691f846a94c03f0c4d31cdc87461f9037b699f8655f67",
+        "panel_sha256": "eebb21036ee9792c7fbf35564576502af82b14c04699242112007efc0f36b190",
+        "redaction_fraction_in_panel": [
+          [
+            0,
+            0,
+            0.31,
+            0.212
+          ],
+          [
+            0.535,
+            0,
+            1,
+            0.193
+          ]
+        ]
+      }
+    },
+    "root_reader_A": {
+      "R13": [
+        "several rounded bodies",
+        "yes",
+        "side"
+      ],
+      "R20": [
+        "continuous elongated axis",
+        "U",
+        "U"
+      ],
+      "R27": [
+        "several fine strands",
+        "U",
+        "U"
+      ],
+      "R34": [
+        "several fine strands",
+        "U",
+        "U"
+      ],
+      "R41": [
+        "one rounded body",
+        "yes",
+        "above"
+      ],
+      "R48": [
+        "one rounded body",
+        "yes",
+        "above"
+      ]
+    },
+    "root_reader_B": {
+      "R13": [
+        "several rounded bodies",
+        "yes",
+        "side"
+      ],
+      "R20": [
+        "continuous elongated axis",
+        "U",
+        "U"
+      ],
+      "R27": [
+        "several fine strands",
+        "U",
+        "U"
+      ],
+      "R34": [
+        "several fine strands",
+        "U",
+        "U"
+      ],
+      "R41": [
+        "one rounded body",
+        "yes",
+        "above"
+      ],
+      "R48": [
+        "one rounded body",
+        "yes",
+        "above"
+      ]
+    },
+    "findings": "Both readers agreed on every category. The two related cyclamen illustrations show a single outlined body with short peripheral marks and upright stems. The paired outer f33v bodies have similar peripheral marks and join laterally at a shared stem; contact at the partly clipped third body is less clear. A round outlined organ with radiating marks can occur in Old World depictions, while this sample distinguishes the number and positions of the bodies. Calendula was coded thick-axis from the whole view and fine strands from the restricted region, showing scope sensitivity at a thick stem neck."
+  }
+}
