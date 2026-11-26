@@ -6680,7 +6680,7 @@
   "language": "galician_portuguese",
   "family": "substitution",
   "control": "homophonic",
-  "control_tokens": 3278,
+  "control_tokens": 6398,
   "true_key": {
    "submission": "control-galician_portuguese-homophonic",
    "family": "substitution",
@@ -6693,7 +6693,7 @@
     "c_pictures"
    ],
    "passes_without_anchors": true,
-   "savings": 0.12207,
+   "savings": 0.10111,
    "killed_by": []
   },
   "true_key_passes": true,
@@ -6709,20 +6709,20 @@
     "c_pictures"
    ],
    "passes_without_anchors": true,
-   "savings": 0.12207,
+   "savings": 0.09323,
    "killed_by": []
   },
   "search_cracks_control_clean": true,
   "noise": 0.02,
   "true_key_passes_noisy": true,
   "search_cracks_control": true,
-  "added_with": "galician_portuguese_a3107d41"
+  "added_with": "galician_portuguese_e5366bed"
  },
  {
   "language": "galician_portuguese",
   "family": "verbose",
   "control": "verbose",
-  "control_tokens": 3278,
+  "control_tokens": 6398,
   "true_key": {
    "submission": "control-galician_portuguese-verbose",
    "family": "verbose",
@@ -6735,7 +6735,7 @@
     "c_pictures"
    ],
    "passes_without_anchors": true,
-   "savings": 0.06213,
+   "savings": 0.069,
    "killed_by": []
   },
   "true_key_passes": true,
@@ -6751,20 +6751,20 @@
     "c_pictures"
    ],
    "passes_without_anchors": true,
-   "savings": 0.06213,
+   "savings": 0.05948,
    "killed_by": []
   },
   "search_cracks_control_clean": true,
   "noise": 0.02,
   "true_key_passes_noisy": true,
   "search_cracks_control": true,
-  "added_with": "galician_portuguese_a3107d41"
+  "added_with": "galician_portuguese_e5366bed"
  },
  {
   "language": "galician_portuguese",
   "family": "nomenclator",
   "control": "nomenclator",
-  "control_tokens": 3278,
+  "control_tokens": 6398,
   "true_key": {
    "submission": "control-galician_portuguese-nomenclator",
    "family": "nomenclator",
@@ -6777,7 +6777,7 @@
     "c_pictures"
    ],
    "passes_without_anchors": true,
-   "savings": 0.07152,
+   "savings": 0.0689,
    "killed_by": []
   },
   "true_key_passes": true,
@@ -6790,23 +6790,25 @@
    },
    "verdict": "FAIL",
    "failed": [
-    "c_pictures"
+    "a_compresses",
+    "c_pictures",
+    "d_not_illusion"
    ],
-   "passes_without_anchors": true,
-   "savings": 0.0476,
+   "passes_without_anchors": false,
+   "savings": -0.01577,
    "killed_by": []
   },
-  "search_cracks_control_clean": true,
+  "search_cracks_control_clean": false,
   "noise": 0.02,
   "true_key_passes_noisy": true,
-  "search_cracks_control": false,
-  "added_with": "galician_portuguese_a3107d41"
+  "search_cracks_control": true,
+  "added_with": "galician_portuguese_e5366bed"
  },
  {
   "language": "galician_portuguese",
   "family": "table-cipher",
   "control": "table-cipher",
-  "control_tokens": 3278,
+  "control_tokens": 6398,
   "true_key": {
    "submission": "control-galician_portuguese-table-cipher",
    "family": "table-cipher",
@@ -6819,7 +6821,7 @@
     "c_pictures"
    ],
    "passes_without_anchors": true,
-   "savings": 0.04871,
+   "savings": 0.03226,
    "killed_by": []
   },
   "true_key_passes": true,
@@ -6835,20 +6837,20 @@
     "c_pictures"
    ],
    "passes_without_anchors": true,
-   "savings": 0.04871,
+   "savings": 0.03226,
    "killed_by": []
   },
   "search_cracks_control_clean": true,
   "noise": 0.02,
   "true_key_passes_noisy": true,
   "search_cracks_control": true,
-  "added_with": "galician_portuguese_a3107d41"
+  "added_with": "galician_portuguese_e5366bed"
  },
  {
   "language": "galician_portuguese",
   "family": "abbreviation",
   "control": "abbreviation",
-  "control_tokens": 3278,
+  "control_tokens": 6398,
   "true_key": {
    "submission": "control-galician_portuguese-abbreviation",
    "family": "abbreviation",
@@ -6861,7 +6863,7 @@
     "c_pictures"
    ],
    "passes_without_anchors": true,
-   "savings": 0.04781,
+   "savings": 0.04072,
    "killed_by": []
   },
   "true_key_passes": true,
@@ -6874,24 +6876,25 @@
    },
    "verdict": "FAIL",
    "failed": [
+    "a_compresses",
     "c_pictures",
     "d_not_illusion"
    ],
-   "passes_without_anchors": true,
-   "savings": 0.02299,
+   "passes_without_anchors": false,
+   "savings": 0.00714,
    "killed_by": []
   },
-  "search_cracks_control_clean": true,
+  "search_cracks_control_clean": false,
   "noise": 0.02,
   "true_key_passes_noisy": true,
   "search_cracks_control": false,
-  "added_with": "galician_portuguese_a3107d41"
+  "added_with": "galician_portuguese_e5366bed"
  },
  {
   "language": "galician_portuguese",
   "family": "syllabic",
   "control": "syllabic",
-  "control_tokens": 3278,
+  "control_tokens": 6398,
   "true_key": {
    "submission": "control-galician_portuguese-syllabic",
    "family": "syllabic",
@@ -6904,7 +6907,7 @@
     "c_pictures"
    ],
    "passes_without_anchors": true,
-   "savings": 0.05595,
+   "savings": 0.05125,
    "killed_by": []
   },
   "true_key_passes": true,
@@ -6920,13 +6923,13 @@
     "c_pictures"
    ],
    "passes_without_anchors": true,
-   "savings": 0.0553,
+   "savings": 0.04487,
    "killed_by": []
   },
   "search_cracks_control_clean": true,
   "noise": 0.02,
   "true_key_passes_noisy": true,
   "search_cracks_control": true,
-  "added_with": "galician_portuguese_a3107d41"
+  "added_with": "galician_portuguese_e5366bed"
  }
 ]
