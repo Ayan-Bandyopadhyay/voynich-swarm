@@ -1,0 +1,1802 @@
+{
+  "title": "Independent replication confirms the ed preference but leaves page chronology open",
+  "statement": "Repeat Timm’s four exact od/ed pairs and substring counts on certain paragraph tokens in the public practice split, compare ZL, Takahashi and RF, and test whether the association survives equal-leaf sampling and hand-by-section matching.",
+  "program": "L1",
+  "check": "Re-run the included public-corpus scripts and verify both transcribed examples against their Yale scans. Any A-before-B conclusion must be tested against a separate physical or scribal direction indicator.",
+  "on_path": true,
+  "hard": false,
+  "findings": [
+    "Re-running the three scripts saved in the prior public P-L1-005 record reproduced its complete stored result objects exactly. A separate recount also matched the main ZL substring totals: training A has 25 ed and 766 od sites (25/791); training B has 4,106 ed and 929 od (4,106/5,035). On the public evaluation pages the counts are 6/156 for A and 677/773 for B. Takahashi and RF have the same direction in both partitions.",
+    "Certain exact pair counts on training pages (A/B): ZL chedy 1/405, chedar 0/30, chedal 0/21 and qokeedy 0/279; Takahashi 2/402, 0/26, 0/20 and 0/277; RF 2/300, 0/18, 0/17 and 0/199. The paired od forms remain attested on both sides for each case where the ed form is B-only.",
+    "The two A-side exception loci were checked in the public ZL, Takahashi and RF editions and against the linked Yale image crops. At f89r1.7.5, chedy and its neighboring words agree in all three. At f58v.12.5, ZL and Takahashi read chedal followed by dy, while RF leaves the boundary/readings uncertain. The f58v item is in the practice evaluation partition, not the training partition.",
+    "For one-site od-to-ed word-form edges whose partner occurs in both varieties, the shared ZL/Takahashi tally is 50 B-only ed edges and one A-only od edge at threshold 2; at threshold 4 it is 37 and one. The reverse exception is cthody/cthedy. Each edition has zero all-section A-only ed and B-only od edges under the same shared-partner rule.",
+    "In 1,000 equal-leaf herbal draws, the median B-minus-A ed-site fraction is 68.0 percentage points in ZL, 67.1 in Takahashi and 59.4 in RF; all 1,000 draws are positive. This controls leaf counts, not token counts. The only public section-by-hand overlap is recipe pages assigned to hand 3: both A pages are sides of leaf f58 (7 ed among 37 od/ed sites in ZL and Takahashi), and each of the 12 B leaves has a higher fraction. This leaves one A leaf and twelve B leaves for descriptive comparison.",
+    "The selected B-line ordering check is sparse and does not supply a chronological direction: within-line interior pairs from the four named pairs are 5 od-before-ed versus 2 ed-before-od in ZL (leaf-flip upper-tail 0.1875) and 6 versus 3 in Takahashi (0.2266). For all eligible one-site pairs the counts tie at 8/8 and 9/9. The practice evaluation pages contain at most one named-pair comparison per edition."
+  ],
+  "interpretation": "The main A/B spelling association is reproduced across the two independent EVA transcriptions and persists in the equal-leaf sensitivity. The strict absence premise has exceptions, including a ZL/Takahashi-agreed chedy on an A page and a chedal on another A page. Currier variety is also entangled with scribal hand and section: herbal A and B have disjoint hands, while the one shared hand-by-section stratum compares a single A leaf with twelve B leaves. The observed association alone does not date the pages or establish A-before-B; the tested local order is sparse and non-directional.",
+  "methods": "Use the pinned corpus public practice partition, P lines and parsed words that match lowercase a–z. Count occurrences of either exact contiguous two-character sequence ed or od, including inside longer forms. Treat both sides and any panels of one numbered leaf as one unit for leaf-level calculations. Keep each edition separate. RF combines earlier transcriptions, so it is a robustness comparison and supplies no third independent witness. For local direction compare every pair of positions 1–10 apart that contains distinct exact variants separated by a single od-to-ed edit. Hold pair counts and distances fixed and flip orientation by leaf. The source and scan check selected four pairs from Graph 12. The cthody comparison follows the existing experiment.",
+  "sources": {
+    "appendix_tables": "https://arxiv.org/pdf/1407.6639v3#page=86",
+    "binding_order": "René Zandbergen, The origin of the Voynich MS, sections Collation of the MS and The current vs. original page order. https://voynich.nu/origin.html",
+    "currier_features": "P. H. Currier, Some Notes and Observations (1976), §§1–2. https://www.voynich.nu/extra/curr_main.html",
+    "f58v_metadata": "https://voynich.nu/q08/index.html",
+    "f89r1_metadata": "https://voynich.nu/q15/index.html",
+    "notation_and_claim": "Torsten Timm, How the Voynich Manuscript was created, arXiv:1407.6639v3, §9 and appendix XII–XVI. https://arxiv.org/pdf/1407.6639v3#page=23",
+    "previous_public_experiment": "experiments/K-005-open-3/fleet-sol/step.json, recorded as P-L1-001"
+  },
+  "scan_checks": [
+    {
+      "canvas": "https://collections.library.yale.edu/catalog/2002046?child_oid=1006233",
+      "currier": "A",
+      "detail": "https://collections.library.yale.edu/iiif/2/1006233/3110,935,2020,295/1300,/0/default.jpg",
+      "detail_location": "Second line of the top paragraph in the center panel, after dal and before qokeody. ZL, Takahashi and RF agree on the token and both neighbors. The scan is consistent with this reading.",
+      "form": "chedy",
+      "locus": "f89r1.7",
+      "ordinal": 5,
+      "review_observation": "The linked crop shows the cited top-paragraph line and the surrounding word sequence; the ZL, Takahashi and RF agreement is consistent with the image at this scale."
+    },
+    {
+      "canvas": "https://collections.library.yale.edu/catalog/2002046?child_oid=1006189",
+      "currier": "A",
+      "detail": "https://collections.library.yale.edu/iiif/2/1006189/900,985,1930,175/1400,/0/default.jpg",
+      "detail_location": "Fifth word of the twelfth text line, after qokey. ZL and Takahashi give chedal followed by dy. RF records two separate words with an unidentified sign in each (che*al.*y). The scan is consistent with the ZL and Takahashi reading. The interlinear has an uncertain separator before dy in Stolfi’s reading.",
+      "form": "chedal",
+      "locus": "f58v.12",
+      "ordinal": 5,
+      "review_observation": "The linked crop shows the cited twelfth-line region. The ZL/Takahashi reading is plausible from the scan; the image alone does not resolve the separator that RF leaves uncertain."
+    }
+  ],
+  "results": {
+    "four_way_exclusivity": {
+      "H": {
+        "2": {
+          "sizes": {
+            "it": {
+              "A_only_ed": 0,
+              "A_only_od": 0,
+              "B_only_ed": 20,
+              "B_only_od": 0
+            },
+            "rf": {
+              "A_only_ed": 0,
+              "A_only_od": 0,
+              "B_only_ed": 11,
+              "B_only_od": 1
+            },
+            "zl": {
+              "A_only_ed": 0,
+              "A_only_od": 0,
+              "B_only_ed": 18,
+              "B_only_od": 0
+            }
+          },
+          "verified_ZL_IT": {
+            "A_only_ed": [],
+            "A_only_od": [],
+            "B_only_ed": [
+              [
+                "cheody",
+                "cheedy"
+              ],
+              [
+                "chodaiin",
+                "chedaiin"
+              ],
+              [
+                "chodar",
+                "chedar"
+              ],
+              [
+                "keody",
+                "keedy"
+              ],
+              [
+                "okody",
+                "okedy"
+              ],
+              [
+                "otchody",
+                "otchedy"
+              ],
+              [
+                "otody",
+                "otedy"
+              ],
+              [
+                "qokeody",
+                "qokeedy"
+              ],
+              [
+                "qokody",
+                "qokedy"
+              ],
+              [
+                "qotody",
+                "qotedy"
+              ],
+              [
+                "sheody",
+                "sheedy"
+              ],
+              [
+                "shod",
+                "shed"
+              ],
+              [
+                "shody",
+                "shedy"
+              ],
+              [
+                "tchody",
+                "tchedy"
+              ],
+              [
+                "tody",
+                "tedy"
+              ],
+              [
+                "ykeody",
+                "ykeedy"
+              ],
+              [
+                "yteody",
+                "yteedy"
+              ]
+            ],
+            "B_only_od": []
+          }
+        },
+        "4": {
+          "sizes": {
+            "it": {
+              "A_only_ed": 0,
+              "A_only_od": 0,
+              "B_only_ed": 12,
+              "B_only_od": 0
+            },
+            "rf": {
+              "A_only_ed": 0,
+              "A_only_od": 0,
+              "B_only_ed": 7,
+              "B_only_od": 1
+            },
+            "zl": {
+              "A_only_ed": 0,
+              "A_only_od": 0,
+              "B_only_ed": 14,
+              "B_only_od": 0
+            }
+          },
+          "verified_ZL_IT": {
+            "A_only_ed": [],
+            "A_only_od": [],
+            "B_only_ed": [
+              [
+                "keody",
+                "keedy"
+              ],
+              [
+                "okody",
+                "okedy"
+              ],
+              [
+                "otody",
+                "otedy"
+              ],
+              [
+                "qokeody",
+                "qokeedy"
+              ],
+              [
+                "qokody",
+                "qokedy"
+              ],
+              [
+                "qotody",
+                "qotedy"
+              ],
+              [
+                "sheody",
+                "sheedy"
+              ],
+              [
+                "shody",
+                "shedy"
+              ],
+              [
+                "tchody",
+                "tchedy"
+              ],
+              [
+                "tody",
+                "tedy"
+              ],
+              [
+                "ykeody",
+                "ykeedy"
+              ],
+              [
+                "yteody",
+                "yteedy"
+              ]
+            ],
+            "B_only_od": []
+          }
+        }
+      },
+      "all": {
+        "2": {
+          "sizes": {
+            "it": {
+              "A_only_ed": 0,
+              "A_only_od": 1,
+              "B_only_ed": 55,
+              "B_only_od": 0
+            },
+            "rf": {
+              "A_only_ed": 0,
+              "A_only_od": 1,
+              "B_only_ed": 42,
+              "B_only_od": 0
+            },
+            "zl": {
+              "A_only_ed": 0,
+              "A_only_od": 1,
+              "B_only_ed": 52,
+              "B_only_od": 0
+            }
+          },
+          "verified_ZL_IT": {
+            "A_only_ed": [],
+            "A_only_od": [
+              [
+                "cthody",
+                "cthedy"
+              ]
+            ],
+            "B_only_ed": [
+              [
+                "chcthody",
+                "chcthedy"
+              ],
+              [
+                "cheod",
+                "cheed"
+              ],
+              [
+                "cheodaiin",
+                "cheedaiin"
+              ],
+              [
+                "cheodain",
+                "cheedain"
+              ],
+              [
+                "cheodar",
+                "cheedar"
+              ],
+              [
+                "chod",
+                "ched"
+              ],
+              [
+                "chodaiin",
+                "chedaiin"
+              ],
+              [
+                "chodar",
+                "chedar"
+              ],
+              [
+                "cphody",
+                "cphedy"
+              ],
+              [
+                "dcheody",
+                "dcheedy"
+              ],
+              [
+                "dody",
+                "dedy"
+              ],
+              [
+                "dsheody",
+                "dsheedy"
+              ],
+              [
+                "kchody",
+                "kchedy"
+              ],
+              [
+                "keeody",
+                "keeedy"
+              ],
+              [
+                "keody",
+                "keedy"
+              ],
+              [
+                "kody",
+                "kedy"
+              ],
+              [
+                "ochody",
+                "ochedy"
+              ],
+              [
+                "ockhody",
+                "ockhedy"
+              ],
+              [
+                "okeeody",
+                "okeeedy"
+              ],
+              [
+                "okody",
+                "okedy"
+              ],
+              [
+                "olcheody",
+                "olcheedy"
+              ],
+              [
+                "olkeeody",
+                "olkeeedy"
+              ],
+              [
+                "opchody",
+                "opchedy"
+              ],
+              [
+                "otchody",
+                "otchedy"
+              ],
+              [
+                "oteeody",
+                "oteeedy"
+              ],
+              [
+                "oteod",
+                "oteed"
+              ],
+              [
+                "otodar",
+                "otedar"
+              ],
+              [
+                "otody",
+                "otedy"
+              ],
+              [
+                "pchodaiin",
+                "pchedaiin"
+              ],
+              [
+                "pchodar",
+                "pchedar"
+              ],
+              [
+                "pchody",
+                "pchedy"
+              ],
+              [
+                "qokeeody",
+                "qokeeedy"
+              ],
+              [
+                "qokeody",
+                "qokeedy"
+              ],
+              [
+                "qokod",
+                "qoked"
+              ],
+              [
+                "qopcheody",
+                "qopcheedy"
+              ],
+              [
+                "qotchody",
+                "qotchedy"
+              ],
+              [
+                "qoteeody",
+                "qoteeedy"
+              ],
+              [
+                "qoteody",
+                "qoteedy"
+              ],
+              [
+                "qotody",
+                "qotedy"
+              ],
+              [
+                "sheod",
+                "sheed"
+              ],
+              [
+                "shod",
+                "shed"
+              ],
+              [
+                "shodaiin",
+                "shedaiin"
+              ],
+              [
+                "shodain",
+                "shedain"
+              ],
+              [
+                "tchody",
+                "tchedy"
+              ],
+              [
+                "teody",
+                "teedy"
+              ],
+              [
+                "todaiin",
+                "tedaiin"
+              ],
+              [
+                "tody",
+                "tedy"
+              ],
+              [
+                "ykeeody",
+                "ykeeedy"
+              ],
+              [
+                "yteody",
+                "yteedy"
+              ],
+              [
+                "ytody",
+                "ytedy"
+              ]
+            ],
+            "B_only_od": []
+          }
+        },
+        "4": {
+          "sizes": {
+            "it": {
+              "A_only_ed": 0,
+              "A_only_od": 1,
+              "B_only_ed": 41,
+              "B_only_od": 0
+            },
+            "rf": {
+              "A_only_ed": 0,
+              "A_only_od": 1,
+              "B_only_ed": 29,
+              "B_only_od": 0
+            },
+            "zl": {
+              "A_only_ed": 0,
+              "A_only_od": 1,
+              "B_only_ed": 40,
+              "B_only_od": 0
+            }
+          },
+          "verified_ZL_IT": {
+            "A_only_ed": [],
+            "A_only_od": [
+              [
+                "cthody",
+                "cthedy"
+              ]
+            ],
+            "B_only_ed": [
+              [
+                "chcthody",
+                "chcthedy"
+              ],
+              [
+                "cheodar",
+                "cheedar"
+              ],
+              [
+                "chod",
+                "ched"
+              ],
+              [
+                "chodaiin",
+                "chedaiin"
+              ],
+              [
+                "chodar",
+                "chedar"
+              ],
+              [
+                "cphody",
+                "cphedy"
+              ],
+              [
+                "dsheody",
+                "dsheedy"
+              ],
+              [
+                "kchody",
+                "kchedy"
+              ],
+              [
+                "keody",
+                "keedy"
+              ],
+              [
+                "kody",
+                "kedy"
+              ],
+              [
+                "ochody",
+                "ochedy"
+              ],
+              [
+                "ockhody",
+                "ockhedy"
+              ],
+              [
+                "okeeody",
+                "okeeedy"
+              ],
+              [
+                "okody",
+                "okedy"
+              ],
+              [
+                "opchody",
+                "opchedy"
+              ],
+              [
+                "otchody",
+                "otchedy"
+              ],
+              [
+                "oteod",
+                "oteed"
+              ],
+              [
+                "otodar",
+                "otedar"
+              ],
+              [
+                "otody",
+                "otedy"
+              ],
+              [
+                "pchodaiin",
+                "pchedaiin"
+              ],
+              [
+                "pchodar",
+                "pchedar"
+              ],
+              [
+                "pchody",
+                "pchedy"
+              ],
+              [
+                "qokeeody",
+                "qokeeedy"
+              ],
+              [
+                "qokeody",
+                "qokeedy"
+              ],
+              [
+                "qokod",
+                "qoked"
+              ],
+              [
+                "qotchody",
+                "qotchedy"
+              ],
+              [
+                "qoteody",
+                "qoteedy"
+              ],
+              [
+                "qotody",
+                "qotedy"
+              ],
+              [
+                "sheod",
+                "sheed"
+              ],
+              [
+                "shod",
+                "shed"
+              ],
+              [
+                "shodaiin",
+                "shedaiin"
+              ],
+              [
+                "shodain",
+                "shedain"
+              ],
+              [
+                "tchody",
+                "tchedy"
+              ],
+              [
+                "teody",
+                "teedy"
+              ],
+              [
+                "tody",
+                "tedy"
+              ],
+              [
+                "yteody",
+                "yteedy"
+              ],
+              [
+                "ytody",
+                "ytedy"
+              ]
+            ],
+            "B_only_od": []
+          }
+        }
+      }
+    },
+    "line_order": {
+      "it": {
+        "evaluation": {
+          "all_slots": {
+            "all_single_site": {
+              "ed_before_od": 1,
+              "flip_method": "all_sign_flips",
+              "leaves_with_pairs": 2,
+              "leaves_with_unbalanced_direction": 2,
+              "od_before_ed": 1,
+              "sign_patterns": 4,
+              "upper_tail_rank": 0.75
+            },
+            "paper_four": {
+              "ed_before_od": 1,
+              "flip_method": "all_sign_flips",
+              "leaves_with_pairs": 1,
+              "leaves_with_unbalanced_direction": 1,
+              "od_before_ed": 0,
+              "sign_patterns": 2,
+              "upper_tail_rank": 1.0
+            }
+          },
+          "interior": {
+            "all_single_site": {
+              "ed_before_od": 1,
+              "flip_method": "all_sign_flips",
+              "leaves_with_pairs": 2,
+              "leaves_with_unbalanced_direction": 2,
+              "od_before_ed": 1,
+              "sign_patterns": 4,
+              "upper_tail_rank": 0.75
+            },
+            "paper_four": {
+              "ed_before_od": 1,
+              "flip_method": "all_sign_flips",
+              "leaves_with_pairs": 1,
+              "leaves_with_unbalanced_direction": 1,
+              "od_before_ed": 0,
+              "sign_patterns": 2,
+              "upper_tail_rank": 1.0
+            }
+          }
+        },
+        "train": {
+          "all_slots": {
+            "all_single_site": {
+              "ed_before_od": 10,
+              "flip_method": "all_sign_flips",
+              "leaves_with_pairs": 14,
+              "leaves_with_unbalanced_direction": 12,
+              "od_before_ed": 10,
+              "sign_patterns": 4096,
+              "upper_tail_rank": 0.573974609375
+            },
+            "paper_four": {
+              "ed_before_od": 3,
+              "flip_method": "all_sign_flips",
+              "leaves_with_pairs": 8,
+              "leaves_with_unbalanced_direction": 7,
+              "od_before_ed": 7,
+              "sign_patterns": 128,
+              "upper_tail_rank": 0.1796875
+            }
+          },
+          "interior": {
+            "all_single_site": {
+              "ed_before_od": 9,
+              "flip_method": "all_sign_flips",
+              "leaves_with_pairs": 14,
+              "leaves_with_unbalanced_direction": 13,
+              "od_before_ed": 9,
+              "sign_patterns": 8192,
+              "upper_tail_rank": 0.5765380859375
+            },
+            "paper_four": {
+              "ed_before_od": 3,
+              "flip_method": "all_sign_flips",
+              "leaves_with_pairs": 8,
+              "leaves_with_unbalanced_direction": 7,
+              "od_before_ed": 6,
+              "sign_patterns": 128,
+              "upper_tail_rank": 0.2265625
+            }
+          }
+        }
+      },
+      "rf": {
+        "evaluation": {
+          "all_slots": {
+            "all_single_site": {
+              "ed_before_od": 0,
+              "flip_method": "all_sign_flips",
+              "leaves_with_pairs": 0,
+              "leaves_with_unbalanced_direction": 0,
+              "od_before_ed": 0,
+              "sign_patterns": 1,
+              "upper_tail_rank": 1.0
+            },
+            "paper_four": {
+              "ed_before_od": 0,
+              "flip_method": "all_sign_flips",
+              "leaves_with_pairs": 0,
+              "leaves_with_unbalanced_direction": 0,
+              "od_before_ed": 0,
+              "sign_patterns": 1,
+              "upper_tail_rank": 1.0
+            }
+          },
+          "interior": {
+            "all_single_site": {
+              "ed_before_od": 0,
+              "flip_method": "all_sign_flips",
+              "leaves_with_pairs": 0,
+              "leaves_with_unbalanced_direction": 0,
+              "od_before_ed": 0,
+              "sign_patterns": 1,
+              "upper_tail_rank": 1.0
+            },
+            "paper_four": {
+              "ed_before_od": 0,
+              "flip_method": "all_sign_flips",
+              "leaves_with_pairs": 0,
+              "leaves_with_unbalanced_direction": 0,
+              "od_before_ed": 0,
+              "sign_patterns": 1,
+              "upper_tail_rank": 1.0
+            }
+          }
+        },
+        "train": {
+          "all_slots": {
+            "all_single_site": {
+              "ed_before_od": 5,
+              "flip_method": "all_sign_flips",
+              "leaves_with_pairs": 5,
+              "leaves_with_unbalanced_direction": 5,
+              "od_before_ed": 2,
+              "sign_patterns": 32,
+              "upper_tail_rank": 0.84375
+            },
+            "paper_four": {
+              "ed_before_od": 1,
+              "flip_method": "all_sign_flips",
+              "leaves_with_pairs": 3,
+              "leaves_with_unbalanced_direction": 3,
+              "od_before_ed": 2,
+              "sign_patterns": 8,
+              "upper_tail_rank": 0.5
+            }
+          },
+          "interior": {
+            "all_single_site": {
+              "ed_before_od": 5,
+              "flip_method": "all_sign_flips",
+              "leaves_with_pairs": 5,
+              "leaves_with_unbalanced_direction": 5,
+              "od_before_ed": 2,
+              "sign_patterns": 32,
+              "upper_tail_rank": 0.84375
+            },
+            "paper_four": {
+              "ed_before_od": 1,
+              "flip_method": "all_sign_flips",
+              "leaves_with_pairs": 3,
+              "leaves_with_unbalanced_direction": 3,
+              "od_before_ed": 2,
+              "sign_patterns": 8,
+              "upper_tail_rank": 0.5
+            }
+          }
+        }
+      },
+      "zl": {
+        "evaluation": {
+          "all_slots": {
+            "all_single_site": {
+              "ed_before_od": 1,
+              "flip_method": "all_sign_flips",
+              "leaves_with_pairs": 2,
+              "leaves_with_unbalanced_direction": 2,
+              "od_before_ed": 1,
+              "sign_patterns": 4,
+              "upper_tail_rank": 0.75
+            },
+            "paper_four": {
+              "ed_before_od": 1,
+              "flip_method": "all_sign_flips",
+              "leaves_with_pairs": 1,
+              "leaves_with_unbalanced_direction": 1,
+              "od_before_ed": 0,
+              "sign_patterns": 2,
+              "upper_tail_rank": 1.0
+            }
+          },
+          "interior": {
+            "all_single_site": {
+              "ed_before_od": 1,
+              "flip_method": "all_sign_flips",
+              "leaves_with_pairs": 2,
+              "leaves_with_unbalanced_direction": 2,
+              "od_before_ed": 1,
+              "sign_patterns": 4,
+              "upper_tail_rank": 0.75
+            },
+            "paper_four": {
+              "ed_before_od": 1,
+              "flip_method": "all_sign_flips",
+              "leaves_with_pairs": 1,
+              "leaves_with_unbalanced_direction": 1,
+              "od_before_ed": 0,
+              "sign_patterns": 2,
+              "upper_tail_rank": 1.0
+            }
+          }
+        },
+        "train": {
+          "all_slots": {
+            "all_single_site": {
+              "ed_before_od": 9,
+              "flip_method": "all_sign_flips",
+              "leaves_with_pairs": 13,
+              "leaves_with_unbalanced_direction": 11,
+              "od_before_ed": 9,
+              "sign_patterns": 2048,
+              "upper_tail_rank": 0.5791015625
+            },
+            "paper_four": {
+              "ed_before_od": 2,
+              "flip_method": "all_sign_flips",
+              "leaves_with_pairs": 6,
+              "leaves_with_unbalanced_direction": 5,
+              "od_before_ed": 6,
+              "sign_patterns": 32,
+              "upper_tail_rank": 0.15625
+            }
+          },
+          "interior": {
+            "all_single_site": {
+              "ed_before_od": 8,
+              "flip_method": "all_sign_flips",
+              "leaves_with_pairs": 13,
+              "leaves_with_unbalanced_direction": 12,
+              "od_before_ed": 8,
+              "sign_patterns": 4096,
+              "upper_tail_rank": 0.58056640625
+            },
+            "paper_four": {
+              "ed_before_od": 2,
+              "flip_method": "all_sign_flips",
+              "leaves_with_pairs": 6,
+              "leaves_with_unbalanced_direction": 5,
+              "od_before_ed": 5,
+              "sign_patterns": 32,
+              "upper_tail_rank": 0.1875
+            }
+          }
+        }
+      }
+    },
+    "variant_counts_and_loci": {
+      "A_locus_agreement": {
+        "evaluation": {
+          "chedal": {
+            "all_three_same_locus": [],
+            "also_agree_on_left_or_right_token": [],
+            "loci_each_edition": {
+              "it": [
+                "f58v.12"
+              ],
+              "rf": [],
+              "zl": [
+                "f58v.12"
+              ]
+            }
+          },
+          "chedar": {
+            "all_three_same_locus": [],
+            "also_agree_on_left_or_right_token": [],
+            "loci_each_edition": {
+              "it": [],
+              "rf": [],
+              "zl": []
+            }
+          },
+          "chedy": {
+            "all_three_same_locus": [],
+            "also_agree_on_left_or_right_token": [],
+            "loci_each_edition": {
+              "it": [],
+              "rf": [],
+              "zl": []
+            }
+          },
+          "cthedy": {
+            "all_three_same_locus": [],
+            "also_agree_on_left_or_right_token": [],
+            "loci_each_edition": {
+              "it": [],
+              "rf": [],
+              "zl": []
+            }
+          },
+          "cthody": {
+            "all_three_same_locus": [
+              "f13v.3",
+              "f29v.8",
+              "f53v.9"
+            ],
+            "also_agree_on_left_or_right_token": [
+              "f13v.3",
+              "f29v.8",
+              "f53v.9"
+            ],
+            "loci_each_edition": {
+              "it": [
+                "f13v.3",
+                "f29v.8",
+                "f53v.9"
+              ],
+              "rf": [
+                "f13v.3",
+                "f29v.8",
+                "f53v.9"
+              ],
+              "zl": [
+                "f13v.3",
+                "f29v.8",
+                "f53v.9"
+              ]
+            }
+          },
+          "qokeedy": {
+            "all_three_same_locus": [],
+            "also_agree_on_left_or_right_token": [],
+            "loci_each_edition": {
+              "it": [],
+              "rf": [],
+              "zl": []
+            }
+          }
+        },
+        "train": {
+          "chedal": {
+            "all_three_same_locus": [],
+            "also_agree_on_left_or_right_token": [],
+            "loci_each_edition": {
+              "it": [],
+              "rf": [],
+              "zl": []
+            }
+          },
+          "chedar": {
+            "all_three_same_locus": [],
+            "also_agree_on_left_or_right_token": [],
+            "loci_each_edition": {
+              "it": [],
+              "rf": [],
+              "zl": []
+            }
+          },
+          "chedy": {
+            "all_three_same_locus": [
+              "f89r1.7"
+            ],
+            "also_agree_on_left_or_right_token": [
+              "f89r1.7"
+            ],
+            "loci_each_edition": {
+              "it": [
+                "f32r.6",
+                "f89r1.7"
+              ],
+              "rf": [
+                "f88v.22",
+                "f89r1.7"
+              ],
+              "zl": [
+                "f89r1.7"
+              ]
+            }
+          },
+          "cthedy": {
+            "all_three_same_locus": [
+              "f102r1.10"
+            ],
+            "also_agree_on_left_or_right_token": [],
+            "loci_each_edition": {
+              "it": [
+                "f102r1.10"
+              ],
+              "rf": [
+                "f102r1.10"
+              ],
+              "zl": [
+                "f102r1.10"
+              ]
+            }
+          },
+          "cthody": {
+            "all_three_same_locus": [
+              "f20r.2",
+              "f21r.9",
+              "f27r.4",
+              "f28r.5",
+              "f54r.3",
+              "f87r.5",
+              "f89v1.19",
+              "f89v1.6",
+              "f93v.6",
+              "f96r.9"
+            ],
+            "also_agree_on_left_or_right_token": [
+              "f20r.2",
+              "f21r.9",
+              "f27r.4",
+              "f28r.5",
+              "f54r.3",
+              "f87r.5",
+              "f89v1.19",
+              "f89v1.6",
+              "f93v.6",
+              "f96r.9"
+            ],
+            "loci_each_edition": {
+              "it": [
+                "f20r.2",
+                "f21r.9",
+                "f27r.4",
+                "f28r.5",
+                "f54r.3",
+                "f87r.5",
+                "f89v1.19",
+                "f89v1.6",
+                "f89v1.7",
+                "f93r.17",
+                "f93v.5",
+                "f93v.6",
+                "f96r.9"
+              ],
+              "rf": [
+                "f20r.2",
+                "f21r.9",
+                "f27r.4",
+                "f28r.5",
+                "f54r.3",
+                "f87r.5",
+                "f89v1.19",
+                "f89v1.6",
+                "f93v.6",
+                "f96r.9"
+              ],
+              "zl": [
+                "f20r.2",
+                "f21r.9",
+                "f27r.4",
+                "f28r.5",
+                "f54r.3",
+                "f87r.5",
+                "f89v1.19",
+                "f89v1.6",
+                "f93v.5",
+                "f93v.6",
+                "f96r.9"
+              ]
+            }
+          },
+          "qokeedy": {
+            "all_three_same_locus": [],
+            "also_agree_on_left_or_right_token": [],
+            "loci_each_edition": {
+              "it": [],
+              "rf": [],
+              "zl": []
+            }
+          }
+        }
+      },
+      "editions": {
+        "it": {
+          "evaluation": {
+            "A": {
+              "leaves": 18,
+              "od_ed_sites": [
+                150,
+                7
+              ],
+              "pages": 19,
+              "pairs": {
+                "chodal/chedal": [
+                  1,
+                  1
+                ],
+                "chodar/chedar": [
+                  1,
+                  0
+                ],
+                "chody/chedy": [
+                  12,
+                  0
+                ],
+                "cthody/cthedy": [
+                  3,
+                  0
+                ],
+                "qokeody/qokeedy": [
+                  2,
+                  0
+                ]
+              },
+              "words": 1877
+            },
+            "B": {
+              "leaves": 9,
+              "od_ed_sites": [
+                98,
+                675
+              ],
+              "pages": 10,
+              "pairs": {
+                "chodal/chedal": [
+                  0,
+                  1
+                ],
+                "chodar/chedar": [
+                  0,
+                  2
+                ],
+                "chody/chedy": [
+                  5,
+                  85
+                ],
+                "cthody/cthedy": [
+                  0,
+                  1
+                ],
+                "qokeody/qokeedy": [
+                  2,
+                  28
+                ]
+              },
+              "words": 3298
+            }
+          },
+          "herbal_match": {
+            "A_available_leaves": 47,
+            "B_ed_fraction": 0.6890547263681592,
+            "B_matched_leaves": 16,
+            "B_minus_A_fraction_quantiles": [
+              0.6558597056212713,
+              0.6713032470782184,
+              0.6842700373729439
+            ],
+            "B_words": 3432,
+            "draws": 1000,
+            "median_A_sample_words": 2673.5,
+            "positive_draws": 1000
+          },
+          "stars_3_same_hand": {
+            "A_leaf_rates": {
+              "f58": 0.1891891891891892
+            },
+            "B_leaf_rate_range": [
+              0.6127450980392157,
+              0.9331619537275064
+            ],
+            "B_leaves_above_A": 12,
+            "B_leaves_equal_A": 0,
+            "B_leaves_informative": 12,
+            "counts": {
+              "A": {
+                "leaves": 1,
+                "od_ed_sites": [
+                  30,
+                  7
+                ],
+                "pages": 2,
+                "pairs": {
+                  "chodal/chedal": [
+                    0,
+                    1
+                  ],
+                  "chodar/chedar": [
+                    0,
+                    0
+                  ],
+                  "chody/chedy": [
+                    1,
+                    0
+                  ],
+                  "cthody/cthedy": [
+                    0,
+                    0
+                  ],
+                  "qokeody/qokeedy": [
+                    0,
+                    0
+                  ]
+                },
+                "words": 732
+              },
+              "B": {
+                "leaves": 12,
+                "od_ed_sites": [
+                  547,
+                  1986
+                ],
+                "pages": 22,
+                "pairs": {
+                  "chodal/chedal": [
+                    3,
+                    17
+                  ],
+                  "chodar/chedar": [
+                    4,
+                    18
+                  ],
+                  "chody/chedy": [
+                    18,
+                    180
+                  ],
+                  "cthody/cthedy": [
+                    0,
+                    3
+                  ],
+                  "qokeody/qokeedy": [
+                    4,
+                    133
+                  ]
+                },
+                "words": 10229
+              }
+            }
+          },
+          "train": {
+            "A": {
+              "leaves": 53,
+              "od_ed_sites": [
+                771,
+                28
+              ],
+              "pages": 95,
+              "pairs": {
+                "chodal/chedal": [
+                  0,
+                  0
+                ],
+                "chodar/chedar": [
+                  6,
+                  0
+                ],
+                "chody/chedy": [
+                  31,
+                  2
+                ],
+                "cthody/cthedy": [
+                  13,
+                  1
+                ],
+                "qokeody/qokeedy": [
+                  13,
+                  0
+                ]
+              },
+              "words": 9204
+            },
+            "B": {
+              "leaves": 39,
+              "od_ed_sites": [
+                937,
+                4102
+              ],
+              "pages": 72,
+              "pairs": {
+                "chodal/chedal": [
+                  4,
+                  20
+                ],
+                "chodar/chedar": [
+                  6,
+                  26
+                ],
+                "chody/chedy": [
+                  41,
+                  402
+                ],
+                "cthody/cthedy": [
+                  0,
+                  8
+                ],
+                "qokeody/qokeedy": [
+                  13,
+                  277
+                ]
+              },
+              "words": 19499
+            }
+          }
+        },
+        "rf": {
+          "evaluation": {
+            "A": {
+              "leaves": 18,
+              "od_ed_sites": [
+                140,
+                5
+              ],
+              "pages": 19,
+              "pairs": {
+                "chodal/chedal": [
+                  1,
+                  0
+                ],
+                "chodar/chedar": [
+                  1,
+                  0
+                ],
+                "chody/chedy": [
+                  10,
+                  0
+                ],
+                "cthody/cthedy": [
+                  3,
+                  0
+                ],
+                "qokeody/qokeedy": [
+                  3,
+                  0
+                ]
+              },
+              "words": 1752
+            },
+            "B": {
+              "leaves": 9,
+              "od_ed_sites": [
+                77,
+                466
+              ],
+              "pages": 10,
+              "pairs": {
+                "chodal/chedal": [
+                  0,
+                  0
+                ],
+                "chodar/chedar": [
+                  0,
+                  1
+                ],
+                "chody/chedy": [
+                  4,
+                  68
+                ],
+                "cthody/cthedy": [
+                  0,
+                  1
+                ],
+                "qokeody/qokeedy": [
+                  1,
+                  21
+                ]
+              },
+              "words": 2924
+            }
+          },
+          "herbal_match": {
+            "A_available_leaves": 47,
+            "B_ed_fraction": 0.6086956521739131,
+            "B_matched_leaves": 16,
+            "B_minus_A_fraction_quantiles": [
+              0.577116704805492,
+              0.5944099378881988,
+              0.6086956521739131
+            ],
+            "B_words": 2757,
+            "draws": 1000,
+            "median_A_sample_words": 2527.0,
+            "positive_draws": 1000
+          },
+          "stars_3_same_hand": {
+            "A_leaf_rates": {
+              "f58": 0.17857142857142858
+            },
+            "B_leaf_rate_range": [
+              0.5641025641025641,
+              0.953125
+            ],
+            "B_leaves_above_A": 12,
+            "B_leaves_equal_A": 0,
+            "B_leaves_informative": 12,
+            "counts": {
+              "A": {
+                "leaves": 1,
+                "od_ed_sites": [
+                  23,
+                  5
+                ],
+                "pages": 2,
+                "pairs": {
+                  "chodal/chedal": [
+                    0,
+                    0
+                  ],
+                  "chodar/chedar": [
+                    0,
+                    0
+                  ],
+                  "chody/chedy": [
+                    0,
+                    0
+                  ],
+                  "cthody/cthedy": [
+                    0,
+                    0
+                  ],
+                  "qokeody/qokeedy": [
+                    0,
+                    0
+                  ]
+                },
+                "words": 670
+              },
+              "B": {
+                "leaves": 12,
+                "od_ed_sites": [
+                  452,
+                  1404
+                ],
+                "pages": 22,
+                "pairs": {
+                  "chodal/chedal": [
+                    3,
+                    15
+                  ],
+                  "chodar/chedar": [
+                    4,
+                    13
+                  ],
+                  "chody/chedy": [
+                    13,
+                    127
+                  ],
+                  "cthody/cthedy": [
+                    0,
+                    4
+                  ],
+                  "qokeody/qokeedy": [
+                    3,
+                    85
+                  ]
+                },
+                "words": 9307
+              }
+            }
+          },
+          "train": {
+            "A": {
+              "leaves": 53,
+              "od_ed_sites": [
+                693,
+                21
+              ],
+              "pages": 95,
+              "pairs": {
+                "chodal/chedal": [
+                  0,
+                  0
+                ],
+                "chodar/chedar": [
+                  5,
+                  0
+                ],
+                "chody/chedy": [
+                  29,
+                  2
+                ],
+                "cthody/cthedy": [
+                  10,
+                  1
+                ],
+                "qokeody/qokeedy": [
+                  10,
+                  0
+                ]
+              },
+              "words": 8677
+            },
+            "B": {
+              "leaves": 39,
+              "od_ed_sites": [
+                762,
+                2819
+              ],
+              "pages": 72,
+              "pairs": {
+                "chodal/chedal": [
+                  3,
+                  17
+                ],
+                "chodar/chedar": [
+                  6,
+                  18
+                ],
+                "chody/chedy": [
+                  33,
+                  300
+                ],
+                "cthody/cthedy": [
+                  0,
+                  9
+                ],
+                "qokeody/qokeedy": [
+                  8,
+                  199
+                ]
+              },
+              "words": 17261
+            }
+          }
+        },
+        "zl": {
+          "evaluation": {
+            "A": {
+              "leaves": 18,
+              "od_ed_sites": [
+                150,
+                6
+              ],
+              "pages": 19,
+              "pairs": {
+                "chodal/chedal": [
+                  1,
+                  1
+                ],
+                "chodar/chedar": [
+                  1,
+                  0
+                ],
+                "chody/chedy": [
+                  11,
+                  0
+                ],
+                "cthody/cthedy": [
+                  3,
+                  0
+                ],
+                "qokeody/qokeedy": [
+                  3,
+                  0
+                ]
+              },
+              "words": 1898
+            },
+            "B": {
+              "leaves": 9,
+              "od_ed_sites": [
+                96,
+                677
+              ],
+              "pages": 10,
+              "pairs": {
+                "chodal/chedal": [
+                  0,
+                  1
+                ],
+                "chodar/chedar": [
+                  0,
+                  2
+                ],
+                "chody/chedy": [
+                  5,
+                  87
+                ],
+                "cthody/cthedy": [
+                  0,
+                  1
+                ],
+                "qokeody/qokeedy": [
+                  1,
+                  28
+                ]
+              },
+              "words": 3336
+            }
+          },
+          "herbal_match": {
+            "A_available_leaves": 47,
+            "B_ed_fraction": 0.6949569495694957,
+            "B_matched_leaves": 16,
+            "B_minus_A_fraction_quantiles": [
+              0.6643447046715365,
+              0.6803049349174811,
+              0.6913468412662466
+            ],
+            "B_words": 3462,
+            "draws": 1000,
+            "median_A_sample_words": 2709.0,
+            "positive_draws": 1000
+          },
+          "stars_3_same_hand": {
+            "A_leaf_rates": {
+              "f58": 0.1891891891891892
+            },
+            "B_leaf_rate_range": [
+              0.6157635467980296,
+              0.9375
+            ],
+            "B_leaves_above_A": 12,
+            "B_leaves_equal_A": 0,
+            "B_leaves_informative": 12,
+            "counts": {
+              "A": {
+                "leaves": 1,
+                "od_ed_sites": [
+                  30,
+                  7
+                ],
+                "pages": 2,
+                "pairs": {
+                  "chodal/chedal": [
+                    0,
+                    1
+                  ],
+                  "chodar/chedar": [
+                    0,
+                    0
+                  ],
+                  "chody/chedy": [
+                    1,
+                    0
+                  ],
+                  "cthody/cthedy": [
+                    0,
+                    0
+                  ],
+                  "qokeody/qokeedy": [
+                    0,
+                    0
+                  ]
+                },
+                "words": 750
+              },
+              "B": {
+                "leaves": 12,
+                "od_ed_sites": [
+                  546,
+                  1979
+                ],
+                "pages": 22,
+                "pairs": {
+                  "chodal/chedal": [
+                    3,
+                    18
+                  ],
+                  "chodar/chedar": [
+                    3,
+                    20
+                  ],
+                  "chody/chedy": [
+                    18,
+                    187
+                  ],
+                  "cthody/cthedy": [
+                    0,
+                    5
+                  ],
+                  "qokeody/qokeedy": [
+                    4,
+                    132
+                  ]
+                },
+                "words": 10376
+              }
+            }
+          },
+          "train": {
+            "A": {
+              "leaves": 53,
+              "od_ed_sites": [
+                766,
+                25
+              ],
+              "pages": 95,
+              "pairs": {
+                "chodal/chedal": [
+                  0,
+                  0
+                ],
+                "chodar/chedar": [
+                  6,
+                  0
+                ],
+                "chody/chedy": [
+                  32,
+                  1
+                ],
+                "cthody/cthedy": [
+                  11,
+                  1
+                ],
+                "qokeody/qokeedy": [
+                  14,
+                  0
+                ]
+              },
+              "words": 9333
+            },
+            "B": {
+              "leaves": 39,
+              "od_ed_sites": [
+                929,
+                4106
+              ],
+              "pages": 72,
+              "pairs": {
+                "chodal/chedal": [
+                  4,
+                  21
+                ],
+                "chodar/chedar": [
+                  5,
+                  30
+                ],
+                "chody/chedy": [
+                  38,
+                  405
+                ],
+                "cthody/cthedy": [
+                  0,
+                  11
+                ],
+                "qokeody/qokeedy": [
+                  13,
+                  279
+                ]
+              },
+              "words": 19711
+            }
+          }
+        }
+      },
+      "practice_public_only": true
+    }
+  },
+  "reproducibility": {
+    "instructions": "Extract the embedded Python scripts to one temporary directory using the listed names. From the repository root with the pinned texts fetched, run each with PYTHONPATH=. python3 /path/to/script.py. The scripts only inspect public practice train and evaluation partitions.",
+    "scripts": {
+      "voynich_currier_exclusivity.py": "\"\"\"Enumerate all four kinds of exact od/ed exclusivity on public training pages.\"\"\"\nimport json\n\nfrom vs import corpus\nfrom voynich_currier_variant_audit import EDITIONS, by_language, sum_stocks, word_stock\nfrom voynich_currier_line_order import odds_to_eds\n\n\ndef exclusive_edges(stock_a, stock_b, minimum=2):\n    possible = sorted(stock_a.keys() | stock_b.keys())\n    results = {f'{grp}_only_{variant}': set() for grp in ('A', 'B') for variant in ('od', 'ed')}\n    for od in possible:\n        for ed in sorted(odds_to_eds(od)):\n            counts = [(od, 'od', ed), (ed, 'ed', od)]\n            for exclusive, label, shared in counts:\n                if stock_a[shared] == 0 or stock_b[shared] == 0:\n                    continue\n                for own, other, group in ((stock_a, stock_b, 'A'), (stock_b, stock_a, 'B')):\n                    if own[exclusive] >= minimum and other[exclusive] == 0:\n                        results[f'{group}_only_{label}'].add((od, ed))\n    return results\n\n\ndef classify(edition, scope=None, minimum=2):\n    train, _ = corpus.split_pages('practice', edition)\n    groups = by_language([(page, word_stock(page)) for page in train\n                          if scope is None or page.section == scope])\n    a, b = (sum_stocks(stock for _, stock in groups[group]) for group in ('A', 'B'))\n    return exclusive_edges(a, b, minimum=minimum)\n\n\nif __name__ == '__main__':\n    records = {}\n    for scope_name, scope in (('all', None), ('H', 'H')):\n        records[scope_name] = {}\n        for minimum in (2, 4):\n            selected = {ed: classify(ed, scope, minimum) for ed in EDITIONS}\n            sizes = {ed: {direction: len(pairs) for direction, pairs in directions.items()}\n                     for ed, directions in selected.items()}\n            cross = {direction: sorted(selected['zl'][direction] & selected['it'][direction])\n                     for direction in selected['zl']}\n            records[scope_name][minimum] = {'sizes': sizes, 'verified_ZL_IT': cross}\n    print(json.dumps(records, indent=2))\n",
+      "voynich_currier_line_order.py": "\"\"\"Check local od/ed order in B while holding leaves, lines, and distances fixed.\"\"\"\nimport json\nimport random\nimport re\nfrom collections import Counter, defaultdict\nfrom functools import lru_cache\nfrom itertools import product\n\nfrom vs import corpus\nfrom voynich_currier_variant_audit import ALTERNATIVES, EDITIONS, PAIRS, PARTS, leaf_id\n\nFOUR = frozenset(PAIRS[:4])\nENDPOINTS = ('interior', 'all_slots')\n\n@lru_cache(maxsize=None)\ndef odds_to_eds(word):\n    if not ALTERNATIVES.fullmatch(word):\n        return frozenset()\n    return frozenset(word[:m.start()] + 'e' + word[m.start() + 1:]\n                     for m in re.finditer('od', word))\n\n\ndef line_pairs(words):\n    for left, first in enumerate(words):\n        for right in range(left + 1, min(left + 11, len(words))):\n            second = words[right]\n            if second in odds_to_eds(first):\n                yield (first, second), 1\n            if first in odds_to_eds(second):\n                yield (second, first), -1\n\n\ndef measure(pages, endpoint):\n    counts = {'paper_four': defaultdict(Counter), 'all_single_site': defaultdict(Counter)}\n    for page in pages:\n        if page.language != 'B':\n            continue\n        for line in page.lines:\n            if line.unit != 'P':\n                continue\n            words = line.words[1:-1] if endpoint == 'interior' else line.words\n            for pair, direction in line_pairs(words):\n                counts['all_single_site'][leaf_id(page)][direction] += 1\n                if pair in FOUR:\n                    counts['paper_four'][leaf_id(page)][direction] += 1\n    return {scope: assess(leaves) for scope, leaves in counts.items()}\n\n\ndef assess(leaves):\n    ahead = sum(count[1] for count in leaves.values())\n    behind = sum(count[-1] for count in leaves.values())\n    effects = [count[1] - count[-1] for count in leaves.values() if count[1] != count[-1]]\n    observed = ahead - behind\n    if len(effects) <= 15:\n        permutations = 2 ** len(effects)\n        upper_tail = sum(sum(s * e for s, e in zip(signs, effects)) >= observed\n                         for signs in product((1, -1), repeat=len(effects))) / permutations\n        method = 'all_sign_flips'\n    else:\n        rng = random.Random(5267)\n        permutations = 9999\n        exceedances = 0\n        for _ in range(permutations):\n            signed_sum = sum(effect if rng.getrandbits(1) else -effect for effect in effects)\n            exceedances += signed_sum >= observed\n        upper_tail = (exceedances + 1) / (permutations + 1)\n        method = 'random_sign_flips_plus_one'\n    return {'od_before_ed': ahead, 'ed_before_od': behind, 'leaves_with_pairs': len(leaves),\n            'leaves_with_unbalanced_direction': len(effects), 'upper_tail_rank': upper_tail,\n            'flip_method': method, 'sign_patterns': permutations}\n\n\nif __name__ == '__main__':\n    result = {ed: {partition: {endpoint: measure(pages, endpoint) for endpoint in ENDPOINTS}\n                   for partition, pages in zip(PARTS, corpus.split_pages('practice', ed))}\n              for ed in EDITIONS}\n    print(json.dumps(result, indent=2))\n",
+      "voynich_currier_variant_audit.py": "\"\"\"Audit the literal od/ed claims in Timm v3, using public practice pages.\"\"\"\nimport json\nimport random\nimport re\nfrom collections import Counter, defaultdict\nfrom statistics import median\n\nfrom vs import corpus\n\nEDITIONS = ('zl', 'it', 'rf')\nPAIRS = (('chody', 'chedy'), ('chodar', 'chedar'), ('chodal', 'chedal'),\n         ('qokeody', 'qokeedy'), ('cthody', 'cthedy'))\nWORD_FORMS = {word for pair in PAIRS for word in pair}\nALTERNATIVES = re.compile(r'[a-z]+\\Z')\nPARTS = ('train', 'evaluation')\n\n\ndef leaf_id(page):\n    return re.match(r'f\\d+', page.id)[0]\n\n\ndef word_stock(page):\n    return Counter(word for line in page.lines if line.unit == 'P'\n                   for word in line.words if ALTERNATIVES.fullmatch(word))\n\n\ndef sum_stocks(stocks):\n    total = Counter()\n    for stock in stocks:\n        total.update(stock)\n    return total\n\n\ndef occurrence_counts(stock):\n    return [sum(n * word.count(form) for word, n in stock.items()) for form in ('od', 'ed')]\n\n\ndef fraction(stock):\n    odds, eds = occurrence_counts(stock)\n    return eds / (odds + eds) if odds + eds else None\n\n\ndef describe(rows):\n    stock = sum_stocks(stock for _, stock in rows)\n    return {\n        'pages': len(rows),\n        'leaves': len({leaf_id(page) for page, _ in rows}),\n        'words': stock.total(),\n        'pairs': {a + '/' + b: [stock[a], stock[b]] for a, b in PAIRS},\n        'od_ed_sites': occurrence_counts(stock),\n    }\n\n\ndef leaf_stocks(rows):\n    grouped = defaultdict(Counter)\n    for page, stock in rows:\n        grouped[leaf_id(page)].update(stock)\n    return dict(grouped)\n\n\ndef by_language(rows):\n    return {language: [(p, s) for p, s in rows if p.language == language]\n            for language in ('A', 'B')}\n\n\ndef matched_herbal_leaves(rows):\n    groups = by_language([(p, s) for p, s in rows if p.section == 'H'])\n    a = list(leaf_stocks(groups['A']).values())\n    b = list(leaf_stocks(groups['B']).values())\n    b_stock = sum_stocks(b)\n    b_fraction = fraction(b_stock)\n    rng = random.Random(5293)\n    draws = []\n    for _ in range(1000):\n        a_stock = sum_stocks(rng.sample(a, len(b)))\n        draws.append([b_fraction - fraction(a_stock), a_stock.total()])\n    rates = sorted(rate for rate, _ in draws)\n    return {\n        'A_available_leaves': len(a), 'B_matched_leaves': len(b),\n        'B_words': b_stock.total(), 'B_ed_fraction': b_fraction,\n        'median_A_sample_words': median(n for _, n in draws),\n        'B_minus_A_fraction_quantiles': [rates[i] for i in (24, 499, 974)],\n        'positive_draws': sum(rate > 0 for rate in rates), 'draws': len(draws),\n    }\n\n\ndef hand_three_star(rows):\n    groups = by_language([(p, s) for p, s in rows if p.section == 'S' and p.hand == '3'])\n    all_rates = {language: {leaf: fraction(s) for leaf, s in leaf_stocks(part).items()}\n                 for language, part in groups.items()}\n    a_rate, = all_rates['A'].values()\n    b_rates = [rate for rate in all_rates['B'].values() if rate is not None]\n    return {\n        'counts': {language: describe(part) for language, part in groups.items()},\n        'A_leaf_rates': all_rates['A'], 'B_leaves_informative': len(b_rates),\n        'B_leaf_rate_range': [min(b_rates), max(b_rates)],\n        'B_leaves_above_A': sum(rate > a_rate for rate in b_rates),\n        'B_leaves_equal_A': sum(rate == a_rate for rate in b_rates),\n    }\n\n\ndef candidate_loci(pages_by_edition):\n    loci = {}\n    for edition, pages in pages_by_edition.items():\n        loci[edition] = {\n            line.id: words\n            for page in pages\n            if page.language == 'A'\n            for line in page.lines\n            if line.unit == 'P'\n            for words in (line.words,)\n            if WORD_FORMS.intersection(words)\n        }\n    matches = {}\n    for word in ('chedy', 'chedal', 'cthody', 'cthedy', 'chedar', 'qokeedy'):\n        per_edition = {ed: {locus for locus, words in entries.items() if word in words}\n                       for ed, entries in loci.items()}\n        common = sorted(set.intersection(*per_edition.values()))\n        adjoining = []\n        for locus in common:\n            context = []\n            for ed in EDITIONS:\n                words = loci[ed][locus]\n                pairs = set(zip(words, words[1:]))\n                context.append({pair for pair in pairs if word in pair\n                                and all(ALTERNATIVES.fullmatch(w) for w in pair)})\n            if set.intersection(*context):\n                adjoining.append(locus)\n        matches[word] = {\n            'loci_each_edition': {ed: sorted(ids) for ed, ids in per_edition.items()},\n            'all_three_same_locus': common,\n            'also_agree_on_left_or_right_token': adjoining,\n        }\n    return matches\n\n\ndef collect():\n    result = {'editions': {}, 'practice_public_only': True}\n    pages_by_part = {part: {} for part in PARTS}\n    for edition in EDITIONS:\n        edition_results = {}\n        rows = []\n        for partition, pages in zip(PARTS, corpus.split_pages('practice', edition)):\n            pages_by_part[partition][edition] = pages\n            selected = [(page, word_stock(page)) for page in pages if page.language in ('A', 'B')]\n            selected = [(page, stock) for page, stock in selected if stock]\n            rows.extend(selected)\n            edition_results[partition] = {\n                language: describe(part) for language, part in by_language(selected).items()\n            }\n        edition_results['herbal_match'] = matched_herbal_leaves(rows)\n        edition_results['stars_3_same_hand'] = hand_three_star(rows)\n        result['editions'][edition] = edition_results\n    result['A_locus_agreement'] = {part: candidate_loci(eds) for part, eds in pages_by_part.items()}\n    return result\n\n\nif __name__ == '__main__':\n    print(json.dumps(collect(), indent=2, ensure_ascii=False))\n"
+    }
+  },
+  "limits": [
+    "RF is a merge of earlier transcriptions, not a third independent witness.",
+    "Equal-leaf resampling does not equalize the number of tokens per variety.",
+    "The scan crops support a reading check but provide no date or direction of composition."
+  ]
+}
