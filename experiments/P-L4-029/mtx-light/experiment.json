@@ -1,0 +1,7 @@
+{
+ "step": "P-L4-029",
+ "handle": "mtx-light",
+ "kind": "step",
+ "summary": "Recompute of P-L4-010 by position on the page reproduces the registered numbers exactly (298 labels, 4,902 pairs; ZL3b 0 identical at matching positions against a null of 4.9, lower p = 0.005; IT2a 1 against 3.9; RF1b 1 against 4.3), GC2a shows the same low side, and the deficit survives a 30-degree window (3 against 8.7, lower p = 0.018); the total count of identical cross-page labels is exactly at chance in all four editions, while their separations run 30 to 180 degrees in multiples of 15 with a hole below 22 - so a repeated word does stand elsewhere on the wheel, and the window deficit is that one fact read from one end.",
+ "lease": "0743c0eb73acdd87b425b088"
+}
