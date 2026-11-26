@@ -1,0 +1,32 @@
+{
+  "language": "middle_persian_pahlavi",
+  "title": "Dēnkard Books VI–VII, Sanjana XI–XIII (Roman Book Pahlavi, scan OCR)",
+  "period": "9th–10th-century Middle Persian compilation; 1910–1912 Bombay edition",
+  "url": "https://raw.githubusercontent.com/mubadala777/voynich-swarm/c5c6bada47ce55f5576cb87e71063cdc1703d713/dinkard-roman-ocr-xi-xiii.txt",
+  "sha256": "c433306b2c249f0efc48e01c9dc2eb899fc8a3213f6f79cb12cf85975f21f663",
+  "license": "public-domain",
+  "encoding": "utf-8",
+  "source": "D. D. P. Sanjana (ed.), The Dinkard, volumes XI, XII and XIII, Bombay, 1910–1912. Book VI from section 88 to the end, and Book VII introduction and chapters I–II. Three consecutive source volumes without repeated witness passages.",
+  "license_urls": [
+    "https://commons.wikimedia.org/wiki/File%3AThe_Dinkard._The_original_Pahlavi_text%3B_the_same_transliterated_in_Zend_characters%3B_translations_of_the_text_in_the_Gujrati_and_English_languages_%28IA_dinkardoriginalp11pesh%29.pdf",
+    "https://commons.wikimedia.org/wiki/File%3AThe_Dinkard._The_original_Pahlavi_text%3B_the_same_transliterated_in_Zend_characters%3B_translations_of_the_text_in_the_Gujrati_and_English_languages_%28IA_dinkardoriginalp12pesh%29.pdf",
+    "https://commons.wikimedia.org/wiki/File%3AThe_Dinkard._The_original_Pahlavi_text%3B_the_same_transliterated_in_Zend_characters%3B_translations_of_the_text_in_the_Gujrati_and_English_languages_%28IA_dinkardoriginalp13pesh%29.pdf"
+  ],
+  "historical_reference": "https://www.iranicaonline.org/articles/denkard/",
+  "transliteration": "Historical Roman rendering of Book Pahlavi, retaining written heterograms and the edition’s Latin accents.",
+  "preparation": "Extract the middle Roman-letter printed band from each of 309 pages in the public-domain scans’ embedded OCR. Omit headings, notes, translations, the original-script band and 194 OCR tokens containing non-Latin letters. Keep the page order, accents and word divisions in the remaining OCR. The export uses one edition across the three volumes.",
+  "quality": "Page-band boundaries were visually spot-checked. Three manually read passages had approximately 4–9 percent normalized character edits against the source OCR, including occasional residual section labels. The sample is small and does not estimate corpus-wide accuracy. Errors in OCR and word divisions remain.",
+  "reproduction": "https://github.com/mubadala777/voynich-swarm/tree/c5c6bada47ce55f5576cb87e71063cdc1703d713",
+  "local_validation": {
+    "bytes": 200670,
+    "normalized_tokens": 32114,
+    "characters_in_complete_blocks": 183611,
+    "blocks": 457,
+    "pages": 309,
+    "source_pdf_sha256": [
+      "31deefc65b2ac3950fddd1af9e7cc215cd3da04c8076f22667175539f85061ab",
+      "171f0995400453abac3a5e71a15ff447ba0735082cc4844067f3d88a0a3cc64a",
+      "abde6e85c5775e887a28926e46e4e3daf451960fc31b25fa292ecab80484c985"
+    ]
+  }
+}
