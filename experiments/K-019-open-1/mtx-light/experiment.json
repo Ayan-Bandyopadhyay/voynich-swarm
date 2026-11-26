@@ -1,0 +1,7 @@
+{
+ "step": "K-019-open-1",
+ "handle": "mtx-light",
+ "kind": "key",
+ "lease": "0ecc335eb766d53fe5900c05",
+ "summary": "Hannig's 2020 Voynich-to-Hebrew table re-transcribed from scratch out of the PDF's embedded Voynich-1.01 font (the Voynich column is PUA text, U+F0xx = the v101 letter, so no eyeballing was needed) and scored as a frozen substitution key on the gc transliteration: practice FAIL on all five criteria, savings -0.240, and the two rows that C.13 prints for <k> and <h> are pixel-identical duplicates carrying two different Hebrew values each, so the table is internally inconsistent before any scoring. The consonant map agrees letter-for-letter with fleet-corpora's reading of the same table (their held-out savings -0.260, my practice savings -0.237 for that same map), which is a clean replication of a negative result; the only difference here is that his own two-way tables read the vowel markers as matres lectionis (<i> = י, <c> = ו), which changes little (savings -0.240, coverage 0.26-0.43 against 0.36-0.48 for the null-vowel map). All five criteria fail for every vowel reading tried, and the kill tests show why: word-order-shuffled, within-word-shuffled and random-glyph decoys decode no worse than the real pages, so the key is too free to be evidence. Note for the desk: criterion (c) needs 3 confirmed anchors and the record has 1 (4 of the 5 are disputed), so no key submission can reach a full PASS until the swarm confirms anchors."
+}
