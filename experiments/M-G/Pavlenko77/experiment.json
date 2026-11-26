@@ -1,0 +1,284 @@
+{
+  "step": "M-G",
+  "handle": "Pavlenko77",
+  "agent": "Codex",
+  "kind": "model",
+  "lease": "237801c3ad7502630c767756",
+  "summary": "A fixed hand-2 production model adds line-position and preceding-edge spelling to established copy/template components, with synthetic controls and three prespecified public ablations.",
+  "protocol": {
+    "selection": "The full model and all settings are frozen before loading manuscript pages. No component, order, window, scope or template size is selected using public evaluation outcomes.",
+    "controls_first": "Independent synthetic pages with either a planted preceding-edge dependency or a planted line-position dependency. Compare an order-3 letter model with the corresponding trusted context-spelling component added. Match nulls by shuffling words within each synthetic page while preserving its multiset and line lengths.",
+    "synthetic_sizes": {
+      "training_pages": 10,
+      "evaluation_pages": 4,
+      "lines_per_page": 50,
+      "words_per_line": 8
+    },
+    "synthetic_vocabulary": "Four-glyph words: first and last glyph from a/o, two middle glyphs from l/r. Boundary control sets first glyph to previous word's final glyph; position control uses a initially and o finally, random first glyph otherwise.",
+    "synthetic_seeds": {
+      "training": 14040,
+      "evaluation": 14041,
+      "null_training": 14042,
+      "null_evaluation": 14043
+    },
+    "synthetic_illustrative_checks": {
+      "boundary_gain_at_least_bits_per_word": 0.4,
+      "position_gain_at_least_bits_per_word": 0.05,
+      "matched_null_gain_at_most_bits_per_word": 0.05
+    },
+    "primary": "Run python -X utf8 -m vs experiment on the unchanged full model, using the default public practice split.",
+    "ablations": [
+      "remove boundary_letters",
+      "remove position_letters",
+      "remove both context-spelling components"
+    ],
+    "weights": "Use existing models.fit_weights EM for each variant: fixed seed 7, components trained on half of training pages and weights fitted on the other half, 15 iterations. Evaluation pages never fit weights.",
+    "report": "Report every prespecified variant, weights and word count; do not choose a winning variant for submission. The full model is submitted even if an ablation predicts better.",
+    "limits": "Synthetic checks establish basic sensitivity, not uniform power or a calibrated manuscript significance test. Scores condition on supplied layout and observed previous words. A code-length gain does not prove a historical mechanism, absence of language or decipherment. This model submission is distinct from a daily generator attack against the fact battery."
+  },
+  "local_measurements": {
+    "source_commit": "4df77e328b4bb6002cd177b2a64d641e021e73a2",
+    "model_canonical_sha256": "1d25c6d2cca86643bd72c5773d90b77019384f2430687b22274ebf56e3a77f17",
+    "protocol": {
+      "selection": "The full model and all settings are frozen before loading manuscript pages. No component, order, window, scope or template size is selected using public evaluation outcomes.",
+      "controls_first": "Independent synthetic pages with either a planted preceding-edge dependency or a planted line-position dependency. Compare an order-3 letter model with the corresponding trusted context-spelling component added. Match nulls by shuffling words within each synthetic page while preserving its multiset and line lengths.",
+      "synthetic_sizes": {
+        "training_pages": 10,
+        "evaluation_pages": 4,
+        "lines_per_page": 50,
+        "words_per_line": 8
+      },
+      "synthetic_vocabulary": "Four-glyph words: first and last glyph from a/o, two middle glyphs from l/r. Boundary control sets first glyph to previous word's final glyph; position control uses a initially and o finally, random first glyph otherwise.",
+      "synthetic_seeds": {
+        "training": 14040,
+        "evaluation": 14041,
+        "null_training": 14042,
+        "null_evaluation": 14043
+      },
+      "synthetic_illustrative_checks": {
+        "boundary_gain_at_least_bits_per_word": 0.4,
+        "position_gain_at_least_bits_per_word": 0.05,
+        "matched_null_gain_at_most_bits_per_word": 0.05
+      },
+      "primary": "Run python -X utf8 -m vs experiment on the unchanged full model, using the default public practice split.",
+      "ablations": [
+        "remove boundary_letters",
+        "remove position_letters",
+        "remove both context-spelling components"
+      ],
+      "weights": "Use existing models.fit_weights EM for each variant: fixed seed 7, components trained on half of training pages and weights fitted on the other half, 15 iterations. Evaluation pages never fit weights.",
+      "report": "Report every prespecified variant, weights and word count; do not choose a winning variant for submission. The full model is submitted even if an ablation predicts better.",
+      "limits": "Synthetic checks establish basic sensitivity, not uniform power or a calibrated manuscript significance test. Scores condition on supplied layout and observed previous words. A code-length gain does not prove a historical mechanism, absence of language or decipherment. This model submission is distinct from a daily generator attack against the fact battery."
+    },
+    "controls": {
+      "boundary": {
+        "planted": {
+          "baseline": {
+            "bits_per_word": 4.0048,
+            "words": 1600,
+            "weights": [
+              1.0
+            ],
+            "references": {
+              "bag_of_words": 4.0028,
+              "letters_only": 4.0048
+            },
+            "gain_over_bag": -0.002
+          },
+          "contextual": {
+            "bits_per_word": 3.0077,
+            "words": 1600,
+            "weights": [
+              0.0,
+              1.0
+            ],
+            "references": {
+              "bag_of_words": 4.0028,
+              "letters_only": 4.0048
+            },
+            "gain_over_bag": 0.9951
+          },
+          "gain_bits_per_word": 0.9971
+        },
+        "matched_null": {
+          "baseline": {
+            "bits_per_word": 4.0048,
+            "words": 1600,
+            "weights": [
+              1.0
+            ],
+            "references": {
+              "bag_of_words": 4.0028,
+              "letters_only": 4.0048
+            },
+            "gain_over_bag": -0.002
+          },
+          "contextual": {
+            "bits_per_word": 4.007,
+            "words": 1600,
+            "weights": [
+              0.5174,
+              0.4826
+            ],
+            "references": {
+              "bag_of_words": 4.0028,
+              "letters_only": 4.0048
+            },
+            "gain_over_bag": -0.0042
+          },
+          "gain_bits_per_word": -0.0022
+        }
+      },
+      "position": {
+        "planted": {
+          "baseline": {
+            "bits_per_word": 4.0076,
+            "words": 1600,
+            "weights": [
+              1.0
+            ],
+            "references": {
+              "bag_of_words": 4.0053,
+              "letters_only": 4.0076
+            },
+            "gain_over_bag": -0.0023
+          },
+          "contextual": {
+            "bits_per_word": 3.7792,
+            "words": 1600,
+            "weights": [
+              0.1056,
+              0.8944
+            ],
+            "references": {
+              "bag_of_words": 4.0053,
+              "letters_only": 4.0076
+            },
+            "gain_over_bag": 0.2261
+          },
+          "gain_bits_per_word": 0.2284
+        },
+        "matched_null": {
+          "baseline": {
+            "bits_per_word": 4.0076,
+            "words": 1600,
+            "weights": [
+              1.0
+            ],
+            "references": {
+              "bag_of_words": 4.0053,
+              "letters_only": 4.0076
+            },
+            "gain_over_bag": -0.0023
+          },
+          "contextual": {
+            "bits_per_word": 4.0108,
+            "words": 1600,
+            "weights": [
+              0.5498,
+              0.4502
+            ],
+            "references": {
+              "bag_of_words": 4.0053,
+              "letters_only": 4.0076
+            },
+            "gain_over_bag": -0.0055
+          },
+          "gain_bits_per_word": -0.0032
+        }
+      }
+    },
+    "practice": {
+      "full": {
+        "bits_per_word": 9.4484,
+        "words": 1576,
+        "weights": [
+          0.085,
+          0.3935,
+          0.374,
+          0.0733,
+          0.0612,
+          0.0068,
+          0.0062
+        ],
+        "references": {
+          "bag_of_words": 9.9312,
+          "letters_only": 9.755
+        },
+        "gain_over_bag": 0.4828
+      },
+      "without_boundary_letters": {
+        "bits_per_word": 9.546,
+        "words": 1576,
+        "weights": [
+          0.2574,
+          0.5513,
+          0.1015,
+          0.0723,
+          0.0087,
+          0.0088
+        ],
+        "references": {
+          "bag_of_words": 9.9312,
+          "letters_only": 9.755
+        },
+        "gain_over_bag": 0.3852
+      },
+      "without_position_letters": {
+        "bits_per_word": 9.5311,
+        "words": 1576,
+        "weights": [
+          0.2613,
+          0.5044,
+          0.1565,
+          0.0602,
+          0.0082,
+          0.0092
+        ],
+        "references": {
+          "bag_of_words": 9.9312,
+          "letters_only": 9.755
+        },
+        "gain_over_bag": 0.4001
+      },
+      "without_both_context_spellers": {
+        "bits_per_word": 9.6726,
+        "words": 1576,
+        "weights": [
+          0.6876,
+          0.2154,
+          0.074,
+          0.0106,
+          0.0124
+        ],
+        "references": {
+          "bag_of_words": 9.9312,
+          "letters_only": 9.755
+        },
+        "gain_over_bag": 0.2586
+      }
+    },
+    "official_advisory_stdout": "{\n \"bits_per_word\": 9.4484,\n \"words\": 1576,\n \"weights\": [\n  0.085,\n  0.3935,\n  0.374,\n  0.0733,\n  0.0612,\n  0.0068,\n  0.0062\n ],\n \"references\": {\n  \"bag_of_words\": 9.9312,\n  \"letters_only\": 9.755\n },\n \"gain_over_bag\": 0.4828\n}\nADVISORY score on practice (held-out bits per word; lower is better)\n",
+    "scope": {
+      "hand": "2",
+      "training_pages": 41,
+      "evaluation_pages": 5
+    }
+  },
+  "interpretation": {
+    "public_practice_only": true,
+    "full_model_bits_per_word": 9.4484,
+    "evaluation_words": 1576,
+    "gain_over_letters": 0.3066,
+    "gain_over_bag": 0.4828,
+    "loss_when_boundary_speller_removed": 0.0976,
+    "loss_when_position_speller_removed": 0.0827,
+    "loss_when_both_context_spellers_removed": 0.2242,
+    "conclusion": "Both context-spelling components improve prediction over the prespecified ablated mixtures on these public evaluation words. Mixture weights are refitted for every ablation, so differences are not additive causal contributions. The full fixed model is submitted unchanged.",
+    "limitations": "One public split and one preselected hand, with supplied page/line layout and observed previous words. No uncertainty interval or historical mechanism is established, and no generator fact-battery or language-free-origin conclusion follows. Authoritative closed-page model scoring remains for the scorer."
+  },
+  "reproduction": {
+    "instructions": "Save this script as work/hand2_context_model.py next to a checkout named work/voynich-swarm containing these two experiment JSON files and the verified pinned data. Run Python 3.12+ -X utf8 work/hand2_context_model.py. The embedded script is a local reproduction recipe; the scorer executes only its trusted model components.",
+    "script": "\"\"\"Frozen production-model comparison, with synthetic sensitivity controls first.\"\"\"\nfrom collections import Counter\nimport copy\nimport hashlib\nimport json\nimport os\nfrom pathlib import Path\nfrom random import Random\nimport subprocess\nimport sys\n\nhere = Path(__file__).resolve().parent\nrepo = here / \"voynich-swarm\"\nos.chdir(repo)\nsys.path.insert(0, str(repo))\nfrom vs import corpus, models\nfrom vs.fetch import verify\nfrom vs.ivtff import Line, Page\n\ndirectory = repo / \"experiments/M-G/Pavlenko77\"\nfrozen = json.loads((directory / \"model.json\").read_text(encoding=\"utf-8\"))\nenvelope = json.loads((directory / \"experiment.json\").read_text(encoding=\"utf-8\"))\ncanonical = lambda d: json.dumps(d, ensure_ascii=False, sort_keys=True, separators=(\",\", \":\")).encode()\nfrozen_hash = hashlib.sha256(canonical(frozen)).hexdigest()\nreport = {\"source_commit\": subprocess.check_output([\"git\", \"rev-parse\", \"HEAD\"], encoding=\"utf-8\").strip(),\n          \"model_canonical_sha256\": frozen_hash, \"protocol\": envelope[\"protocol\"], \"controls\": {}, \"practice\": {}}\n\n\ndef save():\n    (here / \"hand2_context_results.json\").write_text(json.dumps(report, indent=2) + \"\\n\", encoding=\"utf-8\")\n\n\ndef pages(kind, count, seed, prefix):\n    rng = Random(seed)\n    result = []\n    for index in range(count):\n        pid = prefix + str(index)\n        p = Page(pid, index, {\"I\": \"H\", \"L\": \"B\", \"H\": \"2\"})\n        prev = rng.choice(\"ao\")\n        for ln in range(50):\n            words = []\n            for pos in range(8):\n                if kind == \"boundary\":\n                    first = prev\n                else:\n                    first = \"a\" if pos == 0 else \"o\" if pos == 7 else rng.choice(\"ao\")\n                w = first + rng.choice(\"lr\") + rng.choice(\"lr\") + rng.choice(\"ao\")\n                words.append(w)\n                prev = w[-1]\n            p.lines.append(Line(f\"{pid}.{ln}\", pid, ln, \"P\", \"0\", words, ln == 0, False))\n        result.append(p)\n    return result\n\n\ndef shuffled(pages, seed):\n    rng = Random(seed)\n    result = copy.deepcopy(pages)\n    for original, p in zip(pages, result):\n        words = [w for line in p.lines for w in line.words]\n        original_counts = Counter(words)\n        rng.shuffle(words)\n        index = 0\n        for line in p.lines:\n            n = len(line.words)\n            line.words = words[index:index+n]\n            index += n\n        assert Counter(w for line in p.lines for w in line.words) == original_counts\n        assert [len(line.words) for line in p.lines] == [len(line.words) for line in original.lines]\n    return result\n\n\ndef control(kind):\n    tr = pages(kind, 10, 14040, \"synthetic-train-\")\n    ev = pages(kind, 4, 14041, \"synthetic-eval-\")\n    plain = {\"components\": [{\"type\": \"letters\", \"order\": 3}], \"weights\": \"fit\"}\n    contextual = {\"components\": plain[\"components\"] + [{\"type\": kind + \"_letters\", \"order\": 3}], \"weights\": \"fit\"}\n    result = {}\n    for label, train, evaluation in ((\"planted\", tr, ev),\n                                      (\"matched_null\", shuffled(tr, 14042), shuffled(ev, 14043))):\n        baseline = models.evaluate(plain, train, evaluation)\n        candidate = models.evaluate(contextual, train, evaluation)\n        result[label] = {\"baseline\": baseline, \"contextual\": candidate,\n                         \"gain_bits_per_word\": round(baseline[\"bits_per_word\"] - candidate[\"bits_per_word\"], 4)}\n    return result\n\n\nverify()\nfor kind in (\"boundary\", \"position\"):\n    result = control(kind)\n    report[\"controls\"][kind] = result\n    save()\n    print(json.dumps({\"control\": kind, \"results\": result}), flush=True)\n    threshold = .4 if kind == \"boundary\" else .05\n    if result[\"planted\"][\"gain_bits_per_word\"] < threshold or result[\"matched_null\"][\"gain_bits_per_word\"] > .05:\n        raise SystemExit(\"A frozen illustrative control failed; manuscript comparison not started.\")\n\nprint(\"Synthetic controls passed; running the official full-model practice advisory.\", flush=True)\ncompleted = subprocess.run([sys.executable, \"-X\", \"utf8\", \"-m\", \"vs\", \"experiment\", str(directory)],\n                           cwd=repo, capture_output=True, text=True, encoding=\"utf-8\", check=True)\nprint(completed.stdout, end=\"\", flush=True)\nfull, _ = json.JSONDecoder().raw_decode(completed.stdout.lstrip())\nreport[\"practice\"][\"full\"] = full\nreport[\"official_advisory_stdout\"] = completed.stdout\nassert hashlib.sha256(canonical(json.loads((directory / \"model.json\").read_text(encoding=\"utf-8\")))).hexdigest() == frozen_hash\nsave()\n\ntrain, evaluation = corpus.split_pages(\"practice\")\nreport[\"scope\"] = {\"hand\": \"2\", \"training_pages\": len(models.scoped(train, frozen[\"scope\"])),\n                   \"evaluation_pages\": len(models.scoped(evaluation, frozen[\"scope\"]))}\nfor label, removed in ((\"without_boundary_letters\", {\"boundary_letters\"}),\n                       (\"without_position_letters\", {\"position_letters\"}),\n                       (\"without_both_context_spellers\", {\"boundary_letters\", \"position_letters\"})):\n    ablated = copy.deepcopy(frozen)\n    ablated[\"components\"] = [c for c in frozen[\"components\"] if c[\"type\"] not in removed]\n    result = models.evaluate(ablated, train, evaluation)\n    report[\"practice\"][label] = result\n    save()\n    print(json.dumps({\"ablation\": label, \"results\": result}), flush=True)\nprint(\"All frozen variants completed; the submitted full model remains unchanged.\", flush=True)\n"
+  }
+}
