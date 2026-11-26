@@ -1,0 +1,387 @@
+{
+  "title": "Preserve case-sensitive v101 symbols in Claston-based key tests",
+  "statement": "PR #185 already tested the published Hannig projection on Claston v101, so keep that key frozen. The current IVTFF cleaner lowercases every input, including Claston. Uppercase N therefore enters the decoder as lowercase n, even though the frozen map assigns distinct Hebrew letters. Unmapped uppercase forms can also acquire a lowercase mapping. Test the same key with and without that single coercion on the same 34 public practice pages.",
+  "program": "L1",
+  "check": "Review a GC-specific parser change that preserves source case without changing EVA callers. Add a minimal IVTFF regression fixture with distinct N and n and an EVA default-normalization test. Reproduce the paired public results before the scorer maintainer reviews which registered v101 results need a corrected held-out run. Keep conjectural contextual assignments out of the fixed-key regression.",
+  "on_path": true,
+  "hard": false,
+  "source": "Rainer Hannig, Voynich-Hebräisch: Der Weg zur Entzifferung (2020), §§ C.13 and C.15, and printed p. 37. https://www.rainer-hannig.com/voynich . The exact earlier key is https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/185 (K-hebrew-substitution-002).",
+  "findings": "The public practice pages contain 24 uppercase N and 359 lowercase n characters before folding and 383 lowercase n after it. Preserving source case changes the frozen key’s decoded word in 71 of 6,312 practice slots. The projected key still fails all five gates. Relative compression savings move from −23.036% to −23.668%. The unrelated enciphered text decoy kills the lowercased run and survives the case-preserving run. Both baselines are estimated afresh on their own training views. Current public registry v101 keys affected by the representation path are listed for review.",
+  "interpretation": "This is a public parser audit. Earlier closed-page records retain their published provenance and need an explicit maintainer decision before any repeat scoring. Separately, Hannig prints both waw and bet readings of v101 8an on f1r, a Currier A page. A blanket Currier A bet assignment would contradict some of his own examples. A faithful test of context-dependent readings would require a frozen rule and a corresponding positive control.",
+  "reproduction": "Write python to hannig_case_audit.py. From the pinned checkout run PYTHONHASHSEED=0 PYTHONPATH=. python3 hannig_case_audit.py folded folded.json, then run it with case_preserved preserved.json. The script checks that case is the only difference between parsed input word sequences and restores the ordinary parser after it builds the public views.",
+  "results": {
+    "judge_revision": "b5064c785ba9a6e9a48034d4215eab938ae401df",
+    "affected_v101_registry_keys": [
+      "K-english-substitution-004",
+      "K-italian-substitution-004",
+      "K-spanish-substitution-004",
+      "K-french-substitution-004",
+      "K-english-substitution-005",
+      "K-spanish-substitution-005",
+      "K-latin-substitution-006",
+      "K-hebrew-substitution-002"
+    ],
+    "folded": {
+      "mode": "folded",
+      "input_audit": {
+        "train": {
+          "folded_n_lower": 1504,
+          "folded_N_upper": 0,
+          "preserved_n_lower": 1397,
+          "preserved_N_upper": 107,
+          "different_decoded_words": 441,
+          "all_words": 33862,
+          "uppercase_units_raw": {
+            "A": 621,
+            "B": 4,
+            "C": 2463,
+            "D": 8,
+            "E": 47,
+            "F": 29,
+            "G": 79,
+            "H": 710,
+            "I": 88,
+            "J": 101,
+            "K": 775,
+            "L": 26,
+            "M": 152,
+            "N": 107,
+            "P": 33,
+            "Q": 23,
+            "R": 9,
+            "S": 36,
+            "T": 23,
+            "U": 30,
+            "V": 16,
+            "W": 77,
+            "X": 13,
+            "Y": 45,
+            "Z": 124
+          }
+        },
+        "practice": {
+          "folded_n_lower": 383,
+          "folded_N_upper": 0,
+          "preserved_n_lower": 359,
+          "preserved_N_upper": 24,
+          "different_decoded_words": 71,
+          "all_words": 6312,
+          "uppercase_units_raw": {
+            "A": 133,
+            "B": 2,
+            "C": 363,
+            "D": 2,
+            "E": 7,
+            "F": 6,
+            "G": 9,
+            "H": 152,
+            "I": 9,
+            "J": 20,
+            "K": 134,
+            "L": 6,
+            "M": 19,
+            "N": 24,
+            "P": 5,
+            "Q": 4,
+            "R": 2,
+            "S": 2,
+            "T": 4,
+            "U": 2,
+            "V": 7,
+            "W": 14,
+            "X": 1,
+            "Y": 10,
+            "Z": 27
+          }
+        }
+      },
+      "evaluation": {
+        "verdict": "FAIL",
+        "failed": [
+          "a_compresses",
+          "b_reads",
+          "kill_tests",
+          "c_pictures",
+          "d_not_illusion"
+        ],
+        "pages_evaluated": 34,
+        "pages_passing": 0,
+        "a_compresses": {
+          "pass": false,
+          "savings": -0.23036,
+          "baseline_bits": 71769.6,
+          "candidate_bits": 88302.4,
+          "program_bits": 794,
+          "key_bits": 944,
+          "bootstrap_lo95_bits": -20427.3,
+          "baseline": {
+            "char_kn5": 71769.62353664401,
+            "word_unigram_escape": 77098.7155571008,
+            "chosen": "char_kn5"
+          },
+          "candidate": {
+            "plaintext_model": "word_unigram_escape",
+            "plaintext_bits": 58590.3,
+            "choice_code": "adaptive_choice",
+            "choice_bits": 27974.1
+          }
+        },
+        "b_reads": {
+          "pass": false,
+          "sections": {
+            "A": {
+              "tokens": 173,
+              "judged": false
+            },
+            "B": {
+              "tokens": 951,
+              "judged": true,
+              "H": 5.7446,
+              "coverage": 0.3756,
+              "ttr": 0.4167,
+              "pass": false
+            },
+            "C": {
+              "tokens": 366,
+              "judged": true,
+              "H": 5.5913,
+              "coverage": 0.48,
+              "ttr": 0.48,
+              "pass": false
+            },
+            "H": {
+              "tokens": 1576,
+              "judged": true,
+              "H": 5.4888,
+              "coverage": 0.4613,
+              "ttr": 0.5253,
+              "pass": false
+            },
+            "P": {
+              "tokens": 295,
+              "judged": false
+            },
+            "S": {
+              "tokens": 2100,
+              "judged": true,
+              "H": 5.6215,
+              "coverage": 0.4233,
+              "ttr": 0.489,
+              "pass": false
+            },
+            "T": {
+              "tokens": 576,
+              "judged": true,
+              "H": 5.6268,
+              "coverage": 0.36,
+              "ttr": 0.4467,
+              "pass": false
+            },
+            "Z": {
+              "tokens": 216,
+              "judged": false
+            }
+          },
+          "calibration": {
+            "chunks": 214,
+            "H_max": 3.1681,
+            "cov_min": 0.7355,
+            "ttr_lo": 0.63,
+            "ttr_hi": 0.8378,
+            "H_median": 2.5878,
+            "order_gap": 2.2922
+          },
+          "output_tokens": 6253,
+          "voynich_tokens": 6312
+        },
+        "killed_by": [
+          "D1_word_order_shuffled",
+          "D2_glyphs_shuffled",
+          "D3_random_glyphs",
+          "D4_unrelated_text_enciphered"
+        ]
+      }
+    },
+    "case_preserved": {
+      "mode": "case_preserved",
+      "input_audit": {
+        "train": {
+          "folded_n_lower": 1504,
+          "folded_N_upper": 0,
+          "preserved_n_lower": 1397,
+          "preserved_N_upper": 107,
+          "different_decoded_words": 441,
+          "all_words": 33862,
+          "uppercase_units_raw": {
+            "A": 621,
+            "B": 4,
+            "C": 2463,
+            "D": 8,
+            "E": 47,
+            "F": 29,
+            "G": 79,
+            "H": 710,
+            "I": 88,
+            "J": 101,
+            "K": 775,
+            "L": 26,
+            "M": 152,
+            "N": 107,
+            "P": 33,
+            "Q": 23,
+            "R": 9,
+            "S": 36,
+            "T": 23,
+            "U": 30,
+            "V": 16,
+            "W": 77,
+            "X": 13,
+            "Y": 45,
+            "Z": 124
+          }
+        },
+        "practice": {
+          "folded_n_lower": 383,
+          "folded_N_upper": 0,
+          "preserved_n_lower": 359,
+          "preserved_N_upper": 24,
+          "different_decoded_words": 71,
+          "all_words": 6312,
+          "uppercase_units_raw": {
+            "A": 133,
+            "B": 2,
+            "C": 363,
+            "D": 2,
+            "E": 7,
+            "F": 6,
+            "G": 9,
+            "H": 152,
+            "I": 9,
+            "J": 20,
+            "K": 134,
+            "L": 6,
+            "M": 19,
+            "N": 24,
+            "P": 5,
+            "Q": 4,
+            "R": 2,
+            "S": 2,
+            "T": 4,
+            "U": 2,
+            "V": 7,
+            "W": 14,
+            "X": 1,
+            "Y": 10,
+            "Z": 27
+          }
+        }
+      },
+      "evaluation": {
+        "verdict": "FAIL",
+        "failed": [
+          "a_compresses",
+          "b_reads",
+          "kill_tests",
+          "c_pictures",
+          "d_not_illusion"
+        ],
+        "pages_evaluated": 34,
+        "pages_passing": 0,
+        "a_compresses": {
+          "pass": false,
+          "savings": -0.23668,
+          "baseline_bits": 75272.8,
+          "candidate_bits": 93088.4,
+          "program_bits": 794,
+          "key_bits": 944,
+          "bootstrap_lo95_bits": -22129.7,
+          "baseline": {
+            "char_kn5": 75272.84757796931,
+            "word_unigram_escape": 80829.85387333973,
+            "chosen": "char_kn5"
+          },
+          "candidate": {
+            "plaintext_model": "word_unigram_escape",
+            "plaintext_bits": 58675.2,
+            "choice_code": "adaptive_choice",
+            "choice_bits": 32675.2
+          }
+        },
+        "b_reads": {
+          "pass": false,
+          "sections": {
+            "A": {
+              "tokens": 173,
+              "judged": false
+            },
+            "B": {
+              "tokens": 950,
+              "judged": true,
+              "H": 5.7483,
+              "coverage": 0.3756,
+              "ttr": 0.4167,
+              "pass": false
+            },
+            "C": {
+              "tokens": 366,
+              "judged": true,
+              "H": 5.6026,
+              "coverage": 0.48,
+              "ttr": 0.48,
+              "pass": false
+            },
+            "H": {
+              "tokens": 1575,
+              "judged": true,
+              "H": 5.4874,
+              "coverage": 0.4607,
+              "ttr": 0.524,
+              "pass": false
+            },
+            "P": {
+              "tokens": 295,
+              "judged": false
+            },
+            "S": {
+              "tokens": 2098,
+              "judged": true,
+              "H": 5.6395,
+              "coverage": 0.42,
+              "ttr": 0.4811,
+              "pass": false
+            },
+            "T": {
+              "tokens": 576,
+              "judged": true,
+              "H": 5.6379,
+              "coverage": 0.36,
+              "ttr": 0.45,
+              "pass": false
+            },
+            "Z": {
+              "tokens": 216,
+              "judged": false
+            }
+          },
+          "calibration": {
+            "chunks": 214,
+            "H_max": 3.1681,
+            "cov_min": 0.7355,
+            "ttr_lo": 0.63,
+            "ttr_hi": 0.8378,
+            "H_median": 2.5878,
+            "order_gap": 2.2922
+          },
+          "output_tokens": 6249,
+          "voynich_tokens": 6312
+        },
+        "killed_by": [
+          "D1_word_order_shuffled",
+          "D2_glyphs_shuffled",
+          "D3_random_glyphs"
+        ]
+      }
+    }
+  },
+  "python": "\"\"\"Compare the registered Hannig key on standard and case-preserving public GC input.\"\"\"\n\nfrom collections import Counter\nimport inspect\nimport json\nfrom pathlib import Path\nimport re\nimport sys\n\nfrom vs import corpus, ivtff, judge, models, views\nfrom vs.families.substitution import decode_word\n\n\ndef preserving_cleaner():\n    source = inspect.getsource(ivtff.clean_text)\n    needle = '    s = s.lower()\\n'\n    assert source.count(needle) == 1\n    namespace = {'re': re}\n    exec(compile(source.replace(needle, ''), '<case-preserving-IVTFF>', 'exec'), namespace)\n    return namespace['clean_text']\n\n\ndef character_counts(pages):\n    return Counter(char for page in pages for line in page.lines for word in line.words for char in word)\n\n\ndef words_by_line(pages):\n    return {line.id: line.words for page in pages for line in page.lines}\n\n\ndef coverage_report(prior, preserved, key):\n    folded = words_by_line(prior)\n    original = words_by_line(preserved)\n    assert original.keys() == folded.keys()\n    assert all([word.lower() for word in words] == folded[locus] for locus, words in original.items())\n    standard = character_counts(prior)\n    raw = character_counts(preserved)\n\n    def decoded(word):\n        return decode_word(word, key['key'], lambda word: ivtff.segment(word, 'eva-raw'))\n\n    return {\n        'folded_n_lower': standard['n'],\n        'folded_N_upper': standard['N'],\n        'preserved_n_lower': raw['n'],\n        'preserved_N_upper': raw['N'],\n        'different_decoded_words': sum(\n            decoded(left) != decoded(right)\n            for locus, words in original.items() for left, right in zip(words, folded[locus], strict=True)\n        ),\n        'all_words': sum(map(len, original.values())),\n        'uppercase_units_raw': {char: count for char, count in sorted(raw.items()) if char.isupper()},\n    }\n\n\ndef public_report(key, train, practice):\n    train = views.apply(models.scoped(train, key.get('scope')), key)\n    practice = views.apply(models.scoped(practice, key.get('scope')), key)\n    r = judge.evaluate(key, train, practice, 'practice')\n    return {\n        'verdict': r['verdict'],\n        'failed': r['failed'],\n        'pages_evaluated': r['pages_evaluated'],\n        'pages_passing': r['pages_passing'],\n        'a_compresses': r['a_compresses'],\n        'b_reads': r['b_reads'],\n        'killed_by': [name for name, row in r['kill_tests']['decoys'].items() if row['killed']],\n    }\n\n\ndef main():\n    mode, output = sys.argv[1:3]\n    key = judge.load_key('experiments/K-019-open-1/fleet-corpora/key.json')\n    assert key['transliteration'] == 'gc'\n    views.check(key)\n    folded = corpus.split_pages('practice', 'gc')\n    cleaner = preserving_cleaner()\n    assert ivtff.clean_text('a.N.n')[0] == ['a', 'n', 'n']\n    assert cleaner('a.N.n')[0] == ['a', 'N', 'n']\n    stock = ivtff.clean_text\n    try:\n        ivtff.clean_text = cleaner\n        corpus.pages.cache_clear()\n        preserved = corpus.split_pages('practice', 'gc')\n    finally:\n        ivtff.clean_text = stock\n        corpus.pages.cache_clear()\n    coverage = {split: coverage_report(fold, raw, key) for split, fold, raw in zip(('train', 'practice'), folded, preserved)}\n    print(mode, coverage['practice'], flush=True)\n    report = public_report(key, *(preserved if mode == 'case_preserved' else folded))\n    summary = {'mode': mode, 'input_audit': coverage, 'evaluation': report}\n    Path(output).write_text(json.dumps(summary, indent=2, ensure_ascii=False) + '\\n')\n    print(report['verdict'], report['failed'], report['a_compresses']['savings'], flush=True)\n\n\nif __name__ == '__main__':\n    main()\n"
+}
