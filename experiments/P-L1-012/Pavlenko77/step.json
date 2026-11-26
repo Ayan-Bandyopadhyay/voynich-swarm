@@ -110,5 +110,211 @@
       "original_triplet.py": "\"\"\"Public calibration of Matlach et al.'s eight-rule triplet score.\"\"\"\nimport json\nimport math\nimport random\nfrom bisect import bisect_right\nfrom collections import Counter, defaultdict\nfrom itertools import product\n\nfrom vs import corpus, refcorpus\n\nPROPORTION = 500 / 229431\nWEIGHTS = (1, 100, 1, 1, 100, 1, 1, 10)\nTHRESHOLD = 0.05\nLIMIT = 40000\nCONTRASTS = {\n    'english': [('th', 'to'), ('ea', 'er')],\n    'latin': [('en', 'es'), ('pa', 'pe')],\n    'italian': [('ch', 'co'), ('de', 'di')],\n}\nRATES = ((1, 4), (1, 2), (1, 1))\nDRAFT_TRIPLETS = [('m','i','d'),('q','i','e'),('f','i','d'),('n','i',' '),('g','c','d')]\n\n\ndef glyph_counts(text):\n    return Counter(text), Counter(zip(text, text[1:]))\n\n\ndef correlation(x, y):\n    n = len(x)\n    if n < 2:\n        return 0.0\n    mx, my = sum(x) / n, sum(y) / n\n    xv = [a - mx for a in x]\n    yv = [b - my for b in y]\n    den = math.sqrt(sum(a*a for a in xv) * sum(b*b for b in yv))\n    return min(1.0, abs(sum(a*b for a,b in zip(xv,yv)) / den)) if den else 0.0\n\n\nclass Score:\n    def __init__(self, text, *, single_context_loss=0.0):\n        count, raw = glyph_counts(text)\n        rows, cols = Counter(), Counter()\n        for (a, b), n in raw.items():\n            rows[a] += n\n            cols[b] += n\n        kept = {pair: n for pair,n in raw.items()\n                if 500*n >= rows[pair[0]] and 500*n >= cols[pair[1]]}\n        self.p = {s: n / len(text) for s,n in count.items()}\n        self.m = {edge: n / (len(text)-1) for edge,n in kept.items()}\n        self.max_p = max(self.p.values())\n        self.max_m = max(self.m.values())\n        self.max_diag = max((value for (a,b),value in self.m.items() if a == b), default=1.0)\n        self.alphabet = sorted(s for s,p in self.p.items() if s != ' ' and p > PROPORTION)\n        self.context = {}\n        self.context_sizes = {}\n        for c,a in product(count, repeat=2):\n            less, more = (a,c) if self.p[a] < self.p[c] else (c,a)\n            order = [s for s in sorted(count) if (s,less) in self.m]\n            rare = [self.m[s,less] for s in order]\n            common = [self.m.get((s,more),0.0) for s in order]\n            match = sum(r for r,v in zip(rare,common) if v)\n            miss = sum(r for r,v in zip(rare,common) if not v)\n            size = len(order)\n            distribution = 1.0-correlation(rare,common) if size >= 2 else single_context_loss if size else 0.0\n            self.context[c,a] = (match, miss, distribution)\n            self.context_sizes[c,a] = size\n\n    def losses(self, c,a,b, version):\n        pc, pa, pb = self.p[c], self.p[a], self.p[b]\n        matched, unmatched, distribution = self.context[c,a]\n        return (\n            max(0.0, pc-max(pa,pb))/self.max_p,\n            self.m.get((a,b),0.0)/self.max_m,\n            matched if version == 'literal' else unmatched,\n            distribution,\n            self.m.get((c,c),0.0)/self.max_diag,\n            (1-min(pa,pb))/self.max_p if version == 'literal' else 1-min(pa,pb)/self.max_p,\n            pc/((pa+pc)*(pb+pc)),\n            float(a==b),\n        )\n\n    def total(self, triplet, version):\n        return sum(w*x for w,x in zip(WEIGHTS,self.losses(*triplet,version)))\n\n    def ranker(self, version):\n        scores = sorted(self.total((c,a,b),version)\n                        for c,a,b in product(self.alphabet, repeat=3) if c not in (a,b))\n\n        def rank(triplet):\n            if not all(s in self.p for s in triplet):\n                return None\n            t = self.total(triplet,version)\n            return {\n                'rank': bisect_right(scores,t)/len(scores),\n                'loss': t,\n                'competing': all(s in self.alphabet for s in triplet),\n                'loss_left_context_rules': list(self.losses(*triplet,version)[2:4]),\n                'rarer_left_contexts': self.context_sizes[triplet[0],triplet[1]],\n            }\n\n        return rank\n\n\ndef start_positions(text, first, second, by_left):\n    groups = defaultdict(lambda: ([], []))\n    offset = 0\n    for word in text.split(' '):\n        for i in range(len(word)-1):\n            couple = word[i:i+2]\n            if couple in (first,second):\n                # Share a word-initial/medial and a word-final/medial position class.\n                key = (i == 0, i+2 == len(word))\n                if by_left:\n                    key += (word[i-1] if i else ' ',)\n                groups[key][couple == second].append(offset+i)\n        offset += len(word)+1\n    return groups\n\n\ndef paired_positions(text, target, decoy, by_left, seed):\n    groups = start_positions(text, target, decoy, by_left)\n    rng = random.Random(seed)\n    occupied = set()\n    paired = []\n    for key,(left,right) in sorted(groups.items()):\n        rng.shuffle(left)\n        rng.shuffle(right)\n        for i,j in zip(left,right):\n            # Each edit consumes i and i+1 and must have an unedited neighbor.\n            if abs(i-j) < 3 or i in occupied or j in occupied:\n                continue\n            occupied.update(range(i-2,i+3))\n            occupied.update(range(j-2,j+3))\n            paired.append((i,j))\n    rng.shuffle(paired)\n    return paired\n\n\ndef encode(text, pairs):\n    edits = sorted([(i,'X') for i,j in pairs] + [(j,'Z') for i,j in pairs])\n    fragments = []\n    after = 0\n    for start, symbol in edits:\n        fragments.extend((text[after:start],symbol))\n        after = start+2\n    fragments.append(text[after:])\n    return ''.join(fragments)\n\n\ndef euler_surrogate(text, seed):\n    outgoing = defaultdict(list)\n    for a,b in zip(text,text[1:]):\n        outgoing[a].append(b)\n    rng = random.Random(seed)\n    for a in sorted(outgoing):\n        rng.shuffle(outgoing[a])\n    stack = [text[0]]\n    path = []\n    while stack:\n        v = stack[-1]\n        if outgoing[v]:\n            stack.append(outgoing[v].pop())\n        else:\n            path.append(stack.pop())\n    result = ''.join(reversed(path))\n    assert len(result) == len(text)\n    assert glyph_counts(result) == glyph_counts(text)\n    return result\n\n\ndef fixed_match_tests():\n    rows = []\n    euler = []\n    for lang, contrasts in CONTRASTS.items():\n        for partition, loader in (('train',refcorpus.train_text),('control',refcorpus.control_text)):\n            text = (' ' + ' '.join(loader(lang))[:LIMIT].rsplit(' ',1)[0] + ' ')\n            for index,(target,decoy) in enumerate(contrasts):\n                for match in ('word_slots','word_slots_and_left'):\n                    paired = paired_positions(text,target,decoy,match == 'word_slots_and_left',9141+index)\n                    for num,den in RATES:\n                        used = paired[:len(paired)*num//den]\n                        if not used:\n                            continue\n                        trial_text = encode(text,used)\n                        count, bigrams = glyph_counts(trial_text)\n                        assert count['X'] == count['Z'] == len(used)\n                        assert bigrams['X','X'] == bigrams['Z','Z'] == 0\n                        incoming_delta = sum(abs(bigrams[s,'X']-bigrams[s,'Z']) for s in count)\n                        outgoing_delta = sum(abs(bigrams['X',s]-bigrams['Z',s]) for s in count)\n                        if match == 'word_slots_and_left':\n                            assert incoming_delta == 0\n                        calculator = Score(trial_text)\n                        row = {\n                            'language':lang, 'partition':partition, 'target':target, 'decoy':decoy,\n                            'matching':match, 'fraction_of_matched_pool':num/den, 'n_pairs':len(used),\n                            'pool':len(paired), 'source_target_occurrences':text.count(target),\n                            'source_decoy_occurrences':text.count(decoy), 'characters':len(trial_text),\n                            'incoming_count_L1':incoming_delta, 'outgoing_count_L1':outgoing_delta,\n                            'scores':{},\n                        }\n                        for version in ('literal','prose'):\n                            ranks = calculator.ranker(version)\n                            paired_scores = {symbol:ranks((symbol,*target)) for symbol in ('X','Z')}\n                            if match == 'word_slots_and_left':\n                                assert paired_scores['X'] == paired_scores['Z']\n                            row['scores'][version] = paired_scores\n                        rows.append(row)\n                        if partition == 'control' and num == den and index == 0 and match == 'word_slots':\n                            surrogate = euler_surrogate(trial_text,7073)\n                            comparator = Score(surrogate)\n                            for version in ('literal','prose'):\n                                original = calculator.ranker(version)\n                                new = comparator.ranker(version)\n                                assert original(('X',*target)) == new(('X',*target))\n                                losses = [calculator.total(t,version) for t in product(calculator.alphabet,repeat=3)\n                                          if t[0] not in t[1:]]\n                                other = [comparator.total(t,version) for t in product(comparator.alphabet,repeat=3)\n                                         if t[0] not in t[1:]]\n                                assert losses == other\n                            euler.append({'language':lang,'target':target, 'identical_triplet_losses':len(losses),\n                                          'fraction_changed_slots':sum(x!=y for x,y in zip(trial_text,surrogate))/len(trial_text),\n                                          'length':len(trial_text)})\n    return rows,euler\n\n\ndef manuscript():\n    out = {}\n    for name in ('zl','it'):\n        partitions = {}\n        for part,pages in zip(('train','evaluation'),corpus.split_pages('practice',name)):\n            text = ' '.join(word for page in pages for line in page.lines if line.unit == 'P'\n                            for word in line.words if word.isascii() and word.isalpha())\n            options = {}\n            for single_loss in (0.0,1.0):\n                calc = Score(text,single_context_loss=single_loss)\n                versions = {}\n                for version in ('literal','prose'):\n                    lookup = calc.ranker(version)\n                    versions[version] = {'|'.join(t):lookup(t) for t in DRAFT_TRIPLETS}\n                options[str(single_loss)] = versions\n            partitions[part] = {'length':len(text), 'singleton_context_loss':options}\n        out[name] = partitions\n    return out\n\n\ndef clean_lines(pages):\n    return [' '.join(word for word in line.words if word.isascii() and word.isalpha())\n            for page in pages for line in page.lines if line.unit == 'P']\n\n\ndef stationary_chain():\n    results = {}\n    for edition in ('zl','it'):\n        train,test = corpus.split_pages('practice',edition)\n        source = [line for line in clean_lines(train) if line]\n        lengths = [len(line) for line in clean_lines(test) if line]\n        starts = [line[0] for line in source]\n        outgoing = defaultdict(list)\n        for line in source:\n            for a,b in zip(line,line[1:]):\n                outgoing[a].append(b)\n        end_neighbors = {a:[b for b in next_symbols if b != ' ']\n                         for a,next_symbols in outgoing.items()}\n        cases = []\n        for seed in range(7810,7816):\n            rng = random.Random(seed)\n            lines = []\n            for length in lengths:\n                glyphs = [rng.choice(starts)]\n                for i in range(1,length):\n                    table = end_neighbors if i == length-1 else outgoing\n                    glyphs.append(rng.choice(table.get(glyphs[-1]) or starts))\n                lines.append(''.join(glyphs))\n            assert [len(line) for line in lines] == lengths\n            text = ' '.join(lines)\n            assert '  ' not in text\n            calc = Score(text)\n            measurements = {}\n            for version in ('literal','prose'):\n                rank = calc.ranker(version)\n                measurements[version] = {'|'.join(t):rank(t) for t in DRAFT_TRIPLETS}\n            cases.append({'seed':seed,'length':len(text),'measurements':measurements})\n        results[edition] = cases\n    return results\n\n\ndef summarize(rows):\n    summary = {}\n    for name in ('word_slots','word_slots_and_left'):\n        group = [r for r in rows if r['matching'] == name]\n        by_version = {}\n        for version in ('literal','prose'):\n            counts = {}\n            for fraction in (0.25,0.5,1.0):\n                candidates = [row['scores'][version] for row in group if row['fraction_of_matched_pool'] == fraction]\n                eligible = [pair for pair in candidates if pair['X']['competing'] and pair['Z']['competing']]\n                tally = Counter()\n                for pair in eligible:\n                    x,z = pair['X'],pair['Z']\n                    tally['genuine_lower' if x['loss'] < z['loss']-1e-12 else\n                          'decoy_lower' if z['loss'] < x['loss']-1e-12 else 'tied'] += 1\n                    tally['both_below_5pct'] += x['rank'] <= THRESHOLD and z['rank'] <= THRESHOLD\n                    tally['genuine_below_5pct'] += x['rank'] <= THRESHOLD\n                counts[fraction] = {'eligible':len(eligible),'all':len(candidates),**tally}\n            by_version[version] = counts\n        summary[name] = by_version\n    return summary\n\n\nif __name__ == '__main__':\n    pairs,exact_bigrams = fixed_match_tests()\n    print(json.dumps({'summary':summarize(pairs),'same_bigram_surrogates':exact_bigrams,\n                      'manuscript':manuscript(),'stationary_chain':stationary_chain(),'paired_runs':pairs}, indent=2))\n"
     },
     "plan_json_bytes": "{\n  \"created_utc\": \"2026-11-26T17:00:35.209384+00:00\",\n  \"task\": \"P-L1-012\",\n  \"version\": \"right-context-v1\",\n  \"hypothesis\": \"Adding candidate right-context similarity to the proposed second component improves genuine-versus-decoy discrimination under matched immediate left contexts.\",\n  \"scores\": {\n    \"left_js\": \"JSD(P(previous|C), P(previous|A))\",\n    \"bilateral_js\": \"(JSD(P(previous|C), P(previous|A)) + JSD(P(next|C), P(next|B)))/2\",\n    \"eight_rule_prose\": \"Previous P-L1-007 eight-rule prose implementation, unchanged; raw loss, not its original rank percentile.\"\n  },\n  \"js_definition\": \"Equal-weight Jensen-Shannon divergence, log base 2, sum only nonzero probability terms, no smoothing, raw adjacency counts including spaces. Requires nonempty distributions; singleton distributions are valid.\",\n  \"contrasts\": {\n    \"english\": [\n      [\n        \"in\",\n        \"is\"\n      ],\n      [\n        \"an\",\n        \"at\"\n      ]\n    ],\n    \"latin\": [\n      [\n        \"re\",\n        \"ra\"\n      ],\n      [\n        \"us\",\n        \"um\"\n      ]\n    ],\n    \"italian\": [\n      [\n        \"la\",\n        \"le\"\n      ],\n      [\n        \"ra\",\n        \"ri\"\n      ]\n    ]\n  },\n  \"partitioning\": \"Calibration: first 40000 characters from refcorpus.calib_text, drop final partial word. Evaluation: refcorpus.control_text beginning at character 40000, drop first partial word, take at most 40000 further characters and drop final partial word. Surround each text with a space. These control blocks follow the prefix used in the earlier audit.\",\n  \"pairing\": \"Find target AB and decoy AD in words. Match word-initial and word-final position flags. Additional modes match previous glyph (left) or previous and next glyph (both). Shuffle groups and pair lists with each fixed seed. Accept edits only when starts differ by at least 3 and are not within 2 positions of a previous accepted start. Replace the target by X and decoy by Z in one shared text.\",\n  \"matching_modes\": [\n    \"slots\",\n    \"left\",\n    \"both\"\n  ],\n  \"fractions\": [\n    0.5,\n    1.0\n  ],\n  \"seeds\": [\n    58471,\n    58477,\n    58481,\n    58487,\n    58493\n  ],\n  \"eligibility\": \"At least 40 occurrences of each engineered candidate and each proposed component A,B in the encoded text; nonempty incoming/outgoing distributions. No minimum distinct-context count. Report excluded conditions.\",\n  \"primary_condition\": {\n    \"matching\": \"left\",\n    \"fraction\": 1.0\n  },\n  \"paired_comparison\": \"A genuine win means score(X,A,B) < score(Z,A,B) - 1e-12. Reverse inequality is a decoy win; otherwise tie. Report by language and contrast; seeds are robustness replicates, not independent samples.\",\n  \"threshold\": \"For each score, pool eligible calibration primary-condition decoy losses. Sort n losses; set cutoff to loss at zero-based index floor(0.05*n). Accept only loss < cutoff - 1e-12. This attains at most 5% empirical calibration decoy acceptance, allowing ties. Freeze cutoff file and its digest in the public branch before evaluating controls. If no eligible calibration negatives exist, report unavailable and do not improvise.\",\n  \"negative_controls\": \"On untouched evaluation streams and 20 new direct-emission first-order character chains per language, score every letter C not A or B with at least 40 occurrences, using the same fixed components and cutoff. Fit chains on the first 40000 complete-word characters of refcorpus.train_text. Emit exactly 40000 glyphs from one table with sampled starts; end on a nonspace glyph. Each case has no pair-fusion operation. Report candidate-level counts and sample-level any-acceptance separately; samples/contrasts share data.\",\n  \"chain_seeds\": [\n    68001,\n    68002,\n    68003,\n    68004,\n    68005,\n    68006,\n    68007,\n    68008,\n    68009,\n    68010,\n    68011,\n    68012,\n    68013,\n    68014,\n    68015,\n    68016,\n    68017,\n    68018,\n    68019,\n    68020\n  ],\n  \"manuscript_gate\": \"Do not evaluate manuscript candidate triplets in this experiment. A positive result on these selected controls would still need new language/text and scan validation.\",\n  \"stop_rule\": \"No weight, contrast, seed, cutoff rule, sample window, support or matching change after observing outcome. Bugs require a documented amendment and a new plan hash.\",\n  \"sources\": [\n    \"https://doi.org/10.1371/journal.pone.0260948\",\n    \"https://doi.org/10.1109/18.61115\"\n  ]\n}"
+  },
+  "preregistration_commit": "90cb8699b6a904bd283ec7f41319212ea6237e99",
+  "calibration_frozen_before_evaluation": {
+    "sha256": "ef6066782343f46d05684ee1df3a13f8ef8761e27c5d6f3e19fa5477bba952d6",
+    "thresholds": {
+      "left_js": 0.08769798134517912,
+      "bilateral_js": 0.13251493881410006,
+      "eight_rule_prose": 12.29189145471071
+    },
+    "negative_count": 30,
+    "summary": [
+      {
+        "mode": "slots",
+        "fraction": 0.5,
+        "attempted": 30,
+        "eligible": 30,
+        "methods": {
+          "left_js": {
+            "genuine_win": 8,
+            "decoy_win": 22,
+            "tie": 0,
+            "accepted_X": 0,
+            "accepted_Z": 6
+          },
+          "bilateral_js": {
+            "genuine_win": 22,
+            "decoy_win": 8,
+            "tie": 0,
+            "accepted_X": 5,
+            "accepted_Z": 4
+          },
+          "eight_rule_prose": {
+            "genuine_win": 9,
+            "decoy_win": 21,
+            "tie": 0,
+            "accepted_X": 0,
+            "accepted_Z": 0
+          }
+        }
+      },
+      {
+        "mode": "slots",
+        "fraction": 1.0,
+        "attempted": 30,
+        "eligible": 30,
+        "methods": {
+          "left_js": {
+            "genuine_win": 8,
+            "decoy_win": 22,
+            "tie": 0,
+            "accepted_X": 0,
+            "accepted_Z": 5
+          },
+          "bilateral_js": {
+            "genuine_win": 20,
+            "decoy_win": 10,
+            "tie": 0,
+            "accepted_X": 7,
+            "accepted_Z": 4
+          },
+          "eight_rule_prose": {
+            "genuine_win": 13,
+            "decoy_win": 17,
+            "tie": 0,
+            "accepted_X": 10,
+            "accepted_Z": 10
+          }
+        }
+      },
+      {
+        "mode": "left",
+        "fraction": 0.5,
+        "attempted": 30,
+        "eligible": 30,
+        "methods": {
+          "left_js": {
+            "genuine_win": 0,
+            "decoy_win": 0,
+            "tie": 30,
+            "accepted_X": 4,
+            "accepted_Z": 4
+          },
+          "bilateral_js": {
+            "genuine_win": 30,
+            "decoy_win": 0,
+            "tie": 0,
+            "accepted_X": 14,
+            "accepted_Z": 0
+          },
+          "eight_rule_prose": {
+            "genuine_win": 0,
+            "decoy_win": 0,
+            "tie": 30,
+            "accepted_X": 0,
+            "accepted_Z": 0
+          }
+        }
+      },
+      {
+        "mode": "left",
+        "fraction": 1.0,
+        "attempted": 30,
+        "eligible": 30,
+        "methods": {
+          "left_js": {
+            "genuine_win": 0,
+            "decoy_win": 0,
+            "tie": 30,
+            "accepted_X": 0,
+            "accepted_Z": 0
+          },
+          "bilateral_js": {
+            "genuine_win": 30,
+            "decoy_win": 0,
+            "tie": 0,
+            "accepted_X": 15,
+            "accepted_Z": 1
+          },
+          "eight_rule_prose": {
+            "genuine_win": 0,
+            "decoy_win": 0,
+            "tie": 30,
+            "accepted_X": 0,
+            "accepted_Z": 0
+          }
+        }
+      },
+      {
+        "mode": "both",
+        "fraction": 0.5,
+        "attempted": 30,
+        "eligible": 25,
+        "methods": {
+          "left_js": {
+            "genuine_win": 0,
+            "decoy_win": 0,
+            "tie": 25,
+            "accepted_X": 0,
+            "accepted_Z": 0
+          },
+          "bilateral_js": {
+            "genuine_win": 0,
+            "decoy_win": 0,
+            "tie": 25,
+            "accepted_X": 1,
+            "accepted_Z": 1
+          },
+          "eight_rule_prose": {
+            "genuine_win": 0,
+            "decoy_win": 0,
+            "tie": 25,
+            "accepted_X": 0,
+            "accepted_Z": 0
+          }
+        }
+      },
+      {
+        "mode": "both",
+        "fraction": 1.0,
+        "attempted": 30,
+        "eligible": 30,
+        "methods": {
+          "left_js": {
+            "genuine_win": 0,
+            "decoy_win": 0,
+            "tie": 30,
+            "accepted_X": 0,
+            "accepted_Z": 0
+          },
+          "bilateral_js": {
+            "genuine_win": 0,
+            "decoy_win": 0,
+            "tie": 30,
+            "accepted_X": 0,
+            "accepted_Z": 0
+          },
+          "eight_rule_prose": {
+            "genuine_win": 0,
+            "decoy_win": 0,
+            "tie": 30,
+            "accepted_X": 0,
+            "accepted_Z": 0
+          }
+        }
+      }
+    ],
+    "source_hashes": [
+      {
+        "language": "english",
+        "partition": "calibration",
+        "characters": 39994,
+        "sha256": "0e6cb7e0a83007e9a310dac9c0b4a4ebc4fe4ed212d0948778f70e240e245150"
+      },
+      {
+        "language": "latin",
+        "partition": "calibration",
+        "characters": 39998,
+        "sha256": "ce2675efd31879802bec8143d07cfcb4c98e5426817c82a425d68e76d7823583"
+      },
+      {
+        "language": "italian",
+        "partition": "calibration",
+        "characters": 39997,
+        "sha256": "0c0a2b6767f8d035e4020949e45ac1787d2e38fb8d8ad56f64b02b8a30972463"
+      }
+    ]
   }
 }
