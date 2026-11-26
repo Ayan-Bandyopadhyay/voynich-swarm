@@ -1,0 +1,234 @@
+{
+  "folio": "f102v2",
+  "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006252",
+  "blind": true,
+  "statement": "The observation uses the Yale scan of this panel of the foldout and the pinned ZL locus headers. Numbering runs left to right within the upper, middle and lower groups. The upper vessel is drawn as a continuous object with two labelled fields, so the entry uses the first locus f102v2.1, followed by continuation f102v2.2. The long horizontal ochre drawing below the middle group has an uncertain attachment at the stain and is recorded separately. A stain and wear obscure the surroundings of the lower-right drawing, leaving the association of f102v2.29 unresolved. Colours describe visible paint.",
+  "objects": [
+    {
+      "id": "upper-jar",
+      "kind": "jar",
+      "features": {
+        "colour": "blue and cream",
+        "shape": "tall compound vessel with a short top cylinder and a lower pedestal",
+        "mouth": "oval",
+        "decoration": "narrow blue bands around pale ribbed rings and a row of small circles",
+        "base": "flared pale bell-shaped foot attached by a narrow blue stem"
+      },
+      "label": "f102v2.1"
+    },
+    {
+      "id": "upper-1",
+      "kind": "leaf",
+      "features": {
+        "colour": "dark olive-green",
+        "leaf_shape": "small asymmetric blade tapering to the base, with one rounded lateral lobe",
+        "stem": "long and very thin"
+      },
+      "label": "f102v2.3"
+    },
+    {
+      "id": "upper-2",
+      "kind": "leaf",
+      "features": {
+        "colour": "green",
+        "leaf_shape": "narrow upright blade with a curved tip and one broad projection on the right",
+        "stem": "thin and angled towards the left"
+      },
+      "label": "f102v2.4"
+    },
+    {
+      "id": "upper-3",
+      "kind": "plant_part",
+      "features": {
+        "colour": "green and ochre",
+        "leaf_shape": "broad curved blade with rounded projections and a hooked tip",
+        "root_form": "short thick tapered ochre portion below the blade"
+      },
+      "label": "f102v2.5"
+    },
+    {
+      "id": "upper-4",
+      "kind": "plant_part",
+      "features": {
+        "colour": "blue",
+        "shape": "small tilted angular piece with a pale border and dark blue interior",
+        "attachment": "isolated outline"
+      },
+      "label": "f102v2.6"
+    },
+    {
+      "id": "upper-5",
+      "kind": "leaf",
+      "features": {
+        "colour": "green",
+        "leaf_shape": "oblique oblong blade with several long narrow pointed teeth",
+        "stem": "short curved reddish stalk extending to the left"
+      },
+      "label": "f102v2.7"
+    },
+    {
+      "id": "upper-6",
+      "kind": "leaf",
+      "features": {
+        "colour": "green",
+        "leaf_shape": "broad asymmetrical blade with a rounded high lobe, a sharp opposite shoulder and a deep notch",
+        "stem": "long ochre stalk bending leftward"
+      },
+      "label": "f102v2.8"
+    },
+    {
+      "id": "upper-7",
+      "kind": "leaf",
+      "features": {
+        "colour": "green",
+        "leaf_shape": "elongate blade with deep rounded lobes and a narrow base",
+        "stem": "short reddish stalk angled down and left"
+      },
+      "label": "f102v2.9"
+    },
+    {
+      "id": "middle-1",
+      "kind": "plant_part",
+      "features": {
+        "colour": "ochre",
+        "shape": "slanting frayed fragment with a wide base and several thin pointed projections",
+        "orientation": "upper tips directed right"
+      },
+      "label": "f102v2.10"
+    },
+    {
+      "id": "middle-2",
+      "kind": "leaf",
+      "features": {
+        "colour": "green",
+        "leaf_shape": "oblong comb with a curved underside and several blunt upright lobes",
+        "stem": "short red-brown taper at the lower left"
+      },
+      "label": "f102v2.11"
+    },
+    {
+      "id": "middle-3",
+      "kind": "plant_part",
+      "features": {
+        "colour": "dark blue",
+        "shape": "broad comb-like blade with several tall pointed teeth and one rightward pointed tip",
+        "stem": "short bent reddish taper on the left"
+      },
+      "label": "f102v2.12"
+    },
+    {
+      "id": "middle-4",
+      "kind": "leaf",
+      "features": {
+        "colour": "green",
+        "leaf_shape": "narrow upright sprig with three principal pointed serrated branches",
+        "stem": "pale base with diverging thin lines"
+      },
+      "label": "f102v2.13"
+    },
+    {
+      "id": "middle-5",
+      "kind": "leaf",
+      "features": {
+        "colour": "green",
+        "leaf_shape": "small deeply divided outline with clusters of rounded lobes",
+        "stem": "long slender curving stalk descending to the left"
+      },
+      "label": "f102v2.14"
+    },
+    {
+      "id": "middle-6",
+      "kind": "leaf",
+      "features": {
+        "colour": "green",
+        "leaf_shape": "large broad blade with deeply separated rounded lobes and a doubly outlined edge",
+        "stem": "ochre stalk curving to the left"
+      },
+      "label": "f102v2.15"
+    },
+    {
+      "id": "middle-7",
+      "kind": "plant_part",
+      "features": {
+        "colour": "green and brown",
+        "leaf_shape": "upright tapering blade whose upper part is covered by a dark stain",
+        "root_form": "fine central stalk entering a small rounded brown mass"
+      },
+      "label": "f102v2.16"
+    },
+    {
+      "id": "middle-strip",
+      "kind": "plant_part",
+      "features": {
+        "colour": "ochre",
+        "shape": "long low undulating strip with a tapering left end and broad right end",
+        "attachment": "right end disappears at the stained margin"
+      },
+      "label": null
+    },
+    {
+      "id": "lower-jar",
+      "kind": "jar",
+      "features": {
+        "colour": "blue and cream",
+        "shape": "tall vessel with ribbed cylindrical tiers divided by prominent pale rings",
+        "mouth": "oval",
+        "decoration": "vertical blue strokes and a curved blue band above the pale lower label field",
+        "base": "pale splaying petal-like feet"
+      },
+      "label": "f102v2.24"
+    },
+    {
+      "id": "lower-1",
+      "kind": "plant",
+      "features": {
+        "colour": "green and ochre",
+        "leaf_shape": "broad connected silhouette with strongly projecting lobes and fine scallops",
+        "stem": "very thin pale angled stalk",
+        "root_form": "small hanging brown tapered form"
+      },
+      "label": "f102v2.25"
+    },
+    {
+      "id": "lower-2",
+      "kind": "root",
+      "features": {
+        "colour": "red",
+        "root_form": "round raised body with several flattened elongated processes projecting right and a hooked lower branch",
+        "stem": "pale sinuous stalk above the body"
+      },
+      "label": "f102v2.26"
+    },
+    {
+      "id": "lower-3",
+      "kind": "plant",
+      "features": {
+        "colour": "green and pale red",
+        "leaf_shape": "overlapping oblique blades with many long narrow teeth",
+        "root_form": "long tapering red body extending rightward below the leaves"
+      },
+      "label": "f102v2.27"
+    },
+    {
+      "id": "lower-4",
+      "kind": "plant",
+      "features": {
+        "colour": "green and ochre",
+        "leaf_shape": "two conspicuous scalloped blades on a forked stem, the darker left blade drooping",
+        "root_form": "brown crown with several long, ribbon-like strands curving down and left"
+      },
+      "label": "f102v2.28"
+    },
+    {
+      "id": "lower-5",
+      "kind": "plant",
+      "features": {
+        "colour": "pale green and beige",
+        "leaf_shape": "one small pale green rounded blade clearly visible next to the stained margin",
+        "root_form": "pale rounded body with converging curved interior ribs and fine downward branches",
+        "stem": "thin upright fork partly obscured by the margin"
+      },
+      "label": null
+    }
+  ]
+}
