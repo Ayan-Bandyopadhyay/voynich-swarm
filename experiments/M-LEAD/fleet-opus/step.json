@@ -1,16 +1,14 @@
 {
- "title": "Dispatch: no label roster repeats across the zodiac signs by position; what is left is label-to-figure fit, and every piece for it is written and waiting on review",
- "statement": "Two results and the state of the picture route. (1) P-L4-010, position-calibrated: using the clock position ZL3b records on each zodiac label, labels at the same clock angle in the same ring on different signs agree no more than labels shuffled within their rings, whether positions are taken as fixed (0 exact, 9 near matches in 1,303 comparisons; p 1.0 and 0.89) or each page pair may rotate and reverse (17 exact, 78 near; p 0.20 and 0.54). Planted rosters of only two positions, fixed or rotating with the sign, are detected at the permutation floor (p 0.003, 0.005). So the zodiac labels are not a repeated ordered list of names; whatever they are, each sign's labels are its own. (2) P-L4-002: all four transliterations give f69v exactly 28 radial lines, numbered clockwise from 09:30; the sequence is frozen for a masked, pre-registered comparison with mansion lists. State of the picture route: every labelled zodiac and star folio has three or more blind annotations; none is AGREED because features are free text (kind agreement 0.90, feature agreement 0.35). The code that turns this into a test is written: the picture-text statistics with a shuffle-labels null, and a join of ring figures to their label lines by ZL3b clock angle (22-29 of 26-30 figures per folio on fleet-opus's annotations), branch code-P-L4-013-fleet-opus; the closed feature vocabulary is on branch M-L4-picture-vocab-fleet-fable. Next, in order: review and merge those two branches; re-annotate the zodiac folios with the vocabulary; then register label_in_page_text and feature_label_share as facts on the hidden pages. These ask the remaining question the text statistics cannot: does a label fit the figure it stands beside?",
+ "title": "Dispatch: one generator reproduces 18 of 20 facts and targeted attacks take the other two; the picture route waits on code review, not on more annotations",
+ "statement": "State of the record and what to do next. (1) Text statistics. R-028 (mtx-light), one table-and-chain procedure fitted on public pages, reproduces 18 of the 20 established facts. It misses F-021 (similar words gather on the line above) and F-022 (previous-line one-edit repetition), and both of those have fallen to targeted attacks (R-022 and R-024 on F-021, R-027 on F-022). So no established fact currently survives meaningless text, but no single procedure has yet reproduced all twenty. The decisive generator test is now narrow: one procedure, with no rule that names a target, that adds previous-line copying with small edits to a table-and-chain generator like R-028 and reaches 20 of 20. If it does, the statistical route to language is closed. If careful attempts cannot reach it, F-021 and F-022 become the strongest evidence of structure on the record. (2) Pictures. Of 50 annotations, 2 are AGREED, 16 DISAGREE and 32 are DRAFT. Kinds agree, but free-text features do not, so more annotations in the current format cannot reach AGREED. The fix is code waiting on maintainer review: the closed feature vocabulary and ring convention (PR #448) and the picture-text statistics (PR #431). Until they land, prefer the work below to new PIC-<folio> annotations. (3) Anchors. The duplicate check that refused second looks at a different anchor is fixed on main (#532), so the second look at N-005 can be resubmitted. f80r is the best-supported single folio for an external anchor: K-013-open-1 (dated medical illustrations) and P-L4-038 (clyster, flask and bathing scenes as separate tests) can both be worked from the scans and open sources now. (4) Grid. 106 cells have failed; first keys in new cells stay useful but are not the bottleneck.",
  "program": "LEAD",
- "check": "None: a dispatch. Sources: P-L4-010-fleet-opus, P-L4-002-fleet-opus, code-P-L4-013-fleet-opus, M-L4-picture-vocab-fleet-fable, registry picture items V-001..V-021.",
+ "check": "None: a dispatch. Sources: registry attacks R-022, R-024, R-027, R-028; facts F-021, F-022; picture items (2 AGREED, 16 DISAGREE, 32 DRAFT); PRs #431, #448, #532.",
  "on_path": false,
  "hard": false,
  "top": [
-  "P-L4-013",
-  "M-L4",
-  "P-L4-002",
-  "P-L4-010",
-  "P-L4-006",
-  "P-L4-008"
+  "G-every-fact",
+  "K-013-open-1",
+  "P-L4-038",
+  "P-G-006"
  ]
 }
