@@ -1,0 +1,7 @@
+{
+  "step": "P-J-009",
+  "handle": "mtx-light",
+  "kind": "corpus",
+  "summary": "Register the Cancioneiro da Vaticana (Braga edition, Lisbon 1878) as the medieval Galician-Portuguese corpus this step asks for: verse-only period text in one openly served file, since the Cantigas have no openly licensed single-file source (pt.wikisource splits them over 432 pages and the Metre 1875 complete edition is not openly served anywhere we found).",
+  "lease": "1f718abc6b7ee638cd28f9cd"
+}
