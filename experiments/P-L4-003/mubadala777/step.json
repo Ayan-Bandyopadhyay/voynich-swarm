@@ -1,0 +1,1087 @@
+{
+  "title": "Four coarse stroke features recur across scripts while the ordered p84 form remains unverified at its source",
+  "statement": "Ardıç's highlighted p84 crop and its repeated entry 42 do not identify a folio or line. A documented search of the 204 numbered Yale canvases found approximate analogues and no verified source. A known f8r control was recovered at rank 1 near its correct scale and rank 19 across scales. The strongest enlarged candidate verified on the native scan, f76v, has a closed triangular projection at the left junction and a return stroke extending almost the whole width. The published crop has an angular left junction and a shorter curled return. Two fresh readers judged 17 separately coded running or display marks from four traditions, keeping each source orientation. They agreed on 89 of 90 jointly resolved feature judgments, with 29 judgments uncertain for one or both readers. The conjunction of an upright, sweep, aperture and turn occurs jointly in seven selected marks: two Ottoman signatures, a Greek separator, a Greek running form, a Latin notarial sign and two enlarged Voynich marks. Both Ottoman signatures place the long nested loops left of the center, with no required left-third descending shaft, linked right loop or under-return. No main-panel mark receives two affirmative readings on all ordered conditions, with four unresolved. The supplementary f76v scout, rated separately, satisfies the ordered conditions for both readers despite visible differences from the published p84 stroke outline. Thus the coarse geometry recurs outside the proposed pairing, and the ordered check still allows visibly different ink outlines within the manuscript. These role-mixed controls bound the specificity of visual features. Exact source provenance and proposed phonetic assignments remain open.",
+  "program": "L4",
+  "check": "Establish the p84 crop on a primary unannotated page, with a document identifier, locus and overlay coordinates. Freeze which strokes constitute the proposed P, attached upright and reverse path, including orientation and allowed gaps. Sample complete equivalently placed components across independent manuscripts in each role, matched on aspect and visible shaft and aperture counts. Repeat with readers who see neutral filenames and only the specimen pixels. Score exact components and contact order separately from the four coarse shape features, retain uncertain junctions, and report comparisons by document.",
+  "on_path": true,
+  "hard": true,
+  "sample": {
+    "declared_protocol": {
+      "role": "Compare visible ink geometry of medieval running and display marks. The p84 image defines predicted geometry. It is an annotated published crop and its position and role need independent verification. The article's p92 comparison is a separate Ottoman display specimen.",
+      "source_component_reading": {
+        "p84": "The paper rotates a Latin P 90 degrees clockwise in the yellow-highlighted area. It places a blue annotation at the end of the down-curved return and interprets the horizontal continuation leftward as YER/YAR. The uncolored upright in the photograph and the proposed joined I appear in the p84–85 account.",
+        "orientation": "Keep the source orientation of each entire specimen. The cited 90-degree rotation defines the proposed P component. It does not license rotation or reflection of a scored image.",
+        "tolerance": "Estimate fractions in the bounded visible dark-ink motif. A path must turn or touch within approximately one local ink-stroke width. If overlap, fading, or the crop hides that decision, mark uncertain. No adding bridges, following guides in the article, or treating a printed watermark as ink."
+      },
+      "fields": {
+        "U": "Any near-vertical dark-ink shaft spanning at least 30 percent of motif height.",
+        "S": "Any plainly connected near-horizontal sweep spanning at least half the motif width, with slope within about 20 degrees.",
+        "L": "Any clearly bounded interior aperture traced by ink. A curl with an open gap is not enough.",
+        "R": "Any curved stroke whose direction clearly reverses and continues back alongside part of itself.",
+        "A": "A shaft descends from a junction with the qualifying sweep in the leftmost third of the motif and extends down at least 30 percent of motif height.",
+        "B": "A truly enclosed loop is visibly joined to that same sweep in the rightmost third of the motif.",
+        "C": "The right-end path from that same linked loop returns left under the sweep for at least one fifth of the motif width."
+      },
+      "rules": {
+        "read": "Record yes, no, or uncertain for each field. Keep nearby text and other stray marks out of the motif. Make no linguistic or provenance classification.",
+        "coarse_geometry": "U, S, L and R must all be yes.",
+        "ordered_geometry": "S, A, B and C must all be yes.",
+        "consensus": "A yes or no is jointly resolved only when both readers agree on that value. A strict joint positive requires every field to be yes for both readers.",
+        "comparators": "Keep marks in running text separate from the imperial signatures, Greek separators, Latin initials, notarial display signs, and large Voynich flourish. Select within each role by visible connected units and aspect range where feasible. Record width-to-height, visibly resolved shaft and loop counts, roles and source documents. Contrasts across distinct display purposes or with obviously different geometric complexity are descriptive.",
+        "limit": "Two readers may share model-family priors. Recognizable script form may remain. No prevalence or significance claim from these deliberately selected archival controls."
+      }
+    },
+    "protocol_sha256": "e7a7649ef7ddfa39b130c89539ccd94cffb52edfe68ea53bd3c1b71d64112425",
+    "source_description": {
+      "p84–85": "The author illustrates a claimed Latin P turned 90 degrees clockwise and attached to a preceding I-like upright. A blue mark indicates the proposed end of a downward curve. The leftward extension is assigned YER/YAR. The terminal reading retains alternatives.",
+      "p92": "Five overlapping colored traces mark proposed contents of a short Mehmed II signature. They include X marks, loops and Roman-letter outlines, Runic N and a UÇ/UC tamga, verticals, and an 8-like S/Ş figure. Writing is proposed bottom-to-top. One colored connection may be a pen transition without a sound assignment.",
+      "source_uncertainty": "The original figure, official companion tables and the p89 lookalike do not yield the exact unmarked locus. The p89 example has a different second crossbar and left hook. The reading identified by the p90 link is a different many-loop glyph."
+    },
+    "source_images": {
+      "article": {
+        "url": "https://www.turkicresearch.com/files/articles/4072.pdf",
+        "publication": "Ahmet Ardıç, Multisyllabic Structuring of Syllable-Letters in the ATA (Voynich) Manuscript and the Ottoman Tughra: A Structural Comparison, Türk Kültürü 2025/2",
+        "page84": "PDF page 22, image object 885, yellow and blue additions appear in the published crop",
+        "page92": "PDF page 30, the notebook reproduction at the top and the short signature with five component overlays below",
+        "companion_entry_42": "https://www.turkicresearch.com/files/articles/3070.pdf#page=13"
+      },
+      "voynich-f1r-crop.jpg": {
+        "reference": "Beinecke MS 408 f1r, canvas 1006076",
+        "image": "https://collections.library.yale.edu/iiif/2/1006076/pct:14,61,24,9/850,/0/default.jpg",
+        "role_note": "Contains the large flourish above its paragraph body and later small running glyphs"
+      },
+      "voynich-f8r.jpg": {
+        "reference": "Beinecke MS 408 f8r, canvas 1006090",
+        "image": "https://collections.library.yale.edu/iiif/2/1006090/full/1200,/0/default.jpg",
+        "role_note": "Upper left display-like flourish analogous in gross strokes. The separate running rectangle is in the lower right text block"
+      },
+      "greek-1476-239r.jpg": {
+        "reference": "Biblioteca Apostolica Vaticana, Barb. gr. 166 (Quintus Smyrnaeus, Posthomerica), f239r, 1476",
+        "catalog": "https://digi.vatlib.it/view/MSS_Barb.gr.166/0567",
+        "image": "https://digi.vatlib.it/iiifimage/MSS_Barb.gr.166/Barb.gr.166_0567_fa_0239r.jp2/full/1200,/0/default.jpg",
+        "role_note": "Two separator flourishes and two connected groups in the preceding running ink. All four come from the same folio. A pale digitization watermark survives in the separator crops"
+      },
+      "marseille-1425.jpg": {
+        "reference": "Archives départementales des Bouches-du-Rhône, B 641 p. 8, 10 March 1425 in the catalogue",
+        "catalog": "https://gams.uni-graz.at/archive/objects/o%3Acord.65e51e9a.e760.3984.b201.e90889083455/methods/sdef%3ATEI/get?locale=en",
+        "image": "https://images.icar-us.eu/iiif/2/illum%2FIllUrk%2F1424-03-10_Marseille_AD_Bouche_du%20Rhone_B641_p8.jpg/full/1300,/0/default.jpg",
+        "role_note": "Decorated initial, a separate notarial mark, and two connected groups from body writing. The display functions differ from the Greek separators and Ottoman decrees"
+      },
+      "sweden-1477-sign.jpg": {
+        "reference": "Kungliga biblioteket A 93 f149v, 1 July 1477, Conradus Gregorii attestation",
+        "catalog": "https://manuscripta.se/ms/101099",
+        "image": "https://iiif.manuscripta.se/iiif/ms-101099/ms-101099_0304.tif/3220,3650,1170,2220/590,/0/default.jpg",
+        "role_note": "Notarial display mark aligned vertically beside attestation. Public Domain Mark 1.0"
+      },
+      "ottoman-1468-head.jpg": {
+        "reference": "Mehmed II decree to İsa Bey, 25 March–3 April 1468, Dubrovnik State Archives E 004",
+        "facsimile": "https://www.gebze.bel.tr/dosya/20200909134701.pdf#page=42",
+        "date_page": 43,
+        "crop_top_left_pdf_points": [
+          255,
+          278,
+          452,
+          392
+        ],
+        "role_note": "Imperial signature above decree, from a modern municipal facsimile of the manuscript. Lower-left crop edge carries a little text ink"
+      },
+      "ottoman-1477-head.jpg": {
+        "reference": "Mehmed II decree concerning Gallipoli garrison pay, 16 September 1477, Ottoman State Archives BOA A.NŞT 1/1",
+        "facsimile": "https://www.gebze.bel.tr/dosya/20200909134701.pdf#page=66",
+        "date_page": 67,
+        "crop_top_left_pdf_points": [
+          239,
+          260,
+          453,
+          344
+        ],
+        "role_note": "Imperial signature above a distinct decree held in a different archive"
+      },
+      "ottoman-1468-page.jpg": {
+        "same_document_as": "ottoman-1468-head.jpg",
+        "rasterization": "PDF page 42, pdftoppm at 120 dpi, whole page",
+        "role_note": "The running selection comes from the body below the imperial signature"
+      },
+      "ottoman-1477-page.jpg": {
+        "same_document_as": "ottoman-1477-head.jpg",
+        "rasterization": "PDF page 66, pdftoppm at 120 dpi, whole page",
+        "role_note": "The running selection comes from the body below the imperial signature"
+      }
+    },
+    "localization_scout": {
+      "yale_manifest": "https://collections.library.yale.edu/manifests/oid/2002046",
+      "article_sha256": "4bd860daeae29f7bd0f94dcee26b7c09f1a7d90628b5c366dcb999c6f9b82466",
+      "article_image_sha256": "1d782e33fee7be8b33abc75c8eaff08c35afce407dab19afd15441100f3f09b3",
+      "article_image_precise": "Extract image 885 from PDF page 22. Article image size 828 by 293 pixels. Scope the motif to [22,63,438,274].",
+      "scope": "204 files with numbered folio labels from 213 manifest canvases, including foldouts. Excluded nine covers, binding and calibration images. About 13.77 MB of thumbnails with a maximum edge of 600 or 800 pixels, and four native confirmation crops. Kept at most four public image downloads concurrent.",
+      "method": "Used localized red-channel ink contrast with the blue overlay and cut-paper edges masked, and independently a centerline trace. Considered 22 widths from 15 to 326 pixels, five feature angles spanning -14 to 14 degrees and three trace angles from -10 to 10, in the original orientation. A local normalized correlation ranked candidates. These allowed small angular changes only for locating scans. The masked interpretation test keeps images unrotated.",
+      "retained_peaks": {
+        "red_feature": 67312,
+        "trace": 40384
+      },
+      "positive_replay": {
+        "folio": "f8r",
+        "source_scan_template_xyxy": [
+          140,
+          453,
+          301,
+          557
+        ],
+        "predicted_thumbnail_xywh": [
+          66,
+          215,
+          79,
+          51
+        ],
+        "found_thumbnail_xywh": [
+          67,
+          216,
+          77,
+          50
+        ],
+        "rank_within_20_percent_width": 1,
+        "rank_all_widths": 19
+      },
+      "strongest_examined_enlarged_shape_match": {
+        "folio": "f76v",
+        "score": 0.5164,
+        "thumbnail_xywh": [
+          113,
+          211,
+          52,
+          26
+        ],
+        "primary_crop": "https://collections.library.yale.edu/iiif/2/1006211/643,1255,429,261/full/0/default.jpg",
+        "rejection": "Closed triangle at the left cap and a return nearly as long as the upper sweep. The paper crop has a sharper open corner and a short upward-curled reverse segment.",
+        "thumbnail_size": [
+          456,
+          600
+        ]
+      },
+      "other_examined_analogues": [
+        {
+          "folio": "f83r",
+          "normalized_correlation": 0.4648,
+          "difference": "additional closed triangle at left"
+        },
+        {
+          "folio": "f106v",
+          "normalized_correlation": 0.4507,
+          "difference": "shorter sweep relative to upright"
+        },
+        {
+          "folio": "f107r",
+          "normalized_correlation": 0.4464,
+          "difference": "shorter sweep relative to upright"
+        },
+        {
+          "folio": "f116r",
+          "normalized_correlation": 0.4246,
+          "difference": "left triangle and different upright and return shapes"
+        },
+        {
+          "folio": "f8r",
+          "normalized_correlation": 0.3025,
+          "difference": "triangle at left and different curvature with adjacent paint"
+        }
+      ],
+      "limits": "No validated score threshold. Tiny ordinary glyph clusters and layout margins sometimes outscore enlarged shapes. Lower and uneven scan contrast can obscure a match. The negative result applies to this finite scout, not all possible image transformations."
+    },
+    "reader_blinding": {
+      "pilot": "One pilot reader noticed domain terminology in the original folder name. None of those two pilot readings enter the result.",
+      "primary": "Two fresh readers received the same 17 tiles in neutral folders, without their source, candidate statement or comparison role. One saw the shuffled sheets forward and the other in the reverse order, including reversed within-sheet orders.",
+      "disclosure": "Both readers recognized some silhouettes as tughra-like and some ornaments as notarial or rosette-like. Neither recognized an exact source or confidently read a background label. Pale archive print was visible for some motifs. The two readers may share model-family priors.",
+      "sheets": {
+        "sheet_order": [
+          "M46",
+          "M33",
+          "M38",
+          "M31",
+          "M35",
+          "M42",
+          "M34",
+          "M40",
+          "M39",
+          "M47",
+          "M37",
+          "M44",
+          "M43",
+          "M32",
+          "M45",
+          "M41",
+          "M36"
+        ],
+        "sheets": {
+          "a.png": "fb84262f327189f48cede738dd2df4803f22720b4ddbc55b4aa4c67d234b0d59",
+          "b.png": "f5cc35506d1fd692857972ed963aac7038837b6e7e8db7b9608035a3899eee82",
+          "c.png": "61fe2e5a21a28d191d2a74d906defdbde216687d3b9c92d08289a047328b4198",
+          "x.png": "4e72b1b514f371d51cb717ab6d83e0187460069d5c4e704c06646b74a53dc64d",
+          "y.png": "4ce391c625bdd0dfe54b8c0e958ac3e04f0fce4d834c9c011d73a2dbb83bde29",
+          "z.png": "2948fa15c250d72a5b7af17af5a173acd4e074caebe4fd6769e3f17e29b27c1f"
+        }
+      }
+    },
+    "comparison": {
+      "rating_order": "USLRABC",
+      "specimens": [
+        {
+          "tradition": "ottoman",
+          "role": "running ink component",
+          "input": "ottoman-1468-page.jpg",
+          "crop_xyxy": [
+            389,
+            655,
+            445,
+            690
+          ],
+          "source_roi_xyxy": [
+            383,
+            643,
+            662,
+            1163
+          ],
+          "eligible_components_in_region": 66,
+          "code": "M31",
+          "crop_aspect_ratio": 1.6,
+          "source_sha256": "de3456ea45099d3c17354c9a147dc0cae9639a6a98ad77198dfa7fdf44cadad8",
+          "tile_sha256": "c25bf7b0bdc56896ec33cbb83dc965e340b90210b17821374d344b7df7190607",
+          "reader1": {
+            "flags": "YN?YNNN",
+            "shaft_count": "?",
+            "aperture_count": "?",
+            "note": "cropped with thick joins"
+          },
+          "reader2": {
+            "flags": "?NN?NNN",
+            "shaft_count": "?",
+            "aperture_count": "0",
+            "note": ""
+          },
+          "consensus": {
+            "U": "?",
+            "S": "N",
+            "L": "?",
+            "R": "?",
+            "A": "N",
+            "B": "N",
+            "C": "N"
+          },
+          "coarse": "no",
+          "ordered": "no"
+        },
+        {
+          "tradition": "voynich",
+          "role": "running ink component",
+          "input": "voynich-f8r.jpg",
+          "crop_xyxy": [
+            887,
+            1129,
+            940,
+            1154
+          ],
+          "source_roi_xyxy": [
+            540,
+            1110,
+            940,
+            1300
+          ],
+          "eligible_components_in_region": 8,
+          "code": "M32",
+          "crop_aspect_ratio": 2.12,
+          "source_sha256": "bab57c9dcebcbf4a69a943dc10621e305d6370bcc1f29f3ffb176e5d55d5de73",
+          "tile_sha256": "18713515eadee9c2525958e7685669d4347418d70d877b6d2d8e47a3956c97f7",
+          "reader1": {
+            "flags": "YY?Y??N",
+            "shaft_count": "?",
+            "aperture_count": "?",
+            "note": "blurry drops and contacts"
+          },
+          "reader2": {
+            "flags": "YY?YN??",
+            "shaft_count": "2",
+            "aperture_count": "?",
+            "note": ""
+          },
+          "consensus": {
+            "U": "Y",
+            "S": "Y",
+            "L": "?",
+            "R": "Y",
+            "A": "?",
+            "B": "?",
+            "C": "?"
+          },
+          "coarse": "unresolved",
+          "ordered": "unresolved"
+        },
+        {
+          "tradition": "greek",
+          "role": "running ink component",
+          "input": "greek-1476-239r.jpg",
+          "crop_xyxy": [
+            308,
+            280,
+            348,
+            313
+          ],
+          "source_roi_xyxy": [
+            199,
+            260,
+            832,
+            427
+          ],
+          "eligible_components_in_region": 36,
+          "code": "M33",
+          "crop_aspect_ratio": 1.2121,
+          "source_sha256": "443596746f99228418ece538a644a3024f66c2eee73fefd036fecb02c4cd3721",
+          "tile_sha256": "5b2ddba61b7541ec89fff20d32e9cdbc86041f774a6d8e436353bde2105e2e61",
+          "reader1": {
+            "flags": "YYYY?NN",
+            "shaft_count": "1",
+            "aperture_count": "1",
+            "note": "left drop slants into loop"
+          },
+          "reader2": {
+            "flags": "YYYYNNN",
+            "shaft_count": "1",
+            "aperture_count": "1",
+            "note": ""
+          },
+          "consensus": {
+            "U": "Y",
+            "S": "Y",
+            "L": "Y",
+            "R": "Y",
+            "A": "?",
+            "B": "N",
+            "C": "N"
+          },
+          "coarse": "yes",
+          "ordered": "no"
+        },
+        {
+          "tradition": "latin",
+          "role": "notarial mark",
+          "input": "marseille-1425.jpg",
+          "crop_xyxy": [
+            866,
+            1361,
+            1000,
+            1455
+          ],
+          "code": "M34",
+          "crop_aspect_ratio": 1.4255,
+          "source_sha256": "e576819249ff77cd4163abcbe340fcc51c8941d4180557a86b736c9886d99fe7",
+          "tile_sha256": "8e3393db407cc8d771ec633a4f1fd5edb032eb59534985159384ec3fa1d10743",
+          "reader1": {
+            "flags": "?YYYN?N",
+            "shaft_count": "?",
+            "aperture_count": "3+",
+            "note": "oblique rays and right flourish clipped"
+          },
+          "reader2": {
+            "flags": "YYYYN?N",
+            "shaft_count": "2",
+            "aperture_count": "3+",
+            "note": ""
+          },
+          "consensus": {
+            "U": "?",
+            "S": "Y",
+            "L": "Y",
+            "R": "Y",
+            "A": "N",
+            "B": "?",
+            "C": "N"
+          },
+          "coarse": "unresolved",
+          "ordered": "no"
+        },
+        {
+          "tradition": "latin",
+          "role": "notarial mark",
+          "input": "sweden-1477-sign.jpg",
+          "crop_xyxy": [
+            26,
+            40,
+            568,
+            1090
+          ],
+          "code": "M35",
+          "crop_aspect_ratio": 0.5162,
+          "source_sha256": "2e4ecc5b737c996b4dca0082122ce0c16705e8c22a6a867c3f4566fab0208ae2",
+          "tile_sha256": "1a8a0b1a2a9d7516f708bc2dc6eec12d823d92c425f136050ae7d264b57946bd",
+          "reader1": {
+            "flags": "YYYYN??",
+            "shaft_count": "1",
+            "aperture_count": "3+",
+            "note": "fine crossing strokes in right-side ornament"
+          },
+          "reader2": {
+            "flags": "YYYYNYN",
+            "shaft_count": "1",
+            "aperture_count": "3+",
+            "note": ""
+          },
+          "consensus": {
+            "U": "Y",
+            "S": "Y",
+            "L": "Y",
+            "R": "Y",
+            "A": "N",
+            "B": "?",
+            "C": "?"
+          },
+          "coarse": "yes",
+          "ordered": "no"
+        },
+        {
+          "tradition": "ottoman",
+          "role": "imperial signature",
+          "input": "ottoman-1468-head.jpg",
+          "crop_xyxy": [
+            7,
+            4,
+            488,
+            279
+          ],
+          "code": "M36",
+          "crop_aspect_ratio": 1.7491,
+          "source_sha256": "823041b55cedbed8fd3f9a65f014cbea506a0ad169aeea439468b61b0aa2871c",
+          "tile_sha256": "a0a9e0fce248e26b4d61fcf88b4f276deb3f2fe5a8cc804176f27a59501b38f5",
+          "reader1": {
+            "flags": "YYYYNNN",
+            "shaft_count": "3+",
+            "aperture_count": "3+",
+            "note": "loop cluster ends before right third"
+          },
+          "reader2": {
+            "flags": "YYYYNNN",
+            "shaft_count": "3+",
+            "aperture_count": "3+",
+            "note": ""
+          },
+          "consensus": {
+            "U": "Y",
+            "S": "Y",
+            "L": "Y",
+            "R": "Y",
+            "A": "N",
+            "B": "N",
+            "C": "N"
+          },
+          "coarse": "yes",
+          "ordered": "no"
+        },
+        {
+          "tradition": "latin",
+          "role": "running ink component",
+          "input": "marseille-1425.jpg",
+          "crop_xyxy": [
+            585,
+            163,
+            616,
+            195
+          ],
+          "source_roi_xyxy": [
+            145,
+            155,
+            777,
+            447
+          ],
+          "eligible_components_in_region": 24,
+          "code": "M37",
+          "crop_aspect_ratio": 0.9688,
+          "source_sha256": "e576819249ff77cd4163abcbe340fcc51c8941d4180557a86b736c9886d99fe7",
+          "tile_sha256": "b54a70d74336cd760cb57ab694f2936eeae585474b0bca42fdc3943f494e12e4",
+          "reader1": {
+            "flags": "YNYYNNN",
+            "shaft_count": "1",
+            "aperture_count": "?",
+            "note": "upper closure uncertain"
+          },
+          "reader2": {
+            "flags": "YN?YNNN",
+            "shaft_count": "2",
+            "aperture_count": "?",
+            "note": ""
+          },
+          "consensus": {
+            "U": "Y",
+            "S": "N",
+            "L": "?",
+            "R": "Y",
+            "A": "N",
+            "B": "N",
+            "C": "N"
+          },
+          "coarse": "no",
+          "ordered": "no"
+        },
+        {
+          "tradition": "ottoman",
+          "role": "imperial signature",
+          "input": "ottoman-1477-head.jpg",
+          "crop_xyxy": [
+            5,
+            4,
+            532,
+            206
+          ],
+          "code": "M38",
+          "crop_aspect_ratio": 2.6089,
+          "source_sha256": "6e363347077a7778c06c83a6805fa213e8f03f73cafc904535a5f249e5195ab2",
+          "tile_sha256": "8bb6023d19881ab98234010c8fce181ddf01f91c22e27afa81197f2186863c69",
+          "reader1": {
+            "flags": "YYYYNNN",
+            "shaft_count": "3+",
+            "aperture_count": "3+",
+            "note": "central loop cluster"
+          },
+          "reader2": {
+            "flags": "YYYYNNN",
+            "shaft_count": "3+",
+            "aperture_count": "3+",
+            "note": ""
+          },
+          "consensus": {
+            "U": "Y",
+            "S": "Y",
+            "L": "Y",
+            "R": "Y",
+            "A": "N",
+            "B": "N",
+            "C": "N"
+          },
+          "coarse": "yes",
+          "ordered": "no"
+        },
+        {
+          "tradition": "latin",
+          "role": "charter initial",
+          "input": "marseille-1425.jpg",
+          "crop_xyxy": [
+            66,
+            34,
+            200,
+            255
+          ],
+          "code": "M39",
+          "crop_aspect_ratio": 0.6063,
+          "source_sha256": "e576819249ff77cd4163abcbe340fcc51c8941d4180557a86b736c9886d99fe7",
+          "tile_sha256": "098926c800e5ba38e30e59fccfa430898c1ab76535679c1cf89f18b126711174",
+          "reader1": {
+            "flags": "YNYYNNN",
+            "shaft_count": "2",
+            "aperture_count": "?",
+            "note": "fine strokes converge near base"
+          },
+          "reader2": {
+            "flags": "YNYYNNN",
+            "shaft_count": "2",
+            "aperture_count": "3+",
+            "note": ""
+          },
+          "consensus": {
+            "U": "Y",
+            "S": "N",
+            "L": "Y",
+            "R": "Y",
+            "A": "N",
+            "B": "N",
+            "C": "N"
+          },
+          "coarse": "no",
+          "ordered": "no"
+        },
+        {
+          "tradition": "ottoman",
+          "role": "running ink component",
+          "input": "ottoman-1477-page.jpg",
+          "crop_xyxy": [
+            390,
+            574,
+            420,
+            601
+          ],
+          "source_roi_xyxy": [
+            358,
+            572,
+            714,
+            1145
+          ],
+          "eligible_components_in_region": 65,
+          "code": "M40",
+          "crop_aspect_ratio": 1.1111,
+          "source_sha256": "3013b84ddd9c41168d7e8ce8a653429d239cc56ffe696c801adbeb65b72c9853",
+          "tile_sha256": "9f4905f23e85c108f3f096731ae3c1a5d188fca4da643309767d79a914aec962",
+          "reader1": {
+            "flags": "?N??NNN",
+            "shaft_count": "?",
+            "aperture_count": "?",
+            "note": "blurred and cropped"
+          },
+          "reader2": {
+            "flags": "?N??NNN",
+            "shaft_count": "?",
+            "aperture_count": "?",
+            "note": ""
+          },
+          "consensus": {
+            "U": "?",
+            "S": "N",
+            "L": "?",
+            "R": "?",
+            "A": "N",
+            "B": "N",
+            "C": "N"
+          },
+          "coarse": "no",
+          "ordered": "no"
+        },
+        {
+          "tradition": "greek",
+          "role": "separator",
+          "input": "greek-1476-239r.jpg",
+          "crop_xyxy": [
+            660,
+            457,
+            758,
+            529
+          ],
+          "code": "M41",
+          "crop_aspect_ratio": 1.3611,
+          "source_sha256": "443596746f99228418ece538a644a3024f66c2eee73fefd036fecb02c4cd3721",
+          "tile_sha256": "60b08907c9c8fbe3eda31fb0af67d218859fdfa249ae7cfc11a9ceafe2ae3bb7",
+          "reader1": {
+            "flags": "YYYYNNN",
+            "shaft_count": "1",
+            "aperture_count": "2",
+            "note": "central loop joins"
+          },
+          "reader2": {
+            "flags": "YYYYNNN",
+            "shaft_count": "1",
+            "aperture_count": "2",
+            "note": ""
+          },
+          "consensus": {
+            "U": "Y",
+            "S": "Y",
+            "L": "Y",
+            "R": "Y",
+            "A": "N",
+            "B": "N",
+            "C": "N"
+          },
+          "coarse": "yes",
+          "ordered": "no"
+        },
+        {
+          "tradition": "greek",
+          "role": "running ink component",
+          "input": "greek-1476-239r.jpg",
+          "crop_xyxy": [
+            208,
+            280,
+            250,
+            318
+          ],
+          "source_roi_xyxy": [
+            199,
+            260,
+            832,
+            427
+          ],
+          "eligible_components_in_region": 36,
+          "code": "M42",
+          "crop_aspect_ratio": 1.1053,
+          "source_sha256": "443596746f99228418ece538a644a3024f66c2eee73fefd036fecb02c4cd3721",
+          "tile_sha256": "634280f938dd8ea22d40725a6780fce92e118906d92da1761cbfd169c9242e44",
+          "reader1": {
+            "flags": "YNYYNNN",
+            "shaft_count": "1",
+            "aperture_count": "2",
+            "note": "both apertures clear"
+          },
+          "reader2": {
+            "flags": "YNYYNNN",
+            "shaft_count": "1",
+            "aperture_count": "2",
+            "note": ""
+          },
+          "consensus": {
+            "U": "Y",
+            "S": "N",
+            "L": "Y",
+            "R": "Y",
+            "A": "N",
+            "B": "N",
+            "C": "N"
+          },
+          "coarse": "no",
+          "ordered": "no"
+        },
+        {
+          "tradition": "voynich",
+          "role": "enlarged text feature",
+          "input": "voynich-f1r-crop.jpg",
+          "crop_xyxy": [
+            125,
+            30,
+            620,
+            281
+          ],
+          "code": "M43",
+          "crop_aspect_ratio": 1.9721,
+          "source_sha256": "e399c934b27cbc46d994d155d6eab59404cf686fd71d65e1aa62866cb20f2591",
+          "tile_sha256": "d2f451c9ef15488546e1bea15e7a49caf60ae2206b5b33ca30a64c9eb19a88b0",
+          "reader1": {
+            "flags": "YYYYY??",
+            "shaft_count": "1",
+            "aperture_count": "?",
+            "note": "right curl fades near possible closure"
+          },
+          "reader2": {
+            "flags": "YYYY???",
+            "shaft_count": "1",
+            "aperture_count": "?",
+            "note": ""
+          },
+          "consensus": {
+            "U": "Y",
+            "S": "Y",
+            "L": "Y",
+            "R": "Y",
+            "A": "?",
+            "B": "?",
+            "C": "?"
+          },
+          "coarse": "yes",
+          "ordered": "unresolved"
+        },
+        {
+          "tradition": "voynich",
+          "role": "enlarged text feature",
+          "input": "voynich-f8r.jpg",
+          "crop_xyxy": [
+            137,
+            450,
+            302,
+            556
+          ],
+          "code": "M44",
+          "crop_aspect_ratio": 1.5566,
+          "source_sha256": "bab57c9dcebcbf4a69a943dc10621e305d6370bcc1f29f3ffb176e5d55d5de73",
+          "tile_sha256": "afade04439585474273f12e06e001e5e14f989365cc917ee82e005a46aaaed30",
+          "reader1": {
+            "flags": "YYYYY??",
+            "shaft_count": "1",
+            "aperture_count": "?",
+            "note": "faint right curl closure"
+          },
+          "reader2": {
+            "flags": "YYYYYYY",
+            "shaft_count": "1",
+            "aperture_count": "3+",
+            "note": ""
+          },
+          "consensus": {
+            "U": "Y",
+            "S": "Y",
+            "L": "Y",
+            "R": "Y",
+            "A": "Y",
+            "B": "?",
+            "C": "?"
+          },
+          "coarse": "yes",
+          "ordered": "unresolved"
+        },
+        {
+          "tradition": "greek",
+          "role": "separator",
+          "input": "greek-1476-239r.jpg",
+          "crop_xyxy": [
+            423,
+            452,
+            532,
+            520
+          ],
+          "code": "M45",
+          "crop_aspect_ratio": 1.6029,
+          "source_sha256": "443596746f99228418ece538a644a3024f66c2eee73fefd036fecb02c4cd3721",
+          "tile_sha256": "6510971dfa66eedd2c3e48b0564f84dcb9f8796418cd89d4e92fc3b520e62d3c",
+          "reader1": {
+            "flags": "?YYYNNN",
+            "shaft_count": "?",
+            "aperture_count": "2",
+            "note": "oblique shaft and central loop joins"
+          },
+          "reader2": {
+            "flags": "YYYYNNN",
+            "shaft_count": "1",
+            "aperture_count": "2",
+            "note": ""
+          },
+          "consensus": {
+            "U": "?",
+            "S": "Y",
+            "L": "Y",
+            "R": "Y",
+            "A": "N",
+            "B": "N",
+            "C": "N"
+          },
+          "coarse": "unresolved",
+          "ordered": "no"
+        },
+        {
+          "tradition": "latin",
+          "role": "running ink component",
+          "input": "marseille-1425.jpg",
+          "crop_xyxy": [
+            242,
+            155,
+            265,
+            178
+          ],
+          "source_roi_xyxy": [
+            145,
+            155,
+            777,
+            447
+          ],
+          "eligible_components_in_region": 24,
+          "code": "M46",
+          "crop_aspect_ratio": 1.0,
+          "source_sha256": "e576819249ff77cd4163abcbe340fcc51c8941d4180557a86b736c9886d99fe7",
+          "tile_sha256": "b4abf6b542d00ba99b680d99502b1fada625912ef1cb5c94554291acaa0434b7",
+          "reader1": {
+            "flags": "YNYNNNN",
+            "shaft_count": "1",
+            "aperture_count": "1",
+            "note": "slanted stem and separate oval"
+          },
+          "reader2": {
+            "flags": "YNNNNNN",
+            "shaft_count": "1",
+            "aperture_count": "0",
+            "note": ""
+          },
+          "consensus": {
+            "U": "Y",
+            "S": "N",
+            "L": "?",
+            "R": "N",
+            "A": "N",
+            "B": "N",
+            "C": "N"
+          },
+          "coarse": "no",
+          "ordered": "no"
+        },
+        {
+          "tradition": "voynich",
+          "role": "running ink component",
+          "input": "voynich-f1r-crop.jpg",
+          "crop_xyxy": [
+            508,
+            276,
+            534,
+            306
+          ],
+          "source_roi_xyxy": [
+            465,
+            226,
+            824,
+            397
+          ],
+          "eligible_components_in_region": 5,
+          "code": "M47",
+          "crop_aspect_ratio": 0.8667,
+          "source_sha256": "e399c934b27cbc46d994d155d6eab59404cf686fd71d65e1aa62866cb20f2591",
+          "tile_sha256": "252c090c96edf211f8fc965aeb53a0676b3e3d924655a3e4cfc1cad98729162d",
+          "reader1": {
+            "flags": "Y??????",
+            "shaft_count": "?",
+            "aperture_count": "?",
+            "note": "lower strokes obscured by blur"
+          },
+          "reader2": {
+            "flags": "???????",
+            "shaft_count": "?",
+            "aperture_count": "?",
+            "note": ""
+          },
+          "consensus": {
+            "U": "?",
+            "S": "?",
+            "L": "?",
+            "R": "?",
+            "A": "?",
+            "B": "?",
+            "C": "?"
+          },
+          "coarse": "unresolved",
+          "ordered": "unresolved"
+        }
+      ],
+      "group_results": {
+        "ottoman/running ink component": {
+          "n": 2,
+          "coarse": {
+            "no": 2
+          },
+          "ordered": {
+            "no": 2
+          }
+        },
+        "voynich/running ink component": {
+          "n": 2,
+          "coarse": {
+            "unresolved": 2
+          },
+          "ordered": {
+            "unresolved": 2
+          }
+        },
+        "greek/running ink component": {
+          "n": 2,
+          "coarse": {
+            "yes": 1,
+            "no": 1
+          },
+          "ordered": {
+            "no": 2
+          }
+        },
+        "latin/notarial mark": {
+          "n": 2,
+          "coarse": {
+            "unresolved": 1,
+            "yes": 1
+          },
+          "ordered": {
+            "no": 2
+          }
+        },
+        "ottoman/imperial signature": {
+          "n": 2,
+          "coarse": {
+            "yes": 2
+          },
+          "ordered": {
+            "no": 2
+          }
+        },
+        "latin/running ink component": {
+          "n": 2,
+          "coarse": {
+            "no": 2
+          },
+          "ordered": {
+            "no": 2
+          }
+        },
+        "latin/charter initial": {
+          "n": 1,
+          "coarse": {
+            "no": 1
+          },
+          "ordered": {
+            "no": 1
+          }
+        },
+        "greek/separator": {
+          "n": 2,
+          "coarse": {
+            "yes": 1,
+            "unresolved": 1
+          },
+          "ordered": {
+            "no": 2
+          }
+        },
+        "voynich/enlarged text feature": {
+          "n": 2,
+          "coarse": {
+            "yes": 2
+          },
+          "ordered": {
+            "unresolved": 2
+          }
+        }
+      },
+      "agreement_by_feature": {
+        "U": {
+          "one_or_both_uncertain": 5,
+          "resolved_agreement": 12
+        },
+        "S": {
+          "resolved_agreement": 16,
+          "one_or_both_uncertain": 1
+        },
+        "L": {
+          "one_or_both_uncertain": 5,
+          "resolved_agreement": 11,
+          "resolved_disagreement": 1
+        },
+        "R": {
+          "one_or_both_uncertain": 3,
+          "resolved_agreement": 14
+        },
+        "A": {
+          "resolved_agreement": 13,
+          "one_or_both_uncertain": 4
+        },
+        "B": {
+          "resolved_agreement": 11,
+          "one_or_both_uncertain": 6
+        },
+        "C": {
+          "resolved_agreement": 12,
+          "one_or_both_uncertain": 5
+        }
+      },
+      "all_ratings_agreement": {
+        "one_or_both_uncertain": 29,
+        "resolved_agreement": 89,
+        "resolved_disagreement": 1
+      }
+    },
+    "supplementary_scout_control": {
+      "code": "M78",
+      "role": "exploratory similar-looking native crop selected by the template search",
+      "source": "https://collections.library.yale.edu/iiif/2/1006211/643,1255,429,261/full/0/default.jpg",
+      "crop_xyxy": [
+        65,
+        60,
+        367,
+        211
+      ],
+      "source_sha256": "dc1834bb3e3f93ca18d83d45293e9c8318a1418c62ac965e3f8aa371b211e9f9",
+      "panel_sha256": "5cc4d2d19dc5a32f2a11f03eb93391385eb816704821878d7f43bc79e2611c4b",
+      "reader1": {
+        "flags": "YYYYYYY",
+        "shafts": "1",
+        "apertures": "2"
+      },
+      "reader2": {
+        "flags": "YYYYYYY",
+        "shafts": "1",
+        "apertures": "3+"
+      },
+      "interpretation": "Both recognize the ordered geometry. Native inspection separates this thick, long return and triangular cap from the published p84 image. This scout-selected example is excluded from the 17 fixed controls."
+    },
+    "reproduction": {
+      "crop_preparation": "\"\"\"Prepare coded archival crops without rotating or redrawing strokes.\"\"\"\n\nfrom hashlib import sha256\nimport json\nfrom pathlib import Path\nimport random\n\nimport numpy as np\nfrom PIL import Image, ImageDraw, ImageOps\nfrom scipy import ndimage\n\n\nHERE = Path(__file__).resolve().parent\nRAW = HERE / \"raw\"\nDESTINATION = HERE / \"blind\"\n\n# In source pixels, after the initial source download or PDF rasterization.\nDISPLAY = [\n    (\"voynich\", \"enlarged text feature\", \"voynich-f1r-crop.jpg\", (125, 30, 620, 281)),\n    (\"voynich\", \"enlarged text feature\", \"voynich-f8r.jpg\", (137, 450, 302, 556)),\n    (\"ottoman\", \"imperial signature\", \"ottoman-1468-head.jpg\", (7, 4, 488, 279)),\n    (\"ottoman\", \"imperial signature\", \"ottoman-1477-head.jpg\", (5, 4, 532, 206)),\n    (\"greek\", \"separator\", \"greek-1476-239r.jpg\", (423, 452, 532, 520)),\n    (\"greek\", \"separator\", \"greek-1476-239r.jpg\", (660, 457, 758, 529)),\n    (\"latin\", \"charter initial\", \"marseille-1425.jpg\", (66, 34, 200, 255)),\n    (\"latin\", \"notarial mark\", \"marseille-1425.jpg\", (866, 1361, 1000, 1455)),\n    (\"latin\", \"notarial mark\", \"sweden-1477-sign.jpg\", (26, 40, 568, 1090)),\n]\n\n# Rectangles containing ordinary body writing, away from the selected display components.\nRUNNING = [\n    (\"voynich\", \"voynich-f1r-crop.jpg\", (465, 226, 824, 397), 1),\n    (\"voynich\", \"voynich-f8r.jpg\", (540, 1110, 940, 1300), 1),\n    (\"ottoman\", \"ottoman-1468-page.jpg\", (383, 643, 662, 1163), 1),\n    (\"ottoman\", \"ottoman-1477-page.jpg\", (358, 572, 714, 1145), 1),\n    (\"greek\", \"greek-1476-239r.jpg\", (199, 260, 832, 427), 2),\n    (\"latin\", \"marseille-1425.jpg\", (145, 155, 777, 447), 2),\n]\n\n\ndef bounding_candidates(image, region):\n    gray = np.asarray(image.crop(region).convert(\"L\"), dtype=np.float32)\n    baseline = ndimage.gaussian_filter(gray, sigma=7)\n    strong_ink = baseline - gray >= 21\n    labels, count = ndimage.label(strong_ink, structure=np.ones((3, 3), np.uint8))\n    areas = np.bincount(labels.ravel())\n    found = []\n    for component, bounds in enumerate(ndimage.find_objects(labels, count), start=1):\n        vertical, horizontal = bounds\n        top, bottom, left, right = vertical.start, vertical.stop, horizontal.start, horizontal.stop\n        width, height = right - left, bottom - top\n        if not (15 <= width <= 170 and 15 <= height <= 105 and 0.75 <= width / height <= 4.0):\n            continue\n        if areas[component] < max(35, 0.038 * width * height):\n            continue\n        if min(left, top, gray.shape[1] - right, gray.shape[0] - bottom) < 4:\n            continue\n        found.append((top, left, right, bottom))\n    # Choose the first qualifying separate components in a fixed top-to-bottom band ordering.\n    found.sort(key=lambda box: (box[0] // 35, box[1], box[0], box[3]))\n    for top, left, right, bottom in found:\n        yield region[0] + left - 4, region[1] + top - 4, region[0] + right + 4, region[1] + bottom + 4\n\n\ndef tile(image, crop):\n    gray = ImageOps.autocontrast(image.crop(crop).convert(\"L\"), cutoff=(0.5, 2))\n    resized = ImageOps.contain(gray, (240, 144), method=Image.Resampling.LANCZOS)\n    tile = Image.new(\"L\", (260, 165), 255)\n    tile.paste(resized, ((tile.width - resized.width) // 2, (tile.height - resized.height) // 2))\n    return tile\n\n\ndef write_sheet(rows, filename):\n    columns = 3\n    height = ((len(rows) + columns - 1) // columns) * 190\n    sheet = Image.new(\"L\", (columns * 269, height), 255)\n    drawer = ImageDraw.Draw(sheet)\n    for index, row in enumerate(rows):\n        x = index % columns * 269\n        y = index // columns * 190\n        code = row[\"code\"]\n        sheet.paste(Image.open(DESTINATION / f\"{code}.png\"), (x + 4, y + 21))\n        drawer.text((x + 9, y + 5), code, fill=10)\n    sheet.save(DESTINATION / filename)\n\n\ndef main():\n    records = []\n    for tradition, role, filename, box in DISPLAY:\n        records.append({\"tradition\": tradition, \"role\": role, \"input\": filename, \"crop_xyxy\": box})\n    for tradition, filename, region, quota in RUNNING:\n        image = Image.open(RAW / filename)\n        candidates = list(bounding_candidates(image, region))\n        if len(candidates) < quota:\n            raise ValueError(f\"Only {len(candidates)} eligible running components in {filename}\")\n        for box in candidates[:quota]:\n            records.append({\n                \"tradition\": tradition, \"role\": \"running ink component\", \"input\": filename,\n                \"crop_xyxy\": box, \"source_roi_xyxy\": region,\n                \"eligible_components_in_region\": len(candidates),\n            })\n    random.Random(36284).shuffle(records)\n    DESTINATION.mkdir(exist_ok=True)\n    for index, row in enumerate(records, 31):\n        code = f\"M{index}\"\n        row[\"code\"] = code\n        left, upper, right, lower = row[\"crop_xyxy\"]\n        row[\"crop_aspect_ratio\"] = round((right - left) / (lower - upper), 4)\n        input_path = RAW / row[\"input\"]\n        row[\"source_sha256\"] = sha256(input_path.read_bytes()).hexdigest()\n        output = DESTINATION / f\"{code}.png\"\n        with Image.open(input_path) as image:\n            tile(image, row[\"crop_xyxy\"]).save(output)\n        row[\"tile_sha256\"] = sha256(output.read_bytes()).hexdigest()\n    (HERE / \"protocol\" / \"key.json\").write_text(json.dumps(records, indent=2) + \"\\n\")\n    for number in range((len(records) + 5) // 6):\n        rows = records[number * 6:(number + 1) * 6]\n        write_sheet(rows, f\"sheet{number + 1}.png\")\n        write_sheet(list(reversed(rows)), f\"reverse{number + 1}.png\")\n\n\nif __name__ == \"__main__\":\n    main()\n",
+      "scoring": "\"\"\"Combine independent blinded ratings for the fixed visual protocol.\"\"\"\n\nfrom collections import Counter, defaultdict\nimport json\nfrom pathlib import Path\n\n\nFIELDS = \"USLRABC\"\nCOARSE = \"USLR\"\nORDERED = \"SABC\"\nHERE = Path(__file__).resolve().parent / \"protocol\"\n\n\ndef read_ratings(path):\n    rows = {}\n    for line in path.read_text().splitlines():\n        code, ratings, shafts, apertures, *notes = line.split(maxsplit=4)\n        if code in rows or len(ratings) != len(FIELDS) or any(flag not in \"YN?\" for flag in ratings):\n            raise ValueError(f\"Invalid or duplicated rating: {line}\")\n        if {shafts, apertures} - {\"0\", \"1\", \"2\", \"3+\", \"?\"}:\n            raise ValueError(f\"Invalid motif count: {line}\")\n        rows[code] = {\n            \"flags\": ratings,\n            \"shaft_count\": shafts,\n            \"aperture_count\": apertures,\n            \"note\": \" \".join(notes),\n        }\n    return rows\n\n\ndef status(flags, subset):\n    values = [flags[field] for field in subset]\n    if all(value == \"Y\" for value in values):\n        return \"yes\"\n    if \"N\" in values:\n        return \"no\"\n    return \"unresolved\"\n\n\ndef main():\n    key = json.loads((HERE / \"key.json\").read_text())\n    first, second = (read_ratings(HERE / f\"reader{i}.tsv\") for i in (1, 2))\n    valid_codes = {row[\"code\"] for row in key}\n    if set(first) != valid_codes or set(second) != valid_codes:\n        raise ValueError(\"Ratings do not match the frozen specimen codes\")\n    groups = defaultdict(lambda: {\"n\": 0, \"coarse\": Counter(), \"ordered\": Counter()})\n    reliability = defaultdict(Counter)\n    joined = []\n    for item in key:\n        code = item[\"code\"]\n        ratings = (first[code], second[code])\n        agreed = {}\n        for field, left, right in zip(FIELDS, ratings[0][\"flags\"], ratings[1][\"flags\"]):\n            agreed[field] = left if left == right else \"?\"\n            if \"?\" in (left, right):\n                reliability[field][\"one_or_both_uncertain\"] += 1\n            elif left == right:\n                reliability[field][\"resolved_agreement\"] += 1\n            else:\n                reliability[field][\"resolved_disagreement\"] += 1\n        coarse, ordered = status(agreed, COARSE), status(agreed, ORDERED)\n        data = dict(item, reader1=ratings[0], reader2=ratings[1], consensus=agreed, coarse=coarse, ordered=ordered)\n        joined.append(data)\n        group = groups[item[\"tradition\"] + \"/\" + item[\"role\"]]\n        group[\"n\"] += 1\n        group[\"coarse\"][coarse] += 1\n        group[\"ordered\"][ordered] += 1\n\n    total_agreement = Counter()\n    for field in FIELDS:\n        total_agreement.update(reliability[field])\n    output = {\n        \"rating_order\": FIELDS,\n        \"specimens\": joined,\n        \"group_results\": groups,\n        \"agreement_by_feature\": reliability,\n        \"all_ratings_agreement\": total_agreement,\n    }\n    (HERE / \"reader-comparison.json\").write_text(json.dumps(output, indent=2) + \"\\n\")\n\n\nif __name__ == \"__main__\":\n    main()\n",
+      "template_search": "from pathlib import Path\nimport argparse\nimport json\n\nimport numpy as np\nfrom PIL import Image, ImageDraw\nfrom scipy.fft import rfft2, irfft2, next_fast_len\nfrom scipy.ndimage import gaussian_filter, distance_transform_edt, maximum_filter\n\n\nHERE = Path(__file__).resolve().parent\nINPUT = HERE.parent / \"raw/p84-000.jpg\"\nREGION = (22, 63, 438, 274)\nWIDTHS = (15, 18, 21, 25, 29, 34, 39, 45, 52, 60, 69, 79, 91, 105,\n          121, 140, 161, 186, 214, 248, 285, 326)\nREFERENCE_PATHS = (\n    ((47, 184), (44, 180), (46, 174), (52, 166), (63, 162), (76, 156), (90, 154), (103, 150)),\n    ((103, 126), (101, 148), (99, 177), (96, 202), (93, 231), (93, 252), (97, 262), (105, 266)),\n    ((103, 127), (127, 129), (170, 132), (216, 132), (259, 126), (294, 124), (333, 124),\n     (374, 121), (401, 113)),\n    ((403, 116), (402, 103), (400, 94), (400, 86), (405, 79), (413, 80), (419, 85), (421, 94),\n     (415, 107), (406, 115), (403, 133), (392, 144), (380, 152), (357, 163), (341, 167),\n     (315, 174), (298, 172), (289, 164), (289, 151)),\n)\nBLUE = ((244, 180), (265, 162), (286, 149), (303, 142))\n\n\ndef path_image(paths, width):\n    mask = Image.new(\"L\", (REGION[2] - REGION[0], REGION[3] - REGION[1]))\n    draw = ImageDraw.Draw(mask)\n    for path in paths:\n        xy = [(x-REGION[0], y-REGION[1]) for x,y in path]\n        draw.line(xy, fill=255, width=width, joint=\"curve\")\n    return np.asarray(mask, dtype=np.float32) / 255\n\n\ndef standard_ink(a, sigma, local):\n    high = gaussian_filter(a, sigma) - a\n    kept = high / np.sqrt(gaussian_filter(high * high, local) + 5)\n    return np.clip(kept, -3.5, 3.5)\n\n\ndef target_parts(mode):\n    rgb = np.asarray(Image.open(INPUT).convert(\"RGB\").crop(REGION), dtype=np.float32)\n    red = rgb[:,:,0]\n    paper = (rgb[:,:,0] - rgb[:,:,2] > 13) & (rgb[:,:,1] < 236)\n    safe = (distance_transform_edt(paper) >= 6) & (path_image((BLUE,), 13) == 0)\n    t = standard_ink(gaussian_filter(red, 1.0), 5, 8)\n    paths = tuple(path_image((path,), 8) for path in REFERENCE_PATHS)\n    full = np.maximum.reduce(paths)\n    support = gaussian_filter(path_image(REFERENCE_PATHS, 29), 2) * safe\n    if mode == \"traced\":\n        t = gaussian_filter(full, 2.2)\n    elif mode == \"feature\":\n        t = np.maximum(t, 0) * gaussian_filter(full, 3)\n    return t.astype(np.float32), support.astype(np.float32)\n\n\ndef array_transform(a, width, angle, mirror, size=None):\n    im = Image.fromarray(a)\n    if mirror:\n        im = im.transpose(Image.Transpose.FLIP_LEFT_RIGHT)\n    if angle:\n        im = im.rotate(angle, resample=Image.Resampling.BICUBIC, expand=True, fillcolor=0)\n    if size is None:\n        size = width, max(1, round(im.height * width / im.width))\n    return np.asarray(im.resize(size, Image.Resampling.BILINEAR), dtype=np.float32)\n\n\ndef make_templates(mode, angles, mirrors):\n    t, m = target_parts(mode)\n    for mirror in mirrors:\n        for angle in angles:\n            for width in WIDTHS:\n                target = array_transform(t, width, angle, mirror)\n                hit = target.shape[::-1]\n                mask = np.clip(array_transform(m, width, angle, mirror, hit), 0, 1)\n                if mask.sum() <= 0:\n                    continue\n                target = mask * (target - (target * mask).sum() / mask.sum())\n                total = np.maximum(target, 0).sum()\n                if total > 0:\n                    yield (mode, angle, mirror, width, target / total, mask)\n\n\ndef score_at(plane, templ, support, y, x):\n    h,w = templ.shape\n    arr = plane[y:y+h,x:x+w]\n    centered = arr - (support * arr).sum() / support.sum()\n    target_energy = ((templ * templ)/np.maximum(support, 1e-6)).sum()\n    ink_energy = (support * centered * centered).sum()\n    return float((centered * templ).sum() / np.sqrt(max(target_energy * ink_energy, 1e-6)))\n\n\ndef page_search(img, templates, best_n):\n    plane = standard_ink(np.asarray(img.getchannel(\"R\"), dtype=np.float32), 2.1, 3.8)\n    H,W = plane.shape\n    shape = (next_fast_len(H + max(k[4].shape[0] for k in templates) - 1),\n             next_fast_len(W + max(k[4].shape[1] for k in templates) - 1))\n    spectrum = rfft2(plane, shape)\n    found = []\n    for mode, angle, mirror, width, t, mask in templates:\n        h,w = t.shape\n        if (h >= H) or (w >= W):\n            continue\n        total = irfft2(spectrum * rfft2(t[::-1,::-1], shape), shape)\n        vals = total[h-1:H,w-1:W].copy()\n        hits = []\n        for _ in range(best_n):\n            vy,vx = np.unravel_index(vals.argmax(), vals.shape)\n            score = vals[vy,vx]\n            if not np.isfinite(score):\n                break\n            ncc = score_at(plane,t,mask,vy,vx)\n            hits.append(dict(corr=float(ncc),response=float(score),x=int(vx),y=int(vy),\n                             w=w,h=h,angle=angle,mirror=mirror,mode=mode,thumb=[W,H]))\n            gap = max(7,width//4)\n            vals[max(0,vy-gap):vy+gap,max(0,vx-gap):vx+gap] = -np.inf\n        found.extend(sorted(hits, key=lambda z: z[\"corr\"], reverse=True)[:3])\n    return sorted(found, key=lambda z: z[\"corr\"], reverse=True)\n\n\ndef main():\n    p=argparse.ArgumentParser()\n    p.add_argument(\"--angles\", type=int, nargs=\"+\",default=[0])\n    p.add_argument(\"--mode\", choices=[\"learned\",\"feature\",\"traced\"],default=\"feature\")\n    p.add_argument(\"--output\", default=\"search-results.json\")\n    p.add_argument(\"--mirror\", action=\"store_true\")\n    p.add_argument(\"--id\", nargs=\"+\")\n    p.add_argument(\"--peaks\", type=int, default=8)\n    args=p.parse_args()\n    labels = {x[\"id\"]: x for x in json.loads((HERE/\"yale_pages.json\").read_text())}\n    images = sorted((HERE/\"yale\").glob(\"*.jpg\"))\n    if args.id is not None:\n        images = [p for p in images if p.stem in args.id]\n    templates = list(make_templates(args.mode,args.angles,[True] if args.mirror else [False]))\n    output=[]\n    for f in images:\n        im=Image.open(f).convert(\"RGB\")\n        scores=page_search(im,templates,args.peaks)\n        output.extend(dict(found,id=f.stem,label=labels[f.stem][\"label\"]) for found in scores)\n        print(f.stem,labels[f.stem][\"label\"],scores[0],flush=True)\n    (HERE/args.output).write_text(json.dumps(sorted(output,key=lambda z:z[\"corr\"],reverse=True),indent=2)+\"\\n\")\n\n\nif __name__ == \"__main__\":\n    main()\n",
+      "primary_reader1_tsv": "M46 YNYNNNN 1 1 slanted stem and separate oval\nM33 YYYY?NN 1 1 left drop slants into loop\nM38 YYYYNNN 3+ 3+ central loop cluster\nM31 YN?YNNN ? ? cropped with thick joins\nM35 YYYYN?? 1 3+ fine crossing strokes in right-side ornament\nM42 YNYYNNN 1 2 both apertures clear\nM34 ?YYYN?N ? 3+ oblique rays and right flourish clipped\nM40 ?N??NNN ? ? blurred and cropped\nM39 YNYYNNN 2 ? fine strokes converge near base\nM47 Y?????? ? ? lower strokes obscured by blur\nM37 YNYYNNN 1 ? upper closure uncertain\nM44 YYYYY?? 1 ? faint right curl closure\nM43 YYYYY?? 1 ? right curl fades near possible closure\nM32 YY?Y??N ? ? blurry drops and contacts\nM45 ?YYYNNN ? 2 oblique shaft and central loop joins\nM41 YYYYNNN 1 2 central loop joins\nM36 YYYYNNN 3+ 3+ loop cluster ends before right third\n",
+      "primary_reader2_tsv": "M36 YYYYNNN 3+ 3+\nM41 YYYYNNN 1 2\nM45 YYYYNNN 1 2\nM32 YY?YN?? 2 ?\nM43 YYYY??? 1 ?\nM44 YYYYYYY 1 3+\nM37 YN?YNNN 2 ?\nM47 ??????? ? ?\nM39 YNYYNNN 2 3+\nM40 ?N??NNN ? ?\nM34 YYYYN?N 2 3+\nM42 YNYYNNN 1 2\nM35 YYYYNYN 1 3+\nM31 ?NN?NNN ? 0\nM38 YYYYNNN 3+ 3+\nM33 YYYYNNN 1 1\nM46 YNNNNNN 1 0\n",
+      "result_sha256": "72a6195f44d17cc22fd1ad2dbae7f68131a22605763db867dea2bf5c820ddfd8",
+      "comparison_assembly": "Save the scoring source as score_panels.py. In its neighboring protocol folder save the TSV strings as reader1.tsv and reader2.tsv. Take the 17 comparison specimens in their listed order and write key.json containing those rows without reader1, reader2, consensus, coarse or ordered. Run the script to recreate reader-comparison.json. Archived image coordinates use xyxy pixels after the documented initial archive retrieval or rasterization."
+    }
+  }
+}
