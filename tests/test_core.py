@@ -1,7 +1,26 @@
 import json, os, unittest
+from pathlib import Path
+from tempfile import TemporaryDirectory
 from vs import path, ivtff, split, controls, judge, refcorpus
 
 HAVE_DATA = os.path.exists(path("data", "raw", "ZL3b-n.txt"))
+
+
+class TransliterationCaseTest(unittest.TestCase):
+    def test_preserve_case_only_for_v101_header(self):
+        cases = (
+            ("#=IVTFF v101 2.0 M 6\n", ["8aN", "8an"]),
+            ("#=IVTFF Eva- 2.0 M 5\n", ["8an", "8an"]),
+            ("#=IVTFF v101x 2.0 M 6\n", ["8an", "8an"]),
+            ("", ["8an", "8an"]),
+        )
+        with TemporaryDirectory() as directory:
+            fixture = Path(directory) / "transcription.txt"
+            for header, expected in cases:
+                with self.subTest(header=header):
+                    fixture.write_text(header + "<f1r> <! $I=H>\n<f1r.1,@P0> 8a[N:n].8a[n:N]\n", encoding="utf-8")
+                    page, = ivtff.parse(fixture)
+                    self.assertEqual(page.words(), expected)
 
 
 @unittest.skipUnless(HAVE_DATA, "run python3 -m vs fetch first")

@@ -10,6 +10,7 @@ Conventions (documented so that every choice is a pinned, named option):
   <->, <~>  a break around a drawing: a word space
   <%> <$>   paragraph start / end
   <!..>     comments: removed
+  #=IVTFF v101  glyph case is significant; other alphabets retain existing lowercase handling
 """
 import re
 from dataclasses import dataclass, field
@@ -63,7 +64,7 @@ class Page:
         return out
 
 
-def clean_text(s, uncertain_space="split"):
+def clean_text(s, uncertain_space="split", *, preserve_case=False):
     para_start = "<%>" in s
     para_end = "<$>" in s
     s = re.sub(r"<![^>]*>", "", s)
@@ -74,7 +75,8 @@ def clean_text(s, uncertain_space="split"):
     s = re.sub(r"\[([^:\]]*)(:[^\]]*)?\]", r"\1", s)
     s = re.sub(r"@\d+;", "*", s)
     s = s.replace("{", "").replace("}", "").replace("'", "")
-    s = s.lower()
+    if not preserve_case:
+        s = s.lower()
     s = s.replace(",", "." if uncertain_space == "split" else "")
     words = [w for w in re.split(r"[.\s]+", s) if w]
     return words, para_start, para_end
@@ -83,8 +85,11 @@ def clean_text(s, uncertain_space="split"):
 def parse(fn=None, uncertain_space="split"):
     fn = fn or path("data", "raw", "ZL3b-n.txt")
     pages, order = {}, 0
-    for raw in open(fn, encoding="utf-8", errors="strict"):
+    preserve_case = False
+    for line_number, raw in enumerate(open(fn, encoding="utf-8", errors="strict")):
         raw = raw.rstrip("\n")
+        if line_number == 0:
+            preserve_case = raw.startswith("#=IVTFF v101 ")
         if raw.startswith("#") or not raw.strip():
             continue
         m = PAGE_RE.match(raw)
@@ -97,7 +102,7 @@ def parse(fn=None, uncertain_space="split"):
         if not m:
             continue
         pid, n, _pos, unit, sub, text = m.groups()
-        words, ps, pe = clean_text(text, uncertain_space)
+        words, ps, pe = clean_text(text, uncertain_space, preserve_case=preserve_case)
         pages[pid].lines.append(Line(f"{pid}.{n}", pid, int(n), unit, sub, words, ps, pe))
     return [pages[k] for k in sorted(pages, key=lambda k: pages[k].order)]
 
