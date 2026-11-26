@@ -1,0 +1,1115 @@
+{
+  "title": "An independent public botanical Currier B holdout has one trainable hand contrast",
+  "program": "L2",
+  "on_path": false,
+  "hard": false,
+  "statement": "The independent public practice evaluation has only f41r, f50v and f66v among paired botanical Currier B pages for hands 2, 3 and 5 with at least 40 certain paragraph tokens per edition. Hand 3 has zero evaluation pages. The strict and wide rules from #348 both admit two hand 2 versus hand 5 pairs which reuse f50v. Holding out physical quires leaves only f50v–f66v trainable with the specified two-folio training minimum, and neither candidate pair shares a quire. All six eligible hand 3 page panels in the combined public partitions lie on one physical bifolio, Q2. Their nearest hand 2 and 5 matches are 30 and 25 canonical folio positions away, beyond the wider cutoff of 24. A diagnostic for the one remaining pair assigned both hands correctly in 18 of 18 planted runs per edition; copying gave 9 of 18 in ZL and 11 correct plus 3 ties in 18 in Takahashi. These are alternate model fits on one synthetic geometry. No observed manuscript topic or vocabulary score was fitted on this pair.",
+  "check": "Audit the physical-bifolio support of the registered matched hand contrasts before combining their public evidence. Count disjoint bifolia by quire and keep unmatched hands explicit. Any re-estimate should be confined to hand 2 versus hand 5, group all panels of a physical bifolio, and report the number of physically separate matched blocks before reporting accuracy.",
+  "sources": {
+    "prior_matched_pairs": "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/348",
+    "prior_held_apart_triples": "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/506",
+    "physical_metadata": "https://www.voynich.nu/software/ivtt/IVTFF_format.pdf",
+    "pins_commit": "7981b59f83cabb59b245300e2731a2c3ba35469c"
+  },
+  "plan": {
+    "step": "P-L2-002",
+    "primary_sample": "The evaluation partition of the public practice split was not used as a scored page in #348. Keep ZL/IT intersection with shared herbal section H, Currier B, annotated hand 2, 3 or 5, and at least 40 certain paragraph words in each edition.",
+    "metadata": "Use the canonical ZL folio sequence, one physical folio for recto, verso and panels, and quire from the fixed ZL metadata. Match paragraph word counts in each edition.",
+    "matches": {
+      "local": {
+        "max_folio_distance": 12,
+        "max_length_ratio": 1.25
+      },
+      "wider_sensitivity": {
+        "max_folio_distance": 24,
+        "max_length_ratio": 1.5
+      }
+    },
+    "match_criteria": "Candidates have different hands on different physical folios and pass both editions' length ratios. The same-quire subset of each rule is reported separately as a physical-block diagnostic.",
+    "train": "Use the same paired eligibility on practice training. For each target pair, leave both evaluation folios and each of their source quires out before building any vocabulary, IDF, topic basis and hand centroids. Each candidate hand needs two distinct training folios.",
+    "support": "Before reading any lexical outcomes, report unique page sides, physical folios and quire-pair blocks for each hand contrast, including the largest independent sets by folio and by disjoint quire sets. Three-hand inference needs support connecting all three hands and eligible contrasts in at least two physically disjoint quire blocks. Sparse support permits pair-specific accounting only. A scored pair-specific result still needs at least two distinct, disjoint quire blocks.",
+    "controls": "Preserve the pinned G-self-citation backgrounds (seeds 401–406) and the 10% hand-exclusive, same-length planted word control from #348 when the independent geometry permits a fit. Otherwise reproduce these controls on the prior public geometry as a diagnostic and report the distinction."
+  },
+  "metadata_results": {
+    "public_practice_training": [
+      {
+        "id": "f26r",
+        "folio": "f26",
+        "hand": "2",
+        "quire": "D",
+        "order": 24,
+        "lengths": [
+          89,
+          85
+        ],
+        "bifolio": "2"
+      },
+      {
+        "id": "f26v",
+        "folio": "f26",
+        "hand": "2",
+        "quire": "D",
+        "order": 24,
+        "lengths": [
+          92,
+          89
+        ],
+        "bifolio": "2"
+      },
+      {
+        "id": "f31r",
+        "folio": "f31",
+        "hand": "2",
+        "quire": "D",
+        "order": 29,
+        "lengths": [
+          101,
+          100
+        ],
+        "bifolio": "2"
+      },
+      {
+        "id": "f31v",
+        "folio": "f31",
+        "hand": "2",
+        "quire": "D",
+        "order": 29,
+        "lengths": [
+          110,
+          108
+        ],
+        "bifolio": "2"
+      },
+      {
+        "id": "f33r",
+        "folio": "f33",
+        "hand": "2",
+        "quire": "E",
+        "order": 31,
+        "lengths": [
+          74,
+          72
+        ],
+        "bifolio": "1"
+      },
+      {
+        "id": "f33v",
+        "folio": "f33",
+        "hand": "2",
+        "quire": "E",
+        "order": 31,
+        "lengths": [
+          114,
+          109
+        ],
+        "bifolio": "1"
+      },
+      {
+        "id": "f34r",
+        "folio": "f34",
+        "hand": "2",
+        "quire": "E",
+        "order": 32,
+        "lengths": [
+          149,
+          144
+        ],
+        "bifolio": "2"
+      },
+      {
+        "id": "f34v",
+        "folio": "f34",
+        "hand": "2",
+        "quire": "E",
+        "order": 32,
+        "lengths": [
+          117,
+          115
+        ],
+        "bifolio": "2"
+      },
+      {
+        "id": "f39r",
+        "folio": "f39",
+        "hand": "2",
+        "quire": "E",
+        "order": 37,
+        "lengths": [
+          157,
+          154
+        ],
+        "bifolio": "2"
+      },
+      {
+        "id": "f39v",
+        "folio": "f39",
+        "hand": "2",
+        "quire": "E",
+        "order": 37,
+        "lengths": [
+          146,
+          142
+        ],
+        "bifolio": "2"
+      },
+      {
+        "id": "f40r",
+        "folio": "f40",
+        "hand": "2",
+        "quire": "E",
+        "order": 38,
+        "lengths": [
+          102,
+          97
+        ],
+        "bifolio": "1"
+      },
+      {
+        "id": "f40v",
+        "folio": "f40",
+        "hand": "2",
+        "quire": "E",
+        "order": 38,
+        "lengths": [
+          105,
+          106
+        ],
+        "bifolio": "1"
+      },
+      {
+        "id": "f41v",
+        "folio": "f41",
+        "hand": "5",
+        "quire": "F",
+        "order": 39,
+        "lengths": [
+          65,
+          67
+        ],
+        "bifolio": "1"
+      },
+      {
+        "id": "f43r",
+        "folio": "f43",
+        "hand": "2",
+        "quire": "F",
+        "order": 41,
+        "lengths": [
+          153,
+          150
+        ],
+        "bifolio": "3"
+      },
+      {
+        "id": "f43v",
+        "folio": "f43",
+        "hand": "2",
+        "quire": "F",
+        "order": 41,
+        "lengths": [
+          151,
+          153
+        ],
+        "bifolio": "3"
+      },
+      {
+        "id": "f46r",
+        "folio": "f46",
+        "hand": "2",
+        "quire": "F",
+        "order": 44,
+        "lengths": [
+          162,
+          157
+        ],
+        "bifolio": "3"
+      },
+      {
+        "id": "f46v",
+        "folio": "f46",
+        "hand": "2",
+        "quire": "F",
+        "order": 44,
+        "lengths": [
+          110,
+          111
+        ],
+        "bifolio": "3"
+      },
+      {
+        "id": "f48r",
+        "folio": "f48",
+        "hand": "5",
+        "quire": "F",
+        "order": 46,
+        "lengths": [
+          88,
+          89
+        ],
+        "bifolio": "1"
+      },
+      {
+        "id": "f48v",
+        "folio": "f48",
+        "hand": "5",
+        "quire": "F",
+        "order": 46,
+        "lengths": [
+          128,
+          126
+        ],
+        "bifolio": "1"
+      },
+      {
+        "id": "f50r",
+        "folio": "f50",
+        "hand": "2",
+        "quire": "G",
+        "order": 48,
+        "lengths": [
+          93,
+          89
+        ],
+        "bifolio": "2"
+      },
+      {
+        "id": "f55r",
+        "folio": "f55",
+        "hand": "2",
+        "quire": "G",
+        "order": 53,
+        "lengths": [
+          122,
+          124
+        ],
+        "bifolio": "2"
+      },
+      {
+        "id": "f55v",
+        "folio": "f55",
+        "hand": "2",
+        "quire": "G",
+        "order": 53,
+        "lengths": [
+          104,
+          104
+        ],
+        "bifolio": "2"
+      },
+      {
+        "id": "f57r",
+        "folio": "f57",
+        "hand": "5",
+        "quire": "H",
+        "order": 55,
+        "lengths": [
+          87,
+          87
+        ],
+        "bifolio": "1"
+      },
+      {
+        "id": "f94r",
+        "folio": "f94",
+        "hand": "3",
+        "quire": "Q",
+        "order": 83,
+        "lengths": [
+          79,
+          82
+        ],
+        "bifolio": "2"
+      },
+      {
+        "id": "f94v",
+        "folio": "f94",
+        "hand": "3",
+        "quire": "Q",
+        "order": 83,
+        "lengths": [
+          97,
+          101
+        ],
+        "bifolio": "2"
+      },
+      {
+        "id": "f95r1",
+        "folio": "f95",
+        "hand": "3",
+        "quire": "Q",
+        "order": 84,
+        "lengths": [
+          101,
+          103
+        ],
+        "bifolio": "2"
+      },
+      {
+        "id": "f95r2",
+        "folio": "f95",
+        "hand": "3",
+        "quire": "Q",
+        "order": 84,
+        "lengths": [
+          79,
+          79
+        ],
+        "bifolio": "2"
+      },
+      {
+        "id": "f95v2",
+        "folio": "f95",
+        "hand": "3",
+        "quire": "Q",
+        "order": 84,
+        "lengths": [
+          60,
+          64
+        ],
+        "bifolio": "2"
+      },
+      {
+        "id": "f95v1",
+        "folio": "f95",
+        "hand": "3",
+        "quire": "Q",
+        "order": 84,
+        "lengths": [
+          116,
+          117
+        ],
+        "bifolio": "2"
+      }
+    ],
+    "public_practice_evaluation": [
+      {
+        "id": "f41r",
+        "folio": "f41",
+        "hand": "5",
+        "quire": "F",
+        "order": 39,
+        "lengths": [
+          97,
+          97
+        ],
+        "bifolio": "1"
+      },
+      {
+        "id": "f50v",
+        "folio": "f50",
+        "hand": "2",
+        "quire": "G",
+        "order": 48,
+        "lengths": [
+          100,
+          98
+        ],
+        "bifolio": "2"
+      },
+      {
+        "id": "f66v",
+        "folio": "f66",
+        "hand": "5",
+        "quire": "H",
+        "order": 58,
+        "lengths": [
+          114,
+          113
+        ],
+        "bifolio": "1"
+      }
+    ],
+    "minimum_distances_to_hand_3": {
+      "3-2": {
+        "distance": 30,
+        "folios": [
+          "f94",
+          "f55"
+        ]
+      },
+      "3-5": {
+        "distance": 25,
+        "folios": [
+          "f94",
+          "f66"
+        ]
+      }
+    },
+    "matches": {
+      "local": {
+        "2-3": {
+          "raw": {
+            "page_pairs": 0,
+            "pages": [],
+            "folio_pairs": [],
+            "folios": [],
+            "quire_blocks": [],
+            "folio_disjoint_pairs": 0,
+            "quire_disjoint_pairs": 0
+          },
+          "trainable": {
+            "page_pairs": 0,
+            "pages": [],
+            "folio_pairs": [],
+            "folios": [],
+            "quire_blocks": [],
+            "folio_disjoint_pairs": 0,
+            "quire_disjoint_pairs": 0
+          },
+          "trainable_same_quire": {
+            "page_pairs": 0,
+            "pages": [],
+            "folio_pairs": [],
+            "folios": [],
+            "quire_blocks": [],
+            "folio_disjoint_pairs": 0,
+            "quire_disjoint_pairs": 0
+          },
+          "pair_details": []
+        },
+        "2-5": {
+          "raw": {
+            "page_pairs": 2,
+            "pages": [
+              "f41r",
+              "f50v",
+              "f66v"
+            ],
+            "folio_pairs": [
+              [
+                "f50",
+                "f41"
+              ],
+              [
+                "f50",
+                "f66"
+              ]
+            ],
+            "folios": [
+              "f41",
+              "f50",
+              "f66"
+            ],
+            "quire_blocks": [
+              [
+                "F",
+                "G"
+              ],
+              [
+                "G",
+                "H"
+              ]
+            ],
+            "folio_disjoint_pairs": 1,
+            "quire_disjoint_pairs": 1
+          },
+          "trainable": {
+            "page_pairs": 1,
+            "pages": [
+              "f50v",
+              "f66v"
+            ],
+            "folio_pairs": [
+              [
+                "f50",
+                "f66"
+              ]
+            ],
+            "folios": [
+              "f50",
+              "f66"
+            ],
+            "quire_blocks": [
+              [
+                "G",
+                "H"
+              ]
+            ],
+            "folio_disjoint_pairs": 1,
+            "quire_disjoint_pairs": 1
+          },
+          "trainable_same_quire": {
+            "page_pairs": 0,
+            "pages": [],
+            "folio_pairs": [],
+            "folios": [],
+            "quire_blocks": [],
+            "folio_disjoint_pairs": 0,
+            "quire_disjoint_pairs": 0
+          },
+          "pair_details": [
+            {
+              "pages": [
+                "f50v",
+                "f41r"
+              ],
+              "quires": [
+                "G",
+                "F"
+              ],
+              "training_folios": {
+                "2": 6,
+                "5": 1
+              }
+            },
+            {
+              "pages": [
+                "f50v",
+                "f66v"
+              ],
+              "quires": [
+                "G",
+                "H"
+              ],
+              "training_folios": {
+                "2": 8,
+                "5": 2
+              }
+            }
+          ]
+        },
+        "3-5": {
+          "raw": {
+            "page_pairs": 0,
+            "pages": [],
+            "folio_pairs": [],
+            "folios": [],
+            "quire_blocks": [],
+            "folio_disjoint_pairs": 0,
+            "quire_disjoint_pairs": 0
+          },
+          "trainable": {
+            "page_pairs": 0,
+            "pages": [],
+            "folio_pairs": [],
+            "folios": [],
+            "quire_blocks": [],
+            "folio_disjoint_pairs": 0,
+            "quire_disjoint_pairs": 0
+          },
+          "trainable_same_quire": {
+            "page_pairs": 0,
+            "pages": [],
+            "folio_pairs": [],
+            "folios": [],
+            "quire_blocks": [],
+            "folio_disjoint_pairs": 0,
+            "quire_disjoint_pairs": 0
+          },
+          "pair_details": []
+        }
+      },
+      "wider_sensitivity": {
+        "2-3": {
+          "raw": {
+            "page_pairs": 0,
+            "pages": [],
+            "folio_pairs": [],
+            "folios": [],
+            "quire_blocks": [],
+            "folio_disjoint_pairs": 0,
+            "quire_disjoint_pairs": 0
+          },
+          "trainable": {
+            "page_pairs": 0,
+            "pages": [],
+            "folio_pairs": [],
+            "folios": [],
+            "quire_blocks": [],
+            "folio_disjoint_pairs": 0,
+            "quire_disjoint_pairs": 0
+          },
+          "trainable_same_quire": {
+            "page_pairs": 0,
+            "pages": [],
+            "folio_pairs": [],
+            "folios": [],
+            "quire_blocks": [],
+            "folio_disjoint_pairs": 0,
+            "quire_disjoint_pairs": 0
+          },
+          "pair_details": []
+        },
+        "2-5": {
+          "raw": {
+            "page_pairs": 2,
+            "pages": [
+              "f41r",
+              "f50v",
+              "f66v"
+            ],
+            "folio_pairs": [
+              [
+                "f50",
+                "f41"
+              ],
+              [
+                "f50",
+                "f66"
+              ]
+            ],
+            "folios": [
+              "f41",
+              "f50",
+              "f66"
+            ],
+            "quire_blocks": [
+              [
+                "F",
+                "G"
+              ],
+              [
+                "G",
+                "H"
+              ]
+            ],
+            "folio_disjoint_pairs": 1,
+            "quire_disjoint_pairs": 1
+          },
+          "trainable": {
+            "page_pairs": 1,
+            "pages": [
+              "f50v",
+              "f66v"
+            ],
+            "folio_pairs": [
+              [
+                "f50",
+                "f66"
+              ]
+            ],
+            "folios": [
+              "f50",
+              "f66"
+            ],
+            "quire_blocks": [
+              [
+                "G",
+                "H"
+              ]
+            ],
+            "folio_disjoint_pairs": 1,
+            "quire_disjoint_pairs": 1
+          },
+          "trainable_same_quire": {
+            "page_pairs": 0,
+            "pages": [],
+            "folio_pairs": [],
+            "folios": [],
+            "quire_blocks": [],
+            "folio_disjoint_pairs": 0,
+            "quire_disjoint_pairs": 0
+          },
+          "pair_details": [
+            {
+              "pages": [
+                "f50v",
+                "f41r"
+              ],
+              "quires": [
+                "G",
+                "F"
+              ],
+              "training_folios": {
+                "2": 6,
+                "5": 1
+              }
+            },
+            {
+              "pages": [
+                "f50v",
+                "f66v"
+              ],
+              "quires": [
+                "G",
+                "H"
+              ],
+              "training_folios": {
+                "2": 8,
+                "5": 2
+              }
+            }
+          ]
+        },
+        "3-5": {
+          "raw": {
+            "page_pairs": 0,
+            "pages": [],
+            "folio_pairs": [],
+            "folios": [],
+            "quire_blocks": [],
+            "folio_disjoint_pairs": 0,
+            "quire_disjoint_pairs": 0
+          },
+          "trainable": {
+            "page_pairs": 0,
+            "pages": [],
+            "folio_pairs": [],
+            "folios": [],
+            "quire_blocks": [],
+            "folio_disjoint_pairs": 0,
+            "quire_disjoint_pairs": 0
+          },
+          "trainable_same_quire": {
+            "page_pairs": 0,
+            "pages": [],
+            "folio_pairs": [],
+            "folios": [],
+            "quire_blocks": [],
+            "folio_disjoint_pairs": 0,
+            "quire_disjoint_pairs": 0
+          },
+          "pair_details": []
+        }
+      }
+    }
+  },
+  "synthetic_control_results": {
+    "summary": {
+      "zl": {
+        "copy": {
+          "correct": 9,
+          "incorrect": 9
+        },
+        "planted": {
+          "correct": 18
+        }
+      },
+      "it": {
+        "copy": {
+          "correct": 11,
+          "incorrect": 4,
+          "ties": 3
+        },
+        "planted": {
+          "correct": 18
+        }
+      }
+    },
+    "runs": {
+      "contrast": {
+        "pages": [
+          "f50v",
+          "f66v"
+        ],
+        "quires": [
+          "G",
+          "H"
+        ],
+        "training_folios": {
+          "2": 8,
+          "5": 2
+        }
+      },
+      "training_pages": [
+        "f26r",
+        "f26v",
+        "f31r",
+        "f31v",
+        "f33r",
+        "f33v",
+        "f34r",
+        "f34v",
+        "f39r",
+        "f39v",
+        "f40r",
+        "f40v",
+        "f41v",
+        "f43r",
+        "f43v",
+        "f46r",
+        "f46v",
+        "f48r",
+        "f48v"
+      ],
+      "controls": {
+        "zl": {
+          "401": {
+            "copy": [
+              0.03705996,
+              0.28354129,
+              0.03876488
+            ],
+            "planted": [
+              0.51256889,
+              0.46207722,
+              0.46249213
+            ],
+            "planted_test_word_counts": {
+              "f50v": [
+                7,
+                72
+              ],
+              "f66v": [
+                8,
+                82
+              ]
+            }
+          },
+          "402": {
+            "copy": [
+              -0.06173896,
+              -0.07335508,
+              -0.05968894
+            ],
+            "planted": [
+              0.76049304,
+              0.75253688,
+              0.76051561
+            ],
+            "planted_test_word_counts": {
+              "f50v": [
+                9,
+                94
+              ],
+              "f66v": [
+                6,
+                61
+              ]
+            }
+          },
+          "403": {
+            "copy": [
+              -0.72152966,
+              -0.59555397,
+              -0.72128449
+            ],
+            "planted": [
+              0.35384383,
+              0.00928009,
+              0.47549706
+            ],
+            "planted_test_word_counts": {
+              "f50v": [
+                8,
+                80
+              ],
+              "f66v": [
+                7,
+                74
+              ]
+            }
+          },
+          "404": {
+            "copy": [
+              0.32090244,
+              0.32091144,
+              0.02565484
+            ],
+            "planted": [
+              0.70782981,
+              0.65773086,
+              0.99365147
+            ],
+            "planted_test_word_counts": {
+              "f50v": [
+                8,
+                78
+              ],
+              "f66v": [
+                7,
+                69
+              ]
+            }
+          },
+          "405": {
+            "copy": [
+              -0.42735018,
+              -0.42878707,
+              -0.53386165
+            ],
+            "planted": [
+              0.36809376,
+              0.34451654,
+              0.30442625
+            ],
+            "planted_test_word_counts": {
+              "f50v": [
+                10,
+                98
+              ],
+              "f66v": [
+                10,
+                96
+              ]
+            }
+          },
+          "406": {
+            "copy": [
+              0.34782992,
+              0.34862756,
+              0.34862571
+            ],
+            "planted": [
+              0.24484676,
+              0.64003875,
+              0.2834832
+            ],
+            "planted_test_word_counts": {
+              "f50v": [
+                10,
+                97
+              ],
+              "f66v": [
+                9,
+                92
+              ]
+            }
+          }
+        },
+        "it": {
+          "401": {
+            "copy": [
+              0.28412411,
+              0.29721951,
+              0.29064441
+            ],
+            "planted": [
+              0.88007433,
+              0.87762459,
+              0.8389895
+            ],
+            "planted_test_word_counts": {
+              "f50v": [
+                9,
+                87
+              ],
+              "f66v": [
+                11,
+                107
+              ]
+            }
+          },
+          "402": {
+            "copy": [
+              0.18188193,
+              0.19949569,
+              -0.07508223
+            ],
+            "planted": [
+              0.612213,
+              0.30866961,
+              0.39592703
+            ],
+            "planted_test_word_counts": {
+              "f50v": [
+                7,
+                69
+              ],
+              "f66v": [
+                6,
+                56
+              ]
+            }
+          },
+          "403": {
+            "copy": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "planted": [
+              1.62532405,
+              1.63463031,
+              1.56276926
+            ],
+            "planted_test_word_counts": {
+              "f50v": [
+                10,
+                98
+              ],
+              "f66v": [
+                11,
+                108
+              ]
+            }
+          },
+          "404": {
+            "copy": [
+              0.39878998,
+              0.44086075,
+              0.53531747
+            ],
+            "planted": [
+              0.49706014,
+              1.29614047,
+              1.30570928
+            ],
+            "planted_test_word_counts": {
+              "f50v": [
+                7,
+                74
+              ],
+              "f66v": [
+                8,
+                82
+              ]
+            }
+          },
+          "405": {
+            "copy": [
+              0.34400164,
+              0.34553205,
+              0.34546318
+            ],
+            "planted": [
+              1.52368678,
+              1.39906912,
+              1.52006407
+            ],
+            "planted_test_word_counts": {
+              "f50v": [
+                9,
+                90
+              ],
+              "f66v": [
+                11,
+                110
+              ]
+            }
+          },
+          "406": {
+            "copy": [
+              -0.24810746,
+              -0.1737106,
+              -0.01507548
+            ],
+            "planted": [
+              0.181027,
+              0.10682223,
+              0.06440256
+            ],
+            "planted_test_word_counts": {
+              "f50v": [
+                8,
+                77
+              ],
+              "f66v": [
+                7,
+                73
+              ]
+            }
+          }
+        }
+      }
+    },
+    "notes": "The diagnostic reimplements published #348 settings where specified. It uses a fixed train-only smoothed IDF formula and deterministic fresh markers with the same raw character length, four marker words per hand and length. It fits a separate rank-five NMF on each synthetic reconstruction of the eligible training layout. Unplanted backgrounds use the pinned generator and do not use hand labels. Terms are generated using the real training-only vocabulary; test words are used only to specify the public certain-token layout. No manuscripts were scored. A correct synthetic assignment is a margin above 1e-12."
+  },
+  "reproduction": {
+    "python": "3.12.14",
+    "numpy_for_synthetic_diagnostic": "2.3.5",
+    "usage": "From the pinned repository root use python3 layout.py plan.json > layout.json and OPENBLAS_NUM_THREADS=1 python3 control.py layout.json > control.json, with the embedded file contents or absolute paths to them.",
+    "sha256": {
+      "plan.json": "7da2183fdfd886051cdfa89bcf57c559c0a2ab33460960246569a41683226d62",
+      "layout.py": "14f4610c46c44655759fe3fbc6c34da76ce1074bfe7db87bd6f41867f62ef0f1",
+      "layout.json": "bb143baa728f9141206a1b7188f17e83a2429af5afbd971d28892d7a3e7af970",
+      "control.py": "16fbb122515019f52746c9645604e5608684e275affeeeb84d393f357f817673",
+      "control.json": "a766622d4805a199db3a6c0c7586091088a9273b06b84d17cb6bcfb3f1408c3f"
+    },
+    "files": {
+      "plan.json": "{\n  \"step\": \"P-L2-002\",\n  \"primary_sample\": \"The evaluation partition of the public practice split was not used as a scored page in #348. Keep ZL/IT intersection with shared herbal section H, Currier B, annotated hand 2, 3 or 5, and at least 40 certain paragraph words in each edition.\",\n  \"metadata\": \"Use the canonical ZL folio sequence, one physical folio for recto, verso and panels, and quire from the fixed ZL metadata. Match paragraph word counts in each edition.\",\n  \"matches\": {\n    \"local\": {\"max_folio_distance\": 12, \"max_length_ratio\": 1.25},\n    \"wider_sensitivity\": {\"max_folio_distance\": 24, \"max_length_ratio\": 1.5}\n  },\n  \"match_criteria\": \"Candidates have different hands on different physical folios and pass both editions' length ratios. The same-quire subset of each rule is reported separately as a physical-block diagnostic.\",\n  \"train\": \"Use the same paired eligibility on practice training. For each target pair, leave both evaluation folios and each of their source quires out before building any vocabulary, IDF, topic basis and hand centroids. Each candidate hand needs two distinct training folios.\",\n  \"support\": \"Before reading any lexical outcomes, report unique page sides, physical folios and quire-pair blocks for each hand contrast, including the largest independent sets by folio and by disjoint quire sets. Three-hand inference needs support connecting all three hands and eligible contrasts in at least two physically disjoint quire blocks. Sparse support permits pair-specific accounting only. A scored pair-specific result still needs at least two distinct, disjoint quire blocks.\",\n  \"controls\": \"Preserve the pinned G-self-citation backgrounds (seeds 401–406) and the 10% hand-exclusive, same-length planted word control from #348 when the independent geometry permits a fit. Otherwise reproduce these controls on the prior public geometry as a diagnostic and report the distinction.\"\n}\n",
+      "layout.py": "\"\"\"Count metadata-only support for the frozen P-L2-002 comparison.\"\"\"\nfrom collections import defaultdict\nfrom functools import lru_cache\nfrom itertools import combinations\nimport json\nfrom pathlib import Path\nimport re\nimport sys\n\nsys.path.insert(0, str(Path.cwd()))\nfrom vs import corpus, ivtff\n\nHANDS = ('2', '3', '5')\nEDITION = ('zl', 'it')\n\n\ndef folio(page_id):\n    return re.match(r'f\\d+', page_id).group()\n\n\ndef certain_words(page):\n    return sum(not ivtff.uncertain(word) for line in page.lines if line.unit == 'P' for word in line.words)\n\n\ndef sample(pages, folio_order):\n    by_edition = {edition: {page.id: page for page in pages[edition]} for edition in EDITION}\n    for pid, zl in by_edition['zl'].items():\n        it = by_edition['it'].get(pid)\n        if it is None or zl.section != 'H' or zl.language != 'B' or str(zl.hand) not in HANDS:\n            continue\n        if (zl.section, zl.language, str(zl.hand)) != (it.section, it.language, str(it.hand)):\n            continue\n        lengths = [certain_words(zl), certain_words(it)]\n        if min(lengths) >= 40 and zl.meta.get('Q'):\n            yield {'id': pid, 'folio': folio(pid), 'hand': str(zl.hand), 'quire': zl.meta['Q'],\n                   'order': folio_order[folio(pid)], 'lengths': lengths, 'bifolio': zl.meta.get('B')}\n\n\ndef pair_support(edges):\n    incident = defaultdict(set)\n    for left, right in edges:\n        incident[left].add(right)\n    assigned = {}\n\n    def augment(left, visited):\n        for right in sorted(incident[left] - visited):\n            visited.add(right)\n            if right not in assigned or augment(assigned[right], visited):\n                assigned[right] = left\n                return True\n        return False\n\n    for left in sorted(incident):\n        augment(left, set())\n    return len(assigned)\n\n\ndef quire_support(blocks):\n    groups = tuple(sorted(blocks))\n\n    @lru_cache(maxsize=None)\n    def maximum(index, used):\n        if index == len(groups):\n            return 0\n        best = maximum(index + 1, used)\n        block = frozenset(groups[index])\n        if block.isdisjoint(used):\n            best = max(best, 1 + maximum(index + 1, used | block))\n        return best\n\n    return maximum(0, frozenset())\n\n\ndef support(pairs):\n    folio_edges = {(a['folio'], b['folio']) for a, b, _ in pairs}\n    blocks = {tuple(sorted({a['quire'], b['quire']})) for a, b, _ in pairs}\n    return {'page_pairs': len(pairs), 'pages': sorted({p['id'] for a,b,_ in pairs for p in (a,b)}),\n            'folio_pairs': sorted(folio_edges), 'folios': sorted({f for edge in folio_edges for f in edge}),\n            'quire_blocks': [list(x) for x in sorted(blocks)], 'folio_disjoint_pairs': pair_support(folio_edges),\n            'quire_disjoint_pairs': quire_support(blocks)}\n\n\ndef enumerate_pairs(test, train, rule, contrast):\n    a_hand, b_hand = contrast\n    left = [p for p in test if p['hand'] == a_hand]\n    right = [p for p in test if p['hand'] == b_hand]\n    for a in left:\n        for b in right:\n            distance = abs(a['order'] - b['order'])\n            if not 0 < distance <= rule['max_folio_distance']:\n                continue\n            length_ratio = max(max(x, y)/min(x, y) for x, y in zip(a['lengths'], b['lengths']))\n            if length_ratio > rule['max_length_ratio']:\n                continue\n            eligible = [r for r in train if r['quire'] not in (a['quire'], b['quire'])\n                        and r['folio'] not in (a['folio'], b['folio'])]\n            fit = {hand: len({r['folio'] for r in eligible if r['hand'] == hand}) for hand in contrast}\n            yield a, b, fit\n\n\ndef main():\n    plan = json.loads(Path(sys.argv[1]).read_text())\n    all_folios = list(dict.fromkeys(folio(page.id) for page in corpus.pages('zl')))\n    folio_order = {name: i for i, name in enumerate(all_folios)}\n    partitions = {edition: corpus.split_pages('practice', edition) for edition in EDITION}\n    train = list(sample({edition: partitions[edition][0] for edition in EDITION}, folio_order))\n    test = list(sample({edition: partitions[edition][1] for edition in EDITION}, folio_order))\n    rows = {}\n    for name, rule in plan['matches'].items():\n        results = {}\n        for contrast in combinations(HANDS, 2):\n            eligible = list(enumerate_pairs(test, train, rule, contrast))\n            trainable = [(a,b,fit) for a,b,fit in eligible if min(fit.values()) >= 2]\n            same_quire = [(a,b,fit) for a,b,fit in trainable if a['quire'] == b['quire']]\n            results['-'.join(contrast)] = {'raw': support(eligible), 'trainable': support(trainable),\n                'trainable_same_quire': support(same_quire),\n                'pair_details': [{'pages':[a['id'], b['id']], 'quires':[a['quire'], b['quire']],\n                                  'training_folios':fit} for a,b,fit in eligible]}\n        rows[name] = results\n    proximity = {}\n    for hand in ('2', '5'):\n        distance, left, right = min((abs(a['order'] - b['order']), a['folio'], b['folio'])\n                                    for a in train + test for b in train + test\n                                    if a['hand'] == '3' and b['hand'] == hand)\n        proximity['3-' + hand] = {'distance': distance, 'folios': [left, right]}\n    print(json.dumps({'public_practice_training':train,'public_practice_evaluation':test,\n                      'minimum_distances_to_hand_3':proximity,'matches':rows}, indent=2))\n\n\nif __name__ == '__main__':\n    main()\n",
+      "control.py": "\"\"\"Rebuild the documented #348 controls for the one trainable, unreplicated pair.\"\"\"\nfrom collections import Counter\nfrom copy import deepcopy\nimport json\nfrom pathlib import Path\nimport random\nimport sys\n\nimport numpy as np\n\nsys.path.insert(0, str(Path.cwd()))\nfrom vs import corpus, generators, ivtff\n\n\ndef eligible_page(page):\n    lines = [ivtff.Line(line.id, line.page, line.n, line.unit, line.subtype,\n                        [word for word in line.words if not ivtff.uncertain(word)],\n                        line.para_start, line.para_end)\n             for line in page.lines if line.unit == 'P']\n    return ivtff.Page(page.id, page.order, dict(page.meta), lines)\n\n\ndef plant_words(pages, seed):\n    planted = deepcopy(pages)\n    existing = {word for page in planted for line in page.lines for word in line.words}\n    lengths = {len(word) for word in existing if len(word) >= 4}\n    markers = {}\n    for hand, marker_stem in (('2', 'x'), ('5', 'g')):\n        for length in lengths:\n            candidates = (marker_stem + a + b + b * (length - 4) + c\n                          for a in 'aoeyidkl' for b in 'ldknr' for c in 'aoey')\n            markers[hand, length] = []\n            for word in candidates:\n                if word not in existing:\n                    markers[hand, length].append(word)\n                    existing.add(word)\n                    if len(markers[hand, length]) == 4:\n                        break\n    summary = {}\n    for page in planted:\n        rng = random.Random(seed + 997 * page.order)\n        positions = [(line, index) for line in page.lines for index, word in enumerate(line.words) if len(word) >= 4]\n        selected = rng.sample(positions, round(0.10 * len(positions)))\n        for line, index in selected:\n            line.words[index] = rng.choice(markers[str(page.hand), len(line.words[index])])\n        summary[page.id] = [len(selected), len(positions)]\n    return planted, summary\n\n\ndef unit_rows(matrix):\n    norms = np.linalg.norm(matrix, axis=1, keepdims=True)\n    return matrix / np.maximum(norms, 1e-12)\n\n\ndef documents(train, test):\n    words = [Counter(page.words({'P'})) for page in train + test]\n    document_frequency = Counter(word for page in words[:len(train)] for word in page)\n    vocab = {word: index for index, word in enumerate(sorted(word for word, count in document_frequency.items() if count >= 3))}\n    matrix = np.zeros((len(words), len(vocab)))\n    for i, counts in enumerate(words):\n        for word, count in counts.items():\n            if word in vocab:\n                idf = 1 + np.log((1 + len(train)) / (1 + document_frequency[word]))\n                matrix[i, vocab[word]] = count * idf\n    matrix = unit_rows(matrix)\n    return matrix[:len(train)], matrix[len(train):]\n\n\ndef pair_margin(train, test, seed):\n    train_matrix, test_matrix = documents(train, test)\n    rank = 5\n    rng = np.random.default_rng(seed)\n    train_weights = rng.uniform(0.1, 1.0, size=(len(train), rank))\n    basis = rng.uniform(0.1, 1.0, size=(rank, train_matrix.shape[1]))\n    eps = 1e-12\n    for _ in range(300):\n        train_weights *= (train_matrix @ basis.T) / (train_weights @ (basis @ basis.T) + eps)\n        basis *= (train_weights.T @ train_matrix) / ((train_weights.T @ train_weights) @ basis + eps)\n    scales = np.maximum(np.linalg.norm(basis, axis=1), eps)\n    basis /= scales[:, None]\n    train_weights *= scales\n    test_weights = rng.uniform(0.1, 1.0, size=(len(test), rank))\n    for _ in range(200):\n        test_weights *= (test_matrix @ basis.T) / (test_weights @ (basis @ basis.T) + eps)\n    train_weights = unit_rows(train_weights)\n    test_weights = unit_rows(test_weights)\n    centroids = unit_rows(np.array([train_weights[[str(p.hand) == hand for p in train]].mean(axis=0) for hand in ('2', '5')]))\n    similarities = test_weights @ centroids.T\n    return float(similarities[0, 0] + similarities[1, 1] - similarities[0, 1] - similarities[1, 0])\n\n\ndef main():\n    metadata = json.loads(Path(sys.argv[1]).read_text())\n    pair = next(p for p in metadata['matches']['local']['2-5']['pair_details'] if min(p['training_folios'].values()) >= 2)\n    holdout_quires = set(pair['quires'])\n    train_ids = {p['id'] for p in metadata['public_practice_training'] if p['quire'] not in holdout_quires and p['hand'] in ('2', '5')}\n    results = {}\n    for edition in ('zl', 'it'):\n        train_pages, test_pages = corpus.split_pages('practice', edition)\n        train_layout = [eligible_page(page) for page in train_pages if page.id in train_ids]\n        test_index = {page.id: page for page in test_pages}\n        test_layout = [eligible_page(test_index[pid]) for pid in pair['pages']]\n        edition_results = {}\n        for background in range(401, 407):\n            copy = generators.g_self_citation(train_layout, train_layout + test_layout, seed=background)\n            planted, plant_counts = plant_words(copy, background)\n            output = {}\n            n = len(train_layout)\n            for case, pages in [('copy', copy), ('planted', planted)]:\n                margins = [pair_margin(pages[:n], pages[n:], seed) for seed in (47, 83, 113)]\n                output[case] = [round(x, 8) for x in margins]\n            output['planted_test_word_counts'] = {p.id: plant_counts[p.id] for p in test_layout}\n            edition_results[str(background)] = output\n        results[edition] = edition_results\n    print(json.dumps({'contrast':pair, 'training_pages':sorted(train_ids), 'controls':results}, indent=2))\n\n\nif __name__ == '__main__':\n    main()\n"
+    }
+  }
+}
