@@ -6675,5 +6675,258 @@
   "noise": 0.02,
   "true_key_passes_noisy": false,
   "search_cracks_control": false
+ },
+ {
+  "language": "galician_portuguese",
+  "family": "substitution",
+  "control": "homophonic",
+  "control_tokens": 3278,
+  "true_key": {
+   "submission": "control-galician_portuguese-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "galician_portuguese",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.12207,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-galician_portuguese-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "galician_portuguese",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.12207,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true,
+  "added_with": "galician_portuguese_a3107d41"
+ },
+ {
+  "language": "galician_portuguese",
+  "family": "verbose",
+  "control": "verbose",
+  "control_tokens": 3278,
+  "true_key": {
+   "submission": "control-galician_portuguese-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "galician_portuguese",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06213,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-galician_portuguese-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "galician_portuguese",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06213,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true,
+  "added_with": "galician_portuguese_a3107d41"
+ },
+ {
+  "language": "galician_portuguese",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 3278,
+  "true_key": {
+   "submission": "control-galician_portuguese-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "galician_portuguese",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07152,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-galician_portuguese-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "galician_portuguese",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.0476,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false,
+  "added_with": "galician_portuguese_a3107d41"
+ },
+ {
+  "language": "galician_portuguese",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 3278,
+  "true_key": {
+   "submission": "control-galician_portuguese-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "galician_portuguese",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04871,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-galician_portuguese-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "galician_portuguese",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04871,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true,
+  "added_with": "galician_portuguese_a3107d41"
+ },
+ {
+  "language": "galician_portuguese",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 3278,
+  "true_key": {
+   "submission": "control-galician_portuguese-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "galician_portuguese",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04781,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-galician_portuguese-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "galician_portuguese",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.02299,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false,
+  "added_with": "galician_portuguese_a3107d41"
+ },
+ {
+  "language": "galician_portuguese",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 3278,
+  "true_key": {
+   "submission": "control-galician_portuguese-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "galician_portuguese",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05595,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-galician_portuguese-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "galician_portuguese",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.0553,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true,
+  "added_with": "galician_portuguese_a3107d41"
  }
 ]
