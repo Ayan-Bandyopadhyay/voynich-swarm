@@ -1,0 +1,694 @@
+{
+  "title": "Test the v101 terminal curl variants across three hands using masked crops",
+  "statement": "Use public practice training pages and whole-word crops from six Yale scans. Match terminal v101 uppercase N and lowercase n with identical preceding v101 strings on the same page. Include two longer curl controls and two noncurl controls. Compare two isolated visual model annotators, blinded to transcriptions, matching, hand and the expected identity of each tile.",
+  "program": "L1",
+  "check": "Reconstruct the shuffled tiles from the IIIF pixel boxes and labels. Have independent annotators classify the final ink strokes using only the unlabeled crops and the three neutral shape references. Report family agreement, exact class agreement, unresolved cases, and agreement with v101 separately. A confirmatory study should draw additional pages in each hand and use human readers to check the boundary between the stem and each curl.",
+  "on_path": true,
+  "hard": true,
+  "sources": {
+    "paper": "René Zandbergen, Transliteration of the Voynich MS text (2022), §§4.2 and 5, Tables 4 and 7. https://ceur-ws.org/Vol-3313/keynote1.pdf",
+    "claston_reference": "Glen Claston, Voynich Keyboard Assignments, n/N and m row shapes, redrawn labels for the masked study. https://voynich.nu/img/extra/v101a.jpg",
+    "manuscript": "Beinecke MS 408. Yale University Library. Canvas identifiers and native pixel regions are listed for every trial.",
+    "transcriptions": "GC2a-n.txt, ZL3b-n.txt and IT2a-n.txt from pins/sources.json.",
+    "related_report": "P-L1-004, public parser audit in https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/508"
+  },
+  "selection": "Purposive pilot with six pages chosen for identifiable same-page word pairs and coverage of hands 1, 2 and 3. There are 8 uppercase target tokens, 11 lowercase target tokens and 4 controls. Most pairing stems are represented by one nearby lowercase match. The dataset keeps extra copies on f75r and f103v to show local variation. Group labels were sealed before either image reader saw the shuffled panel. Using certain paragraph words ending in N or n in the public training partition, hand 1 has 53 N and 206 n, hand 2 has 13 N and 474 n, hand 3 has 22 N and 623 n, hand 4 has 0 N and 2 n, and hand 5 has 0 N and 11 n. The unassigned pages contribute 2 N and 26 n. The pilot intentionally targets hands with both cases available in training.",
+  "method": {
+    "class_A": "Return curl with no independent short diagonal stroke before it.",
+    "class_B": "Return curl with one independent short diagonal stroke before it.",
+    "class_C": "Return curl with two or more preceding short strokes.",
+    "class_D": "Visibly different terminal, for example a distinct descender.",
+    "class_U": "Unreadable or unclear terminal segmentation.",
+    "annotation": "Random order via Python random.Random(1731). Each isolated image-model reader saw only the contact sheet with numbered crops and an A/B/C reference card cut from the published chart. Readers had no access to the token strings, folio IDs, or one another’s labels. Crop preparers had access to the source strings to locate tokens and did not contribute labels. Leave indecision visible rather than imputing it. Broad family groups A/B/C as curl and D as other. The stricter target subset is A/B. A readable ordered pair outranks a tied or reversed pair in the relative stroke check, which is exploratory.",
+    "nearest_pairs": "After unmasking, compare the uppercase token with a lowercase token of identical preceding v101 string on the same page. Choose smallest absolute difference in locus line number, break ties toward earlier line, then closest word ordinal and earlier ordinal. Holds the stems and pages fixed."
+  },
+  "results_summary": [
+    "The two readers agreed on the broad curl-versus-other family in 21/21 jointly readable trials. Exact A/B/C/D labels agreed in 18/21. Both labeled all four controls as expected.",
+    "Against Claston’s listed target distinctions, exact matches are 10/19 and 8/19, counting unresolved annotations as missing matches. Both label 7/11 lowercase targets B. The readers label 3/8 and 1/8 uppercase targets A. Four lowercase targets receive C from both readers.",
+    "Both members of the neighboring f55v.5 pair were read as expected by both readers. The readers differ on the uppercase target in f75r.9. On f103v, the eight total crops include three uppercase targets, and neither reader labeled any of the three A.",
+    "Under the nearest-pair ranking, the uppercase target has fewer apparent short strokes in 6 pairs, ties in 1 and is unresolved in 1 for reader A. For reader B the respective counts are 2, 4 and 2. Neither reader observes a reversed pair."
+  ],
+  "limitations": "The two independent readings were by separately prompted image models, not human palaeographers. Crops include the preceding letter because counting the independent strokes depends on a boundary that is often hard to see. Some crop edges catch neighboring lines. The six pages were chosen for tractable matching, including only one page of hand 3. Differences between these samples cannot establish a hand effect. The pilot gives mixed evidence about the absolute zero-versus-one threshold, and it does not decide whether the two strings encode distinct letters.",
+  "reproduction": {
+    "readers": "Masked observations are recorded verbatim as class labels in the trial rows. T10 was obscured by low contrast for both readers. Reader B also left T23 unresolved because the terminal ink obscured segmentation.",
+    "coordinates": "xyxy uses left, top, right, bottom in native Yale image pixels. Each scan_crop URL encodes the same region as x, y, width, height.",
+    "score_script": "import json\nfrom collections import Counter\nfrom pathlib import Path\n\nbase = Path(__file__).resolve().parent\nkey = json.loads((base / 'blind-unmask-key.json').read_text())\nhand = {'f1r': 1, 'f2r': 1, 'f5r': 1, 'f55v': 2, 'f75r': 2, 'f103v': 3}\nmapping = {'N':'A','n':'B','m':'C'}\ntarget = {'A','B'}\na, b = (json.loads((base / filename).read_text()) for filename in ('blind-rater-a.json', 'blind-rater-b.json'))\n\n\ndef broad_family(code):\n    return 'curl' if code in 'ABC' else 'undecided' if code == 'U' else 'other'\n\n\ndef target_family(code):\n    return 'target' if code in target else 'undecided' if code == 'U' else 'other'\n\n\ndef measure(rows):\n    possible = [(r['reader_A'], r['reader_B']) for r in rows]\n    decidable = [(x,y) for x,y in possible if 'U' not in (x,y)]\n    totals = {'n':len(rows), 'paired_decidable':len(decidable),\n              'broad_family_matches_among_decidable':sum(broad_family(x)==broad_family(y) for x,y in decidable),\n              'target_subset_matches_among_decidable':sum(target_family(x)==target_family(y) for x,y in decidable),\n              'variant_matches_among_decidable':sum(x==y for x,y in decidable),\n              'variant_matches_including_matching_undecided':sum(x==y for x,y in possible)}\n    for reader in ('reader_A','reader_B'):\n        out = {}\n        for gold in 'ABCD':\n            got = Counter(r[reader] for r in rows if r['v101_shape'] == gold)\n            if got:\n                out[gold] = dict(got)\n        totals[reader] = out\n    return totals\n\n\nassert set(a) == set(b) == {row['tile'] for row in key}\nfor row in key:\n    row['hand'] = hand[row['locus'].split('.')[0]]\n    row['v101_shape'] = mapping.get(row['v101'][-1], 'D')\n    row['reader_A'] = a[row['tile']]\n    row['reader_B'] = b[row['tile']]\nresults = {'all':measure(key), 'target_only':measure([r for r in key if r['v101_shape'] in target]),\n           'by_hand':{str(h):measure([r for r in key if r['hand']==h]) for h in range(1,4)}}\ndef nearest_matches(rows):\n    by_stem = {}\n    for row in rows:\n        if row['v101_shape'] == 'B':\n            page = row['locus'].split('.')[0]\n            by_stem.setdefault((page, row['v101'][:-1]), []).append(row)\n    pairs = []\n    for capital in rows:\n        if capital['v101_shape'] != 'A':\n            continue\n        page, line = capital['locus'].split('.')\n        n = int(line)\n        possible = by_stem[page, capital['v101'][:-1]]\n\n        def distance(lower):\n            ln = int(lower['locus'].split('.')[1])\n            return abs(ln-n), ln, abs(lower['word_ordinal']-capital['word_ordinal']), lower['word_ordinal']\n\n        lower = min(possible, key=distance)\n        annotations = {reader: capital[reader]+lower[reader] for reader in ('reader_A','reader_B')}\n        pairs.append({'uppercase_tile':capital['tile'], 'lowercase_tile':lower['tile'], **annotations})\n    return pairs\n\n\npairs = nearest_matches(key)\nfor reader in ('reader_A','reader_B'):\n    counts = Counter()\n    for pair in pairs:\n        left, right = pair[reader]\n        if left not in 'ABC' or right not in 'ABC':\n            counts['unresolved'] += 1\n        else:\n            counts['shorter' if left < right else 'tied' if left == right else 'longer'] += 1\n    results[reader + '_relative_strokes'] = dict(counts)\nprint(json.dumps({'measurements':results, 'nearest_pairs':pairs, 'trials':key},indent=2))\n",
+    "score_script_inputs": "Use the trial rows as blind-unmask-key.json (extra fields allowed). Derive blind-rater-a.json and blind-rater-b.json by mapping tile to reader_A and reader_B respectively. Run the script in the same directory."
+  },
+  "results": {
+    "measurements": {
+      "all": {
+        "n": 23,
+        "paired_decidable": 21,
+        "broad_family_matches_among_decidable": 21,
+        "target_subset_matches_among_decidable": 20,
+        "variant_matches_among_decidable": 18,
+        "variant_matches_including_matching_undecided": 19,
+        "reader_A": {
+          "A": {
+            "B": 4,
+            "A": 3,
+            "U": 1
+          },
+          "B": {
+            "B": 7,
+            "C": 4
+          },
+          "C": {
+            "C": 2
+          },
+          "D": {
+            "D": 2
+          }
+        },
+        "reader_B": {
+          "A": {
+            "B": 4,
+            "U": 2,
+            "A": 1,
+            "C": 1
+          },
+          "B": {
+            "B": 7,
+            "C": 4
+          },
+          "C": {
+            "C": 2
+          },
+          "D": {
+            "D": 2
+          }
+        }
+      },
+      "target_only": {
+        "n": 19,
+        "paired_decidable": 17,
+        "broad_family_matches_among_decidable": 17,
+        "target_subset_matches_among_decidable": 16,
+        "variant_matches_among_decidable": 14,
+        "variant_matches_including_matching_undecided": 15,
+        "reader_A": {
+          "A": {
+            "B": 4,
+            "A": 3,
+            "U": 1
+          },
+          "B": {
+            "B": 7,
+            "C": 4
+          }
+        },
+        "reader_B": {
+          "A": {
+            "B": 4,
+            "U": 2,
+            "A": 1,
+            "C": 1
+          },
+          "B": {
+            "B": 7,
+            "C": 4
+          }
+        }
+      },
+      "by_hand": {
+        "1": {
+          "n": 8,
+          "paired_decidable": 7,
+          "broad_family_matches_among_decidable": 7,
+          "target_subset_matches_among_decidable": 7,
+          "variant_matches_among_decidable": 6,
+          "variant_matches_including_matching_undecided": 7,
+          "reader_A": {
+            "A": {
+              "B": 1,
+              "A": 1,
+              "U": 1
+            },
+            "B": {
+              "B": 3
+            },
+            "C": {
+              "C": 2
+            }
+          },
+          "reader_B": {
+            "A": {
+              "B": 2,
+              "U": 1
+            },
+            "B": {
+              "B": 3
+            },
+            "C": {
+              "C": 2
+            }
+          }
+        },
+        "2": {
+          "n": 7,
+          "paired_decidable": 7,
+          "broad_family_matches_among_decidable": 7,
+          "target_subset_matches_among_decidable": 7,
+          "variant_matches_among_decidable": 6,
+          "variant_matches_including_matching_undecided": 6,
+          "reader_A": {
+            "A": {
+              "A": 2
+            },
+            "B": {
+              "B": 3,
+              "C": 1
+            },
+            "D": {
+              "D": 1
+            }
+          },
+          "reader_B": {
+            "A": {
+              "A": 1,
+              "B": 1
+            },
+            "B": {
+              "B": 3,
+              "C": 1
+            },
+            "D": {
+              "D": 1
+            }
+          }
+        },
+        "3": {
+          "n": 8,
+          "paired_decidable": 7,
+          "broad_family_matches_among_decidable": 7,
+          "target_subset_matches_among_decidable": 6,
+          "variant_matches_among_decidable": 6,
+          "variant_matches_including_matching_undecided": 6,
+          "reader_A": {
+            "A": {
+              "B": 3
+            },
+            "B": {
+              "C": 3,
+              "B": 1
+            },
+            "D": {
+              "D": 1
+            }
+          },
+          "reader_B": {
+            "A": {
+              "B": 1,
+              "C": 1,
+              "U": 1
+            },
+            "B": {
+              "C": 3,
+              "B": 1
+            },
+            "D": {
+              "D": 1
+            }
+          }
+        }
+      },
+      "reader_A_relative_strokes": {
+        "tied": 1,
+        "shorter": 6,
+        "unresolved": 1
+      },
+      "reader_B_relative_strokes": {
+        "tied": 4,
+        "shorter": 2,
+        "unresolved": 2
+      }
+    },
+    "nearest_pairs": [
+      {
+        "uppercase_tile": "T02",
+        "lowercase_tile": "T06",
+        "reader_A": "BB",
+        "reader_B": "BB"
+      },
+      {
+        "uppercase_tile": "T07",
+        "lowercase_tile": "T22",
+        "reader_A": "AB",
+        "reader_B": "BB"
+      },
+      {
+        "uppercase_tile": "T08",
+        "lowercase_tile": "T05",
+        "reader_A": "BC",
+        "reader_B": "BC"
+      },
+      {
+        "uppercase_tile": "T10",
+        "lowercase_tile": "T20",
+        "reader_A": "UB",
+        "reader_B": "UB"
+      },
+      {
+        "uppercase_tile": "T12",
+        "lowercase_tile": "T18",
+        "reader_A": "AB",
+        "reader_B": "AB"
+      },
+      {
+        "uppercase_tile": "T13",
+        "lowercase_tile": "T11",
+        "reader_A": "AB",
+        "reader_B": "BB"
+      },
+      {
+        "uppercase_tile": "T14",
+        "lowercase_tile": "T19",
+        "reader_A": "BC",
+        "reader_B": "CC"
+      },
+      {
+        "uppercase_tile": "T23",
+        "lowercase_tile": "T04",
+        "reader_A": "BC",
+        "reader_B": "UC"
+      }
+    ],
+    "trials": [
+      {
+        "locus": "f75r.3",
+        "word_ordinal": 1,
+        "v101": "4ohan",
+        "xyxy": [
+          386,
+          451,
+          563,
+          536
+        ],
+        "tile": "T01",
+        "hand": 2,
+        "v101_shape": "B",
+        "reader_A": "B",
+        "reader_B": "B",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006208",
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006208/386,451,177,85/full/0/default.jpg"
+      },
+      {
+        "locus": "f5r.3",
+        "word_ordinal": 2,
+        "v101": "okaN",
+        "xyxy": [
+          591,
+          686,
+          755,
+          777
+        ],
+        "tile": "T02",
+        "hand": 1,
+        "v101_shape": "A",
+        "reader_A": "B",
+        "reader_B": "B",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006084",
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006084/591,686,164,91/full/0/default.jpg"
+      },
+      {
+        "locus": "f103v.13",
+        "word_ordinal": 11,
+        "v101": "oe2c9",
+        "xyxy": [
+          2237,
+          888,
+          2443,
+          960
+        ],
+        "tile": "T03",
+        "hand": 3,
+        "v101_shape": "D",
+        "reader_A": "D",
+        "reader_B": "D",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006255",
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006255/2237,888,206,72/full/0/default.jpg"
+      },
+      {
+        "locus": "f103v.24",
+        "word_ordinal": 9,
+        "v101": "okan",
+        "xyxy": [
+          1809,
+          1515,
+          1980,
+          1593
+        ],
+        "tile": "T04",
+        "hand": 3,
+        "v101_shape": "B",
+        "reader_A": "C",
+        "reader_B": "C",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006255",
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006255/1809,1515,171,78/full/0/default.jpg"
+      },
+      {
+        "locus": "f103v.22",
+        "word_ordinal": 8,
+        "v101": "4ohan",
+        "xyxy": [
+          1865,
+          1397,
+          2067,
+          1490
+        ],
+        "tile": "T05",
+        "hand": 3,
+        "v101_shape": "B",
+        "reader_A": "C",
+        "reader_B": "C",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006255",
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006255/1865,1397,202,93/full/0/default.jpg"
+      },
+      {
+        "locus": "f5r.4",
+        "word_ordinal": 1,
+        "v101": "okan",
+        "xyxy": [
+          423,
+          759,
+          587,
+          833
+        ],
+        "tile": "T06",
+        "hand": 1,
+        "v101_shape": "B",
+        "reader_A": "B",
+        "reader_B": "B",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006084",
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006084/423,759,164,74/full/0/default.jpg"
+      },
+      {
+        "locus": "f2r.5",
+        "word_ordinal": 5,
+        "v101": "8aN",
+        "xyxy": [
+          1475,
+          803,
+          1607,
+          870
+        ],
+        "tile": "T07",
+        "hand": 1,
+        "v101_shape": "A",
+        "reader_A": "A",
+        "reader_B": "B",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006078",
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006078/1475,803,132,67/full/0/default.jpg"
+      },
+      {
+        "locus": "f103v.25",
+        "word_ordinal": 3,
+        "v101": "4ohaN",
+        "xyxy": [
+          1080,
+          1600,
+          1262,
+          1700
+        ],
+        "tile": "T08",
+        "hand": 3,
+        "v101_shape": "A",
+        "reader_A": "B",
+        "reader_B": "B",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006255",
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006255/1080,1600,182,100/full/0/default.jpg"
+      },
+      {
+        "locus": "f2r.5",
+        "word_ordinal": 6,
+        "v101": "9k1am",
+        "xyxy": [
+          1668,
+          810,
+          1974,
+          883
+        ],
+        "tile": "T09",
+        "hand": 1,
+        "v101_shape": "C",
+        "reader_A": "C",
+        "reader_B": "C",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006078",
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006078/1668,810,306,73/full/0/default.jpg"
+      },
+      {
+        "locus": "f1r.12",
+        "word_ordinal": 6,
+        "v101": "ohaN",
+        "xyxy": [
+          1490,
+          1539,
+          1676,
+          1637
+        ],
+        "tile": "T10",
+        "hand": 1,
+        "v101_shape": "A",
+        "reader_A": "U",
+        "reader_B": "U",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006076",
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006076/1490,1539,186,98/full/0/default.jpg"
+      },
+      {
+        "locus": "f75r.8",
+        "word_ordinal": 5,
+        "v101": "4ohan",
+        "xyxy": [
+          1696,
+          788,
+          1885,
+          861
+        ],
+        "tile": "T11",
+        "hand": 2,
+        "v101_shape": "B",
+        "reader_A": "B",
+        "reader_B": "B",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006208",
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006208/1696,788,189,73/full/0/default.jpg"
+      },
+      {
+        "locus": "f55v.5",
+        "word_ordinal": 4,
+        "v101": "9haN",
+        "xyxy": [
+          1473,
+          667,
+          1625,
+          753
+        ],
+        "tile": "T12",
+        "hand": 2,
+        "v101_shape": "A",
+        "reader_A": "A",
+        "reader_B": "A",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006183",
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006183/1473,667,152,86/full/0/default.jpg"
+      },
+      {
+        "locus": "f75r.9",
+        "word_ordinal": 5,
+        "v101": "4ohaN",
+        "xyxy": [
+          1618,
+          846,
+          1790,
+          925
+        ],
+        "tile": "T13",
+        "hand": 2,
+        "v101_shape": "A",
+        "reader_A": "A",
+        "reader_B": "B",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006208",
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006208/1618,846,172,79/full/0/default.jpg"
+      },
+      {
+        "locus": "f103v.13",
+        "word_ordinal": 10,
+        "v101": "ohaN",
+        "xyxy": [
+          2058,
+          899,
+          2223,
+          959
+        ],
+        "tile": "T14",
+        "hand": 3,
+        "v101_shape": "A",
+        "reader_A": "B",
+        "reader_B": "C",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006255",
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006255/2058,899,165,60/full/0/default.jpg"
+      },
+      {
+        "locus": "f5r.3",
+        "word_ordinal": 4,
+        "v101": "8am",
+        "xyxy": [
+          920,
+          717,
+          1080,
+          780
+        ],
+        "tile": "T15",
+        "hand": 1,
+        "v101_shape": "C",
+        "reader_A": "C",
+        "reader_B": "C",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006084",
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006084/920,717,160,63/full/0/default.jpg"
+      },
+      {
+        "locus": "f103v.24",
+        "word_ordinal": 10,
+        "v101": "okan",
+        "xyxy": [
+          1998,
+          1515,
+          2162,
+          1586
+        ],
+        "tile": "T16",
+        "hand": 3,
+        "v101_shape": "B",
+        "reader_A": "B",
+        "reader_B": "B",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006255",
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006255/1998,1515,164,71/full/0/default.jpg"
+      },
+      {
+        "locus": "f75r.10",
+        "word_ordinal": 5,
+        "v101": "4ohan",
+        "xyxy": [
+          1586,
+          900,
+          1771,
+          973
+        ],
+        "tile": "T17",
+        "hand": 2,
+        "v101_shape": "B",
+        "reader_A": "C",
+        "reader_B": "C",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006208",
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006208/1586,900,185,73/full/0/default.jpg"
+      },
+      {
+        "locus": "f55v.5",
+        "word_ordinal": 3,
+        "v101": "9han",
+        "xyxy": [
+          1296,
+          665,
+          1460,
+          753
+        ],
+        "tile": "T18",
+        "hand": 2,
+        "v101_shape": "B",
+        "reader_A": "B",
+        "reader_B": "B",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006183",
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006183/1296,665,164,88/full/0/default.jpg"
+      },
+      {
+        "locus": "f103v.20",
+        "word_ordinal": 4,
+        "v101": "ohan",
+        "xyxy": [
+          1045,
+          1320,
+          1212,
+          1392
+        ],
+        "tile": "T19",
+        "hand": 3,
+        "v101_shape": "B",
+        "reader_A": "C",
+        "reader_B": "C",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006255",
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006255/1045,1320,167,72/full/0/default.jpg"
+      },
+      {
+        "locus": "f1r.14",
+        "word_ordinal": 7,
+        "v101": "ohan",
+        "xyxy": [
+          1723,
+          1740,
+          1937,
+          1820
+        ],
+        "tile": "T20",
+        "hand": 1,
+        "v101_shape": "B",
+        "reader_A": "B",
+        "reader_B": "B",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006076",
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006076/1723,1740,214,80/full/0/default.jpg"
+      },
+      {
+        "locus": "f75r.2",
+        "word_ordinal": 8,
+        "v101": "yoy",
+        "xyxy": [
+          2388,
+          444,
+          2482,
+          498
+        ],
+        "tile": "T21",
+        "hand": 2,
+        "v101_shape": "D",
+        "reader_A": "D",
+        "reader_B": "D",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006208",
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006208/2388,444,94,54/full/0/default.jpg"
+      },
+      {
+        "locus": "f2r.9",
+        "word_ordinal": 10,
+        "v101": "8an",
+        "xyxy": [
+          1980,
+          2498,
+          2120,
+          2580
+        ],
+        "tile": "T22",
+        "hand": 1,
+        "v101_shape": "B",
+        "reader_A": "B",
+        "reader_B": "B",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006078",
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006078/1980,2498,140,82/full/0/default.jpg"
+      },
+      {
+        "locus": "f103v.24",
+        "word_ordinal": 8,
+        "v101": "okaN",
+        "xyxy": [
+          1624,
+          1515,
+          1782,
+          1597
+        ],
+        "tile": "T23",
+        "hand": 3,
+        "v101_shape": "A",
+        "reader_A": "B",
+        "reader_B": "U",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006255",
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006255/1624,1515,158,82/full/0/default.jpg"
+      }
+    ]
+  }
+}
