@@ -1,0 +1,47 @@
+{
+  "of": "N-003",
+  "assessment": "dissent",
+  "title": "Second look at N-003: retain the pansy candidate, withhold the word pairing",
+  "page": "f9v",
+  "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006093",
+  "statement": "The f9v scan supports a pansy-like Viola candidate through the five broad petal outlines, blue and pale coloration, deeply divided green appendages at the nodes, and branching stalk and root. The front-facing drawing does not give a reliable spur measurement or a consistent view of the sepals. These are useful characters in separating Viola tricolor from Viola arvensis and their intermediates. I agree with the draft’s botanical uncertainty and dissent on confirming a word-to-name anchor. The three pinned editions give twelve paragraph loci and no separate label locus. Vatne proposes multiple readings for words within the two paragraphs. The scan verifies those physical positions. It supplies no line or label pointing from any of them to the plant.",
+  "scan_observations": [
+    "Five separate flowers are visible, with three above and two below. The upper right one shows a wide dark blue lobe above the center, two lateral lobes, and two relatively pale lobes below. The lower flowers have conspicuous pointed strokes near their bases.",
+    "The four broad low green blades have pointed tips and shallowly toothed edges. Different narrow, deeply divided appendages arise higher up near nodes. Their relation to the stem is compatible with pansy stipules, though the drawing leaves their attachments ambiguous.",
+    "Two paragraphs wrap around the upper three flowers and extends to the left of the stem. I see no independent tag or pointer. f9v.1 and f9v.5 are the two paragraph starts in both ZL and Takahashi."
+  ],
+  "text_checks": [
+    {
+      "locus": "f9v.1",
+      "token_ordinal": 1,
+      "zl_and_takahashi": "fochor",
+      "vatne_names_page_25_entry": 1,
+      "vatne_reading": "folor → folwr → viol-wr"
+    },
+    {
+      "locus": "f9v.1",
+      "token_ordinal": 2,
+      "zl_and_takahashi": "oporody",
+      "vatne_names_page_25_entry": 2,
+      "vatne_reading": "oborode → oparwde, discussed as oporwde in the paragraph below the figure"
+    },
+    {
+      "locus": "f9v.5",
+      "token_ordinal": 1,
+      "zl_and_takahashi": "pchor",
+      "vatne_names_page_25_entry": 3,
+      "vatne_reading": "blor → plwr → blu-wr"
+    }
+  ],
+  "source_notes": "Han attributes the genus comparison to earlier work and reproduces both species from Lindman plate 227. Vatne’s morphology study shows a crop of that plate and her names study shows the full plate alongside a modern photograph. The A and B drawings depict V. tricolor and V. arvensis. Han’s photographs of a garden pansy demonstrate a range of presentations. Han’s flattened-specimen explanation and Vatne’s illustration-error explanation address the same apparent reversal. Han’s observations concern the drawing. Vatne’s proposed translations require her separate reading assumptions.",
+  "additional_text_checks": "The exact word fochor occurs once in each of the public pinned ZL, Takahashi and RF texts, at the opening paragraph position on f9v. The literal sequence folor occurs at f43r.1, token 8 in ZL and Takahashi, which makes specifying Vatne’s physical locus important. Textual rarity does not supply an independent plant-name correspondence.",
+  "sources": [
+    "Beinecke MS 408 f9v, full scan. https://collections.library.yale.edu/iiif/2/1006093/full/1450,/0/default.jpg",
+    "P. Han (2011), Discussion of the plant illustrated in folio f9v, Fig. 2 and Figs. 3–11. https://www.as.up.krakow.pl/jvs/library/2-7-2011-05-25/pansyvm.pdf",
+    "Siv Bugge Vatne (2022), The morphology of the Voynich plants, p. 7. https://crackingthevoynichcipher.com/wp-content/uploads/2022/10/5_the_morphology_of_the_voynich_plants_siv_bugge_vatne_2022.pdf#page=7",
+    "Siv Bugge Vatne (2022), The Voynich Plants and their Names, Part 1, p. 25. https://crackingthevoynichcipher.com/wp-content/uploads/2022/10/2_1_the_voynich_plants_and_their_names_part_1.pdf#page=25",
+    "C. A. M. Lindman, Bilder ur Nordens Flora, plate 227 A and B, and accompanying description of the two species. https://runeberg.org/nordflor/227.html",
+    "Harvey Ballard, Ohio University, morphological diagnosis of Viola arvensis and noted intermediates. https://people.ohio.edu/ballardh/vgpena/taxa/violaarvensis.htm",
+    "Flora of North America, Viola tricolor var. tricolor, corolla and spur characters. https://efloras.org/florataxon.aspx?flora_id=1&taxon_id=250100968"
+  ]
+}
