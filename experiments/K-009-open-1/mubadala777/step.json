@@ -1,0 +1,120 @@
+{
+  "title": "Independent scan evidence limits the layouts of quires 13 and 20 without fixing either sheet order",
+  "statement": "Compare graphic joins, opening treatment and possible pigment offsets on Beinecke scans with the arrangements of Layfield and Davis (2026, Tables 14–15), the current binding and competing arrangements. The join in quire 13 is within one sheet. The conspicuous openings constrain possible endpoints only if they mark section boundaries, and possible offsets support other contacts at an undated stage.",
+  "program": "L1",
+  "check": "Repeat the comparison at native scan resolution before rating the candidate orders. Have two readers mark openings, ruling, edge crossings and possible offsets on unlabeled images. Compare each proposed junction with current neighbors and matched unrelated margins. Register each mirrored offset against several independent features on the leaf and assess whether the pigment or ruling can be dated to initial production. Report each surviving order and the evidence needed to choose among them.",
+  "on_path": true,
+  "hard": true,
+  "sources": {
+    "proposal": "Colin Layfield and Lisa Fagin Davis, Singulion Structure and the Voynich Manuscript (2026), Tables 14–15 and paragraphs 50–54. https://doi.org/10.4000/16k0a",
+    "scans": "Yale Beinecke MS 408, https://collections.library.yale.edu/catalog/2002046. Image URL template: https://collections.library.yale.edu/iiif/2/{image_id}/full/880,/0/default.jpg",
+    "existing_binding": ["https://www.voynich.nu/q13/index.html", "https://www.voynich.nu/q20/index.html"],
+    "q13_competing_nesting": ["https://voynich.net/Arch/2003/07/msg00670.html", "https://ciphermysteries.com/the-voynich-manuscript/voynich-codicology"],
+    "q20_offsets": "Nick Pelling, Quire 20, order from chaos (Part 1: Evidence), Contact Transfers. https://ciphermysteries.com/2022/12/20/quire-20-order-from-chaos-part-1-evidence",
+    "hands": "The classification of the first twelve lines of f115r as hand 2 is summarized at https://www.voynich.nu/writing.html."
+  },
+  "method": {
+    "scope": "Test the explicit sheet orders in the paper for Q13 and Q20. All visual observations come from public scans. No transcription, text-similarity fitting, or hidden split is used. Sheet identity, production pairing, an opening or ending surface, and actual contact between sheets have different implications for order.",
+    "arrangements": "For a sheet a|b in the tested orientation, a stacked arrangement reads ar, av, br, bv consecutively. Its within-sheet opening is av facing br. The between-sheet openings are bv facing the next ar. For a nested arrangement take the first leaves in order and the second leaves in reverse. Skip missing f109 and f110 when listing visible leaves, and limit layout counts to surviving bifolia with their published orientations.",
+    "comparison": "Use the first text band of the five lower-numbered rectos of Q13 and the six of Q20 as controls for the opening features. Inspect inner margins of the two Q13 same-sheet pairs and the currently facing controls. Compare the two distinct Q13 proposals at their pool-sheet junctions. Examine current and proposed star-sheet contacts separately. Pixel coordinates are approximate on the specified 880 px wide full images, origin at the top left."
+  },
+  "quire_13": {
+    "canvas_image_ids": {
+      "f75r": 1006208,
+      "f76r": 1006210,
+      "f76v": 1006211,
+      "f77r": 1006212,
+      "f78r": 1006214,
+      "f78v": 1006215,
+      "f79r": 1006216,
+      "f80v": 1006219,
+      "f81r": 1006220,
+      "f81v": 1006221,
+      "f83r": 1006224,
+      "f84v": 1006227
+    },
+    "candidates": [
+      {
+        "layout": "Current nested quire",
+        "outside_to_inside": ["75|84", "76|83", "77|82", "78|81", "79|80"],
+        "published_text_score": 0.461,
+        "first_page": "f75r",
+        "opening_at_fold": ["f79v", "f80r"],
+        "current_neighbors_for_the_join": [["f78v", "f79r"], ["f80v", "f81r"]]
+      },
+      {
+        "layout": "Table 14 highest stacked score",
+        "sheet_order": ["77|82", "78|81", "75|84", "76|83", "79|80"],
+        "published_text_score": 0.517,
+        "first_page": "f77r",
+        "between_sheets": [["f82v", "f78r"], ["f81v", "f75r"], ["f84v", "f76r"], ["f83v", "f79r"]]
+      },
+      {
+        "layout": "Table 14 second stacked score",
+        "sheet_order": ["76|83", "77|82", "79|80", "75|84", "78|81"],
+        "published_text_score": 0.494,
+        "first_page": "f76r",
+        "between_sheets": [["f83v", "f77r"], ["f82v", "f79r"], ["f80v", "f75r"], ["f84v", "f78r"]]
+      }
+    ],
+    "observations": [
+      "The pool on f78v has linework entering its right inner margin. On f81r a branch enters the left inner margin between the upper and lower pools. The linework is consistent with the continuation identified by the authors and Zandbergen when the two halves of one parchment are opened together. The currently facing controls f79r and f80v do not show comparable continuations at those margins.",
+      "The proposed f76v–f83r connection is a weaker, more local drawing cue. The illustration at the upper left of f83r approaches the fold at the site of the reported continuation with f76v. Even if the mark on f76v is accepted as part of that drawing, this is another same-sheet connection.",
+      "An enlarged, extended initial at the upper left of f76r stands out in the opening comparison with f75r, f77r, f78r and f79r. f76r is the only page of this quire without a substantial illustration. This is compatible with a section opening. It would favor the second stacked candidate over the first only if this marks the start of the entire gathering.",
+      "Both proposals put the pool-bearing sheets 75|84 and 78|81 next to each other. The second gives f84v facing f78r, with comparable flared and patterned forms near the tops of the two pages. The first gives f81v facing f75r, with similar green figure-filled pools. These are motif similarities rather than measured line joins. Pelling also attained f84v facing f78r in a nested hypothesis by reversing 75|84. The facing pair alone cannot identify the binding structure."
+    ],
+    "order_constraints": {
+      "all_stacks_preserving_same_sheet_joins": 120,
+      "stacks_starting_f76r": 24,
+      "also_adjacent_pool_sheets_either_direction": 12,
+      "also_with_f84v_facing_f78r": 6,
+      "unreversed_nests_with_f78v_facing_f81r_at_center": 24
+    }
+  },
+  "quire_20": {
+    "canvas_image_ids": {
+      "f103r": 1006254,
+      "f104r": 1006256,
+      "f105r": 1006258,
+      "f106r": 1006260,
+      "f107r": 1006262,
+      "f108r": 1006264,
+      "f113v": 1006271,
+      "f114v": 1006273,
+      "f115r": 1006274,
+      "f115v": 1006275,
+      "f116r": 1006276,
+      "f116v": 1006277
+    },
+    "candidates": [
+      {
+        "layout": "Current nested quire, surviving sheets",
+        "outside_to_inside": ["103|116", "104|115", "105|114", "106|113", "107|112", "108|111"],
+        "published_text_score": 0.438,
+        "first_page": "f103r",
+        "last_page": "f116v",
+        "relevant_facing_pairs": [["f104v", "f105r"], ["f114v", "f115r"], ["f115v", "f116r"]]
+      },
+      {
+        "layout": "Table 15 highest stacked score",
+        "sheet_order": ["105|114", "104|115", "106|113", "107|112", "108|111", "103|116"],
+        "published_text_score": 0.526,
+        "first_page": "f105r",
+        "last_page": "f116v",
+        "between_sheets": [["f114v", "f104r"], ["f115v", "f106r"], ["f113v", "f107r"], ["f112v", "f108r"], ["f111v", "f103r"]],
+        "last_sheet_fold": ["f103v", "f116r"]
+      }
+    ],
+    "observations": [
+      "Compared with f103r, f104r, f106r, f107r and f108r, f105r has an especially extended initial and more space above the main first line. This is evidence for special opening treatment. f116v carries a few lines near the top and is mostly uninscribed. Both the published stack and the current binding already end there. The quire mark on f103r pertains to a recorded arrangement, and the first twelve lines of f115r are assigned to another hand, showing that an opening feature can also represent a local division.",
+      "In the f115v scan the main leaf has two small reddish marks near the inner edge, roughly (818,123) and (817,246). They are left of the narrow sliver showing f116r itself, so that sliver and its visible stars should be excluded. The first two conspicuously red centers on the f116r scan are near (54,139) and (56,266). The vertical separations are approximately 123 and 127 pixels. The marks are consistent with Pelling's contact report. The approximate spacing and a shared color family are insufficient to identify pigment or date the transfer. No single-star or unrelated-margin false-match rate has been measured.",
+      "The f115v–f116r pair faces today. In the published stack f115v would instead face f106r, and f116r would face f103v on its own bifolium. The possible f113v–f115r offset across a flaw of f114 and the weaker reported stray spots are useful targets for sharper registration. They are not scored here as verified connections. If the f115v–f116r contact was made while the order in question was in use, it favors a different layout from the published stack at that stage."
+    ],
+    "order_constraints": {
+      "all_unreversed_stacks": 720,
+      "stacks_starting_f105r_and_ending_f116v": 24,
+      "unreversed_stacks_with_f115v_facing_f116r": 0
+    }
+  },
+  "interpretation": "No ruled line or pinhole match was resolved at a candidate between-sheet junction in these normal-light scans. This does not establish an absence of ruling. The counts are exact permutations under optional, stated geometric and opening assumptions, not tests of historical probability. The direct scan comparison provides a strong same-sheet clue in Q13, suggestive opening features in both quires, and a possible Q20 contact at a stage whose date remains uncertain. The evidence distinguishes some features of the candidates but does not identify a unique sequence of the surviving sheets in either quire."
+}
