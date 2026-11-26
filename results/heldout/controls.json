@@ -7745,5 +7745,5590 @@
   "true_key_passes_noisy": false,
   "search_cracks_control": false,
   "added_with": "middle_persian_pahlavi_c433306b"
+ },
+ {
+  "language": "latin",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 2320,
+  "true_key": {
+   "submission": "control-latin-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "latin",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05983,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-latin-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "latin",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05983,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "latin",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 2320,
+  "true_key": {
+   "submission": "control-latin-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "latin",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05603,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-latin-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "latin",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05603,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
+ },
+ {
+  "language": "latin",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 2320,
+  "true_key": {
+   "submission": "control-latin-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "latin",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05925,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-latin-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "latin",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05815,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
+ },
+ {
+  "language": "italian",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 2560,
+  "true_key": {
+   "submission": "control-italian-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "italian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04103,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-italian-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "italian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04103,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "italian",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 2560,
+  "true_key": {
+   "submission": "control-italian-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "italian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.00835,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-italian-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "italian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.01216,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "italian",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 2560,
+  "true_key": {
+   "submission": "control-italian-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "italian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.02381,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-italian-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "italian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.02592,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "spanish",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 3440,
+  "true_key": {
+   "submission": "control-spanish-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "spanish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06168,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-spanish-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "spanish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06168,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "spanish",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 3440,
+  "true_key": {
+   "submission": "control-spanish-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "spanish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.02786,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-spanish-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "spanish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.00316,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "spanish",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 3440,
+  "true_key": {
+   "submission": "control-spanish-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "spanish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05165,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-spanish-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "spanish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05134,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
+ },
+ {
+  "language": "french",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 2080,
+  "true_key": {
+   "submission": "control-french-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "french",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05498,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-french-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "french",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05498,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "french",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 2080,
+  "true_key": {
+   "submission": "control-french-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "french",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.0046,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-french-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "french",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.0049,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "french",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 2080,
+  "true_key": {
+   "submission": "control-french-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "french",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.02059,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-french-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "french",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.00931,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "catalan",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 1509,
+  "true_key": {
+   "submission": "control-catalan-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "catalan",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.02371,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-catalan-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "catalan",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.02371,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "catalan",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 1509,
+  "true_key": {
+   "submission": "control-catalan-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "catalan",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.01211,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-catalan-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "catalan",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.04231,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "catalan",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 1509,
+  "true_key": {
+   "submission": "control-catalan-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "catalan",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.00785,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-catalan-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "catalan",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.01098,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "german",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 1360,
+  "true_key": {
+   "submission": "control-german-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "german",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.00788,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-german-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "german",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.00788,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "german",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 1360,
+  "true_key": {
+   "submission": "control-german-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "german",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.04274,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-german-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "german",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.04434,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "german",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 1360,
+  "true_key": {
+   "submission": "control-german-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "german",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.02066,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-german-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "german",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.02241,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "english",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 6000,
+  "true_key": {
+   "submission": "control-english-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "english",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06019,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-english-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "english",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06019,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "english",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 6000,
+  "true_key": {
+   "submission": "control-english-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "english",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.034,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-english-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "english",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.034,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "english",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 6000,
+  "true_key": {
+   "submission": "control-english-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "english",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05787,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-english-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "english",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05787,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "czech",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 8560,
+  "true_key": {
+   "submission": "control-czech-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "czech",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06664,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-czech-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "czech",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06664,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "czech",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 8560,
+  "true_key": {
+   "submission": "control-czech-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "czech",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04072,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-czech-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "czech",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04102,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "czech",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 8560,
+  "true_key": {
+   "submission": "control-czech-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "czech",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06438,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-czech-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "czech",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06414,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "hebrew",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 4595,
+  "true_key": {
+   "submission": "control-hebrew-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "hebrew",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08374,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-hebrew-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "hebrew",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08374,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "hebrew",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 4595,
+  "true_key": {
+   "submission": "control-hebrew-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "hebrew",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07423,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-hebrew-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "hebrew",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07423,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "albanian",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 10800,
+  "true_key": {
+   "submission": "control-albanian-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "albanian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.0225,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-albanian-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "albanian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.0225,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "albanian",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 10800,
+  "true_key": {
+   "submission": "control-albanian-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "albanian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.03501,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-albanian-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "albanian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.03501,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "albanian",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 10800,
+  "true_key": {
+   "submission": "control-albanian-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "albanian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04742,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-albanian-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "albanian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04742,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "ancient_greek",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 7760,
+  "true_key": {
+   "submission": "control-ancient_greek-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "ancient_greek",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05417,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-ancient_greek-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "ancient_greek",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05417,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "ancient_greek",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 7760,
+  "true_key": {
+   "submission": "control-ancient_greek-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "ancient_greek",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.02511,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-ancient_greek-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "ancient_greek",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.06033,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "breton",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 1280,
+  "true_key": {
+   "submission": "control-breton-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "breton",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.04247,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-breton-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "breton",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.04247,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "breton",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 1280,
+  "true_key": {
+   "submission": "control-breton-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "breton",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.02934,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-breton-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "breton",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.02934,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "breton",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 1280,
+  "true_key": {
+   "submission": "control-breton-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "breton",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.00227,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-breton-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "breton",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.00227,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "bulgarian",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 1323,
+  "true_key": {
+   "submission": "control-bulgarian-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "bulgarian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.00656,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-bulgarian-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "bulgarian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.00656,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "church_slavonic",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 9116,
+  "true_key": {
+   "submission": "control-church_slavonic-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "church_slavonic",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07056,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-church_slavonic-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "church_slavonic",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07056,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "cornish",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 560,
+  "true_key": {
+   "submission": "control-cornish-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "cornish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.12353,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-cornish-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "cornish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.12353,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "cornish",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 560,
+  "true_key": {
+   "submission": "control-cornish-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "cornish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.14686,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-cornish-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "cornish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.14686,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "cornish",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 560,
+  "true_key": {
+   "submission": "control-cornish-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "cornish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.16262,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-cornish-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "cornish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.16262,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "croatian",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 9200,
+  "true_key": {
+   "submission": "control-croatian-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "croatian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05761,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-croatian-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "croatian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05761,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "croatian",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 9200,
+  "true_key": {
+   "submission": "control-croatian-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "croatian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06757,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-croatian-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "croatian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06757,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "croatian",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 9200,
+  "true_key": {
+   "submission": "control-croatian-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "croatian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06936,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-croatian-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "croatian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06936,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "danish",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 10160,
+  "true_key": {
+   "submission": "control-danish-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "danish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.02705,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-danish-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "danish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.02705,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "danish",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 10160,
+  "true_key": {
+   "submission": "control-danish-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "danish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.02986,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-danish-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "danish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.02986,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "danish",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 10160,
+  "true_key": {
+   "submission": "control-danish-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "danish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04569,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-danish-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "danish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "kill_tests",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.0311,
+   "killed_by": [
+    "D1_word_order_shuffled"
+   ]
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "dutch",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 11040,
+  "true_key": {
+   "submission": "control-dutch-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "dutch",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.02176,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-dutch-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "dutch",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.02176,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "dutch",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 11040,
+  "true_key": {
+   "submission": "control-dutch-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "dutch",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.03659,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-dutch-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "dutch",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.03659,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "dutch",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 11040,
+  "true_key": {
+   "submission": "control-dutch-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "dutch",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05839,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-dutch-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "dutch",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.00332,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "estonian",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 1040,
+  "true_key": {
+   "submission": "control-estonian-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "estonian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.01899,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-estonian-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "estonian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.01899,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "estonian",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 1040,
+  "true_key": {
+   "submission": "control-estonian-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "estonian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06367,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-estonian-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "estonian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06367,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "estonian",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 1040,
+  "true_key": {
+   "submission": "control-estonian-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "estonian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.0199,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-estonian-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "estonian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.0199,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "finnish",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 9280,
+  "true_key": {
+   "submission": "control-finnish-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "finnish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.02664,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-finnish-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "finnish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.02664,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "finnish",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 9280,
+  "true_key": {
+   "submission": "control-finnish-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "finnish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05784,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-finnish-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "finnish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05784,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "finnish",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 9280,
+  "true_key": {
+   "submission": "control-finnish-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "finnish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05168,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-finnish-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "finnish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.02796,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "frisian",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 4880,
+  "true_key": {
+   "submission": "control-frisian-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "frisian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.0556,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-frisian-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "frisian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.0556,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "frisian",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 4880,
+  "true_key": {
+   "submission": "control-frisian-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "frisian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04805,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-frisian-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "frisian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04805,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "frisian",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 4880,
+  "true_key": {
+   "submission": "control-frisian-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "frisian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05634,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-frisian-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "frisian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05634,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "galician",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 640,
+  "true_key": {
+   "submission": "control-galician-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "galician",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.06801,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-galician-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "galician",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.06801,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "galician",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 640,
+  "true_key": {
+   "submission": "control-galician-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "galician",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.07397,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-galician-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "galician",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.09819,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "galician",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 640,
+  "true_key": {
+   "submission": "control-galician-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "galician",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.07457,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-galician-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "galician",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.07326,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "gothic",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 960,
+  "true_key": {
+   "submission": "control-gothic-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "gothic",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.08501,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-gothic-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "gothic",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.08501,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "gothic",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 960,
+  "true_key": {
+   "submission": "control-gothic-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "gothic",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.05439,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-gothic-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "gothic",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.05439,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "greek",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 10096,
+  "true_key": {
+   "submission": "control-greek-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "greek",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.03839,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-greek-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "greek",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.03839,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "greek",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 10096,
+  "true_key": {
+   "submission": "control-greek-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "greek",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.03044,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-greek-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "greek",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.03044,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "hungarian",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 8560,
+  "true_key": {
+   "submission": "control-hungarian-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "hungarian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05805,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-hungarian-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "hungarian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05805,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "hungarian",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 8560,
+  "true_key": {
+   "submission": "control-hungarian-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "hungarian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06467,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-hungarian-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "hungarian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06467,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "hungarian",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 8560,
+  "true_key": {
+   "submission": "control-hungarian-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "hungarian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.0596,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-hungarian-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "hungarian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.0596,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "icelandic",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 400,
+  "true_key": {
+   "submission": "control-icelandic-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "icelandic",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.17497,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-icelandic-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "icelandic",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.17497,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "icelandic",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 400,
+  "true_key": {
+   "submission": "control-icelandic-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "icelandic",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.29243,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-icelandic-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "icelandic",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.29243,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "irish",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 560,
+  "true_key": {
+   "submission": "control-irish-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "irish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.12819,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-irish-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "irish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.12819,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "irish",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 560,
+  "true_key": {
+   "submission": "control-irish-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "irish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.04917,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-irish-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "irish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "kill_tests",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.07544,
+   "killed_by": [
+    "D1_word_order_shuffled"
+   ]
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "latvian",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 8960,
+  "true_key": {
+   "submission": "control-latvian-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "latvian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.03681,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-latvian-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "latvian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.03681,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "latvian",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 8960,
+  "true_key": {
+   "submission": "control-latvian-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "latvian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05944,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-latvian-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "latvian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05944,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "latvian",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 8960,
+  "true_key": {
+   "submission": "control-latvian-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "latvian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06334,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-latvian-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "latvian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06334,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
+ },
+ {
+  "language": "lithuanian",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 1680,
+  "true_key": {
+   "submission": "control-lithuanian-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "lithuanian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04553,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-lithuanian-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "lithuanian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04553,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "lithuanian",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 1680,
+  "true_key": {
+   "submission": "control-lithuanian-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "lithuanian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08942,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-lithuanian-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "lithuanian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08942,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "lithuanian",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 1680,
+  "true_key": {
+   "submission": "control-lithuanian-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "lithuanian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07039,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-lithuanian-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "lithuanian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07039,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "manx",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 1200,
+  "true_key": {
+   "submission": "control-manx-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "manx",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.05372,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-manx-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "manx",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.05372,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "manx",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 1200,
+  "true_key": {
+   "submission": "control-manx-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "manx",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.03518,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-manx-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "manx",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.03518,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "manx",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 1200,
+  "true_key": {
+   "submission": "control-manx-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "manx",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.02962,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-manx-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "manx",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.02962,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "nahuatl",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 1360,
+  "true_key": {
+   "submission": "control-nahuatl-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "nahuatl",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.00845,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-nahuatl-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "nahuatl",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.00845,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "nahuatl",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 1360,
+  "true_key": {
+   "submission": "control-nahuatl-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "nahuatl",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.00233,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-nahuatl-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "nahuatl",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.00061,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "nahuatl",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 1360,
+  "true_key": {
+   "submission": "control-nahuatl-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "nahuatl",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.01423,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-nahuatl-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "nahuatl",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "kill_tests",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.26678,
+   "killed_by": [
+    "D1_word_order_shuffled"
+   ]
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "neapolitan",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 560,
+  "true_key": {
+   "submission": "control-neapolitan-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "neapolitan",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.12037,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-neapolitan-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "neapolitan",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.12037,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "neapolitan",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 560,
+  "true_key": {
+   "submission": "control-neapolitan-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "neapolitan",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.08848,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-neapolitan-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "neapolitan",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.08848,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "neapolitan",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 560,
+  "true_key": {
+   "submission": "control-neapolitan-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "neapolitan",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.14141,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-neapolitan-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "neapolitan",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.14141,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "norwegian",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 10268,
+  "true_key": {
+   "submission": "control-norwegian-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "norwegian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.03187,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-norwegian-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "norwegian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.03187,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "norwegian",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 10268,
+  "true_key": {
+   "submission": "control-norwegian-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "norwegian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04375,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-norwegian-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "norwegian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04375,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "norwegian",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 10268,
+  "true_key": {
+   "submission": "control-norwegian-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "norwegian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05479,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-norwegian-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "norwegian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05479,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "old_norse",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 480,
+  "true_key": {
+   "submission": "control-old_norse-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "old_norse",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.2829,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-old_norse-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "old_norse",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.2829,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "old_norse",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 480,
+  "true_key": {
+   "submission": "control-old_norse-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "old_norse",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.25452,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-old_norse-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "old_norse",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.25452,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "old_norse",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 480,
+  "true_key": {
+   "submission": "control-old_norse-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "old_norse",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.25956,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-old_norse-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "old_norse",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.25956,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "old_occitan",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 1760,
+  "true_key": {
+   "submission": "control-old_occitan-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "old_occitan",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.02533,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-old_occitan-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "old_occitan",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.02533,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "old_occitan",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 1760,
+  "true_key": {
+   "submission": "control-old_occitan-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "old_occitan",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.02084,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-old_occitan-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "old_occitan",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.02084,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "old_occitan",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 1760,
+  "true_key": {
+   "submission": "control-old_occitan-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "old_occitan",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.00043,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-old_occitan-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "old_occitan",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "kill_tests",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.20785,
+   "killed_by": [
+    "D1_word_order_shuffled",
+    "D2_glyphs_shuffled",
+    "D3_random_glyphs",
+    "D4_unrelated_text_enciphered"
+   ]
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "polish",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 8560,
+  "true_key": {
+   "submission": "control-polish-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "polish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04723,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-polish-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "polish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04723,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "polish",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 8560,
+  "true_key": {
+   "submission": "control-polish-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "polish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04957,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-polish-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "polish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04957,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "polish",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 8560,
+  "true_key": {
+   "submission": "control-polish-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "polish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06125,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-polish-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "polish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06125,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "portuguese",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 10080,
+  "true_key": {
+   "submission": "control-portuguese-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "portuguese",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.03299,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-portuguese-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "portuguese",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.03299,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "portuguese",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 10080,
+  "true_key": {
+   "submission": "control-portuguese-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "portuguese",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05139,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-portuguese-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "portuguese",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.03259,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
+ },
+ {
+  "language": "portuguese",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 10080,
+  "true_key": {
+   "submission": "control-portuguese-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "portuguese",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07072,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-portuguese-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "portuguese",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.0709,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "romanian",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 2418,
+  "true_key": {
+   "submission": "control-romanian-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "romanian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.00843,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-romanian-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "romanian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.00843,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "romanian",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 2418,
+  "true_key": {
+   "submission": "control-romanian-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "romanian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07842,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-romanian-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "romanian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07842,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "romanian",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 2418,
+  "true_key": {
+   "submission": "control-romanian-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "romanian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06275,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-romanian-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "romanian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06275,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "russian",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 9673,
+  "true_key": {
+   "submission": "control-russian-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "russian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06916,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-russian-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "russian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06916,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "sanskrit",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 1520,
+  "true_key": {
+   "submission": "control-sanskrit-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "sanskrit",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07277,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-sanskrit-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "sanskrit",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07277,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "sanskrit",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 1520,
+  "true_key": {
+   "submission": "control-sanskrit-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "sanskrit",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05584,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-sanskrit-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "sanskrit",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05584,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "sanskrit",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 1520,
+  "true_key": {
+   "submission": "control-sanskrit-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "sanskrit",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.03007,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-sanskrit-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "sanskrit",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.00428,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "serbian",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 8320,
+  "true_key": {
+   "submission": "control-serbian-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "serbian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06017,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-serbian-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "serbian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06017,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "slovak",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 480,
+  "true_key": {
+   "submission": "control-slovak-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "slovak",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.0847,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-slovak-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "slovak",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.0847,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "slovak",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 480,
+  "true_key": {
+   "submission": "control-slovak-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "slovak",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.12163,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-slovak-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "slovak",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.12337,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "slovak",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 480,
+  "true_key": {
+   "submission": "control-slovak-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "slovak",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.16887,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-slovak-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "slovak",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.17038,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "slovene",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 2511,
+  "true_key": {
+   "submission": "control-slovene-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "slovene",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04896,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-slovene-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "slovene",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04896,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "slovene",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 2511,
+  "true_key": {
+   "submission": "control-slovene-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "slovene",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08576,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-slovene-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "slovene",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08576,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "slovene",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 2511,
+  "true_key": {
+   "submission": "control-slovene-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "slovene",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06606,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-slovene-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "slovene",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06606,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "swedish",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 7040,
+  "true_key": {
+   "submission": "control-swedish-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "swedish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.0437,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-swedish-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "swedish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.0437,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "swedish",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 7040,
+  "true_key": {
+   "submission": "control-swedish-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "swedish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05753,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-swedish-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "swedish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05354,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "swedish",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 7040,
+  "true_key": {
+   "submission": "control-swedish-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "swedish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06277,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-swedish-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "swedish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05915,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false
+ },
+ {
+  "language": "syriac",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 1596,
+  "true_key": {
+   "submission": "control-syriac-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "syriac",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06565,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-syriac-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "syriac",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06565,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "syriac",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 1596,
+  "true_key": {
+   "submission": "control-syriac-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "syriac",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.03193,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-syriac-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "syriac",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.03193,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "turkish",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 1360,
+  "true_key": {
+   "submission": "control-turkish-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "turkish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.02862,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-turkish-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "turkish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.02862,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "turkish",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 1360,
+  "true_key": {
+   "submission": "control-turkish-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "turkish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05964,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-turkish-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "turkish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05964,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "turkish",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 1360,
+  "true_key": {
+   "submission": "control-turkish-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "turkish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05052,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-turkish-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "turkish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "kill_tests",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.26801,
+   "killed_by": [
+    "D1_word_order_shuffled"
+   ]
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "ukrainian",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 8320,
+  "true_key": {
+   "submission": "control-ukrainian-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "ukrainian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08123,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-ukrainian-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "ukrainian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08123,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "vietnamese",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 12880,
+  "true_key": {
+   "submission": "control-vietnamese-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "vietnamese",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.00984,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-vietnamese-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "vietnamese",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.00984,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "vietnamese",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 12880,
+  "true_key": {
+   "submission": "control-vietnamese-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "vietnamese",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.00564,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-vietnamese-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "vietnamese",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.01265,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "vietnamese",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 12880,
+  "true_key": {
+   "submission": "control-vietnamese-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "vietnamese",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.01683,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-vietnamese-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "vietnamese",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "kill_tests",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.06577,
+   "killed_by": [
+    "D1_word_order_shuffled"
+   ]
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "welsh",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 560,
+  "true_key": {
+   "submission": "control-welsh-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "welsh",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.12856,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-welsh-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "welsh",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.12856,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "welsh",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 560,
+  "true_key": {
+   "submission": "control-welsh-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "welsh",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.08798,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-welsh-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "welsh",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.08798,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "welsh",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 560,
+  "true_key": {
+   "submission": "control-welsh-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "welsh",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.11437,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-welsh-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "welsh",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.23031,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "yiddish",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 800,
+  "true_key": {
+   "submission": "control-yiddish-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "yiddish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.12885,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-yiddish-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "yiddish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.12885,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "yiddish",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 800,
+  "true_key": {
+   "submission": "control-yiddish-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "yiddish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.14771,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-yiddish-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "yiddish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.09686,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
  }
 ]
