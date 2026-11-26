@@ -195,6 +195,58 @@ def climb(tri, table, letters, seed, budget=BUDGET, init=None, group_swap=0.0):
     return best_m, best_s
 
 
+def refine_adjacent_pairs(trigrams, mapping, table, letters, pair_limit, sweeps):
+    """Reassign frequent neighbouring units together on the same trigram objective.
+
+    Whole homophone-group swaps cannot separate two units collapsed onto one letter.
+    Try independent output letters for each unit and keep a move only if it improves
+    the training score. Aggregate either orientation of a pair within words.
+    """
+    pairs = Counter()
+    items = list(trigrams.items())
+    occurrences = defaultdict(set)
+    for i, ((a, b, c), count) in enumerate(items):
+        if b != c and lm.WB not in (b, c):
+            pairs[tuple(sorted((b, c)))] += count
+        for unit in {a, b, c}:
+            occurrences[unit].add(i)
+    candidates = sorted(pairs, key=lambda pair: (-pairs[pair], pair))[:pair_limit]
+    m = {**mapping, lm.WB: lm.WB}
+
+    def single_scores(unit, positions):
+        rows = [items[i] for i in sorted(positions)]
+        return {letter: sum(table[tuple(letter if x == unit else m[x] for x in triple)] * count
+                            for triple, count in rows)
+                for letter in letters}
+
+    for _ in range(sweeps):
+        improved = False
+        for left, right in candidates:
+            left_positions, right_positions = occurrences[left], occurrences[right]
+            left_scores = single_scores(left, left_positions - right_positions)
+            right_scores = single_scores(right, right_positions - left_positions)
+            variables = {left: 0, right: 1}
+            joint = Counter()
+            for i in sorted(left_positions & right_positions):
+                triple, count = items[i]
+                joint[tuple(variables.get(unit, m[unit]) for unit in triple)] += count
+
+            def score(pair):
+                together = sum(table[tuple(pair[x] if isinstance(x, int) else x for x in triple)] * count
+                               for triple, count in joint.items())
+                return left_scores[pair[0]] + right_scores[pair[1]] + together
+
+            current = (m[left], m[right])
+            proposal = max(itertools.product(letters, repeat=2), key=score)
+            if score(proposal) > score(current) + 1e-8:
+                m[left], m[right] = proposal
+                improved = True
+        if not improved:
+            break
+    m.pop(lm.WB)
+    return m
+
+
 def cell_budget(lang, family):
     if family == "nomenclator" and lang in ("english", "latin", "spanish"):
         from .search_nomenclator import SETTINGS
@@ -206,6 +258,8 @@ def cell_budget(lang, family):
     if family in ("syllabic",):
         from .search_syllabic import SETTINGS
         return {**BUDGET, **SETTINGS}
+    if (lang, family) == ("german", "substitution"):
+        return {**BUDGET, "substitution_pair_candidates": 16, "substitution_pair_sweeps": 3}
     if (lang, family) == ("nahuatl", "substitution"):
         return {**BUDGET, "homophone_ranked_restarts": 1, "homophone_word_sweeps": 5}
     if family == "verbose" and lang in ("french", "german"):
@@ -356,9 +410,16 @@ def search_cell(lang, family, train_pages, budget=None, tag="cell"):
         tri = unit_trigrams(train_pages, segf)
         m, s = climb(tri, table, letters, f"{budget['seed']}/{lang}/{family}/{tag}", budget,
                      group_swap=budget.get("substitution_group_swap", 0.0))
-        if budget.get("homophone_ranked_restarts", 0) and budget.get("homophone_word_sweeps", 0):
+        refine_words = budget.get("homophone_ranked_restarts", 0) and budget.get("homophone_word_sweeps", 0)
+        pair_limit = budget.get("substitution_pair_candidates", 0)
+        pair_sweeps = budget.get("substitution_pair_sweeps", 0)
+        refine_neighbours = lang == "german" and pair_limit > 0 and pair_sweeps > 0
+        if refine_words:
             from .search_homophones import refine_homophones
             m = refine_homophones(lang, train_pages, m, tri, table, letters, budget)
+        if refine_neighbours:
+            m = refine_adjacent_pairs(tri, m, table, letters, pair_limit, pair_sweeps)
+        if refine_words or refine_neighbours:
             scored = {**m, lm.WB: lm.WB}
             s = sum(n * table[scored[a], scored[b], scored[c]] for (a, b, c), n in tri.items())
         key = {"map": m}
