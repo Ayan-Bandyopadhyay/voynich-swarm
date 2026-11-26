@@ -1,0 +1,558 @@
+{
+ "title": "Independent rerun of P-L4-007 on 299 figure labels reproduces all eight registered numbers to within one agreement; and ZL's own clock marks put the three shared f73r/f73v labels two to three figure positions apart, so the one-place shift is not one label copied across the leaf",
+ "statement": "An independent rerun of P-L4-007 with my own code, on the loci the step declares: only the figure-label loci (unit Lz) of the twelve zodiac pages, 299 labels (15 on f70v1, f71r, f71v and f72r1; 29 on f72r2; 30 on f70v2, f72r3, f72v1, f72v2, f72v3, f73r and f73v), glyph strings with word breaks removed, and for each of the 66 page pairs the largest number of agreements over every cyclic offset of the longer page against the shorter, summed; 1,000 shuffles, seed 408; two nulls, labels shuffled over the whole page and labels shuffled only inside their own ring. All eight registered numbers reproduce. Best offset, exact agreement, whole-page and within-ring nulls: ZL3b 27 against 24.8 (p = 0.047, 0.035; registered 27 against 24.9, p = 0.034, 0.050); IT2a 19 against 17.8 (p = 0.194, 0.157; registered 19 against 17.8, p = 0.17, 0.18); RF1b 21 against 20.6 (p = 0.446, 0.403; registered 20 against 20.5, p = 1.0, 1.0); GC2a 18 against 18.4 (p = 1.0, 1.0; registered 18 against 18.4, p = 1.0, 1.0). Allowing one glyph of difference: ZL3b 82 against 75.7 (p = 0.019, 0.020; registered 82 against 76.2, p = 0.028, 0.027); IT2a 83 against 76.3 (p = 0.019, 0.014; registered 82 against 75.2, p = 0.025, 0.012); RF1b 68 against 66.2 (p = 0.303, 0.324; registered 69 against 65.7, p = 0.15, 0.15); GC2a 78 against 75.5 (p = 0.226, 0.210; registered 75 against 72.9, p = 0.27, 0.23). Same position, no offset: ZL3b, RF1b and GC2a 1 agreement each in 1,403 comparisons, IT2a none, as registered. Where the ZL excess comes from, pair by pair: f73r against f73v at offset 1 carries 3 exact agreements in ZL3b and 3 in IT2a - the labels at f73r.7, f73r.20 and f73r.26 equal those at f73v.6, f73v.19 and f73v.25 (ZL reads them okeody, okeos, oky) - while the same pair carries 1 agreement in RF1b and 1 in GC2a, the middle label only (GC2a reads it ohcos); no other offset of that pair reaches 2 in any edition, and in RF1b and GC2a the f73r/f73v pair is not the best pair on the page. New check, added after the rerun and stated below: ZL3b writes a clock position into every figure label, which is the scribe's own place marker on the wheel. Pairing the two pages' label lists ring by ring, the clock marks line up at a shift of one label position in the outer ring (all 15 comparable pairs within 30 minutes of each other, median -30 minutes) and at two positions in the inner ring (6 of 8 within 30 minutes), and at no shift at all for the four labels written above the wheel (4 of 4 agree at shift 0). The shift that carries the three shared words, +1, is the worst of them all: 1 of 29 pairs within 30 minutes, median +120 minutes; in the outer ring the shared labels sit 90 minutes apart where one figure position is 45 minutes, and in the inner ring 210 minutes apart where one position is 72 minutes. So the shared words are not the same figure's label copied across the leaf: they stand two positions apart on the outer ring and about three on the inner. The scan part: I read the six labels on the Yale canvases at the full resolution the server gives (2834 by 3761 and 2979 by 3724 pixels). f73r.7 and f73v.6 are the same word - six glyphs in the same order: a round o, a two-legged gallows, a small curve, a round o, a looped glyph with a descender, and y. f73r.26 and f73v.25 have the same three-glyph outline (o, a gallows, a looped glyph with a descender), but the head of the gallows looks slightly different in the two and at about a hundred pixels per label I cannot call that a different gallows rather than pen angle. f73r.20 reads o, a gallows, a short stroke, a small curve, o and a short final stroke; the label at f73v.19 is faint and turned about 60 degrees, and there I see a run of round glyphs with a tall glyph at one end, which I cannot match to it with confidence.",
+ "program": "L4",
+ "check": "Rerun with the loci stated (unit Lz on the twelve pages, word breaks removed, best cyclic offset per pair, both shuffles). Separately, on the Beinecke scans of f73r and f73v (canvases 1006206 and 1006207), read the labels at loci f73r.7, f73r.20, f73r.26 and f73v.6, f73v.19, f73v.25 without the transliteration in view, and say whether each pair is the same word; if the shift of one place is real it should also show whether the two pages were labelled from starting figures one place apart.",
+ "on_path": true,
+ "hard": false,
+ "findings": [
+  "All eight registered numbers reproduce within one agreement. Exact best offset, my run then registered: ZL3b 27 / 27 against nulls 24.8 / 24.9 (p 0.047 and 0.035 against 0.034 and 0.050); IT2a 19 / 19 against 17.8 / 17.8 (p 0.194 and 0.157 against 0.17 and 0.18); RF1b 21 / 20 against 20.6 / 20.5 (p 0.446 and 0.403 against 1.0 and 1.0); GC2a 18 / 18 against 18.4 / 18.4 (p 1.0 / 1.0). One glyph allowed: ZL3b 82 / 82 against 75.7 / 76.2 (p 0.019 and 0.020 against 0.028 and 0.027); IT2a 83 / 82 against 76.3 / 75.2 (p 0.019 and 0.014 against 0.025 and 0.012); RF1b 68 / 69 against 66.2 / 65.7 (p 0.303 and 0.324 against 0.15 and 0.15); GC2a 78 / 75 against 75.5 / 72.9 (p 0.226 and 0.210 against 0.27 and 0.23). My null means land within 0.6 of the registered ones every time; the observed totals differ by at most 3 (GC2a one-glyph), and RF1b's p values move because my observed total is one lower and my null mean is half a point lower.",
+  "The ZL excess is one leaf, exactly as registered. f73r against f73v at offset 1: 3 exact agreements in ZL3b and 3 in IT2a, 1 in RF1b and 1 in GC2a. The three agreeing labels are f73r.7 = f73v.6 (okeody), f73r.20 = f73v.19 (okeos; GC2a ohcos), f73r.26 = f73v.25 (oky). No other offset of that pair reaches 2 in any of the four editions, and in RF1b and GC2a the pair's best is a single agreement, so the whole nominal significance of ZL and IT rests on three labels that two other editions do not read the same way.",
+  "New: ZL's own clock marks say the shared labels are not at the same figure. ZL3b writes a clock position into every figure label (the <!hh:mm> comment), and the twelve pages' labels fall into three rings: 4 labels above the wheel, 16 in the outer ring, 10 in the inner. Pairing f73r and f73v label by label, the clock marks agree best at shift -1 in the outer ring (15 of 15 comparable pairs within 30 minutes, median -30 minutes), at shift -2 in the inner ring (6 of 8 within 30 minutes), and at shift 0 for the four labels above the wheel (4 of 4, median 0). The shift that carries the shared words, +1, is the worst shift on the page: 1 of 29 pairs within 30 minutes, median +120 minutes. In the outer ring one figure position is 45 minutes, so the shared labels there are 2 positions apart (observed median +90 minutes); in the inner ring one position is 72 minutes and they are about 3 apart (observed median +210 minutes).",
+  "So the two pages were labelled from starting figures one place apart - that part of the check is confirmed, and cleanly so in the outer ring - but the rotation runs the other way from the word shift. Under the rotation, the label that sits at the same place on both wheels is f73r.k against f73v.(k+1); the shared words are at f73r.(k+1) against f73v.k, two positions further round. The shared words are therefore a repetition of three words at different figures on recto and verso of one leaf, not one label read twice.",
+  "The scan, at the resolution the public server gives (crops listed in results.scan.crops). f73r.7 and f73v.6: same word, yes - six glyphs in the same order, round o, two-legged gallows, small curve, round o, looped glyph with a descender, y. f73r.26 and f73v.25: same three-glyph outline, o, gallows, looped glyph with a descender; the gallows head looks slightly different in the two, and at about a hundred pixels per label I cannot say whether that is a different gallows (as RF1b's oty would need) or pen angle. f73r.20 and f73v.19: not confirmed - the f73v label is faint and turned about 60 degrees, and what I can see there (a run of round glyphs with a tall glyph at one end) does not obviously match the f73r label (o, gallows, short stroke, small curve, o, short final stroke)."
+ ],
+ "interpretation": "The registered result stands: there is no list of labels repeating in order from sign to sign, and the only exact excess in any edition is three labels on one leaf, which two of the four editions do not read identically. My clock-mark check sharpens what that excess is not. The registered step read the one-place shift as 'a rotation of the whole wheel, not a counting slip', and the clock marks do show a real one-place rotation between the two pages - the outer rings line up 15 of 15 at that shift. But the rotation goes the opposite way to the word shift, so the shared words are not the same figure's label surviving on both sides of the leaf: they are the same words written two positions apart on the outer ring, three apart on the inner. That is a slightly stranger fact than a copying slip, and a weaker candidate for a decoding lever than it looked: three repeated words on one leaf, at figures that do not correspond. It also means the clock marks are worth using as an independent place marker - they let a label claim be tested against position, not only against spelling, and on these two pages they contradict the obvious reading of the spelling match. On the scan the first pair is plainly the same word and the third pair is the same outline with an unresolvable gallows, so the editions' disagreement about oky against oty is still not settled by the public image.",
+ "methods": "Three scripts, all read-only over the public practice partition. pl4021.py parses each of the four pinned transliterations with vs.ivtff, keeps only lines whose unit is L and subtype z (the figure labels), joins the words of each line into one glyph string with ?*{} brackets stripped, and groups each page's labels into rings by maximal runs of consecutive line numbers - the groups the transcription itself marks. For each of the 66 page pairs it computes, vectorised in numpy, the number of agreements at every cyclic offset of the longer page against the shorter and takes the maximum, then sums over pairs; the same code counts agreements at the same position with no offset. Two nulls, 1,000 shuffles each from random.Random(408): labels shuffled over the whole page, and labels shuffled only inside their own ring. p is (count of nulls at or above the observed total + 1) / 1001. pl4021_oneglyph.py is the same run with the equality test replaced by a relation that also accepts two labels that differ by one glyph (one substitution in equal-length strings, or one insertion in strings whose lengths differ by one), precomputed as a boolean matrix over the distinct label strings; the observed value and both nulls are recomputed under it. pl4021_clock.py reads the clock position out of the <!hh:mm> comment that ZL3b attaches to each figure label, pairs the f73r and f73v label lists at every shift from -4 to +4, and reports the signed clock difference per pair, overall and ring by ring; a shift where the two pages' clock marks agree is a shift where their label numbering refers to the same figure. The scan part is my own reading of crops of the two Yale canvases at the maximum size the IIIF server serves; the crop boxes are recorded in results.scan.",
+ "results": {
+  "setup": {
+   "commit": "cb94ef4",
+   "split": "practice",
+   "transliterations": [
+    "zl (ZL3b)",
+    "it (IT2a)",
+    "rf (RF1b)",
+    "gc (GC2a)"
+   ],
+   "loci": "unit Lz only, twelve zodiac pages",
+   "labels_per_page": {
+    "f70v1": 15,
+    "f71r": 15,
+    "f71v": 15,
+    "f72r1": 15,
+    "f72r2": 29,
+    "f70v2": 30,
+    "f72r3": 30,
+    "f72v1": 30,
+    "f72v2": 30,
+    "f72v3": 30,
+    "f73r": 30,
+    "f73v": 30
+   },
+   "total_labels": 299,
+   "page_pairs": 66,
+   "comparisons_at_no_offset": 1403,
+   "shuffles": 1000,
+   "seed": 408,
+   "numpy": "2.5.5"
+  },
+  "exact_best_offset": {
+   "zl": {
+    "mine": [
+     27,
+     24.8,
+     0.047,
+     0.035
+    ],
+    "registered": [
+     27,
+     24.9,
+     0.034,
+     0.05
+    ]
+   },
+   "it": {
+    "mine": [
+     19,
+     17.8,
+     0.194,
+     0.157
+    ],
+    "registered": [
+     19,
+     17.8,
+     0.17,
+     0.18
+    ]
+   },
+   "rf": {
+    "mine": [
+     21,
+     20.6,
+     0.446,
+     0.403
+    ],
+    "registered": [
+     20,
+     20.5,
+     1.0,
+     1.0
+    ]
+   },
+   "gc": {
+    "mine": [
+     18,
+     18.4,
+     1.0,
+     1.0
+    ],
+    "registered": [
+     18,
+     18.4,
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "one_glyph_best_offset": {
+   "zl": {
+    "mine": [
+     82,
+     75.7,
+     0.019,
+     0.02
+    ],
+    "registered": [
+     82,
+     76.2,
+     0.028,
+     0.027
+    ]
+   },
+   "it": {
+    "mine": [
+     83,
+     76.3,
+     0.019,
+     0.014
+    ],
+    "registered": [
+     82,
+     75.2,
+     0.025,
+     0.012
+    ]
+   },
+   "rf": {
+    "mine": [
+     68,
+     66.2,
+     0.303,
+     0.324
+    ],
+    "registered": [
+     69,
+     65.7,
+     0.15,
+     0.15
+    ]
+   },
+   "gc": {
+    "mine": [
+     78,
+     75.5,
+     0.226,
+     0.21
+    ],
+    "registered": [
+     75,
+     72.9,
+     0.27,
+     0.23
+    ]
+   }
+  },
+  "same_position_no_offset": {
+   "zl": {
+    "mine_exact": 1,
+    "mine_one_glyph": 17
+   },
+   "it": {
+    "mine_exact": 0,
+    "mine_one_glyph": 16
+   },
+   "rf": {
+    "mine_exact": 1,
+    "mine_one_glyph": 9
+   },
+   "gc": {
+    "mine_exact": 1,
+    "mine_one_glyph": 10
+   }
+  },
+  "f73r_against_f73v": {
+   "agreements_at_offset_1": {
+    "zl": 3,
+    "it": 3,
+    "rf": 1,
+    "gc": 1
+   },
+   "shared_labels": {
+    "zl": [
+     [
+      "f73r.7",
+      "f73v.6",
+      "okeody"
+     ],
+     [
+      "f73r.20",
+      "f73v.19",
+      "okeos"
+     ],
+     [
+      "f73r.26",
+      "f73v.25",
+      "oky"
+     ]
+    ],
+    "it": [
+     [
+      "f73r.7",
+      "f73v.6",
+      "okeody"
+     ],
+     [
+      "f73r.20",
+      "f73v.19",
+      "okeos"
+     ],
+     [
+      "f73r.26",
+      "f73v.25",
+      "oky"
+     ]
+    ],
+    "rf": [
+     [
+      "f73r.20",
+      "f73v.19",
+      "okeos"
+     ]
+    ],
+    "gc": [
+     [
+      "f73r.20",
+      "f73v.19",
+      "ohcos"
+     ]
+    ]
+   },
+   "best_other_offsets": {
+    "zl": "1 agreement at offset 12, 0 elsewhere",
+    "it": "1 agreement at offsets 24 and 12",
+    "rf": "no other offset reaches 1",
+    "gc": "1 agreement at offset 12"
+   }
+  },
+  "clock_marks": {
+   "note": "ZL3b attaches a clock position to every figure label; one figure position is 45 minutes in the 16-label outer ring and 72 minutes in the 10-label inner ring.",
+   "rings": {
+    "labels above the wheel": 4,
+    "outer ring": 16,
+    "inner ring": 10
+   },
+   "shift_where_clocks_agree": {
+    "labels above the wheel": {
+     "shift": 0,
+     "within_30_min": "4/4",
+     "median_minutes": 0
+    },
+    "outer ring": {
+     "shift": -1,
+     "within_30_min": "15/15",
+     "median_minutes": -30
+    },
+    "inner ring": {
+     "shift": -2,
+     "within_30_min": "6/8",
+     "median_minutes": -30
+    }
+   },
+   "at_the_shift_that_carries_the_shared_words": {
+    "all pairs": {
+     "within_30_min": "1/29",
+     "median_minutes": 120
+    },
+    "outer ring": {
+     "median_minutes": 90,
+     "implied_positions_apart": 2
+    },
+    "inner ring": {
+     "median_minutes": 210,
+     "implied_positions_apart": 3
+    }
+   },
+   "clock_difference_by_shift": {
+    "-4": [
+     -240,
+     -210,
+     -180,
+     -180,
+     -180,
+     -180,
+     -150,
+     -150,
+     -150,
+     -150,
+     -150,
+     -150,
+     -150,
+     -135,
+     -120,
+     -120,
+     -120,
+     -120,
+     -120,
+     -120,
+     -120,
+     -90,
+     60,
+     60,
+     75,
+     75
+    ],
+    "-3": [
+     -180,
+     -150,
+     -120,
+     -120,
+     -105,
+     -90,
+     -90,
+     -90,
+     -90,
+     -90,
+     -90,
+     -90,
+     -90,
+     -90,
+     -90,
+     -90,
+     -90,
+     -90,
+     -90,
+     -90,
+     -60,
+     -60,
+     -60,
+     -45,
+     90,
+     105,
+     120
+    ],
+    "-2": [
+     -90,
+     -75,
+     -75,
+     -60,
+     -60,
+     -60,
+     -60,
+     -60,
+     -60,
+     -60,
+     -30,
+     -30,
+     -30,
+     -30,
+     -30,
+     -30,
+     -30,
+     -30,
+     -30,
+     -30,
+     -30,
+     -30,
+     -15,
+     0,
+     0,
+     0,
+     150,
+     150
+    ],
+    "-1": [
+     -45,
+     -30,
+     -30,
+     -30,
+     -30,
+     -30,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     15,
+     30,
+     30,
+     30,
+     30,
+     30,
+     30,
+     30,
+     30,
+     30,
+     60,
+     60,
+     60,
+     60,
+     60,
+     180
+    ],
+    "0": [
+     0,
+     0,
+     0,
+     0,
+     15,
+     30,
+     30,
+     30,
+     30,
+     30,
+     60,
+     60,
+     60,
+     60,
+     60,
+     60,
+     60,
+     60,
+     60,
+     75,
+     90,
+     90,
+     120,
+     120,
+     120,
+     120,
+     120,
+     120,
+     150,
+     150
+    ],
+    "+1": [
+     -120,
+     30,
+     45,
+     45,
+     60,
+     60,
+     60,
+     60,
+     90,
+     90,
+     90,
+     90,
+     90,
+     105,
+     120,
+     120,
+     120,
+     120,
+     120,
+     150,
+     150,
+     150,
+     180,
+     180,
+     210,
+     210,
+     210,
+     210,
+     210
+    ],
+    "+2": [
+     -90,
+     -90,
+     75,
+     90,
+     90,
+     90,
+     120,
+     120,
+     120,
+     120,
+     150,
+     150,
+     150,
+     150,
+     165,
+     180,
+     180,
+     180,
+     180,
+     210,
+     240,
+     240,
+     240,
+     270,
+     270,
+     270,
+     270,
+     300
+    ]
+   }
+  },
+  "scan": {
+   "canvases": {
+    "f73r": "1006206 (2834 x 3761)",
+    "f73v": "1006207 (2979 x 3724)"
+   },
+   "source": "https://collections.library.yale.edu/iiif/2/<canvas>/full/max/0/default.jpg",
+   "crops": {
+    "f73r.7": "1006206, x=940 y=840 w=430 h=300",
+    "f73v.6": "1006207, x=960 y=1090 w=300 h=200",
+    "f73r.20": "1006206, x=470 y=1390 w=260 h=150",
+    "f73v.19": "1006207, x=1000 y=2120 w=460 h=300",
+    "f73r.26": "1006206, x=1460 y=1780 w=260 h=200",
+    "f73v.25": "1006207, x=1760 y=1260 w=260 h=170"
+   },
+   "pairs": [
+    {
+     "loci": [
+      "f73r.7",
+      "f73v.6"
+     ],
+     "same_word": "yes",
+     "what_i_see": "six glyphs in the same order on both pages: round o, two-legged gallows, small curve, round o, looped glyph with a descender, y"
+    },
+    {
+     "loci": [
+      "f73r.20",
+      "f73v.19"
+     ],
+     "same_word": "not confirmed",
+     "what_i_see": "f73r.20: o, gallows, short stroke, small curve, o, short final stroke. f73v.19: faint, turned about 60 degrees; a run of round glyphs with a tall glyph at one end, which I cannot match"
+    },
+    {
+     "loci": [
+      "f73r.26",
+      "f73v.25"
+     ],
+     "same_word": "same outline, gallows unresolved",
+     "what_i_see": "three glyphs on both pages: round o, gallows, looped glyph with a descender; the head of the gallows looks slightly different in the two, and at about a hundred pixels per label that is not decidable"
+    }
+   ]
+  }
+ },
+ "reproducibility": {
+  "instructions": "From the repository root, with the four pinned transliterations fetched (vs.fetch), extract the three scripts below to /tmp and run them with PYTHONPATH=. python3 /tmp/pl4021.py (about 4 minutes), PYTHONPATH=. python3 /tmp/pl4021_oneglyph.py (about 4 minutes) and PYTHONPATH=. python3 /tmp/pl4021_clock.py (a few seconds). The first two print, per transliteration, the same-position count, the best exact offset with both null means and p values, and the best one-glyph offset with both null means and p values; the third prints the clock-difference table that the position finding rests on. All three only read the public practice partition and the transcription comments; none writes to the repository. The scan part is reproducible from the crop boxes in results.scan: fetch the two canvases at full size and cut those boxes.",
+  "scripts": {
+   "pl4021.py": "\"\"\"P-L4-021: rerun of P-L4-007 on the figure labels only (unit Lz), four transliterations.\n\nDeclared before running (from the step): the figure-label loci of the twelve zodiac pages, glyph\nstrings with word breaks removed; for each of the 66 page pairs the largest number of agreements\nover every cyclic offset of the longer page against the shorter, summed; 1000 shuffles; two nulls,\nlabels shuffled over the whole page and labels shuffled only inside their own ring (the groups the\ntranscription marks). Also reported: agreements at the same position with no offset, and which page\npair carries the excess.\n\"\"\"\nimport sys, random, collections\nimport numpy as np\nsys.path.insert(0, \".\")\nfrom vs import corpus, ivtff, path\n\nTURNS = 1000\nSEED = 408\n\n\ndef labels(translit):\n    \"\"\"page -> list of (line, ring index, glyph string with word breaks removed).\"\"\"\n    pages = ivtff.parse(path(\"data\", \"raw\", corpus.TRANSLITERATIONS[translit]))\n    out = collections.defaultdict(list)\n    for pg in pages:\n        for ln in pg.lines:\n            if ln.unit == \"L\" and ln.subtype == \"z\" and ln.words:\n                w = \"\".join(x.strip(\"?*{}\") for x in ln.words)\n                if w:\n                    out[pg.id].append((ln.n, w))\n    for p in out:\n        out[p].sort()\n    return out\n\n\ndef rings(rows):\n    \"\"\"Maximal runs of consecutive line numbers: the label groups the transcription marks.\n    Returns a list of lists of positions within `rows`.\"\"\"\n    groups, cur = [], [0]\n    for i in range(1, len(rows)):\n        if rows[i][0] == rows[i - 1][0] + 1:\n            cur.append(i)\n        else:\n            groups.append(cur)\n            cur = [i]\n    groups.append(cur)\n    return groups\n\n\ndef pair_index(La, Lb):\n    \"\"\"M[o, i] = (i + o) % La: index into the longer page for offset o, position i of the shorter.\"\"\"\n    return (np.arange(Lb)[None, :] + np.arange(La)[:, None]) % La\n\n\ndef measure(pages, shuffles=None):\n    \"\"\"pages: dict page -> list of (line, string). Returns summed best-offset agreements, summed\n    same-position agreements, summed comparisons, and the per-pair best offsets.\"\"\"\n    ids = sorted(pages)\n    codes = {s: i for i, s in enumerate({s for rows in pages.values() for _n, s in rows})}\n    arr = {p: np.array([codes[s] for _n, s in rows], dtype=np.int32) for p, rows in pages.items()}\n    best = same = cmp_ = 0\n    detail = []\n    for i in range(len(ids)):\n        for j in range(i + 1, len(ids)):\n            a, b = arr[ids[i]], arr[ids[j]]\n            if len(a) < len(b):\n                a, b = b, a\n            M = pair_index(len(a), len(b))\n            agree = (a[M] == b[None, :]).sum(axis=1)\n            o = int(agree.argmax())\n            best += int(agree[o])\n            n = min(len(a), len(b))\n            same += int((a[:n] == b[:n]).sum())\n            cmp_ += n\n            detail.append((ids[i], ids[j], o, int(agree[o]), int((a[:n] == b[:n]).sum())))\n    return best, same, cmp_, detail\n\n\ndef shuffled(pages, rng, within_ring):\n    out = {}\n    for p, rows in pages.items():\n        items = list(rows)\n        if within_ring:\n            for g in rings(rows):\n                pick = [rows[i] for i in g]\n                rng.shuffle(pick)\n                for k, i in enumerate(g):\n                    items[i] = pick[k]\n        else:\n            rng.shuffle(items)\n        out[p] = items\n    return out\n\n\nfor tl in (\"zl\", \"it\", \"rf\", \"gc\"):\n    pages = labels(tl)\n    sizes = sorted((len(v) for v in pages.values()), reverse=True)\n    obs_best, obs_same, cmp_, detail = measure(pages)\n    one = sum(1 for p, q, o, e, s in detail if e >= 1)\n    rng = random.Random(SEED)\n    nulls = {True: [], False: []}\n    for _ in range(TURNS):\n        for within in (True, False):\n            pages2 = shuffled(pages, rng, within)\n            nulls[within].append(measure(pages2)[0])\n    n_page = [x for x in nulls[False]]\n    n_ring = [x for x in nulls[True]]\n    p_page = (sum(1 for x in n_page if x >= obs_best) + 1) / (TURNS + 1)\n    p_ring = (sum(1 for x in n_ring if x >= obs_best) + 1) / (TURNS + 1)\n    print(f\"{tl}: pages={len(pages)} labels={sum(sizes)} sizes={sizes}\")\n    print(f\"   same position, no offset: {obs_same} in {cmp_} comparisons ({100 * obs_same / cmp_:.2f}%)\")\n    print(f\"   best cyclic offset: {obs_best}; null whole-page mean {sum(n_page) / TURNS:.1f} (p={p_page:.3f}); \"\n          f\"null within-ring mean {sum(n_ring) / TURNS:.1f} (p={p_ring:.3f})\", flush=True)\n    top = sorted(detail, key=lambda d: -d[3])[:4]\n    print(\"   pairs carrying the most agreements:\", \", \".join(f\"{a}+{b} offset {o}: {e}\" for a, b, o, e, _s in top), flush=True)\n",
+   "pl4021_oneglyph.py": "\"\"\"P-L4-021: rerun of P-L4-007 on the figure labels only (unit Lz), four transliterations.\n\nDeclared before running (from the step): the figure-label loci of the twelve zodiac pages, glyph\nstrings with word breaks removed; for each of the 66 page pairs the largest number of agreements\nover every cyclic offset of the longer page against the shorter, summed; 1000 shuffles; two nulls,\nlabels shuffled over the whole page and labels shuffled only inside their own ring (the groups the\ntranscription marks). Also reported: agreements at the same position with no offset, and which page\npair carries the excess.\n\"\"\"\nimport sys, random, collections\nimport numpy as np\nsys.path.insert(0, \".\")\nfrom vs import corpus, ivtff, path\n\nTURNS = 1000\nSEED = 408\n\n\ndef labels(translit):\n    \"\"\"page -> list of (line, ring index, glyph string with word breaks removed).\"\"\"\n    pages = ivtff.parse(path(\"data\", \"raw\", corpus.TRANSLITERATIONS[translit]))\n    out = collections.defaultdict(list)\n    for pg in pages:\n        for ln in pg.lines:\n            if ln.unit == \"L\" and ln.subtype == \"z\" and ln.words:\n                w = \"\".join(x.strip(\"?*{}\") for x in ln.words)\n                if w:\n                    out[pg.id].append((ln.n, w))\n    for p in out:\n        out[p].sort()\n    return out\n\n\ndef rings(rows):\n    \"\"\"Maximal runs of consecutive line numbers: the label groups the transcription marks.\n    Returns a list of lists of positions within `rows`.\"\"\"\n    groups, cur = [], [0]\n    for i in range(1, len(rows)):\n        if rows[i][0] == rows[i - 1][0] + 1:\n            cur.append(i)\n        else:\n            groups.append(cur)\n            cur = [i]\n    groups.append(cur)\n    return groups\n\n\ndef pair_index(La, Lb):\n    \"\"\"M[o, i] = (i + o) % La: index into the longer page for offset o, position i of the shorter.\"\"\"\n    return (np.arange(Lb)[None, :] + np.arange(La)[:, None]) % La\n\n\ndef one_glyph(a, b):\n    if a == b or abs(len(a) - len(b)) > 1:\n        return False\n    if len(a) == len(b):\n        return sum(x != y for x, y in zip(a, b)) == 1\n    lo, hi = (a, b) if len(a) < len(b) else (b, a)\n    i = 0\n    while i < len(lo) and lo[i] == hi[i]:\n        i += 1\n    return lo[i:] == hi[i + 1:]\n\n\ndef measure(pages, near=None):\n    \"\"\"pages: dict page -> list of (line, string). Returns summed best-offset agreements, summed\n    same-position agreements, summed comparisons, and the per-pair best offsets.\"\"\"\n    ids = sorted(pages)\n    strs = sorted({s for rows in pages.values() for _n, s in rows})\n    codes = {s: i for i, s in enumerate(strs)}\n    if near is not None:\n        near[:, :] = False\n        for i, a in enumerate(strs):\n            for j, b in enumerate(strs[i:], start=i):\n                v = a == b or one_glyph(a, b)\n                near[i, j] = near[j, i] = v\n    arr = {p: np.array([codes[s] for _n, s in rows], dtype=np.int32) for p, rows in pages.items()}\n    best = same = cmp_ = 0\n    detail = []\n    for i in range(len(ids)):\n        for j in range(i + 1, len(ids)):\n            a, b = arr[ids[i]], arr[ids[j]]\n            if len(a) < len(b):\n                a, b = b, a\n            M = pair_index(len(a), len(b))\n            agree = (near[a[M], b[None, :]] if near is not None else (a[M] == b[None, :])).sum(axis=1)\n            o = int(agree.argmax())\n            best += int(agree[o])\n            n = min(len(a), len(b))\n            same += int((near[a[:n], b[:n]] if near is not None else (a[:n] == b[:n])).sum())\n            cmp_ += n\n            detail.append((ids[i], ids[j], o, int(agree[o]), int((a[:n] == b[:n]).sum())))\n    return best, same, cmp_, detail\n\n\ndef shuffled(pages, rng, within_ring):\n    out = {}\n    for p, rows in pages.items():\n        items = list(rows)\n        if within_ring:\n            for g in rings(rows):\n                pick = [rows[i] for i in g]\n                rng.shuffle(pick)\n                for k, i in enumerate(g):\n                    items[i] = pick[k]\n        else:\n            rng.shuffle(items)\n        out[p] = items\n    return out\n\n\nfor tl in (\"zl\", \"it\", \"rf\", \"gc\"):\n    pages = labels(tl)\n    sizes = sorted((len(v) for v in pages.values()), reverse=True)\n    near = np.zeros((len({s for rows in pages.values() for _n, s in rows}),) * 2, dtype=bool)\n    obs_best, obs_same, cmp_, detail = measure(pages)\n    obs_best_g, obs_same_g, _, detail_g = measure(pages, near=near)\n    one = sum(1 for p, q, o, e, s in detail if e >= 1)\n    rng = random.Random(SEED)\n    nulls = {True: [], False: []}\n    nulls_g = {True: [], False: []}\n    for _ in range(TURNS):\n        for within in (True, False):\n            pages2 = shuffled(pages, rng, within)\n            nulls[within].append(measure(pages2)[0])\n            nulls_g[within].append(measure(pages2, near=near)[0])\n    n_page = [x for x in nulls[False]]\n    n_ring = [x for x in nulls[True]]\n    p_page = (sum(1 for x in n_page if x >= obs_best) + 1) / (TURNS + 1)\n    p_ring = (sum(1 for x in n_ring if x >= obs_best) + 1) / (TURNS + 1)\n    print(f\"{tl}: pages={len(pages)} labels={sum(sizes)} sizes={sizes}\")\n    print(f\"   same position, no offset: {obs_same} in {cmp_} comparisons ({100 * obs_same / cmp_:.2f}%)\")\n    print(f\"   best cyclic offset: {obs_best}; null whole-page mean {sum(n_page) / TURNS:.1f} (p={p_page:.3f}); \"\n          f\"null within-ring mean {sum(n_ring) / TURNS:.1f} (p={p_ring:.3f})\", flush=True)\n    gp = (sum(1 for x in nulls_g[False] if x >= obs_best_g) + 1) / (TURNS + 1)\n    gr = (sum(1 for x in nulls_g[True] if x >= obs_best_g) + 1) / (TURNS + 1)\n    print(f\"   best cyclic offset, one glyph allowed: {obs_best_g}; null whole-page mean {sum(nulls_g[False]) / TURNS:.1f} (p={gp:.3f}); \"\n          f\"null within-ring mean {sum(nulls_g[True]) / TURNS:.1f} (p={gr:.3f}); same position {obs_same_g}\", flush=True)\n    topg = sorted(detail_g, key=lambda d: -d[3])[:4]\n    print(\"   one-glyph pairs carrying the most agreements:\", \", \".join(f\"{a}+{b} offset {o}: {e}\" for a, b, o, e, _s in topg), flush=True)\n    top = sorted(detail, key=lambda d: -d[3])[:4]\n    print(\"   pairs carrying the most agreements:\", \", \".join(f\"{a}+{b} offset {o}: {e}\" for a, b, o, e, _s in top), flush=True)\n\n",
+   "pl4021_clock.py": "\"\"\"P-L4-021: are the three shared f73r/f73v labels the same figure's label, seen twice?\n\nZL3b writes a clock position into every figure label (the <!hh:mm> comment in the transcription\nfile), which is the scribe's own place marker on the wheel. If the one-place shift between f73r\nand f73v were a rotation of the labelled wheel, the shared labels would sit at the same clock\nposition on the two pages. This script pairs the two pages' label lists at every small shift,\nseparately for each of the three label rings (the four labels above the wheel, the 16-label outer\nring, the 10-label inner ring), and prints the clock difference per pair. A shift where the rings\nline up is where the two wheels' label numbering refers to the same figure.\n\"\"\"\nimport re\nimport sys, os\n\nsys.path.insert(0, os.getcwd())\nfrom vs import corpus, ivtff, path\n\n\ndef clockmap(pid, translit=\"zl\"):\n    \"\"\"line number -> clock position in minutes, read from the <!hh:mm> comment.\"\"\"\n    text = open(path(\"data\", \"raw\", corpus.TRANSLITERATIONS[translit]), encoding=\"utf-8\").read()\n    out = {}\n    for line in text.splitlines():\n        m = re.match(rf\"<{pid}\\.(\\d+),[^>]*>\\s*(.*)$\", line)\n        if not m:\n            continue\n        c = re.search(r\"<!\\s*(\\d\\d):(\\d\\d)>\", m.group(2))\n        if c:\n            out[int(m.group(1))] = int(c.group(1)) * 60 + int(c.group(2))\n    return out\n\n\ndef labels(pid, cm, translit=\"zl\"):\n    \"\"\"figure labels on one page, in line order: (line, clock minutes, glyph string).\"\"\"\n    for pg in ivtff.parse(path(\"data\", \"raw\", corpus.TRANSLITERATIONS[translit])):\n        if pg.id != pid:\n            continue\n        return sorted(\n            (ln.n, cm[ln.n], \"\".join(w.strip(\"?*{}\") for w in ln.words))\n            for ln in pg.lines\n            if ln.unit == \"L\" and ln.subtype == \"z\" and ln.words and ln.n in cm\n        )\n\n\ndef rings(rows):\n    \"\"\"Maximal runs of consecutive line numbers: the label groups the transcription marks.\"\"\"\n    groups, cur = [], [0]\n    for i in range(1, len(rows)):\n        if rows[i][0] == rows[i - 1][0] + 1:\n            cur.append(i)\n        else:\n            groups.append(cur)\n            cur = [i]\n    groups.append(cur)\n    return groups\n\n\ndef circ(a, b):\n    \"\"\"Signed clock difference a - b in minutes, folded into (-360, 360].\"\"\"\n    d = (a - b) % 720\n    return d - 720 if d > 360 else d\n\n\nr = labels(\"f73r\", clockmap(\"f73r\"))\nv = labels(\"f73v\", clockmap(\"f73v\"))\ngr = {i: g for g, grp in enumerate(rings(r)) for i in grp}\ngv = {i: g for g, grp in enumerate(rings(v)) for i in grp}\nprint(f\"labels with clock marks: f73r {len(r)}, f73v {len(v)}\")\nprint(f\"rings (labels above the wheel, outer ring, inner ring): \"\n      f\"f73r {[len(g) for g in rings(r)]}, f73v {[len(g) for g in rings(v)]}\")\n\n# the shift that carries the shared words, and the clock difference it implies\nfor s in range(-4, 5):\n    pairs = [(r[i + s], v[i]) for i in range(len(v)) if 0 <= i + s < len(r)]\n    same = sum(1 for a, b in pairs if a[2] == b[2])\n    ds = sorted(circ(a[1], b[1]) for a, b in pairs)\n    med = ds[len(ds) // 2]\n    print(f\"shift {s:+d}: {same} shared words; clock difference median {med:+d} min, \"\n          f\"{sum(1 for d in ds if abs(d) <= 30)}/{len(ds)} pairs within 30 min\")\n\nprint(\"\\nper ring, at the shift where that ring's clock marks line up:\")\nfor ring, s in ((0, 0), (1, -1), (2, -2)):\n    ds = sorted(circ(r[i + s][1], v[i][1]) for i in range(len(v))\n                if 0 <= i + s < len(r) and gv[i] == ring and gr[i + s] == ring)\n    print(f\"ring {ring}, shift {s:+d}: {ds}\")\n\nprint(\"\\nper ring, at the shift that carries the shared words (s=+1):\")\nfor ring in (0, 1, 2):\n    ds = sorted(circ(r[i + 1][1], v[i][1]) for i in range(len(v))\n                if 0 <= i + 1 < len(r) and gv[i] == ring and gr[i + 1] == ring)\n    step = 720 / len(ds) if ds else 0\n    print(f\"ring {ring}, shift +1: {ds} (one figure position there is {step:.0f} min)\")\n"
+  }
+ },
+ "limits": [
+  "Eight tests, no correction, exactly as registered; my p values are not smaller than the registered ones because the observed totals are the same, and a p of 1.0 only says the observed total sits at the floor of the null.",
+  "RF1b's exact total is 21 where the registered run reports 20, and GC2a's one-glyph total is 78 where it reports 75. I did not chase the difference; it is one to three agreements out of 1,403 comparisons, and it does not change any verdict, but it means my code is not bit-identical to the registered one.",
+  "The one-glyph relation is my own reading of 'allowing one glyph of difference': one substitution in equal-length strings, or one insertion where the lengths differ by one. A different tolerance (one substitution or one deletion in either direction, say) would move these totals.",
+  "The clock-mark finding uses ZL3b's own annotations, which are quantised to 15 and 30 minutes and are the transcriber's estimate of where each label sits, not a measurement from the scan. My alignment test accepts a pair as agreeing within 30 minutes, which is two thirds of an outer-ring position; the outer ring's 15-of-15 is decisive against the other shifts (0 of 15 at the shared-word shift), but the inner ring aligns only 6 of 8 and the four labels above the wheel are not spaced evenly around the wheel, so I draw no position conclusion from them.",
+  "The scan reading is not fully blind: I had the registered step's statement in view, which quotes ZL's readings of the three words, before I cut the crops. Where I could not resolve a glyph I say so rather than choosing between the editions.",
+  "The public server's maximum image is what I used; the disputed gallows in f73v.25 and the variant glyph in f73v.6 need a higher-resolution image than this, as the registered step also concluded.",
+  "I did not count figures around the two wheels on the scan. The position arithmetic comes from the transcription's line order and clock marks, so it is a claim about the transcription's internal consistency, not an independent visual measurement of the two wheels."
+ ]
+}
