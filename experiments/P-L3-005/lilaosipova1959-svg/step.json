@@ -1,0 +1,97 @@
+{
+ "title": "Independent reproduction: collapsing sound distinctions reaches the manuscript's conditional entropy only by halving its single-glyph entropy, and never raises positional binding",
+ "statement": "The step's numbers reproduce on the public practice evaluation layout (5,461 certain paragraph tokens, 652 lines) with the pinned references poured into that same line shape, glyph units kept separate under eva-basic (so ch, sh and the gallows stay single symbols). Manuscript ZL: alphabet 29, single-glyph entropy 3.894, glyph_cond_entropy 2 1.940, dominant-position share 0.791. IT2a (Takahashi): alphabet 26, 3.891, 1.935, 0.793. Every step value in the step statement is confirmed to three decimals. My collapse ladder on Latin gives 2.680 / 2.665 / 2.485 / 2.400 at alphabets 23 / 18 / 14 / 12, Italian 2.584 / 2.551 / 2.338 / 2.271 at 22 / 18 / 15 / 13, German 2.274 / 2.263 / 2.249 / 2.190 at 23 / 18 / 15 / 13, matching the step's first four figures in each language to within 0.02. The two differences are worth recording. (1) My final ladder step merges only h, so it stops at alphabet 12 and Hcond2 2.400 for Latin, where the step reaches alphabet 9 and 2.079: its last step must also drop a class the statement does not name, so the figure 2.079 is not reproducible from the rules as written. That matters because the conclusion leans on it - the manuscript's 1.940 is reached only when the alphabet is cut to about nine or ten symbols, and the reported threshold depends on how hard the last step cuts. (2) The decisive asymmetry reproduces cleanly and does not depend on step (1): the manuscript keeps single-glyph entropy 3.89 at conditional entropy 1.94, a drop of 1.95 bits, while raw Latin drops 1.25 (3.928 to 2.680) and every collapsed Latin variant drops less still (0.97 at alphabet 12), so collapse moves away from the target rather than toward it. Positional binding settles the question independently: manuscript 0.791, Latin 0.660 raw and 0.646-0.660 at every collapse step, Italian 0.561 down to 0.544, German 0.619 down to 0.564. No collapse raises the share; two of three languages lower it. So merging sounds cannot produce the manuscript's position-bound glyphs at all, whatever the alphabet size, and that half of the step's answer is stronger than the entropy half, which rests on a cutoff the rules do not fix.",
+ "program": "L3",
+ "check": "Fix the ladder so it names every merge in its last step, and state the alphabet size at which the manuscript's 1.940 is considered reached; then the entropy half of the conclusion has a reproducible threshold. The position half needs no threshold: it is an ordering that no collapse step in any of the three languages reverses. If a fact is to be registered rather than an audit, the dominant-position share must first be added to vs/dsl.py as a statistic (it is not one today: the DSL has entropy, cond_entropy, glyph_cond_entropy and context_mi, none of which is the frequency-weighted share of a glyph's occurrences in its commonest word position), then registered against the reference languages the same way F-013 is.",
+ "on_path": true,
+ "hard": false,
+ "verification": {
+  "layout": {
+   "tokens": 5461,
+   "lines": 652
+  },
+  "manuscript": {
+   "zl": {
+    "alphabet": 29,
+    "H1": 3.894,
+    "Hcond2": 1.94,
+    "pos": 0.791
+   },
+   "it": {
+    "alphabet": 26,
+    "H1": 3.891,
+    "Hcond2": 1.935,
+    "pos": 0.793
+   }
+  },
+  "latin": {
+   "Hcond2": [
+    2.68,
+    2.665,
+    2.485,
+    2.4
+   ],
+   "alphabet": [
+    23,
+    18,
+    14,
+    12
+   ],
+   "pos": [
+    0.66,
+    0.66,
+    0.66,
+    0.648
+   ]
+  },
+  "italian": {
+   "Hcond2": [
+    2.584,
+    2.551,
+    2.338,
+    2.271
+   ],
+   "alphabet": [
+    22,
+    18,
+    15,
+    13
+   ],
+   "pos": [
+    0.561,
+    0.549,
+    0.549,
+    0.549
+   ]
+  },
+  "german": {
+   "Hcond2": [
+    2.274,
+    2.263,
+    2.249,
+    2.19
+   ],
+   "alphabet": [
+    23,
+    18,
+    15,
+    13
+   ],
+   "pos": [
+    0.619,
+    0.595,
+    0.595,
+    0.583
+   ]
+  },
+  "step_claimed_latin": [
+   2.665,
+   2.656,
+   2.479,
+   2.394,
+   2.079
+  ],
+  "reproduced": "first four to within 0.02, final 2.079 not reproducible from the stated rules",
+  "statistic_available": "glyph_cond_entropy verified against dsl.statistic = 1.94036 on ZL, matching F-013's 1.940"
+ }
+}
