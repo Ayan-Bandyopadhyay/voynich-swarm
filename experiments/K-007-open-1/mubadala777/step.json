@@ -1,0 +1,378 @@
+{
+  "title": "Long gallows bridges recur, with several distinct ink junctions and conflicting endpoint readings",
+  "statement": "Test the layouts of Davis's bridge-gallows by comparing closed-loop and stem features in shuffled Yale scan crops with several transcriptions. Paired gallows are plausible for some paragraph openings. Several superficially similar bridges have a shared lower bar or an ambiguous foot, and the complex labels admit conflicting component readings.",
+  "program": "L1",
+  "check": "Repeat the blind crop exercise with human readers on full-resolution images and with ordinary gallows selected at matched positions. Treat loops, stem reach, raised connections and low contacts as separate observations. Align each endpoint to the visible ink in the original transcriptions. Report which readings survive and the range of alternative readings where the ink permits several.",
+  "on_path": true,
+  "hard": false,
+  "sources": {
+    "hypothesis": "Lisa Fagin Davis, Voynich Paleography (2022), section 5.2 and Fig. 5, PDF pp. 9–10. https://ceur-ws.org/Vol-3313/keynote2.pdf",
+    "scans": "Beinecke MS 408, Yale IIIF manifest https://collections.library.yale.edu/manifests/2002046. The visual crop table below specifies image IDs, widths and pixel rectangles.",
+    "editions": "Pinned raw ZL3b-n, IT2a-n, GC2a-n and LSI_ivtff_0d. LSI H duplicates Takahashi. RF combines sources, so it is also omitted from the count of independent editions.",
+    "crosswalk": "René Zandbergen, STA1 definitions, families K, T and U. K1 equates GC 1 with plain EVA ch, while U2 equates GC K with EVA cth. https://www.voynich.nu/data/sta/STA1_def.pdf",
+    "additional_locators": "John Grove, Do Split Gallows have rules? (2026). The post distinguishes split bench forms from mixed examples and reports several loci in both classes. https://voynich.ninja/printthread.php?tid=6043"
+  },
+  "predictions": {
+    "ordinary_components": {
+      "f": {
+        "loops": 1,
+        "legs": 1,
+        "left_loop": false
+      },
+      "p": {
+        "loops": 2,
+        "legs": 1,
+        "left_loop": true
+      },
+      "k": {
+        "loops": 1,
+        "legs": 2,
+        "left_loop": false
+      },
+      "t": {
+        "loops": 2,
+        "legs": 2,
+        "left_loop": true
+      }
+    },
+    "split_bench": "Davis proposes two benched t forms connected across nearby writing, exemplified by f8r.14 ctho cthey. The visual prediction used here is one long upper span with a tall descent at each end and two independent low bench contacts. The f8r drawing has one high loop or hook at each outer end, so this class uses fused strokes. The sum of the ordinary t loop and leg counts is not a count of visible marks on f8r.",
+    "star": "At f68r2.7 the proposed additive totals are three loops and three legs, and the first component has a left loop. The ordered pairs p+k and t+f satisfy those constraints and give opol chckhy or otol chcfhy.",
+    "rosette": "At fRos.33 the proposed totals are two loops and three legs, and the first component lacks a left loop. The ordered pairs k+f and f+k give okalcfhy or ofalckhy. The separate abbreviation suggestions p→ke and f→te are outside this visual test."
+  },
+  "text_audit": {
+    "rows_from_raw_zl": "Read raw IVTFF text because the practical cleaner collapses extended signs. In a single locus search for a literal ZL brace form with c, code 132, 155 or 216, and optional h, followed by a brace form with c, code 133 or 196, and h. Preserve the text between them and match IT and case-preserved GC by locus. This deliberate shortlist includes mixed shapes and leaves the paper's unnamed examples unresolved.",
+    "endpoint_rows": [
+      {
+        "locus": "f8r.14",
+        "codes": [
+          132,
+          196
+        ],
+        "it": "ctho.cthey",
+        "gc": "Ko.1c9",
+        "it_pair": "adjacent"
+      },
+      {
+        "locus": "f8v.1",
+        "codes": [
+          216,
+          196
+        ],
+        "it": "cthod.soocth",
+        "gc": "Ko8.soo1",
+        "it_pair": "adjacent"
+      },
+      {
+        "locus": "f30v.1",
+        "codes": [
+          132,
+          133
+        ],
+        "it": "cthscthain",
+        "gc": "Ks1an",
+        "it_pair": "joined"
+      },
+      {
+        "locus": "f35r.1",
+        "codes": [
+          132,
+          196
+        ],
+        "it": "cthoo.r.choly.cthy",
+        "gc": "Koo.y.1oe9,19",
+        "it_pair": "intervening_words"
+      },
+      {
+        "locus": "f42r.1",
+        "codes": [
+          155,
+          196
+        ],
+        "it": "sho.ofaiin.cthachcthy",
+        "gc": "2o.ofam.Ka1K9",
+        "it_pair": "different_left_end"
+      },
+      {
+        "locus": "f80r.34",
+        "codes": [
+          132,
+          133
+        ],
+        "it": "cthcthey",
+        "gc": "K1c9",
+        "it_pair": "joined"
+      },
+      {
+        "locus": "f86v6.13",
+        "codes": [
+          132,
+          133
+        ],
+        "it": "ctholcthy",
+        "gc": "Koe19",
+        "it_pair": "joined"
+      },
+      {
+        "locus": "f95v1.1",
+        "codes": [
+          132,
+          133
+        ],
+        "it": "tolteedy.cthoepain",
+        "gc": "koekcc89,1o,cjan",
+        "it_pair": "different_left_end"
+      },
+      {
+        "locus": "f99v.37",
+        "codes": [
+          132,
+          133
+        ],
+        "it": "oteol.socthey",
+        "gc": "okcoe.so1c9",
+        "it_pair": "different_left_end"
+      },
+      {
+        "locus": "f100v.14",
+        "codes": [
+          132,
+          133
+        ],
+        "it": "cthdeecthy",
+        "gc": "K7C19",
+        "it_pair": "joined"
+      },
+      {
+        "locus": "f102r2.16",
+        "codes": [
+          132,
+          133
+        ],
+        "it": "cthol.dcthody",
+        "gc": "Koe.81o89",
+        "it_pair": "adjacent"
+      }
+    ],
+    "findings": [
+      "Eight of eleven rows have cth at both aligned endpoints in IT. Four are within an IT word and three use adjacent IT words. The remaining pair is separated by two words at f35r.1. The two cth signs at f42r.1 occur farther right and cannot be counted as the two aligned endpoints.",
+      "Every one of the eight IT pairs has GC K at the first endpoint and GC 1 at the second. The independently encoded first endpoint agrees with cth, while the right endpoint has a plain bench reading. An older LSI witness supplies both cth forms for six of the seven within-word or adjacent pairs. The exception is f100v.14, where the First Study Group row reads the first cth but leaves the second unresolved.",
+      "All seven same-word or adjacent-word IT pairs stand at paragraph openings across three scribal hands and several sections. The count of seven under this chosen spacing rule does not recover Davis's undocumented list. Reading the locators from the manuscript shows that some open paragraphs midway down a page.",
+      "At f68r2.7 ZL encodes a rare sign both near the start and inside the later shape. IT otolchcthy keeps a benched t rather than the predicted k or f. LSI records Mike Roe otolch!tey, John Grove otolchc!hy, and Jorge Stolfi opolchs!hy. Stolfi and Grove even locate the landing of the raised stroke on different signs.",
+      "At fRos.33 the ZL and RF forms agree in their rare-code representation, while IT and GC lack a row. The raw interlinear includes John Grove's ofalcfhy for the bridged word, which pairs f with f and falls outside both proposed readings. This transcription is a witness to the ambiguity, without establishing the historical reading."
+    ]
+  },
+  "visual_audit": {
+    "method": "From the raw shortlist, inspect ten loci with identifiable early line regions, leaving f99v.37 in the text audit only. Add two mixed forms and the rosette, plus three nearby ordinary controls. The two auxiliary image-model readers independently received only shuffled crops with anonymous IDs and the same written observations to record. They did not see the locus mappings, transliterations or tested readings. fRos.33 was supplied later as a supplementary anonymous crop. Counts refer to ink visible on these photographs and include a range for faint or open returns. This is an enriched sample and yields no population frequency.",
+    "rule_for_comparison": "Code both benches as apparent only when both readers can trace a low contact under each separate terminal or judge a contact probable despite a stated overlap. Code a shared-bar ending when both see the right stem ending in the spanning lower bar. Keep faded, aligned but disconnected or crowded foot shapes unresolved. This synthesis was coded after collecting both independent reads.",
+    "rows": {
+      "S01": "Two full descents and a middle return, with two or three upper lobes. The left descent ends by the writing and the far right ends at a low curve.",
+      "S02": "A visible upper span joins the left descent to a short right return. A farther-right curl and lowering stroke are possible. The readers could not fix both loop closure and attachment at the resolution examined.",
+      "S03": "Long upper span, two discernible descents, one closed or nearly closed head and a more open left return. Both readers see distinct low attachments.",
+      "S04": "A long pale span and two descents. Separate low horizontals align with the descents and the left join is faint.",
+      "S05": "Ordinary comparison with a short raised connector. The right descent ends high or is obscured.",
+      "S06": "Long span from left to center and a shorter rightward connection. Both readers report two outer descents and a higher central return, with two to three loop-like forms and faint outer contacts.",
+      "S07": "Two descents and long upper span. The left stem ends near an oval and the right meets a short curved stroke.",
+      "S08": "Two long bars at different levels. The right upper descent feeds into the lower bar and a second independent foot is unresolved.",
+      "S09": "Long upper trace next to smaller marks. Both readers see a possible gap above the left low stroke and a contact at the right.",
+      "S10": "Two raised loops and two spans. The left descent goes through the lower span to a low curve and the right ends in the lower span.",
+      "S11": "Long pale span with two descents. Both readers trace separate low horizontal attachments, with weak contrast at the right.",
+      "S12": "Long trace toward the right end with a pale gap. The left foot is crowded with rounded ink and the right enters a low horizontal.",
+      "S13": "Ordinary comparison with a short upper connector. The two descents contact the same low stroke.",
+      "S14": "Ordinary comparison with a short upper connector and no resolved low bench attachments.",
+      "S15": "Two descents and a long span. Both readers see separate low contacts as plausible. Brown-red marking and overlapping ink limit the right join.",
+      "S16": "Two tall descents with a short dark upright near the top, zero secure closed loops and one possible open return at the right. Both readers observe a pale surface line crossing the apparent bridge and no continuous dark ink span that can be traced. The short upright does not show a third descent."
+    },
+    "findings": [
+      "Within the seven IT pairs with close endpoints, two have traceable separate low contacts, including the f8r.14 example and the new f30v.1 example. Contacts are plausible with overlapping ink at f8v.1. At f80r.34 and f86v6.13 the right stem ends in a shared lower bar. The remaining two at f100v.14 and f102r2.16 have unresolved contacts. The long visual spans thus recur, with a range of attachments. The three comparison crops have ordinary short spans.",
+      "The spaced f35r.1 pair has two probable lower contacts and supplies an example of the visual pattern spanning additional words. The similarly extended f56r.1 and the more complex f42r.1 and f95v1.1 show why a long span alone is insufficient for assigning paired benched t.",
+      "For f68r2.7 the lobes and partial descents are compatible with a multi-part mark. The blinding results leave open whether three fully connected legs and three closed loops are present, and do not distinguish the two allocations proposed by Davis.",
+      "For fRos.33 the match to Figure 5 comes from the original Yale canvas rotated ninety degrees clockwise. Both readers independently found two traceable tall legs and an ambiguous pale surface feature above. The photographed ink does not independently reproduce the full three-leg, two-loop inventory. The exact cause of the bright trace and any hidden joined stroke remain unresolved."
+    ],
+    "crops": {
+      "S01": {
+        "locus": "f95v1.1",
+        "image_id": 1006243,
+        "width": 1200,
+        "crop_xyxy": [
+          232,
+          154,
+          390,
+          249
+        ]
+      },
+      "S02": {
+        "locus": "f68r2.7",
+        "image_id": 1006196,
+        "width": 2800,
+        "crop_xyxy": [
+          1107,
+          355,
+          1192,
+          421
+        ]
+      },
+      "S03": {
+        "locus": "f30v.1",
+        "image_id": 1006133,
+        "width": 1200,
+        "crop_xyxy": [
+          286,
+          175,
+          419,
+          281
+        ]
+      },
+      "S04": {
+        "locus": "f35r.1",
+        "image_id": 1006142,
+        "width": 1200,
+        "crop_xyxy": [
+          185,
+          103,
+          424,
+          307
+        ]
+      },
+      "S05": {
+        "locus": "control_near_f100v.14",
+        "image_id": 1006249,
+        "width": 2800,
+        "crop_xyxy": [
+          434,
+          896,
+          515,
+          948
+        ]
+      },
+      "S06": {
+        "locus": "f42r.1",
+        "image_id": 1006156,
+        "width": 1200,
+        "crop_xyxy": [
+          160,
+          135,
+          467,
+          290
+        ]
+      },
+      "S07": {
+        "locus": "f56r.1",
+        "image_id": 1006184,
+        "width": 1200,
+        "crop_xyxy": [
+          145,
+          130,
+          340,
+          242
+        ]
+      },
+      "S08": {
+        "locus": "f86v6.13",
+        "image_id": 1006229,
+        "width": 2800,
+        "crop_xyxy": [
+          1968,
+          556,
+          2081,
+          628
+        ]
+      },
+      "S09": {
+        "locus": "f102r2.16",
+        "image_id": 1006251,
+        "width": 2400,
+        "crop_xyxy": [
+          1617,
+          595,
+          1742,
+          688
+        ]
+      },
+      "S10": {
+        "locus": "f80r.34",
+        "image_id": 1006218,
+        "width": 1200,
+        "crop_xyxy": [
+          131,
+          1157,
+          229,
+          1208
+        ]
+      },
+      "S11": {
+        "locus": "f8r.14",
+        "image_id": 1006090,
+        "width": 1200,
+        "crop_xyxy": [
+          146,
+          1000,
+          291,
+          1102
+        ]
+      },
+      "S12": {
+        "locus": "f100v.14",
+        "image_id": 1006249,
+        "width": 2800,
+        "crop_xyxy": [
+          313,
+          869,
+          406,
+          950
+        ]
+      },
+      "S13": {
+        "locus": "control_near_f30v.1",
+        "image_id": 1006133,
+        "width": 1200,
+        "crop_xyxy": [
+          558,
+          183,
+          648,
+          268
+        ]
+      },
+      "S14": {
+        "locus": "control_near_f8v.1",
+        "image_id": 1006091,
+        "width": 1200,
+        "crop_xyxy": [
+          518,
+          170,
+          613,
+          245
+        ]
+      },
+      "S15": {
+        "locus": "f8v.1",
+        "image_id": 1006091,
+        "width": 1200,
+        "crop_xyxy": [
+          194,
+          136,
+          362,
+          252
+        ]
+      },
+      "S16": {
+        "locus": "fRos.33",
+        "image_id": 1006231,
+        "native_iiif_region_xywh": [
+          5572,
+          1099,
+          249,
+          409
+        ],
+        "rotation_clockwise": 90,
+        "rotated_crop_xyxy": [
+          205,
+          92,
+          366,
+          206
+        ],
+        "figure_match_url": "https://collections.library.yale.edu/iiif/2/1006231/5650,1115,153,206/full/90/default.jpg"
+      }
+    }
+  },
+  "interpretation": "Graphic evidence supports bridges as an extended family, with recognizable separate bench contacts in some paragraph openings. Endpoint transcription depends on edition and visual attachment, and the two complex labels do not yield unique decompositions with the present evidence. Static ink geometry leaves stroke sequence, abbreviation and reading undetermined."
+}
