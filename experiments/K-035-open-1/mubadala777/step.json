@@ -1,0 +1,1182 @@
+{
+  "title": "The near-line-length spectral peak does not replicate in paired public paragraph lines",
+  "statement": "Test the near-line-length band reported by Landini (2001) on shared ZL and Takahashi paragraph loci. Freeze the band using modal spaceless line length on public training pages. Compare one-hot Welch spectral power across equal blocks against whole-stream glyph shuffling and physical-folio interior shuffling that preserves every retained line length and its endpoints.",
+  "program": "L2",
+  "check": "Extract both scripts and repeat the reported public training and evaluation analyses. Check the shuffled folio and line invariants and confirm that the injected periodic glyph is detected. Re-evaluate on diverse fixed public blocks before defining any closed-page criterion. Report separately the effect of transcription, narrow-bin choice, and how lines are concatenated.",
+  "on_path": false,
+  "hard": false,
+  "sources": {
+    "primary": "Gabriel Landini (2001), Evidence of Linguistic Structure in the Voynich Manuscript Using Spectral Analysis, pp. 283, 286 and 289–292, Table 2 and Figure 8. https://www.iasi.cnr.it/~vbonifaci/semcn/Landini2001.pdf",
+    "doi": "https://doi.org/10.1080/0161-110191889932",
+    "catalogue": "K-035, https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/512"
+  },
+  "design": {
+    "input": "Match public ZL and IT paragraph line ids in ZL physical order. Retain the line when both editions have at least one word and only unambiguous lowercase ASCII glyph codes in every word. Remove all spaces. Keep raw EVA characters as units. The training counts are 3,277 shared lines, with 138,478 ZL and 138,402 IT glyphs. The evaluation counts are 626 shared lines, with 25,910 ZL and 25,918 IT glyphs.",
+    "center_and_spectrum": "Pool training line lengths across editions. Select the most frequent length after a symmetric triangular histogram smoother with weights 1,2,3,2,1, using the smaller length if tied. This selects 44. Use nonoverlapping windows of 1,024 positions with a periodic Hann taper. For each frequency sum one-hot glyph squared Fourier magnitudes, normalize by the taper energy, and average over full windows. Compare the mean power over periods 0.90–1.10 times 44 and the ratio of that band power to the mean of two shoulder means, with period factors 0.65–0.80 and 1.25–1.50. Each edition uses 25 full windows in evaluation.",
+    "nulls": "The global permutation keeps the observed overall glyph stock. For each numbered folio, permutation of all interior glyphs together holds the full folio inventory, exact length of each retained line, and positions of both endpoint glyphs. The stronger within-line permutation also keeps each line’s inventory. Verify these invariants for fixed diagnostic seed 512. Use 19 draws per initial training comparison and 99 per primary evaluation comparison. Upper-tail ranks include ties and add one to numerator and denominator. Use each complete simulated text as a replicate rather than counting windows or Fourier bins as independent tests.",
+    "sensitivities": "Repeat in nonoverlapping 512-position blocks entirely within a numbered folio and with 49 draws. Separately retain the shared paragraph loci with any clean words in both editions, omit uncertain words only, and run the fixed 1,024-position test. A pulse control introduces a new glyph at repeated phases of the closest selected Fourier bin, keeping known line edges untouched. A separate geometry-only control simulates independent letters from training first-two, last-two and interior position distributions and the evaluation line-length array."
+  },
+  "findings": [
+    "The ZL and Takahashi training band-to-shoulder ratios are 1.019 and 1.022. Against the folio-interior controls their upper-tail ranks are 0.40 and 0.10. Against the global controls the ranks are 0.35 and 0.15.",
+    "The primary evaluation ratios are 0.895 and 0.883. Against the global glyph controls both upper-tail ranks are 1.00. Against the endpoint-preserving folio interiors they are 0.99 and 1.00. Across these four comparisons, total band power is approximately 68–70% of the shuffle median. Leaving every line’s glyph stock intact also gives upper-tail ranks 1.00 for both ratios.",
+    "Using only the 16,896 glyphs in complete windows that stay within a numbered folio gives ratios of 1.022 and 1.014. Against folio interiors the ranks are 0.30 and 0.36. Relaxing the word certainty filter keeps 651 matched loci and gives ratios 0.981 and 0.960, with folio-interior ranks 0.70 and 0.86.",
+    "The injected pulse at 44.52 characters gives a band-to-shoulder ratio of 1.176 and exceeds all 19 global and all 19 folio-interior shuffles. The six boundary-only realizations have ratios 0.980–1.068, with every global-shuffle upper-tail rank at least 0.10. This small geometry calibration is specific to the chosen edge model."
+  ],
+  "scope": "This is a public robustness check with paired paragraph sampling, explicit treatment of uncertain loci, and Welch band averaging. Landini used a long continuous stream and logarithmic frequency smoothing. An isolated narrow peak or a feature of his original sample requires a separate estimate at that scale. The present public result supports withholding a positive line-band criterion.",
+  "reproduction": {
+    "instructions": "Write the embedded scripts with the given names to one temporary directory. From the repo root use PYTHONPATH=. python3 /path/voynich_spectral_lines.py and then PYTHONPATH=. python3 /path/voynich_spectral_geometry.py. The second script imports the first. Only the public practice split is used.",
+    "scripts": {
+      "voynich_spectral_lines.py": "\"\"\"Public matched-line spectral sensitivity analysis for Landini's long peak.\"\"\"\nimport cmath\nimport json\nimport math\nimport random\nimport re\nfrom collections import Counter, defaultdict\nfrom statistics import fmean, median\n\nfrom vs import corpus\n\nEDITIONS = ('zl', 'it')\nBLOCK = 1024\nN_PERM = {'train': 19, 'evaluation': 99}\nRAW = re.compile('[a-z]+')\nFOLIO = re.compile(r'f\\d+')\nGLYPH_ID = {char: index for index, char in enumerate('abcdefghijklmnopqrstuvwxyz#')}\nBANDS = {'center': (0.90, 1.10), 'short': (0.65, 0.80), 'long': (1.25, 1.50)}\n\n\ndef aligned_corpus():\n    parts = defaultdict(dict)\n    for ed in EDITIONS:\n        for part,pages in zip(N_PERM, corpus.split_pages('practice',ed)):\n            lines = {line.id: ''.join(line.words)\n                     for page in pages for line in page.lines if line.unit == 'P'\n                     and line.words and all(RAW.fullmatch(word) for word in line.words)}\n            parts[part][ed] = lines\n    result = {}\n    for part in N_PERM:\n        ids = [locus for locus in parts[part]['zl'] if locus in parts[part]['it']]\n        result[part] = {ed: [(FOLIO.match(locus)[0], parts[part][ed][locus]) for locus in ids]\n                        for ed in EDITIONS}\n    return result\n\n\ndef choose_center(paired_training):\n    lengths = Counter(len(line) for rows in paired_training.values() for _,line in rows)\n\n    def neighborhood(center):\n        return sum((3-abs(delta))*lengths[center+delta] for delta in range(-2,3))\n\n    return min(lengths, key=lambda x:(-neighborhood(x),x))\n\n\ndef bins_for(period,block):\n    return {band:tuple(k for k in range(2,block//2)\n                      if lo*period <= block/k <= hi*period)\n            for band,(lo,hi) in BANDS.items()}\n\n\nclass Spectrum:\n    def __init__(self, center, block):\n        self.block = block\n        self.band_bins = bins_for(center,block)\n        assert all(self.band_bins.values())\n        self.weights = [0.5 - 0.5*math.cos(2*math.pi*i/block) for i in range(block)]\n        self.window_energy = sum(x*x for x in self.weights)\n        bins = sorted(set().union(*self.band_bins.values()))\n        self.basis = {k:tuple(cmath.exp(-2j*math.pi*k*i/block)*w for i,w in enumerate(self.weights))\n                      for k in bins}\n\n    def band_power(self, text):\n        n = self.block\n        glyphs = [GLYPH_ID[c] for c in text]\n        blocks = [glyphs[i:i+n] for i in range(0,len(glyphs)-n+1,n)]\n        assert blocks\n        spec = {}\n        for k,vectors in self.basis.items():\n            power = 0.0\n            for block in blocks:\n                sums = [0j]*len(GLYPH_ID)\n                for char,v in zip(block,vectors):\n                    sums[char] += v\n                power += sum(z.real*z.real+z.imag*z.imag for z in sums)\n            spec[k] = power/(len(blocks)*self.window_energy)\n        band = {name:fmean(spec[k] for k in bins) for name,bins in self.band_bins.items()}\n        return {'band_power':band['center'],\n                'peak_ratio':band['center']/fmean((band['short'],band['long'])),\n                'shoulders':[band['short'],band['long']],\n                'blocks':len(blocks), 'used_glyphs':len(blocks)*n,\n                'band_bins_power':spec}\n\n\ndef flat(rows):\n    return ''.join(line for _,line in rows)\n\n\ndef shuffle_global(rows,rng):\n    sequence = list(flat(rows))\n    rng.shuffle(sequence)\n    return ''.join(sequence)\n\n\ndef shuffle_folio_interiors(rows,rng):\n    pools = defaultdict(list)\n    for folio,line in rows:\n        pools[folio].extend(line[1:-1])\n    for pool in pools.values():\n        rng.shuffle(pool)\n    pointers = Counter()\n    shuff = []\n    for folio,line in rows:\n        m = max(0,len(line)-2)\n        start = pointers[folio]\n        interior = ''.join(pools[folio][start:start+m])\n        shuff.append(line[0]+interior+line[-1] if len(line)>1 else line)\n        pointers[folio] += m\n    return ''.join(shuff)\n\n\ndef shuffle_line_interiors(rows,rng):\n    lines = []\n    for _,line in rows:\n        if len(line)<3:\n            lines.append(line)\n        else:\n            middle = list(line[1:-1])\n            rng.shuffle(middle)\n            lines.append(line[0]+''.join(middle)+line[-1])\n    return ''.join(lines)\n\n\ndef period_control(rows,rng,block,bin_index):\n    sequence = list(shuffle_global(rows,rng))\n    ends = set()\n    position = 0\n    for _,line in rows:\n        ends.update((position,position+len(line)-1))\n        position += len(line)\n    for offset in range(0,len(sequence)-block+1,block):\n        for pulse in range(bin_index):\n            index = offset + (pulse*block)//bin_index + 2\n            if index not in ends:\n                sequence[index] = '#'\n    striped = []\n    offset = 0\n    for folio,line in rows:\n        striped.append((folio,''.join(sequence[offset:offset+len(line)])))\n        offset += len(line)\n    return striped\n\n\ndef validate_nulls(rows):\n    observed = flat(rows)\n    for fun in (shuffle_global,shuffle_folio_interiors,shuffle_line_interiors):\n        x = fun(rows,random.Random(512))\n        assert Counter(x)==Counter(observed)\n        if fun == shuffle_global:\n            continue\n        i = 0\n        before,after = defaultdict(Counter),defaultdict(Counter)\n        for folio,line in rows:\n            generated = x[i:i+len(line)]\n            assert (line[0],line[-1]) == (generated[0],generated[-1])\n            i += len(line)\n            before[folio].update(line)\n            after[folio].update(generated)\n            if fun==shuffle_line_interiors:\n                assert Counter(line)==Counter(generated)\n        assert i==len(observed)\n        assert dict(before)==dict(after)\n\n\ndef evaluate(rows,spectrum,nperm,seed,modes):\n    real = spectrum.band_power(flat(rows))\n    result = {'observed':real,'nulls':{}}\n    for no,(name,fun) in enumerate(modes):\n        rng = random.Random(seed+1000*no)\n        controls = [spectrum.band_power(fun(rows,rng)) for _ in range(nperm)]\n        metrics = {}\n        for key in ('band_power','peak_ratio'):\n            values = sorted(c[key] for c in controls)\n            metrics[key] = {\n                'permutations':nperm, 'median':median(values),\n                'p_upper':(1+sum(x>=real[key] for x in values))/(nperm+1),\n                'null_range':[values[0],values[-1]],\n                'observed_over_null_median':real[key]/median(values),\n            }\n        result['nulls'][name] = metrics\n    return result\n\n\ndef run():\n    data = aligned_corpus()\n    center = choose_center(data['train'])\n    s = Spectrum(center,BLOCK)\n    modes = [('global_glyph',shuffle_global),('folio_interiors',shuffle_folio_interiors)]\n    result = {}\n    for part,n in N_PERM.items():\n        cases = {}\n        for ed,rows in data[part].items():\n            validate_nulls(rows)\n            selected_modes = modes + ([('line_interiors',shuffle_line_interiors)] if part=='evaluation' else [])\n            cases[ed] = evaluate(rows,s,n,26687,selected_modes)\n            cases[ed]['lines'] = len(rows)\n            cases[ed]['total_glyphs'] = len(flat(rows))\n        result[part] = cases\n    held = data['evaluation']['zl']\n    mid = min(s.band_bins['center'],key=lambda k:abs(BLOCK/k-center))\n    pulse_text = period_control(held,random.Random(6484),BLOCK,mid)\n    validation = evaluate(pulse_text,s,19,42911,modes)\n    return {'selected_period':center,'block_size':BLOCK,'bands_period_multipliers':BANDS,\n            'bins':s.band_bins,'simulated_pulse_period':BLOCK/mid,'simulated_pulse':validation,\n            'partitions':result}\n\n\nif __name__ == '__main__':\n    print(json.dumps(run(),indent=2))\n",
+      "voynich_spectral_geometry.py": "\"\"\"Boundary-only and within-folio sensitivities for the public spectral analysis.\"\"\"\nimport json\nimport random\nfrom collections import defaultdict\nfrom itertools import groupby\nfrom statistics import median\n\nfrom vs import corpus\n\nfrom voynich_spectral_lines import (\n    BLOCK, EDITIONS, FOLIO, RAW, Spectrum, aligned_corpus, choose_center, evaluate, flat,\n    shuffle_folio_interiors, shuffle_global,\n)\n\n\ndef position(index,length):\n    if index < 2:\n        return ('start',index)\n    if length-index <= 2:\n        return ('end',length-index)\n    return ('middle',0)\n\n\ndef independent_geometry(training,layout,seed):\n    choices = defaultdict(list)\n    for _,line in training:\n        for index,char in enumerate(line):\n            choices[position(index,len(line))].append(char)\n    rng = random.Random(seed)\n    return [(folio,''.join(rng.choice(choices[position(i,len(line))]) for i in range(len(line))))\n            for folio,line in layout]\n\n\ndef within_folio_slices(rows,block):\n    start = 0\n    slices = []\n    for _, group in groupby(rows,key=lambda row:row[0]):\n        length = sum(len(line) for _,line in group)\n        kept = length//block*block\n        if kept:\n            slices.append(slice(start,start+kept))\n        start += length\n    return slices\n\n\ndef no_crossing(rows,center):\n    block = 512\n    spectrum = Spectrum(center,block)\n    slices = within_folio_slices(rows,block)\n    assert slices\n\n    def score(text):\n        selected = ''.join(text[segment] for segment in slices)\n        return spectrum.band_power(selected)\n\n    observed = score(flat(rows))\n    nulls = {}\n    for name,fun in (('global_glyph',shuffle_global),('folio_interiors',shuffle_folio_interiors)):\n        rng = random.Random(377)\n        null = [score(fun(rows,rng)) for _ in range(49)]\n        nulls[name] = {k: {'p_upper':(1+sum(x[k]>=observed[k] for x in null))/(len(null)+1),\n                           'median':median(x[k] for x in null)}\n                       for k in ('band_power','peak_ratio')}\n    return {'observed':observed,'compared_folio_runs':len(slices),'nulls':nulls}\n\n\ndef relaxed_evaluation():\n    parsed = {}\n    for ed in EDITIONS:\n        _,pages = corpus.split_pages('practice',ed)\n        parsed[ed] = {line.id: ''.join(word for word in line.words if RAW.fullmatch(word))\n                      for page in pages for line in page.lines if line.unit == 'P'}\n    ids = [locus for locus in parsed['zl'] if parsed['zl'][locus] and parsed['it'].get(locus)]\n    return {ed: [(FOLIO.match(locus)[0],parsed[ed][locus]) for locus in ids] for ed in EDITIONS}\n\n\ndef run():\n    data = aligned_corpus()\n    center = choose_center(data['train'])\n    spectrum = Spectrum(center,BLOCK)\n    modes = [('global_glyph',shuffle_global),('folio_interiors',shuffle_folio_interiors)]\n    result = {}\n    relaxed = relaxed_evaluation()\n    for ed in EDITIONS:\n        train = data['train'][ed]\n        evalp = data['evaluation'][ed]\n        trials = [evaluate(independent_geometry(train,evalp,seed),spectrum,19,seed,modes)\n                  for seed in (2987,2988,2989)]\n        less_strict = evaluate(relaxed[ed],spectrum,49,2138,modes)\n        less_strict['lines'] = len(relaxed[ed])\n        result[ed] = {'wide_sensitivity':no_crossing(evalp,center),'geometry_only':trials,\n                      'retaining_clean_words_in_uncertain_lines':less_strict}\n    return result\n\n\nif __name__ == '__main__':\n    print(json.dumps(run(),indent=2))\n"
+    }
+  },
+  "results": {
+    "primary": {
+      "selected_period": 44,
+      "block_size": 1024,
+      "bands_period_multipliers": {
+        "center": [
+          0.9,
+          1.1
+        ],
+        "short": [
+          0.65,
+          0.8
+        ],
+        "long": [
+          1.25,
+          1.5
+        ]
+      },
+      "bins": {
+        "center": [
+          22,
+          23,
+          24,
+          25
+        ],
+        "short": [
+          30,
+          31,
+          32,
+          33,
+          34,
+          35
+        ],
+        "long": [
+          16,
+          17,
+          18
+        ]
+      },
+      "simulated_pulse_period": 44.52173913043478,
+      "simulated_pulse": {
+        "observed": {
+          "band_power": 1.0325125830409445,
+          "peak_ratio": 1.1764936135254394,
+          "shoulders": [
+            0.913035086878179,
+            0.8422019516756533
+          ],
+          "blocks": 25,
+          "used_glyphs": 25600,
+          "band_bins_power": {
+            "16": 0.8211547764394233,
+            "17": 0.8153370601645457,
+            "18": 0.8901140184229909,
+            "22": 0.9491192933922851,
+            "23": 1.2826067802445547,
+            "24": 0.9769131020158364,
+            "25": 0.9214111565111015,
+            "30": 0.9339009652961691,
+            "31": 0.9385897694292636,
+            "32": 0.9413591757239753,
+            "33": 0.899748275887578,
+            "34": 0.8655889899793018,
+            "35": 0.8990233449527864
+          }
+        },
+        "nulls": {
+          "global_glyph": {
+            "band_power": {
+              "permutations": 19,
+              "median": 0.9098967514025657,
+              "p_upper": 0.05,
+              "null_range": [
+                0.8834170781702451,
+                1.0002708474689106
+              ],
+              "observed_over_null_median": 1.134757961768049
+            },
+            "peak_ratio": {
+              "permutations": 19,
+              "median": 0.9675301424789705,
+              "p_upper": 0.05,
+              "null_range": [
+                0.9092985715592676,
+                1.0595384910803134
+              ],
+              "observed_over_null_median": 1.2159761870685188
+            }
+          },
+          "folio_interiors": {
+            "band_power": {
+              "permutations": 19,
+              "median": 0.9291963482665146,
+              "p_upper": 0.05,
+              "null_range": [
+                0.8780650385631674,
+                0.9804786535716228
+              ],
+              "observed_over_null_median": 1.1111888084441723
+            },
+            "peak_ratio": {
+              "permutations": 19,
+              "median": 0.9949841166008029,
+              "p_upper": 0.05,
+              "null_range": [
+                0.9272626920981613,
+                1.055795343380833
+              ],
+              "observed_over_null_median": 1.18242451703122
+            }
+          }
+        }
+      },
+      "partitions": {
+        "train": {
+          "zl": {
+            "observed": {
+              "band_power": 0.7185018025833516,
+              "peak_ratio": 1.0185124999753798,
+              "shoulders": [
+                0.6835866726839659,
+                0.7272979312864706
+              ],
+              "blocks": 135,
+              "used_glyphs": 138240,
+              "band_bins_power": {
+                "16": 0.7219090650693224,
+                "17": 0.7458878323127017,
+                "18": 0.7140968964773873,
+                "22": 0.7414112217289118,
+                "23": 0.7443866165251068,
+                "24": 0.7012122699244672,
+                "25": 0.6869971021549205,
+                "30": 0.698535935634974,
+                "31": 0.6775444703993255,
+                "32": 0.6904937747593145,
+                "33": 0.6590369346021538,
+                "34": 0.6841721121823332,
+                "35": 0.6917368085256941
+              }
+            },
+            "nulls": {
+              "global_glyph": {
+                "band_power": {
+                  "permutations": 19,
+                  "median": 0.9251640943765032,
+                  "p_upper": 1.0,
+                  "null_range": [
+                    0.9061087920394324,
+                    0.9443042057072468
+                  ],
+                  "observed_over_null_median": 0.7766209334654003
+                },
+                "peak_ratio": {
+                  "permutations": 19,
+                  "median": 1.0095881109808504,
+                  "p_upper": 0.35,
+                  "null_range": [
+                    0.9703971099847725,
+                    1.04630426751722
+                  ],
+                  "observed_over_null_median": 1.0088396336064804
+                }
+              },
+              "folio_interiors": {
+                "band_power": {
+                  "permutations": 19,
+                  "median": 0.9260395398182997,
+                  "p_upper": 1.0,
+                  "null_range": [
+                    0.8968337670645763,
+                    0.9484975946720743
+                  ],
+                  "observed_over_null_median": 0.7758867431560541
+                },
+                "peak_ratio": {
+                  "permutations": 19,
+                  "median": 1.0073065996555424,
+                  "p_upper": 0.4,
+                  "null_range": [
+                    0.9548134961081497,
+                    1.0369194505454917
+                  ],
+                  "observed_over_null_median": 1.0111246171956676
+                }
+              }
+            },
+            "lines": 3277,
+            "total_glyphs": 138478
+          },
+          "it": {
+            "observed": {
+              "band_power": 0.720490251164661,
+              "peak_ratio": 1.0221784724758312,
+              "shoulders": [
+                0.6802466961858219,
+                0.7294684769767524
+              ],
+              "blocks": 135,
+              "used_glyphs": 138240,
+              "band_bins_power": {
+                "16": 0.7267842822554796,
+                "17": 0.7414885549529551,
+                "18": 0.7201325937218227,
+                "22": 0.749615934701209,
+                "23": 0.7348300333856363,
+                "24": 0.7084937387150331,
+                "25": 0.6890212978567658,
+                "30": 0.6940913516458553,
+                "31": 0.6727917346133158,
+                "32": 0.6896783281825077,
+                "33": 0.6537548168085415,
+                "34": 0.6818349154822677,
+                "35": 0.6893290303824436
+              }
+            },
+            "nulls": {
+              "global_glyph": {
+                "band_power": {
+                  "permutations": 19,
+                  "median": 0.9213573518253554,
+                  "p_upper": 1.0,
+                  "null_range": [
+                    0.9065951301285765,
+                    0.9417532732542172
+                  ],
+                  "observed_over_null_median": 0.7819878462327948
+                },
+                "peak_ratio": {
+                  "permutations": 19,
+                  "median": 0.9931714289949106,
+                  "p_upper": 0.15,
+                  "null_range": [
+                    0.97351149371611,
+                    1.0368328313061541
+                  ],
+                  "observed_over_null_median": 1.0292064820171838
+                }
+              },
+              "folio_interiors": {
+                "band_power": {
+                  "permutations": 19,
+                  "median": 0.9179387257557805,
+                  "p_upper": 1.0,
+                  "null_range": [
+                    0.8926247294778322,
+                    0.9415446365480525
+                  ],
+                  "observed_over_null_median": 0.7849001583100754
+                },
+                "peak_ratio": {
+                  "permutations": 19,
+                  "median": 0.9906628866413363,
+                  "p_upper": 0.1,
+                  "null_range": [
+                    0.9628084987079575,
+                    1.0303081693382687
+                  ],
+                  "observed_over_null_median": 1.0318126239101808
+                }
+              }
+            },
+            "lines": 3277,
+            "total_glyphs": 138402
+          }
+        },
+        "evaluation": {
+          "zl": {
+            "observed": {
+              "band_power": 0.6494996575666194,
+              "peak_ratio": 0.8949119140220035,
+              "shoulders": [
+                0.7068703525192842,
+                0.7446683908807729
+              ],
+              "blocks": 25,
+              "used_glyphs": 25600,
+              "band_bins_power": {
+                "16": 0.6973622172842718,
+                "17": 0.751584729331872,
+                "18": 0.7850582260261746,
+                "22": 0.6724053638755549,
+                "23": 0.6300461937551332,
+                "24": 0.6029055528401945,
+                "25": 0.6926415197955953,
+                "30": 0.7196192606410676,
+                "31": 0.7345255348944774,
+                "32": 0.7320297223473957,
+                "33": 0.7048391414658054,
+                "34": 0.6712784502117767,
+                "35": 0.6789300055551826
+              }
+            },
+            "nulls": {
+              "global_glyph": {
+                "band_power": {
+                  "permutations": 99,
+                  "median": 0.9233634023704501,
+                  "p_upper": 1.0,
+                  "null_range": [
+                    0.8620747941962663,
+                    1.0352413979749213
+                  ],
+                  "observed_over_null_median": 0.7034063250711798
+                },
+                "peak_ratio": {
+                  "permutations": 99,
+                  "median": 1.001103755986316,
+                  "p_upper": 1.0,
+                  "null_range": [
+                    0.9166527561458383,
+                    1.1582044954859751
+                  ],
+                  "observed_over_null_median": 0.8939252386884821
+                }
+              },
+              "folio_interiors": {
+                "band_power": {
+                  "permutations": 99,
+                  "median": 0.9223342812815974,
+                  "p_upper": 1.0,
+                  "null_range": [
+                    0.8278974301060706,
+                    1.0032507202395422
+                  ],
+                  "observed_over_null_median": 0.7041911709755923
+                },
+                "peak_ratio": {
+                  "permutations": 99,
+                  "median": 1.0082296685227283,
+                  "p_upper": 0.99,
+                  "null_range": [
+                    0.8861252458827741,
+                    1.1096011959129894
+                  ],
+                  "observed_over_null_median": 0.8876072009795551
+                }
+              },
+              "line_interiors": {
+                "band_power": {
+                  "permutations": 99,
+                  "median": 0.9034702703567652,
+                  "p_upper": 1.0,
+                  "null_range": [
+                    0.8216132429149383,
+                    1.0090959930676493
+                  ],
+                  "observed_over_null_median": 0.7188943331916644
+                },
+                "peak_ratio": {
+                  "permutations": 99,
+                  "median": 1.0105402034624829,
+                  "p_upper": 1.0,
+                  "null_range": [
+                    0.897348055396541,
+                    1.1516726699174897
+                  ],
+                  "observed_over_null_median": 0.885577744414033
+                }
+              }
+            },
+            "lines": 626,
+            "total_glyphs": 25910
+          },
+          "it": {
+            "observed": {
+              "band_power": 0.6339530847820837,
+              "peak_ratio": 0.8826231807183038,
+              "shoulders": [
+                0.7003532507588633,
+                0.7361671095293283
+              ],
+              "blocks": 25,
+              "used_glyphs": 25600,
+              "band_bins_power": {
+                "16": 0.691325905370126,
+                "17": 0.736765889144197,
+                "18": 0.780409534073662,
+                "22": 0.6690937442117937,
+                "23": 0.6179864317106063,
+                "24": 0.585046008716581,
+                "25": 0.6636861544893539,
+                "30": 0.7350621140725185,
+                "31": 0.7217289169894772,
+                "32": 0.72261580292077,
+                "33": 0.688647667040523,
+                "34": 0.6599612713494001,
+                "35": 0.6741037321804918
+              }
+            },
+            "nulls": {
+              "global_glyph": {
+                "band_power": {
+                  "permutations": 99,
+                  "median": 0.9239827067674824,
+                  "p_upper": 1.0,
+                  "null_range": [
+                    0.8338614066286192,
+                    1.0154634597697862
+                  ],
+                  "observed_over_null_median": 0.6861092530616119
+                },
+                "peak_ratio": {
+                  "permutations": 99,
+                  "median": 0.9954173121429531,
+                  "p_upper": 1.0,
+                  "null_range": [
+                    0.8881784468081615,
+                    1.1050450842499222
+                  ],
+                  "observed_over_null_median": 0.8866865885807993
+                }
+              },
+              "folio_interiors": {
+                "band_power": {
+                  "permutations": 99,
+                  "median": 0.9311006144773568,
+                  "p_upper": 1.0,
+                  "null_range": [
+                    0.8412117368367882,
+                    1.0648079592711113
+                  ],
+                  "observed_over_null_median": 0.6808642105106253
+                },
+                "peak_ratio": {
+                  "permutations": 99,
+                  "median": 1.0043376369627253,
+                  "p_upper": 1.0,
+                  "null_range": [
+                    0.9273006384890857,
+                    1.1687958935682972
+                  ],
+                  "observed_over_null_median": 0.8788112167014819
+                }
+              },
+              "line_interiors": {
+                "band_power": {
+                  "permutations": 99,
+                  "median": 0.9039980834490504,
+                  "p_upper": 1.0,
+                  "null_range": [
+                    0.8410876491170038,
+                    0.9998527184355359
+                  ],
+                  "observed_over_null_median": 0.7012770230256947
+                },
+                "peak_ratio": {
+                  "permutations": 99,
+                  "median": 1.0077069829576488,
+                  "p_upper": 1.0,
+                  "null_range": [
+                    0.9194893801371388,
+                    1.1116406192719646
+                  ],
+                  "observed_over_null_median": 0.8758728436393083
+                }
+              }
+            },
+            "lines": 626,
+            "total_glyphs": 25918
+          }
+        }
+      }
+    },
+    "additional": {
+      "zl": {
+        "wide_sensitivity": {
+          "observed": {
+            "band_power": 0.7380875808437358,
+            "peak_ratio": 1.0216460390234408,
+            "shoulders": [
+              0.6939069625690936,
+              0.7509918627603729
+            ],
+            "blocks": 33,
+            "used_glyphs": 16896,
+            "band_bins_power": {
+              "8": 0.8039622426253972,
+              "9": 0.6980214828953485,
+              "11": 0.7318597824385528,
+              "12": 0.7443153792489189,
+              "15": 0.6980971178861143,
+              "16": 0.6848092481974345,
+              "17": 0.6988145216237318
+            }
+          },
+          "compared_folio_runs": 12,
+          "nulls": {
+            "global_glyph": {
+              "band_power": {
+                "p_upper": 1.0,
+                "median": 0.9296125052365776
+              },
+              "peak_ratio": {
+                "p_upper": 0.38,
+                "median": 1.00742510271927
+              }
+            },
+            "folio_interiors": {
+              "band_power": {
+                "p_upper": 1.0,
+                "median": 0.9224258009272976
+              },
+              "peak_ratio": {
+                "p_upper": 0.3,
+                "median": 0.9955668257902516
+              }
+            }
+          }
+        },
+        "geometry_only": [
+          {
+            "observed": {
+              "band_power": 0.9560080218582513,
+              "peak_ratio": 1.0527640645969791,
+              "shoulders": [
+                0.9116897503776693,
+                0.904496903417798
+              ],
+              "blocks": 25,
+              "used_glyphs": 25600,
+              "band_bins_power": {
+                "16": 0.8960465595237794,
+                "17": 0.8848736935918277,
+                "18": 0.9325704571377869,
+                "22": 0.9691187564921984,
+                "23": 0.9506202837976316,
+                "24": 0.9496171787067857,
+                "25": 0.9546758684363895,
+                "30": 0.8864262116635708,
+                "31": 0.8814870499317887,
+                "32": 0.8487630249804238,
+                "33": 0.8354670722156575,
+                "34": 0.9644027211788326,
+                "35": 1.0535924222957427
+              }
+            },
+            "nulls": {
+              "global_glyph": {
+                "band_power": {
+                  "permutations": 19,
+                  "median": 0.9310508163985604,
+                  "p_upper": 0.25,
+                  "null_range": [
+                    0.8513047272932965,
+                    0.9659427556759368
+                  ],
+                  "observed_over_null_median": 1.0268054170837086
+                },
+                "peak_ratio": {
+                  "permutations": 19,
+                  "median": 1.0055705240206412,
+                  "p_upper": 0.1,
+                  "null_range": [
+                    0.8983503860696086,
+                    1.073072684003735
+                  ],
+                  "observed_over_null_median": 1.0469321041627602
+                }
+              },
+              "folio_interiors": {
+                "band_power": {
+                  "permutations": 19,
+                  "median": 0.9285758153003053,
+                  "p_upper": 0.4,
+                  "null_range": [
+                    0.8469458065651808,
+                    1.0081321539486199
+                  ],
+                  "observed_over_null_median": 1.029542236730637
+                },
+                "peak_ratio": {
+                  "permutations": 19,
+                  "median": 1.0057456241878395,
+                  "p_upper": 0.25,
+                  "null_range": [
+                    0.9122262208121981,
+                    1.1129449153608448
+                  ],
+                  "observed_over_null_median": 1.0467498334353758
+                }
+              }
+            }
+          },
+          {
+            "observed": {
+              "band_power": 0.8777935307976392,
+              "peak_ratio": 0.9799447609494613,
+              "shoulders": [
+                0.9089810509048507,
+                0.8825352993578958
+              ],
+              "blocks": 25,
+              "used_glyphs": 25600,
+              "band_bins_power": {
+                "16": 0.8104784342231833,
+                "17": 0.8730767995468117,
+                "18": 0.9640506643036925,
+                "22": 0.8610591512757891,
+                "23": 0.7821740948441636,
+                "24": 0.9021626934065322,
+                "25": 0.965778183664072,
+                "30": 0.8762707408175305,
+                "31": 0.8684225737957904,
+                "32": 0.934595769750074,
+                "33": 0.9626250635963731,
+                "34": 0.9773435315203252,
+                "35": 0.8346286259490111
+              }
+            },
+            "nulls": {
+              "global_glyph": {
+                "band_power": {
+                  "permutations": 19,
+                  "median": 0.9173062482076646,
+                  "p_upper": 0.85,
+                  "null_range": [
+                    0.8486003801930335,
+                    0.9666289409426769
+                  ],
+                  "observed_over_null_median": 0.9569252716993591
+                },
+                "peak_ratio": {
+                  "permutations": 19,
+                  "median": 0.9916572745801778,
+                  "p_upper": 0.65,
+                  "null_range": [
+                    0.9013252325486724,
+                    1.0727536147951653
+                  ],
+                  "observed_over_null_median": 0.9881889500224005
+                }
+              },
+              "folio_interiors": {
+                "band_power": {
+                  "permutations": 19,
+                  "median": 0.9331118988204664,
+                  "p_upper": 0.9,
+                  "null_range": [
+                    0.8754364616896444,
+                    0.9929048394078956
+                  ],
+                  "observed_over_null_median": 0.9407162548320792
+                },
+                "peak_ratio": {
+                  "permutations": 19,
+                  "median": 1.0184255305585403,
+                  "p_upper": 0.65,
+                  "null_range": [
+                    0.9210311327594382,
+                    1.0928997383065497
+                  ],
+                  "observed_over_null_median": 0.9622154311194704
+                }
+              }
+            }
+          },
+          {
+            "observed": {
+              "band_power": 0.9264214270385907,
+              "peak_ratio": 1.0325633423738176,
+              "shoulders": [
+                0.9112024720662437,
+                0.8832083674833933
+              ],
+              "blocks": 25,
+              "used_glyphs": 25600,
+              "band_bins_power": {
+                "16": 0.8606448731024108,
+                "17": 0.9032264494374548,
+                "18": 0.8857537799103143,
+                "22": 0.9392611390276532,
+                "23": 0.9188383157446866,
+                "24": 0.9061449484723741,
+                "25": 0.9414413049096485,
+                "30": 0.9548584229216757,
+                "31": 0.9044847845823437,
+                "32": 0.8272003303292345,
+                "33": 0.9250827736683637,
+                "34": 0.883691109014861,
+                "35": 0.9718974118809834
+              }
+            },
+            "nulls": {
+              "global_glyph": {
+                "band_power": {
+                  "permutations": 19,
+                  "median": 0.9235318758829827,
+                  "p_upper": 0.5,
+                  "null_range": [
+                    0.8470273425847783,
+                    1.0069376634995229
+                  ],
+                  "observed_over_null_median": 1.003128805005074
+                },
+                "peak_ratio": {
+                  "permutations": 19,
+                  "median": 1.016643840666281,
+                  "p_upper": 0.35,
+                  "null_range": [
+                    0.8972940282366437,
+                    1.117611366052212
+                  ],
+                  "observed_over_null_median": 1.0156588778397588
+                }
+              },
+              "folio_interiors": {
+                "band_power": {
+                  "permutations": 19,
+                  "median": 0.9006601735626798,
+                  "p_upper": 0.35,
+                  "null_range": [
+                    0.8597777188140553,
+                    0.9908207850818941
+                  ],
+                  "observed_over_null_median": 1.0286026341922156
+                },
+                "peak_ratio": {
+                  "permutations": 19,
+                  "median": 0.9901697360840881,
+                  "p_upper": 0.15,
+                  "null_range": [
+                    0.9209003138795031,
+                    1.0682442452010732
+                  ],
+                  "observed_over_null_median": 1.0428144839665443
+                }
+              }
+            }
+          }
+        ],
+        "retaining_clean_words_in_uncertain_lines": {
+          "observed": {
+            "band_power": 0.7219256038841055,
+            "peak_ratio": 0.9805559691081268,
+            "shoulders": [
+              0.7254730331111277,
+              0.7470091639851568
+            ],
+            "blocks": 26,
+            "used_glyphs": 26624,
+            "band_bins_power": {
+              "16": 0.6972761642451313,
+              "17": 0.7206597327515397,
+              "18": 0.8230915949587995,
+              "22": 0.7048022022766828,
+              "23": 0.7622286723464132,
+              "24": 0.732308708411346,
+              "25": 0.6883628325019802,
+              "30": 0.7191507643592759,
+              "31": 0.7122693110362028,
+              "32": 0.7921479580113808,
+              "33": 0.7919674197987272,
+              "34": 0.6987556521539829,
+              "35": 0.6385470933071958
+            }
+          },
+          "nulls": {
+            "global_glyph": {
+              "band_power": {
+                "permutations": 49,
+                "median": 0.9251503321856698,
+                "p_upper": 1.0,
+                "null_range": [
+                  0.8467726238295814,
+                  1.0015971895665603
+                ],
+                "observed_over_null_median": 0.7803332915403648
+              },
+              "peak_ratio": {
+                "permutations": 49,
+                "median": 0.99593610119173,
+                "p_upper": 0.62,
+                "null_range": [
+                  0.9033565334864481,
+                  1.0929144319291955
+                ],
+                "observed_over_null_median": 0.9845571095723917
+              }
+            },
+            "folio_interiors": {
+              "band_power": {
+                "permutations": 49,
+                "median": 0.9152984588565329,
+                "p_upper": 1.0,
+                "null_range": [
+                  0.8502564035346464,
+                  1.020888449721665
+                ],
+                "observed_over_null_median": 0.7887324586845641
+              },
+              "peak_ratio": {
+                "permutations": 49,
+                "median": 0.9940673654185032,
+                "p_upper": 0.7,
+                "null_range": [
+                  0.8915213535136567,
+                  1.1350180082215806
+                ],
+                "observed_over_null_median": 0.9864079671253587
+              }
+            }
+          },
+          "lines": 651
+        }
+      },
+      "it": {
+        "wide_sensitivity": {
+          "observed": {
+            "band_power": 0.7243085630208681,
+            "peak_ratio": 1.0135012124367018,
+            "shoulders": [
+              0.6814812903056574,
+              0.7478382884631833
+            ],
+            "blocks": 33,
+            "used_glyphs": 16896,
+            "band_bins_power": {
+              "8": 0.797453225598655,
+              "9": 0.6982233513277116,
+              "11": 0.7163998424497321,
+              "12": 0.7322172835920042,
+              "15": 0.7073245566906549,
+              "16": 0.6639279177275822,
+              "17": 0.673191396498735
+            }
+          },
+          "compared_folio_runs": 12,
+          "nulls": {
+            "global_glyph": {
+              "band_power": {
+                "p_upper": 1.0,
+                "median": 0.9330605999943244
+              },
+              "peak_ratio": {
+                "p_upper": 0.42,
+                "median": 1.0040593279663632
+              }
+            },
+            "folio_interiors": {
+              "band_power": {
+                "p_upper": 1.0,
+                "median": 0.9141265034248509
+              },
+              "peak_ratio": {
+                "p_upper": 0.36,
+                "median": 0.996577723025654
+              }
+            }
+          }
+        },
+        "geometry_only": [
+          {
+            "observed": {
+              "band_power": 0.911540653131486,
+              "peak_ratio": 0.9979542251791882,
+              "shoulders": [
+                0.920929160783031,
+                0.9058894049038148
+              ],
+              "blocks": 25,
+              "used_glyphs": 25600,
+              "band_bins_power": {
+                "16": 0.8744641429378962,
+                "17": 0.908790995398764,
+                "18": 0.9344130763747843,
+                "22": 0.9492886786337963,
+                "23": 0.8897481191251608,
+                "24": 0.9007910694024442,
+                "25": 0.9063347453645428,
+                "30": 0.9385687480333902,
+                "31": 0.9250925349031934,
+                "32": 0.8866920031157778,
+                "33": 0.9344639881108913,
+                "34": 0.9202155195437814,
+                "35": 0.9205421709911519
+              }
+            },
+            "nulls": {
+              "global_glyph": {
+                "band_power": {
+                  "permutations": 19,
+                  "median": 0.9212422796040821,
+                  "p_upper": 0.65,
+                  "null_range": [
+                    0.8674584099307114,
+                    0.9791412434607084
+                  ],
+                  "observed_over_null_median": 0.9894689739199057
+                },
+                "peak_ratio": {
+                  "permutations": 19,
+                  "median": 0.9848880764687973,
+                  "p_upper": 0.5,
+                  "null_range": [
+                    0.9154309675481309,
+                    1.1003288629439463
+                  ],
+                  "observed_over_null_median": 1.013266633054629
+                }
+              },
+              "folio_interiors": {
+                "band_power": {
+                  "permutations": 19,
+                  "median": 0.9180378769154109,
+                  "p_upper": 0.55,
+                  "null_range": [
+                    0.8692296965055442,
+                    0.9727421674262283
+                  ],
+                  "observed_over_null_median": 0.9929227061896885
+                },
+                "peak_ratio": {
+                  "permutations": 19,
+                  "median": 0.9841462610403683,
+                  "p_upper": 0.45,
+                  "null_range": [
+                    0.902188181096509,
+                    1.0698717052434448
+                  ],
+                  "observed_over_null_median": 1.0140303984127554
+                }
+              }
+            }
+          },
+          {
+            "observed": {
+              "band_power": 0.9418029434349477,
+              "peak_ratio": 1.0681149078862608,
+              "shoulders": [
+                0.8949417810505813,
+                0.8685444065895158
+              ],
+              "blocks": 25,
+              "used_glyphs": 25600,
+              "band_bins_power": {
+                "16": 0.8374279646999705,
+                "17": 0.8910546816720599,
+                "18": 0.8771505733965169,
+                "22": 0.9222105774177025,
+                "23": 0.9696568153234479,
+                "24": 0.9127787424646079,
+                "25": 0.9625656385340328,
+                "30": 0.9228223987703973,
+                "31": 0.8763918714799994,
+                "32": 0.9019097159885234,
+                "33": 0.8632001774640495,
+                "34": 0.8861000673633832,
+                "35": 0.9192264552371351
+              }
+            },
+            "nulls": {
+              "global_glyph": {
+                "band_power": {
+                  "permutations": 19,
+                  "median": 0.9349993402786506,
+                  "p_upper": 0.25,
+                  "null_range": [
+                    0.8553458932554074,
+                    1.0014944175049327
+                  ],
+                  "observed_over_null_median": 1.007276586050071
+                },
+                "peak_ratio": {
+                  "permutations": 19,
+                  "median": 1.02015276466025,
+                  "p_upper": 0.15,
+                  "null_range": [
+                    0.9450544579628818,
+                    1.109604417765991
+                  ],
+                  "observed_over_null_median": 1.0470146676924257
+                }
+              },
+              "folio_interiors": {
+                "band_power": {
+                  "permutations": 19,
+                  "median": 0.9216658870817592,
+                  "p_upper": 0.5,
+                  "null_range": [
+                    0.8785782095549499,
+                    0.9852054176184473
+                  ],
+                  "observed_over_null_median": 1.0218485425526032
+                },
+                "peak_ratio": {
+                  "permutations": 19,
+                  "median": 1.0098908286095063,
+                  "p_upper": 0.15,
+                  "null_range": [
+                    0.9405888717235155,
+                    1.1009376972417695
+                  ],
+                  "observed_over_null_median": 1.0576538350753435
+                }
+              }
+            }
+          },
+          {
+            "observed": {
+              "band_power": 0.9517532111226118,
+              "peak_ratio": 1.0435800808937479,
+              "shoulders": [
+                0.8939280107189765,
+                0.9300876610012173
+              ],
+              "blocks": 25,
+              "used_glyphs": 25600,
+              "band_bins_power": {
+                "16": 0.895362706220912,
+                "17": 0.9573549842308404,
+                "18": 0.9375452925518999,
+                "22": 0.9580818630292726,
+                "23": 0.9330603850025732,
+                "24": 0.9949629149193087,
+                "25": 0.9209076815392929,
+                "30": 0.8792870845658333,
+                "31": 0.851850576464409,
+                "32": 0.9040528186807218,
+                "33": 0.8971553483472708,
+                "34": 0.903608423537902,
+                "35": 0.927613812717722
+              }
+            },
+            "nulls": {
+              "global_glyph": {
+                "band_power": {
+                  "permutations": 19,
+                  "median": 0.9172412093628693,
+                  "p_upper": 0.2,
+                  "null_range": [
+                    0.8719157009213188,
+                    0.9864810042691434
+                  ],
+                  "observed_over_null_median": 1.037625873551533
+                },
+                "peak_ratio": {
+                  "permutations": 19,
+                  "median": 0.9970806095983473,
+                  "p_upper": 0.2,
+                  "null_range": [
+                    0.9278261985621901,
+                    1.0574176357533314
+                  ],
+                  "observed_over_null_median": 1.046635618873515
+                }
+              },
+              "folio_interiors": {
+                "band_power": {
+                  "permutations": 19,
+                  "median": 0.945278039334471,
+                  "p_upper": 0.45,
+                  "null_range": [
+                    0.8669618440753858,
+                    0.988180570175626
+                  ],
+                  "observed_over_null_median": 1.006850018215487
+                },
+                "peak_ratio": {
+                  "permutations": 19,
+                  "median": 1.0207780475758335,
+                  "p_upper": 0.35,
+                  "null_range": [
+                    0.9489763310423798,
+                    1.0812878301053686
+                  ],
+                  "observed_over_null_median": 1.0223378954632354
+                }
+              }
+            }
+          }
+        ],
+        "retaining_clean_words_in_uncertain_lines": {
+          "observed": {
+            "band_power": 0.7163660071868483,
+            "peak_ratio": 0.9598803394497332,
+            "shoulders": [
+              0.7479589473554601,
+              0.7446562834086509
+            ],
+            "blocks": 26,
+            "used_glyphs": 26624,
+            "band_bins_power": {
+              "16": 0.6891046160037262,
+              "17": 0.7218480200251215,
+              "18": 0.8230162141971048,
+              "22": 0.7465919541760647,
+              "23": 0.773279353740871,
+              "24": 0.6908843743860862,
+              "25": 0.6547083464443711,
+              "30": 0.7534019214632052,
+              "31": 0.7678558968390153,
+              "32": 0.8362792309908358,
+              "33": 0.7817237255171785,
+              "34": 0.6976068683305703,
+              "35": 0.6508860409919558
+            }
+          },
+          "nulls": {
+            "global_glyph": {
+              "band_power": {
+                "permutations": 49,
+                "median": 0.9303920919448347,
+                "p_upper": 1.0,
+                "null_range": [
+                  0.8399270969140873,
+                  1.044960474927786
+                ],
+                "observed_over_null_median": 0.7699614102366247
+              },
+              "peak_ratio": {
+                "permutations": 49,
+                "median": 1.012447896381781,
+                "p_upper": 0.9,
+                "null_range": [
+                  0.8965924465104905,
+                  1.1330366726433219
+                ],
+                "observed_over_null_median": 0.9480787533660644
+              }
+            },
+            "folio_interiors": {
+              "band_power": {
+                "permutations": 49,
+                "median": 0.926614739577556,
+                "p_upper": 1.0,
+                "null_range": [
+                  0.8110547833412892,
+                  0.9753384295577286
+                ],
+                "observed_over_null_median": 0.7731001640589483
+              },
+              "peak_ratio": {
+                "permutations": 49,
+                "median": 1.0077796314569816,
+                "p_upper": 0.86,
+                "null_range": [
+                  0.8770272315643789,
+                  1.0817699581679174
+                ],
+                "observed_over_null_median": 0.9524704702177809
+              }
+            }
+          },
+          "lines": 651
+        }
+      }
+    }
+  }
+}
