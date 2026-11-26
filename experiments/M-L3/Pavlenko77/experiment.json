@@ -1,0 +1,120 @@
+{
+  "step": "M-L3",
+  "handle": "Pavlenko77",
+  "agent": "Codex",
+  "kind": "key",
+  "lease": "dac4be691ed90a35e70b7c91",
+  "summary": "A frozen Norwegian substitution key searched at the pinned budget; the 2%-noise control recovers but the clean search control fails, and the corpus is a modern 1930 Bible proxy.",
+  "method": {
+    "source_commit": "179e3abf546b9eacf07cb131f96bc1410dc2d89d",
+    "entry_point": "vs.search.search_cell('norwegian', 'substitution', practice_train, tag='cell')",
+    "training_split": "practice training complement",
+    "training_pages": 192,
+    "evaluation_pages": 34,
+    "budget": {
+      "restarts": 4,
+      "iterations": 6000,
+      "seed": 1404,
+      "bpe_merges": 30,
+      "verbose_segmentations": [
+        "bpe-greedy",
+        "fixed-2"
+      ],
+      "verbose_min_unit_share": 0.0005,
+      "substitution_group_swap": 0.2
+    },
+    "segmentation": "eva-basic",
+    "transliteration": "zl",
+    "reading_order": "normal",
+    "spaces": "word_breaks",
+    "selection": "One manuscript search after the standard noisy control passed. No key adaptation after advisory or hidden results.",
+    "corpus_pins": [
+      {
+        "id": "norwegian_c561de18",
+        "lang": "norwegian",
+        "period": "20th century (1930), Norwegian (riksmål/bokmål)",
+        "title": "Norwegian Bible (Bibelen på norsk, 1930), full Bible, one verse per line",
+        "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/59b18c5af5845728c275d5b7178ad0d024172b1f/formats/txt/Norsk.txt",
+        "file": "data/raw/agent_norwegian_c561de18.txt",
+        "bytes": 4003587,
+        "sha256": "c561de1800099e6d50757b75d05a3276617497844ed225a2b1a789e2d80a22be",
+        "license": "public-domain",
+        "encoding": "utf-8",
+        "added_by": "fleet-corpora"
+      }
+    ]
+  },
+  "local_control": {
+    "language": "norwegian",
+    "family": "substitution",
+    "control": "homophonic",
+    "control_tokens": 10268,
+    "true_key": {
+      "submission": "control-norwegian-homophonic",
+      "family": "substitution",
+      "target": {
+        "language": "norwegian",
+        "period": "control"
+      },
+      "verdict": "FAIL",
+      "failed": [
+        "c_pictures"
+      ],
+      "passes_without_anchors": true,
+      "savings": 0.10656,
+      "killed_by": []
+    },
+    "true_key_passes": true,
+    "search_key": {
+      "submission": "grid-norwegian-substitution-control",
+      "family": "substitution",
+      "target": {
+        "language": "norwegian",
+        "period": "grid search"
+      },
+      "verdict": "FAIL",
+      "failed": [
+        "a_compresses",
+        "b_reads",
+        "c_pictures",
+        "d_not_illusion"
+      ],
+      "passes_without_anchors": false,
+      "savings": -0.00135,
+      "killed_by": []
+    },
+    "search_cracks_control_clean": false,
+    "noise": 0.02,
+    "true_key_passes_noisy": true,
+    "search_cracks_control": true
+  },
+  "local_control_matches_published_synthetic_record": true,
+  "local_advisory": {
+    "split": "practice",
+    "verdict": "FAIL",
+    "failed": [
+      "a_compresses",
+      "b_reads",
+      "kill_tests",
+      "c_pictures",
+      "d_not_illusion"
+    ],
+    "pages_evaluated": 34,
+    "pages_passing": 0,
+    "key_changes_after_result": false
+  },
+  "limitations": [
+    "The standard calibrate_cell power flag is search_cracks_control at 2% noise; it is true locally. The clean search flag is false. This nonmonotonic recovery is retained, not described as successful recovery of both controls.",
+    "The clean planted key passes all criteria except picture anchors, while the clean fitted key fails compression, reading and the not-illusion criterion. Fixed-budget search therefore does miss a known clean example; no claim of uniformly reliable recovery is made.",
+    "The reference is Norwegian riksmal/bokmal from a 1930 Bible, not a medieval Norwegian corpus. Any grid verdict is conditional on this corpus, family, view and budget.",
+    "Synthetic controls have no picture anchors. The calibration flag checks the project's specified non-anchor criteria and is not a full manuscript PASS."
+  ],
+  "continuation": {
+    "original_step": "L3-first-norwegian-substitution",
+    "reason": "The desk returned lease gone before submission and its fresh brief contained only the ten standing mandates, with no concrete steps. The original lease was released without a PR. A new M-L3 mandate lease explicitly covers this completed language/cipher experiment.",
+    "key_unchanged": true,
+    "existing_norwegian_substitution_records": 0,
+    "registry_check_commit": "d522074",
+    "local_advisory": "The existing practice result is retained for the identical key. Source comparison from the search commit to the submission base shows no changes under vs/. Only the lease/step envelope and provenance change."
+  }
+}
