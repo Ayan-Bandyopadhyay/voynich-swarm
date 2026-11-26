@@ -21,11 +21,35 @@ ABBREVIATION_SIGNS = ("cth", "ckh", "cph", "cfh")
 NOISE = 0.02  # transcription noise used for power (after Schwartz 2026: power at 2% noise)
 
 
-def make(lang, kind="simple", seed=0, words_per_line=8, lines_per_page=10, homophones=2, noise=0.0, corpus_id=None):
+def _null_stock(dec, plaintext_words, rng):
+    """Draw unmarked ciphertext shapes that cannot encode an ordinary control word."""
+    alphabet = sorted(dec)
+    stock = {}
+    for length in (3, 4, 4, 5, 5, 6):
+        for _ in range(1000):
+            units = rng.choices(alphabet, k=length)
+            ciphertext = "".join(units)
+            plaintext = "".join(dec[unit] for unit in units)
+            if ciphertext not in stock and plaintext not in plaintext_words:
+                stock[ciphertext] = units
+                break
+        else:
+            raise ValueError("cannot build a disjoint whole-word null stock")
+    return stock
+
+
+def make(lang, kind="simple", seed=0, words_per_line=8, lines_per_page=10, homophones=2, noise=0.0,
+         corpus_id=None, *, null_rate=0.20):
     """A synthetic enciphered manuscript. noise: share of glyphs replaced by a random other glyph
     (transcription error). corpus_id: draw plaintext from one pinned text (a genre) instead of
-    the language's whole control split."""
-    rng = random.Random(f"control/{lang}/{kind}/{seed}/{noise}/{corpus_id}")
+    the language's whole control split. null_rate: fraction of output words to pad in the
+    nulls control, rounded to the nearest word. The key records the clean null spellings, so a
+    transcription error can hide a planted null from the decoder."""
+    if kind == "nulls" and not 0 <= null_rate < 1:
+        raise ValueError("null_rate must be at least zero and less than one")
+    # Use the same ordinary encryption as the unpadded homophonic control.
+    cipher_kind = "homophonic" if kind == "nulls" else kind
+    rng = random.Random(f"control/{lang}/{cipher_kind}/{seed}/{noise}/{corpus_id}")
     if corpus_id:
         from . import refcorpus as _rc
         blocks = [b for i, b in enumerate(_rc.blocks_of(corpus_id)) if i % 10 == 9] or _rc.blocks_of(corpus_id)
@@ -46,6 +70,8 @@ def make(lang, kind="simple", seed=0, words_per_line=8, lines_per_page=10, homop
         raise ValueError(f"target alphabet exceeds the nomenclator glyph inventory")
     if kind == "table-cipher" and len(letters) > len(glyphs):
         raise ValueError(f"target alphabet exceeds the table-cipher glyph inventory")
+    if kind == "nulls" and len(letters) > len(glyphs):
+        raise ValueError("target alphabet exceeds the null-padded glyph inventory")
     rng.shuffle(glyphs)
     if kind == "table-cipher":
         # A periodic tabula recta uses the public alphabet order and secret column shifts.
@@ -56,7 +82,7 @@ def make(lang, kind="simple", seed=0, words_per_line=8, lines_per_page=10, homop
         enc = {l: [glyphs[i]] for i, l in enumerate(letters)}
     elif kind == "codebook":
         enc = {}
-    elif kind in ("homophonic", "nomenclator", "abbreviation", "syllabic"):
+    elif cipher_kind in ("homophonic", "nomenclator", "abbreviation", "syllabic"):
         # the most frequent letters get `homophones` glyphs, the rest one; needs few letters
         freq = sorted(letters, key=lambda l: -sum(w.count(l) for w in words[:5000]))
         enc, i = {}, 0
@@ -121,6 +147,11 @@ def make(lang, kind="simple", seed=0, words_per_line=8, lines_per_page=10, homop
         rng.shuffle(codes)
         word_codes = dict(zip(vocabulary, codes))
 
+    def noisy(units, stream):
+        if not noise:
+            return units
+        return [stream.choice([x for x in noise_pool if x != u]) if stream.random() < noise else u for u in units]
+
     def cipher(w):
         if w in word_codes:
             return "".join(rng.choice([x for x in CIPHER_GLYPHS if x != c]) if rng.random() < noise else c
@@ -148,16 +179,34 @@ def make(lang, kind="simple", seed=0, words_per_line=8, lines_per_page=10, homop
             units = [rng.choice(enc[c]) for c in w if c in enc]
         if suffix:
             units.append(abbreviated[suffix])
-        if noise:
-            units = [rng.choice([x for x in noise_pool if x != u]) if rng.random() < noise else u for u in units]
-        return "".join(units)
+        return "".join(noisy(units, rng))
+
+    if kind == "nulls":
+        null_stock = {}
+        ciphertext = [cipher(word) for word in words]
+        ordinary_count = sum(bool(word) for word in ciphertext)
+        padding_count = round(ordinary_count * null_rate / (1 - null_rate))
+        if padding_count:
+            padding_rng = random.Random(f"control/{lang}/nulls/{seed}/{corpus_id}")
+            noise_rng = random.Random(f"control/{lang}/null-noise/{seed}/{corpus_id}")
+            plaintext_words = {"".join(c for c in word if c in enc) for word in words}
+            null_stock = _null_stock(dec, plaintext_words, padding_rng)
+            stock_units = list(null_stock.values())
+            slots = range(ordinary_count + padding_count)
+            padding_positions = set(padding_rng.sample(slots, padding_count))
+            ordinary_words = (word for word in ciphertext if word)
+            ciphertext = ["".join(noisy(padding_rng.choice(stock_units), noise_rng))
+                          if index in padding_positions else next(ordinary_words) for index in slots]
+        words = ciphertext
 
     pages, i, n = [], 0, 0
     while i < len(words):
         pid = f"c{n:03d}"
         pg = Page(pid, n, {"I": "H", "L": None, "H": None})
         for k in range(lines_per_page):
-            ws = [cipher(w) for w in words[i:i + words_per_line]]
+            ws = words[i:i + words_per_line]
+            if kind != "nulls":
+                ws = [cipher(w) for w in ws]
             i += words_per_line
             ws = [w for w in ws if w]
             if ws:
@@ -184,6 +233,8 @@ def make(lang, kind="simple", seed=0, words_per_line=8, lines_per_page=10, homop
         true_key["family"] = kind
         true_key["key"]["marker"] = "q"
         true_key["key"]["map"].update({"q" + label: syllable for syllable, labels in sign_map.items() for label in labels})
+    if kind == "nulls":
+        true_key.update(family=kind, key={"map": dec, "null_words": list(null_stock), "null_glyphs": []})
     return tr, ev, true_key
 
 

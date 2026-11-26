@@ -258,6 +258,9 @@ def cell_budget(lang, family):
     if family in ("syllabic",):
         from .search_syllabic import SETTINGS
         return {**BUDGET, **SETTINGS}
+    if family == "nulls":
+        from .search_nulls import SETTINGS
+        return {**BUDGET, **SETTINGS}
     if (lang, family) == ("german", "substitution"):
         return {**BUDGET, "substitution_pair_candidates": 16, "substitution_pair_sweeps": 3}
     if (lang, family) == ("nahuatl", "substitution"):
@@ -405,6 +408,10 @@ def search_cell(lang, family, train_pages, budget=None, tag="cell"):
         from .search_syllabic import search_syllabic, SETTINGS
         budget = {**SETTINGS, **budget}
         return search_syllabic(lang, train_pages, budget, tag, table, letters)
+    if family == "nulls":
+        from . import search_nulls
+        budget = {**search_nulls.SETTINGS, **budget}
+        return search_nulls.search(lang, train_pages, budget, tag, table, letters)
     if family == "substitution":
         segf = lambda w: ivtff.segment(w, "eva-basic")
         tri = unit_trigrams(train_pages, segf)
