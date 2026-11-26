@@ -1,0 +1,7 @@
+{
+  "step": "P-J-003",
+  "handle": "mtx-light",
+  "kind": "corpus",
+  "summary": "Register the verse-only Cantigas corpus exactly as P-J-003's check prescribes: pinned nabu-data CSV (sha256 bfb48769...), Primary_Text column exported in file order (derived sha256 e5366bed..., 1,003,547 normalized characters), hosted at a stable raw URL with the CC BY 4.0 citation and attribution preserved.",
+  "lease": "ab7c4a8a5dcedc59602d115f"
+}
