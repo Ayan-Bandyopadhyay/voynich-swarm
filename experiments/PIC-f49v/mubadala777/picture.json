@@ -1,0 +1,376 @@
+{
+  "folio": "f49v",
+  "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006171",
+  "scan": "https://collections.library.yale.edu/iiif/2/1006171/full/full/0/default.jpg",
+  "blind": true,
+  "statement": "A tall green-stemmed plant drawing with layered coiled blade-like parts, six separate blue painted lobes at the upper right, and a rounded, lightly outlined lower body at the foot of the stem.",
+  "regions": {
+    "blue-flower": [
+      2495,
+      125,
+      2825,
+      430
+    ],
+    "upper-arching-region": [
+      1760,
+      362,
+      2800,
+      870
+    ],
+    "upper-pale-blade": [
+      2040,
+      450,
+      2540,
+      976
+    ],
+    "left-coiled-blade": [
+      1650,
+      729,
+      2220,
+      1290
+    ],
+    "right-coiled-blade": [
+      2260,
+      738,
+      2830,
+      1390
+    ],
+    "left-lower-hook": [
+      1723,
+      1180,
+      2167,
+      1520
+    ],
+    "right-lower-hook": [
+      2330,
+      1210,
+      2800,
+      1594
+    ],
+    "crown-branches": [
+      1990,
+      777,
+      2510,
+      1460
+    ],
+    "main-stem": [
+      2150,
+      1280,
+      2510,
+      3450
+    ],
+    "upper-right-stub": [
+      2250,
+      1400,
+      2354,
+      1545
+    ],
+    "upper-left-stub": [
+      2200,
+      1510,
+      2270,
+      1650
+    ],
+    "mid-right-stub": [
+      2240,
+      1770,
+      2340,
+      1940
+    ],
+    "mid-left-stub": [
+      2115,
+      1995,
+      2230,
+      2120
+    ],
+    "lower-right-stub": [
+      2207,
+      2230,
+      2295,
+      2375
+    ],
+    "lower-rounded-body": [
+      2280,
+      3165,
+      2865,
+      3670
+    ],
+    "plant": [
+      1650,
+      125,
+      2880,
+      3685
+    ],
+    "blue-flower-stalk": [
+      2445,
+      278,
+      2650,
+      508
+    ],
+    "basal-oval-contact": [
+      2400,
+      3316,
+      2540,
+      3440
+    ]
+  },
+  "objects": [
+    {
+      "id": "plant",
+      "kind": "plant",
+      "features": {
+        "habit": "single_stem",
+        "orientation": "upright",
+        "part_layout": "terminal_crown_and_rounded_base"
+      },
+      "label": null
+    },
+    {
+      "id": "blue-flower",
+      "kind": "flower",
+      "features": {
+        "colour": "blue",
+        "shape": "radial",
+        "petal_count": 6,
+        "centre_colour": "pale",
+        "position": "upper_right",
+        "petal_tip": "rounded"
+      },
+      "label": null
+    },
+    {
+      "id": "upper-arching-region",
+      "kind": "plant_part",
+      "features": {
+        "shape": "broad_curved_band",
+        "colour": "green_olive",
+        "position": "behind_upper_crown",
+        "boundary": "partly_obscured"
+      },
+      "label": null
+    },
+    {
+      "id": "upper-pale-blade",
+      "kind": "leaf",
+      "features": {
+        "leaf_shape": "rounded",
+        "colour": "pale_blue_green",
+        "position": "upper_centre",
+        "internal_mark": "brown_blue_crescent",
+        "attachment": "narrow_lower_neck"
+      },
+      "label": null
+    },
+    {
+      "id": "left-coiled-blade",
+      "kind": "leaf",
+      "features": {
+        "leaf_shape": "coiled_rounded",
+        "colour": "green",
+        "position": "left",
+        "internal_mark": "brown_blue_crescent",
+        "attachment": "inner_notch"
+      },
+      "label": null
+    },
+    {
+      "id": "right-coiled-blade",
+      "kind": "leaf",
+      "features": {
+        "leaf_shape": "coiled_rounded",
+        "colour": "green",
+        "position": "right",
+        "internal_mark": "brown_blue_crescent",
+        "attachment": "inner_notch"
+      },
+      "label": null
+    },
+    {
+      "id": "left-lower-hook",
+      "kind": "leaf",
+      "features": {
+        "leaf_shape": "crescent_hook",
+        "colour": "green",
+        "position": "lower_left",
+        "attachment": "inner_upper_shoulder"
+      },
+      "label": null
+    },
+    {
+      "id": "right-lower-hook",
+      "kind": "leaf",
+      "features": {
+        "leaf_shape": "rounded_hook",
+        "colour": "olive_green",
+        "position": "lower_right",
+        "internal_mark": "small_blue_brown_patch"
+      },
+      "label": null
+    },
+    {
+      "id": "crown-branches",
+      "kind": "plant_part",
+      "features": {
+        "shape": "fan_of_thin_stalks",
+        "colour": "pale_brown",
+        "position": "under_crown",
+        "joins": "main_stem"
+      },
+      "label": null
+    },
+    {
+      "id": "main-stem",
+      "kind": "plant_part",
+      "features": {
+        "shape": "long_narrow",
+        "colour": "light_green",
+        "position": "right_half",
+        "lower_bend": "right"
+      },
+      "label": null
+    },
+    {
+      "id": "upper-right-stub",
+      "kind": "plant_part",
+      "features": {
+        "shape": "short_tapering_stub",
+        "colour": "pale_brown",
+        "orientation": "upper_right",
+        "position": "immediately_below_crown"
+      },
+      "label": null
+    },
+    {
+      "id": "upper-left-stub",
+      "kind": "plant_part",
+      "features": {
+        "shape": "short_tapering_stub",
+        "colour": "pale_brown",
+        "orientation": "upper_left",
+        "position": "upper_stem"
+      },
+      "label": null
+    },
+    {
+      "id": "mid-right-stub",
+      "kind": "plant_part",
+      "features": {
+        "shape": "thin_pointed_stub",
+        "colour": "light_green",
+        "orientation": "upper_right",
+        "position": "middle_stem"
+      },
+      "label": null
+    },
+    {
+      "id": "mid-left-stub",
+      "kind": "plant_part",
+      "features": {
+        "shape": "short_tapering_stub",
+        "colour": "pale_green_brown",
+        "orientation": "upper_left",
+        "position": "middle_stem",
+        "tip": "near_dark_ink"
+      },
+      "label": null
+    },
+    {
+      "id": "lower-right-stub",
+      "kind": "plant_part",
+      "features": {
+        "shape": "thin_tapering_stub",
+        "colour": "pale_brown",
+        "orientation": "upper_right",
+        "position": "below_middle_stem"
+      },
+      "label": null
+    },
+    {
+      "id": "lower-rounded-body",
+      "kind": "root",
+      "features": {
+        "root": "large_rounded_body",
+        "colour": "unpainted",
+        "shape": "broad_suboval_scalloped",
+        "surface": "many_short_curved_marks",
+        "position": "bottom_right",
+        "attachment": "notch_at_stem_end"
+      },
+      "label": null
+    },
+    {
+      "id": "blue-flower-stalk",
+      "kind": "plant_part",
+      "features": {
+        "shape": "thin_double_line",
+        "colour": "pale_brown",
+        "orientation": "diagonal_down_left",
+        "attachment": "upper_crown_partly_hidden"
+      },
+      "label": null
+    },
+    {
+      "id": "basal-oval-contact",
+      "kind": "plant_part",
+      "features": {
+        "shape": "small_oval",
+        "colour": "pale_green",
+        "position": "upper_left_notch_of_rounded_base",
+        "attachment": "main_stem_end",
+        "boundary": "overlaps_basal_margin"
+      },
+      "label": null
+    }
+  ],
+  "visual_uncertainty": [
+    "The bold blue lobe count is six. Fine, unpainted lines around the small rosette do not consistently close into additional separate lobes. A fine short stalk appears to run from its underside into the upper crown, with the lower join partly hidden.",
+    "Five visible blade-like shapes are distinguishable by drawn edges, innermost notches, or stalk connections. The green and olive curved areas behind them share concealed boundaries and are grouped into one painted region. This grouping does not establish that they are one leaf.",
+    "A pale two-line stalk ends in a small loop inside the lower part of the central blade. Thin branches in the fan overlap; isolated lines were not counted as separate stalks. Five short upper-leaning stubs can be traced at least partly to the main stem, with the two thinnest brown connections less certain.",
+    "The broad lowest form is called root by position only. Its outer line is partly faint in the lower right margin. Numerous interior hooks and shorter marginal scallops are visible; their number and anatomy are uncertain.",
+    "Faint reversed or offset marks in the left background and marginal number-like marks lack visible joins to the plant. They are not assigned to the drawing. No taxon is identified."
+  ],
+  "coordinate_frame": {
+    "source_size": [
+      2935,
+      3769
+    ],
+    "boxes": "approximate xyxy on unscaled Yale image, excluding background where separable"
+  },
+  "label_review": {
+    "zl_l0_locus_ids": [
+      "f49v.1",
+      "f49v.3",
+      "f49v.5",
+      "f49v.7",
+      "f49v.9",
+      "f49v.11",
+      "f49v.13",
+      "f49v.15",
+      "f49v.17",
+      "f49v.19",
+      "f49v.21",
+      "f49v.23",
+      "f49v.25",
+      "f49v.27",
+      "f49v.29",
+      "f49v.31",
+      "f49v.33",
+      "f49v.35",
+      "f49v.37",
+      "f49v.39",
+      "f49v.41",
+      "f49v.43",
+      "f49v.45",
+      "f49v.47",
+      "f49v.49",
+      "f49v.51"
+    ],
+    "zl_p0_locus_count": 26,
+    "observation": "The L0 fields alternate with P0 fields by locus number. The scan shows a narrow column of short left marks beside successive text rows. Other short rows align across the main stalk, and the blue flower and rounded lower body have no clear detached adjacent text. L0 is a transcription class and gives no independent pointing relation. None of these IDs are joined to an object.",
+    "blinding": "The drawing and positional notes were frozen from the scan before extracting only ZL locus IDs and line classes."
+  },
+  "independent_image_check": {
+    "scope": "Supporting scan-only inspection within this submission, performed before sharing the object list or locus IDs. The agreement decision requires a separate desk annotation.",
+    "agreements": "Six filled blue radial lobes, three dominant rounded crown forms, additional overlapping curved patches, two clear right-side stem shoots, one broad scalloped basal form with curved marks, and no isolated object-associated line. The fainter shoots and several attachment traces remain uncertain."
+  }
+}
