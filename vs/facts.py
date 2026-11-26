@@ -358,10 +358,20 @@ METRICS = {k[2:]: v for k, v in globals().items() if k.startswith("m_")}
 
 
 def battery():
-    """Facts on the record (registered by agents), as metric specs."""
+    """Registered DSL or legacy metric specs, in registry order."""
     from . import registry
-    return [{"id": i["id"], "title": i["title"], "statement": i["statement"], "metric": i["detail"]["metric"],
-             "params": i["detail"]["params"]} for i in registry.read("fact") if "metric" in i["detail"]]
+    rows = []
+    for item in registry.read("fact"):
+        detail = item["detail"]
+        row = {k: item[k] for k in ("id", "title", "statement")}
+        if "spec" in detail:
+            row["spec"] = detail["spec"]
+        elif "metric" in detail:
+            row.update(metric=detail["metric"], params=detail["params"])
+        else:
+            raise ValueError(f"Registered fact {item['id']} has neither a DSL spec nor a legacy metric")
+        rows.append(row)
+    return rows
 
 
 def run(train, evalp, ids=None):
@@ -369,7 +379,11 @@ def run(train, evalp, ids=None):
     for f in battery():
         if ids and f["id"] not in ids:
             continue
-        out[f["id"]] = METRICS[f["metric"]](train, evalp, **f["params"])
+        if "spec" in f:
+            from . import dsl
+            out[f["id"]] = dsl.evaluate(f["spec"], evalp)
+        else:
+            out[f["id"]] = METRICS[f["metric"]](train, evalp, **f["params"])
     return out
 
 

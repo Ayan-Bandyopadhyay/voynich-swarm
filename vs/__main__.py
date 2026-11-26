@@ -43,7 +43,10 @@ def main(argv=None):
         from .fetch import verify
         verify()
         tr, ev = corpus.split_pages(a.split)
-        for k, v in facts.run(tr, ev).items():
+        results = facts.run(tr, ev)
+        if not results:
+            print("No registered facts.")
+        for k, v in results.items():
             print(k, "ESTABLISHED" if v["pass"] else "REFUTED   ", v["value"])
     elif a.cmd == "judge":
         from . import corpus, judge
