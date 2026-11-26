@@ -1,0 +1,2176 @@
+{
+  "title": "Held-block NMF separates matched herbal groups, with sparse same-Currier evidence",
+  "statement": "Starting from Sterneck, Polish and Bowern (2021), compare unsupervised NMF and raw TF-IDF similarity in held-apart, same-section triples. Use only the pinned public practice training pool shared by ZL and Takahashi with matching metadata and at least 50 certain paragraph tokens in each. Within each held-out 16-folio block, match an anchor with a same-hand and a different-hand folio. Require distinct physical folios, both distances at most 12 folios and within two folios of each other, and a maximum token-count ratio of 1.25 across the three pages in both editions. Freeze the common page support before looking at word similarities. Fit each vocabulary, IDF and five-topic NMF in other blocks with one surrounding block on each side excluded. Draw 40 words per page for the primary comparison and 20 for sensitivity, using six fixed seeds.",
+  "program": "L2",
+  "check": "Reproduce the saved scores on the pinned public corpus. For a confirmatory hand-specific test, first identify additional independent same-section and same-Currier blocks with multiple hands, then freeze matching and an independent block-level contrast. Keep the copying and planted-hand controls and compare NMF with raw TF-IDF from the same training-only transform.",
+  "on_path": false,
+  "hard": true,
+  "source": "Rachel Sterneck, Annie Polish and Claire Bowern, Topic Modeling in the Voynich Manuscript (2021), sections 3 and 4.3–4.5. https://arxiv.org/abs/2107.02858",
+  "findings": "The 162-page eligible inventory yields 342 broad matched triples, all herbal, from 39 anchor folios across four held blocks. For 40-word samples the block-averaged same-hand NMF win rates are 86.4% in ZL and 85.8% in Takahashi. Raw TF-IDF gives 84.8% and 81.0%. A pooled copying baseline generated without hand or section labels gives 53.8% and 44.6% for NMF, while adding a fixed 15% planted hand vocabulary gives 93.8% and 93.9%. Requiring the same Currier variety leaves just 10 overlapping comparisons of hands 2 and 5, three anchor folios and two blocks. NMF rates there are 70.0% and 69.4%, driven by one block with 100% wins and one with about 40%. Raw TF-IDF already gives 85.8% and 79.4% on that small subset. The data table includes 20-word, exact-distance and same-side sensitivities.",
+  "interpretation": "A win means the anchor is closer to the same-hand comparison than to the different-hand comparison in cosine similarity, with half credit for ties. Average triples within each anchor folio, then average folios within block and give each held block equal weight. The broad botanical contrast joins differences in scribal hand and Currier variety. The limited within-B comparisons and unequal block scores leave the magnitude of a hand effect independent of dialect unresolved. Both transcriptions describe the same folios and therefore test transcription sensitivity. Overlapping comparisons are not independent trials. No p-value treating them as independent is reported.",
+  "controls": "The copying baseline samples a pooled training-only word distribution with one-third probability of copying one of the preceding 30 tokens, resetting the window at each physical block. It preserves the number of tokens per page. The synthetic planted control independently replaces words with hand-specific tokens at probability 15% on the same layout to check that the analysis can carry a handwriting-correlated lexical signal.",
+  "reproduction": "Write python to nmf_matched.py and results.plan to plan.json. From the pinned checkout run OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONHASHSEED=0 PYTHONPATH=. python3 nmf_matched.py plan.json result.json, with the NumPy and scikit-learn versions in results. The estimator is an unregularized five-topic TF-IDF NMF pilot. Raising the iteration limit from 1,200 to 3,000 eliminated one convergence warning and changed none of the four primary observed 40-word win rates.",
+  "results": {
+    "plan": {
+      "block_folios": 16,
+      "embargo_blocks_each_side": 1,
+      "eligible_min_paragraph_tokens_both_editions": 50,
+      "samples_per_page": [
+        40,
+        20
+      ],
+      "sampling_seeds": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "topics": 5,
+      "max_anchor_distance_folios": 12,
+      "max_distance_imbalance_folios": 2,
+      "max_largest_to_smallest_page_length_ratio_both_editions": 1.25,
+      "copy_window_tokens": 30,
+      "copy_rate": 0.3333333333333333,
+      "positive_control_hand_token_rate": 0.15
+    },
+    "versions": {
+      "sklearn": "1.8.0",
+      "numpy": "2.3.5"
+    },
+    "eligible_pages": 162,
+    "support": {
+      "1": {
+        "train_pages": 85,
+        "test_pages": 29,
+        "shared_section": {
+          "triads": 201,
+          "anchor_folios": 13,
+          "all_folios": 13,
+          "sections": [
+            "H"
+          ],
+          "hands": [
+            "1",
+            "2"
+          ]
+        },
+        "same_currier": {
+          "triads": 0,
+          "anchor_folios": 0,
+          "all_folios": 0,
+          "sections": [],
+          "hands": []
+        },
+        "same_side": {
+          "triads": 113,
+          "anchor_folios": 13,
+          "all_folios": 13,
+          "sections": [
+            "H"
+          ],
+          "hands": [
+            "1",
+            "2"
+          ]
+        },
+        "exact_distance": {
+          "triads": 19,
+          "anchor_folios": 5,
+          "all_folios": 9,
+          "sections": [
+            "H"
+          ],
+          "hands": [
+            "1",
+            "2"
+          ]
+        }
+      },
+      "2": {
+        "train_pages": 92,
+        "test_pages": 27,
+        "shared_section": {
+          "triads": 64,
+          "anchor_folios": 13,
+          "all_folios": 16,
+          "sections": [
+            "H"
+          ],
+          "hands": [
+            "1",
+            "2",
+            "5"
+          ]
+        },
+        "same_currier": {
+          "triads": 9,
+          "anchor_folios": 2,
+          "all_folios": 7,
+          "sections": [
+            "H"
+          ],
+          "hands": [
+            "2",
+            "5"
+          ]
+        },
+        "same_side": {
+          "triads": 31,
+          "anchor_folios": 9,
+          "all_folios": 11,
+          "sections": [
+            "H"
+          ],
+          "hands": [
+            "1",
+            "2",
+            "5"
+          ]
+        },
+        "exact_distance": {
+          "triads": 4,
+          "anchor_folios": 2,
+          "all_folios": 6,
+          "sections": [
+            "H"
+          ],
+          "hands": [
+            "1",
+            "2",
+            "5"
+          ]
+        }
+      },
+      "3": {
+        "train_pages": 110,
+        "test_pages": 14,
+        "shared_section": {
+          "triads": 26,
+          "anchor_folios": 7,
+          "all_folios": 8,
+          "sections": [
+            "H"
+          ],
+          "hands": [
+            "1",
+            "2",
+            "5"
+          ]
+        },
+        "same_currier": {
+          "triads": 1,
+          "anchor_folios": 1,
+          "all_folios": 3,
+          "sections": [
+            "H"
+          ],
+          "hands": [
+            "2",
+            "5"
+          ]
+        },
+        "same_side": {
+          "triads": 22,
+          "anchor_folios": 7,
+          "all_folios": 8,
+          "sections": [
+            "H"
+          ],
+          "hands": [
+            "1",
+            "2",
+            "5"
+          ]
+        },
+        "exact_distance": {
+          "triads": 2,
+          "anchor_folios": 1,
+          "all_folios": 3,
+          "sections": [
+            "H"
+          ],
+          "hands": [
+            "1",
+            "2"
+          ]
+        }
+      },
+      "5": {
+        "train_pages": 96,
+        "test_pages": 32,
+        "shared_section": {
+          "triads": 51,
+          "anchor_folios": 6,
+          "all_folios": 6,
+          "sections": [
+            "H"
+          ],
+          "hands": [
+            "1",
+            "3"
+          ]
+        },
+        "same_currier": {
+          "triads": 0,
+          "anchor_folios": 0,
+          "all_folios": 0,
+          "sections": [],
+          "hands": []
+        },
+        "same_side": {
+          "triads": 36,
+          "anchor_folios": 6,
+          "all_folios": 6,
+          "sections": [
+            "H"
+          ],
+          "hands": [
+            "1",
+            "3"
+          ]
+        },
+        "exact_distance": {
+          "triads": 4,
+          "anchor_folios": 2,
+          "all_folios": 4,
+          "sections": [
+            "H"
+          ],
+          "hands": [
+            "1",
+            "3"
+          ]
+        }
+      }
+    },
+    "fit_diagnostics": {
+      "nonconvergence_warnings": 0,
+      "zero_test_vectors": 0
+    },
+    "scores": {
+      "zl/40/observed/nmf/shared_section": {
+        "win_rate": 0.8637959124797615,
+        "margin": 0.3483543324806308,
+        "blocks": {
+          "1": {
+            "win_rate": 0.9040009065009065,
+            "margin": 0.3242983591196791
+          },
+          "2": {
+            "win_rate": 0.892422748191979,
+            "margin": 0.48595313048425437
+          },
+          "3": {
+            "win_rate": 0.8846371882086168,
+            "margin": 0.4198795992801553
+          },
+          "5": {
+            "win_rate": 0.7741228070175439,
+            "margin": 0.16328624103843445
+          }
+        }
+      },
+      "zl/40/observed/nmf/same_currier": {
+        "win_rate": 0.7,
+        "margin": 0.23295744569172905,
+        "blocks": {
+          "2": {
+            "win_rate": 0.4,
+            "margin": 0.004146601961481758
+          },
+          "3": {
+            "win_rate": 1.0,
+            "margin": 0.46176828942197634
+          }
+        }
+      },
+      "zl/40/observed/nmf/same_side": {
+        "win_rate": 0.8685594305385972,
+        "margin": 0.34892267961957796,
+        "blocks": {
+          "1": {
+            "win_rate": 0.8990613553113553,
+            "margin": 0.3151672917271848
+          },
+          "2": {
+            "win_rate": 0.9448853615520282,
+            "margin": 0.5209164939156865
+          },
+          "3": {
+            "win_rate": 0.8571428571428571,
+            "margin": 0.39264978172285464
+          },
+          "5": {
+            "win_rate": 0.7731481481481481,
+            "margin": 0.1669571511125859
+          }
+        }
+      },
+      "zl/40/observed/nmf/exact_distance": {
+        "win_rate": 0.9409722222222222,
+        "margin": 0.46602597159232195,
+        "blocks": {
+          "1": {
+            "win_rate": 0.8888888888888888,
+            "margin": 0.29650970402584326
+          },
+          "2": {
+            "win_rate": 1.0,
+            "margin": 0.6879714545058435
+          },
+          "3": {
+            "win_rate": 1.0,
+            "margin": 0.6184094538279279
+          },
+          "5": {
+            "win_rate": 0.875,
+            "margin": 0.26121327400967304
+          }
+        }
+      },
+      "zl/40/observed/tfidf/shared_section": {
+        "win_rate": 0.8476605474926397,
+        "margin": 0.10256264592130254,
+        "blocks": {
+          "1": {
+            "win_rate": 0.8620736670736671,
+            "margin": 0.12189278327864866
+          },
+          "2": {
+            "win_rate": 0.8437212360289283,
+            "margin": 0.09869786898059464
+          },
+          "3": {
+            "win_rate": 0.8280612244897959,
+            "margin": 0.08184489396990682
+          },
+          "5": {
+            "win_rate": 0.8567860623781677,
+            "margin": 0.10781503745606005
+          }
+        }
+      },
+      "zl/40/observed/tfidf/same_currier": {
+        "win_rate": 0.8583333333333334,
+        "margin": 0.08806256859464706,
+        "blocks": {
+          "2": {
+            "win_rate": 0.7166666666666667,
+            "margin": 0.040673711544041896
+          },
+          "3": {
+            "win_rate": 1.0,
+            "margin": 0.13545142564525223
+          }
+        }
+      },
+      "zl/40/observed/tfidf/same_side": {
+        "win_rate": 0.849121692350859,
+        "margin": 0.10471941541109711,
+        "blocks": {
+          "1": {
+            "win_rate": 0.8643328893328893,
+            "margin": 0.11609688679110661
+          },
+          "2": {
+            "win_rate": 0.8853615520282186,
+            "margin": 0.1194333290006366
+          },
+          "3": {
+            "win_rate": 0.7845238095238095,
+            "margin": 0.06944004745714459
+          },
+          "5": {
+            "win_rate": 0.8622685185185185,
+            "margin": 0.11390739839550064
+          }
+        }
+      },
+      "zl/40/observed/tfidf/exact_distance": {
+        "win_rate": 0.9111111111111111,
+        "margin": 0.12321009698196882,
+        "blocks": {
+          "1": {
+            "win_rate": 0.8527777777777777,
+            "margin": 0.13110238877674382
+          },
+          "2": {
+            "win_rate": 0.9166666666666666,
+            "margin": 0.10640277583434295
+          },
+          "3": {
+            "win_rate": 0.9166666666666666,
+            "margin": 0.0694808770206243
+          },
+          "5": {
+            "win_rate": 0.9583333333333334,
+            "margin": 0.18585434629616418
+          }
+        }
+      },
+      "zl/40/copy/nmf/shared_section": {
+        "win_rate": 0.5384548609740194,
+        "margin": 0.020263745891448647,
+        "blocks": {
+          "1": {
+            "win_rate": 0.5533118733118733,
+            "margin": 0.0213196331582539
+          },
+          "2": {
+            "win_rate": 0.5144148586456279,
+            "margin": 0.00593431230175074
+          },
+          "3": {
+            "win_rate": 0.5757369614512472,
+            "margin": 0.0324470644410706
+          },
+          "5": {
+            "win_rate": 0.5103557504873294,
+            "margin": 0.021353973664719347
+          }
+        }
+      },
+      "zl/40/copy/nmf/same_currier": {
+        "win_rate": 0.70625,
+        "margin": 0.0726383949422227,
+        "blocks": {
+          "2": {
+            "win_rate": 0.5791666666666666,
+            "margin": 0.026132638429731507
+          },
+          "3": {
+            "win_rate": 0.8333333333333334,
+            "margin": 0.1191441514547139
+          }
+        }
+      },
+      "zl/40/copy/nmf/same_side": {
+        "win_rate": 0.5234797417089083,
+        "margin": 0.015579374018454498,
+        "blocks": {
+          "1": {
+            "win_rate": 0.5498933936433936,
+            "margin": 0.02275270839924763
+          },
+          "2": {
+            "win_rate": 0.5063932980599647,
+            "margin": -0.005455282180636513
+          },
+          "3": {
+            "win_rate": 0.5769841269841269,
+            "margin": 0.038348632239817174
+          },
+          "5": {
+            "win_rate": 0.46064814814814814,
+            "margin": 0.006671437615389699
+          }
+        }
+      },
+      "zl/40/copy/nmf/exact_distance": {
+        "win_rate": 0.6368055555555556,
+        "margin": 0.04228864918672921,
+        "blocks": {
+          "1": {
+            "win_rate": 0.4638888888888889,
+            "margin": -0.021874664416250224
+          },
+          "2": {
+            "win_rate": 0.7083333333333334,
+            "margin": 0.1101958278446227
+          },
+          "3": {
+            "win_rate": 0.6666666666666666,
+            "margin": -0.008675405503317255
+          },
+          "5": {
+            "win_rate": 0.7083333333333334,
+            "margin": 0.08950883882186163
+          }
+        }
+      },
+      "zl/40/copy/tfidf/shared_section": {
+        "win_rate": 0.49195206298933164,
+        "margin": -0.002511258086212035,
+        "blocks": {
+          "1": {
+            "win_rate": 0.47274577274577273,
+            "margin": -0.006817992091499905
+          },
+          "2": {
+            "win_rate": 0.5257232084155161,
+            "margin": 0.00010166221443983009
+          },
+          "3": {
+            "win_rate": 0.4651360544217687,
+            "margin": -0.0006315712588404989
+          },
+          "5": {
+            "win_rate": 0.504203216374269,
+            "margin": -0.002697131208947567
+          }
+        }
+      },
+      "zl/40/copy/tfidf/same_currier": {
+        "win_rate": 0.6270833333333333,
+        "margin": -0.008694122157047434,
+        "blocks": {
+          "2": {
+            "win_rate": 0.5041666666666667,
+            "margin": -0.0090352724624174
+          },
+          "3": {
+            "win_rate": 0.75,
+            "margin": -0.008352971851677469
+          }
+        }
+      },
+      "zl/40/copy/tfidf/same_side": {
+        "win_rate": 0.48928345959595965,
+        "margin": -0.003161790580876159,
+        "blocks": {
+          "1": {
+            "win_rate": 0.47757034632034634,
+            "margin": -0.007408185783238847
+          },
+          "2": {
+            "win_rate": 0.5277777777777778,
+            "margin": 0.003685984230898794
+          },
+          "3": {
+            "win_rate": 0.45873015873015877,
+            "margin": 0.00041030806080977303
+          },
+          "5": {
+            "win_rate": 0.4930555555555556,
+            "margin": -0.009335268831974356
+          }
+        }
+      },
+      "zl/40/copy/tfidf/exact_distance": {
+        "win_rate": 0.49722222222222223,
+        "margin": 0.008628342918056432,
+        "blocks": {
+          "1": {
+            "win_rate": 0.44722222222222224,
+            "margin": -0.011161909092726657
+          },
+          "2": {
+            "win_rate": 0.4166666666666667,
+            "margin": -0.024996910506208656
+          },
+          "3": {
+            "win_rate": 0.4166666666666667,
+            "margin": 0.012855389156318469
+          },
+          "5": {
+            "win_rate": 0.7083333333333334,
+            "margin": 0.05781680211484257
+          }
+        }
+      },
+      "zl/40/planted_hand/nmf/shared_section": {
+        "win_rate": 0.9376989877611625,
+        "margin": 0.46303585148765636,
+        "blocks": {
+          "1": {
+            "win_rate": 0.9606993931993932,
+            "margin": 0.5069814227623222
+          },
+          "2": {
+            "win_rate": 0.9582018408941486,
+            "margin": 0.4501961900899781
+          },
+          "3": {
+            "win_rate": 0.9253401360544218,
+            "margin": 0.43308406840505465
+          },
+          "5": {
+            "win_rate": 0.9065545808966862,
+            "margin": 0.46188172469327043
+          }
+        }
+      },
+      "zl/40/planted_hand/nmf/same_currier": {
+        "win_rate": 0.9916666666666667,
+        "margin": 0.4398803540544415,
+        "blocks": {
+          "2": {
+            "win_rate": 0.9833333333333334,
+            "margin": 0.4051792466688549
+          },
+          "3": {
+            "win_rate": 1.0,
+            "margin": 0.4745814614400281
+          }
+        }
+      },
+      "zl/40/planted_hand/nmf/same_side": {
+        "win_rate": 0.9342118722327055,
+        "margin": 0.4632552097793306,
+        "blocks": {
+          "1": {
+            "win_rate": 0.9564683002183002,
+            "margin": 0.5019010476013598
+          },
+          "2": {
+            "win_rate": 0.9572310405643739,
+            "margin": 0.4577723048840449
+          },
+          "3": {
+            "win_rate": 0.9111111111111111,
+            "margin": 0.4188037874438777
+          },
+          "5": {
+            "win_rate": 0.912037037037037,
+            "margin": 0.47454369918804
+          }
+        }
+      },
+      "zl/40/planted_hand/nmf/exact_distance": {
+        "win_rate": 0.9638888888888889,
+        "margin": 0.5034640002123014,
+        "blocks": {
+          "1": {
+            "win_rate": 0.9805555555555555,
+            "margin": 0.5466055394103743
+          },
+          "2": {
+            "win_rate": 0.9166666666666666,
+            "margin": 0.4502450416035374
+          },
+          "3": {
+            "win_rate": 1.0,
+            "margin": 0.4411551928152749
+          },
+          "5": {
+            "win_rate": 0.9583333333333334,
+            "margin": 0.5758502270200193
+          }
+        }
+      },
+      "zl/40/planted_hand/tfidf/shared_section": {
+        "win_rate": 0.7272207428827946,
+        "margin": 0.06943116629083665,
+        "blocks": {
+          "1": {
+            "win_rate": 0.84999814999815,
+            "margin": 0.1003232562368323
+          },
+          "2": {
+            "win_rate": 0.7359631821170283,
+            "margin": 0.05447107654572262
+          },
+          "3": {
+            "win_rate": 0.63718820861678,
+            "margin": 0.05712382056602651
+          },
+          "5": {
+            "win_rate": 0.6857334307992202,
+            "margin": 0.06580651181476516
+          }
+        }
+      },
+      "zl/40/planted_hand/tfidf/same_currier": {
+        "win_rate": 0.8187500000000001,
+        "margin": 0.12251344856169545,
+        "blocks": {
+          "2": {
+            "win_rate": 0.8041666666666667,
+            "margin": 0.07520507008662114
+          },
+          "3": {
+            "win_rate": 0.8333333333333334,
+            "margin": 0.16982182703676976
+          }
+        }
+      },
+      "zl/40/planted_hand/tfidf/same_side": {
+        "win_rate": 0.721114128926629,
+        "margin": 0.06706886052240472,
+        "blocks": {
+          "1": {
+            "win_rate": 0.8559181559181559,
+            "margin": 0.10115011720139756
+          },
+          "2": {
+            "win_rate": 0.6951058201058201,
+            "margin": 0.045656962756134775
+          },
+          "3": {
+            "win_rate": 0.6285714285714286,
+            "margin": 0.05601912427875056
+          },
+          "5": {
+            "win_rate": 0.7048611111111112,
+            "margin": 0.06544923785333599
+          }
+        }
+      },
+      "zl/40/planted_hand/tfidf/exact_distance": {
+        "win_rate": 0.7909722222222222,
+        "margin": 0.08840286449608427,
+        "blocks": {
+          "1": {
+            "win_rate": 0.8722222222222222,
+            "margin": 0.09419153448647007
+          },
+          "2": {
+            "win_rate": 0.875,
+            "margin": 0.08998963034739825
+          },
+          "3": {
+            "win_rate": 0.5833333333333334,
+            "margin": 0.02490872202624631
+          },
+          "5": {
+            "win_rate": 0.8333333333333334,
+            "margin": 0.14452157112422243
+          }
+        }
+      },
+      "zl/20/observed/nmf/shared_section": {
+        "win_rate": 0.7360524995028321,
+        "margin": 0.2191444864022032,
+        "blocks": {
+          "1": {
+            "win_rate": 0.7797940947940948,
+            "margin": 0.2884683387643474
+          },
+          "2": {
+            "win_rate": 0.7629026955950033,
+            "margin": 0.26853896979292513
+          },
+          "3": {
+            "win_rate": 0.76859410430839,
+            "margin": 0.2092894908260142
+          },
+          "5": {
+            "win_rate": 0.6329191033138402,
+            "margin": 0.11028114622552604
+          }
+        }
+      },
+      "zl/20/observed/nmf/same_currier": {
+        "win_rate": 0.6354166666666667,
+        "margin": 0.08670233094187667,
+        "blocks": {
+          "2": {
+            "win_rate": 0.4375,
+            "margin": -0.021542065008875007
+          },
+          "3": {
+            "win_rate": 0.8333333333333334,
+            "margin": 0.19494672689262835
+          }
+        }
+      },
+      "zl/20/observed/nmf/same_side": {
+        "win_rate": 0.7537135896510896,
+        "margin": 0.22609248848310656,
+        "blocks": {
+          "1": {
+            "win_rate": 0.7828437765937766,
+            "margin": 0.2807579088956892
+          },
+          "2": {
+            "win_rate": 0.8108465608465608,
+            "margin": 0.29529048779325984
+          },
+          "3": {
+            "win_rate": 0.7730158730158729,
+            "margin": 0.2027955932068722
+          },
+          "5": {
+            "win_rate": 0.6481481481481481,
+            "margin": 0.125525964036605
+          }
+        }
+      },
+      "zl/20/observed/nmf/exact_distance": {
+        "win_rate": 0.7680555555555556,
+        "margin": 0.26647087778032696,
+        "blocks": {
+          "1": {
+            "win_rate": 0.7805555555555556,
+            "margin": 0.24194306702349444
+          },
+          "2": {
+            "win_rate": 0.8333333333333334,
+            "margin": 0.3843687261164154
+          },
+          "3": {
+            "win_rate": 0.75,
+            "margin": 0.25160125098928415
+          },
+          "5": {
+            "win_rate": 0.7083333333333334,
+            "margin": 0.1879704669921138
+          }
+        }
+      },
+      "zl/20/observed/tfidf/shared_section": {
+        "win_rate": 0.744868583743656,
+        "margin": 0.08000762899881574,
+        "blocks": {
+          "1": {
+            "win_rate": 0.7356953694453694,
+            "margin": 0.09963735688996786
+          },
+          "2": {
+            "win_rate": 0.7510026298487837,
+            "margin": 0.07983247319999298
+          },
+          "3": {
+            "win_rate": 0.7288265306122449,
+            "margin": 0.06627241880402969
+          },
+          "5": {
+            "win_rate": 0.7639498050682262,
+            "margin": 0.07428826710127241
+          }
+        }
+      },
+      "zl/20/observed/tfidf/same_currier": {
+        "win_rate": 0.6375,
+        "margin": 0.06980061858931444,
+        "blocks": {
+          "2": {
+            "win_rate": 0.6916666666666667,
+            "margin": 0.05840617144305722
+          },
+          "3": {
+            "win_rate": 0.5833333333333334,
+            "margin": 0.08119506573557167
+          }
+        }
+      },
+      "zl/20/observed/tfidf/same_side": {
+        "win_rate": 0.7623096232471233,
+        "margin": 0.08465442442855012,
+        "blocks": {
+          "1": {
+            "win_rate": 0.7318443130943131,
+            "margin": 0.09735914815817731
+          },
+          "2": {
+            "win_rate": 0.8449074074074074,
+            "margin": 0.10138704032462925
+          },
+          "3": {
+            "win_rate": 0.6970238095238095,
+            "margin": 0.06051430623338258
+          },
+          "5": {
+            "win_rate": 0.7754629629629629,
+            "margin": 0.07935720299801134
+          }
+        }
+      },
+      "zl/20/observed/tfidf/exact_distance": {
+        "win_rate": 0.7878472222222223,
+        "margin": 0.08253499860781131,
+        "blocks": {
+          "1": {
+            "win_rate": 0.7347222222222223,
+            "margin": 0.08632644537155848
+          },
+          "2": {
+            "win_rate": 0.6458333333333334,
+            "margin": 0.05144018677248727
+          },
+          "3": {
+            "win_rate": 0.875,
+            "margin": 0.06304860422471582
+          },
+          "5": {
+            "win_rate": 0.8958333333333334,
+            "margin": 0.1293247580624837
+          }
+        }
+      },
+      "zl/20/copy/nmf/shared_section": {
+        "win_rate": 0.5498916833479803,
+        "margin": 0.01155674681083749,
+        "blocks": {
+          "1": {
+            "win_rate": 0.5098292448292449,
+            "margin": -0.005784568437940075
+          },
+          "2": {
+            "win_rate": 0.5416666666666666,
+            "margin": 0.015427013708621894
+          },
+          "3": {
+            "win_rate": 0.5500566893424036,
+            "margin": 0.006841825310820831
+          },
+          "5": {
+            "win_rate": 0.5980141325536062,
+            "margin": 0.029742716661847312
+          }
+        }
+      },
+      "zl/20/copy/nmf/same_currier": {
+        "win_rate": 0.625,
+        "margin": 0.11993629290844693,
+        "blocks": {
+          "2": {
+            "win_rate": 0.5833333333333334,
+            "margin": 0.08055972742478346
+          },
+          "3": {
+            "win_rate": 0.6666666666666666,
+            "margin": 0.1593128583921104
+          }
+        }
+      },
+      "zl/20/copy/nmf/same_side": {
+        "win_rate": 0.5735351261392928,
+        "margin": 0.018687741188489967,
+        "blocks": {
+          "1": {
+            "win_rate": 0.5133424445924446,
+            "margin": -0.0021890332759693237
+          },
+          "2": {
+            "win_rate": 0.5798059964726631,
+            "margin": 0.022362681471703148
+          },
+          "3": {
+            "win_rate": 0.569047619047619,
+            "margin": 0.008741408289826754
+          },
+          "5": {
+            "win_rate": 0.6319444444444444,
+            "margin": 0.04583590826839929
+          }
+        }
+      },
+      "zl/20/copy/nmf/exact_distance": {
+        "win_rate": 0.6152777777777778,
+        "margin": 0.046672256096828894,
+        "blocks": {
+          "1": {
+            "win_rate": 0.5027777777777778,
+            "margin": -0.04099830091768023
+          },
+          "2": {
+            "win_rate": 0.5833333333333334,
+            "margin": 0.025084259188429714
+          },
+          "3": {
+            "win_rate": 0.6666666666666666,
+            "margin": 0.07674611962620598
+          },
+          "5": {
+            "win_rate": 0.7083333333333334,
+            "margin": 0.1258569464903601
+          }
+        }
+      },
+      "zl/20/copy/tfidf/shared_section": {
+        "win_rate": 0.4929701396881667,
+        "margin": -0.0005490147872538225,
+        "blocks": {
+          "1": {
+            "win_rate": 0.4880648518148518,
+            "margin": -0.005213662258915063
+          },
+          "2": {
+            "win_rate": 0.5102728468113084,
+            "margin": 0.004777508615452358
+          },
+          "3": {
+            "win_rate": 0.540702947845805,
+            "margin": 0.005350613083925708
+          },
+          "5": {
+            "win_rate": 0.43283991228070173,
+            "margin": -0.007110518589478293
+          }
+        }
+      },
+      "zl/20/copy/tfidf/same_currier": {
+        "win_rate": 0.48541666666666666,
+        "margin": -0.015708802535359938,
+        "blocks": {
+          "2": {
+            "win_rate": 0.4708333333333333,
+            "margin": -0.01406534819408714
+          },
+          "3": {
+            "win_rate": 0.5,
+            "margin": -0.017352256876632735
+          }
+        }
+      },
+      "zl/20/copy/tfidf/same_side": {
+        "win_rate": 0.4913607707878541,
+        "margin": -0.00016800098574644776,
+        "blocks": {
+          "1": {
+            "win_rate": 0.47048056110556113,
+            "margin": -0.009945325654197373
+          },
+          "2": {
+            "win_rate": 0.5184082892416226,
+            "margin": 0.013283349789850515
+          },
+          "3": {
+            "win_rate": 0.5448412698412698,
+            "margin": 0.0020888773473381975
+          },
+          "5": {
+            "win_rate": 0.43171296296296297,
+            "margin": -0.00609890542597713
+          }
+        }
+      },
+      "zl/20/copy/tfidf/exact_distance": {
+        "win_rate": 0.42777777777777776,
+        "margin": 0.0006073490453071827,
+        "blocks": {
+          "1": {
+            "win_rate": 0.46111111111111114,
+            "margin": -0.0006383966962211701
+          },
+          "2": {
+            "win_rate": 0.4583333333333333,
+            "margin": -0.015036385537291247
+          },
+          "3": {
+            "win_rate": 0.3333333333333333,
+            "margin": -0.008317473880747031
+          },
+          "5": {
+            "win_rate": 0.4583333333333333,
+            "margin": 0.02642165229548818
+          }
+        }
+      },
+      "zl/20/planted_hand/nmf/shared_section": {
+        "win_rate": 0.7683930197001336,
+        "margin": 0.25959264988613656,
+        "blocks": {
+          "1": {
+            "win_rate": 0.8518034743034743,
+            "margin": 0.34625699496223605
+          },
+          "2": {
+            "win_rate": 0.8181459566074951,
+            "margin": 0.2942452010877633
+          },
+          "3": {
+            "win_rate": 0.7999433106575964,
+            "margin": 0.2974079880066645
+          },
+          "5": {
+            "win_rate": 0.6036793372319689,
+            "margin": 0.10046041548788234
+          }
+        }
+      },
+      "zl/20/planted_hand/nmf/same_currier": {
+        "win_rate": 0.80625,
+        "margin": 0.33945046199501927,
+        "blocks": {
+          "2": {
+            "win_rate": 0.7791666666666667,
+            "margin": 0.25935856561843745
+          },
+          "3": {
+            "win_rate": 0.8333333333333334,
+            "margin": 0.41954235837160114
+          }
+        }
+      },
+      "zl/20/planted_hand/nmf/same_side": {
+        "win_rate": 0.767551969635303,
+        "margin": 0.2609709717127379,
+        "blocks": {
+          "1": {
+            "win_rate": 0.8504107004107004,
+            "margin": 0.32969916706682284
+          },
+          "2": {
+            "win_rate": 0.7918871252204586,
+            "margin": 0.3046325303626867
+          },
+          "3": {
+            "win_rate": 0.8075396825396826,
+            "margin": 0.30013973713411624
+          },
+          "5": {
+            "win_rate": 0.6203703703703703,
+            "margin": 0.10941245228732593
+          }
+        }
+      },
+      "zl/20/planted_hand/nmf/exact_distance": {
+        "win_rate": 0.7159722222222222,
+        "margin": 0.2220956229125835,
+        "blocks": {
+          "1": {
+            "win_rate": 0.8638888888888889,
+            "margin": 0.3908703276482365
+          },
+          "2": {
+            "win_rate": 0.8333333333333334,
+            "margin": 0.22499367163641742
+          },
+          "3": {
+            "win_rate": 0.5833333333333334,
+            "margin": 0.17794451976547257
+          },
+          "5": {
+            "win_rate": 0.5833333333333334,
+            "margin": 0.09457397260020749
+          }
+        }
+      },
+      "zl/20/planted_hand/tfidf/shared_section": {
+        "win_rate": 0.6495760701534451,
+        "margin": 0.05838681830634549,
+        "blocks": {
+          "1": {
+            "win_rate": 0.7246947959447959,
+            "margin": 0.0821720811238737
+          },
+          "2": {
+            "win_rate": 0.6057034845496384,
+            "margin": 0.03480549294531986
+          },
+          "3": {
+            "win_rate": 0.6115646258503401,
+            "margin": 0.061433107676731845
+          },
+          "5": {
+            "win_rate": 0.6563413742690059,
+            "margin": 0.05513659147945656
+          }
+        }
+      },
+      "zl/20/planted_hand/tfidf/same_currier": {
+        "win_rate": 0.7572916666666667,
+        "margin": 0.1096807295844801,
+        "blocks": {
+          "2": {
+            "win_rate": 0.68125,
+            "margin": 0.05764521284348412
+          },
+          "3": {
+            "win_rate": 0.8333333333333334,
+            "margin": 0.16171624632547607
+          }
+        }
+      },
+      "zl/20/planted_hand/tfidf/same_side": {
+        "win_rate": 0.6521655331551165,
+        "margin": 0.059212820111978585,
+        "blocks": {
+          "1": {
+            "win_rate": 0.7339707745957746,
+            "margin": 0.08572498288145017
+          },
+          "2": {
+            "win_rate": 0.6126543209876543,
+            "margin": 0.03457361951278796
+          },
+          "3": {
+            "win_rate": 0.6138888888888889,
+            "margin": 0.06208354369855661
+          },
+          "5": {
+            "win_rate": 0.6481481481481481,
+            "margin": 0.05446913435511961
+          }
+        }
+      },
+      "zl/20/planted_hand/tfidf/exact_distance": {
+        "win_rate": 0.7173611111111111,
+        "margin": 0.07095932079629547,
+        "blocks": {
+          "1": {
+            "win_rate": 0.7444444444444445,
+            "margin": 0.07866640336482798
+          },
+          "2": {
+            "win_rate": 0.7083333333333334,
+            "margin": 0.07031390961227144
+          },
+          "3": {
+            "win_rate": 0.625,
+            "margin": 0.03175980555521979
+          },
+          "5": {
+            "win_rate": 0.7916666666666666,
+            "margin": 0.10309716465286266
+          }
+        }
+      },
+      "it/40/observed/nmf/shared_section": {
+        "win_rate": 0.8577687695045995,
+        "margin": 0.3553034217970078,
+        "blocks": {
+          "1": {
+            "win_rate": 0.9470748695748695,
+            "margin": 0.4969380345566865
+          },
+          "2": {
+            "win_rate": 0.8765614727153188,
+            "margin": 0.408004110869906
+          },
+          "3": {
+            "win_rate": 0.8253968253968254,
+            "margin": 0.322303608947721
+          },
+          "5": {
+            "win_rate": 0.782041910331384,
+            "margin": 0.19396793281371771
+          }
+        }
+      },
+      "it/40/observed/nmf/same_currier": {
+        "win_rate": 0.69375,
+        "margin": 0.1969902853978254,
+        "blocks": {
+          "2": {
+            "win_rate": 0.3875,
+            "margin": -0.03450802603821016
+          },
+          "3": {
+            "win_rate": 1.0,
+            "margin": 0.428488596833861
+          }
+        }
+      },
+      "it/40/observed/nmf/same_side": {
+        "win_rate": 0.8631670605628939,
+        "margin": 0.3530935009128828,
+        "blocks": {
+          "1": {
+            "win_rate": 0.9515218577718577,
+            "margin": 0.49570787212193046
+          },
+          "2": {
+            "win_rate": 0.908289241622575,
+            "margin": 0.4150886207601797
+          },
+          "3": {
+            "win_rate": 0.7873015873015874,
+            "margin": 0.3018567280966583
+          },
+          "5": {
+            "win_rate": 0.8055555555555556,
+            "margin": 0.1997207826727626
+          }
+        }
+      },
+      "it/40/observed/nmf/exact_distance": {
+        "win_rate": 0.9375,
+        "margin": 0.4603972124784399,
+        "blocks": {
+          "1": {
+            "win_rate": 0.9166666666666666,
+            "margin": 0.444461773187685
+          },
+          "2": {
+            "win_rate": 1.0,
+            "margin": 0.6819924610831882
+          },
+          "3": {
+            "win_rate": 0.9166666666666666,
+            "margin": 0.3836626478451195
+          },
+          "5": {
+            "win_rate": 0.9166666666666666,
+            "margin": 0.3314719677977669
+          }
+        }
+      },
+      "it/40/observed/tfidf/shared_section": {
+        "win_rate": 0.8103983194217795,
+        "margin": 0.0893472374099174,
+        "blocks": {
+          "1": {
+            "win_rate": 0.849725505975506,
+            "margin": 0.1122228594434935
+          },
+          "2": {
+            "win_rate": 0.8192636423405655,
+            "margin": 0.08396382546633105
+          },
+          "3": {
+            "win_rate": 0.7443877551020408,
+            "margin": 0.05674942505401551
+          },
+          "5": {
+            "win_rate": 0.8282163742690059,
+            "margin": 0.10445283967582954
+          }
+        }
+      },
+      "it/40/observed/tfidf/same_currier": {
+        "win_rate": 0.79375,
+        "margin": 0.06228433589287968,
+        "blocks": {
+          "2": {
+            "win_rate": 0.5875,
+            "margin": 0.014280699435658325
+          },
+          "3": {
+            "win_rate": 1.0,
+            "margin": 0.11028797235010104
+          }
+        }
+      },
+      "it/40/observed/tfidf/same_side": {
+        "win_rate": 0.8067403853862187,
+        "margin": 0.09032689603652569,
+        "blocks": {
+          "1": {
+            "win_rate": 0.8400347337847338,
+            "margin": 0.10713064242047259
+          },
+          "2": {
+            "win_rate": 0.9016754850088183,
+            "margin": 0.10681764720426846
+          },
+          "3": {
+            "win_rate": 0.6634920634920635,
+            "margin": 0.04291774833694207
+          },
+          "5": {
+            "win_rate": 0.8217592592592593,
+            "margin": 0.10444154618441963
+          }
+        }
+      },
+      "it/40/observed/tfidf/exact_distance": {
+        "win_rate": 0.8149305555555555,
+        "margin": 0.10118088510818174,
+        "blocks": {
+          "1": {
+            "win_rate": 0.8847222222222222,
+            "margin": 0.1146727574490431
+          },
+          "2": {
+            "win_rate": 0.7916666666666666,
+            "margin": 0.0707065717320092
+          },
+          "3": {
+            "win_rate": 0.5833333333333334,
+            "margin": 0.028859354725811883
+          },
+          "5": {
+            "win_rate": 1.0,
+            "margin": 0.1904848565258628
+          }
+        }
+      },
+      "it/40/copy/nmf/shared_section": {
+        "win_rate": 0.4458805331238819,
+        "margin": -0.02493547139188958,
+        "blocks": {
+          "1": {
+            "win_rate": 0.48848142598142597,
+            "margin": 0.0015440345767341098
+          },
+          "2": {
+            "win_rate": 0.4321170282708744,
+            "margin": -0.04158300271627609
+          },
+          "3": {
+            "win_rate": 0.42176870748299317,
+            "margin": -0.01704946014492333
+          },
+          "5": {
+            "win_rate": 0.4411549707602339,
+            "margin": -0.04265345728309301
+          }
+        }
+      },
+      "it/40/copy/nmf/same_currier": {
+        "win_rate": 0.4125,
+        "margin": -0.04318380227158552,
+        "blocks": {
+          "2": {
+            "win_rate": 0.4916666666666667,
+            "margin": 0.01368917525372136
+          },
+          "3": {
+            "win_rate": 0.3333333333333333,
+            "margin": -0.1000567797968924
+          }
+        }
+      },
+      "it/40/copy/nmf/same_side": {
+        "win_rate": 0.44730256240672905,
+        "margin": -0.02249642732827656,
+        "blocks": {
+          "1": {
+            "win_rate": 0.48327991452991453,
+            "margin": -0.0024214452861679703
+          },
+          "2": {
+            "win_rate": 0.44488536155202824,
+            "margin": -0.030300487530082958
+          },
+          "3": {
+            "win_rate": 0.41428571428571426,
+            "margin": -0.025999280397202007
+          },
+          "5": {
+            "win_rate": 0.44675925925925924,
+            "margin": -0.03126449609965331
+          }
+        }
+      },
+      "it/40/copy/nmf/exact_distance": {
+        "win_rate": 0.5375,
+        "margin": 0.013643815196410997,
+        "blocks": {
+          "1": {
+            "win_rate": 0.44166666666666665,
+            "margin": -0.00646128985927011
+          },
+          "2": {
+            "win_rate": 0.5833333333333334,
+            "margin": 0.04363013936812117
+          },
+          "3": {
+            "win_rate": 0.5833333333333334,
+            "margin": 0.03535747212988024
+          },
+          "5": {
+            "win_rate": 0.5416666666666666,
+            "margin": -0.01795106085308731
+          }
+        }
+      },
+      "it/40/copy/tfidf/shared_section": {
+        "win_rate": 0.4889069652339606,
+        "margin": -0.0014790022640514874,
+        "blocks": {
+          "1": {
+            "win_rate": 0.5029261941761942,
+            "margin": -0.006148171789371238
+          },
+          "2": {
+            "win_rate": 0.493655489809336,
+            "margin": 0.0029055728310336186
+          },
+          "3": {
+            "win_rate": 0.4381519274376417,
+            "margin": -0.008016578261941904
+          },
+          "5": {
+            "win_rate": 0.5208942495126706,
+            "margin": 0.005343168164073574
+          }
+        }
+      },
+      "it/40/copy/tfidf/same_currier": {
+        "win_rate": 0.43333333333333335,
+        "margin": -0.005809939268656134,
+        "blocks": {
+          "2": {
+            "win_rate": 0.5333333333333333,
+            "margin": -0.004816531747867424
+          },
+          "3": {
+            "win_rate": 0.3333333333333333,
+            "margin": -0.006803346789444845
+          }
+        }
+      },
+      "it/40/copy/tfidf/same_side": {
+        "win_rate": 0.47265188515188516,
+        "margin": -0.0021172306287385693,
+        "blocks": {
+          "1": {
+            "win_rate": 0.5003297628297628,
+            "margin": -0.005094121152684215
+          },
+          "2": {
+            "win_rate": 0.4365079365079365,
+            "margin": -0.005475159437688921
+          },
+          "3": {
+            "win_rate": 0.419047619047619,
+            "margin": -0.006245337713528233
+          },
+          "5": {
+            "win_rate": 0.5347222222222222,
+            "margin": 0.008345695788947092
+          }
+        }
+      },
+      "it/40/copy/tfidf/exact_distance": {
+        "win_rate": 0.47152777777777777,
+        "margin": -0.015705540622282854,
+        "blocks": {
+          "1": {
+            "win_rate": 0.5111111111111111,
+            "margin": -0.015430190049348117
+          },
+          "2": {
+            "win_rate": 0.4166666666666667,
+            "margin": -0.030052524555552195
+          },
+          "3": {
+            "win_rate": 0.4166666666666667,
+            "margin": -0.024572543344731326
+          },
+          "5": {
+            "win_rate": 0.5416666666666666,
+            "margin": 0.007233095460500223
+          }
+        }
+      },
+      "it/40/planted_hand/nmf/shared_section": {
+        "win_rate": 0.9393191115404099,
+        "margin": 0.47459152466806187,
+        "blocks": {
+          "1": {
+            "win_rate": 0.9629403929403929,
+            "margin": 0.5346245602668868
+          },
+          "2": {
+            "win_rate": 0.9049474030243261,
+            "margin": 0.4193076120645199
+          },
+          "3": {
+            "win_rate": 0.9540816326530612,
+            "margin": 0.5304049812680633
+          },
+          "5": {
+            "win_rate": 0.9353070175438596,
+            "margin": 0.4140289450727776
+          }
+        }
+      },
+      "it/40/planted_hand/nmf/same_currier": {
+        "win_rate": 0.8604166666666666,
+        "margin": 0.3633102442676205,
+        "blocks": {
+          "2": {
+            "win_rate": 0.8875,
+            "margin": 0.30971174450734346
+          },
+          "3": {
+            "win_rate": 0.8333333333333334,
+            "margin": 0.41690874402789757
+          }
+        }
+      },
+      "it/40/planted_hand/nmf/same_side": {
+        "win_rate": 0.9491720085470086,
+        "margin": 0.48513865303495435,
+        "blocks": {
+          "1": {
+            "win_rate": 0.9647435897435898,
+            "margin": 0.534956141589318
+          },
+          "2": {
+            "win_rate": 0.9391534391534392,
+            "margin": 0.45853905055687083
+          },
+          "3": {
+            "win_rate": 0.946031746031746,
+            "margin": 0.5169777437727865
+          },
+          "5": {
+            "win_rate": 0.9467592592592593,
+            "margin": 0.43008167622084204
+          }
+        }
+      },
+      "it/40/planted_hand/nmf/exact_distance": {
+        "win_rate": 0.96875,
+        "margin": 0.4692032054372157,
+        "blocks": {
+          "1": {
+            "win_rate": 0.9583333333333334,
+            "margin": 0.5537496493126705
+          },
+          "2": {
+            "win_rate": 0.9166666666666666,
+            "margin": 0.3657175260014467
+          },
+          "3": {
+            "win_rate": 1.0,
+            "margin": 0.4913407670021195
+          },
+          "5": {
+            "win_rate": 1.0,
+            "margin": 0.46600487943262614
+          }
+        }
+      },
+      "it/40/planted_hand/tfidf/shared_section": {
+        "win_rate": 0.8330592910693402,
+        "margin": 0.07461660410376847,
+        "blocks": {
+          "1": {
+            "win_rate": 0.8343922743922744,
+            "margin": 0.08500791983524185
+          },
+          "2": {
+            "win_rate": 0.8194937541091387,
+            "margin": 0.07132930231468763
+          },
+          "3": {
+            "win_rate": 0.8539115646258504,
+            "margin": 0.06576594345683873
+          },
+          "5": {
+            "win_rate": 0.8244395711500975,
+            "margin": 0.07636325080830568
+          }
+        }
+      },
+      "it/40/planted_hand/tfidf/same_currier": {
+        "win_rate": 0.8104166666666667,
+        "margin": 0.09185286182020486,
+        "blocks": {
+          "2": {
+            "win_rate": 0.7875,
+            "margin": 0.09843495226190865
+          },
+          "3": {
+            "win_rate": 0.8333333333333334,
+            "margin": 0.08527077137850105
+          }
+        }
+      },
+      "it/40/planted_hand/tfidf/same_side": {
+        "win_rate": 0.8342988223196557,
+        "margin": 0.07844175591738689,
+        "blocks": {
+          "1": {
+            "win_rate": 0.8260621323121323,
+            "margin": 0.08576924564271081
+          },
+          "2": {
+            "win_rate": 0.8514109347442681,
+            "margin": 0.0830899398411931
+          },
+          "3": {
+            "win_rate": 0.8194444444444444,
+            "margin": 0.06414925142348622
+          },
+          "5": {
+            "win_rate": 0.8402777777777778,
+            "margin": 0.0807585867621574
+          }
+        }
+      },
+      "it/40/planted_hand/tfidf/exact_distance": {
+        "win_rate": 0.8430555555555556,
+        "margin": 0.08055992773892497,
+        "blocks": {
+          "1": {
+            "win_rate": 0.8305555555555556,
+            "margin": 0.08132854997203455
+          },
+          "2": {
+            "win_rate": 0.875,
+            "margin": 0.07249547350711767
+          },
+          "3": {
+            "win_rate": 0.8333333333333334,
+            "margin": 0.06190518438479709
+          },
+          "5": {
+            "win_rate": 0.8333333333333334,
+            "margin": 0.10651050309175054
+          }
+        }
+      },
+      "it/20/observed/nmf/shared_section": {
+        "win_rate": 0.7470079374254476,
+        "margin": 0.23660044817416326,
+        "blocks": {
+          "1": {
+            "win_rate": 0.7981011581011581,
+            "margin": 0.2636786178472432
+          },
+          "2": {
+            "win_rate": 0.7592044707429323,
+            "margin": 0.2403000278296069
+          },
+          "3": {
+            "win_rate": 0.7027777777777777,
+            "margin": 0.23219411624433167
+          },
+          "5": {
+            "win_rate": 0.7279483430799221,
+            "margin": 0.21022903077547117
+          }
+        }
+      },
+      "it/20/observed/nmf/same_currier": {
+        "win_rate": 0.5229166666666667,
+        "margin": 0.019479541707253106,
+        "blocks": {
+          "2": {
+            "win_rate": 0.5458333333333333,
+            "margin": -0.02978443252954358
+          },
+          "3": {
+            "win_rate": 0.5,
+            "margin": 0.06874351594404979
+          }
+        }
+      },
+      "it/20/observed/nmf/same_side": {
+        "win_rate": 0.7423198522156855,
+        "margin": 0.22788987415515777,
+        "blocks": {
+          "1": {
+            "win_rate": 0.7996145058645059,
+            "margin": 0.256877343955186
+          },
+          "2": {
+            "win_rate": 0.7449294532627866,
+            "margin": 0.21452728623689768
+          },
+          "3": {
+            "win_rate": 0.6932539682539682,
+            "margin": 0.22510636331668246
+          },
+          "5": {
+            "win_rate": 0.7314814814814814,
+            "margin": 0.21504850311186494
+          }
+        }
+      },
+      "it/20/observed/nmf/exact_distance": {
+        "win_rate": 0.8375,
+        "margin": 0.30195724230366666,
+        "blocks": {
+          "1": {
+            "win_rate": 0.8083333333333333,
+            "margin": 0.2633046397073344
+          },
+          "2": {
+            "win_rate": 0.8333333333333334,
+            "margin": 0.3560350472055292
+          },
+          "3": {
+            "win_rate": 0.8333333333333334,
+            "margin": 0.2437570431450389
+          },
+          "5": {
+            "win_rate": 0.875,
+            "margin": 0.3447322391567642
+          }
+        }
+      },
+      "it/20/observed/tfidf/shared_section": {
+        "win_rate": 0.6678693491912838,
+        "margin": 0.05741290716379746,
+        "blocks": {
+          "1": {
+            "win_rate": 0.6648458485958486,
+            "margin": 0.06564164477332618
+          },
+          "2": {
+            "win_rate": 0.6378944773175542,
+            "margin": 0.05411559868039874
+          },
+          "3": {
+            "win_rate": 0.6738662131519274,
+            "margin": 0.03497360472581526
+          },
+          "5": {
+            "win_rate": 0.6948708576998051,
+            "margin": 0.07492078047564966
+          }
+        }
+      },
+      "it/20/observed/tfidf/same_currier": {
+        "win_rate": 0.76875,
+        "margin": 0.0655716574126181,
+        "blocks": {
+          "2": {
+            "win_rate": 0.6208333333333333,
+            "margin": 0.033237432012408925
+          },
+          "3": {
+            "win_rate": 0.9166666666666666,
+            "margin": 0.09790588281282726
+          }
+        }
+      },
+      "it/20/observed/tfidf/same_side": {
+        "win_rate": 0.6598635353843687,
+        "margin": 0.05474160474902714,
+        "blocks": {
+          "1": {
+            "win_rate": 0.6599678099678099,
+            "margin": 0.06411386995176914
+          },
+          "2": {
+            "win_rate": 0.6245590828924162,
+            "margin": 0.05389965225227905
+          },
+          "3": {
+            "win_rate": 0.6176587301587302,
+            "margin": 0.020418384448227668
+          },
+          "5": {
+            "win_rate": 0.7372685185185185,
+            "margin": 0.08053451234383269
+          }
+        }
+      },
+      "it/20/observed/tfidf/exact_distance": {
+        "win_rate": 0.7458333333333333,
+        "margin": 0.07309757265064581,
+        "blocks": {
+          "1": {
+            "win_rate": 0.7541666666666667,
+            "margin": 0.07862690606013926
+          },
+          "2": {
+            "win_rate": 0.6875,
+            "margin": 0.036772829601697844
+          },
+          "3": {
+            "win_rate": 0.8333333333333334,
+            "margin": 0.056996711826704266
+          },
+          "5": {
+            "win_rate": 0.7083333333333334,
+            "margin": 0.1199938431140419
+          }
+        }
+      },
+      "it/20/copy/nmf/shared_section": {
+        "win_rate": 0.4740298226303504,
+        "margin": -0.021836244532512056,
+        "blocks": {
+          "1": {
+            "win_rate": 0.5603426203426203,
+            "margin": 0.035575947935923294
+          },
+          "2": {
+            "win_rate": 0.434861932938856,
+            "margin": -0.04660470680672826
+          },
+          "3": {
+            "win_rate": 0.4996598639455782,
+            "margin": -0.005552411799218824
+          },
+          "5": {
+            "win_rate": 0.401254873294347,
+            "margin": -0.07076380746002443
+          }
+        }
+      },
+      "it/20/copy/nmf/same_currier": {
+        "win_rate": 0.44791666666666663,
+        "margin": -0.1272258226650811,
+        "blocks": {
+          "2": {
+            "win_rate": 0.3958333333333333,
+            "margin": -0.1154622695246998
+          },
+          "3": {
+            "win_rate": 0.5,
+            "margin": -0.13898937580546236
+          }
+        }
+      },
+      "it/20/copy/nmf/same_side": {
+        "win_rate": 0.47367985024235026,
+        "margin": -0.010204169414509112,
+        "blocks": {
+          "1": {
+            "win_rate": 0.5529204591704592,
+            "margin": 0.031044050994571706
+          },
+          "2": {
+            "win_rate": 0.45039682539682535,
+            "margin": -0.028345577709006302
+          },
+          "3": {
+            "win_rate": 0.4654761904761905,
+            "margin": -0.006076485048469239
+          },
+          "5": {
+            "win_rate": 0.42592592592592593,
+            "margin": -0.03743866589513261
+          }
+        }
+      },
+      "it/20/copy/nmf/exact_distance": {
+        "win_rate": 0.4375,
+        "margin": -0.06037789378024475,
+        "blocks": {
+          "1": {
+            "win_rate": 0.5416666666666667,
+            "margin": 0.03573547318661562
+          },
+          "2": {
+            "win_rate": 0.5,
+            "margin": 0.03426988652536855
+          },
+          "3": {
+            "win_rate": 0.4166666666666667,
+            "margin": -0.10268632075342927
+          },
+          "5": {
+            "win_rate": 0.2916666666666667,
+            "margin": -0.2088306140795339
+          }
+        }
+      },
+      "it/20/copy/tfidf/shared_section": {
+        "win_rate": 0.4978509111181537,
+        "margin": 0.0004464972356293163,
+        "blocks": {
+          "1": {
+            "win_rate": 0.5113192363192363,
+            "margin": 0.004641117798245847
+          },
+          "2": {
+            "win_rate": 0.5080374753451676,
+            "margin": 0.0037909857316702654
+          },
+          "3": {
+            "win_rate": 0.46272675736961455,
+            "margin": -0.012939829809678229
+          },
+          "5": {
+            "win_rate": 0.5093201754385965,
+            "margin": 0.006293715222279382
+          }
+        }
+      },
+      "it/20/copy/tfidf/same_currier": {
+        "win_rate": 0.33541666666666664,
+        "margin": -0.035141572216476784,
+        "blocks": {
+          "2": {
+            "win_rate": 0.5041666666666667,
+            "margin": 0.005696600996001813
+          },
+          "3": {
+            "win_rate": 0.16666666666666666,
+            "margin": -0.07597974542895539
+          }
+        }
+      },
+      "it/20/copy/tfidf/same_side": {
+        "win_rate": 0.4861954692683859,
+        "margin": 7.230784555682158e-05,
+        "blocks": {
+          "1": {
+            "win_rate": 0.4977801134051134,
+            "margin": 0.001885643567306619
+          },
+          "2": {
+            "win_rate": 0.48390652557319225,
+            "margin": -0.003501067829218788
+          },
+          "3": {
+            "win_rate": 0.4492063492063492,
+            "margin": -0.00980438209758018
+          },
+          "5": {
+            "win_rate": 0.5138888888888888,
+            "margin": 0.011709037741719636
+          }
+        }
+      },
+      "it/20/copy/tfidf/exact_distance": {
+        "win_rate": 0.46458333333333335,
+        "margin": -0.00979542187568571,
+        "blocks": {
+          "1": {
+            "win_rate": 0.44166666666666665,
+            "margin": -0.014018623531366107
+          },
+          "2": {
+            "win_rate": 0.4583333333333333,
+            "margin": -0.011978334327820491
+          },
+          "3": {
+            "win_rate": 0.4166666666666667,
+            "margin": -0.02383833736417366
+          },
+          "5": {
+            "win_rate": 0.5416666666666666,
+            "margin": 0.010653607720617419
+          }
+        }
+      },
+      "it/20/planted_hand/nmf/shared_section": {
+        "win_rate": 0.7716209072614509,
+        "margin": 0.25728473249292116,
+        "blocks": {
+          "1": {
+            "win_rate": 0.83494671994672,
+            "margin": 0.3275288170546083
+          },
+          "2": {
+            "win_rate": 0.809155161078238,
+            "margin": 0.3116052256651816
+          },
+          "3": {
+            "win_rate": 0.847108843537415,
+            "margin": 0.3150754870790641
+          },
+          "5": {
+            "win_rate": 0.5952729044834308,
+            "margin": 0.0749294001728306
+          }
+        }
+      },
+      "it/20/planted_hand/nmf/same_currier": {
+        "win_rate": 0.825,
+        "margin": 0.2616443516022396,
+        "blocks": {
+          "2": {
+            "win_rate": 0.8166666666666667,
+            "margin": 0.22983935869700234
+          },
+          "3": {
+            "win_rate": 0.8333333333333334,
+            "margin": 0.29344934450747684
+          }
+        }
+      },
+      "it/20/planted_hand/nmf/same_side": {
+        "win_rate": 0.7901957224873891,
+        "margin": 0.27361112636201756,
+        "blocks": {
+          "1": {
+            "win_rate": 0.8572335072335072,
+            "margin": 0.3404429167228599
+          },
+          "2": {
+            "win_rate": 0.8344356261022927,
+            "margin": 0.3618680357775923
+          },
+          "3": {
+            "win_rate": 0.8603174603174603,
+            "margin": 0.3104844960688983
+          },
+          "5": {
+            "win_rate": 0.6087962962962963,
+            "margin": 0.0816490568787197
+          }
+        }
+      },
+      "it/20/planted_hand/nmf/exact_distance": {
+        "win_rate": 0.7854166666666667,
+        "margin": 0.2666939138998724,
+        "blocks": {
+          "1": {
+            "win_rate": 0.85,
+            "margin": 0.3593075859821793
+          },
+          "2": {
+            "win_rate": 0.875,
+            "margin": 0.3541779259958679
+          },
+          "3": {
+            "win_rate": 0.9166666666666666,
+            "margin": 0.3514293363970407
+          },
+          "5": {
+            "win_rate": 0.5,
+            "margin": 0.0018608072244016675
+          }
+        }
+      },
+      "it/20/planted_hand/tfidf/shared_section": {
+        "win_rate": 0.6532925161427909,
+        "margin": 0.04762623640789522,
+        "blocks": {
+          "1": {
+            "win_rate": 0.7415719003219003,
+            "margin": 0.07726722312446378
+          },
+          "2": {
+            "win_rate": 0.6185322156476003,
+            "margin": 0.04883952566214182
+          },
+          "3": {
+            "win_rate": 0.6917233560090703,
+            "margin": 0.046988065286202745
+          },
+          "5": {
+            "win_rate": 0.5613425925925926,
+            "margin": 0.01741013155877253
+          }
+        }
+      },
+      "it/20/planted_hand/tfidf/same_currier": {
+        "win_rate": 0.6479166666666667,
+        "margin": 0.03352603447110848,
+        "blocks": {
+          "2": {
+            "win_rate": 0.6291666666666667,
+            "margin": 0.05041763856752152
+          },
+          "3": {
+            "win_rate": 0.6666666666666666,
+            "margin": 0.016634430374695447
+          }
+        }
+      },
+      "it/20/planted_hand/tfidf/same_side": {
+        "win_rate": 0.6633789532227032,
+        "margin": 0.052322928074491584,
+        "blocks": {
+          "1": {
+            "win_rate": 0.7591375060125061,
+            "margin": 0.0821967373265194
+          },
+          "2": {
+            "win_rate": 0.6431878306878307,
+            "margin": 0.05988046740710551
+          },
+          "3": {
+            "win_rate": 0.702579365079365,
+            "margin": 0.049161659604528
+          },
+          "5": {
+            "win_rate": 0.5486111111111112,
+            "margin": 0.01805284795981342
+          }
+        }
+      },
+      "it/20/planted_hand/tfidf/exact_distance": {
+        "win_rate": 0.628125,
+        "margin": 0.04261520619623446,
+        "blocks": {
+          "1": {
+            "win_rate": 0.7,
+            "margin": 0.08382920496838207
+          },
+          "2": {
+            "win_rate": 0.5625,
+            "margin": 0.027239779508295
+          },
+          "3": {
+            "win_rate": 0.8333333333333334,
+            "margin": 0.07286746639318022
+          },
+          "5": {
+            "win_rate": 0.4166666666666667,
+            "margin": -0.013475626084919442
+          }
+        }
+      }
+    }
+  },
+  "python": "\"\"\"Public blocked NMF similarity pilot with length and folio-distance matching.\"\"\"\n\nfrom collections import Counter, defaultdict, deque\nfrom dataclasses import dataclass\nimport json\nfrom pathlib import Path\nimport random\nimport re\nfrom statistics import mean\nimport sys\nimport warnings\n\nimport numpy as np\nimport sklearn\nfrom sklearn.decomposition import NMF\nfrom sklearn.exceptions import ConvergenceWarning\nfrom sklearn.feature_extraction.text import TfidfVectorizer\nfrom sklearn.preprocessing import normalize\n\nfrom vs import corpus, ivtff\n\n\ndef tokenize(document):\n    return document.split()\n\n\n@dataclass\nclass Document:\n    id: str\n    folio: int\n    section: str\n    hand: str\n    currier: str\n    words: dict[str, list[str]]\n\n\ndef paragraph_words(page):\n    return [\n        word for line in page.lines if line.unit == 'P'\n        for word in line.words if not ivtff.uncertain(word)\n    ]\n\n\ndef collect_documents(plan):\n    primary, _ = corpus.split_pages('practice', 'zl')\n    alternative, _ = corpus.split_pages('practice', 'it')\n    by_id = {page.id: page for page in alternative}\n    documents = []\n    for p in primary:\n        q = by_id.get(p.id)\n        match = re.fullmatch(r'f(\\d+)[rv]\\d*', p.id)\n        if not q or not match or not p.hand or not p.section:\n            continue\n        if (p.hand, p.section, p.language) != (q.hand, q.section, q.language):\n            continue\n        words = {'zl': paragraph_words(p), 'it': paragraph_words(q)}\n        if min(map(len, words.values())) < plan['eligible_min_paragraph_tokens_both_editions']:\n            continue\n        documents.append(Document(p.id, int(match[1]), p.section, p.hand, p.language, words))\n    return documents\n\n\ndef block(doc, plan):\n    return (doc.folio - 1) // plan['block_folios']\n\n\ndef compile_triads(documents, plan):\n    triads = {'shared_section': [], 'same_currier': [], 'same_side': [], 'exact_distance': []}\n    for anchor in documents:\n        comparators = [\n            doc for doc in documents\n            if doc.section == anchor.section\n            and 0 < abs(doc.folio - anchor.folio) <= plan['max_anchor_distance_folios']\n        ]\n        for positive in comparators:\n            if positive.hand != anchor.hand:\n                continue\n            positive_offset = positive.folio - anchor.folio\n            for negative in comparators:\n                if negative.hand == anchor.hand or negative.folio == positive.folio:\n                    continue\n                negative_offset = negative.folio - anchor.folio\n                imbalance = abs(abs(positive_offset) - abs(negative_offset))\n                if imbalance > plan['max_distance_imbalance_folios']:\n                    continue\n                triple = anchor, positive, negative\n                for edition in ('zl', 'it'):\n                    lengths = [len(doc.words[edition]) for doc in triple]\n                    if max(lengths) / min(lengths) > plan['max_largest_to_smallest_page_length_ratio_both_editions']:\n                        break\n                else:\n                    triads['shared_section'].append(triple)\n                    if anchor.currier in ('A', 'B') and anchor.currier == positive.currier == negative.currier:\n                        triads['same_currier'].append(triple)\n                    if positive_offset * negative_offset > 0:\n                        triads['same_side'].append(triple)\n                    if imbalance == 0:\n                        triads['exact_distance'].append(triple)\n    return triads\n\n\ndef synthetic(documents, prior, edition, seed, plan, planted):\n    stream = random.Random(f'copy/{edition}/{seed}/{planted}')\n    vocabulary, weights = zip(*sorted(prior.items()))\n    total_words = sum(len(doc.words[edition]) for doc in documents)\n    proposals = iter(stream.choices(vocabulary, weights=weights, k=total_words))\n    memory = deque(maxlen=plan['copy_window_tokens'])\n    previous_block = None\n    output = {}\n    for doc in documents:\n        this_block = block(doc, plan)\n        if this_block != previous_block:\n            memory.clear()\n        previous_block = this_block\n        words = []\n        for _ in doc.words[edition]:\n            candidate = next(proposals)\n            if memory and stream.random() < plan['copy_rate']:\n                candidate = stream.choice(memory)\n            memory.append(candidate)\n            if planted and stream.random() < plan['positive_control_hand_token_rate']:\n                candidate = f'planted_{doc.hand}_{stream.randrange(8)}'\n            words.append(candidate)\n        output[doc.id] = words\n    return output\n\n\ndef documents_at_length(documents, words, size, seed):\n    result = []\n    for doc in documents:\n        rng = random.Random(f'sample/{seed}/{doc.id}')\n        result.append(' '.join(rng.sample(words[doc.id], size)))\n    return result\n\n\ndef score_triads(similarity, docs, matched):\n    index = {doc.id: position for position, doc in enumerate(docs)}\n    by_folio = defaultdict(list)\n    margins = defaultdict(list)\n    for a, b, c in matched:\n        anchor, positive, negative = (index[doc.id] for doc in (a, b, c))\n        margin = float(similarity[anchor, positive] - similarity[anchor, negative])\n        win = 0.5 if abs(margin) <= 1e-12 else float(margin > 0)\n        by_folio[a.folio].append(win)\n        margins[a.folio].append(margin)\n    if not by_folio:\n        return None\n    return {\n        'win_rate': mean(mean(wins) for wins in by_folio.values()),\n        'margin': mean(mean(gaps) for gaps in margins.values()),\n    }\n\n\ndef evaluate(train, test, matched, words, size, seed, plan):\n    vectorizer = TfidfVectorizer(\n        tokenizer=tokenize, token_pattern=None, lowercase=False, min_df=2, max_df=0.95\n    )\n    train_input = documents_at_length(train, words, size, seed)\n    test_input = documents_at_length(test, words, size, seed)\n    fitted = vectorizer.fit_transform(train_input)\n    projected = vectorizer.transform(test_input)\n    model = NMF(n_components=plan['topics'], init='nndsvda', solver='cd', max_iter=3000, random_state=1)\n    with warnings.catch_warnings(record=True) as caught:\n        warnings.simplefilter('always', ConvergenceWarning)\n        model.fit(fitted)\n        topic_weights = normalize(model.transform(projected))\n    matrices = {\n        'nmf': topic_weights @ topic_weights.T,\n        'tfidf': (projected @ projected.T).toarray(),\n    }\n    metrics = {\n        method: {group: score_triads(similarity, test, triples) for group, triples in matched.items()}\n        for method, similarity in matrices.items()\n    }\n    return metrics, {\n        'nonconvergence_warnings': sum(issubclass(entry.category, ConvergenceWarning) for entry in caught),\n        'zero_test_vectors': int(sum(projected.getnnz(axis=1) == 0)),\n    }\n\n\ndef summarise(entries):\n    by_block = defaultdict(list)\n    for block_id, metric in entries:\n        if metric is not None:\n            by_block[block_id].append(metric)\n    rows = {\n        str(block_id): {key: mean(row[key] for row in repeats) for key in ('win_rate', 'margin')}\n        for block_id, repeats in sorted(by_block.items())\n    }\n    if not rows:\n        return None\n    return {\n        **{key: mean(block[key] for block in rows.values()) for key in ('win_rate', 'margin')},\n        'blocks': rows,\n    }\n\n\ndef run(plan):\n    documents = collect_documents(plan)\n    groups = defaultdict(list)\n    for doc in documents:\n        groups[block(doc, plan)].append(doc)\n    support = {}\n    scores = defaultdict(list)\n    diagnostics = Counter()\n    for holdout, test in sorted(groups.items()):\n        matched = compile_triads(test, plan)\n        if not matched['shared_section']:\n            continue\n        train = [doc for doc in documents if abs(block(doc, plan) - holdout) > plan['embargo_blocks_each_side']]\n        assert {doc.folio for doc in train}.isdisjoint(doc.folio for doc in test)\n        support[str(holdout)] = {\n            'train_pages': len(train),\n            'test_pages': len(test),\n            **{\n                name: {\n                    'triads': len(triples),\n                    'anchor_folios': len({triad[0].folio for triad in triples}),\n                    'all_folios': len({doc.folio for triad in triples for doc in triad}),\n                    'sections': sorted({triad[0].section for triad in triples}),\n                    'hands': sorted({doc.hand for triad in triples for doc in triad}),\n                }\n                for name, triples in matched.items()\n            },\n        }\n        for edition in ('zl', 'it'):\n            prior = Counter(word for doc in train for word in doc.words[edition])\n            observed = {doc.id: doc.words[edition] for doc in train + test}\n            for seed in plan['sampling_seeds']:\n                pools = {\n                    'observed': observed,\n                    'copy': synthetic(sorted(train + test, key=lambda doc: doc.folio), prior, edition, seed, plan, False),\n                    'planted_hand': synthetic(sorted(train + test, key=lambda doc: doc.folio), prior, edition, seed, plan, True),\n                }\n                for size in plan['samples_per_page']:\n                    for scenario, words in pools.items():\n                        metrics, counts = evaluate(train, test, matched, words, size, seed, plan)\n                        diagnostics.update(counts)\n                        for method, comparisons in metrics.items():\n                            for group, metric in comparisons.items():\n                                scores[edition, size, scenario, method, group].append((holdout, metric))\n        print(f'Block {holdout} finished', flush=True)\n    return {\n        'plan': plan,\n        'versions': {'sklearn': sklearn.__version__, 'numpy': np.__version__},\n        'eligible_pages': len(documents),\n        'support': support,\n        'fit_diagnostics': dict(diagnostics),\n        'scores': {'/'.join(map(str, key)): summarise(entries) for key, entries in scores.items()},\n    }\n\n\ndef main():\n    plan = json.loads(Path(sys.argv[1]).read_text())\n    result = run(plan)\n    Path(sys.argv[2]).write_text(json.dumps(result, indent=2) + '\\n')\n    print(result['fit_diagnostics'])\n    for phase, metric in result['scores'].items():\n        if '/40/' in phase and phase.endswith(('shared_section', 'same_currier')):\n            print(phase, round(metric['win_rate'], 4) if metric else None)\n\n\nif __name__ == '__main__':\n    main()\n"
+}
