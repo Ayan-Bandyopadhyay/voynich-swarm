@@ -1,0 +1,83 @@
+{
+  "title": "Previous-line one-edit repetition matches or exceeds the strongest layout-matched reference",
+  "statement": "In certain paragraph text, the share of current words of at least four transliteration characters that have a spelling exactly one character edit away on the previous line, minus the corresponding share four lines back, is at least the largest value for any reference corpus measured on the same selected word slots.",
+  "source": "Torsten Timm, How the Voynich Manuscript was created, first posted 2014, revised 2015 (https://arxiv.org/abs/1407.6639), section 5, graphs 2–4 and appendices VI–VII. This tests the layout-matched comparative claim for altered forms. F-015 tested exact same-word recurrence and was refuted. F-021 established bounded previous-line one-edit excess against a within-page null and reported a public reference comparison without registering it. Here the token selection, lags, minimum length, and edit distance are inherited without tuning, and the explicit above-all reference comparison is the sole test. The pinned DSL uses single character insertion, deletion, or replacement on stored transliteration strings. Eligible current tokens have four earlier consecutive selected numbered lines on the same page. References are in source order within calibration blocks and poured into the exact selected word slots, with short corpora excluded. The measure is an adaptation of Timm's 20-line analysis, which allowed cross-page comparisons and used a different script representation. The above_all comparator passes ties and uses zero margin. This test is sensitive to the strongest reference and its calibration excerpts, and does not determine a cause of recurrence. Exploratory public checks are recorded below. The two successful prior attacks R-022 and R-024 show that a positive local excess of altered forms is compatible with nonlinguistic copying procedures; the present comparison does not adjudicate those procedures.",
+  "spec": {
+    "select": {
+      "unit": [
+        "P"
+      ],
+      "certain": true
+    },
+    "statistic": {
+      "line_near_excess": {
+        "min_length": 4
+      }
+    },
+    "compare": [
+      {
+        "reference": "above_all"
+      }
+    ]
+  },
+  "public_practice": {
+    "same_reference_test": {
+      "ZL3b": {
+        "value": 0.029572,
+        "top_reference": "hebrew",
+        "top_reference_value": 0.02366,
+        "eligible_references": 48
+      },
+      "IT2a": {
+        "value": 0.030794,
+        "top_reference": "hebrew",
+        "top_reference_value": 0.02613,
+        "eligible_references": 49
+      },
+      "RF1b": {
+        "value": 0.020372,
+        "top_reference": "syriac",
+        "top_reference_value": 0.01924,
+        "eligible_references": 49
+      }
+    },
+    "exploratory_paragraph_null": {
+      "method": "Use P paragraphs from explicit opening and ending markers. Keep contiguous interior runs of at least five certain-token lines. Exclude first and last paragraph lines. For each current eligible token record binary exact hits (minimum length 2) and one-character-edit hits (minimum length 4), previous line minus four back. Shuffle whole intact lines inside each eligible run with 199 permutations, Python Random seed 408, once unrestricted and once restricted to equal certain-token counts. One-sided p with ties counted toward the null. This is a smaller public subset with a different question from the reference comparison.",
+      "ZL3b": {
+        "windows": 159,
+        "paragraphs": 23,
+        "pages": 18,
+        "exact": 0.009236,
+        "edit1": 0.03024,
+        "n_exact": 1191,
+        "n_edit1": 959,
+        "p_unrestricted": {
+          "exact": 0.225,
+          "edit1": 0.035
+        },
+        "p_equal_certain_line_lengths": {
+          "exact": 0.31,
+          "edit1": 0.105
+        }
+      },
+      "IT2a": {
+        "windows": 154,
+        "paragraphs": 22,
+        "pages": 17,
+        "exact": 0.011986,
+        "edit1": 0.026738,
+        "n_exact": 1168,
+        "n_edit1": 935,
+        "p_unrestricted": {
+          "exact": 0.155,
+          "edit1": 0.065
+        },
+        "p_equal_certain_line_lengths": {
+          "exact": 0.155,
+          "edit1": 0.09
+        }
+      },
+      "interpretation": "The edit-near result weakens when exact selected line lengths are preserved. The small sample is compatible with subtle layout effects and lower power. Matching selected line length does not fix the number of eligible long tokens across positions. Voynich grammar and the production process cannot be identified by these tests."
+    }
+  }
+}
