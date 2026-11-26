@@ -1,0 +1,3396 @@
+{
+  "title": "One public spectral excess depends on within-folio windows and the line-interior shuffle",
+  "program": "L2",
+  "on_path": false,
+  "hard": false,
+  "statement": "The two original public scripts reproduce #515 exactly, including the detected 44.52-character pulse. Four fixed physical folio blocks show no nominal p at or below .05 for the broad band, nearest bin, or center-band maximum in either continuous window size under the two endpoint-preserving nulls. Restricting 512-character windows to each folio gives one local paired excess, the f53–f85 block, where line-interior shuffling gives broad-band p values .02 in ZL and .05 in Takahashi, and nearest-bin .02 and .04. The broad-band ranks are .04 and .07 under folio-interior shuffling, including when scored glyph stock is exactly fixed. There is no positive criterion that is replicated across these tested nulls and layouts.",
+  "check": "Reproduce the predeclared four physical blocks, verify the scored-prefix invariants and isolate what changes on f53–f85 when within-line inventories are fixed. Any proposed confirmatory comparison should keep the matched physical-folio geometry and exact scored prefix fixed across editions, specify the frequency and null in advance, and account for looking at multiple blocks and window modes.",
+  "public_replay": {
+    "source": "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/515",
+    "original_experiment": "experiments/K-035-open-1/mubadala777/step.json",
+    "script_sha256": {
+      "voynich_spectral_lines.py": "33b0f0e7b9f2048a8fc7c9bf04cd3a19d34738337365b87e60232031313648f5",
+      "voynich_spectral_geometry.py": "21c66013284c82f1c3bf85f77ccafc0eff0e86a3f74bf442f0182e54b5eba41a"
+    },
+    "output_sha256": {
+      "primary": "3557b8d9d59efdee0d0adef7f12857f4bc02019ee3e6e65e3706dfcbd097ea19",
+      "additional": "07bf67c31acb07cf46a8303620f966b66d99e5002bd9b0d5dcb85f74a9204ad0"
+    },
+    "findings": [
+      "All registered training, evaluation, pulse and geometry figures match exactly.",
+      "The pulse avoided altering line-edge positions after a global glyph shuffle. It therefore keeps the endpoints of the randomized background, rather than restoring the original manuscript glyphs.",
+      "The exact original folio-interior null preserves the complete folio’s stock. It exchanges characters with the omitted tail of a truncated scored prefix. Independent seed checks verified the original endpoint and full-stock invariants in both views."
+    ]
+  },
+  "fixed_block_design": {
+    "scope": "Public practice only. Keep the exact strict paired loci and raw spaceless EVA representation from #515. Keep its already published period of 44. The 0.90–1.10 center band and shoulder factors 0.65–0.80 and 1.25–1.50 are fixed.",
+    "blocks": "Rank distinct numbered physical folios in canonical ZL first-observed order, and assign rank i to quartile floor(4*i/N). Analyze the four quartiles independently in each practice partition, keeping page panels of a folio together. Evaluation is primary. Training quartiles are descriptive because these pages set the common period. The ZL/IT results are alternative readings of the same loci, not independent cohorts.",
+    "layout": {
+      "continuous_1024": "administrative quartile stream with 1,024-position nonoverlapping Hann windows",
+      "continuous_512": "same stream with 512-position windows",
+      "within_folio_512": "512-position windows taken only within one physical folio; omit each folio's residual tail"
+    },
+    "spectrum": "Compare wide band mean, the nearest center Fourier bin selected before observations (lower bin on a tie), and maximum over the entire fixed center band. Divide each by the mean of the two shoulder means. For nearest-bin sensitivity also report fixed center bins closest to periods 0.95, 1.00 and 1.05 times 44, ranked against their own permutations. Use the simultaneous maximum of the center bins for an arbitrary narrow spike anywhere in the band.",
+    "null": "Use 99 shuffles from each endpoint-preserving folio-interior and line-interior permutation. Within a quartile and edition, feed identical permuted glyph streams into all window modes. Use seed 692615 plus 1000 for the line null. Preserve comparison boundaries and count ties against a positive upper-tail excess. Report supports, unavailable quartile geometry, and descriptive p-values. Give combined evidence only when the same prespecified broad or maximum statistic is positive in both editions of a fixed public evaluation block; otherwise no positive criterion is proposed. Do not recenter based on a measured peak.",
+    "calibration": "Check vectorized spectral power against the published direct Fourier code on the same exact observed stream to numerical tolerance. Confirm the original injected periodic glyph in the exact replay of #515, and separate each new null's scope from that reconstruction.",
+    "scored_prefix_sensitivity": "Before observing results, add a within-folio 512 null that shuffles only the retained prefix interior slots of each folio. This avoids changing the scored glyph stock by exchanging with a truncated folio tail. It preserves original line endpoints even when a 512-window boundary falls inside a line. Use 99 draws and seed 695615."
+  },
+  "evaluation_layout": {
+    "canonical_folios": [
+      [
+        "f1",
+        "f27"
+      ],
+      [
+        "f28",
+        "f52"
+      ],
+      [
+        "f53",
+        "f85"
+      ],
+      [
+        "f86",
+        "f116"
+      ]
+    ],
+    "qualifying_within_folio_blocks": [
+      0,
+      1,
+      6,
+      5
+    ],
+    "scope": "Physical numbering is shared across editions. Some labels have multiple panels. Twenty-six of the 29 evaluation folio numbers also occur on separate training sides or panels. The public partitions do not represent 29 independent held-out physical leaves."
+  },
+  "results": {
+    "center": 44,
+    "permutations": 99,
+    "max_errors": {
+      "train": {
+        "zl": {
+          "512": 2.220446049250313e-16,
+          "1024": 4.440892098500626e-16
+        },
+        "it": {
+          "512": 2.220446049250313e-16,
+          "1024": 7.771561172376096e-16
+        }
+      },
+      "evaluation": {
+        "zl": {
+          "512": 3.3306690738754696e-16,
+          "1024": 7.771561172376096e-16
+        },
+        "it": {
+          "512": 3.3306690738754696e-16,
+          "1024": 4.440892098500626e-16
+        }
+      }
+    },
+    "results": {
+      "train": {
+        "1": {
+          "zl": {
+            "folios": 25,
+            "lines": 525,
+            "glyphs": 16623,
+            "layouts": {
+              "continuous_1024": {
+                "windows": 16,
+                "used_glyphs": 16384,
+                "periods": {
+                  "nearest_shorter": 40.96,
+                  "nearest": 44.52173913043478,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 0.9692986230591485,
+                  "max_center": 1.062427897447693,
+                  "nearest_shorter": 0.912862503289666,
+                  "nearest": 1.062427897447693,
+                  "nearest_longer": 1.0597279133816062
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.7,
+                      "null_median": 0.9968875771842866
+                    },
+                    "max_center": {
+                      "p_upper": 0.53,
+                      "null_median": 1.069109377940061
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.89,
+                      "null_median": 1.0090530571363596
+                    },
+                    "nearest": {
+                      "p_upper": 0.23,
+                      "null_median": 0.9872896889698656
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.22,
+                      "null_median": 0.985879846688696
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.82,
+                      "null_median": 1.0212167936995018
+                    },
+                    "max_center": {
+                      "p_upper": 0.64,
+                      "null_median": 1.0852163365318657
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.93,
+                      "null_median": 1.0504927440190683
+                    },
+                    "nearest": {
+                      "p_upper": 0.25,
+                      "null_median": 0.9978316953912659
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.3,
+                      "null_median": 1.0051340017270847
+                    }
+                  }
+                }
+              },
+              "continuous_512": {
+                "windows": 32,
+                "used_glyphs": 16384,
+                "periods": {
+                  "nearest_shorter": 42.666666666666664,
+                  "nearest": 42.666666666666664,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 0.9733328364320039,
+                  "max_center": 1.0135495923140756,
+                  "nearest_shorter": 0.9331160805499323,
+                  "nearest": 0.9331160805499323,
+                  "nearest_longer": 1.0135495923140756
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.68,
+                      "null_median": 0.9927931197303493
+                    },
+                    "max_center": {
+                      "p_upper": 0.54,
+                      "null_median": 1.0195827012134528
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.83,
+                      "null_median": 0.9931799122297538
+                    },
+                    "nearest": {
+                      "p_upper": 0.83,
+                      "null_median": 0.9931799122297538
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.37,
+                      "null_median": 0.9873013399358465
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.7,
+                      "null_median": 0.9973926931654163
+                    },
+                    "max_center": {
+                      "p_upper": 0.54,
+                      "null_median": 1.0162611702772684
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.83,
+                      "null_median": 0.9884693156008839
+                    },
+                    "nearest": {
+                      "p_upper": 0.83,
+                      "null_median": 0.9884693156008839
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.4,
+                      "null_median": 1.0014527994919407
+                    }
+                  }
+                }
+              },
+              "within_folio_512": {
+                "windows": 19,
+                "used_glyphs": 9728,
+                "periods": {
+                  "nearest_shorter": 42.666666666666664,
+                  "nearest": 42.666666666666664,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 1.0267226534370375,
+                  "max_center": 1.0917604626936024,
+                  "nearest_shorter": 1.0917604626936024,
+                  "nearest": 1.0917604626936024,
+                  "nearest_longer": 0.961684844180473
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.3,
+                      "null_median": 0.9899940625713108
+                    },
+                    "max_center": {
+                      "p_upper": 0.22,
+                      "null_median": 1.0143522852963534
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.13,
+                      "null_median": 0.9908087794655144
+                    },
+                    "nearest": {
+                      "p_upper": 0.13,
+                      "null_median": 0.9908087794655144
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.6,
+                      "null_median": 0.9805279812573189
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.41,
+                      "null_median": 1.0062989591528724
+                    },
+                    "max_center": {
+                      "p_upper": 0.29,
+                      "null_median": 1.0450142685750496
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.22,
+                      "null_median": 1.0353100110913358
+                    },
+                    "nearest": {
+                      "p_upper": 0.22,
+                      "null_median": 1.0353100110913358
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.6,
+                      "null_median": 0.9816218088621038
+                    }
+                  },
+                  "scored_prefix_folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.32,
+                      "null_median": 1.004283327415069
+                    },
+                    "max_center": {
+                      "p_upper": 0.19,
+                      "null_median": 1.034991485396078
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.17,
+                      "null_median": 0.9927117604492729
+                    },
+                    "nearest": {
+                      "p_upper": 0.17,
+                      "null_median": 0.9927117604492729
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.68,
+                      "null_median": 0.9984398262062895
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "it": {
+            "folios": 25,
+            "lines": 525,
+            "glyphs": 16626,
+            "layouts": {
+              "continuous_1024": {
+                "windows": 16,
+                "used_glyphs": 16384,
+                "periods": {
+                  "nearest_shorter": 40.96,
+                  "nearest": 44.52173913043478,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 0.9681149571130697,
+                  "max_center": 1.0963389173113547,
+                  "nearest_shorter": 0.9029341619676359,
+                  "nearest": 1.042457404945156,
+                  "nearest_longer": 1.0963389173113547
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.66,
+                      "null_median": 0.9930879329293454
+                    },
+                    "max_center": {
+                      "p_upper": 0.27,
+                      "null_median": 1.0500055029449884
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.85,
+                      "null_median": 0.9826693685583922
+                    },
+                    "nearest": {
+                      "p_upper": 0.28,
+                      "null_median": 1.0009501153657223
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.07,
+                      "null_median": 0.9930492893389631
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.77,
+                      "null_median": 1.0080701674553907
+                    },
+                    "max_center": {
+                      "p_upper": 0.4,
+                      "null_median": 1.0773341923352853
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.95,
+                      "null_median": 1.0318090595067662
+                    },
+                    "nearest": {
+                      "p_upper": 0.26,
+                      "null_median": 0.9832733482189274
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.15,
+                      "null_median": 0.9997598901274487
+                    }
+                  }
+                }
+              },
+              "continuous_512": {
+                "windows": 32,
+                "used_glyphs": 16384,
+                "periods": {
+                  "nearest_shorter": 42.666666666666664,
+                  "nearest": 42.666666666666664,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 0.9819728212752068,
+                  "max_center": 1.0236122116517505,
+                  "nearest_shorter": 0.9403334308986631,
+                  "nearest": 0.9403334308986631,
+                  "nearest_longer": 1.0236122116517505
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.47,
+                      "null_median": 0.9765338969096778
+                    },
+                    "max_center": {
+                      "p_upper": 0.34,
+                      "null_median": 1.0026804694437712
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.72,
+                      "null_median": 0.9760878948731787
+                    },
+                    "nearest": {
+                      "p_upper": 0.72,
+                      "null_median": 0.9760878948731787
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.23,
+                      "null_median": 0.9750040535311515
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.64,
+                      "null_median": 0.9998007107173016
+                    },
+                    "max_center": {
+                      "p_upper": 0.5,
+                      "null_median": 1.0231330786679849
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.92,
+                      "null_median": 0.9974464544159644
+                    },
+                    "nearest": {
+                      "p_upper": 0.92,
+                      "null_median": 0.9974464544159644
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.36,
+                      "null_median": 1.0055634264574866
+                    }
+                  }
+                }
+              },
+              "within_folio_512": {
+                "windows": 19,
+                "used_glyphs": 9728,
+                "periods": {
+                  "nearest_shorter": 42.666666666666664,
+                  "nearest": 42.666666666666664,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 1.0238712508703611,
+                  "max_center": 1.0997245432739315,
+                  "nearest_shorter": 1.0997245432739315,
+                  "nearest": 1.0997245432739315,
+                  "nearest_longer": 0.948017958466791
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.29,
+                      "null_median": 0.9798892400883187
+                    },
+                    "max_center": {
+                      "p_upper": 0.13,
+                      "null_median": 1.0193931381456915
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.05,
+                      "null_median": 0.9921130033465267
+                    },
+                    "nearest": {
+                      "p_upper": 0.05,
+                      "null_median": 0.9921130033465267
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.64,
+                      "null_median": 0.979571053580006
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.42,
+                      "null_median": 1.0128121553576745
+                    },
+                    "max_center": {
+                      "p_upper": 0.22,
+                      "null_median": 1.0446249823971154
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.2,
+                      "null_median": 1.036158014243888
+                    },
+                    "nearest": {
+                      "p_upper": 0.2,
+                      "null_median": 1.036158014243888
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.81,
+                      "null_median": 0.9930263217869193
+                    }
+                  },
+                  "scored_prefix_folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.33,
+                      "null_median": 0.9928815330211207
+                    },
+                    "max_center": {
+                      "p_upper": 0.12,
+                      "null_median": 1.0272650694702274
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.09,
+                      "null_median": 0.9904349386184333
+                    },
+                    "nearest": {
+                      "p_upper": 0.09,
+                      "null_median": 0.9904349386184333
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.7,
+                      "null_median": 0.9939870870040035
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "2": {
+          "zl": {
+            "folios": 25,
+            "lines": 523,
+            "glyphs": 18833,
+            "layouts": {
+              "continuous_1024": {
+                "windows": 18,
+                "used_glyphs": 18432,
+                "periods": {
+                  "nearest_shorter": 40.96,
+                  "nearest": 44.52173913043478,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 0.9548232359745922,
+                  "max_center": 0.9875101458275244,
+                  "nearest_shorter": 0.979367309372136,
+                  "nearest": 0.9024325654389271,
+                  "nearest_longer": 0.9499829232597813
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.77,
+                      "null_median": 1.00486992591704
+                    },
+                    "max_center": {
+                      "p_upper": 0.84,
+                      "null_median": 1.0619997279238051
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.62,
+                      "null_median": 0.9926036576749289
+                    },
+                    "nearest": {
+                      "p_upper": 0.89,
+                      "null_median": 1.0056482591200429
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.76,
+                      "null_median": 0.9986304231292981
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.84,
+                      "null_median": 0.991917136476541
+                    },
+                    "max_center": {
+                      "p_upper": 0.93,
+                      "null_median": 1.0560126645993004
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.7,
+                      "null_median": 1.009218476320094
+                    },
+                    "nearest": {
+                      "p_upper": 0.87,
+                      "null_median": 0.9698889921584906
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.81,
+                      "null_median": 1.0081230560999344
+                    }
+                  }
+                }
+              },
+              "continuous_512": {
+                "windows": 36,
+                "used_glyphs": 18432,
+                "periods": {
+                  "nearest_shorter": 42.666666666666664,
+                  "nearest": 42.666666666666664,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 1.0785883311276168,
+                  "max_center": 1.1132581787750713,
+                  "nearest_shorter": 1.1132581787750713,
+                  "nearest": 1.1132581787750713,
+                  "nearest_longer": 1.0439184834801623
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.05,
+                      "null_median": 1.0011368335797135
+                    },
+                    "max_center": {
+                      "p_upper": 0.04,
+                      "null_median": 1.0194078515556906
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.03,
+                      "null_median": 0.9959684702765013
+                    },
+                    "nearest": {
+                      "p_upper": 0.03,
+                      "null_median": 0.9959684702765013
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.19,
+                      "null_median": 1.000659270634844
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.07,
+                      "null_median": 1.0060556606226556
+                    },
+                    "max_center": {
+                      "p_upper": 0.03,
+                      "null_median": 1.027176177729557
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.03,
+                      "null_median": 1.0165329715536284
+                    },
+                    "nearest": {
+                      "p_upper": 0.03,
+                      "null_median": 1.0165329715536284
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.26,
+                      "null_median": 0.9950852840839489
+                    }
+                  }
+                }
+              },
+              "within_folio_512": {
+                "windows": 21,
+                "used_glyphs": 10752,
+                "periods": {
+                  "nearest_shorter": 42.666666666666664,
+                  "nearest": 42.666666666666664,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 1.0657016434442668,
+                  "max_center": 1.0962083017778324,
+                  "nearest_shorter": 1.0962083017778324,
+                  "nearest": 1.0962083017778324,
+                  "nearest_longer": 1.0351949851107012
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.16,
+                      "null_median": 1.008617744135737
+                    },
+                    "max_center": {
+                      "p_upper": 0.17,
+                      "null_median": 1.0337725517836864
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.13,
+                      "null_median": 1.0087069254296706
+                    },
+                    "nearest": {
+                      "p_upper": 0.13,
+                      "null_median": 1.0087069254296706
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.31,
+                      "null_median": 1.003080479169707
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.24,
+                      "null_median": 1.0285321842293613
+                    },
+                    "max_center": {
+                      "p_upper": 0.34,
+                      "null_median": 1.057518461648421
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.18,
+                      "null_median": 1.0140480768781668
+                    },
+                    "nearest": {
+                      "p_upper": 0.18,
+                      "null_median": 1.0140480768781668
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.41,
+                      "null_median": 1.0182708359083517
+                    }
+                  },
+                  "scored_prefix_folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.09,
+                      "null_median": 0.9873797900138985
+                    },
+                    "max_center": {
+                      "p_upper": 0.07,
+                      "null_median": 1.0137530137725559
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.06,
+                      "null_median": 0.9841739561101901
+                    },
+                    "nearest": {
+                      "p_upper": 0.06,
+                      "null_median": 0.9841739561101901
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.25,
+                      "null_median": 0.9778142677179069
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "it": {
+            "folios": 25,
+            "lines": 523,
+            "glyphs": 18829,
+            "layouts": {
+              "continuous_1024": {
+                "windows": 18,
+                "used_glyphs": 18432,
+                "periods": {
+                  "nearest_shorter": 40.96,
+                  "nearest": 44.52173913043478,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 0.969861497855818,
+                  "max_center": 0.9943249069703874,
+                  "nearest_shorter": 0.9943249069703874,
+                  "nearest": 0.9359240277642057,
+                  "nearest_longer": 0.9680529277255977
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.59,
+                      "null_median": 0.985671792640449
+                    },
+                    "max_center": {
+                      "p_upper": 0.77,
+                      "null_median": 1.0351659369365633
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.46,
+                      "null_median": 0.9869509607455256
+                    },
+                    "nearest": {
+                      "p_upper": 0.73,
+                      "null_median": 0.989290958719216
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.67,
+                      "null_median": 0.9937552412376739
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.75,
+                      "null_median": 1.004995328324159
+                    },
+                    "max_center": {
+                      "p_upper": 0.87,
+                      "null_median": 1.0744822037613095
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.65,
+                      "null_median": 1.0198379852822161
+                    },
+                    "nearest": {
+                      "p_upper": 0.78,
+                      "null_median": 0.9780790439836776
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.83,
+                      "null_median": 1.025866213806212
+                    }
+                  }
+                }
+              },
+              "continuous_512": {
+                "windows": 36,
+                "used_glyphs": 18432,
+                "periods": {
+                  "nearest_shorter": 42.666666666666664,
+                  "nearest": 42.666666666666664,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 1.1023377264588259,
+                  "max_center": 1.1288928966197984,
+                  "nearest_shorter": 1.1288928966197984,
+                  "nearest": 1.1288928966197984,
+                  "nearest_longer": 1.0757825562978534
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.03,
+                      "null_median": 1.0011535189436396
+                    },
+                    "max_center": {
+                      "p_upper": 0.03,
+                      "null_median": 1.01901088321492
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.02,
+                      "null_median": 1.002921530940985
+                    },
+                    "nearest": {
+                      "p_upper": 0.02,
+                      "null_median": 1.002921530940985
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.1,
+                      "null_median": 0.9974483425927398
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.05,
+                      "null_median": 1.016254176112739
+                    },
+                    "max_center": {
+                      "p_upper": 0.05,
+                      "null_median": 1.0341254511636033
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.05,
+                      "null_median": 1.0131963853306525
+                    },
+                    "nearest": {
+                      "p_upper": 0.05,
+                      "null_median": 1.0131963853306525
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.1,
+                      "null_median": 1.0200997009089179
+                    }
+                  }
+                }
+              },
+              "within_folio_512": {
+                "windows": 21,
+                "used_glyphs": 10752,
+                "periods": {
+                  "nearest_shorter": 42.666666666666664,
+                  "nearest": 42.666666666666664,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 1.0703271141422932,
+                  "max_center": 1.0893713584806828,
+                  "nearest_shorter": 1.0893713584806828,
+                  "nearest": 1.0893713584806828,
+                  "nearest_longer": 1.0512828698039038
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.15,
+                      "null_median": 0.9995568886171651
+                    },
+                    "max_center": {
+                      "p_upper": 0.18,
+                      "null_median": 1.0197184889247557
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.13,
+                      "null_median": 0.9892643015577233
+                    },
+                    "nearest": {
+                      "p_upper": 0.13,
+                      "null_median": 0.9892643015577233
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.26,
+                      "null_median": 1.0016000916389898
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.29,
+                      "null_median": 1.0275265805196643
+                    },
+                    "max_center": {
+                      "p_upper": 0.38,
+                      "null_median": 1.0576330796162745
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.25,
+                      "null_median": 1.0161928946127272
+                    },
+                    "nearest": {
+                      "p_upper": 0.25,
+                      "null_median": 1.0161928946127272
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.4,
+                      "null_median": 1.0292313332907705
+                    }
+                  },
+                  "scored_prefix_folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.09,
+                      "null_median": 0.9850730121927138
+                    },
+                    "max_center": {
+                      "p_upper": 0.09,
+                      "null_median": 1.007393654807795
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.06,
+                      "null_median": 0.9855703262230506
+                    },
+                    "nearest": {
+                      "p_upper": 0.06,
+                      "null_median": 0.9855703262230506
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.15,
+                      "null_median": 0.9807597713165438
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "3": {
+          "zl": {
+            "folios": 21,
+            "lines": 877,
+            "glyphs": 36335,
+            "layouts": {
+              "continuous_1024": {
+                "windows": 35,
+                "used_glyphs": 35840,
+                "periods": {
+                  "nearest_shorter": 40.96,
+                  "nearest": 44.52173913043478,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 1.08822204915064,
+                  "max_center": 1.1568135740382601,
+                  "nearest_shorter": 1.007706285922122,
+                  "nearest": 1.150661999221106,
+                  "nearest_longer": 1.1568135740382601
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.05,
+                      "null_median": 1.0115147052991136
+                    },
+                    "max_center": {
+                      "p_upper": 0.06,
+                      "null_median": 1.054334858936015
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.41,
+                      "null_median": 0.9865690177371079
+                    },
+                    "nearest": {
+                      "p_upper": 0.04,
+                      "null_median": 1.0253200123945612
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.03,
+                      "null_median": 1.0198694119348903
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.12,
+                      "null_median": 1.0351604745962497
+                    },
+                    "max_center": {
+                      "p_upper": 0.05,
+                      "null_median": 1.081700538969746
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.61,
+                      "null_median": 1.026865527646965
+                    },
+                    "nearest": {
+                      "p_upper": 0.03,
+                      "null_median": 1.0439250119151027
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.02,
+                      "null_median": 1.0450485048794302
+                    }
+                  }
+                }
+              },
+              "continuous_512": {
+                "windows": 70,
+                "used_glyphs": 35840,
+                "periods": {
+                  "nearest_shorter": 42.666666666666664,
+                  "nearest": 42.666666666666664,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 1.0397175469327515,
+                  "max_center": 1.0601797555366237,
+                  "nearest_shorter": 1.0192553383288792,
+                  "nearest": 1.0192553383288792,
+                  "nearest_longer": 1.0601797555366237
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.17,
+                      "null_median": 1.0107185664119682
+                    },
+                    "max_center": {
+                      "p_upper": 0.13,
+                      "null_median": 1.0283284182315102
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.46,
+                      "null_median": 1.0120128577672054
+                    },
+                    "nearest": {
+                      "p_upper": 0.46,
+                      "null_median": 1.0120128577672054
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.1,
+                      "null_median": 1.0160045674978042
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.51,
+                      "null_median": 1.0423115948521502
+                    },
+                    "max_center": {
+                      "p_upper": 0.49,
+                      "null_median": 1.057054539864325
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.68,
+                      "null_median": 1.0358510923241355
+                    },
+                    "nearest": {
+                      "p_upper": 0.68,
+                      "null_median": 1.0358510923241355
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.3,
+                      "null_median": 1.0407859618894184
+                    }
+                  }
+                }
+              },
+              "within_folio_512": {
+                "windows": 58,
+                "used_glyphs": 29696,
+                "periods": {
+                  "nearest_shorter": 42.666666666666664,
+                  "nearest": 42.666666666666664,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 1.0148373761787721,
+                  "max_center": 1.064400785901911,
+                  "nearest_shorter": 1.064400785901911,
+                  "nearest": 1.064400785901911,
+                  "nearest_longer": 0.9652739664556338
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.4,
+                      "null_median": 1.005336683128049
+                    },
+                    "max_center": {
+                      "p_upper": 0.17,
+                      "null_median": 1.0172168025366206
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.14,
+                      "null_median": 0.99768199082068
+                    },
+                    "nearest": {
+                      "p_upper": 0.14,
+                      "null_median": 0.99768199082068
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.8,
+                      "null_median": 1.0115216294965956
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.61,
+                      "null_median": 1.0218055051652857
+                    },
+                    "max_center": {
+                      "p_upper": 0.34,
+                      "null_median": 1.0375089491969314
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.26,
+                      "null_median": 1.0224685436809797
+                    },
+                    "nearest": {
+                      "p_upper": 0.26,
+                      "null_median": 1.0224685436809797
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.82,
+                      "null_median": 1.0168344286317137
+                    }
+                  },
+                  "scored_prefix_folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.35,
+                      "null_median": 0.9965311680042449
+                    },
+                    "max_center": {
+                      "p_upper": 0.17,
+                      "null_median": 1.008667547123042
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.04,
+                      "null_median": 0.9870892110117134
+                    },
+                    "nearest": {
+                      "p_upper": 0.04,
+                      "null_median": 0.9870892110117134
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.86,
+                      "null_median": 1.002737026132915
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "it": {
+            "folios": 21,
+            "lines": 877,
+            "glyphs": 36340,
+            "layouts": {
+              "continuous_1024": {
+                "windows": 35,
+                "used_glyphs": 35840,
+                "periods": {
+                  "nearest_shorter": 40.96,
+                  "nearest": 44.52173913043478,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 1.06588767738988,
+                  "max_center": 1.1340224162695813,
+                  "nearest_shorter": 0.9873988346498733,
+                  "nearest": 1.1314726402694564,
+                  "nearest_longer": 1.1340224162695813
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.06,
+                      "null_median": 1.0067784242955533
+                    },
+                    "max_center": {
+                      "p_upper": 0.03,
+                      "null_median": 1.0466560050227918
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.56,
+                      "null_median": 0.9980615019231789
+                    },
+                    "nearest": {
+                      "p_upper": 0.02,
+                      "null_median": 1.0159564252740314
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.01,
+                      "null_median": 1.0060617271668237
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.19,
+                      "null_median": 1.0249994781220622
+                    },
+                    "max_center": {
+                      "p_upper": 0.07,
+                      "null_median": 1.0644563537654286
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.74,
+                      "null_median": 1.016406788925014
+                    },
+                    "nearest": {
+                      "p_upper": 0.05,
+                      "null_median": 1.0353350797192606
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.03,
+                      "null_median": 1.033688002534624
+                    }
+                  }
+                }
+              },
+              "continuous_512": {
+                "windows": 70,
+                "used_glyphs": 35840,
+                "periods": {
+                  "nearest_shorter": 42.666666666666664,
+                  "nearest": 42.666666666666664,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 1.0376505023047473,
+                  "max_center": 1.057908243231638,
+                  "nearest_shorter": 1.0173927613778566,
+                  "nearest": 1.0173927613778566,
+                  "nearest_longer": 1.057908243231638
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.19,
+                      "null_median": 1.004105644174154
+                    },
+                    "max_center": {
+                      "p_upper": 0.19,
+                      "null_median": 1.0203510880699138
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.4,
+                      "null_median": 1.006590451927373
+                    },
+                    "nearest": {
+                      "p_upper": 0.4,
+                      "null_median": 1.006590451927373
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.13,
+                      "null_median": 1.01270615120597
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.42,
+                      "null_median": 1.0329969335669011
+                    },
+                    "max_center": {
+                      "p_upper": 0.35,
+                      "null_median": 1.0486535665588275
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.67,
+                      "null_median": 1.0334699490957133
+                    },
+                    "nearest": {
+                      "p_upper": 0.67,
+                      "null_median": 1.0334699490957133
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.23,
+                      "null_median": 1.0309383521712527
+                    }
+                  }
+                }
+              },
+              "within_folio_512": {
+                "windows": 58,
+                "used_glyphs": 29696,
+                "periods": {
+                  "nearest_shorter": 42.666666666666664,
+                  "nearest": 42.666666666666664,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 1.0076957904482988,
+                  "max_center": 1.0549827064737667,
+                  "nearest_shorter": 1.0549827064737667,
+                  "nearest": 1.0549827064737667,
+                  "nearest_longer": 0.9604088744228307
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.5,
+                      "null_median": 1.007499749951177
+                    },
+                    "max_center": {
+                      "p_upper": 0.25,
+                      "null_median": 1.0248278970708817
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.18,
+                      "null_median": 1.0130785858462665
+                    },
+                    "nearest": {
+                      "p_upper": 0.18,
+                      "null_median": 1.0130785858462665
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.88,
+                      "null_median": 1.00269733395244
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.58,
+                      "null_median": 1.0176685885544343
+                    },
+                    "max_center": {
+                      "p_upper": 0.29,
+                      "null_median": 1.0346484196635042
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.23,
+                      "null_median": 1.020854254232448
+                    },
+                    "nearest": {
+                      "p_upper": 0.23,
+                      "null_median": 1.020854254232448
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.93,
+                      "null_median": 1.0167164339398598
+                    }
+                  },
+                  "scored_prefix_folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.51,
+                      "null_median": 1.0088909757329314
+                    },
+                    "max_center": {
+                      "p_upper": 0.22,
+                      "null_median": 1.0260478446940915
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.13,
+                      "null_median": 1.0060401475826328
+                    },
+                    "nearest": {
+                      "p_upper": 0.13,
+                      "null_median": 1.0060401475826328
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.82,
+                      "null_median": 1.0138818272698091
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "4": {
+          "zl": {
+            "folios": 25,
+            "lines": 1352,
+            "glyphs": 66687,
+            "layouts": {
+              "continuous_1024": {
+                "windows": 65,
+                "used_glyphs": 66560,
+                "periods": {
+                  "nearest_shorter": 40.96,
+                  "nearest": 44.52173913043478,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 1.0220407527478974,
+                  "max_center": 1.1120022216694698,
+                  "nearest_shorter": 0.9130458813985839,
+                  "nearest": 1.0637846375722129,
+                  "nearest_longer": 1.1120022216694698
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.23,
+                      "null_median": 1.001405007161967
+                    },
+                    "max_center": {
+                      "p_upper": 0.02,
+                      "null_median": 1.0376028759705704
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.99,
+                      "null_median": 0.9972432496314645
+                    },
+                    "nearest": {
+                      "p_upper": 0.08,
+                      "null_median": 1.00250514000832
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.01,
+                      "null_median": 1.0021689653576424
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.33,
+                      "null_median": 1.008003699930052
+                    },
+                    "max_center": {
+                      "p_upper": 0.05,
+                      "null_median": 1.0396454345238022
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.98,
+                      "null_median": 1.0066976717194265
+                    },
+                    "nearest": {
+                      "p_upper": 0.11,
+                      "null_median": 1.0150228058163608
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.03,
+                      "null_median": 1.0201093343899028
+                    }
+                  }
+                }
+              },
+              "continuous_512": {
+                "windows": 130,
+                "used_glyphs": 66560,
+                "periods": {
+                  "nearest_shorter": 42.666666666666664,
+                  "nearest": 42.666666666666664,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 0.9918813472705781,
+                  "max_center": 1.0085434083855322,
+                  "nearest_shorter": 0.9752192861556237,
+                  "nearest": 0.9752192861556237,
+                  "nearest_longer": 1.0085434083855322
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.56,
+                      "null_median": 0.9968133272298364
+                    },
+                    "max_center": {
+                      "p_upper": 0.48,
+                      "null_median": 1.0056089017199479
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.77,
+                      "null_median": 0.9938827237029664
+                    },
+                    "nearest": {
+                      "p_upper": 0.77,
+                      "null_median": 0.9938827237029664
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.33,
+                      "null_median": 1.000422975400214
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.68,
+                      "null_median": 1.0059904178399313
+                    },
+                    "max_center": {
+                      "p_upper": 0.6,
+                      "null_median": 1.0148276507977212
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.82,
+                      "null_median": 1.0002971334309692
+                    },
+                    "nearest": {
+                      "p_upper": 0.82,
+                      "null_median": 1.0002971334309692
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.49,
+                      "null_median": 1.0075371808532103
+                    }
+                  }
+                }
+              },
+              "within_folio_512": {
+                "windows": 116,
+                "used_glyphs": 59392,
+                "periods": {
+                  "nearest_shorter": 42.666666666666664,
+                  "nearest": 42.666666666666664,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 0.9914053450515298,
+                  "max_center": 1.0145134366056132,
+                  "nearest_shorter": 0.9682972534974466,
+                  "nearest": 0.9682972534974466,
+                  "nearest_longer": 1.0145134366056132
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.64,
+                      "null_median": 0.9981093297396759
+                    },
+                    "max_center": {
+                      "p_upper": 0.43,
+                      "null_median": 1.0117713177536143
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.85,
+                      "null_median": 1.0005972671484986
+                    },
+                    "nearest": {
+                      "p_upper": 0.85,
+                      "null_median": 1.0005972671484986
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.31,
+                      "null_median": 0.9985564629193051
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.63,
+                      "null_median": 0.9995349883182579
+                    },
+                    "max_center": {
+                      "p_upper": 0.49,
+                      "null_median": 1.0133989784255462
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.83,
+                      "null_median": 0.995769058095374
+                    },
+                    "nearest": {
+                      "p_upper": 0.83,
+                      "null_median": 0.995769058095374
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.43,
+                      "null_median": 1.0092398657447215
+                    }
+                  },
+                  "scored_prefix_folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.53,
+                      "null_median": 0.9943961847320718
+                    },
+                    "max_center": {
+                      "p_upper": 0.42,
+                      "null_median": 1.0029929505324853
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.75,
+                      "null_median": 0.9890035036362171
+                    },
+                    "nearest": {
+                      "p_upper": 0.75,
+                      "null_median": 0.9890035036362171
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.3,
+                      "null_median": 0.9957434040647325
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "it": {
+            "folios": 25,
+            "lines": 1352,
+            "glyphs": 66607,
+            "layouts": {
+              "continuous_1024": {
+                "windows": 65,
+                "used_glyphs": 66560,
+                "periods": {
+                  "nearest_shorter": 40.96,
+                  "nearest": 44.52173913043478,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 1.0292130322049822,
+                  "max_center": 1.118927504054702,
+                  "nearest_shorter": 0.919058525011507,
+                  "nearest": 1.0652547891271544,
+                  "nearest_longer": 1.118927504054702
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.11,
+                      "null_median": 0.9919894504914353
+                    },
+                    "max_center": {
+                      "p_upper": 0.03,
+                      "null_median": 1.0287774585793197
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.97,
+                      "null_median": 0.9870852317134757
+                    },
+                    "nearest": {
+                      "p_upper": 0.03,
+                      "null_median": 0.9942042408188908
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.01,
+                      "null_median": 0.9951592987400709
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.24,
+                      "null_median": 1.0105955635941755
+                    },
+                    "max_center": {
+                      "p_upper": 0.02,
+                      "null_median": 1.041508807590988
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.98,
+                      "null_median": 1.0029212465635777
+                    },
+                    "nearest": {
+                      "p_upper": 0.07,
+                      "null_median": 1.0055499611707934
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.02,
+                      "null_median": 1.0234425061155006
+                    }
+                  }
+                }
+              },
+              "continuous_512": {
+                "windows": 130,
+                "used_glyphs": 66560,
+                "periods": {
+                  "nearest_shorter": 42.666666666666664,
+                  "nearest": 42.666666666666664,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 0.9701203801225441,
+                  "max_center": 0.9887568335337288,
+                  "nearest_shorter": 0.9514839267113596,
+                  "nearest": 0.9514839267113596,
+                  "nearest_longer": 0.9887568335337288
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.79,
+                      "null_median": 0.9956338823095557
+                    },
+                    "max_center": {
+                      "p_upper": 0.71,
+                      "null_median": 1.0056116201408445
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.9,
+                      "null_median": 0.9871095456770617
+                    },
+                    "nearest": {
+                      "p_upper": 0.9,
+                      "null_median": 0.9871095456770617
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.65,
+                      "null_median": 0.9971601777687066
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.92,
+                      "null_median": 1.0031698534840203
+                    },
+                    "max_center": {
+                      "p_upper": 0.83,
+                      "null_median": 1.0123723236078896
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.93,
+                      "null_median": 0.9952134277676536
+                    },
+                    "nearest": {
+                      "p_upper": 0.93,
+                      "null_median": 0.9952134277676536
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.76,
+                      "null_median": 1.0068862316975329
+                    }
+                  }
+                }
+              },
+              "within_folio_512": {
+                "windows": 116,
+                "used_glyphs": 59392,
+                "periods": {
+                  "nearest_shorter": 42.666666666666664,
+                  "nearest": 42.666666666666664,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 0.9795945200539378,
+                  "max_center": 1.0031970487028492,
+                  "nearest_shorter": 0.9559919914050264,
+                  "nearest": 0.9559919914050264,
+                  "nearest_longer": 1.0031970487028492
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.73,
+                      "null_median": 0.9958878484254268
+                    },
+                    "max_center": {
+                      "p_upper": 0.52,
+                      "null_median": 1.005656625422637
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.93,
+                      "null_median": 0.9899708290493581
+                    },
+                    "nearest": {
+                      "p_upper": 0.93,
+                      "null_median": 0.9899708290493581
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.45,
+                      "null_median": 0.9984757143107013
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.79,
+                      "null_median": 1.002105887985908
+                    },
+                    "max_center": {
+                      "p_upper": 0.66,
+                      "null_median": 1.0134007268945655
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.85,
+                      "null_median": 0.9994415551735243
+                    },
+                    "nearest": {
+                      "p_upper": 0.85,
+                      "null_median": 0.9994415551735243
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.53,
+                      "null_median": 1.00558768288869
+                    }
+                  },
+                  "scored_prefix_folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.69,
+                      "null_median": 0.9937758226331579
+                    },
+                    "max_center": {
+                      "p_upper": 0.53,
+                      "null_median": 1.005480899984897
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.88,
+                      "null_median": 0.9913012524605808
+                    },
+                    "nearest": {
+                      "p_upper": 0.88,
+                      "null_median": 0.9913012524605808
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.42,
+                      "null_median": 0.9969690558017245
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "evaluation": {
+        "1": {
+          "zl": {
+            "folios": 7,
+            "lines": 74,
+            "glyphs": 2435,
+            "layouts": {
+              "continuous_1024": {
+                "windows": 2,
+                "used_glyphs": 2048,
+                "periods": {
+                  "nearest_shorter": 40.96,
+                  "nearest": 44.52173913043478,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 0.8325015064709574,
+                  "max_center": 0.9708523260041584,
+                  "nearest_shorter": 0.9708523260041584,
+                  "nearest": 0.7240730070634602,
+                  "nearest_longer": 0.7837512256280618
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.92,
+                      "null_median": 1.0029589956459586
+                    },
+                    "max_center": {
+                      "p_upper": 0.9,
+                      "null_median": 1.2213060822873953
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.63,
+                      "null_median": 1.0469902484665632
+                    },
+                    "nearest": {
+                      "p_upper": 0.9,
+                      "null_median": 1.0007932277103713
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.88,
+                      "null_median": 1.0003737470290377
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.89,
+                      "null_median": 1.0209172041979797
+                    },
+                    "max_center": {
+                      "p_upper": 0.91,
+                      "null_median": 1.2154402920259717
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.68,
+                      "null_median": 1.0615453610375958
+                    },
+                    "nearest": {
+                      "p_upper": 0.9,
+                      "null_median": 0.9910735309786672
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.84,
+                      "null_median": 1.029061899020908
+                    }
+                  }
+                }
+              },
+              "continuous_512": {
+                "windows": 4,
+                "used_glyphs": 2048,
+                "periods": {
+                  "nearest_shorter": 42.666666666666664,
+                  "nearest": 42.666666666666664,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 0.8774144946952569,
+                  "max_center": 0.9316218961211393,
+                  "nearest_shorter": 0.8232070932693745,
+                  "nearest": 0.8232070932693745,
+                  "nearest_longer": 0.9316218961211393
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.8,
+                      "null_median": 1.0286313979899588
+                    },
+                    "max_center": {
+                      "p_upper": 0.76,
+                      "null_median": 1.1026206486572612
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.88,
+                      "null_median": 1.0285926155213314
+                    },
+                    "nearest": {
+                      "p_upper": 0.88,
+                      "null_median": 1.0285926155213314
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.66,
+                      "null_median": 1.0068139313324385
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.78,
+                      "null_median": 0.999761461222984
+                    },
+                    "max_center": {
+                      "p_upper": 0.79,
+                      "null_median": 1.0613644263516202
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.87,
+                      "null_median": 1.0224470695158259
+                    },
+                    "nearest": {
+                      "p_upper": 0.87,
+                      "null_median": 1.0224470695158259
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.56,
+                      "null_median": 0.9646051162624727
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "it": {
+            "folios": 7,
+            "lines": 74,
+            "glyphs": 2439,
+            "layouts": {
+              "continuous_1024": {
+                "windows": 2,
+                "used_glyphs": 2048,
+                "periods": {
+                  "nearest_shorter": 40.96,
+                  "nearest": 44.52173913043478,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 0.7773316392628874,
+                  "max_center": 0.9209653017004351,
+                  "nearest_shorter": 0.9209653017004351,
+                  "nearest": 0.6795161873123275,
+                  "nearest_longer": 0.7499803332329966
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.94,
+                      "null_median": 1.0200032342662315
+                    },
+                    "max_center": {
+                      "p_upper": 0.94,
+                      "null_median": 1.202847912740485
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.64,
+                      "null_median": 1.018309002987622
+                    },
+                    "nearest": {
+                      "p_upper": 0.96,
+                      "null_median": 0.9959739691541454
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.9,
+                      "null_median": 1.0179218026473962
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.91,
+                      "null_median": 1.013768354547655
+                    },
+                    "max_center": {
+                      "p_upper": 0.93,
+                      "null_median": 1.1798893531016401
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.62,
+                      "null_median": 1.001924977663302
+                    },
+                    "nearest": {
+                      "p_upper": 0.91,
+                      "null_median": 0.942623108496512
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.92,
+                      "null_median": 1.0503095966098048
+                    }
+                  }
+                }
+              },
+              "continuous_512": {
+                "windows": 4,
+                "used_glyphs": 2048,
+                "periods": {
+                  "nearest_shorter": 42.666666666666664,
+                  "nearest": 42.666666666666664,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 0.839135272095952,
+                  "max_center": 0.8955150923763702,
+                  "nearest_shorter": 0.7827554518155336,
+                  "nearest": 0.7827554518155336,
+                  "nearest_longer": 0.8955150923763702
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.89,
+                      "null_median": 1.0078043265792527
+                    },
+                    "max_center": {
+                      "p_upper": 0.88,
+                      "null_median": 1.0715201636945162
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.92,
+                      "null_median": 1.0042423711603785
+                    },
+                    "nearest": {
+                      "p_upper": 0.92,
+                      "null_median": 1.0042423711603785
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.75,
+                      "null_median": 1.015341705929729
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.85,
+                      "null_median": 0.9912553777677144
+                    },
+                    "max_center": {
+                      "p_upper": 0.87,
+                      "null_median": 1.0459871421655085
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.89,
+                      "null_median": 0.9686104359754413
+                    },
+                    "nearest": {
+                      "p_upper": 0.89,
+                      "null_median": 0.9686104359754413
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.76,
+                      "null_median": 0.9924002924621748
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "2": {
+          "zl": {
+            "folios": 8,
+            "lines": 101,
+            "glyphs": 3379,
+            "layouts": {
+              "continuous_1024": {
+                "windows": 3,
+                "used_glyphs": 3072,
+                "periods": {
+                  "nearest_shorter": 40.96,
+                  "nearest": 44.52173913043478,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 0.8817849303651997,
+                  "max_center": 0.9856232360610209,
+                  "nearest_shorter": 0.9856232360610209,
+                  "nearest": 0.8282710471565442,
+                  "nearest_longer": 0.8455672829967635
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.85,
+                      "null_median": 0.9919325486782167
+                    },
+                    "max_center": {
+                      "p_upper": 0.85,
+                      "null_median": 1.1792412558593506
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.52,
+                      "null_median": 0.9867154118674355
+                    },
+                    "nearest": {
+                      "p_upper": 0.85,
+                      "null_median": 0.9914104948079995
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.84,
+                      "null_median": 1.0199312617085545
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.89,
+                      "null_median": 1.020843993460238
+                    },
+                    "max_center": {
+                      "p_upper": 0.9,
+                      "null_median": 1.1474169486231411
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.62,
+                      "null_median": 1.0132854796068707
+                    },
+                    "nearest": {
+                      "p_upper": 0.86,
+                      "null_median": 0.9731542467971567
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.87,
+                      "null_median": 1.0117718051171047
+                    }
+                  }
+                }
+              },
+              "continuous_512": {
+                "windows": 6,
+                "used_glyphs": 3072,
+                "periods": {
+                  "nearest_shorter": 42.666666666666664,
+                  "nearest": 42.666666666666664,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 1.1268396169433677,
+                  "max_center": 1.1361920030449093,
+                  "nearest_shorter": 1.1174872308418258,
+                  "nearest": 1.1174872308418258,
+                  "nearest_longer": 1.1361920030449093
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.18,
+                      "null_median": 1.003624375486976
+                    },
+                    "max_center": {
+                      "p_upper": 0.31,
+                      "null_median": 1.048016916887229
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.22,
+                      "null_median": 0.9933021516792797
+                    },
+                    "nearest": {
+                      "p_upper": 0.22,
+                      "null_median": 0.9933021516792797
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.19,
+                      "null_median": 1.0100049898625918
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.19,
+                      "null_median": 1.005337514986313
+                    },
+                    "max_center": {
+                      "p_upper": 0.31,
+                      "null_median": 1.0447802274452371
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.22,
+                      "null_median": 0.975469808335196
+                    },
+                    "nearest": {
+                      "p_upper": 0.22,
+                      "null_median": 0.975469808335196
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.22,
+                      "null_median": 1.007001614931475
+                    }
+                  }
+                }
+              },
+              "within_folio_512": {
+                "windows": 1,
+                "used_glyphs": 512,
+                "periods": {
+                  "nearest_shorter": 42.666666666666664,
+                  "nearest": 42.666666666666664,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 0.5119840788337174,
+                  "max_center": 0.5453748628122248,
+                  "nearest_shorter": 0.5453748628122248,
+                  "nearest": 0.5453748628122248,
+                  "nearest_longer": 0.4785932948552101
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.94,
+                      "null_median": 0.9719474455693792
+                    },
+                    "max_center": {
+                      "p_upper": 0.96,
+                      "null_median": 1.094150034328861
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.91,
+                      "null_median": 1.0254807022595234
+                    },
+                    "nearest": {
+                      "p_upper": 0.91,
+                      "null_median": 1.0254807022595234
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.97,
+                      "null_median": 0.9517675507567664
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 1.0,
+                      "null_median": 0.8961599690749227
+                    },
+                    "max_center": {
+                      "p_upper": 1.0,
+                      "null_median": 1.0170311276445803
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.96,
+                      "null_median": 0.9125550981823934
+                    },
+                    "nearest": {
+                      "p_upper": 0.96,
+                      "null_median": 0.9125550981823934
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.96,
+                      "null_median": 0.9236264790037365
+                    }
+                  },
+                  "scored_prefix_folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.98,
+                      "null_median": 0.9703927967872115
+                    },
+                    "max_center": {
+                      "p_upper": 0.99,
+                      "null_median": 1.0358725858253046
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.96,
+                      "null_median": 0.9472327020790837
+                    },
+                    "nearest": {
+                      "p_upper": 0.96,
+                      "null_median": 0.9472327020790837
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.95,
+                      "null_median": 0.9451714861603148
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "it": {
+            "folios": 8,
+            "lines": 101,
+            "glyphs": 3379,
+            "layouts": {
+              "continuous_1024": {
+                "windows": 3,
+                "used_glyphs": 3072,
+                "periods": {
+                  "nearest_shorter": 40.96,
+                  "nearest": 44.52173913043478,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 0.8924698133325266,
+                  "max_center": 1.0365816186437142,
+                  "nearest_shorter": 1.0365816186437142,
+                  "nearest": 0.8142758324025271,
+                  "nearest_longer": 0.8518076855387973
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.82,
+                      "null_median": 0.9928717526351689
+                    },
+                    "max_center": {
+                      "p_upper": 0.78,
+                      "null_median": 1.1347840879407571
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.35,
+                      "null_median": 0.9600511582898273
+                    },
+                    "nearest": {
+                      "p_upper": 0.87,
+                      "null_median": 0.9924917843940093
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.81,
+                      "null_median": 0.9889193341250767
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.78,
+                      "null_median": 0.9899139027525311
+                    },
+                    "max_center": {
+                      "p_upper": 0.65,
+                      "null_median": 1.1049627022237256
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.33,
+                      "null_median": 0.9735327393503282
+                    },
+                    "nearest": {
+                      "p_upper": 0.82,
+                      "null_median": 0.9520912310238442
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.82,
+                      "null_median": 0.9876497781167123
+                    }
+                  }
+                }
+              },
+              "continuous_512": {
+                "windows": 6,
+                "used_glyphs": 3072,
+                "periods": {
+                  "nearest_shorter": 42.666666666666664,
+                  "nearest": 42.666666666666664,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 1.1323104189377113,
+                  "max_center": 1.1449121257092445,
+                  "nearest_shorter": 1.1197087121661784,
+                  "nearest": 1.1197087121661784,
+                  "nearest_longer": 1.1449121257092445
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.19,
+                      "null_median": 1.0072339617966442
+                    },
+                    "max_center": {
+                      "p_upper": 0.3,
+                      "null_median": 1.054393333549383
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.24,
+                      "null_median": 0.9967394697005375
+                    },
+                    "nearest": {
+                      "p_upper": 0.24,
+                      "null_median": 0.9967394697005375
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.19,
+                      "null_median": 1.011262969108764
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.16,
+                      "null_median": 0.9977844166616097
+                    },
+                    "max_center": {
+                      "p_upper": 0.26,
+                      "null_median": 1.054548854546909
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.19,
+                      "null_median": 0.9670774542035411
+                    },
+                    "nearest": {
+                      "p_upper": 0.19,
+                      "null_median": 0.9670774542035411
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.2,
+                      "null_median": 1.0099431184569763
+                    }
+                  }
+                }
+              },
+              "within_folio_512": {
+                "windows": 1,
+                "used_glyphs": 512,
+                "periods": {
+                  "nearest_shorter": 42.666666666666664,
+                  "nearest": 42.666666666666664,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 0.5293245938808249,
+                  "max_center": 0.6031085410105504,
+                  "nearest_shorter": 0.6031085410105504,
+                  "nearest": 0.6031085410105504,
+                  "nearest_longer": 0.4555406467510993
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.97,
+                      "null_median": 0.963205002364808
+                    },
+                    "max_center": {
+                      "p_upper": 0.95,
+                      "null_median": 1.075776775516818
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.88,
+                      "null_median": 0.9632988207726385
+                    },
+                    "nearest": {
+                      "p_upper": 0.88,
+                      "null_median": 0.9632988207726385
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.97,
+                      "null_median": 0.9569006825852887
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.96,
+                      "null_median": 0.9588910935910355
+                    },
+                    "max_center": {
+                      "p_upper": 0.97,
+                      "null_median": 1.0693267176965948
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.94,
+                      "null_median": 0.9645087778488353
+                    },
+                    "nearest": {
+                      "p_upper": 0.94,
+                      "null_median": 0.9645087778488353
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.97,
+                      "null_median": 0.9169160005385375
+                    }
+                  },
+                  "scored_prefix_folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.99,
+                      "null_median": 0.970058981122925
+                    },
+                    "max_center": {
+                      "p_upper": 0.98,
+                      "null_median": 1.1020980884370961
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.95,
+                      "null_median": 0.9541671759388426
+                    },
+                    "nearest": {
+                      "p_upper": 0.95,
+                      "null_median": 0.9541671759388426
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.99,
+                      "null_median": 0.9463396416063636
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "3": {
+          "zl": {
+            "folios": 9,
+            "lines": 273,
+            "glyphs": 10812,
+            "layouts": {
+              "continuous_1024": {
+                "windows": 10,
+                "used_glyphs": 10240,
+                "periods": {
+                  "nearest_shorter": 40.96,
+                  "nearest": 44.52173913043478,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 1.0087999829921028,
+                  "max_center": 1.0800758215059518,
+                  "nearest_shorter": 0.9827151702456063,
+                  "nearest": 1.0101959451495905,
+                  "nearest_longer": 0.9622129950672629
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.43,
+                      "null_median": 1.0023366878220188
+                    },
+                    "max_center": {
+                      "p_upper": 0.51,
+                      "null_median": 1.0808180953881676
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.61,
+                      "null_median": 1.0130588595660768
+                    },
+                    "nearest": {
+                      "p_upper": 0.44,
+                      "null_median": 0.9931268508974516
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.57,
+                      "null_median": 0.9850704301229877
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.44,
+                      "null_median": 0.996462762629161
+                    },
+                    "max_center": {
+                      "p_upper": 0.47,
+                      "null_median": 1.0723392427149323
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.68,
+                      "null_median": 1.0319566633371666
+                    },
+                    "nearest": {
+                      "p_upper": 0.41,
+                      "null_median": 0.9713188367038713
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.54,
+                      "null_median": 0.9760189108581102
+                    }
+                  }
+                }
+              },
+              "continuous_512": {
+                "windows": 21,
+                "used_glyphs": 10752,
+                "periods": {
+                  "nearest_shorter": 42.666666666666664,
+                  "nearest": 42.666666666666664,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 0.904990225237645,
+                  "max_center": 0.9555743343612665,
+                  "nearest_shorter": 0.9555743343612665,
+                  "nearest": 0.9555743343612665,
+                  "nearest_longer": 0.8544061161140235
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.97,
+                      "null_median": 1.0193215958668849
+                    },
+                    "max_center": {
+                      "p_upper": 0.92,
+                      "null_median": 1.0585169215802916
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.8,
+                      "null_median": 1.0238631300692274
+                    },
+                    "nearest": {
+                      "p_upper": 0.8,
+                      "null_median": 1.0238631300692274
+                    },
+                    "nearest_longer": {
+                      "p_upper": 1.0,
+                      "null_median": 1.0193705619333988
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.86,
+                      "null_median": 0.967061209302669
+                    },
+                    "max_center": {
+                      "p_upper": 0.74,
+                      "null_median": 0.9844512816966555
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.54,
+                      "null_median": 0.95980332878026
+                    },
+                    "nearest": {
+                      "p_upper": 0.54,
+                      "null_median": 0.95980332878026
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.94,
+                      "null_median": 0.9718694023211345
+                    }
+                  }
+                }
+              },
+              "within_folio_512": {
+                "windows": 16,
+                "used_glyphs": 8192,
+                "periods": {
+                  "nearest_shorter": 42.666666666666664,
+                  "nearest": 42.666666666666664,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 1.1616542106314964,
+                  "max_center": 1.1623951570990452,
+                  "nearest_shorter": 1.1623951570990452,
+                  "nearest": 1.1623951570990452,
+                  "nearest_longer": 1.1609132641639477
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.04,
+                      "null_median": 1.0342934287487882
+                    },
+                    "max_center": {
+                      "p_upper": 0.11,
+                      "null_median": 1.0733819363888606
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.09,
+                      "null_median": 1.0216162916128442
+                    },
+                    "nearest": {
+                      "p_upper": 0.09,
+                      "null_median": 1.0216162916128442
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.06,
+                      "null_median": 1.0259293633739166
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.02,
+                      "null_median": 0.9669241509277833
+                    },
+                    "max_center": {
+                      "p_upper": 0.04,
+                      "null_median": 1.0011041074090823
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.02,
+                      "null_median": 0.9639746900507792
+                    },
+                    "nearest": {
+                      "p_upper": 0.02,
+                      "null_median": 0.9639746900507792
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.03,
+                      "null_median": 0.9793689923946439
+                    }
+                  },
+                  "scored_prefix_folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.04,
+                      "null_median": 1.0132220432682821
+                    },
+                    "max_center": {
+                      "p_upper": 0.11,
+                      "null_median": 1.0450990518711574
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.06,
+                      "null_median": 1.022940596318826
+                    },
+                    "nearest": {
+                      "p_upper": 0.06,
+                      "null_median": 1.022940596318826
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.07,
+                      "null_median": 1.0085524095669258
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "it": {
+            "folios": 9,
+            "lines": 273,
+            "glyphs": 10811,
+            "layouts": {
+              "continuous_1024": {
+                "windows": 10,
+                "used_glyphs": 10240,
+                "periods": {
+                  "nearest_shorter": 40.96,
+                  "nearest": 44.52173913043478,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 0.979059058647774,
+                  "max_center": 1.0272331205763168,
+                  "nearest_shorter": 0.9050933571809963,
+                  "nearest": 0.995551265827797,
+                  "nearest_longer": 0.9883584910059857
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.67,
+                      "null_median": 1.0184010180142709
+                    },
+                    "max_center": {
+                      "p_upper": 0.76,
+                      "null_median": 1.0950507406035042
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.85,
+                      "null_median": 1.0164005391948898
+                    },
+                    "nearest": {
+                      "p_upper": 0.53,
+                      "null_median": 1.0035725121613477
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.54,
+                      "null_median": 0.9909061120973458
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.74,
+                      "null_median": 1.0198639740489346
+                    },
+                    "max_center": {
+                      "p_upper": 0.84,
+                      "null_median": 1.0975599155910196
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.91,
+                      "null_median": 1.0528245102431881
+                    },
+                    "nearest": {
+                      "p_upper": 0.47,
+                      "null_median": 0.9872547349687291
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.49,
+                      "null_median": 0.9840128382318739
+                    }
+                  }
+                }
+              },
+              "continuous_512": {
+                "windows": 21,
+                "used_glyphs": 10752,
+                "periods": {
+                  "nearest_shorter": 42.666666666666664,
+                  "nearest": 42.666666666666664,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 0.9230791063723423,
+                  "max_center": 0.9634234388635801,
+                  "nearest_shorter": 0.9634234388635801,
+                  "nearest": 0.9634234388635801,
+                  "nearest_longer": 0.8827347738811044
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.93,
+                      "null_median": 0.9990576480327099
+                    },
+                    "max_center": {
+                      "p_upper": 0.88,
+                      "null_median": 1.0283155729988585
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.75,
+                      "null_median": 1.0118683900875618
+                    },
+                    "nearest": {
+                      "p_upper": 0.75,
+                      "null_median": 1.0118683900875618
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.96,
+                      "null_median": 0.9967530781682129
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.89,
+                      "null_median": 0.9975572376081786
+                    },
+                    "max_center": {
+                      "p_upper": 0.82,
+                      "null_median": 1.0183350914422373
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.65,
+                      "null_median": 0.9861280258927255
+                    },
+                    "nearest": {
+                      "p_upper": 0.65,
+                      "null_median": 0.9861280258927255
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.93,
+                      "null_median": 1.0048052452917369
+                    }
+                  }
+                }
+              },
+              "within_folio_512": {
+                "windows": 16,
+                "used_glyphs": 8192,
+                "periods": {
+                  "nearest_shorter": 42.666666666666664,
+                  "nearest": 42.666666666666664,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 1.1593645779405868,
+                  "max_center": 1.161778231569555,
+                  "nearest_shorter": 1.1569509243116187,
+                  "nearest": 1.1569509243116187,
+                  "nearest_longer": 1.161778231569555
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.07,
+                      "null_median": 1.0190131415498496
+                    },
+                    "max_center": {
+                      "p_upper": 0.16,
+                      "null_median": 1.0549792956513202
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.08,
+                      "null_median": 1.0090350026048287
+                    },
+                    "nearest": {
+                      "p_upper": 0.08,
+                      "null_median": 1.0090350026048287
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.11,
+                      "null_median": 1.0179321582658614
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.05,
+                      "null_median": 0.9894639326707639
+                    },
+                    "max_center": {
+                      "p_upper": 0.07,
+                      "null_median": 1.0205805288827026
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.04,
+                      "null_median": 0.9863593994151523
+                    },
+                    "nearest": {
+                      "p_upper": 0.04,
+                      "null_median": 0.9863593994151523
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.06,
+                      "null_median": 1.0124384395591588
+                    }
+                  },
+                  "scored_prefix_folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.07,
+                      "null_median": 1.0341035699502739
+                    },
+                    "max_center": {
+                      "p_upper": 0.13,
+                      "null_median": 1.0654674334358871
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.05,
+                      "null_median": 1.0177971059175774
+                    },
+                    "nearest": {
+                      "p_upper": 0.05,
+                      "null_median": 1.0177971059175774
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.1,
+                      "null_median": 1.0241120037586435
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "4": {
+          "zl": {
+            "folios": 5,
+            "lines": 178,
+            "glyphs": 9284,
+            "layouts": {
+              "continuous_1024": {
+                "windows": 9,
+                "used_glyphs": 9216,
+                "periods": {
+                  "nearest_shorter": 40.96,
+                  "nearest": 44.52173913043478,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 0.8892246715603551,
+                  "max_center": 0.9689084793315415,
+                  "nearest_shorter": 0.8731660190578723,
+                  "nearest": 0.8260474448559938,
+                  "nearest_longer": 0.9689084793315415
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.98,
+                      "null_median": 0.988020929069648
+                    },
+                    "max_center": {
+                      "p_upper": 0.93,
+                      "null_median": 1.0797179671693613
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.83,
+                      "null_median": 0.9781686692124243
+                    },
+                    "nearest": {
+                      "p_upper": 0.98,
+                      "null_median": 0.9893979161162386
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.65,
+                      "null_median": 1.0088098251727877
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.91,
+                      "null_median": 0.9899865004985895
+                    },
+                    "max_center": {
+                      "p_upper": 0.91,
+                      "null_median": 1.0690440301135151
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.84,
+                      "null_median": 0.9624160633513185
+                    },
+                    "nearest": {
+                      "p_upper": 0.96,
+                      "null_median": 0.980868611726413
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.58,
+                      "null_median": 0.9921864404885542
+                    }
+                  }
+                }
+              },
+              "continuous_512": {
+                "windows": 18,
+                "used_glyphs": 9216,
+                "periods": {
+                  "nearest_shorter": 42.666666666666664,
+                  "nearest": 42.666666666666664,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 0.9291784754419021,
+                  "max_center": 0.9716908969071344,
+                  "nearest_shorter": 0.8866660539766698,
+                  "nearest": 0.8866660539766698,
+                  "nearest_longer": 0.9716908969071344
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.89,
+                      "null_median": 0.9953408052633502
+                    },
+                    "max_center": {
+                      "p_upper": 0.74,
+                      "null_median": 1.018645900599399
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.94,
+                      "null_median": 0.9874299138387456
+                    },
+                    "nearest": {
+                      "p_upper": 0.94,
+                      "null_median": 0.9874299138387456
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.63,
+                      "null_median": 0.9891567187925234
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.83,
+                      "null_median": 0.9908847794546942
+                    },
+                    "max_center": {
+                      "p_upper": 0.73,
+                      "null_median": 1.0268190865455367
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.94,
+                      "null_median": 0.9983597721274206
+                    },
+                    "nearest": {
+                      "p_upper": 0.94,
+                      "null_median": 0.9983597721274206
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.54,
+                      "null_median": 0.9772354523062068
+                    }
+                  }
+                }
+              },
+              "within_folio_512": {
+                "windows": 16,
+                "used_glyphs": 8192,
+                "periods": {
+                  "nearest_shorter": 42.666666666666664,
+                  "nearest": 42.666666666666664,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 0.9327123545760118,
+                  "max_center": 0.946574647069036,
+                  "nearest_shorter": 0.946574647069036,
+                  "nearest": 0.946574647069036,
+                  "nearest_longer": 0.9188500620829874
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.82,
+                      "null_median": 0.9850870817024585
+                    },
+                    "max_center": {
+                      "p_upper": 0.87,
+                      "null_median": 1.017196497403054
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.73,
+                      "null_median": 0.989682051782582
+                    },
+                    "nearest": {
+                      "p_upper": 0.73,
+                      "null_median": 0.989682051782582
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.78,
+                      "null_median": 0.9839125867604319
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.84,
+                      "null_median": 0.9867314514576111
+                    },
+                    "max_center": {
+                      "p_upper": 0.86,
+                      "null_median": 1.005285778567762
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.73,
+                      "null_median": 0.9874692224258675
+                    },
+                    "nearest": {
+                      "p_upper": 0.73,
+                      "null_median": 0.9874692224258675
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.88,
+                      "null_median": 0.9807494184827248
+                    }
+                  },
+                  "scored_prefix_folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.82,
+                      "null_median": 1.01290383397955
+                    },
+                    "max_center": {
+                      "p_upper": 0.86,
+                      "null_median": 1.0441125320031184
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.77,
+                      "null_median": 1.0063940512250376
+                    },
+                    "nearest": {
+                      "p_upper": 0.77,
+                      "null_median": 1.0063940512250376
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.87,
+                      "null_median": 0.9924646715403072
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "it": {
+            "folios": 5,
+            "lines": 178,
+            "glyphs": 9289,
+            "layouts": {
+              "continuous_1024": {
+                "windows": 9,
+                "used_glyphs": 9216,
+                "periods": {
+                  "nearest_shorter": 40.96,
+                  "nearest": 44.52173913043478,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 0.8893220623031222,
+                  "max_center": 0.9621750862968668,
+                  "nearest_shorter": 0.8755742116857388,
+                  "nearest": 0.8359022068484492,
+                  "nearest_longer": 0.9621750862968668
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.88,
+                      "null_median": 0.9864537741745495
+                    },
+                    "max_center": {
+                      "p_upper": 0.88,
+                      "null_median": 1.064177541492489
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.85,
+                      "null_median": 0.9800167399915628
+                    },
+                    "nearest": {
+                      "p_upper": 0.91,
+                      "null_median": 0.9865790459206413
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.58,
+                      "null_median": 0.9889158433330556
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.93,
+                      "null_median": 0.9898110755483328
+                    },
+                    "max_center": {
+                      "p_upper": 0.9,
+                      "null_median": 1.0674522768463497
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.9,
+                      "null_median": 0.9988716363120329
+                    },
+                    "nearest": {
+                      "p_upper": 0.91,
+                      "null_median": 0.958312644023206
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.62,
+                      "null_median": 0.9868195929789294
+                    }
+                  }
+                }
+              },
+              "continuous_512": {
+                "windows": 18,
+                "used_glyphs": 9216,
+                "periods": {
+                  "nearest_shorter": 42.666666666666664,
+                  "nearest": 42.666666666666664,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 0.9111256894356632,
+                  "max_center": 0.9721493783516477,
+                  "nearest_shorter": 0.8501020005196785,
+                  "nearest": 0.8501020005196785,
+                  "nearest_longer": 0.9721493783516477
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.86,
+                      "null_median": 0.9909885771799968
+                    },
+                    "max_center": {
+                      "p_upper": 0.79,
+                      "null_median": 1.0176559736462847
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.96,
+                      "null_median": 0.9969197081465418
+                    },
+                    "nearest": {
+                      "p_upper": 0.96,
+                      "null_median": 0.9969197081465418
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.62,
+                      "null_median": 0.9948718728878414
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.9,
+                      "null_median": 0.9826593433102201
+                    },
+                    "max_center": {
+                      "p_upper": 0.72,
+                      "null_median": 1.0081693865950943
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.97,
+                      "null_median": 0.9771718903891627
+                    },
+                    "nearest": {
+                      "p_upper": 0.97,
+                      "null_median": 0.9771718903891627
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.52,
+                      "null_median": 0.9740431806839069
+                    }
+                  }
+                }
+              },
+              "within_folio_512": {
+                "windows": 16,
+                "used_glyphs": 8192,
+                "periods": {
+                  "nearest_shorter": 42.666666666666664,
+                  "nearest": 42.666666666666664,
+                  "nearest_longer": 46.54545454545455
+                },
+                "observed": {
+                  "wide": 0.9181853859007671,
+                  "max_center": 0.9369719718621885,
+                  "nearest_shorter": 0.9369719718621885,
+                  "nearest": 0.9369719718621885,
+                  "nearest_longer": 0.8993987999393457
+                },
+                "nulls": {
+                  "folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.77,
+                      "null_median": 0.9771966185665864
+                    },
+                    "max_center": {
+                      "p_upper": 0.79,
+                      "null_median": 1.0042578951838634
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.73,
+                      "null_median": 0.9796082860488474
+                    },
+                    "nearest": {
+                      "p_upper": 0.73,
+                      "null_median": 0.9796082860488474
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.78,
+                      "null_median": 0.9759041158839697
+                    }
+                  },
+                  "line_interiors": {
+                    "wide": {
+                      "p_upper": 0.81,
+                      "null_median": 0.9754387797037264
+                    },
+                    "max_center": {
+                      "p_upper": 0.79,
+                      "null_median": 1.011553808710609
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.67,
+                      "null_median": 0.9851528293361053
+                    },
+                    "nearest": {
+                      "p_upper": 0.67,
+                      "null_median": 0.9851528293361053
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.83,
+                      "null_median": 0.9640131073480906
+                    }
+                  },
+                  "scored_prefix_folio_interiors": {
+                    "wide": {
+                      "p_upper": 0.86,
+                      "null_median": 0.9946739593520743
+                    },
+                    "max_center": {
+                      "p_upper": 0.91,
+                      "null_median": 1.0205627780427826
+                    },
+                    "nearest_shorter": {
+                      "p_upper": 0.77,
+                      "null_median": 0.9934613663187705
+                    },
+                    "nearest": {
+                      "p_upper": 0.77,
+                      "null_median": 0.9934613663187705
+                    },
+                    "nearest_longer": {
+                      "p_upper": 0.9,
+                      "null_median": 0.9978452190180997
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "reproduction": {
+    "pins_commit": "20dd02aed363a1f94b09178c5fdc01c9b6b9251a",
+    "numpy": "2.3.5",
+    "usage": "Extract the two exact scripts from the original experiment to one directory, and save the new block_sensitivity.py beside them. Run OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python3 /path/to/block_sensitivity.py from the pinned public repository root. The same new test reproduced byte for byte twice.",
+    "sha256": {
+      "plan.json": "a9f9f1272d089d3bcc97879fe5c866818715909b0d8d18469b7c2b72c2bc824f",
+      "block_sensitivity.py": "61b82a937a8c8ffc0925e983cbd94bb7302a6b8a48e90b0e42799b961f815be0",
+      "results.json": "ccf498645ac35e85cc3036e9be53f40946b1d39c8209806497d946044987c21d"
+    },
+    "block_sensitivity.py": "\"\"\"Re-evaluate #515 on four fixed public folio blocks and matched FFT settings.\"\"\"\nfrom collections import defaultdict\nimport json\nfrom pathlib import Path\nfrom random import Random\nfrom statistics import median\nimport sys\n\nimport numpy as np\n\nfrom voynich_spectral_geometry import within_folio_slices\nfrom voynich_spectral_lines import (\n    FOLIO, GLYPH_ID, Spectrum, aligned_corpus, bins_for, corpus, flat,\n    shuffle_folio_interiors, shuffle_line_interiors,\n)\n\nPERIOD = 44\nPERMUTATIONS = 99\nGLYPHS = np.array([ord(char) for char in GLYPH_ID], dtype=np.uint8)\n\n\nclass WindowSpectrum:\n    def __init__(self, rows, block, no_crossing=False):\n        glyphs = sum(len(line) for _, line in rows)\n        regions = within_folio_slices(rows, block) if no_crossing else (slice(0, glyphs),)\n        starts = [i for region in regions for i in range(region.start, region.stop - block + 1, block)]\n        self.positions = np.asarray(starts, dtype=int)[:, None] + np.arange(block)\n        self.taper = 0.5 - 0.5 * np.cos(2 * np.pi * np.arange(block) / block)\n        self.energy = (self.taper * self.taper).sum()\n        self.bins = bins_for(PERIOD, block)\n        self.periods = {name: min(self.bins['center'], key=lambda k: (abs(block / k - PERIOD * factor), k))\n                        for name, factor in (('nearest_shorter', .95), ('nearest', 1.), ('nearest_longer', 1.05))}\n        self.block = block\n\n    def power(self, text):\n        glyphs = np.frombuffer(text.encode('ascii'), dtype=np.uint8)[self.positions]\n        one_hot = glyphs[:, None, :] == GLYPHS[None, :, None]\n        fft = np.fft.rfft(one_hot * self.taper[None, None, :], axis=-1)\n        return np.square(np.abs(fft)).sum(axis=1).mean(axis=0) / self.energy\n\n    def ratios(self, power):\n        shoulders = np.mean([power[list(self.bins[band])].mean() for band in ('short', 'long')])\n        center = power[list(self.bins['center'])]\n        return {'wide': float(center.mean() / shoulders), 'max_center': float(center.max() / shoulders),\n                **{name: float(power[k] / shoulders) for name, k in self.periods.items()}}\n\n\ndef exact_prefix_slots(rows, block):\n    active = {i for s in within_folio_slices(rows, block) for i in range(s.start, s.stop)}\n    groups = defaultdict(list)\n    offset = 0\n    for folio, line in rows:\n        groups[folio].extend(i for i in range(offset + 1, offset + len(line) - 1) if i in active)\n        offset += len(line)\n    return groups\n\n\ndef prefix_shuffle(text, groups, rng):\n    sequence = list(text)\n    for indices in groups.values():\n        values = [text[i] for i in indices]\n        rng.shuffle(values)\n        for index, value in zip(indices, values, strict=True):\n            sequence[index] = value\n    return ''.join(sequence)\n\n\ndef upper_tail(observed, draws):\n    return {key: {'p_upper': (1 + sum(sample[key] >= value - 1e-12 for sample in draws)) / (len(draws) + 1),\n                  'null_median': median(sample[key] for sample in draws)}\n            for key,value in observed.items()}\n\n\ndef audit_group(rows):\n    spectra = {name: WindowSpectrum(rows, size, in_folio) for name,size,in_folio in\n               [('continuous_1024', 1024, False), ('continuous_512', 512, False), ('within_folio_512', 512, True)]}\n    spectra = {name: spectrum for name,spectrum in spectra.items() if len(spectrum.positions)}\n    observed_text = flat(rows)\n    observed = {name: spectrum.ratios(spectrum.power(observed_text)) for name,spectrum in spectra.items()}\n    results = {name: {'windows': len(spectrum.positions), 'used_glyphs': len(spectrum.positions) * spectrum.block,\n                      'periods': {probe: spectrum.block / k for probe,k in spectrum.periods.items()},\n                      'observed': observed[name], 'nulls':{}} for name,spectrum in spectra.items()}\n    for null, func, seed in [('folio_interiors',shuffle_folio_interiors,692615),\n                             ('line_interiors',shuffle_line_interiors,693615)]:\n        rng = Random(seed)\n        draws = defaultdict(list)\n        for _ in range(PERMUTATIONS):\n            shuffled = func(rows,rng)\n            for name,spectrum in spectra.items():\n                draws[name].append(spectrum.ratios(spectrum.power(shuffled)))\n        for name, samples in draws.items():\n            results[name]['nulls'][null] = upper_tail(observed[name], samples)\n    if 'within_folio_512' in spectra:\n        spectrum = spectra['within_folio_512']\n        slots = exact_prefix_slots(rows, spectrum.block)\n        rng = Random(695615)\n        draws = [spectrum.ratios(spectrum.power(prefix_shuffle(observed_text, slots, rng))) for _ in range(PERMUTATIONS)]\n        results['within_folio_512']['nulls']['scored_prefix_folio_interiors'] = upper_tail(observed['within_folio_512'], draws)\n    return {'folios': len({folio for folio,_ in rows}), 'lines': len(rows), 'glyphs': len(observed_text), 'layouts':results}\n\n\ndef numeric_replay(rows, block):\n    old = Spectrum(PERIOD, block).band_power(flat(rows))['band_bins_power']\n    new = WindowSpectrum(rows, block).power(flat(rows))\n    max_absolute_error = max(abs(new[k] - value) for k,value in old.items())\n    assert max_absolute_error < 1e-10\n    return float(max_absolute_error)\n\n\ndef main():\n    rows_by_partition = aligned_corpus()\n    folios = list(dict.fromkeys(FOLIO.match(page.id)[0] for page in corpus.pages('zl')))\n    quartile = {folio: 4 * i // len(folios)  for i,folio in enumerate(folios)}\n    replay = {}\n    results = {}\n    for partition, editions in rows_by_partition.items():\n        replay[partition] = {edition:{str(block): numeric_replay(rows, block) for block in (512, 1024)}\n                             for edition,rows in editions.items()}\n        results[partition] = {}\n        for block in range(4):\n            results[partition][str(block+1)] = {}\n            for edition, rows in editions.items():\n                subgroup = [(folio, line) for folio,line in rows if quartile[folio] == block]\n                results[partition][str(block+1)][edition] = audit_group(subgroup)\n                print(f'{partition} {block+1} {edition} complete', file=sys.stderr, flush=True)\n    print(json.dumps({'center':PERIOD,'permutations':PERMUTATIONS,'max_errors':replay,'results':results}, indent=2))\n\n\nif __name__ == '__main__':\n    main()\n"
+  }
+}
