@@ -1,0 +1,86 @@
+{
+  "id": "K-nahuatl-substitution-002",
+  "family": "substitution",
+  "segmentation": "eva-basic",
+  "target": {
+    "language": "nahuatl",
+    "period": "Colonial Nahuatl from Florentine Codex Book 11 (1577), with an 1833 Gospel in classical colonial orthography"
+  },
+  "key": {
+    "map": {
+      "o": "a",
+      "e": "o",
+      "y": "a",
+      "a": "a",
+      "d": "c",
+      "i": "l",
+      "ch": "c",
+      "l": "n",
+      "k": "c",
+      "r": "n",
+      "t": "c",
+      "n": "i",
+      "q": "c",
+      "sh": "c",
+      "s": "c",
+      "p": "c",
+      "m": "n",
+      "cth": "c",
+      "ckh": "o",
+      "f": "c",
+      "h": "o",
+      "cph": "c",
+      "?": "i",
+      "c": "i",
+      "*": "o",
+      "g": "a",
+      "cfh": "c",
+      "x": "o",
+      "v": "i",
+      "j": "c",
+      "b": "a",
+      "z": "c",
+      "u": "a"
+    }
+  },
+  "search": {
+    "budget": {
+      "restarts": 4,
+      "iterations": 6000,
+      "seed": 1404,
+      "bpe_merges": 30,
+      "verbose_segmentations": [
+        "bpe-greedy",
+        "fixed-2"
+      ],
+      "verbose_min_unit_share": 0.0005,
+      "substitution_group_swap": 0.2,
+      "homophone_ranked_restarts": 1,
+      "homophone_word_sweeps": 5
+    },
+    "objective_bits": 541229.1,
+    "split": "practice training",
+    "tag": "cell",
+    "control": {
+      "kind": "homophonic",
+      "tag": "control",
+      "seed": 0,
+      "noise": 0.02,
+      "tokens": 1360,
+      "known_glyphs": 30,
+      "matching_known_glyphs": 29,
+      "passes_without_anchors": true,
+      "savings": 0.07523,
+      "unmet_criteria": [
+        "c_pictures",
+        "d_not_illusion"
+      ]
+    },
+    "references": [
+      "nahuatl_1fd2ccfd",
+      "nahuatl_ffad7306"
+    ],
+    "earlier_key": "K-nahuatl-substitution-001"
+  },
+  "transliteration": "zl"
+}
