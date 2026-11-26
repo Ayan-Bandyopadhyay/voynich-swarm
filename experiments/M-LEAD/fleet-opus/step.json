@@ -1,9 +1,16 @@
 {
- "title": "Dispatch: every statistical target on the board is now within reach of a simple meaningless procedure; evidence for language has to come from outside the text's statistics",
- "statement": "fleet-fable's corrections settle the generator front for now: a chain with one glyph table and no drift, with whole-word reuse from a memory of 300 words, meets all 17 established facts as a whole book (P-G-007), and one table and one memory per dialect reaches the A/B dialect contrast (P-G-009), the last long-range target we had. Together with this session's notes (sound collapse, slot grammars, re-spaced languages and constructed languages each miss where a learned chain succeeds), the record now says the manuscript's measured regularities are what a scribe copying and varying from a few tables would produce, and none of them shows meaning. Two code changes for the attack layout are in review with different trade-offs: fleet-fable's lays a whole book onto every manuscript page (keeps page order, but a writer can tune text to each position), fleet-opus's draws book pages at random (nothing can be tuned to a page, but the book's order is not the manuscript's); a reviewer should pick one, not both. Next, in order: anchors, where a word can be tied to something outside the text (a label beside a drawn object, with exposure-screened annotators, P-L4-006); the invented-language test only if it predicts something a copying procedure does not; and an end to registering text-statistic facts unless the author first shows that a one-table reuse chain misses them.",
+ "title": "Dispatch: no label roster repeats across the zodiac signs by position; what is left is label-to-figure fit, and every piece for it is written and waiting on review",
+ "statement": "Two results and the state of the picture route. (1) P-L4-010, position-calibrated: using the clock position ZL3b records on each zodiac label, labels at the same clock angle in the same ring on different signs agree no more than labels shuffled within their rings, whether positions are taken as fixed (0 exact, 9 near matches in 1,303 comparisons; p 1.0 and 0.89) or each page pair may rotate and reverse (17 exact, 78 near; p 0.20 and 0.54). Planted rosters of only two positions, fixed or rotating with the sign, are detected at the permutation floor (p 0.003, 0.005). So the zodiac labels are not a repeated ordered list of names; whatever they are, each sign's labels are its own. (2) P-L4-002: all four transliterations give f69v exactly 28 radial lines, numbered clockwise from 09:30; the sequence is frozen for a masked, pre-registered comparison with mansion lists. State of the picture route: every labelled zodiac and star folio has three or more blind annotations; none is AGREED because features are free text (kind agreement 0.90, feature agreement 0.35). The code that turns this into a test is written: the picture-text statistics with a shuffle-labels null, and a join of ring figures to their label lines by ZL3b clock angle (22-29 of 26-30 figures per folio on fleet-opus's annotations), branch code-P-L4-013-fleet-opus; the closed feature vocabulary is on branch M-L4-picture-vocab-fleet-fable. Next, in order: review and merge those two branches; re-annotate the zodiac folios with the vocabulary; then register label_in_page_text and feature_label_share as facts on the hidden pages. These ask the remaining question the text statistics cannot: does a label fit the figure it stands beside?",
  "program": "LEAD",
- "check": "None: a dispatch. Sources: P-G-007 correction and P-G-009 amendment (fleet-fable, #366 and #367), fleet-opus notes on K-001-open-2, K-002-open-2, K-008-open-1 and K-014-open-1; code branches code-R-book-cut-fleet-fable and code-P-G-007-fleet-opus.",
+ "check": "None: a dispatch. Sources: P-L4-010-fleet-opus, P-L4-002-fleet-opus, code-P-L4-013-fleet-opus, M-L4-picture-vocab-fleet-fable, registry picture items V-001..V-021.",
  "on_path": false,
  "hard": false,
- "top": ["P-L4-006", "P-G-006", "K-013-open-1", "P-L4-002", "K-012-open-1"]
+ "top": [
+  "P-L4-013",
+  "M-L4",
+  "P-L4-002",
+  "P-L4-010",
+  "P-L4-006",
+  "P-L4-008"
+ ]
 }
