@@ -1,0 +1,607 @@
+{
+ "folio": "f72v3",
+ "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006204",
+ "blind": true,
+ "statement": "Annotated from the Beinecke scan alone (the left-hand wheel of the two-wheel '72v (part)' canvas, with two crops). At the centre is one four-legged animal with a large head, clawed feet and a tail curled over its back, pale with blue dots and a red spot on the hindquarters, a small tree behind it and a word in a different script beneath. Around it are two rings of nude female figures standing with their feet toward the centre, without tubs, each holding a star on a line and each with a short label; the drawing is faint, uncoloured outside the centre, and its left edge crosses a stained fold. Two things here are not independent observations. First, which wheel is f72v3: the two wheels on this canvas have the same label-group sizes, so the line ids cannot tell them apart; I took this one to be f72v3 because the single-wheel canvas matches f72v1 by its ring counts and this wheel is the one farthest from it in the fold order. If that is wrong, this annotation describes f72v2. Second, the ring counts of eighteen and twelve are taken from the label-group sizes; what I can see is consistent with them but too faint for a confident count of my own. Labels were paired by ring size and then clockwise from twelve o'clock, an assumption about starting point and direction, so each ring's pairing may be rotated. Per-figure features are generic.",
+ "objects": [
+  {
+   "id": "centre_animal",
+   "kind": "zodiac_figure",
+   "features": {
+    "position": "centre",
+    "animal": "four-legged animal with a large head, clawed feet and a long tail curled over the back",
+    "count": 1,
+    "facing": "left",
+    "colour": "pale with blue dots and one red spot on the hindquarters",
+    "background": "small tree or plant behind the animal",
+    "inscription": "one word in a different script under the animal",
+    "surround": "ring of text close around it"
+   },
+   "label": null
+  },
+  {
+   "id": "outer_figure_1",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, 1 of 18 clockwise from twelve o'clock (about 12 o'clock)",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing, feet toward the centre",
+    "container": "none",
+    "headdress": "none",
+    "hair": "long loose",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "colour": "uncoloured"
+   },
+   "label": "f72v3.2"
+  },
+  {
+   "id": "outer_figure_2",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, 2 of 18 clockwise from twelve o'clock (about 0.7 o'clock)",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing, feet toward the centre",
+    "container": "none",
+    "headdress": "none",
+    "hair": "long loose",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "colour": "uncoloured"
+   },
+   "label": "f72v3.3"
+  },
+  {
+   "id": "outer_figure_3",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, 3 of 18 clockwise from twelve o'clock (about 1.3 o'clock)",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing, feet toward the centre",
+    "container": "none",
+    "headdress": "none",
+    "hair": "long loose",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "colour": "uncoloured"
+   },
+   "label": "f72v3.4"
+  },
+  {
+   "id": "outer_figure_4",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, 4 of 18 clockwise from twelve o'clock (about 2.0 o'clock)",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing, feet toward the centre",
+    "container": "none",
+    "headdress": "none",
+    "hair": "long loose",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "colour": "uncoloured"
+   },
+   "label": "f72v3.5"
+  },
+  {
+   "id": "outer_figure_5",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, 5 of 18 clockwise from twelve o'clock (about 2.7 o'clock)",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing, feet toward the centre",
+    "container": "none",
+    "headdress": "none",
+    "hair": "long loose",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "colour": "uncoloured"
+   },
+   "label": "f72v3.6"
+  },
+  {
+   "id": "outer_figure_6",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, 6 of 18 clockwise from twelve o'clock (about 3.3 o'clock)",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing, feet toward the centre",
+    "container": "none",
+    "headdress": "none",
+    "hair": "long loose",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "colour": "uncoloured"
+   },
+   "label": "f72v3.7"
+  },
+  {
+   "id": "outer_figure_7",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, 7 of 18 clockwise from twelve o'clock (about 4.0 o'clock)",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing, feet toward the centre",
+    "container": "none",
+    "headdress": "none",
+    "hair": "long loose",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "colour": "uncoloured"
+   },
+   "label": "f72v3.8"
+  },
+  {
+   "id": "outer_figure_8",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, 8 of 18 clockwise from twelve o'clock (about 4.7 o'clock)",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing, feet toward the centre",
+    "container": "none",
+    "headdress": "none",
+    "hair": "long loose",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "colour": "uncoloured"
+   },
+   "label": "f72v3.9"
+  },
+  {
+   "id": "outer_figure_9",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, 9 of 18 clockwise from twelve o'clock (about 5.3 o'clock)",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing, feet toward the centre",
+    "container": "none",
+    "headdress": "none",
+    "hair": "long loose",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "colour": "uncoloured"
+   },
+   "label": "f72v3.10"
+  },
+  {
+   "id": "outer_figure_10",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, 10 of 18 clockwise from twelve o'clock (about 6.0 o'clock)",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing, feet toward the centre",
+    "container": "none",
+    "headdress": "none",
+    "hair": "long loose",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "colour": "uncoloured"
+   },
+   "label": "f72v3.11"
+  },
+  {
+   "id": "outer_figure_11",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, 11 of 18 clockwise from twelve o'clock (about 6.7 o'clock)",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing, feet toward the centre",
+    "container": "none",
+    "headdress": "none",
+    "hair": "long loose",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "colour": "uncoloured"
+   },
+   "label": "f72v3.12"
+  },
+  {
+   "id": "outer_figure_12",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, 12 of 18 clockwise from twelve o'clock (about 7.3 o'clock)",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing, feet toward the centre",
+    "container": "none",
+    "headdress": "none",
+    "hair": "long loose",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "colour": "uncoloured"
+   },
+   "label": "f72v3.13"
+  },
+  {
+   "id": "outer_figure_13",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, 13 of 18 clockwise from twelve o'clock (about 8.0 o'clock)",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing, feet toward the centre",
+    "container": "none",
+    "headdress": "none",
+    "hair": "long loose",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "colour": "uncoloured"
+   },
+   "label": "f72v3.14"
+  },
+  {
+   "id": "outer_figure_14",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, 14 of 18 clockwise from twelve o'clock (about 8.7 o'clock)",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing, feet toward the centre",
+    "container": "none",
+    "headdress": "none",
+    "hair": "long loose",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "colour": "uncoloured"
+   },
+   "label": "f72v3.15"
+  },
+  {
+   "id": "outer_figure_15",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, 15 of 18 clockwise from twelve o'clock (about 9.3 o'clock)",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing, feet toward the centre",
+    "container": "none",
+    "headdress": "none",
+    "hair": "long loose",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "colour": "uncoloured"
+   },
+   "label": "f72v3.16"
+  },
+  {
+   "id": "outer_figure_16",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, 16 of 18 clockwise from twelve o'clock (about 10.0 o'clock)",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing, feet toward the centre",
+    "container": "none",
+    "headdress": "none",
+    "hair": "long loose",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "colour": "uncoloured"
+   },
+   "label": "f72v3.17"
+  },
+  {
+   "id": "outer_figure_17",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, 17 of 18 clockwise from twelve o'clock (about 10.7 o'clock)",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing, feet toward the centre",
+    "container": "none",
+    "headdress": "none",
+    "hair": "long loose",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "colour": "uncoloured"
+   },
+   "label": "f72v3.18"
+  },
+  {
+   "id": "outer_figure_18",
+   "kind": "human_figure",
+   "features": {
+    "ring": "outer",
+    "position": "outer ring, 18 of 18 clockwise from twelve o'clock (about 11.3 o'clock)",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing, feet toward the centre",
+    "container": "none",
+    "headdress": "none",
+    "hair": "long loose",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "colour": "uncoloured"
+   },
+   "label": "f72v3.19"
+  },
+  {
+   "id": "inner_figure_1",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "position": "inner ring, 1 of 12 clockwise from twelve o'clock (about 12 o'clock)",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing, feet toward the centre",
+    "container": "none",
+    "headdress": "none",
+    "hair": "long loose",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "colour": "uncoloured"
+   },
+   "label": "f72v3.21"
+  },
+  {
+   "id": "inner_figure_2",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "position": "inner ring, 2 of 12 clockwise from twelve o'clock (about 1.0 o'clock)",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing, feet toward the centre",
+    "container": "none",
+    "headdress": "none",
+    "hair": "long loose",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "colour": "uncoloured"
+   },
+   "label": "f72v3.22"
+  },
+  {
+   "id": "inner_figure_3",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "position": "inner ring, 3 of 12 clockwise from twelve o'clock (about 2.0 o'clock)",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing, feet toward the centre",
+    "container": "none",
+    "headdress": "none",
+    "hair": "long loose",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "colour": "uncoloured"
+   },
+   "label": "f72v3.23"
+  },
+  {
+   "id": "inner_figure_4",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "position": "inner ring, 4 of 12 clockwise from twelve o'clock (about 3.0 o'clock)",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing, feet toward the centre",
+    "container": "none",
+    "headdress": "none",
+    "hair": "long loose",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "colour": "uncoloured"
+   },
+   "label": "f72v3.24"
+  },
+  {
+   "id": "inner_figure_5",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "position": "inner ring, 5 of 12 clockwise from twelve o'clock (about 4.0 o'clock)",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing, feet toward the centre",
+    "container": "none",
+    "headdress": "none",
+    "hair": "long loose",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "colour": "uncoloured"
+   },
+   "label": "f72v3.25"
+  },
+  {
+   "id": "inner_figure_6",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "position": "inner ring, 6 of 12 clockwise from twelve o'clock (about 5.0 o'clock)",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing, feet toward the centre",
+    "container": "none",
+    "headdress": "none",
+    "hair": "long loose",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "colour": "uncoloured"
+   },
+   "label": "f72v3.26"
+  },
+  {
+   "id": "inner_figure_7",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "position": "inner ring, 7 of 12 clockwise from twelve o'clock (about 6.0 o'clock)",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing, feet toward the centre",
+    "container": "none",
+    "headdress": "none",
+    "hair": "long loose",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "colour": "uncoloured"
+   },
+   "label": "f72v3.27"
+  },
+  {
+   "id": "inner_figure_8",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "position": "inner ring, 8 of 12 clockwise from twelve o'clock (about 7.0 o'clock)",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing, feet toward the centre",
+    "container": "none",
+    "headdress": "none",
+    "hair": "long loose",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "colour": "uncoloured"
+   },
+   "label": "f72v3.28"
+  },
+  {
+   "id": "inner_figure_9",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "position": "inner ring, 9 of 12 clockwise from twelve o'clock (about 8.0 o'clock)",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing, feet toward the centre",
+    "container": "none",
+    "headdress": "none",
+    "hair": "long loose",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "colour": "uncoloured"
+   },
+   "label": "f72v3.29"
+  },
+  {
+   "id": "inner_figure_10",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "position": "inner ring, 10 of 12 clockwise from twelve o'clock (about 9.0 o'clock)",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing, feet toward the centre",
+    "container": "none",
+    "headdress": "none",
+    "hair": "long loose",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "colour": "uncoloured"
+   },
+   "label": "f72v3.30"
+  },
+  {
+   "id": "inner_figure_11",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "position": "inner ring, 11 of 12 clockwise from twelve o'clock (about 10.0 o'clock)",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing, feet toward the centre",
+    "container": "none",
+    "headdress": "none",
+    "hair": "long loose",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "colour": "uncoloured"
+   },
+   "label": "f72v3.31"
+  },
+  {
+   "id": "inner_figure_12",
+   "kind": "human_figure",
+   "features": {
+    "ring": "inner",
+    "position": "inner ring, 12 of 12 clockwise from twelve o'clock (about 11.0 o'clock)",
+    "sex": "female",
+    "clothing": "nude",
+    "posture": "standing, feet toward the centre",
+    "container": "none",
+    "headdress": "none",
+    "hair": "long loose",
+    "holds": "star on a line",
+    "star_points": "7 or 8",
+    "star_colour": "yellow centre",
+    "colour": "uncoloured"
+   },
+   "label": "f72v3.32"
+  },
+  {
+   "id": "wheel",
+   "kind": "diagram",
+   "features": {
+    "shape": "concentric circles",
+    "count_figure_rings": 2,
+    "count_outer_figures": 18,
+    "count_inner_figures": 12,
+    "count_text_rings": 3,
+    "colour": "uncoloured apart from the centre",
+    "condition": "left edge of the outer ring crosses a fold and is stained"
+   },
+   "label": null
+  }
+ ]
+}
