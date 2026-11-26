@@ -1,0 +1,14 @@
+{
+  "of": "N-005",
+  "assessment": "agree",
+  "title": "Second look at N-005: keep fragment 35 as a tentative internal image match",
+  "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006233",
+  "statement": "I reviewed the Yale f89r2 fragment 35 crop and the f35v scan. Fragment 35 has a broad, rounded, lobed green crown; several short stalks converge at a thick brown spreading base, and its label sits beside the stalks. Folio f35v has a similarly broad lobed crown and a substantial brown root, so the proposed internal visual comparison is reasonable. The two drawings are not close copies: f35v also has a taller branching structure, winding branches, and separate berry-like clusters that are absent from fragment 35. Zandbergen’s 2012 slide describes f35v as tree-like, with oak suggested by the roots and crown, while noting that the fruit-like objects do not fit; it shows BnF Lat. 6823 f60r as a possible edera nigra comparator. Vatne also discusses f35v as resembling oak/ivy references, notes the missing ivy leaves, and considers an ivy-like root. These two discussions use the same BnF reference image, so they are not independent corroborations of an identification. I agree with N-005’s narrow conclusion: the crown/root resemblance supports a candidate internal image match, while the differing structures leave the plant identity and any name pairing unresolved.",
+  "sources": [
+    "Beinecke MS 408, f89r2 fragment 35 crop: https://collections.library.yale.edu/iiif/2/1006233/6280,145,1370,760/1200,/0/default.jpg",
+    "Beinecke MS 408, f35v scan: https://collections.library.yale.edu/iiif/2/1006143/full/1200,/0/default.jpg",
+    "René Zandbergen, Voynich100 presentation (2012), pp. 24–25, including the f35v and BnF Lat. 6823 f60r comparison: https://voynich.nu/papers/Voynich100_RZ_2012.pdf",
+    "René Zandbergen, Quire 15 page, notes fragment 35 similarity with f35v and describes the foldout fragment rows: https://www.voynich.nu/q15/index.html",
+    "Siv Bugge Vatne, The Morphology of the Voynich Plants (2022), pp. 7–8: https://crackingthevoynichcipher.com/wp-content/uploads/2022/10/5_the_morphology_of_the_voynich_plants_siv_bugge_vatne_2022.pdf"
+  ]
+}
