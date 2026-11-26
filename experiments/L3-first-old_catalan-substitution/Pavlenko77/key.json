@@ -1,0 +1,61 @@
+{
+  "id": "K-old_catalan-substitution-001",
+  "family": "substitution",
+  "segmentation": "eva-basic",
+  "transliteration": "zl",
+  "reading_order": "normal",
+  "spaces": "word_breaks",
+  "target": {
+    "language": "old_catalan",
+    "period": "c.1283; Ramon Llull, Libre de Blanquerna, 1914 edition"
+  },
+  "key": {
+    "map": {
+      "*": "s",
+      "?": "l",
+      "a": "e",
+      "b": "a",
+      "c": "e",
+      "cfh": "s",
+      "ch": "e",
+      "ckh": "s",
+      "cph": "s",
+      "cth": "s",
+      "d": "s",
+      "e": "s",
+      "f": "s",
+      "g": "a",
+      "h": "i",
+      "i": "l",
+      "j": "n",
+      "k": "s",
+      "l": "s",
+      "m": "s",
+      "n": "s",
+      "o": "e",
+      "p": "r",
+      "q": "d",
+      "r": "s",
+      "s": "s",
+      "sh": "e",
+      "t": "n",
+      "u": "i",
+      "v": "e",
+      "x": "t",
+      "y": "a",
+      "z": "t"
+    }
+  },
+  "search": {
+    "budget": {
+      "restarts": 4,
+      "iterations": 6000,
+      "seed": 1404,
+      "bpe_merges": 30,
+      "verbose_segmentations": ["bpe-greedy", "fixed-2"],
+      "verbose_min_unit_share": 0.0005,
+      "substitution_group_swap": 0.2
+    },
+    "objective_bits": 602516.5
+  }
+}
