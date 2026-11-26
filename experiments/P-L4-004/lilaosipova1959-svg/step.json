@@ -1,0 +1,154 @@
+{
+ "title": "Scan check on f72v1 agrees with the step's negative but corrects its count: the centre inscription is the inner ring's own continuation, not a second freestanding string",
+ "statement": "The step reports that across the twelve zodiac centres only one freestanding Voynich string occurs (next to the upper star on f70v2) and that no centre pairs an explicit Voynich word with a month name. I checked f72v1 on the Yale IIIF canvas 1006205 at high magnification, because the library reading (libra) draws a word-like inscription immediately under the balance, inside the innermost circle, which would look like a second freestanding centre string. It is not one. Following the innermost ring round from its start, the inscription under the beam is a continuation of that ring's text as ZL3b records it in the single locus f72v1.33 (eleven words: otalal dalal ykeols oteo r aiin yotoam oteey saiin oteeos am), and the same ring carries on below the figures. So the mark under the balance is ring text seen where the ring dips inward, not an independent label in the empty centre. The transcription agrees and says so structurally: across all twelve zodiac pages the unit counts are 2-4 circular lines and 15-30 labels with ZERO lines in any third unit, so the pinned text offers no field for an inner-disk string anywhere. f72v1 has three rings of 41, 22 and 11 words and 30 labels, and f70v2 - the page the step singles out - has three rings of 42, 32 and 22 words and 30 labels. The step's negative therefore stands and is strengthened: the reason no centre pairs a Voynich word with a month name is that the layout provides no such field. What I could not verify from this seat is the step's identification of the f70v2 string as separate from mars: that needs the same ring-by-ring tracing on canvas 1006200, and the transcription records f70v2's inner ring but does not say which figure it passes.",
+ "program": "L4",
+ "check": "Before this becomes an anchor, trace the innermost ring on both canvases the same way: start at each ring's recorded start point, follow it round, and mark where it passes nearest a figure, so that a word under a drawn object is attributed to the ring rather than to the object. Report for all twelve pages the angular position of the month annotation relative to the nearest Voynich label, which turns 'no pairing' into a measured gap, and confirm the f70v2 string the step found is genuinely detached from its ring rather than a dip like f72v1's. The dating question the step leaves open cannot be reached from the text: whether the month annotations differ in ink or ductus from the ring hand is a paleographic judgement on the scan, and the ZL page headers do not record it.",
+ "on_path": true,
+ "hard": false,
+ "evidence": {
+  "canvas_checked": "1006205 = f72v1 (libra), Yale IIIF, high magnification crops at pct:45,44,18,8 and pct:33,38,38,26",
+  "f72v1": {
+   "rings": [
+    41,
+    22,
+    11
+   ],
+   "labels": 30,
+   "inner_ring_locus": "f72v1.33",
+   "inner_ring_words": "otalal dalal ykeols oteo r aiin yotoam oteey saiin oteeos am"
+  },
+  "f70v2": {
+   "rings": [
+    42,
+    32,
+    22
+   ],
+   "labels": 30
+  },
+  "all_twelve_pages": {
+   "f70v2": {
+    "rings": 3,
+    "words_per_ring": [
+     42,
+     32,
+     22
+    ],
+    "labels": 30,
+    "lines_other_than_rings_and_labels": 0
+   },
+   "f70v1": {
+    "rings": 2,
+    "words_per_ring": [
+     38,
+     23
+    ],
+    "labels": 15,
+    "lines_other_than_rings_and_labels": 0
+   },
+   "f71r": {
+    "rings": 3,
+    "words_per_ring": [
+     38,
+     25,
+     10
+    ],
+    "labels": 15,
+    "lines_other_than_rings_and_labels": 0
+   },
+   "f71v": {
+    "rings": 3,
+    "words_per_ring": [
+     37,
+     30,
+     11
+    ],
+    "labels": 15,
+    "lines_other_than_rings_and_labels": 0
+   },
+   "f72r1": {
+    "rings": 3,
+    "words_per_ring": [
+     42,
+     27,
+     13
+    ],
+    "labels": 15,
+    "lines_other_than_rings_and_labels": 0
+   },
+   "f72r2": {
+    "rings": 3,
+    "words_per_ring": [
+     41,
+     26,
+     15
+    ],
+    "labels": 29,
+    "lines_other_than_rings_and_labels": 0
+   },
+   "f72r3": {
+    "rings": 4,
+    "words_per_ring": [
+     48,
+     41,
+     26,
+     9
+    ],
+    "labels": 30,
+    "lines_other_than_rings_and_labels": 0
+   },
+   "f72v3": {
+    "rings": 3,
+    "words_per_ring": [
+     41,
+     32,
+     12
+    ],
+    "labels": 30,
+    "lines_other_than_rings_and_labels": 0
+   },
+   "f72v2": {
+    "rings": 3,
+    "words_per_ring": [
+     37,
+     28,
+     12
+    ],
+    "labels": 30,
+    "lines_other_than_rings_and_labels": 0
+   },
+   "f72v1": {
+    "rings": 3,
+    "words_per_ring": [
+     41,
+     22,
+     11
+    ],
+    "labels": 30,
+    "lines_other_than_rings_and_labels": 0
+   },
+   "f73r": {
+    "rings": 3,
+    "words_per_ring": [
+     34,
+     25,
+     7
+    ],
+    "labels": 30,
+    "lines_other_than_rings_and_labels": 0
+   },
+   "f73v": {
+    "rings": 3,
+    "words_per_ring": [
+     35,
+     22,
+     11
+    ],
+    "labels": 30,
+    "lines_other_than_rings_and_labels": 0
+   }
+  },
+  "lines_in_a_third_unit_on_any_zodiac_page": 0,
+  "correction_to_step": "the inscription under the balance on f72v1 is the inner ring's text, not a second freestanding centre string",
+  "unverified_here": "whether f70v2's centre string is truly detached from its ring; needs ring tracing on canvas 1006200"
+ }
+}
