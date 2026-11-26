@@ -1,0 +1,318 @@
+{
+  "title": "Power falls as a line-ending null fixes more of the observed endpoints",
+  "statement": "For a K-024-open-1 calibration, sample 160 Currier B paragraph line lengths from the pinned public ZL training split. Keep initial slots fixed and simulate only the binary last-glyph feature of each noninitial token. The interior probability is 1%, and the final probability ranges from 1% to 18%. Use 1,500 independent replicate books per rate. On the same book compare four conditional permutation nulls that fix 0%, 50%, 90%, or 100% of observed line endings. The masks are nested, fixed by a separate seed before simulating outcomes, and all tests use inclusive exact upper tails at alpha=0.01.",
+  "program": "J",
+  "check": "Replicate the embedded pilot with the stored simulation plan, then repeat under different public layout samples and independently seeded masks. If extending to the production F-001 rule, test its finite 10× ratio cutoff and its exact token-permutation implementation separately from the permutation-only power measured here.",
+  "on_path": true,
+  "hard": false,
+  "findings": "For a 5% final rate versus a 1% interior rate, detection was 70.7%, 38.3%, 3.1% and 0% as the locked share rose. For a 10% final rate the corresponding rates were 99.5%, 89.6%, 15.7% and 0%. With no effect the four rejection counts were 5, 5, 0 and 0 out of 1,500, consistent with conservative discrete tests. The JSON includes the full grid and Wilson intervals.",
+  "interpretation": "Given k marked tokens among n noninitial slots, the unfrozen final token is marked with probability k/n under a uniform within-line permutation. Independent lines give a Poisson-binomial tail. Fixed endpoints contribute the same constant to the observation and every draw, so they cancel from the tail. At complete fixation all draws tie and the inclusive p-value is 1 by construction. The production DSL rejects such an immobile null. The pilot keeps initials fixed in every condition and measures permutation power for a count at one layout and set of masks. F-001 additionally uses a ratio cutoff and permutes whole words, including initial slots. The pilot contains no measured feature rates from the manuscript and leaves the actual source of its line-final effects open.",
+  "reproduction": "Write `python` to null_power.py and results.plan to plan.json. Run from the checkout with PYTHONHASHSEED=0 PYTHONPATH=. python3 null_power.py plan.json result.json after fetching the pinned inputs. Two runs produced byte-identical JSON. The tail was also compared to exhaustive enumeration on 30 independently drawn small examples.",
+  "results": {
+    "plan": {
+      "alpha": 0.01,
+      "books_per_rate": 1500,
+      "lines_per_book": 160,
+      "interior_rate": 0.01,
+      "final_rates": [
+        0.01,
+        0.02,
+        0.03,
+        0.05,
+        0.08,
+        0.1,
+        0.12,
+        0.18
+      ],
+      "locked_fractions": [
+        0,
+        0.5,
+        0.9,
+        1
+      ],
+      "layout_seed": 408,
+      "mask_seed": 2401,
+      "simulation_seed": 20261126
+    },
+    "layout": {
+      "minimum": 3,
+      "median": 9.5,
+      "maximum": 15
+    },
+    "power": {
+      "0.01": {
+        "0": {
+          "rejections": 5,
+          "rate": 0.0033333333333333335,
+          "wilson_95": [
+            0.0014246155236142537,
+            0.00777945232509936
+          ]
+        },
+        "0.5": {
+          "rejections": 5,
+          "rate": 0.0033333333333333335,
+          "wilson_95": [
+            0.0014246155236142537,
+            0.00777945232509936
+          ]
+        },
+        "0.9": {
+          "rejections": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.002554430720181488
+          ]
+        },
+        "1": {
+          "rejections": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.002554430720181488
+          ]
+        }
+      },
+      "0.02": {
+        "0": {
+          "rejections": 101,
+          "rate": 0.06733333333333333,
+          "wilson_95": [
+            0.055724832625160745,
+            0.08115226809136962
+          ]
+        },
+        "0.5": {
+          "rejections": 44,
+          "rate": 0.029333333333333333,
+          "wilson_95": [
+            0.021922981949671613,
+            0.039148255501592566
+          ]
+        },
+        "0.9": {
+          "rejections": 4,
+          "rate": 0.0026666666666666666,
+          "wilson_95": [
+            0.0010374882451031462,
+            0.006836652177904041
+          ]
+        },
+        "1": {
+          "rejections": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.002554430720181488
+          ]
+        }
+      },
+      "0.03": {
+        "0": {
+          "rejections": 383,
+          "rate": 0.25533333333333336,
+          "wilson_95": [
+            0.23391097012776318,
+            0.27800566463797904
+          ]
+        },
+        "0.5": {
+          "rejections": 159,
+          "rate": 0.106,
+          "wilson_95": [
+            0.09141539039239177,
+            0.12259750101511124
+          ]
+        },
+        "0.9": {
+          "rejections": 8,
+          "rate": 0.005333333333333333,
+          "wilson_95": [
+            0.0027049287623018017,
+            0.010488921363531084
+          ]
+        },
+        "1": {
+          "rejections": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.002554430720181488
+          ]
+        }
+      },
+      "0.05": {
+        "0": {
+          "rejections": 1061,
+          "rate": 0.7073333333333334,
+          "wilson_95": [
+            0.6838019630520747,
+            0.7298054663426233
+          ]
+        },
+        "0.5": {
+          "rejections": 574,
+          "rate": 0.38266666666666665,
+          "wilson_95": [
+            0.35839953121412316,
+            0.40753324186154605
+          ]
+        },
+        "0.9": {
+          "rejections": 46,
+          "rate": 0.030666666666666665,
+          "wilson_95": [
+            0.02306947388821145,
+            0.04066161841446556
+          ]
+        },
+        "1": {
+          "rejections": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.002554430720181488
+          ]
+        }
+      },
+      "0.08": {
+        "0": {
+          "rejections": 1458,
+          "rate": 0.972,
+          "wilson_95": [
+            0.962369637905843,
+            0.9792189794943057
+          ]
+        },
+        "0.5": {
+          "rejections": 1116,
+          "rate": 0.744,
+          "wilson_95": [
+            0.7213105553951168,
+            0.7654428824134346
+          ]
+        },
+        "0.9": {
+          "rejections": 167,
+          "rate": 0.11133333333333334,
+          "wilson_95": [
+            0.09639767368628424,
+            0.12825463712687019
+          ]
+        },
+        "1": {
+          "rejections": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.002554430720181488
+          ]
+        }
+      },
+      "0.1": {
+        "0": {
+          "rejections": 1492,
+          "rate": 0.9946666666666667,
+          "wilson_95": [
+            0.9895110786364689,
+            0.9972950712376982
+          ]
+        },
+        "0.5": {
+          "rejections": 1344,
+          "rate": 0.896,
+          "wilson_95": [
+            0.8795270316938932,
+            0.9104498591757231
+          ]
+        },
+        "0.9": {
+          "rejections": 236,
+          "rate": 0.15733333333333333,
+          "wilson_95": [
+            0.13978498551865226,
+            0.17663231766824544
+          ]
+        },
+        "1": {
+          "rejections": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.002554430720181488
+          ]
+        }
+      },
+      "0.12": {
+        "0": {
+          "rejections": 1500,
+          "rate": 1.0,
+          "wilson_95": [
+            0.9974455692798185,
+            1.0
+          ]
+        },
+        "0.5": {
+          "rejections": 1448,
+          "rate": 0.9653333333333334,
+          "wilson_95": [
+            0.9548228339303267,
+            0.9734665092127578
+          ]
+        },
+        "0.9": {
+          "rejections": 315,
+          "rate": 0.21,
+          "wilson_95": [
+            0.19014154174898645,
+            0.23134002806871878
+          ]
+        },
+        "1": {
+          "rejections": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.002554430720181488
+          ]
+        }
+      },
+      "0.18": {
+        "0": {
+          "rejections": 1500,
+          "rate": 1.0,
+          "wilson_95": [
+            0.9974455692798185,
+            1.0
+          ]
+        },
+        "0.5": {
+          "rejections": 1499,
+          "rate": 0.9993333333333333,
+          "wilson_95": [
+            0.9962333345857864,
+            0.9998823072683257
+          ]
+        },
+        "0.9": {
+          "rejections": 698,
+          "rate": 0.4653333333333333,
+          "wilson_95": [
+            0.440211855917952,
+            0.4906319179453139
+          ]
+        },
+        "1": {
+          "rejections": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.002554430720181488
+          ]
+        }
+      }
+    }
+  },
+  "python": "\"\"\"Calibrate a line-final permutation test while fixing selected endings.\"\"\"\n\nimport json\nfrom math import sqrt\nfrom pathlib import Path\nimport random\nfrom statistics import median\nimport sys\n\nfrom vs import corpus\n\n\ndef upper_tail(lines):\n    \"\"\"Exact inclusive tail for independent terminal draws conditional on each line total.\"\"\"\n    observed = 0\n    distribution = [1.0]\n    for eligible, positives, final in lines:\n        if positives in (0, eligible):\n            assert final == (positives == eligible)\n            continue\n        observed += final\n        probability = positives / eligible\n        distribution.append(0.0)\n        for k in range(len(distribution) - 1, 0, -1):\n            distribution[k] = (\n                distribution[k] * (1 - probability) + distribution[k - 1] * probability\n            )\n        distribution[0] *= 1 - probability\n    return min(1.0, sum(distribution[observed:]))\n\n\ndef wilson(successes, trials):\n    p = successes / trials\n    z = 1.959963984540054\n    scale = 1 + z * z / trials\n    centre = (p + z * z / (2 * trials)) / scale\n    radius = z * sqrt(p * (1 - p) / trials + z * z / (4 * trials * trials)) / scale\n    return [max(0.0, centre - radius), min(1.0, centre + radius)]\n\n\ndef public_line_lengths(plan):\n    public_training, _ = corpus.split_pages('practice', 'zl')\n    lengths = [\n        len(line.words)\n        for page in public_training if page.language == 'B'\n        for line in page.lines if line.unit == 'P' and len(line.words) >= 3\n    ]\n    return random.Random(plan['layout_seed']).choices(lengths, k=plan['lines_per_book'])\n\n\ndef run(plan):\n    lengths = public_line_lengths(plan)\n    order = list(range(len(lengths)))\n    random.Random(plan['mask_seed']).shuffle(order)\n    masks = {\n        str(fraction): sorted(order[round(fraction * len(lengths)):])\n        for fraction in plan['locked_fractions']\n    }\n    rng = random.Random(plan['simulation_seed'])\n    trials = plan['books_per_rate']\n    rows = {}\n    for final_rate in plan['final_rates']:\n        counts = dict.fromkeys(masks, 0)\n        for _ in range(trials):\n            lines = []\n            for length in lengths:\n                interior = sum(rng.random() < plan['interior_rate'] for _ in range(length - 2))\n                final = rng.random() < final_rate\n                lines.append((length - 1, interior + final, final))\n            for locked, free_indices in masks.items():\n                counts[locked] += upper_tail(lines[i] for i in free_indices) <= plan['alpha']\n        rows[str(final_rate)] = {\n            locked: {\n                'rejections': count,\n                'rate': count / trials,\n                'wilson_95': wilson(count, trials),\n            }\n            for locked, count in counts.items()\n        }\n    assert all(row['1']['rejections'] == 0 for row in rows.values())\n    return {\n        'plan': plan,\n        'layout': {'minimum': min(lengths), 'median': median(lengths), 'maximum': max(lengths)},\n        'power': rows,\n    }\n\n\ndef main():\n    assert upper_tail([]) == 1.0\n    assert abs(upper_tail([(5, 1, True)]) - .2) < 1e-12\n    assert abs(upper_tail([(5, 1, True), (4, 1, True)]) - .05) < 1e-12\n    assert upper_tail([(3, 3, True), (2, 0, False)]) == 1.0\n    plan = json.loads(Path(sys.argv[1]).read_text())\n    result = run(plan)\n    Path(sys.argv[2]).write_text(json.dumps(result, indent=2) + '\\n')\n    for rate, fractions in result['power'].items():\n        print(rate, {fraction: round(row['rate'], 3) for fraction, row in fractions.items()})\n\n\nif __name__ == '__main__':\n    main()\n"
+}
