@@ -1,0 +1,18 @@
+{
+  "of": "N-002",
+  "assessment": "agree",
+  "title": "Second look at N-002: f80r referent remains open",
+  "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006218",
+  "statement": "I reviewed the Yale f80r scan and the cited comparison images and records. The figure holds a small bulbous object behind the waist; a short projection angles downward and inward, separated from the body. Keagan Brewer’s 2022 reading of it as a phallic insertion device is a serious published alternative, and the figure’s pose is consistent with that interpretation. The Clm 337 clyster bag offers a partial silhouette analogy (reservoir plus nozzle), but it is more elongated, shown separately, and does not match the way the f80r figure holds the object. The Wellcome MS.49 gynecological scenes establish a medical context for some neighboring imagery but do not identify this item. The nonmedical examples in Wellcome MS.49 f60r and Morgan MS G.24 f42r show that held implements and raised-arm gestures also occur in nonmedical scenes; their long scourge and textile tools do not match the f80r silhouette. I therefore agree with N-002’s limited conclusion that the referent remains unresolved and that no word–name pairing is established. I would keep the published phallic reading explicit as a competing interpretation and scope “no dated example” to the sources reviewed here, not treat this small comparison set as exhaustive.",
+  "sources": [
+    "Beinecke MS 408, f80r, upper-left detail: https://collections.library.yale.edu/iiif/2/1006218/130,0,740,700/900,/0/default.jpg",
+    "Keagan Brewer, “I beg your grace that you suppress this chapter or else allow it to be written in secret letters”: The emotions of encipherment in late-medieval gynaecology (2022), pp. 2–3: https://ceur-ws.org/Vol-3313/paper3.pdf",
+    "Keagan Brewer, seminar slides, slide 117, comparisons with f80v, f82r and Clm 337 f131r: https://www.fromthelighthouse.org/uploads/9/9/7/7/99776076/brewer_seminar_slides_1.pdf",
+    "DPLA / Carolina Digital Library and Archives record, Bayerische Staatsbibliothek Clm 337, f131r, catalogued as a clyster bag: https://dp.la/item/654e924bae9b3af1ab921bf9755d4dfd",
+    "Wellcome Collection, MS.49 catalogue (f38v, f39r and f60r descriptions): https://wellcomecollection.org/works/af6d7sm2",
+    "Wellcome MS.49, f38v: https://iiif.wellcomecollection.org/image/b19684915_ms_49_0080.JP2/full/1200,/0/default.jpg",
+    "Wellcome MS.49, f39r: https://iiif.wellcomecollection.org/image/b19684915_ms_49_0081.JP2/full/1200,/0/default.jpg",
+    "Wellcome MS.49, f60r: https://iiif.wellcomecollection.org/image/b19684915_ms_49_0123.JP2/full/1200,/0/default.jpg",
+    "Morgan Library, MS G.24, f42r: https://ica.themorgan.org/manuscript/page/64/76974"
+  ]
+}
