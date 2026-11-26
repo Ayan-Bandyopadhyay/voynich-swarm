@@ -1,0 +1,149 @@
+{
+  "title": "Restore registered DSL facts to the local facts battery",
+  "statement": "At main commit 50274c2ac760189465c12ca87606f7c396a18d8c, python -X utf8 -m vs facts exits successfully with no output although the registry contains 22 facts. All 22 use detail.spec; facts.battery selects only detail.metric and therefore returns an empty list. In an isolated mixed fixture the same path evaluates the legacy fact and silently omits both a passing and a failing DSL fact. A scratch dispatcher that retains both schemas and gives spec precedence restores coverage using the existing evaluators. The omission is in the local advisory command: static call-site inspection and a synthetic red-team control do not support a claim that authoritative scoring or language-family power is affected.",
+  "program": "J",
+  "check": "Make a reviewed code change to facts.battery/facts.run, or a shared dispatcher with the same contract, so registered detail.spec facts are evaluated with dsl.evaluate and legacy detail.metric/params facts still use facts.METRICS. Preserve registry withdrawal handling, record ordering, requested-ID filtering and returned result dictionaries. Give spec precedence when both fields occur, as score.py and redteam.py already do. Verify the fixture cases below, including a failing DSL fact and an invalid DSL spec; omitted facts must not look like a completed battery. On the public practice split, the evaluated IDs must equal the registry fact IDs. Keep thresholds, nulls, random seeds, split membership and evaluators unchanged. An actually empty registry remains a legitimate fresh-board case and should be distinguished in diagnostics from a nonempty registry whose records were skipped. Do not infer new hidden-page results or recalibrate a cipher cell from this CLI coverage repair.",
+  "on_path": false,
+  "hard": false,
+  "scope": "A concrete maintenance step proposed under the test-power front. No production source file is changed by this experiment, and no new key-search power or manuscript fact is claimed.",
+  "environment": {
+    "commit": "50274c2ac760189465c12ca87606f7c396a18d8c",
+    "python": "3.12.14",
+    "host": "Windows",
+    "text_mode": "-X utf8",
+    "manuscript_evaluation": "public practice only",
+    "controlled_cases": "Synthetic Page/Line objects; registry reads and corpus loaders patched in the scratch harness, so these controls do not need manuscript input"
+  },
+  "observed_baseline": {
+    "command": ["python", "-X", "utf8", "-m", "vs", "facts"],
+    "exit_status": 0,
+    "stdout": "",
+    "registered_fact_count": 22,
+    "records_with_spec": 22,
+    "legacy_battery_count": 0,
+    "count_reproduction": "from vs import facts, registry; rows = registry.read('fact'); print(len(rows), sum('spec' in r['detail'] for r in rows), len(facts.battery()))",
+    "count_output": "22 22 0",
+    "selection_reproduction": "[r['id'] for r in registry.read('fact') if 'metric' in r['detail']]",
+    "selection_output": []
+  },
+  "call_paths": [
+    {
+      "location": "vs/__main__.py:46",
+      "source": "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/blob/50274c2ac760189465c12ca87606f7c396a18d8c/vs/__main__.py#L46",
+      "finding": "The facts CLI prints only the mapping returned by facts.run. An empty mapping produces no output."
+    },
+    {
+      "location": "vs/facts.py:360",
+      "source": "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/blob/50274c2ac760189465c12ca87606f7c396a18d8c/vs/facts.py#L360",
+      "finding": "battery normalizes only metric/params records and filters with 'metric' in i['detail']; registered spec records never reach run."
+    },
+    {
+      "location": "vs/facts.py:367",
+      "source": "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/blob/50274c2ac760189465c12ca87606f7c396a18d8c/vs/facts.py#L367",
+      "finding": "run iterates battery and dispatches exclusively through METRICS. Both collection and dispatch need to understand the current schema."
+    },
+    {
+      "location": "vs/score.py:133",
+      "source": "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/blob/50274c2ac760189465c12ca87606f7c396a18d8c/vs/score.py#L133",
+      "finding": "The authoritative fact branch explicitly recognizes spec and calls dsl.evaluate. This path was inspected, not run on hidden pages."
+    },
+    {
+      "location": "vs/redteam.py:220",
+      "source": "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/blob/50274c2ac760189465c12ca87606f7c396a18d8c/vs/redteam.py#L220",
+      "finding": "Fact attacks explicitly evaluate spec for both real and synthetic pages; this does not use facts.battery."
+    },
+    {
+      "location": "vs/redteam.py:270",
+      "source": "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/blob/50274c2ac760189465c12ca87606f7c396a18d8c/vs/redteam.py#L270",
+      "finding": "Generator tests select ESTABLISHED records directly from registry.read('fact'), rather than the legacy battery."
+    },
+    {
+      "location": "vs/season.py:69",
+      "source": "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/blob/50274c2ac760189465c12ca87606f7c396a18d8c/vs/season.py#L69",
+      "finding": "Cipher calibration goes through controls.make, search.search_cell and judge.evaluate. The local battery omission alone says nothing about whether a cipher control is cracked."
+    }
+  ],
+  "synthetic_fixture": {
+    "page": {"id": "fixture", "order": 0, "meta": {"I": "H", "L": "A", "H": "1"}},
+    "lines": {"count": 40, "unit": "P", "subtype": "0", "words_each": ["ol", "daiin"], "paragraph_start": "first line only", "paragraph_end": false},
+    "tokens": 80,
+    "mean_word_length": 3.5,
+    "legacy": {"id": "legacy", "detail": {"metric": "hapax_share", "params": {"lo": 0, "hi": 0}}},
+    "passing": {"id": "passing", "detail": {"spec": {"statistic": {"mean_length": true}, "compare": [{"op": ">=", "value": 3}]}}},
+    "failing": {"id": "failing", "detail": {"spec": {"statistic": {"mean_length": true}, "compare": [{"op": ">=", "value": 4}]}}},
+    "metadata": "Each synthetic registry item also has type='fact', title equal to its id, and statement='fixture'. The registry.read return value is patched for these cases."
+  },
+  "before_after": [
+    {"input_ids": ["passing"], "current_output_ids": [], "prototype_output_ids": ["passing"], "prototype_pass": {"passing": true}},
+    {"input_ids": ["legacy", "passing", "failing"], "current_output_ids": ["legacy"], "prototype_output_ids": ["legacy", "passing", "failing"], "prototype_pass": {"legacy": true, "passing": true, "failing": false}}
+  ],
+  "prototype_outline": [
+    "For each item in registry.read('fact'), retain id/title/statement and either detail.spec or detail.metric/params.",
+    "Prefer spec if both representations are present, matching the existing scorer and attack paths.",
+    "In run, apply the existing requested-ID filter before evaluation.",
+    "Dispatch spec rows to dsl.evaluate(row['spec'], eval_pages); dispatch legacy rows through facts.METRICS[row['metric']](train_pages, eval_pages, **row['params']).",
+    "Return the evaluator dictionary under the original fact ID, preserving order and failure/exception behavior. Do not alter the measurement itself."
+  ],
+  "isolated_controls": {
+    "executed": 12,
+    "passed": 12,
+    "cases": [
+      "Legacy-only result equals the current facts.run result.",
+      "Passing DSL result equals a direct dsl.evaluate call.",
+      "Failing DSL result equals a direct dsl.evaluate call and has pass=false.",
+      "Mixed registry retains all IDs in input order.",
+      "Requested-ID filtering selects a DSL row.",
+      "Empty IDs preserves the current API's all-rows behavior; no unrelated API change is proposed.",
+      "If both spec and metric occur, a failing spec takes precedence over a passing legacy metric.",
+      "Invalid DSL raises dsl.SpecError instead of silently disappearing.",
+      "An empty registry still yields an empty mapping.",
+      "The unmodified CLI, using patched synthetic loaders and only DSL fixtures, returns normally and emits no lines.",
+      "The same CLI with only facts.run patched to the prototype emits three rows: legacy ESTABLISHED, passing ESTABLISHED, failing REFUTED.",
+      "The existing red-team DSL path succeeds on a known satisfying synthetic body and fails on a known nonsatisfying body while facts.battery is patched to raise if called."
+    ],
+    "redteam_control": {
+      "real_fixture": "The 80-token page above; mean length 3.5; passing DSL threshold >=3.",
+      "negative_body": {"lines": 40, "words_each": ["aa", "bb"], "synthetic_pass": false, "attack_success": false},
+      "positive_body": {"lines": 40, "words_each": ["aaaa", "bbbb"], "synthetic_pass": true, "attack_success": true},
+      "isolation": "corpus.pages returns []; corpus.split_pages returns ([], [fixture]); a fact item is passed directly to fact_attack with cut='lines'. This is an in-memory code-path control, not an attack submission, and it accesses no manuscript pages or hidden layout."
+    }
+  },
+  "public_practice_prototype": {
+    "evaluated": 22,
+    "passed": 21,
+    "failed": ["F-015"],
+    "values_by_id": {
+      "F-001": 61.623767,
+      "F-002": 0.229923,
+      "F-003": 54.562233,
+      "F-004": 0.324703,
+      "F-005": 0.230432,
+      "F-006": 4.829721,
+      "F-007": 0.209637,
+      "F-008": 15.414819,
+      "F-009": 0.310573,
+      "F-010": 0.173092,
+      "F-011": 0.073983,
+      "F-012": 0.011019,
+      "F-013": 1.94036,
+      "F-014": 0.71054,
+      "F-015": 0.011019,
+      "F-016": 0.310573,
+      "F-017": 0.011019,
+      "F-018": 1.183019,
+      "F-019": 8.462455,
+      "F-020": 0.121544,
+      "F-021": 0.029572,
+      "F-022": 0.029572
+    },
+    "interpretation": "Coverage and evaluator parity on public pages only. The already-refuted F-012 passes on practice, illustrating why this local replay cannot replace authoritative hidden-page scoring."
+  },
+  "limits": [
+    "The 22-record count is a snapshot of the cited commit. It must not be hardcoded into the fix or interpreted as permanent.",
+    "The proposed dispatcher lives only in the local scratch harness. This data-only proposal does not repair the repository's production implementation.",
+    "The direct scorers already contain separate DSL branches. No published fact or attack verdict is overturned by this report.",
+    "The constructed mean-length fixtures are implementation controls, not evidence about Voynich production or natural language.",
+    "With no current legacy records, a repair should still be checked on a mixed synthetic registry to avoid abandoning the old API.",
+    "No hidden seed, hidden split, held-out page list, or hidden-page numerical result was requested or used."
+  ]
+}
