@@ -1,0 +1,414 @@
+{
+  "id": "K-greek-nomenclator-001",
+  "family": "nomenclator",
+  "segmentation": "eva-basic",
+  "target": {
+    "language": "greek",
+    "period": "Learned modern Greek, Neophytos Vamvas Bible (1850), pinned verse corpus."
+  },
+  "key": {
+    "marker": "ee",
+    "map": {
+      "*": "ν",
+      "?": "α",
+      "a": "α",
+      "b": "α",
+      "c": "α",
+      "cfh": "τ",
+      "ch": "ε",
+      "ckh": "τ",
+      "cph": "τ",
+      "cth": "τ",
+      "d": "ι",
+      "e": "ρ",
+      "f": "ν",
+      "g": "α",
+      "h": "τ",
+      "i": "σ",
+      "j": "ι",
+      "k": "ι",
+      "l": "ν",
+      "m": "ν",
+      "n": "α",
+      "o": "α",
+      "p": "ν",
+      "q": "κ",
+      "r": "ν",
+      "s": "ι",
+      "sh": "ε",
+      "t": "ρ",
+      "u": "α",
+      "v": "ο",
+      "x": "ι",
+      "y": "α",
+      "z": "π",
+      "eees": "και",
+      "eeedy": "και",
+      "eey": "και",
+      "eedy": "και",
+      "eeey": "και",
+      "ees": "και",
+      "eeody": "και",
+      "eeckhy": "και",
+      "een": "και",
+      "eeockhy": "το",
+      "eeeoly": "και",
+      "eeor": "και",
+      "eee": "και",
+      "eeety": "και",
+      "eetees": "και",
+      "eeis": "και",
+      "eeokol": "και",
+      "eeesaly": "και",
+      "eeer": "και",
+      "eeeody": "και",
+      "eery": "και",
+      "eeed": "και",
+      "eeesal": "και",
+      "eeodaiin": "και"
+    }
+  },
+  "search": {
+    "budget": {
+      "word_code_limit": 24,
+      "candidate_words": 48,
+      "assignment_sweeps": 4,
+      "restarts": 4,
+      "iterations": 6000,
+      "seed": 1404,
+      "bpe_merges": 30,
+      "verbose_segmentations": [
+        "bpe-greedy",
+        "fixed-2"
+      ],
+      "verbose_min_unit_share": 0.0005,
+      "substitution_group_swap": 0.2
+    },
+    "references": [
+      "greek_725ba423"
+    ],
+    "positive_control": {
+      "criteria_method": "season._short(judge.evaluate(key, train, evaluation, 'control'))",
+      "language": "greek",
+      "cipher_family": "nomenclator",
+      "control_seed": 0,
+      "python_hash_seed": 0,
+      "noise": 0.02,
+      "search_tag": "control",
+      "search_budget": {
+        "restarts": 4,
+        "iterations": 6000,
+        "seed": 1404,
+        "bpe_merges": 30,
+        "verbose_segmentations": [
+          "bpe-greedy",
+          "fixed-2"
+        ],
+        "verbose_min_unit_share": 0.0005,
+        "substitution_group_swap": 0.2,
+        "word_code_limit": 24,
+        "candidate_words": 48,
+        "assignment_sweeps": 4
+      },
+      "training": {
+        "pages": 759,
+        "lines": 7590,
+        "words": 60713
+      },
+      "evaluation": {
+        "pages": 127,
+        "lines": 1263,
+        "words": 10096
+      },
+      "passes_without_anchors": true,
+      "planted_passes_without_anchors": true,
+      "relative_compression_savings": 0.02194,
+      "planted_relative_compression_savings": 0.01573,
+      "fitted_coverage": 0.8771,
+      "planted_coverage": 0.8829,
+      "mapping_recovery": {
+        "matching_planted_glyph_mappings": 29,
+        "planted_glyph_mappings": 30,
+        "fitted_glyph_mappings": 30,
+        "matching_planted_word_codes": 24,
+        "planted_word_codes": 24,
+        "fitted_word_codes": 25,
+        "marker_planted": "cc",
+        "marker_recovered": "cc"
+      },
+      "planted": {
+        "short": {
+          "submission": "control-greek-nomenclator",
+          "family": "nomenclator",
+          "target": {
+            "language": "greek",
+            "period": "control"
+          },
+          "verdict": "FAIL",
+          "failed": [
+            "c_pictures"
+          ],
+          "passes_without_anchors": true,
+          "savings": 0.01573,
+          "killed_by": []
+        },
+        "criteria": {
+          "a_compresses": {
+            "pass": true,
+            "savings": 0.01573,
+            "baseline_bits": 148804.5,
+            "candidate_bits": 146463.9,
+            "program_bits": 1138,
+            "key_bits": 2472,
+            "bootstrap_lo95_bits": 1523.3,
+            "baseline": {
+              "char_kn5": 148804.48053415865,
+              "word_unigram_escape": 157895.93921890022,
+              "chosen": "char_kn5"
+            },
+            "candidate": {
+              "plaintext_model": "char_kn5",
+              "plaintext_bits": 117218.9,
+              "choice_code": "adaptive_choice",
+              "choice_bits": 25635.0
+            }
+          },
+          "b_reads": {
+            "pass": true,
+            "sections": {
+              "H": {
+                "tokens": 9965,
+                "judged": true,
+                "H": 2.0998,
+                "coverage": 0.8829,
+                "ttr": 0.6092,
+                "pass": true
+              }
+            },
+            "calibration": {
+              "chunks": 470,
+              "H_max": 2.2596,
+              "cov_min": 0.84,
+              "ttr_lo": 0.4933,
+              "ttr_hi": 0.6533,
+              "H_median": 1.9122,
+              "order_gap": 4.7027
+            },
+            "output_tokens": 9965,
+            "voynich_tokens": 10096
+          },
+          "kill_tests": {
+            "pass": true,
+            "real": {
+              "H": 2.1034,
+              "coverage": 0.8829,
+              "word_bits": 8.7833
+            },
+            "decoys": {
+              "D1_word_order_shuffled": {
+                "word_bits_gap": 3.46,
+                "needed": 2.3514,
+                "killed": false
+              },
+              "D2_glyphs_shuffled": {
+                "H": 6.8598,
+                "coverage": 0.1665,
+                "killed": false
+              },
+              "D3_random_glyphs": {
+                "H": 7.1582,
+                "coverage": 0.0434,
+                "killed": false
+              },
+              "D4_unrelated_text_enciphered": {
+                "H": 7.4664,
+                "coverage": 0.0334,
+                "killed": false
+              }
+            }
+          },
+          "c_pictures": {
+            "confirmed": 1,
+            "pass": false,
+            "reason": "only 1 confirmed anchors (need 3): criterion (c) cannot pass yet"
+          },
+          "d_not_illusion": {
+            "shape": {
+              "top3_letter_share": 0.3135,
+              "band": [
+                0.3037,
+                0.3285
+              ],
+              "hapax_share": 0.7724,
+              "hapax_band": [
+                0.6323,
+                0.7979
+              ],
+              "pass": true
+            },
+            "phrase_repetition": {
+              "rate": 0.01536,
+              "language_low_end": 0.004,
+              "language_mean": 0.0301,
+              "pass": true
+            },
+            "exclusive": {
+              "own_bits_per_char": 2.0681,
+              "best_rival": "ancient_greek",
+              "rival_bits_per_char": 2.4402,
+              "pass": true
+            },
+            "matched_freedom": {
+              "pass": true,
+              "note": "no declared search budget: not applicable (keys from unknown searches are judged on (a)-(c) and the other checks)"
+            },
+            "pass": true
+          }
+        }
+      },
+      "fitted": {
+        "short": {
+          "submission": "grid-greek-nomenclator-control",
+          "family": "nomenclator",
+          "target": {
+            "language": "greek",
+            "period": "grid search"
+          },
+          "verdict": "FAIL",
+          "failed": [
+            "c_pictures",
+            "d_not_illusion"
+          ],
+          "passes_without_anchors": true,
+          "savings": 0.02194,
+          "killed_by": []
+        },
+        "criteria": {
+          "a_compresses": {
+            "pass": true,
+            "savings": 0.02194,
+            "baseline_bits": 148804.5,
+            "candidate_bits": 145540.0,
+            "program_bits": 1138,
+            "key_bits": 2472,
+            "bootstrap_lo95_bits": 2374.8,
+            "baseline": {
+              "char_kn5": 148804.48053415865,
+              "word_unigram_escape": 157895.93921890022,
+              "chosen": "char_kn5"
+            },
+            "candidate": {
+              "plaintext_model": "char_kn5",
+              "plaintext_bits": 117794.5,
+              "choice_code": "adaptive_choice",
+              "choice_bits": 24135.5
+            }
+          },
+          "b_reads": {
+            "pass": true,
+            "sections": {
+              "H": {
+                "tokens": 9965,
+                "judged": true,
+                "H": 2.1191,
+                "coverage": 0.8771,
+                "ttr": 0.6093,
+                "pass": true
+              }
+            },
+            "calibration": {
+              "chunks": 470,
+              "H_max": 2.2596,
+              "cov_min": 0.84,
+              "ttr_lo": 0.4933,
+              "ttr_hi": 0.6533,
+              "H_median": 1.9122,
+              "order_gap": 4.7027
+            },
+            "output_tokens": 9965,
+            "voynich_tokens": 10096
+          },
+          "kill_tests": {
+            "pass": true,
+            "real": {
+              "H": 2.123,
+              "coverage": 0.8771,
+              "word_bits": 8.8429
+            },
+            "decoys": {
+              "D1_word_order_shuffled": {
+                "word_bits_gap": 3.4162,
+                "needed": 2.3514,
+                "killed": false
+              },
+              "D2_glyphs_shuffled": {
+                "H": 6.6787,
+                "coverage": 0.1137,
+                "killed": false
+              },
+              "D3_random_glyphs": {
+                "H": 7.0408,
+                "coverage": 0.0337,
+                "killed": false
+              },
+              "D4_unrelated_text_enciphered": {
+                "H": 7.4473,
+                "coverage": 0.0334,
+                "killed": false
+              }
+            }
+          },
+          "c_pictures": {
+            "confirmed": 1,
+            "pass": false,
+            "reason": "only 1 confirmed anchors (need 3): criterion (c) cannot pass yet"
+          },
+          "d_not_illusion": {
+            "shape": {
+              "top3_letter_share": 0.3153,
+              "band": [
+                0.3037,
+                0.3285
+              ],
+              "hapax_share": 0.7732,
+              "hapax_band": [
+                0.6323,
+                0.7979
+              ],
+              "pass": true
+            },
+            "phrase_repetition": {
+              "rate": 0.01536,
+              "language_low_end": 0.004,
+              "language_mean": 0.0301,
+              "pass": true
+            },
+            "exclusive": {
+              "own_bits_per_char": 2.0768,
+              "best_rival": "ancient_greek",
+              "rival_bits_per_char": 2.448,
+              "pass": true
+            },
+            "matched_freedom": {
+              "meaningless_savings": 0.00366,
+              "savings": 0.02194,
+              "pass": false
+            },
+            "pass": false
+          }
+        }
+      },
+      "search_seconds": 21.283,
+      "total_seconds": 103.403
+    },
+    "training": "Public ZL practice training only, EVA-basic with ordinary word breaks and reading order.",
+    "word_code_coverage": {
+      "marker": "ee",
+      "training_tokens": 32410,
+      "marked_training_tokens": 68,
+      "assigned_code_types": 24,
+      "assigned_training_tokens": 54
+    }
+  },
+  "transliteration": "zl"
+}
