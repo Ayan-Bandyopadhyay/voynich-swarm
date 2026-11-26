@@ -1005,6 +1005,19 @@
       "license": "cc-by",
       "encoding": "utf-8",
       "added_by": "mtx-light"
+    },
+    {
+      "id": "old_hungarian_8326f8ce",
+      "lang": "old_hungarian",
+      "period": "1466 (manuscript copy date), Old Hungarian",
+      "title": "Munich Codex, four Gospels in Old Hungarian (HGDS diplomatic transcription)",
+      "url": "https://raw.githubusercontent.com/mubadala777/voynich-swarm/02d68f81ef886f949d12d420bae4436456e0ca23/munich-codex-1466.txt",
+      "file": "data/raw/agent_old_hungarian_8326f8ce.txt",
+      "bytes": 487814,
+      "sha256": "8326f8ce4d897909393356adbf10992605b4035d347fcc45fb41f983d13f89c0",
+      "license": "cc-by",
+      "encoding": "utf-8",
+      "added_by": "mubadala777"
     }
   ],
   "missing_corpora": {
