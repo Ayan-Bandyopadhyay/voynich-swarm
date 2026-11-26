@@ -1,0 +1,45 @@
+{
+ "id": "hannig-2020-hebrew-table-vowels-as-matres",
+ "family": "substitution",
+ "segmentation": "eva-raw",
+ "target": {
+  "language": "hebrew",
+  "period": "Hannig 2020 reads the text as Hebrew of his own construction; scored against the pinned Hebrew corpora"
+ },
+ "key": {
+  "map": {
+   "9": "א",
+   "U": "ב",
+   "u": "ב",
+   "F": "ג",
+   "f": "ג",
+   "J": "ד",
+   "j": "ד",
+   "k": "ת",
+   "K": "ת",
+   "4": "י",
+   "H": "כ",
+   "h": "כ",
+   "y": "ל",
+   "m": "מ",
+   "n": "נ",
+   "a": "ע",
+   "A": "ע",
+   "G": "פ",
+   "g": "פ",
+   "e": "ר",
+   "t": "ז",
+   "8": "ו",
+   "2": "ש",
+   "p": "צ",
+   "s": "ח",
+   "1": "מ",
+   "N": "פ",
+   "i": "י",
+   "c": "ו"
+  }
+ },
+ "transliteration": "gc",
+ "source": "Rainer Hannig (2020), Voynich-Hebräisch: Der Weg zur Entzifferung, self-published PDF (rainer-hannig.com): the correspondence table in section C.13 and its continuations C.14-C.22, cross-checked against the two-way alphabet tables at the end of the book. The Voynich column was read out of the PDF's embedded Voynich-1.01 font (PUA U+F0xx = the ASCII code of the v101 letter), so the codes below are v101 codes and the key runs on the 'gc' transliteration.",
+ "notes": "Frozen table, no search. Two glyph rows in C.13 are pixel-identical duplicates of another row and give one glyph two Hebrew values: <k> is listed for both ט and ת, <h> for both ק and כ (rendered cells compared at 600 dpi: IoU 1.000). The book's own two-way tables resolve this the other way round - ט is assigned to <K> and <k>, ק to <H> and <h>, while ת is assigned only to <k> and כ only to <h> - so the exclusive value is kept: k=ת, h=כ, and ט and ק end up with no glyph of their own. Final forms are written as base letters because the pinned Hebrew corpora are normalized with finals folded (refcorpus.HEB_FINALS) and pointing removed. The vowel markers are read the way his Hebrew-to-Voynich table reads them: <i> = י (vocalic yod, also the j of the imperfect) and <c> = ו (vocalic vav, u in the middle of a word); <o>, his 'Hauptvokal, Platzhalter für Vokal', is given no Hebrew equivalent anywhere in the book and is left unmapped (a null). Also left unmapped: <*> (End-k, 'noch nicht identifiziert'), regular צ ('noch nicht identifiziert'), the ligatures <ý> and <.>, and <\\>. The same table with <i> and <c> as nulls instead was also scored on the practice split; the numbers are in the experiment summary."
+}
