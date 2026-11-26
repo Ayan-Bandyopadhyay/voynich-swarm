@@ -1,0 +1,1104 @@
+{
+  "of": "N-005",
+  "assessment": "dissent",
+  "page": "f89r2",
+  "voynich": "saloiinsheol",
+  "title": "Second look at N-005 across all 16 f89r2 fragments",
+  "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006233",
+  "sources": [
+    "Beinecke MS 408, f89r2 and right panel, expanded crop starting at native x5270, https://collections.library.yale.edu/iiif/2/1006233/5270,0,3808,3777/full/0/default.jpg",
+    "Yale f35v, https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006143 and https://collections.library.yale.edu/iiif/2/1006143/full/1400,/0/default.jpg",
+    "René Zandbergen, Quire 15, fragment numbering 33–38 and 40–49 and proposed resemblance to f35v, https://www.voynich.nu/q15/index.html",
+    "Zandbergen, Villa Mondragone (2012), PDF p. 24 for f35v and BnF Latin 6823 f60r, https://voynich.nu/papers/Voynich100_RZ_2012.pdf#page=24",
+    "BnF Latin 6823 f60r, right-hand ivy comparison, https://gallica.bnf.fr/ark:/12148/btv1b6000517p/f127.image . Reproduced scan directly reviewed at https://commons.wikimedia.org/wiki/File:BnF_Latin_6823,_f.060r.jpg",
+    "Siv Bugge Vatne, The Morphology of the Voynich Plants (2022), section Drawings from memory, https://crackingthevoynichcipher.com/wp-content/uploads/2022/10/5_the_morphology_of_the_voynich_plants_siv_bugge_vatne_2022.pdf",
+    "Draft N-005, https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/223; lexical status check, vs/judge.py lines 495–545 in the current scorer."
+  ],
+  "visual_and_text_context": {
+    "position": "Fragment 35 is the broad green crown over a tan spreading root in the top row. The short line sits under the green area, to the right of the converging stalks. Its relation rests on proximity and layout.",
+    "locus": "f89r2.4",
+    "literal_transliterations": {
+      "ZL3b": "saloiinsheol",
+      "RF1b": "saloiinsheol",
+      "IT2a": "saloiin.sheol",
+      "GC2a": "saeom3coe"
+    },
+    "transliteration_reasoning": "All four edition records put the locus in the figure-label class Lf. ZL and RF agree on one token; IT splits it into two; GC2a employs its own transcription system and supplies the spelling shown above. Agreement on a figure locus cannot establish its language or referent.",
+    "external_controls": "The BnF right-hand plant has angular or pointed leaves, raised sprays and clusters of dark rounded beads. It supplies a comparison for a woody stem and clustered objects on f35v. Zandbergen's slide and Vatne's discussion share that BnF illustration. Vatne additionally discusses Egerton 747 f37 and Sloane 4016 f38v in a group of herbal comparators. These external suggestions do not identify the short f89r2 legend."
+  },
+  "anchor_status_explanation": "N-005 explicitly records an empty list of names. An agreeing assessment would move it to confirmed status and include it in the anchor-count threshold and matching denominator, although the matching loop has no candidate name for it. Dissent is on promotion to a word-to-name anchor. The visual comparison and exact locus are recorded here as observations.",
+  "statement": "Both masked readers place fragment 35 first for crown features among comparisons with at least two common observations. Its crown shares four of four and two of two comparable traits with f35v. One reader could not trace individual blade edges through the dark paint on f35v. The converging stalks and blunt wide crown are the shared positive features across both readings. Fragment 33 offers a control for visibly deep blade sinuses and does not match the wide silhouette. Neither reader scores a basal feature shared with fragment 35, with zero of one and zero of two visible matches. The nearby label remains f89r2.4. Its interpretation and the object’s identity are open. I dissent from confirmation for word-to-name scoring because the proposal contains no target name.",
+  "visual_test": {
+    "sampling": "All 16 plant fragments indexed on f89r2 (33–38 and 40–49), in same-page controls. Reference is f35v crown and base in two cropped tiers. Grayscale images omit surrounding text and mask recognisable label bands where separable. Partial neighboring traces persist in tight zones, especially fragments 37/38 and 46/47. If crop edges or overlay interrupted a feature, the readers could mark it unknown.",
+    "coordinates": "Fragment pixel boxes below are on the expanded Yale crop. Add 5270 to horizontal coordinates for original full-canvas positions. Polygon and label-mask coordinates are in the 970-pixel-wide worksheet preview of the same crop. The reference bounds are pixel coordinates on the Yale scan delivered at 1400-pixel width. Thumbnail caps at 360×420 preserve aspect ratio. Output grayscale conversion uses PIL. The query montage preserves separate crown and basal views rather than imposing relative size.",
+    "features": {
+      "C1": "Broad compact crown with several blunt rounded edge lobes",
+      "C2": "At least one traceable exposed blade with at least two pronounced rounded sinuses",
+      "C3": "Three or more fine stalks converging on a common crown junction",
+      "C4": "Multiple overlapping blades whose separate boundaries can be traced",
+      "B1": "Dominant elongated lateral root axis markedly asymmetric in the illustrated orientation",
+      "B2": "At least two recurved root tips turning back upward toward the crown",
+      "B3": "Repeated separate branchlets descending from a shared broad horizontal root span"
+    },
+    "method": "Two model reader instances scored the same anonymous fragments independently using Y/N/U with U for a missing, obscured or unresolved feature. Reference remained visible to both. Per region and per reader report number of equal codes and number of jointly known codes. A descriptive crown ranking needs at least two comparable features. The eight local lower figures include damaged or faint shapes. Do not combine crown and root into a single anatomical claim.",
+    "exposure": "The organizer knew the source mapping from the catalogue. The readers saw anonymous IDs and a recognizable manuscript visual style, and had earlier general exposure to other manuscript tasks. They reported no use of the identity map or each other’s scores. They are two instances of one model family; these comparisons are a reproducible descriptive assessment, with a separate human review needed for stronger visual claims.",
+    "frames": {
+      "reference_xyxy": [
+        [
+          782,
+          72,
+          1358,
+          628
+        ],
+        [
+          314,
+          1520,
+          1360,
+          1813
+        ]
+      ],
+      "preview_size": [
+        970,
+        962
+      ],
+      "original_size": [
+        3808,
+        3777
+      ],
+      "boxes": {
+        "M11": {
+          "fragment": 37,
+          "pixels_xyxy": [
+            314,
+            1213,
+            2018,
+            1755
+          ],
+          "polygon_preview_xy": null,
+          "label_mask_preview_xyxy": [
+            [
+              260,
+              316,
+              343,
+              337
+            ]
+          ],
+          "panel_sha256": "c3e4e080109c3e5d6969525f7bbaa2b761913a994ef4863e769811f1b1052a3f"
+        },
+        "M16": {
+          "fragment": 33,
+          "pixels_xyxy": [
+            177,
+            153,
+            612,
+            993
+          ],
+          "polygon_preview_xy": null,
+          "label_mask_preview_xyxy": [
+            [
+              74,
+              135,
+              105,
+              149
+            ],
+            [
+              135,
+              140,
+              167,
+              161
+            ]
+          ],
+          "panel_sha256": "86a1e20801ae1298af037d17283f7bd9dbc779839541b55de9434beb4591a8ce"
+        },
+        "M21": {
+          "fragment": 49,
+          "pixels_xyxy": [
+            2159,
+            2748,
+            3533,
+            3706
+          ],
+          "polygon_preview_xy": null,
+          "label_mask_preview_xyxy": [
+            [
+              609,
+              808,
+              673,
+              834
+            ]
+          ],
+          "panel_sha256": "c29276bfda1fe0be0fd607577e64f8408b42bd2ccee51ce1576ccf5ed0d306af"
+        },
+        "M26": {
+          "fragment": 35,
+          "pixels_xyxy": [
+            828,
+            157,
+            2348,
+            1076
+          ],
+          "polygon_preview_xy": [
+            [
+              350,
+              40
+            ],
+            [
+              595,
+              41
+            ],
+            [
+              600,
+              145
+            ],
+            [
+              568,
+              175
+            ],
+            [
+              597,
+              250
+            ],
+            [
+              576,
+              273
+            ],
+            [
+              210,
+              272
+            ],
+            [
+              211,
+              240
+            ],
+            [
+              251,
+              200
+            ],
+            [
+              345,
+              174
+            ],
+            [
+              355,
+              125
+            ]
+          ],
+          "label_mask_preview_xyxy": [
+            [
+              463,
+              149,
+              538,
+              170
+            ]
+          ],
+          "panel_sha256": "a73fabca4f9ec08b3309d5015a44adff79c2e5d19ec7235ad4aa6b8396e96410"
+        },
+        "M31": {
+          "fragment": 46,
+          "pixels_xyxy": [
+            369,
+            2779,
+            1080,
+            3545
+          ],
+          "polygon_preview_xy": null,
+          "label_mask_preview_xyxy": [
+            [
+              123,
+              790,
+              154,
+              813
+            ]
+          ],
+          "panel_sha256": "6e3a5d95b38263865a4bffbcf03cc2d2bb90369c46c9aa5fc6909da1a68129e2"
+        },
+        "M36": {
+          "fragment": 38,
+          "pixels_xyxy": [
+            2049,
+            1288,
+            3423,
+            1794
+          ],
+          "polygon_preview_xy": null,
+          "label_mask_preview_xyxy": [
+            [
+              622,
+              334,
+              680,
+              356
+            ]
+          ],
+          "panel_sha256": "1cbd458f577ecc2512ee3530c9ad7bd111d60c11dea28d0cd29db160ed199122"
+        },
+        "M41": {
+          "fragment": 42,
+          "pixels_xyxy": [
+            1025,
+            1947,
+            1303,
+            2406
+          ],
+          "polygon_preview_xy": null,
+          "label_mask_preview_xyxy": [
+            [
+              245,
+              544,
+              271,
+              560
+            ]
+          ],
+          "panel_sha256": "375bbe75e37d8478970339f989bcb94ca4b835b77bb750c293dc991a82c2cbe0"
+        },
+        "M46": {
+          "fragment": 48,
+          "pixels_xyxy": [
+            1433,
+            2791,
+            2179,
+            3639
+          ],
+          "polygon_preview_xy": null,
+          "label_mask_preview_xyxy": [
+            [
+              451,
+              789,
+              482,
+              811
+            ]
+          ],
+          "panel_sha256": "547ab66d842f98921534d33dc467f1eb79a6a3eb433dd37decc0e86cc3e58cad"
+        },
+        "M51": {
+          "fragment": 36,
+          "pixels_xyxy": [
+            2143,
+            192,
+            3726,
+            1822
+          ],
+          "polygon_preview_xy": null,
+          "label_mask_preview_xyxy": [
+            [
+              734,
+              144,
+              802,
+              178
+            ]
+          ],
+          "panel_sha256": "d4018639aac667fb189cc60aacb8dc713059b4130e1688df619852fa443292f1"
+        },
+        "M56": {
+          "fragment": 34,
+          "pixels_xyxy": [
+            561,
+            204,
+            1390,
+            989
+          ],
+          "polygon_preview_xy": null,
+          "label_mask_preview_xyxy": [
+            [
+              236,
+              130,
+              302,
+              153
+            ]
+          ],
+          "panel_sha256": "518bab53ac6cdd21f8f6c92bb533da388691c8efc4a06e5a60034aaeb125fe9f"
+        },
+        "M61": {
+          "fragment": 40,
+          "pixels_xyxy": [
+            263,
+            1892,
+            707,
+            2536
+          ],
+          "polygon_preview_xy": null,
+          "label_mask_preview_xyxy": [
+            [
+              142,
+              524,
+              170,
+              546
+            ]
+          ],
+          "panel_sha256": "32404829c372b96065f857f5ec2f0cae7b8968badee7af795552afe3a98c91a0"
+        },
+        "M66": {
+          "fragment": 47,
+          "pixels_xyxy": [
+            726,
+            2791,
+            1460,
+            3337
+          ],
+          "polygon_preview_xy": null,
+          "label_mask_preview_xyxy": [
+            [
+              221,
+              773,
+              276,
+              800
+            ]
+          ],
+          "panel_sha256": "8c841f8f8e7aef611d7c6dde4a585fbed8b8c9e68ceb778231c0eef6d3fb24e6"
+        },
+        "M71": {
+          "fragment": 41,
+          "pixels_xyxy": [
+            683,
+            1924,
+            1044,
+            2430
+          ],
+          "polygon_preview_xy": null,
+          "label_mask_preview_xyxy": [
+            [
+              169,
+              521,
+              193,
+              547
+            ],
+            [
+              252,
+              543,
+              266,
+              559
+            ]
+          ],
+          "panel_sha256": "9c2b14f10bf2205b9d46186421d9ca52391f9d0c4e001250b544034d17b54d56"
+        },
+        "M76": {
+          "fragment": 44,
+          "pixels_xyxy": [
+            1774,
+            1924,
+            2344,
+            2446
+          ],
+          "polygon_preview_xy": null,
+          "label_mask_preview_xyxy": [
+            [
+              476,
+              529,
+              502,
+              553
+            ]
+          ],
+          "panel_sha256": "643c62be3cb0e98063b9377783f3379bb4ffe4a3daf211eb6c8c349f6ede4d04"
+        },
+        "M81": {
+          "fragment": 45,
+          "pixels_xyxy": [
+            2352,
+            1908,
+            3659,
+            2917
+          ],
+          "polygon_preview_xy": null,
+          "label_mask_preview_xyxy": [
+            [
+              600,
+              545,
+              622,
+              567
+            ]
+          ],
+          "panel_sha256": "9beca81c87e0a23af64c324dda98e222845dab254576c94b6967af4d620d3cc9"
+        },
+        "M86": {
+          "fragment": 43,
+          "pixels_xyxy": [
+            1311,
+            1979,
+            1782,
+            2430
+          ],
+          "polygon_preview_xy": null,
+          "label_mask_preview_xyxy": [
+            [
+              345,
+              541,
+              374,
+              561
+            ]
+          ],
+          "panel_sha256": "9d8234171055e05472da551b59567994af859f4b0fc9188ba22b5ff79417e67c"
+        }
+      }
+    },
+    "ratings": {
+      "A": {
+        "reference": [
+          "Y",
+          "Y",
+          "Y",
+          "Y",
+          "Y",
+          "Y",
+          "Y"
+        ],
+        "M11": [
+          "N",
+          "N",
+          "Y",
+          "U",
+          "N",
+          "U",
+          "N"
+        ],
+        "M16": [
+          "N",
+          "Y",
+          "U",
+          "Y",
+          "N",
+          "U",
+          "N"
+        ],
+        "M21": [
+          "Y",
+          "N",
+          "U",
+          "N",
+          "Y",
+          "U",
+          "N"
+        ],
+        "M26": [
+          "Y",
+          "Y",
+          "Y",
+          "Y",
+          "U",
+          "U",
+          "N"
+        ],
+        "M31": [
+          "N",
+          "N",
+          "N",
+          "N",
+          "Y",
+          "N",
+          "N"
+        ],
+        "M36": [
+          "N",
+          "N",
+          "Y",
+          "N",
+          "N",
+          "N",
+          "N"
+        ],
+        "M41": [
+          "N",
+          "N",
+          "N",
+          "N",
+          "N",
+          "N",
+          "N"
+        ],
+        "M46": [
+          "U",
+          "U",
+          "U",
+          "U",
+          "U",
+          "U",
+          "U"
+        ],
+        "M51": [
+          "N",
+          "N",
+          "U",
+          "N",
+          "Y",
+          "U",
+          "N"
+        ],
+        "M56": [
+          "N",
+          "N",
+          "Y",
+          "N",
+          "N",
+          "N",
+          "N"
+        ],
+        "M61": [
+          "Y",
+          "N",
+          "U",
+          "Y",
+          "Y",
+          "Y",
+          "N"
+        ],
+        "M66": [
+          "Y",
+          "N",
+          "N",
+          "N",
+          "U",
+          "U",
+          "U"
+        ],
+        "M71": [
+          "N",
+          "N",
+          "N",
+          "N",
+          "Y",
+          "U",
+          "N"
+        ],
+        "M76": [
+          "N",
+          "N",
+          "N",
+          "N",
+          "Y",
+          "Y",
+          "N"
+        ],
+        "M81": [
+          "N",
+          "N",
+          "U",
+          "N",
+          "N",
+          "U",
+          "N"
+        ],
+        "M86": [
+          "Y",
+          "U",
+          "U",
+          "U",
+          "N",
+          "Y",
+          "N"
+        ]
+      },
+      "B": {
+        "reference": [
+          "Y",
+          "U",
+          "Y",
+          "U",
+          "Y",
+          "Y",
+          "Y"
+        ],
+        "M11": [
+          "N",
+          "U",
+          "U",
+          "U",
+          "N",
+          "U",
+          "N"
+        ],
+        "M16": [
+          "N",
+          "Y",
+          "U",
+          "N",
+          "N",
+          "U",
+          "N"
+        ],
+        "M21": [
+          "N",
+          "N",
+          "N",
+          "N",
+          "N",
+          "U",
+          "N"
+        ],
+        "M26": [
+          "Y",
+          "Y",
+          "Y",
+          "Y",
+          "N",
+          "U",
+          "N"
+        ],
+        "M31": [
+          "N",
+          "N",
+          "N",
+          "N",
+          "Y",
+          "N",
+          "N"
+        ],
+        "M36": [
+          "U",
+          "U",
+          "N",
+          "U",
+          "N",
+          "N",
+          "N"
+        ],
+        "M41": [
+          "U",
+          "N",
+          "U",
+          "U",
+          "U",
+          "N",
+          "N"
+        ],
+        "M46": [
+          "U",
+          "U",
+          "U",
+          "U",
+          "U",
+          "U",
+          "U"
+        ],
+        "M51": [
+          "N",
+          "N",
+          "Y",
+          "N",
+          "Y",
+          "U",
+          "N"
+        ],
+        "M56": [
+          "N",
+          "N",
+          "U",
+          "N",
+          "N",
+          "N",
+          "N"
+        ],
+        "M61": [
+          "N",
+          "N",
+          "U",
+          "N",
+          "Y",
+          "N",
+          "N"
+        ],
+        "M66": [
+          "N",
+          "N",
+          "N",
+          "N",
+          "U",
+          "U",
+          "U"
+        ],
+        "M71": [
+          "N",
+          "N",
+          "N",
+          "N",
+          "Y",
+          "U",
+          "N"
+        ],
+        "M76": [
+          "N",
+          "N",
+          "N",
+          "N",
+          "Y",
+          "N",
+          "N"
+        ],
+        "M81": [
+          "N",
+          "N",
+          "U",
+          "N",
+          "N",
+          "U",
+          "N"
+        ],
+        "M86": [
+          "Y",
+          "N",
+          "N",
+          "N",
+          "N",
+          "N",
+          "N"
+        ]
+      }
+    },
+    "same_page_pair_scores_by_fragment": {
+      "33": {
+        "A": {
+          "crown": [
+            2,
+            3
+          ],
+          "root": [
+            0,
+            2
+          ]
+        },
+        "B": {
+          "crown": [
+            0,
+            1
+          ],
+          "root": [
+            0,
+            2
+          ]
+        }
+      },
+      "34": {
+        "A": {
+          "crown": [
+            1,
+            4
+          ],
+          "root": [
+            0,
+            3
+          ]
+        },
+        "B": {
+          "crown": [
+            0,
+            1
+          ],
+          "root": [
+            0,
+            3
+          ]
+        }
+      },
+      "35": {
+        "A": {
+          "crown": [
+            4,
+            4
+          ],
+          "root": [
+            0,
+            1
+          ]
+        },
+        "B": {
+          "crown": [
+            2,
+            2
+          ],
+          "root": [
+            0,
+            2
+          ]
+        }
+      },
+      "36": {
+        "A": {
+          "crown": [
+            0,
+            3
+          ],
+          "root": [
+            1,
+            2
+          ]
+        },
+        "B": {
+          "crown": [
+            1,
+            2
+          ],
+          "root": [
+            1,
+            2
+          ]
+        }
+      },
+      "37": {
+        "A": {
+          "crown": [
+            1,
+            3
+          ],
+          "root": [
+            0,
+            2
+          ]
+        },
+        "B": {
+          "crown": [
+            0,
+            1
+          ],
+          "root": [
+            0,
+            2
+          ]
+        }
+      },
+      "38": {
+        "A": {
+          "crown": [
+            1,
+            4
+          ],
+          "root": [
+            0,
+            3
+          ]
+        },
+        "B": {
+          "crown": [
+            0,
+            1
+          ],
+          "root": [
+            0,
+            3
+          ]
+        }
+      },
+      "40": {
+        "A": {
+          "crown": [
+            2,
+            3
+          ],
+          "root": [
+            2,
+            3
+          ]
+        },
+        "B": {
+          "crown": [
+            0,
+            1
+          ],
+          "root": [
+            1,
+            3
+          ]
+        }
+      },
+      "41": {
+        "A": {
+          "crown": [
+            0,
+            4
+          ],
+          "root": [
+            1,
+            2
+          ]
+        },
+        "B": {
+          "crown": [
+            0,
+            2
+          ],
+          "root": [
+            1,
+            2
+          ]
+        }
+      },
+      "42": {
+        "A": {
+          "crown": [
+            0,
+            4
+          ],
+          "root": [
+            0,
+            3
+          ]
+        },
+        "B": {
+          "crown": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            2
+          ]
+        }
+      },
+      "43": {
+        "A": {
+          "crown": [
+            1,
+            1
+          ],
+          "root": [
+            1,
+            3
+          ]
+        },
+        "B": {
+          "crown": [
+            1,
+            2
+          ],
+          "root": [
+            0,
+            3
+          ]
+        }
+      },
+      "44": {
+        "A": {
+          "crown": [
+            0,
+            4
+          ],
+          "root": [
+            2,
+            3
+          ]
+        },
+        "B": {
+          "crown": [
+            0,
+            2
+          ],
+          "root": [
+            1,
+            3
+          ]
+        }
+      },
+      "45": {
+        "A": {
+          "crown": [
+            0,
+            3
+          ],
+          "root": [
+            0,
+            2
+          ]
+        },
+        "B": {
+          "crown": [
+            0,
+            1
+          ],
+          "root": [
+            0,
+            2
+          ]
+        }
+      },
+      "46": {
+        "A": {
+          "crown": [
+            0,
+            4
+          ],
+          "root": [
+            1,
+            3
+          ]
+        },
+        "B": {
+          "crown": [
+            0,
+            2
+          ],
+          "root": [
+            1,
+            3
+          ]
+        }
+      },
+      "47": {
+        "A": {
+          "crown": [
+            1,
+            4
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "B": {
+          "crown": [
+            0,
+            2
+          ],
+          "root": [
+            0,
+            0
+          ]
+        }
+      },
+      "48": {
+        "A": {
+          "crown": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "B": {
+          "crown": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ]
+        }
+      },
+      "49": {
+        "A": {
+          "crown": [
+            1,
+            3
+          ],
+          "root": [
+            1,
+            2
+          ]
+        },
+        "B": {
+          "crown": [
+            0,
+            2
+          ],
+          "root": [
+            0,
+            2
+          ]
+        }
+      }
+    },
+    "outcomes": [
+      "Fragment 35 shares both the broad blunt-lobed crown and the fan of fine converging stalks. Reader A also matches individual and overlapping blade traits; reader B could not reliably trace those reference traits through overlapping paint.",
+      "The spreading base on fragment 35 is pale and roughly balanced across its junction. The f35v main base is more strongly lateral and asymmetric, with groups of returning tips and a repeated array of downward branchlets. The completeness of some edges on fragment 35 remains unclear.",
+      "Fragment 33 has more visible deep recesses on individual blades than many neighboring pieces. Its overall outline and descending base give a different combination. Several lowermost controls appear faint or overlap traces, which limits how much a low match count tells us."
+    ]
+  }
+}
