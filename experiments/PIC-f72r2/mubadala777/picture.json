@@ -1,0 +1,1111 @@
+{
+  "folio": "f72r2",
+  "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006203",
+  "blind": true,
+  "statement": "The third diagram from the left on the foldout has a central pair with overlapping hands and thirty peripheral human figures, organized into an incomplete row of five in the upper arc, sixteen in the middle and nine in the inner ring. Most figures are paired with radiating stars. Two places near folds have only possible ray marks. Three separate rounded forms are visible near feet.",
+  "scan_regions": {
+    "panel": "https://collections.library.yale.edu/iiif/2/1006203/4260,130,1750,2330/full/0/default.jpg",
+    "panel_and_adjacent_folds": "https://collections.library.yale.edu/iiif/2/1006203/4090,130,2310,2330/1770,/0/default.jpg",
+    "right_fold": "https://collections.library.yale.edu/iiif/2/1006203/5490,385,1040,2160/780,/0/default.jpg"
+  },
+  "annotation_order": "Use the top-left figure as the start of the upper arc, the figure with a raised star to the left of top as the start of the middle ring, and the knee-raised figure upper-left of the central pair as the start of the inner ring. Proceed clockwise. Record objects from the scans before extracting IVTFF locus identifiers.",
+  "locus_context": {
+    "format_reference": "IVTFF specification §6.4. https://voynich.nu/software/ivtt/IVTFF_format.pdf",
+    "observed_groups": [
+      {
+        "label_ids": [
+          "f72r2.1",
+          "f72r2.2",
+          "f72r2.3",
+          "f72r2.4",
+          "f72r2.5"
+        ],
+        "next_circular_locus": "f72r2.6"
+      },
+      {
+        "label_ids": [
+          "f72r2.7",
+          "f72r2.8",
+          "f72r2.9",
+          "f72r2.10",
+          "f72r2.11",
+          "f72r2.12",
+          "f72r2.13",
+          "f72r2.14",
+          "f72r2.15",
+          "f72r2.16",
+          "f72r2.17",
+          "f72r2.18",
+          "f72r2.19",
+          "f72r2.20",
+          "f72r2.21"
+        ],
+        "next_circular_locus": "f72r2.22"
+      },
+      {
+        "label_ids": [
+          "f72r2.23",
+          "f72r2.24",
+          "f72r2.25",
+          "f72r2.26",
+          "f72r2.27",
+          "f72r2.28",
+          "f72r2.29",
+          "f72r2.30",
+          "f72r2.31"
+        ],
+        "next_circular_locus": "f72r2.32"
+      }
+    ],
+    "association_limit": "The locus headers identify three series of 5, 15 and 9 labels. The image gives local label positions, while the numeric headers leave the starting point of the circular series and the missing middle-ring association unresolved. For the open upper arc record a possible ordering by position for review. Leave exact object-label links empty pending spatial confirmation."
+  },
+  "objects": [
+    {
+      "id": "radial-diagram",
+      "kind": "diagram",
+      "features": {
+        "layout": "concentric arrangement around a central pair, with a narrow outer row only along the upper arc",
+        "center_canvas_px": [
+          5140,
+          1400
+        ],
+        "circular_inscription_bands": 3,
+        "folds": "a dark, worn fold at upper left partly obscures a body and possible rays. A lighter right fold separates a different diagram."
+      },
+      "label": null
+    },
+    {
+      "id": "center-left",
+      "kind": "human_figure",
+      "features": {
+        "center_canvas_px": [
+          5044,
+          1285
+        ],
+        "position": "center, left",
+        "orientation": "facing the other figure",
+        "posture": "visible bent leg and curled-toe foot. Both arms extend toward the other figure and overlap their hands.",
+        "clothing": "short belted tunic with a scalloped or pleated hem and a broad cap",
+        "colour": "green cap, tunic tint and footwear. Red facial accents."
+      },
+      "label": null
+    },
+    {
+      "id": "center-right",
+      "kind": "human_figure",
+      "features": {
+        "center_canvas_px": [
+          5207,
+          1275
+        ],
+        "position": "center, right",
+        "orientation": "facing the other figure",
+        "posture": "arms extend left across the center, reaching the other figure. Legs covered by garment.",
+        "clothing": "long vertically streaked robe with a trailing hem and a long tan outlined head covering or hair",
+        "colour": "blue stripes and headband. Red facial accents."
+      },
+      "label": null
+    },
+    {
+      "id": "upper-arc-human-01",
+      "kind": "human_figure",
+      "features": {
+        "position": "upper-arc",
+        "head_canvas_px": [
+          4354,
+          487
+        ],
+        "orientation": "radial, head generally outward",
+        "posture": "worn fold obscures head and part of torso. Bent knee and hatched lines below the feet remain visible.",
+        "appearance": "unclear",
+        "nearby_ray_object": "upper-arc-rays-01",
+        "provisional_locus_by_open_arc_order": "f72r2.1"
+      },
+      "label": null
+    },
+    {
+      "id": "upper-arc-rays-01",
+      "kind": "other",
+      "features": {
+        "position": "upper-arc",
+        "center_canvas_px": [
+          4455,
+          352
+        ],
+        "associated_figure": "upper-arc-human-01",
+        "form": "possible radiating mark",
+        "colour": "faint ray-like traces at the fold",
+        "visibility": "possible"
+      },
+      "label": null
+    },
+    {
+      "id": "upper-arc-human-02",
+      "kind": "human_figure",
+      "features": {
+        "position": "upper-arc",
+        "head_canvas_px": [
+          4690,
+          337
+        ],
+        "orientation": "radial, head generally outward",
+        "posture": "one hand at waist and one lifted. One knee flexed.",
+        "appearance": "body outlined",
+        "nearby_ray_object": "upper-arc-rays-02",
+        "provisional_locus_by_open_arc_order": "f72r2.2"
+      },
+      "label": null
+    },
+    {
+      "id": "upper-arc-rays-02",
+      "kind": "star",
+      "features": {
+        "position": "upper-arc",
+        "center_canvas_px": [
+          4835,
+          300
+        ],
+        "associated_figure": "upper-arc-human-02",
+        "form": "radiating star",
+        "colour": "unfilled outlined rays",
+        "visibility": "clear"
+      },
+      "label": null
+    },
+    {
+      "id": "upper-arc-human-03",
+      "kind": "human_figure",
+      "features": {
+        "position": "upper-arc",
+        "head_canvas_px": [
+          5065,
+          260
+        ],
+        "orientation": "radial, head generally outward",
+        "posture": "knees close together and near hand at hip. Opposite arm reaches right.",
+        "appearance": "body outlined",
+        "nearby_ray_object": "upper-arc-rays-03",
+        "provisional_locus_by_open_arc_order": "f72r2.3"
+      },
+      "label": null
+    },
+    {
+      "id": "upper-arc-rays-03",
+      "kind": "star",
+      "features": {
+        "position": "upper-arc",
+        "center_canvas_px": [
+          5170,
+          313
+        ],
+        "associated_figure": "upper-arc-human-03",
+        "form": "radiating star",
+        "colour": "ochre center and outlined rays",
+        "visibility": "clear"
+      },
+      "label": null
+    },
+    {
+      "id": "upper-arc-human-04",
+      "kind": "human_figure",
+      "features": {
+        "position": "upper-arc",
+        "head_canvas_px": [
+          5340,
+          248
+        ],
+        "orientation": "radial, head generally outward",
+        "posture": "one knee raised, with an extended arm and faint terminal line.",
+        "appearance": "body outlined",
+        "nearby_ray_object": "upper-arc-rays-04",
+        "provisional_locus_by_open_arc_order": "f72r2.4"
+      },
+      "label": null
+    },
+    {
+      "id": "upper-arc-rays-04",
+      "kind": "star",
+      "features": {
+        "position": "upper-arc",
+        "center_canvas_px": [
+          5494,
+          242
+        ],
+        "associated_figure": "upper-arc-human-04",
+        "form": "radiating star",
+        "colour": "ochre mark with faint rays",
+        "visibility": "clear"
+      },
+      "label": null
+    },
+    {
+      "id": "upper-arc-human-05",
+      "kind": "human_figure",
+      "features": {
+        "position": "upper-arc",
+        "head_canvas_px": [
+          5675,
+          341
+        ],
+        "orientation": "radial, head generally outward",
+        "posture": "one hand at waist and extended hand below rays, with one flexed knee.",
+        "appearance": "rounded hair or cap outline, body outlined",
+        "nearby_ray_object": "upper-arc-rays-05",
+        "provisional_locus_by_open_arc_order": "f72r2.5"
+      },
+      "label": null
+    },
+    {
+      "id": "upper-arc-rays-05",
+      "kind": "star",
+      "features": {
+        "position": "upper-arc",
+        "center_canvas_px": [
+          5820,
+          341
+        ],
+        "associated_figure": "upper-arc-human-05",
+        "form": "radiating star",
+        "colour": "ochre center and outlined rays",
+        "visibility": "clear"
+      },
+      "label": null
+    },
+    {
+      "id": "middle-ring-human-01",
+      "kind": "human_figure",
+      "features": {
+        "position": "middle-ring",
+        "head_canvas_px": [
+          4714,
+          710
+        ],
+        "orientation": "radial, head generally outward",
+        "posture": "long strokes behind head, raised reaching hand, knees bent.",
+        "appearance": "body outlined",
+        "nearby_ray_object": "middle-ring-rays-01"
+      },
+      "label": null
+    },
+    {
+      "id": "middle-ring-rays-01",
+      "kind": "star",
+      "features": {
+        "position": "middle-ring",
+        "center_canvas_px": [
+          4818,
+          670
+        ],
+        "associated_figure": "middle-ring-human-01",
+        "form": "radiating star",
+        "colour": "unfilled outlined rays",
+        "visibility": "clear"
+      },
+      "label": null
+    },
+    {
+      "id": "middle-ring-human-02",
+      "kind": "human_figure",
+      "features": {
+        "position": "middle-ring",
+        "head_canvas_px": [
+          5061,
+          601
+        ],
+        "orientation": "radial, head generally outward",
+        "posture": "near hand on hip, other hand raised to rays.",
+        "appearance": "rounded hair outline",
+        "nearby_ray_object": "middle-ring-rays-02"
+      },
+      "label": null
+    },
+    {
+      "id": "middle-ring-rays-02",
+      "kind": "star",
+      "features": {
+        "position": "middle-ring",
+        "center_canvas_px": [
+          5182,
+          622
+        ],
+        "associated_figure": "middle-ring-human-02",
+        "form": "radiating star",
+        "colour": "ochre center and outlined rays",
+        "visibility": "clear"
+      },
+      "label": null
+    },
+    {
+      "id": "middle-ring-human-03",
+      "kind": "human_figure",
+      "features": {
+        "position": "middle-ring",
+        "head_canvas_px": [
+          5300,
+          625
+        ],
+        "orientation": "radial, head generally outward",
+        "posture": "hand near shoulder or hip and arm stretched out toward rays.",
+        "appearance": "body outlined",
+        "nearby_ray_object": "middle-ring-rays-03"
+      },
+      "label": null
+    },
+    {
+      "id": "middle-ring-rays-03",
+      "kind": "star",
+      "features": {
+        "position": "middle-ring",
+        "center_canvas_px": [
+          5423,
+          663
+        ],
+        "associated_figure": "middle-ring-human-03",
+        "form": "radiating star",
+        "colour": "mostly outline with pale central tint",
+        "visibility": "clear"
+      },
+      "label": null
+    },
+    {
+      "id": "middle-ring-human-04",
+      "kind": "human_figure",
+      "features": {
+        "position": "middle-ring",
+        "head_canvas_px": [
+          5575,
+          735
+        ],
+        "orientation": "radial, head generally outward",
+        "posture": "diagonally outward, one hand at hip and one extending down-right.",
+        "appearance": "body outlined",
+        "nearby_ray_object": "middle-ring-rays-04"
+      },
+      "label": null
+    },
+    {
+      "id": "middle-ring-rays-04",
+      "kind": "star",
+      "features": {
+        "position": "middle-ring",
+        "center_canvas_px": [
+          5681,
+          885
+        ],
+        "associated_figure": "middle-ring-human-04",
+        "form": "radiating star",
+        "colour": "unfilled outlined rays",
+        "visibility": "clear"
+      },
+      "label": null
+    },
+    {
+      "id": "middle-ring-human-05",
+      "kind": "human_figure",
+      "features": {
+        "position": "middle-ring",
+        "head_canvas_px": [
+          5827,
+          986
+        ],
+        "orientation": "radial, head generally outward",
+        "posture": "almost sideways, one arm extended at rays and other bent.",
+        "appearance": "tan hair tint",
+        "nearby_ray_object": "middle-ring-rays-05"
+      },
+      "label": null
+    },
+    {
+      "id": "middle-ring-rays-05",
+      "kind": "star",
+      "features": {
+        "position": "middle-ring",
+        "center_canvas_px": [
+          5876,
+          1108
+        ],
+        "associated_figure": "middle-ring-human-05",
+        "form": "radiating star",
+        "colour": "ochre center and outlined rays",
+        "visibility": "clear"
+      },
+      "label": null
+    },
+    {
+      "id": "middle-ring-human-06",
+      "kind": "human_figure",
+      "features": {
+        "position": "middle-ring",
+        "head_canvas_px": [
+          5921,
+          1375
+        ],
+        "orientation": "radial, head generally outward",
+        "posture": "sideways with head outward and curved reach to the rays below.",
+        "appearance": "pale hair outline",
+        "nearby_ray_object": "middle-ring-rays-06"
+      },
+      "label": null
+    },
+    {
+      "id": "middle-ring-rays-06",
+      "kind": "star",
+      "features": {
+        "position": "middle-ring",
+        "center_canvas_px": [
+          5915,
+          1529
+        ],
+        "associated_figure": "middle-ring-human-06",
+        "form": "radiating star",
+        "colour": "ochre center and outlined rays",
+        "visibility": "clear"
+      },
+      "label": null
+    },
+    {
+      "id": "middle-ring-human-07",
+      "kind": "human_figure",
+      "features": {
+        "position": "middle-ring",
+        "head_canvas_px": [
+          5844,
+          1839
+        ],
+        "orientation": "radial, head generally outward",
+        "posture": "diagonal with head down-right, one arm at side and one reaching toward the faded fold.",
+        "appearance": "body outlined",
+        "nearby_ray_object": "middle-ring-rays-07"
+      },
+      "label": null
+    },
+    {
+      "id": "middle-ring-rays-07",
+      "kind": "other",
+      "features": {
+        "position": "middle-ring",
+        "center_canvas_px": [
+          5972,
+          1777
+        ],
+        "associated_figure": "middle-ring-human-07",
+        "form": "possible radiating mark",
+        "colour": "faded strokes near the raised hand and fold",
+        "visibility": "possible"
+      },
+      "label": null
+    },
+    {
+      "id": "middle-ring-human-08",
+      "kind": "human_figure",
+      "features": {
+        "position": "middle-ring",
+        "head_canvas_px": [
+          5525,
+          2150
+        ],
+        "orientation": "radial, head generally outward",
+        "posture": "diagonally inverted, hair trailing outward and arm angled toward rays.",
+        "appearance": "body outlined",
+        "nearby_ray_object": "middle-ring-rays-08"
+      },
+      "label": null
+    },
+    {
+      "id": "middle-ring-rays-08",
+      "kind": "star",
+      "features": {
+        "position": "middle-ring",
+        "center_canvas_px": [
+          5385,
+          2230
+        ],
+        "associated_figure": "middle-ring-human-08",
+        "form": "radiating star",
+        "colour": "ochre center and outlined rays",
+        "visibility": "clear"
+      },
+      "label": null
+    },
+    {
+      "id": "middle-ring-human-09",
+      "kind": "human_figure",
+      "features": {
+        "position": "middle-ring",
+        "head_canvas_px": [
+          5106,
+          2250
+        ],
+        "orientation": "radial, head generally outward",
+        "posture": "inverted with one hand on side and one reaching toward rays. Feet overlap an oblong support.",
+        "appearance": "body outlined",
+        "nearby_ray_object": "middle-ring-rays-09"
+      },
+      "label": null
+    },
+    {
+      "id": "middle-ring-rays-09",
+      "kind": "star",
+      "features": {
+        "position": "middle-ring",
+        "center_canvas_px": [
+          4950,
+          2224
+        ],
+        "associated_figure": "middle-ring-human-09",
+        "form": "radiating star",
+        "colour": "unfilled outlined rays",
+        "visibility": "clear"
+      },
+      "label": null
+    },
+    {
+      "id": "middle-ring-human-10",
+      "kind": "human_figure",
+      "features": {
+        "position": "middle-ring",
+        "head_canvas_px": [
+          4810,
+          2182
+        ],
+        "orientation": "radial, head generally outward",
+        "posture": "inverted, one extended palm and one hand near rays.",
+        "appearance": "short pleated garment",
+        "nearby_ray_object": "middle-ring-rays-10"
+      },
+      "label": null
+    },
+    {
+      "id": "middle-ring-rays-10",
+      "kind": "star",
+      "features": {
+        "position": "middle-ring",
+        "center_canvas_px": [
+          4706,
+          2121
+        ],
+        "associated_figure": "middle-ring-human-10",
+        "form": "radiating star",
+        "colour": "mostly outline",
+        "visibility": "clear"
+      },
+      "label": null
+    },
+    {
+      "id": "middle-ring-human-11",
+      "kind": "human_figure",
+      "features": {
+        "position": "middle-ring",
+        "head_canvas_px": [
+          4588,
+          2022
+        ],
+        "orientation": "radial, head generally outward",
+        "posture": "inverted diagonal. A round outline touches the foot area.",
+        "appearance": "short outfit outlined",
+        "nearby_ray_object": "middle-ring-rays-11"
+      },
+      "label": null
+    },
+    {
+      "id": "middle-ring-rays-11",
+      "kind": "star",
+      "features": {
+        "position": "middle-ring",
+        "center_canvas_px": [
+          4488,
+          1920
+        ],
+        "associated_figure": "middle-ring-human-11",
+        "form": "radiating star",
+        "colour": "pale tan center",
+        "visibility": "clear"
+      },
+      "label": null
+    },
+    {
+      "id": "middle-ring-human-12",
+      "kind": "human_figure",
+      "features": {
+        "position": "middle-ring",
+        "head_canvas_px": [
+          4458,
+          1850
+        ],
+        "orientation": "radial, head generally outward",
+        "posture": "radially inverted at lower left, an extended arm at rays.",
+        "appearance": "long draped garment with stripes",
+        "nearby_ray_object": "middle-ring-rays-12"
+      },
+      "label": null
+    },
+    {
+      "id": "middle-ring-rays-12",
+      "kind": "star",
+      "features": {
+        "position": "middle-ring",
+        "center_canvas_px": [
+          4384,
+          1740
+        ],
+        "associated_figure": "middle-ring-human-12",
+        "form": "radiating star",
+        "colour": "faded ochre tint",
+        "visibility": "clear"
+      },
+      "label": null
+    },
+    {
+      "id": "middle-ring-human-13",
+      "kind": "human_figure",
+      "features": {
+        "position": "middle-ring",
+        "head_canvas_px": [
+          4360,
+          1640
+        ],
+        "orientation": "radial, head generally outward",
+        "posture": "outward-facing sideways figure with raised hand.",
+        "appearance": "short garment outlined",
+        "nearby_ray_object": "middle-ring-rays-13"
+      },
+      "label": null
+    },
+    {
+      "id": "middle-ring-rays-13",
+      "kind": "star",
+      "features": {
+        "position": "middle-ring",
+        "center_canvas_px": [
+          4383,
+          1520
+        ],
+        "associated_figure": "middle-ring-human-13",
+        "form": "radiating star",
+        "colour": "ochre center and outlined rays",
+        "visibility": "clear"
+      },
+      "label": null
+    },
+    {
+      "id": "middle-ring-human-14",
+      "kind": "human_figure",
+      "features": {
+        "position": "middle-ring",
+        "head_canvas_px": [
+          4343,
+          1430
+        ],
+        "orientation": "radial, head generally outward",
+        "posture": "outward at left, slightly bent legs and arm reaching up.",
+        "appearance": "body outlined",
+        "nearby_ray_object": "middle-ring-rays-14"
+      },
+      "label": null
+    },
+    {
+      "id": "middle-ring-rays-14",
+      "kind": "star",
+      "features": {
+        "position": "middle-ring",
+        "center_canvas_px": [
+          4345,
+          1330
+        ],
+        "associated_figure": "middle-ring-human-14",
+        "form": "radiating star",
+        "colour": "faint ochre and ray outlines",
+        "visibility": "clear"
+      },
+      "label": null
+    },
+    {
+      "id": "middle-ring-human-15",
+      "kind": "human_figure",
+      "features": {
+        "position": "middle-ring",
+        "head_canvas_px": [
+          4361,
+          1231
+        ],
+        "orientation": "radial, head generally outward",
+        "posture": "sideways with one hand at waist and other angled toward rays.",
+        "appearance": "body outlined, partially faded",
+        "nearby_ray_object": "middle-ring-rays-15"
+      },
+      "label": null
+    },
+    {
+      "id": "middle-ring-rays-15",
+      "kind": "star",
+      "features": {
+        "position": "middle-ring",
+        "center_canvas_px": [
+          4380,
+          1108
+        ],
+        "associated_figure": "middle-ring-human-15",
+        "form": "radiating star",
+        "colour": "faint ochre and ray outlines",
+        "visibility": "clear"
+      },
+      "label": null
+    },
+    {
+      "id": "middle-ring-human-16",
+      "kind": "human_figure",
+      "features": {
+        "position": "middle-ring",
+        "head_canvas_px": [
+          4455,
+          975
+        ],
+        "orientation": "radial, head generally outward",
+        "posture": "diagonal with extended arm lifted to rays, opposite arm dropped and hand open.",
+        "appearance": "body outlined",
+        "nearby_ray_object": "middle-ring-rays-16"
+      },
+      "label": null
+    },
+    {
+      "id": "middle-ring-rays-16",
+      "kind": "star",
+      "features": {
+        "position": "middle-ring",
+        "center_canvas_px": [
+          4546,
+          841
+        ],
+        "associated_figure": "middle-ring-human-16",
+        "form": "radiating star",
+        "colour": "ochre center and outlined rays",
+        "visibility": "clear"
+      },
+      "label": null
+    },
+    {
+      "id": "inner-ring-human-01",
+      "kind": "human_figure",
+      "features": {
+        "position": "inner-ring",
+        "head_canvas_px": [
+          4838,
+          1078
+        ],
+        "orientation": "radial, head generally outward",
+        "posture": "one knee raised and one hand over abdomen. Lifted hand near outlined rays.",
+        "appearance": "rounded head outline",
+        "nearby_ray_object": "inner-ring-rays-01"
+      },
+      "label": null
+    },
+    {
+      "id": "inner-ring-rays-01",
+      "kind": "star",
+      "features": {
+        "position": "inner-ring",
+        "center_canvas_px": [
+          4896,
+          1022
+        ],
+        "associated_figure": "inner-ring-human-01",
+        "form": "radiating star",
+        "colour": "unfilled outlined rays",
+        "visibility": "clear"
+      },
+      "label": null
+    },
+    {
+      "id": "inner-ring-human-02",
+      "kind": "human_figure",
+      "features": {
+        "position": "inner-ring",
+        "head_canvas_px": [
+          5059,
+          962
+        ],
+        "orientation": "radial, head generally outward",
+        "posture": "one hand at hip and one extended to the right.",
+        "appearance": "long hair-like strokes",
+        "nearby_ray_object": "inner-ring-rays-02"
+      },
+      "label": null
+    },
+    {
+      "id": "inner-ring-rays-02",
+      "kind": "star",
+      "features": {
+        "position": "inner-ring",
+        "center_canvas_px": [
+          5182,
+          975
+        ],
+        "associated_figure": "inner-ring-human-02",
+        "form": "radiating star",
+        "colour": "ochre center and outlined rays",
+        "visibility": "clear"
+      },
+      "label": null
+    },
+    {
+      "id": "inner-ring-human-03",
+      "kind": "human_figure",
+      "features": {
+        "position": "inner-ring",
+        "head_canvas_px": [
+          5270,
+          980
+        ],
+        "orientation": "radial, head generally outward",
+        "posture": "one hand across belly, opposite arm extends outward.",
+        "appearance": "body outlined",
+        "nearby_ray_object": "inner-ring-rays-03"
+      },
+      "label": null
+    },
+    {
+      "id": "inner-ring-rays-03",
+      "kind": "star",
+      "features": {
+        "position": "inner-ring",
+        "center_canvas_px": [
+          5388,
+          1025
+        ],
+        "associated_figure": "inner-ring-human-03",
+        "form": "radiating star",
+        "colour": "unfilled outlined rays",
+        "visibility": "clear"
+      },
+      "label": null
+    },
+    {
+      "id": "inner-ring-human-04",
+      "kind": "human_figure",
+      "features": {
+        "position": "inner-ring",
+        "head_canvas_px": [
+          5514,
+          1152
+        ],
+        "orientation": "radial, head generally outward",
+        "posture": "diagonal with a waist hand. Approach to nearby star is faint.",
+        "appearance": "body outlined",
+        "nearby_ray_object": "inner-ring-rays-04"
+      },
+      "label": null
+    },
+    {
+      "id": "inner-ring-rays-04",
+      "kind": "star",
+      "features": {
+        "position": "inner-ring",
+        "center_canvas_px": [
+          5577,
+          1250
+        ],
+        "associated_figure": "inner-ring-human-04",
+        "form": "radiating star",
+        "colour": "compact ochre-filled shape",
+        "visibility": "clear"
+      },
+      "label": null
+    },
+    {
+      "id": "inner-ring-human-05",
+      "kind": "human_figure",
+      "features": {
+        "position": "inner-ring",
+        "head_canvas_px": [
+          5594,
+          1500
+        ],
+        "orientation": "radial, head generally outward",
+        "posture": "sideways with bent limbs and curved reach.",
+        "appearance": "body outlined",
+        "nearby_ray_object": "inner-ring-rays-05"
+      },
+      "label": null
+    },
+    {
+      "id": "inner-ring-rays-05",
+      "kind": "star",
+      "features": {
+        "position": "inner-ring",
+        "center_canvas_px": [
+          5562,
+          1618
+        ],
+        "associated_figure": "inner-ring-human-05",
+        "form": "radiating star",
+        "colour": "ochre center and outlined rays",
+        "visibility": "clear"
+      },
+      "label": null
+    },
+    {
+      "id": "inner-ring-human-06",
+      "kind": "human_figure",
+      "features": {
+        "position": "inner-ring",
+        "head_canvas_px": [
+          5337,
+          1842
+        ],
+        "orientation": "radial, head generally outward",
+        "posture": "inverted diagonal, knees bent, one hand at waist.",
+        "appearance": "body outlined",
+        "nearby_ray_object": "inner-ring-rays-06"
+      },
+      "label": null
+    },
+    {
+      "id": "inner-ring-rays-06",
+      "kind": "star",
+      "features": {
+        "position": "inner-ring",
+        "center_canvas_px": [
+          5184,
+          1892
+        ],
+        "associated_figure": "inner-ring-human-06",
+        "form": "radiating star",
+        "colour": "ochre center and outlined rays",
+        "visibility": "clear"
+      },
+      "label": null
+    },
+    {
+      "id": "inner-ring-human-07",
+      "kind": "human_figure",
+      "features": {
+        "position": "inner-ring",
+        "head_canvas_px": [
+          5044,
+          1868
+        ],
+        "orientation": "radial, head generally outward",
+        "posture": "inverted, one hand on abdomen and other at rays.",
+        "appearance": "body outlined",
+        "nearby_ray_object": "inner-ring-rays-07"
+      },
+      "label": null
+    },
+    {
+      "id": "inner-ring-rays-07",
+      "kind": "star",
+      "features": {
+        "position": "inner-ring",
+        "center_canvas_px": [
+          4957,
+          1856
+        ],
+        "associated_figure": "inner-ring-human-07",
+        "form": "radiating star",
+        "colour": "darkened ochre center",
+        "visibility": "clear"
+      },
+      "label": null
+    },
+    {
+      "id": "inner-ring-human-08",
+      "kind": "human_figure",
+      "features": {
+        "position": "inner-ring",
+        "head_canvas_px": [
+          4839,
+          1765
+        ],
+        "orientation": "radial, head generally outward",
+        "posture": "inverted diagonal, one arm reaches to rays and the opposite arm is bent out.",
+        "appearance": "body outlined",
+        "nearby_ray_object": "inner-ring-rays-08"
+      },
+      "label": null
+    },
+    {
+      "id": "inner-ring-rays-08",
+      "kind": "star",
+      "features": {
+        "position": "inner-ring",
+        "center_canvas_px": [
+          4766,
+          1713
+        ],
+        "associated_figure": "inner-ring-human-08",
+        "form": "radiating star",
+        "colour": "pale ochre with ray outlines",
+        "visibility": "clear"
+      },
+      "label": null
+    },
+    {
+      "id": "inner-ring-human-09",
+      "kind": "human_figure",
+      "features": {
+        "position": "inner-ring",
+        "head_canvas_px": [
+          4683,
+          1474
+        ],
+        "orientation": "radial, head generally outward",
+        "posture": "sideways, one arm at hip and other reaches toward rays.",
+        "appearance": "body outlined",
+        "nearby_ray_object": "inner-ring-rays-09"
+      },
+      "label": null
+    },
+    {
+      "id": "inner-ring-rays-09",
+      "kind": "star",
+      "features": {
+        "position": "inner-ring",
+        "center_canvas_px": [
+          4671,
+          1364
+        ],
+        "associated_figure": "inner-ring-human-09",
+        "form": "radiating star",
+        "colour": "outlined rays with pale tint",
+        "visibility": "clear"
+      },
+      "label": null
+    },
+    {
+      "id": "round-support-01",
+      "kind": "other",
+      "features": {
+        "center_canvas_px": [
+          5090,
+          2013
+        ],
+        "outline": "oblong pictured outline with short interior marks, against the two feet of the lowest inverted figure"
+      },
+      "label": null
+    },
+    {
+      "id": "round-support-02",
+      "kind": "other",
+      "features": {
+        "center_canvas_px": [
+          4832,
+          1982
+        ],
+        "outline": "round, partly double-outlined form near the foot of the lower-left pleated figure"
+      },
+      "label": null
+    },
+    {
+      "id": "round-support-03",
+      "kind": "other",
+      "features": {
+        "center_canvas_px": [
+          4715,
+          1845
+        ],
+        "outline": "round outlined form near the foot of the adjacent lower-left figure"
+      },
+      "label": null
+    }
+  ]
+}
