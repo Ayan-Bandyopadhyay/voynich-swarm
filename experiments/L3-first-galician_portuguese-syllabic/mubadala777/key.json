@@ -1,0 +1,99 @@
+{
+  "id": "K-galician_portuguese-syllabic-001",
+  "family": "syllabic",
+  "segmentation": "eva-basic",
+  "target": {
+    "language": "galician_portuguese",
+    "period": "13th–15th-century Galician-Portuguese lyric from Braga's 1878 Cancioneiro da Vaticana and the Cantigas Medievais Galego Portuguesas verse-only edition."
+  },
+  "key": {
+    "marker": "q",
+    "map": {
+      "*": "i",
+      "?": "i",
+      "a": "a",
+      "b": "r",
+      "c": "i",
+      "cfh": "c",
+      "ch": "r",
+      "ckh": "i",
+      "cph": "d",
+      "cth": "c",
+      "d": "c",
+      "e": "i",
+      "f": "t",
+      "g": "o",
+      "h": "i",
+      "i": "s",
+      "j": "r",
+      "k": "t",
+      "l": "r",
+      "m": "s",
+      "n": "i",
+      "o": "a",
+      "p": "t",
+      "r": "s",
+      "s": "m",
+      "sh": "r",
+      "t": "t",
+      "u": "a",
+      "v": "a",
+      "x": "m",
+      "y": "a",
+      "z": "c",
+      "qo": "ma",
+      "qe": "ma",
+      "qk": "qu",
+      "qy": "ca",
+      "qcth": "ma",
+      "qckh": "mi",
+      "qa": "vo",
+      "q*": "ma",
+      "q?": "di",
+      "qch": "di",
+      "qcph": "ma"
+    }
+  },
+  "search": {
+    "budget": {
+      "syllable_candidates": 64,
+      "sign_limit": 24,
+      "lexical_sweeps": 5,
+      "restarts": 4,
+      "iterations": 6000,
+      "seed": 1404,
+      "bpe_merges": 30,
+      "verbose_segmentations": [
+        "bpe-greedy",
+        "fixed-2"
+      ],
+      "verbose_min_unit_share": 0.0005,
+      "substitution_group_swap": 0.2
+    },
+    "references": [
+      "galician_portuguese_a3107d41",
+      "galician_portuguese_e5366bed"
+    ],
+    "positive_control": {
+      "fixture": "Pinned CV-syllabic control, seed 0, 2% transcription noise",
+      "planted_passes_without_anchors": true,
+      "passes_without_anchors": true,
+      "relative_compression_savings": 0.02459,
+      "matching_planted_glyph_mappings": 27,
+      "planted_glyph_mappings": 29,
+      "matching_planted_syllable_mappings": 20,
+      "planted_syllable_mappings": 20,
+      "evaluation_words": 6398
+    },
+    "training": "Public ZL practice training only, EVA-basic with ordinary word breaks and reading order.",
+    "syllabic_coverage": {
+      "marker": "q",
+      "train_units": 140876,
+      "marked_sign_types": 14,
+      "marked_units": 4592,
+      "assigned_sign_types": 11,
+      "assigned_units": 4589
+    }
+  },
+  "transliteration": "zl"
+}
