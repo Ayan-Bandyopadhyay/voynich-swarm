@@ -1,0 +1,21 @@
+{
+  "title": "Evidence of Linguistic Structure in the Voynich Manuscript Using Spectral Analysis",
+  "authors": "Gabriel Landini",
+  "year": 2001,
+  "url": "https://www.iasi.cnr.it/~vbonifaci/semcn/Landini2001.pdf",
+  "doi": "10.1080/0161-110191889932",
+  "summary": "This Cryptologia study compared Fourier power spectra of spaceless transcriptions and scrambled controls. Landini reported two spectral peaks in the Voynich sample and related the longer one to line length. The article leaves meter, ornamental or null glyphs, and an artificial language open as explanations of the line structure.",
+  "established": [
+    "Table 2 and Figure 8 report spectral peaks at periods of 5.9 and 46.1 characters in the spaceless Voynich sample. A character shuffle removed both peaks, and a whole-token shuffle removed the 46.1-character peak.",
+    "Figure 8 compares those scales with a line-length histogram whose two modes were 6 and 44 characters. Landini associates the short mode with isolated labels and the longer one with folios rich in paragraphs.",
+    "The manuscript spectrum also differed from its scrambles at scales above 400 characters. The paper discusses uneven symbol densities, changes across sections, and the insertion of labels as possible contributors."
+  ],
+  "open": [
+    {
+      "question": "Does the near-line-length spectral peak survive in both modern EVA transcriptions when controls retain folio glyph frequencies, every line length, and the first and last glyph of each line?",
+      "front": "L2",
+      "check": "Use paragraph lines only in ZL and Takahashi. On public training pages fix the segmentation, treatment of uncertain signs, Fourier smoothing, and a band around the modal stripped line length. Compare observed band power across equal-length blocks with a character shuffle and with folio-level interior-glyph shuffles retaining both edge glyphs and every line length. Report the two null comparisons separately and check the same procedure on public practice pages before proposing a held-out statistic.",
+      "hard": false
+    }
+  ]
+}
