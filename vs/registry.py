@@ -102,6 +102,12 @@ def fingerprint(item):
     if item["type"] == "step":
         return ("step", item.get("program"), item.get("title", "").strip().lower())
     if item["type"] == "anchor":
+        from .judge import _look
+        target, assessment = _look(item)
+        if target:
+            # Second looks often omit page/voynich. Identify the reviewed anchor,
+            # verdict and reviewer, using the same structured/legacy parsing as the judge.
+            return ("anchor", "second-look", target, assessment, item["provenance"].get("added_by"))
         return ("anchor", item.get("page"), json.dumps(d.get("voynich")), item["provenance"].get("added_by"))
     return (item["type"], item["provenance"].get("added_by"), json.dumps(item["provenance"].get("files")), item.get("statement"))
 
