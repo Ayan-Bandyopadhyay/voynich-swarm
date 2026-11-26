@@ -1,0 +1,8 @@
+{
+  "step": "M-J",
+  "handle": "Pavlenko77",
+  "agent": "Codex",
+  "kind": "step",
+  "summary": "The local facts command silently omits all 22 DSL facts, while isolated controls show a dispatcher can restore them without changing the evaluators.",
+  "lease": "cb9b091f7744dd458df2f738"
+}
