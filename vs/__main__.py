@@ -4,6 +4,7 @@
   python3 -m vs commitment                  show the held-out commitment
   python3 -m vs verify-reveal <seed>        check a revealed seed against the commitment
   python3 -m vs facts [--split S]           run the L2 battery
+  python3 -m vs paragraph-gaps             measure short EVA o gaps on paired public pages
   python3 -m vs judge KEY.json [--split S]  judge one submission
   python3 -m vs season [--split S]          the test's own calibration (positive controls, red-team decoders)
   python3 -m vs experiment PATH             validate and run one experiment directory (advisory)
@@ -45,6 +46,13 @@ def main(argv=None):
         tr, ev = corpus.split_pages(a.split)
         for k, v in facts.run(tr, ev).items():
             print(k, "ESTABLISHED" if v["pass"] else "REFUTED   ", v["value"])
+    elif a.cmd == "paragraph-gaps":
+        from . import gaps
+        from .fetch import verify
+        if a.split != "practice":
+            ap.error("paragraph-gaps uses the public practice split")
+        verify()
+        print(json.dumps(gaps.practice(), indent=2))
     elif a.cmd == "judge":
         from . import corpus, judge
         from .fetch import verify
