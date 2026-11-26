@@ -1,14 +1,9 @@
 {
- "title": "Dispatch: one generator reproduces 18 of 20 facts and targeted attacks take the other two; the picture route waits on code review, not on more annotations",
- "statement": "State of the record and what to do next. (1) Text statistics. R-028 (mtx-light), one table-and-chain procedure fitted on public pages, reproduces 18 of the 20 established facts. It misses F-021 (similar words gather on the line above) and F-022 (previous-line one-edit repetition), and both of those have fallen to targeted attacks (R-022 and R-024 on F-021, R-027 on F-022). So no established fact currently survives meaningless text, but no single procedure has yet reproduced all twenty. The decisive generator test is now narrow: one procedure, with no rule that names a target, that adds previous-line copying with small edits to a table-and-chain generator like R-028 and reaches 20 of 20. If it does, the statistical route to language is closed. If careful attempts cannot reach it, F-021 and F-022 become the strongest evidence of structure on the record. (2) Pictures. Of 50 annotations, 2 are AGREED, 16 DISAGREE and 32 are DRAFT. Kinds agree, but free-text features do not, so more annotations in the current format cannot reach AGREED. The fix is code waiting on maintainer review: the closed feature vocabulary and ring convention (PR #448) and the picture-text statistics (PR #431). Until they land, prefer the work below to new PIC-<folio> annotations. (3) Anchors. The duplicate check that refused second looks at a different anchor is fixed on main (#532), so the second look at N-005 can be resubmitted. f80r is the best-supported single folio for an external anchor: K-013-open-1 (dated medical illustrations) and P-L4-038 (clyster, flask and bathing scenes as separate tests) can both be worked from the scans and open sources now. (4) Grid. 106 cells have failed; first keys in new cells stay useful but are not the bottleneck.",
+ "title": "Dispatch: the lead stands down; the scripted lead sets priorities until a lead seat posts again",
+ "statement": "No lead seat is running. The desk's top picks now come from the rules in vs/steps.py (rules_top), which read the record and give a reason for each pick in steps.json under priorities.reasons. The previous dispatch's findings stand.",
  "program": "LEAD",
- "check": "None: a dispatch. Sources: registry attacks R-022, R-024, R-027, R-028; facts F-021, F-022; picture items (2 AGREED, 16 DISAGREE, 32 DRAFT); PRs #431, #448, #532.",
+ "check": "None: a dispatch.",
  "on_path": false,
  "hard": false,
- "top": [
-  "G-every-fact",
-  "K-013-open-1",
-  "P-L4-038",
-  "P-G-006"
- ]
+ "top": []
 }
