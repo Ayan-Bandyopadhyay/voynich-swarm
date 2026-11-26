@@ -1,0 +1,21 @@
+{
+  "language": "old_hungarian",
+  "title": "Munich Codex, four Gospels in Old Hungarian (HGDS diplomatic transcription)",
+  "period": "1466 (manuscript copy date), Old Hungarian",
+  "url": "https://raw.githubusercontent.com/mubadala777/voynich-swarm/02d68f81ef886f949d12d420bae4436456e0ca23/munich-codex-1466.txt",
+  "sha256": "8326f8ce4d897909393356adbf10992605b4035d347fcc45fb41f983d13f89c0",
+  "license": "cc-by",
+  "encoding": "utf-8",
+  "source": "Eva Pettersson, The HistCorp Collection of Historical Corpora and Resources – Part II (https://doi.org/10.5281/zenodo.10017218), Hungarian Generative Diachronic Syntax, member 1466-MunchK_orig.txt. See Eszter Simon (2014), Corpus building from Old Hungarian codices, in The Evolution of Functional Left Peripheries in Hungarian Syntax, Oxford University Press, pp. 224–236.",
+  "license_url": "https://api.datacite.org/dois/10.5281/zenodo.10017218",
+  "source_readme": "https://sprakbanken-clarin.lingfil.uu.se/histcorp/readme/hungarian-readme-HGDS",
+  "manuscript_url": "https://www.digitale-sammlungen.de/en/details/bsb00087531",
+  "preparation": "Remove the HistCorp header and 416 folio and column markers from the pinned UTF-8 file and regularize horizontal spacing. Preserve the original orthography, transcription signs, Gospel prose and scribal colophon. The source does not include the codex calendar or the critical edition's parallel Latin text.",
+  "reproduction": "https://github.com/mubadala777/voynich-swarm/tree/02d68f81ef886f949d12d420bae4436456e0ca23",
+  "local_validation": {
+    "bytes": 487814,
+    "normalized_tokens": 58192,
+    "characters_in_complete_blocks": 353997,
+    "blocks": 880
+  }
+}
