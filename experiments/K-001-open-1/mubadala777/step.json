@@ -1,0 +1,6320 @@
+{
+  "title": "Same-glyph ink gaps support graded separators in sampled quires",
+  "statement": "Measure two differently labelled separators between the same ordered glyph pair on the same Yale scan line. Readers locate the strokes from a separator-erased glyph sequence and mark the ink extrema before the labels are revealed. Compare this physical audit with an exact-pair reanalysis of a much larger published ink-gap table.",
+  "program": "L1",
+  "check": "Repeat the frozen matched-line sampler, recover the same whole-line crops from the Yale IIIF manifest, and give randomized unlabeled crop panels to additional readers. Extend whole-line segmentation to the unsupported layouts. Compare the signed within-line width difference across quires with the least reliable lines retained as unresolved, and measure how often alternative alignments reverse the effect.",
+  "on_path": true,
+  "hard": true,
+  "sources": {
+    "primary": "Liudmila Rozanova and Alexander Temerev (2026), A Glyph Is Not a Letter, a Token Is Not a Word, a Space Is Not a Space, section 2.6 and Appendix A.3. https://arxiv.org/html/2608.17096v1#A1.SS3",
+    "primary_archive": "https://github.com/lrozanova/voynich-units/tree/main/data/direct_pixel",
+    "printed_glyph_reference": "Voynich EVA from https://github.com/kreativekorp/voynich-unicode/blob/master/Voynich/VoynichEVA.ttf",
+    "native_scans": "Yale Beinecke MS 408, https://collections.library.yale.edu/manifests/2002046. Native region request uses the canvas numeric ID and the same reported x0 and y0 origin.",
+    "s45_line_detection": "Jonathan Simone, S45 data, archived commit 713fa1003dd56e9526e8596f57128e60e18c02d6. https://github.com/thisisntjon/voynich/tree/713fa1003dd56e9526e8596f57128e60e18c02d6/record/runs/s45",
+    "s47_measurements": "Jonathan Simone, F-19/S47, https://simoneresearch.com/research/voynich/atlas/f-19/ and https://github.com/thisisntjon/voynich/tree/713fa1003dd56e9526e8596f57128e60e18c02d6/record/runs/s47. positions.tsv SHA256 8284089a44b7a8da4240eb7b9c951f676a6906a3867dd67be789d73d694a6a19.",
+    "alternate_line_registration": "Voynichese archive word-coordinate data, used in this audit only as guides to the intended whole lines on alternate layouts. https://github.com/lrozanova/voynich-units/tree/main/data/voynich-units/morphometry_voynichese/voynichese_boxes"
+  },
+  "prior_evidence": "Rozanova and Temerev found a strong distinction using Voynichese token boxes. Their direct pixel pilot measures the physical ink but uses those same boxes to locate gaps on six folios. It retains 265 certain and 21 uncertain gaps, giving a mean contrast of +1.84 pixels at 700 pixels page width. Its eighteen exact-pair comparisons were post hoc. The present spot audit matches both glyphs on the same line prospectively and gives the readers no inherited word boxes.",
+  "primary_method": {
+    "sampling": "Use the public practice training set. Retain paragraph lines composed entirely of lowercase EVA and literal comma or period after deleting edge paragraph markers. In EVA-basic select a period and a comma on the same line with exactly the same ordered glyph pair. The frozen 27 cases use distinct numbered leaves. Twelve quires contribute two cases of at most two separator ordinals apart and three additional eligible quires contribute one case with a cap of two or four ordinals. Optimize opposite left-to-right label orientations, then ordinal distance and exact pair diversity, with SHA256-seeded tie breaks. The original selection had 16 period-left and 11 period-right cases.",
+    "whole_line_localization": "Use only the S45 image-native baselines and polygons from unique 1:1 row matches, giving 18 lines from ten quires. The existing whole-line correspondence uses continuous glyph counts, without specifying where either sampled separator lies. Exclude seven compound or foldout loci that lack the corresponding S45 crop, and two loci with non-1:1 matches. Native photographs are displayed as padded whole-line strips, retaining useful context for ambiguous tall strokes. There are no imported boundaries or word boxes on the displayed ink.",
+    "blinding": "Four auxiliary image-model readers independently inspect overlapping groups of anonymous strips, so two readers cover each initial line. Each panel has a native pixel ruler and a detached reference in EVA-basic with every separator removed. Two randomized A and B markers in that reference indicate which stroke transitions to locate, without identifying their separator classes. The reference x positions are unrelated to the photograph. Give readers no physical word locations or separator categories. The panel ordering and marker labels use seed 104081551.",
+    "measurement": "Each reader matches the full unspaced sequence by inspection, then records the left glyph's rightmost horizontal ink extent and the right glyph's leftmost extent. Use max(0,right-left-1) native pixels so touching or overlapping glyph envelopes contribute zero. Compare the same-line difference after averaging the two estimates and multiplying by 700 divided by native canvas width. Require all four estimated endpoints to agree between readers within 20 pixels; show a 10-pixel sensitivity. Quire means receive equal weight. Repeat the quire-cluster bootstrap 4,000 times with fixed seed 20261126. This is a small convenience sample among eligible lines with measurable geometry, and the intervals are descriptive.",
+    "companion_checks": "The archive's initial folios are f7v, f14v, f23r, f39v, f42v and f56v. Repeat the primary result after excluding them. Independently try one wider crop for the clipped right edge and one additional reader for an exact repeated-glyph alignment disagreement. Keep these recovery measurements outside the primary tally. A further alternative-layout check uses whole-line locators cross-registered with old archive boxes and normal-light Yale crops, without giving the optical readers either target coordinates or separator classes. The whole-canvas width conversion compresses units differently on wide foldouts, so use native edges and the within-line sign for the supplemental comparison."
+  },
+  "s47_reanalysis_method": {
+    "mapping": "Read the published S47 positions on public scans. Read the pinned raw ZL paragraph lines using the strict clean-line rule. Reconstruct the entire ordinal sequence of periods, commas and internal positions with the S47 glyph segmentation (EVA-basic plus iiin, iin, in, iir, ir and ee). Require exact agreement to the observed row labels and lengths before transferring any glyph-pair identities. Drop lines with any missing width; use the nearest same-pair cross-class match per line, breaking ties by period ordinal, then comma ordinal. This additional filter avoids choosing gaps by magnitude.",
+    "comparison": "Subtract uncertain width from certain width and divide by the published geometric threshold for that line. Report both pooled results and equally weighted quire means. Recompute descriptive percentile intervals with 4,000 quire resamples and seed 1947. Check orientation, proximity, quire exclusion and the alignment branches with equal or unequal detected versus transcribed token counts. The published table has 2,441 loci with emitted positions, including width-gate failures.",
+    "independence_limit": "S47 ink segmentation precedes transcription alignment, but its width at a separator depends on alignment to transcribed tokens. Some within-token distances are placed at proportional glyph offsets. Guarding on exact ordinal sequence and exact glyph pair leaves this dependency in place. The larger reanalysis tests robustness of the archived measurements and the small blind audit tests independence of the pixel edges."
+  },
+  "sampling_record": {
+    "seed": 4080001,
+    "transliteration_sha256": "bf5b6d4ac1e3a51b1847a9c388318d609020441ccd56984c901c32b09beccafc",
+    "glyph_convention": "EVA-basic token-internal segmentation. Glyphs are indexed from zero in the concatenated segmented words. Raw EVA character offsets also start at zero and mark a point between characters.",
+    "selection": "Two different numbered leaves per A,B,C,D,E,F,G,H,M,N,S,T; distance ≤2. Optimize opposite dot/comma orientations, then summed distance, then distinct edge pairs, then seeded SHA-256 order. Add one in each I,O,Q in that order at caps 4,2,4; minimize orientation imbalance then distance then seeded SHA-256 order. IDs sorted by the same seeded hash.",
+    "orientation_counts": {
+      "dot_left": 16,
+      "dot_right": 11
+    },
+    "sampled_loci": [
+      {
+        "sample_id": "C01",
+        "locus": "f66r.68",
+        "quire": "H",
+        "numbered_leaf": "f66",
+        "hand": "5",
+        "exact_edge_pair": [
+          "y",
+          "d"
+        ],
+        "dot": {
+          "separator_ordinal_1_based": 9,
+          "glyph_before_index_0_based": 33,
+          "glyph_after_index_0_based": 34,
+          "continuous_eva_character_offset_0_based": 35,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 31,
+              "eva": "a"
+            },
+            {
+              "index_0_based": 32,
+              "eva": "l"
+            },
+            {
+              "index_0_based": 33,
+              "eva": "y"
+            },
+            {
+              "index_0_based": 34,
+              "eva": "d"
+            },
+            {
+              "index_0_based": 35,
+              "eva": "a"
+            },
+            {
+              "index_0_based": 36,
+              "eva": "i"
+            }
+          ]
+        },
+        "comma": {
+          "separator_ordinal_1_based": 11,
+          "glyph_before_index_0_based": 46,
+          "glyph_after_index_0_based": 47,
+          "continuous_eva_character_offset_0_based": 49,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 44,
+              "eva": "r"
+            },
+            {
+              "index_0_based": 45,
+              "eva": "sh"
+            },
+            {
+              "index_0_based": 46,
+              "eva": "y"
+            },
+            {
+              "index_0_based": 47,
+              "eva": "d"
+            },
+            {
+              "index_0_based": 48,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 49,
+              "eva": "r"
+            }
+          ]
+        }
+      },
+      {
+        "sample_id": "C02",
+        "locus": "f56v.14",
+        "quire": "G",
+        "numbered_leaf": "f56",
+        "hand": "1",
+        "exact_edge_pair": [
+          "l",
+          "ch"
+        ],
+        "dot": {
+          "separator_ordinal_1_based": 3,
+          "glyph_before_index_0_based": 9,
+          "glyph_after_index_0_based": 10,
+          "continuous_eva_character_offset_0_based": 13,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 7,
+              "eva": "ch"
+            },
+            {
+              "index_0_based": 8,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 9,
+              "eva": "l"
+            },
+            {
+              "index_0_based": 10,
+              "eva": "ch"
+            },
+            {
+              "index_0_based": 11,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 12,
+              "eva": "l"
+            }
+          ]
+        },
+        "comma": {
+          "separator_ordinal_1_based": 1,
+          "glyph_before_index_0_based": 2,
+          "glyph_after_index_0_based": 3,
+          "continuous_eva_character_offset_0_based": 4,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 0,
+              "eva": "ch"
+            },
+            {
+              "index_0_based": 1,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 2,
+              "eva": "l"
+            },
+            {
+              "index_0_based": 3,
+              "eva": "ch"
+            },
+            {
+              "index_0_based": 4,
+              "eva": "e"
+            },
+            {
+              "index_0_based": 5,
+              "eva": "o"
+            }
+          ]
+        }
+      },
+      {
+        "sample_id": "C03",
+        "locus": "f104v.40",
+        "quire": "T",
+        "numbered_leaf": "f104",
+        "hand": "3",
+        "exact_edge_pair": [
+          "n",
+          "o"
+        ],
+        "dot": {
+          "separator_ordinal_1_based": 5,
+          "glyph_before_index_0_based": 27,
+          "glyph_after_index_0_based": 28,
+          "continuous_eva_character_offset_0_based": 29,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 25,
+              "eva": "a"
+            },
+            {
+              "index_0_based": 26,
+              "eva": "i"
+            },
+            {
+              "index_0_based": 27,
+              "eva": "n"
+            },
+            {
+              "index_0_based": 28,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 29,
+              "eva": "r"
+            },
+            {
+              "index_0_based": 30,
+              "eva": "ch"
+            }
+          ]
+        },
+        "comma": {
+          "separator_ordinal_1_based": 4,
+          "glyph_before_index_0_based": 22,
+          "glyph_after_index_0_based": 23,
+          "continuous_eva_character_offset_0_based": 24,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 20,
+              "eva": "i"
+            },
+            {
+              "index_0_based": 21,
+              "eva": "i"
+            },
+            {
+              "index_0_based": 22,
+              "eva": "n"
+            },
+            {
+              "index_0_based": 23,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 24,
+              "eva": "d"
+            },
+            {
+              "index_0_based": 25,
+              "eva": "a"
+            }
+          ]
+        }
+      },
+      {
+        "sample_id": "C04",
+        "locus": "f112r.32",
+        "quire": "T",
+        "numbered_leaf": "f112",
+        "hand": "3",
+        "exact_edge_pair": [
+          "r",
+          "a"
+        ],
+        "dot": {
+          "separator_ordinal_1_based": 1,
+          "glyph_before_index_0_based": 2,
+          "glyph_after_index_0_based": 3,
+          "continuous_eva_character_offset_0_based": 3,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 0,
+              "eva": "s"
+            },
+            {
+              "index_0_based": 1,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 2,
+              "eva": "r"
+            },
+            {
+              "index_0_based": 3,
+              "eva": "a"
+            },
+            {
+              "index_0_based": 4,
+              "eva": "r"
+            },
+            {
+              "index_0_based": 5,
+              "eva": "a"
+            }
+          ]
+        },
+        "comma": {
+          "separator_ordinal_1_based": 2,
+          "glyph_before_index_0_based": 4,
+          "glyph_after_index_0_based": 5,
+          "continuous_eva_character_offset_0_based": 5,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 2,
+              "eva": "r"
+            },
+            {
+              "index_0_based": 3,
+              "eva": "a"
+            },
+            {
+              "index_0_based": 4,
+              "eva": "r"
+            },
+            {
+              "index_0_based": 5,
+              "eva": "a"
+            },
+            {
+              "index_0_based": 6,
+              "eva": "l"
+            },
+            {
+              "index_0_based": 7,
+              "eva": "a"
+            }
+          ]
+        }
+      },
+      {
+        "sample_id": "C05",
+        "locus": "f86v6.7",
+        "quire": "N",
+        "numbered_leaf": "f86",
+        "hand": "2",
+        "exact_edge_pair": [
+          "l",
+          "o"
+        ],
+        "dot": {
+          "separator_ordinal_1_based": 8,
+          "glyph_before_index_0_based": 28,
+          "glyph_after_index_0_based": 29,
+          "continuous_eva_character_offset_0_based": 30,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 26,
+              "eva": "k"
+            },
+            {
+              "index_0_based": 27,
+              "eva": "a"
+            },
+            {
+              "index_0_based": 28,
+              "eva": "l"
+            },
+            {
+              "index_0_based": 29,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 30,
+              "eva": "r"
+            },
+            {
+              "index_0_based": 31,
+              "eva": "sh"
+            }
+          ]
+        },
+        "comma": {
+          "separator_ordinal_1_based": 6,
+          "glyph_before_index_0_based": 21,
+          "glyph_after_index_0_based": 22,
+          "continuous_eva_character_offset_0_based": 23,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 19,
+              "eva": "n"
+            },
+            {
+              "index_0_based": 20,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 21,
+              "eva": "l"
+            },
+            {
+              "index_0_based": 22,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 23,
+              "eva": "r"
+            },
+            {
+              "index_0_based": 24,
+              "eva": "o"
+            }
+          ]
+        }
+      },
+      {
+        "sample_id": "C06",
+        "locus": "f32r.7",
+        "quire": "D",
+        "numbered_leaf": "f32",
+        "hand": "1",
+        "exact_edge_pair": [
+          "l",
+          "d"
+        ],
+        "dot": {
+          "separator_ordinal_1_based": 1,
+          "glyph_before_index_0_based": 3,
+          "glyph_after_index_0_based": 4,
+          "continuous_eva_character_offset_0_based": 4,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 1,
+              "eva": "t"
+            },
+            {
+              "index_0_based": 2,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 3,
+              "eva": "l"
+            },
+            {
+              "index_0_based": 4,
+              "eva": "d"
+            },
+            {
+              "index_0_based": 5,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 6,
+              "eva": "l"
+            }
+          ]
+        },
+        "comma": {
+          "separator_ordinal_1_based": 3,
+          "glyph_before_index_0_based": 8,
+          "glyph_after_index_0_based": 9,
+          "continuous_eva_character_offset_0_based": 9,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 6,
+              "eva": "l"
+            },
+            {
+              "index_0_based": 7,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 8,
+              "eva": "l"
+            },
+            {
+              "index_0_based": 9,
+              "eva": "d"
+            },
+            {
+              "index_0_based": 10,
+              "eva": "a"
+            },
+            {
+              "index_0_based": 11,
+              "eva": "i"
+            }
+          ]
+        }
+      },
+      {
+        "sample_id": "C07",
+        "locus": "f85r1.1",
+        "quire": "N",
+        "numbered_leaf": "f85",
+        "hand": "2",
+        "exact_edge_pair": [
+          "r",
+          "sh"
+        ],
+        "dot": {
+          "separator_ordinal_1_based": 8,
+          "glyph_before_index_0_based": 41,
+          "glyph_after_index_0_based": 42,
+          "continuous_eva_character_offset_0_based": 48,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 39,
+              "eva": "a"
+            },
+            {
+              "index_0_based": 40,
+              "eva": "i"
+            },
+            {
+              "index_0_based": 41,
+              "eva": "r"
+            },
+            {
+              "index_0_based": 42,
+              "eva": "sh"
+            },
+            {
+              "index_0_based": 43,
+              "eva": "e"
+            },
+            {
+              "index_0_based": 44,
+              "eva": "d"
+            }
+          ]
+        },
+        "comma": {
+          "separator_ordinal_1_based": 10,
+          "glyph_before_index_0_based": 51,
+          "glyph_after_index_0_based": 52,
+          "continuous_eva_character_offset_0_based": 59,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 49,
+              "eva": "a"
+            },
+            {
+              "index_0_based": 50,
+              "eva": "i"
+            },
+            {
+              "index_0_based": 51,
+              "eva": "r"
+            },
+            {
+              "index_0_based": 52,
+              "eva": "sh"
+            },
+            {
+              "index_0_based": 53,
+              "eva": "e"
+            },
+            {
+              "index_0_based": 54,
+              "eva": "y"
+            }
+          ]
+        }
+      },
+      {
+        "sample_id": "C08",
+        "locus": "f75r.43",
+        "quire": "M",
+        "numbered_leaf": "f75",
+        "hand": "2",
+        "exact_edge_pair": [
+          "r",
+          "o"
+        ],
+        "dot": {
+          "separator_ordinal_1_based": 5,
+          "glyph_before_index_0_based": 23,
+          "glyph_after_index_0_based": 24,
+          "continuous_eva_character_offset_0_based": 27,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 21,
+              "eva": "k"
+            },
+            {
+              "index_0_based": 22,
+              "eva": "a"
+            },
+            {
+              "index_0_based": 23,
+              "eva": "r"
+            },
+            {
+              "index_0_based": 24,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 25,
+              "eva": "t"
+            },
+            {
+              "index_0_based": 26,
+              "eva": "a"
+            }
+          ]
+        },
+        "comma": {
+          "separator_ordinal_1_based": 6,
+          "glyph_before_index_0_based": 27,
+          "glyph_after_index_0_based": 28,
+          "continuous_eva_character_offset_0_based": 31,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 25,
+              "eva": "t"
+            },
+            {
+              "index_0_based": 26,
+              "eva": "a"
+            },
+            {
+              "index_0_based": 27,
+              "eva": "r"
+            },
+            {
+              "index_0_based": 28,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 29,
+              "eva": "l"
+            },
+            {
+              "index_0_based": 30,
+              "eva": "d"
+            }
+          ]
+        }
+      },
+      {
+        "sample_id": "C09",
+        "locus": "f21v.7",
+        "quire": "C",
+        "numbered_leaf": "f21",
+        "hand": "1",
+        "exact_edge_pair": [
+          "l",
+          "ch"
+        ],
+        "dot": {
+          "separator_ordinal_1_based": 2,
+          "glyph_before_index_0_based": 7,
+          "glyph_after_index_0_based": 8,
+          "continuous_eva_character_offset_0_based": 10,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 5,
+              "eva": "ch"
+            },
+            {
+              "index_0_based": 6,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 7,
+              "eva": "l"
+            },
+            {
+              "index_0_based": 8,
+              "eva": "ch"
+            },
+            {
+              "index_0_based": 9,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 10,
+              "eva": "l"
+            }
+          ]
+        },
+        "comma": {
+          "separator_ordinal_1_based": 4,
+          "glyph_before_index_0_based": 10,
+          "glyph_after_index_0_based": 11,
+          "continuous_eva_character_offset_0_based": 14,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 8,
+              "eva": "ch"
+            },
+            {
+              "index_0_based": 9,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 10,
+              "eva": "l"
+            },
+            {
+              "index_0_based": 11,
+              "eva": "ch"
+            },
+            {
+              "index_0_based": 12,
+              "eva": "a"
+            },
+            {
+              "index_0_based": 13,
+              "eva": "i"
+            }
+          ]
+        }
+      },
+      {
+        "sample_id": "C10",
+        "locus": "f79r.5",
+        "quire": "M",
+        "numbered_leaf": "f79",
+        "hand": "2",
+        "exact_edge_pair": [
+          "l",
+          "ch"
+        ],
+        "dot": {
+          "separator_ordinal_1_based": 11,
+          "glyph_before_index_0_based": 37,
+          "glyph_after_index_0_based": 38,
+          "continuous_eva_character_offset_0_based": 47,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 35,
+              "eva": "e"
+            },
+            {
+              "index_0_based": 36,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 37,
+              "eva": "l"
+            },
+            {
+              "index_0_based": 38,
+              "eva": "ch"
+            },
+            {
+              "index_0_based": 39,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 40,
+              "eva": "l"
+            }
+          ]
+        },
+        "comma": {
+          "separator_ordinal_1_based": 10,
+          "glyph_before_index_0_based": 33,
+          "glyph_after_index_0_based": 34,
+          "continuous_eva_character_offset_0_based": 42,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 31,
+              "eva": "e"
+            },
+            {
+              "index_0_based": 32,
+              "eva": "y"
+            },
+            {
+              "index_0_based": 33,
+              "eva": "l"
+            },
+            {
+              "index_0_based": 34,
+              "eva": "ch"
+            },
+            {
+              "index_0_based": 35,
+              "eva": "e"
+            },
+            {
+              "index_0_based": 36,
+              "eva": "o"
+            }
+          ]
+        }
+      },
+      {
+        "sample_id": "C11",
+        "locus": "f35r.8",
+        "quire": "E",
+        "numbered_leaf": "f35",
+        "hand": "1",
+        "exact_edge_pair": [
+          "y",
+          "k"
+        ],
+        "dot": {
+          "separator_ordinal_1_based": 1,
+          "glyph_before_index_0_based": 5,
+          "glyph_after_index_0_based": 6,
+          "continuous_eva_character_offset_0_based": 6,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 3,
+              "eva": "e"
+            },
+            {
+              "index_0_based": 4,
+              "eva": "e"
+            },
+            {
+              "index_0_based": 5,
+              "eva": "y"
+            },
+            {
+              "index_0_based": 6,
+              "eva": "k"
+            },
+            {
+              "index_0_based": 7,
+              "eva": "y"
+            },
+            {
+              "index_0_based": 8,
+              "eva": "k"
+            }
+          ]
+        },
+        "comma": {
+          "separator_ordinal_1_based": 2,
+          "glyph_before_index_0_based": 7,
+          "glyph_after_index_0_based": 8,
+          "continuous_eva_character_offset_0_based": 8,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 5,
+              "eva": "y"
+            },
+            {
+              "index_0_based": 6,
+              "eva": "k"
+            },
+            {
+              "index_0_based": 7,
+              "eva": "y"
+            },
+            {
+              "index_0_based": 8,
+              "eva": "k"
+            },
+            {
+              "index_0_based": 9,
+              "eva": "a"
+            },
+            {
+              "index_0_based": 10,
+              "eva": "i"
+            }
+          ]
+        }
+      },
+      {
+        "sample_id": "C12",
+        "locus": "f48r.4",
+        "quire": "F",
+        "numbered_leaf": "f48",
+        "hand": "5",
+        "exact_edge_pair": [
+          "y",
+          "t"
+        ],
+        "dot": {
+          "separator_ordinal_1_based": 8,
+          "glyph_before_index_0_based": 39,
+          "glyph_after_index_0_based": 40,
+          "continuous_eva_character_offset_0_based": 41,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 37,
+              "eva": "k"
+            },
+            {
+              "index_0_based": 38,
+              "eva": "d"
+            },
+            {
+              "index_0_based": 39,
+              "eva": "y"
+            },
+            {
+              "index_0_based": 40,
+              "eva": "t"
+            },
+            {
+              "index_0_based": 41,
+              "eva": "sh"
+            },
+            {
+              "index_0_based": 42,
+              "eva": "d"
+            }
+          ]
+        },
+        "comma": {
+          "separator_ordinal_1_based": 6,
+          "glyph_before_index_0_based": 30,
+          "glyph_after_index_0_based": 31,
+          "continuous_eva_character_offset_0_based": 32,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 28,
+              "eva": "e"
+            },
+            {
+              "index_0_based": 29,
+              "eva": "d"
+            },
+            {
+              "index_0_based": 30,
+              "eva": "y"
+            },
+            {
+              "index_0_based": 31,
+              "eva": "t"
+            },
+            {
+              "index_0_based": 32,
+              "eva": "e"
+            },
+            {
+              "index_0_based": 33,
+              "eva": "d"
+            }
+          ]
+        }
+      },
+      {
+        "sample_id": "C13",
+        "locus": "f89r1.6",
+        "quire": "O",
+        "numbered_leaf": "f89",
+        "hand": "1",
+        "exact_edge_pair": [
+          "r",
+          "sh"
+        ],
+        "dot": {
+          "separator_ordinal_1_based": 6,
+          "glyph_before_index_0_based": 25,
+          "glyph_after_index_0_based": 26,
+          "continuous_eva_character_offset_0_based": 29,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 23,
+              "eva": "d"
+            },
+            {
+              "index_0_based": 24,
+              "eva": "a"
+            },
+            {
+              "index_0_based": 25,
+              "eva": "r"
+            },
+            {
+              "index_0_based": 26,
+              "eva": "sh"
+            },
+            {
+              "index_0_based": 27,
+              "eva": "e"
+            },
+            {
+              "index_0_based": 28,
+              "eva": "e"
+            }
+          ]
+        },
+        "comma": {
+          "separator_ordinal_1_based": 8,
+          "glyph_before_index_0_based": 33,
+          "glyph_after_index_0_based": 34,
+          "continuous_eva_character_offset_0_based": 38,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 31,
+              "eva": "k"
+            },
+            {
+              "index_0_based": 32,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 33,
+              "eva": "r"
+            },
+            {
+              "index_0_based": 34,
+              "eva": "sh"
+            },
+            {
+              "index_0_based": 35,
+              "eva": "e"
+            },
+            {
+              "index_0_based": 36,
+              "eva": "e"
+            }
+          ]
+        }
+      },
+      {
+        "sample_id": "C14",
+        "locus": "f20r.13",
+        "quire": "C",
+        "numbered_leaf": "f20",
+        "hand": "1",
+        "exact_edge_pair": [
+          "r",
+          "ch"
+        ],
+        "dot": {
+          "separator_ordinal_1_based": 2,
+          "glyph_before_index_0_based": 8,
+          "glyph_after_index_0_based": 9,
+          "continuous_eva_character_offset_0_based": 11,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 6,
+              "eva": "ch"
+            },
+            {
+              "index_0_based": 7,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 8,
+              "eva": "r"
+            },
+            {
+              "index_0_based": 9,
+              "eva": "ch"
+            },
+            {
+              "index_0_based": 10,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 11,
+              "eva": "r"
+            }
+          ]
+        },
+        "comma": {
+          "separator_ordinal_1_based": 3,
+          "glyph_before_index_0_based": 11,
+          "glyph_after_index_0_based": 12,
+          "continuous_eva_character_offset_0_based": 15,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 9,
+              "eva": "ch"
+            },
+            {
+              "index_0_based": 10,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 11,
+              "eva": "r"
+            },
+            {
+              "index_0_based": 12,
+              "eva": "ch"
+            },
+            {
+              "index_0_based": 13,
+              "eva": "e"
+            },
+            {
+              "index_0_based": 14,
+              "eva": "e"
+            }
+          ]
+        }
+      },
+      {
+        "sample_id": "C15",
+        "locus": "f16v.3",
+        "quire": "B",
+        "numbered_leaf": "f16",
+        "hand": "1",
+        "exact_edge_pair": [
+          "y",
+          "k"
+        ],
+        "dot": {
+          "separator_ordinal_1_based": 6,
+          "glyph_before_index_0_based": 17,
+          "glyph_after_index_0_based": 18,
+          "continuous_eva_character_offset_0_based": 22,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 15,
+              "eva": "k"
+            },
+            {
+              "index_0_based": 16,
+              "eva": "ch"
+            },
+            {
+              "index_0_based": 17,
+              "eva": "y"
+            },
+            {
+              "index_0_based": 18,
+              "eva": "k"
+            },
+            {
+              "index_0_based": 19,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 20,
+              "eva": "sh"
+            }
+          ]
+        },
+        "comma": {
+          "separator_ordinal_1_based": 5,
+          "glyph_before_index_0_based": 14,
+          "glyph_after_index_0_based": 15,
+          "continuous_eva_character_offset_0_based": 18,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 12,
+              "eva": "y"
+            },
+            {
+              "index_0_based": 13,
+              "eva": "ch"
+            },
+            {
+              "index_0_based": 14,
+              "eva": "y"
+            },
+            {
+              "index_0_based": 15,
+              "eva": "k"
+            },
+            {
+              "index_0_based": 16,
+              "eva": "ch"
+            },
+            {
+              "index_0_based": 17,
+              "eva": "y"
+            }
+          ]
+        }
+      },
+      {
+        "sample_id": "C16",
+        "locus": "f101r.2",
+        "quire": "S",
+        "numbered_leaf": "f101",
+        "hand": "1",
+        "exact_edge_pair": [
+          "l",
+          "o"
+        ],
+        "dot": {
+          "separator_ordinal_1_based": 11,
+          "glyph_before_index_0_based": 35,
+          "glyph_after_index_0_based": 36,
+          "continuous_eva_character_offset_0_based": 41,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 33,
+              "eva": "r"
+            },
+            {
+              "index_0_based": 34,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 35,
+              "eva": "l"
+            },
+            {
+              "index_0_based": 36,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 37,
+              "eva": "k"
+            },
+            {
+              "index_0_based": 38,
+              "eva": "o"
+            }
+          ]
+        },
+        "comma": {
+          "separator_ordinal_1_based": 12,
+          "glyph_before_index_0_based": 39,
+          "glyph_after_index_0_based": 40,
+          "continuous_eva_character_offset_0_based": 45,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 37,
+              "eva": "k"
+            },
+            {
+              "index_0_based": 38,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 39,
+              "eva": "l"
+            },
+            {
+              "index_0_based": 40,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 41,
+              "eva": "l"
+            },
+            {
+              "index_0_based": 42,
+              "eva": "o"
+            }
+          ]
+        }
+      },
+      {
+        "sample_id": "C17",
+        "locus": "f44r.2",
+        "quire": "F",
+        "numbered_leaf": "f44",
+        "hand": "1",
+        "exact_edge_pair": [
+          "y",
+          "d"
+        ],
+        "dot": {
+          "separator_ordinal_1_based": 7,
+          "glyph_before_index_0_based": 25,
+          "glyph_after_index_0_based": 26,
+          "continuous_eva_character_offset_0_based": 29,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 23,
+              "eva": "ch"
+            },
+            {
+              "index_0_based": 24,
+              "eva": "e"
+            },
+            {
+              "index_0_based": 25,
+              "eva": "y"
+            },
+            {
+              "index_0_based": 26,
+              "eva": "d"
+            },
+            {
+              "index_0_based": 27,
+              "eva": "ch"
+            },
+            {
+              "index_0_based": 28,
+              "eva": "y"
+            }
+          ]
+        },
+        "comma": {
+          "separator_ordinal_1_based": 8,
+          "glyph_before_index_0_based": 28,
+          "glyph_after_index_0_based": 29,
+          "continuous_eva_character_offset_0_based": 33,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 26,
+              "eva": "d"
+            },
+            {
+              "index_0_based": 27,
+              "eva": "ch"
+            },
+            {
+              "index_0_based": 28,
+              "eva": "y"
+            },
+            {
+              "index_0_based": 29,
+              "eva": "d"
+            },
+            {
+              "index_0_based": 30,
+              "eva": "y"
+            }
+          ]
+        }
+      },
+      {
+        "sample_id": "C18",
+        "locus": "f68r2.1",
+        "quire": "I",
+        "numbered_leaf": "f68",
+        "hand": "4",
+        "exact_edge_pair": [
+          "l",
+          "d"
+        ],
+        "dot": {
+          "separator_ordinal_1_based": 7,
+          "glyph_before_index_0_based": 29,
+          "glyph_after_index_0_based": 30,
+          "continuous_eva_character_offset_0_based": 37,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 27,
+              "eva": "e"
+            },
+            {
+              "index_0_based": 28,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 29,
+              "eva": "l"
+            },
+            {
+              "index_0_based": 30,
+              "eva": "d"
+            },
+            {
+              "index_0_based": 31,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 32,
+              "eva": "k"
+            }
+          ]
+        },
+        "comma": {
+          "separator_ordinal_1_based": 3,
+          "glyph_before_index_0_based": 12,
+          "glyph_after_index_0_based": 13,
+          "continuous_eva_character_offset_0_based": 16,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 10,
+              "eva": "e"
+            },
+            {
+              "index_0_based": 11,
+              "eva": "a"
+            },
+            {
+              "index_0_based": 12,
+              "eva": "l"
+            },
+            {
+              "index_0_based": 13,
+              "eva": "d"
+            },
+            {
+              "index_0_based": 14,
+              "eva": "a"
+            },
+            {
+              "index_0_based": 15,
+              "eva": "r"
+            }
+          ]
+        }
+      },
+      {
+        "sample_id": "C19",
+        "locus": "f95v1.3",
+        "quire": "Q",
+        "numbered_leaf": "f95",
+        "hand": "3",
+        "exact_edge_pair": [
+          "y",
+          "ch"
+        ],
+        "dot": {
+          "separator_ordinal_1_based": 6,
+          "glyph_before_index_0_based": 25,
+          "glyph_after_index_0_based": 26,
+          "continuous_eva_character_offset_0_based": 29,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 23,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 24,
+              "eva": "d"
+            },
+            {
+              "index_0_based": 25,
+              "eva": "y"
+            },
+            {
+              "index_0_based": 26,
+              "eva": "ch"
+            },
+            {
+              "index_0_based": 27,
+              "eva": "e"
+            },
+            {
+              "index_0_based": 28,
+              "eva": "d"
+            }
+          ]
+        },
+        "comma": {
+          "separator_ordinal_1_based": 3,
+          "glyph_before_index_0_based": 12,
+          "glyph_after_index_0_based": 13,
+          "continuous_eva_character_offset_0_based": 14,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 10,
+              "eva": "i"
+            },
+            {
+              "index_0_based": 11,
+              "eva": "n"
+            },
+            {
+              "index_0_based": 12,
+              "eva": "y"
+            },
+            {
+              "index_0_based": 13,
+              "eva": "ch"
+            },
+            {
+              "index_0_based": 14,
+              "eva": "a"
+            },
+            {
+              "index_0_based": 15,
+              "eva": "r"
+            }
+          ]
+        }
+      },
+      {
+        "sample_id": "C20",
+        "locus": "f5r.1",
+        "quire": "A",
+        "numbered_leaf": "f5",
+        "hand": "1",
+        "exact_edge_pair": [
+          "y",
+          "d"
+        ],
+        "dot": {
+          "separator_ordinal_1_based": 7,
+          "glyph_before_index_0_based": 28,
+          "glyph_after_index_0_based": 29,
+          "continuous_eva_character_offset_0_based": 33,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 26,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 27,
+              "eva": "d"
+            },
+            {
+              "index_0_based": 28,
+              "eva": "y"
+            },
+            {
+              "index_0_based": 29,
+              "eva": "d"
+            },
+            {
+              "index_0_based": 30,
+              "eva": "k"
+            },
+            {
+              "index_0_based": 31,
+              "eva": "sh"
+            }
+          ]
+        },
+        "comma": {
+          "separator_ordinal_1_based": 8,
+          "glyph_before_index_0_based": 32,
+          "glyph_after_index_0_based": 33,
+          "continuous_eva_character_offset_0_based": 38,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 30,
+              "eva": "k"
+            },
+            {
+              "index_0_based": 31,
+              "eva": "sh"
+            },
+            {
+              "index_0_based": 32,
+              "eva": "y"
+            },
+            {
+              "index_0_based": 33,
+              "eva": "d"
+            },
+            {
+              "index_0_based": 34,
+              "eva": "y"
+            }
+          ]
+        }
+      },
+      {
+        "sample_id": "C21",
+        "locus": "f102v2.21",
+        "quire": "S",
+        "numbered_leaf": "f102",
+        "hand": "1",
+        "exact_edge_pair": [
+          "s",
+          "o"
+        ],
+        "dot": {
+          "separator_ordinal_1_based": 9,
+          "glyph_before_index_0_based": 31,
+          "glyph_after_index_0_based": 32,
+          "continuous_eva_character_offset_0_based": 34,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 29,
+              "eva": "e"
+            },
+            {
+              "index_0_based": 30,
+              "eva": "e"
+            },
+            {
+              "index_0_based": 31,
+              "eva": "s"
+            },
+            {
+              "index_0_based": 32,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 33,
+              "eva": "k"
+            },
+            {
+              "index_0_based": 34,
+              "eva": "e"
+            }
+          ]
+        },
+        "comma": {
+          "separator_ordinal_1_based": 7,
+          "glyph_before_index_0_based": 22,
+          "glyph_after_index_0_based": 23,
+          "continuous_eva_character_offset_0_based": 25,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 20,
+              "eva": "l"
+            },
+            {
+              "index_0_based": 21,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 22,
+              "eva": "s"
+            },
+            {
+              "index_0_based": 23,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 24,
+              "eva": "i"
+            },
+            {
+              "index_0_based": 25,
+              "eva": "i"
+            }
+          ]
+        }
+      },
+      {
+        "sample_id": "C22",
+        "locus": "f14v.6",
+        "quire": "B",
+        "numbered_leaf": "f14",
+        "hand": "1",
+        "exact_edge_pair": [
+          "y",
+          "d"
+        ],
+        "dot": {
+          "separator_ordinal_1_based": 4,
+          "glyph_before_index_0_based": 14,
+          "glyph_after_index_0_based": 15,
+          "continuous_eva_character_offset_0_based": 20,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 12,
+              "eva": "k"
+            },
+            {
+              "index_0_based": 13,
+              "eva": "ch"
+            },
+            {
+              "index_0_based": 14,
+              "eva": "y"
+            },
+            {
+              "index_0_based": 15,
+              "eva": "d"
+            },
+            {
+              "index_0_based": 16,
+              "eva": "y"
+            },
+            {
+              "index_0_based": 17,
+              "eva": "d"
+            }
+          ]
+        },
+        "comma": {
+          "separator_ordinal_1_based": 5,
+          "glyph_before_index_0_based": 16,
+          "glyph_after_index_0_based": 17,
+          "continuous_eva_character_offset_0_based": 22,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 14,
+              "eva": "y"
+            },
+            {
+              "index_0_based": 15,
+              "eva": "d"
+            },
+            {
+              "index_0_based": 16,
+              "eva": "y"
+            },
+            {
+              "index_0_based": 17,
+              "eva": "d"
+            },
+            {
+              "index_0_based": 18,
+              "eva": "y"
+            },
+            {
+              "index_0_based": 19,
+              "eva": "d"
+            }
+          ]
+        }
+      },
+      {
+        "sample_id": "C23",
+        "locus": "f30r.6",
+        "quire": "D",
+        "numbered_leaf": "f30",
+        "hand": "1",
+        "exact_edge_pair": [
+          "o",
+          "r"
+        ],
+        "dot": {
+          "separator_ordinal_1_based": 5,
+          "glyph_before_index_0_based": 14,
+          "glyph_after_index_0_based": 15,
+          "continuous_eva_character_offset_0_based": 19,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 12,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 13,
+              "eva": "r"
+            },
+            {
+              "index_0_based": 14,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 15,
+              "eva": "r"
+            },
+            {
+              "index_0_based": 16,
+              "eva": "a"
+            },
+            {
+              "index_0_based": 17,
+              "eva": "i"
+            }
+          ]
+        },
+        "comma": {
+          "separator_ordinal_1_based": 4,
+          "glyph_before_index_0_based": 12,
+          "glyph_after_index_0_based": 13,
+          "continuous_eva_character_offset_0_based": 17,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 10,
+              "eva": "r"
+            },
+            {
+              "index_0_based": 11,
+              "eva": "ch"
+            },
+            {
+              "index_0_based": 12,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 13,
+              "eva": "r"
+            },
+            {
+              "index_0_based": 14,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 15,
+              "eva": "r"
+            }
+          ]
+        }
+      },
+      {
+        "sample_id": "C24",
+        "locus": "f58r.5",
+        "quire": "H",
+        "numbered_leaf": "f58",
+        "hand": "3",
+        "exact_edge_pair": [
+          "r",
+          "a"
+        ],
+        "dot": {
+          "separator_ordinal_1_based": 9,
+          "glyph_before_index_0_based": 27,
+          "glyph_after_index_0_based": 28,
+          "continuous_eva_character_offset_0_based": 31,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 25,
+              "eva": "ch"
+            },
+            {
+              "index_0_based": 26,
+              "eva": "a"
+            },
+            {
+              "index_0_based": 27,
+              "eva": "r"
+            },
+            {
+              "index_0_based": 28,
+              "eva": "a"
+            },
+            {
+              "index_0_based": 29,
+              "eva": "r"
+            },
+            {
+              "index_0_based": 30,
+              "eva": "a"
+            }
+          ]
+        },
+        "comma": {
+          "separator_ordinal_1_based": 10,
+          "glyph_before_index_0_based": 29,
+          "glyph_after_index_0_based": 30,
+          "continuous_eva_character_offset_0_based": 33,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 27,
+              "eva": "r"
+            },
+            {
+              "index_0_based": 28,
+              "eva": "a"
+            },
+            {
+              "index_0_based": 29,
+              "eva": "r"
+            },
+            {
+              "index_0_based": 30,
+              "eva": "a"
+            },
+            {
+              "index_0_based": 31,
+              "eva": "r"
+            },
+            {
+              "index_0_based": 32,
+              "eva": "y"
+            }
+          ]
+        }
+      },
+      {
+        "sample_id": "C25",
+        "locus": "f3v.2",
+        "quire": "A",
+        "numbered_leaf": "f3",
+        "hand": "1",
+        "exact_edge_pair": [
+          "l",
+          "d"
+        ],
+        "dot": {
+          "separator_ordinal_1_based": 5,
+          "glyph_before_index_0_based": 28,
+          "glyph_after_index_0_based": 29,
+          "continuous_eva_character_offset_0_based": 29,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 26,
+              "eva": "t"
+            },
+            {
+              "index_0_based": 27,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 28,
+              "eva": "l"
+            },
+            {
+              "index_0_based": 29,
+              "eva": "d"
+            },
+            {
+              "index_0_based": 30,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 31,
+              "eva": "l"
+            }
+          ]
+        },
+        "comma": {
+          "separator_ordinal_1_based": 6,
+          "glyph_before_index_0_based": 31,
+          "glyph_after_index_0_based": 32,
+          "continuous_eva_character_offset_0_based": 32,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 29,
+              "eva": "d"
+            },
+            {
+              "index_0_based": 30,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 31,
+              "eva": "l"
+            },
+            {
+              "index_0_based": 32,
+              "eva": "d"
+            },
+            {
+              "index_0_based": 33,
+              "eva": "a"
+            },
+            {
+              "index_0_based": 34,
+              "eva": "r"
+            }
+          ]
+        }
+      },
+      {
+        "sample_id": "C26",
+        "locus": "f40v.9",
+        "quire": "E",
+        "numbered_leaf": "f40",
+        "hand": "2",
+        "exact_edge_pair": [
+          "y",
+          "p"
+        ],
+        "dot": {
+          "separator_ordinal_1_based": 2,
+          "glyph_before_index_0_based": 7,
+          "glyph_after_index_0_based": 8,
+          "continuous_eva_character_offset_0_based": 10,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 5,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 6,
+              "eva": "d"
+            },
+            {
+              "index_0_based": 7,
+              "eva": "y"
+            },
+            {
+              "index_0_based": 8,
+              "eva": "p"
+            },
+            {
+              "index_0_based": 9,
+              "eva": "ch"
+            },
+            {
+              "index_0_based": 10,
+              "eva": "d"
+            }
+          ]
+        },
+        "comma": {
+          "separator_ordinal_1_based": 1,
+          "glyph_before_index_0_based": 2,
+          "glyph_after_index_0_based": 3,
+          "continuous_eva_character_offset_0_based": 4,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 0,
+              "eva": "t"
+            },
+            {
+              "index_0_based": 1,
+              "eva": "ch"
+            },
+            {
+              "index_0_based": 2,
+              "eva": "y"
+            },
+            {
+              "index_0_based": 3,
+              "eva": "p"
+            },
+            {
+              "index_0_based": 4,
+              "eva": "ch"
+            },
+            {
+              "index_0_based": 5,
+              "eva": "o"
+            }
+          ]
+        }
+      },
+      {
+        "sample_id": "C27",
+        "locus": "f49r.10",
+        "quire": "G",
+        "numbered_leaf": "f49",
+        "hand": "1",
+        "exact_edge_pair": [
+          "r",
+          "sh"
+        ],
+        "dot": {
+          "separator_ordinal_1_based": 4,
+          "glyph_before_index_0_based": 10,
+          "glyph_after_index_0_based": 11,
+          "continuous_eva_character_offset_0_based": 14,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 8,
+              "eva": "sh"
+            },
+            {
+              "index_0_based": 9,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 10,
+              "eva": "r"
+            },
+            {
+              "index_0_based": 11,
+              "eva": "sh"
+            },
+            {
+              "index_0_based": 12,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 13,
+              "eva": "r"
+            }
+          ]
+        },
+        "comma": {
+          "separator_ordinal_1_based": 5,
+          "glyph_before_index_0_based": 13,
+          "glyph_after_index_0_based": 14,
+          "continuous_eva_character_offset_0_based": 18,
+          "nearby_glyphs": [
+            {
+              "index_0_based": 11,
+              "eva": "sh"
+            },
+            {
+              "index_0_based": 12,
+              "eva": "o"
+            },
+            {
+              "index_0_based": 13,
+              "eva": "r"
+            },
+            {
+              "index_0_based": 14,
+              "eva": "sh"
+            },
+            {
+              "index_0_based": 15,
+              "eva": "y"
+            }
+          ]
+        }
+      }
+    ],
+    "original_mapping_outcomes": {
+      "measured": 14,
+      "unresolved_by_one_or_both": 3,
+      "reader_edge_disagreement": 1
+    },
+    "originally_unavailable_loci": {
+      "ambiguous_detected_line_alignment": [
+        "f75r.43",
+        "f21v.7"
+      ],
+      "compound_or_foldout_absent_from_s45": [
+        "f86v6.7",
+        "f85r1.1",
+        "f89r1.6",
+        "f101r.2",
+        "f68r2.1",
+        "f95v1.3",
+        "f102v2.21"
+      ]
+    }
+  },
+  "blind_primary": {
+    "rows": [
+      {
+        "panel": "B01",
+        "locus": "f44r.2",
+        "quire": "F",
+        "A_class": "comma",
+        "B_class": "dot",
+        "same_terminal_pair": [
+          "y",
+          "d"
+        ],
+        "continuous_eva": "ydshdyeeesytyokyokcheyqykcheydchydy",
+        "dot_separator_ordinal": 7,
+        "comma_separator_ordinal": 8,
+        "dot_glyph_after_index_0_based": 26,
+        "comma_glyph_after_index_0_based": 29,
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006160",
+        "native_crop_xyxy": [
+          342,
+          474,
+          1554,
+          615
+        ],
+        "native_canvas_width": 2799,
+        "readers": [
+          {
+            "reader": "1",
+            "A": [
+              1164,
+              1174
+            ],
+            "B": [
+              1057,
+              1073
+            ],
+            "note": "probable both"
+          },
+          {
+            "reader": "3",
+            "A": [
+              1163,
+              1175
+            ],
+            "B": [
+              1058,
+              1073
+            ],
+            "note": "clear both"
+          }
+        ],
+        "status": "measured",
+        "largest_edge_difference_native_px": 1,
+        "certain_gap_native_px": 14.5,
+        "uncertain_gap_native_px": 10,
+        "difference_700px": 1.1254019292604502,
+        "certain_left": true
+      },
+      {
+        "panel": "B02",
+        "locus": "f79r.5",
+        "quire": "M",
+        "A_class": "dot",
+        "B_class": "comma",
+        "same_terminal_pair": [
+          "l",
+          "ch"
+        ],
+        "continuous_eva": "qokalshedychcthyorchearsalcheyqolshalcheylcheolcholchy",
+        "dot_separator_ordinal": 11,
+        "comma_separator_ordinal": 10,
+        "dot_glyph_after_index_0_based": 38,
+        "comma_glyph_after_index_0_based": 34,
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006216",
+        "native_crop_xyxy": [
+          447,
+          528,
+          2122,
+          643
+        ],
+        "native_canvas_width": 2784,
+        "readers": [
+          {
+            "reader": "1",
+            "A": [
+              1428,
+              1468
+            ],
+            "B": [
+              1281,
+              1300
+            ],
+            "note": "probable both, dense suffix"
+          },
+          {
+            "reader": "3",
+            "A": [
+              1429,
+              1468
+            ],
+            "B": [
+              1281,
+              1302
+            ],
+            "note": "clear both, neighboring thin stroke excluded"
+          }
+        ],
+        "status": "measured",
+        "largest_edge_difference_native_px": 2,
+        "certain_gap_native_px": 38.5,
+        "uncertain_gap_native_px": 19,
+        "difference_700px": 4.9030172413793105,
+        "certain_left": false
+      },
+      {
+        "panel": "B03",
+        "locus": "f14v.6",
+        "quire": "B",
+        "A_class": "dot",
+        "B_class": "comma",
+        "same_terminal_pair": [
+          "y",
+          "d"
+        ],
+        "continuous_eva": "qotychokycthychokchydydydychckhydchydn",
+        "dot_separator_ordinal": 4,
+        "comma_separator_ordinal": 5,
+        "dot_glyph_after_index_0_based": 15,
+        "comma_glyph_after_index_0_based": 17,
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006101",
+        "native_crop_xyxy": [
+          778,
+          876,
+          2388,
+          1031
+        ],
+        "native_canvas_width": 2812,
+        "readers": [
+          {
+            "reader": "1",
+            "A": [
+              837,
+              887
+            ],
+            "B": [
+              957,
+              975
+            ],
+            "note": "clear both"
+          },
+          {
+            "reader": "3",
+            "A": [
+              839,
+              886
+            ],
+            "B": [
+              957,
+              974
+            ],
+            "note": "clear both"
+          }
+        ],
+        "status": "measured",
+        "largest_edge_difference_native_px": 2,
+        "certain_gap_native_px": 47.5,
+        "uncertain_gap_native_px": 16.5,
+        "difference_700px": 7.716927453769559,
+        "certain_left": true
+      },
+      {
+        "panel": "B04",
+        "locus": "f40v.9",
+        "quire": "E",
+        "A_class": "comma",
+        "B_class": "dot",
+        "same_terminal_pair": [
+          "y",
+          "p"
+        ],
+        "continuous_eva": "tchypchodypchdykorol",
+        "dot_separator_ordinal": 2,
+        "comma_separator_ordinal": 1,
+        "dot_glyph_after_index_0_based": 8,
+        "comma_glyph_after_index_0_based": 3,
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006153",
+        "native_crop_xyxy": [
+          526,
+          980,
+          1271,
+          1091
+        ],
+        "native_canvas_width": 2882,
+        "readers": [
+          {
+            "reader": "1",
+            "A": [
+              131,
+              118
+            ],
+            "B": [
+              323,
+              337
+            ],
+            "note": "A overlap probable, B clear"
+          },
+          {
+            "reader": "3",
+            "A": [
+              133,
+              118
+            ],
+            "B": [
+              323,
+              339
+            ],
+            "note": "A overlap probable, B clear"
+          }
+        ],
+        "status": "measured",
+        "largest_edge_difference_native_px": 2,
+        "certain_gap_native_px": 14,
+        "uncertain_gap_native_px": 0,
+        "difference_700px": 3.400416377515614,
+        "certain_left": false
+      },
+      {
+        "panel": "B05",
+        "locus": "f66r.68",
+        "quire": "H",
+        "A_class": "comma",
+        "B_class": "dot",
+        "same_terminal_pair": [
+          "y",
+          "d"
+        ],
+        "continuous_eva": "sairoldaiindaiindaldolcheodydairalydairaldolarshydor",
+        "dot_separator_ordinal": 9,
+        "comma_separator_ordinal": 11,
+        "dot_glyph_after_index_0_based": 34,
+        "comma_glyph_after_index_0_based": 47,
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006192",
+        "native_crop_xyxy": [
+          284,
+          2129,
+          2243,
+          2272
+        ],
+        "native_canvas_width": 2793,
+        "readers": [
+          {
+            "reader": "1",
+            "A": null,
+            "B": null,
+            "note": "no visible row matches reference"
+          },
+          {
+            "reader": "3",
+            "A": null,
+            "B": null,
+            "note": "no visible row matches reference"
+          }
+        ],
+        "status": "unresolved_by_one_or_both"
+      },
+      {
+        "panel": "B06",
+        "locus": "f35r.8",
+        "quire": "E",
+        "A_class": "dot",
+        "B_class": "comma",
+        "same_terminal_pair": [
+          "y",
+          "k"
+        ],
+        "continuous_eva": "qokeeykykaiindaiin",
+        "dot_separator_ordinal": 1,
+        "comma_separator_ordinal": 2,
+        "dot_glyph_after_index_0_based": 6,
+        "comma_glyph_after_index_0_based": 8,
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006142",
+        "native_crop_xyxy": [
+          512,
+          1064,
+          1142,
+          1194
+        ],
+        "native_canvas_width": 2793,
+        "readers": [
+          {
+            "reader": "1",
+            "A": null,
+            "B": null,
+            "note": "no visible row matches reference"
+          },
+          {
+            "reader": "3",
+            "A": null,
+            "B": null,
+            "note": "no visible row matches reference"
+          }
+        ],
+        "status": "unresolved_by_one_or_both"
+      },
+      {
+        "panel": "B07",
+        "locus": "f32r.7",
+        "quire": "D",
+        "A_class": "dot",
+        "B_class": "comma",
+        "same_terminal_pair": [
+          "l",
+          "d"
+        ],
+        "continuous_eva": "otoldololdair",
+        "dot_separator_ordinal": 1,
+        "comma_separator_ordinal": 3,
+        "dot_glyph_after_index_0_based": 4,
+        "comma_glyph_after_index_0_based": 9,
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006136",
+        "native_crop_xyxy": [
+          446,
+          1001,
+          933,
+          1105
+        ],
+        "native_canvas_width": 2734,
+        "readers": [
+          {
+            "reader": "1",
+            "A": [
+              148,
+              177
+            ],
+            "B": [
+              356,
+              372
+            ],
+            "note": "clear both"
+          },
+          {
+            "reader": "2",
+            "A": [
+              149,
+              178
+            ],
+            "B": [
+              356,
+              372
+            ],
+            "note": "clear both"
+          }
+        ],
+        "status": "measured",
+        "largest_edge_difference_native_px": 1,
+        "certain_gap_native_px": 28,
+        "uncertain_gap_native_px": 15,
+        "difference_700px": 3.328456474030724,
+        "certain_left": true
+      },
+      {
+        "panel": "B08",
+        "locus": "f104v.40",
+        "quire": "T",
+        "A_class": "comma",
+        "B_class": "dot",
+        "same_terminal_pair": [
+          "n",
+          "o"
+        ],
+        "continuous_eva": "qokeeeyokchedyqokeeyaiinodainorchedyqoky",
+        "dot_separator_ordinal": 5,
+        "comma_separator_ordinal": 4,
+        "dot_glyph_after_index_0_based": 28,
+        "comma_glyph_after_index_0_based": 23,
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006257",
+        "native_crop_xyxy": [
+          562,
+          2681,
+          1791,
+          2826
+        ],
+        "native_canvas_width": 2744,
+        "readers": [
+          {
+            "reader": "1",
+            "A": [
+              715,
+              727
+            ],
+            "B": [
+              867,
+              895
+            ],
+            "note": "clear both"
+          },
+          {
+            "reader": "2",
+            "A": [
+              715,
+              725
+            ],
+            "B": [
+              868,
+              895
+            ],
+            "note": "clear both"
+          }
+        ],
+        "status": "measured",
+        "largest_edge_difference_native_px": 2,
+        "certain_gap_native_px": 26.5,
+        "uncertain_gap_native_px": 10,
+        "difference_700px": 4.209183673469388,
+        "certain_left": false
+      },
+      {
+        "panel": "B09",
+        "locus": "f112r.32",
+        "quire": "T",
+        "A_class": "comma",
+        "B_class": "dot",
+        "same_terminal_pair": [
+          "r",
+          "a"
+        ],
+        "continuous_eva": "soraralarsalkeeorolshedyokeechyqoiiinoteeychedalam",
+        "dot_separator_ordinal": 1,
+        "comma_separator_ordinal": 2,
+        "dot_glyph_after_index_0_based": 3,
+        "comma_glyph_after_index_0_based": 5,
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006268",
+        "native_crop_xyxy": [
+          299,
+          2020,
+          2252,
+          2232
+        ],
+        "native_canvas_width": 2602,
+        "readers": [
+          {
+            "reader": "1",
+            "A": [
+              239,
+              254
+            ],
+            "B": [
+              160,
+              174
+            ],
+            "note": "clear both, sloping row"
+          },
+          {
+            "reader": "2",
+            "A": [
+              239,
+              249
+            ],
+            "B": [
+              140,
+              174
+            ],
+            "note": "clear both, sloping row"
+          }
+        ],
+        "status": "measured",
+        "largest_edge_difference_native_px": 20,
+        "certain_gap_native_px": 23,
+        "uncertain_gap_native_px": 11.5,
+        "difference_700px": 3.093774019984627,
+        "certain_left": true
+      },
+      {
+        "panel": "B10",
+        "locus": "f49r.10",
+        "quire": "G",
+        "A_class": "comma",
+        "B_class": "dot",
+        "same_terminal_pair": [
+          "r",
+          "sh"
+        ],
+        "continuous_eva": "shorchoiinshorshorshy",
+        "dot_separator_ordinal": 4,
+        "comma_separator_ordinal": 5,
+        "dot_glyph_after_index_0_based": 11,
+        "comma_glyph_after_index_0_based": 14,
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006170",
+        "native_crop_xyxy": [
+          470,
+          1879,
+          1348,
+          1998
+        ],
+        "native_canvas_width": 2837,
+        "readers": [
+          {
+            "reader": "1",
+            "A": [
+              770,
+              770
+            ],
+            "B": [
+              610,
+              623
+            ],
+            "note": "probable both, A touching"
+          },
+          {
+            "reader": "2",
+            "A": [
+              770,
+              769
+            ],
+            "B": [
+              610,
+              624
+            ],
+            "note": "probable both, A overlap"
+          }
+        ],
+        "status": "measured",
+        "largest_edge_difference_native_px": 1,
+        "certain_gap_native_px": 12.5,
+        "uncertain_gap_native_px": 0,
+        "difference_700px": 3.0842439196334155,
+        "certain_left": true
+      },
+      {
+        "panel": "B11",
+        "locus": "f20r.13",
+        "quire": "C",
+        "A_class": "dot",
+        "B_class": "comma",
+        "same_terminal_pair": [
+          "r",
+          "ch"
+        ],
+        "continuous_eva": "ochaiinchorchorcheeytchey",
+        "dot_separator_ordinal": 2,
+        "comma_separator_ordinal": 3,
+        "dot_glyph_after_index_0_based": 9,
+        "comma_glyph_after_index_0_based": 12,
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006112",
+        "native_crop_xyxy": [
+          479,
+          1518,
+          1361,
+          1641
+        ],
+        "native_canvas_width": 2649,
+        "readers": [
+          {
+            "reader": "1",
+            "A": [
+              360,
+              391
+            ],
+            "B": [
+              527,
+              537
+            ],
+            "note": "clear both"
+          },
+          {
+            "reader": "2",
+            "A": [
+              361,
+              391
+            ],
+            "B": [
+              529,
+              537
+            ],
+            "note": "clear both"
+          }
+        ],
+        "status": "measured",
+        "largest_edge_difference_native_px": 2,
+        "certain_gap_native_px": 29.5,
+        "uncertain_gap_native_px": 8,
+        "difference_700px": 5.6813892034730085,
+        "certain_left": true
+      },
+      {
+        "panel": "B12",
+        "locus": "f58r.5",
+        "quire": "H",
+        "A_class": "dot",
+        "B_class": "comma",
+        "same_terminal_pair": [
+          "r",
+          "a"
+        ],
+        "continuous_eva": "qordchairamotarotarchararalcharararyytalarcham",
+        "dot_separator_ordinal": 9,
+        "comma_separator_ordinal": 10,
+        "dot_glyph_after_index_0_based": 28,
+        "comma_glyph_after_index_0_based": 30,
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006188",
+        "native_crop_xyxy": [
+          544,
+          566,
+          2232,
+          692
+        ],
+        "native_canvas_width": 2793,
+        "readers": [
+          {
+            "reader": "1",
+            "A": [
+              1121,
+              1153
+            ],
+            "B": [
+              1216,
+              1227
+            ],
+            "note": "clear both"
+          },
+          {
+            "reader": "2",
+            "A": [
+              1123,
+              1153
+            ],
+            "B": [
+              1218,
+              1226
+            ],
+            "note": "clear both"
+          }
+        ],
+        "status": "measured",
+        "largest_edge_difference_native_px": 2,
+        "certain_gap_native_px": 30,
+        "uncertain_gap_native_px": 8.5,
+        "difference_700px": 5.388471177944862,
+        "certain_left": true
+      },
+      {
+        "panel": "B13",
+        "locus": "f56v.14",
+        "quire": "G",
+        "A_class": "dot",
+        "B_class": "comma",
+        "same_terminal_pair": [
+          "l",
+          "ch"
+        ],
+        "continuous_eva": "cholcheokcholcholchokychotor",
+        "dot_separator_ordinal": 3,
+        "comma_separator_ordinal": 1,
+        "dot_glyph_after_index_0_based": 10,
+        "comma_glyph_after_index_0_based": 3,
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006185",
+        "native_crop_xyxy": [
+          821,
+          2651,
+          1929,
+          2783
+        ],
+        "native_canvas_width": 2979,
+        "readers": [
+          {
+            "reader": "2",
+            "A": [
+              473,
+              505
+            ],
+            "B": [
+              148,
+              169
+            ],
+            "note": "A probable, B clear"
+          },
+          {
+            "reader": "4",
+            "A": [
+              471,
+              504
+            ],
+            "B": [
+              148,
+              168
+            ],
+            "note": "A probable, B clear"
+          }
+        ],
+        "status": "measured",
+        "largest_edge_difference_native_px": 2,
+        "certain_gap_native_px": 31.5,
+        "uncertain_gap_native_px": 19.5,
+        "difference_700px": 2.8197381671701915,
+        "certain_left": false
+      },
+      {
+        "panel": "B14",
+        "locus": "f5r.1",
+        "quire": "A",
+        "A_class": "dot",
+        "B_class": "comma",
+        "same_terminal_pair": [
+          "y",
+          "d"
+        ],
+        "continuous_eva": "kchodyfchoychkoyoaiinoarolsychodydkshydy",
+        "dot_separator_ordinal": 7,
+        "comma_separator_ordinal": 8,
+        "dot_glyph_after_index_0_based": 29,
+        "comma_glyph_after_index_0_based": 33,
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006084",
+        "native_crop_xyxy": [
+          414,
+          494,
+          1943,
+          685
+        ],
+        "native_canvas_width": 2636,
+        "readers": [
+          {
+            "reader": "2",
+            "A": [
+              1309,
+              1343
+            ],
+            "B": null,
+            "note": "A clear, B missing right glyph"
+          },
+          {
+            "reader": "4",
+            "A": [
+              1310,
+              1341
+            ],
+            "B": null,
+            "note": "A clear, B missing right glyph"
+          }
+        ],
+        "status": "unresolved_by_one_or_both"
+      },
+      {
+        "panel": "B15",
+        "locus": "f16v.3",
+        "quire": "B",
+        "A_class": "comma",
+        "B_class": "dot",
+        "same_terminal_pair": [
+          "y",
+          "k"
+        ],
+        "continuous_eva": "ykchydychoyqotychykchykoshet",
+        "dot_separator_ordinal": 6,
+        "comma_separator_ordinal": 5,
+        "dot_glyph_after_index_0_based": 18,
+        "comma_glyph_after_index_0_based": 15,
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006105",
+        "native_crop_xyxy": [
+          565,
+          689,
+          1528,
+          847
+        ],
+        "native_canvas_width": 2840,
+        "readers": [
+          {
+            "reader": "2",
+            "A": [
+              674,
+              690
+            ],
+            "B": [
+              804,
+              825
+            ],
+            "note": "clear both"
+          },
+          {
+            "reader": "4",
+            "A": [
+              673,
+              689
+            ],
+            "B": [
+              804,
+              822
+            ],
+            "note": "clear both"
+          }
+        ],
+        "status": "measured",
+        "largest_edge_difference_native_px": 3,
+        "certain_gap_native_px": 18.5,
+        "uncertain_gap_native_px": 15,
+        "difference_700px": 0.8626760563380281,
+        "certain_left": false
+      },
+      {
+        "panel": "B16",
+        "locus": "f3v.2",
+        "quire": "A",
+        "A_class": "comma",
+        "B_class": "dot",
+        "same_terminal_pair": [
+          "l",
+          "d"
+        ],
+        "continuous_eva": "daiidyqoteeolokeeorokorolytoldoldar",
+        "dot_separator_ordinal": 5,
+        "comma_separator_ordinal": 6,
+        "dot_glyph_after_index_0_based": 29,
+        "comma_glyph_after_index_0_based": 32,
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006081",
+        "native_crop_xyxy": [
+          633,
+          513,
+          1867,
+          648
+        ],
+        "native_canvas_width": 2762,
+        "readers": [
+          {
+            "reader": "2",
+            "A": [
+              1155,
+              1170
+            ],
+            "B": [
+              1029,
+              1057
+            ],
+            "note": "clear both"
+          },
+          {
+            "reader": "4",
+            "A": [
+              1153,
+              1169
+            ],
+            "B": [
+              1028,
+              1057
+            ],
+            "note": "clear both"
+          }
+        ],
+        "status": "measured",
+        "largest_edge_difference_native_px": 2,
+        "certain_gap_native_px": 27.5,
+        "uncertain_gap_native_px": 14.5,
+        "difference_700px": 3.294713975380159,
+        "certain_left": true
+      },
+      {
+        "panel": "B17",
+        "locus": "f48r.4",
+        "quire": "F",
+        "A_class": "dot",
+        "B_class": "comma",
+        "same_terminal_pair": [
+          "y",
+          "t"
+        ],
+        "continuous_eva": "tolkeoldainotaiinykeedychetytedytedyqokdytshdychetedyctheetyr",
+        "dot_separator_ordinal": 8,
+        "comma_separator_ordinal": 6,
+        "dot_glyph_after_index_0_based": 40,
+        "comma_glyph_after_index_0_based": 31,
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006168",
+        "native_crop_xyxy": [
+          312,
+          494,
+          2138,
+          599
+        ],
+        "native_canvas_width": 2859,
+        "readers": [
+          {
+            "reader": "2",
+            "A": [
+              1231,
+              1248
+            ],
+            "B": [
+              979,
+              984
+            ],
+            "note": "A clear, B probable"
+          },
+          {
+            "reader": "4",
+            "A": [
+              1230,
+              1248
+            ],
+            "B": [
+              862,
+              867
+            ],
+            "note": "A clear, B probable"
+          }
+        ],
+        "status": "reader_edge_disagreement",
+        "largest_edge_difference_native_px": 117
+      },
+      {
+        "panel": "B18",
+        "locus": "f30r.6",
+        "quire": "D",
+        "A_class": "comma",
+        "B_class": "dot",
+        "same_terminal_pair": [
+          "o",
+          "r"
+        ],
+        "continuous_eva": "dchorolshochorchororaiindorchseeordy",
+        "dot_separator_ordinal": 5,
+        "comma_separator_ordinal": 4,
+        "dot_glyph_after_index_0_based": 15,
+        "comma_glyph_after_index_0_based": 13,
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006132",
+        "native_crop_xyxy": [
+          370,
+          892,
+          1852,
+          1052
+        ],
+        "native_canvas_width": 2742,
+        "readers": [
+          {
+            "reader": "2",
+            "A": [
+              700,
+              726
+            ],
+            "B": [
+              788,
+              821
+            ],
+            "note": "A probable, B clear"
+          },
+          {
+            "reader": "4",
+            "A": [
+              699,
+              722
+            ],
+            "B": [
+              787,
+              821
+            ],
+            "note": "A probable, B clear"
+          }
+        ],
+        "status": "measured",
+        "largest_edge_difference_native_px": 4,
+        "certain_gap_native_px": 32.5,
+        "uncertain_gap_native_px": 23.5,
+        "difference_700px": 2.297592997811816,
+        "certain_left": false
+      }
+    ],
+    "summaries": {
+      "both_readers": {
+        "n": 14,
+        "wider_certain": 14,
+        "wider_uncertain": 0,
+        "tied": 0,
+        "n_quires": 10,
+        "median_widths_native_px": {
+          "certain": 27.75,
+          "uncertain": 13.0
+        },
+        "median_difference_700px": 3.311585224705442,
+        "equal_quire_mean_difference_700px": 3.749970628605728,
+        "equal_quire_bootstrap_95": [
+          2.9191927544457035,
+          4.5576984067419115
+        ],
+        "exact_two_sided_row_sign_p_descriptive": 0.0001220703125,
+        "by_quire": {
+          "A": {
+            "n": 1,
+            "mean_difference_700px": 3.294713975380159
+          },
+          "B": {
+            "n": 2,
+            "mean_difference_700px": 4.2898017550537935
+          },
+          "C": {
+            "n": 1,
+            "mean_difference_700px": 5.6813892034730085
+          },
+          "D": {
+            "n": 2,
+            "mean_difference_700px": 2.81302473592127
+          },
+          "E": {
+            "n": 1,
+            "mean_difference_700px": 3.400416377515614
+          },
+          "F": {
+            "n": 1,
+            "mean_difference_700px": 1.1254019292604502
+          },
+          "G": {
+            "n": 2,
+            "mean_difference_700px": 2.9519910434018035
+          },
+          "H": {
+            "n": 1,
+            "mean_difference_700px": 5.388471177944862
+          },
+          "M": {
+            "n": 1,
+            "mean_difference_700px": 4.9030172413793105
+          },
+          "T": {
+            "n": 2,
+            "mean_difference_700px": 3.6514788467270076
+          }
+        }
+      },
+      "within_10_pixel_edge_agreement": {
+        "n": 13,
+        "wider_certain": 13,
+        "wider_uncertain": 0,
+        "tied": 0,
+        "n_quires": 10,
+        "median_widths_native_px": {
+          "certain": 28,
+          "uncertain": 14.5
+        },
+        "median_difference_700px": 3.328456474030724,
+        "equal_quire_mean_difference_700px": 3.805741111279966,
+        "equal_quire_bootstrap_95": [
+          2.9726668809566386,
+          4.607823020657399
+        ],
+        "exact_two_sided_row_sign_p_descriptive": 0.000244140625,
+        "by_quire": {
+          "A": {
+            "n": 1,
+            "mean_difference_700px": 3.294713975380159
+          },
+          "B": {
+            "n": 2,
+            "mean_difference_700px": 4.2898017550537935
+          },
+          "C": {
+            "n": 1,
+            "mean_difference_700px": 5.6813892034730085
+          },
+          "D": {
+            "n": 2,
+            "mean_difference_700px": 2.81302473592127
+          },
+          "E": {
+            "n": 1,
+            "mean_difference_700px": 3.400416377515614
+          },
+          "F": {
+            "n": 1,
+            "mean_difference_700px": 1.1254019292604502
+          },
+          "G": {
+            "n": 2,
+            "mean_difference_700px": 2.9519910434018035
+          },
+          "H": {
+            "n": 1,
+            "mean_difference_700px": 5.388471177944862
+          },
+          "M": {
+            "n": 1,
+            "mean_difference_700px": 4.9030172413793105
+          },
+          "T": {
+            "n": 1,
+            "mean_difference_700px": 4.209183673469388
+          }
+        }
+      },
+      "outside_the_six_original_direct_audit_faces": {
+        "n": 12,
+        "wider_certain": 12,
+        "wider_uncertain": 0,
+        "tied": 0,
+        "n_quires": 10,
+        "median_widths_native_px": {
+          "certain": 27.0,
+          "uncertain": 10.75
+        },
+        "median_difference_700px": 3.311585224705442,
+        "equal_quire_mean_difference_700px": 3.4204833463573125,
+        "equal_quire_bootstrap_95": [
+          2.486032519483131,
+          4.345172322418998
+        ],
+        "exact_two_sided_row_sign_p_descriptive": 0.00048828125,
+        "by_quire": {
+          "A": {
+            "n": 1,
+            "mean_difference_700px": 3.294713975380159
+          },
+          "B": {
+            "n": 1,
+            "mean_difference_700px": 0.8626760563380281
+          },
+          "C": {
+            "n": 1,
+            "mean_difference_700px": 5.6813892034730085
+          },
+          "D": {
+            "n": 2,
+            "mean_difference_700px": 2.81302473592127
+          },
+          "E": {
+            "n": 1,
+            "mean_difference_700px": 3.400416377515614
+          },
+          "F": {
+            "n": 1,
+            "mean_difference_700px": 1.1254019292604502
+          },
+          "G": {
+            "n": 1,
+            "mean_difference_700px": 3.0842439196334155
+          },
+          "H": {
+            "n": 1,
+            "mean_difference_700px": 5.388471177944862
+          },
+          "M": {
+            "n": 1,
+            "mean_difference_700px": 4.9030172413793105
+          },
+          "T": {
+            "n": 2,
+            "mean_difference_700px": 3.6514788467270076
+          }
+        }
+      },
+      "certain_left": {
+        "n": 8,
+        "wider_certain": 8,
+        "wider_uncertain": 0,
+        "tied": 0,
+        "n_quires": 8,
+        "median_widths_native_px": {
+          "certain": 27.75,
+          "uncertain": 10.75
+        },
+        "median_difference_700px": 3.311585224705442,
+        "equal_quire_mean_difference_700px": 4.0891722691846,
+        "equal_quire_bootstrap_95": [
+          2.923724016617046,
+          5.492198401515258
+        ],
+        "exact_two_sided_row_sign_p_descriptive": 0.0078125,
+        "by_quire": {
+          "A": {
+            "n": 1,
+            "mean_difference_700px": 3.294713975380159
+          },
+          "B": {
+            "n": 1,
+            "mean_difference_700px": 7.716927453769559
+          },
+          "C": {
+            "n": 1,
+            "mean_difference_700px": 5.6813892034730085
+          },
+          "D": {
+            "n": 1,
+            "mean_difference_700px": 3.328456474030724
+          },
+          "F": {
+            "n": 1,
+            "mean_difference_700px": 1.1254019292604502
+          },
+          "G": {
+            "n": 1,
+            "mean_difference_700px": 3.0842439196334155
+          },
+          "H": {
+            "n": 1,
+            "mean_difference_700px": 5.388471177944862
+          },
+          "T": {
+            "n": 1,
+            "mean_difference_700px": 3.093774019984627
+          }
+        }
+      },
+      "certain_right": {
+        "n": 6,
+        "wider_certain": 6,
+        "wider_uncertain": 0,
+        "tied": 0,
+        "n_quires": 6,
+        "median_widths_native_px": {
+          "certain": 29.0,
+          "uncertain": 17.0
+        },
+        "median_difference_700px": 3.110077272342903,
+        "equal_quire_mean_difference_700px": 3.0821040856140582,
+        "equal_quire_bootstrap_95": [
+          1.9857571679109134,
+          4.074092729063867
+        ],
+        "exact_two_sided_row_sign_p_descriptive": 0.03125,
+        "by_quire": {
+          "B": {
+            "n": 1,
+            "mean_difference_700px": 0.8626760563380281
+          },
+          "D": {
+            "n": 1,
+            "mean_difference_700px": 2.297592997811816
+          },
+          "E": {
+            "n": 1,
+            "mean_difference_700px": 3.400416377515614
+          },
+          "G": {
+            "n": 1,
+            "mean_difference_700px": 2.8197381671701915
+          },
+          "M": {
+            "n": 1,
+            "mean_difference_700px": 4.9030172413793105
+          },
+          "T": {
+            "n": 1,
+            "mean_difference_700px": 4.209183673469388
+          }
+        }
+      }
+    }
+  },
+  "blind_alternate_layout_checks": {
+    "rows": [
+      {
+        "panel": "B19",
+        "locus": "f89r1.6",
+        "quire": "O",
+        "A_class": "dot",
+        "B_class": "comma",
+        "same_terminal_pair": [
+          "r",
+          "sh"
+        ],
+        "continuous_eva": "qoarsharqopcholyqokodchepydarsheeyokorsheeosoldain",
+        "dot_separator_ordinal": 6,
+        "comma_separator_ordinal": 8,
+        "dot_glyph_after_index_0_based": 26,
+        "comma_glyph_after_index_0_based": 34,
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006233",
+        "native_crop_xyxy": [
+          3145,
+          918,
+          5050,
+          1080
+        ],
+        "native_canvas_width": 9078,
+        "readers": [
+          {
+            "reader": "2",
+            "A": [
+              1093,
+              1158
+            ],
+            "B": [
+              1497,
+              1510
+            ],
+            "note": "A pale, B clear"
+          },
+          {
+            "reader": "4",
+            "A": [
+              1090,
+              1159
+            ],
+            "B": [
+              1497,
+              1511
+            ],
+            "note": "probable both, faint contours"
+          }
+        ],
+        "status": "measured",
+        "largest_edge_difference_native_px": 3,
+        "certain_gap_native_px": 66,
+        "uncertain_gap_native_px": 12.5,
+        "difference_700px": 4.125358008371888,
+        "certain_left": true
+      },
+      {
+        "panel": "B20",
+        "locus": "f86v6.7",
+        "quire": "N",
+        "A_class": "comma",
+        "B_class": "dot",
+        "same_terminal_pair": [
+          "l",
+          "o"
+        ],
+        "continuous_eva": "qokaiinylchedororaiinolorolkalorshedyqokalsararcheydy",
+        "dot_separator_ordinal": 8,
+        "comma_separator_ordinal": 6,
+        "dot_glyph_after_index_0_based": 29,
+        "comma_glyph_after_index_0_based": 22,
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006229",
+        "native_crop_xyxy": [
+          5503,
+          775,
+          7395,
+          869
+        ],
+        "native_canvas_width": 7754,
+        "readers": [
+          {
+            "reader": "2",
+            "A": [
+              802,
+              818
+            ],
+            "B": [
+              1040,
+              1065
+            ],
+            "note": "clear both"
+          },
+          {
+            "reader": "4",
+            "A": [
+              801,
+              817
+            ],
+            "B": [
+              1040,
+              1065
+            ],
+            "note": "clear both"
+          }
+        ],
+        "status": "measured",
+        "largest_edge_difference_native_px": 1,
+        "certain_gap_native_px": 24,
+        "uncertain_gap_native_px": 15,
+        "difference_700px": 0.8124838792881094,
+        "certain_left": false
+      },
+      {
+        "panel": "B21",
+        "locus": "f68r2.1",
+        "quire": "I",
+        "A_class": "comma",
+        "B_class": "dot",
+        "same_terminal_pair": [
+          "l",
+          "d"
+        ],
+        "continuous_eva": "tsheeorchorshealdaropcheyoeecthysheoldokechyotcheoly",
+        "dot_separator_ordinal": 7,
+        "comma_separator_ordinal": 3,
+        "dot_glyph_after_index_0_based": 30,
+        "comma_glyph_after_index_0_based": 13,
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006196",
+        "native_crop_xyxy": [
+          2730,
+          383,
+          4345,
+          529
+        ],
+        "native_canvas_width": 7993,
+        "readers": [
+          {
+            "reader": "2",
+            "A": [
+              459,
+              468
+            ],
+            "B": [
+              1147,
+              1197
+            ],
+            "note": "clear both"
+          },
+          {
+            "reader": "4",
+            "A": [
+              458,
+              468
+            ],
+            "B": [
+              1146,
+              1197
+            ],
+            "note": "clear both"
+          }
+        ],
+        "status": "measured",
+        "largest_edge_difference_native_px": 1,
+        "certain_gap_native_px": 49.5,
+        "uncertain_gap_native_px": 8.5,
+        "difference_700px": 3.590641811585137,
+        "certain_left": false
+      },
+      {
+        "panel": "B22",
+        "locus": "f95v1.3",
+        "quire": "Q",
+        "A_class": "comma",
+        "B_class": "dot",
+        "same_terminal_pair": [
+          "y",
+          "ch"
+        ],
+        "continuous_eva": "tchodyqokaiinycharokainsheodychedychcthykedyetydainal",
+        "dot_separator_ordinal": 6,
+        "comma_separator_ordinal": 3,
+        "dot_glyph_after_index_0_based": 26,
+        "comma_glyph_after_index_0_based": 13,
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006243",
+        "native_crop_xyxy": [
+          563,
+          568,
+          2418,
+          681
+        ],
+        "native_canvas_width": 2838,
+        "readers": [
+          {
+            "reader": "2",
+            "A": [
+              466,
+              486
+            ],
+            "B": [
+              980,
+              1009
+            ],
+            "note": "clear both"
+          },
+          {
+            "reader": "4",
+            "A": [
+              466,
+              486
+            ],
+            "B": [
+              979,
+              1009
+            ],
+            "note": "clear both"
+          }
+        ],
+        "status": "measured",
+        "largest_edge_difference_native_px": 1,
+        "certain_gap_native_px": 28.5,
+        "uncertain_gap_native_px": 19,
+        "difference_700px": 2.343199436222692,
+        "certain_left": false
+      },
+      {
+        "panel": "B23",
+        "locus": "f85r1.1",
+        "quire": "N",
+        "A_class": "comma",
+        "B_class": "dot",
+        "same_terminal_pair": [
+          "r",
+          "sh"
+        ],
+        "continuous_eva": "pdsheodyshdolsheyotchdydshedysoeeedydchefoeysairshedysodairshey",
+        "dot_separator_ordinal": 8,
+        "comma_separator_ordinal": 10,
+        "dot_glyph_after_index_0_based": 42,
+        "comma_glyph_after_index_0_based": 52,
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006228",
+        "native_crop_xyxy": [
+          329,
+          404,
+          2190,
+          574
+        ],
+        "native_canvas_width": 2775,
+        "readers": [
+          {
+            "reader": "1",
+            "A": [
+              1752,
+              1754
+            ],
+            "B": [
+              1419,
+              1438
+            ],
+            "note": "A probable, B clear, ruler refinement"
+          },
+          {
+            "reader": "3",
+            "A": [
+              1752,
+              1754
+            ],
+            "B": [
+              1419,
+              1439
+            ],
+            "note": "A probable, B clear"
+          }
+        ],
+        "status": "measured",
+        "largest_edge_difference_native_px": 1,
+        "certain_gap_native_px": 18.5,
+        "uncertain_gap_native_px": 1,
+        "difference_700px": 4.414414414414415,
+        "certain_left": true
+      },
+      {
+        "panel": "B24",
+        "locus": "f102v2.21",
+        "quire": "S",
+        "A_class": "comma",
+        "B_class": "dot",
+        "same_terminal_pair": [
+          "s",
+          "o"
+        ],
+        "continuous_eva": "ycheeysodeeyokeeorcheolosoiinoeeesokearcheykeeysaiinoteo",
+        "dot_separator_ordinal": 9,
+        "comma_separator_ordinal": 7,
+        "dot_glyph_after_index_0_based": 32,
+        "comma_glyph_after_index_0_based": 23,
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006252",
+        "native_crop_xyxy": [
+          575,
+          1372,
+          2700,
+          1504
+        ],
+        "native_canvas_width": 2981,
+        "readers": [
+          {
+            "reader": "1",
+            "A": [
+              943,
+              960
+            ],
+            "B": [
+              1253,
+              1310
+            ],
+            "note": "both clear"
+          },
+          {
+            "reader": "3",
+            "A": [
+              944,
+              960
+            ],
+            "B": [
+              1252,
+              1310
+            ],
+            "note": "both clear"
+          }
+        ],
+        "status": "measured",
+        "largest_edge_difference_native_px": 1,
+        "certain_gap_native_px": 56.5,
+        "uncertain_gap_native_px": 15.5,
+        "difference_700px": 9.627641730962765,
+        "certain_left": false
+      },
+      {
+        "panel": "B25",
+        "locus": "f21v.7",
+        "quire": "C",
+        "A_class": "comma",
+        "B_class": "dot",
+        "same_terminal_pair": [
+          "l",
+          "ch"
+        ],
+        "continuous_eva": "ykcholcholcholchaiinotchyssheaiin",
+        "dot_separator_ordinal": 2,
+        "comma_separator_ordinal": 4,
+        "dot_glyph_after_index_0_based": 8,
+        "comma_glyph_after_index_0_based": 11,
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006115",
+        "native_crop_xyxy": [
+          877,
+          1000,
+          2150,
+          1102
+        ],
+        "native_canvas_width": 2849,
+        "readers": [
+          {
+            "reader": "1",
+            "A": [
+              570,
+              585
+            ],
+            "B": [
+              398,
+              436
+            ],
+            "note": "both clear"
+          },
+          {
+            "reader": "3",
+            "A": [
+              572,
+              587
+            ],
+            "B": [
+              398,
+              435
+            ],
+            "note": "both clear"
+          }
+        ],
+        "status": "measured",
+        "largest_edge_difference_native_px": 2,
+        "certain_gap_native_px": 36.5,
+        "uncertain_gap_native_px": 14,
+        "difference_700px": 5.528255528255528,
+        "certain_left": true
+      },
+      {
+        "panel": "B26",
+        "locus": "f75r.43",
+        "quire": "M",
+        "A_class": "comma",
+        "B_class": "dot",
+        "same_terminal_pair": [
+          "r",
+          "o"
+        ],
+        "continuous_eva": "yshedychekaroldyqokainchkarotaroldy",
+        "dot_separator_ordinal": 5,
+        "comma_separator_ordinal": 6,
+        "dot_glyph_after_index_0_based": 24,
+        "comma_glyph_after_index_0_based": 28,
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006208",
+        "native_crop_xyxy": [
+          406,
+          2984,
+          1720,
+          3080
+        ],
+        "native_canvas_width": 2852,
+        "readers": [
+          {
+            "reader": "1",
+            "A": [
+              1160,
+              1169
+            ],
+            "B": [
+              994,
+              1017
+            ],
+            "note": "both clear"
+          },
+          {
+            "reader": "3",
+            "A": [
+              1159,
+              1169
+            ],
+            "B": [
+              994,
+              1018
+            ],
+            "note": "both clear"
+          }
+        ],
+        "status": "measured",
+        "largest_edge_difference_native_px": 1,
+        "certain_gap_native_px": 22.5,
+        "uncertain_gap_native_px": 8.5,
+        "difference_700px": 3.4361851332398317,
+        "certain_left": true
+      },
+      {
+        "panel": "B27",
+        "locus": "f101r.2",
+        "quire": "S",
+        "A_class": "dot",
+        "B_class": "comma",
+        "same_terminal_pair": [
+          "l",
+          "o"
+        ],
+        "continuous_eva": "dolchokeeychkeyctheyokalcholkolokeeyrorolokolololcheyqokchalokeyqokeolkarsheyteoloroiiincholdaiin",
+        "dot_separator_ordinal": 11,
+        "comma_separator_ordinal": 12,
+        "dot_glyph_after_index_0_based": 36,
+        "comma_glyph_after_index_0_based": 40,
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006249",
+        "native_crop_xyxy": [
+          3193,
+          1789,
+          6740,
+          1940
+        ],
+        "native_canvas_width": 7486,
+        "readers": [
+          {
+            "reader": "1",
+            "A": [
+              1407,
+              1451
+            ],
+            "B": [
+              1567,
+              1590
+            ],
+            "note": "clear alignment, thin ink"
+          },
+          {
+            "reader": "3",
+            "A": [
+              1406,
+              1450
+            ],
+            "B": [
+              1566,
+              1583
+            ],
+            "note": "both clear, excluded other rows"
+          }
+        ],
+        "status": "measured",
+        "largest_edge_difference_native_px": 7,
+        "certain_gap_native_px": 43,
+        "uncertain_gap_native_px": 19,
+        "difference_700px": 2.24418915308576,
+        "certain_left": true
+      }
+    ],
+    "summaries": {
+      "both_readers": {
+        "n": 9,
+        "wider_certain": 9,
+        "wider_uncertain": 0,
+        "tied": 0,
+        "n_quires": 7,
+        "median_widths_native_px": {
+          "certain": 36.5,
+          "uncertain": 14
+        },
+        "median_difference_700px": 3.590641811585137,
+        "equal_quire_mean_difference_700px": 3.939000643792943,
+        "equal_quire_bootstrap_95": [
+          3.0479616899961908,
+          4.890854576896804
+        ],
+        "exact_two_sided_row_sign_p_descriptive": 0.00390625,
+        "by_quire": {
+          "C": {
+            "n": 1,
+            "mean_difference_700px": 5.528255528255528
+          },
+          "I": {
+            "n": 1,
+            "mean_difference_700px": 3.590641811585137
+          },
+          "M": {
+            "n": 1,
+            "mean_difference_700px": 3.4361851332398317
+          },
+          "N": {
+            "n": 2,
+            "mean_difference_700px": 2.613449146851262
+          },
+          "O": {
+            "n": 1,
+            "mean_difference_700px": 4.125358008371888
+          },
+          "Q": {
+            "n": 1,
+            "mean_difference_700px": 2.343199436222692
+          },
+          "S": {
+            "n": 2,
+            "mean_difference_700px": 5.935915442024262
+          }
+        }
+      },
+      "within_10_pixel_edge_agreement": {
+        "n": 9,
+        "wider_certain": 9,
+        "wider_uncertain": 0,
+        "tied": 0,
+        "n_quires": 7,
+        "median_widths_native_px": {
+          "certain": 36.5,
+          "uncertain": 14
+        },
+        "median_difference_700px": 3.590641811585137,
+        "equal_quire_mean_difference_700px": 3.939000643792943,
+        "equal_quire_bootstrap_95": [
+          3.0479616899961908,
+          4.890854576896804
+        ],
+        "exact_two_sided_row_sign_p_descriptive": 0.00390625,
+        "by_quire": {
+          "C": {
+            "n": 1,
+            "mean_difference_700px": 5.528255528255528
+          },
+          "I": {
+            "n": 1,
+            "mean_difference_700px": 3.590641811585137
+          },
+          "M": {
+            "n": 1,
+            "mean_difference_700px": 3.4361851332398317
+          },
+          "N": {
+            "n": 2,
+            "mean_difference_700px": 2.613449146851262
+          },
+          "O": {
+            "n": 1,
+            "mean_difference_700px": 4.125358008371888
+          },
+          "Q": {
+            "n": 1,
+            "mean_difference_700px": 2.343199436222692
+          },
+          "S": {
+            "n": 2,
+            "mean_difference_700px": 5.935915442024262
+          }
+        }
+      },
+      "outside_the_six_original_direct_audit_faces": {
+        "n": 9,
+        "wider_certain": 9,
+        "wider_uncertain": 0,
+        "tied": 0,
+        "n_quires": 7,
+        "median_widths_native_px": {
+          "certain": 36.5,
+          "uncertain": 14
+        },
+        "median_difference_700px": 3.590641811585137,
+        "equal_quire_mean_difference_700px": 3.939000643792943,
+        "equal_quire_bootstrap_95": [
+          3.0479616899961908,
+          4.890854576896804
+        ],
+        "exact_two_sided_row_sign_p_descriptive": 0.00390625,
+        "by_quire": {
+          "C": {
+            "n": 1,
+            "mean_difference_700px": 5.528255528255528
+          },
+          "I": {
+            "n": 1,
+            "mean_difference_700px": 3.590641811585137
+          },
+          "M": {
+            "n": 1,
+            "mean_difference_700px": 3.4361851332398317
+          },
+          "N": {
+            "n": 2,
+            "mean_difference_700px": 2.613449146851262
+          },
+          "O": {
+            "n": 1,
+            "mean_difference_700px": 4.125358008371888
+          },
+          "Q": {
+            "n": 1,
+            "mean_difference_700px": 2.343199436222692
+          },
+          "S": {
+            "n": 2,
+            "mean_difference_700px": 5.935915442024262
+          }
+        }
+      },
+      "certain_left": {
+        "n": 5,
+        "wider_certain": 5,
+        "wider_uncertain": 0,
+        "tied": 0,
+        "n_quires": 5,
+        "median_widths_native_px": {
+          "certain": 36.5,
+          "uncertain": 12.5
+        },
+        "median_difference_700px": 4.125358008371888,
+        "equal_quire_mean_difference_700px": 3.9496804474734843,
+        "equal_quire_bootstrap_95": [
+          2.959386741178203,
+          4.85995085995086
+        ],
+        "exact_two_sided_row_sign_p_descriptive": 0.0625,
+        "by_quire": {
+          "C": {
+            "n": 1,
+            "mean_difference_700px": 5.528255528255528
+          },
+          "M": {
+            "n": 1,
+            "mean_difference_700px": 3.4361851332398317
+          },
+          "N": {
+            "n": 1,
+            "mean_difference_700px": 4.414414414414415
+          },
+          "O": {
+            "n": 1,
+            "mean_difference_700px": 4.125358008371888
+          },
+          "S": {
+            "n": 1,
+            "mean_difference_700px": 2.24418915308576
+          }
+        }
+      },
+      "certain_right": {
+        "n": 4,
+        "wider_certain": 4,
+        "wider_uncertain": 0,
+        "tied": 0,
+        "n_quires": 4,
+        "median_widths_native_px": {
+          "certain": 39.0,
+          "uncertain": 15.25
+        },
+        "median_difference_700px": 2.9669206239039143,
+        "equal_quire_mean_difference_700px": 4.093491714514676,
+        "equal_quire_bootstrap_95": [
+          1.5070233623623663,
+          7.806531157277746
+        ],
+        "exact_two_sided_row_sign_p_descriptive": 0.125,
+        "by_quire": {
+          "I": {
+            "n": 1,
+            "mean_difference_700px": 3.590641811585137
+          },
+          "N": {
+            "n": 1,
+            "mean_difference_700px": 0.8124838792881094
+          },
+          "Q": {
+            "n": 1,
+            "mean_difference_700px": 2.343199436222692
+          },
+          "S": {
+            "n": 1,
+            "mean_difference_700px": 9.627641730962765
+          }
+        }
+      }
+    }
+  },
+  "additional_blind_recovery": [
+    {
+      "panel": "B14R",
+      "original": "B14",
+      "reason": "Right-hand letter of B was outside original whole-line crop. Expand only right edge and preserve original x origin and sequence.",
+      "native_crop_xyxy": [
+        414,
+        494,
+        2154,
+        685
+      ],
+      "reads": [
+        {
+          "reader": 2,
+          "A": [
+            1309,
+            1343
+          ],
+          "B": [
+            1524,
+            1546
+          ]
+        },
+        {
+          "reader": 4,
+          "A": [
+            1310,
+            1341
+          ],
+          "B": [
+            1525,
+            1546
+          ]
+        }
+      ],
+      "locus": "f5r.1",
+      "quire": "A",
+      "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006084",
+      "A_class": "dot",
+      "B_class": "comma",
+      "certain_gap_native_px": 31.5,
+      "uncertain_gap_native_px": 20.5,
+      "difference_700px": 2.921092564491654
+    },
+    {
+      "panel": "B17R",
+      "original": "B17",
+      "reason": "Third blinded reader aligns the B separator between the two consecutive tedy groups. The original discrepant read placed that target at the earlier chety–tedy junction. No image replacement.",
+      "native_crop_xyxy": null,
+      "reads": [
+        {
+          "reader": 2,
+          "A": [
+            1231,
+            1248
+          ],
+          "B": [
+            979,
+            984
+          ]
+        },
+        {
+          "reader": 1,
+          "A": [
+            1231,
+            1248
+          ],
+          "B": [
+            979,
+            983
+          ]
+        }
+      ],
+      "locus": "f48r.4",
+      "quire": "F",
+      "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006168",
+      "A_class": "dot",
+      "B_class": "comma",
+      "certain_gap_native_px": 16,
+      "uncertain_gap_native_px": 3.5,
+      "difference_700px": 3.0605106680657572
+    }
+  ],
+  "combined_descriptive_only": {
+    "distinct_quire_groups": 15,
+    "distinct_loci": 25,
+    "wider_certain": 25,
+    "wider_uncertain": 0,
+    "equal": 0
+  },
+  "s47_reanalysis": {
+    "scrutineered_lines": 2441,
+    "exclusions": {
+      "unmapped_or_editorial_line": 808,
+      "lacks_mixed_label_pair": 1450,
+      "unmeasured_width": 37,
+      "glyph_or_separator_alignment_mismatch": 25
+    },
+    "summaries": {
+      "all": {
+        "lines": 121,
+        "folios": 54,
+        "quires": 11,
+        "certain_larger": 99,
+        "equal": 0,
+        "pooled_mean": 0.5910934922491727,
+        "raw_gap_median_px": {
+          "certain": 30.0,
+          "uncertain": 15.0
+        },
+        "equal_quire_mean": 0.26876097465752863,
+        "bootstrap_quire_95": [
+          -0.7573964539497167,
+          0.8916953369051196
+        ],
+        "quire_effects": {
+          "A": 1.1801812541478118,
+          "B": 1.2941117560819406,
+          "C": 0.8508297777547624,
+          "D": 0.330809691938478,
+          "E": -4.566962988676791,
+          "F": 0.5168231416086786,
+          "G": 0.35715927223635663,
+          "H": 0.6064080461616406,
+          "M": 1.046542404035095,
+          "O": 0.6870615462500904,
+          "T": 0.653406819694752
+        },
+        "equal_quire_leave_one_range": [
+          0.16622589651508743,
+          0.7523333709909606
+        ]
+      },
+      "unequal_token_counts": {
+        "lines": 104,
+        "folios": 51,
+        "quires": 11,
+        "certain_larger": 89,
+        "equal": 0,
+        "pooled_mean": 0.6892260360729358,
+        "raw_gap_median_px": {
+          "certain": 30.0,
+          "uncertain": 14.0
+        },
+        "equal_quire_mean": 0.3360506071425961,
+        "bootstrap_quire_95": [
+          -0.7057779408772635,
+          0.9535940772374916
+        ],
+        "quire_effects": {
+          "A": 1.1801812541478118,
+          "B": 1.2941117560819406,
+          "C": 0.8508297777547624,
+          "D": 0.5556149663482831,
+          "E": -4.566962988676791,
+          "F": 0.5168231416086786,
+          "G": 0.35715927223635663,
+          "H": 0.9391732125473999,
+          "M": 1.0866217496462713,
+          "O": 0.6870615462500904,
+          "T": 0.7959429906237536
+        },
+        "equal_quire_leave_one_range": [
+          0.24024449224866165,
+          0.8263519667245348
+        ]
+      },
+      "equal_token_counts": {
+        "lines": 17,
+        "folios": 12,
+        "quires": 4,
+        "certain_larger": 10,
+        "equal": 0,
+        "pooled_mean": -0.009246775849142415,
+        "raw_gap_median_px": {
+          "certain": 27.0,
+          "uncertain": 26.0
+        },
+        "equal_quire_mean": -0.09012787524357135,
+        "bootstrap_quire_95": [
+          -0.7886942865917196,
+          0.5127716652318248
+        ],
+        "quire_effects": {
+          "D": -0.006398219676229666,
+          "H": -1.0574177857671565,
+          "M": 0.6858282935345096,
+          "T": 0.01747621093459117
+        },
+        "equal_quire_leave_one_range": [
+          -0.3487799315029317,
+          0.23230209493095702
+        ]
+      },
+      "earlier_certain": {
+        "lines": 72,
+        "folios": 38,
+        "quires": 11,
+        "certain_larger": 58,
+        "equal": 0,
+        "pooled_mean": 0.5197763551927674,
+        "raw_gap_median_px": {
+          "certain": 28.0,
+          "uncertain": 15.0
+        },
+        "equal_quire_mean": -0.17351637466674913,
+        "bootstrap_quire_95": [
+          -1.7640728825572758,
+          0.9213298682704337
+        ],
+        "quire_effects": {
+          "A": 1.1801812541478118,
+          "B": 1.3841837150694916,
+          "C": 0.6954647857916004,
+          "D": 0.16235119146509805,
+          "E": -6.99944025153536,
+          "F": 0.059886194615146715,
+          "G": -2.178649237472767,
+          "H": 0.4104643196638217,
+          "M": 1.021398874372361,
+          "O": 1.5910898965791567,
+          "T": 0.7643891359693988
+        },
+        "equal_quire_leave_one_range": [
+          -0.3499770017913397,
+          0.509076013020112
+        ]
+      },
+      "later_certain": {
+        "lines": 49,
+        "folios": 35,
+        "quires": 10,
+        "certain_larger": 41,
+        "equal": 0,
+        "pooled_mean": 0.6958860201687886,
+        "raw_gap_median_px": {
+          "certain": 30.0,
+          "uncertain": 14.0
+        },
+        "equal_quire_mean": 0.8780299573621068,
+        "bootstrap_quire_95": [
+          0.5176624090025104,
+          1.1977222248576986
+        ],
+        "quire_effects": {
+          "B": 1.2265577868412774,
+          "C": 1.3169247536442485,
+          "D": 0.583497442648548,
+          "E": 0.29799153704034803,
+          "F": 1.4306970355957422,
+          "G": 0.9911113996636375,
+          "H": 1.5861266786507349,
+          "M": 1.0716859336978293,
+          "O": -0.21696680407897592,
+          "T": 0.49267380991767734
+        },
+        "equal_quire_leave_one_range": [
+          0.7993525438855925,
+          0.9996962641888937
+        ]
+      },
+      "near_glyph_distance_10": {
+        "lines": 63,
+        "folios": 42,
+        "quires": 11,
+        "certain_larger": 53,
+        "equal": 0,
+        "pooled_mean": 0.6272604239564974,
+        "raw_gap_median_px": {
+          "certain": 30.0,
+          "uncertain": 15.0
+        },
+        "equal_quire_mean": 0.38164625401943375,
+        "bootstrap_quire_95": [
+          -0.7089223258827356,
+          1.0687754705570256
+        ],
+        "quire_effects": {
+          "A": 1.0719647466437243,
+          "B": 1.5312696697628043,
+          "C": 0.6954647857916004,
+          "D": 0.27524627580308275,
+          "E": -4.566962988676791,
+          "F": 0.5168231416086786,
+          "G": 0.5331357528870359,
+          "H": 0.3412500093926142,
+          "M": 1.2918037758297278,
+          "O": 1.5910898965791567,
+          "T": 0.9170237285921374
+        },
+        "equal_quire_leave_one_range": [
+          0.2607018897634614,
+          0.8765071782890562
+        ]
+      },
+      "exclude_quires_13_20": {
+        "lines": 40,
+        "folios": 29,
+        "quires": 9,
+        "certain_larger": 32,
+        "equal": 0,
+        "pooled_mean": 0.36662510808678883,
+        "raw_gap_median_px": {
+          "certain": 27.5,
+          "uncertain": 14.5
+        },
+        "equal_quire_mean": 0.13960238861144086,
+        "bootstrap_quire_95": [
+          -1.1009461679725765,
+          0.8986361919947736
+        ],
+        "quire_effects": {
+          "A": 1.1801812541478118,
+          "B": 1.2941117560819406,
+          "C": 0.8508297777547624,
+          "D": 0.330809691938478,
+          "E": -4.566962988676791,
+          "F": 0.5168231416086786,
+          "G": 0.35715927223635663,
+          "H": 0.6064080461616406,
+          "O": 0.6870615462500904
+        },
+        "equal_quire_leave_one_range": [
+          -0.004711282322371606,
+          0.7279230607724699
+        ]
+      }
+    },
+    "rows": [
+      {
+        "folio": "f3r",
+        "locus": "f3r.20",
+        "quire": "A",
+        "pair": [
+          "l",
+          "o"
+        ],
+        "certain_left": true,
+        "glyph_distance": 14,
+        "certain_px": 50.0,
+        "uncertain_px": 15.0,
+        "counts_equal": false,
+        "threshold": 20.11,
+        "difference": 1.74042764793635
+      },
+      {
+        "folio": "f3v",
+        "locus": "f3v.2",
+        "quire": "A",
+        "pair": [
+          "l",
+          "d"
+        ],
+        "certain_left": true,
+        "glyph_distance": 3,
+        "certain_px": 28.0,
+        "uncertain_px": 7.0,
+        "counts_equal": false,
+        "threshold": 25.408,
+        "difference": 0.8265113350125944
+      },
+      {
+        "folio": "f3v",
+        "locus": "f3v.4",
+        "quire": "A",
+        "pair": [
+          "r",
+          "ee"
+        ],
+        "certain_left": true,
+        "glyph_distance": 20,
+        "certain_px": 35.0,
+        "uncertain_px": 11.0,
+        "counts_equal": false,
+        "threshold": 25.408,
+        "difference": 0.9445843828715365
+      },
+      {
+        "folio": "f5r",
+        "locus": "f5r.1",
+        "quire": "A",
+        "pair": [
+          "y",
+          "d"
+        ],
+        "certain_left": true,
+        "glyph_distance": 4,
+        "certain_px": 33.0,
+        "uncertain_px": 5.0,
+        "counts_equal": false,
+        "threshold": 17.478,
+        "difference": 1.602013960407369
+      },
+      {
+        "folio": "f5v",
+        "locus": "f5v.5",
+        "quire": "A",
+        "pair": [
+          "l",
+          "ch"
+        ],
+        "certain_left": true,
+        "glyph_distance": 3,
+        "certain_px": 43.0,
+        "uncertain_px": 24.0,
+        "counts_equal": false,
+        "threshold": 24.131,
+        "difference": 0.7873689445112096
+      },
+      {
+        "folio": "f9v",
+        "locus": "f9v.4",
+        "quire": "B",
+        "pair": [
+          "y",
+          "t"
+        ],
+        "certain_left": false,
+        "glyph_distance": 16,
+        "certain_px": 21.0,
+        "uncertain_px": 16.0,
+        "counts_equal": false,
+        "threshold": 13.678,
+        "difference": 0.3655505190817371
+      },
+      {
+        "folio": "f10v",
+        "locus": "f10v.7",
+        "quire": "B",
+        "pair": [
+          "l",
+          "ch"
+        ],
+        "certain_left": true,
+        "glyph_distance": 7,
+        "certain_px": 25.0,
+        "uncertain_px": 13.0,
+        "counts_equal": false,
+        "threshold": 18.513,
+        "difference": 0.6481931615621455
+      },
+      {
+        "folio": "f13r",
+        "locus": "f13r.3",
+        "quire": "B",
+        "pair": [
+          "s",
+          "y"
+        ],
+        "certain_left": false,
+        "glyph_distance": 12,
+        "certain_px": 28.0,
+        "uncertain_px": 14.0,
+        "counts_equal": false,
+        "threshold": 13.502,
+        "difference": 1.0368834246778253
+      },
+      {
+        "folio": "f14v",
+        "locus": "f14v.4",
+        "quire": "B",
+        "pair": [
+          "y",
+          "d"
+        ],
+        "certain_left": true,
+        "glyph_distance": 5,
+        "certain_px": 26.0,
+        "uncertain_px": 14.0,
+        "counts_equal": false,
+        "threshold": 11.129,
+        "difference": 1.0782639949681014
+      },
+      {
+        "folio": "f14v",
+        "locus": "f14v.6",
+        "quire": "B",
+        "pair": [
+          "y",
+          "d"
+        ],
+        "certain_left": true,
+        "glyph_distance": 2,
+        "certain_px": 44.0,
+        "uncertain_px": 17.0,
+        "counts_equal": false,
+        "threshold": 11.129,
+        "difference": 2.426093988678228
+      },
+      {
+        "folio": "f14v",
+        "locus": "f14v.7",
+        "quire": "B",
+        "pair": [
+          "y",
+          "o"
+        ],
+        "certain_left": false,
+        "glyph_distance": 8,
+        "certain_px": 54.0,
+        "uncertain_px": 18.0,
+        "counts_equal": false,
+        "threshold": 11.129,
+        "difference": 3.2347919849043043
+      },
+      {
+        "folio": "f16v",
+        "locus": "f16v.3",
+        "quire": "B",
+        "pair": [
+          "y",
+          "k"
+        ],
+        "certain_left": false,
+        "glyph_distance": 3,
+        "certain_px": 22.0,
+        "uncertain_px": 17.0,
+        "counts_equal": false,
+        "threshold": 18.587,
+        "difference": 0.26900521870124283
+      },
+      {
+        "folio": "f19v",
+        "locus": "f19v.3",
+        "quire": "C",
+        "pair": [
+          "l",
+          "d"
+        ],
+        "certain_left": false,
+        "glyph_distance": 12,
+        "certain_px": 43.0,
+        "uncertain_px": 14.0,
+        "counts_equal": false,
+        "threshold": 22.021,
+        "difference": 1.3169247536442485
+      },
+      {
+        "folio": "f20r",
+        "locus": "f20r.13",
+        "quire": "C",
+        "pair": [
+          "r",
+          "ch"
+        ],
+        "certain_left": true,
+        "glyph_distance": 3,
+        "certain_px": 31.0,
+        "uncertain_px": 7.0,
+        "counts_equal": false,
+        "threshold": 22.383,
+        "difference": 1.0722423267658492
+      },
+      {
+        "folio": "f21r",
+        "locus": "f21r.6",
+        "quire": "C",
+        "pair": [
+          "y",
+          "k"
+        ],
+        "certain_left": true,
+        "glyph_distance": 4,
+        "certain_px": 31.0,
+        "uncertain_px": 16.0,
+        "counts_equal": false,
+        "threshold": 21.693,
+        "difference": 0.6914672935970129
+      },
+      {
+        "folio": "f21r",
+        "locus": "f21r.10",
+        "quire": "C",
+        "pair": [
+          "y",
+          "k"
+        ],
+        "certain_left": true,
+        "glyph_distance": 6,
+        "certain_px": 26.0,
+        "uncertain_px": 19.0,
+        "counts_equal": false,
+        "threshold": 21.693,
+        "difference": 0.32268473701193934
+      },
+      {
+        "folio": "f26v",
+        "locus": "f26v.6",
+        "quire": "D",
+        "pair": [
+          "r",
+          "ch"
+        ],
+        "certain_left": false,
+        "glyph_distance": 7,
+        "certain_px": 28.0,
+        "uncertain_px": 12.0,
+        "counts_equal": false,
+        "threshold": 32.047,
+        "difference": 0.49926670203139145
+      },
+      {
+        "folio": "f30r",
+        "locus": "f30r.6",
+        "quire": "D",
+        "pair": [
+          "o",
+          "r"
+        ],
+        "certain_left": false,
+        "glyph_distance": 2,
+        "certain_px": 35.0,
+        "uncertain_px": 22.0,
+        "counts_equal": true,
+        "threshold": 19.469,
+        "difference": 0.6677281832657044
+      },
+      {
+        "folio": "f31v",
+        "locus": "f31v.3",
+        "quire": "D",
+        "pair": [
+          "o",
+          "d"
+        ],
+        "certain_left": true,
+        "glyph_distance": 20,
+        "certain_px": 22.0,
+        "uncertain_px": 13.0,
+        "counts_equal": false,
+        "threshold": 16.273,
+        "difference": 0.553063356480059
+      },
+      {
+        "folio": "f31v",
+        "locus": "f31v.8",
+        "quire": "D",
+        "pair": [
+          "r",
+          "ch"
+        ],
+        "certain_left": true,
+        "glyph_distance": 6,
+        "certain_px": 24.0,
+        "uncertain_px": 14.0,
+        "counts_equal": false,
+        "threshold": 16.273,
+        "difference": 0.6145148405333989
+      },
+      {
+        "folio": "f32r",
+        "locus": "f32r.7",
+        "quire": "D",
+        "pair": [
+          "l",
+          "d"
+        ],
+        "certain_left": true,
+        "glyph_distance": 5,
+        "certain_px": 17.0,
+        "uncertain_px": 28.0,
+        "counts_equal": true,
+        "threshold": 16.164,
+        "difference": -0.6805246226181637
+      },
+      {
+        "folio": "f35r",
+        "locus": "f35r.8",
+        "quire": "E",
+        "pair": [
+          "y",
+          "k"
+        ],
+        "certain_left": true,
+        "glyph_distance": 2,
+        "certain_px": 9.0,
+        "uncertain_px": 242.0,
+        "counts_equal": false,
+        "threshold": 18.097,
+        "difference": -12.875062164999722
+      },
+      {
+        "folio": "f35v",
+        "locus": "f35v.12",
+        "quire": "E",
+        "pair": [
+          "iin",
+          "d"
+        ],
+        "certain_left": true,
+        "glyph_distance": 3,
+        "certain_px": 12.0,
+        "uncertain_px": 29.0,
+        "counts_equal": false,
+        "threshold": 15.127,
+        "difference": -1.1238183380709987
+      },
+      {
+        "folio": "f40v",
+        "locus": "f40v.9",
+        "quire": "E",
+        "pair": [
+          "y",
+          "p"
+        ],
+        "certain_left": false,
+        "glyph_distance": 5,
+        "certain_px": 15.0,
+        "uncertain_px": 10.0,
+        "counts_equal": false,
+        "threshold": 16.779,
+        "difference": 0.29799153704034803
+      },
+      {
+        "folio": "f44r",
+        "locus": "f44r.2",
+        "quire": "F",
+        "pair": [
+          "y",
+          "d"
+        ],
+        "certain_left": true,
+        "glyph_distance": 3,
+        "certain_px": 21.0,
+        "uncertain_px": 7.0,
+        "counts_equal": false,
+        "threshold": 25.236,
+        "difference": 0.5547630369313679
+      },
+      {
+        "folio": "f44v",
+        "locus": "f44v.6",
+        "quire": "F",
+        "pair": [
+          "y",
+          "k"
+        ],
+        "certain_left": true,
+        "glyph_distance": 7,
+        "certain_px": 7.0,
+        "uncertain_px": 17.0,
+        "counts_equal": false,
+        "threshold": 22.989,
+        "difference": -0.43499064770107443
+      },
+      {
+        "folio": "f48r",
+        "locus": "f48r.4",
+        "quire": "F",
+        "pair": [
+          "y",
+          "t"
+        ],
+        "certain_left": false,
+        "glyph_distance": 9,
+        "certain_px": 32.0,
+        "uncertain_px": 7.0,
+        "counts_equal": false,
+        "threshold": 17.474,
+        "difference": 1.4306970355957422
+      },
+      {
+        "folio": "f50v",
+        "locus": "f50v.5",
+        "quire": "G",
+        "pair": [
+          "y",
+          "ch"
+        ],
+        "certain_left": false,
+        "glyph_distance": 24,
+        "certain_px": 44.0,
+        "uncertain_px": 21.0,
+        "counts_equal": false,
+        "threshold": 14.582,
+        "difference": 1.5772870662460567
+      },
+      {
+        "folio": "f54v",
+        "locus": "f54v.4",
+        "quire": "G",
+        "pair": [
+          "r",
+          "ch"
+        ],
+        "certain_left": false,
+        "glyph_distance": 3,
+        "certain_px": 44.0,
+        "uncertain_px": 1.0,
+        "counts_equal": false,
+        "threshold": 22.227,
+        "difference": 1.9345840644261483
+      },
+      {
+        "folio": "f56r",
+        "locus": "f56r.10",
+        "quire": "G",
+        "pair": [
+          "t",
+          "ch"
+        ],
+        "certain_left": false,
+        "glyph_distance": 12,
+        "certain_px": 3.0,
+        "uncertain_px": 28.0,
+        "counts_equal": false,
+        "threshold": 17.974,
+        "difference": -1.390897963725381
+      },
+      {
+        "folio": "f56v",
+        "locus": "f56v.9",
+        "quire": "G",
+        "pair": [
+          "o",
+          "k"
+        ],
+        "certain_left": true,
+        "glyph_distance": 3,
+        "certain_px": 16.0,
+        "uncertain_px": 42.0,
+        "counts_equal": false,
+        "threshold": 11.934,
+        "difference": -2.178649237472767
+      },
+      {
+        "folio": "f56v",
+        "locus": "f56v.14",
+        "quire": "G",
+        "pair": [
+          "l",
+          "ch"
+        ],
+        "certain_left": false,
+        "glyph_distance": 7,
+        "certain_px": 34.0,
+        "uncertain_px": 12.0,
+        "counts_equal": false,
+        "threshold": 11.934,
+        "difference": 1.843472431707726
+      },
+      {
+        "folio": "f58r",
+        "locus": "f58r.5",
+        "quire": "H",
+        "pair": [
+          "r",
+          "a"
+        ],
+        "certain_left": true,
+        "glyph_distance": 2,
+        "certain_px": 30.0,
+        "uncertain_px": 8.0,
+        "counts_equal": false,
+        "threshold": 18.914,
+        "difference": 1.1631595643438721
+      },
+      {
+        "folio": "f58r",
+        "locus": "f58r.6",
+        "quire": "H",
+        "pair": [
+          "r",
+          "y"
+        ],
+        "certain_left": false,
+        "glyph_distance": 11,
+        "certain_px": 39.0,
+        "uncertain_px": 9.0,
+        "counts_equal": false,
+        "threshold": 18.914,
+        "difference": 1.5861266786507349
+      },
+      {
+        "folio": "f58r",
+        "locus": "f58r.25",
+        "quire": "H",
+        "pair": [
+          "r",
+          "a"
+        ],
+        "certain_left": true,
+        "glyph_distance": 7,
+        "certain_px": 26.0,
+        "uncertain_px": 9.0,
+        "counts_equal": false,
+        "threshold": 18.914,
+        "difference": 0.8988051179020831
+      },
+      {
+        "folio": "f58r",
+        "locus": "f58r.27",
+        "quire": "H",
+        "pair": [
+          "r",
+          "a"
+        ],
+        "certain_left": true,
+        "glyph_distance": 24,
+        "certain_px": 23.0,
+        "uncertain_px": 10.0,
+        "counts_equal": false,
+        "threshold": 18.914,
+        "difference": 0.6873215607486517
+      },
+      {
+        "folio": "f58r",
+        "locus": "f58r.41",
+        "quire": "H",
+        "pair": [
+          "l",
+          "s"
+        ],
+        "certain_left": true,
+        "glyph_distance": 10,
+        "certain_px": 20.0,
+        "uncertain_px": 40.0,
+        "counts_equal": true,
+        "threshold": 18.914,
+        "difference": -1.0574177857671565
+      },
+      {
+        "folio": "f58v",
+        "locus": "f58v.32",
+        "quire": "H",
+        "pair": [
+          "l",
+          "o"
+        ],
+        "certain_left": true,
+        "glyph_distance": 7,
+        "certain_px": 27.0,
+        "uncertain_px": 20.0,
+        "counts_equal": false,
+        "threshold": 19.42,
+        "difference": 0.36045314109165805
+      },
+      {
+        "folio": "f77v",
+        "locus": "f77v.11",
+        "quire": "M",
+        "pair": [
+          "l",
+          "ch"
+        ],
+        "certain_left": false,
+        "glyph_distance": 14,
+        "certain_px": 34.0,
+        "uncertain_px": 23.0,
+        "counts_equal": true,
+        "threshold": 16.039,
+        "difference": 0.6858282935345096
+      },
+      {
+        "folio": "f78r",
+        "locus": "f78r.3",
+        "quire": "M",
+        "pair": [
+          "y",
+          "q"
+        ],
+        "certain_left": true,
+        "glyph_distance": 8,
+        "certain_px": 44.0,
+        "uncertain_px": 17.0,
+        "counts_equal": false,
+        "threshold": 11.119,
+        "difference": 2.4282759240938936
+      },
+      {
+        "folio": "f78r",
+        "locus": "f78r.33",
+        "quire": "M",
+        "pair": [
+          "y",
+          "o"
+        ],
+        "certain_left": false,
+        "glyph_distance": 10,
+        "certain_px": 43.0,
+        "uncertain_px": 13.0,
+        "counts_equal": false,
+        "threshold": 11.119,
+        "difference": 2.698084360104326
+      },
+      {
+        "folio": "f79r",
+        "locus": "f79r.5",
+        "quire": "M",
+        "pair": [
+          "l",
+          "ch"
+        ],
+        "certain_left": true,
+        "glyph_distance": 3,
+        "certain_px": 38.0,
+        "uncertain_px": 15.0,
+        "counts_equal": false,
+        "threshold": 20.355,
+        "difference": 1.1299435028248588
+      },
+      {
+        "folio": "f79r",
+        "locus": "f79r.6",
+        "quire": "M",
+        "pair": [
+          "l",
+          "o"
+        ],
+        "certain_left": true,
+        "glyph_distance": 6,
+        "certain_px": 19.0,
+        "uncertain_px": 16.0,
+        "counts_equal": false,
+        "threshold": 20.355,
+        "difference": 0.14738393515106854
+      },
+      {
+        "folio": "f79r",
+        "locus": "f79r.14",
+        "quire": "M",
+        "pair": [
+          "y",
+          "q"
+        ],
+        "certain_left": true,
+        "glyph_distance": 21,
+        "certain_px": 24.0,
+        "uncertain_px": 18.0,
+        "counts_equal": false,
+        "threshold": 20.355,
+        "difference": 0.2947678703021371
+      },
+      {
+        "folio": "f81r",
+        "locus": "f81r.22",
+        "quire": "M",
+        "pair": [
+          "l",
+          "ch"
+        ],
+        "certain_left": true,
+        "glyph_distance": 14,
+        "certain_px": 40.0,
+        "uncertain_px": 20.0,
+        "counts_equal": false,
+        "threshold": 18.073,
+        "difference": 1.1066231394898467
+      },
+      {
+        "folio": "f81r",
+        "locus": "f81r.24",
+        "quire": "M",
+        "pair": [
+          "r",
+          "o"
+        ],
+        "certain_left": false,
+        "glyph_distance": 19,
+        "certain_px": 31.0,
+        "uncertain_px": 10.0,
+        "counts_equal": false,
+        "threshold": 18.073,
+        "difference": 1.161954296464339
+      },
+      {
+        "folio": "f81r",
+        "locus": "f81r.29",
+        "quire": "M",
+        "pair": [
+          "y",
+          "sh"
+        ],
+        "certain_left": false,
+        "glyph_distance": 4,
+        "certain_px": 19.0,
+        "uncertain_px": 18.0,
+        "counts_equal": false,
+        "threshold": 18.073,
+        "difference": 0.05533115697449233
+      },
+      {
+        "folio": "f83v",
+        "locus": "f83v.13",
+        "quire": "M",
+        "pair": [
+          "l",
+          "ch"
+        ],
+        "certain_left": false,
+        "glyph_distance": 19,
+        "certain_px": 36.0,
+        "uncertain_px": 21.0,
+        "counts_equal": false,
+        "threshold": 19.809,
+        "difference": 0.7572315614114796
+      },
+      {
+        "folio": "f88r",
+        "locus": "f88r.28",
+        "quire": "O",
+        "pair": [
+          "r",
+          "a"
+        ],
+        "certain_left": true,
+        "glyph_distance": 2,
+        "certain_px": 37.0,
+        "uncertain_px": 15.0,
+        "counts_equal": false,
+        "threshold": 13.827,
+        "difference": 1.5910898965791567
+      },
+      {
+        "folio": "f88r",
+        "locus": "f88r.29",
+        "quire": "O",
+        "pair": [
+          "r",
+          "ch"
+        ],
+        "certain_left": false,
+        "glyph_distance": 25,
+        "certain_px": 15.0,
+        "uncertain_px": 18.0,
+        "counts_equal": false,
+        "threshold": 13.827,
+        "difference": -0.21696680407897592
+      },
+      {
+        "folio": "f103v",
+        "locus": "f103v.9",
+        "quire": "T",
+        "pair": [
+          "l",
+          "sh"
+        ],
+        "certain_left": false,
+        "glyph_distance": 3,
+        "certain_px": 37.0,
+        "uncertain_px": 9.0,
+        "counts_equal": false,
+        "threshold": 17.477,
+        "difference": 1.6021056245351033
+      },
+      {
+        "folio": "f103v",
+        "locus": "f103v.12",
+        "quire": "T",
+        "pair": [
+          "l",
+          "sh"
+        ],
+        "certain_left": false,
+        "glyph_distance": 16,
+        "certain_px": 14.0,
+        "uncertain_px": 11.0,
+        "counts_equal": false,
+        "threshold": 17.477,
+        "difference": 0.1716541740573325
+      },
+      {
+        "folio": "f103v",
+        "locus": "f103v.19",
+        "quire": "T",
+        "pair": [
+          "y",
+          "l"
+        ],
+        "certain_left": true,
+        "glyph_distance": 14,
+        "certain_px": 17.0,
+        "uncertain_px": 20.0,
+        "counts_equal": false,
+        "threshold": 17.477,
+        "difference": -0.1716541740573325
+      },
+      {
+        "folio": "f103v",
+        "locus": "f103v.43",
+        "quire": "T",
+        "pair": [
+          "y",
+          "l"
+        ],
+        "certain_left": true,
+        "glyph_distance": 8,
+        "certain_px": 38.0,
+        "uncertain_px": 18.0,
+        "counts_equal": true,
+        "threshold": 17.477,
+        "difference": 1.1443611603822166
+      },
+      {
+        "folio": "f103v",
+        "locus": "f103v.45",
+        "quire": "T",
+        "pair": [
+          "y",
+          "o"
+        ],
+        "certain_left": true,
+        "glyph_distance": 20,
+        "certain_px": 45.0,
+        "uncertain_px": 26.0,
+        "counts_equal": true,
+        "threshold": 17.477,
+        "difference": 1.0871431023631057
+      },
+      {
+        "folio": "f104r",
+        "locus": "f104r.14",
+        "quire": "T",
+        "pair": [
+          "l",
+          "o"
+        ],
+        "certain_left": true,
+        "glyph_distance": 2,
+        "certain_px": 57.0,
+        "uncertain_px": 38.0,
+        "counts_equal": true,
+        "threshold": 20.428,
+        "difference": 0.9300959467397689
+      },
+      {
+        "folio": "f104r",
+        "locus": "f104r.23",
+        "quire": "T",
+        "pair": [
+          "l",
+          "k"
+        ],
+        "certain_left": false,
+        "glyph_distance": 15,
+        "certain_px": 28.0,
+        "uncertain_px": 22.0,
+        "counts_equal": false,
+        "threshold": 20.428,
+        "difference": 0.29371450949676914
+      },
+      {
+        "folio": "f104r",
+        "locus": "f104r.28",
+        "quire": "T",
+        "pair": [
+          "r",
+          "a"
+        ],
+        "certain_left": true,
+        "glyph_distance": 27,
+        "certain_px": 36.0,
+        "uncertain_px": 16.0,
+        "counts_equal": false,
+        "threshold": 20.428,
+        "difference": 0.9790483649892304
+      },
+      {
+        "folio": "f104r",
+        "locus": "f104r.29",
+        "quire": "T",
+        "pair": [
+          "r",
+          "a"
+        ],
+        "certain_left": false,
+        "glyph_distance": 9,
+        "certain_px": 52.0,
+        "uncertain_px": 16.0,
+        "counts_equal": false,
+        "threshold": 20.428,
+        "difference": 1.7622870569806148
+      },
+      {
+        "folio": "f104r",
+        "locus": "f104r.30",
+        "quire": "T",
+        "pair": [
+          "o",
+          "l"
+        ],
+        "certain_left": false,
+        "glyph_distance": 19,
+        "certain_px": 30.0,
+        "uncertain_px": 75.0,
+        "counts_equal": false,
+        "threshold": 20.428,
+        "difference": -2.2028588212257683
+      },
+      {
+        "folio": "f104r",
+        "locus": "f104r.35",
+        "quire": "T",
+        "pair": [
+          "l",
+          "ch"
+        ],
+        "certain_left": true,
+        "glyph_distance": 6,
+        "certain_px": 32.0,
+        "uncertain_px": 17.0,
+        "counts_equal": false,
+        "threshold": 20.428,
+        "difference": 0.7342862737419228
+      },
+      {
+        "folio": "f104v",
+        "locus": "f104v.25",
+        "quire": "T",
+        "pair": [
+          "iin",
+          "ch"
+        ],
+        "certain_left": false,
+        "glyph_distance": 10,
+        "certain_px": 2.0,
+        "uncertain_px": 18.0,
+        "counts_equal": false,
+        "threshold": 15.459,
+        "difference": -1.0349957953295814
+      },
+      {
+        "folio": "f104v",
+        "locus": "f104v.31",
+        "quire": "T",
+        "pair": [
+          "y",
+          "ch"
+        ],
+        "certain_left": false,
+        "glyph_distance": 9,
+        "certain_px": 36.0,
+        "uncertain_px": 15.0,
+        "counts_equal": false,
+        "threshold": 15.459,
+        "difference": 1.3584319813700758
+      },
+      {
+        "folio": "f104v",
+        "locus": "f104v.33",
+        "quire": "T",
+        "pair": [
+          "r",
+          "a"
+        ],
+        "certain_left": true,
+        "glyph_distance": 2,
+        "certain_px": 28.0,
+        "uncertain_px": 7.0,
+        "counts_equal": false,
+        "threshold": 15.459,
+        "difference": 1.3584319813700758
+      },
+      {
+        "folio": "f104v",
+        "locus": "f104v.37",
+        "quire": "T",
+        "pair": [
+          "y",
+          "s"
+        ],
+        "certain_left": true,
+        "glyph_distance": 17,
+        "certain_px": 37.0,
+        "uncertain_px": 4.0,
+        "counts_equal": false,
+        "threshold": 15.459,
+        "difference": 2.134678827867262
+      },
+      {
+        "folio": "f104v",
+        "locus": "f104v.38",
+        "quire": "T",
+        "pair": [
+          "y",
+          "ch"
+        ],
+        "certain_left": true,
+        "glyph_distance": 4,
+        "certain_px": 38.0,
+        "uncertain_px": 14.0,
+        "counts_equal": false,
+        "threshold": 15.459,
+        "difference": 1.5524936929943722
+      },
+      {
+        "folio": "f105v",
+        "locus": "f105v.2",
+        "quire": "T",
+        "pair": [
+          "r",
+          "o"
+        ],
+        "certain_left": false,
+        "glyph_distance": 2,
+        "certain_px": 32.0,
+        "uncertain_px": 11.0,
+        "counts_equal": false,
+        "threshold": 15.93,
+        "difference": 1.3182674199623352
+      },
+      {
+        "folio": "f105v",
+        "locus": "f105v.30",
+        "quire": "T",
+        "pair": [
+          "iin",
+          "s"
+        ],
+        "certain_left": true,
+        "glyph_distance": 3,
+        "certain_px": 11.0,
+        "uncertain_px": 31.0,
+        "counts_equal": false,
+        "threshold": 15.93,
+        "difference": -1.2554927809165097
+      },
+      {
+        "folio": "f106r",
+        "locus": "f106r.30",
+        "quire": "T",
+        "pair": [
+          "o",
+          "l"
+        ],
+        "certain_left": true,
+        "glyph_distance": 12,
+        "certain_px": 20.0,
+        "uncertain_px": 16.0,
+        "counts_equal": false,
+        "threshold": 17.661,
+        "difference": 0.22648774135099936
+      },
+      {
+        "folio": "f106r",
+        "locus": "f106r.34",
+        "quire": "T",
+        "pair": [
+          "o",
+          "l"
+        ],
+        "certain_left": true,
+        "glyph_distance": 12,
+        "certain_px": 50.0,
+        "uncertain_px": 14.0,
+        "counts_equal": false,
+        "threshold": 17.661,
+        "difference": 2.0383896721589942
+      },
+      {
+        "folio": "f106r",
+        "locus": "f106r.39",
+        "quire": "T",
+        "pair": [
+          "l",
+          "ch"
+        ],
+        "certain_left": true,
+        "glyph_distance": 21,
+        "certain_px": 33.0,
+        "uncertain_px": 15.0,
+        "counts_equal": false,
+        "threshold": 17.661,
+        "difference": 1.0191948360794971
+      },
+      {
+        "folio": "f106r",
+        "locus": "f106r.47",
+        "quire": "T",
+        "pair": [
+          "r",
+          "o"
+        ],
+        "certain_left": true,
+        "glyph_distance": 12,
+        "certain_px": 22.0,
+        "uncertain_px": 31.0,
+        "counts_equal": true,
+        "threshold": 17.661,
+        "difference": -0.5095974180397486
+      },
+      {
+        "folio": "f106v",
+        "locus": "f106v.11",
+        "quire": "T",
+        "pair": [
+          "y",
+          "k"
+        ],
+        "certain_left": false,
+        "glyph_distance": 30,
+        "certain_px": 23.0,
+        "uncertain_px": 16.0,
+        "counts_equal": false,
+        "threshold": 17.631,
+        "difference": 0.39702796211218877
+      },
+      {
+        "folio": "f106v",
+        "locus": "f106v.34",
+        "quire": "T",
+        "pair": [
+          "r",
+          "a"
+        ],
+        "certain_left": false,
+        "glyph_distance": 32,
+        "certain_px": 13.0,
+        "uncertain_px": 9.0,
+        "counts_equal": false,
+        "threshold": 17.631,
+        "difference": 0.226873121206965
+      },
+      {
+        "folio": "f106v",
+        "locus": "f106v.42",
+        "quire": "T",
+        "pair": [
+          "y",
+          "ch"
+        ],
+        "certain_left": false,
+        "glyph_distance": 13,
+        "certain_px": 32.0,
+        "uncertain_px": 40.0,
+        "counts_equal": false,
+        "threshold": 17.631,
+        "difference": -0.45374624241393
+      },
+      {
+        "folio": "f107r",
+        "locus": "f107r.26",
+        "quire": "T",
+        "pair": [
+          "l",
+          "ch"
+        ],
+        "certain_left": false,
+        "glyph_distance": 27,
+        "certain_px": 25.0,
+        "uncertain_px": 13.0,
+        "counts_equal": false,
+        "threshold": 16.058,
+        "difference": 0.747291069871715
+      },
+      {
+        "folio": "f107r",
+        "locus": "f107r.51",
+        "quire": "T",
+        "pair": [
+          "l",
+          "o"
+        ],
+        "certain_left": false,
+        "glyph_distance": 2,
+        "certain_px": 33.0,
+        "uncertain_px": 9.0,
+        "counts_equal": false,
+        "threshold": 16.058,
+        "difference": 1.49458213974343
+      },
+      {
+        "folio": "f108r",
+        "locus": "f108r.25",
+        "quire": "T",
+        "pair": [
+          "y",
+          "ch"
+        ],
+        "certain_left": false,
+        "glyph_distance": 10,
+        "certain_px": 33.0,
+        "uncertain_px": 7.0,
+        "counts_equal": false,
+        "threshold": 18.795,
+        "difference": 1.3833466347432826
+      },
+      {
+        "folio": "f108r",
+        "locus": "f108r.50",
+        "quire": "T",
+        "pair": [
+          "y",
+          "l"
+        ],
+        "certain_left": false,
+        "glyph_distance": 5,
+        "certain_px": 46.0,
+        "uncertain_px": 25.0,
+        "counts_equal": false,
+        "threshold": 18.795,
+        "difference": 1.1173184357541899
+      },
+      {
+        "folio": "f108v",
+        "locus": "f108v.20",
+        "quire": "T",
+        "pair": [
+          "iin",
+          "o"
+        ],
+        "certain_left": true,
+        "glyph_distance": 14,
+        "certain_px": 47.0,
+        "uncertain_px": 20.0,
+        "counts_equal": false,
+        "threshold": 15.171,
+        "difference": 1.7797112912794149
+      },
+      {
+        "folio": "f108v",
+        "locus": "f108v.39",
+        "quire": "T",
+        "pair": [
+          "y",
+          "r"
+        ],
+        "certain_left": true,
+        "glyph_distance": 28,
+        "certain_px": 23.0,
+        "uncertain_px": 33.0,
+        "counts_equal": true,
+        "threshold": 15.171,
+        "difference": -0.659152330103487
+      },
+      {
+        "folio": "f108v",
+        "locus": "f108v.40",
+        "quire": "T",
+        "pair": [
+          "y",
+          "q"
+        ],
+        "certain_left": true,
+        "glyph_distance": 10,
+        "certain_px": 25.0,
+        "uncertain_px": 11.0,
+        "counts_equal": false,
+        "threshold": 15.171,
+        "difference": 0.9228132621448817
+      },
+      {
+        "folio": "f108v",
+        "locus": "f108v.42",
+        "quire": "T",
+        "pair": [
+          "y",
+          "q"
+        ],
+        "certain_left": false,
+        "glyph_distance": 5,
+        "certain_px": 28.0,
+        "uncertain_px": 10.0,
+        "counts_equal": false,
+        "threshold": 15.171,
+        "difference": 1.1864741941862764
+      },
+      {
+        "folio": "f108v",
+        "locus": "f108v.50",
+        "quire": "T",
+        "pair": [
+          "y",
+          "q"
+        ],
+        "certain_left": true,
+        "glyph_distance": 23,
+        "certain_px": 37.0,
+        "uncertain_px": 25.0,
+        "counts_equal": true,
+        "threshold": 15.171,
+        "difference": 0.7909827961241843
+      },
+      {
+        "folio": "f111r",
+        "locus": "f111r.32",
+        "quire": "T",
+        "pair": [
+          "o",
+          "l"
+        ],
+        "certain_left": true,
+        "glyph_distance": 20,
+        "certain_px": 18.0,
+        "uncertain_px": 11.0,
+        "counts_equal": false,
+        "threshold": 15.253,
+        "difference": 0.45892611289582375
+      },
+      {
+        "folio": "f111r",
+        "locus": "f111r.36",
+        "quire": "T",
+        "pair": [
+          "y",
+          "p"
+        ],
+        "certain_left": true,
+        "glyph_distance": 29,
+        "certain_px": 16.0,
+        "uncertain_px": 24.0,
+        "counts_equal": true,
+        "threshold": 15.253,
+        "difference": -0.5244869861666558
+      },
+      {
+        "folio": "f111r",
+        "locus": "f111r.37",
+        "quire": "T",
+        "pair": [
+          "l",
+          "k"
+        ],
+        "certain_left": true,
+        "glyph_distance": 5,
+        "certain_px": 0.0,
+        "uncertain_px": 8.0,
+        "counts_equal": false,
+        "threshold": 15.253,
+        "difference": -0.5244869861666558
+      },
+      {
+        "folio": "f111r",
+        "locus": "f111r.38",
+        "quire": "T",
+        "pair": [
+          "y",
+          "k"
+        ],
+        "certain_left": true,
+        "glyph_distance": 27,
+        "certain_px": 22.0,
+        "uncertain_px": 13.0,
+        "counts_equal": false,
+        "threshold": 15.253,
+        "difference": 0.5900478594374877
+      },
+      {
+        "folio": "f111r",
+        "locus": "f111r.49",
+        "quire": "T",
+        "pair": [
+          "y",
+          "k"
+        ],
+        "certain_left": true,
+        "glyph_distance": 19,
+        "certain_px": 21.0,
+        "uncertain_px": 16.0,
+        "counts_equal": true,
+        "threshold": 15.253,
+        "difference": 0.3278043663541598
+      },
+      {
+        "folio": "f111v",
+        "locus": "f111v.7",
+        "quire": "T",
+        "pair": [
+          "l",
+          "k"
+        ],
+        "certain_left": false,
+        "glyph_distance": 17,
+        "certain_px": 29.0,
+        "uncertain_px": 32.0,
+        "counts_equal": false,
+        "threshold": 15.671,
+        "difference": -0.19143641120541127
+      },
+      {
+        "folio": "f111v",
+        "locus": "f111v.16",
+        "quire": "T",
+        "pair": [
+          "r",
+          "a"
+        ],
+        "certain_left": false,
+        "glyph_distance": 18,
+        "certain_px": 9.0,
+        "uncertain_px": 3.0,
+        "counts_equal": false,
+        "threshold": 15.671,
+        "difference": 0.38287282241082254
+      },
+      {
+        "folio": "f111v",
+        "locus": "f111v.32",
+        "quire": "T",
+        "pair": [
+          "l",
+          "ch"
+        ],
+        "certain_left": true,
+        "glyph_distance": 12,
+        "certain_px": 22.0,
+        "uncertain_px": 8.0,
+        "counts_equal": false,
+        "threshold": 15.671,
+        "difference": 0.893369918958586
+      },
+      {
+        "folio": "f111v",
+        "locus": "f111v.37",
+        "quire": "T",
+        "pair": [
+          "y",
+          "l"
+        ],
+        "certain_left": false,
+        "glyph_distance": 33,
+        "certain_px": 35.0,
+        "uncertain_px": 42.0,
+        "counts_equal": false,
+        "threshold": 15.671,
+        "difference": -0.446684959479293
+      },
+      {
+        "folio": "f112r",
+        "locus": "f112r.3",
+        "quire": "T",
+        "pair": [
+          "r",
+          "ch"
+        ],
+        "certain_left": false,
+        "glyph_distance": 5,
+        "certain_px": 30.0,
+        "uncertain_px": 13.0,
+        "counts_equal": false,
+        "threshold": 15.949,
+        "difference": 1.0658975484356386
+      },
+      {
+        "folio": "f112r",
+        "locus": "f112r.29",
+        "quire": "T",
+        "pair": [
+          "r",
+          "a"
+        ],
+        "certain_left": true,
+        "glyph_distance": 33,
+        "certain_px": 18.0,
+        "uncertain_px": 12.0,
+        "counts_equal": false,
+        "threshold": 15.949,
+        "difference": 0.37619913474199007
+      },
+      {
+        "folio": "f112r",
+        "locus": "f112r.32",
+        "quire": "T",
+        "pair": [
+          "r",
+          "a"
+        ],
+        "certain_left": true,
+        "glyph_distance": 2,
+        "certain_px": 34.0,
+        "uncertain_px": 11.0,
+        "counts_equal": false,
+        "threshold": 15.949,
+        "difference": 1.4420966831776287
+      },
+      {
+        "folio": "f112v",
+        "locus": "f112v.10",
+        "quire": "T",
+        "pair": [
+          "y",
+          "o"
+        ],
+        "certain_left": true,
+        "glyph_distance": 6,
+        "certain_px": 35.0,
+        "uncertain_px": 14.0,
+        "counts_equal": false,
+        "threshold": 15.193,
+        "difference": 1.3822154939774898
+      },
+      {
+        "folio": "f112v",
+        "locus": "f112v.12",
+        "quire": "T",
+        "pair": [
+          "y",
+          "q"
+        ],
+        "certain_left": true,
+        "glyph_distance": 9,
+        "certain_px": 27.0,
+        "uncertain_px": 40.0,
+        "counts_equal": true,
+        "threshold": 15.193,
+        "difference": -0.8556572105574936
+      },
+      {
+        "folio": "f112v",
+        "locus": "f112v.43",
+        "quire": "T",
+        "pair": [
+          "l",
+          "o"
+        ],
+        "certain_left": true,
+        "glyph_distance": 13,
+        "certain_px": 36.0,
+        "uncertain_px": 32.0,
+        "counts_equal": true,
+        "threshold": 15.193,
+        "difference": 0.26327914170999805
+      },
+      {
+        "folio": "f113r",
+        "locus": "f113r.4",
+        "quire": "T",
+        "pair": [
+          "r",
+          "a"
+        ],
+        "certain_left": true,
+        "glyph_distance": 2,
+        "certain_px": 37.0,
+        "uncertain_px": 15.0,
+        "counts_equal": false,
+        "threshold": 17.03,
+        "difference": 1.291837933059307
+      },
+      {
+        "folio": "f113r",
+        "locus": "f113r.43",
+        "quire": "T",
+        "pair": [
+          "r",
+          "a"
+        ],
+        "certain_left": true,
+        "glyph_distance": 23,
+        "certain_px": 38.0,
+        "uncertain_px": 12.0,
+        "counts_equal": false,
+        "threshold": 17.03,
+        "difference": 1.5267175572519083
+      },
+      {
+        "folio": "f113v",
+        "locus": "f113v.2",
+        "quire": "T",
+        "pair": [
+          "r",
+          "a"
+        ],
+        "certain_left": true,
+        "glyph_distance": 4,
+        "certain_px": 24.0,
+        "uncertain_px": 2.0,
+        "counts_equal": false,
+        "threshold": 16.74,
+        "difference": 1.3142174432497014
+      },
+      {
+        "folio": "f113v",
+        "locus": "f113v.10",
+        "quire": "T",
+        "pair": [
+          "r",
+          "a"
+        ],
+        "certain_left": false,
+        "glyph_distance": 13,
+        "certain_px": 12.0,
+        "uncertain_px": 9.0,
+        "counts_equal": false,
+        "threshold": 16.74,
+        "difference": 0.1792114695340502
+      },
+      {
+        "folio": "f113v",
+        "locus": "f113v.25",
+        "quire": "T",
+        "pair": [
+          "y",
+          "l"
+        ],
+        "certain_left": true,
+        "glyph_distance": 5,
+        "certain_px": 33.0,
+        "uncertain_px": 21.0,
+        "counts_equal": false,
+        "threshold": 16.74,
+        "difference": 0.7168458781362008
+      },
+      {
+        "folio": "f113v",
+        "locus": "f113v.40",
+        "quire": "T",
+        "pair": [
+          "r",
+          "a"
+        ],
+        "certain_left": true,
+        "glyph_distance": 11,
+        "certain_px": 41.0,
+        "uncertain_px": 13.0,
+        "counts_equal": false,
+        "threshold": 16.74,
+        "difference": 1.6726403823178018
+      },
+      {
+        "folio": "f114r",
+        "locus": "f114r.7",
+        "quire": "T",
+        "pair": [
+          "iin",
+          "ch"
+        ],
+        "certain_left": false,
+        "glyph_distance": 17,
+        "certain_px": 22.0,
+        "uncertain_px": 15.0,
+        "counts_equal": false,
+        "threshold": 14.11,
+        "difference": 0.49610205527994333
+      },
+      {
+        "folio": "f114r",
+        "locus": "f114r.15",
+        "quire": "T",
+        "pair": [
+          "y",
+          "q"
+        ],
+        "certain_left": true,
+        "glyph_distance": 15,
+        "certain_px": 34.0,
+        "uncertain_px": 10.0,
+        "counts_equal": false,
+        "threshold": 14.11,
+        "difference": 1.7009213323883772
+      },
+      {
+        "folio": "f114r",
+        "locus": "f114r.16",
+        "quire": "T",
+        "pair": [
+          "l",
+          "ch"
+        ],
+        "certain_left": false,
+        "glyph_distance": 15,
+        "certain_px": 16.0,
+        "uncertain_px": 13.0,
+        "counts_equal": false,
+        "threshold": 14.11,
+        "difference": 0.21261516654854715
+      },
+      {
+        "folio": "f114v",
+        "locus": "f114v.26",
+        "quire": "T",
+        "pair": [
+          "l",
+          "ch"
+        ],
+        "certain_left": true,
+        "glyph_distance": 21,
+        "certain_px": 30.0,
+        "uncertain_px": 19.0,
+        "counts_equal": false,
+        "threshold": 18.589,
+        "difference": 0.5917478078433482
+      },
+      {
+        "folio": "f114v",
+        "locus": "f114v.29",
+        "quire": "T",
+        "pair": [
+          "y",
+          "q"
+        ],
+        "certain_left": true,
+        "glyph_distance": 18,
+        "certain_px": 43.0,
+        "uncertain_px": 13.0,
+        "counts_equal": false,
+        "threshold": 18.589,
+        "difference": 1.6138576577545862
+      },
+      {
+        "folio": "f114v",
+        "locus": "f114v.32",
+        "quire": "T",
+        "pair": [
+          "y",
+          "ch"
+        ],
+        "certain_left": false,
+        "glyph_distance": 8,
+        "certain_px": 62.0,
+        "uncertain_px": 17.0,
+        "counts_equal": false,
+        "threshold": 18.589,
+        "difference": 2.4207864866318793
+      },
+      {
+        "folio": "f115r",
+        "locus": "f115r.2",
+        "quire": "T",
+        "pair": [
+          "y",
+          "q"
+        ],
+        "certain_left": true,
+        "glyph_distance": 21,
+        "certain_px": 32.0,
+        "uncertain_px": 15.0,
+        "counts_equal": false,
+        "threshold": 16.127,
+        "difference": 1.0541328207354128
+      },
+      {
+        "folio": "f115r",
+        "locus": "f115r.10",
+        "quire": "T",
+        "pair": [
+          "y",
+          "q"
+        ],
+        "certain_left": true,
+        "glyph_distance": 10,
+        "certain_px": 23.0,
+        "uncertain_px": 18.0,
+        "counts_equal": true,
+        "threshold": 16.127,
+        "difference": 0.3100390649221802
+      },
+      {
+        "folio": "f115r",
+        "locus": "f115r.25",
+        "quire": "T",
+        "pair": [
+          "y",
+          "ch"
+        ],
+        "certain_left": false,
+        "glyph_distance": 23,
+        "certain_px": 34.0,
+        "uncertain_px": 24.0,
+        "counts_equal": true,
+        "threshold": 16.127,
+        "difference": 0.6200781298443604
+      },
+      {
+        "folio": "f115v",
+        "locus": "f115v.25",
+        "quire": "T",
+        "pair": [
+          "s",
+          "a"
+        ],
+        "certain_left": true,
+        "glyph_distance": 12,
+        "certain_px": 16.0,
+        "uncertain_px": 23.0,
+        "counts_equal": false,
+        "threshold": 18.905,
+        "difference": -0.37027241470510447
+      },
+      {
+        "folio": "f115v",
+        "locus": "f115v.26",
+        "quire": "T",
+        "pair": [
+          "r",
+          "a"
+        ],
+        "certain_left": true,
+        "glyph_distance": 30,
+        "certain_px": 46.0,
+        "uncertain_px": 10.0,
+        "counts_equal": false,
+        "threshold": 18.905,
+        "difference": 1.9042581327691086
+      },
+      {
+        "folio": "f115v",
+        "locus": "f115v.28",
+        "quire": "T",
+        "pair": [
+          "y",
+          "ch"
+        ],
+        "certain_left": false,
+        "glyph_distance": 13,
+        "certain_px": 25.0,
+        "uncertain_px": 76.0,
+        "counts_equal": true,
+        "threshold": 18.905,
+        "difference": -2.697699021422904
+      },
+      {
+        "folio": "f115v",
+        "locus": "f115v.40",
+        "quire": "T",
+        "pair": [
+          "s",
+          "ch"
+        ],
+        "certain_left": false,
+        "glyph_distance": 7,
+        "certain_px": 31.0,
+        "uncertain_px": 12.0,
+        "counts_equal": false,
+        "threshold": 18.905,
+        "difference": 1.0050251256281406
+      },
+      {
+        "folio": "f116r",
+        "locus": "f116r.7",
+        "quire": "T",
+        "pair": [
+          "y",
+          "t"
+        ],
+        "certain_left": false,
+        "glyph_distance": 21,
+        "certain_px": 28.0,
+        "uncertain_px": 7.0,
+        "counts_equal": false,
+        "threshold": 16.551,
+        "difference": 1.2688055102410731
+      },
+      {
+        "folio": "f116r",
+        "locus": "f116r.29",
+        "quire": "T",
+        "pair": [
+          "l",
+          "l"
+        ],
+        "certain_left": false,
+        "glyph_distance": 1,
+        "certain_px": 22.0,
+        "uncertain_px": 12.0,
+        "counts_equal": false,
+        "threshold": 16.551,
+        "difference": 0.6041931001147968
+      },
+      {
+        "folio": "f116r",
+        "locus": "f116r.40",
+        "quire": "T",
+        "pair": [
+          "y",
+          "l"
+        ],
+        "certain_left": true,
+        "glyph_distance": 4,
+        "certain_px": 28.0,
+        "uncertain_px": 14.0,
+        "counts_equal": false,
+        "threshold": 16.551,
+        "difference": 0.8458703401607155
+      }
+    ]
+  },
+  "interpretation": [
+    "Both masked readers matched all four edges within 20 native pixels for 14 of the 18 initial crops, spanning ten quires. The certain gap is larger in each measured pair. The equal-quire contrast is +3.75 pixels rescaled to a 700-pixel page. Excluding pages from the original direct ink study leaves 12 of 12 positive cases with an equal-quire contrast of +3.42 pixels. Both left-to-right label orientations give the same direction.",
+    "The exception log is part of the result. Two initially mapped photographs do not provide reliable matches to the complete reference row. One crop cuts off the right glyph and one repeated sequence received discrepant placements. Expanded-crop recovery and a tie-breaking reader are reported separately. The alternate locators broaden coverage across compound leaves while keeping the sample small and conditional on visually identifiable glyphs.",
+    "All 25 resolved comparisons were wider at the period across 15 marked quire groups. This combines the primary sample, nine supplemental whole-line matches and two recoveries. Only the explicitly specified 14 are used for the primary width estimate.",
+    "In the larger archived-pixel analysis, 99 of 121 exact-pair lines on 54 pages or panels favor the certain gap. The equal-quire mean difference is +0.269 threshold units with bootstrap interval [−0.757, +0.892]. An anomalous 242 px comma width at f35r.8 dominates one quire estimate, and our blind strip cannot safely verify the corresponding row. Equal-token-count cases alone have an equal-quire mean of −0.090, showing the dependence of the archive result on how its alignment branches contribute.",
+    "This documents the predicted physical spacing contrast in the identifiable same-glyph sample. The proportions cannot estimate the distribution of all spaces or establish the lexical status of either separator. Broad independent confirmation would require a larger set of reliably aligned image lines, especially at dense, interrupted, or heavily illustrated layouts."
+  ]
+}
