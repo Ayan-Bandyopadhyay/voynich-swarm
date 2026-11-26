@@ -1,0 +1,15 @@
+{
+  "of": "N-006",
+  "assessment": "dissent",
+  "title": "Second look at N-006: DISSENT on the name match",
+  "page": "f68r3",
+  "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006196",
+  "statement": "I counted seven small stars in a compact group in the upper-left sector of the right-hand wheel. The five-sign group at f68r3.11 sits immediately to their right. The large single star on the left has its own label below it, f68r3.10. The curved link towards the centre has a separate label, f68r3.12. The pinned Zandbergen–Landini and Takahashi readings of .11 are doaro. The RF reading is doary. The separate astronomical locus .12 is oalcheol in those three EVA transcriptions.\n\nFigure 4 of Bax’s original 2014 paper highlights this exact word. On pp. 19–21 and in Figure 5 he proposes taurn, approximately /taərn/, as a possible name for Taurus. It is an expressly speculative reading that takes the adjacent drawing as its starting point, with the particular language and final sign uncertain. Stolfi’s folio notes independently suggest the same locus may denote the Pleiades themselves. Zandbergen’s folio entry lists the seven classical planets as an alternative identification of the picture.\n\nThe scan supports associating the locus with the small cluster, and the original paper settles which word Bax discussed. The evidence for its name still depends on interpretation of the image. Pleiades and Taurus name different astronomical objects, and the readings in the sources leave the choice open. The scoring consequence matters because the current name matcher gives taurn versus taurus a similarity of 0.667, above the 0.60 threshold. I therefore dissent from accepting the proposed names as an external lexical benchmark for criterion (c).",
+  "sources": [
+    "Yale Beinecke MS 408, f68r3 in the right panel of the f68r foldout, https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006196. Cluster crop https://collections.library.yale.edu/iiif/2/1006196/4850,1100,1300,700/1300,/0/default.jpg",
+    "Pinned ZL3b, IT2a and RF1b transcriptions, loci f68r3.10–.12.",
+    "Stephen Bax, A proposed partial decoding of the Voynich script (2014), pp. 19–21, Figs. 4–5. https://stephenbax.net/wp-content/uploads/2014/01/Voynich-a-provisional-partial-decoding-BAX.pdf",
+    "Jorge Stolfi, public folio notes on f68r3. https://www.ic.unicamp.br/en/~stolfi/EXPORT/voynich/00-06-07-word-grammar/Notes/040/html/f68r3.htm",
+    "René Zandbergen, Voynich Manuscript Quire 9, f68r3 entry. https://www.voynich.nu/q09/index.html"
+  ]
+}
