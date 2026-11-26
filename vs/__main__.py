@@ -39,12 +39,23 @@ def main(argv=None):
         if ok:
             print(",".join(held))
     elif a.cmd == "facts":
-        from . import corpus, facts
+        from . import corpus, facts, registry
         from .fetch import verify
         verify()
         tr, ev = corpus.split_pages(a.split)
-        for k, v in facts.run(tr, ev).items():
-            print(k, "ESTABLISHED" if v["pass"] else "REFUTED   ", v["value"])
+        res = facts.run(tr, ev)
+        for k, v in res.items():
+            if v.get("detail", {}).get("refused"):
+                print(k, "REFUSED  ", v["detail"]["refused"])
+            else:
+                print(k, "ESTABLISHED" if v["pass"] else "REFUTED   ", v["value"])
+        ids = [i["id"] for i in registry.read("fact")]
+        if not ids:
+            print("the registry holds no facts: a fresh board, nothing to run")
+        elif not res:
+            print(f"the battery evaluated nothing although the registry holds {len(ids)} facts")
+        if facts.undispatchable():
+            print(f"not evaluated, no spec and no metric: {' '.join(facts.undispatchable())}")
     elif a.cmd == "judge":
         from . import corpus, judge
         from .fetch import verify

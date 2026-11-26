@@ -358,18 +358,43 @@ METRICS = {k[2:]: v for k, v in globals().items() if k.startswith("m_")}
 
 
 def battery():
-    """Facts on the record (registered by agents), as metric specs."""
+    """Facts on the record (registered by agents), as specs. A fact registered with detail.spec is
+    read by vs/dsl.py; a legacy fact with detail.metric/params keeps facts.METRICS. spec wins when
+    a record carries both, as it does in score.py and redteam.py."""
     from . import registry
-    return [{"id": i["id"], "title": i["title"], "statement": i["statement"], "metric": i["detail"]["metric"],
-             "params": i["detail"]["params"]} for i in registry.read("fact") if "metric" in i["detail"]]
+    out = []
+    for i in registry.read("fact"):
+        d = i.get("detail") or {}
+        if "spec" in d:
+            out.append({"id": i["id"], "title": i["title"], "statement": i["statement"], "spec": d["spec"]})
+        elif "metric" in d:
+            out.append({"id": i["id"], "title": i["title"], "statement": i["statement"], "metric": d["metric"],
+                        "params": d["params"]})
+    return out
+
+
+def undispatchable():
+    """Registered facts carrying neither a spec nor a metric. The battery cannot evaluate them, and
+    a battery that says nothing must not read as a battery that ran: an empty registry is a fresh
+    board, a nonempty registry whose records were skipped is a fault."""
+    from . import registry
+    return [i["id"] for i in registry.read("fact")
+            if not ({"spec", "metric"} & set((i.get("detail") or {}).keys()))]
 
 
 def run(train, evalp, ids=None):
+    from . import dsl
     out = {}
     for f in battery():
         if ids and f["id"] not in ids:
             continue
-        out[f["id"]] = METRICS[f["metric"]](train, evalp, **f["params"])
+        if "spec" in f:
+            try:
+                out[f["id"]] = dsl.evaluate(f["spec"], evalp)
+            except dsl.SpecError as ex:  # the scope or the selection is too small on these pages
+                out[f["id"]] = {"value": None, "pass": False, "detail": {"refused": f"spec: {ex}"}}
+        else:
+            out[f["id"]] = METRICS[f["metric"]](train, evalp, **f["params"])
     return out
 
 
