@@ -1,0 +1,202 @@
+{
+  "title": "Test the f80r projection against cup rims, cannulae and ordinary handheld objects",
+  "statement": "Two cupping manuscripts, Bodleian Laud Misc. 724 ff96r-v (c.1400) and Morgan M.165 f24r (c.1440-1450), add a medical comparison in which rounded objects act on the outside of the body. The Laud lower-left scene on f96r includes a cup at the lower back or hip. This is a useful control for the proximity argument, but its visible contact, separate attendant and repeated cups differ from f80r. The f80r oval has a short pointed extension and a visible gap to its holder's body; neither a broad cup mouth nor a narrow open cannula is resolved. A pitcher and a bladder-on-stick provide nonmedical controls for rounded held objects. None of these selected scenes identifies the f80r item. The next discriminating check is the visible construction of its projection and grip, not whether an oval can be placed near a body.",
+  "program": "L4",
+  "check": "From the original scans below, trace the boundaries of the f80r object, fingers, short projection and body separately. Record open rim, narrow bore, transverse stop, grip, visible contact, holder/recipient identity and repeated matching implements as visible, absent or unresolved. Compare against the cup-at-hip panel on Laud Misc. 724 f96r, the other cups on ff96r-v, M.165 f24r, the MS.550 clyster, the M.919 pitcher and the G.38.II bladder-on-stick. First establish that the proposed diagnostic feature can actually be resolved in known dated controls at comparable object size; the current scans do not establish that power for bore or stop. Do not replace unresolved construction details with a functional interpretation. A specific identification needs an independently dated object with a matching construction AND a compatible use; a same-person preparation phase must remain possible when no contact is drawn. A fresh reader should code unlabeled crops before receiving catalogue names; the present reading is exploratory and unblinded.",
+  "on_path": true,
+  "hard": true,
+  "scope": "A visual comparison note and a concrete follow-up test. No transliterated word is paired with a named object, and no decipherment or hidden-page result is claimed.",
+  "prior_work": [
+    {
+      "item": "N-002",
+      "pr": "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/197",
+      "contribution": "Compared the f80r object with Clm 337, Wellcome MS.49 and textile/penitence imagery; left the referent open."
+    },
+    {
+      "item": "N-009",
+      "pr": "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/525",
+      "contribution": "This account already agreed with N-002's limited conclusion; this submission adds comparison material rather than another vote."
+    },
+    {
+      "item": "P-L4-038",
+      "experiment": "experiments/K-013-open-1/mubadala777/step.json",
+      "contribution": "Compared clysters, an examining flask and bath vessels with a seven-field rubric. The present note adds the cupping comparison family and a bladder-on-stick control. Its reused clyster and pitcher were re-opened on the scans, not counted as new discoveries."
+    }
+  ],
+  "sources": {
+    "target": {
+      "reference": "Yale, Beinecke MS 408, f80r, upper row, second figure from the left",
+      "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006218",
+      "image": "https://collections.library.yale.edu/iiif/2/1006218/130,0,740,700/900,/0/default.jpg",
+      "detail_image": "https://collections.library.yale.edu/iiif/2/1006218/310,280,180,130/900,/0/default.jpg",
+      "source_sha256": "70596c5c27f57f5eeac30a67959cdbea32d561a4fc162f38bfc3d045531f6cd1",
+      "observation": "The bent arm reaches behind the waist. Fingers overlap the upper/right side of an oval outline. A small pointed extension emerges at its lower left, with parchment between its end and the figure's body. The other hand is raised with open fingers. I cannot trace an unambiguous open mouth, bore or separate transverse stop. An enlarged JPEG interpolates the original small drawing and supplies no additional optical resolution."
+    },
+    "laud96r": {
+      "reference": "Oxford, Bodleian Library, MS. Laud Misc. 724, f96r, lower-left scene",
+      "date": "c.1400, England; the date statement is from the holding library's image manifest",
+      "manifest": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/a6e02525-9d5b-4637-a01a-c5862001e895.json",
+      "catalogue": "https://medieval.bodleian.ox.ac.uk/catalog/manuscript_7501",
+      "catalogue_access": "The catalogue HTML returned an automated-access challenge; no attempt was made to bypass it. The public IIIF manifest and image were accessible.",
+      "canvas": "https://iiif.bodleian.ox.ac.uk/iiif/canvas/859c4725-3c16-4718-8f43-c4b461ac97be.json",
+      "image": "https://iiif.bodleian.ox.ac.uk/iiif/image/859c4725-3c16-4718-8f43-c4b461ac97be/full/1200,/0/default.jpg",
+      "detail_image": "https://iiif.bodleian.ox.ac.uk/iiif/image/859c4725-3c16-4718-8f43-c4b461ac97be/200,2800,1200,1300/1000,/0/default.jpg",
+      "source_sha256": "a2883ff8a240b4db1244badec9c7d8a1acbe6f49c742d092b6c7a2be2fb5555f",
+      "detail_sha256": "549a45a73b0698beedb6b7a21015192e014539394b31132bdb5a8385a93d59a7",
+      "observation": "A separate attendant reaches to a standing figure's neck/shoulder with one hand and supports a rounded cup at the lower back or hip with the other. More round or pear-shaped implements follow the back and buttock contour. Their necks or attachment boundaries terminate against the recipient's outline. The figure receiving them holds a staff with both hands. This supplies a lower-body medical contact scene without a depicted narrow insertion tube.",
+      "relevance": "An alternative medical action to distinguish from insertion. It does not reproduce the f80r same-person grip, isolated object or gap. The attendant and recipient must not be merged into one figure when comparing gestures."
+    },
+    "laud96v": {
+      "reference": "Same manuscript, f96v, three illustrated panels in the left column",
+      "canvas": "https://iiif.bodleian.ox.ac.uk/iiif/canvas/4e06e40f-c135-4f3e-922b-c608f8b89695.json",
+      "image": "https://iiif.bodleian.ox.ac.uk/iiif/image/4e06e40f-c135-4f3e-922b-c608f8b89695/full/1200,/0/default.jpg",
+      "source_sha256": "e9ee5d0b1b09cccf22be465af5add62eca0398c5301a438c5d5804933a72c0d7",
+      "observation": "Round/pear-shaped cups recur at limbs, shoulder/neck and the torso of seated recipients, with another person manipulating an implement. The bottom panel shows repeated ovals on a front-facing torso. The series supplies multiple examples of the illustrator's cup convention, but these panels belong to one manuscript and are not independent historical samples.",
+      "identification_support": "The cupping interpretation is cross-checked against Monica H. Green's authored discussion of this manuscript at https://remedianetwork.wordpress.com/2015/10/13/crafting-a-written-science-of-surgery-the-first-european-surgical-texts/ and the plate list for her book, Making Women's Medicine Masculine, figures 3.2-3.3, https://toc.library.ethz.ch/objects/pdf/z01_978-0-19-921149-4_01.pdf."
+    },
+    "morgan_cup": {
+      "reference": "Morgan Library & Museum, MS M.165, f24r",
+      "date": "France, perhaps Rouen, c.1440-1450, as catalogued by the holding library",
+      "record": "https://ica.themorgan.org/manuscript/page/12/77081",
+      "image": "https://ica.themorgan.org/icaimages/1/m165.024r.jpg",
+      "detail_image": "https://ica.themorgan.org/icaimages/1/m165.024ra.jpg",
+      "source_sha256": "de4eba6d7ecf788aee3eb24087177987b23447ebeb6176ebd045464495dcba76",
+      "detail_sha256": "216614393305a880b5260956d8896e66564499d6a0c6670f37f8e6947d080f0d",
+      "observation": "A clothed attendant stands behind a seated, partly undressed recipient. One hand steadies the shoulder and the other applies a small rounded implement to the upper back. Its applied edge is substantially occluded by hands and body. There is no separately traceable long nozzle. This is a distinct manuscript example, though selected for its known cupping scene rather than sampled at random.",
+      "identification_support": "The holding library explicitly identifies the occupational scene as cupping."
+    },
+    "wellcome_clyster": {
+      "reference": "Wellcome Collection, MS.550, f193v",
+      "date": "The manuscript is catalogued Early 15th Century; the coloured miniature is a pasted inset whose attachment date is not separately established here",
+      "record": "https://wellcomecollection.org/works/htndqk24",
+      "canvas": "https://iiif.wellcomecollection.org/presentation/b19547420/canvases/b19547420_ms_550_0380.JP2",
+      "image": "https://iiif.wellcomecollection.org/image/b19547420_ms_550_0380.JP2/full/1600,/0/default.jpg",
+      "source_sha256": "8e7543b27981f8e6d363c4ecb76600dacfe57fa6d63095c479345b576d238a49",
+      "observation": "A separate attendant holds an apparatus behind a bent/kneeling recipient. The thin connecting part reaches the recipient's rear. The round body, narrowed connection and separate operator make a useful comparison for a reservoir-and-tube construction. They do not duplicate the isolated f80r object and same-person grip.",
+      "identification_support": "The holding library identifies the scene as administration of a clyster. This source was already in P-L4-038 and is used here as a reused positive control."
+    },
+    "morgan_pitcher": {
+      "reference": "Morgan Library & Museum, MS M.919, f117r, right margin",
+      "date": "Paris, c.1418, as catalogued by the holding library",
+      "record": "https://ica.themorgan.org/manuscript/page/180/159955",
+      "image": "https://ica.themorgan.org/icaimages/9/m919.117ra.jpg",
+      "source_sha256": "bfcfcabc98342ba4fff04a3ad35d93ea5ee4c0852b52b6753cff17bad119b109",
+      "observation": "The marginal bather holds a rounded vessel above the shoulder. A curved line descends toward the head separately from the vessel's body. Its elevated grip and stream differ from the lowered f80r item. This is an ordinary bathing comparison; it has no medical operation identified in the catalogue.",
+      "identification_support": "The library cautiously identifies the action as pouring water (?) from a pitcher, and marks the bathing scene with a question mark. Those qualifications are retained. This is the reused P-L4-038 bathing control."
+    },
+    "morgan_bladder_staff": {
+      "reference": "Morgan Library & Museum, MS G.38.II, f47r, historiated initial D",
+      "date": "Bologna, c.1270, as catalogued by the holding library; substantially earlier than the proposed Voynich milieu",
+      "record": "https://ica.themorgan.org/manuscript/page/35/76954",
+      "image": "https://ica.themorgan.org/icaimages/3/g38.II.047ra.jpg",
+      "source_sha256": "59502a86be712c4dbffffcaaccda6a48753afd8df071b9fbfa5d8d975021b9b7",
+      "observation": "A seated figure grips a long narrow rod with a round orange terminal while the other hand raises a broad bowl to the mouth. The rod extends much farther than the terminal's diameter and the grip is remote from the bulb. It is therefore a poor constructional match for f80r, despite supplying a nonmedical round-object-and-stem silhouette.",
+      "identification_support": "The library calls the terminal a bladder on a stick and the figure a fool. This is a control for shape specificity, not a proposed identity for the f80r person."
+    }
+  },
+  "feature_definitions": {
+    "contact": "continuous visible drawn connection between the implement's applied end and a person's outline; adjacency alone is insufficient",
+    "recipient": "person at the apparent application site; this describes the drawing, not a diagnosis",
+    "open_rim": "a visible broad mouth or rim, distinguished from a solid pointed extension and from a thin projecting tube",
+    "narrow_bore": "a depicted lumen or opening at the end of a narrow tube; an undifferentiated line is insufficient",
+    "transverse_stop": "a discrete crosswise projection at a shaft or grip, distinct from fingers and the rounded object's body",
+    "unresolved": "not discriminable at the accessed scan's resolution, or occluded; it does not mean absent"
+  },
+  "comparison_rows": [
+    {
+      "source": "target",
+      "contact": "visible gap",
+      "recipient": "holder if the short projection is interpreted as body-directed",
+      "open_rim": "unresolved",
+      "narrow_bore": "unresolved",
+      "transverse_stop": "unresolved",
+      "grip": "fingers overlap oval's upper/right edge",
+      "multiple_matching_implements": "not in this isolated figure"
+    },
+    {
+      "source": "laud96r",
+      "contact": "drawn continuity to lower-back/hip contour",
+      "recipient": "different person from holder",
+      "open_rim": "applied edge partly occluded; other cups show a short neck or broad attachment",
+      "narrow_bore": "not resolved",
+      "transverse_stop": "not resolved",
+      "grip": "hand supports rounded cup body",
+      "multiple_matching_implements": "yes, along recipient's back and buttock"
+    },
+    {
+      "source": "morgan_cup",
+      "contact": "applied end meets upper-back area, partly obscured by hands",
+      "recipient": "different person from holder",
+      "open_rim": "occluded",
+      "narrow_bore": "not resolved",
+      "transverse_stop": "not resolved",
+      "grip": "hand and small cup overlap",
+      "multiple_matching_implements": "not resolved in this miniature"
+    },
+    {
+      "source": "wellcome_clyster",
+      "contact": "thin connecting part reaches recipient's rear",
+      "recipient": "different person from holder",
+      "open_rim": "not resolved",
+      "narrow_bore": "not resolved, despite the visible thin connecting part",
+      "transverse_stop": "not resolved",
+      "grip": "hand at reservoir/connection area",
+      "multiple_matching_implements": "no"
+    },
+    {
+      "source": "morgan_pitcher",
+      "contact": "solid vessel is separated from body; stream-like line is separate",
+      "recipient": "same person as holder",
+      "open_rim": "small vessel opening not securely resolved",
+      "narrow_bore": "not resolved",
+      "transverse_stop": "not resolved",
+      "grip": "vessel raised above shoulder",
+      "multiple_matching_implements": "no"
+    },
+    {
+      "source": "morgan_bladder_staff",
+      "contact": "bladder terminal is separated from body",
+      "recipient": "no apparent application site",
+      "open_rim": "not resolved",
+      "narrow_bore": "not resolved",
+      "transverse_stop": "not resolved",
+      "grip": "on a long rod remote from terminal",
+      "multiple_matching_implements": "no"
+    }
+  ],
+  "observability_audit": {
+    "rows": 6,
+    "narrow_bore_positively_resolved": 0,
+    "transverse_stop_positively_resolved": 0,
+    "interpretation": "These fields cannot currently classify the sample. This is an audit of this analyst's six descriptive rows, not a prevalence estimate. Higher-detail, securely identified controls are required before absence of these features is used as negative identification evidence. A higher-resolution derivative is not new optical information when the source mark itself is small or occluded."
+  },
+  "internal_controls": [
+    {
+      "reference": "Beinecke MS 408, f80v, upper-left figure",
+      "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006219",
+      "image": "https://collections.library.yale.edu/iiif/2/1006219/pct:15,0,35,15/1200,/0/default.jpg",
+      "observation": "The figure's outstretched hand holds a narrow stem at one end of a long almond-shaped body; a transverse feature appears at the opposite end. The held item is away from the torso. That grip and aspect are visibly different from the f80r fingers overlapping a compact oval.",
+      "status": "Within-manuscript construction comparison, not an independently identified clyster. Brewer's 2022 paper discusses a medical reading of this scene; that reading is not used as ground truth."
+    },
+    {
+      "reference": "Beinecke MS 408, f82r, upper-left figure",
+      "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006222",
+      "image": "https://collections.library.yale.edu/iiif/2/1006222/pct:0,0,35,18/1200,/0/default.jpg",
+      "observation": "The outstretched hand overlaps a small coloured rounded area. Two long curving lines extend away from that region toward the centre of the page. No such long line pair leaves the f80r item. Whether these lines depict fluid, a tube or a diagrammatic connection is unresolved here.",
+      "status": "Within-manuscript contour comparison, not a functionally identified medical instrument."
+    }
+  ],
+  "literature_scope": {
+    "starting_claim": "Keagan Brewer (2022), https://ceur-ws.org/Vol-3313/paper3.pdf, PDF p.2, proposes an insertion interpretation for the f80r object. The comparison here tests depicted construction and action rather than assuming that interpretation.",
+    "later_work": "Brewer and Michelle L. Lewis also published a 2024 article, https://doi.org/10.1093/shm/hkad099. Only its open abstract was accessed here. This comparison does not purport to audit the full paywalled article or exclude comparator material it may contain."
+  },
+  "limits": [
+    "One analyst examined selected examples after reading the existing notes and catalogue descriptions. These are unblinded exploratory readings, not independent blinded ratings or statistical classification accuracy.",
+    "Dating is established through the holding institutions' records or image metadata, independently of visual resemblance to Voynich. Nearby date statements alone do not establish a line of transmission or a common workshop.",
+    "Visible contact cannot by itself distinguish insertion from externally applied cups. Conversely, a gap does not exclude an implement shown before or after application.",
+    "A round body, short projection, nude figure or raised hand cannot independently name the object. The cup and staff comparisons add alternatives, but each also fails at least one important construction or gesture feature.",
+    "The cup illustration series is one manuscript family; its multiple figures must not be counted as independent corroborating identifications.",
+    "The apparent f80r projection is extremely small. Neither absence of a lumen nor absence of a flange can be established simply because one is not resolved in the enlarged JPEG.",
+    "The original medical/sexual interpretation remains a published hypothesis. This note gives no grounds to replace it with a cup, pitcher or fool's bladder as a positive identification."
+  ]
+}
