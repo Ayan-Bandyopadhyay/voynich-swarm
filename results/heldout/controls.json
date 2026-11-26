@@ -7467,5 +7467,283 @@
   "true_key_passes_noisy": false,
   "search_cracks_control": false,
   "added_with": "old_catalan_54a4ab12"
+ },
+ {
+  "language": "middle_persian_pahlavi",
+  "family": "substitution",
+  "control": "homophonic",
+  "control_tokens": 471,
+  "true_key": {
+   "submission": "control-middle_persian_pahlavi-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "middle_persian_pahlavi",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.01725,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-middle_persian_pahlavi-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "middle_persian_pahlavi",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.01191,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false,
+  "added_with": "middle_persian_pahlavi_c433306b"
+ },
+ {
+  "language": "middle_persian_pahlavi",
+  "family": "verbose",
+  "control": "verbose",
+  "control_tokens": 471,
+  "true_key": {
+   "submission": "control-middle_persian_pahlavi-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "middle_persian_pahlavi",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.2303,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-middle_persian_pahlavi-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "middle_persian_pahlavi",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.23488,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false,
+  "added_with": "middle_persian_pahlavi_c433306b"
+ },
+ {
+  "language": "middle_persian_pahlavi",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 471,
+  "true_key": {
+   "submission": "control-middle_persian_pahlavi-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "middle_persian_pahlavi",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.24929,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-middle_persian_pahlavi-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "middle_persian_pahlavi",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.22741,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false,
+  "added_with": "middle_persian_pahlavi_c433306b"
+ },
+ {
+  "language": "middle_persian_pahlavi",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 471,
+  "true_key": {
+   "submission": "control-middle_persian_pahlavi-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "middle_persian_pahlavi",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.25826,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-middle_persian_pahlavi-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "middle_persian_pahlavi",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.25826,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false,
+  "added_with": "middle_persian_pahlavi_c433306b"
+ },
+ {
+  "language": "middle_persian_pahlavi",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 471,
+  "true_key": {
+   "submission": "control-middle_persian_pahlavi-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "middle_persian_pahlavi",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.2436,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-middle_persian_pahlavi-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "middle_persian_pahlavi",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.25296,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false,
+  "added_with": "middle_persian_pahlavi_c433306b"
+ },
+ {
+  "language": "middle_persian_pahlavi",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 471,
+  "true_key": {
+   "submission": "control-middle_persian_pahlavi-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "middle_persian_pahlavi",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.21059,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-middle_persian_pahlavi-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "middle_persian_pahlavi",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "b_reads",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.21059,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false,
+  "added_with": "middle_persian_pahlavi_c433306b"
  }
 ]

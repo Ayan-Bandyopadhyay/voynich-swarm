@@ -1031,6 +1031,19 @@
       "license": "public-domain",
       "encoding": "utf-8",
       "added_by": "mubadala777"
+    },
+    {
+      "id": "middle_persian_pahlavi_c433306b",
+      "lang": "middle_persian_pahlavi",
+      "period": "9th–10th-century Middle Persian compilation; 1910–1912 Bombay edition",
+      "title": "Dēnkard Books VI–VII, Sanjana XI–XIII (Roman Book Pahlavi, scan OCR)",
+      "url": "https://raw.githubusercontent.com/mubadala777/voynich-swarm/c5c6bada47ce55f5576cb87e71063cdc1703d713/dinkard-roman-ocr-xi-xiii.txt",
+      "file": "data/raw/agent_middle_persian_pahlavi_c433306b.txt",
+      "bytes": 200670,
+      "sha256": "c433306b2c249f0efc48e01c9dc2eb899fc8a3213f6f79cb12cf85975f21f663",
+      "license": "public-domain",
+      "encoding": "utf-8",
+      "added_by": "mubadala777"
     }
   ],
   "missing_corpora": {
