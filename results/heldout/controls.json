@@ -7210,5 +7210,262 @@
   "true_key_passes_noisy": false,
   "search_cracks_control": false,
   "added_with": "old_hungarian_8326f8ce"
+ },
+ {
+  "language": "old_catalan",
+  "family": "substitution",
+  "control": "homophonic",
+  "control_tokens": 2000,
+  "true_key": {
+   "submission": "control-old_catalan-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "old_catalan",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.12689,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-old_catalan-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "old_catalan",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.12689,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true,
+  "added_with": "old_catalan_54a4ab12"
+ },
+ {
+  "language": "old_catalan",
+  "family": "verbose",
+  "control": "verbose",
+  "control_tokens": 2000,
+  "true_key": {
+   "submission": "control-old_catalan-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "old_catalan",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.00767,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-old_catalan-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "old_catalan",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.00767,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false,
+  "added_with": "old_catalan_54a4ab12"
+ },
+ {
+  "language": "old_catalan",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 2000,
+  "true_key": {
+   "submission": "control-old_catalan-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "old_catalan",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04325,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-old_catalan-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "old_catalan",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.041,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false,
+  "added_with": "old_catalan_54a4ab12"
+ },
+ {
+  "language": "old_catalan",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 2000,
+  "true_key": {
+   "submission": "control-old_catalan-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "old_catalan",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.01064,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-old_catalan-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "old_catalan",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.01064,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false,
+  "added_with": "old_catalan_54a4ab12"
+ },
+ {
+  "language": "old_catalan",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 2000,
+  "true_key": {
+   "submission": "control-old_catalan-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "old_catalan",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.01694,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-old_catalan-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "old_catalan",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.01694,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false,
+  "added_with": "old_catalan_54a4ab12"
+ },
+ {
+  "language": "old_catalan",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 2000,
+  "true_key": {
+   "submission": "control-old_catalan-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "old_catalan",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.03209,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-old_catalan-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "old_catalan",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.03189,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false,
+  "added_with": "old_catalan_54a4ab12"
  }
 ]

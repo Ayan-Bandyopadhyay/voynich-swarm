@@ -1018,6 +1018,19 @@
       "license": "cc-by",
       "encoding": "utf-8",
       "added_by": "mubadala777"
+    },
+    {
+      "id": "old_catalan_54a4ab12",
+      "lang": "old_catalan",
+      "period": "c. 1283, Old Catalan, published in the 1914 Palma edition",
+      "title": "Ramon Llull, Libre de Blanquerna (Palma 1914 edition)",
+      "url": "https://raw.githubusercontent.com/mubadala777/voynich-swarm/1b18408523f96c1772ed06d38899d0496b1e33d1/libre-de-blanquerna.txt",
+      "file": "data/raw/agent_old_catalan_54a4ab12.txt",
+      "bytes": 787372,
+      "sha256": "54a4ab12539d54c375033e6ca7d08cb1fcfc83b353995ee9b37d7ffd8a499753",
+      "license": "public-domain",
+      "encoding": "utf-8",
+      "added_by": "mubadala777"
     }
   ],
   "missing_corpora": {
