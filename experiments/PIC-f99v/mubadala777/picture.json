@@ -1,0 +1,269 @@
+{
+  "folio": "f99v",
+  "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006247",
+  "blind": true,
+  "statement": "Four jars and twenty botanical-looking drawings are recorded in horizontal groups, left to right within each group. Connected parts of a drawing are grouped together. Descriptions use visible shape and pigment. Only the ZL locus identifiers and their line types were consulted. Labels are assigned by position. The assignments around the fourth and fifth botanical drawings of row three are crowded, so the red drawing is left unlinked and the blue and brown drawing is linked to the inscription immediately to its upper right. The two unused candidate loci are f99v.29 and f99v.30.",
+  "objects": [
+    {
+      "id": "row1-jar",
+      "kind": "jar",
+      "features": {
+        "colour": "red",
+        "shape": "tall stepped cylinder widening towards base",
+        "mouth": "oval",
+        "mouth_colour": "dark blue",
+        "decoration": "multiple pale ribbed bands, two blue horizontal bands and a dotted red upper collar",
+        "base": "wide rounded rim with scalloped lower edge"
+      },
+      "label": "f99v.1"
+    },
+    {
+      "id": "row1-1",
+      "kind": "root",
+      "features": {
+        "colour": "red",
+        "root_form": "long tapered central axis with many thin curled lateral branches on both sides",
+        "stem": "pale, doubled and curved at top"
+      },
+      "label": "f99v.2"
+    },
+    {
+      "id": "row1-2",
+      "kind": "root",
+      "features": {
+        "colour": "red",
+        "root_form": "red hanging fork with several pale gaps and long tapering strands below",
+        "stem": "long pale hooked stem curving left"
+      },
+      "label": "f99v.3"
+    },
+    {
+      "id": "row1-3",
+      "kind": "root",
+      "features": {
+        "colour": "brown",
+        "root_form": "short capped head with numerous slender spreading strands and one broad leftward fork",
+        "stem": "single narrow upright stalk"
+      },
+      "label": "f99v.4"
+    },
+    {
+      "id": "row1-4",
+      "kind": "plant_part",
+      "features": {
+        "colour": "green",
+        "leaf_shape": "broad elongate blade tapering towards the right",
+        "leaf_margin": "scalloped",
+        "root_form": "rounded red base with several narrow curved points",
+        "attachment": "thin green stalk connects blade to red base"
+      },
+      "label": "f99v.5"
+    },
+    {
+      "id": "row1-5",
+      "kind": "root",
+      "features": {
+        "colour": "brown",
+        "root_form": "flattened sloping crown with multiple long, curved, roughly parallel branches",
+        "stem": "upward curve ending in a rounded hook"
+      },
+      "label": "f99v.6"
+    },
+    {
+      "id": "row1-6",
+      "kind": "root",
+      "features": {
+        "colour": "red",
+        "root_form": "narrow lobed central body with several forked descending lines",
+        "stem": "long pale, curved stalk rising to the right"
+      },
+      "label": "f99v.7"
+    },
+    {
+      "id": "row1-7",
+      "kind": "root",
+      "features": {
+        "colour": "olive-brown",
+        "root_form": "thick vertical body splitting into two long opposed curving arms",
+        "stem": "slender unpainted extension rising from the forked body"
+      },
+      "label": "f99v.8"
+    },
+    {
+      "id": "row1-8",
+      "kind": "plant_part",
+      "features": {
+        "colour": "pale red",
+        "shape": "broad striped cone tapering into a narrow pendant section",
+        "decoration": "alternating red and pale bands and a collar near the lower end",
+        "upper_end": "tuft of fine diverging strokes"
+      },
+      "label": "f99v.9"
+    },
+    {
+      "id": "row2-jar",
+      "kind": "jar",
+      "features": {
+        "colour": "red",
+        "shape": "tall cylinder with two red body sections",
+        "mouth": "oval",
+        "mouth_colour": "dark blue",
+        "decoration": "pale encircling bands with short repeated marks",
+        "base": "several projecting pointed feet"
+      },
+      "label": "f99v.14"
+    },
+    {
+      "id": "row2-1",
+      "kind": "root",
+      "features": {
+        "colour": "blue-grey",
+        "root_form": "vertical tapered axis with many overlapping crescent-shaped branches",
+        "stem": "thin straight upper stalk",
+        "accent_colour": "pale red"
+      },
+      "label": "f99v.15"
+    },
+    {
+      "id": "row2-2",
+      "kind": "plant_part",
+      "features": {
+        "colour": "pale red",
+        "shape": "two unequal pointed hanging lobes separated by a gap",
+        "decoration": "irregular red stripes and patches on pale interior",
+        "stem": "thin upright fork at top"
+      },
+      "label": "f99v.16"
+    },
+    {
+      "id": "row2-3",
+      "kind": "root",
+      "features": {
+        "colour": "dark olive-brown",
+        "root_form": "dark central head with two horn-like lateral arms and several pointed descending forks",
+        "stem": "unpainted central neck rising between the arms"
+      },
+      "label": "f99v.17"
+    },
+    {
+      "id": "row2-4",
+      "kind": "root",
+      "features": {
+        "colour": "red",
+        "root_form": "central red body dividing into two broad upward-curving arms, with fine parallel strands inside both",
+        "stem": "short narrow upright stalk"
+      },
+      "label": "f99v.18"
+    },
+    {
+      "id": "row2-5",
+      "kind": "root",
+      "features": {
+        "colour": "pale red",
+        "root_form": "two adjacent rounded lobes tapering into outward curls at the bottom",
+        "stem": "upright stalk with a broad leftward hook"
+      },
+      "label": "f99v.19"
+    },
+    {
+      "id": "row2-6",
+      "kind": "root",
+      "features": {
+        "colour": "olive-brown",
+        "root_form": "fan of many narrow tapered strands descending from an oval head",
+        "stem": "single long upright stalk",
+        "decoration": "vertical hatch marks on the pale head"
+      },
+      "label": "f99v.20"
+    },
+    {
+      "id": "row3-jar",
+      "kind": "jar",
+      "features": {
+        "colour": "red",
+        "shape": "tall cylinder with a short upper and long lower red field",
+        "mouth": "oval",
+        "mouth_colour": "blue",
+        "decoration": "multiple pale rings and rows of short repeated marks",
+        "base": "rounded ring foot"
+      },
+      "label": "f99v.25"
+    },
+    {
+      "id": "row3-1",
+      "kind": "root",
+      "features": {
+        "colour": "pale red",
+        "root_form": "short rounded head with several thin spreading lower roots",
+        "stem": "long central stalk with hooked upper tip"
+      },
+      "label": "f99v.26"
+    },
+    {
+      "id": "row3-2",
+      "kind": "root",
+      "features": {
+        "colour": "pale red",
+        "root_form": "elongated bent body with pointed offshoots both beneath the head and at the far right",
+        "stem": "short sinuous upright stalk"
+      },
+      "label": "f99v.27"
+    },
+    {
+      "id": "row3-3",
+      "kind": "root",
+      "features": {
+        "colour": "ochre",
+        "root_form": "two broad hanging lobes, both tapering into pointed strands",
+        "stem": "single narrow upright stalk",
+        "shape": "larger left lobe and smaller right lobe"
+      },
+      "label": "f99v.28"
+    },
+    {
+      "id": "row3-4",
+      "kind": "root",
+      "features": {
+        "colour": "red",
+        "root_form": "large broad body divided near the bottom into several pointed arms",
+        "stem": "thick pale stem bending to the right"
+      },
+      "label": null
+    },
+    {
+      "id": "row3-5",
+      "kind": "plant_part",
+      "features": {
+        "colour": "blue and brown",
+        "shape": "broad arched ridged head, narrow curved upper offshoots and two long crossed lower branches",
+        "decoration": "short blue strokes along the arched head"
+      },
+      "label": "f99v.31"
+    },
+    {
+      "id": "row4-jar",
+      "kind": "jar",
+      "features": {
+        "colour": "red",
+        "shape": "short cylinder with two body sections",
+        "mouth": "oval",
+        "mouth_colour": "blue",
+        "decoration": "pale bands with short repeated marks around top, middle and base",
+        "base": "rounded ring foot"
+      },
+      "label": "f99v.36"
+    },
+    {
+      "id": "row4-1",
+      "kind": "plant",
+      "features": {
+        "colour": "green",
+        "leaf_shape": "single large asymmetric blade tapering into a hooked tip",
+        "leaf_margin": "scalloped with a deep angular notch",
+        "stem": "long green stem arching over towards the blade",
+        "root_form": "several long ribbon-like blue-green strands spreading from a central junction"
+      },
+      "label": "f99v.44"
+    }
+  ]
+}
