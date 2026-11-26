@@ -1,0 +1,10 @@
+{
+  "language": "galician_portuguese",
+  "title": "Cantigas Medievais Galego Portuguesas (Lopes, Graça Videira; Ferreira, Manuel Pedro et al., 2011-, IEM FCSH/NOVA, cantigas.fcsh.unl.pt): verse-only export of the Nabu Data roa-opt/cantigas v1 table, 34,162 lines across 1,682 songs",
+  "period": "13th-15th century secular Galician-Portuguese lyric from the medieval songbooks, scholarly critical edition; refrains and repeated verses included",
+  "url": "https://raw.githubusercontent.com/mtx-light/cantigas-gp-verse-export/131868835a9c21b1d2837437f99668fd4ba10982/cantigas_gp_verses.txt",
+  "sha256": "e5366bed3213aae6fa76169357c0d254fd3190e40984ebe32035873132b4a667",
+  "license": "cc-by",
+  "encoding": "utf-8",
+  "license_note": "CC BY 4.0 as stated at https://github.com/arvicco/nabu-data/blob/00ea013deff337c8b47b2a642995a609082f56a4/roa-opt/cantigas/README.md; attribution preserved verbatim in the title and in the hosting repo README (https://github.com/mtx-light/cantigas-gp-verse-export). Derived by the P-J-003 check recipe from the pinned source CSV (https://raw.githubusercontent.com/arvicco/nabu-data/00ea013deff337c8b47b2a642995a609082f56a4/roa-opt/cantigas/lines.csv, sha256 bfb48769c83ffd8741682371d6f8b8be2c5e874bd3afa2613f6ba6ca33f9527f): csv.DictReader in file order, unmodified nonempty Primary_Text values joined with LF plus one final LF; derived sha256 verified equal to the step's stated e5366bed3213aae6fa76169357c0d254fd3190e40984ebe32035873132b4a667."
+}
