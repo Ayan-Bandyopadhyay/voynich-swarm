@@ -1,0 +1,1287 @@
+{
+  "title": "The proposed Nahuatl endings overlap across Morelos and Puebla",
+  "statement": "Tucker and Talbert used final tl and chi and several names borrowed between languages to propose a central or northern Mexican dialect. Both written endings occur in all four Gospel books of the Tetelcingo Morelos, Northern Puebla and Southeastern Puebla editions examined in 3,738 matching verse numbers. The Isthmus-Mecayapan edition and Highland Puebla treebank also have chi, with zero literal final tl in these samples. Five published Voynich label examples admit a partial mapping under spelling harmonization and a revised fish reading in some transliterations. The exact 2013 readings fail the same consistency model. The available observations leave the historical variety and its speaker community undetermined.",
+  "program": "L3",
+  "check": "Apply the same published spellings mechanically to connected lines using an explicit symbol inventory fixed in advance. Compare independently attested cognates at multiple word positions and whole paradigms with named early sources and present-day localities. Validate the comparisons by leaving whole documents or speakers out. Record word-level eligibility, alternative spellings and uncertainty. Assess extinction only after independent historical and community documentation makes a specific variety identifiable.",
+  "on_path": true,
+  "hard": true,
+  "relation_to_existing_work": "P-L3-004 (#213) already checks the authors’ illustrative names and proposes inflectional tests. This follow-up measures the claimed final sequences against matched regional corpora and quantifies spelling dependence in a single-replacement reconstruction.",
+  "sources": {
+    "2013": {
+      "authors": "Arthur O. Tucker and Rexford H. Talbert",
+      "url": "https://umb.herbalgram.org/media/3jojkmox/issue100.pdf",
+      "pages": "72–75, 78, 81",
+      "note": "Printed p.74 invokes written tl and chi endings and shows a fish-related reading, while p.78 proposes Morelos or Puebla for the main text. The appendix parses chi as a putative lexical root in an illustrative mixed name."
+    },
+    "2018_text_hypotheses": {
+      "authors": "Jules Janick and Arthur O. Tucker",
+      "url": "https://link.springer.com/chapter/10.1007/978-3-319-77294-3_13",
+      "pages": "277–304",
+      "note": "The public abstract says the main text remains unread and considers both a lost dialect and a mixed synthetic language."
+    },
+    "2018_fish_label": {
+      "chapter": "https://doi.org/10.1007/978-3-319-77294-3_6",
+      "page": 162,
+      "quoted_by": "https://voynichportal.com/2018/09/05/not-nahuatl/",
+      "note": "The precise later spelling is taken from Petersen’s quotation of p.162. The quote gives a different spelling and gloss than 2013. The enumeration is conditional on that quotation and does not adopt the blog’s dictionary interpretation."
+    },
+    "mouth_of_water": {
+      "url": "https://nahuatl.wired-humanities.org/content/atlan",
+      "note": "Classical relational form atlan ends in n, with the tl sequence in the water element, independently of the proposed picture label."
+    },
+    "classical_owl": {
+      "url": "https://nahuatl.wired-humanities.org/content/chichtli",
+      "note": "Molina and Karttunen attest chichtli, analyzed with the noun ending tli. The exact orthographic string chi alone covers unrelated forms in the measured editions."
+    },
+    "historical_dialectology": [
+      {
+        "author": "Una Canger",
+        "year": 1988,
+        "pages": "60–65",
+        "url": "https://doi.org/10.1086/466074",
+        "note": "Uses cognate correspondences and positions, including several Tlaxcala, Puebla and Morelos groupings. In some named dialects the correspondence for Classical lateral affricate is t."
+      },
+      {
+        "author": "Karen Dakin",
+        "year": 1974,
+        "pages": "229, 232–233",
+        "url": "https://nahuatl.historicas.unam.mx/index.php/ecn/article/download/78491/69439/231489",
+        "note": "Her field reports show tl in several Morelos localities and context-dependent l and final variation in Xoxocotla. Morelos is itself a dialect network."
+      },
+      {
+        "authors": "Robert Pugh and Francis Tyers",
+        "year": 2024,
+        "url": "https://aclanthology.org/2024.naacl-long.76/",
+        "data": "https://universaldependencies.org/treebanks/azz_itml/index.html",
+        "note": "Highland Puebla material combines speech, nonfiction and examples. Its authors describe a t correspondence for Classical tl."
+      }
+    ],
+    "locality_catalogue": "https://www.inali.gob.mx/sitios/clin-inali/html/v_nahuatl.html",
+    "tetelcingo_morelos_vocabulary": "https://mexico.sil.org/resources/archives/10947",
+    "early_morelos_check": "https://www.international.ucla.edu/lai/publications/book/24",
+    "early_morelos_timing": "https://www.history.ucsb.edu/wp-content/uploads/analyzing_the_cuernavaca_censuses.pdf",
+    "early_central_check": "https://zenodo.org/records/7213020",
+    "extinction_framework": {
+      "url": "https://ich.unesco.org/doc/src/00120-EN.pdf",
+      "page": 7,
+      "note": "A grade for intergenerational transmission depends on whether speakers remain. INALI documents named varieties and location, a separate matter from an assigned manuscript language."
+    },
+    "earlier_linguistic_review": "https://doi.org/10.1146/annurev-linguistics-011619-030613"
+  },
+  "parallel_corpus_method": {
+    "selection": "All chapters of Matthew, Mark, Luke and John in four eBible HTML packages. Include a verse ID only when the displayed number is a single number equal to that ID in every edition and text remains. Remove chapter headings, navigation, section headings, references, superscript verse numbers and footnotes. Count all remaining Unicode letter/mark tokens after NFC and casefold, retaining internal apostrophes and lexical saltillo. Run a second normalization without combining marks and report type as well as token counts. Count tl, tli, tle, chi and chih as literal ending sequences, including complete tokens that match the sequence.",
+    "comparability": "Parallel text controls much of the subject matter. Each edition has its own orthography, contributors, vocabulary and morphosyntax. The printed strings are not phonetic measurements or language genealogies. Report the Highland treebank as an unmatched genre check. The 3,755 verse-number preliminary match permitting bridged markers gave the same qualitative result. Remove bridged verses in the principal result. Historical works are independent follow-up controls, with different genres and orthographic conventions.",
+    "editions": {
+      "nhgNT": {
+        "variety": "Tetelcingo, Morelos",
+        "edition_year": 1980,
+        "catalog": "https://ebible.org/find/show.php?id=nhgNT",
+        "credit": "Wycliffe Bible Translators, Inc."
+      },
+      "ncjNT": {
+        "variety": "Northern Puebla",
+        "edition_year": 1979,
+        "catalog": "https://ebible.org/find/show.php?id=ncjNT",
+        "credit": "Wycliffe Bible Translators, Inc."
+      },
+      "nplNT": {
+        "variety": "Southeastern Puebla",
+        "edition_year": 2011,
+        "catalog": "https://ebible.org/find/show.php?id=nplNT",
+        "credit": "Wycliffe Bible Translators, Inc."
+      },
+      "nhx": {
+        "variety": "Isthmus-Mecayapan",
+        "edition_year": 2016,
+        "catalog": "https://ebible.org/bible/details.php?id=nhx",
+        "credit": "Wycliffe Bible Translators, Inc."
+      }
+    },
+    "data_scope": "Local descriptive comparison using publicly readable editions. Only aggregate results and a few word examples are used here. The colonial Nahuatl, modern dictionaries and nonparallel Highland sample do not enter the four-edition counts."
+  },
+  "parallel_corpus_results": {
+    "shared_numbered_verses": 3738,
+    "shared_numbered_verse_counts_by_book": {
+      "JHN": 870,
+      "LUK": 1137,
+      "MAT": 1065,
+      "MRK": 666
+    },
+    "public_inputs": {
+      "nhgNT": {
+        "archive": "https://ebible.org/Scriptures/nhgNT_html.zip",
+        "sha256": "b8fabcb404a4086184869d8e7e15e66f44cff44384a94ed8430b8fa83d6d202e",
+        "verses_with_text": 3756
+      },
+      "ncjNT": {
+        "archive": "https://ebible.org/Scriptures/ncjNT_html.zip",
+        "sha256": "4cb4bb9fc07fa496817507a15984eaee972bfa19dcface0b1d0ba5f3ad7995cc",
+        "verses_with_text": 3766
+      },
+      "nplNT": {
+        "archive": "https://ebible.org/Scriptures/nplNT_html.zip",
+        "sha256": "7c95099e44a0dcce3f6955260fe5b86e788bfa511ef178cdbfff06627301ef6c",
+        "verses_with_text": 3773
+      },
+      "nhx": {
+        "archive": "https://ebible.org/Scriptures/nhx_html.zip",
+        "sha256": "68b6e87e1d2a95e149179eb8eb094b1686a6468357b6169c2133fab70dec345e",
+        "verses_with_text": 3777
+      }
+    },
+    "results": {
+      "nhgNT": {
+        "literal": {
+          "tokens": 70187,
+          "types": 7657,
+          "endings": {
+            "tl": {
+              "tokens": 960,
+              "types": 71
+            },
+            "tli": {
+              "tokens": 1682,
+              "types": 2
+            },
+            "tle": {
+              "tokens": 1759,
+              "types": 151
+            },
+            "chi": {
+              "tokens": 267,
+              "types": 11
+            },
+            "chih": {
+              "tokens": 0,
+              "types": 0
+            }
+          }
+        },
+        "diacritics_folded": {
+          "tokens": 70187,
+          "types": 7609,
+          "endings": {
+            "tl": {
+              "tokens": 960,
+              "types": 70
+            },
+            "tli": {
+              "tokens": 1682,
+              "types": 2
+            },
+            "tle": {
+              "tokens": 1759,
+              "types": 151
+            },
+            "chi": {
+              "tokens": 267,
+              "types": 11
+            },
+            "chih": {
+              "tokens": 0,
+              "types": 0
+            }
+          }
+        },
+        "literal_by_book": {
+          "JHN": {
+            "tokens": 15654,
+            "types": 2629,
+            "endings": {
+              "tl": {
+                "tokens": 202,
+                "types": 35
+              },
+              "tli": {
+                "tokens": 359,
+                "types": 2
+              },
+              "tle": {
+                "tokens": 382,
+                "types": 62
+              },
+              "chi": {
+                "tokens": 37,
+                "types": 7
+              },
+              "chih": {
+                "tokens": 0,
+                "types": 0
+              }
+            }
+          },
+          "LUK": {
+            "tokens": 21863,
+            "types": 3940,
+            "endings": {
+              "tl": {
+                "tokens": 296,
+                "types": 45
+              },
+              "tli": {
+                "tokens": 557,
+                "types": 1
+              },
+              "tle": {
+                "tokens": 595,
+                "types": 98
+              },
+              "chi": {
+                "tokens": 114,
+                "types": 9
+              },
+              "chih": {
+                "tokens": 0,
+                "types": 0
+              }
+            }
+          },
+          "MAT": {
+            "tokens": 20944,
+            "types": 3739,
+            "endings": {
+              "tl": {
+                "tokens": 278,
+                "types": 41
+              },
+              "tli": {
+                "tokens": 486,
+                "types": 1
+              },
+              "tle": {
+                "tokens": 534,
+                "types": 91
+              },
+              "chi": {
+                "tokens": 80,
+                "types": 8
+              },
+              "chih": {
+                "tokens": 0,
+                "types": 0
+              }
+            }
+          },
+          "MRK": {
+            "tokens": 11726,
+            "types": 2507,
+            "endings": {
+              "tl": {
+                "tokens": 184,
+                "types": 31
+              },
+              "tli": {
+                "tokens": 280,
+                "types": 1
+              },
+              "tle": {
+                "tokens": 248,
+                "types": 57
+              },
+              "chi": {
+                "tokens": 36,
+                "types": 5
+              },
+              "chih": {
+                "tokens": 0,
+                "types": 0
+              }
+            }
+          }
+        },
+        "endings_per_1000_tokens": {
+          "tl": 13.678,
+          "tli": 23.965,
+          "tle": 25.062,
+          "chi": 3.804,
+          "chih": 0.0
+        },
+        "most_frequent_literal_chi_forms": [
+          [
+            "omochi",
+            125
+          ],
+          [
+            "onochi",
+            78
+          ],
+          [
+            "oquechi",
+            36
+          ]
+        ],
+        "two_literal_tli_forms": [
+          [
+            "tli",
+            1681
+          ],
+          [
+            "tajtli",
+            1
+          ]
+        ]
+      },
+      "ncjNT": {
+        "literal": {
+          "tokens": 71497,
+          "types": 7934,
+          "endings": {
+            "tl": {
+              "tokens": 1913,
+              "types": 84
+            },
+            "tli": {
+              "tokens": 1192,
+              "types": 159
+            },
+            "tle": {
+              "tokens": 1,
+              "types": 1
+            },
+            "chi": {
+              "tokens": 294,
+              "types": 5
+            },
+            "chih": {
+              "tokens": 0,
+              "types": 0
+            }
+          }
+        },
+        "diacritics_folded": {
+          "tokens": 71497,
+          "types": 7930,
+          "endings": {
+            "tl": {
+              "tokens": 1913,
+              "types": 84
+            },
+            "tli": {
+              "tokens": 1192,
+              "types": 159
+            },
+            "tle": {
+              "tokens": 1,
+              "types": 1
+            },
+            "chi": {
+              "tokens": 294,
+              "types": 5
+            },
+            "chih": {
+              "tokens": 0,
+              "types": 0
+            }
+          }
+        },
+        "literal_by_book": {
+          "JHN": {
+            "tokens": 16715,
+            "types": 2813,
+            "endings": {
+              "tl": {
+                "tokens": 529,
+                "types": 41
+              },
+              "tli": {
+                "tokens": 250,
+                "types": 59
+              },
+              "tle": {
+                "tokens": 0,
+                "types": 0
+              },
+              "chi": {
+                "tokens": 47,
+                "types": 2
+              },
+              "chih": {
+                "tokens": 0,
+                "types": 0
+              }
+            }
+          },
+          "LUK": {
+            "tokens": 20734,
+            "types": 3633,
+            "endings": {
+              "tl": {
+                "tokens": 504,
+                "types": 47
+              },
+              "tli": {
+                "tokens": 346,
+                "types": 96
+              },
+              "tle": {
+                "tokens": 1,
+                "types": 1
+              },
+              "chi": {
+                "tokens": 99,
+                "types": 4
+              },
+              "chih": {
+                "tokens": 0,
+                "types": 0
+              }
+            }
+          },
+          "MAT": {
+            "tokens": 21514,
+            "types": 3547,
+            "endings": {
+              "tl": {
+                "tokens": 543,
+                "types": 60
+              },
+              "tli": {
+                "tokens": 344,
+                "types": 89
+              },
+              "tle": {
+                "tokens": 0,
+                "types": 0
+              },
+              "chi": {
+                "tokens": 113,
+                "types": 3
+              },
+              "chih": {
+                "tokens": 0,
+                "types": 0
+              }
+            }
+          },
+          "MRK": {
+            "tokens": 12534,
+            "types": 2509,
+            "endings": {
+              "tl": {
+                "tokens": 337,
+                "types": 43
+              },
+              "tli": {
+                "tokens": 252,
+                "types": 71
+              },
+              "tle": {
+                "tokens": 0,
+                "types": 0
+              },
+              "chi": {
+                "tokens": 35,
+                "types": 1
+              },
+              "chih": {
+                "tokens": 0,
+                "types": 0
+              }
+            }
+          }
+        },
+        "endings_per_1000_tokens": {
+          "tl": 26.756,
+          "tli": 16.672,
+          "tle": 0.014,
+          "chi": 4.112,
+          "chih": 0.0
+        },
+        "most_frequent_literal_chi_forms": [
+          [
+            "ocachi",
+            282
+          ],
+          [
+            "michi",
+            9
+          ],
+          [
+            "oquimpechi",
+            1
+          ]
+        ]
+      },
+      "nplNT": {
+        "literal": {
+          "tokens": 63333,
+          "types": 7673,
+          "endings": {
+            "tl": {
+              "tokens": 1226,
+              "types": 62
+            },
+            "tli": {
+              "tokens": 744,
+              "types": 80
+            },
+            "tle": {
+              "tokens": 0,
+              "types": 0
+            },
+            "chi": {
+              "tokens": 840,
+              "types": 33
+            },
+            "chih": {
+              "tokens": 2,
+              "types": 1
+            }
+          }
+        },
+        "diacritics_folded": {
+          "tokens": 63333,
+          "types": 7621,
+          "endings": {
+            "tl": {
+              "tokens": 1226,
+              "types": 61
+            },
+            "tli": {
+              "tokens": 744,
+              "types": 78
+            },
+            "tle": {
+              "tokens": 0,
+              "types": 0
+            },
+            "chi": {
+              "tokens": 840,
+              "types": 33
+            },
+            "chih": {
+              "tokens": 2,
+              "types": 1
+            }
+          }
+        },
+        "literal_by_book": {
+          "JHN": {
+            "tokens": 14416,
+            "types": 2552,
+            "endings": {
+              "tl": {
+                "tokens": 270,
+                "types": 32
+              },
+              "tli": {
+                "tokens": 165,
+                "types": 34
+              },
+              "tle": {
+                "tokens": 0,
+                "types": 0
+              },
+              "chi": {
+                "tokens": 167,
+                "types": 20
+              },
+              "chih": {
+                "tokens": 0,
+                "types": 0
+              }
+            }
+          },
+          "LUK": {
+            "tokens": 19588,
+            "types": 3944,
+            "endings": {
+              "tl": {
+                "tokens": 408,
+                "types": 38
+              },
+              "tli": {
+                "tokens": 215,
+                "types": 49
+              },
+              "tle": {
+                "tokens": 0,
+                "types": 0
+              },
+              "chi": {
+                "tokens": 275,
+                "types": 22
+              },
+              "chih": {
+                "tokens": 0,
+                "types": 0
+              }
+            }
+          },
+          "MAT": {
+            "tokens": 18203,
+            "types": 3581,
+            "endings": {
+              "tl": {
+                "tokens": 347,
+                "types": 40
+              },
+              "tli": {
+                "tokens": 213,
+                "types": 50
+              },
+              "tle": {
+                "tokens": 0,
+                "types": 0
+              },
+              "chi": {
+                "tokens": 267,
+                "types": 15
+              },
+              "chih": {
+                "tokens": 1,
+                "types": 1
+              }
+            }
+          },
+          "MRK": {
+            "tokens": 11126,
+            "types": 2509,
+            "endings": {
+              "tl": {
+                "tokens": 201,
+                "types": 31
+              },
+              "tli": {
+                "tokens": 151,
+                "types": 34
+              },
+              "tle": {
+                "tokens": 0,
+                "types": 0
+              },
+              "chi": {
+                "tokens": 131,
+                "types": 11
+              },
+              "chih": {
+                "tokens": 1,
+                "types": 1
+              }
+            }
+          }
+        },
+        "endings_per_1000_tokens": {
+          "tl": 19.358,
+          "tli": 11.747,
+          "tle": 0.0,
+          "chi": 13.263,
+          "chih": 0.032
+        },
+        "most_frequent_literal_chi_forms": [
+          [
+            "nochi",
+            327
+          ],
+          [
+            "okachi",
+            242
+          ],
+          [
+            "onimochi",
+            75
+          ]
+        ]
+      },
+      "nhx": {
+        "literal": {
+          "tokens": 65667,
+          "types": 7508,
+          "endings": {
+            "tl": {
+              "tokens": 0,
+              "types": 0
+            },
+            "tli": {
+              "tokens": 0,
+              "types": 0
+            },
+            "tle": {
+              "tokens": 0,
+              "types": 0
+            },
+            "chi": {
+              "tokens": 442,
+              "types": 6
+            },
+            "chih": {
+              "tokens": 0,
+              "types": 0
+            }
+          }
+        },
+        "diacritics_folded": {
+          "tokens": 65667,
+          "types": 7393,
+          "endings": {
+            "tl": {
+              "tokens": 0,
+              "types": 0
+            },
+            "tli": {
+              "tokens": 0,
+              "types": 0
+            },
+            "tle": {
+              "tokens": 0,
+              "types": 0
+            },
+            "chi": {
+              "tokens": 450,
+              "types": 11
+            },
+            "chih": {
+              "tokens": 0,
+              "types": 0
+            }
+          }
+        },
+        "literal_by_book": {
+          "JHN": {
+            "tokens": 14799,
+            "types": 2659,
+            "endings": {
+              "tl": {
+                "tokens": 0,
+                "types": 0
+              },
+              "tli": {
+                "tokens": 0,
+                "types": 0
+              },
+              "tle": {
+                "tokens": 0,
+                "types": 0
+              },
+              "chi": {
+                "tokens": 96,
+                "types": 4
+              },
+              "chih": {
+                "tokens": 0,
+                "types": 0
+              }
+            }
+          },
+          "LUK": {
+            "tokens": 19821,
+            "types": 3960,
+            "endings": {
+              "tl": {
+                "tokens": 0,
+                "types": 0
+              },
+              "tli": {
+                "tokens": 0,
+                "types": 0
+              },
+              "tle": {
+                "tokens": 0,
+                "types": 0
+              },
+              "chi": {
+                "tokens": 120,
+                "types": 5
+              },
+              "chih": {
+                "tokens": 0,
+                "types": 0
+              }
+            }
+          },
+          "MAT": {
+            "tokens": 19580,
+            "types": 3717,
+            "endings": {
+              "tl": {
+                "tokens": 0,
+                "types": 0
+              },
+              "tli": {
+                "tokens": 0,
+                "types": 0
+              },
+              "tle": {
+                "tokens": 0,
+                "types": 0
+              },
+              "chi": {
+                "tokens": 142,
+                "types": 4
+              },
+              "chih": {
+                "tokens": 0,
+                "types": 0
+              }
+            }
+          },
+          "MRK": {
+            "tokens": 11467,
+            "types": 2637,
+            "endings": {
+              "tl": {
+                "tokens": 0,
+                "types": 0
+              },
+              "tli": {
+                "tokens": 0,
+                "types": 0
+              },
+              "tle": {
+                "tokens": 0,
+                "types": 0
+              },
+              "chi": {
+                "tokens": 84,
+                "types": 4
+              },
+              "chih": {
+                "tokens": 0,
+                "types": 0
+              }
+            }
+          }
+        },
+        "endings_per_1000_tokens": {
+          "tl": 0.0,
+          "tli": 0.0,
+          "tle": 0.0,
+          "chi": 6.731,
+          "chih": 0.0
+        },
+        "most_frequent_literal_chi_forms": [
+          [
+            "nochi",
+            314
+          ],
+          [
+            "inochi",
+            80
+          ],
+          [
+            "achi",
+            42
+          ]
+        ]
+      }
+    },
+    "unmatched_azz_sensitivity": {
+      "sentences": 1260,
+      "source_sha256": "cc0966ad3838ea309a129d834d279bb0fd9d45192382ea82a3bd507a7b912414",
+      "source_url": "https://raw.githubusercontent.com/UniversalDependencies/UD_Highland_Puebla_Nahuatl-ITML/fe7147565f3d178ecadc9f17e6d4b197699d42d4/azz_itml-ud-test.conllu",
+      "literal": {
+        "tokens": 7941,
+        "types": 1849,
+        "endings": {
+          "tl": {
+            "tokens": 0,
+            "types": 0
+          },
+          "tli": {
+            "tokens": 0,
+            "types": 0
+          },
+          "tle": {
+            "tokens": 0,
+            "types": 0
+          },
+          "chi": {
+            "tokens": 67,
+            "types": 6
+          },
+          "chih": {
+            "tokens": 0,
+            "types": 0
+          }
+        }
+      },
+      "diacritics_folded": {
+        "tokens": 7941,
+        "types": 1838,
+        "endings": {
+          "tl": {
+            "tokens": 0,
+            "types": 0
+          },
+          "tli": {
+            "tokens": 0,
+            "types": 0
+          },
+          "tle": {
+            "tokens": 0,
+            "types": 0
+          },
+          "chi": {
+            "tokens": 67,
+            "types": 6
+          },
+          "chih": {
+            "tokens": 0,
+            "types": 0
+          }
+        }
+      }
+    }
+  },
+  "lexical_checks": [
+    {
+      "locus": "John 4:7",
+      "gloss_context": "water at the well",
+      "words": {
+        "nhgNT": "ötzintle",
+        "ncjNT": "atl",
+        "nplNT": "atl",
+        "nhx": "a̱ꞌti"
+      },
+      "interpretation": "The two Puebla texts share this lexical spelling. The Morelos and Isthmus editions express the noun differently."
+    },
+    {
+      "locus": "Matthew 7:9",
+      "gloss_context": "a stone offered instead of bread",
+      "words": {
+        "nhgNT": "tietetu",
+        "ncjNT": "tetl",
+        "nplNT": "tetl",
+        "nhx": "teꞌti"
+      },
+      "interpretation": "A shared sense gives a useful comparison within a single passage. Morphological and dialect inferences require more tokens and matched grammatical forms."
+    },
+    {
+      "locus": "Matthew 13:44",
+      "gloss_context": "a man finds the hidden object",
+      "words": {
+        "nhgNT": "tlöcatl",
+        "ncjNT": "tlacatl",
+        "nplNT": "tlakatl",
+        "nhx": "ta̱gaꞌ"
+      },
+      "interpretation": "Here Morelos and both Puebla texts share final tl in one identifiable lexical comparison. The k/c contrast is a spelling choice in the two Puebla editions."
+    }
+  ],
+  "published_label_assay": {
+    "method": "Use the named labels from the authors’ published argument in order cactus, agave, fish-associated, cube, paddle-shaped root. Read the exact pinned ZL3b/IT2a/RF1b locus strings. At ZL alternatives, enumerate both stated values in brackets. Split EVA with ch as one symbol and every other visible symbol in these words as a single character. For each pair in order, exhaustively enumerate all nonempty output-string prefixes for newly encountered symbols, reusing the same output whenever a symbol reappears. Allow homophones, any nonempty output length and unaligned boundaries. Compare printed spellings, a terminal i/y harmonization sensitivity, and the reported later fish reading with accent marks removed. Test the alternate cube gloss atlan separately. Counts are partial mappings satisfying constraints on these examples.",
+    "location_caveat": "The p.75 fish panel has the two Pisces fish and is f70v2 in the current foliation. The legacy Stolfi interlinear label list attaches the corresponding word to the central star. An exclusive relation to the fish is unresolved. The cube is f102v2 at locus 6 across the compared pinned editions.",
+    "older_locator_index": "https://www.ic.unicamp.br/~stolfi/EXPORT/projects/voynich/00-EXPORT/98-02-01-lotsa-labels/labels-t.html",
+    "reading_counts": {
+      "entries": [
+        [
+          "cactus",
+          "f100r.8",
+          [
+            "soity"
+          ],
+          [
+            "soity"
+          ],
+          [
+            "soity"
+          ],
+          "nashtli"
+        ],
+        [
+          "agave",
+          "f100r.4",
+          [
+            "chofary",
+            "chofany"
+          ],
+          [
+            "chofary"
+          ],
+          [
+            "chofary"
+          ],
+          "maguoey"
+        ],
+        [
+          "fish-associated",
+          "f70v2.33",
+          [
+            "otolal"
+          ],
+          [
+            "otylal"
+          ],
+          [
+            "otolal"
+          ],
+          "atlacaaca"
+        ],
+        [
+          "cube",
+          "f102v2.6",
+          [
+            "okeos",
+            "okeor"
+          ],
+          [
+            "okeos"
+          ],
+          [
+            "oteos"
+          ],
+          "atlaan"
+        ],
+        [
+          "paddle-root",
+          "f99r.46",
+          [
+            "tolsasy"
+          ],
+          [
+            "tolsasy"
+          ],
+          [
+            "tolsasy"
+          ],
+          "tlacanoni"
+        ]
+      ],
+      "sensitivity": {
+        "ZL3b": {
+          "soity/chofary/otolal/okeos/tolsasy": {
+            "printed_2013": {
+              "solution_counts_in_order": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "using_alternative_atlan": {
+                "all_five_solution_count": 0
+              }
+            },
+            "terminal_i_y_sensitivity": {
+              "solution_counts_in_order": [
+                9,
+                0,
+                0,
+                0
+              ],
+              "using_alternative_atlan": {
+                "all_five_solution_count": 0
+              }
+            },
+            "fish_reading_reported_for_2018": {
+              "solution_counts_in_order": [
+                9,
+                1,
+                2,
+                2
+              ],
+              "using_alternative_atlan": {
+                "all_five_solution_count": 1
+              }
+            }
+          },
+          "soity/chofary/otolal/okeor/tolsasy": {
+            "printed_2013": {
+              "solution_counts_in_order": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "using_alternative_atlan": {
+                "all_five_solution_count": 0
+              }
+            },
+            "terminal_i_y_sensitivity": {
+              "solution_counts_in_order": [
+                9,
+                0,
+                0,
+                0
+              ],
+              "using_alternative_atlan": {
+                "all_five_solution_count": 0
+              }
+            },
+            "fish_reading_reported_for_2018": {
+              "solution_counts_in_order": [
+                9,
+                1,
+                0,
+                0
+              ],
+              "using_alternative_atlan": {
+                "all_five_solution_count": 0
+              }
+            }
+          },
+          "soity/chofany/otolal/okeos/tolsasy": {
+            "printed_2013": {
+              "solution_counts_in_order": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "using_alternative_atlan": {
+                "all_five_solution_count": 0
+              }
+            },
+            "terminal_i_y_sensitivity": {
+              "solution_counts_in_order": [
+                9,
+                0,
+                0,
+                0
+              ],
+              "using_alternative_atlan": {
+                "all_five_solution_count": 0
+              }
+            },
+            "fish_reading_reported_for_2018": {
+              "solution_counts_in_order": [
+                9,
+                1,
+                2,
+                2
+              ],
+              "using_alternative_atlan": {
+                "all_five_solution_count": 1
+              }
+            }
+          },
+          "soity/chofany/otolal/okeor/tolsasy": {
+            "printed_2013": {
+              "solution_counts_in_order": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "using_alternative_atlan": {
+                "all_five_solution_count": 0
+              }
+            },
+            "terminal_i_y_sensitivity": {
+              "solution_counts_in_order": [
+                9,
+                0,
+                0,
+                0
+              ],
+              "using_alternative_atlan": {
+                "all_five_solution_count": 0
+              }
+            },
+            "fish_reading_reported_for_2018": {
+              "solution_counts_in_order": [
+                9,
+                1,
+                3,
+                3
+              ],
+              "using_alternative_atlan": {
+                "all_five_solution_count": 1
+              }
+            }
+          }
+        },
+        "IT2a": {
+          "soity/chofary/otylal/okeos/tolsasy": {
+            "printed_2013": {
+              "solution_counts_in_order": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "using_alternative_atlan": {
+                "all_five_solution_count": 0
+              }
+            },
+            "terminal_i_y_sensitivity": {
+              "solution_counts_in_order": [
+                9,
+                0,
+                0,
+                0
+              ],
+              "using_alternative_atlan": {
+                "all_five_solution_count": 0
+              }
+            },
+            "fish_reading_reported_for_2018": {
+              "solution_counts_in_order": [
+                9,
+                0,
+                0,
+                0
+              ],
+              "using_alternative_atlan": {
+                "all_five_solution_count": 0
+              }
+            }
+          }
+        },
+        "RF1b": {
+          "soity/chofary/otolal/oteos/tolsasy": {
+            "printed_2013": {
+              "solution_counts_in_order": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "using_alternative_atlan": {
+                "all_five_solution_count": 0
+              }
+            },
+            "terminal_i_y_sensitivity": {
+              "solution_counts_in_order": [
+                9,
+                0,
+                0,
+                0
+              ],
+              "using_alternative_atlan": {
+                "all_five_solution_count": 0
+              }
+            },
+            "fish_reading_reported_for_2018": {
+              "solution_counts_in_order": [
+                9,
+                1,
+                1,
+                1
+              ],
+              "using_alternative_atlan": {
+                "all_five_solution_count": 0
+              },
+              "unique_rule_for_these_cribs": {
+                "s": "n",
+                "o": "a",
+                "i": "sh",
+                "t": "tl",
+                "y": "i",
+                "ch": "m",
+                "f": "gu",
+                "a": "o",
+                "r": "e",
+                "l": "ca",
+                "e": "a"
+              }
+            }
+          }
+        }
+      }
+    },
+    "interpretation": "With printed 2013 spellings, the cactus and agave already conflict under this symbol rule. Harmonizing the final i/y permits nine partial assignments, all eliminated by the original fish reading. With the later fish reading RF1b has one assignment at four examples and predicts the fifth published spelling exactly. Some choices of ZL alternatives give two or three solutions for all five, and other choices give zero. IT2a gives zero after adding its fish reading in all tested settings. These are published examples chosen before this audit but used by the underlying authors to develop the hypothesis. A correspondence calculation on them says little about predicting a new passage or locating a dialect.",
+    "locators": {
+      "cactus": "f100r.8",
+      "agave": "f100r.4",
+      "fish-associated": "f70v2.33",
+      "cube": "f102v2.6",
+      "paddle-root": "f99r.46"
+    }
+  },
+  "interpretation": [
+    "Three matched editions share both reported written endings. Frequency varies by edition, and chi alone occurs in all four matched editions and in the Highland Puebla treebank.",
+    "Much of chi counting comes from a few frequent spellings. A terminal letter string can belong to unrelated stems or forms, so it does not by itself identify the proposed owl root. Counts across books preserve the same presence pattern.",
+    "Living regional varieties in the proposed areas are independently documented. The published label assays leave the manuscript’s variety unassigned and support no extinction conclusion for a specific historical speech community.",
+    "A sound correspondence supported in independently read examples at several word positions could establish affinity to groups retaining that reflex. The raw letter-sequence indicator gives a limited comparison among written editions."
+  ]
+}
