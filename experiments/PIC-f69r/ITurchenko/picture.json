@@ -1,0 +1,176 @@
+{
+  "folio": "f69r",
+  "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006198",
+  "blind": true,
+  "statement": "A six-pointed star sits at the centre of a wheel with twelve painted spokes and a scalloped rim. Writing follows the rim, extends along radial compartments and circles the centre. No individual label can be assigned to a painted part with confidence.",
+  "objects": [
+    {
+      "id": "wheel",
+      "kind": "diagram",
+      "features": {
+        "shape": "circular",
+        "layout": "radial",
+        "painted_spokes": 12,
+        "spoke_arrangement": "four dark pairs at top, right, bottom and left, with one green spoke between successive pairs",
+        "radial_compartments": "fine dividing lines with writing between some of them",
+        "hatching": "a narrow upper-right compartment contains groups of short cross-strokes alternating with dots"
+      },
+      "label": null
+    },
+    {
+      "id": "central-star",
+      "kind": "star",
+      "features": {
+        "position": "centre",
+        "points": 6,
+        "colour": "pale yellow",
+        "shape": "narrow tapering rays of unequal length",
+        "tips": "short dark cross-marks near the ends of the rays",
+        "surroundings": "one small ink sign in each of the six gaps between rays"
+      },
+      "label": null
+    },
+    {
+      "id": "inner-band",
+      "kind": "diagram",
+      "features": {
+        "position": "around the central star, inside the spokes",
+        "shape": "circular band",
+        "decoration": "writing follows the circumference"
+      },
+      "label": null
+    },
+    {
+      "id": "scalloped-rim",
+      "kind": "diagram",
+      "features": {
+        "position": "at the outer ends of the spokes",
+        "shape": "continuous scalloped border",
+        "cells": 45,
+        "decoration": "each rounded cell contains a short painted patch below a curved ink outline",
+        "colours": "green, blue and grey-brown"
+      },
+      "label": null
+    },
+    {
+      "id": "spoke-north-east-of-axis",
+      "kind": "other",
+      "features": {
+        "shape": "radial stripe",
+        "position": "just right of twelve o'clock",
+        "colour": "dark blue-grey"
+      },
+      "label": null
+    },
+    {
+      "id": "spoke-upper-right",
+      "kind": "other",
+      "features": {
+        "shape": "radial stripe",
+        "position": "upper right diagonal",
+        "colour": "green"
+      },
+      "label": null
+    },
+    {
+      "id": "spoke-east-above-axis",
+      "kind": "other",
+      "features": {
+        "shape": "radial stripe",
+        "position": "upper member of the right-hand pair",
+        "colour": "dark blue-grey"
+      },
+      "label": null
+    },
+    {
+      "id": "spoke-east-below-axis",
+      "kind": "other",
+      "features": {
+        "shape": "radial stripe",
+        "position": "lower member of the right-hand pair",
+        "colour": "dark blue-grey"
+      },
+      "label": null
+    },
+    {
+      "id": "spoke-lower-right",
+      "kind": "other",
+      "features": {
+        "shape": "radial stripe",
+        "position": "lower right diagonal",
+        "colour": "green"
+      },
+      "label": null
+    },
+    {
+      "id": "spoke-south-east-of-axis",
+      "kind": "other",
+      "features": {
+        "shape": "radial stripe",
+        "position": "right member of the bottom pair",
+        "colour": "dark blue-grey"
+      },
+      "label": null
+    },
+    {
+      "id": "spoke-south-on-axis",
+      "kind": "other",
+      "features": {
+        "shape": "radial stripe",
+        "position": "left member of the bottom pair",
+        "colour": "dark blue"
+      },
+      "label": null
+    },
+    {
+      "id": "spoke-lower-left",
+      "kind": "other",
+      "features": {
+        "shape": "radial stripe",
+        "position": "lower left diagonal",
+        "colour": "green"
+      },
+      "label": null
+    },
+    {
+      "id": "spoke-west-below-axis",
+      "kind": "other",
+      "features": {
+        "shape": "radial stripe",
+        "position": "lower member of the left-hand pair",
+        "colour": "dark blue-grey"
+      },
+      "label": null
+    },
+    {
+      "id": "spoke-west-above-axis",
+      "kind": "other",
+      "features": {
+        "shape": "radial stripe",
+        "position": "upper member of the left-hand pair",
+        "colour": "dark blue-grey"
+      },
+      "label": null
+    },
+    {
+      "id": "spoke-upper-left",
+      "kind": "other",
+      "features": {
+        "shape": "radial stripe",
+        "position": "upper left diagonal",
+        "colour": "green"
+      },
+      "label": null
+    },
+    {
+      "id": "spoke-north-west-of-axis",
+      "kind": "other",
+      "features": {
+        "shape": "radial stripe",
+        "position": "left member of the top pair",
+        "colour": "dark blue-grey"
+      },
+      "label": null
+    }
+  ]
+}
