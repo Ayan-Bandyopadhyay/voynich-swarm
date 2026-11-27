@@ -1,0 +1,2141 @@
+{
+  "title": "The full public scribal inventory adds six recipe bifolia for hand3 but no new hand5 block",
+  "program": "L2",
+  "on_path": false,
+  "hard": false,
+  "statement": "Searching the complete pinned ZL, Takahashi and RF page inventories finds hand3 on eight physical (quire,bifolio) groups: H:2, Q:2 and T:1–6. Six T groups provide extra CurrierB support in the stars/recipe section, all within quire20; Q:2 is the only botanical CurrierB group. H:2 combines f58r/v annotated A and f65r/v with unknown Currier. Hand5 has seven annotated page sides on only F:1 (f41/f48) and H:1 (f57/f66), in all three transcript inventories. Including f66r, lowering the paired paragraph-token floor from40 to20 or1, allowing unknown herbal Currier, and expanding to every section adds no third hand5 bifolio. With one hand5 bifolio reserved for testing, at most one remains for training, so the frozen two-training-bifolia floor cannot be met anywhere in this public attribution. The new hand3 material cannot create a matched botanical three-hand confirmation.",
+  "check": "Before further lexical hand classification, obtain an independently reviewed paleographic attribution of hand5 on a third surviving physical bifolio, or explicitly redesign the question as a within-hand cross-section stability study. Keep original two-training-bifolia/hand and complete test-bifolio exclusion requirements for any confirmatory comparison. A section change or a new page/panel on an already counted bifolio does not supply the missing unit. The current inventory provides a concrete support bound; no additional lexical model can repair it.",
+  "limitations": [
+    "The three transcripts describe the same manuscript and carry shared hand metadata; agreement among inventories is not three independent paleographic judgments.",
+    "The six new hand3 B bifolia all belong to the same quire and different section from the original herbal contrast. Physical distinctness alone does not ensure statistical independence.",
+    "Counts follow pinned ZL Q/B metadata and page-level hand assignments. f116v has no certain P text and is excluded by positive token floors. The mixed hand3 portion of f115r already belongs to T:2 and cannot add a bifolio.",
+    "Primary-source generalizations and pinned Currier metadata differ on f58; metadata is preserved, not relabeled to make a comparison trainable.",
+    "No hidden-page list/seed or hidden verdict was consulted. This is support verification, not a new accuracy result or a change to scribal attribution."
+  ],
+  "source_review": {
+    "primary_pdf": "https://ceur-ws.org/Vol-3313/keynote2.pdf",
+    "pages": "PDF pp5–6, Figure2 and adjacent codicological description. Both pages rendered; Figure2 inspected visually.",
+    "author_update": "https://manuscriptroadtrip.wordpress.com/2025/01/19/voynich-codicology/",
+    "notes": {
+      "davis2022_pp5_6": "Figure2 and surrounding text place hand5 in botanical quires6/8 and hand3 on ff58/65, the inner quire17 bifolio and the surviving quire20 bifolia. These are corroborating annotations, not independent manuscripts.",
+      "metadata_discrepancy": "ZL/IT/RF annotate f58r/v Currier A despite the source generalization that hands3/4/5 use B; f65r/v lack Currier. No labels are altered to enlarge the H/B sample.",
+      "mixed_page": "Davis describes f115r as hand2 lines1–12 and hand3 thereafter. Page-level metadata is hand2; assigning the hand3 portion adds no physical bifolio because T:2 already contains hand3 f104r/v and f115v.",
+      "source_internal_caveat": "Davis2022 p7 calls f66v one of only three hand5 pages, while p5 explicitly also places hand5 in quire6. The complete inventory is based on the pinned page labels and p5/6 physical description; the isolated p7 count is not used."
+    }
+  },
+  "results": {
+    "plan": {
+      "task": "P-L2-013",
+      "scope": "Public manuscript transcription inventory and primary-source support audit only; no secret split or seed. Metadata exploration follows the prior explicit request to find new physical support.",
+      "inventory": "For ZL/IT/RF, list hand3/5 page metadata Q,B,section,Currier and certain P/all-unit token counts. Build physical key Q:B; panel and page counts do not add bifolia.",
+      "primary": "Keep paired ZL/IT agreeing hand/section/Currier H/B pages with >=40 certain P tokens. At each candidate heldout bifolio require two remaining training bifolia per hand. Use practice training for fitting-support counts.",
+      "sensitivity": "Report >=1,20,40 certain P tokens, permit herbal unknown Currier only as metadata sensitivity, and report all-section totals. Do not pool other sections into the original hand-specific lexical test.",
+      "source_review": "Davis2022 keynote PDF pp5–6, rendered for visual inspection, plus authors Voynich Codicology post. Retain manuscript transcription metadata unchanged when the prose generalization about Currier differs.",
+      "stop": "If no new hand5 physical support exists in current attribution, report impossibility of >=2 training-bifolia floor after holding one out, rather than refitting the prior two blocks."
+    },
+    "all_transcription_inventories": {
+      "zl": [
+        {
+          "id": "f41r",
+          "hand": "5",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "F:1",
+          "certain_P": 97,
+          "certain_all": 97
+        },
+        {
+          "id": "f41v",
+          "hand": "5",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "F:1",
+          "certain_P": 65,
+          "certain_all": 66
+        },
+        {
+          "id": "f48r",
+          "hand": "5",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "F:1",
+          "certain_P": 88,
+          "certain_all": 88
+        },
+        {
+          "id": "f48v",
+          "hand": "5",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "F:1",
+          "certain_P": 128,
+          "certain_all": 128
+        },
+        {
+          "id": "f57r",
+          "hand": "5",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "H:1",
+          "certain_P": 87,
+          "certain_all": 87
+        },
+        {
+          "id": "f58r",
+          "hand": "3",
+          "section": "S",
+          "currier": "A",
+          "bifolio": "H:2",
+          "certain_P": 377,
+          "certain_all": 377
+        },
+        {
+          "id": "f58v",
+          "hand": "3",
+          "section": "S",
+          "currier": "A",
+          "bifolio": "H:2",
+          "certain_P": 373,
+          "certain_all": 373
+        },
+        {
+          "id": "f65r",
+          "hand": "3",
+          "section": "H",
+          "currier": null,
+          "bifolio": "H:2",
+          "certain_P": 0,
+          "certain_all": 3
+        },
+        {
+          "id": "f65v",
+          "hand": "3",
+          "section": "H",
+          "currier": null,
+          "bifolio": "H:2",
+          "certain_P": 45,
+          "certain_all": 45
+        },
+        {
+          "id": "f66r",
+          "hand": "5",
+          "section": "T",
+          "currier": "B",
+          "bifolio": "H:1",
+          "certain_P": 294,
+          "certain_all": 345
+        },
+        {
+          "id": "f66v",
+          "hand": "5",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "H:1",
+          "certain_P": 114,
+          "certain_all": 114
+        },
+        {
+          "id": "f94r",
+          "hand": "3",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "Q:2",
+          "certain_P": 79,
+          "certain_all": 79
+        },
+        {
+          "id": "f94v",
+          "hand": "3",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "Q:2",
+          "certain_P": 97,
+          "certain_all": 97
+        },
+        {
+          "id": "f95r1",
+          "hand": "3",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "Q:2",
+          "certain_P": 101,
+          "certain_all": 101
+        },
+        {
+          "id": "f95r2",
+          "hand": "3",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "Q:2",
+          "certain_P": 79,
+          "certain_all": 79
+        },
+        {
+          "id": "f95v2",
+          "hand": "3",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "Q:2",
+          "certain_P": 60,
+          "certain_all": 60
+        },
+        {
+          "id": "f95v1",
+          "hand": "3",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "Q:2",
+          "certain_P": 116,
+          "certain_all": 116
+        },
+        {
+          "id": "f103r",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:1",
+          "certain_P": 523,
+          "certain_all": 523
+        },
+        {
+          "id": "f103v",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:1",
+          "certain_P": 453,
+          "certain_all": 453
+        },
+        {
+          "id": "f104r",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:2",
+          "certain_P": 448,
+          "certain_all": 448
+        },
+        {
+          "id": "f104v",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:2",
+          "certain_P": 472,
+          "certain_all": 472
+        },
+        {
+          "id": "f105r",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:3",
+          "certain_P": 376,
+          "certain_all": 376
+        },
+        {
+          "id": "f105v",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:3",
+          "certain_P": 399,
+          "certain_all": 399
+        },
+        {
+          "id": "f106r",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:4",
+          "certain_P": 431,
+          "certain_all": 431
+        },
+        {
+          "id": "f106v",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:4",
+          "certain_P": 444,
+          "certain_all": 444
+        },
+        {
+          "id": "f107r",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:5",
+          "certain_P": 487,
+          "certain_all": 487
+        },
+        {
+          "id": "f107v",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:5",
+          "certain_P": 462,
+          "certain_all": 462
+        },
+        {
+          "id": "f108r",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:6",
+          "certain_P": 493,
+          "certain_all": 493
+        },
+        {
+          "id": "f108v",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:6",
+          "certain_P": 580,
+          "certain_all": 580
+        },
+        {
+          "id": "f111r",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:6",
+          "certain_P": 620,
+          "certain_all": 620
+        },
+        {
+          "id": "f111v",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:6",
+          "certain_P": 565,
+          "certain_all": 565
+        },
+        {
+          "id": "f112r",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:5",
+          "certain_P": 397,
+          "certain_all": 397
+        },
+        {
+          "id": "f112v",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:5",
+          "certain_P": 418,
+          "certain_all": 418
+        },
+        {
+          "id": "f113r",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:4",
+          "certain_P": 528,
+          "certain_all": 528
+        },
+        {
+          "id": "f113v",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:4",
+          "certain_P": 499,
+          "certain_all": 499
+        },
+        {
+          "id": "f114r",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:3",
+          "certain_P": 455,
+          "certain_all": 455
+        },
+        {
+          "id": "f114v",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:3",
+          "certain_P": 373,
+          "certain_all": 373
+        },
+        {
+          "id": "f115v",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:2",
+          "certain_P": 408,
+          "certain_all": 408
+        },
+        {
+          "id": "f116r",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:1",
+          "certain_P": 545,
+          "certain_all": 545
+        },
+        {
+          "id": "f116v",
+          "hand": "3",
+          "section": "T",
+          "currier": null,
+          "bifolio": "T:1",
+          "certain_P": 0,
+          "certain_all": 2
+        }
+      ],
+      "it": [
+        {
+          "id": "f41r",
+          "hand": "5",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "F:1",
+          "certain_P": 97,
+          "certain_all": 97
+        },
+        {
+          "id": "f41v",
+          "hand": "5",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "F:1",
+          "certain_P": 67,
+          "certain_all": 68
+        },
+        {
+          "id": "f48r",
+          "hand": "5",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "F:1",
+          "certain_P": 89,
+          "certain_all": 89
+        },
+        {
+          "id": "f48v",
+          "hand": "5",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "F:1",
+          "certain_P": 126,
+          "certain_all": 126
+        },
+        {
+          "id": "f57r",
+          "hand": "5",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "H:1",
+          "certain_P": 87,
+          "certain_all": 87
+        },
+        {
+          "id": "f58r",
+          "hand": "3",
+          "section": "S",
+          "currier": "A",
+          "bifolio": "H:2",
+          "certain_P": 367,
+          "certain_all": 367
+        },
+        {
+          "id": "f58v",
+          "hand": "3",
+          "section": "S",
+          "currier": "A",
+          "bifolio": "H:2",
+          "certain_P": 365,
+          "certain_all": 365
+        },
+        {
+          "id": "f65r",
+          "hand": "3",
+          "section": "H",
+          "currier": null,
+          "bifolio": "H:2",
+          "certain_P": 0,
+          "certain_all": 3
+        },
+        {
+          "id": "f65v",
+          "hand": "3",
+          "section": "H",
+          "currier": null,
+          "bifolio": "H:2",
+          "certain_P": 44,
+          "certain_all": 44
+        },
+        {
+          "id": "f66r",
+          "hand": "5",
+          "section": "T",
+          "currier": "B",
+          "bifolio": "H:1",
+          "certain_P": 295,
+          "certain_all": 345
+        },
+        {
+          "id": "f66v",
+          "hand": "5",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "H:1",
+          "certain_P": 113,
+          "certain_all": 113
+        },
+        {
+          "id": "f94r",
+          "hand": "3",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "Q:2",
+          "certain_P": 82,
+          "certain_all": 82
+        },
+        {
+          "id": "f94v",
+          "hand": "3",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "Q:2",
+          "certain_P": 101,
+          "certain_all": 101
+        },
+        {
+          "id": "f95r1",
+          "hand": "3",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "Q:2",
+          "certain_P": 103,
+          "certain_all": 103
+        },
+        {
+          "id": "f95r2",
+          "hand": "3",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "Q:2",
+          "certain_P": 79,
+          "certain_all": 79
+        },
+        {
+          "id": "f95v2",
+          "hand": "3",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "Q:2",
+          "certain_P": 64,
+          "certain_all": 64
+        },
+        {
+          "id": "f95v1",
+          "hand": "3",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "Q:2",
+          "certain_P": 117,
+          "certain_all": 117
+        },
+        {
+          "id": "f103r",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:1",
+          "certain_P": 522,
+          "certain_all": 522
+        },
+        {
+          "id": "f103v",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:1",
+          "certain_P": 449,
+          "certain_all": 449
+        },
+        {
+          "id": "f104r",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:2",
+          "certain_P": 438,
+          "certain_all": 438
+        },
+        {
+          "id": "f104v",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:2",
+          "certain_P": 458,
+          "certain_all": 458
+        },
+        {
+          "id": "f105r",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:3",
+          "certain_P": 370,
+          "certain_all": 370
+        },
+        {
+          "id": "f105v",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:3",
+          "certain_P": 390,
+          "certain_all": 390
+        },
+        {
+          "id": "f106r",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:4",
+          "certain_P": 421,
+          "certain_all": 421
+        },
+        {
+          "id": "f106v",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:4",
+          "certain_P": 449,
+          "certain_all": 449
+        },
+        {
+          "id": "f107r",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:5",
+          "certain_P": 488,
+          "certain_all": 488
+        },
+        {
+          "id": "f107v",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:5",
+          "certain_P": 455,
+          "certain_all": 455
+        },
+        {
+          "id": "f108r",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:6",
+          "certain_P": 491,
+          "certain_all": 491
+        },
+        {
+          "id": "f108v",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:6",
+          "certain_P": 570,
+          "certain_all": 570
+        },
+        {
+          "id": "f111r",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:6",
+          "certain_P": 614,
+          "certain_all": 614
+        },
+        {
+          "id": "f111v",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:6",
+          "certain_P": 561,
+          "certain_all": 561
+        },
+        {
+          "id": "f112r",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:5",
+          "certain_P": 394,
+          "certain_all": 394
+        },
+        {
+          "id": "f112v",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:5",
+          "certain_P": 415,
+          "certain_all": 415
+        },
+        {
+          "id": "f113r",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:4",
+          "certain_P": 518,
+          "certain_all": 518
+        },
+        {
+          "id": "f113v",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:4",
+          "certain_P": 481,
+          "certain_all": 481
+        },
+        {
+          "id": "f114r",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:3",
+          "certain_P": 447,
+          "certain_all": 447
+        },
+        {
+          "id": "f114v",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:3",
+          "certain_P": 362,
+          "certain_all": 362
+        },
+        {
+          "id": "f115v",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:2",
+          "certain_P": 399,
+          "certain_all": 399
+        },
+        {
+          "id": "f116r",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:1",
+          "certain_P": 537,
+          "certain_all": 537
+        }
+      ],
+      "rf": [
+        {
+          "id": "f41r",
+          "hand": "5",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "F:1",
+          "certain_P": 72,
+          "certain_all": 72
+        },
+        {
+          "id": "f41v",
+          "hand": "5",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "F:1",
+          "certain_P": 55,
+          "certain_all": 56
+        },
+        {
+          "id": "f48r",
+          "hand": "5",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "F:1",
+          "certain_P": 74,
+          "certain_all": 74
+        },
+        {
+          "id": "f48v",
+          "hand": "5",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "F:1",
+          "certain_P": 102,
+          "certain_all": 102
+        },
+        {
+          "id": "f57r",
+          "hand": "5",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "H:1",
+          "certain_P": 74,
+          "certain_all": 74
+        },
+        {
+          "id": "f58r",
+          "hand": "3",
+          "section": "S",
+          "currier": "A",
+          "bifolio": "H:2",
+          "certain_P": 332,
+          "certain_all": 332
+        },
+        {
+          "id": "f58v",
+          "hand": "3",
+          "section": "S",
+          "currier": "A",
+          "bifolio": "H:2",
+          "certain_P": 338,
+          "certain_all": 338
+        },
+        {
+          "id": "f65r",
+          "hand": "3",
+          "section": "H",
+          "currier": null,
+          "bifolio": "H:2",
+          "certain_P": 0,
+          "certain_all": 3
+        },
+        {
+          "id": "f65v",
+          "hand": "3",
+          "section": "H",
+          "currier": null,
+          "bifolio": "H:2",
+          "certain_P": 43,
+          "certain_all": 43
+        },
+        {
+          "id": "f66r",
+          "hand": "5",
+          "section": "T",
+          "currier": "B",
+          "bifolio": "H:1",
+          "certain_P": 246,
+          "certain_all": 295
+        },
+        {
+          "id": "f66v",
+          "hand": "5",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "H:1",
+          "certain_P": 97,
+          "certain_all": 97
+        },
+        {
+          "id": "f94r",
+          "hand": "3",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "Q:2",
+          "certain_P": 70,
+          "certain_all": 70
+        },
+        {
+          "id": "f94v",
+          "hand": "3",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "Q:2",
+          "certain_P": 79,
+          "certain_all": 79
+        },
+        {
+          "id": "f95r1",
+          "hand": "3",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "Q:2",
+          "certain_P": 87,
+          "certain_all": 87
+        },
+        {
+          "id": "f95r2",
+          "hand": "3",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "Q:2",
+          "certain_P": 66,
+          "certain_all": 66
+        },
+        {
+          "id": "f95v2",
+          "hand": "3",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "Q:2",
+          "certain_P": 56,
+          "certain_all": 56
+        },
+        {
+          "id": "f95v1",
+          "hand": "3",
+          "section": "H",
+          "currier": "B",
+          "bifolio": "Q:2",
+          "certain_P": 89,
+          "certain_all": 89
+        },
+        {
+          "id": "f103r",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:1",
+          "certain_P": 479,
+          "certain_all": 479
+        },
+        {
+          "id": "f103v",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:1",
+          "certain_P": 420,
+          "certain_all": 420
+        },
+        {
+          "id": "f104r",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:2",
+          "certain_P": 408,
+          "certain_all": 408
+        },
+        {
+          "id": "f104v",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:2",
+          "certain_P": 450,
+          "certain_all": 450
+        },
+        {
+          "id": "f105r",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:3",
+          "certain_P": 325,
+          "certain_all": 325
+        },
+        {
+          "id": "f105v",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:3",
+          "certain_P": 371,
+          "certain_all": 371
+        },
+        {
+          "id": "f106r",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:4",
+          "certain_P": 387,
+          "certain_all": 387
+        },
+        {
+          "id": "f106v",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:4",
+          "certain_P": 391,
+          "certain_all": 391
+        },
+        {
+          "id": "f107r",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:5",
+          "certain_P": 460,
+          "certain_all": 460
+        },
+        {
+          "id": "f107v",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:5",
+          "certain_P": 406,
+          "certain_all": 406
+        },
+        {
+          "id": "f108r",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:6",
+          "certain_P": 432,
+          "certain_all": 432
+        },
+        {
+          "id": "f108v",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:6",
+          "certain_P": 511,
+          "certain_all": 511
+        },
+        {
+          "id": "f111r",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:6",
+          "certain_P": 519,
+          "certain_all": 519
+        },
+        {
+          "id": "f111v",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:6",
+          "certain_P": 512,
+          "certain_all": 512
+        },
+        {
+          "id": "f112r",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:5",
+          "certain_P": 346,
+          "certain_all": 346
+        },
+        {
+          "id": "f112v",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:5",
+          "certain_P": 346,
+          "certain_all": 346
+        },
+        {
+          "id": "f113r",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:4",
+          "certain_P": 469,
+          "certain_all": 469
+        },
+        {
+          "id": "f113v",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:4",
+          "certain_P": 437,
+          "certain_all": 437
+        },
+        {
+          "id": "f114r",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:3",
+          "certain_P": 415,
+          "certain_all": 415
+        },
+        {
+          "id": "f114v",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:3",
+          "certain_P": 328,
+          "certain_all": 328
+        },
+        {
+          "id": "f115v",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:2",
+          "certain_P": 379,
+          "certain_all": 379
+        },
+        {
+          "id": "f116r",
+          "hand": "3",
+          "section": "S",
+          "currier": "B",
+          "bifolio": "T:1",
+          "certain_P": 516,
+          "certain_all": 516
+        },
+        {
+          "id": "f116v",
+          "hand": "3",
+          "section": "T",
+          "currier": null,
+          "bifolio": "T:1",
+          "certain_P": 0,
+          "certain_all": 2
+        }
+      ]
+    },
+    "zl_physical_table": {
+      "3": {
+        "H:2": {
+          "pages": [
+            "f58r",
+            "f58v",
+            "f65r",
+            "f65v"
+          ],
+          "sections": [
+            "H",
+            "S"
+          ],
+          "currier": [
+            "A",
+            "None"
+          ],
+          "certain_P": 795
+        },
+        "Q:2": {
+          "pages": [
+            "f94r",
+            "f94v",
+            "f95r1",
+            "f95r2",
+            "f95v2",
+            "f95v1"
+          ],
+          "sections": [
+            "H"
+          ],
+          "currier": [
+            "B"
+          ],
+          "certain_P": 532
+        },
+        "T:1": {
+          "pages": [
+            "f103r",
+            "f103v",
+            "f116r",
+            "f116v"
+          ],
+          "sections": [
+            "S",
+            "T"
+          ],
+          "currier": [
+            "B",
+            "None"
+          ],
+          "certain_P": 1521
+        },
+        "T:2": {
+          "pages": [
+            "f104r",
+            "f104v",
+            "f115v"
+          ],
+          "sections": [
+            "S"
+          ],
+          "currier": [
+            "B"
+          ],
+          "certain_P": 1328
+        },
+        "T:3": {
+          "pages": [
+            "f105r",
+            "f105v",
+            "f114r",
+            "f114v"
+          ],
+          "sections": [
+            "S"
+          ],
+          "currier": [
+            "B"
+          ],
+          "certain_P": 1603
+        },
+        "T:4": {
+          "pages": [
+            "f106r",
+            "f106v",
+            "f113r",
+            "f113v"
+          ],
+          "sections": [
+            "S"
+          ],
+          "currier": [
+            "B"
+          ],
+          "certain_P": 1902
+        },
+        "T:5": {
+          "pages": [
+            "f107r",
+            "f107v",
+            "f112r",
+            "f112v"
+          ],
+          "sections": [
+            "S"
+          ],
+          "currier": [
+            "B"
+          ],
+          "certain_P": 1764
+        },
+        "T:6": {
+          "pages": [
+            "f108r",
+            "f108v",
+            "f111r",
+            "f111v"
+          ],
+          "sections": [
+            "S"
+          ],
+          "currier": [
+            "B"
+          ],
+          "certain_P": 2258
+        }
+      },
+      "5": {
+        "F:1": {
+          "pages": [
+            "f41r",
+            "f41v",
+            "f48r",
+            "f48v"
+          ],
+          "sections": [
+            "H"
+          ],
+          "currier": [
+            "B"
+          ],
+          "certain_P": 378
+        },
+        "H:1": {
+          "pages": [
+            "f57r",
+            "f66r",
+            "f66v"
+          ],
+          "sections": [
+            "H",
+            "T"
+          ],
+          "currier": [
+            "B"
+          ],
+          "certain_P": 495
+        }
+      }
+    },
+    "sensitivity": {
+      "herbal_B/1": {
+        "bifolia": {
+          "2": [
+            "D:2",
+            "E:1",
+            "E:2",
+            "F:3",
+            "G:2"
+          ],
+          "3": [
+            "Q:2"
+          ],
+          "5": [
+            "F:1",
+            "H:1"
+          ]
+        },
+        "training_bifolia": {
+          "2": [
+            "D:2",
+            "E:1",
+            "E:2",
+            "F:3",
+            "G:2"
+          ],
+          "3": [
+            "Q:2"
+          ],
+          "5": [
+            "F:1",
+            "H:1"
+          ]
+        },
+        "train_count_after_own_bifolio_exclusion": {
+          "2": {
+            "D:2": 4,
+            "E:1": 4,
+            "E:2": 4,
+            "F:3": 4,
+            "G:2": 4
+          },
+          "3": {
+            "Q:2": 0
+          },
+          "5": {
+            "F:1": 1,
+            "H:1": 1
+          }
+        }
+      },
+      "herbal_B_or_unknown/1": {
+        "bifolia": {
+          "2": [
+            "D:2",
+            "E:1",
+            "E:2",
+            "F:3",
+            "G:2"
+          ],
+          "3": [
+            "H:2",
+            "Q:2"
+          ],
+          "5": [
+            "F:1",
+            "H:1"
+          ]
+        },
+        "training_bifolia": {
+          "2": [
+            "D:2",
+            "E:1",
+            "E:2",
+            "F:3",
+            "G:2"
+          ],
+          "3": [
+            "H:2",
+            "Q:2"
+          ],
+          "5": [
+            "F:1",
+            "H:1"
+          ]
+        },
+        "train_count_after_own_bifolio_exclusion": {
+          "2": {
+            "D:2": 4,
+            "E:1": 4,
+            "E:2": 4,
+            "F:3": 4,
+            "G:2": 4
+          },
+          "3": {
+            "H:2": 1,
+            "Q:2": 1
+          },
+          "5": {
+            "F:1": 1,
+            "H:1": 1
+          }
+        }
+      },
+      "all_sections_B/1": {
+        "bifolia": {
+          "2": [
+            "D:2",
+            "E:1",
+            "E:2",
+            "F:3",
+            "G:2",
+            "M:1",
+            "M:2",
+            "M:3",
+            "M:4",
+            "M:5",
+            "N:1"
+          ],
+          "3": [
+            "Q:2",
+            "T:1",
+            "T:2",
+            "T:3",
+            "T:4",
+            "T:5",
+            "T:6"
+          ],
+          "5": [
+            "F:1",
+            "H:1"
+          ]
+        },
+        "training_bifolia": {
+          "2": [
+            "D:2",
+            "E:1",
+            "E:2",
+            "F:3",
+            "G:2",
+            "M:1",
+            "M:2",
+            "M:3",
+            "M:4",
+            "M:5",
+            "N:1"
+          ],
+          "3": [
+            "Q:2",
+            "T:1",
+            "T:2",
+            "T:3",
+            "T:4",
+            "T:5",
+            "T:6"
+          ],
+          "5": [
+            "F:1",
+            "H:1"
+          ]
+        },
+        "train_count_after_own_bifolio_exclusion": {
+          "2": {
+            "D:2": 10,
+            "E:1": 10,
+            "E:2": 10,
+            "F:3": 10,
+            "G:2": 10,
+            "M:1": 10,
+            "M:2": 10,
+            "M:3": 10,
+            "M:4": 10,
+            "M:5": 10,
+            "N:1": 10
+          },
+          "3": {
+            "Q:2": 6,
+            "T:1": 6,
+            "T:2": 6,
+            "T:3": 6,
+            "T:4": 6,
+            "T:5": 6,
+            "T:6": 6
+          },
+          "5": {
+            "F:1": 1,
+            "H:1": 1
+          }
+        }
+      },
+      "all_sections_any/1": {
+        "bifolia": {
+          "2": [
+            "D:2",
+            "E:1",
+            "E:2",
+            "F:3",
+            "G:2",
+            "M:1",
+            "M:2",
+            "M:3",
+            "M:4",
+            "M:5",
+            "N:1"
+          ],
+          "3": [
+            "H:2",
+            "Q:2",
+            "T:1",
+            "T:2",
+            "T:3",
+            "T:4",
+            "T:5",
+            "T:6"
+          ],
+          "5": [
+            "F:1",
+            "H:1"
+          ]
+        },
+        "training_bifolia": {
+          "2": [
+            "D:2",
+            "E:1",
+            "E:2",
+            "F:3",
+            "G:2",
+            "M:1",
+            "M:2",
+            "M:3",
+            "M:4",
+            "M:5",
+            "N:1"
+          ],
+          "3": [
+            "H:2",
+            "Q:2",
+            "T:1",
+            "T:2",
+            "T:3",
+            "T:4",
+            "T:5",
+            "T:6"
+          ],
+          "5": [
+            "F:1",
+            "H:1"
+          ]
+        },
+        "train_count_after_own_bifolio_exclusion": {
+          "2": {
+            "D:2": 10,
+            "E:1": 10,
+            "E:2": 10,
+            "F:3": 10,
+            "G:2": 10,
+            "M:1": 10,
+            "M:2": 10,
+            "M:3": 10,
+            "M:4": 10,
+            "M:5": 10,
+            "N:1": 10
+          },
+          "3": {
+            "H:2": 7,
+            "Q:2": 7,
+            "T:1": 7,
+            "T:2": 7,
+            "T:3": 7,
+            "T:4": 7,
+            "T:5": 7,
+            "T:6": 7
+          },
+          "5": {
+            "F:1": 1,
+            "H:1": 1
+          }
+        }
+      },
+      "herbal_B/20": {
+        "bifolia": {
+          "2": [
+            "D:2",
+            "E:1",
+            "E:2",
+            "F:3",
+            "G:2"
+          ],
+          "3": [
+            "Q:2"
+          ],
+          "5": [
+            "F:1",
+            "H:1"
+          ]
+        },
+        "training_bifolia": {
+          "2": [
+            "D:2",
+            "E:1",
+            "E:2",
+            "F:3",
+            "G:2"
+          ],
+          "3": [
+            "Q:2"
+          ],
+          "5": [
+            "F:1",
+            "H:1"
+          ]
+        },
+        "train_count_after_own_bifolio_exclusion": {
+          "2": {
+            "D:2": 4,
+            "E:1": 4,
+            "E:2": 4,
+            "F:3": 4,
+            "G:2": 4
+          },
+          "3": {
+            "Q:2": 0
+          },
+          "5": {
+            "F:1": 1,
+            "H:1": 1
+          }
+        }
+      },
+      "herbal_B_or_unknown/20": {
+        "bifolia": {
+          "2": [
+            "D:2",
+            "E:1",
+            "E:2",
+            "F:3",
+            "G:2"
+          ],
+          "3": [
+            "H:2",
+            "Q:2"
+          ],
+          "5": [
+            "F:1",
+            "H:1"
+          ]
+        },
+        "training_bifolia": {
+          "2": [
+            "D:2",
+            "E:1",
+            "E:2",
+            "F:3",
+            "G:2"
+          ],
+          "3": [
+            "H:2",
+            "Q:2"
+          ],
+          "5": [
+            "F:1",
+            "H:1"
+          ]
+        },
+        "train_count_after_own_bifolio_exclusion": {
+          "2": {
+            "D:2": 4,
+            "E:1": 4,
+            "E:2": 4,
+            "F:3": 4,
+            "G:2": 4
+          },
+          "3": {
+            "H:2": 1,
+            "Q:2": 1
+          },
+          "5": {
+            "F:1": 1,
+            "H:1": 1
+          }
+        }
+      },
+      "all_sections_B/20": {
+        "bifolia": {
+          "2": [
+            "D:2",
+            "E:1",
+            "E:2",
+            "F:3",
+            "G:2",
+            "M:1",
+            "M:2",
+            "M:3",
+            "M:4",
+            "M:5",
+            "N:1"
+          ],
+          "3": [
+            "Q:2",
+            "T:1",
+            "T:2",
+            "T:3",
+            "T:4",
+            "T:5",
+            "T:6"
+          ],
+          "5": [
+            "F:1",
+            "H:1"
+          ]
+        },
+        "training_bifolia": {
+          "2": [
+            "D:2",
+            "E:1",
+            "E:2",
+            "F:3",
+            "G:2",
+            "M:1",
+            "M:2",
+            "M:3",
+            "M:4",
+            "M:5",
+            "N:1"
+          ],
+          "3": [
+            "Q:2",
+            "T:1",
+            "T:2",
+            "T:3",
+            "T:4",
+            "T:5",
+            "T:6"
+          ],
+          "5": [
+            "F:1",
+            "H:1"
+          ]
+        },
+        "train_count_after_own_bifolio_exclusion": {
+          "2": {
+            "D:2": 10,
+            "E:1": 10,
+            "E:2": 10,
+            "F:3": 10,
+            "G:2": 10,
+            "M:1": 10,
+            "M:2": 10,
+            "M:3": 10,
+            "M:4": 10,
+            "M:5": 10,
+            "N:1": 10
+          },
+          "3": {
+            "Q:2": 6,
+            "T:1": 6,
+            "T:2": 6,
+            "T:3": 6,
+            "T:4": 6,
+            "T:5": 6,
+            "T:6": 6
+          },
+          "5": {
+            "F:1": 1,
+            "H:1": 1
+          }
+        }
+      },
+      "all_sections_any/20": {
+        "bifolia": {
+          "2": [
+            "D:2",
+            "E:1",
+            "E:2",
+            "F:3",
+            "G:2",
+            "M:1",
+            "M:2",
+            "M:3",
+            "M:4",
+            "M:5",
+            "N:1"
+          ],
+          "3": [
+            "H:2",
+            "Q:2",
+            "T:1",
+            "T:2",
+            "T:3",
+            "T:4",
+            "T:5",
+            "T:6"
+          ],
+          "5": [
+            "F:1",
+            "H:1"
+          ]
+        },
+        "training_bifolia": {
+          "2": [
+            "D:2",
+            "E:1",
+            "E:2",
+            "F:3",
+            "G:2",
+            "M:1",
+            "M:2",
+            "M:3",
+            "M:4",
+            "M:5",
+            "N:1"
+          ],
+          "3": [
+            "H:2",
+            "Q:2",
+            "T:1",
+            "T:2",
+            "T:3",
+            "T:4",
+            "T:5",
+            "T:6"
+          ],
+          "5": [
+            "F:1",
+            "H:1"
+          ]
+        },
+        "train_count_after_own_bifolio_exclusion": {
+          "2": {
+            "D:2": 10,
+            "E:1": 10,
+            "E:2": 10,
+            "F:3": 10,
+            "G:2": 10,
+            "M:1": 10,
+            "M:2": 10,
+            "M:3": 10,
+            "M:4": 10,
+            "M:5": 10,
+            "N:1": 10
+          },
+          "3": {
+            "H:2": 7,
+            "Q:2": 7,
+            "T:1": 7,
+            "T:2": 7,
+            "T:3": 7,
+            "T:4": 7,
+            "T:5": 7,
+            "T:6": 7
+          },
+          "5": {
+            "F:1": 1,
+            "H:1": 1
+          }
+        }
+      },
+      "herbal_B/40": {
+        "bifolia": {
+          "2": [
+            "D:2",
+            "E:1",
+            "E:2",
+            "F:3",
+            "G:2"
+          ],
+          "3": [
+            "Q:2"
+          ],
+          "5": [
+            "F:1",
+            "H:1"
+          ]
+        },
+        "training_bifolia": {
+          "2": [
+            "D:2",
+            "E:1",
+            "E:2",
+            "F:3",
+            "G:2"
+          ],
+          "3": [
+            "Q:2"
+          ],
+          "5": [
+            "F:1",
+            "H:1"
+          ]
+        },
+        "train_count_after_own_bifolio_exclusion": {
+          "2": {
+            "D:2": 4,
+            "E:1": 4,
+            "E:2": 4,
+            "F:3": 4,
+            "G:2": 4
+          },
+          "3": {
+            "Q:2": 0
+          },
+          "5": {
+            "F:1": 1,
+            "H:1": 1
+          }
+        }
+      },
+      "herbal_B_or_unknown/40": {
+        "bifolia": {
+          "2": [
+            "D:2",
+            "E:1",
+            "E:2",
+            "F:3",
+            "G:2"
+          ],
+          "3": [
+            "H:2",
+            "Q:2"
+          ],
+          "5": [
+            "F:1",
+            "H:1"
+          ]
+        },
+        "training_bifolia": {
+          "2": [
+            "D:2",
+            "E:1",
+            "E:2",
+            "F:3",
+            "G:2"
+          ],
+          "3": [
+            "H:2",
+            "Q:2"
+          ],
+          "5": [
+            "F:1",
+            "H:1"
+          ]
+        },
+        "train_count_after_own_bifolio_exclusion": {
+          "2": {
+            "D:2": 4,
+            "E:1": 4,
+            "E:2": 4,
+            "F:3": 4,
+            "G:2": 4
+          },
+          "3": {
+            "H:2": 1,
+            "Q:2": 1
+          },
+          "5": {
+            "F:1": 1,
+            "H:1": 1
+          }
+        }
+      },
+      "all_sections_B/40": {
+        "bifolia": {
+          "2": [
+            "D:2",
+            "E:1",
+            "E:2",
+            "F:3",
+            "G:2",
+            "M:1",
+            "M:2",
+            "M:3",
+            "M:4",
+            "M:5",
+            "N:1"
+          ],
+          "3": [
+            "Q:2",
+            "T:1",
+            "T:2",
+            "T:3",
+            "T:4",
+            "T:5",
+            "T:6"
+          ],
+          "5": [
+            "F:1",
+            "H:1"
+          ]
+        },
+        "training_bifolia": {
+          "2": [
+            "D:2",
+            "E:1",
+            "E:2",
+            "F:3",
+            "G:2",
+            "M:1",
+            "M:2",
+            "M:3",
+            "M:4",
+            "M:5",
+            "N:1"
+          ],
+          "3": [
+            "Q:2",
+            "T:1",
+            "T:2",
+            "T:3",
+            "T:4",
+            "T:5",
+            "T:6"
+          ],
+          "5": [
+            "F:1",
+            "H:1"
+          ]
+        },
+        "train_count_after_own_bifolio_exclusion": {
+          "2": {
+            "D:2": 10,
+            "E:1": 10,
+            "E:2": 10,
+            "F:3": 10,
+            "G:2": 10,
+            "M:1": 10,
+            "M:2": 10,
+            "M:3": 10,
+            "M:4": 10,
+            "M:5": 10,
+            "N:1": 10
+          },
+          "3": {
+            "Q:2": 6,
+            "T:1": 6,
+            "T:2": 6,
+            "T:3": 6,
+            "T:4": 6,
+            "T:5": 6,
+            "T:6": 6
+          },
+          "5": {
+            "F:1": 1,
+            "H:1": 1
+          }
+        }
+      },
+      "all_sections_any/40": {
+        "bifolia": {
+          "2": [
+            "D:2",
+            "E:1",
+            "E:2",
+            "F:3",
+            "G:2",
+            "M:1",
+            "M:2",
+            "M:3",
+            "M:4",
+            "M:5",
+            "N:1"
+          ],
+          "3": [
+            "H:2",
+            "Q:2",
+            "T:1",
+            "T:2",
+            "T:3",
+            "T:4",
+            "T:5",
+            "T:6"
+          ],
+          "5": [
+            "F:1",
+            "H:1"
+          ]
+        },
+        "training_bifolia": {
+          "2": [
+            "D:2",
+            "E:1",
+            "E:2",
+            "F:3",
+            "G:2",
+            "M:1",
+            "M:2",
+            "M:3",
+            "M:4",
+            "M:5",
+            "N:1"
+          ],
+          "3": [
+            "H:2",
+            "Q:2",
+            "T:1",
+            "T:2",
+            "T:3",
+            "T:4",
+            "T:5",
+            "T:6"
+          ],
+          "5": [
+            "F:1",
+            "H:1"
+          ]
+        },
+        "train_count_after_own_bifolio_exclusion": {
+          "2": {
+            "D:2": 10,
+            "E:1": 10,
+            "E:2": 10,
+            "F:3": 10,
+            "G:2": 10,
+            "M:1": 10,
+            "M:2": 10,
+            "M:3": 10,
+            "M:4": 10,
+            "M:5": 10,
+            "N:1": 10
+          },
+          "3": {
+            "H:2": 7,
+            "Q:2": 7,
+            "T:1": 7,
+            "T:2": 7,
+            "T:3": 7,
+            "T:4": 7,
+            "T:5": 7,
+            "T:6": 7
+          },
+          "5": {
+            "F:1": 1,
+            "H:1": 1
+          }
+        }
+      }
+    },
+    "source_notes": {
+      "davis2022_pp5_6": "Figure2 and surrounding text place hand5 in botanical quires6/8 and hand3 on ff58/65, the inner quire17 bifolio and the surviving quire20 bifolia. These are corroborating annotations, not independent manuscripts.",
+      "metadata_discrepancy": "ZL/IT/RF annotate f58r/v Currier A despite the source generalization that hands3/4/5 use B; f65r/v lack Currier. No labels are altered to enlarge the H/B sample.",
+      "mixed_page": "Davis describes f115r as hand2 lines1–12 and hand3 thereafter. Page-level metadata is hand2; assigning the hand3 portion adds no physical bifolio because T:2 already contains hand3 f104r/v and f115v.",
+      "source_internal_caveat": "Davis2022 p7 calls f66v one of only three hand5 pages, while p5 explicitly also places hand5 in quire6. The complete inventory is based on the pinned page labels and p5/6 physical description; the isolated p7 count is not used."
+    },
+    "sources": [
+      "https://ceur-ws.org/Vol-3313/keynote2.pdf",
+      "https://manuscriptroadtrip.wordpress.com/2025/01/19/voynich-codicology/"
+    ],
+    "transcription_sha256": {
+      "ZL3b-n.txt": "bf5b6d4ac1e3a51b1847a9c388318d609020441ccd56984c901c32b09beccafc",
+      "IT2a-n.txt": "7f27a8b0feed8f6de0a99900df6bf912dd1d295c38e5f830bac8b41c3f536fb5",
+      "RF1b-e.txt": "e7d3238e35743e06c63367a933909ec37b1e2de7ada3a1b449447eafa1918782"
+    },
+    "sha256": {
+      "plan.json": "094c85fc4cf956cce7db85f4bf9072296cb866c45db39ab745ff249d2aa1456d",
+      "inventory.py": "ed3c652af34cedc5a28a8be4321c586392e7f03ea2bc66269f048966656f7380",
+      "davis2022.pdf": "cd56145b65b802b2503151957cd9e1ecf0846e992212b6ce6210e0a84f6bc14a"
+    }
+  },
+  "reproduction": {
+    "usage": "Extract plan.json and inventory.py into one directory. Download the cited keynote PDF there as davis2022.pdf and verify its recorded sha256. From the pinned repository root with PYTHONPATH=repository, run python path/to/inventory.py. Standard library only for inventory; PDF text/visual review used pypdf and Poppler.",
+    "files": {
+      "plan.json": "{\n  \"task\": \"P-L2-013\",\n  \"scope\": \"Public manuscript transcription inventory and primary-source support audit only; no secret split or seed. Metadata exploration follows the prior explicit request to find new physical support.\",\n  \"inventory\": \"For ZL/IT/RF, list hand3/5 page metadata Q,B,section,Currier and certain P/all-unit token counts. Build physical key Q:B; panel and page counts do not add bifolia.\",\n  \"primary\": \"Keep paired ZL/IT agreeing hand/section/Currier H/B pages with >=40 certain P tokens. At each candidate heldout bifolio require two remaining training bifolia per hand. Use practice training for fitting-support counts.\",\n  \"sensitivity\": \"Report >=1,20,40 certain P tokens, permit herbal unknown Currier only as metadata sensitivity, and report all-section totals. Do not pool other sections into the original hand-specific lexical test.\",\n  \"source_review\": \"Davis2022 keynote PDF pp5\\u20136, rendered for visual inspection, plus authors Voynich Codicology post. Retain manuscript transcription metadata unchanged when the prose generalization about Currier differs.\",\n  \"stop\": \"If no new hand5 physical support exists in current attribution, report impossibility of >=2 training-bifolia floor after holding one out, rather than refitting the prior two blocks.\"\n}\n",
+      "inventory.py": "\"\"\"Public hand support search; no lexical outcomes and no heldout seed access.\"\"\"\nimport hashlib,json,re\nfrom collections import defaultdict\nfrom pathlib import Path\nfrom vs import corpus,ivtff\n\nHERE=Path(__file__).resolve().parent\n\ndef count(page,paragraph=True):\n    return sum(not ivtff.uncertain(w) for l in page.lines if not paragraph or l.unit=='P' for w in l.words)\n\ndef main():\n    inventories={}\n    for edition in ('zl','it','rf'):\n        rows=[]\n        for p in corpus.pages(edition):\n            if p.hand not in ('3','5'):continue\n            rows.append(dict(id=p.id,hand=p.hand,section=p.section,currier=p.language,\n                             bifolio=p.meta.get('Q','?')+':'+p.meta.get('B','?'),\n                             certain_P=count(p),certain_all=count(p,False)))\n        inventories[edition]=rows\n    primary={p.id:p for p in corpus.pages('zl')};it={p.id:p for p in corpus.pages('it')}\n    common=[]\n    train_ids={p.id for p in corpus.split_pages('practice','zl')[0]}\n    for pid,p in primary.items():\n        q=it.get(pid)\n        if not q or (p.hand,p.section,p.language)!=(q.hand,q.section,q.language):continue\n        if p.hand not in ('2','3','5'):continue\n        common.append(dict(id=pid,hand=p.hand,section=p.section,currier=p.language,\n                           bifolio=p.meta.get('Q','?')+':'+p.meta.get('B','?'),\n                           minimum_P=min(count(p),count(q)),training=pid in train_ids))\n    sensitivities={}\n    for floor in (1,20,40):\n        for name,condition in [('herbal_B',lambda x:x['section']=='H' and x['currier']=='B'),\n                               ('herbal_B_or_unknown',lambda x:x['section']=='H' and x['currier'] in ('B',None)),\n                               ('all_sections_B',lambda x:x['currier']=='B'),('all_sections_any',lambda x:True)]:\n            rows=[x for x in common if x['minimum_P']>=floor and condition(x)]\n            groups={h:sorted({x['bifolio'] for x in rows if x['hand']==h}) for h in ('2','3','5')}\n            train={h:sorted({x['bifolio'] for x in rows if x['hand']==h and x['training']}) for h in ('2','3','5')}\n            remaining={h:{b:len(set(train[h])-{b}) for b in groups[h]} for h in groups}\n            sensitivities[f'{name}/{floor}']=dict(bifolia=groups,training_bifolia=train,\n                                                train_count_after_own_bifolio_exclusion=remaining)\n    table={}\n    for hand in ('3','5'):\n        table[hand]={}\n        for b in sorted({x['bifolio'] for x in inventories['zl'] if x['hand']==hand}):\n            rows=[x for x in inventories['zl'] if x['hand']==hand and x['bifolio']==b]\n            table[hand][b]=dict(pages=[x['id'] for x in rows],sections=sorted({x['section'] for x in rows}),\n                                currier=sorted({str(x['currier']) for x in rows}),\n                                certain_P=sum(x['certain_P'] for x in rows))\n    assert set(table['5'])=={'F:1','H:1'}\n    assert len(table['3'])==8\n    result=dict(plan=json.loads((HERE/'plan.json').read_text()),all_transcription_inventories=inventories,\n                zl_physical_table=table,sensitivity=sensitivities,\n                source_notes={'davis2022_pp5_6':'Figure2 and surrounding text place hand5 in botanical quires6/8 and hand3 on ff58/65, the inner quire17 bifolio and the surviving quire20 bifolia. These are corroborating annotations, not independent manuscripts.',\n                'metadata_discrepancy':'ZL/IT/RF annotate f58r/v Currier A despite the source generalization that hands3/4/5 use B; f65r/v lack Currier. No labels are altered to enlarge the H/B sample.',\n                'mixed_page':'Davis describes f115r as hand2 lines1–12 and hand3 thereafter. Page-level metadata is hand2; assigning the hand3 portion adds no physical bifolio because T:2 already contains hand3 f104r/v and f115v.',\n                'source_internal_caveat':'Davis2022 p7 calls f66v one of only three hand5 pages, while p5 explicitly also places hand5 in quire6. The complete inventory is based on the pinned page labels and p5/6 physical description; the isolated p7 count is not used.'},\n                sources=['https://ceur-ws.org/Vol-3313/keynote2.pdf','https://manuscriptroadtrip.wordpress.com/2025/01/19/voynich-codicology/'],\n                transcription_sha256={corpus.TRANSLITERATIONS[e]:hashlib.sha256(Path('data/raw',corpus.TRANSLITERATIONS[e]).read_bytes()).hexdigest() for e in ('zl','it','rf')},\n                sha256={n:hashlib.sha256((HERE/n).read_bytes()).hexdigest() for n in ('plan.json','inventory.py','davis2022.pdf')})\n    (HERE/'result.json').write_text(json.dumps(result,indent=2)+'\\n')\n    print(json.dumps(table,indent=2))\n\nif __name__=='__main__':main()\n"
+    },
+    "result_sha256": "e1cabe2446dc1724bf88f7a6e80f4fc67fb3eabfbe65a73876a50d77a692e3b6"
+  }
+}
