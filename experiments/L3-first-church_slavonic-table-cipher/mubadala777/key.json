@@ -1,0 +1,149 @@
+{
+  "id": "grid-church_slavonic-table-cipher-zl-practice-train",
+  "family": "table-cipher",
+  "segmentation": "eva-basic",
+  "target": {
+    "language": "church_slavonic",
+    "period": "Russian recension of Church Slavonic, Elizabeth Bible (1751/1757)"
+  },
+  "key": {
+    "map": {
+      "a": "а",
+      "b": "б",
+      "ch": "в",
+      "ckh": "г",
+      "cph": "д",
+      "cth": "е",
+      "d": "ж",
+      "e": "з",
+      "f": "и",
+      "g": "к",
+      "i": "л",
+      "j": "м",
+      "k": "н",
+      "l": "о",
+      "m": "п",
+      "n": "р",
+      "o": "с",
+      "p": "т",
+      "q": "у",
+      "r": "ф",
+      "s": "х",
+      "sh": "ц",
+      "t": "ч",
+      "u": "ш",
+      "v": "щ",
+      "w": "ы",
+      "x": "ь",
+      "y": "ю",
+      "z": "я"
+    },
+    "shifts": [
+      0,
+      2,
+      0,
+      2
+    ]
+  },
+  "search": {
+    "budget": {
+      "max_period": 4,
+      "sweeps": 4
+    }
+  },
+  "transliteration": "zl",
+  "reading_order": "normal",
+  "spaces": "word_breaks",
+  "controls": [
+    {
+      "seed": 0,
+      "noise": 0.0,
+      "planted_shifts": [
+        22,
+        11,
+        18
+      ],
+      "recovered_shifts": [
+        22,
+        11,
+        18
+      ],
+      "exact": true,
+      "control_evaluation_tokens": 9116,
+      "evaluation": {
+        "compresses": true,
+        "reads": true,
+        "beats_decoys": true,
+        "savings": 0.07056,
+        "decoys_that_kill_key": []
+      }
+    },
+    {
+      "seed": 0,
+      "noise": 0.02,
+      "planted_shifts": [
+        20,
+        13,
+        13
+      ],
+      "recovered_shifts": [
+        20,
+        13,
+        13
+      ],
+      "exact": true,
+      "control_evaluation_tokens": 9116,
+      "evaluation": {
+        "compresses": true,
+        "reads": true,
+        "beats_decoys": true,
+        "savings": 0.04406,
+        "decoys_that_kill_key": []
+      }
+    },
+    {
+      "seed": 1,
+      "noise": 0.02,
+      "planted_shifts": [
+        20,
+        7,
+        11
+      ],
+      "recovered_shifts": [
+        20,
+        7,
+        11
+      ],
+      "exact": true,
+      "control_evaluation_tokens": 9116
+    },
+    {
+      "seed": 2,
+      "noise": 0.02,
+      "planted_shifts": [
+        4,
+        20,
+        17
+      ],
+      "recovered_shifts": [
+        4,
+        20,
+        17
+      ],
+      "exact": true,
+      "control_evaluation_tokens": 9116
+    }
+  ],
+  "coverage": {
+    "practice_training": {
+      "total": 145468,
+      "unmapped": 767
+    },
+    "practice_evaluation": {
+      "total": 26848,
+      "unmapped": 122
+    }
+  },
+  "source": "Pinned Elizabeth Bible corpus church_slavonic_a83c68c3, https://voynichswarm.com/x/C-016.html",
+  "scope_of_inference": "Fixed sorted EVA-basic glyph alphabet, ranks paired with the normalized corpus alphabet, one periodic cyclic shift string reset at each word. Unmapped glyphs occupy a shift slot and yield no plaintext. The published budget searches periods one through four with at most four sweeps. The same budget is used for the synthetic controls and the 192-page public practice training partition. The manuscript fit never selects a key using the public practice evaluation pages. The Elizabeth Bible is a later printed Russian recension and is not a sample of a fifteenth-century spelling or an earlier recension."
+}

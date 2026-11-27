@@ -1,0 +1,7 @@
+{
+  "step": "L3-first-church_slavonic-table-cipher",
+  "handle": "mubadala777",
+  "kind": "key",
+  "summary": "Test the pinned word-reset cyclic table search against the Church Slavonic Elizabeth Bible corpus on the standard ZL view.",
+  "lease": "9308fcdd1aab829346c4082e"
+}
