@@ -1,25 +1,20 @@
 {
-  "title": "Rightward and Downward Grapheme Distributions in the Voynich Manuscript",
-  "authors": "Patrick Feaster",
+  "title": "Demystifying the Scribes behind the Voynich Manuscript using Computational Linguistic Techniques",
+  "authors": "Kevin Farrugia, Colin Layfield, Lonneke van der Plas",
   "year": 2022,
-  "url": "https://ceur-ws.org/Vol-3313/paper12.pdf",
-  "summary": "Feaster studies relative positions within lines and paragraphs, concentrating on matched word forms differing by one grapheme. Three selected case studies show differences within line interiors as well as at their edges; the paper describes positional explanations as possibilities, not established readings.",
+  "url": "https://ceur-ws.org/Vol-3313/paper5.pdf",
+  "summary": "The authors train character n-gram classifiers to predict Davis's palaeographic page labels, using page-level cross-validation. The comparison uses the proposed labels as training data and includes only three of the five proposed hands; agreement with those labels is not a direct independent count of scribes.",
   "established": [
-    "Using paragraph text in Zandbergen–Landini version 1.7, the study defines relative rightwardness as zero-based position divided by line token count minus one. It resolves annotated ambiguity using the first non-question-mark option and omits uncertain-space commas (section 2).",
-    "For matched forms beginning Sh and ch, mean positions in the line interior are 0.433 and 0.481 respectively. Nineteen of 21 frequent matched pairs retain the direction when line-edge words are excluded (section 2, Table 1).",
-    "For matched forms beginning qo and o, interior mean positions are 0.487 and 0.517 respectively; for matched k and t forms they are 0.490 and 0.541. The paper selects these cases to illustrate patterns and does not present them as a prespecified exhaustive search (section 2, Tables 2–3).",
-    "The paper proposes positional distributions as one possible contributor to cross-word boundary frequencies and illustrates this using y.q and n.q; it leaves generalization to other boundary combinations open (section 5)."
+    "The Zandbergen version 1r EVA text was balanced to 31 pages for each of hands 1, 2 and 3; hands 4 and 5 were excluded for limited data. The balanced classes differed substantially in word count: 4,660, 9,241 and 10,698 respectively (section 3.1, Tables 1–2).",
+    "Four classifiers used character bigram and trigram features in separate ten-fold page-level cross-validation runs, with feature extraction after splitting. Reported accuracies ranged from 73.1% to 90.3% with trigrams and 65.6% to 84.9% with bigrams (sections 3.2 and 4, Table 4).",
+    "All four trigram classifiers agreed with each other but disagreed with the palaeographic labels on seven pages: f57v, f65v, f85r, f86v, f95r, f95v and f116v. The paper notes that low word counts remain a limitation for some pages (section 4).",
+    "The decision-tree root features ed and edy match a known Currier A/B distinction, and the authors note confusion between hands 2 and 3; their task predicts the existing hand labels and does not measure new handwriting features (section 4)."
   ],
   "open": [
     {
-      "question": "How do the reported line-interior positional differences vary with line length and manuscript section?",
-      "front": "L2",
-      "check": "Prespecify the Sh/ch, qo/o and k/t contrasts, measure relative interior positions by line-length and section strata in independent transcriptions, and evaluate the fixed comparisons on held-out pages."
-    },
-    {
-      "question": "How much of the observed cross-word boundary frequency structure is explained by line and paragraph position beyond the illustrated y.q and n.q examples?",
-      "front": "L2",
-      "check": "Use position-matched randomizations to compare a prespecified set of boundary pairs on public pages, and evaluate the fixed aggregate comparison on held-out pages."
+      "question": "What do independent palaeographic and stylometric checks show for the pages where all four trigram classifiers disagreed with the original hand assignments?",
+      "front": "L1",
+      "check": "Predefine a blind image-feature assessment and compare the seven reported pages with matched pages from the candidate hands, without using the classifier predictions to label the images."
     }
   ]
 }
