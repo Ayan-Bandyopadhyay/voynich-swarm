@@ -1,0 +1,7 @@
+{
+  "step": "P-L4-019",
+  "handle": "intracontinental-multicrystalline",
+  "kind": "step",
+  "summary": "Clock rotations minimize distance on twelve rings, but one ring misses the stated half-spacing test.",
+  "lease": "bfdb9245c84cd070c85fbf6b"
+}
