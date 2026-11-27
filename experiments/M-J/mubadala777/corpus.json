@@ -1,21 +1,907 @@
 {
-  "language": "old_hungarian",
-  "title": "Munich Codex, four Gospels in Old Hungarian (HGDS diplomatic transcription)",
-  "period": "1466 (manuscript copy date), Old Hungarian",
-  "url": "https://raw.githubusercontent.com/mubadala777/voynich-swarm/02d68f81ef886f949d12d420bae4436456e0ca23/munich-codex-1466.txt",
-  "sha256": "8326f8ce4d897909393356adbf10992605b4035d347fcc45fb41f983d13f89c0",
-  "license": "cc-by",
+  "language": "medieval_czech",
+  "title": "Jan Hus, Postilla (1413), Czech sermon cycle, Erben edition (Prague, 1866), printed pp. 1–427",
+  "period": "early fifteenth-century Old Czech sermon prose completed in 1413, in Erben's nineteenth-century textual edition",
+  "url": "https://raw.githubusercontent.com/mubadala777/voynich-swarm/1c32945509236b66132c9cc2c92b2fa347288ac3/corpora/hus-postilla-erben-1866/hus-postilla-erben-1866.txt",
+  "sha256": "01473c190be9c9b73b373a29264c54b7747d4834ca1f81e2d159a5b8f398ecfe",
+  "license": "public-domain",
   "encoding": "utf-8",
-  "source": "Eva Pettersson, The HistCorp Collection of Historical Corpora and Resources – Part II (https://doi.org/10.5281/zenodo.10017218), Hungarian Generative Diachronic Syntax, member 1466-MunchK_orig.txt. See Eszter Simon (2014), Corpus building from Old Hungarian codices, in The Evolution of Functional Left Peripheries in Hungarian Syntax, Oxford University Press, pp. 224–236.",
-  "license_url": "https://api.datacite.org/dois/10.5281/zenodo.10017218",
-  "source_readme": "https://sprakbanken-clarin.lingfil.uu.se/histcorp/readme/hungarian-readme-HGDS",
-  "manuscript_url": "https://www.digitale-sammlungen.de/en/details/bsb00087531",
-  "preparation": "Remove the HistCorp header and 416 folio and column markers from the pinned UTF-8 file and regularize horizontal spacing. Preserve the original orthography, transcription signs, Gospel prose and scribal colophon. The source does not include the codex calendar or the critical edition's parallel Latin text.",
-  "reproduction": "https://github.com/mubadala777/voynich-swarm/tree/02d68f81ef886f949d12d420bae4436456e0ca23",
-  "local_validation": {
-    "bytes": 487814,
-    "normalized_tokens": 58192,
-    "characters_in_complete_blocks": 353997,
-    "blocks": 880
+  "license_evidence": {
+    "catalog": "https://www.ndk.cz/uuid/3a69fd10-04b1-11dd-abf7-000d606f5dc6",
+    "library_policy": "https://www.nkp.cz/faq-sluzby-nk-cr",
+    "statement": "The Czech National Library defines accessibility public as works in the public domain. The exact volume and all selected page records carry this status."
+  },
+  "edition_evidence": {
+    "institute_source_catalog": "https://vokabular.ujc.cas.cz/soubory/essc/essc-soupis-pramenu-a-zkratek.pdf",
+    "comparison_edition": "https://archive.org/details/postilla00husj",
+    "selection": "Erben II, 1866 original-language edition. Printed p. 427 ends with the 1413 completion statement. The later-print supplement pp. 428–434 and subsequent index are outside the main sermon cycle.",
+    "comparison": "Flajšhans explicitly modernizes the Czech vocabulary and grammar and uses the Kralice wording for Gospel readings. It is used solely as a contrasting edition in the audit."
+  },
+  "reproducibility": {
+    "public_source_tree": "https://github.com/mubadala777/voynich-swarm/tree/1c32945509236b66132c9cc2c92b2fa347288ac3/corpora/hus-postilla-erben-1866",
+    "extraction": "Complete 427-page early Czech main sermon sequence, anonymously fetched as verified UTF-16 from the library's per-page Kramerius V5 OCR streams. Pin the cleaned UTF-8 output under a separate medieval reference ID so the controls probe the historical text without pooling the Kralice and catechism references.",
+    "cleaning_summary": {
+      "edition": "Karel Jaromír Erben, Sebrané spisy české II, Prague, 1866",
+      "source": "Czech National Library, NDK edition 3a69fd10-04b1-11dd-abf7-000d606f5dc6",
+      "minimum_printed_page": 1,
+      "maximum_printed_page": 427,
+      "available_printed_pages": 427,
+      "missing_printed_pages": [],
+      "corpus_bytes": 1042190,
+      "normalized_characters": 886434,
+      "normalized_tokens": 162627,
+      "raw_normalized_characters_sum": 895082,
+      "remaining_numbered_gloss_lines_in_source": 86,
+      "removed": {
+        "scan_checked_marginal_spans": 1,
+        "title_lines": 2,
+        "book_signatures": 19,
+        "joined_letter_hyphen_line_ends": 2340,
+        "running_headers": 306,
+        "unambiguous_gloss_lines": 23,
+        "isolated_numbers_at_edges": 59,
+        "scan_checked_gloss_block_lines": 9
+      },
+      "utf8_sha256": "01473c190be9c9b73b373a29264c54b7747d4834ca1f81e2d159a5b8f398ecfe"
+    },
+    "quality_scope": "Conservative layout cleanup and sampled agreement against a second OCR. Imperfect line wraps and apparatus, OCR errors, and genre concentration remain. The alignment values compare distinct OCR readings of the same printed edition and are not manuscript OCR accuracy or gold error rates.",
+    "sampled_ocr_and_edition_comparison": {
+      "disclosure": "These are matched-observation agreements, not error rates against a gold transcription. Edition marker diagnostics are descriptive. The source claims and early page findings informed the marker list. The editions share sermons and are not statistically independent underlying works.",
+      "orthographic_diagnostics": [
+        {
+          "label": "Erben 1866, 14 fixed printed-page AHISTO OCR samples",
+          "tokens": 5307,
+          "marker_counts": {
+            "old_forms": {
+              "sú": 48,
+              "jsú": 31,
+              "byl-li": 0,
+              "bieše": 2,
+              "býti": 13,
+              "bližnieho": 0,
+              "přěd": 5,
+              "kterak": 11,
+              "čtenie": 7,
+              "přikázanie": 9,
+              "odpočinutie": 1,
+              "ovcě": 2,
+              "spasenie": 6,
+              "svú": 5,
+              "sě": 87,
+              "ktož": 16,
+              "vece": 4
+            },
+            "comparison_forms": {
+              "jsou": 0,
+              "bylo-li": 0,
+              "byl": 10,
+              "být": 0,
+              "bližního": 0,
+              "před": 1,
+              "jak": 0,
+              "čtení": 3,
+              "přikázání": 0,
+              "odpočinutí": 1,
+              "ovce": 0,
+              "spasení": 1,
+              "svou": 0,
+              "se": 0,
+              "kdož": 0,
+              "řekl": 11
+            }
+          }
+        },
+        {
+          "label": "Flajšhans modernization, body-only IA transcription",
+          "tokens": 158163,
+          "marker_counts": {
+            "old_forms": {
+              "sú": 0,
+              "jsú": 0,
+              "byl-li": 0,
+              "bieše": 0,
+              "býti": 423,
+              "bližnieho": 0,
+              "přěd": 0,
+              "kterak": 204,
+              "čtenie": 0,
+              "přikázanie": 0,
+              "odpočinutie": 0,
+              "ovcě": 0,
+              "spasenie": 0,
+              "svú": 0,
+              "sě": 0,
+              "ktož": 0,
+              "vece": 22
+            },
+            "comparison_forms": {
+              "jsou": 582,
+              "bylo-li": 0,
+              "byl": 461,
+              "být": 0,
+              "bližního": 59,
+              "před": 275,
+              "jak": 69,
+              "čtení": 5,
+              "přikázání": 16,
+              "odpočinutí": 10,
+              "ovce": 100,
+              "spasení": 155,
+              "svou": 207,
+              "se": 2669,
+              "kdož": 302,
+              "řekl": 441
+            }
+          }
+        }
+      ],
+      "matched_page_ocr_agreement": [
+        {
+          "page": 1,
+          "nkp_against_ahisto": {
+            "characters": {
+              "matched": 1317,
+              "left_length": 1321,
+              "right_length": 1400,
+              "matched_average_share": 0.9680264608599779
+            },
+            "tokens": {
+              "matched": 235,
+              "left_length": 244,
+              "right_length": 262,
+              "matched_average_share": 0.9288537549407114
+            }
+          },
+          "nkp_against_independent_tesseract": {
+            "characters": {
+              "matched": 1309,
+              "left_length": 1321,
+              "right_length": 1394,
+              "matched_average_share": 0.9642725598526704
+            },
+            "tokens": {
+              "matched": 230,
+              "left_length": 244,
+              "right_length": 259,
+              "matched_average_share": 0.9145129224652088
+            }
+          },
+          "ahisto_against_independent_tesseract": {
+            "characters": {
+              "matched": 1381,
+              "left_length": 1400,
+              "right_length": 1394,
+              "matched_average_share": 0.9885468861846815
+            },
+            "tokens": {
+              "matched": 251,
+              "left_length": 262,
+              "right_length": 259,
+              "matched_average_share": 0.963531669865643
+            }
+          }
+        },
+        {
+          "page": 17,
+          "nkp_against_ahisto": {
+            "characters": {
+              "matched": 2147,
+              "left_length": 2177,
+              "right_length": 2190,
+              "matched_average_share": 0.9832837188000916
+            },
+            "tokens": {
+              "matched": 396,
+              "left_length": 421,
+              "right_length": 425,
+              "matched_average_share": 0.9361702127659575
+            }
+          }
+        },
+        {
+          "page": 51,
+          "nkp_against_ahisto": {
+            "characters": {
+              "matched": 1382,
+              "left_length": 1392,
+              "right_length": 1907,
+              "matched_average_share": 0.8378296453470748
+            },
+            "tokens": {
+              "matched": 264,
+              "left_length": 276,
+              "right_length": 373,
+              "matched_average_share": 0.8135593220338984
+            }
+          },
+          "nkp_against_independent_tesseract": {
+            "characters": {
+              "matched": 1378,
+              "left_length": 1392,
+              "right_length": 1913,
+              "matched_average_share": 0.8338880484114978
+            },
+            "tokens": {
+              "matched": 258,
+              "left_length": 276,
+              "right_length": 374,
+              "matched_average_share": 0.7938461538461539
+            }
+          },
+          "ahisto_against_independent_tesseract": {
+            "characters": {
+              "matched": 1901,
+              "left_length": 1907,
+              "right_length": 1913,
+              "matched_average_share": 0.9952879581151832
+            },
+            "tokens": {
+              "matched": 362,
+              "left_length": 373,
+              "right_length": 374,
+              "matched_average_share": 0.9692101740294511
+            }
+          }
+        },
+        {
+          "page": 85,
+          "nkp_against_ahisto": {
+            "characters": {
+              "matched": 1837,
+              "left_length": 1862,
+              "right_length": 1875,
+              "matched_average_share": 0.9831415573989831
+            },
+            "tokens": {
+              "matched": 324,
+              "left_length": 343,
+              "right_length": 345,
+              "matched_average_share": 0.9418604651162791
+            }
+          }
+        },
+        {
+          "page": 119,
+          "nkp_against_ahisto": {
+            "characters": {
+              "matched": 2123,
+              "left_length": 2148,
+              "right_length": 2169,
+              "matched_average_share": 0.9835533935603429
+            },
+            "tokens": {
+              "matched": 385,
+              "left_length": 407,
+              "right_length": 413,
+              "matched_average_share": 0.9390243902439024
+            }
+          }
+        },
+        {
+          "page": 153,
+          "nkp_against_ahisto": {
+            "characters": {
+              "matched": 2169,
+              "left_length": 2191,
+              "right_length": 2219,
+              "matched_average_share": 0.9836734693877551
+            },
+            "tokens": {
+              "matched": 381,
+              "left_length": 400,
+              "right_length": 411,
+              "matched_average_share": 0.9395807644882861
+            }
+          }
+        },
+        {
+          "page": 187,
+          "nkp_against_ahisto": {
+            "characters": {
+              "matched": 2092,
+              "left_length": 2109,
+              "right_length": 2137,
+              "matched_average_share": 0.9853980216674517
+            },
+            "tokens": {
+              "matched": 400,
+              "left_length": 414,
+              "right_length": 421,
+              "matched_average_share": 0.9580838323353293
+            }
+          }
+        },
+        {
+          "page": 221,
+          "nkp_against_ahisto": {
+            "characters": {
+              "matched": 2134,
+              "left_length": 2168,
+              "right_length": 2199,
+              "matched_average_share": 0.9773299748110831
+            },
+            "tokens": {
+              "matched": 360,
+              "left_length": 388,
+              "right_length": 398,
+              "matched_average_share": 0.916030534351145
+            }
+          },
+          "nkp_against_independent_tesseract": {
+            "characters": {
+              "matched": 2057,
+              "left_length": 2168,
+              "right_length": 2122,
+              "matched_average_share": 0.958974358974359
+            },
+            "tokens": {
+              "matched": 339,
+              "left_length": 388,
+              "right_length": 382,
+              "matched_average_share": 0.8805194805194805
+            }
+          },
+          "ahisto_against_independent_tesseract": {
+            "characters": {
+              "matched": 2105,
+              "left_length": 2199,
+              "right_length": 2122,
+              "matched_average_share": 0.9743115019671372
+            },
+            "tokens": {
+              "matched": 370,
+              "left_length": 398,
+              "right_length": 382,
+              "matched_average_share": 0.9487179487179487
+            }
+          }
+        },
+        {
+          "page": 255,
+          "nkp_against_ahisto": {
+            "characters": {
+              "matched": 2138,
+              "left_length": 2158,
+              "right_length": 2168,
+              "matched_average_share": 0.9884419787332409
+            },
+            "tokens": {
+              "matched": 378,
+              "left_length": 403,
+              "right_length": 419,
+              "matched_average_share": 0.9197080291970803
+            }
+          }
+        },
+        {
+          "page": 289,
+          "nkp_against_ahisto": {
+            "characters": {
+              "matched": 1659,
+              "left_length": 1694,
+              "right_length": 1766,
+              "matched_average_share": 0.9589595375722544
+            },
+            "tokens": {
+              "matched": 292,
+              "left_length": 313,
+              "right_length": 332,
+              "matched_average_share": 0.9054263565891473
+            }
+          }
+        },
+        {
+          "page": 323,
+          "nkp_against_ahisto": {
+            "characters": {
+              "matched": 2080,
+              "left_length": 2098,
+              "right_length": 2142,
+              "matched_average_share": 0.9811320754716981
+            },
+            "tokens": {
+              "matched": 371,
+              "left_length": 391,
+              "right_length": 400,
+              "matched_average_share": 0.9380530973451328
+            }
+          }
+        },
+        {
+          "page": 357,
+          "nkp_against_ahisto": {
+            "characters": {
+              "matched": 2150,
+              "left_length": 2165,
+              "right_length": 2207,
+              "matched_average_share": 0.9835315645013724
+            },
+            "tokens": {
+              "matched": 378,
+              "left_length": 396,
+              "right_length": 408,
+              "matched_average_share": 0.9402985074626866
+            }
+          }
+        },
+        {
+          "page": 391,
+          "nkp_against_ahisto": {
+            "characters": {
+              "matched": 2111,
+              "left_length": 2139,
+              "right_length": 2142,
+              "matched_average_share": 0.9862181733239898
+            },
+            "tokens": {
+              "matched": 378,
+              "left_length": 400,
+              "right_length": 409,
+              "matched_average_share": 0.934487021013597
+            }
+          }
+        },
+        {
+          "page": 425,
+          "nkp_against_ahisto": {
+            "characters": {
+              "matched": 2059,
+              "left_length": 2080,
+              "right_length": 2118,
+              "matched_average_share": 0.9809433063363506
+            },
+            "tokens": {
+              "matched": 351,
+              "left_length": 371,
+              "right_length": 390,
+              "matched_average_share": 0.9224704336399474
+            }
+          },
+          "nkp_against_independent_tesseract": {
+            "characters": {
+              "matched": 2001,
+              "left_length": 2080,
+              "right_length": 2065,
+              "matched_average_share": 0.9655006031363088
+            },
+            "tokens": {
+              "matched": 331,
+              "left_length": 371,
+              "right_length": 376,
+              "matched_average_share": 0.8862115127175368
+            }
+          },
+          "ahisto_against_independent_tesseract": {
+            "characters": {
+              "matched": 2058,
+              "left_length": 2118,
+              "right_length": 2065,
+              "matched_average_share": 0.9839827874731054
+            },
+            "tokens": {
+              "matched": 367,
+              "left_length": 390,
+              "right_length": 376,
+              "matched_average_share": 0.95822454308094
+            }
+          }
+        }
+      ]
+    },
+    "sampled_diplomatic_scan_verification": {
+      "source": "Erben 1866 page OCR and independent Tesseract, compared to scan manual readings.",
+      "sample": "Four fixed eight-line opening prose samples, 32 printed lines. P. 51 starts below glosses.",
+      "pages": {
+        "1": {
+          "body_accuracy": {
+            "nkp": {
+              "nfc_chars": {
+                "edits": 11,
+                "denominator": 470,
+                "error_rate": 0.023404255319148935
+              },
+              "nfc_words": {
+                "edits": 8,
+                "denominator": 82,
+                "error_rate": 0.0975609756097561
+              },
+              "project_normalized_chars": {
+                "edits": 2,
+                "denominator": 453,
+                "error_rate": 0.004415011037527594
+              },
+              "project_normalized_words": {
+                "edits": 2,
+                "denominator": 82,
+                "error_rate": 0.024390243902439025
+              },
+              "input_sha256": "0310992c6eb169548bdaa580e2e6da8f783fcfabd1dca88745643c0d16c49e17",
+              "input_line_span_1based_inclusive": [
+                3,
+                10
+              ]
+            },
+            "tesseract": {
+              "nfc_chars": {
+                "edits": 1,
+                "denominator": 470,
+                "error_rate": 0.002127659574468085
+              },
+              "nfc_words": {
+                "edits": 1,
+                "denominator": 82,
+                "error_rate": 0.012195121951219513
+              },
+              "project_normalized_chars": {
+                "edits": 0,
+                "denominator": 453,
+                "error_rate": 0.0
+              },
+              "project_normalized_words": {
+                "edits": 0,
+                "denominator": 82,
+                "error_rate": 0.0
+              },
+              "input_sha256": "2e2de73b6899378810979b01458e46b7cac72ba0c027167173345785625a4c36",
+              "input_line_span_1based_inclusive": [
+                5,
+                12
+              ]
+            }
+          },
+          "definite_excluded_words_by_category": {
+            "title_and_footer": 17,
+            "clear_marginal_ocr_words": 2
+          },
+          "all_raw_words": 269
+        },
+        "51": {
+          "body_accuracy": {
+            "nkp": {
+              "nfc_chars": {
+                "edits": 7,
+                "denominator": 484,
+                "error_rate": 0.014462809917355372
+              },
+              "nfc_words": {
+                "edits": 4,
+                "denominator": 88,
+                "error_rate": 0.045454545454545456
+              },
+              "project_normalized_chars": {
+                "edits": 1,
+                "denominator": 468,
+                "error_rate": 0.002136752136752137
+              },
+              "project_normalized_words": {
+                "edits": 1,
+                "denominator": 88,
+                "error_rate": 0.011363636363636364
+              },
+              "input_sha256": "1b4020d0112b976819c301e0e39509efc971f4d736930c4a5af9d0eb7ffeb56b",
+              "input_line_span_1based_inclusive": [
+                25,
+                32
+              ]
+            },
+            "tesseract": {
+              "nfc_chars": {
+                "edits": 1,
+                "denominator": 484,
+                "error_rate": 0.002066115702479339
+              },
+              "nfc_words": {
+                "edits": 1,
+                "denominator": 88,
+                "error_rate": 0.011363636363636364
+              },
+              "project_normalized_chars": {
+                "edits": 0,
+                "denominator": 468,
+                "error_rate": 0.0
+              },
+              "project_normalized_words": {
+                "edits": 0,
+                "denominator": 88,
+                "error_rate": 0.0
+              },
+              "input_sha256": "f98b38474955a86979836485edcd55c48e2ac6a6bfa9b640ca60b7a794be72b0",
+              "input_line_span_1based_inclusive": [
+                29,
+                36
+              ]
+            }
+          },
+          "definite_excluded_words_by_category": {
+            "running_head_and_signature": 6,
+            "numbered_glosses": 94
+          },
+          "all_raw_words": 380
+        },
+        "221": {
+          "body_accuracy": {
+            "nkp": {
+              "nfc_chars": {
+                "edits": 13,
+                "denominator": 478,
+                "error_rate": 0.027196652719665274
+              },
+              "nfc_words": {
+                "edits": 9,
+                "denominator": 88,
+                "error_rate": 0.10227272727272728
+              },
+              "project_normalized_chars": {
+                "edits": 4,
+                "denominator": 461,
+                "error_rate": 0.008676789587852495
+              },
+              "project_normalized_words": {
+                "edits": 4,
+                "denominator": 88,
+                "error_rate": 0.045454545454545456
+              },
+              "input_sha256": "0af5b3adcf4460ff29ca6a0ac401da0a4dfaac21deafd13dece9096f196e3531",
+              "input_line_span_1based_inclusive": [
+                2,
+                9
+              ]
+            },
+            "tesseract": {
+              "nfc_chars": {
+                "edits": 63,
+                "denominator": 478,
+                "error_rate": 0.13179916317991633
+              },
+              "nfc_words": {
+                "edits": 14,
+                "denominator": 88,
+                "error_rate": 0.1590909090909091
+              },
+              "project_normalized_chars": {
+                "edits": 60,
+                "denominator": 461,
+                "error_rate": 0.1301518438177874
+              },
+              "project_normalized_words": {
+                "edits": 13,
+                "denominator": 88,
+                "error_rate": 0.14772727272727273
+              },
+              "input_sha256": "ca6a0e69bb71f36f6d82183e97a93be519a278c59983c1a339eff32d463fa36b",
+              "input_line_span_1based_inclusive": [
+                3,
+                10
+              ]
+            }
+          },
+          "definite_excluded_words_by_category": {
+            "running_head": 5,
+            "clear_marginal_ocr_words": 3
+          },
+          "all_raw_words": 398
+        },
+        "425": {
+          "body_accuracy": {
+            "nkp": {
+              "nfc_chars": {
+                "edits": 22,
+                "denominator": 475,
+                "error_rate": 0.04631578947368421
+              },
+              "nfc_words": {
+                "edits": 15,
+                "denominator": 82,
+                "error_rate": 0.18292682926829268
+              },
+              "project_normalized_chars": {
+                "edits": 14,
+                "denominator": 463,
+                "error_rate": 0.03023758099352052
+              },
+              "project_normalized_words": {
+                "edits": 13,
+                "denominator": 82,
+                "error_rate": 0.15853658536585366
+              },
+              "input_sha256": "493cbb5e6761f1c2ca138aaf698e239d75770fe9dbff0972bdc8c716bde36e64",
+              "input_line_span_1based_inclusive": [
+                2,
+                9
+              ]
+            },
+            "tesseract": {
+              "nfc_chars": {
+                "edits": 4,
+                "denominator": 475,
+                "error_rate": 0.008421052631578947
+              },
+              "nfc_words": {
+                "edits": 4,
+                "denominator": 82,
+                "error_rate": 0.04878048780487805
+              },
+              "project_normalized_chars": {
+                "edits": 1,
+                "denominator": 463,
+                "error_rate": 0.0021598272138228943
+              },
+              "project_normalized_words": {
+                "edits": 1,
+                "denominator": 82,
+                "error_rate": 0.012195121951219513
+              },
+              "input_sha256": "40100f5b033c415237c82b79db171ae97018d3b68bc6cd0867675e85bd2e553a",
+              "input_line_span_1based_inclusive": [
+                3,
+                10
+              ]
+            }
+          },
+          "definite_excluded_words_by_category": {
+            "running_head": 3
+          },
+          "all_raw_words": 380
+        }
+      },
+      "pooled_body": {
+        "nkp": {
+          "nfc_chars": {
+            "edits": 53,
+            "denominator": 1907,
+            "error_rate": 0.02779234399580493
+          },
+          "nfc_words": {
+            "edits": 36,
+            "denominator": 340,
+            "error_rate": 0.10588235294117647
+          },
+          "project_normalized_chars": {
+            "edits": 21,
+            "denominator": 1845,
+            "error_rate": 0.011382113821138212
+          },
+          "project_normalized_words": {
+            "edits": 20,
+            "denominator": 340,
+            "error_rate": 0.058823529411764705
+          }
+        },
+        "tesseract": {
+          "nfc_chars": {
+            "edits": 69,
+            "denominator": 1907,
+            "error_rate": 0.03618248557944415
+          },
+          "nfc_words": {
+            "edits": 20,
+            "denominator": 340,
+            "error_rate": 0.058823529411764705
+          },
+          "project_normalized_chars": {
+            "edits": 61,
+            "denominator": 1845,
+            "error_rate": 0.033062330623306234
+          },
+          "project_normalized_words": {
+            "edits": 14,
+            "denominator": 340,
+            "error_rate": 0.041176470588235294
+          }
+        }
+      },
+      "layout_note": "Named excluded material is a conservative lower bound. It excludes printed bracketed insertions and marginal debris with unclear OCR boundaries. Structural headings and the bold scriptural quotation on p. 51 were not counted as contamination."
+    },
+    "local_reference_and_control_checks": {
+      "file_sha256": "01473c190be9c9b73b373a29264c54b7747d4834ca1f81e2d159a5b8f398ecfe",
+      "reference_alias": "medieval_czech",
+      "project_retained_400_character_blocks": 2200,
+      "project_retained_normalized_characters": 884008,
+      "alphabet": "abcdefghijklmnoprstuvyz",
+      "unigram_counts": {
+        "a": 58301,
+        "b": 16700,
+        "c": 21552,
+        "d": 24934,
+        "e": 93057,
+        "f": 865,
+        "g": 484,
+        "h": 17703,
+        "i": 61360,
+        "j": 22482,
+        "k": 24305,
+        "l": 30110,
+        "m": 23077,
+        "n": 41388,
+        "o": 49822,
+        "p": 18703,
+        "q": 52,
+        "r": 27785,
+        "s": 44487,
+        "t": 45449,
+        "u": 22928,
+        "v": 31894,
+        "w": 60,
+        "x": 77,
+        "y": 17474,
+        "z": 28572
+      },
+      "pinned_abbreviation_control": [
+        {
+          "seed": 0,
+          "noise": 0,
+          "budget": {
+            "restarts": 4,
+            "iterations": 6000,
+            "seed": 1404,
+            "bpe_merges": 30,
+            "verbose_segmentations": [
+              "bpe-greedy",
+              "fixed-2"
+            ],
+            "verbose_min_unit_share": 0.0005,
+            "substitution_group_swap": 0.2,
+            "suffix_candidates": 48,
+            "lexical_sweeps": 4
+          },
+          "control_training_pages": 174,
+          "control_evaluation_pages": 29,
+          "control_evaluation_words": 2319,
+          "planted_identical_gold_words": 2313,
+          "fitted_identical_gold_words": 2304,
+          "planted_ordinary_map_size": 26,
+          "recovered_ordinary_map_size": 25,
+          "expected_suffixes": {
+            "cph$": "ie",
+            "cth$": "st",
+            "cfh$": "ti",
+            "ckh$": "est"
+          },
+          "fitted_suffixes": {
+            "cth$": "sti",
+            "ckh$": "est",
+            "cph$": "ie",
+            "cfh$": "ti"
+          }
+        },
+        {
+          "seed": 0,
+          "noise": 0.02,
+          "budget": {
+            "restarts": 4,
+            "iterations": 6000,
+            "seed": 1404,
+            "bpe_merges": 30,
+            "verbose_segmentations": [
+              "bpe-greedy",
+              "fixed-2"
+            ],
+            "verbose_min_unit_share": 0.0005,
+            "substitution_group_swap": 0.2,
+            "suffix_candidates": 48,
+            "lexical_sweeps": 4
+          },
+          "control_training_pages": 174,
+          "control_evaluation_pages": 29,
+          "control_evaluation_words": 2319,
+          "planted_identical_gold_words": 2133,
+          "fitted_identical_gold_words": 2120,
+          "planted_ordinary_map_size": 26,
+          "recovered_ordinary_map_size": 24,
+          "expected_suffixes": {
+            "ckh$": "ie",
+            "cth$": "st",
+            "cfh$": "ti",
+            "cph$": "est"
+          },
+          "fitted_suffixes": {
+            "cth$": "sti",
+            "ckh$": "ie",
+            "cph$": "est",
+            "cfh$": "ti"
+          }
+        }
+      ]
+    }
   }
 }
