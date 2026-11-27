@@ -1,0 +1,6 @@
+{
+  "title": "Word-level entropy within the natural-language range",
+  "statement": "On the public evaluation pages the Shannon entropy of the certain-word distribution is 9.65 bits; reference natural languages at matched token counts span [7.97, 12.28]. The fact asserts that Voynich's word-level entropy falls within this natural-language range on the held-out pages, i.e. its vocabulary is neither too small nor too uniform to be a real language under cipher.",
+  "metric": "word_entropy",
+  "params": {}
+}
