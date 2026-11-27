@@ -1,0 +1,75 @@
+{
+  "title": "Layout conditioning weakens the public first-glyph gain and training refits are unstable",
+  "program": "L2",
+  "on_path": false,
+  "hard": true,
+  "statement": "With a more strongly layout-conditioned first-glyph model, gains on a new folio split of the public practice-training data fall to 0.0041 nats per target for ZL and 0.0058 for IT; whole-evaluation-folio bootstrap intervals cross zero for both. All 99 within-folio exact-layout predecessor shuffles score lower, but 100 separately resampled training-folio fits have negative percentile intervals for the gain. The two uncertainty calculations condition on different things. These pages were used during the parent pilot’s training, so this is not an untouched research holdout or a replication of the paper’s unpublished classes.",
+  "check": "Confirm the result on genuinely untouched folios chosen before model design, with independent training refits and jointly resampled evaluation folios. Evaluate effects of smoothing, exact line length, within-line position, paragraph position and page composition with controls capable of retaining latent line mixtures and overlapping word boundaries. Resolve uncertain or shifted alignment by direct line-level comparison and report inclusion bias. Obtain the original model and classes if possible; otherwise register this alternative separately only after review, without presenting it as the paper’s result.",
+  "split_and_matching": "Take the existing public practice-training folios in manuscript order and reserve each fifth folio (38 assigned); fit on the other 154. The original P-L2-031 pilot had used these folios to train its own model; the split is new, but that previous use prevents calling it untouched. For the reserved folios, match ZL and IT paragraph lines by folio and line ID and require equal raw token counts, retaining 538 lines from 737 per witness. Retain only positions present in both where the immediate predecessor and target in each witness are nonempty, certain, ASCII lowercase alphabetic tokens. The same 3,977 positions occur in both; previous and target first-character classes jointly agree in 3,832. Equal length and index do not prove segmentation is aligned; unmatched lines and uncertain words are excluded.",
+  "model": "Classify each target and immediate predecessor by the first character using acdefgiklmnopqrsy and OTHER (18 classes). Exclude the first line token and do not bridge uncertain tokens. Condition the baseline on target position bins 1, 2–3, 4–6, 7+ (zero indexed), line length bins <=6, 7–10, >10, and paragraph-first-line flag. The position-only class distribution has add-one smoothing. The alternative additionally conditions on predecessor class, with 18 pseudo-observations distributed according to the corresponding baseline. Both use only the fit folios of ZL and sum to one per context. Score each target’s natural-log probability improvement; IT shares the same fit.",
+  "uncertainty": "Bootstrap evaluation folios together with all their rows 2,000 times, seed 31001, and report percentile entries 49 and 1949 for the original fixed fit. Separately draw 100 replacement samples of the training folios, seed 31002, refit both models for each and report sorted entries 2 and 97 against the fixed evaluation rows. The latter is a finite training-resampling sensitivity, not an independently collected model dataset or a joint train/evaluation confidence interval. The strict null shuffles predecessor class among rows within the same folio, exact line length, exact ordinal position and paragraph-start flag; run 99 seeds and retain whole-row target classes. About 72% of rows belong to cells with more than one predecessor class. This destroys local pairing but does not isolate latent line effects and may break consistency of shared words across overlapping pairs.",
+  "source_sha256": {
+    "ZL3b-n.txt": "bf5b6d4ac1e3a51b1847a9c388318d609020441ccd56984c901c32b09beccafc",
+    "IT2a-n.txt": "7f27a8b0feed8f6de0a99900df6bf912dd1d295c38e5f830bac8b41c3f536fb5"
+  },
+  "limitations": "The predictor and preprocessing are an explicit alternative, not the original author’s 18 classes or model. These are correlated transcriptions of the same folios, not two independent manuscripts. Folio bootstrap intervals and permutation tails answer different questions, and the training-refit intervals show sensitivity but do not alone prove population failure. Filtering to equal-length lines and mutually certain positions changes the target population; identical ordinal indices can still be shifted. Line-level latent effects and overlapping-pair dependence are uncontrolled by the null, and no season-heldout pages were accessed.",
+  "results": {
+    "fit_folios": 154,
+    "reserved_folios": 38,
+    "fit_tokens": 20149,
+    "matched_lines": 538,
+    "both_positions": 3977,
+    "class_pairs_agree": 3832,
+    "raw_lines": {
+      "zl": 737,
+      "it": 737
+    },
+    "raw_rows": {
+      "zl": 5647,
+      "it": 5597
+    },
+    "results": {
+      "zl": {
+        "tokens": 3977,
+        "folios": 36,
+        "gain": 0.004103438427079279,
+        "eval_folio_boot_95": [
+          -0.007604607722983144,
+          0.014423019341424715
+        ],
+        "shuffle_min": -0.024731554820879877,
+        "shuffle_max": -0.005665540311823027,
+        "shuffle_mean": -0.016151977012604155,
+        "shuffles_above_equal": 0,
+        "movable_cells": 806,
+        "moved_row_fraction": 0.7188835805883832,
+        "training_refit_boot_95": [
+          -0.03488958824855376,
+          -0.010723847099534565
+        ]
+      },
+      "it": {
+        "tokens": 3977,
+        "folios": 36,
+        "gain": 0.005797518666302866,
+        "eval_folio_boot_95": [
+          -0.006319421287227851,
+          0.01618076256976818
+        ],
+        "shuffle_min": -0.025895317287660792,
+        "shuffle_max": -0.009125546360233668,
+        "shuffle_mean": -0.016834843629900925,
+        "shuffles_above_equal": 0,
+        "movable_cells": 805,
+        "moved_row_fraction": 0.719889363842092,
+        "training_refit_boot_95": [
+          -0.03248825723227931,
+          -0.008361283580071027
+        ]
+      }
+    }
+  },
+  "reproducibility": {
+    "script": "from vs import corpus,ivtff\nfrom collections import Counter,defaultdict\nimport random,math,json\nCHARS='acdefgiklmnopqrsy';K=18; A=18\n\ndef cls(w):return CHARS.index(w[0]) if w[0] in CHARS else 17\ndef good(w):return bool(w) and w.isascii() and w.islower() and w.isalpha() and not ivtff.uncertain(w)\ndef pos(i):return 0 if i==1 else 1 if i<=3 else 2 if i<=6 else 3\ndef length(n):return 0 if n<=6 else 1 if n<=10 else 2\ndef rows(pages):\n out=[]\n for p in pages:\n  for l in p.lines:\n   if l.unit!='P':continue\n   for i in range(1,len(l.words)):\n    a,b=l.words[i-1:i+1]\n    if good(a) and good(b):out.append((p.id,l.id,i,len(l.words),l.para_start,cls(a),cls(b)))\n return out\n\ndef fit(rs):\n cnt=Counter();ctx=Counter();tot=Counter();ctot=Counter()\n for p,l,i,n,pf,a,b in rs:\n  z=(pos(i),length(n),pf);cnt[z,b]+=1;tot[z]+=1;ctx[z,a,b]+=1;ctot[z,a]+=1\n def loggain(r):\n  p,l,i,n,pf,a,b=r;z=(pos(i),length(n),pf);base=(cnt[z,b]+1)/(tot[z]+K);alt=(ctx[z,a,b]+A*base)/(ctot[z,a]+A);return math.log(alt/base)\n return loggain\n\ndef assess(rs,model,shuffle=False):\n v=[model(r) for r in rs];gp=defaultdict(list)\n for r,x in zip(rs,v):gp[r[0]].append(x)\n keys=sorted(gp);rng=random.Random(31001);bs=[]\n for i in range(2000):\n  picked=[rng.choice(keys) for k in keys];bs.append(sum(sum(gp[k]) for k in picked)/sum(len(gp[k]) for k in picked))\n bs.sort();out={'tokens':len(rs),'folios':len(keys),'gain':sum(v)/len(v),'eval_folio_boot_95':[bs[49],bs[1949]]}\n if shuffle:\n  batches=defaultdict(list)\n  for j,r in enumerate(rs):batches[(r[0],r[3],r[4],r[2])].append(j)\n  movable=[indices for indices in batches.values() if len(set(rs[i][5] for i in indices))>1]\n  sh=[]\n  for seed in range(99):\n   rng=random.Random(seed+6000);a=[r[5] for r in rs]\n   for g in batches.values():\n    vals=[a[i] for i in g];rng.shuffle(vals)\n    for i,x in zip(g,vals):a[i]=x\n   sh.append(sum(model(r[:5]+(a[j],r[6])) for j,r in enumerate(rs))/len(rs))\n  out.update({'shuffle_min':min(sh),'shuffle_max':max(sh),'shuffle_mean':sum(sh)/len(sh),'shuffles_above_equal':sum(x>=out['gain'] for x in sh),'movable_cells':len(movable),'moved_row_fraction':sum(len(g) for g in movable)/len(rs)})\n return out\nzltrain=corpus.split_pages('practice','zl')[0];ittrain=corpus.split_pages('practice','it')[0];ids=[p.id for p in zltrain];assert len(set(ids))==len(ids)\n# Reserve every fifth training folio in original manuscript order.\ntest_ids={p for i,p in enumerate(ids) if i%5==4};train_ids=set(ids)-test_ids\nassert train_ids.isdisjoint(test_ids)\npages={t:[p for p in ps if p.id in test_ids] for t,ps in [('zl',zltrain),('it',ittrain)]}\nlines={t:{(p.id,l.id):len(l.words) for p in pages[t] for l in p.lines if l.unit=='P'} for t in pages};matched={k for k,n in lines['zl'].items() if lines['it'].get(k)==n}\nallrows={t:rows(pages[t]) for t in pages};rm={t:{(r[0],r[1],r[2]):r for r in allrows[t] if (r[0],r[1]) in matched} for t in pages};keys=sorted(rm['zl'].keys()&rm['it'].keys());ev={t:[rm[t][k] for k in keys] for t in rm}\ntr=rows([p for p in zltrain if p.id in train_ids]);mod=fit(tr);out={'fit_folios':len(train_ids),'reserved_folios':len(test_ids),'fit_tokens':len(tr),'matched_lines':len(matched),'both_positions':len(keys),'class_pairs_agree':sum(rm['zl'][k][-2:]==rm['it'][k][-2:] for k in keys),'raw_lines':{t:len(lines[t]) for t in lines},'raw_rows':{t:len(allrows[t]) for t in allrows},'results':{t:assess(ev[t],mod,True) for t in ev}}\nby=defaultdict(list)\nfor r in tr:by[r[0]].append(r)\nfolios=sorted(by);rng=random.Random(31002);refits={t:[] for t in ev}\nfor rep in range(100):\n chosen=[rng.choice(folios) for f in folios];sample=[r for f in chosen for r in by[f]];m=fit(sample)\n for t in ev:refits[t].append(sum(m(r) for r in ev[t])/len(ev[t]))\nfor t,vals in refits.items():vals.sort();out['results'][t]['training_refit_boot_95']=[vals[2],vals[97]]\nprint(json.dumps(out,indent=2))\n"
+  }
+}
