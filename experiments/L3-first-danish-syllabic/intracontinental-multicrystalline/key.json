@@ -1,0 +1,77 @@
+{
+  "id": "K-danish-syllabic-001",
+  "family": "syllabic",
+  "segmentation": "eva-basic",
+  "target": {
+    "language": "danish",
+    "period": "1871/1907 Danish Bible, distant period proxy"
+  },
+  "key": {
+    "marker": "q",
+    "map": {
+      "*": "i",
+      "?": "t",
+      "a": "e",
+      "b": "d",
+      "c": "e",
+      "cfh": "d",
+      "ch": "r",
+      "ckh": "r",
+      "cph": "d",
+      "cth": "d",
+      "d": "d",
+      "e": "a",
+      "f": "d",
+      "g": "s",
+      "h": "r",
+      "i": "n",
+      "j": "r",
+      "k": "r",
+      "l": "n",
+      "m": "n",
+      "n": "e",
+      "o": "e",
+      "p": "d",
+      "r": "n",
+      "s": "d",
+      "sh": "b",
+      "t": "r",
+      "u": "e",
+      "v": "i",
+      "x": "i",
+      "y": "e",
+      "z": "d",
+      "qo": "va",
+      "qe": "va",
+      "qk": "bo",
+      "qy": "de",
+      "qcth": "va",
+      "qckh": "ti",
+      "qa": "de",
+      "q*": "va",
+      "q?": "fa",
+      "qch": "ti",
+      "qcph": "pa"
+    }
+  },
+  "search": {
+    "budget": {
+      "syllable_candidates": 64,
+      "sign_limit": 24,
+      "lexical_sweeps": 5,
+      "restarts": 4,
+      "iterations": 6000,
+      "seed": 1404,
+      "bpe_merges": 30,
+      "verbose_segmentations": [
+        "bpe-greedy",
+        "fixed-2"
+      ],
+      "verbose_min_unit_share": 0.0005,
+      "substitution_group_swap": 0.2
+    }
+  },
+  "transliteration": "zl",
+  "reading_order": "normal",
+  "spaces": "word_breaks"
+}
