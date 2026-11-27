@@ -1,0 +1,1315 @@
+{
+  "program": "J",
+  "title": "Italian cross-work padding results change with context length",
+  "hard": false,
+  "on_path": true,
+  "statement": "Train on the first 64 normalized blocks of Dante’s Inferno (cantos I–X) and evaluate the first 40 blocks of Villani book I. For constant padding, output versus source context at order 3 costs 3.144 versus 2.982 bits per original symbol, while order 4 costs 3.004 versus 3.211. For deterministic two-symbol padding, the corresponding figures are 3.098 versus 2.982 at order 3 and 3.006 versus 3.211 at order 4. With random marker permutations the three-seed mean at order 3 is 4.017 versus 4.141. Thus this descriptive cross-work pair does not retain the same ranking across orders or marker regimes; no finite-context rate difference establishes information loss.",
+  "check": "Use independently authored works across multiple languages and genres, document-level validation, and random marker replicates. Fix context selection before evaluation; report total bits and both denominators, model and transform costs, and a parsable code when markers collide with source characters. Compare lossless inverse baselines and exact round trips; do not infer information-theoretic differences from finite sample models.",
+  "method": "The state-aware paired models and padding methods are those from P-J-036, including identical state alphabets and nested interpolation, and shared known source/marker alphabets and boundaries. Select a different pre-existing Italian poetry training passage and historical prose evaluation passage from pinned texts, stripping bracketed notes and using project Italian normalization. Source texts are independent works, not fresh to the project. Train on 64 blocks and score 40, measuring context orders 1,2,3,4,6,8 for each form; use seeds 1,2,3 for all transforms. Constant and deterministic transforms repeat exactly across seeds, whereas random marker permutations vary. The source-only inverse reference uses order 3, inherited from the Latin pilot, not reselected here. Capture normalized and raw hashes, output counts, total bits, per-original and per-output bits, and assert every transformed block decodes to its normalized source.",
+  "limitations": "One train/test work pair, one source language, and three random marker seeds; no independent document folds, model cost, transform cost or transmitted block boundaries. Dante headings and prose headings or unbracketed editorial material may remain; bracket stripping is not a complete editorial audit. These are descriptive rates using known alignment and shared finite tables, with no true information-theoretic advantage or manuscript result claimed.",
+  "summary_bits_per_original": {
+    "addB": {
+      "1": {
+        "output": 3.818965,
+        "source": 3.187648
+      },
+      "2": {
+        "output": 3.188133,
+        "source": 2.965457
+      },
+      "3": {
+        "output": 3.143641,
+        "source": 2.981733
+      },
+      "4": {
+        "output": 3.004482,
+        "source": 3.211124
+      },
+      "6": {
+        "output": 3.252995,
+        "source": 3.547218
+      },
+      "8": {
+        "output": 3.946217,
+        "source": 3.659924
+      }
+    },
+    "matched_deterministic": {
+      "1": {
+        "output": 3.644939,
+        "source": 3.188898
+      },
+      "2": {
+        "output": 3.188346,
+        "source": 2.965536
+      },
+      "3": {
+        "output": 3.097834,
+        "source": 2.981779
+      },
+      "4": {
+        "output": 3.005683,
+        "source": 3.211165
+      },
+      "6": {
+        "output": 3.330962,
+        "source": 3.547257
+      },
+      "8": {
+        "output": 4.008957,
+        "source": 3.659963
+      }
+    },
+    "matched_random": {
+      "1": {
+        "output": 4.619266,
+        "source": 3.998246
+      },
+      "2": {
+        "output": 4.00268,
+        "source": 3.919363
+      },
+      "3": {
+        "output": 4.016631,
+        "source": 4.140613
+      },
+      "4": {
+        "output": 4.054979,
+        "source": 4.365021
+      },
+      "6": {
+        "output": 4.833407,
+        "source": 4.492995
+      },
+      "8": {
+        "output": 5.306026,
+        "source": 4.50708
+      }
+    }
+  },
+  "results": {
+    "training": {
+      "id": "it_dante",
+      "pin_sha256": "db0181a5820b1a60b93b87036351cad97b86ea3ab0d725b16dbc6017ab5ccd37",
+      "normalized_sha256": "6f1eb92c86d515697af26705cae0ad6ec76adf6d243898e7342908638983f52e",
+      "blocks": 119
+    },
+    "evaluation": {
+      "id": "it_villani",
+      "pin_sha256": "3acf82f4b25b636048d915961bb8cec2262e9b7cf9ff860ff056ab4bf1e1fd6e",
+      "normalized_sha256": "9fbcc70ca8a304234a2b559259570222de407e554efc784ef2f9de72f3797fd8",
+      "blocks": 581
+    },
+    "train_blocks": 64,
+    "eval_blocks": 40,
+    "source_symbols": 16098,
+    "source_bits": 47998.61269593318,
+    "rows": [
+      {
+        "kind": "addB",
+        "seed": 1,
+        "order": 1,
+        "form": "output",
+        "bits": 61477.701959055004,
+        "per_original": 3.8189652105264633,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 2.086182156132037
+      },
+      {
+        "kind": "addB",
+        "seed": 1,
+        "order": 1,
+        "form": "source",
+        "bits": 51314.765532926715,
+        "per_original": 3.1876484987530573,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.741313432180485
+      },
+      {
+        "kind": "addB",
+        "seed": 1,
+        "order": 2,
+        "form": "output",
+        "bits": 51322.56149206717,
+        "per_original": 3.18813277997684,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.7415779799812403
+      },
+      {
+        "kind": "addB",
+        "seed": 1,
+        "order": 2,
+        "form": "source",
+        "bits": 47737.93106423331,
+        "per_original": 2.9654572657617906,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.619937258279321
+      },
+      {
+        "kind": "addB",
+        "seed": 1,
+        "order": 3,
+        "form": "output",
+        "bits": 50606.332072850135,
+        "per_original": 3.1436409537116496,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.7172734762920403
+      },
+      {
+        "kind": "addB",
+        "seed": 1,
+        "order": 3,
+        "form": "source",
+        "bits": 47999.93753593946,
+        "per_original": 2.981732981484623,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.628828176590297
+      },
+      {
+        "kind": "addB",
+        "seed": 1,
+        "order": 4,
+        "form": "output",
+        "bits": 48366.15813979803,
+        "per_original": 3.004482428860606,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.6412554935626602
+      },
+      {
+        "kind": "addB",
+        "seed": 1,
+        "order": 4,
+        "form": "source",
+        "bits": 51692.67740891936,
+        "per_original": 3.2111242023182602,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.7541374803664649
+      },
+      {
+        "kind": "addB",
+        "seed": 1,
+        "order": 6,
+        "form": "output",
+        "bits": 52366.70909415013,
+        "per_original": 3.252994725689535,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.7770100476483808
+      },
+      {
+        "kind": "addB",
+        "seed": 1,
+        "order": 6,
+        "form": "source",
+        "bits": 57103.1157853822,
+        "per_original": 3.547218026176059,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.9377351041902406
+      },
+      {
+        "kind": "addB",
+        "seed": 1,
+        "order": 8,
+        "form": "output",
+        "bits": 63526.19936789083,
+        "per_original": 3.9462168820903734,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 2.1556957944922064
+      },
+      {
+        "kind": "addB",
+        "seed": 1,
+        "order": 8,
+        "form": "source",
+        "bits": 58917.45761675034,
+        "per_original": 3.659924066141778,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.9993029154959565
+      },
+      {
+        "kind": "addB",
+        "seed": 2,
+        "order": 1,
+        "form": "output",
+        "bits": 61477.701959055004,
+        "per_original": 3.8189652105264633,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 2.086182156132037
+      },
+      {
+        "kind": "addB",
+        "seed": 2,
+        "order": 1,
+        "form": "source",
+        "bits": 51314.765532926715,
+        "per_original": 3.1876484987530573,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.741313432180485
+      },
+      {
+        "kind": "addB",
+        "seed": 2,
+        "order": 2,
+        "form": "output",
+        "bits": 51322.56149206717,
+        "per_original": 3.18813277997684,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.7415779799812403
+      },
+      {
+        "kind": "addB",
+        "seed": 2,
+        "order": 2,
+        "form": "source",
+        "bits": 47737.93106423331,
+        "per_original": 2.9654572657617906,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.619937258279321
+      },
+      {
+        "kind": "addB",
+        "seed": 2,
+        "order": 3,
+        "form": "output",
+        "bits": 50606.332072850135,
+        "per_original": 3.1436409537116496,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.7172734762920403
+      },
+      {
+        "kind": "addB",
+        "seed": 2,
+        "order": 3,
+        "form": "source",
+        "bits": 47999.93753593946,
+        "per_original": 2.981732981484623,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.628828176590297
+      },
+      {
+        "kind": "addB",
+        "seed": 2,
+        "order": 4,
+        "form": "output",
+        "bits": 48366.15813979803,
+        "per_original": 3.004482428860606,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.6412554935626602
+      },
+      {
+        "kind": "addB",
+        "seed": 2,
+        "order": 4,
+        "form": "source",
+        "bits": 51692.67740891936,
+        "per_original": 3.2111242023182602,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.7541374803664649
+      },
+      {
+        "kind": "addB",
+        "seed": 2,
+        "order": 6,
+        "form": "output",
+        "bits": 52366.70909415013,
+        "per_original": 3.252994725689535,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.7770100476483808
+      },
+      {
+        "kind": "addB",
+        "seed": 2,
+        "order": 6,
+        "form": "source",
+        "bits": 57103.1157853822,
+        "per_original": 3.547218026176059,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.9377351041902406
+      },
+      {
+        "kind": "addB",
+        "seed": 2,
+        "order": 8,
+        "form": "output",
+        "bits": 63526.19936789083,
+        "per_original": 3.9462168820903734,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 2.1556957944922064
+      },
+      {
+        "kind": "addB",
+        "seed": 2,
+        "order": 8,
+        "form": "source",
+        "bits": 58917.45761675034,
+        "per_original": 3.659924066141778,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.9993029154959565
+      },
+      {
+        "kind": "addB",
+        "seed": 3,
+        "order": 1,
+        "form": "output",
+        "bits": 61477.701959055004,
+        "per_original": 3.8189652105264633,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 2.086182156132037
+      },
+      {
+        "kind": "addB",
+        "seed": 3,
+        "order": 1,
+        "form": "source",
+        "bits": 51314.765532926715,
+        "per_original": 3.1876484987530573,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.741313432180485
+      },
+      {
+        "kind": "addB",
+        "seed": 3,
+        "order": 2,
+        "form": "output",
+        "bits": 51322.56149206717,
+        "per_original": 3.18813277997684,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.7415779799812403
+      },
+      {
+        "kind": "addB",
+        "seed": 3,
+        "order": 2,
+        "form": "source",
+        "bits": 47737.93106423331,
+        "per_original": 2.9654572657617906,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.619937258279321
+      },
+      {
+        "kind": "addB",
+        "seed": 3,
+        "order": 3,
+        "form": "output",
+        "bits": 50606.332072850135,
+        "per_original": 3.1436409537116496,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.7172734762920403
+      },
+      {
+        "kind": "addB",
+        "seed": 3,
+        "order": 3,
+        "form": "source",
+        "bits": 47999.93753593946,
+        "per_original": 2.981732981484623,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.628828176590297
+      },
+      {
+        "kind": "addB",
+        "seed": 3,
+        "order": 4,
+        "form": "output",
+        "bits": 48366.15813979803,
+        "per_original": 3.004482428860606,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.6412554935626602
+      },
+      {
+        "kind": "addB",
+        "seed": 3,
+        "order": 4,
+        "form": "source",
+        "bits": 51692.67740891936,
+        "per_original": 3.2111242023182602,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.7541374803664649
+      },
+      {
+        "kind": "addB",
+        "seed": 3,
+        "order": 6,
+        "form": "output",
+        "bits": 52366.70909415013,
+        "per_original": 3.252994725689535,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.7770100476483808
+      },
+      {
+        "kind": "addB",
+        "seed": 3,
+        "order": 6,
+        "form": "source",
+        "bits": 57103.1157853822,
+        "per_original": 3.547218026176059,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.9377351041902406
+      },
+      {
+        "kind": "addB",
+        "seed": 3,
+        "order": 8,
+        "form": "output",
+        "bits": 63526.19936789083,
+        "per_original": 3.9462168820903734,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 2.1556957944922064
+      },
+      {
+        "kind": "addB",
+        "seed": 3,
+        "order": 8,
+        "form": "source",
+        "bits": 58917.45761675034,
+        "per_original": 3.659924066141778,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.9993029154959565
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 1,
+        "order": 1,
+        "form": "output",
+        "bits": 58676.23127877789,
+        "per_original": 3.644939202309472,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.9911171495055104
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 1,
+        "order": 1,
+        "form": "source",
+        "bits": 51334.88280364429,
+        "per_original": 3.1888981739125537,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.7419960909309542
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 1,
+        "order": 2,
+        "form": "output",
+        "bits": 51325.991737185584,
+        "per_original": 3.188345865150055,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.7416943817973323
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 1,
+        "order": 2,
+        "form": "source",
+        "bits": 47739.19321010847,
+        "per_original": 2.9655356696551416,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.619980087892649
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 1,
+        "order": 3,
+        "form": "output",
+        "bits": 49868.93651076404,
+        "per_original": 3.0978342968545185,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.6922507214620124
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 1,
+        "order": 3,
+        "form": "source",
+        "bits": 48000.67311406735,
+        "per_original": 2.981778675243344,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.6288531376723794
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 1,
+        "order": 4,
+        "form": "output",
+        "bits": 48385.49220565427,
+        "per_original": 3.005683451711658,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.6419115750671645
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 1,
+        "order": 4,
+        "form": "source",
+        "bits": 51693.330572407554,
+        "per_original": 3.2111647765192917,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.7541596447930894
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 1,
+        "order": 6,
+        "form": "output",
+        "bits": 53621.822212206054,
+        "per_original": 3.330961747559079,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.8196010116463421
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 1,
+        "order": 6,
+        "form": "source",
+        "bits": 57103.74100483896,
+        "per_original": 3.5472568645073275,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.937756320365094
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 1,
+        "order": 8,
+        "form": "output",
+        "bits": 64536.18649813735,
+        "per_original": 4.008956795759557,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 2.1899686619205725
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 1,
+        "order": 8,
+        "form": "source",
+        "bits": 58918.07958749571,
+        "per_original": 3.659962702664661,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.999324021429153
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 2,
+        "order": 1,
+        "form": "output",
+        "bits": 58676.23127877789,
+        "per_original": 3.644939202309472,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.9911171495055104
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 2,
+        "order": 1,
+        "form": "source",
+        "bits": 51334.88280364429,
+        "per_original": 3.1888981739125537,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.7419960909309542
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 2,
+        "order": 2,
+        "form": "output",
+        "bits": 51325.991737185584,
+        "per_original": 3.188345865150055,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.7416943817973323
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 2,
+        "order": 2,
+        "form": "source",
+        "bits": 47739.19321010847,
+        "per_original": 2.9655356696551416,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.619980087892649
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 2,
+        "order": 3,
+        "form": "output",
+        "bits": 49868.93651076404,
+        "per_original": 3.0978342968545185,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.6922507214620124
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 2,
+        "order": 3,
+        "form": "source",
+        "bits": 48000.67311406735,
+        "per_original": 2.981778675243344,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.6288531376723794
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 2,
+        "order": 4,
+        "form": "output",
+        "bits": 48385.49220565427,
+        "per_original": 3.005683451711658,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.6419115750671645
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 2,
+        "order": 4,
+        "form": "source",
+        "bits": 51693.330572407554,
+        "per_original": 3.2111647765192917,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.7541596447930894
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 2,
+        "order": 6,
+        "form": "output",
+        "bits": 53621.822212206054,
+        "per_original": 3.330961747559079,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.8196010116463421
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 2,
+        "order": 6,
+        "form": "source",
+        "bits": 57103.74100483896,
+        "per_original": 3.5472568645073275,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.937756320365094
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 2,
+        "order": 8,
+        "form": "output",
+        "bits": 64536.18649813735,
+        "per_original": 4.008956795759557,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 2.1899686619205725
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 2,
+        "order": 8,
+        "form": "source",
+        "bits": 58918.07958749571,
+        "per_original": 3.659962702664661,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.999324021429153
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 3,
+        "order": 1,
+        "form": "output",
+        "bits": 58676.23127877789,
+        "per_original": 3.644939202309472,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.9911171495055104
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 3,
+        "order": 1,
+        "form": "source",
+        "bits": 51334.88280364429,
+        "per_original": 3.1888981739125537,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.7419960909309542
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 3,
+        "order": 2,
+        "form": "output",
+        "bits": 51325.991737185584,
+        "per_original": 3.188345865150055,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.7416943817973323
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 3,
+        "order": 2,
+        "form": "source",
+        "bits": 47739.19321010847,
+        "per_original": 2.9655356696551416,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.619980087892649
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 3,
+        "order": 3,
+        "form": "output",
+        "bits": 49868.93651076404,
+        "per_original": 3.0978342968545185,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.6922507214620124
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 3,
+        "order": 3,
+        "form": "source",
+        "bits": 48000.67311406735,
+        "per_original": 2.981778675243344,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.6288531376723794
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 3,
+        "order": 4,
+        "form": "output",
+        "bits": 48385.49220565427,
+        "per_original": 3.005683451711658,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.6419115750671645
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 3,
+        "order": 4,
+        "form": "source",
+        "bits": 51693.330572407554,
+        "per_original": 3.2111647765192917,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.7541596447930894
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 3,
+        "order": 6,
+        "form": "output",
+        "bits": 53621.822212206054,
+        "per_original": 3.330961747559079,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.8196010116463421
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 3,
+        "order": 6,
+        "form": "source",
+        "bits": 57103.74100483896,
+        "per_original": 3.5472568645073275,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.937756320365094
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 3,
+        "order": 8,
+        "form": "output",
+        "bits": 64536.18649813735,
+        "per_original": 4.008956795759557,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 2.1899686619205725
+      },
+      {
+        "kind": "matched_deterministic",
+        "seed": 3,
+        "order": 8,
+        "form": "source",
+        "bits": 58918.07958749571,
+        "per_original": 3.659962702664661,
+        "output_symbols": 29469,
+        "inverse_bits": 47998.61269593318,
+        "per_output": 1.999324021429153
+      },
+      {
+        "kind": "matched_random",
+        "seed": 1,
+        "order": 1,
+        "form": "output",
+        "bits": 74348.31401637012,
+        "per_original": 4.618481427281036,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.5229330488435346
+      },
+      {
+        "kind": "matched_random",
+        "seed": 1,
+        "order": 1,
+        "form": "source",
+        "bits": 64327.16782885233,
+        "per_original": 3.99597265678049,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.1828758298161572
+      },
+      {
+        "kind": "matched_random",
+        "seed": 1,
+        "order": 2,
+        "form": "output",
+        "bits": 64396.09176632054,
+        "per_original": 4.0002541785514065,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.185214692263753
+      },
+      {
+        "kind": "matched_random",
+        "seed": 1,
+        "order": 2,
+        "form": "source",
+        "bits": 63115.91807142951,
+        "per_original": 3.9207304057292527,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.1417733235409924
+      },
+      {
+        "kind": "matched_random",
+        "seed": 1,
+        "order": 3,
+        "form": "output",
+        "bits": 64688.96053597601,
+        "per_original": 4.0184470453457575,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.1951528906978863
+      },
+      {
+        "kind": "matched_random",
+        "seed": 1,
+        "order": 3,
+        "form": "source",
+        "bits": 66537.3002410866,
+        "per_original": 4.133265016839769,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.2578743846444262
+      },
+      {
+        "kind": "matched_random",
+        "seed": 1,
+        "order": 4,
+        "form": "output",
+        "bits": 65397.22870102895,
+        "per_original": 4.062444322339977,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.219187237470866
+      },
+      {
+        "kind": "matched_random",
+        "seed": 1,
+        "order": 4,
+        "form": "source",
+        "bits": 70114.99976067671,
+        "per_original": 4.355509986375743,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.3792799131520144
+      },
+      {
+        "kind": "matched_random",
+        "seed": 1,
+        "order": 6,
+        "form": "output",
+        "bits": 77829.52471056551,
+        "per_original": 4.834732557495683,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.641064328975042
+      },
+      {
+        "kind": "matched_random",
+        "seed": 1,
+        "order": 6,
+        "form": "source",
+        "bits": 72223.37363998462,
+        "per_original": 4.486481155422079,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.4508253975358723
+      },
+      {
+        "kind": "matched_random",
+        "seed": 1,
+        "order": 8,
+        "form": "output",
+        "bits": 85349.67411737912,
+        "per_original": 5.30188061357803,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.8962528120187017
+      },
+      {
+        "kind": "matched_random",
+        "seed": 1,
+        "order": 8,
+        "form": "source",
+        "bits": 72429.83835847443,
+        "per_original": 4.499306644208873,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.4578315639646555
+      },
+      {
+        "kind": "matched_random",
+        "seed": 2,
+        "order": 1,
+        "form": "output",
+        "bits": 74349.8352049651,
+        "per_original": 4.618575922783271,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.522984668803322
+      },
+      {
+        "kind": "matched_random",
+        "seed": 2,
+        "order": 1,
+        "form": "source",
+        "bits": 64385.65298956629,
+        "per_original": 3.999605726771418,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.184860463183898
+      },
+      {
+        "kind": "matched_random",
+        "seed": 2,
+        "order": 2,
+        "form": "output",
+        "bits": 64448.46230679953,
+        "per_original": 4.003507411280875,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.1869918323254787
+      },
+      {
+        "kind": "matched_random",
+        "seed": 2,
+        "order": 2,
+        "form": "source",
+        "bits": 63140.74700856177,
+        "per_original": 3.9222727673351825,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.1426158678123373
+      },
+      {
+        "kind": "matched_random",
+        "seed": 2,
+        "order": 3,
+        "form": "output",
+        "bits": 64777.27046379609,
+        "per_original": 4.0239328154923655,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.1981495966539786
+      },
+      {
+        "kind": "matched_random",
+        "seed": 2,
+        "order": 3,
+        "form": "source",
+        "bits": 66945.71785041236,
+        "per_original": 4.158635721854414,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.2717336133025334
+      },
+      {
+        "kind": "matched_random",
+        "seed": 2,
+        "order": 4,
+        "form": "output",
+        "bits": 65398.49893158545,
+        "per_original": 4.062523228449836,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.2192303414294834
+      },
+      {
+        "kind": "matched_random",
+        "seed": 2,
+        "order": 4,
+        "form": "source",
+        "bits": 70569.54636574541,
+        "per_original": 4.383746202369575,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.3947044815143173
+      },
+      {
+        "kind": "matched_random",
+        "seed": 2,
+        "order": 6,
+        "form": "output",
+        "bits": 78168.28597109193,
+        "per_original": 4.855776243700579,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.6525598415654392
+      },
+      {
+        "kind": "matched_random",
+        "seed": 2,
+        "order": 6,
+        "form": "source",
+        "bits": 72615.55423296896,
+        "per_original": 4.510843224808608,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.4641336398577813
+      },
+      {
+        "kind": "matched_random",
+        "seed": 2,
+        "order": 8,
+        "form": "output",
+        "bits": 85813.1139274922,
+        "per_original": 5.330669271182272,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.911979162085317
+      },
+      {
+        "kind": "matched_random",
+        "seed": 2,
+        "order": 8,
+        "form": "source",
+        "bits": 72852.94140999157,
+        "per_original": 4.525589601813366,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.472189127896826
+      },
+      {
+        "kind": "matched_random",
+        "seed": 3,
+        "order": 1,
+        "form": "output",
+        "bits": 74384.67813397716,
+        "per_original": 4.620740348737555,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.52416702751967
+      },
+      {
+        "kind": "matched_random",
+        "seed": 3,
+        "order": 1,
+        "form": "source",
+        "bits": 64378.457206079234,
+        "per_original": 3.9991587281699115,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.184616281722462
+      },
+      {
+        "kind": "matched_random",
+        "seed": 3,
+        "order": 2,
+        "form": "output",
+        "bits": 64460.875835728264,
+        "per_original": 4.004278533714018,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.187413072575529
+      },
+      {
+        "kind": "matched_random",
+        "seed": 3,
+        "order": 2,
+        "form": "source",
+        "bits": 63025.06094586791,
+        "per_original": 3.9150864048868126,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.1386901810671524
+      },
+      {
+        "kind": "matched_random",
+        "seed": 3,
+        "order": 3,
+        "form": "output",
+        "bits": 64512.93493391839,
+        "per_original": 4.0075124197986325,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.189179644165679
+      },
+      {
+        "kind": "matched_random",
+        "seed": 3,
+        "order": 3,
+        "form": "source",
+        "bits": 66483.73341352073,
+        "per_original": 4.129937471333131,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.2560566498191568
+      },
+      {
+        "kind": "matched_random",
+        "seed": 3,
+        "order": 4,
+        "form": "output",
+        "bits": 65035.44024704962,
+        "per_original": 4.039970197977986,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.206910320915186
+      },
+      {
+        "kind": "matched_random",
+        "seed": 3,
+        "order": 4,
+        "form": "source",
+        "bits": 70119.79159572058,
+        "per_original": 4.355807652858776,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.3794425191123074
+      },
+      {
+        "kind": "matched_random",
+        "seed": 3,
+        "order": 6,
+        "form": "output",
+        "bits": 77426.75260939581,
+        "per_original": 4.8097125487262895,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.6273966747903157
+      },
+      {
+        "kind": "matched_random",
+        "seed": 3,
+        "order": 6,
+        "form": "source",
+        "bits": 72145.766196123,
+        "per_original": 4.481660218419866,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.4481918692905427
+      },
+      {
+        "kind": "matched_random",
+        "seed": 3,
+        "order": 8,
+        "form": "output",
+        "bits": 85086.42225196221,
+        "per_original": 5.285527534598224,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.8873196325617503
+      },
+      {
+        "kind": "matched_random",
+        "seed": 3,
+        "order": 8,
+        "form": "source",
+        "bits": 72382.16438629534,
+        "per_original": 4.496345160038224,
+        "output_symbols": 29469,
+        "inverse_bits": 60651.45723040601,
+        "per_output": 2.456213797084914
+      }
+    ]
+  },
+  "reproduction": {
+    "instructions": "Save scripts together, fetch pinned inputs, run italian_padding.py with the repository root and script directory on PYTHONPATH. The final script prints results; recompute per_output as bits/output_symbols. The source and marker alphabets, rules and framing are assumed shared.",
+    "scripts": {
+      "extract_works.py": "\"\"\"Prepare six pinned, public-domain reference work spans for P-J-011.\"\"\"\nimport hashlib\nimport json\nfrom pathlib import Path\nimport re\n\nfrom vs import path, refcorpus\n\n\nWORKS = {\n    \"la_augustine\": {\n        \"work\": \"Augustine, Confessiones, Books I–II\",\n        \"start\": \"1. _Magnus es, Domine\",\n        \"stop\": \"\\nLIBER TERTIUS.\",\n        \"cleaning\": \"Remove inline square-bracketed sidenotes and footnote calls, braced page numbers, and four-space-indented editorial summaries.\",\n        \"confidence\": \"High. Main prose of the first two books in the 1838 Latin edition. Augustine’s own Biblical quotations remain.\",\n    },\n    \"la_vulg_daniel\": {\n        \"work\": \"Clementine Vulgate, Daniel\",\n        \"start\": \"\\n1:1 Anno tertio\",\n        \"stop\": \"\\nPARALLELISMUS MEMBRORUM.\",\n        \"cleaning\": \"Keep only blank-line-delimited paragraphs opening with a decimal chapter:verse token. The project normalizer removes the verse numbers.\",\n        \"confidence\": \"High. The main verses only, independent of the English transcriber notes and Latin critical appendix. The Vulgate includes the Septuagint additions.\",\n    },\n    \"it_dante\": {\n        \"work\": \"Dante, Commedia, Inferno\",\n        \"start\": \"Nel mezzo del cammin di nostra vita\",\n        \"stop\": \"\\n  PURGATORIO\",\n        \"cleaning\": \"Remove remaining Inferno canto-title lines. The raw pin contains the whole Commedia, while this span is Inferno only.\",\n        \"confidence\": \"High. Starts at the first verse and ends after Inferno XXXIV.\",\n    },\n    \"it_villani\": {\n        \"work\": \"Matteo Villani, Cronica, Book I\",\n        \"start\": \"Esaminando nell’animo la vostra esortazione\",\n        \"stop\": \"\\nLIBRO SECONDO\",\n        \"cleaning\": \"Keep the original author’s prologue and main Book I. Chapter headings remain. No modern introduction or table of contents.\",\n        \"confidence\": \"High for main medieval prose. Chapter headings from the 1825 edition remain.\",\n    },\n    \"de_nibelunge\": {\n        \"work\": \"Der Nibelunge liet, Middle High German text\",\n        \"start\": \"Uns ist in alten mæren\",\n        \"stop\": None,\n        \"cleaning\": \"Drop letter-period-decimal manuscript and stanza tags, preserving the text of stanza and section headings. Use the text through its ending.\",\n        \"confidence\": \"High. Gutenberg #48888 is Simrock’s Middle High German text. His modern German translation and editorial introduction are a different Gutenberg file (#14915).\",\n    },\n    \"de_walther\": {\n        \"work\": \"Walther von der Vogelweide, Gedichte und Sprüche in Auswahl, poems\",\n        \"start\": \"Uns hât der winter geschadet über al:\",\n        \"stop\": \"\\nANMERKUNGEN\",\n        \"cleaning\": \"Omit all-uppercase section headings and bracket-initial editorial lines before the start of the commentary.\",\n        \"confidence\": \"High. A single-author selection of lyric poetry independent of the Nibelungen epic. The modern notes are after the stop marker.\",\n    },\n}\nPAIRS = {\n    \"latin\": {\n        \"train\": \"la_augustine\",\n        \"evaluation\": \"la_vulg_daniel\",\n        \"rationale\": \"Autobiographical theological prose versus an independent biblical book. Augustine’s own brief scriptural quotations are part of his work. No consecutive 12-word passage overlaps the selected Daniel edition.\",\n    },\n    \"italian\": {\n        \"train\": \"it_dante\",\n        \"evaluation\": \"it_villani\",\n        \"rationale\": \"Dante’s narrative poem versus Matteo Villani’s historical chronicle. #426 used the same IDs, while these spans exclude Villani’s modern preface and reset the training and evaluation samples on actual medieval text.\",\n    },\n    \"german\": {\n        \"train\": \"de_nibelunge\",\n        \"evaluation\": \"de_walther\",\n        \"rationale\": \"Anonymous heroic epic versus a selection of Walther’s lyrics and songs. Separate works and corpus editions, with no translation or anthology that contains the epic.\",\n    },\n}\n\n\ndef sha256(s):\n    return hashlib.sha256(s).hexdigest()\n\n\ndef extraction(cid, text):\n    if cid == \"la_augustine\":\n        return re.sub(r\"\\[[^\\[\\]]*\\]|\\{\\d+\\}|^    .*$\", \"\", text, flags=re.M)\n    if cid == \"la_vulg_daniel\":\n        return \"\\n\".join(p for p in text.split(\"\\n\\n\") if re.match(r\"^\\d+:\\d+ \", p.strip()))\n    if cid == \"it_dante\":\n        return re.sub(r\"^\\s*Inferno • Canto.*$\", \"\", text, flags=re.M)\n    if cid == \"de_nibelunge\":\n        return re.sub(r\"\\s+[A-Z][.]\\d+(?:[*a-z]?)\", \"\", text)\n    if cid == \"de_walther\":\n        return \"\\n\".join(line for line in text.splitlines()\n                         if not (line.strip().isupper() or line.lstrip().startswith(\"[\")))\n    return text\n\n\ndef blocks(text):\n    out, current, length = [], [], 0\n    for word in text.split():\n        current.append(word)\n        length += len(word) + 1\n        if length >= 400:\n            out.append(\" \".join(current))\n            current, length = [], 0\n    if current:\n        out.append(\" \".join(current))\n    return out\n\n\ndef ngrams(text, n):\n    words = text.split()\n    return {tuple(words[i:i+n]) for i in range(len(words)-n+1)}\n\n\ndef main():\n    refs = {e[\"id\"]: e for e in refcorpus.pins()}\n    archive, work_meta, texts = {}, {}, {}\n    for cid, recipe in WORKS.items():\n        e = refs[cid]\n        source_file = Path(path(e[\"file\"]))\n        raw = source_file.read_bytes()\n        assert sha256(raw) == e[\"sha256\"], cid\n        with source_file.open(encoding=e.get(\"encoding\", \"utf-8\"), errors=\"replace\") as src:\n            stripped = refcorpus.strip_gutenberg(src.read())\n        start = stripped.index(recipe[\"start\"])\n        stop = stripped.index(recipe[\"stop\"], start + len(recipe[\"start\"])) if recipe[\"stop\"] else len(stripped)\n        normalized = refcorpus.normalize(extraction(cid, stripped[start:stop]), e[\"lang\"])\n        texts[cid] = normalized\n        archive[cid] = blocks(normalized)\n        assert \" \".join(archive[cid]) == normalized\n        work_meta[cid] = {\n            **recipe,\n            \"language\": e[\"lang\"],\n            \"catalog_period\": e[\"period\"],\n            \"raw_url\": e[\"url\"],\n            \"raw_sha256\": e[\"sha256\"],\n            \"catalog_url\": f\"https://www.gutenberg.org/ebooks/{e['gutenberg']}\",\n            \"rights\": \"Project Gutenberg catalog marks public domain in the USA.\",\n            \"encoding\": e.get(\"encoding\", \"utf-8\"),\n            \"span_start_stop\": [start, stop],\n            \"normalized_symbols_including_spaces\": len(normalized),\n            \"normalized_nonspace_symbols\": len(normalized.replace(\" \", \"\")),\n            \"blocks\": len(archive[cid]),\n            \"sum_of_block_symbol_counts\": sum(map(len, archive[cid])),\n            \"symbols_in_first_64_blocks\": sum(map(len, archive[cid][:64])),\n            \"normalized_sha256\": sha256(normalized.encode()),\n            \"newline_joined_blocks_sha256\": sha256(\"\\n\".join(archive[cid]).encode()),\n        }\n    pair_meta = {lang: dict(pair) for lang, pair in PAIRS.items()}\n    for lang, pair in pair_meta.items():\n        a, b = pair[\"train\"], pair[\"evaluation\"]\n        pair[\"exact_shared_blocks\"] = len(set(archive[a]) & set(archive[b]))\n        pair[\"exact_shared_distinct_12_word_windows\"] = len(ngrams(texts[a], 12) & ngrams(texts[b], 12))\n        assert not pair[\"exact_shared_blocks\"]\n    out = {\n        \"pairs\": pair_meta,\n        \"works_by_corpus_id\": work_meta,\n        \"extraction_order\": \"Decode the SHA-verified pinned file with universal newlines. Apply vs.refcorpus.strip_gutenberg. Find the literal start and stop markers, or use the end of the stripped file. Apply the listed per-work cleanup, then vs.refcorpus.normalize. Span offsets refer to the stripped decoded text before cleanup. Break at word boundaries once the same accounting as blocks_of reaches at least 400, keeping the final partial block. Counts including spaces treat each run of whitespace as one symbol.\",\n        \"pr_426\": {\n            \"url\": \"https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/426\",\n            \"design\": \"First 100 training-work blocks and 30 evaluation-work blocks built directly with refcorpus.blocks_of, using Augustine/Erasmus, Dante/Villani, Lucanor/Buen Amor and Chaucer/Paston. Order 0–8 smoothed character models and several reversible padding controls were used.\",\n            \"editorial_confounds\": \"The pins start with editorial text in Augustine (1838 Latin Monitum), Erasmus (digital production and bilingual title line plus 20th-century transcriber corrections elsewhere), Villani (1825 editor address), Lucanor (editorial transcription note), Buen Amor (edition front matter and extensive notes), Chaucer (Purves’s table of contents and biography), and Paston (Gairdner’s early-20th-century critical edition’s preface and long historical introduction). These are risks for any claim about source-language coding rates from untrimmed beginnings.\",\n        },\n    }\n    dest = Path(__file__).parent\n    (dest / \"works.json\").write_text(json.dumps(out, ensure_ascii=False, indent=2) + \"\\n\", encoding=\"utf-8\")\n    (dest / \"clean_works.json\").write_text(json.dumps(archive, ensure_ascii=False) + \"\\n\", encoding=\"utf-8\")\n    print(json.dumps(pair_meta, ensure_ascii=False, indent=2))\n    for cid, e in work_meta.items():\n        print(cid, e[\"normalized_symbols_including_spaces\"], e[\"normalized_nonspace_symbols\"], e[\"blocks\"], e[\"symbols_in_first_64_blocks\"])\n\n\nif __name__ == \"__main__\":\n    main()\n",
+      "battery.py": "\"\"\"Character code lengths and sample entropy with train and evaluation works separated.\"\"\"\nfrom collections import Counter\nfrom dataclasses import dataclass\nfrom hashlib import sha256\nimport json\nfrom math import isclose, log2\nfrom pathlib import Path\n\nMAX_ORDER = 8\nPRIOR_STRENGTH = 2\nPSEUDOCOUNT = 0.5\nPAD_ALPHABETS = {\n    'identity': '', 'substitution': '', 'addB': 'B',\n    'matched_deterministic': 'BD', 'matched_random': 'BD', 'suffix_B': 'B',\n}\nSOURCE = 'abcdefghijklmnopqrstuvwxyz '\n\n\n@dataclass\nclass Markov:\n    alphabet: str\n    counts: list\n    totals: list\n\n    @classmethod\n    def fit(cls, blocks, alphabet, max_order=MAX_ORDER):\n        counts = [dict() for _ in range(max_order + 1)]\n        for block in blocks:\n            if set(block) - set(alphabet):\n                raise ValueError('training contains a symbol outside the declared alphabet')\n            for i, symbol in enumerate(block):\n                for order in range(min(i, max_order) + 1):\n                    ctx = block[i-order:i]\n                    table = counts[order].setdefault(ctx, Counter())\n                    table[symbol] += 1\n        if not counts[0]:\n            raise ValueError('the training work is empty')\n        totals = [{ctx: row.total() for ctx, row in table.items()} for table in counts]\n        return cls(alphabet, counts, totals)\n\n    def probabilities(self, symbol, context):\n        if symbol not in self.alphabet:\n            raise ValueError(f'evaluation contains a symbol outside the declared alphabet: {symbol!r}')\n        cells = self.counts[0]['']\n        prior = (cells[symbol] + PSEUDOCOUNT) / (self.totals[0][''] + PSEUDOCOUNT * len(self.alphabet))\n        yield prior\n        for order in range(1, len(self.counts)):\n            if len(context) >= order:\n                ctx = context[-order:]\n                row = self.counts[order].get(ctx)\n                if row is not None:\n                    prior = (row[symbol] + PRIOR_STRENGTH * prior) / (self.totals[order][ctx] + PRIOR_STRENGTH)\n            yield prior\n\n    def bits(self, blocks):\n        result = [0.0] * len(self.counts)\n        for block in blocks:\n            for i, symbol in enumerate(block):\n                context = block[max(0, i-len(result)+1):i]\n                for order, probability in enumerate(self.probabilities(symbol, context)):\n                    result[order] -= log2(probability)\n        return result\n\n\ndef sample_entropy_bits(blocks, max_order=MAX_ORDER):\n    \"\"\"Empirical conditional entropy, allowing shorter context at each block start.\"\"\"\n    histograms = [dict() for _ in range(max_order + 1)]\n    for block in blocks:\n        for i, symbol in enumerate(block):\n            for order in range(max_order + 1):\n                ctx = block[max(0, i-order):i]\n                table = histograms[order].setdefault(ctx, Counter())\n                table[symbol] += 1\n    totals = []\n    for order in range(max_order + 1):\n        bits = 0.0\n        for row in histograms[order].values():\n            total = row.total()\n            bits -= sum(n * log2(n / total) for n in row.values())\n        totals.append(bits)\n    return totals\n\n\ndef adjacent_entropy(blocks):\n    pairs = {}\n    for block in blocks:\n        for left, right in zip(block, block[1:]):\n            pairs.setdefault(left, Counter())[right] += 1\n    transitions, bits = 0, 0.0\n    for row in pairs.values():\n        count = row.total()\n        transitions += count\n        bits -= sum(n * log2(n/count) for n in row.values())\n    return {'transitions': transitions,\n            'bits_per_transition': round(bits/transitions, 8) if transitions else None}\n\n\ndef digest(text):\n    return sha256(text.encode()).hexdigest()\n\n\ndef evaluate(train, test, kinds, encode, decode, side_bits):\n    train_text = '\\n'.join(train)\n    test_text = '\\n'.join(test)\n    source_count = sum(map(len, test))\n    if not source_count or not sum(map(len, train)):\n        raise ValueError('both disjoint works must have nonempty normalised blocks')\n    hashes_train = {digest(block) for block in train}\n    hashes_test = {digest(block) for block in test}\n    if hashes_train & hashes_test:\n        raise ValueError('an exact normalised block occurs in both works')\n\n    identity = Markov.fit(train, SOURCE).bits(test)\n    result = {}\n    for kind in kinds:\n        encoded_train = encode(train_text, kind, seed=40801)\n        encoded_test = encode(test_text, kind, seed=40802)\n        assert decode(encoded_train, kind) == train_text\n        assert decode(encoded_test, kind) == test_text\n        train_blocks = encoded_train.split('\\n')\n        test_blocks = encoded_test.split('\\n')\n        assert len(train_blocks) == len(train) and len(test_blocks) == len(test)\n        assert [text.count(' ') for text in train_blocks] == [text.count(' ') for text in train]\n        assert [text.count(' ') for text in test_blocks] == [text.count(' ') for text in test]\n        if kind == 'matched_random':\n            for raw, encoded in ((train_text, encoded_train), (test_text, encoded_test)):\n                ordered_pads = (ch for ch in encoded if ch in 'BD')\n                reconstructed = ''.join(ch if ch in ' \\n' else ch + next(ordered_pads) for ch in raw)\n                assert reconstructed == encoded and next(ordered_pads, None) is None\n        output_count = sum(map(len, test_blocks))\n        alphabet = SOURCE + PAD_ALPHABETS[kind]\n        forward = Markov.fit(train_blocks, alphabet).bits(test_blocks)\n        empirical = sample_entropy_bits(test_blocks)\n        side = side_bits(test_text, kind)\n        inverse = [raw + side for raw in identity]\n        rows = []\n        for order, (a, b, c) in enumerate(zip(forward, empirical, inverse)):\n            assert isclose((a/source_count) * source_count, (a/output_count) * output_count)\n            rows.append({'order': order, 'forward_bits': round(a, 6),\n                         'forward_bits_per_source': round(a/source_count, 8),\n                         'forward_bits_per_output': round(a/output_count, 8),\n                         'empirical_bits_per_source': round(b/source_count, 8),\n                         'empirical_bits_per_output': round(b/output_count, 8),\n                         'inverse_bits': round(c, 6),\n                         'inverse_bits_per_source': round(c/source_count, 8),\n                         'inverse_bits_per_output': round(c/output_count, 8)})\n        result[kind] = {'output_symbols': output_count, 'output_train_symbols': sum(map(len, train_blocks)),\n                        'output_checksum': digest(encoded_test), 'train_output_checksum': digest(encoded_train),\n                        'side_bits': round(side, 6), 'orders': rows,\n                        'adjacent_empirical': adjacent_entropy(test_blocks),\n                        'training_marker_counts': dict(Counter(ch for ch in encoded_train if ch in 'BD')),\n                        'evaluation_marker_counts': dict(Counter(ch for ch in encoded_test if ch in 'BD'))}\n        if kind in ('identity', 'substitution'):\n            assert all(isclose(raw, transformed, rel_tol=1e-11) for raw, transformed in zip(identity, forward))\n    a = result['matched_deterministic']\n    b = result['matched_random']\n    assert a['output_symbols'] == b['output_symbols']\n    assert a['output_train_symbols'] == b['output_train_symbols']\n    assert a['training_marker_counts'] == b['training_marker_counts']\n    assert a['evaluation_marker_counts'] == b['evaluation_marker_counts']\n    return {'train_blocks': len(train), 'eval_blocks': len(test), 'train_symbols': sum(map(len, train)),\n            'eval_source_symbols': source_count, 'train_source_checksum': digest(train_text),\n            'eval_source_checksum': digest(test_text), 'eval_spaces': test_text.count(' '),\n            'exact_block_overlap': 0, 'modes': result}\n\n\ndef main():\n    from transforms import KINDS, encode, decode, side_bits\n\n    base = Path(__file__).resolve().parent\n    works = json.loads((base/'clean_works.json').read_text())\n    selection = json.loads((base/'works.json').read_text())\n    output = {}\n    for name, pair in selection['pairs'].items():\n        train_id, test_id = pair['train'], pair['evaluation']\n        assert train_id != test_id and len(works[train_id]) >= 64 and len(works[test_id]) >= 64\n        print('Scoring', name, 'independent', train_id, '->', test_id, flush=True)\n        output[name] = evaluate(works[train_id][:64], works[test_id][:64], KINDS, encode, decode, side_bits)\n        output[name]['work_metadata'] = pair\n        for mode, result in output[name]['modes'].items():\n            last = result['orders'][-1]\n            print(mode, 'output', result['output_symbols'], 'source', last['forward_bits_per_source'],\n                  'output_rate', last['forward_bits_per_output'], 'inverse', last['inverse_bits_per_source'], flush=True)\n        (base/'results.json').write_text(json.dumps(output, ensure_ascii=False, indent=2)+'\\n')\n\n\nif __name__ == '__main__':\n    main()\n",
+      "transforms.py": "\"\"\"Boundary-preserving transforms for normalized lowercase ASCII work blocks.\n\nSpaces remain word separators. Newlines can join a work's blocks for a single\nmatched shuffle while remaining available for model resets. The source and\nmarker alphabets below exclude those block separators.\n\"\"\"\n\nfrom itertools import repeat\nfrom math import comb, log2\nfrom random import Random\nimport re\nfrom string import ascii_lowercase\n\n\nSOURCE_ALPHABET = ascii_lowercase + \" \"\nMARKER_ALPHABETS = {\n    \"identity\": \"\",\n    \"substitution\": \"\",\n    \"addB\": \"B\",\n    \"matched_deterministic\": \"BD\",\n    \"matched_random\": \"BD\",\n    \"suffix_B\": \"B\",\n}\nKINDS = tuple(MARKER_ALPHABETS)\nDEFAULT_SEED = 408\n\n_BOUNDARIES = frozenset(\" \\n\")\n_SOURCE_SYMBOLS = frozenset(SOURCE_ALPHABET) | _BOUNDARIES\n_PARITY_PAD = {letter: \"DB\"[i % 2] for i, letter in enumerate(ascii_lowercase)}\n_WORD = re.compile(r\"[a-z]+\")\n_RANDOM_PADDING = re.compile(r\"(?:[a-z][BD]|[ \\n])*\")\n_STRIP_PADDING = str.maketrans(\"\", \"\", \"BD\")\n\n_substitution = list(ascii_lowercase)\nRandom(408).shuffle(_substitution)\n_FORWARD = str.maketrans(ascii_lowercase, \"\".join(_substitution))\n_BACKWARD = str.maketrans(\"\".join(_substitution), ascii_lowercase)\n\n\ndef _check_source(text: str, kind: str) -> None:\n    if kind not in MARKER_ALPHABETS:\n        raise ValueError(f\"unknown transform {kind!r}\")\n    if not _SOURCE_SYMBOLS.issuperset(text):\n        raise ValueError(\"source must contain only lowercase ASCII letters, spaces, and newlines\")\n\n\ndef encode(text: str, kind: str, seed: int = DEFAULT_SEED) -> str:\n    \"\"\"Transform a block or newline-joined work without changing its separators.\n\n    Matched deterministic markers follow zero-based letter-index parity, with\n    even indices producing D and odd indices producing B. Matched random uses a\n    uniform shuffle of that exact marker multiset across the input's letters.\n    The call's seed affects only the shuffle. Substitution uses a fixed key.\n    \"\"\"\n    _check_source(text, kind)\n    if kind == \"identity\":\n        return text\n    if kind == \"substitution\":\n        return text.translate(_FORWARD)\n    if kind == \"suffix_B\":\n        return _WORD.sub(lambda word: word.group() + \"B\", text)\n\n    if kind == \"addB\":\n        markers = repeat(\"B\")\n    else:\n        pads = [_PARITY_PAD[letter] for letter in text if letter not in _BOUNDARIES]\n        if kind == \"matched_random\":\n            Random(seed).shuffle(pads)\n        markers = iter(pads)\n    return \"\".join(c if c in _BOUNDARIES else c + next(markers) for c in text)\n\n\ndef decode(text: str, kind: str) -> str:\n    \"\"\"Recover the original source. Reject misplaced or mismatched markers.\"\"\"\n    if kind in (\"identity\", \"substitution\"):\n        _check_source(text, kind)\n        return text.translate(_BACKWARD) if kind == \"substitution\" else text\n\n    source = text.translate(_STRIP_PADDING)\n    _check_source(source, kind)\n    if kind == \"matched_random\":\n        expected_b = sum(_PARITY_PAD.get(c) == \"B\" for c in source)\n        valid = _RANDOM_PADDING.fullmatch(text) is not None and text.count(\"B\") == expected_b\n    else:\n        valid = encode(source, kind) == text\n    if not valid:\n        raise ValueError(f\"invalid {kind} markers\")\n    return source\n\n\ndef side_bits(source: str, kind: str) -> float:\n    \"\"\"Conditional marker-code length for a source block or joined work.\n\n    The source determines the number of marker locations n and B markers k.\n    In matched random, all C(n,k) arrangements are equiprobable, so the ideal\n    code length is log2(C(n,k)). Deterministic markers need zero side bits.\n    \"\"\"\n    _check_source(source, kind)\n    if kind != \"matched_random\":\n        return 0.0\n    n = sum(c not in _BOUNDARIES for c in source)\n    k = sum(_PARITY_PAD.get(c) == \"B\" for c in source)\n    return log2(comb(n, k))\n",
+      "paired_state.py": "import math,random,json,re,hashlib\nfrom collections import Counter\nfrom pathlib import Path\nfrom vs import refcorpus,path\nfrom extract_works import blocks\nfrom battery import Markov,SOURCE,PAD_ALPHABETS\nfrom transforms import encode,decode,side_bits\n\ndef extract(cid,start,stop):\n e=next(e for e in refcorpus.pins() if e['id']==cid);raw=Path(path(e['file'])).read_bytes();assert hashlib.sha256(raw).hexdigest()==e['sha256'];text=raw.decode(e.get('encoding','utf-8'),errors='replace');a=text.index(start);b=text.index(stop,a);body=re.sub(r'\\[[\\s\\S]*?\\]',' ',text[a:b]);normalized=refcorpus.normalize(body,'latin');return blocks(normalized),{'id':cid,'pin_sha256':e['sha256'],'normalized_sha256':hashlib.sha256(normalized.encode()).hexdigest(),'blocks':len(blocks(normalized))}\n\ndef events(block):\n prefix='';starts=[];marker=False\n for c in block:\n  kind='p' if marker else 's';yield kind,prefix,starts,c\n  if kind=='s':\n   starts=starts+[len(prefix)];marker=(c!=' ')\n  else:marker=False\n  prefix+=c\n\ndef ctx(prefix,starts,n,kind):\n if not n:return ''\n if kind=='output':return prefix[-n:]\n return prefix[starts[-n]:] if len(starts)>=n else prefix\nclass Model:\n def __init__(self,bs,kind,n,form):\n  self.kind,self.n,self.form=kind,n,form;self.tables={t:[{} for _ in range(n+1)] for t in ('s','p')}\n  for b in bs:\n   for state,prefix,starts,ch in events(b):\n    for k in range(n+1):\n     key=ctx(prefix,starts,k,form);self.tables[state][k].setdefault(key,Counter())[ch]+=1\n def bits(self,bs):\n  total=0\n  for b in bs:\n   for state,prefix,starts,ch in events(b):\n    alphabet=SOURCE if state=='s' else PAD_ALPHABETS[self.kind]; tab=self.tables[state];base=tab[0].get('',Counter());q=(base[ch]+.5)/(base.total()+.5*len(alphabet))\n    for k in range(1,self.n+1):\n     row=tab[k].get(ctx(prefix,starts,k,self.form));\n     if row:q=(row[ch]+2*q)/(row.total()+2)\n    total-=math.log2(q)\n  return total\n\ndef enc(bs,kind,seed):\n result=[encode(b,kind,seed+i) for i,b in enumerate(bs)];assert all(decode(y,kind)==b for b,y in zip(bs,result));return result\ntrain,tm=extract('la_erasmus','Quo saepius est ars medicinae','                     Dixi.');test,em=extract('la_patrick','Tria sunt sub omnipotentis Dei manu habitacula',\"End of Project Gutenberg\")\nassert len(train)>=64 and len(test)>=20\ntrain=train[:64];test=test[:40];N=sum(map(len,test));folds=[]\nfor f in range(3):\n validation=train[f*16:(f+1)*16];fitting=train[:f*16]+train[(f+1)*16:];vals=Markov.fit(fitting,SOURCE).bits(validation);folds.append({'fold':f,'order':min(range(9),key=lambda k:vals[k]),'validation_bits':vals})\norder=min(range(9),key=lambda k:sum(f['validation_bits'][k] for f in folds));sourcebits=Markov.fit(train,SOURCE).bits(test)[order];res={'training':tm,'evaluation':em,'training_blocks_used':64,'evaluation_blocks_used':len(test),'source_symbols':N,'folds':folds,'selected_order':order,'source_bits':sourcebits,'cases':[]}\nfor kind in ('addB','matched_deterministic','matched_random'):\n for seed in (1,2,3):\n  tr=enc(train,kind,seed*10000);ev=enc(test,kind,seed*10000+5000);row={'kind':kind,'seed':seed,'out_symbols':sum(map(len,ev)),'inverse_bits':sourcebits+sum(side_bits(b,kind) for b in test)}\n  for form in ('output','source'):\n   row[form+'_bits']=Model(tr,kind,order,form).bits(ev)\n  res['cases'].append(row)\nprint(json.dumps(res,indent=2))\n",
+      "italian_padding.py": "import json\nns={};exec(open('paired_state.py').read().split(\"train,tm=extract(\")[0].replace(\"refcorpus.normalize(body,'latin')\",\"refcorpus.normalize(body,'italian')\"),ns)\nextract=ns['extract'];enc=ns['enc'];Model=ns['Model'];Markov=ns['Markov'];SOURCE=ns['SOURCE'];side_bits=ns['side_bits']\ntrain,tm=extract('it_dante','Inferno • Canto I','Inferno • Canto XI');test,em=extract('it_villani','LIBRO PRIMO','LIBRO SECONDO');assert len(train)>=64 and len(test)>=40\ntrain=train[:64];test=test[:40];n=sum(map(len,test));order=3\nres={'training':tm,'evaluation':em,'train_blocks':len(train),'eval_blocks':len(test),'source_symbols':n,'source_bits':Markov.fit(train,SOURCE).bits(test)[order],'rows':[]}\nfor kind in ('addB','matched_deterministic','matched_random'):\n for seed in (1,2,3):\n  tr=enc(train,kind,seed*10000);ev=enc(test,kind,seed*10000+5000)\n  for o in (1,2,3,4,6,8):\n   for form in ('output','source'):\n    bits=Model(tr,kind,o,form).bits(ev)\n    res['rows'].append({'kind':kind,'seed':seed,'order':o,'form':form,'bits':bits,'per_original':bits/n,'output_symbols':sum(map(len,ev)),'inverse_bits':res['source_bits']+sum(side_bits(b,kind) for b in test)})\nprint(json.dumps(res,indent=2))\n"
+    },
+    "sha256": {
+      "extract_works.py": "73278c66d377cb6615f3ff37f25cff1d7730fe3ebf4fd8b5184436681791e1f9",
+      "battery.py": "a3ca92415a5887725c6b5eb68eefb4245c3df3e1d7839c8460edd970c0e24d2f",
+      "transforms.py": "76b277d269ef17f888e8b8a7c5443dafb282bbb536f05eab93f8920903f6dcfa",
+      "paired_state.py": "2672fa1dbb67d51b38128feecd8ada8da2b8c367c3ace154dba90660f3e893ff",
+      "italian_padding.py": "259902fb8674326281eb991e38646654649d277d03a5c00913abe077da48dc76"
+    }
+  }
+}
