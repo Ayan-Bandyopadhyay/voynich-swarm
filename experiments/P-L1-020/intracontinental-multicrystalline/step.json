@@ -1,0 +1,3115 @@
+{
+  "program": "L1",
+  "title": "Evaluate ligature context controls on independent works with internal morphological matches",
+  "statement": "The P-L1-018 embedded implementation and SHA-verified LLCT files reproduce every stored calibration and held-apart row, summary, threshold and standalone-letter outcome. The reconstructed plan JSON has a different byte hash, so this is numerical reproduction rather than an exact-byte replay of the original plan or calibration artifact. The five us/um repeats contain 657–658 matched pairs, with only 31–32 unequal right contexts; all 626 terminal pairs tie. The ten standalone-letter tests accepted 7, 6 and 2 cases under unconditioned, position-all and position-info thresholds respectively. For a further exploratory source, the pinned UD Latin ITTB train file contains Aquinas Summa contra gentiles books II–IV. Using the original morphology/left matching and seed 66103, those individual books have respectively 28, 90 and 104 internal same-morphology pairs; books III and IV meet the frozen 40-site minimum. Applying the LLCT-frozen thresholds to each book after examining support, five pairing seeds per book give: position-aware scores rank the planted internal target before the paired alternative in all ten eligible runs, but both candidates fail both position-aware absolute thresholds in all ten. Unconditioned scoring ranks the alternative ahead in all ten and also accepts neither. The terminal same-stem/case arm ties in all fifteen book/seed runs; both position-aware methods accept both candidates in every tie. The standalone-letter acceptance counts in books II, III and IV are 7/10, 7/10, 7/10 unconditioned; 3/10, 4/10, 4/10 position-all; and 1/10 in each position-info. These three books share an author and work, and pairing seeds reuse the text. The exploratory source and matching were chosen after prior results and do not constitute independent manuscripts or confirmatory replication.",
+  "check": "Obtain independently authored, openly reusable annotated Latin works with at least 40 disjoint internal matched pairs per work, verify underlying work boundaries and genre, and lock candidate construction before scoring. Validate annotation and external contexts on matched source spans, evaluate the frozen thresholds and standalone-letter negatives once per work, and report both pairwise ordering and absolute acceptance. Compare genuine and wrong alternatives without counting pairing seeds as independent samples. Keep the original ambiguous published loss distinguished from the later context-based scores and do not infer graphical ligatures from statistical ranks alone.",
+  "hard": false,
+  "on_path": true,
+  "methods": {
+    "prior_replay": "Download three LLCT pinned files from URLs and validate hashes embedded in experiments/P-L1-018/mubadala777/step.json, reconstruct plan from evidence.design with indent=2, extract its embedded Python scripts, run calibration and evaluation. Compared every row, threshold, summary and negative-control list to stored JSON. The byte-level plan and consequent calibration hash differ because serialization is reconstructed.",
+    "external_source": "UD Latin ITTB https://github.com/UniversalDependencies/UD_Latin-ITTB/tree/16cc97fce6969cdec628544c57194938281fbcdf, train file SHA256 7a8ed5d4a3391e918213ffa988f0930364e009e97a4ae4c3c820837fb3cfe29a. README states CC BY-NC-SA 3.0; only derived aggregate results are submitted. Book II uses train sentence indices 105–5657, III 5658–13519 and IV 16810–22775, per repository README. These are parts of a single work; corpus carries no compatible charter document IDs.",
+    "selection": "Check internal support first, then run original five pairing seeds and frozen LLCT calibration. No thresholds refit. Exact exterior contexts and morphology are as the original parser and matcher define. Counts below 40 abstain.",
+    "limits": "Post-support analysis, no new manuscript data, same-author parts of a single work, annotated text not independent of linguistic modeling, no proof of visual ligature. Different corpus sizes and genre may affect transfer. Single control alphabet and only ten operational standalone-letter tests per book."
+  },
+  "ittb_support": {
+    "test": {
+      "sha256": "e813e8859f2097e83ec2f7944b49f4cbb74ae5869be7110a2e730b53d4600f45",
+      "source_sites": 4238,
+      "document_ids_present": 0,
+      "internal_upper_bound": {
+        "source_occurrences": {
+          "us": 282,
+          "um": 180
+        },
+        "upper_bound_matching_role_and_immediate_left": 25,
+        "by_role": {
+          "initial": {
+            "source_occurrences": {
+              "us": 14,
+              "um": 0
+            },
+            "upper_bound_matching_only_role": 0,
+            "upper_bound_matching_role_and_immediate_left": 0,
+            "nonempty_exact_left_strata": 0,
+            "left_strata_with_both": []
+          },
+          "interior": {
+            "source_occurrences": {
+              "us": 268,
+              "um": 180
+            },
+            "upper_bound_matching_only_role": 180,
+            "upper_bound_matching_role_and_immediate_left": 25,
+            "nonempty_exact_left_strata": 6,
+            "left_strata_with_both": [
+              {
+                "left": "b",
+                "source_occurrences": {
+                  "us": 8,
+                  "um": 1
+                },
+                "pair_upper_bound": 1
+              },
+              {
+                "left": "c",
+                "source_occurrences": {
+                  "us": 1,
+                  "um": 38
+                },
+                "pair_upper_bound": 1
+              },
+              {
+                "left": "g",
+                "source_occurrences": {
+                  "us": 1,
+                  "um": 3
+                },
+                "pair_upper_bound": 1
+              },
+              {
+                "left": "i",
+                "source_occurrences": {
+                  "us": 82,
+                  "um": 2
+                },
+                "pair_upper_bound": 2
+              },
+              {
+                "left": "l",
+                "source_occurrences": {
+                  "us": 19,
+                  "um": 18
+                },
+                "pair_upper_bound": 18
+              },
+              {
+                "left": "n",
+                "source_occurrences": {
+                  "us": 2,
+                  "um": 39
+                },
+                "pair_upper_bound": 2
+              }
+            ]
+          }
+        }
+      },
+      "modes": {
+        "all": {
+          "pairs": 884,
+          "support": {
+            "source_sites": [
+              1748,
+              2490
+            ],
+            "stratum_unrestricted_upper_bound": 885,
+            "shared_nonempty_strata": 20
+          },
+          "exterior_right_disagreements": 24
+        },
+        "internal": {
+          "pairs": 25,
+          "support": {
+            "source_sites": [
+              282,
+              180
+            ],
+            "stratum_unrestricted_upper_bound": 25,
+            "shared_nonempty_strata": 6
+          },
+          "exterior_right_disagreements": 23
+        },
+        "internal_same_morph": {
+          "pairs": 9,
+          "support": {
+            "source_sites": [
+              282,
+              180
+            ],
+            "stratum_unrestricted_upper_bound": 9,
+            "shared_nonempty_strata": 4
+          },
+          "exterior_right_disagreements": 7
+        },
+        "terminal_same_stem_case": {
+          "pairs": 149,
+          "support": {
+            "source_sites": [
+              669,
+              223
+            ],
+            "stratum_unrestricted_upper_bound": 149,
+            "shared_nonempty_strata": 22
+          },
+          "exterior_right_disagreements": 0
+        },
+        "both_sides_matched": {
+          "pairs": 862,
+          "support": {
+            "source_sites": [
+              1748,
+              2490
+            ],
+            "stratum_unrestricted_upper_bound": 862,
+            "shared_nonempty_strata": 15
+          },
+          "exterior_right_disagreements": 0
+        }
+      }
+    },
+    "train": {
+      "sha256": "7a8ed5d4a3391e918213ffa988f0930364e009e97a4ae4c3c820837fb3cfe29a",
+      "source_sites": 52633,
+      "document_ids_present": 0,
+      "internal_upper_bound": {
+        "source_occurrences": {
+          "us": 3249,
+          "um": 3033
+        },
+        "upper_bound_matching_role_and_immediate_left": 423,
+        "by_role": {
+          "initial": {
+            "source_occurrences": {
+              "us": 202,
+              "um": 1
+            },
+            "upper_bound_matching_only_role": 1,
+            "upper_bound_matching_role_and_immediate_left": 1,
+            "nonempty_exact_left_strata": 1,
+            "left_strata_with_both": [
+              {
+                "left": " ",
+                "source_occurrences": {
+                  "us": 202,
+                  "um": 1
+                },
+                "pair_upper_bound": 1
+              }
+            ]
+          },
+          "interior": {
+            "source_occurrences": {
+              "us": 3047,
+              "um": 3032
+            },
+            "upper_bound_matching_only_role": 3032,
+            "upper_bound_matching_role_and_immediate_left": 422,
+            "nonempty_exact_left_strata": 11,
+            "left_strata_with_both": [
+              {
+                "left": "b",
+                "source_occurrences": {
+                  "us": 108,
+                  "um": 2
+                },
+                "pair_upper_bound": 2
+              },
+              {
+                "left": "c",
+                "source_occurrences": {
+                  "us": 29,
+                  "um": 332
+                },
+                "pair_upper_bound": 29
+              },
+              {
+                "left": "d",
+                "source_occurrences": {
+                  "us": 5,
+                  "um": 31
+                },
+                "pair_upper_bound": 5
+              },
+              {
+                "left": "f",
+                "source_occurrences": {
+                  "us": 35,
+                  "um": 4
+                },
+                "pair_upper_bound": 4
+              },
+              {
+                "left": "g",
+                "source_occurrences": {
+                  "us": 64,
+                  "um": 17
+                },
+                "pair_upper_bound": 17
+              },
+              {
+                "left": "i",
+                "source_occurrences": {
+                  "us": 1040,
+                  "um": 10
+                },
+                "pair_upper_bound": 10
+              },
+              {
+                "left": "l",
+                "source_occurrences": {
+                  "us": 50,
+                  "um": 200
+                },
+                "pair_upper_bound": 50
+              },
+              {
+                "left": "n",
+                "source_occurrences": {
+                  "us": 25,
+                  "um": 370
+                },
+                "pair_upper_bound": 25
+              },
+              {
+                "left": "r",
+                "source_occurrences": {
+                  "us": 52,
+                  "um": 410
+                },
+                "pair_upper_bound": 52
+              },
+              {
+                "left": "s",
+                "source_occurrences": {
+                  "us": 227,
+                  "um": 678
+                },
+                "pair_upper_bound": 227
+              },
+              {
+                "left": "t",
+                "source_occurrences": {
+                  "us": 1,
+                  "um": 25
+                },
+                "pair_upper_bound": 1
+              }
+            ]
+          }
+        }
+      },
+      "modes": {
+        "all": {
+          "pairs": 12278,
+          "support": {
+            "source_sites": [
+              21842,
+              30791
+            ],
+            "stratum_unrestricted_upper_bound": 12296,
+            "shared_nonempty_strata": 28
+          },
+          "exterior_right_disagreements": 387
+        },
+        "internal": {
+          "pairs": 423,
+          "support": {
+            "source_sites": [
+              3249,
+              3033
+            ],
+            "stratum_unrestricted_upper_bound": 423,
+            "shared_nonempty_strata": 12
+          },
+          "exterior_right_disagreements": 392
+        },
+        "internal_same_morph": {
+          "pairs": 295,
+          "support": {
+            "source_sites": [
+              3249,
+              3027
+            ],
+            "stratum_unrestricted_upper_bound": 295,
+            "shared_nonempty_strata": 51
+          },
+          "exterior_right_disagreements": 261
+        },
+        "terminal_same_stem_case": {
+          "pairs": 2859,
+          "support": {
+            "source_sites": [
+              5938,
+              3510
+            ],
+            "stratum_unrestricted_upper_bound": 2859,
+            "shared_nonempty_strata": 159
+          },
+          "exterior_right_disagreements": 0
+        },
+        "both_sides_matched": {
+          "pairs": 11952,
+          "support": {
+            "source_sites": [
+              21842,
+              30791
+            ],
+            "stratum_unrestricted_upper_bound": 11956,
+            "shared_nonempty_strata": 27
+          },
+          "exterior_right_disagreements": 0
+        }
+      }
+    }
+  },
+  "book_support": {
+    "2": {
+      "modes": {
+        "all": {
+          "pairs": 2617,
+          "right_disagreements": 45,
+          "support": {
+            "source_sites": [
+              5012,
+              6843
+            ],
+            "stratum_unrestricted_upper_bound": 2626,
+            "shared_nonempty_strata": 21
+          }
+        },
+        "internal": {
+          "pairs": 60,
+          "right_disagreements": 51,
+          "support": {
+            "source_sites": [
+              735,
+              629
+            ],
+            "stratum_unrestricted_upper_bound": 60,
+            "shared_nonempty_strata": 7
+          }
+        },
+        "internal_same_morph": {
+          "pairs": 28,
+          "right_disagreements": 26,
+          "support": {
+            "source_sites": [
+              735,
+              629
+            ],
+            "stratum_unrestricted_upper_bound": 28,
+            "shared_nonempty_strata": 16
+          }
+        },
+        "terminal_same_stem_case": {
+          "pairs": 597,
+          "right_disagreements": 0,
+          "support": {
+            "source_sites": [
+              1304,
+              733
+            ],
+            "stratum_unrestricted_upper_bound": 597,
+            "shared_nonempty_strata": 44
+          }
+        }
+      }
+    },
+    "3": {
+      "modes": {
+        "all": {
+          "pairs": 4182,
+          "right_disagreements": 158,
+          "support": {
+            "source_sites": [
+              7667,
+              10513
+            ],
+            "stratum_unrestricted_upper_bound": 4189,
+            "shared_nonempty_strata": 25
+          }
+        },
+        "internal": {
+          "pairs": 177,
+          "right_disagreements": 162,
+          "support": {
+            "source_sites": [
+              1431,
+              915
+            ],
+            "stratum_unrestricted_upper_bound": 177,
+            "shared_nonempty_strata": 10
+          }
+        },
+        "internal_same_morph": {
+          "pairs": 90,
+          "right_disagreements": 77,
+          "support": {
+            "source_sites": [
+              1431,
+              913
+            ],
+            "stratum_unrestricted_upper_bound": 90,
+            "shared_nonempty_strata": 29
+          }
+        },
+        "terminal_same_stem_case": {
+          "pairs": 930,
+          "right_disagreements": 0,
+          "support": {
+            "source_sites": [
+              1654,
+              1206
+            ],
+            "stratum_unrestricted_upper_bound": 930,
+            "shared_nonempty_strata": 80
+          }
+        }
+      }
+    },
+    "4": {
+      "modes": {
+        "all": {
+          "pairs": 3675,
+          "right_disagreements": 129,
+          "support": {
+            "source_sites": [
+              5790,
+              7746
+            ],
+            "stratum_unrestricted_upper_bound": 3679,
+            "shared_nonempty_strata": 23
+          }
+        },
+        "internal": {
+          "pairs": 135,
+          "right_disagreements": 126,
+          "support": {
+            "source_sites": [
+              606,
+              1008
+            ],
+            "stratum_unrestricted_upper_bound": 135,
+            "shared_nonempty_strata": 7
+          }
+        },
+        "internal_same_morph": {
+          "pairs": 104,
+          "right_disagreements": 91,
+          "support": {
+            "source_sites": [
+              606,
+              1004
+            ],
+            "stratum_unrestricted_upper_bound": 104,
+            "shared_nonempty_strata": 20
+          }
+        },
+        "terminal_same_stem_case": {
+          "pairs": 836,
+          "right_disagreements": 0,
+          "support": {
+            "source_sites": [
+              2205,
+              1072
+            ],
+            "stratum_unrestricted_upper_bound": 836,
+            "shared_nonempty_strata": 78
+          }
+        }
+      }
+    }
+  },
+  "book_score": {
+    "2": {
+      "source": {
+        "sha256": "ac845175c898930c4b8606a434f54421857dccebf408e37c79ea0a668978d222",
+        "documents": [
+          null
+        ],
+        "sentences": 5553,
+        "normalized_words": 76563,
+        "surface_tokens_with_punctuation": 88698
+      },
+      "summary": {
+        "us/um/internal": {
+          "support_range_by_seed": [
+            60,
+            60
+          ],
+          "common_supported_seeds": 5,
+          "methods": {
+            "unconditioned": {
+              "supported_seeds": 5,
+              "genuine_wins": 0,
+              "decoy_wins": 5,
+              "ties": 0,
+              "genuine_accepted": 0,
+              "decoy_accepted": 0
+            },
+            "position_all": {
+              "supported_seeds": 5,
+              "genuine_wins": 5,
+              "decoy_wins": 0,
+              "ties": 0,
+              "genuine_accepted": 0,
+              "decoy_accepted": 0
+            },
+            "position_info": {
+              "supported_seeds": 5,
+              "genuine_wins": 5,
+              "decoy_wins": 0,
+              "ties": 0,
+              "genuine_accepted": 0,
+              "decoy_accepted": 0
+            }
+          }
+        },
+        "us/um/internal_same_morph": {
+          "support_range_by_seed": [
+            28,
+            28
+          ],
+          "common_supported_seeds": 0,
+          "methods": {
+            "unconditioned": {
+              "supported_seeds": 0,
+              "genuine_wins": 0,
+              "decoy_wins": 0,
+              "ties": 0,
+              "genuine_accepted": 0,
+              "decoy_accepted": 0
+            },
+            "position_all": {
+              "supported_seeds": 0,
+              "genuine_wins": 0,
+              "decoy_wins": 0,
+              "ties": 0,
+              "genuine_accepted": 0,
+              "decoy_accepted": 0
+            },
+            "position_info": {
+              "supported_seeds": 0,
+              "genuine_wins": 0,
+              "decoy_wins": 0,
+              "ties": 0,
+              "genuine_accepted": 0,
+              "decoy_accepted": 0
+            }
+          }
+        },
+        "us/um/terminal_same_stem_case": {
+          "support_range_by_seed": [
+            597,
+            597
+          ],
+          "common_supported_seeds": 5,
+          "methods": {
+            "unconditioned": {
+              "supported_seeds": 5,
+              "genuine_wins": 0,
+              "decoy_wins": 0,
+              "ties": 5,
+              "genuine_accepted": 0,
+              "decoy_accepted": 0
+            },
+            "position_all": {
+              "supported_seeds": 5,
+              "genuine_wins": 0,
+              "decoy_wins": 0,
+              "ties": 5,
+              "genuine_accepted": 5,
+              "decoy_accepted": 5
+            },
+            "position_info": {
+              "supported_seeds": 5,
+              "genuine_wins": 0,
+              "decoy_wins": 0,
+              "ties": 5,
+              "genuine_accepted": 5,
+              "decoy_accepted": 5
+            }
+          }
+        }
+      },
+      "rows": [
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "internal",
+          "seed": 66103,
+          "pairs": 60,
+          "same_right_context": 9,
+          "support": {
+            "source_sites": [
+              735,
+              629
+            ],
+            "stratum_unrestricted_upper_bound": 60,
+            "shared_nonempty_strata": 7
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.5451691447511218,
+              "position_all": 0.4638711312451088,
+              "position_info": 0.4638711312451088
+            },
+            "Z": {
+              "unconditioned": 0.48375244515653026,
+              "position_all": 0.4699257551347158,
+              "position_info": 0.4699257551347158
+            }
+          },
+          "paired_unique_lemmas": [
+            19,
+            21
+          ],
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Abl": 6,
+              "Nom": 22,
+              "Acc": 8,
+              "_": 17,
+              "Gen": 7
+            },
+            {
+              "_": 33,
+              "Nom": 10,
+              "Gen": 6,
+              "Abl": 4,
+              "Dat": 2,
+              "Acc": 5
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "internal",
+          "seed": 66109,
+          "pairs": 60,
+          "same_right_context": 8,
+          "support": {
+            "source_sites": [
+              735,
+              629
+            ],
+            "stratum_unrestricted_upper_bound": 60,
+            "shared_nonempty_strata": 7
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.5403575715289094,
+              "position_all": 0.4593993083367222,
+              "position_info": 0.4593993083367222
+            },
+            "Z": {
+              "unconditioned": 0.49405922329538454,
+              "position_all": 0.48642787577310526,
+              "position_info": 0.48642787577310526
+            }
+          },
+          "paired_unique_lemmas": [
+            20,
+            22
+          ],
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Nom": 21,
+              "Abl": 8,
+              "Acc": 8,
+              "_": 17,
+              "Gen": 6
+            },
+            {
+              "Nom": 12,
+              "_": 33,
+              "Acc": 4,
+              "Gen": 6,
+              "Dat": 3,
+              "Abl": 2
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "internal",
+          "seed": 66113,
+          "pairs": 60,
+          "same_right_context": 8,
+          "support": {
+            "source_sites": [
+              735,
+              629
+            ],
+            "stratum_unrestricted_upper_bound": 60,
+            "shared_nonempty_strata": 7
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.5385312746829946,
+              "position_all": 0.45590660756432183,
+              "position_info": 0.45590660756432183
+            },
+            "Z": {
+              "unconditioned": 0.4976504930694262,
+              "position_all": 0.4936902150774615,
+              "position_info": 0.4936902150774615
+            }
+          },
+          "paired_unique_lemmas": [
+            18,
+            20
+          ],
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "_": 19,
+              "Gen": 5,
+              "Nom": 21,
+              "Abl": 7,
+              "Acc": 8
+            },
+            {
+              "Acc": 3,
+              "Abl": 5,
+              "Gen": 3,
+              "_": 31,
+              "Nom": 15,
+              "Dat": 3
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "internal",
+          "seed": 66121,
+          "pairs": 60,
+          "same_right_context": 6,
+          "support": {
+            "source_sites": [
+              735,
+              629
+            ],
+            "stratum_unrestricted_upper_bound": 60,
+            "shared_nonempty_strata": 7
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.542410585092396,
+              "position_all": 0.45847686620150896,
+              "position_info": 0.45847686620150896
+            },
+            "Z": {
+              "unconditioned": 0.48555747626131096,
+              "position_all": 0.475712360407019,
+              "position_info": 0.475712360407019
+            }
+          },
+          "paired_unique_lemmas": [
+            18,
+            22
+          ],
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Nom": 22,
+              "Gen": 6,
+              "Abl": 6,
+              "Acc": 8,
+              "_": 18
+            },
+            {
+              "Nom": 14,
+              "Gen": 6,
+              "_": 27,
+              "Dat": 3,
+              "Abl": 4,
+              "Acc": 6
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "internal",
+          "seed": 66137,
+          "pairs": 60,
+          "same_right_context": 7,
+          "support": {
+            "source_sites": [
+              735,
+              629
+            ],
+            "stratum_unrestricted_upper_bound": 60,
+            "shared_nonempty_strata": 7
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.5438989045603888,
+              "position_all": 0.4613192935901045,
+              "position_info": 0.4613192935901045
+            },
+            "Z": {
+              "unconditioned": 0.4978199127528983,
+              "position_all": 0.4856843743495014,
+              "position_info": 0.4856843743495014
+            }
+          },
+          "paired_unique_lemmas": [
+            19,
+            19
+          ],
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Nom": 22,
+              "_": 19,
+              "Abl": 6,
+              "Acc": 8,
+              "Gen": 5
+            },
+            {
+              "_": 31,
+              "Nom": 12,
+              "Acc": 6,
+              "Abl": 4,
+              "Gen": 5,
+              "Dat": 2
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "internal_same_morph",
+          "seed": 66103,
+          "pairs": 28,
+          "same_right_context": 2,
+          "support": {
+            "source_sites": [
+              735,
+              629
+            ],
+            "stratum_unrestricted_upper_bound": 28,
+            "shared_nonempty_strata": 16
+          },
+          "scores": {
+            "X": {
+              "unconditioned": null,
+              "position_all": null,
+              "position_info": null
+            },
+            "Z": {
+              "unconditioned": null,
+              "position_all": null,
+              "position_info": null
+            }
+          },
+          "paired_unique_lemmas": [
+            13,
+            11
+          ],
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "_": 11,
+              "Nom": 11,
+              "Acc": 2,
+              "Abl": 3,
+              "Gen": 1
+            },
+            {
+              "_": 11,
+              "Nom": 11,
+              "Acc": 2,
+              "Abl": 3,
+              "Gen": 1
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "internal_same_morph",
+          "seed": 66109,
+          "pairs": 28,
+          "same_right_context": 2,
+          "support": {
+            "source_sites": [
+              735,
+              629
+            ],
+            "stratum_unrestricted_upper_bound": 28,
+            "shared_nonempty_strata": 16
+          },
+          "scores": {
+            "X": {
+              "unconditioned": null,
+              "position_all": null,
+              "position_info": null
+            },
+            "Z": {
+              "unconditioned": null,
+              "position_all": null,
+              "position_info": null
+            }
+          },
+          "paired_unique_lemmas": [
+            13,
+            12
+          ],
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Nom": 11,
+              "_": 11,
+              "Abl": 3,
+              "Gen": 1,
+              "Acc": 2
+            },
+            {
+              "Nom": 11,
+              "_": 11,
+              "Abl": 3,
+              "Gen": 1,
+              "Acc": 2
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "internal_same_morph",
+          "seed": 66113,
+          "pairs": 28,
+          "same_right_context": 2,
+          "support": {
+            "source_sites": [
+              735,
+              629
+            ],
+            "stratum_unrestricted_upper_bound": 28,
+            "shared_nonempty_strata": 16
+          },
+          "scores": {
+            "X": {
+              "unconditioned": null,
+              "position_all": null,
+              "position_info": null
+            },
+            "Z": {
+              "unconditioned": null,
+              "position_all": null,
+              "position_info": null
+            }
+          },
+          "paired_unique_lemmas": [
+            13,
+            12
+          ],
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Nom": 11,
+              "_": 11,
+              "Abl": 3,
+              "Gen": 1,
+              "Acc": 2
+            },
+            {
+              "Nom": 11,
+              "_": 11,
+              "Abl": 3,
+              "Gen": 1,
+              "Acc": 2
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "internal_same_morph",
+          "seed": 66121,
+          "pairs": 28,
+          "same_right_context": 2,
+          "support": {
+            "source_sites": [
+              735,
+              629
+            ],
+            "stratum_unrestricted_upper_bound": 28,
+            "shared_nonempty_strata": 16
+          },
+          "scores": {
+            "X": {
+              "unconditioned": null,
+              "position_all": null,
+              "position_info": null
+            },
+            "Z": {
+              "unconditioned": null,
+              "position_all": null,
+              "position_info": null
+            }
+          },
+          "paired_unique_lemmas": [
+            13,
+            12
+          ],
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Acc": 2,
+              "_": 11,
+              "Nom": 11,
+              "Abl": 3,
+              "Gen": 1
+            },
+            {
+              "Acc": 2,
+              "_": 11,
+              "Nom": 11,
+              "Abl": 3,
+              "Gen": 1
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "internal_same_morph",
+          "seed": 66137,
+          "pairs": 28,
+          "same_right_context": 2,
+          "support": {
+            "source_sites": [
+              735,
+              629
+            ],
+            "stratum_unrestricted_upper_bound": 28,
+            "shared_nonempty_strata": 16
+          },
+          "scores": {
+            "X": {
+              "unconditioned": null,
+              "position_all": null,
+              "position_info": null
+            },
+            "Z": {
+              "unconditioned": null,
+              "position_all": null,
+              "position_info": null
+            }
+          },
+          "paired_unique_lemmas": [
+            13,
+            10
+          ],
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Nom": 11,
+              "_": 11,
+              "Abl": 3,
+              "Acc": 2,
+              "Gen": 1
+            },
+            {
+              "Nom": 11,
+              "_": 11,
+              "Abl": 3,
+              "Acc": 2,
+              "Gen": 1
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "terminal_same_stem_case",
+          "seed": 66103,
+          "pairs": 597,
+          "same_right_context": 597,
+          "support": {
+            "source_sites": [
+              1304,
+              733
+            ],
+            "stratum_unrestricted_upper_bound": 597,
+            "shared_nonempty_strata": 44
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.451565680984455,
+              "position_all": 0.18581659369923736,
+              "position_info": 0.37163318739847473
+            },
+            "Z": {
+              "unconditioned": 0.451565680984455,
+              "position_all": 0.18581659369923736,
+              "position_info": 0.37163318739847473
+            }
+          },
+          "paired_unique_lemmas": [
+            44,
+            44
+          ],
+          "position_counts": {
+            "word_final": 597,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Nom": 597
+            },
+            {
+              "Acc": 597
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "terminal_same_stem_case",
+          "seed": 66109,
+          "pairs": 597,
+          "same_right_context": 597,
+          "support": {
+            "source_sites": [
+              1304,
+              733
+            ],
+            "stratum_unrestricted_upper_bound": 597,
+            "shared_nonempty_strata": 44
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.451565680984455,
+              "position_all": 0.18581659369923736,
+              "position_info": 0.37163318739847473
+            },
+            "Z": {
+              "unconditioned": 0.451565680984455,
+              "position_all": 0.18581659369923736,
+              "position_info": 0.37163318739847473
+            }
+          },
+          "paired_unique_lemmas": [
+            44,
+            44
+          ],
+          "position_counts": {
+            "word_final": 597,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Nom": 597
+            },
+            {
+              "Acc": 597
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "terminal_same_stem_case",
+          "seed": 66113,
+          "pairs": 597,
+          "same_right_context": 597,
+          "support": {
+            "source_sites": [
+              1304,
+              733
+            ],
+            "stratum_unrestricted_upper_bound": 597,
+            "shared_nonempty_strata": 44
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.451565680984455,
+              "position_all": 0.18581659369923736,
+              "position_info": 0.37163318739847473
+            },
+            "Z": {
+              "unconditioned": 0.451565680984455,
+              "position_all": 0.18581659369923736,
+              "position_info": 0.37163318739847473
+            }
+          },
+          "paired_unique_lemmas": [
+            44,
+            44
+          ],
+          "position_counts": {
+            "word_final": 597,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Nom": 597
+            },
+            {
+              "Acc": 597
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "terminal_same_stem_case",
+          "seed": 66121,
+          "pairs": 597,
+          "same_right_context": 597,
+          "support": {
+            "source_sites": [
+              1304,
+              733
+            ],
+            "stratum_unrestricted_upper_bound": 597,
+            "shared_nonempty_strata": 44
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.451565680984455,
+              "position_all": 0.18581659369923736,
+              "position_info": 0.37163318739847473
+            },
+            "Z": {
+              "unconditioned": 0.451565680984455,
+              "position_all": 0.18581659369923736,
+              "position_info": 0.37163318739847473
+            }
+          },
+          "paired_unique_lemmas": [
+            44,
+            44
+          ],
+          "position_counts": {
+            "word_final": 597,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Nom": 597
+            },
+            {
+              "Acc": 597
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "terminal_same_stem_case",
+          "seed": 66137,
+          "pairs": 597,
+          "same_right_context": 597,
+          "support": {
+            "source_sites": [
+              1304,
+              733
+            ],
+            "stratum_unrestricted_upper_bound": 597,
+            "shared_nonempty_strata": 44
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.451565680984455,
+              "position_all": 0.18581659369923736,
+              "position_info": 0.37163318739847473
+            },
+            "Z": {
+              "unconditioned": 0.451565680984455,
+              "position_all": 0.18581659369923736,
+              "position_info": 0.37163318739847473
+            }
+          },
+          "paired_unique_lemmas": [
+            44,
+            44
+          ],
+          "position_counts": {
+            "word_final": 597,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Nom": 597
+            },
+            {
+              "Acc": 597
+            }
+          ]
+        }
+      ],
+      "negative_acceptances": {
+        "unconditioned": 7,
+        "position_all": 3,
+        "position_info": 1
+      }
+    },
+    "3": {
+      "source": {
+        "sha256": "83e17b56b22c09d627ca4df80b0e5b8294be443a7ab86e8c98a66ead22b79d6b",
+        "documents": [
+          null
+        ],
+        "sentences": 7862,
+        "normalized_words": 109922,
+        "surface_tokens_with_punctuation": 127693
+      },
+      "summary": {
+        "us/um/internal": {
+          "support_range_by_seed": [
+            177,
+            177
+          ],
+          "common_supported_seeds": 5,
+          "methods": {
+            "unconditioned": {
+              "supported_seeds": 5,
+              "genuine_wins": 5,
+              "decoy_wins": 0,
+              "ties": 0,
+              "genuine_accepted": 0,
+              "decoy_accepted": 0
+            },
+            "position_all": {
+              "supported_seeds": 5,
+              "genuine_wins": 5,
+              "decoy_wins": 0,
+              "ties": 0,
+              "genuine_accepted": 5,
+              "decoy_accepted": 0
+            },
+            "position_info": {
+              "supported_seeds": 5,
+              "genuine_wins": 5,
+              "decoy_wins": 0,
+              "ties": 0,
+              "genuine_accepted": 5,
+              "decoy_accepted": 0
+            }
+          }
+        },
+        "us/um/internal_same_morph": {
+          "support_range_by_seed": [
+            90,
+            90
+          ],
+          "common_supported_seeds": 5,
+          "methods": {
+            "unconditioned": {
+              "supported_seeds": 5,
+              "genuine_wins": 0,
+              "decoy_wins": 5,
+              "ties": 0,
+              "genuine_accepted": 0,
+              "decoy_accepted": 0
+            },
+            "position_all": {
+              "supported_seeds": 5,
+              "genuine_wins": 5,
+              "decoy_wins": 0,
+              "ties": 0,
+              "genuine_accepted": 0,
+              "decoy_accepted": 0
+            },
+            "position_info": {
+              "supported_seeds": 5,
+              "genuine_wins": 5,
+              "decoy_wins": 0,
+              "ties": 0,
+              "genuine_accepted": 0,
+              "decoy_accepted": 0
+            }
+          }
+        },
+        "us/um/terminal_same_stem_case": {
+          "support_range_by_seed": [
+            930,
+            930
+          ],
+          "common_supported_seeds": 5,
+          "methods": {
+            "unconditioned": {
+              "supported_seeds": 5,
+              "genuine_wins": 0,
+              "decoy_wins": 0,
+              "ties": 5,
+              "genuine_accepted": 0,
+              "decoy_accepted": 0
+            },
+            "position_all": {
+              "supported_seeds": 5,
+              "genuine_wins": 0,
+              "decoy_wins": 0,
+              "ties": 5,
+              "genuine_accepted": 5,
+              "decoy_accepted": 5
+            },
+            "position_info": {
+              "supported_seeds": 5,
+              "genuine_wins": 0,
+              "decoy_wins": 0,
+              "ties": 5,
+              "genuine_accepted": 5,
+              "decoy_accepted": 5
+            }
+          }
+        }
+      },
+      "rows": [
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "internal",
+          "seed": 66103,
+          "pairs": 177,
+          "same_right_context": 15,
+          "support": {
+            "source_sites": [
+              1431,
+              915
+            ],
+            "stratum_unrestricted_upper_bound": 177,
+            "shared_nonempty_strata": 10
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.4884101772031873,
+              "position_all": 0.3444888325071503,
+              "position_info": 0.3444888325071503
+            },
+            "Z": {
+              "unconditioned": 0.5336521197987475,
+              "position_all": 0.5007206471040727,
+              "position_info": 0.5007206471040727
+            }
+          },
+          "paired_unique_lemmas": [
+            33,
+            44
+          ],
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Nom": 41,
+              "_": 75,
+              "Acc": 45,
+              "Abl": 7,
+              "Dat": 1,
+              "Gen": 8
+            },
+            {
+              "_": 51,
+              "Gen": 11,
+              "Abl": 16,
+              "Nom": 64,
+              "Dat": 8,
+              "Acc": 27
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "internal",
+          "seed": 66109,
+          "pairs": 177,
+          "same_right_context": 12,
+          "support": {
+            "source_sites": [
+              1431,
+              915
+            ],
+            "stratum_unrestricted_upper_bound": 177,
+            "shared_nonempty_strata": 10
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.4889228851805942,
+              "position_all": 0.34541338185497156,
+              "position_info": 0.34541338185497156
+            },
+            "Z": {
+              "unconditioned": 0.516313400170839,
+              "position_all": 0.47965344292409934,
+              "position_info": 0.47965344292409934
+            }
+          },
+          "paired_unique_lemmas": [
+            32,
+            41
+          ],
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Nom": 41,
+              "Gen": 7,
+              "_": 75,
+              "Acc": 46,
+              "Abl": 8
+            },
+            {
+              "_": 47,
+              "Nom": 53,
+              "Acc": 35,
+              "Dat": 8,
+              "Gen": 9,
+              "Abl": 25
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "internal",
+          "seed": 66113,
+          "pairs": 177,
+          "same_right_context": 14,
+          "support": {
+            "source_sites": [
+              1431,
+              915
+            ],
+            "stratum_unrestricted_upper_bound": 177,
+            "shared_nonempty_strata": 10
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.4871845613071847,
+              "position_all": 0.34351776557846325,
+              "position_info": 0.34351776557846325
+            },
+            "Z": {
+              "unconditioned": 0.5186514804084787,
+              "position_all": 0.48580683710199707,
+              "position_info": 0.48580683710199707
+            }
+          },
+          "paired_unique_lemmas": [
+            31,
+            37
+          ],
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Acc": 45,
+              "Nom": 40,
+              "Abl": 8,
+              "_": 76,
+              "Gen": 8
+            },
+            {
+              "_": 47,
+              "Acc": 35,
+              "Nom": 67,
+              "Abl": 15,
+              "Dat": 7,
+              "Gen": 6
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "internal",
+          "seed": 66121,
+          "pairs": 177,
+          "same_right_context": 16,
+          "support": {
+            "source_sites": [
+              1431,
+              915
+            ],
+            "stratum_unrestricted_upper_bound": 177,
+            "shared_nonempty_strata": 10
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.4909910660035647,
+              "position_all": 0.3484804169051744,
+              "position_info": 0.3484804169051744
+            },
+            "Z": {
+              "unconditioned": 0.5205902802613702,
+              "position_all": 0.485781972333198,
+              "position_info": 0.485781972333198
+            }
+          },
+          "paired_unique_lemmas": [
+            33,
+            40
+          ],
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Acc": 46,
+              "Abl": 8,
+              "Nom": 40,
+              "Gen": 10,
+              "_": 73
+            },
+            {
+              "_": 53,
+              "Acc": 24,
+              "Abl": 26,
+              "Nom": 61,
+              "Gen": 6,
+              "Dat": 7
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "internal",
+          "seed": 66137,
+          "pairs": 177,
+          "same_right_context": 14,
+          "support": {
+            "source_sites": [
+              1431,
+              915
+            ],
+            "stratum_unrestricted_upper_bound": 177,
+            "shared_nonempty_strata": 10
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.4896833605033186,
+              "position_all": 0.34657233739632914,
+              "position_info": 0.34657233739632914
+            },
+            "Z": {
+              "unconditioned": 0.5270680474229499,
+              "position_all": 0.49667648955078114,
+              "position_info": 0.49667648955078114
+            }
+          },
+          "paired_unique_lemmas": [
+            32,
+            40
+          ],
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "_": 74,
+              "Nom": 41,
+              "Abl": 7,
+              "Acc": 46,
+              "Gen": 8,
+              "Dat": 1
+            },
+            {
+              "Nom": 57,
+              "Acc": 30,
+              "Abl": 18,
+              "_": 53,
+              "Gen": 11,
+              "Dat": 8
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "internal_same_morph",
+          "seed": 66103,
+          "pairs": 90,
+          "same_right_context": 13,
+          "support": {
+            "source_sites": [
+              1431,
+              913
+            ],
+            "stratum_unrestricted_upper_bound": 90,
+            "shared_nonempty_strata": 29
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.5435806419960659,
+              "position_all": 0.41348222134242546,
+              "position_info": 0.41348222134242546
+            },
+            "Z": {
+              "unconditioned": 0.5094706296285425,
+              "position_all": 0.47691275707476866,
+              "position_info": 0.47691275707476866
+            }
+          },
+          "paired_unique_lemmas": [
+            24,
+            29
+          ],
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Acc": 16,
+              "_": 41,
+              "Nom": 28,
+              "Abl": 3,
+              "Gen": 2
+            },
+            {
+              "Acc": 16,
+              "_": 41,
+              "Nom": 28,
+              "Abl": 3,
+              "Gen": 2
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "internal_same_morph",
+          "seed": 66109,
+          "pairs": 90,
+          "same_right_context": 12,
+          "support": {
+            "source_sites": [
+              1431,
+              913
+            ],
+            "stratum_unrestricted_upper_bound": 90,
+            "shared_nonempty_strata": 29
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.5435806419960659,
+              "position_all": 0.41348222134242546,
+              "position_info": 0.41348222134242546
+            },
+            "Z": {
+              "unconditioned": 0.5097850658822323,
+              "position_all": 0.47751620401951334,
+              "position_info": 0.47751620401951334
+            }
+          },
+          "paired_unique_lemmas": [
+            24,
+            28
+          ],
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Nom": 28,
+              "Acc": 16,
+              "_": 41,
+              "Abl": 3,
+              "Gen": 2
+            },
+            {
+              "Nom": 28,
+              "Acc": 16,
+              "_": 41,
+              "Abl": 3,
+              "Gen": 2
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "internal_same_morph",
+          "seed": 66113,
+          "pairs": 90,
+          "same_right_context": 12,
+          "support": {
+            "source_sites": [
+              1431,
+              913
+            ],
+            "stratum_unrestricted_upper_bound": 90,
+            "shared_nonempty_strata": 29
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.5397860015918579,
+              "position_all": 0.40846597594019657,
+              "position_info": 0.40846597594019657
+            },
+            "Z": {
+              "unconditioned": 0.5058439031144066,
+              "position_all": 0.4733394319407501,
+              "position_info": 0.4733394319407501
+            }
+          },
+          "paired_unique_lemmas": [
+            24,
+            29
+          ],
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Gen": 2,
+              "Nom": 28,
+              "_": 41,
+              "Acc": 16,
+              "Abl": 3
+            },
+            {
+              "Gen": 2,
+              "Nom": 28,
+              "_": 41,
+              "Acc": 16,
+              "Abl": 3
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "internal_same_morph",
+          "seed": 66121,
+          "pairs": 90,
+          "same_right_context": 14,
+          "support": {
+            "source_sites": [
+              1431,
+              913
+            ],
+            "stratum_unrestricted_upper_bound": 90,
+            "shared_nonempty_strata": 29
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.5441107451128668,
+              "position_all": 0.41484901339099395,
+              "position_info": 0.41484901339099395
+            },
+            "Z": {
+              "unconditioned": 0.5051308279799227,
+              "position_all": 0.47135324398250106,
+              "position_info": 0.47135324398250106
+            }
+          },
+          "paired_unique_lemmas": [
+            24,
+            26
+          ],
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Acc": 16,
+              "Nom": 28,
+              "_": 41,
+              "Abl": 3,
+              "Gen": 2
+            },
+            {
+              "Acc": 16,
+              "Nom": 28,
+              "_": 41,
+              "Abl": 3,
+              "Gen": 2
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "internal_same_morph",
+          "seed": 66137,
+          "pairs": 90,
+          "same_right_context": 14,
+          "support": {
+            "source_sites": [
+              1431,
+              913
+            ],
+            "stratum_unrestricted_upper_bound": 90,
+            "shared_nonempty_strata": 29
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.5435806419960659,
+              "position_all": 0.41348222134242546,
+              "position_info": 0.41348222134242546
+            },
+            "Z": {
+              "unconditioned": 0.5010515740275884,
+              "position_all": 0.46753132039107137,
+              "position_info": 0.46753132039107137
+            }
+          },
+          "paired_unique_lemmas": [
+            24,
+            28
+          ],
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Nom": 28,
+              "Acc": 16,
+              "_": 41,
+              "Gen": 2,
+              "Abl": 3
+            },
+            {
+              "Nom": 28,
+              "Acc": 16,
+              "_": 41,
+              "Gen": 2,
+              "Abl": 3
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "terminal_same_stem_case",
+          "seed": 66103,
+          "pairs": 930,
+          "same_right_context": 930,
+          "support": {
+            "source_sites": [
+              1654,
+              1206
+            ],
+            "stratum_unrestricted_upper_bound": 930,
+            "shared_nonempty_strata": 80
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.4315404236794329,
+              "position_all": 0.18561780828805183,
+              "position_info": 0.37123561657610366
+            },
+            "Z": {
+              "unconditioned": 0.4315404236794329,
+              "position_all": 0.18561780828805183,
+              "position_info": 0.37123561657610366
+            }
+          },
+          "paired_unique_lemmas": [
+            77,
+            77
+          ],
+          "position_counts": {
+            "word_final": 930,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Nom": 930
+            },
+            {
+              "Acc": 930
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "terminal_same_stem_case",
+          "seed": 66109,
+          "pairs": 930,
+          "same_right_context": 930,
+          "support": {
+            "source_sites": [
+              1654,
+              1206
+            ],
+            "stratum_unrestricted_upper_bound": 930,
+            "shared_nonempty_strata": 80
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.4315404236794329,
+              "position_all": 0.18561780828805183,
+              "position_info": 0.37123561657610366
+            },
+            "Z": {
+              "unconditioned": 0.4315404236794329,
+              "position_all": 0.18561780828805183,
+              "position_info": 0.37123561657610366
+            }
+          },
+          "paired_unique_lemmas": [
+            77,
+            77
+          ],
+          "position_counts": {
+            "word_final": 930,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Nom": 930
+            },
+            {
+              "Acc": 930
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "terminal_same_stem_case",
+          "seed": 66113,
+          "pairs": 930,
+          "same_right_context": 930,
+          "support": {
+            "source_sites": [
+              1654,
+              1206
+            ],
+            "stratum_unrestricted_upper_bound": 930,
+            "shared_nonempty_strata": 80
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.4315404236794329,
+              "position_all": 0.18561780828805183,
+              "position_info": 0.37123561657610366
+            },
+            "Z": {
+              "unconditioned": 0.4315404236794329,
+              "position_all": 0.18561780828805183,
+              "position_info": 0.37123561657610366
+            }
+          },
+          "paired_unique_lemmas": [
+            77,
+            77
+          ],
+          "position_counts": {
+            "word_final": 930,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Nom": 930
+            },
+            {
+              "Acc": 930
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "terminal_same_stem_case",
+          "seed": 66121,
+          "pairs": 930,
+          "same_right_context": 930,
+          "support": {
+            "source_sites": [
+              1654,
+              1206
+            ],
+            "stratum_unrestricted_upper_bound": 930,
+            "shared_nonempty_strata": 80
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.4315404236794329,
+              "position_all": 0.18561780828805183,
+              "position_info": 0.37123561657610366
+            },
+            "Z": {
+              "unconditioned": 0.4315404236794329,
+              "position_all": 0.18561780828805183,
+              "position_info": 0.37123561657610366
+            }
+          },
+          "paired_unique_lemmas": [
+            77,
+            77
+          ],
+          "position_counts": {
+            "word_final": 930,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Nom": 930
+            },
+            {
+              "Acc": 930
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "terminal_same_stem_case",
+          "seed": 66137,
+          "pairs": 930,
+          "same_right_context": 930,
+          "support": {
+            "source_sites": [
+              1654,
+              1206
+            ],
+            "stratum_unrestricted_upper_bound": 930,
+            "shared_nonempty_strata": 80
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.4315404236794329,
+              "position_all": 0.18561780828805183,
+              "position_info": 0.37123561657610366
+            },
+            "Z": {
+              "unconditioned": 0.4315404236794329,
+              "position_all": 0.18561780828805183,
+              "position_info": 0.37123561657610366
+            }
+          },
+          "paired_unique_lemmas": [
+            77,
+            77
+          ],
+          "position_counts": {
+            "word_final": 930,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Nom": 930
+            },
+            {
+              "Acc": 930
+            }
+          ]
+        }
+      ],
+      "negative_acceptances": {
+        "unconditioned": 7,
+        "position_all": 4,
+        "position_info": 1
+      }
+    },
+    "4": {
+      "source": {
+        "sha256": "fb914ac763d12ac201bd51ef1f49c4de29354ca585f149b215fe7450cb832814",
+        "documents": [
+          null
+        ],
+        "sentences": 5966,
+        "normalized_words": 83069,
+        "surface_tokens_with_punctuation": 97466
+      },
+      "summary": {
+        "us/um/internal": {
+          "support_range_by_seed": [
+            135,
+            135
+          ],
+          "common_supported_seeds": 5,
+          "methods": {
+            "unconditioned": {
+              "supported_seeds": 5,
+              "genuine_wins": 0,
+              "decoy_wins": 5,
+              "ties": 0,
+              "genuine_accepted": 0,
+              "decoy_accepted": 0
+            },
+            "position_all": {
+              "supported_seeds": 5,
+              "genuine_wins": 5,
+              "decoy_wins": 0,
+              "ties": 0,
+              "genuine_accepted": 0,
+              "decoy_accepted": 0
+            },
+            "position_info": {
+              "supported_seeds": 5,
+              "genuine_wins": 5,
+              "decoy_wins": 0,
+              "ties": 0,
+              "genuine_accepted": 0,
+              "decoy_accepted": 0
+            }
+          }
+        },
+        "us/um/internal_same_morph": {
+          "support_range_by_seed": [
+            104,
+            104
+          ],
+          "common_supported_seeds": 5,
+          "methods": {
+            "unconditioned": {
+              "supported_seeds": 5,
+              "genuine_wins": 0,
+              "decoy_wins": 5,
+              "ties": 0,
+              "genuine_accepted": 0,
+              "decoy_accepted": 0
+            },
+            "position_all": {
+              "supported_seeds": 5,
+              "genuine_wins": 5,
+              "decoy_wins": 0,
+              "ties": 0,
+              "genuine_accepted": 0,
+              "decoy_accepted": 0
+            },
+            "position_info": {
+              "supported_seeds": 5,
+              "genuine_wins": 5,
+              "decoy_wins": 0,
+              "ties": 0,
+              "genuine_accepted": 0,
+              "decoy_accepted": 0
+            }
+          }
+        },
+        "us/um/terminal_same_stem_case": {
+          "support_range_by_seed": [
+            836,
+            836
+          ],
+          "common_supported_seeds": 5,
+          "methods": {
+            "unconditioned": {
+              "supported_seeds": 5,
+              "genuine_wins": 0,
+              "decoy_wins": 0,
+              "ties": 5,
+              "genuine_accepted": 0,
+              "decoy_accepted": 0
+            },
+            "position_all": {
+              "supported_seeds": 5,
+              "genuine_wins": 0,
+              "decoy_wins": 0,
+              "ties": 5,
+              "genuine_accepted": 5,
+              "decoy_accepted": 5
+            },
+            "position_info": {
+              "supported_seeds": 5,
+              "genuine_wins": 0,
+              "decoy_wins": 0,
+              "ties": 5,
+              "genuine_accepted": 5,
+              "decoy_accepted": 5
+            }
+          }
+        }
+      },
+      "rows": [
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "internal",
+          "seed": 66103,
+          "pairs": 135,
+          "same_right_context": 9,
+          "support": {
+            "source_sites": [
+              606,
+              1008
+            ],
+            "stratum_unrestricted_upper_bound": 135,
+            "shared_nonempty_strata": 7
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.572979755936479,
+              "position_all": 0.48872064772564483,
+              "position_info": 0.48872064772564483
+            },
+            "Z": {
+              "unconditioned": 0.5546194670315154,
+              "position_all": 0.5478754160413323,
+              "position_info": 0.5478754160413323
+            }
+          },
+          "paired_unique_lemmas": [
+            24,
+            32
+          ],
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Nom": 29,
+              "_": 81,
+              "Acc": 17,
+              "Abl": 4,
+              "Gen": 4
+            },
+            {
+              "_": 68,
+              "Acc": 18,
+              "Nom": 32,
+              "Gen": 6,
+              "Abl": 7,
+              "Dat": 4
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "internal",
+          "seed": 66109,
+          "pairs": 135,
+          "same_right_context": 10,
+          "support": {
+            "source_sites": [
+              606,
+              1008
+            ],
+            "stratum_unrestricted_upper_bound": 135,
+            "shared_nonempty_strata": 7
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.5754831947848101,
+              "position_all": 0.4926290502533283,
+              "position_info": 0.4926290502533283
+            },
+            "Z": {
+              "unconditioned": 0.5431925838412123,
+              "position_all": 0.5376131804951475,
+              "position_info": 0.5376131804951475
+            }
+          },
+          "paired_unique_lemmas": [
+            25,
+            34
+          ],
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Nom": 29,
+              "Acc": 18,
+              "_": 78,
+              "Abl": 4,
+              "Gen": 6
+            },
+            {
+              "Acc": 12,
+              "Nom": 30,
+              "_": 72,
+              "Gen": 6,
+              "Abl": 14,
+              "Dat": 1
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "internal",
+          "seed": 66113,
+          "pairs": 135,
+          "same_right_context": 9,
+          "support": {
+            "source_sites": [
+              606,
+              1008
+            ],
+            "stratum_unrestricted_upper_bound": 135,
+            "shared_nonempty_strata": 7
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.5740266697477454,
+              "position_all": 0.4906861892635963,
+              "position_info": 0.4906861892635963
+            },
+            "Z": {
+              "unconditioned": 0.5539412041466282,
+              "position_all": 0.5474617009941697,
+              "position_info": 0.5474617009941697
+            }
+          },
+          "paired_unique_lemmas": [
+            25,
+            25
+          ],
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Gen": 6,
+              "_": 80,
+              "Nom": 27,
+              "Acc": 18,
+              "Abl": 4
+            },
+            {
+              "_": 65,
+              "Abl": 8,
+              "Acc": 22,
+              "Nom": 33,
+              "Gen": 5,
+              "Dat": 2
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "internal",
+          "seed": 66121,
+          "pairs": 135,
+          "same_right_context": 8,
+          "support": {
+            "source_sites": [
+              606,
+              1008
+            ],
+            "stratum_unrestricted_upper_bound": 135,
+            "shared_nonempty_strata": 7
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.5761335041188492,
+              "position_all": 0.49345939826008545,
+              "position_info": 0.49345939826008545
+            },
+            "Z": {
+              "unconditioned": 0.5431080778146036,
+              "position_all": 0.5335021220635624,
+              "position_info": 0.5335021220635624
+            }
+          },
+          "paired_unique_lemmas": [
+            24,
+            33
+          ],
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Abl": 5,
+              "Nom": 26,
+              "Acc": 19,
+              "Gen": 5,
+              "_": 80
+            },
+            {
+              "Nom": 32,
+              "_": 66,
+              "Abl": 17,
+              "Acc": 16,
+              "Gen": 3,
+              "Dat": 1
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "internal",
+          "seed": 66137,
+          "pairs": 135,
+          "same_right_context": 7,
+          "support": {
+            "source_sites": [
+              606,
+              1008
+            ],
+            "stratum_unrestricted_upper_bound": 135,
+            "shared_nonempty_strata": 7
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.5729880218395809,
+              "position_all": 0.4887536070020196,
+              "position_info": 0.4887536070020196
+            },
+            "Z": {
+              "unconditioned": 0.5481297540302104,
+              "position_all": 0.5399325434276706,
+              "position_info": 0.5399325434276706
+            }
+          },
+          "paired_unique_lemmas": [
+            25,
+            28
+          ],
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Nom": 29,
+              "_": 79,
+              "Gen": 5,
+              "Abl": 4,
+              "Acc": 18
+            },
+            {
+              "Acc": 16,
+              "Gen": 5,
+              "Abl": 11,
+              "_": 70,
+              "Nom": 31,
+              "Dat": 2
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "internal_same_morph",
+          "seed": 66103,
+          "pairs": 104,
+          "same_right_context": 13,
+          "support": {
+            "source_sites": [
+              606,
+              1004
+            ],
+            "stratum_unrestricted_upper_bound": 104,
+            "shared_nonempty_strata": 20
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.651832955669836,
+              "position_all": 0.5830535895834258,
+              "position_info": 0.5830535895834258
+            },
+            "Z": {
+              "unconditioned": 0.6086418736891408,
+              "position_all": 0.6051575213641086,
+              "position_info": 0.6051575213641086
+            }
+          },
+          "paired_unique_lemmas": [
+            16,
+            24
+          ],
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Acc": 16,
+              "Nom": 17,
+              "_": 64,
+              "Abl": 3,
+              "Gen": 4
+            },
+            {
+              "Acc": 16,
+              "Nom": 17,
+              "_": 64,
+              "Abl": 3,
+              "Gen": 4
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "internal_same_morph",
+          "seed": 66109,
+          "pairs": 104,
+          "same_right_context": 11,
+          "support": {
+            "source_sites": [
+              606,
+              1004
+            ],
+            "stratum_unrestricted_upper_bound": 104,
+            "shared_nonempty_strata": 20
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.651832955669836,
+              "position_all": 0.5830535895834258,
+              "position_info": 0.5830535895834258
+            },
+            "Z": {
+              "unconditioned": 0.6136664469811254,
+              "position_all": 0.6122834370739234,
+              "position_info": 0.6122834370739234
+            }
+          },
+          "paired_unique_lemmas": [
+            16,
+            20
+          ],
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Acc": 16,
+              "Abl": 3,
+              "_": 64,
+              "Nom": 17,
+              "Gen": 4
+            },
+            {
+              "Acc": 16,
+              "Abl": 3,
+              "_": 64,
+              "Nom": 17,
+              "Gen": 4
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "internal_same_morph",
+          "seed": 66113,
+          "pairs": 104,
+          "same_right_context": 11,
+          "support": {
+            "source_sites": [
+              606,
+              1004
+            ],
+            "stratum_unrestricted_upper_bound": 104,
+            "shared_nonempty_strata": 20
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.651832955669836,
+              "position_all": 0.5830535895834258,
+              "position_info": 0.5830535895834258
+            },
+            "Z": {
+              "unconditioned": 0.5930072344334714,
+              "position_all": 0.5901759993193048,
+              "position_info": 0.5901759993193048
+            }
+          },
+          "paired_unique_lemmas": [
+            16,
+            21
+          ],
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Nom": 17,
+              "Abl": 3,
+              "_": 64,
+              "Acc": 16,
+              "Gen": 4
+            },
+            {
+              "Nom": 17,
+              "Abl": 3,
+              "_": 64,
+              "Acc": 16,
+              "Gen": 4
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "internal_same_morph",
+          "seed": 66121,
+          "pairs": 104,
+          "same_right_context": 13,
+          "support": {
+            "source_sites": [
+              606,
+              1004
+            ],
+            "stratum_unrestricted_upper_bound": 104,
+            "shared_nonempty_strata": 20
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.651832955669836,
+              "position_all": 0.5830535895834258,
+              "position_info": 0.5830535895834258
+            },
+            "Z": {
+              "unconditioned": 0.6031485377259261,
+              "position_all": 0.5988470802079177,
+              "position_info": 0.5988470802079177
+            }
+          },
+          "paired_unique_lemmas": [
+            16,
+            19
+          ],
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "_": 64,
+              "Acc": 16,
+              "Nom": 17,
+              "Abl": 3,
+              "Gen": 4
+            },
+            {
+              "_": 64,
+              "Acc": 16,
+              "Nom": 17,
+              "Abl": 3,
+              "Gen": 4
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "internal_same_morph",
+          "seed": 66137,
+          "pairs": 104,
+          "same_right_context": 11,
+          "support": {
+            "source_sites": [
+              606,
+              1004
+            ],
+            "stratum_unrestricted_upper_bound": 104,
+            "shared_nonempty_strata": 20
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.651832955669836,
+              "position_all": 0.5830535895834258,
+              "position_info": 0.5830535895834258
+            },
+            "Z": {
+              "unconditioned": 0.6078516723975316,
+              "position_all": 0.6051858922625839,
+              "position_info": 0.6051858922625839
+            }
+          },
+          "paired_unique_lemmas": [
+            16,
+            21
+          ],
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "_": 64,
+              "Nom": 17,
+              "Acc": 16,
+              "Abl": 3,
+              "Gen": 4
+            },
+            {
+              "_": 64,
+              "Nom": 17,
+              "Acc": 16,
+              "Abl": 3,
+              "Gen": 4
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "terminal_same_stem_case",
+          "seed": 66103,
+          "pairs": 836,
+          "same_right_context": 836,
+          "support": {
+            "source_sites": [
+              2205,
+              1072
+            ],
+            "stratum_unrestricted_upper_bound": 836,
+            "shared_nonempty_strata": 78
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.4044214368310086,
+              "position_all": 0.13626439832861556,
+              "position_info": 0.2725287966572311
+            },
+            "Z": {
+              "unconditioned": 0.4044214368310086,
+              "position_all": 0.13626439832861556,
+              "position_info": 0.2725287966572311
+            }
+          },
+          "paired_unique_lemmas": [
+            76,
+            76
+          ],
+          "position_counts": {
+            "word_final": 836,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Nom": 836
+            },
+            {
+              "Acc": 836
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "terminal_same_stem_case",
+          "seed": 66109,
+          "pairs": 836,
+          "same_right_context": 836,
+          "support": {
+            "source_sites": [
+              2205,
+              1072
+            ],
+            "stratum_unrestricted_upper_bound": 836,
+            "shared_nonempty_strata": 78
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.4044214368310086,
+              "position_all": 0.13626439832861556,
+              "position_info": 0.2725287966572311
+            },
+            "Z": {
+              "unconditioned": 0.4044214368310086,
+              "position_all": 0.13626439832861556,
+              "position_info": 0.2725287966572311
+            }
+          },
+          "paired_unique_lemmas": [
+            76,
+            76
+          ],
+          "position_counts": {
+            "word_final": 836,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Nom": 836
+            },
+            {
+              "Acc": 836
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "terminal_same_stem_case",
+          "seed": 66113,
+          "pairs": 836,
+          "same_right_context": 836,
+          "support": {
+            "source_sites": [
+              2205,
+              1072
+            ],
+            "stratum_unrestricted_upper_bound": 836,
+            "shared_nonempty_strata": 78
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.4044214368310086,
+              "position_all": 0.13626439832861556,
+              "position_info": 0.2725287966572311
+            },
+            "Z": {
+              "unconditioned": 0.4044214368310086,
+              "position_all": 0.13626439832861556,
+              "position_info": 0.2725287966572311
+            }
+          },
+          "paired_unique_lemmas": [
+            76,
+            76
+          ],
+          "position_counts": {
+            "word_final": 836,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Nom": 836
+            },
+            {
+              "Acc": 836
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "terminal_same_stem_case",
+          "seed": 66121,
+          "pairs": 836,
+          "same_right_context": 836,
+          "support": {
+            "source_sites": [
+              2205,
+              1072
+            ],
+            "stratum_unrestricted_upper_bound": 836,
+            "shared_nonempty_strata": 78
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.4044214368310086,
+              "position_all": 0.13626439832861556,
+              "position_info": 0.2725287966572311
+            },
+            "Z": {
+              "unconditioned": 0.4044214368310086,
+              "position_all": 0.13626439832861556,
+              "position_info": 0.2725287966572311
+            }
+          },
+          "paired_unique_lemmas": [
+            76,
+            76
+          ],
+          "position_counts": {
+            "word_final": 836,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Nom": 836
+            },
+            {
+              "Acc": 836
+            }
+          ]
+        },
+        {
+          "target": "us",
+          "decoy": "um",
+          "mode": "terminal_same_stem_case",
+          "seed": 66137,
+          "pairs": 836,
+          "same_right_context": 836,
+          "support": {
+            "source_sites": [
+              2205,
+              1072
+            ],
+            "stratum_unrestricted_upper_bound": 836,
+            "shared_nonempty_strata": 78
+          },
+          "scores": {
+            "X": {
+              "unconditioned": 0.4044214368310086,
+              "position_all": 0.13626439832861556,
+              "position_info": 0.2725287966572311
+            },
+            "Z": {
+              "unconditioned": 0.4044214368310086,
+              "position_all": 0.13626439832861556,
+              "position_info": 0.2725287966572311
+            }
+          },
+          "paired_unique_lemmas": [
+            76,
+            76
+          ],
+          "position_counts": {
+            "word_final": 836,
+            "word_initial": 0
+          },
+          "case_counts": [
+            {
+              "Nom": 836
+            },
+            {
+              "Acc": 836
+            }
+          ]
+        }
+      ],
+      "negative_acceptances": {
+        "unconditioned": 7,
+        "position_all": 4,
+        "position_info": 1
+      }
+    }
+  },
+  "reproduction": {
+    "instruction": "Extract the scripts and design from P-L1-018/mubadala777/step.json evidence.reproduction, download its pinned files and calibrate/evaluate as described there; write evidence.design to plan.json. Download the ITTB train and test files at the listed commit and SHA-verify them. Run support, book segmentation and scoring scripts in that directory with PYTHONPATH including the original repository and script directory. book_score expects the segmented book files produced by the segmentation procedure; these can be generated by retaining the same ranges in book_support.py outside its temporary directory.",
+    "support_script": "import json,hashlib\nfrom pathlib import Path\nfrom audit_morphology_support import _build_input,_internal_support\nfrom charter_context import make_pairs\nout={}\nfor split in ('test','train'):\n path=Path(__file__).parent/('ittb-'+split+'.conllu');occ,sites,docs=_build_input(path);subset={}\n for mode in ('all','internal','internal_same_morph','terminal_same_stem_case','both_sides_matched'):\n  pairs,support=make_pairs(sites,mode,66103,frozenset());subset[mode]={'pairs':len(pairs),'support':support,'exterior_right_disagreements':sum(a.after != b.after for a,b in pairs)}\n out[split]={'sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'source_sites':len(occ),'document_ids_present':len(set(x for x in docs.values() if x is not None)),'internal_upper_bound':_internal_support(occ),'modes':subset}\n print(split,json.dumps(out[split]),flush=True)\nPath('/tmp/voy-llct/ittb-support.json').write_text(json.dumps(out,indent=2)+'\\n')\n",
+    "book_support_script": "from pathlib import Path\nfrom tempfile import TemporaryDirectory\nfrom audit_morphology_support import _build_input\nfrom charter_context import make_pairs\nimport hashlib,re,json\nroot=Path(__file__).parent; source=root/'ittb-train.conllu';raw=source.read_bytes();assert hashlib.sha256(raw).hexdigest()=='7a8ed5d4a3391e918213ffa988f0930364e009e97a4ae4c3c820837fb3cfe29a';rows={}\nwith TemporaryDirectory() as temp:\n files={n:open(Path(temp)/f'book{n}.conllu','w') for n in (2,3,4)}\n for block in raw.decode().split('\\n\\n'):\n  m=re.search(r'^# sent_id = train-s(\\d+)$',block,re.M)\n  if not m:continue\n  i=int(m[1]);n=2 if 105<=i<=5657 else 3 if 5658<=i<=13519 else 4 if 16810<=i<=22775 else None\n  if n:files[n].write(block+'\\n\\n')\n for f in files.values():f.close()\n for n in (2,3,4):\n  occ,sites,docs=_build_input(Path(temp)/f'book{n}.conllu');modes={}\n  for mode in ('all','internal','internal_same_morph','terminal_same_stem_case'):\n   pairs,support=make_pairs(sites,mode,66103,frozenset());modes[mode]={'pairs':len(pairs),'right_disagreements':sum(a.after!=b.after for a,b in pairs),'support':support}\n  rows[str(n)]={'modes':modes}\nprint(json.dumps(rows,indent=2))\n",
+    "book_score_script": "import json, pathlib\nimport charter_context as c\nfrom charter_context import run_rows,summarized,negative_controls\nthresholds=json.loads(pathlib.Path('/tmp/voy-llct/calibration.json').read_text())['thresholds'];out={}\nfor n in (2,3,4):\n p=pathlib.Path('/tmp/voy-llct/corpus')/('book'+str(n)+'.conllu');p.write_bytes(pathlib.Path('/tmp/voy-llct/book'+str(n)+'.conllu').read_bytes());words,info=c.read_words('book'+str(n));rows=run_rows(words,[('us','um')],('internal','internal_same_morph','terminal_same_stem_case'),set());neg=negative_controls(words,thresholds);out[str(n)]={'source':info,'summary':summarized(rows,thresholds),'rows':rows,'negative_acceptances':{m:sum(x['acceptances'][m] for x in neg) for m in c.METHODS}};print(n,json.dumps(out[str(n)]['summary']),flush=True)\npathlib.Path('/tmp/voy-llct/book-score.json').write_text(json.dumps(out,indent=2)+'\\n')\n"
+  }
+}
