@@ -2,18 +2,18 @@
   "step": "M-L3",
   "handle": "intracontinental-multicrystalline",
   "kind": "key",
-  "summary": "Search medieval Czech substitution at the pinned budget and calibrate on a synthetic control.",
-  "lease": "16a983d54f5446c8c11909fd",
+  "summary": "Search the modern Welsh substitution cell with published control calibration.",
+  "lease": "cbabaebeadb6927e11883a7a",
   "control": {
-    "language": "medieval_czech",
+    "language": "welsh",
     "family": "substitution",
     "control": "homophonic",
-    "control_tokens": 2319,
+    "control_tokens": 560,
     "true_key": {
-      "submission": "control-medieval_czech-homophonic",
+      "submission": "control-welsh-homophonic",
       "family": "substitution",
       "target": {
-        "language": "medieval_czech",
+        "language": "welsh",
         "period": "control"
       },
       "verdict": "FAIL",
@@ -21,36 +21,40 @@
         "c_pictures"
       ],
       "passes_without_anchors": true,
-      "savings": 0.12293,
+      "savings": 0.05094,
       "killed_by": []
     },
     "true_key_passes": true,
     "search_key": {
-      "submission": "grid-medieval_czech-substitution-control",
+      "submission": "grid-welsh-substitution-control",
       "family": "substitution",
       "target": {
-        "language": "medieval_czech",
+        "language": "welsh",
         "period": "grid search"
       },
       "verdict": "FAIL",
       "failed": [
-        "c_pictures"
+        "a_compresses",
+        "b_reads",
+        "c_pictures",
+        "d_not_illusion"
       ],
-      "passes_without_anchors": true,
-      "savings": 0.12163,
+      "passes_without_anchors": false,
+      "savings": -0.13359,
       "killed_by": []
     },
-    "search_cracks_control_clean": true,
+    "search_cracks_control_clean": false,
     "noise": 0.02,
     "true_key_passes_noisy": true,
     "search_cracks_control": true
   },
   "method": {
-    "entry_point": "vs.search.search_cell('medieval_czech', 'substitution', practice_train, tag='cell')",
+    "entry_point": "vs.search.search_cell('welsh', 'substitution', practice_train, tag='cell')",
     "training_split": "public practice-training pages only",
-    "corpus": "medieval_czech_01473c19",
-    "corpus_sha256": "01473c190be9c9b73b373a29264c54b7747d4834ca1f81e2d159a5b8f398ecfe",
-    "selection": "One search at the pinned budget with its standard deterministic seed; no adaptation to a hidden result."
+    "corpus": "welsh_8aa20d4e",
+    "corpus_sha256": "8aa20d4ebf6e4cd9f1276d8a824c8665671bc4e7963e2e6405da6c25e5500ffc",
+    "period_limitation": "This 1904 modern Welsh travel text is not medieval Welsh. The noisy control search passes under the current calibration, but the clean control search fails, so the result has a material instability.",
+    "selection": "One pinned-budget search with its standard deterministic seed."
   },
   "local_advisory": {
     "split": "practice",
@@ -61,8 +65,6 @@
       "kill_tests",
       "c_pictures",
       "d_not_illusion"
-    ],
-    "pages_evaluated": 34,
-    "pages_passing": 0
+    ]
   }
 }
