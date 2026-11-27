@@ -1,0 +1,1945 @@
+{
+  "title": "Independently check and use the f68r1 map of 29 star-label loci",
+  "statement": "This is the f68r1 panel component of P-L4-031. It supplies approximate native Yale first-glyph positions for all 29 ZL star-label loci f68r1.8 through f68r1.36. Voynichese word boxes were registered to the left panel of the unfolded Yale recto. Inside the star field, Takahashi's readings match the 29 boxes one-to-one. Six ZL readings differ from Takahashi. For the duplicate otor, the other companion occurrence lies in the upper paragraph. Each first-glyph point was examined on the native crop, with a second reading of the six variant matches and the duplicate. A contributor who did not annotate f68r1 can verify the locations before joining them to the independent blind pictures. The coordinates themselves express location and carry no proposed reading in a target language.",
+  "program": "L4",
+  "check": "Check coverage of all 29 ZL Ls IDs and unique word-box assignments. Have a separate contributor recover at least three frozen loci f68r1.12, f68r1.26 and f68r1.30 on the linked native crop without the recorded positions, then compare the selected word and first-glyph point. Review f68r1.32 before any join that assumes labels always lie to the right. Use only agreed blind picture features for cross-panel tests.",
+  "on_path": true,
+  "hard": false,
+  "evidence": {
+    "parent_step": "P-L4-031",
+    "folio": "f68r1",
+    "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006196",
+    "canvas_native_width_height_px": [
+      7993,
+      3828
+    ],
+    "panel": "Leftmost when recto is fully unfolded, innermost recto panel",
+    "panel_reference": "https://www.voynich.nu/q09/",
+    "card_note": "The review point is a representative point on the first visible sign, with approximately 10 to 20 native pixels of manual placement uncertainty, potentially more at faded or linked forms. It is not a pen-stroke order or a measurement of the earliest ink pixel.",
+    "coordinate_rule": "Origin is upper left. Subtract the panel x or y origin and divide by panel width or height for x_frac or y_frac. This explicit panel reference rectangle is used for reproducibility. The paper edge is irregular.",
+    "panel_reference_native_xywh": [
+      250,
+      120,
+      2175,
+      3585
+    ],
+    "sources": {
+      "yale-left-panel.jpg": {
+        "url": "https://collections.library.yale.edu/iiif/2/1006196/175,60,2320,3700/full/0/default.jpg",
+        "sha256": "960276a528fa4110416fa449c8c1b7e60ebc14ba88408b3f7baaea346f3b8586"
+      },
+      "companion.jpg": {
+        "url": "https://www.voynichese.com/2/data/folio/image/glance/color/large/f68r1.jpg",
+        "sha256": "a7da74a67a4411dc95e650c270c76ffd1a323dc20f55dc9ab718e6344c263d11"
+      },
+      "companion-coords.json": {
+        "url": "https://raw.githubusercontent.com/YaleDHLab/voynich/c4d36f4595292c92da8c7428e30cb23b700a019b/utils/voynichese/coords/f68r1.json",
+        "sha256": "a817e7fbfac800e3728fe2cafc3375e16bfb0bb444ed9648414ff9b897a79edf"
+      }
+    },
+    "reading_method": "Choose word boxes on the Yale scan that fall in the discrete star field. Assign modern IVTFF loci using exact Takahashi word matches inside that field. The companion transcription and the Takahashi readings are not independent text witnesses. Verify the visible form and location against the scan, preserve the other edition readings, and keep the separate legacy Stolfi numbering out of the map keys.",
+    "registration": {
+      "region_native_xywh": [
+        175,
+        60,
+        2320,
+        3700
+      ],
+      "companion_size": [
+        636,
+        900
+      ],
+      "overview_size": [
+        650,
+        1037
+      ],
+      "coarse_from_manual_points": [
+        [
+          0.9572937476461322,
+          -0.0026066326013744023
+        ],
+        [
+          0.009351556968986638,
+          0.986834528463719
+        ],
+        [
+          15.717979639023396,
+          28.655378486656343
+        ]
+      ],
+      "anchor_pairs": [
+        {
+          "companion": [
+            76.5,
+            76.5
+          ],
+          "yale_overview": [
+            94.0,
+            111.0
+          ],
+          "patch_correlation": 0.46796249111581073
+        },
+        {
+          "companion": [
+            133.5,
+            69.0
+          ],
+          "yale_overview": [
+            143.0,
+            102.0
+          ],
+          "patch_correlation": 0.7178761594344837
+        },
+        {
+          "companion": [
+            210.0,
+            70.5
+          ],
+          "yale_overview": [
+            216.0,
+            103.0
+          ],
+          "patch_correlation": 0.8335607814711242
+        },
+        {
+          "companion": [
+            264.0,
+            69.0
+          ],
+          "yale_overview": [
+            268.0,
+            101.0
+          ],
+          "patch_correlation": 0.8505112844282321
+        },
+        {
+          "companion": [
+            310.5,
+            69.0
+          ],
+          "yale_overview": [
+            313.0,
+            100.0
+          ],
+          "patch_correlation": 0.8384881818818036
+        },
+        {
+          "companion": [
+            366.0,
+            67.5
+          ],
+          "yale_overview": [
+            368.0,
+            98.0
+          ],
+          "patch_correlation": 0.8080756264947305
+        },
+        {
+          "companion": [
+            424.5,
+            70.5
+          ],
+          "yale_overview": [
+            425.0,
+            101.0
+          ],
+          "patch_correlation": 0.8526478760054325
+        },
+        {
+          "companion": [
+            484.5,
+            73.5
+          ],
+          "yale_overview": [
+            483.0,
+            104.0
+          ],
+          "patch_correlation": 0.8581902562249231
+        },
+        {
+          "companion": [
+            552.0,
+            75.0
+          ],
+          "yale_overview": [
+            549.0,
+            105.0
+          ],
+          "patch_correlation": 0.8194715284310886
+        },
+        {
+          "companion": [
+            69.0,
+            99.0
+          ],
+          "yale_overview": [
+            89.0,
+            133.0
+          ],
+          "patch_correlation": 0.6298639322534291
+        },
+        {
+          "companion": [
+            117.0,
+            93.0
+          ],
+          "yale_overview": [
+            129.0,
+            126.0
+          ],
+          "patch_correlation": 0.6951768888783539
+        },
+        {
+          "companion": [
+            178.5,
+            88.5
+          ],
+          "yale_overview": [
+            186.0,
+            120.0
+          ],
+          "patch_correlation": 0.7703126177078229
+        },
+        {
+          "companion": [
+            240.0,
+            100.5
+          ],
+          "yale_overview": [
+            245.0,
+            132.0
+          ],
+          "patch_correlation": 0.8351145771645098
+        },
+        {
+          "companion": [
+            303.0,
+            91.5
+          ],
+          "yale_overview": [
+            306.0,
+            123.0
+          ],
+          "patch_correlation": 0.8182087540755058
+        },
+        {
+          "companion": [
+            373.5,
+            94.5
+          ],
+          "yale_overview": [
+            375.0,
+            125.0
+          ],
+          "patch_correlation": 0.8506290142994009
+        },
+        {
+          "companion": [
+            432.0,
+            93.0
+          ],
+          "yale_overview": [
+            432.0,
+            123.0
+          ],
+          "patch_correlation": 0.8579209193669589
+        },
+        {
+          "companion": [
+            490.5,
+            100.5
+          ],
+          "yale_overview": [
+            490.0,
+            130.0
+          ],
+          "patch_correlation": 0.788547097831796
+        },
+        {
+          "companion": [
+            556.5,
+            103.5
+          ],
+          "yale_overview": [
+            554.0,
+            133.0
+          ],
+          "patch_correlation": 0.8637623085153517
+        },
+        {
+          "companion": [
+            67.5,
+            126.0
+          ],
+          "yale_overview": [
+            87.0,
+            159.0
+          ],
+          "patch_correlation": 0.5274177027086472
+        },
+        {
+          "companion": [
+            97.5,
+            123.0
+          ],
+          "yale_overview": [
+            112.0,
+            156.0
+          ],
+          "patch_correlation": 0.5587339552727066
+        },
+        {
+          "companion": [
+            142.5,
+            120.0
+          ],
+          "yale_overview": [
+            152.0,
+            152.0
+          ],
+          "patch_correlation": 0.7849685392356369
+        },
+        {
+          "companion": [
+            196.5,
+            114.0
+          ],
+          "yale_overview": [
+            203.0,
+            145.0
+          ],
+          "patch_correlation": 0.7681683098045969
+        },
+        {
+          "companion": [
+            394.5,
+            120.0
+          ],
+          "yale_overview": [
+            396.0,
+            150.0
+          ],
+          "patch_correlation": 0.8327313776839765
+        },
+        {
+          "companion": [
+            439.5,
+            127.5
+          ],
+          "yale_overview": [
+            440.0,
+            157.0
+          ],
+          "patch_correlation": 0.8569737365797211
+        },
+        {
+          "companion": [
+            490.5,
+            123.0
+          ],
+          "yale_overview": [
+            490.0,
+            152.0
+          ],
+          "patch_correlation": 0.8277205432894412
+        },
+        {
+          "companion": [
+            543.0,
+            132.0
+          ],
+          "yale_overview": [
+            541.0,
+            161.0
+          ],
+          "patch_correlation": 0.8543211214082264
+        },
+        {
+          "companion": [
+            70.5,
+            151.5
+          ],
+          "yale_overview": [
+            90.0,
+            184.0
+          ],
+          "patch_correlation": 0.5452616293389392
+        },
+        {
+          "companion": [
+            106.5,
+            148.5
+          ],
+          "yale_overview": [
+            120.0,
+            180.0
+          ],
+          "patch_correlation": 0.6455086177973819
+        },
+        {
+          "companion": [
+            330.0,
+            165.0
+          ],
+          "yale_overview": [
+            333.0,
+            194.0
+          ],
+          "patch_correlation": 0.759326790815548
+        },
+        {
+          "companion": [
+            327.0,
+            183.0
+          ],
+          "yale_overview": [
+            330.0,
+            212.0
+          ],
+          "patch_correlation": 0.7512678229839324
+        },
+        {
+          "companion": [
+            291.0,
+            207.0
+          ],
+          "yale_overview": [
+            296.0,
+            235.0
+          ],
+          "patch_correlation": 0.7746692613160149
+        },
+        {
+          "companion": [
+            331.5,
+            291.0
+          ],
+          "yale_overview": [
+            336.0,
+            317.0
+          ],
+          "patch_correlation": 0.8646977399228082
+        },
+        {
+          "companion": [
+            441.0,
+            321.0
+          ],
+          "yale_overview": [
+            443.0,
+            345.0
+          ],
+          "patch_correlation": 0.804896743887514
+        },
+        {
+          "companion": [
+            459.0,
+            672.0
+          ],
+          "yale_overview": [
+            463.0,
+            687.0
+          ],
+          "patch_correlation": 0.8499252756498775
+        },
+        {
+          "companion": [
+            202.5,
+            444.0
+          ],
+          "yale_overview": [
+            211.0,
+            467.0
+          ],
+          "patch_correlation": 0.7590767054683492
+        },
+        {
+          "companion": [
+            66.0,
+            583.5
+          ],
+          "yale_overview": [
+            87.0,
+            603.0
+          ],
+          "patch_correlation": 0.6267990445111734
+        },
+        {
+          "companion": [
+            442.5,
+            243.0
+          ],
+          "yale_overview": [
+            444.0,
+            269.0
+          ],
+          "patch_correlation": 0.8282017994953195
+        },
+        {
+          "companion": [
+            112.5,
+            258.0
+          ],
+          "yale_overview": [
+            125.0,
+            286.0
+          ],
+          "patch_correlation": 0.6734276173260525
+        },
+        {
+          "companion": [
+            441.0,
+            178.5
+          ],
+          "yale_overview": [
+            442.0,
+            207.0
+          ],
+          "patch_correlation": 0.8646617740321512
+        },
+        {
+          "companion": [
+            334.5,
+            438.0
+          ],
+          "yale_overview": [
+            340.0,
+            460.0
+          ],
+          "patch_correlation": 0.8110765123180121
+        },
+        {
+          "companion": [
+            133.5,
+            546.0
+          ],
+          "yale_overview": [
+            146.0,
+            566.0
+          ],
+          "patch_correlation": 0.8300706433084996
+        },
+        {
+          "companion": [
+            274.5,
+            367.5
+          ],
+          "yale_overview": [
+            281.0,
+            392.0
+          ],
+          "patch_correlation": 0.796705989853021
+        },
+        {
+          "companion": [
+            94.5,
+            642.0
+          ],
+          "yale_overview": [
+            112.0,
+            660.0
+          ],
+          "patch_correlation": 0.634720561266192
+        },
+        {
+          "companion": [
+            235.5,
+            289.5
+          ],
+          "yale_overview": [
+            242.0,
+            316.0
+          ],
+          "patch_correlation": 0.8676069691921727
+        },
+        {
+          "companion": [
+            262.5,
+            535.5
+          ],
+          "yale_overview": [
+            271.0,
+            555.0
+          ],
+          "patch_correlation": 0.752246620515618
+        },
+        {
+          "companion": [
+            258.0,
+            609.0
+          ],
+          "yale_overview": [
+            267.0,
+            627.0
+          ],
+          "patch_correlation": 0.8596947769735203
+        },
+        {
+          "companion": [
+            130.5,
+            435.0
+          ],
+          "yale_overview": [
+            143.0,
+            458.0
+          ],
+          "patch_correlation": 0.7362200579319788
+        },
+        {
+          "companion": [
+            396.0,
+            594.0
+          ],
+          "yale_overview": [
+            401.0,
+            611.0
+          ],
+          "patch_correlation": 0.8158480612401735
+        },
+        {
+          "companion": [
+            556.5,
+            268.5
+          ],
+          "yale_overview": [
+            555.0,
+            294.0
+          ],
+          "patch_correlation": 0.8180505597722448
+        },
+        {
+          "companion": [
+            516.0,
+            589.5
+          ],
+          "yale_overview": [
+            518.0,
+            606.0
+          ],
+          "patch_correlation": 0.8259930352889601
+        },
+        {
+          "companion": [
+            192.0,
+            187.5
+          ],
+          "yale_overview": [
+            199.0,
+            217.0
+          ],
+          "patch_correlation": 0.7963830120061272
+        },
+        {
+          "companion": [
+            601.5,
+            388.5
+          ],
+          "yale_overview": [
+            600.0,
+            410.0
+          ],
+          "patch_correlation": 0.809403103696764
+        },
+        {
+          "companion": [
+            58.5,
+            489.0
+          ],
+          "yale_overview": [
+            79.0,
+            511.0
+          ],
+          "patch_correlation": 0.6753994745898881
+        },
+        {
+          "companion": [
+            64.5,
+            346.5
+          ],
+          "yale_overview": [
+            84.0,
+            373.0
+          ],
+          "patch_correlation": 0.6784609581311066
+        },
+        {
+          "companion": [
+            190.5,
+            361.5
+          ],
+          "yale_overview": [
+            199.0,
+            386.0
+          ],
+          "patch_correlation": 0.798975783799283
+        },
+        {
+          "companion": [
+            567.0,
+            334.5
+          ],
+          "yale_overview": [
+            566.0,
+            358.0
+          ],
+          "patch_correlation": 0.8537835911492997
+        },
+        {
+          "companion": [
+            73.5,
+            424.5
+          ],
+          "yale_overview": [
+            92.0,
+            449.0
+          ],
+          "patch_correlation": 0.6342832216211132
+        },
+        {
+          "companion": [
+            526.5,
+            493.5
+          ],
+          "yale_overview": [
+            527.0,
+            513.0
+          ],
+          "patch_correlation": 0.8382477346250186
+        },
+        {
+          "companion": [
+            403.5,
+            498.0
+          ],
+          "yale_overview": [
+            408.0,
+            518.0
+          ],
+          "patch_correlation": 0.7531746007206356
+        },
+        {
+          "companion": [
+            483.0,
+            390.0
+          ],
+          "yale_overview": [
+            484.0,
+            412.0
+          ],
+          "patch_correlation": 0.7299342510649622
+        },
+        {
+          "companion": [
+            225.0,
+            718.5
+          ],
+          "yale_overview": [
+            235.0,
+            733.0
+          ],
+          "patch_correlation": 0.7469294778244028
+        },
+        {
+          "companion": [
+            234.0,
+            685.5
+          ],
+          "yale_overview": [
+            244.0,
+            702.0
+          ],
+          "patch_correlation": 0.7817395163701648
+        },
+        {
+          "companion": [
+            274.5,
+            657.0
+          ],
+          "yale_overview": [
+            283.0,
+            674.0
+          ],
+          "patch_correlation": 0.8014461413832668
+        },
+        {
+          "companion": [
+            315.0,
+            670.5
+          ],
+          "yale_overview": [
+            323.0,
+            686.0
+          ],
+          "patch_correlation": 0.8256785326212533
+        },
+        {
+          "companion": [
+            336.0,
+            711.0
+          ],
+          "yale_overview": [
+            344.0,
+            725.0
+          ],
+          "patch_correlation": 0.790621940315346
+        }
+      ],
+      "holdout_indices": [
+        1,
+        6,
+        11,
+        14,
+        17,
+        19,
+        25,
+        38,
+        36,
+        31,
+        54,
+        56,
+        52,
+        40,
+        45,
+        33
+      ],
+      "holdout_native_error_px": {
+        "median": 1.9856054221481814,
+        "p90": 3.3579536782125143,
+        "affine_p90": 9.766846267079174,
+        "errors": [
+          3.381173953198533,
+          2.031671164665708,
+          2.5015802471359567,
+          1.7238664671899224,
+          1.0058659085603732,
+          2.4659666854512037,
+          1.565795168565505,
+          0.9584511810036587,
+          2.2208254371869884,
+          0.5286474964394037,
+          1.939539679630655,
+          2.4905779859142125,
+          0.22778459673468668,
+          8.316465590247565,
+          1.1112138613031093,
+          3.3347334032264957
+        ],
+        "max": 8.316465590247565
+      },
+      "method": "Register the companion image to a 650 by 1037 overview of the specified native crop. High-pass both grayscale images at Gaussian sigma 3 pixels. Use 25 by 25 overview-pixel patches centered on companion word boxes and find their normalized cross-correlation peak within 32 pixels of a seven-point approximate affine match. Keep correlation at least 0.44 and residual under 14 overview pixels against an affine fit. Validate the thin-plate spline interpolation (18 neighbors, smoothing 4) on every fourth retained patch in companion vertical order starting at index one. Refit on all retained patches for box transfer. Validation errors are distances between corresponding image patches, not a measure of glyph interpretation or point-picking accuracy."
+    },
+    "locus_positions": {
+      "f68r1.8": {
+        "x_frac": 0.25793,
+        "y_frac": 0.19972,
+        "first_glyph_native_xy": [
+          811,
+          836
+        ],
+        "companion_box_index": 50,
+        "companion_box_xywh": [
+          165,
+          171,
+          54,
+          33
+        ],
+        "reading_eva": {
+          "zl": "okodaly",
+          "it": "okodaly",
+          "rf": "*ko*aly"
+        },
+        "projected_word_quad_native": [
+          [
+            793.26,
+            777.58
+          ],
+          [
+            978.13,
+            775.93
+          ],
+          [
+            979.33,
+            890.39
+          ],
+          [
+            794.18,
+            892.1
+          ]
+        ]
+      },
+      "f68r1.9": {
+        "x_frac": 0.64782,
+        "y_frac": 0.18884,
+        "first_glyph_native_xy": [
+          1659,
+          797
+        ],
+        "companion_box_index": 38,
+        "companion_box_xywh": [
+          411,
+          162,
+          60,
+          33
+        ],
+        "reading_eva": {
+          "zl": "odchecthy",
+          "it": "odchecthy",
+          "rf": "odchecthy"
+        },
+        "projected_word_quad_native": [
+          [
+            1647.21,
+            741.85
+          ],
+          [
+            1856.64,
+            739.82
+          ],
+          [
+            1857.54,
+            854.4
+          ],
+          [
+            1647.97,
+            856.34
+          ]
+        ]
+      },
+      "f68r1.10": {
+        "x_frac": 0.13793,
+        "y_frac": 0.27001,
+        "first_glyph_native_xy": [
+          550,
+          1088
+        ],
+        "companion_box_index": 37,
+        "companion_box_xywh": [
+          84,
+          240,
+          57,
+          36
+        ],
+        "reading_eva": {
+          "zl": "otcheody",
+          "it": "otcheody",
+          "rf": "otcheody"
+        },
+        "projected_word_quad_native": [
+          [
+            532.08,
+            1020.03
+          ],
+          [
+            714.15,
+            1017.13
+          ],
+          [
+            714.79,
+            1141.69
+          ],
+          [
+            532.06,
+            1144.62
+          ]
+        ]
+      },
+      "f68r1.11": {
+        "x_frac": 0.33609,
+        "y_frac": 0.30014,
+        "first_glyph_native_xy": [
+          981,
+          1196
+        ],
+        "companion_box_index": 43,
+        "companion_box_xywh": [
+          213,
+          276,
+          45,
+          27
+        ],
+        "reading_eva": {
+          "zl": "okoaly",
+          "it": "okoaly",
+          "rf": "okoaly"
+        },
+        "projected_word_quad_native": [
+          [
+            959.93,
+            1140.68
+          ],
+          [
+            1117.13,
+            1140.03
+          ],
+          [
+            1117.73,
+            1234.16
+          ],
+          [
+            960.99,
+            1234.47
+          ]
+        ]
+      },
+      "f68r1.12": {
+        "x_frac": 0.48414,
+        "y_frac": 0.30377,
+        "first_glyph_native_xy": [
+          1303,
+          1209
+        ],
+        "companion_box_index": 31,
+        "companion_box_xywh": [
+          306,
+          276,
+          51,
+          30
+        ],
+        "reading_eva": {
+          "zl": "chocfhy",
+          "it": "chocphy",
+          "rf": "chocfhy"
+        },
+        "projected_word_quad_native": [
+          [
+            1284.95,
+            1139.26
+          ],
+          [
+            1462.46,
+            1138.18
+          ],
+          [
+            1463.53,
+            1242.19
+          ],
+          [
+            1285.76,
+            1243.88
+          ]
+        ],
+        "note": "The initial linked form is faint near the star ray. Takahashi matches the companion reading chocphy."
+      },
+      "f68r1.13": {
+        "x_frac": 0.66483,
+        "y_frac": 0.25802,
+        "first_glyph_native_xy": [
+          1696,
+          1045
+        ],
+        "companion_box_index": 36,
+        "companion_box_xywh": [
+          420,
+          228,
+          45,
+          30
+        ],
+        "reading_eva": {
+          "zl": "octhey",
+          "it": "octhey",
+          "rf": "octhey"
+        },
+        "projected_word_quad_native": [
+          [
+            1680.48,
+            969.43
+          ],
+          [
+            1837.51,
+            968.03
+          ],
+          [
+            1838.4,
+            1071.41
+          ],
+          [
+            1681.57,
+            1072.69
+          ]
+        ]
+      },
+      "f68r1.14": {
+        "x_frac": 0.07678,
+        "y_frac": 0.35593,
+        "first_glyph_native_xy": [
+          417,
+          1396
+        ],
+        "companion_box_index": 53,
+        "companion_box_xywh": [
+          42,
+          330,
+          45,
+          33
+        ],
+        "reading_eva": {
+          "zl": "otshey",
+          "it": "otcsey",
+          "rf": "otshey"
+        },
+        "projected_word_quad_native": [
+          [
+            403.71,
+            1334.8
+          ],
+          [
+            544.66,
+            1332.0
+          ],
+          [
+            545.95,
+            1447.02
+          ],
+          [
+            404.39,
+            1449.66
+          ]
+        ],
+        "note": "The word begins at the small loop right of the star. Takahashi reads otcsey."
+      },
+      "f68r1.15": {
+        "x_frac": 0.26851,
+        "y_frac": 0.36792,
+        "first_glyph_native_xy": [
+          834,
+          1439
+        ],
+        "companion_box_index": 54,
+        "companion_box_xywh": [
+          171,
+          348,
+          39,
+          27
+        ],
+        "reading_eva": {
+          "zl": "otydy",
+          "it": "otydy",
+          "rf": "otydy"
+        },
+        "projected_word_quad_native": [
+          [
+            818.78,
+            1390.58
+          ],
+          [
+            951.95,
+            1390.43
+          ],
+          [
+            952.49,
+            1484.56
+          ],
+          [
+            819.52,
+            1484.62
+          ]
+        ]
+      },
+      "f68r1.16": {
+        "x_frac": 0.40552,
+        "y_frac": 0.37768,
+        "first_glyph_native_xy": [
+          1132,
+          1474
+        ],
+        "companion_box_index": 41,
+        "companion_box_xywh": [
+          255,
+          357,
+          39,
+          21
+        ],
+        "reading_eva": {
+          "zl": "okear",
+          "it": "okeor",
+          "rf": "oke*r"
+        },
+        "projected_word_quad_native": [
+          [
+            1109.15,
+            1422.21
+          ],
+          [
+            1245.79,
+            1421.69
+          ],
+          [
+            1246.25,
+            1494.68
+          ],
+          [
+            1109.7,
+            1495.35
+          ]
+        ],
+        "note": "The loop and tall following form identify the correct word between the neighboring labels. Takahashi reads okeor."
+      },
+      "f68r1.17": {
+        "x_frac": 0.6423,
+        "y_frac": 0.33305,
+        "first_glyph_native_xy": [
+          1647,
+          1314
+        ],
+        "companion_box_index": 32,
+        "companion_box_xywh": [
+          408,
+          303,
+          66,
+          36
+        ],
+        "reading_eva": {
+          "zl": "cphocthy",
+          "it": "cphocthy",
+          "rf": "cphocthy"
+        },
+        "projected_word_quad_native": [
+          [
+            1641.02,
+            1229.45
+          ],
+          [
+            1870.6,
+            1227.8
+          ],
+          [
+            1870.96,
+            1352.98
+          ],
+          [
+            1641.69,
+            1354.65
+          ]
+        ]
+      },
+      "f68r1.18": {
+        "x_frac": 0.84414,
+        "y_frac": 0.28368,
+        "first_glyph_native_xy": [
+          2086,
+          1137
+        ],
+        "companion_box_index": 48,
+        "companion_box_xywh": [
+          531,
+          252,
+          51,
+          33
+        ],
+        "reading_eva": {
+          "zl": "ytchody",
+          "it": "ytchody",
+          "rf": "ytchody"
+        },
+        "projected_word_quad_native": [
+          [
+            2066.89,
+            1051.6
+          ],
+          [
+            2244.2,
+            1051.57
+          ],
+          [
+            2245.46,
+            1165.96
+          ],
+          [
+            2067.91,
+            1165.99
+          ]
+        ]
+      },
+      "f68r1.19": {
+        "x_frac": 0.09609,
+        "y_frac": 0.43403,
+        "first_glyph_native_xy": [
+          459,
+          1676
+        ],
+        "companion_box_index": 56,
+        "companion_box_xywh": [
+          60,
+          408,
+          27,
+          33
+        ],
+        "reading_eva": {
+          "zl": "otys",
+          "it": "otys",
+          "rf": "otys"
+        },
+        "projected_word_quad_native": [
+          [
+            460.82,
+            1605.55
+          ],
+          [
+            546.11,
+            1603.84
+          ],
+          [
+            546.1,
+            1717.71
+          ],
+          [
+            460.82,
+            1719.2
+          ]
+        ],
+        "note": "The star ray reaches the initial loop. The point is placed on the loop."
+      },
+      "f68r1.20": {
+        "x_frac": 0.18621,
+        "y_frac": 0.44045,
+        "first_glyph_native_xy": [
+          655,
+          1699
+        ],
+        "companion_box_index": 46,
+        "companion_box_xywh": [
+          117,
+          426,
+          27,
+          18
+        ],
+        "reading_eva": {
+          "zl": "olor",
+          "it": "olor",
+          "rf": "olor"
+        },
+        "projected_word_quad_native": [
+          [
+            641.84,
+            1663.77
+          ],
+          [
+            729.82,
+            1662.71
+          ],
+          [
+            729.76,
+            1725.2
+          ],
+          [
+            641.73,
+            1725.98
+          ]
+        ]
+      },
+      "f68r1.21": {
+        "x_frac": 0.28966,
+        "y_frac": 0.45216,
+        "first_glyph_native_xy": [
+          880,
+          1741
+        ],
+        "companion_box_index": 34,
+        "companion_box_xywh": [
+          183,
+          432,
+          39,
+          24
+        ],
+        "reading_eva": {
+          "zl": "ockhy",
+          "it": "ockhy",
+          "rf": "ockhy"
+        },
+        "projected_word_quad_native": [
+          [
+            860.9,
+            1684.08
+          ],
+          [
+            995.5,
+            1684.14
+          ],
+          [
+            996.2,
+            1767.46
+          ],
+          [
+            861.26,
+            1767.54
+          ]
+        ]
+      },
+      "f68r1.22": {
+        "x_frac": 0.49425,
+        "y_frac": 0.44798,
+        "first_glyph_native_xy": [
+          1325,
+          1726
+        ],
+        "companion_box_index": 39,
+        "companion_box_xywh": [
+          312,
+          426,
+          45,
+          24
+        ],
+        "reading_eva": {
+          "zl": "ofcheor",
+          "it": "ofcheor",
+          "rf": "ofcheor"
+        },
+        "projected_word_quad_native": [
+          [
+            1309.71,
+            1660.44
+          ],
+          [
+            1466.64,
+            1659.04
+          ],
+          [
+            1467.52,
+            1742.34
+          ],
+          [
+            1310.53,
+            1743.57
+          ]
+        ]
+      },
+      "f68r1.23": {
+        "x_frac": 0.72644,
+        "y_frac": 0.40139,
+        "first_glyph_native_xy": [
+          1830,
+          1559
+        ],
+        "companion_box_index": 59,
+        "companion_box_xywh": [
+          456,
+          375,
+          54,
+          30
+        ],
+        "reading_eva": {
+          "zl": "otchdy",
+          "it": "otcsdo",
+          "rf": "otchdo"
+        },
+        "projected_word_quad_native": [
+          [
+            1808.73,
+            1478.41
+          ],
+          [
+            1996.46,
+            1477.64
+          ],
+          [
+            1996.81,
+            1581.96
+          ],
+          [
+            1809.25,
+            1582.95
+          ]
+        ],
+        "note": "The initial compact oval is below the long upper stroke of the following tall sign. Takahashi reads otcsdo."
+      },
+      "f68r1.24": {
+        "x_frac": 0.84644,
+        "y_frac": 0.34561,
+        "first_glyph_native_xy": [
+          2091,
+          1359
+        ],
+        "companion_box_index": 55,
+        "companion_box_xywh": [
+          537,
+          321,
+          60,
+          27
+        ],
+        "reading_eva": {
+          "zl": "otykchs",
+          "it": "otykchs",
+          "rf": "otykchs"
+        },
+        "projected_word_quad_native": [
+          [
+            2090.01,
+            1290.71
+          ],
+          [
+            2299.28,
+            1290.13
+          ],
+          [
+            2300.09,
+            1383.28
+          ],
+          [
+            2090.63,
+            1384.09
+          ]
+        ]
+      },
+      "f68r1.25": {
+        "x_frac": 0.92966,
+        "y_frac": 0.39665,
+        "first_glyph_native_xy": [
+          2272,
+          1542
+        ],
+        "companion_box_index": 51,
+        "companion_box_xywh": [
+          585,
+          375,
+          33,
+          27
+        ],
+        "reading_eva": {
+          "zl": "otol",
+          "it": "otol",
+          "rf": "otol"
+        },
+        "projected_word_quad_native": [
+          [
+            2258.75,
+            1476.65
+          ],
+          [
+            2373.81,
+            1475.9
+          ],
+          [
+            2374.24,
+            1569.35
+          ],
+          [
+            2258.99,
+            1570.09
+          ]
+        ]
+      },
+      "f68r1.26": {
+        "x_frac": 0.0823,
+        "y_frac": 0.49986,
+        "first_glyph_native_xy": [
+          429,
+          1912
+        ],
+        "companion_box_index": 52,
+        "companion_box_xywh": [
+          45,
+          477,
+          27,
+          24
+        ],
+        "reading_eva": {
+          "zl": "otor",
+          "it": "otor",
+          "rf": "otor"
+        },
+        "projected_word_quad_native": [
+          [
+            413.81,
+            1842.66
+          ],
+          [
+            499.17,
+            1841.63
+          ],
+          [
+            499.87,
+            1924.23
+          ],
+          [
+            414.67,
+            1925.17
+          ]
+        ],
+        "note": "Use the lower-left star-field otor. The other otor at companion box 6 is in the upper paragraph."
+      },
+      "f68r1.27": {
+        "x_frac": 0.17839,
+        "y_frac": 0.55035,
+        "first_glyph_native_xy": [
+          638,
+          2093
+        ],
+        "companion_box_index": 40,
+        "companion_box_xywh": [
+          111,
+          537,
+          45,
+          18
+        ],
+        "reading_eva": {
+          "zl": "oiinar",
+          "it": "oiinar",
+          "rf": "oiinar"
+        },
+        "projected_word_quad_native": [
+          [
+            623.79,
+            2048.41
+          ],
+          [
+            770.76,
+            2047.97
+          ],
+          [
+            771.65,
+            2110.71
+          ],
+          [
+            624.83,
+            2111.18
+          ]
+        ]
+      },
+      "f68r1.28": {
+        "x_frac": 0.37655,
+        "y_frac": 0.5431,
+        "first_glyph_native_xy": [
+          1069,
+          2067
+        ],
+        "companion_box_index": 44,
+        "companion_box_xywh": [
+          237,
+          522,
+          51,
+          27
+        ],
+        "reading_eva": {
+          "zl": "okoldy",
+          "it": "okoldy",
+          "rf": "okoldy"
+        },
+        "projected_word_quad_native": [
+          [
+            1051.77,
+            1994.42
+          ],
+          [
+            1230.56,
+            1992.75
+          ],
+          [
+            1231.57,
+            2086.33
+          ],
+          [
+            1052.98,
+            2088.04
+          ]
+        ]
+      },
+      "f68r1.29": {
+        "x_frac": 0.60046,
+        "y_frac": 0.506,
+        "first_glyph_native_xy": [
+          1556,
+          1934
+        ],
+        "companion_box_index": 58,
+        "companion_box_xywh": [
+          378,
+          480,
+          51,
+          36
+        ],
+        "reading_eva": {
+          "zl": "ykchdy",
+          "it": "ykchdy",
+          "rf": "ykchdy"
+        },
+        "projected_word_quad_native": [
+          [
+            1541.93,
+            1846.1
+          ],
+          [
+            1718.67,
+            1845.22
+          ],
+          [
+            1719.77,
+            1970.04
+          ],
+          [
+            1543.01,
+            1970.72
+          ]
+        ]
+      },
+      "f68r1.30": {
+        "x_frac": 0.78805,
+        "y_frac": 0.49093,
+        "first_glyph_native_xy": [
+          1964,
+          1880
+        ],
+        "companion_box_index": 57,
+        "companion_box_xywh": [
+          492,
+          471,
+          69,
+          45
+        ],
+        "reading_eva": {
+          "zl": "*oeeodc*hy",
+          "it": "toeeodcthy",
+          "rf": "*oeeodc*hy"
+        },
+        "projected_word_quad_native": [
+          [
+            1935.77,
+            1812.69
+          ],
+          [
+            2175.77,
+            1811.0
+          ],
+          [
+            2177.14,
+            1967.2
+          ],
+          [
+            1937.38,
+            1968.88
+          ]
+        ],
+        "note": "Use the left upright of the linked extended tall sign. Takahashi reads toeeodcthy. Stolfi describes this form at his legacy f68r1.S.27, not a modern locus number."
+      },
+      "f68r1.31": {
+        "x_frac": 0.0869,
+        "y_frac": 0.59052,
+        "first_glyph_native_xy": [
+          439,
+          2237
+        ],
+        "companion_box_index": 35,
+        "companion_box_xywh": [
+          48,
+          570,
+          36,
+          27
+        ],
+        "reading_eva": {
+          "zl": "ocphy",
+          "it": "ocphy",
+          "rf": "ocphy"
+        },
+        "projected_word_quad_native": [
+          [
+            427.64,
+            2164.8
+          ],
+          [
+            541.36,
+            2164.04
+          ],
+          [
+            542.18,
+            2258.31
+          ],
+          [
+            427.71,
+            2258.86
+          ]
+        ]
+      },
+      "f68r1.32": {
+        "x_frac": 0.12046,
+        "y_frac": 0.64686,
+        "first_glyph_native_xy": [
+          512,
+          2439
+        ],
+        "companion_box_index": 42,
+        "companion_box_xywh": [
+          69,
+          630,
+          51,
+          24
+        ],
+        "reading_eva": {
+          "zl": "okeeodal",
+          "it": "okeeodal",
+          "rf": "okeeodal"
+        },
+        "projected_word_quad_native": [
+          [
+            493.45,
+            2373.41
+          ],
+          [
+            657.59,
+            2372.91
+          ],
+          [
+            658.04,
+            2456.11
+          ],
+          [
+            492.59,
+            2456.61
+          ]
+        ],
+        "note": "The label sits left of the adjacent star. A rule that always chooses a star to the left will misassign this example."
+      },
+      "f68r1.33": {
+        "x_frac": 0.37057,
+        "y_frac": 0.61283,
+        "first_glyph_native_xy": [
+          1056,
+          2317
+        ],
+        "companion_box_index": 45,
+        "companion_box_xywh": [
+          231,
+          597,
+          54,
+          24
+        ],
+        "reading_eva": {
+          "zl": "okshor",
+          "it": "okshor",
+          "rf": "okshor"
+        },
+        "projected_word_quad_native": [
+          [
+            1033.48,
+            2256.06
+          ],
+          [
+            1221.78,
+            2253.93
+          ],
+          [
+            1221.76,
+            2338.05
+          ],
+          [
+            1034.09,
+            2340.48
+          ]
+        ]
+      },
+      "f68r1.34": {
+        "x_frac": 0.58759,
+        "y_frac": 0.59582,
+        "first_glyph_native_xy": [
+          1528,
+          2256
+        ],
+        "companion_box_index": 47,
+        "companion_box_xywh": [
+          369,
+          585,
+          54,
+          18
+        ],
+        "reading_eva": {
+          "zl": "osdaiin",
+          "it": "ordaiin",
+          "rf": "ordaiin"
+        },
+        "projected_word_quad_native": [
+          [
+            1512.5,
+            2209.38
+          ],
+          [
+            1699.92,
+            2208.58
+          ],
+          [
+            1700.3,
+            2271.05
+          ],
+          [
+            1512.98,
+            2271.77
+          ]
+        ],
+        "note": "Use the oval before the small r-like form. Takahashi reads ordaiin."
+      },
+      "f68r1.35": {
+        "x_frac": 0.76874,
+        "y_frac": 0.5894,
+        "first_glyph_native_xy": [
+          1922,
+          2233
+        ],
+        "companion_box_index": 49,
+        "companion_box_xywh": [
+          480,
+          570,
+          72,
+          39
+        ],
+        "reading_eva": {
+          "zl": "otochedy",
+          "it": "otochedy",
+          "rf": "otoche*y"
+        },
+        "projected_word_quad_native": [
+          [
+            1897.86,
+            2155.66
+          ],
+          [
+            2148.2,
+            2154.04
+          ],
+          [
+            2149.65,
+            2289.27
+          ],
+          [
+            1898.98,
+            2291.04
+          ]
+        ]
+      },
+      "f68r1.36": {
+        "x_frac": 0.68322,
+        "y_frac": 0.66499,
+        "first_glyph_native_xy": [
+          1736,
+          2504
+        ],
+        "companion_box_index": 33,
+        "companion_box_xywh": [
+          426,
+          660,
+          66,
+          24
+        ],
+        "reading_eva": {
+          "zl": "dolchedy",
+          "it": "dolchedy",
+          "rf": "dolche*y"
+        },
+        "projected_word_quad_native": [
+          [
+            1712.7,
+            2469.48
+          ],
+          [
+            1942.09,
+            2468.56
+          ],
+          [
+            1942.82,
+            2552.0
+          ],
+          [
+            1713.68,
+            2552.86
+          ]
+        ]
+      }
+    }
+  }
+}
