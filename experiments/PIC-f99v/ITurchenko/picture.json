@@ -1,0 +1,254 @@
+{
+  "folio": "f99v",
+  "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006247",
+  "blind": true,
+  "statement": "The catalogue follows the painted forms from left to right in each row. A label records a spatial association with the whole drawing, and null marks an unresolved association.",
+  "objects": [
+    {
+      "id": "r1-jar",
+      "kind": "jar",
+      "features": {
+        "body": "tall, stepped outline widening toward the foot",
+        "mouth": "dark blue oval with pale rim",
+        "bands": "red panels, two blue stripes and rows of small outlined loops",
+        "base": "broad scalloped foot"
+      },
+      "label": "f99v.1"
+    },
+    {
+      "id": "r1-fringed",
+      "kind": "root",
+      "features": {
+        "axis": "long red taper below a pale hooked stalk",
+        "sides": "many short curved branches in two files",
+        "shoulders": "pale with red patches"
+      },
+      "label": "f99v.2"
+    },
+    {
+      "id": "r1-red-comb",
+      "kind": "root",
+      "features": {
+        "body": "sloping dark red bar",
+        "tips": "several hanging points, one trailing far down to the left",
+        "stalk": "pale double outline sweeping up and left"
+      },
+      "label": "f99v.3"
+    },
+    {
+      "id": "r1-brown-fringe",
+      "kind": "root",
+      "features": {
+        "top": "short rounded collar with a dark brown bar inside",
+        "stalk": "narrow and upright",
+        "tips": "a fan of slender curved strands with brown and pale interiors"
+      },
+      "label": "f99v.4"
+    },
+    {
+      "id": "r1-green-blade",
+      "kind": "plant",
+      "features": {
+        "blade": "broad green form narrowing to the right, with a toothed outline",
+        "neck": "short green connection at the lower left of the blade",
+        "base": "rounded red body tapering into narrow downward points"
+      },
+      "label": "f99v.5"
+    },
+    {
+      "id": "r1-brown-crook",
+      "kind": "root",
+      "features": {
+        "stalk": "long pale neck with a rounded hook at the top",
+        "body": "oblique brown bar with a pale patch",
+        "tips": "several long curved prongs spreading down and left"
+      },
+      "label": null
+    },
+    {
+      "id": "r1-red-knots",
+      "kind": "root",
+      "features": {
+        "stalk": "pale and bent to the right",
+        "body": "narrow red centre with rounded knobs along the sides",
+        "tips": "three splayed lower points, pale toward the ends"
+      },
+      "label": "f99v.7"
+    },
+    {
+      "id": "r1-wide-fork",
+      "kind": "root",
+      "features": {
+        "body": "thick upright brown shank below a pale stalk",
+        "branches": "two low arms turning outward",
+        "asymmetry": "left arm much longer than the right"
+      },
+      "label": "f99v.8"
+    },
+    {
+      "id": "r1-banded-cone",
+      "kind": "root",
+      "features": {
+        "body": "long tapered outline with alternating pink and pale bands",
+        "top": "fine strokes fanning above the broad end",
+        "tail": "two pale rings around a narrow reddish continuation",
+        "sides": "small curved ticks"
+      },
+      "label": "f99v.9"
+    },
+    {
+      "id": "r2-jar",
+      "kind": "jar",
+      "features": {
+        "body": "two red cylindrical sections",
+        "mouth": "dark blue oval inside nested pale rims",
+        "band": "pale ridged collar with hanging tabs",
+        "base": "three projecting pointed feet"
+      },
+      "label": "f99v.14"
+    },
+    {
+      "id": "r2-ribbed",
+      "kind": "plant_part",
+      "features": {
+        "shape": "narrow hanging plume",
+        "axis": "pink central stripe",
+        "sides": "repeated curved ribs on both sides with flecks of blue",
+        "tip": "long pointed lower end"
+      },
+      "label": "f99v.15"
+    },
+    {
+      "id": "r2-paired-blades",
+      "kind": "plant_part",
+      "features": {
+        "shape": "two narrow pointed lobes spreading from a common neck",
+        "markings": "long red patches within pale outlines",
+        "tips": "left tip extends farther downward"
+      },
+      "label": "f99v.16"
+    },
+    {
+      "id": "r2-dark-spokes",
+      "kind": "root",
+      "features": {
+        "centre": "dark brown hub below a pale swelling",
+        "sides": "two long nearly horizontal horn-like arms",
+        "tips": "several tapering, downward-curving prongs"
+      },
+      "label": "f99v.17"
+    },
+    {
+      "id": "r2-curled-fan",
+      "kind": "root",
+      "features": {
+        "centre": "short pale stalk above a pink-red central strip",
+        "sides": "two broad arms curving out and back up",
+        "interior": "several nested narrow curves inside each arm"
+      },
+      "label": "f99v.18"
+    },
+    {
+      "id": "r2-double-bulb",
+      "kind": "root",
+      "features": {
+        "body": "pair of plump pink lobes with a pale dividing line",
+        "base": "two thin tails turning in opposite directions",
+        "top": "upright pale neck with a long hooked side branch"
+      },
+      "label": "f99v.19"
+    },
+    {
+      "id": "r2-ochre-fan",
+      "kind": "root",
+      "features": {
+        "top": "short upright stalk on a pale oval collar with vertical hatching",
+        "base": "ochre band below the collar",
+        "tips": "wide fan of long thick and thin brown rays"
+      },
+      "label": "f99v.20"
+    },
+    {
+      "id": "r3-jar",
+      "kind": "jar",
+      "features": {
+        "body": "tall nearly straight red cylinder",
+        "mouth": "blue-green oval with concentric outlines",
+        "bands": "pale tabbed collars at the shoulder and foot",
+        "base": "stacked pale rings"
+      },
+      "label": "f99v.25"
+    },
+    {
+      "id": "r3-round-cap",
+      "kind": "root",
+      "features": {
+        "top": "long narrow stalk seated in a pale oval",
+        "body": "small pink taper below the oval",
+        "tips": "short spreading branches, one curving right with a red stripe"
+      },
+      "label": "f99v.26"
+    },
+    {
+      "id": "r3-bent-root",
+      "kind": "root",
+      "features": {
+        "body": "elongated pink form bending sharply to the right",
+        "top": "pale pinched stalk with a flared hatched end",
+        "tips": "four descending points in two pairs"
+      },
+      "label": null
+    },
+    {
+      "id": "r3-twin-fan",
+      "kind": "plant_part",
+      "features": {
+        "top": "single pale stalk on a broad nearly level upper edge",
+        "body": "two ochre lobes meeting at the centre",
+        "tips": "dark lines converge toward a pointed end on each side"
+      },
+      "label": null
+    },
+    {
+      "id": "r3-red-taper",
+      "kind": "root",
+      "features": {
+        "top": "single pale bent stalk",
+        "body": "broad red-brown mass with a narrow pale cleft near the top",
+        "tips": "three unequal downward points, the outer pair longer"
+      },
+      "label": "f99v.30"
+    },
+    {
+      "id": "r3-crossed",
+      "kind": "plant_part",
+      "features": {
+        "top": "pale blue upright fork with two outward-bending arms",
+        "body": "broad arched cap edged with short hatch marks",
+        "base": "two long blue and brown bands cross and curve outward at the ends"
+      },
+      "label": "f99v.31"
+    },
+    {
+      "id": "r4-jar",
+      "kind": "jar",
+      "features": {
+        "body": "short red cylinder",
+        "mouth": "small blue-green oval with a ring of short marks",
+        "bands": "pale notched bands across the middle and along the foot",
+        "base": "rounded concentric outlines"
+      },
+      "label": "f99v.36"
+    },
+    {
+      "id": "r4-spreading",
+      "kind": "plant",
+      "features": {
+        "blade": "single broad green blade with a deep notch, a scalloped lower border and a hooked right tip",
+        "stalk": "long slender green stalk bending over at the top",
+        "base": "six main ribbon-like blue-green arms radiate from one junction"
+      },
+      "label": "f99v.44"
+    }
+  ]
+}
