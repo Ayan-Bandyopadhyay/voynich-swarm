@@ -1,0 +1,7 @@
+{
+ "step": "P-L4-013",
+ "handle": "lilaosipova1959-svg",
+ "kind": "step",
+ "summary": "Found the root cause below the agreement tie: picture_agreement never scores the label field, so erasing all 30 labels from V-043 leaves its agreement unchanged and an unlabelled annotation can reach AGREED.",
+ "lease": "1e6cab7ee0d64ef33a58f51e"
+}

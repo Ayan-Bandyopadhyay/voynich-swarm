@@ -1,0 +1,48 @@
+{
+ "title": "The label statistics are blocked one level below the agreement pick: picture_agreement never scores the labels it uses to pair objects, so erasing 30 labels changes the score by exactly zero",
+ "statement": "P-L4-013 asks for the three picture-text statistics and then for facts registered from them. The code half is already done: the statistics exist in vs/dsl.py (picture_label with same_object_label, feature_label_share and label_in_page_text, plus the shuffle_picture_labels null) and thirteen tests in tests/test_picture_label.py pass on synthetic pages. What blocks the fact half is a defect one level below the one my earlier note (P-G-023) described. That note said pictures() breaks a tie in agreement by insertion order, so the unlabelled V-026 wins over the labelled V-043. That is true, but the reason the tie exists at all is worse. registry.picture_agreement() matches two seats' objects by label locus when both give one and by kind otherwise, then scores only the kind and the shared FEATURES: labels are consumed to pair objects and never contribute to the score. I verified the consequence numerically. Erasing all thirty labels from V-043 leaves its agreement at 0.8333, unchanged to the digit. Moving every V-043 label to a different object leaves the score at 0.8333 as well, because the same loci are still present to pair with. So AGREED does not certify that the seats agree about labels, and a folio can reach AGREED while one seat gives no labels at all - which is exactly what happened on f72v1, the only AGREED folio in the record, and the one the label statistics need. Two consequences follow. First, fixing the pick alone (my P-G-023) would still leave the statistics undefined here, because the sample itself is unusable: with V-043 forced the whole book yields 30 labelled objects, all human_figure on one folio, near-identical (the first two agree on 9 of 10 features), so feature_label_share receives 435 alike pairs and 0 not-alike and _rate_diff returns NaN for want of a comparison group. Second, the fix that matters is not the tie-break but the definition: an annotation should not be able to reach AGREED on a folio whose label field the statistics will read, unless the seats were compared on the labels too. The step's own minimum of labelled objects is the right gate, and it is currently unreachable by construction.",
+ "program": "L4",
+ "check": "Three changes, in order of what unblocks most. (a) Extend picture_agreement to score the label field where both seats give one: count agreement on the label locus as a compared item, and treat a missing label on one side as a disagreement rather than as nothing to compare, so a seat cannot carry a folio to AGREED while omitting the field the statistics read. (b) Then fix the pick (P-G-023): at equal agreement prefer the annotation with more non-null labels, with a unit test feeding V-026 and V-043 in both orders. (c) Only then attempt the facts, and report the alike/not-alike pair counts per statistic before fixing a threshold, since a single folio of one kind cannot supply the not-alike group that feature_label_share needs. Until (a) and (b), P-L4-013's fact half is not merely unfinished: the gate it relies on cannot certify the data it reads.",
+ "on_path": true,
+ "hard": true,
+ "evidence": {
+  "code_half_done": "vs/dsl.py picture_label + shuffle_picture_labels null; tests/test_picture_label.py 13 tests pass",
+  "agreed_folios_in_record": 1,
+  "agreed_annotations_on_that_folio": {
+   "V-026": {
+    "agreement": 0.833,
+    "labels": 0
+   },
+   "V-043": {
+    "agreement": 0.833,
+    "labels": 30
+   }
+  },
+  "erasing_all_30_labels_from_V-043": {
+   "agreement_before": 0.8333333333333334,
+   "agreement_after": 0.8333333333333334,
+   "delta": 0.0
+  },
+  "moving_every_label_to_another_object": {
+   "agreement": 0.8333333333333334
+  },
+  "contradicting_labels_on_V-026": {
+   "agreement": 0.7222222222222222
+  },
+  "pictures_returns_labelled_objects": 0,
+  "with_V-043_forced": {
+   "labelled_objects_whole_book": 30,
+   "kinds": [
+    "human_figure"
+   ],
+   "folios": [
+    "f72v1"
+   ],
+   "pairs": 435,
+   "alike": 435,
+   "not_alike": 0,
+   "min_pairs_per_group": 5
+  },
+  "verdict": "the AGREED gate does not certify labels; fix the agreement definition before the tie-break"
+ }
+}
