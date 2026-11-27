@@ -1,0 +1,743 @@
+{
+  "title": "An EVA-only bounded escape round-trips but misses the observed public escape syntax",
+  "program": "L3",
+  "on_path": true,
+  "hard": true,
+  "statement": "A prefix-reserved, exactly reversible escape using only EVA a/e/i/o/y glyphs handles unknown lowercase ASCII words of length at most 16; longer words are explicitly refused. Across four historical books and three random codebook assignments, with 5,000 assigned entries, 2,166\u20136,452 of 25,000 planted test words use the escape and 0\u20134 are refused. The escaped tokens average 28.55\u201330.98 EVA glyphs, and a simple fixed-width charge for their five-symbol stream is 201,294\u2013557,400 bits; the compressed dictionary alone costs 224,168\u2013245,536 bits. None of the 5,461 ZL or 5,394 IT public practice-evaluation tokens is a valid escaped word under this frozen syntax. The channel therefore provides no literal escape coverage of those samples, despite exact planted round-trips; dictionary membership is not decipherment.",
+  "check": "Before any hidden-page test, design a documented historical or otherwise well-motivated bounded escape whose valid encoded forms occur in an independently chosen public training set and are distinguishable from dictionary words. Include complete codec and dictionary charges, a normalized model for transmitted ciphertext, plaintext and preimage costs, explicit treatment of refused words, and unknown-key recovery calibrated on disjoint planted data. Compare fixed dictionary-only, escape-only and combined variants without changing the syntax on the final evaluation. Do not count an arbitrary dictionary hit as a reading.",
+  "method": "Use public training ZL paragraph words for the candidate codebook after excluding all y-initial words (5,797 types), and reserve y as escape prefix. For each lowercase ASCII byte emit four base-four digits a/e/i/o, preceded once by y; decode validates each byte, length 1\u201316, and exact syntax. Encode whole words, preserving spaces; reject rather than silently alter any longer OOV word. Fit plaintext frequency ranks on the first 50,000 tokens of each hash-verified historical reference; assign 1,000 or 5,000 random codewords with seeds 17/37/73; encode and exactly decode the next 25,000 tokens. Evaluate dictionary membership and strict escape syntax on the public ZL/IT practice-evaluation witnesses. Count dictionary JSON compressed by the project\u2019s judge, compressed codec-function source separately, 3 bits per five-symbol escape glyph as a fixed-width cost, and literal UTF-8 plaintext size as an accounting reference. These component sizes are not a full MDL score and must not be summed without specifying the whole coding scheme.",
+  "results": {
+    "candidate_types": 5797,
+    "witness_tokens": {
+      "zl": 5461,
+      "it": 5394
+    },
+    "results": {
+      "it_dante": {
+        "1000": {
+          "17": {
+            "entries": 1000,
+            "key_compressed_bits": 45592,
+            "codec_source_compressed_bits": 3144,
+            "key_bits_per_input_token": 1.82368,
+            "input_tokens": 25000,
+            "literal_plaintext_utf8_bits": 799728,
+            "unencodable_tokens": 0,
+            "dictionary_tokens": 18664,
+            "escape_tokens": 6336,
+            "escape_glyphs": 170064,
+            "cipher_glyphs": 267054,
+            "mean_cipher_glyphs_per_encodable_token": 10.68216,
+            "dictionary_mean_glyphs": 5.196635233604801,
+            "escape_mean_glyphs": 26.84090909090909,
+            "escape_payload_fixed_bits": 510192,
+            "practice_membership": {
+              "zl": {
+                "dictionary_token_share": 0.1523530488921443,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.1523530488921443
+              },
+              "it": {
+                "dictionary_token_share": 0.15202076381164256,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.15202076381164256
+              }
+            }
+          },
+          "37": {
+            "entries": 1000,
+            "key_compressed_bits": 45560,
+            "codec_source_compressed_bits": 3144,
+            "key_bits_per_input_token": 1.8224,
+            "input_tokens": 25000,
+            "literal_plaintext_utf8_bits": 799728,
+            "unencodable_tokens": 0,
+            "dictionary_tokens": 18664,
+            "escape_tokens": 6336,
+            "escape_glyphs": 170064,
+            "cipher_glyphs": 272051,
+            "mean_cipher_glyphs_per_encodable_token": 10.88204,
+            "dictionary_mean_glyphs": 5.464369909987141,
+            "escape_mean_glyphs": 26.84090909090909,
+            "escape_payload_fixed_bits": 510192,
+            "practice_membership": {
+              "zl": {
+                "dictionary_token_share": 0.12909723493865594,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.12909723493865594
+              },
+              "it": {
+                "dictionary_token_share": 0.12940304041527623,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.12940304041527623
+              }
+            }
+          },
+          "73": {
+            "entries": 1000,
+            "key_compressed_bits": 45976,
+            "codec_source_compressed_bits": 3144,
+            "key_bits_per_input_token": 1.83904,
+            "input_tokens": 25000,
+            "literal_plaintext_utf8_bits": 799728,
+            "unencodable_tokens": 0,
+            "dictionary_tokens": 18664,
+            "escape_tokens": 6336,
+            "escape_glyphs": 170064,
+            "cipher_glyphs": 279956,
+            "mean_cipher_glyphs_per_encodable_token": 11.19824,
+            "dictionary_mean_glyphs": 5.887912558936991,
+            "escape_mean_glyphs": 26.84090909090909,
+            "escape_payload_fixed_bits": 510192,
+            "practice_membership": {
+              "zl": {
+                "dictionary_token_share": 0.12598425196850394,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.12598425196850394
+              },
+              "it": {
+                "dictionary_token_share": 0.12161661104931405,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.12161661104931405
+              }
+            }
+          }
+        },
+        "5000": {
+          "17": {
+            "entries": 5000,
+            "key_compressed_bits": 224496,
+            "codec_source_compressed_bits": 3144,
+            "key_bits_per_input_token": 8.97984,
+            "input_tokens": 25000,
+            "literal_plaintext_utf8_bits": 799728,
+            "unencodable_tokens": 0,
+            "dictionary_tokens": 21368,
+            "escape_tokens": 3632,
+            "escape_glyphs": 103684,
+            "cipher_glyphs": 215816,
+            "mean_cipher_glyphs_per_encodable_token": 8.63264,
+            "dictionary_mean_glyphs": 5.247660052414826,
+            "escape_mean_glyphs": 28.547356828193834,
+            "escape_payload_fixed_bits": 311052,
+            "practice_membership": {
+              "zl": {
+                "dictionary_token_share": 0.6826588536898004,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.6826588536898004
+              },
+              "it": {
+                "dictionary_token_share": 0.6870596959584724,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.6870596959584724
+              }
+            }
+          },
+          "37": {
+            "entries": 5000,
+            "key_compressed_bits": 224256,
+            "codec_source_compressed_bits": 3144,
+            "key_bits_per_input_token": 8.97024,
+            "input_tokens": 25000,
+            "literal_plaintext_utf8_bits": 799728,
+            "unencodable_tokens": 0,
+            "dictionary_tokens": 21368,
+            "escape_tokens": 3632,
+            "escape_glyphs": 103684,
+            "cipher_glyphs": 220865,
+            "mean_cipher_glyphs_per_encodable_token": 8.8346,
+            "dictionary_mean_glyphs": 5.483947959565706,
+            "escape_mean_glyphs": 28.547356828193834,
+            "escape_payload_fixed_bits": 311052,
+            "practice_membership": {
+              "zl": {
+                "dictionary_token_share": 0.6951107855704084,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.6951107855704084
+              },
+              "it": {
+                "dictionary_token_share": 0.7018909899888766,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.7018909899888766
+              }
+            }
+          },
+          "73": {
+            "entries": 5000,
+            "key_compressed_bits": 224168,
+            "codec_source_compressed_bits": 3144,
+            "key_bits_per_input_token": 8.96672,
+            "input_tokens": 25000,
+            "literal_plaintext_utf8_bits": 799728,
+            "unencodable_tokens": 0,
+            "dictionary_tokens": 21368,
+            "escape_tokens": 3632,
+            "escape_glyphs": 103684,
+            "cipher_glyphs": 228782,
+            "mean_cipher_glyphs_per_encodable_token": 9.15128,
+            "dictionary_mean_glyphs": 5.8544552602021716,
+            "escape_mean_glyphs": 28.547356828193834,
+            "escape_payload_fixed_bits": 311052,
+            "practice_membership": {
+              "zl": {
+                "dictionary_token_share": 0.7282548983702618,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.7282548983702618
+              },
+              "it": {
+                "dictionary_token_share": 0.7289581015943641,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.7289581015943641
+              }
+            }
+          }
+        }
+      },
+      "es_buenamor": {
+        "1000": {
+          "17": {
+            "entries": 1000,
+            "key_compressed_bits": 47024,
+            "codec_source_compressed_bits": 3144,
+            "key_bits_per_input_token": 1.88096,
+            "input_tokens": 25000,
+            "literal_plaintext_utf8_bits": 877056,
+            "unencodable_tokens": 0,
+            "dictionary_tokens": 15729,
+            "escape_tokens": 9271,
+            "escape_glyphs": 255579,
+            "cipher_glyphs": 335384,
+            "mean_cipher_glyphs_per_encodable_token": 13.41536,
+            "dictionary_mean_glyphs": 5.073749125818551,
+            "escape_mean_glyphs": 27.567576313234817,
+            "escape_payload_fixed_bits": 766737,
+            "practice_membership": {
+              "zl": {
+                "dictionary_token_share": 0.1523530488921443,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.1523530488921443
+              },
+              "it": {
+                "dictionary_token_share": 0.15202076381164256,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.15202076381164256
+              }
+            }
+          },
+          "37": {
+            "entries": 1000,
+            "key_compressed_bits": 47048,
+            "codec_source_compressed_bits": 3144,
+            "key_bits_per_input_token": 1.88192,
+            "input_tokens": 25000,
+            "literal_plaintext_utf8_bits": 877056,
+            "unencodable_tokens": 0,
+            "dictionary_tokens": 15729,
+            "escape_tokens": 9271,
+            "escape_glyphs": 255579,
+            "cipher_glyphs": 341516,
+            "mean_cipher_glyphs_per_encodable_token": 13.66064,
+            "dictionary_mean_glyphs": 5.463602263335241,
+            "escape_mean_glyphs": 27.567576313234817,
+            "escape_payload_fixed_bits": 766737,
+            "practice_membership": {
+              "zl": {
+                "dictionary_token_share": 0.12909723493865594,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.12909723493865594
+              },
+              "it": {
+                "dictionary_token_share": 0.12940304041527623,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.12940304041527623
+              }
+            }
+          },
+          "73": {
+            "entries": 1000,
+            "key_compressed_bits": 47464,
+            "codec_source_compressed_bits": 3144,
+            "key_bits_per_input_token": 1.89856,
+            "input_tokens": 25000,
+            "literal_plaintext_utf8_bits": 877056,
+            "unencodable_tokens": 0,
+            "dictionary_tokens": 15729,
+            "escape_tokens": 9271,
+            "escape_glyphs": 255579,
+            "cipher_glyphs": 348123,
+            "mean_cipher_glyphs_per_encodable_token": 13.92492,
+            "dictionary_mean_glyphs": 5.883654396337975,
+            "escape_mean_glyphs": 27.567576313234817,
+            "escape_payload_fixed_bits": 766737,
+            "practice_membership": {
+              "zl": {
+                "dictionary_token_share": 0.12598425196850394,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.12598425196850394
+              },
+              "it": {
+                "dictionary_token_share": 0.12161661104931405,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.12161661104931405
+              }
+            }
+          }
+        },
+        "5000": {
+          "17": {
+            "entries": 5000,
+            "key_compressed_bits": 230928,
+            "codec_source_compressed_bits": 3144,
+            "key_bits_per_input_token": 9.23712,
+            "input_tokens": 25000,
+            "literal_plaintext_utf8_bits": 877056,
+            "unencodable_tokens": 0,
+            "dictionary_tokens": 18548,
+            "escape_tokens": 6452,
+            "escape_glyphs": 185800,
+            "cipher_glyphs": 281442,
+            "mean_cipher_glyphs_per_encodable_token": 11.25768,
+            "dictionary_mean_glyphs": 5.156458917403493,
+            "escape_mean_glyphs": 28.79727216367018,
+            "escape_payload_fixed_bits": 557400,
+            "practice_membership": {
+              "zl": {
+                "dictionary_token_share": 0.6826588536898004,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.6826588536898004
+              },
+              "it": {
+                "dictionary_token_share": 0.6870596959584724,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.6870596959584724
+              }
+            }
+          },
+          "37": {
+            "entries": 5000,
+            "key_compressed_bits": 230408,
+            "codec_source_compressed_bits": 3144,
+            "key_bits_per_input_token": 9.21632,
+            "input_tokens": 25000,
+            "literal_plaintext_utf8_bits": 877056,
+            "unencodable_tokens": 0,
+            "dictionary_tokens": 18548,
+            "escape_tokens": 6452,
+            "escape_glyphs": 185800,
+            "cipher_glyphs": 287628,
+            "mean_cipher_glyphs_per_encodable_token": 11.50512,
+            "dictionary_mean_glyphs": 5.489971964632305,
+            "escape_mean_glyphs": 28.79727216367018,
+            "escape_payload_fixed_bits": 557400,
+            "practice_membership": {
+              "zl": {
+                "dictionary_token_share": 0.6951107855704084,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.6951107855704084
+              },
+              "it": {
+                "dictionary_token_share": 0.7018909899888766,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.7018909899888766
+              }
+            }
+          },
+          "73": {
+            "entries": 5000,
+            "key_compressed_bits": 230624,
+            "codec_source_compressed_bits": 3144,
+            "key_bits_per_input_token": 9.22496,
+            "input_tokens": 25000,
+            "literal_plaintext_utf8_bits": 877056,
+            "unencodable_tokens": 0,
+            "dictionary_tokens": 18548,
+            "escape_tokens": 6452,
+            "escape_glyphs": 185800,
+            "cipher_glyphs": 294141,
+            "mean_cipher_glyphs_per_encodable_token": 11.76564,
+            "dictionary_mean_glyphs": 5.841114945007548,
+            "escape_mean_glyphs": 28.79727216367018,
+            "escape_payload_fixed_bits": 557400,
+            "practice_membership": {
+              "zl": {
+                "dictionary_token_share": 0.7282548983702618,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.7282548983702618
+              },
+              "it": {
+                "dictionary_token_share": 0.7289581015943641,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.7289581015943641
+              }
+            }
+          }
+        }
+      },
+      "en_paston": {
+        "1000": {
+          "17": {
+            "entries": 1000,
+            "key_compressed_bits": 51048,
+            "codec_source_compressed_bits": 3144,
+            "key_bits_per_input_token": 2.04192,
+            "input_tokens": 25000,
+            "literal_plaintext_utf8_bits": 901648,
+            "unencodable_tokens": 1,
+            "dictionary_tokens": 20024,
+            "escape_tokens": 4975,
+            "escape_glyphs": 150455,
+            "cipher_glyphs": 252606,
+            "mean_cipher_glyphs_per_encodable_token": 10.10464418576743,
+            "dictionary_mean_glyphs": 5.1014282860567315,
+            "escape_mean_glyphs": 30.242211055276382,
+            "escape_payload_fixed_bits": 451365,
+            "practice_membership": {
+              "zl": {
+                "dictionary_token_share": 0.1523530488921443,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.1523530488921443
+              },
+              "it": {
+                "dictionary_token_share": 0.15202076381164256,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.15202076381164256
+              }
+            }
+          },
+          "37": {
+            "entries": 1000,
+            "key_compressed_bits": 51136,
+            "codec_source_compressed_bits": 3144,
+            "key_bits_per_input_token": 2.04544,
+            "input_tokens": 25000,
+            "literal_plaintext_utf8_bits": 901648,
+            "unencodable_tokens": 1,
+            "dictionary_tokens": 20024,
+            "escape_tokens": 4975,
+            "escape_glyphs": 150455,
+            "cipher_glyphs": 260322,
+            "mean_cipher_glyphs_per_encodable_token": 10.413296531861274,
+            "dictionary_mean_glyphs": 5.486765880942869,
+            "escape_mean_glyphs": 30.242211055276382,
+            "escape_payload_fixed_bits": 451365,
+            "practice_membership": {
+              "zl": {
+                "dictionary_token_share": 0.12909723493865594,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.12909723493865594
+              },
+              "it": {
+                "dictionary_token_share": 0.12940304041527623,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.12940304041527623
+              }
+            }
+          },
+          "73": {
+            "entries": 1000,
+            "key_compressed_bits": 51544,
+            "codec_source_compressed_bits": 3144,
+            "key_bits_per_input_token": 2.06176,
+            "input_tokens": 25000,
+            "literal_plaintext_utf8_bits": 901648,
+            "unencodable_tokens": 1,
+            "dictionary_tokens": 20024,
+            "escape_tokens": 4975,
+            "escape_glyphs": 150455,
+            "cipher_glyphs": 267059,
+            "mean_cipher_glyphs_per_encodable_token": 10.68278731149246,
+            "dictionary_mean_glyphs": 5.823212145425489,
+            "escape_mean_glyphs": 30.242211055276382,
+            "escape_payload_fixed_bits": 451365,
+            "practice_membership": {
+              "zl": {
+                "dictionary_token_share": 0.12598425196850394,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.12598425196850394
+              },
+              "it": {
+                "dictionary_token_share": 0.12161661104931405,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.12161661104931405
+              }
+            }
+          }
+        },
+        "5000": {
+          "17": {
+            "entries": 5000,
+            "key_compressed_bits": 245536,
+            "codec_source_compressed_bits": 3144,
+            "key_bits_per_input_token": 9.82144,
+            "input_tokens": 25000,
+            "literal_plaintext_utf8_bits": 901648,
+            "unencodable_tokens": 0,
+            "dictionary_tokens": 22834,
+            "escape_tokens": 2166,
+            "escape_glyphs": 67098,
+            "cipher_glyphs": 185087,
+            "mean_cipher_glyphs_per_encodable_token": 7.40348,
+            "dictionary_mean_glyphs": 5.167250591223614,
+            "escape_mean_glyphs": 30.977839335180054,
+            "escape_payload_fixed_bits": 201294,
+            "practice_membership": {
+              "zl": {
+                "dictionary_token_share": 0.6826588536898004,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.6826588536898004
+              },
+              "it": {
+                "dictionary_token_share": 0.6870596959584724,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.6870596959584724
+              }
+            }
+          },
+          "37": {
+            "entries": 5000,
+            "key_compressed_bits": 245200,
+            "codec_source_compressed_bits": 3144,
+            "key_bits_per_input_token": 9.808,
+            "input_tokens": 25000,
+            "literal_plaintext_utf8_bits": 901648,
+            "unencodable_tokens": 0,
+            "dictionary_tokens": 22834,
+            "escape_tokens": 2166,
+            "escape_glyphs": 67098,
+            "cipher_glyphs": 192700,
+            "mean_cipher_glyphs_per_encodable_token": 7.708,
+            "dictionary_mean_glyphs": 5.500656915126566,
+            "escape_mean_glyphs": 30.977839335180054,
+            "escape_payload_fixed_bits": 201294,
+            "practice_membership": {
+              "zl": {
+                "dictionary_token_share": 0.6951107855704084,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.6951107855704084
+              },
+              "it": {
+                "dictionary_token_share": 0.7018909899888766,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.7018909899888766
+              }
+            }
+          },
+          "73": {
+            "entries": 5000,
+            "key_compressed_bits": 245360,
+            "codec_source_compressed_bits": 3144,
+            "key_bits_per_input_token": 9.8144,
+            "input_tokens": 25000,
+            "literal_plaintext_utf8_bits": 901648,
+            "unencodable_tokens": 0,
+            "dictionary_tokens": 22834,
+            "escape_tokens": 2166,
+            "escape_glyphs": 67098,
+            "cipher_glyphs": 199557,
+            "mean_cipher_glyphs_per_encodable_token": 7.98228,
+            "dictionary_mean_glyphs": 5.800954716650609,
+            "escape_mean_glyphs": 30.977839335180054,
+            "escape_payload_fixed_bits": 201294,
+            "practice_membership": {
+              "zl": {
+                "dictionary_token_share": 0.7282548983702618,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.7282548983702618
+              },
+              "it": {
+                "dictionary_token_share": 0.7289581015943641,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.7289581015943641
+              }
+            }
+          }
+        }
+      },
+      "medieval_czech_01473c19": {
+        "1000": {
+          "17": {
+            "entries": 1000,
+            "key_compressed_bits": 47024,
+            "codec_source_compressed_bits": 3144,
+            "key_bits_per_input_token": 1.88096,
+            "input_tokens": 25000,
+            "literal_plaintext_utf8_bits": 878480,
+            "unencodable_tokens": 4,
+            "dictionary_tokens": 17985,
+            "escape_tokens": 7011,
+            "escape_glyphs": 190251,
+            "cipher_glyphs": 285686,
+            "mean_cipher_glyphs_per_encodable_token": 11.429268682989278,
+            "dictionary_mean_glyphs": 5.306366416458159,
+            "escape_mean_glyphs": 27.13607188703466,
+            "escape_payload_fixed_bits": 570753,
+            "practice_membership": {
+              "zl": {
+                "dictionary_token_share": 0.1523530488921443,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.1523530488921443
+              },
+              "it": {
+                "dictionary_token_share": 0.15202076381164256,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.15202076381164256
+              }
+            }
+          },
+          "37": {
+            "entries": 1000,
+            "key_compressed_bits": 46984,
+            "codec_source_compressed_bits": 3144,
+            "key_bits_per_input_token": 1.87936,
+            "input_tokens": 25000,
+            "literal_plaintext_utf8_bits": 878480,
+            "unencodable_tokens": 4,
+            "dictionary_tokens": 17985,
+            "escape_tokens": 7011,
+            "escape_glyphs": 190251,
+            "cipher_glyphs": 289823,
+            "mean_cipher_glyphs_per_encodable_token": 11.594775164026244,
+            "dictionary_mean_glyphs": 5.536391437308868,
+            "escape_mean_glyphs": 27.13607188703466,
+            "escape_payload_fixed_bits": 570753,
+            "practice_membership": {
+              "zl": {
+                "dictionary_token_share": 0.12909723493865594,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.12909723493865594
+              },
+              "it": {
+                "dictionary_token_share": 0.12940304041527623,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.12940304041527623
+              }
+            }
+          },
+          "73": {
+            "entries": 1000,
+            "key_compressed_bits": 47528,
+            "codec_source_compressed_bits": 3144,
+            "key_bits_per_input_token": 1.90112,
+            "input_tokens": 25000,
+            "literal_plaintext_utf8_bits": 878480,
+            "unencodable_tokens": 4,
+            "dictionary_tokens": 17985,
+            "escape_tokens": 7011,
+            "escape_glyphs": 190251,
+            "cipher_glyphs": 294130,
+            "mean_cipher_glyphs_per_encodable_token": 11.767082733237318,
+            "dictionary_mean_glyphs": 5.775868779538504,
+            "escape_mean_glyphs": 27.13607188703466,
+            "escape_payload_fixed_bits": 570753,
+            "practice_membership": {
+              "zl": {
+                "dictionary_token_share": 0.12598425196850394,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.12598425196850394
+              },
+              "it": {
+                "dictionary_token_share": 0.12161661104931405,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.12161661104931405
+              }
+            }
+          }
+        },
+        "5000": {
+          "17": {
+            "entries": 5000,
+            "key_compressed_bits": 229704,
+            "codec_source_compressed_bits": 3144,
+            "key_bits_per_input_token": 9.18816,
+            "input_tokens": 25000,
+            "literal_plaintext_utf8_bits": 878480,
+            "unencodable_tokens": 4,
+            "dictionary_tokens": 20850,
+            "escape_tokens": 4146,
+            "escape_glyphs": 119738,
+            "cipher_glyphs": 231158,
+            "mean_cipher_glyphs_per_encodable_token": 9.24779964794367,
+            "dictionary_mean_glyphs": 5.343884892086331,
+            "escape_mean_glyphs": 28.8803666184274,
+            "escape_payload_fixed_bits": 359214,
+            "practice_membership": {
+              "zl": {
+                "dictionary_token_share": 0.6826588536898004,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.6826588536898004
+              },
+              "it": {
+                "dictionary_token_share": 0.6870596959584724,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.6870596959584724
+              }
+            }
+          },
+          "37": {
+            "entries": 5000,
+            "key_compressed_bits": 229232,
+            "codec_source_compressed_bits": 3144,
+            "key_bits_per_input_token": 9.16928,
+            "input_tokens": 25000,
+            "literal_plaintext_utf8_bits": 878480,
+            "unencodable_tokens": 4,
+            "dictionary_tokens": 20850,
+            "escape_tokens": 4146,
+            "escape_glyphs": 119738,
+            "cipher_glyphs": 235275,
+            "mean_cipher_glyphs_per_encodable_token": 9.412506000960153,
+            "dictionary_mean_glyphs": 5.541342925659473,
+            "escape_mean_glyphs": 28.8803666184274,
+            "escape_payload_fixed_bits": 359214,
+            "practice_membership": {
+              "zl": {
+                "dictionary_token_share": 0.6951107855704084,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.6951107855704084
+              },
+              "it": {
+                "dictionary_token_share": 0.7018909899888766,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.7018909899888766
+              }
+            }
+          },
+          "73": {
+            "entries": 5000,
+            "key_compressed_bits": 229376,
+            "codec_source_compressed_bits": 3144,
+            "key_bits_per_input_token": 9.17504,
+            "input_tokens": 25000,
+            "literal_plaintext_utf8_bits": 878480,
+            "unencodable_tokens": 4,
+            "dictionary_tokens": 20850,
+            "escape_tokens": 4146,
+            "escape_glyphs": 119738,
+            "cipher_glyphs": 239649,
+            "mean_cipher_glyphs_per_encodable_token": 9.587493999039847,
+            "dictionary_mean_glyphs": 5.7511270983213425,
+            "escape_mean_glyphs": 28.8803666184274,
+            "escape_payload_fixed_bits": 359214,
+            "practice_membership": {
+              "zl": {
+                "dictionary_token_share": 0.7282548983702618,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.7282548983702618
+              },
+              "it": {
+                "dictionary_token_share": 0.7289581015943641,
+                "valid_escape_token_share": 0.0,
+                "union_token_share": 0.7289581015943641
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "reproduce": {
+    "command": "Save script to /tmp/reproduce_pl3010.py; from the project checkout after python3 -m vs fetch run PYTHONPATH=. python3 /tmp/reproduce_pl3010.py",
+    "script": "import json,random,hashlib,inspect\nfrom collections import Counter\nfrom vs import corpus,ivtff,refcorpus,judge\nBOOKS=('it_dante','es_buenamor','en_paston','medieval_czech_01473c19'); DIGITS='aeio'; MARKER='y'; MAXLEN=16\n\ndef escape(word):\n if not word or len(word)>MAXLEN or not word.isascii() or not word.islower() or not word.isalpha(): raise ValueError('outside bounded alphabet')\n return MARKER+''.join(DIGITS[(ord(ch)>>s)&3] for ch in word for s in (6,4,2,0))\n\ndef unescape(s):\n if not s.startswith(MARKER) or len(s)<5 or (len(s)-1)%4 or (len(s)-1)//4>MAXLEN or any(c not in DIGITS for c in s[1:]): raise ValueError('invalid escape')\n bs=[sum(DIGITS.index(c)<<s for c,s in zip(s0,(6,4,2,0))) for s0 in (s[i:i+4] for i in range(1,len(s),4))]\n if any(not 97<=c<=122 for c in bs):raise ValueError('nonletter')\n return ''.join(chr(c) for c in bs)\n\ndef isescape(s):\n try: unescape(s);return True\n except ValueError:return False\n\ndef words(pages):\n return [w for p in pages for l in p.lines if l.unit=='P' for w in l.words if not ivtff.uncertain(w) and w.isascii() and w.isalpha() and w.islower()]\n\ndef run(train,test,codes,n,seed,evalw):\n freq=Counter(train);common=sorted(freq,key=lambda x:(-freq[x],x))[:n];codes=sorted(codes);random.Random(seed).shuffle(codes)\n enc=dict(zip(common,codes));dec={v:k for k,v in enc.items()};assert len(dec)==n and all(not w.startswith(MARKER) for w in dec)\n out=[];skipped=[]\n for w in test:\n  if w in enc:out.append(enc[w])\n  elif len(w)<=MAXLEN:out.append(escape(w))\n  else:out.append(None);skipped.append(w)\n decoded=[None if w is None else (unescape(w) if w.startswith(MARKER) else dec[w]) for w in out]\n assert decoded==[None if w is None else t for t,w in zip(test,out)]\n valid=[w for w in out if w is not None]; direct=[w for w in valid if not w.startswith(MARKER)];esc=[w for w in valid if w.startswith(MARKER)]\n kb=judge.compressed_bits(judge.canonical({'map':dec}));src=inspect.getsource(escape)+inspect.getsource(unescape)+\"DIGITS='aeio'; MARKER='y'; MAXLEN=16\\n\";pb=judge.compressed_bits(src.encode())\n return {'entries':n,'key_compressed_bits':kb,'codec_source_compressed_bits':pb,'key_bits_per_input_token':kb/len(test),'input_tokens':len(test),'literal_plaintext_utf8_bits':8*sum(len(w.encode()) for w in test),'unencodable_tokens':len(skipped),'dictionary_tokens':len(direct),'escape_tokens':len(esc),'escape_glyphs':sum(map(len,esc)),'cipher_glyphs':sum(len(ivtff.segment(w)) for w in valid),'mean_cipher_glyphs_per_encodable_token':sum(len(ivtff.segment(w)) for w in valid)/len(valid),'dictionary_mean_glyphs':sum(len(ivtff.segment(w)) for w in direct)/len(direct),'escape_mean_glyphs':sum(len(ivtff.segment(w)) for w in esc)/len(esc),'escape_payload_fixed_bits':3*sum(map(len,esc)), 'practice_membership':{name:{'dictionary_token_share':sum(w in dec for w in ws)/len(ws),'valid_escape_token_share':sum(isescape(w) for w in ws)/len(ws),'union_token_share':sum(w in dec or isescape(w) for w in ws)/len(ws)} for name,ws in evalw.items()}}\n\nif __name__=='__main__':\n for w in ('a','z','voynich','x'*16):assert unescape(escape(w))==w\n for w in ('','A','x'*17):\n  try:escape(w);raise AssertionError(w)\n  except ValueError:pass\n for s in ('y','ya','yaaaa','yaaaa'+'a'*64,'yxxxx'):\n  try:unescape(s);raise AssertionError(s)\n  except ValueError:pass\n pins={e['id']:e for e in refcorpus.pins()}\n for book in BOOKS:\n  with open(pins[book]['file'],'rb') as f: assert hashlib.sha256(f.read()).hexdigest()==pins[book]['sha256']\n for fn,sha in [('ZL3b-n.txt','bf5b6d4ac1e3a51b1847a9c388318d609020441ccd56984c901c32b09beccafc'),('IT2a-n.txt','7f27a8b0feed8f6de0a99900df6bf912dd1d295c38e5f830bac8b41c3f536fb5')]:\n  with open('data/raw/'+fn,'rb') as f:assert hashlib.sha256(f.read()).hexdigest()==sha\n tr,_=corpus.split_pages('practice','zl');lex=set(w for w in words(tr) if not w.startswith(MARKER));ev={t:words(corpus.split_pages('practice',t)[1]) for t in ('zl','it')}\n out={'candidate_types':len(lex),'witness_tokens':{k:len(v) for k,v in ev.items()},'results':{}}\n for book in BOOKS:\n  ws=' '.join(refcorpus.blocks_of(book)).split();assert len(ws)>=75000 and all(w.isascii() and w.isalpha() and w.islower() for w in ws[:75000])\n  out['results'][book]={str(n):{str(s):run(ws[:50000],ws[50000:75000],lex,n,s,ev) for s in (17,37,73)} for n in (1000,5000)}\n print(json.dumps(out,indent=2))\n"
+  },
+  "limitations": "This deliberately simple escaped spelling is a diagnostic construction, not a historically sourced cipher or a claim that the selected marker was used in the manuscript. A valid escape is not automatically a sensible plaintext, and no key is inferred. Dictionary assignments are random and use public Voynich training types, so membership is not recovery; reference windows and generated texts are not independent of their own fitted training vocabulary. ZL and IT transcribe the same pages. The 16-character cap refuses some test words; none is silently accepted. Fixed-width and compressed JSON costs are descriptive components, omit full program, plaintext distribution and preimage charges, and do not constitute the judge\u2019s full model score. No secret held-out manuscript pages were accessed."
+}
