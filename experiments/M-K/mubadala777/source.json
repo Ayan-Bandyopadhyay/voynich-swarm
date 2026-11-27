@@ -1,28 +1,124 @@
 {
-  "title": "An Application of Cluster Analysis to the Question of ‘Hands’ and ‘Languages’ in the Voynich Manuscript",
-  "authors": "Mary E. D'Imperio",
-  "year": 1978,
-  "url": "https://documents.theblackvault.com/documents/nsa/voynichmanuscript-nsa1.pdf#page=8",
-  "summary": "D'Imperio used glyph counts for the first roughly 350–400 transcribed characters on each of 40 pages to compare four clustering procedures and a multidimensional scaling procedure. Four outputs grouped Biological B pages with Herbal B page 59 in Currier's numbering, and the author identified the narrow range of sampled sections as a limit on separating subject, handwriting, and the A/B grouping.",
+  "title": "One Hand, Five Labels: A Critical Examination of the Five-Scribe Hypothesis for the Voynich Manuscript",
+  "authors": "Torsten Timm",
+  "year": 2026,
+  "doi": "10.5281/zenodo.19169450",
+  "url": "https://zenodo.org/records/19169450",
+  "summary": "Version 5 of this open preprint examines the use of glyph outlines, Currier classes, and illustration sections in Davis's five-scribe attribution. It presents selected examples of within-folio shape variation and proposes that spacing and writing habits may account for some of the differences. Its accompanying image annotations permit inspection of individual glyph crops.",
   "established": [
-    "The samples were 16 Herbal A, 12 Herbal B, and 12 Biological B pages according to Currier's classifications in Figure 6 (pp. 6, 18).",
-    "PEP-1, HICLUS, and Ling's (K,R) algorithm used correlations between single-glyph count profiles. Those clusterings and the MINISSA placement put the Biological B pages together with Herbal B page 59, whereas the Manhattan-distance TAXMAP-2 result clearly grouped ten Biological B pages (pp. 7–12).",
-    "The author interpreted the horizontal MINISSA coordinate as associated with Currier A/B. The secondary coordinate could reflect either the Herbal/Biological section contrast or the Hand B/Hand Z contrast, which coincided for the B pages sampled (pp. 11–12)."
+    "Figure 1 uses six word crops from f23v. Four contain EVA k, and the bottom row illustrates three n terminations. The examples show variation in the appearance of k crossbars and n terminations within the folio assigned to Scribe 1. They are chosen illustrations, with no reported random sample or per-folio count of the specific variants.",
+    "Section 4 derives about 44 uploaded images and 369 glyph annotations from earlier presentation and application screenshots. These describe the evidence visible in those materials. The amount of material Davis reviewed outside the screenshots is undetermined.",
+    "Sections 5.2 and 5.3 contrast selected Herbal A and pharmaceutical letter shapes and suggest an association between available writing space and the detached or attached plume on EVA sh. The claim is qualitative. The preprint provides neither a spacing-matched estimate nor a measured frequency for the plume variants.",
+    "The companion Archetype dump contains 1,684 distinct graphs linked through annotations to 201 of 203 image records. The eight archival hand bins are Davis-derived regional categories. The selected graph totals are 854 iin, 32 in, 432 k, 348 sh, and 18 unusual forms.",
+    "The dump records the glyph group and image geometry but has no populated graph-level feature tables for the proposed shape variants. All 39 Pharma-bin entries are sh. The f2r versus f99r iin contrast is described in the preprint, so testing it needs new independent iin annotations rather than tabulating the Pharma bin."
   ],
   "open": [
     {
-      "question": "Does the clustering of D'Imperio's 40-page panel, including the association of Currier page 59 with Biological B, hold across modern independent transliterations and comparable text windows?",
-      "front": "L2",
-      "check": "Map Figure 6 with Currier's Table A (1976 seminar, p. 68) and the Petersen column in Zandbergen's IVTFF Annex 1. Currier page 59 is f31r, not the missing folio 59. First replicate the historical single-glyph comparisons with the public Currier text. On the modern public practice split compare correlation and length-normalized Manhattan distance on 350–400 transcribed glyphs in ZL and IT, beginning at the same locus. Repeat for later matching windows where long enough. Report exclusions, within- and between-group distances, and the nearest group for f31r when available, using physical folios as blocks. Report the support for section contrasts within modern hands before interpreting the Currier B grouping.",
+      "question": "Does local writing space predict whether the plume of EVA sh touches its bench after accounting for Currier group, line position and illustration section?",
+      "front": "L1",
+      "check": "Choose paragraph-text candidates from the native scans without using the archive's existing sh crops for selection. Before decoding page or hand labels, have two readers independently score visible plume attachment, ambiguous contact, line height and adjacent spacing. Include well-supported same-Currier cross-hand and same-assigned-hand cross-section comparisons where available. Hold out entire physical bifolios when comparing a spacing-and-position model with the same model plus existing hand labels. Report rater agreement, the number of eligible folios and unscorable crops, and where the matched support is inadequate.",
       "hard": true
     }
   ],
-  "report_number": "PI Informal No. 3, S-216,867",
-  "date": "1978-06",
-  "access_note": "The FOIA volume contains NSA DOCID 6588666 at PDF pages 8–27. Report numbers in the summary refer to the printed pagination. The expanded Summer 1978 NSA Technical Journal publication is DOCID 636902.",
-  "related_public_materials": {
-    "currier_concordance": "https://www.nsa.gov/portals/75/documents/news-features/declassified-documents/voynich/proceedings-of-a-seminar-30-november-1976.pdf",
-    "modern_concordance": "https://www.voynich.nu/data/previous/IVTFF_format_1_7.pdf",
-    "historical_currier_text": "https://www.voynich.nu/hist/rand/voynich_orig.txt"
+  "evidence": {
+    "version": "v5",
+    "paper_sha256": "f78fe31d823ff762a38ccd3cbbc70472c67f3a02115b89f1ae0b7898fe7085b8",
+    "dataset": "https://zenodo.org/records/18827108",
+    "project_archive_sha256": "1e79c1ebcce4aa18a8fa5ad83743e9204eb1b08ea52627264bc08bf036485ba4",
+    "audit_method": "Read the PostgreSQL COPY text in digipal_project/archetype.sql. Join annotation.image_id to image.id and annotation.graph_id to graph.id. Join graph.idiograph_id through idiograph.allograph_id to allograph.name and graph.hand_id to hand.label. Count distinct graph and image identifiers; these are annotation coverage counts.",
+    "annotation_counts": {
+      "catalogued_image_records": 203,
+      "image_records_with_graphs": 201,
+      "image_loci_without_graphs": [
+        "57v",
+        "65r"
+      ],
+      "distinct_graphs": 1684,
+      "unique_image_geometry_pairs": 1684,
+      "categories": {
+        "iin": {
+          "graphs": 854,
+          "images": 200
+        },
+        "in": {
+          "graphs": 32,
+          "images": 25
+        },
+        "k": {
+          "graphs": 432,
+          "images": 199
+        },
+        "sh": {
+          "graphs": 348,
+          "images": 154
+        },
+        "weirdos": {
+          "graphs": 18,
+          "images": 13
+        }
+      },
+      "hand_bin_counts": {
+        "Balneology": 194,
+        "Cosmological": 132,
+        "Herbal - Scribe 3": 76,
+        "HerbalA": 700,
+        "HerbalB": 249,
+        "Pharma": 39,
+        "Scribe 5": 62,
+        "Stars": 232
+      },
+      "hand_bin_categories": {
+        "Balneology": {
+          "iin": 109,
+          "k": 41,
+          "sh": 44
+        },
+        "Cosmological": {
+          "iin": 77,
+          "k": 38,
+          "in": 1,
+          "sh": 16
+        },
+        "Herbal - Scribe 3": {
+          "iin": 48,
+          "k": 14,
+          "sh": 14
+        },
+        "HerbalA": {
+          "k": 218,
+          "iin": 303,
+          "in": 29,
+          "sh": 135,
+          "weirdos": 15
+        },
+        "HerbalB": {
+          "iin": 156,
+          "k": 54,
+          "sh": 38,
+          "in": 1
+        },
+        "Pharma": {
+          "sh": 39
+        },
+        "Scribe 5": {
+          "iin": 37,
+          "in": 1,
+          "k": 14,
+          "sh": 10
+        },
+        "Stars": {
+          "iin": 124,
+          "k": 53,
+          "sh": 52,
+          "weirdos": 3
+        }
+      },
+      "annotation_notes_present": 0,
+      "graph_feature_table_counts": {
+        "digipal_graph_aspects": 0,
+        "digipal_graphcomponent": 0,
+        "digipal_graphcomponent_features": 0
+      }
+    }
   }
 }
