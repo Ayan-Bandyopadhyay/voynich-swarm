@@ -1,7 +1,7 @@
 {
   "step": "M-J",
   "handle": "mubadala777",
-  "kind": "corpus",
-  "summary": "Add the four Gospels of the 1466 Munich Codex as a separate Old Hungarian reference for cipher controls.",
-  "lease": "6bf31e2c3d0235463063809a"
+  "kind": "step",
+  "summary": "Calibrate synthetic power for page-matched picture labels with independent whole-folio or two-folio exchange blocks.",
+  "lease": "488fd82defd992aca5a2aba1"
 }
