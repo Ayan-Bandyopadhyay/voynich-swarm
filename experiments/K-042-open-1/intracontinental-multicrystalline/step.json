@@ -1,0 +1,100 @@
+{
+  "title": "Recover the published class definitions and rerun the prediction model on source-verified witnesses",
+  "program": "L2",
+  "on_path": false,
+  "hard": true,
+  "statement": "A related, independently specified 18-class predictor on the public practice split gives positive next-class gains of 0.01678, 0.01544 and 0.01436 nats/token in ZL, IT and RF respectively, versus negative gains for 30 position-matched random-predecessor controls. All three 95% folio-bootstrap intervals cross zero. These are not exact replications: the paper does not state the 18 class definitions or complete modeling details, and the RF witness merges ZL and GC.",
+  "check": "Obtain the author’s exact class definitions, filtering, position bins, split algorithm and model code or a sufficiently complete frozen specification, then rerun from byte-verified original IVTFF on grouped folios. Compare genuinely independent transcription witnesses on matched lines, report paired folio-bootstrap uncertainty and position-matched predecessor controls. Preserve an untouched final evaluation partition. Separate failure to reproduce an effect from differences in definitions, preprocessing and statistical power.",
+  "method": "This alternate test specifies 18 classes as six initial EVA-basic glyph categories q, o, ch, sh, d, other crossed with three glyph-length bins 1–3, 4–6, 7+. Select adjacent certain ASCII-letter tokens in paragraph lines without bridging skipped tokens. Condition baseline on section and floor(4*token_index/line_length), with additive shrinkage of 20 toward global class frequencies. The transition distribution is conditioned on the previous class with identical shrinkage. Tune mixture weight 0, .05, …, 1 solely on development folios selected by SHA-256(folio_id) mod 5 from public practice-training pages; train on remaining training folios, test on the project’s public practice-evaluation pages. Sample random predecessor class 30 times from training section-position buckets; fallback to the pooled training distribution. Estimate a paired 95% percentile interval by 1000 resamples of complete test folios. The three witness results use the same practice folio IDs but retain each witness’s own valid lines.",
+  "source": "Matthew Brian Dominik, Line-Conditioned Orthographic Organization in the Voynich Manuscript (2026), https://zenodo.org/records/23407412 ; source IVTFF files at https://www.voynich.nu/data/ (see source pins).",
+  "source_sha256": {
+    "ZL3b-n.txt": "bf5b6d4ac1e3a51b1847a9c388318d609020441ccd56984c901c32b09beccafc",
+    "IT2a-n.txt": "7f27a8b0feed8f6de0a99900df6bf912dd1d295c38e5f830bac8b41c3f536fb5",
+    "RF1b-e.txt": "e7d3238e35743e06c63367a933909ec37b1e2de7ada3a1b449447eafa1918782"
+  },
+  "results": {
+    "zl": {
+      "folio_counts": [
+        161,
+        31,
+        34
+      ],
+      "pair_counts": [
+        21617,
+        4179,
+        4796
+      ],
+      "mixture_weight": 0.6,
+      "baseline_nll": 2.486694,
+      "transition_nll": 2.469916,
+      "gain": 0.016779,
+      "placebo_gain_range": [
+        -0.031139,
+        -0.021418
+      ],
+      "folio_bootstrap_interval": [
+        -0.008603,
+        0.042563
+      ],
+      "positive_folios": 15,
+      "test_folios_with_pairs": 31
+    },
+    "it": {
+      "folio_counts": [
+        160,
+        31,
+        34
+      ],
+      "pair_counts": [
+        21436,
+        4068,
+        4740
+      ],
+      "mixture_weight": 0.55,
+      "baseline_nll": 2.471751,
+      "transition_nll": 2.456312,
+      "gain": 0.01544,
+      "placebo_gain_range": [
+        -0.025772,
+        -0.014875
+      ],
+      "folio_bootstrap_interval": [
+        -0.007022,
+        0.040212
+      ],
+      "positive_folios": 15,
+      "test_folios_with_pairs": 31
+    },
+    "rf": {
+      "folio_counts": [
+        161,
+        31,
+        34
+      ],
+      "pair_counts": [
+        17555,
+        3337,
+        3917
+      ],
+      "mixture_weight": 0.6,
+      "baseline_nll": 2.474124,
+      "transition_nll": 2.45976,
+      "gain": 0.014364,
+      "placebo_gain_range": [
+        -0.032176,
+        -0.020035
+      ],
+      "folio_bootstrap_interval": [
+        -0.00747,
+        0.039037
+      ],
+      "positive_folios": 15,
+      "test_folios_with_pairs": 31
+    }
+  },
+  "reproduce": {
+    "command": "Save script as /tmp/voy_k042_predict.py; from the repository root run PYTHONPATH=. python3 /tmp/voy_k042_predict.py. The script checks the pinned SHA-256 values before loading.",
+    "script": "import math, json, random, hashlib\nfrom collections import Counter,defaultdict\nfrom vs import corpus, ivtff\n\nN=18; SEEDS=30\nHASHES={'ZL3b-n.txt':'bf5b6d4ac1e3a51b1847a9c388318d609020441ccd56984c901c32b09beccafc', 'IT2a-n.txt':'7f27a8b0feed8f6de0a99900df6bf912dd1d295c38e5f830bac8b41c3f536fb5', 'RF1b-e.txt':'e7d3238e35743e06c63367a933909ec37b1e2de7ada3a1b449447eafa1918782'}\nfor name,digest in HASHES.items():\n    with open('data/raw/'+name,'rb') as f: assert hashlib.sha256(f.read()).hexdigest()==digest, name\n\ndef cl(w):\n    g=ivtff.segment(w); first=g[0]; prefix={'q':0,'o':1,'ch':2,'sh':3,'d':4}.get(first,5)\n    size=0 if len(g)<=3 else 1 if len(g)<=6 else 2\n    return prefix*3+size\n\ndef rows(pages):\n    out=[]\n    for p in pages:\n        for line in p.lines:\n            if line.unit!='P' or len(line.words)<2: continue\n            n=len(line.words)\n            for i in range(1,n):\n                a,b=line.words[i-1:i+1]\n                if ivtff.uncertain(a) or ivtff.uncertain(b): continue\n                if not all(c.isalpha() and c.isascii() and c.islower() for c in a+b): continue\n                pos=min(3,4*i//n); out.append((p.id,p.section or '?',pos,cl(a),cl(b)))\n    return out\n\ndef fit(rr):\n    base=defaultdict(Counter); trans=defaultdict(Counter); pred=defaultdict(list); counts=Counter()\n    for f,s,p,a,b in rr: base[s,p][b]+=1; trans[a][b]+=1; counts[b]+=1; pred[s,p].append(a)\n    total=sum(counts.values()); globalp=[(counts[i]+.5)/(total+.5*N) for i in range(N)]\n    def dist(c,alpha):\n        n=sum(c.values()); return [(c[i]+alpha*globalp[i])/(n+alpha) for i in range(N)]\n    return {'base':{k:dist(c,20) for k,c in base.items()},'trans':{k:dist(c,20) for k,c in trans.items()},'pred':pred,'global':globalp}\n\ndef evaluate(rr,model,w,override=None,byfolio=False):\n    lossb=losst=0; group=defaultdict(list)\n    for i,(f,s,p,a,b) in enumerate(rr):\n        if override is not None: a=override[i]\n        d=model['base'].get((s,p),model['global']); t=model['trans'].get(a,model['global'])\n        lb=-math.log(d[b]); lt=-math.log((1-w)*d[b]+w*t[b]);lossb+=lb;losst+=lt;group[f].append(lb-lt)\n    return lossb/len(rr),losst/len(rr),group\n\ndef trial(trans):\n    tr,ev=corpus.split_pages('practice',trans)\n    dev=[p for p in tr if int(hashlib.sha256(p.id.encode()).hexdigest()[:8],16)%5==0]; train=[p for p in tr if p not in dev]\n    rtrain,rdev,rtest=rows(train),rows(dev),rows(ev); model=fit(rtrain)\n    weights=[i/20 for i in range(21)]\n    w=min(weights,key=lambda x:evaluate(rdev,model,x)[1]); b,t,group=evaluate(rtest,model,w)\n    rng=random.Random(42107); placebo=[]\n    allpred=[v for x in model['pred'].values() for v in x]\n    for _ in range(SEEDS):\n        pred=[rng.choice(model['pred'].get((s,p),allpred)) for f,s,p,a,y in rtest]\n        pb,pt,_=evaluate(rtest,model,w,pred); placebo.append(pb-pt)\n    sums={k:(sum(v),len(v)) for k,v in group.items()}; ids=list(sums); boots=[]\n    for _ in range(1000):\n        picked=rng.choices(ids,k=len(ids)); boots.append(sum(sums[k][0] for k in picked)/sum(sums[k][1] for k in picked))\n    boots.sort()\n    return {'folio_counts':[len(train),len(dev),len(ev)],'pair_counts':[len(rtrain),len(rdev),len(rtest)],'mixture_weight':w,'baseline_nll':round(b,6),'transition_nll':round(t,6),'gain':round(b-t,6),'placebo_gain_range':[round(min(placebo),6),round(max(placebo),6)],'folio_bootstrap_interval':[round(boots[24],6),round(boots[974],6)],'positive_folios':sum(sum(v)>0 for v in group.values()),'test_folios_with_pairs':len(group)}\n\nif __name__=='__main__': print(json.dumps({t:trial(t) for t in ('zl','it','rf')},indent=2))\n"
+  },
+  "limitations": "Source-file hashes establish bytes of the project inputs, not equivalence to the author’s reconstructed corpus or correctness of every IVTFF parsing decision. The published text describes initial and length classes but does not enumerate its exact 18 classes, smoothing or splits. The new design was not preregistered and is not comparable in magnitude to the original claim without a matched specification. IT is a separate transcription of the same manuscript; RF is not independent of ZL. Folio resampling does not account for model selection or manuscript-wide dependencies. No physical handwriting lines were checked and no hidden-page identities were accessed."
+}

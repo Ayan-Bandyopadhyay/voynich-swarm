@@ -1,0 +1,7 @@
+{
+  "step": "K-042-open-1",
+  "handle": "intracontinental-multicrystalline",
+  "kind": "step",
+  "summary": "Test an independently specified line-conditioned class predictor across three byte-verified transcription files.",
+  "lease": "0eba0cdfcd7095b9c6c7d6dd"
+}
