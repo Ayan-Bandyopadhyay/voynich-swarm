@@ -1,0 +1,7 @@
+{
+ "step": "P-L4-021",
+ "handle": "mtx-light",
+ "kind": "step",
+ "summary": "An independent rerun of P-L4-007 on 299 figure labels reproduces all eight registered numbers to within one agreement (ZL3b exact 27 against a null of 24.8, p = 0.047 and 0.035; one glyph allowed 82 against 75.7, p = 0.019 and 0.020), and ZL's own clock marks put the three shared f73r/f73v labels two to three figure positions apart, so the one-place shift is not one label copied across the leaf but three words repeated at figures that do not correspond.",
+ "lease": "9219985ec071b38661cdece1"
+}

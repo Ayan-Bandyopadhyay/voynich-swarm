@@ -1,0 +1,99 @@
+{
+ "title": "Independent replication: the divisible-by-three line rule sits at chance in every transliteration, and the one cell that looked significant does not survive the variants it was chosen from",
+ "statement": "The step reports that, among 615 shared certain paragraph lines, the five highlighted decompositions give 201 divisible lengths in ZL and 213 in Takahashi, and that an extended variant reaches a one-sided p of 0.025 in ZL and 0.350 in Takahashi before adjustment. I reproduced the consequence on the pinned practice evaluation pages, where no hidden page is involved, counting a line as compliant when its glyph count is divisible by three under a fixed expansion (the toy demonstration fixes one digit per EVA symbol: YZXAKJCCJBXX gives twelve digits 222 133 113 122, four triplets, so digit length equals symbol length). My line counts differ slightly from the step's because I use the practice evaluation pages rather than its 615 shared lines, but the picture is the same and sharper. ZL, 630 certain paragraph lines: eva-raw 199 divisible (0.316), eva-basic 213 (0.338), eva-iin 235 (0.373). IT (Takahashi), 647 lines: 206 (0.318), 217 (0.335), 232 (0.359). RF, 327 lines: 101 (0.309), 97 (0.297), 120 (0.367). The null is one third, and only one of the nine cells clears a nominal 0.05 at all: ZL under eva-iin, z = +2.11, p = 0.0173. That cell is the one to be suspicious of, for three reasons. It does not replicate in the other two transliterations of the same pages (IT 0.359 at p = 0.087, RF 0.367 at p = 0.099), so it depends on which transcription is used; it appears only under the segmentation that maximises the count (eva-iin merges the i-runs, which the manuscript does not license as single symbols by default); and it was chosen after looking at nine combinations, so the Bonferroni threshold for nine cells at family-wise 0.05 is 0.0056, which 0.0173 does not reach. In other words the whole rule family is indistinguishable from chance once selection is priced in, which is what the step's own exploratory p of 0.025 in ZL and 0.350 in Takahashi already hinted at. This does not by itself refute Matlach et al., whose actual proposal leaves the EVA-to-digit partition, the expansion table, the reset boundaries and the error policy open: it closes the one consequence they made testable without a key. A verdict on the manuscript still needs the key the step's check demands, and until then the cell is INCONCLUSIVE rather than ruled out.",
+ "program": "R",
+ "check": "No attack.json is filed: attacking would require choosing a partition and a reset policy the authors never fixed, which would test our construction rather than theirs. What closes this audit properly is the step's own check - a versioned key from the authors, with a fixed EVA expansion, a stated mapping of triples to symbols, a language, and a deterministic policy for spaces, synchronisation, framing and errors - and it should be verified on their published folio examples without retuning. Separately, and independently of the manuscript, the family needs a power demonstration: plant a known three-digit encoding with deliberate uncertain breaks and variable ligatures into a control text and show the fixed family recovers it. If it cannot recover a planted case, no manuscript verdict from this family means anything. Until a key exists, record the cell as INCONCLUSIVE, not ruled out, and note that the divisibility consequence is at chance in all three transliterations.",
+ "on_path": false,
+ "hard": false,
+ "evidence": {
+  "toy_demonstration": {
+   "input": "YZXAKJCCJBXX",
+   "digits": "222133113122",
+   "triplets": [
+    "222",
+    "133",
+    "113",
+    "122"
+   ],
+   "implication": "one digit per EVA symbol, so digit length equals symbol length"
+  },
+  "lines_counted": {
+   "zl": 630,
+   "it": 647,
+   "rf": 327
+  },
+  "divisible_by_three": {
+   "zl": {
+    "eva-raw": [
+     199,
+     0.316,
+     -0.93,
+     0.8237
+    ],
+    "eva-basic": [
+     213,
+     0.338,
+     0.25,
+     0.3999
+    ],
+    "eva-iin": [
+     235,
+     0.373,
+     2.11,
+     0.0173
+    ]
+   },
+   "it": {
+    "eva-raw": [
+     206,
+     0.318,
+     -0.81,
+     0.7899
+    ],
+    "eva-basic": [
+     217,
+     0.335,
+     0.11,
+     0.4557
+    ],
+    "eva-iin": [
+     232,
+     0.359,
+     1.36,
+     0.0866
+    ]
+   },
+   "rf": {
+    "eva-raw": [
+     101,
+     0.309,
+     -0.94,
+     0.826
+    ],
+    "eva-basic": [
+     97,
+     0.297,
+     -1.41,
+     0.9204
+    ],
+    "eva-iin": [
+     120,
+     0.367,
+     1.29,
+     0.0985
+    ]
+   }
+  },
+  "null": 0.333333,
+  "best_cell": "zl eva-iin p=0.0173",
+  "bonferroni_9_cells": 0.0056,
+  "survives": false,
+  "step_reported": {
+   "zl": 201,
+   "it": 213,
+   "extended_p_zl": 0.025,
+   "extended_p_it": 0.35
+  },
+  "verdict": "rule family at chance under every transliteration; no cell survives selection; cell stays INCONCLUSIVE"
+ }
+}

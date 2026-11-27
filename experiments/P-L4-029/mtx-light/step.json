@@ -1,0 +1,420 @@
+{
+ "title": "Recompute of P-L4-010 by position on the page: the registered numbers reproduce exactly (ZL3b 0 identical labels at matching positions against a null of 4.9, lower p = 0.005; IT2a 1 against 3.9; RF1b 1 against 4.3), GC2a shows the same low side, the deficit survives a wider window (3 against 8.7 at 30 degrees, lower p = 0.018) - and the total count of repeated labels across pages is exactly at chance, so what is unusual is not that words repeat but that a repeated word never stands at the same place twice",
+ "statement": "A recomputation of P-L4-010 by position on the page, with my own code, on the design the step declares: figure labels (unit Lz) on the twelve zodiac pages that carry a clock comment in ZL3b, word breaks removed - 298 labels, the same count the registered run reports - every pair of labels on two different pages whose recorded positions lie within 15 degrees of each other in any ring (4,902 pairs, again the registered count), and no fitted rotation; the null shuffles the labels of each ring of each page among that ring's own positions, 1,000 shuffles. The other three editions are placed by ZL's loci, as the registered run does. Everything reproduces. Identical pairs at matching positions, mine then registered: ZL3b 0 against a null mean of 4.9 / 5.1 (upper p = 1.000 / 1.0, lower p = 0.005 / 0.005); IT2a 1 against 3.9 / 4.0 (upper 0.981 / 0.99, lower 0.074 / 0.08); RF1b 1 against 4.3 / 4.3 (upper 0.990 / 0.99, lower 0.053 / 0.05). Within one glyph: ZL3b 43 / 44 against 46.7 / 47.4 (upper 0.772 / 0.74); IT2a 42 / 42 against 44.2 / 43.8 (upper 0.650 / 0.65); RF1b 31 / 29 against 37.6 / 37.1 (upper 0.919 / 0.94). GC2a, which the registered run does not report: 1 identical against 3.9 (upper 0.989, lower 0.070) and 32 within one glyph against 42.8 (upper 0.970, lower 0.038). So there is no roster of words tied to fixed places round the wheel, by a route that does not depend on list order or starting figure. Two things added after the recomputation. First, the window: the registered author fixed 15 degrees and tried no other, so I ran 5 and 30 degrees as an exploratory sweep. The low side is not the window's fault - at 30 degrees ZL3b gives 3 identical pairs against a null mean of 8.7 (lower p = 0.018), IT2a 3 against 6.9 (0.056), RF1b 4 against 7.5 (0.099), GC2a 4 against 6.8 (0.150); at 5 degrees there are too few pairs to say anything (0 against 1.2 to 1.6). Second, where the low side comes from: the total number of identical cross-page pairs, at any separation at all, is exactly at chance in all four editions - ZL3b 42 against a null mean of 42.0, IT2a 33 against 33.0, RF1b 36 against 36.0, GC2a 33 against 33.0. What is not at chance is where those repeats stand. The angular separations of the identical pairs in ZL3b run 30, 30, 30, 45, 45, 45, 45, 45, 52, 60, 60, 60, 60, 75, 75, 82, 82, 90, 90, 90, 105, 105, 112, 120, 120, 120, 127, 135 (x7), 150, 157, 157, 165 (x5), 180 degrees - almost all multiples of 15 degrees, which is two half-hour clock marks, and with a hole below 22 degrees; in the other three editions exactly one pair sits at 7 degrees and none below that. A repeated word does stand elsewhere on the wheel; the deficit inside the window is that same fact read from one end, not a second result.",
+ "program": "L4",
+ "check": "Recompute from the pinned ZL3b file: labels of unit Lz on the twelve zodiac pages that carry a clock comment, word breaks removed; cross-page pairs within 15 degrees; within-ring shuffle. A separate seat should test the low-side observation as a registered prediction before it is given any weight, with the window fixed in advance, for example on Takahashi's transliteration placed by the same positions.",
+ "on_path": true,
+ "hard": false,
+ "findings": [
+  "The registered numbers reproduce. Identical pairs at matching positions, mine then registered: ZL3b 0 against nulls 4.9 / 5.1 (upper p 1.000 / 1.0, lower p 0.005 / 0.005); IT2a 1 against 3.9 / 4.0 (0.981 / 0.99, lower 0.074 / 0.08); RF1b 1 against 4.3 / 4.3 (0.990 / 0.99, lower 0.053 / 0.05). Within one glyph: ZL3b 43 / 44 against 46.7 / 47.4; IT2a 42 / 42 against 44.2 / 43.8; RF1b 31 / 29 against 37.6 / 37.1. The label count (298) and the pair count (4,902) are identical to the registered ones; my null means are within 0.6 throughout and my lower-tail p values within 0.006 of the registered ones, which used 3,000 shuffles against my 1,000.",
+  "GC2a, which the registered run does not report, behaves like the other three: 1 identical pair against a null mean of 3.9 (upper p 0.989, lower p 0.070), and 32 within one glyph against 42.8 (upper p 0.970, lower p 0.038).",
+  "The low side is not an artifact of the 15-degree window. Exploratory sweep, same labels and same null: at 30 degrees ZL3b gives 3 identical pairs against 8.7 expected (lower p 0.018), IT2a 3 against 6.9 (0.056), RF1b 4 against 7.5 (0.099), GC2a 4 against 6.8 (0.150). At 5 degrees the design has too few pairs to conclude anything (0 observed against 1.2 to 1.6 expected, lower p 0.18 to 0.29).",
+  "Mechanically, the deficit is about where repeats stand, not how many there are. The count of identical cross-page pairs at any separation is exactly at chance in all four editions: ZL3b 42 against a null mean of 42.0, IT2a 33 against 33.0, RF1b 36 against 36.0, GC2a 33 against 33.0. Their angular separations are not uniform: in ZL3b they run from 30 to 180 degrees and are almost all multiples of 15 degrees (two half-hour clock marks), with a hole below 22 degrees; in IT2a, RF1b and GC2a exactly one pair sits at 7 degrees and none closer. So the registered author's unclaimed reading - that a word used again on another page tends to stand elsewhere on the wheel - is what the data look like, and the 15-degree deficit is that same fact seen from one end.",
+  "The four editions are not four tests. They are placed by the same ZL3b positions over the same loci, so four consistent lower tails are one observation repeated over spellings, not independent evidence. The prediction test the check asks for still needs a separate seat: with the window fixed at 15 degrees and positions from ZL3b, an independent transliteration placed by the same loci (Takahashi's, once it is catalogued) should give an identical-pair count at or below the 5th percentile of the within-ring null. It cannot be run from this repository: the pinned corpus holds zl, it, rf and gc only."
+ ],
+ "interpretation": "The step's own claim stands and is now reproduced by a second seat: there is no roster of Voynich words tied to fixed places round the zodiac wheel. That matters because it closes a route that looked promising after the label-list tests - if the same figure position on every page carried the same word, the wheel would be a lookup table and the labels would be its entries. It is not: matching positions agree at or below chance in all four editions, and the one nominal excess in the list-order tests (three labels shared by f73r and f73v) is now known to sit two to three figure positions apart rather than at the same place, which is the same fact from the other side. The unclaimed low side deserves the treatment the step prescribes rather than more reanalysis: it survives a window sweep and it shows up in a fourth edition, but every measurement of it so far uses ZL's positions and ZL's loci, so it is one observation, and the separation table says it is the arithmetic consequence of repeats sitting at multiples of 15 degrees rather than at zero. Before anyone builds on it, it needs a transliteration that is not one of the four pinned here, with the window fixed in advance.",
+ "methods": "Two scripts, read-only over the public practice partition. pl4029.py takes the figure labels (unit Lz) of the twelve zodiac pages from each pinned transliteration, joins each line's words into one glyph string with ?*{} brackets stripped, and keeps only loci that carry a clock comment in ZL3b - the only pinned edition that has them, which is why the other three are placed by ZL's positions, as the registered run does. Positions are converted to degrees as clock minutes times 360 over 720. Pairs are every cross-page pair whose positions are within the window, in any ring; rings are maximal runs of consecutive line numbers, the grouping the transcription itself marks, and they are taken from ZL's line order so every edition is shuffled in the same 28 groups. The null permutes the labels within each group, 1,000 draws from random.Random(429); p is (count of nulls at or beyond the observed value + 1) / 1001, reported for both tails. The one-glyph relation is one substitution in equal-length strings or one insertion where the lengths differ by one, precomputed as a boolean matrix over the distinct label strings. pl4029_sep.py drops the window entirely, counts identical cross-page pairs at any separation, and lists their angular separations against the same within-ring null; that is what turns the low side from a p value into a picture of where repeats actually stand.",
+ "results": {
+  "setup": {
+   "commit": "cb94ef4",
+   "split": "practice",
+   "positions_from": "ZL3b clock comments (<!hh:mm>) on figure labels",
+   "labels_with_positions": 298,
+   "ring_groups": 28,
+   "cross_page_pairs_at_15_deg": 4902,
+   "cross_page_pairs_at_5_deg": 1582,
+   "cross_page_pairs_at_30_deg": 8439,
+   "shuffles": 1000,
+   "seed": 429,
+   "note": "the registered run reports 298 labels and 4,902 pairs; both counts match exactly"
+  },
+  "window_15_deg": {
+   "zl": {
+    "mine": {
+     "identical": [
+      0,
+      4.9,
+      1.0,
+      0.005
+     ],
+     "within_one_glyph": [
+      43,
+      46.7,
+      0.772,
+      0.283
+     ]
+    },
+    "registered": [
+     0,
+     5.1,
+     1.0,
+     44,
+     47.4,
+     0.74,
+     0.005
+    ]
+   },
+   "it": {
+    "mine": {
+     "identical": [
+      1,
+      3.9,
+      0.981,
+      0.074
+     ],
+     "within_one_glyph": [
+      42,
+      44.2,
+      0.65,
+      0.406
+     ]
+    },
+    "registered": [
+     1,
+     4.0,
+     0.99,
+     42,
+     43.8,
+     0.65,
+     0.08
+    ]
+   },
+   "rf": {
+    "mine": {
+     "identical": [
+      1,
+      4.3,
+      0.99,
+      0.053
+     ],
+     "within_one_glyph": [
+      31,
+      37.6,
+      0.919,
+      0.127
+     ]
+    },
+    "registered": [
+     1,
+     4.3,
+     0.99,
+     29,
+     37.1,
+     0.94,
+     0.05
+    ]
+   },
+   "gc": {
+    "mine": {
+     "identical": [
+      1,
+      3.9,
+      0.989,
+      0.07
+     ],
+     "within_one_glyph": [
+      32,
+      42.8,
+      0.97,
+      0.038
+     ]
+    },
+    "registered": null
+   }
+  },
+  "window_sweep_exploratory": {
+   "zl": {
+    "5_deg": {
+     "identical": [
+      0,
+      1.6,
+      0.183
+     ],
+     "within_one_glyph": [
+      14,
+      14.4
+     ]
+    },
+    "30_deg": {
+     "identical": [
+      3,
+      8.7,
+      0.018
+     ],
+     "within_one_glyph": [
+      81,
+      80.0
+     ]
+    }
+   },
+   "it": {
+    "5_deg": {
+     "identical": [
+      0,
+      1.2,
+      0.281
+     ],
+     "within_one_glyph": [
+      13,
+      13.5
+     ]
+    },
+    "30_deg": {
+     "identical": [
+      3,
+      6.9,
+      0.056
+     ],
+     "within_one_glyph": [
+      84,
+      76.1
+     ]
+    }
+   },
+   "rf": {
+    "5_deg": {
+     "identical": [
+      0,
+      1.4,
+      0.243
+     ],
+     "within_one_glyph": [
+      10,
+      11.4
+     ]
+    },
+    "30_deg": {
+     "identical": [
+      4,
+      7.5,
+      0.099
+     ],
+     "within_one_glyph": [
+      61,
+      64.6
+     ]
+    }
+   },
+   "gc": {
+    "5_deg": {
+     "identical": [
+      0,
+      1.2,
+      0.287
+     ],
+     "within_one_glyph": [
+      10,
+      13.3
+     ]
+    },
+    "30_deg": {
+     "identical": [
+      4,
+      6.8,
+      0.15
+     ],
+     "within_one_glyph": [
+      66,
+      73.5
+     ]
+    }
+   }
+  },
+  "identical_pairs_at_any_separation": {
+   "zl": {
+    "observed": 42,
+    "null_mean": 42.0,
+    "within_15_deg": 0,
+    "separations_deg": [
+     30,
+     30,
+     30,
+     45,
+     45,
+     45,
+     45,
+     45,
+     52,
+     60,
+     60,
+     60,
+     60,
+     75,
+     75,
+     82,
+     82,
+     90,
+     90,
+     90,
+     105,
+     105,
+     112,
+     120,
+     120,
+     120,
+     127,
+     135,
+     135,
+     135,
+     135,
+     135,
+     135,
+     135,
+     150,
+     157,
+     157,
+     165,
+     165,
+     165,
+     165,
+     180
+    ]
+   },
+   "it": {
+    "observed": 33,
+    "null_mean": 33.0,
+    "within_15_deg": 1,
+    "separations_deg": [
+     7,
+     30,
+     30,
+     45,
+     45,
+     45,
+     60,
+     60,
+     60,
+     75,
+     75,
+     82,
+     90,
+     90,
+     105,
+     105,
+     105,
+     105,
+     105,
+     112,
+     120,
+     120,
+     120,
+     120,
+     135,
+     135,
+     135,
+     135,
+     150,
+     165,
+     165,
+     165,
+     180
+    ]
+   },
+   "rf": {
+    "observed": 36,
+    "null_mean": 36.0,
+    "within_15_deg": 1,
+    "separations_deg": [
+     7,
+     22,
+     30,
+     30,
+     45,
+     45,
+     45,
+     60,
+     60,
+     60,
+     60,
+     75,
+     75,
+     82,
+     82,
+     90,
+     90,
+     105,
+     105,
+     112,
+     120,
+     120,
+     120,
+     127,
+     135,
+     135,
+     135,
+     135,
+     135,
+     135,
+     150,
+     150,
+     157,
+     165,
+     165,
+     180
+    ]
+   },
+   "gc": {
+    "observed": 33,
+    "null_mean": 33.0,
+    "within_15_deg": 1,
+    "separations_deg": [
+     7,
+     22,
+     30,
+     30,
+     45,
+     45,
+     60,
+     60,
+     60,
+     60,
+     75,
+     75,
+     82,
+     82,
+     90,
+     90,
+     105,
+     105,
+     112,
+     120,
+     120,
+     120,
+     127,
+     135,
+     135,
+     135,
+     135,
+     150,
+     150,
+     157,
+     165,
+     165,
+     180
+    ]
+   }
+  },
+  "prediction_left_for_a_separate_seat": {
+   "window_deg": 15,
+   "positions": "ZL3b clock comments, unchanged",
+   "subject": "an independent transliteration of the same loci (Takahashi's, once catalogued)",
+   "prediction": "the count of identical cross-page pairs within the window is at or below the 5th percentile of the within-ring shuffle null",
+   "why_not_run_here": "the pinned corpus holds zl, it, rf and gc only, and all four are placed by ZL's positions over ZL's loci"
+  }
+ },
+ "reproducibility": {
+  "instructions": "From the repository root, with the four pinned transliterations fetched (vs.fetch), extract the two scripts below to /tmp and run PYTHONPATH=. python3 /tmp/pl4029.py (about 2 minutes) and PYTHONPATH=. python3 /tmp/pl4029_sep.py (about 1 minute). The first prints, per edition and per window, the identical and within-one-glyph counts against the within-ring null with both tails; the second prints the total identical cross-page count and the list of angular separations. Neither writes to the repository. The design - 15-degree window, within-ring shuffle, 1,000 draws, seed 429 - is fixed at the top of the script; the 5 and 30 degree windows are marked exploratory in the output.",
+  "scripts": {
+   "pl4029.py": "\"\"\"P-L4-029: do zodiac figure labels standing at the same place on the wheel agree?\n\nDesign, fixed before running (the step's own): take every pair of figure labels that stand on two\ndifferent zodiac pages and whose recorded clock positions lie within 15 degrees of each other, in\nany ring; count how many pairs are the same word, and how many are the same or one glyph apart. No\nrotation is fitted - the hypothesis is a roster of words tied to fixed places round the wheel.\nNull: the labels of each ring of each page shuffled among that ring's positions, 1,000 shuffles.\nBoth tails are reported: the registered run found the identical count on the low side, which it did\nnot predict, and the step asks that this be treated as unclaimed until it is tested as a\nprediction. The window sweep (5 and 30 degrees) is exploratory and labelled as such - the\nregistered author fixed 15 degrees and tried no other.\n\nPositions come from ZL3b, the only pinned transliteration that carries them; the other editions are\nplaced by ZL's loci, as the registered run does.\n\"\"\"\nimport re\nimport os, random, sys\n\nimport numpy as np\n\nsys.path.insert(0, os.getcwd())\nfrom vs import corpus, ivtff, path\n\nWINDOWS = (15, 5, 30)          # degrees; 15 is the registered window, the other two are exploratory\nTURNS = 1000\nSEED = 429\nPAGES = [\"f70v1\", \"f70v2\", \"f71r\", \"f71v\", \"f72r1\", \"f72r2\", \"f72r3\",\n         \"f72v1\", \"f72v2\", \"f72v3\", \"f73r\", \"f73v\"]\n\n\ndef one_glyph(a, b):\n    \"\"\"Same word allowing one glyph of difference: one substitution in equal-length strings, or one\n    insertion where the lengths differ by one.\"\"\"\n    if a == b or abs(len(a) - len(b)) > 1:\n        return False\n    if len(a) == len(b):\n        return sum(x != y for x, y in zip(a, b)) == 1\n    lo, hi = (a, b) if len(a) < len(b) else (b, a)\n    i = 0\n    while i < len(lo) and lo[i] == hi[i]:\n        i += 1\n    return lo[i:] == hi[i + 1:]\n\n\ndef parse_labels(translit):\n    \"\"\"(page, line) -> glyph string with word breaks removed, for every figure label (unit Lz).\"\"\"\n    out = {}\n    for pg in ivtff.parse(path(\"data\", \"raw\", corpus.TRANSLITERATIONS[translit])):\n        if pg.id not in PAGES:\n            continue\n        for ln in pg.lines:\n            if ln.unit == \"L\" and ln.subtype == \"z\" and ln.words:\n                w = \"\".join(x.strip(\"?*{}\") for x in ln.words)\n                if w:\n                    out[(pg.id, ln.n)] = w\n    return out\n\n\ndef zodiac_positions():\n    \"\"\"(page, line) -> clock minutes, from the <!hh:mm> comment ZL3b attaches to figure labels.\"\"\"\n    text = open(path(\"data\", \"raw\", corpus.TRANSLITERATIONS[\"zl\"]), encoding=\"utf-8\").read()\n    out = {}\n    for line in text.splitlines():\n        m = re.match(r\"<(f[^.>\\s]+)\\.(\\d+),\", line)\n        if not m:\n            continue\n        c = re.search(r\"<!\\s*(\\d\\d):(\\d\\d)>\", line)\n        if c:\n            out[(m.group(1), int(m.group(2)))] = int(c.group(1)) * 60 + int(c.group(2))\n    return out\n\n\ndef rows_for(translit, positions, zl_lines):\n    \"\"\"One row per label: (page, ring, line, degrees, string). Rings are maximal runs of\n    consecutive line numbers on a page, which is the grouping the transcription itself marks; they\n    are taken from ZL's line order so that every edition is shuffled in the same groups.\"\"\"\n    words = parse_labels(translit)\n    rows = []\n    for page in PAGES:\n        lines = sorted(n for (p, n) in zl_lines if p == page)\n        ring, prev = -1, None\n        for n in lines:\n            if (page, n) not in words:\n                continue\n            if prev is not None and n != prev + 1:\n                ring += 1\n            prev = n\n            rows.append((page, ring, n, positions[(page, n)] / 720 * 360.0, words[(page, n)]))\n    return rows\n\n\ndef build(rows):\n    \"\"\"Index arrays for the cross-page pairs, per window, plus the ring groups to shuffle within.\"\"\"\n    codes = {s: i for i, s in enumerate(sorted({r[4] for r in rows}))}\n    code = np.array([codes[r[4]] for r in rows], dtype=np.int32)\n    page = np.array([r[0] for r in rows])\n    deg = np.array([r[3] for r in rows], dtype=float)\n    ss = sorted(codes, key=codes.get)\n    near = np.zeros((len(codes),) * 2, dtype=bool)\n    for i, a in enumerate(ss):\n        for j, b in enumerate(ss[i:], start=i):\n            v = a == b or one_glyph(a, b)\n            near[i, j] = near[j, i] = v\n    groups = {}\n    for i, r in enumerate(rows):\n        groups.setdefault((r[0], r[1]), []).append(i)\n    groups = [np.array(g) for g in groups.values()]\n    d = np.abs(deg[:, None] - deg[None, :])\n    d = np.minimum(d, 360 - d)\n    diff_page = page[:, None] != page[None, :]\n    pairs = {w: np.nonzero(np.triu(diff_page & (d <= w), 1)) for w in WINDOWS}\n    return code, near, groups, pairs\n\n\ndef count(code, pairs, near=None):\n    i, j = pairs\n    a, b = code[i], code[j]\n    same = int((a == b).sum())\n    return same, (int(near[a, b].sum()) if near is not None else same)\n\n\npositions = zodiac_positions()\nzl_lines = set(positions)\nprint(f\"ZL3b clock comments on figure labels: {len(positions)}\")\n\nfor translit in (\"zl\", \"it\", \"rf\", \"gc\"):\n    rows = rows_for(translit, positions, zl_lines)\n    code0, near, groups, pairs = build(rows)\n    obs = {w: count(code0, pairs[w], near) for w in WINDOWS}\n    rng = random.Random(SEED)\n    null = {w: {\"same\": [], \"ng\": []} for w in WINDOWS}\n    for _ in range(TURNS):\n        perm = code0.copy()\n        for g in groups:                    # shuffle each ring of each page among its own positions\n            pick = [code0[k] for k in g]\n            rng.shuffle(pick)\n            for k, v in zip(g, pick):\n                perm[k] = v\n        for w in WINDOWS:\n            s, n = count(perm, pairs[w], near)\n            null[w][\"same\"].append(s)\n            null[w][\"ng\"].append(n)\n    print(f\"\\n{translit}: {len(rows)} labels placed by ZL's positions, {len(groups)} ring groups; \"\n          + \", \".join(f\"{w} deg -> {len(pairs[w][0])} cross-page pairs\" for w in WINDOWS))\n    for w in WINDOWS:\n        s, n = obs[w]\n        ns, nn = null[w][\"same\"], null[w][\"ng\"]\n        pu = lambda x, t: (sum(1 for y in t if y >= x) + 1) / (TURNS + 1)\n        pl = lambda x, t: (sum(1 for y in t if y <= x) + 1) / (TURNS + 1)\n        tag = \"\" if w == 15 else \" [exploratory]\"\n        print(f\"   {w} deg{tag}: identical {s} vs null mean {sum(ns)/TURNS:.1f} \"\n              f\"(upper p={pu(s,ns):.3f}, lower p={pl(s,ns):.3f}); within one glyph {n} vs \"\n              f\"{sum(nn)/TURNS:.1f} (upper p={pu(n,nn):.3f}, lower p={pl(n,nn):.3f})\", flush=True)\n",
+   "pl4029_sep.py": "\"\"\"P-L4-029 companion: why is the count of identical labels at matching positions BELOW chance?\n\nThe registered run noticed this and did not claim it. This script asks a mechanical question first:\nrepeated words do exist across pages, so where do they stand relative to each other on the wheel?\nFor every pair of identical labels on two different pages it records the angular separation, and\ncompares that distribution with what the within-ring shuffle produces. If the repeats pile up at a\nfew specific separations that are not zero, the deficit inside the 15 degree window follows from\nthat structure and needs no claim about words avoiding their old places.\n\"\"\"\nimport os, random, sys\n\nimport numpy as np\n\nsys.path.insert(0, os.getcwd())\nexec(open(\"/tmp/pl4029.py\").read().split(\"positions = zodiac_positions()\")[0])\n\npositions = zodiac_positions()\nzl_lines = set(positions)\n\n\ndef separations(rows, code, pairs):\n    \"\"\"Angular separation of every identical cross-page pair, and the same for a shuffled draw.\"\"\"\n    i, j = pairs\n    d = np.abs(np.array([r[3] for r in rows], dtype=float)[:, None] - np.array([r[3] for r in rows], dtype=float)[None, :])\n    d = np.minimum(d, 360 - d)\n    return d[i, j][code[i] == code[j]]\n\n\nfor translit in (\"zl\", \"it\", \"rf\", \"gc\"):\n    rows = rows_for(translit, positions, zl_lines)\n    code0, near, groups, pairs = build(rows)\n    # every cross-page pair, no window at all\n    page = np.array([r[0] for r in rows])\n    allpairs = np.nonzero(np.triu(page[:, None] != page[None, :], 1))\n    obs = separations(rows, code0, allpairs)\n    rng = random.Random(SEED)\n    null_counts, null_in15 = [], []\n    d = np.abs(np.array([r[3] for r in rows], dtype=float)[:, None] - np.array([r[3] for r in rows], dtype=float)[None, :])\n    d = np.minimum(d, 360 - d)\n    for _ in range(200):\n        perm = code0.copy()\n        for g in groups:\n            pick = [code0[k] for k in g]\n            rng.shuffle(pick)\n            for k, v in zip(g, pick):\n                perm[k] = v\n        n = separations(rows, perm, allpairs)\n        null_counts.append(len(n))\n        null_in15.append(int((n <= 15).sum()))\n    hist = {}\n    for x in obs:\n        b = int(x // 45) * 45\n        hist[b] = hist.get(b, 0) + 1\n    print(f\"{translit}: identical cross-page pairs anywhere: {len(obs)} \"\n          f\"(null mean {sum(null_counts)/len(null_counts):.1f}); of those, within 15 deg: \"\n          f\"{int((obs <= 15).sum())} (null mean {sum(null_in15)/len(null_in15):.1f})\")\n    print(\"   separations of the identical pairs, 45-degree bins:\",\n          \", \".join(f\"{b}-{b+45} deg: {hist[b]}\" for b in sorted(hist)), flush=True)\n    print(\"   separations:\", sorted(int(x) for x in obs), flush=True)\n"
+  }
+ },
+ "limits": [
+  "The positions are ZL3b's half-hour clock readings, not measurements from the scan, and they are quantised: separations come out in steps of 7.5 degrees, so a 15-degree window holds only three grid values (0, 7.5, 15) out of about 48. That is why the sweep matters, and the 30-degree result is the informative one.",
+  "The 5 and 30 degree windows are exploratory and were chosen after seeing the 15-degree result; the registered author fixed 15 degrees and tried no other. Only the 15-degree figures are a registered-design recomputation.",
+  "IT2a, RF1b and GC2a are placed by ZL's loci and ZL's positions, so a label ZL marks and another edition leaves blank is missing from one edition's count; the label count is the same 298 in all four, so this did not bite here, but the four editions are not independent seats.",
+  "The lower-tail p values are computed from 1,000 shuffles where the registered run used 3,000; the floor is 0.001 and the smallest reported value (0.005) is 5 draws, so it is a coarse number.",
+  "Pages with 15 labels and pages with 30 are pooled, as in the registered run; the ring groups differ in size, so the null is not one uniform distribution across pairs.",
+  "The separation table describes where repeats stand under ZL's position marks. It does not say the scribe placed them so: an alternative is that ZL's clock readings are systematically off in a way that spreads repeats apart, and nothing here separates the two."
+ ]
+}

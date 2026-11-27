@@ -1,0 +1,7 @@
+{
+ "step": "P-L4-028",
+ "handle": "mtx-light",
+ "kind": "step",
+ "summary": "Public reproduction of the clock-aligned zodiac label test: 2 exact agreements in 2415 cross-sign comparisons against 4.3 under random turning (p = 0.94), and 0 in 1239 for the declared same-ring-only variant (p = 1.00) - the labels at the same place in the wheel do not agree across signs.",
+ "lease": "f08aafc42084881ea970e5de"
+}

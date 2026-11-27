@@ -1,0 +1,7 @@
+{
+ "step": "R-attack-F-023",
+ "handle": "svarog611",
+ "kind": "attack",
+ "summary": "A scribe with a letter jig, a word tray and a quire packet, who writes each line to the margin: he fills the ruled width and, when the room left is small, tries shorter forms until one fits. Fitted on the 192 public practice pages only. Held-out practice: at-most-three-unit share 0.4403 at line ends against 0.3440 mid-line, ratio 1.2681 (manuscript 1.1575), within-line shuffle p = 0.0025/399; seeds 12-14 give 1.2533, 1.3192, 1.2916. With the margin-filling off the ratio is 0.98, so the ruled page carries F-023, not the vocabulary. The same text reproduces 15 of 21 established facts. Public finding: the manuscript's own ratio falls below 1 on 1 of 20 random 34-page public subsets, so the fact's threshold sits inside its sampling noise.",
+ "lease": "be5b57f54b301e4ae43d7ddd"
+}

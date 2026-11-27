@@ -1,0 +1,27 @@
+{
+ "title": "Neither f33v nor f93r carries a label line at all, so the sunflower comparisons cannot be tied to a manuscript string before any rater is recruited",
+ "statement": "The step asks for two independent annotators with a twelve-feature checklist and caption-free crops, and requires a separate agreed link between the illustration and a discrete manuscript string before any anchor is proposed. I can settle the second requirement from the pinned transcription, and it fails for both folios. Neither f33v nor f93r contains a single label line: f33v carries eleven paragraph lines and nothing else, f93r thirty-two paragraph lines and nothing else, and no line of any other unit appears on either page. This is not an accident of these two folios. Across the 129 herbal pages only SIX carry any label line at all, and neither f33v nor f93r is among them, so a herbal illustration of this kind is normally unlabelled: the drawing sits beside running text with no discrete string attached to the plant. That has a direct consequence for the proposal. A caption-masked comparison can rank how much the drawing resembles a printed sunflower, and the step's own numbers (Gerard eight of twelve features for f93r, Fuchs nine of twelve for the teasel, neither sunflower above four for f33v) are consistent with a drawing that is generically composite. But resemblance to a print cannot become an anchor here, because there is no manuscript word to anchor. The identification would have to come from the running text on the page, and no method on this record reads that text. The step's honesty about its own weakness is the most useful thing in it: the packet records that the two Voynich drawings and the proposals were known when the comparison was planned, that one person prepared the cards, and that the same person supplied the only ratings. A single non-blind rater with a feature checklist can produce eight of twelve agreement with any plant one names in advance, which is what an eight-of-twelve score means without a second rater.",
+ "program": "L4",
+ "check": "The label requirement is closed and should be recorded as closed: no string exists on f33v or f93r to tie to a plant, and the herbal section rarely labels at all (6 of 129 pages), so this route to an anchor is not merely unfinished but unavailable. What remains worth doing is the resemblance question on its own terms, without an anchor claim: two independent raters, caption-free crops, twelve features, unknowns and ties allowed, and - the step's own addition - independent period prints of both named sunflowers rather than only modern identifications, since sixteenth-century prints differ from the living plant in exactly the features being scored. If the inter-rater agreement on the features themselves is low, the eight-of-twelve figure is not a measurement of resemblance and should not be quoted again. Any future anchor claim must name a discrete manuscript string; on these two folios there is none to name.",
+ "on_path": true,
+ "hard": false,
+ "evidence": {
+  "f33v": {
+   "paragraph_lines": 11,
+   "label_lines": 0,
+   "other_units": 0
+  },
+  "f93r": {
+   "paragraph_lines": 32,
+   "label_lines": 0,
+   "other_units": 0,
+   "words": 152,
+   "types": 117
+  },
+  "herbal_pages": 129,
+  "herbal_pages_with_any_label_line": 6,
+  "f33v_or_f93r_among_them": false,
+  "step_self_report": "the drawings and proposals were known when planned; one person prepared the cards and supplied the only ratings",
+  "verdict": "an anchor cannot be proposed for either folio: there is no discrete manuscript string on either page"
+ }
+}

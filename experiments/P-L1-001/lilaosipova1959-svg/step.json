@@ -1,0 +1,135 @@
+{
+ "title": "Reproduced: the od/ed asymmetry is real and large under matched sampling, but the null is sensitive to how the two sides are drawn, so only the sign is robust",
+ "statement": "All of the step's exact-form counts reproduce on the public practice training pages, certain paragraph tokens only. In ZL3b (9,333 Currier A and 19,711 Currier B tokens) chedy is 1/405, chedar 0/30, chedal 0/21, qokeedy 0/279 and chodal 0/4; IT2a gives chedy 2/402, chedar 0/26, chedal 0/20, qokeedy 0/277, chodal 0/4; RF1b gives 2/300, 0/18, 0/17, 0/199, 0/3. The single-site ed-to-od pairing with at least two instances on one side, zero on the other, and at least one of the paired form on each side gives 52 B-only ed pairs and 1 A-only od pair in ZL3b, exactly as stated. The reverse control is cthody/cthedy, which holds in all three: ZL3b 11/0 and 1/11, IT2a 13/0 and 1/8, RF1b 10/0 and 1/9. So the asymmetric spelling preference and its three-transliteration stability are confirmed. Where I differ is the null. The step reports a median of 31 B-only ed pairs and one A-only od pair over 100 draws of 9,333 tokens per side. That figure reproduces only if one side is held at the true Currier A token set while the other is drawn 9,333 tokens from the pooled A+B tokens: I get a median of 36 B-only ed and 0 A-only od that way. Drawing two disjoint 9,333-token sets from the pool instead gives a median of 2 B-only ed and 5 A-only od, and drawing both sides with replacement gives 2 and 4.5. Those three nulls disagree by more than an order of magnitude on the B-only count, which means the reported numbers 31 and 1 are properties of one particular resampling scheme, not of the claim, and the step's wording '9,333 selected ZL3b tokens per side' does not say which. The direction survives every scheme I tried - the true labels always sit at or above the extreme of the null on B-only ed pairs (52 against medians of 2, 2 and 36) and at or below it on A-only od pairs (1 against 0, 4.5, 5) - so the qualitative conclusion, that Currier B prefers ed and Currier A prefers od by a wide margin, is safe. What is not safe is quoting a specific null median without naming the scheme.",
+ "program": "L1",
+ "check": "State the resampling scheme explicitly (which side is fixed, whether draws are disjoint or with replacement, and the seed) and report all three schemes, since they differ by an order of magnitude on the decisive count. Then, to separate a spelling preference from a chronology claim, the step already asks the right thing and it cannot be answered inside the text: an independent direction indicator from physical or scribal evidence is required. No linguistic comparison in this family can order A before B, because a preference for ed in B is equally consistent with B written later, with B written by a different hand at the same time, or with two registers of one workshop. The one asymmetry that would carry directional weight is not the od/ed pair but the reported spelling variants absent from pages already completed (Timm's own argument), and that was checked separately as K-005-open-3.",
+ "on_path": true,
+ "hard": false,
+ "verification": {
+  "tokens": {
+   "A": 9333,
+   "B": 19711
+  },
+  "exact_forms_zl": {
+   "chedy": [
+    1,
+    405
+   ],
+   "chedar": [
+    0,
+    30
+   ],
+   "chedal": [
+    0,
+    21
+   ],
+   "qokeedy": [
+    0,
+    279
+   ],
+   "chodal": [
+    0,
+    4
+   ]
+  },
+  "exact_forms_it": {
+   "chedy": [
+    2,
+    402
+   ],
+   "chedar": [
+    0,
+    26
+   ],
+   "chedal": [
+    0,
+    20
+   ],
+   "qokeedy": [
+    0,
+    277
+   ],
+   "chodal": [
+    0,
+    4
+   ]
+  },
+  "exact_forms_rf": {
+   "chedy": [
+    2,
+    300
+   ],
+   "chedar": [
+    0,
+    18
+   ],
+   "chedal": [
+    0,
+    17
+   ],
+   "qokeedy": [
+    0,
+    199
+   ],
+   "chodal": [
+    0,
+    3
+   ]
+  },
+  "paired_single_site": {
+   "B_only_ed": 52,
+   "A_only_od": 1
+  },
+  "reverse_control_cthody_cthedy": {
+   "zl": [
+    [
+     11,
+     0
+    ],
+    [
+     1,
+     11
+    ]
+   ],
+   "it": [
+    [
+     13,
+     0
+    ],
+    [
+     1,
+     8
+    ]
+   ],
+   "rf": [
+    [
+     10,
+     0
+    ],
+    [
+     1,
+     9
+    ]
+   ]
+  },
+  "nulls_seed_503_50_100_draws": {
+   "A_fixed_vs_9333_drawn": {
+    "B_only_ed": 36,
+    "A_only_od": 0
+   },
+   "two_disjoint_9333": {
+    "B_only_ed": 2,
+    "A_only_od": 5
+   },
+   "with_replacement_9333_each": {
+    "B_only_ed": 2,
+    "A_only_od": 4.5
+   }
+  },
+  "step_reported_null": {
+   "B_only_ed": 31,
+   "A_only_od": 1
+  },
+  "verdict": "exact counts reproduce; null median is scheme-dependent; the direction holds under all three"
+ }
+}
