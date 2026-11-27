@@ -1,0 +1,1276 @@
+{
+  "title": "Two masked model readers reproduce n categories but disagree on fine k features",
+  "program": "L2",
+  "on_path": false,
+  "hard": false,
+  "statement": "Two separate model agents without parent chat history each coded24 masked cards:18 unique prior scan contexts (11N,7K) plus6 repeated contexts, in different random orders. Source labels/mapping and other-reader outputs were withheld; both24-row files were hashed before unmasking. First-presentation n closure agrees11/11 including one shared unclear; 9/11N contexts are jointly accepted and unambiguous, with closure9/9, height9/9 and tip-position8/9 agreement there. For K,6/7contexts are jointly accepted/unambiguous: bar6/6, loop5/6, and foot4/5 on jointly resolved comparisons. Full K feature vectors agree3/7 overall. Both readers repeat their own exact feature vectors on6/6 duplicate pairs. Unmasking shows the broad accepted n categories also occur in hand2, while hand3 k bars are bowed in two herbal contexts and straight in three recipe contexts. The masked re-annotation improves traceable coding but does not establish a unique cross-section hand3 signature.",
+  "check": "Use independent human paleographers on a prospectively localized complete same-context glyph inventory, including a matched hand5 N control. Keep source labels hidden, report target acceptance and abstention before feature agreement, and adjudicate discrepancies such as terminal feet without changing original ratings. Validate graphical criteria on independently known hands before using them for attribution. This selected18-context model-reader pilot supplies no handwriting identification accuracy.",
+  "results": {
+    "protocol": {
+      "key_sha256": "7d3a9b1b35020e19e158601bd52356b56faa78d4a403d56d61ed178421f02352",
+      "unique_source_contexts": 18,
+      "cards_per_reader": 24,
+      "reader_count_planned": 2,
+      "source": "Frozen previous pilot contexts, no new outcome-selected scan windows.",
+      "scope": "Masked re-annotation of a selected descriptive pilot only. It does not repair the incomplete occurrence census.",
+      "analysis": "Freeze both annotation files before unmasking. Report per-feature agreement including unclear, agreement on jointly resolved accepted targets, and exact repeated-card consistency. Do not count repeats as independent specimens. Do not infer hand attribution from agreement. Report all ambiguity and disagreements.",
+      "limitations": "Root prepared packets and knows labels; independent readers must start without chat history. Shared model and selected prior contexts limit independence. Context wording and visible handwriting may still be recognizable. No external sharing yet."
+    },
+    "analysis_rule": "Use the first presentation of each source context in each reader packet for cross-reader comparisons; repeats only assess within-reader consistency. All unclear counts retained. No p-values or crop-level hand inference.",
+    "frozen_annotations": {
+      "A": {
+        "sha256": "7d2a2d3cd9d31651937383da22e7a9abbbd96de6f20b61cce1dba42df75c5167",
+        "frozen_utc": "2026-11-27T11:09:24.578846+00:00"
+      },
+      "B": {
+        "sha256": "d68dfc16b54a75bc878e9fff183f8f1af2d8d177176d31ccbc00fdb6517cd337",
+        "frozen_utc": "2026-11-27T11:09:24.579843+00:00"
+      }
+    },
+    "metrics": {
+      "N": {
+        "contexts": 11,
+        "both_accepted_unambiguous": 9,
+        "family_agreement": 10,
+        "ambiguity_agreement": 10,
+        "exact_feature_vector_agreement": 10,
+        "features": {
+          "closure": {
+            "all_contexts_agree": 11,
+            "all_contexts_total": 11,
+            "jointly_resolved": 9,
+            "jointly_resolved_agree": 9,
+            "paired_values": {
+              "open/open": 10,
+              "unclear/unclear": 1
+            }
+          },
+          "tip_position": {
+            "all_contexts_agree": 10,
+            "all_contexts_total": 11,
+            "jointly_resolved": 9,
+            "jointly_resolved_agree": 8,
+            "paired_values": {
+              "right/right": 5,
+              "over/over": 4,
+              "right/over": 1,
+              "unclear/unclear": 1
+            }
+          },
+          "loop_height": {
+            "all_contexts_agree": 11,
+            "all_contexts_total": 11,
+            "jointly_resolved": 9,
+            "jointly_resolved_agree": 9,
+            "paired_values": {
+              "high/high": 11
+            }
+          }
+        }
+      },
+      "K": {
+        "contexts": 7,
+        "both_accepted_unambiguous": 6,
+        "family_agreement": 6,
+        "ambiguity_agreement": 6,
+        "exact_feature_vector_agreement": 3,
+        "features": {
+          "bar": {
+            "all_contexts_agree": 6,
+            "all_contexts_total": 7,
+            "jointly_resolved": 6,
+            "jointly_resolved_agree": 6,
+            "paired_values": {
+              "bowed/bowed": 2,
+              "straight/straight": 4,
+              "bowed/unclear": 1
+            }
+          },
+          "loop": {
+            "all_contexts_agree": 6,
+            "all_contexts_total": 7,
+            "jointly_resolved": 6,
+            "jointly_resolved_agree": 5,
+            "paired_values": {
+              "oval/oval": 5,
+              "round/oval": 1,
+              "unclear/unclear": 1
+            }
+          },
+          "foot": {
+            "all_contexts_agree": 4,
+            "all_contexts_total": 7,
+            "jointly_resolved": 5,
+            "jointly_resolved_agree": 4,
+            "paired_values": {
+              "present/present": 4,
+              "unclear/present": 1,
+              "absent/present": 1,
+              "absent/unclear": 1
+            }
+          }
+        }
+      }
+    },
+    "repeated_card_consistency": {
+      "A": [
+        {
+          "source_index": 11,
+          "cards": [
+            "C126E0892",
+            "CD1A948A1"
+          ],
+          "family": "N",
+          "family_agrees": true,
+          "ambiguity_agrees": true,
+          "exact_features_agree": true,
+          "features": {
+            "closure": {
+              "first": "unclear",
+              "repeat": "unclear",
+              "agree": true
+            },
+            "tip_position": {
+              "first": "unclear",
+              "repeat": "unclear",
+              "agree": true
+            },
+            "loop_height": {
+              "first": "high",
+              "repeat": "high",
+              "agree": true
+            }
+          }
+        },
+        {
+          "source_index": 13,
+          "cards": [
+            "C625CB509",
+            "C1B87CA9E"
+          ],
+          "family": "K",
+          "family_agrees": true,
+          "ambiguity_agrees": true,
+          "exact_features_agree": true,
+          "features": {
+            "bar": {
+              "first": "straight",
+              "repeat": "straight",
+              "agree": true
+            },
+            "loop": {
+              "first": "oval",
+              "repeat": "oval",
+              "agree": true
+            },
+            "foot": {
+              "first": "absent",
+              "repeat": "absent",
+              "agree": true
+            }
+          }
+        },
+        {
+          "source_index": 10,
+          "cards": [
+            "C49BFFE17",
+            "C1DD70A58"
+          ],
+          "family": "K",
+          "family_agrees": true,
+          "ambiguity_agrees": true,
+          "exact_features_agree": true,
+          "features": {
+            "bar": {
+              "first": "straight",
+              "repeat": "straight",
+              "agree": true
+            },
+            "loop": {
+              "first": "oval",
+              "repeat": "oval",
+              "agree": true
+            },
+            "foot": {
+              "first": "present",
+              "repeat": "present",
+              "agree": true
+            }
+          }
+        },
+        {
+          "source_index": 8,
+          "cards": [
+            "C3993AE69",
+            "C8AC2761D"
+          ],
+          "family": "N",
+          "family_agrees": true,
+          "ambiguity_agrees": true,
+          "exact_features_agree": true,
+          "features": {
+            "closure": {
+              "first": "open",
+              "repeat": "open",
+              "agree": true
+            },
+            "tip_position": {
+              "first": "right",
+              "repeat": "right",
+              "agree": true
+            },
+            "loop_height": {
+              "first": "high",
+              "repeat": "high",
+              "agree": true
+            }
+          }
+        },
+        {
+          "source_index": 17,
+          "cards": [
+            "CF61CD832",
+            "C19DC27E0"
+          ],
+          "family": "K",
+          "family_agrees": true,
+          "ambiguity_agrees": true,
+          "exact_features_agree": true,
+          "features": {
+            "bar": {
+              "first": "bowed",
+              "repeat": "bowed",
+              "agree": true
+            },
+            "loop": {
+              "first": "unclear",
+              "repeat": "unclear",
+              "agree": true
+            },
+            "foot": {
+              "first": "absent",
+              "repeat": "absent",
+              "agree": true
+            }
+          }
+        },
+        {
+          "source_index": 12,
+          "cards": [
+            "C4FBF3D16",
+            "C7BC40212"
+          ],
+          "family": "N",
+          "family_agrees": true,
+          "ambiguity_agrees": true,
+          "exact_features_agree": true,
+          "features": {
+            "closure": {
+              "first": "open",
+              "repeat": "open",
+              "agree": true
+            },
+            "tip_position": {
+              "first": "right",
+              "repeat": "right",
+              "agree": true
+            },
+            "loop_height": {
+              "first": "high",
+              "repeat": "high",
+              "agree": true
+            }
+          }
+        }
+      ],
+      "B": [
+        {
+          "source_index": 17,
+          "cards": [
+            "C01C07929",
+            "CEC774721"
+          ],
+          "family": "K",
+          "family_agrees": true,
+          "ambiguity_agrees": true,
+          "exact_features_agree": true,
+          "features": {
+            "bar": {
+              "first": "unclear",
+              "repeat": "unclear",
+              "agree": true
+            },
+            "loop": {
+              "first": "unclear",
+              "repeat": "unclear",
+              "agree": true
+            },
+            "foot": {
+              "first": "unclear",
+              "repeat": "unclear",
+              "agree": true
+            }
+          }
+        },
+        {
+          "source_index": 12,
+          "cards": [
+            "CBE085FC8",
+            "C48071DD4"
+          ],
+          "family": "N",
+          "family_agrees": true,
+          "ambiguity_agrees": true,
+          "exact_features_agree": true,
+          "features": {
+            "closure": {
+              "first": "open",
+              "repeat": "open",
+              "agree": true
+            },
+            "tip_position": {
+              "first": "right",
+              "repeat": "right",
+              "agree": true
+            },
+            "loop_height": {
+              "first": "high",
+              "repeat": "high",
+              "agree": true
+            }
+          }
+        },
+        {
+          "source_index": 11,
+          "cards": [
+            "C795770EE",
+            "C5A5381B8"
+          ],
+          "family": "N",
+          "family_agrees": true,
+          "ambiguity_agrees": true,
+          "exact_features_agree": true,
+          "features": {
+            "closure": {
+              "first": "unclear",
+              "repeat": "unclear",
+              "agree": true
+            },
+            "tip_position": {
+              "first": "unclear",
+              "repeat": "unclear",
+              "agree": true
+            },
+            "loop_height": {
+              "first": "high",
+              "repeat": "high",
+              "agree": true
+            }
+          }
+        },
+        {
+          "source_index": 10,
+          "cards": [
+            "C71ACD31E",
+            "CBCA3C0B4"
+          ],
+          "family": "K",
+          "family_agrees": true,
+          "ambiguity_agrees": true,
+          "exact_features_agree": true,
+          "features": {
+            "bar": {
+              "first": "straight",
+              "repeat": "straight",
+              "agree": true
+            },
+            "loop": {
+              "first": "oval",
+              "repeat": "oval",
+              "agree": true
+            },
+            "foot": {
+              "first": "present",
+              "repeat": "present",
+              "agree": true
+            }
+          }
+        },
+        {
+          "source_index": 13,
+          "cards": [
+            "CECB4A985",
+            "CBD866666"
+          ],
+          "family": "K",
+          "family_agrees": true,
+          "ambiguity_agrees": true,
+          "exact_features_agree": true,
+          "features": {
+            "bar": {
+              "first": "straight",
+              "repeat": "straight",
+              "agree": true
+            },
+            "loop": {
+              "first": "oval",
+              "repeat": "oval",
+              "agree": true
+            },
+            "foot": {
+              "first": "present",
+              "repeat": "present",
+              "agree": true
+            }
+          }
+        },
+        {
+          "source_index": 8,
+          "cards": [
+            "C0393A6E7",
+            "CD1A0A45D"
+          ],
+          "family": "N",
+          "family_agrees": true,
+          "ambiguity_agrees": true,
+          "exact_features_agree": true,
+          "features": {
+            "closure": {
+              "first": "open",
+              "repeat": "open",
+              "agree": true
+            },
+            "tip_position": {
+              "first": "right",
+              "repeat": "right",
+              "agree": true
+            },
+            "loop_height": {
+              "first": "high",
+              "repeat": "high",
+              "agree": true
+            }
+          }
+        }
+      ]
+    },
+    "comparisons": [
+      {
+        "source_index": 0,
+        "source": {
+          "source": "f94r",
+          "family": "N",
+          "context": "n1",
+          "box": [
+            770,
+            510,
+            910,
+            590
+          ]
+        },
+        "A": {
+          "id": "C23784260",
+          "family_accepted": "yes",
+          "target_ambiguous": false,
+          "features": {
+            "closure": "open",
+            "tip_position": "right",
+            "loop_height": "high"
+          },
+          "confidence": "high",
+          "note": "The terminal rises well above the preceding minim; a broad gap remains at the left of the return."
+        },
+        "B": {
+          "id": "CB1C129BC",
+          "family_accepted": "yes",
+          "target_ambiguous": false,
+          "features": {
+            "closure": "open",
+            "tip_position": "right",
+            "loop_height": "high"
+          },
+          "confidence": "high",
+          "note": "Final bowl curves upward to a short thick tip well right of the descending start. The opening is broad and the tip rises above preceding minims."
+        },
+        "both_accepted_unambiguous": true,
+        "family_agrees": true,
+        "ambiguity_agrees": true,
+        "exact_features_agree": true
+      },
+      {
+        "source_index": 1,
+        "source": {
+          "source": "f94r",
+          "family": "N",
+          "context": "n2",
+          "box": [
+            2020,
+            480,
+            2240,
+            580
+          ]
+        },
+        "A": {
+          "id": "C88A406E1",
+          "family_accepted": "yes",
+          "target_ambiguous": false,
+          "features": {
+            "closure": "open",
+            "tip_position": "right",
+            "loop_height": "high"
+          },
+          "confidence": "medium",
+          "note": "The high return has a visible left-side gap; its endpoint lies slightly right of the upper start of the final minim."
+        },
+        "B": {
+          "id": "C2F471B93",
+          "family_accepted": "yes",
+          "target_ambiguous": false,
+          "features": {
+            "closure": "open",
+            "tip_position": "right",
+            "loop_height": "high"
+          },
+          "confidence": "medium",
+          "note": "The rightmost terminal makes a broad raised bowl. A visible gap separates its return tip from the upper start of its descent; the tip is slightly to the right."
+        },
+        "both_accepted_unambiguous": true,
+        "family_agrees": true,
+        "ambiguity_agrees": true,
+        "exact_features_agree": true
+      },
+      {
+        "source_index": 2,
+        "source": {
+          "source": "f94r",
+          "family": "K",
+          "context": "k",
+          "box": [
+            710,
+            485,
+            835,
+            580
+          ]
+        },
+        "A": {
+          "id": "C601AF41E",
+          "family_accepted": "yes",
+          "target_ambiguous": false,
+          "features": {
+            "bar": "bowed",
+            "loop": "oval",
+            "foot": "present"
+          },
+          "confidence": "medium",
+          "note": "The bridge dips between the stems; the upper loop is elongated and the right stem has a short outward basal projection."
+        },
+        "B": {
+          "id": "CFA90DA1B",
+          "family_accepted": "yes",
+          "target_ambiguous": false,
+          "features": {
+            "bar": "bowed",
+            "loop": "oval",
+            "foot": "present"
+          },
+          "confidence": "medium",
+          "note": "Central tall form has a dipping connector, oblong upper loop, and a small projecting base on the right stem."
+        },
+        "both_accepted_unambiguous": true,
+        "family_agrees": true,
+        "ambiguity_agrees": true,
+        "exact_features_agree": true
+      },
+      {
+        "source_index": 3,
+        "source": {
+          "source": "f94v-95r",
+          "family": "N",
+          "context": "n1",
+          "box": [
+            1200,
+            650,
+            1480,
+            730
+          ]
+        },
+        "A": {
+          "id": "C6C454A92",
+          "family_accepted": "yes",
+          "target_ambiguous": false,
+          "features": {
+            "closure": "open",
+            "tip_position": "over",
+            "loop_height": "high"
+          },
+          "confidence": "medium",
+          "note": "The high rounded return stops above the final descending minim with a visible gap wider than the local thin stroke."
+        },
+        "B": {
+          "id": "CCBA390B5",
+          "family_accepted": "yes",
+          "target_ambiguous": false,
+          "features": {
+            "closure": "open",
+            "tip_position": "over",
+            "loop_height": "high"
+          },
+          "confidence": "medium",
+          "note": "Rightmost complete terminal has a raised return tip approximately over the descending minim start. A gap wider than the local stroke remains."
+        },
+        "both_accepted_unambiguous": true,
+        "family_agrees": true,
+        "ambiguity_agrees": true,
+        "exact_features_agree": true
+      },
+      {
+        "source_index": 4,
+        "source": {
+          "source": "f94v-95r",
+          "family": "K",
+          "context": "k",
+          "box": [
+            1230,
+            565,
+            1410,
+            665
+          ]
+        },
+        "A": {
+          "id": "C5F86C22C",
+          "family_accepted": "yes",
+          "target_ambiguous": false,
+          "features": {
+            "bar": "bowed",
+            "loop": "oval",
+            "foot": "unclear"
+          },
+          "confidence": "medium",
+          "note": "The connecting bar dips visibly; the upper loop is elongated. Lower adjacent ink prevents confident separation of a foot."
+        },
+        "B": {
+          "id": "CED83E66A",
+          "family_accepted": "yes",
+          "target_ambiguous": false,
+          "features": {
+            "bar": "bowed",
+            "loop": "oval",
+            "foot": "present"
+          },
+          "confidence": "medium",
+          "note": "Central tall paired form has a dipping connector and an oblong right upper loop. A small basal projection is visible."
+        },
+        "both_accepted_unambiguous": true,
+        "family_agrees": true,
+        "ambiguity_agrees": true,
+        "exact_features_agree": false
+      },
+      {
+        "source_index": 5,
+        "source": {
+          "source": "f103r",
+          "family": "N",
+          "context": "n1",
+          "box": [
+            350,
+            265,
+            470,
+            340
+          ]
+        },
+        "A": {
+          "id": "CA032D7DD",
+          "family_accepted": "yes",
+          "target_ambiguous": false,
+          "features": {
+            "closure": "open",
+            "tip_position": "right",
+            "loop_height": "high"
+          },
+          "confidence": "medium",
+          "note": "The return is high with an open left-side gap; its tip lies slightly right of the final minim's upper start."
+        },
+        "B": {
+          "id": "C987FF20C",
+          "family_accepted": "yes",
+          "target_ambiguous": false,
+          "features": {
+            "closure": "open",
+            "tip_position": "over",
+            "loop_height": "high"
+          },
+          "confidence": "medium",
+          "note": "Final terminal has a high curved return and a clear opening. The return tip is approximately above the descending start within the coarse stroke width."
+        },
+        "both_accepted_unambiguous": true,
+        "family_agrees": true,
+        "ambiguity_agrees": true,
+        "exact_features_agree": false
+      },
+      {
+        "source_index": 6,
+        "source": {
+          "source": "f103r",
+          "family": "N",
+          "context": "n2",
+          "box": [
+            375,
+            320,
+            580,
+            390
+          ]
+        },
+        "A": {
+          "id": "C80FEDA15",
+          "family_accepted": "yes",
+          "target_ambiguous": false,
+          "features": {
+            "closure": "open",
+            "tip_position": "right",
+            "loop_height": "high"
+          },
+          "confidence": "high",
+          "note": "The tall terminal return ends well right of the descending minim's upper start and leaves a wide gap."
+        },
+        "B": {
+          "id": "CE4BDC7EF",
+          "family_accepted": "yes",
+          "target_ambiguous": false,
+          "features": {
+            "closure": "open",
+            "tip_position": "right",
+            "loop_height": "high"
+          },
+          "confidence": "high",
+          "note": "The terminal returns high on the right, leaving a wide opening. Its short upper tip is clearly right of the descent start."
+        },
+        "both_accepted_unambiguous": true,
+        "family_agrees": true,
+        "ambiguity_agrees": true,
+        "exact_features_agree": true
+      },
+      {
+        "source_index": 7,
+        "source": {
+          "source": "f103r",
+          "family": "K",
+          "context": "k",
+          "box": [
+            800,
+            250,
+            975,
+            365
+          ]
+        },
+        "A": {
+          "id": "CC4ED91BB",
+          "family_accepted": "yes",
+          "target_ambiguous": false,
+          "features": {
+            "bar": "straight",
+            "loop": "round",
+            "foot": "present"
+          },
+          "confidence": "medium",
+          "note": "The short bridge is roughly level; the upper loop is compact and rounded, and the right stem ends in a projecting wedge."
+        },
+        "B": {
+          "id": "CDF05A997",
+          "family_accepted": "yes",
+          "target_ambiguous": false,
+          "features": {
+            "bar": "straight",
+            "loop": "oval",
+            "foot": "present"
+          },
+          "confidence": "medium",
+          "note": "Main tall form has a short fairly straight connector, an oblong right loop, and a projecting dark base."
+        },
+        "both_accepted_unambiguous": true,
+        "family_agrees": true,
+        "ambiguity_agrees": true,
+        "exact_features_agree": false
+      },
+      {
+        "source_index": 8,
+        "source": {
+          "source": "f104r",
+          "family": "N",
+          "context": "n1",
+          "box": [
+            355,
+            270,
+            590,
+            350
+          ]
+        },
+        "A": {
+          "id": "C3993AE69",
+          "family_accepted": "yes",
+          "target_ambiguous": false,
+          "features": {
+            "closure": "open",
+            "tip_position": "right",
+            "loop_height": "high"
+          },
+          "confidence": "high",
+          "note": "The rightmost complete terminal has a tall return ending to the right of its descending minim, with a wide gap."
+        },
+        "B": {
+          "id": "C0393A6E7",
+          "family_accepted": "yes",
+          "target_ambiguous": false,
+          "features": {
+            "closure": "open",
+            "tip_position": "right",
+            "loop_height": "high"
+          },
+          "confidence": "high",
+          "note": "Rightmost minim sequence ends in a tall open curve with a tip visibly to the right of the final descending start."
+        },
+        "both_accepted_unambiguous": true,
+        "family_agrees": true,
+        "ambiguity_agrees": true,
+        "exact_features_agree": true
+      },
+      {
+        "source_index": 9,
+        "source": {
+          "source": "f104r",
+          "family": "N",
+          "context": "n2",
+          "box": [
+            1090,
+            355,
+            1310,
+            445
+          ]
+        },
+        "A": {
+          "id": "C714B9893",
+          "family_accepted": "yes",
+          "target_ambiguous": false,
+          "features": {
+            "closure": "open",
+            "tip_position": "over",
+            "loop_height": "high"
+          },
+          "confidence": "high",
+          "note": "The broad high return ends approximately above the upper start of the final descending minim, with a large open gap."
+        },
+        "B": {
+          "id": "C958C1FC3",
+          "family_accepted": "yes",
+          "target_ambiguous": false,
+          "features": {
+            "closure": "open",
+            "tip_position": "over",
+            "loop_height": "high"
+          },
+          "confidence": "medium",
+          "note": "Lower right terminal has a high broad return with a wide opening. The thin tip is approximately aligned over the final descending start."
+        },
+        "both_accepted_unambiguous": true,
+        "family_agrees": true,
+        "ambiguity_agrees": true,
+        "exact_features_agree": true
+      },
+      {
+        "source_index": 10,
+        "source": {
+          "source": "f104r",
+          "family": "K",
+          "context": "k",
+          "box": [
+            850,
+            310,
+            1040,
+            430
+          ]
+        },
+        "A": {
+          "id": "C49BFFE17",
+          "family_accepted": "yes",
+          "target_ambiguous": false,
+          "features": {
+            "bar": "straight",
+            "loop": "oval",
+            "foot": "present"
+          },
+          "confidence": "high",
+          "note": "A short near-level bar joins the stems; the upper loop is oval and the lower right stem projects outward."
+        },
+        "B": {
+          "id": "C71ACD31E",
+          "family_accepted": "yes",
+          "target_ambiguous": false,
+          "features": {
+            "bar": "straight",
+            "loop": "oval",
+            "foot": "present"
+          },
+          "confidence": "high",
+          "note": "The central complete tall form has a short straight connector, an oblong upper loop and a distinct lower right projection."
+        },
+        "both_accepted_unambiguous": true,
+        "family_agrees": true,
+        "ambiguity_agrees": true,
+        "exact_features_agree": true
+      },
+      {
+        "source_index": 11,
+        "source": {
+          "source": "f105r",
+          "family": "N",
+          "context": "n1",
+          "box": [
+            750,
+            535,
+            930,
+            615
+          ]
+        },
+        "A": {
+          "id": "C126E0892",
+          "family_accepted": "unclear",
+          "target_ambiguous": false,
+          "features": {
+            "closure": "unclear",
+            "tip_position": "unclear",
+            "loop_height": "high"
+          },
+          "confidence": "low",
+          "note": "The lower terminal curve is visible, but faint separated upper ink does not establish a continuous return or its endpoint."
+        },
+        "B": {
+          "id": "C795770EE",
+          "family_accepted": "yes",
+          "target_ambiguous": false,
+          "features": {
+            "closure": "unclear",
+            "tip_position": "unclear",
+            "loop_height": "high"
+          },
+          "confidence": "low",
+          "note": "A large raised terminal curve is recognizable, but the pale and interrupted upper ink prevents a reliable return-tip or contact decision."
+        },
+        "both_accepted_unambiguous": false,
+        "family_agrees": false,
+        "ambiguity_agrees": true,
+        "exact_features_agree": true
+      },
+      {
+        "source_index": 12,
+        "source": {
+          "source": "f105r",
+          "family": "N",
+          "context": "n2",
+          "box": [
+            520,
+            575,
+            735,
+            685
+          ]
+        },
+        "A": {
+          "id": "C4FBF3D16",
+          "family_accepted": "yes",
+          "target_ambiguous": false,
+          "features": {
+            "closure": "open",
+            "tip_position": "right",
+            "loop_height": "high"
+          },
+          "confidence": "medium",
+          "note": "The terminal makes a large high return with a wide gap. Crossing ink at its base does not obscure the upper endpoint."
+        },
+        "B": {
+          "id": "CBE085FC8",
+          "family_accepted": "yes",
+          "target_ambiguous": false,
+          "features": {
+            "closure": "open",
+            "tip_position": "right",
+            "loop_height": "high"
+          },
+          "confidence": "medium",
+          "note": "The lower minim sequence ends in a large returning curve. Its tip remains separated by a wide gap and sits above and right of the final descending minim."
+        },
+        "both_accepted_unambiguous": true,
+        "family_agrees": true,
+        "ambiguity_agrees": true,
+        "exact_features_agree": true
+      },
+      {
+        "source_index": 13,
+        "source": {
+          "source": "f105r",
+          "family": "K",
+          "context": "k",
+          "box": [
+            1750,
+            515,
+            1900,
+            635
+          ]
+        },
+        "A": {
+          "id": "C625CB509",
+          "family_accepted": "yes",
+          "target_ambiguous": false,
+          "features": {
+            "bar": "straight",
+            "loop": "oval",
+            "foot": "absent"
+          },
+          "confidence": "medium",
+          "note": "The complete upper form has a roughly level bridge, an oblique oval upper loop, and no distinct projecting basal foot."
+        },
+        "B": {
+          "id": "CECB4A985",
+          "family_accepted": "yes",
+          "target_ambiguous": false,
+          "features": {
+            "bar": "straight",
+            "loop": "oval",
+            "foot": "present"
+          },
+          "confidence": "medium",
+          "note": "The fully visible upper tall form is separable from the clipped form below. Its connector is fairly straight, loop oblong, and right base has a small projection."
+        },
+        "both_accepted_unambiguous": true,
+        "family_agrees": true,
+        "ambiguity_agrees": true,
+        "exact_features_agree": false
+      },
+      {
+        "source_index": 14,
+        "source": {
+          "source": "f46r",
+          "family": "N",
+          "context": "n1",
+          "box": [
+            270,
+            405,
+            470,
+            500
+          ]
+        },
+        "A": {
+          "id": "CF3A570FE",
+          "family_accepted": "yes",
+          "target_ambiguous": true,
+          "features": {
+            "closure": "open",
+            "tip_position": "over",
+            "loop_height": "high"
+          },
+          "confidence": "medium",
+          "note": "The high return has a clear left-side opening and an endpoint approximately above the descending minim. A stroke from above meets its right edge, complicating target isolation."
+        },
+        "B": {
+          "id": "C53B39DE2",
+          "family_accepted": "yes",
+          "target_ambiguous": false,
+          "features": {
+            "closure": "open",
+            "tip_position": "over",
+            "loop_height": "high"
+          },
+          "confidence": "medium",
+          "note": "Lower sequence ends in a broad high return, with its tip nearly over the descending start and a wide intervening gap. Nearby upper-line ink is distinguishable."
+        },
+        "both_accepted_unambiguous": false,
+        "family_agrees": true,
+        "ambiguity_agrees": false,
+        "exact_features_agree": true
+      },
+      {
+        "source_index": 15,
+        "source": {
+          "source": "f46r",
+          "family": "N",
+          "context": "n2",
+          "box": [
+            1225,
+            405,
+            1395,
+            500
+          ]
+        },
+        "A": {
+          "id": "C0ECBA6AB",
+          "family_accepted": "yes",
+          "target_ambiguous": false,
+          "features": {
+            "closure": "open",
+            "tip_position": "over",
+            "loop_height": "high"
+          },
+          "confidence": "high",
+          "note": "The rounded return rises above the preceding minim and ends approximately above its descending start, leaving a clear gap."
+        },
+        "B": {
+          "id": "CE0A2A2EF",
+          "family_accepted": "yes",
+          "target_ambiguous": false,
+          "features": {
+            "closure": "open",
+            "tip_position": "over",
+            "loop_height": "high"
+          },
+          "confidence": "medium",
+          "note": "Rightmost terminal returns well above the minim tops with an obvious opening. Its tip lies approximately over the final descending start."
+        },
+        "both_accepted_unambiguous": true,
+        "family_agrees": true,
+        "ambiguity_agrees": true,
+        "exact_features_agree": true
+      },
+      {
+        "source_index": 16,
+        "source": {
+          "source": "f46r",
+          "family": "K",
+          "context": "k",
+          "box": [
+            545,
+            470,
+            690,
+            580
+          ]
+        },
+        "A": {
+          "id": "C865D01BE",
+          "family_accepted": "yes",
+          "target_ambiguous": false,
+          "features": {
+            "bar": "straight",
+            "loop": "oval",
+            "foot": "present"
+          },
+          "confidence": "high",
+          "note": "The bridge is near-level, the upper loop is obliquely elongated, and the right stem has a clear outward foot."
+        },
+        "B": {
+          "id": "CD6F9FFAF",
+          "family_accepted": "yes",
+          "target_ambiguous": false,
+          "features": {
+            "bar": "straight",
+            "loop": "oval",
+            "foot": "present"
+          },
+          "confidence": "high",
+          "note": "Complete central tall paired form shows a short straight cross connection, oval upper loop, and a clear right basal hook."
+        },
+        "both_accepted_unambiguous": true,
+        "family_agrees": true,
+        "ambiguity_agrees": true,
+        "exact_features_agree": true
+      },
+      {
+        "source_index": 17,
+        "source": {
+          "source": "f41r",
+          "family": "K",
+          "context": "k",
+          "box": [
+            610,
+            385,
+            720,
+            490
+          ]
+        },
+        "A": {
+          "id": "CF61CD832",
+          "family_accepted": "yes",
+          "target_ambiguous": false,
+          "features": {
+            "bar": "bowed",
+            "loop": "unclear",
+            "foot": "absent"
+          },
+          "confidence": "medium",
+          "note": "Two tall stems are visible with a dipping connection. The upper right curve is incomplete, so loop shape is uncertain; no distinct foot is visible."
+        },
+        "B": {
+          "id": "C01C07929",
+          "family_accepted": "no",
+          "target_ambiguous": true,
+          "features": {
+            "bar": "unclear",
+            "loop": "unclear",
+            "foot": "unclear"
+          },
+          "confidence": "medium",
+          "note": "Two tall strokes are visible, but their top has an open rising hook; I cannot isolate a complete two-stem upper-loop target."
+        },
+        "both_accepted_unambiguous": false,
+        "family_agrees": false,
+        "ambiguity_agrees": false,
+        "exact_features_agree": false
+      }
+    ],
+    "files_sha256": {
+      "protocol.json": "4d95e1e598f7243d037da327ca2f88ae37f05439942633b8a517b604d3e5912b",
+      "private-key.json": "7d3a9b1b35020e19e158601bd52356b56faa78d4a403d56d61ed178421f02352",
+      "analyze.py": "7b736197aca5784f5414da012ac09615da3bea0d7140adab0b0d968ef7bda9d8"
+    }
+  },
+  "reader_provenance": {
+    "readers": {
+      "A": {
+        "agent": "/root/masked_reader_a",
+        "fork_turns": "none",
+        "attestation": "Inspected all24 PNGs with view_image; packet only; no mappings, other-reader outputs, internet or prior chat; no deviations; annotations unchanged."
+      },
+      "B": {
+        "agent": "/root/masked_reader_b",
+        "fork_turns": "none",
+        "attestation": "Inspected all24 PNGs; packet only; no mappings, other-reader outputs, internet or prior chat; no deviations; annotations unchanged."
+      }
+    },
+    "caution": "Both are model agents with inherited model and same rubric, not human paleographers. Filesystem isolation was by instruction, not a separate access-control sandbox. No source labels were sent to either agent."
+  },
+  "limitations": [
+    "Readers are two isolated runs of the same inherited model with the same rubric, not two human experts or independent paleographic ground truth. Shared model biases may produce agreement.",
+    "The root knew source labels while preparing selected pilot contexts. Masking was by packet content and instructions; no separate filesystem access-control sandbox was imposed. Both readers attest packet-only viewing of all24 images.",
+    "The18 unique contexts were selected in a prior descriptive pilot, not a complete occurrence census. Repeat cards and paired page sides are not independent handwriting samples; repeated images may be recognized.",
+    "All 11N heights were coded high and10closures open, so high agreement partly reflects little category diversity. Jointly resolved agreement excludes ambiguous/unaccepted targets; the full counts and notes are retained.",
+    "One reader accepted the hand5 K candidate that the other rejected as ambiguous; no hand5 N control is available. Foot contact also has several disagreements. No source-based adjudication overwrites the original answers.",
+    "No hidden-page data, hidden seed, trained handwriting classifier or new attribution verdict was used."
+  ],
+  "validation": {
+    "annotation_hashes_verified_unchanged": true,
+    "all48_image_hashes_verified_unchanged": true,
+    "private_key_matches_preexisting_commitment": true,
+    "both_readers_attest_no_source_access": true,
+    "runtime": {
+      "python": "3.12.14",
+      "Pillow": "13.0.0"
+    }
+  },
+  "reproduction": {
+    "usage": "Extract files preserving reader_A/reader_B subfolders, then python analyze.py. It verifies committed source-key hash and frozen annotation hashes before comparing first presentations and repeats. No image files are needed to recompute agreement. To regenerate original cards, use source-plan/detail-boxes and exact source JPGs from PR645 under sibling hand3-scans, then prepare.py with the recorded Pillow runtime; do not regenerate or reannotate prior to verifying frozen results.",
+    "files": {
+      "protocol.json": "{\n  \"key_sha256\": \"7d3a9b1b35020e19e158601bd52356b56faa78d4a403d56d61ed178421f02352\",\n  \"unique_source_contexts\": 18,\n  \"cards_per_reader\": 24,\n  \"reader_count_planned\": 2,\n  \"source\": \"Frozen previous pilot contexts, no new outcome-selected scan windows.\",\n  \"scope\": \"Masked re-annotation of a selected descriptive pilot only. It does not repair the incomplete occurrence census.\",\n  \"analysis\": \"Freeze both annotation files before unmasking. Report per-feature agreement including unclear, agreement on jointly resolved accepted targets, and exact repeated-card consistency. Do not count repeats as independent specimens. Do not infer hand attribution from agreement. Report all ambiguity and disagreements.\",\n  \"limitations\": \"Root prepared packets and knows labels; independent readers must start without chat history. Shared model and selected prior contexts limit independence. Context wording and visible handwriting may still be recognizable. No external sharing yet.\"\n}\n",
+      "analysis-plan.json": "{\n  \"frozen_before_reader_results\": true,\n  \"rule\": \"First presentation per unique source context; repeat consistency separate. Per-feature agreement includes unclear; jointly resolved denominator requires both family_accepted=yes and target_ambiguous=false. Both raw acceptance/ambiguity rates reported. No hand classification or accuracy inference.\",\n  \"script_sha256\": \"7b736197aca5784f5414da012ac09615da3bea0d7140adab0b0d968ef7bda9d8\",\n  \"created_utc\": \"2026-11-27T11:08:44.866049+00:00\"\n}\n",
+      "private-key.json": "{\n  \"source_plan_sha256\": \"0557c98aecc4fb5c01f5de72bc15cf50b6c66c072c161c5fe0589767ba4fc5a8\",\n  \"packets\": {\n    \"A\": [\n      {\n        \"id\": \"C23784260\",\n        \"source_index\": 0,\n        \"source\": {\n          \"source\": \"f94r\",\n          \"family\": \"N\",\n          \"context\": \"n1\",\n          \"box\": [\n            770,\n            510,\n            910,\n            590\n          ]\n        },\n        \"duplicate_of_source\": false\n      },\n      {\n        \"id\": \"C126E0892\",\n        \"source_index\": 11,\n        \"source\": {\n          \"source\": \"f105r\",\n          \"family\": \"N\",\n          \"context\": \"n1\",\n          \"box\": [\n            750,\n            535,\n            930,\n            615\n          ]\n        },\n        \"duplicate_of_source\": true\n      },\n      {\n        \"id\": \"C625CB509\",\n        \"source_index\": 13,\n        \"source\": {\n          \"source\": \"f105r\",\n          \"family\": \"K\",\n          \"context\": \"k\",\n          \"box\": [\n            1750,\n            515,\n            1900,\n            635\n          ]\n        },\n        \"duplicate_of_source\": true\n      },\n      {\n        \"id\": \"C88A406E1\",\n        \"source_index\": 1,\n        \"source\": {\n          \"source\": \"f94r\",\n          \"family\": \"N\",\n          \"context\": \"n2\",\n          \"box\": [\n            2020,\n            480,\n            2240,\n            580\n          ]\n        },\n        \"duplicate_of_source\": false\n      },\n      {\n        \"id\": \"C5F86C22C\",\n        \"source_index\": 4,\n        \"source\": {\n          \"source\": \"f94v-95r\",\n          \"family\": \"K\",\n          \"context\": \"k\",\n          \"box\": [\n            1230,\n            565,\n            1410,\n            665\n          ]\n        },\n        \"duplicate_of_source\": false\n      },\n      {\n        \"id\": \"C49BFFE17\",\n        \"source_index\": 10,\n        \"source\": {\n          \"source\": \"f104r\",\n          \"family\": \"K\",\n          \"context\": \"k\",\n          \"box\": [\n            850,\n            310,\n            1040,\n            430\n          ]\n        },\n        \"duplicate_of_source\": true\n      },\n      {\n        \"id\": \"CA032D7DD\",\n        \"source_index\": 5,\n        \"source\": {\n          \"source\": \"f103r\",\n          \"family\": \"N\",\n          \"context\": \"n1\",\n          \"box\": [\n            350,\n            265,\n            470,\n            340\n          ]\n        },\n        \"duplicate_of_source\": false\n      },\n      {\n        \"id\": \"C3993AE69\",\n        \"source_index\": 8,\n        \"source\": {\n          \"source\": \"f104r\",\n          \"family\": \"N\",\n          \"context\": \"n1\",\n          \"box\": [\n            355,\n            270,\n            590,\n            350\n          ]\n        },\n        \"duplicate_of_source\": true\n      },\n      {\n        \"id\": \"C1B87CA9E\",\n        \"source_index\": 13,\n        \"source\": {\n          \"source\": \"f105r\",\n          \"family\": \"K\",\n          \"context\": \"k\",\n          \"box\": [\n            1750,\n            515,\n            1900,\n            635\n          ]\n        },\n        \"duplicate_of_source\": true\n      },\n      {\n        \"id\": \"CF61CD832\",\n        \"source_index\": 17,\n        \"source\": {\n          \"source\": \"f41r\",\n          \"family\": \"K\",\n          \"context\": \"k\",\n          \"box\": [\n            610,\n            385,\n            720,\n            490\n          ]\n        },\n        \"duplicate_of_source\": true\n      },\n      {\n        \"id\": \"C4FBF3D16\",\n        \"source_index\": 12,\n        \"source\": {\n          \"source\": \"f105r\",\n          \"family\": \"N\",\n          \"context\": \"n2\",\n          \"box\": [\n            520,\n            575,\n            735,\n            685\n          ]\n        },\n        \"duplicate_of_source\": true\n      },\n      {\n        \"id\": \"C6C454A92\",\n        \"source_index\": 3,\n        \"source\": {\n          \"source\": \"f94v-95r\",\n          \"family\": \"N\",\n          \"context\": \"n1\",\n          \"box\": [\n            1200,\n            650,\n            1480,\n            730\n          ]\n        },\n        \"duplicate_of_source\": false\n      },\n      {\n        \"id\": \"C601AF41E\",\n        \"source_index\": 2,\n        \"source\": {\n          \"source\": \"f94r\",\n          \"family\": \"K\",\n          \"context\": \"k\",\n          \"box\": [\n            710,\n            485,\n            835,\n            580\n          ]\n        },\n        \"duplicate_of_source\": false\n      },\n      {\n        \"id\": \"CD1A948A1\",\n        \"source_index\": 11,\n        \"source\": {\n          \"source\": \"f105r\",\n          \"family\": \"N\",\n          \"context\": \"n1\",\n          \"box\": [\n            750,\n            535,\n            930,\n            615\n          ]\n        },\n        \"duplicate_of_source\": true\n      },\n      {\n        \"id\": \"C7BC40212\",\n        \"source_index\": 12,\n        \"source\": {\n          \"source\": \"f105r\",\n          \"family\": \"N\",\n          \"context\": \"n2\",\n          \"box\": [\n            520,\n            575,\n            735,\n            685\n          ]\n        },\n        \"duplicate_of_source\": true\n      },\n      {\n        \"id\": \"C19DC27E0\",\n        \"source_index\": 17,\n        \"source\": {\n          \"source\": \"f41r\",\n          \"family\": \"K\",\n          \"context\": \"k\",\n          \"box\": [\n            610,\n            385,\n            720,\n            490\n          ]\n        },\n        \"duplicate_of_source\": true\n      },\n      {\n        \"id\": \"C80FEDA15\",\n        \"source_index\": 6,\n        \"source\": {\n          \"source\": \"f103r\",\n          \"family\": \"N\",\n          \"context\": \"n2\",\n          \"box\": [\n            375,\n            320,\n            580,\n            390\n          ]\n        },\n        \"duplicate_of_source\": false\n      },\n      {\n        \"id\": \"CC4ED91BB\",\n        \"source_index\": 7,\n        \"source\": {\n          \"source\": \"f103r\",\n          \"family\": \"K\",\n          \"context\": \"k\",\n          \"box\": [\n            800,\n            250,\n            975,\n            365\n          ]\n        },\n        \"duplicate_of_source\": false\n      },\n      {\n        \"id\": \"C714B9893\",\n        \"source_index\": 9,\n        \"source\": {\n          \"source\": \"f104r\",\n          \"family\": \"N\",\n          \"context\": \"n2\",\n          \"box\": [\n            1090,\n            355,\n            1310,\n            445\n          ]\n        },\n        \"duplicate_of_source\": false\n      },\n      {\n        \"id\": \"C865D01BE\",\n        \"source_index\": 16,\n        \"source\": {\n          \"source\": \"f46r\",\n          \"family\": \"K\",\n          \"context\": \"k\",\n          \"box\": [\n            545,\n            470,\n            690,\n            580\n          ]\n        },\n        \"duplicate_of_source\": false\n      },\n      {\n        \"id\": \"C1DD70A58\",\n        \"source_index\": 10,\n        \"source\": {\n          \"source\": \"f104r\",\n          \"family\": \"K\",\n          \"context\": \"k\",\n          \"box\": [\n            850,\n            310,\n            1040,\n            430\n          ]\n        },\n        \"duplicate_of_source\": true\n      },\n      {\n        \"id\": \"C0ECBA6AB\",\n        \"source_index\": 15,\n        \"source\": {\n          \"source\": \"f46r\",\n          \"family\": \"N\",\n          \"context\": \"n2\",\n          \"box\": [\n            1225,\n            405,\n            1395,\n            500\n          ]\n        },\n        \"duplicate_of_source\": false\n      },\n      {\n        \"id\": \"CF3A570FE\",\n        \"source_index\": 14,\n        \"source\": {\n          \"source\": \"f46r\",\n          \"family\": \"N\",\n          \"context\": \"n1\",\n          \"box\": [\n            270,\n            405,\n            470,\n            500\n          ]\n        },\n        \"duplicate_of_source\": false\n      },\n      {\n        \"id\": \"C8AC2761D\",\n        \"source_index\": 8,\n        \"source\": {\n          \"source\": \"f104r\",\n          \"family\": \"N\",\n          \"context\": \"n1\",\n          \"box\": [\n            355,\n            270,\n            590,\n            350\n          ]\n        },\n        \"duplicate_of_source\": true\n      }\n    ],\n    \"B\": [\n      {\n        \"id\": \"C01C07929\",\n        \"source_index\": 17,\n        \"source\": {\n          \"source\": \"f41r\",\n          \"family\": \"K\",\n          \"context\": \"k\",\n          \"box\": [\n            610,\n            385,\n            720,\n            490\n          ]\n        },\n        \"duplicate_of_source\": true\n      },\n      {\n        \"id\": \"CED83E66A\",\n        \"source_index\": 4,\n        \"source\": {\n          \"source\": \"f94v-95r\",\n          \"family\": \"K\",\n          \"context\": \"k\",\n          \"box\": [\n            1230,\n            565,\n            1410,\n            665\n          ]\n        },\n        \"duplicate_of_source\": false\n      },\n      {\n        \"id\": \"CDF05A997\",\n        \"source_index\": 7,\n        \"source\": {\n          \"source\": \"f103r\",\n          \"family\": \"K\",\n          \"context\": \"k\",\n          \"box\": [\n            800,\n            250,\n            975,\n            365\n          ]\n        },\n        \"duplicate_of_source\": false\n      },\n      {\n        \"id\": \"CBE085FC8\",\n        \"source_index\": 12,\n        \"source\": {\n          \"source\": \"f105r\",\n          \"family\": \"N\",\n          \"context\": \"n2\",\n          \"box\": [\n            520,\n            575,\n            735,\n            685\n          ]\n        },\n        \"duplicate_of_source\": true\n      },\n      {\n        \"id\": \"C2F471B93\",\n        \"source_index\": 1,\n        \"source\": {\n          \"source\": \"f94r\",\n          \"family\": \"N\",\n          \"context\": \"n2\",\n          \"box\": [\n            2020,\n            480,\n            2240,\n            580\n          ]\n        },\n        \"duplicate_of_source\": false\n      },\n      {\n        \"id\": \"C795770EE\",\n        \"source_index\": 11,\n        \"source\": {\n          \"source\": \"f105r\",\n          \"family\": \"N\",\n          \"context\": \"n1\",\n          \"box\": [\n            750,\n            535,\n            930,\n            615\n          ]\n        },\n        \"duplicate_of_source\": true\n      },\n      {\n        \"id\": \"CE0A2A2EF\",\n        \"source_index\": 15,\n        \"source\": {\n          \"source\": \"f46r\",\n          \"family\": \"N\",\n          \"context\": \"n2\",\n          \"box\": [\n            1225,\n            405,\n            1395,\n            500\n          ]\n        },\n        \"duplicate_of_source\": false\n      },\n      {\n        \"id\": \"CEC774721\",\n        \"source_index\": 17,\n        \"source\": {\n          \"source\": \"f41r\",\n          \"family\": \"K\",\n          \"context\": \"k\",\n          \"box\": [\n            610,\n            385,\n            720,\n            490\n          ]\n        },\n        \"duplicate_of_source\": true\n      },\n      {\n        \"id\": \"C71ACD31E\",\n        \"source_index\": 10,\n        \"source\": {\n          \"source\": \"f104r\",\n          \"family\": \"K\",\n          \"context\": \"k\",\n          \"box\": [\n            850,\n            310,\n            1040,\n            430\n          ]\n        },\n        \"duplicate_of_source\": true\n      },\n      {\n        \"id\": \"CECB4A985\",\n        \"source_index\": 13,\n        \"source\": {\n          \"source\": \"f105r\",\n          \"family\": \"K\",\n          \"context\": \"k\",\n          \"box\": [\n            1750,\n            515,\n            1900,\n            635\n          ]\n        },\n        \"duplicate_of_source\": true\n      },\n      {\n        \"id\": \"C958C1FC3\",\n        \"source_index\": 9,\n        \"source\": {\n          \"source\": \"f104r\",\n          \"family\": \"N\",\n          \"context\": \"n2\",\n          \"box\": [\n            1090,\n            355,\n            1310,\n            445\n          ]\n        },\n        \"duplicate_of_source\": false\n      },\n      {\n        \"id\": \"CD6F9FFAF\",\n        \"source_index\": 16,\n        \"source\": {\n          \"source\": \"f46r\",\n          \"family\": \"K\",\n          \"context\": \"k\",\n          \"box\": [\n            545,\n            470,\n            690,\n            580\n          ]\n        },\n        \"duplicate_of_source\": false\n      },\n      {\n        \"id\": \"CCBA390B5\",\n        \"source_index\": 3,\n        \"source\": {\n          \"source\": \"f94v-95r\",\n          \"family\": \"N\",\n          \"context\": \"n1\",\n          \"box\": [\n            1200,\n            650,\n            1480,\n            730\n          ]\n        },\n        \"duplicate_of_source\": false\n      },\n      {\n        \"id\": \"CBD866666\",\n        \"source_index\": 13,\n        \"source\": {\n          \"source\": \"f105r\",\n          \"family\": \"K\",\n          \"context\": \"k\",\n          \"box\": [\n            1750,\n            515,\n            1900,\n            635\n          ]\n        },\n        \"duplicate_of_source\": true\n      },\n      {\n        \"id\": \"C987FF20C\",\n        \"source_index\": 5,\n        \"source\": {\n          \"source\": \"f103r\",\n          \"family\": \"N\",\n          \"context\": \"n1\",\n          \"box\": [\n            350,\n            265,\n            470,\n            340\n          ]\n        },\n        \"duplicate_of_source\": false\n      },\n      {\n        \"id\": \"C53B39DE2\",\n        \"source_index\": 14,\n        \"source\": {\n          \"source\": \"f46r\",\n          \"family\": \"N\",\n          \"context\": \"n1\",\n          \"box\": [\n            270,\n            405,\n            470,\n            500\n          ]\n        },\n        \"duplicate_of_source\": false\n      },\n      {\n        \"id\": \"CB1C129BC\",\n        \"source_index\": 0,\n        \"source\": {\n          \"source\": \"f94r\",\n          \"family\": \"N\",\n          \"context\": \"n1\",\n          \"box\": [\n            770,\n            510,\n            910,\n            590\n          ]\n        },\n        \"duplicate_of_source\": false\n      },\n      {\n        \"id\": \"C0393A6E7\",\n        \"source_index\": 8,\n        \"source\": {\n          \"source\": \"f104r\",\n          \"family\": \"N\",\n          \"context\": \"n1\",\n          \"box\": [\n            355,\n            270,\n            590,\n            350\n          ]\n        },\n        \"duplicate_of_source\": true\n      },\n      {\n        \"id\": \"CE4BDC7EF\",\n        \"source_index\": 6,\n        \"source\": {\n          \"source\": \"f103r\",\n          \"family\": \"N\",\n          \"context\": \"n2\",\n          \"box\": [\n            375,\n            320,\n            580,\n            390\n          ]\n        },\n        \"duplicate_of_source\": false\n      },\n      {\n        \"id\": \"CD1A0A45D\",\n        \"source_index\": 8,\n        \"source\": {\n          \"source\": \"f104r\",\n          \"family\": \"N\",\n          \"context\": \"n1\",\n          \"box\": [\n            355,\n            270,\n            590,\n            350\n          ]\n        },\n        \"duplicate_of_source\": true\n      },\n      {\n        \"id\": \"C5A5381B8\",\n        \"source_index\": 11,\n        \"source\": {\n          \"source\": \"f105r\",\n          \"family\": \"N\",\n          \"context\": \"n1\",\n          \"box\": [\n            750,\n            535,\n            930,\n            615\n          ]\n        },\n        \"duplicate_of_source\": true\n      },\n      {\n        \"id\": \"CFA90DA1B\",\n        \"source_index\": 2,\n        \"source\": {\n          \"source\": \"f94r\",\n          \"family\": \"K\",\n          \"context\": \"k\",\n          \"box\": [\n            710,\n            485,\n            835,\n            580\n          ]\n        },\n        \"duplicate_of_source\": false\n      },\n      {\n        \"id\": \"C48071DD4\",\n        \"source_index\": 12,\n        \"source\": {\n          \"source\": \"f105r\",\n          \"family\": \"N\",\n          \"context\": \"n2\",\n          \"box\": [\n            520,\n            575,\n            735,\n            685\n          ]\n        },\n        \"duplicate_of_source\": true\n      },\n      {\n        \"id\": \"CBCA3C0B4\",\n        \"source_index\": 10,\n        \"source\": {\n          \"source\": \"f104r\",\n          \"family\": \"K\",\n          \"context\": \"k\",\n          \"box\": [\n            850,\n            310,\n            1040,\n            430\n          ]\n        },\n        \"duplicate_of_source\": true\n      }\n    ]\n  }\n}\n",
+      "frozen-annotations.json": "{\n  \"A\": {\n    \"sha256\": \"7d2a2d3cd9d31651937383da22e7a9abbbd96de6f20b61cce1dba42df75c5167\",\n    \"frozen_utc\": \"2026-11-27T11:09:24.578846+00:00\"\n  },\n  \"B\": {\n    \"sha256\": \"d68dfc16b54a75bc878e9fff183f8f1af2d8d177176d31ccbc00fdb6517cd337\",\n    \"frozen_utc\": \"2026-11-27T11:09:24.579843+00:00\"\n  }\n}\n",
+      "provenance.json": "{\n  \"readers\": {\n    \"A\": {\n      \"agent\": \"/root/masked_reader_a\",\n      \"fork_turns\": \"none\",\n      \"attestation\": \"Inspected all24 PNGs with view_image; packet only; no mappings, other-reader outputs, internet or prior chat; no deviations; annotations unchanged.\"\n    },\n    \"B\": {\n      \"agent\": \"/root/masked_reader_b\",\n      \"fork_turns\": \"none\",\n      \"attestation\": \"Inspected all24 PNGs; packet only; no mappings, other-reader outputs, internet or prior chat; no deviations; annotations unchanged.\"\n    }\n  },\n  \"caution\": \"Both are model agents with inherited model and same rubric, not human paleographers. Filesystem isolation was by instruction, not a separate access-control sandbox. No source labels were sent to either agent.\"\n}\n",
+      "analyze.py": "\"\"\"Validate frozen masked annotations, then unmask and compare selected contexts.\"\"\"\nimport hashlib,json\nfrom collections import defaultdict,Counter\nfrom pathlib import Path\n\nHERE=Path(__file__).resolve().parent\nALLOWED={\n 'N':{'closure':{'closed','near','open','unclear'},'tip_position':{'left','over','right','unclear'},'loop_height':{'high','low','unclear'}},\n 'K':{'bar':{'straight','bowed','unclear'},'loop':{'round','oval','unclear'},'foot':{'present','absent','unclear'}}}\n\ndef digest(path):return hashlib.sha256(path.read_bytes()).hexdigest()\n\ndef eligible(row):return row['family_accepted']=='yes' and not row['target_ambiguous']\n\ndef main():\n    protocol=json.loads((HERE/'protocol.json').read_text())\n    assert digest(HERE/'private-key.json')==protocol['key_sha256']\n    # Refuse unmasking until both final files exist and have been frozen together.\n    frozen=json.loads((HERE/'frozen-annotations.json').read_text())\n    answers={};cards={}\n    for reader in ('A','B'):\n        folder=HERE/('reader_'+reader)\n        assert digest(folder/'annotations.json')==frozen[reader]['sha256']\n        rows=json.loads((folder/'annotations.json').read_text())\n        manifest=json.loads((folder/'cards.json').read_text())\n        assert [r['id'] for r in rows]==[r['id'] for r in manifest]\n        assert len(rows)==24\n        cards[reader]={c['id']:c for c in manifest}\n        for r in rows:\n            family=cards[reader][r['id']]['candidate_family']\n            assert r['family_accepted'] in ('yes','no','unclear')\n            assert isinstance(r['target_ambiguous'],bool)\n            assert r['confidence'] in ('high','medium','low')\n            assert isinstance(r['note'],str)\n            assert set(r['features'])==set(ALLOWED[family])\n            assert all(value in ALLOWED[family][key] for key,value in r['features'].items())\n        answers[reader]={r['id']:r for r in rows}\n    key=json.loads((HERE/'private-key.json').read_text())\n    grouped={};repeats={};first={}\n    for reader in ('A','B'):\n        grouped[reader]=defaultdict(list)\n        for item in key['packets'][reader]:grouped[reader][item['source_index']].append(item)\n        first[reader]={i:answers[reader][items[0]['id']] for i,items in grouped[reader].items()}\n        duplicate_rows=[]\n        for i,items in grouped[reader].items():\n            if len(items)<2:continue\n            assert len(items)==2\n            a,b=[answers[reader][it['id']] for it in items]\n            duplicate_rows.append(dict(source_index=i,cards=[it['id'] for it in items],family=items[0]['source']['family'],\n                                       family_agrees=a['family_accepted']==b['family_accepted'],\n                                       ambiguity_agrees=a['target_ambiguous']==b['target_ambiguous'],\n                                       exact_features_agree=a['features']==b['features'],\n                                       features={k:dict(first=a['features'][k],repeat=b['features'][k],agree=a['features'][k]==b['features'][k]) for k in a['features']}))\n        repeats[reader]=duplicate_rows\n    comparisons=[]\n    for i in sorted(first['A']):\n        a,b=first['A'][i],first['B'][i]\n        source=grouped['A'][i][0]['source']\n        assert source==grouped['B'][i][0]['source']\n        comparisons.append(dict(source_index=i,source=source,A=a,B=b,\n                                both_accepted_unambiguous=eligible(a) and eligible(b),\n                                family_agrees=a['family_accepted']==b['family_accepted'],\n                                ambiguity_agrees=a['target_ambiguous']==b['target_ambiguous'],\n                                exact_features_agree=a['features']==b['features']))\n    metrics={}\n    for family in ('N','K'):\n        rows=[r for r in comparisons if r['source']['family']==family]\n        m=dict(contexts=len(rows),both_accepted_unambiguous=sum(r['both_accepted_unambiguous'] for r in rows),\n               family_agreement=sum(r['family_agrees'] for r in rows),ambiguity_agreement=sum(r['ambiguity_agrees'] for r in rows),\n               exact_feature_vector_agreement=sum(r['exact_features_agree'] for r in rows),features={})\n        for feature in ALLOWED[family]:\n            resolved=[r for r in rows if r['both_accepted_unambiguous'] and all(r[x]['features'][feature]!='unclear' for x in ('A','B'))]\n            m['features'][feature]=dict(all_contexts_agree=sum(r['A']['features'][feature]==r['B']['features'][feature] for r in rows),\n                                        all_contexts_total=len(rows),jointly_resolved=len(resolved),\n                                        jointly_resolved_agree=sum(r['A']['features'][feature]==r['B']['features'][feature] for r in resolved),\n                                        paired_values=dict(Counter(r['A']['features'][feature]+'/'+r['B']['features'][feature] for r in rows)))\n        metrics[family]=m\n    result=dict(protocol=protocol,analysis_rule='Use the first presentation of each source context in each reader packet for cross-reader comparisons; repeats only assess within-reader consistency. All unclear counts retained. No p-values or crop-level hand inference.',\n                frozen_annotations=frozen,metrics=metrics,repeated_card_consistency=repeats,comparisons=comparisons,\n                files_sha256={n:digest(HERE/n) for n in ('protocol.json','private-key.json','analyze.py')})\n    (HERE/'result.json').write_text(json.dumps(result,indent=2)+'\\n')\n    print(json.dumps(metrics,indent=2))\n    for reader,rows in repeats.items():print(reader,'repeat exact features',sum(r['exact_features_agree'] for r in rows),'/',len(rows))\n\nif __name__=='__main__':main()\n",
+      "prepare.py": "\"\"\"Create masked reader packets and keep the source key outside the packets.\"\"\"\nimport hashlib,json,random,shutil,zipfile\nfrom pathlib import Path\nfrom PIL import Image,ImageDraw,ImageFont\n\nHERE=Path(__file__).resolve().parent\nSOURCE=HERE.parent/'hand3-scans'\nOUT=HERE.parents[1]/'outputs'\n\ndef main():\n    boxes=json.loads((SOURCE/'detail-boxes.json').read_text())\n    records=[]\n    for page,parts in boxes.items():\n        for family,box in parts.items():\n            if box is not None:records.append(dict(source=page,family='N' if family.startswith('n') else 'K',context=family,box=box))\n    rng=random.Random(2026112701)\n    duplicates=[]\n    for family in ('N','K'):\n        duplicates.extend(rng.sample([i for i,r in enumerate(records) if r['family']==family],3))\n    # Source information remains only in the private key. Readers receive no counts by hand/section.\n    key={'source_plan_sha256':hashlib.sha256((SOURCE/'plan.json').read_bytes()).hexdigest(),'packets':{}}\n    rubric={'task':'Describe only the designated N-like terminal or K-like tall form in each card. Labels refer to candidate families, not accepted identities. Do not guess author, folio, section, date, or any hand label.',\n            'independence':'Use only this packet and its images. Do not inspect adjacent folders, source images, other readers, prior chat, internet or manuscript transcriptions. Commit all answers before seeing any source mapping or another reader. These are model-reader observations, not expert paleographic authentication.',\n            'target':'For N, assess the terminal returning curve of the rightmost complete minim/terminal sequence in the main crop. For K, assess the main complete tall two-stem upper-loop form. If another form or a cut-off target makes this ambiguous, mark target_ambiguous; do not substitute a different glyph.',\n            'required_each_card':['id','family_accepted: yes/no/unclear','target_ambiguous: true/false','features','confidence: high/medium/low','note'],\n            'N_features':{'closure':'closed: actual return contact visible; near: visible gap no greater than local stroke thickness; open: wider visible gap; unclear: cannot resolve',\n                          'tip_position':'left/over/right/unclear relative to upper start of the final descending minim',\n                          'loop_height':'high/low/unclear relative to the preceding minim height'},\n            'K_features':{'bar':'straight/bowed/unclear','loop':'round/oval/unclear','foot':'present/absent/unclear; use unclear if adjacent letters or a crop boundary prevent isolating it'},\n            'abstention':'Use unclear for indistinct ink or uncertain joins. A visible gap must not be inferred from expected glyph identity. Do not infer stroke order. Report broad similarities only after all individual cards have been coded.',\n            'output':'Write annotations.json as a JSON list, one entry per supplied card in order. No hand classification or accuracy claim.'}\n    for reader in ('A','B'):\n        folder=HERE/('reader_'+reader);folder.mkdir(parents=True,exist_ok=True)\n        order=list(range(len(records)))+duplicates\n        random.Random('masked-order/'+reader+'/20261127').shuffle(order)\n        rows=[];private=[]\n        for ordinal,index in enumerate(order,1):\n            identity=hashlib.sha256(f'{reader}/{ordinal}/20261127'.encode()).hexdigest()[:8].upper()\n            card_id='C'+identity\n            r=records[index];im=Image.open(SOURCE/(r['source']+'.jpg')).crop(tuple(r['box'])).convert('RGB')\n            # Fixed 2x display magnification preserves aspect; no contrast/color/sharpness changes.\n            im=im.resize((im.width*2,im.height*2),Image.Resampling.NEAREST)\n            card=Image.new('RGB',(max(620,im.width+40),max(300,im.height+80)),'white')\n            draw=ImageDraw.Draw(card);draw.text((15,12),card_id+' / candidate '+r['family'],fill='black')\n            card.paste(im,((card.width-im.width)//2,55))\n            path=folder/(card_id+'.png');card.save(path)\n            rows.append(dict(id=card_id,file=path.name,candidate_family=r['family'],sha256=hashlib.sha256(path.read_bytes()).hexdigest()))\n            private.append(dict(id=card_id,source_index=index,source=r,duplicate_of_source=index in duplicates))\n        (folder/'cards.json').write_text(json.dumps(rows,indent=2)+'\\n')\n        (folder/'rubric.json').write_text(json.dumps(rubric,indent=2)+'\\n')\n        key['packets'][reader]=private\n    (HERE/'private-key.json').write_text(json.dumps(key,indent=2)+'\\n')\n    commitment=hashlib.sha256((HERE/'private-key.json').read_bytes()).hexdigest()\n    protocol={'key_sha256':commitment,'unique_source_contexts':len(records),'cards_per_reader':len(records)+len(duplicates),\n              'reader_count_planned':2,'source':'Frozen previous pilot contexts, no new outcome-selected scan windows.',\n              'scope':'Masked re-annotation of a selected descriptive pilot only. It does not repair the incomplete occurrence census.',\n              'analysis':'Freeze both annotation files before unmasking. Report per-feature agreement including unclear, agreement on jointly resolved accepted targets, and exact repeated-card consistency. Do not count repeats as independent specimens. Do not infer hand attribution from agreement. Report all ambiguity and disagreements.',\n              'limitations':'Root prepared packets and knows labels; independent readers must start without chat history. Shared model and selected prior contexts limit independence. Context wording and visible handwriting may still be recognizable. No external sharing yet.'}\n    (HERE/'protocol.json').write_text(json.dumps(protocol,indent=2)+'\\n')\n    OUT.mkdir(exist_ok=True)\n    dest=OUT/'hand3-masked-reader-packets.zip'\n    with zipfile.ZipFile(dest,'w',zipfile.ZIP_DEFLATED) as z:\n        for reader in ('A','B'):\n            for path in sorted((HERE/('reader_'+reader)).iterdir()):z.write(path,'reader_'+reader+'/'+path.name)\n        z.write(HERE/'protocol.json','protocol.json')\n    print(json.dumps({'unique_contexts':len(records),'cards_per_reader':len(records)+len(duplicates),'key_sha256':commitment,'zip_bytes':dest.stat().st_size}))\n\nif __name__=='__main__':main()\n",
+      "reader_A/annotations.json": "[\n  {\n    \"id\": \"C23784260\",\n    \"family_accepted\": \"yes\",\n    \"target_ambiguous\": false,\n    \"features\": {\n      \"closure\": \"open\",\n      \"tip_position\": \"right\",\n      \"loop_height\": \"high\"\n    },\n    \"confidence\": \"high\",\n    \"note\": \"The terminal rises well above the preceding minim; a broad gap remains at the left of the return.\"\n  },\n  {\n    \"id\": \"C126E0892\",\n    \"family_accepted\": \"unclear\",\n    \"target_ambiguous\": false,\n    \"features\": {\n      \"closure\": \"unclear\",\n      \"tip_position\": \"unclear\",\n      \"loop_height\": \"high\"\n    },\n    \"confidence\": \"low\",\n    \"note\": \"The lower terminal curve is visible, but faint separated upper ink does not establish a continuous return or its endpoint.\"\n  },\n  {\n    \"id\": \"C625CB509\",\n    \"family_accepted\": \"yes\",\n    \"target_ambiguous\": false,\n    \"features\": {\n      \"bar\": \"straight\",\n      \"loop\": \"oval\",\n      \"foot\": \"absent\"\n    },\n    \"confidence\": \"medium\",\n    \"note\": \"The complete upper form has a roughly level bridge, an oblique oval upper loop, and no distinct projecting basal foot.\"\n  },\n  {\n    \"id\": \"C88A406E1\",\n    \"family_accepted\": \"yes\",\n    \"target_ambiguous\": false,\n    \"features\": {\n      \"closure\": \"open\",\n      \"tip_position\": \"right\",\n      \"loop_height\": \"high\"\n    },\n    \"confidence\": \"medium\",\n    \"note\": \"The high return has a visible left-side gap; its endpoint lies slightly right of the upper start of the final minim.\"\n  },\n  {\n    \"id\": \"C5F86C22C\",\n    \"family_accepted\": \"yes\",\n    \"target_ambiguous\": false,\n    \"features\": {\n      \"bar\": \"bowed\",\n      \"loop\": \"oval\",\n      \"foot\": \"unclear\"\n    },\n    \"confidence\": \"medium\",\n    \"note\": \"The connecting bar dips visibly; the upper loop is elongated. Lower adjacent ink prevents confident separation of a foot.\"\n  },\n  {\n    \"id\": \"C49BFFE17\",\n    \"family_accepted\": \"yes\",\n    \"target_ambiguous\": false,\n    \"features\": {\n      \"bar\": \"straight\",\n      \"loop\": \"oval\",\n      \"foot\": \"present\"\n    },\n    \"confidence\": \"high\",\n    \"note\": \"A short near-level bar joins the stems; the upper loop is oval and the lower right stem projects outward.\"\n  },\n  {\n    \"id\": \"CA032D7DD\",\n    \"family_accepted\": \"yes\",\n    \"target_ambiguous\": false,\n    \"features\": {\n      \"closure\": \"open\",\n      \"tip_position\": \"right\",\n      \"loop_height\": \"high\"\n    },\n    \"confidence\": \"medium\",\n    \"note\": \"The return is high with an open left-side gap; its tip lies slightly right of the final minim's upper start.\"\n  },\n  {\n    \"id\": \"C3993AE69\",\n    \"family_accepted\": \"yes\",\n    \"target_ambiguous\": false,\n    \"features\": {\n      \"closure\": \"open\",\n      \"tip_position\": \"right\",\n      \"loop_height\": \"high\"\n    },\n    \"confidence\": \"high\",\n    \"note\": \"The rightmost complete terminal has a tall return ending to the right of its descending minim, with a wide gap.\"\n  },\n  {\n    \"id\": \"C1B87CA9E\",\n    \"family_accepted\": \"yes\",\n    \"target_ambiguous\": false,\n    \"features\": {\n      \"bar\": \"straight\",\n      \"loop\": \"oval\",\n      \"foot\": \"absent\"\n    },\n    \"confidence\": \"medium\",\n    \"note\": \"The complete upper form has a roughly level bridge and an oblique oval loop; no distinct basal projection is visible.\"\n  },\n  {\n    \"id\": \"CF61CD832\",\n    \"family_accepted\": \"yes\",\n    \"target_ambiguous\": false,\n    \"features\": {\n      \"bar\": \"bowed\",\n      \"loop\": \"unclear\",\n      \"foot\": \"absent\"\n    },\n    \"confidence\": \"medium\",\n    \"note\": \"Two tall stems are visible with a dipping connection. The upper right curve is incomplete, so loop shape is uncertain; no distinct foot is visible.\"\n  },\n  {\n    \"id\": \"C4FBF3D16\",\n    \"family_accepted\": \"yes\",\n    \"target_ambiguous\": false,\n    \"features\": {\n      \"closure\": \"open\",\n      \"tip_position\": \"right\",\n      \"loop_height\": \"high\"\n    },\n    \"confidence\": \"medium\",\n    \"note\": \"The terminal makes a large high return with a wide gap. Crossing ink at its base does not obscure the upper endpoint.\"\n  },\n  {\n    \"id\": \"C6C454A92\",\n    \"family_accepted\": \"yes\",\n    \"target_ambiguous\": false,\n    \"features\": {\n      \"closure\": \"open\",\n      \"tip_position\": \"over\",\n      \"loop_height\": \"high\"\n    },\n    \"confidence\": \"medium\",\n    \"note\": \"The high rounded return stops above the final descending minim with a visible gap wider than the local thin stroke.\"\n  },\n  {\n    \"id\": \"C601AF41E\",\n    \"family_accepted\": \"yes\",\n    \"target_ambiguous\": false,\n    \"features\": {\n      \"bar\": \"bowed\",\n      \"loop\": \"oval\",\n      \"foot\": \"present\"\n    },\n    \"confidence\": \"medium\",\n    \"note\": \"The bridge dips between the stems; the upper loop is elongated and the right stem has a short outward basal projection.\"\n  },\n  {\n    \"id\": \"CD1A948A1\",\n    \"family_accepted\": \"unclear\",\n    \"target_ambiguous\": false,\n    \"features\": {\n      \"closure\": \"unclear\",\n      \"tip_position\": \"unclear\",\n      \"loop_height\": \"high\"\n    },\n    \"confidence\": \"low\",\n    \"note\": \"The lower bowl and high upper fragments are visible, but faint ink prevents resolving the terminal's return and endpoint.\"\n  },\n  {\n    \"id\": \"C7BC40212\",\n    \"family_accepted\": \"yes\",\n    \"target_ambiguous\": false,\n    \"features\": {\n      \"closure\": \"open\",\n      \"tip_position\": \"right\",\n      \"loop_height\": \"high\"\n    },\n    \"confidence\": \"medium\",\n    \"note\": \"A large high return ends right of the final minim's upper start, leaving a wide gap; basal crossing ink is present.\"\n  },\n  {\n    \"id\": \"C19DC27E0\",\n    \"family_accepted\": \"yes\",\n    \"target_ambiguous\": false,\n    \"features\": {\n      \"bar\": \"bowed\",\n      \"loop\": \"unclear\",\n      \"foot\": \"absent\"\n    },\n    \"confidence\": \"medium\",\n    \"note\": \"The two stems have a dipping connection and an incomplete upper right curve. No distinct foot projects from the visible stem ends.\"\n  },\n  {\n    \"id\": \"C80FEDA15\",\n    \"family_accepted\": \"yes\",\n    \"target_ambiguous\": false,\n    \"features\": {\n      \"closure\": \"open\",\n      \"tip_position\": \"right\",\n      \"loop_height\": \"high\"\n    },\n    \"confidence\": \"high\",\n    \"note\": \"The tall terminal return ends well right of the descending minim's upper start and leaves a wide gap.\"\n  },\n  {\n    \"id\": \"CC4ED91BB\",\n    \"family_accepted\": \"yes\",\n    \"target_ambiguous\": false,\n    \"features\": {\n      \"bar\": \"straight\",\n      \"loop\": \"round\",\n      \"foot\": \"present\"\n    },\n    \"confidence\": \"medium\",\n    \"note\": \"The short bridge is roughly level; the upper loop is compact and rounded, and the right stem ends in a projecting wedge.\"\n  },\n  {\n    \"id\": \"C714B9893\",\n    \"family_accepted\": \"yes\",\n    \"target_ambiguous\": false,\n    \"features\": {\n      \"closure\": \"open\",\n      \"tip_position\": \"over\",\n      \"loop_height\": \"high\"\n    },\n    \"confidence\": \"high\",\n    \"note\": \"The broad high return ends approximately above the upper start of the final descending minim, with a large open gap.\"\n  },\n  {\n    \"id\": \"C865D01BE\",\n    \"family_accepted\": \"yes\",\n    \"target_ambiguous\": false,\n    \"features\": {\n      \"bar\": \"straight\",\n      \"loop\": \"oval\",\n      \"foot\": \"present\"\n    },\n    \"confidence\": \"high\",\n    \"note\": \"The bridge is near-level, the upper loop is obliquely elongated, and the right stem has a clear outward foot.\"\n  },\n  {\n    \"id\": \"C1DD70A58\",\n    \"family_accepted\": \"yes\",\n    \"target_ambiguous\": false,\n    \"features\": {\n      \"bar\": \"straight\",\n      \"loop\": \"oval\",\n      \"foot\": \"present\"\n    },\n    \"confidence\": \"high\",\n    \"note\": \"A short level bridge joins the tall stems; the upper loop is oval and the lower right stem curves outward.\"\n  },\n  {\n    \"id\": \"C0ECBA6AB\",\n    \"family_accepted\": \"yes\",\n    \"target_ambiguous\": false,\n    \"features\": {\n      \"closure\": \"open\",\n      \"tip_position\": \"over\",\n      \"loop_height\": \"high\"\n    },\n    \"confidence\": \"high\",\n    \"note\": \"The rounded return rises above the preceding minim and ends approximately above its descending start, leaving a clear gap.\"\n  },\n  {\n    \"id\": \"CF3A570FE\",\n    \"family_accepted\": \"yes\",\n    \"target_ambiguous\": true,\n    \"features\": {\n      \"closure\": \"open\",\n      \"tip_position\": \"over\",\n      \"loop_height\": \"high\"\n    },\n    \"confidence\": \"medium\",\n    \"note\": \"The high return has a clear left-side opening and an endpoint approximately above the descending minim. A stroke from above meets its right edge, complicating target isolation.\"\n  },\n  {\n    \"id\": \"C8AC2761D\",\n    \"family_accepted\": \"yes\",\n    \"target_ambiguous\": false,\n    \"features\": {\n      \"closure\": \"open\",\n      \"tip_position\": \"right\",\n      \"loop_height\": \"high\"\n    },\n    \"confidence\": \"high\",\n    \"note\": \"The rightmost complete terminal has a high return with its tip right of the final minim's upper start and a broad open gap.\"\n  }\n]\n",
+      "reader_A/cards.json": "[\n  {\n    \"id\": \"C23784260\",\n    \"file\": \"C23784260.png\",\n    \"candidate_family\": \"N\",\n    \"sha256\": \"0120266601a07b718120d2eefc54a454dc8b3b7c5fdea10b4a66f5f546da4c7a\"\n  },\n  {\n    \"id\": \"C126E0892\",\n    \"file\": \"C126E0892.png\",\n    \"candidate_family\": \"N\",\n    \"sha256\": \"b7f5e612fb2e633e9bc21456141e5a3c8f296ea36366695f0d7022d63082fa1e\"\n  },\n  {\n    \"id\": \"C625CB509\",\n    \"file\": \"C625CB509.png\",\n    \"candidate_family\": \"K\",\n    \"sha256\": \"9825ca792d7593d1e89762c5fff6379fd332f303d49fbb4041cb4a4d1d02097c\"\n  },\n  {\n    \"id\": \"C88A406E1\",\n    \"file\": \"C88A406E1.png\",\n    \"candidate_family\": \"N\",\n    \"sha256\": \"b8a324aa91b41557d60c32bceba17ac8685d4bf1b467a48b498c25d80908a049\"\n  },\n  {\n    \"id\": \"C5F86C22C\",\n    \"file\": \"C5F86C22C.png\",\n    \"candidate_family\": \"K\",\n    \"sha256\": \"c0bbd8c58cbb193653414ce5c752f080ff6968a35bfa9de1911d95b9919eca30\"\n  },\n  {\n    \"id\": \"C49BFFE17\",\n    \"file\": \"C49BFFE17.png\",\n    \"candidate_family\": \"K\",\n    \"sha256\": \"5dd7a40e85ec594d7237aab7a3c85fd25139e35a39f4016b95c135ff2a1e6a2c\"\n  },\n  {\n    \"id\": \"CA032D7DD\",\n    \"file\": \"CA032D7DD.png\",\n    \"candidate_family\": \"N\",\n    \"sha256\": \"858369cede8cef3d79222b0637e0d98aa24fb7cb8ef48849af9d911872585b21\"\n  },\n  {\n    \"id\": \"C3993AE69\",\n    \"file\": \"C3993AE69.png\",\n    \"candidate_family\": \"N\",\n    \"sha256\": \"78fc1681a50ebf97cb86f4f7ccd902f15291eb8d3670c3a338f7445b98c2fd1d\"\n  },\n  {\n    \"id\": \"C1B87CA9E\",\n    \"file\": \"C1B87CA9E.png\",\n    \"candidate_family\": \"K\",\n    \"sha256\": \"01b9409950c8b06584f7c97c65054bf7ff5246176d4b07f4a55dfb68ef0eb9c0\"\n  },\n  {\n    \"id\": \"CF61CD832\",\n    \"file\": \"CF61CD832.png\",\n    \"candidate_family\": \"K\",\n    \"sha256\": \"a98634e653e58e5dc85ef2dad9be0d46f7c7ef309d6db9611d21e164a9425d0e\"\n  },\n  {\n    \"id\": \"C4FBF3D16\",\n    \"file\": \"C4FBF3D16.png\",\n    \"candidate_family\": \"N\",\n    \"sha256\": \"c5b2d64fb6025b494a6df440e1c493beb4ae6f46df0daf1b155780d143dedb45\"\n  },\n  {\n    \"id\": \"C6C454A92\",\n    \"file\": \"C6C454A92.png\",\n    \"candidate_family\": \"N\",\n    \"sha256\": \"ecfb6ae5f73b32f7633349c8533eda697b3c775b048ce2f53c6792ea807eee65\"\n  },\n  {\n    \"id\": \"C601AF41E\",\n    \"file\": \"C601AF41E.png\",\n    \"candidate_family\": \"K\",\n    \"sha256\": \"0599eee79c3136fd8d56912551ef52dbe72c02f157b0bb3383f56cb4bb440418\"\n  },\n  {\n    \"id\": \"CD1A948A1\",\n    \"file\": \"CD1A948A1.png\",\n    \"candidate_family\": \"N\",\n    \"sha256\": \"5cbb60c48f99fd2664b7a32a78ee4ba4e562e0cc121cc9b7bd93f080e33d9047\"\n  },\n  {\n    \"id\": \"C7BC40212\",\n    \"file\": \"C7BC40212.png\",\n    \"candidate_family\": \"N\",\n    \"sha256\": \"5fd2640efec0d2afde03b02d7acb17697db4f5358e70d7e1aab96261f33936aa\"\n  },\n  {\n    \"id\": \"C19DC27E0\",\n    \"file\": \"C19DC27E0.png\",\n    \"candidate_family\": \"K\",\n    \"sha256\": \"0886ac4a053a99f156ceb112083abce1572b933e96f2f21f6c2873fbe35cf575\"\n  },\n  {\n    \"id\": \"C80FEDA15\",\n    \"file\": \"C80FEDA15.png\",\n    \"candidate_family\": \"N\",\n    \"sha256\": \"2fd86379d9d5e3883aca5c7db973d24bc97a36cbbe4a804f2c9deb1c7b122c40\"\n  },\n  {\n    \"id\": \"CC4ED91BB\",\n    \"file\": \"CC4ED91BB.png\",\n    \"candidate_family\": \"K\",\n    \"sha256\": \"0bc41fb5db8aea01e34d5743caa11c6c7d34d386a00085ba0d9a6e13882c302e\"\n  },\n  {\n    \"id\": \"C714B9893\",\n    \"file\": \"C714B9893.png\",\n    \"candidate_family\": \"N\",\n    \"sha256\": \"25b23b594a72c1465c3c7a4bf31b13e7c5d96571bfbd549e0a612657c84a396e\"\n  },\n  {\n    \"id\": \"C865D01BE\",\n    \"file\": \"C865D01BE.png\",\n    \"candidate_family\": \"K\",\n    \"sha256\": \"7510a76068a86a392ae00757251faf735d2a622bec34119eb54703c3a014e8b6\"\n  },\n  {\n    \"id\": \"C1DD70A58\",\n    \"file\": \"C1DD70A58.png\",\n    \"candidate_family\": \"K\",\n    \"sha256\": \"314438451fc1c0abc06d8a7ab65351b4bf2e2a0152d29527600c9d2efccf9303\"\n  },\n  {\n    \"id\": \"C0ECBA6AB\",\n    \"file\": \"C0ECBA6AB.png\",\n    \"candidate_family\": \"N\",\n    \"sha256\": \"209c8e5e6f8d7dbf41968af80bb8e34f8353ddf7206356328bc6a7b8b32ec006\"\n  },\n  {\n    \"id\": \"CF3A570FE\",\n    \"file\": \"CF3A570FE.png\",\n    \"candidate_family\": \"N\",\n    \"sha256\": \"0d556f6785adb8e7e866a2efbb30f3355ee31d3dd327d8f52206784ea59198f9\"\n  },\n  {\n    \"id\": \"C8AC2761D\",\n    \"file\": \"C8AC2761D.png\",\n    \"candidate_family\": \"N\",\n    \"sha256\": \"6d1e6e00a506a62ab430e9954ba4465b5a73b863b468de4af0da977f467b6730\"\n  }\n]\n",
+      "reader_A/rubric.json": "{\n  \"task\": \"Describe only the designated N-like terminal or K-like tall form in each card. Labels refer to candidate families, not accepted identities. Do not guess author, folio, section, date, or any hand label.\",\n  \"independence\": \"Use only this packet and its images. Do not inspect adjacent folders, source images, other readers, prior chat, internet or manuscript transcriptions. Commit all answers before seeing any source mapping or another reader. These are model-reader observations, not expert paleographic authentication.\",\n  \"target\": \"For N, assess the terminal returning curve of the rightmost complete minim/terminal sequence in the main crop. For K, assess the main complete tall two-stem upper-loop form. If another form or a cut-off target makes this ambiguous, mark target_ambiguous; do not substitute a different glyph.\",\n  \"required_each_card\": [\n    \"id\",\n    \"family_accepted: yes/no/unclear\",\n    \"target_ambiguous: true/false\",\n    \"features\",\n    \"confidence: high/medium/low\",\n    \"note\"\n  ],\n  \"N_features\": {\n    \"closure\": \"closed: actual return contact visible; near: visible gap no greater than local stroke thickness; open: wider visible gap; unclear: cannot resolve\",\n    \"tip_position\": \"left/over/right/unclear relative to upper start of the final descending minim\",\n    \"loop_height\": \"high/low/unclear relative to the preceding minim height\"\n  },\n  \"K_features\": {\n    \"bar\": \"straight/bowed/unclear\",\n    \"loop\": \"round/oval/unclear\",\n    \"foot\": \"present/absent/unclear; use unclear if adjacent letters or a crop boundary prevent isolating it\"\n  },\n  \"abstention\": \"Use unclear for indistinct ink or uncertain joins. A visible gap must not be inferred from expected glyph identity. Do not infer stroke order. Report broad similarities only after all individual cards have been coded.\",\n  \"output\": \"Write annotations.json as a JSON list, one entry per supplied card in order. No hand classification or accuracy claim.\"\n}\n",
+      "reader_B/annotations.json": "[\n  {\"id\":\"C01C07929\",\"family_accepted\":\"no\",\"target_ambiguous\":true,\"features\":{\"bar\":\"unclear\",\"loop\":\"unclear\",\"foot\":\"unclear\"},\"confidence\":\"medium\",\"note\":\"Two tall strokes are visible, but their top has an open rising hook; I cannot isolate a complete two-stem upper-loop target.\"},\n  {\"id\":\"CED83E66A\",\"family_accepted\":\"yes\",\"target_ambiguous\":false,\"features\":{\"bar\":\"bowed\",\"loop\":\"oval\",\"foot\":\"present\"},\"confidence\":\"medium\",\"note\":\"Central tall paired form has a dipping connector and an oblong right upper loop. A small basal projection is visible.\"},\n  {\"id\":\"CDF05A997\",\"family_accepted\":\"yes\",\"target_ambiguous\":false,\"features\":{\"bar\":\"straight\",\"loop\":\"oval\",\"foot\":\"present\"},\"confidence\":\"medium\",\"note\":\"Main tall form has a short fairly straight connector, an oblong right loop, and a projecting dark base.\"},\n  {\"id\":\"CBE085FC8\",\"family_accepted\":\"yes\",\"target_ambiguous\":false,\"features\":{\"closure\":\"open\",\"tip_position\":\"right\",\"loop_height\":\"high\"},\"confidence\":\"medium\",\"note\":\"The lower minim sequence ends in a large returning curve. Its tip remains separated by a wide gap and sits above and right of the final descending minim.\"},\n  {\"id\":\"C2F471B93\",\"family_accepted\":\"yes\",\"target_ambiguous\":false,\"features\":{\"closure\":\"open\",\"tip_position\":\"right\",\"loop_height\":\"high\"},\"confidence\":\"medium\",\"note\":\"The rightmost terminal makes a broad raised bowl. A visible gap separates its return tip from the upper start of its descent; the tip is slightly to the right.\"},\n  {\"id\":\"C795770EE\",\"family_accepted\":\"yes\",\"target_ambiguous\":false,\"features\":{\"closure\":\"unclear\",\"tip_position\":\"unclear\",\"loop_height\":\"high\"},\"confidence\":\"low\",\"note\":\"A large raised terminal curve is recognizable, but the pale and interrupted upper ink prevents a reliable return-tip or contact decision.\"},\n  {\"id\":\"CE0A2A2EF\",\"family_accepted\":\"yes\",\"target_ambiguous\":false,\"features\":{\"closure\":\"open\",\"tip_position\":\"over\",\"loop_height\":\"high\"},\"confidence\":\"medium\",\"note\":\"Rightmost terminal returns well above the minim tops with an obvious opening. Its tip lies approximately over the final descending start.\"},\n  {\"id\":\"CEC774721\",\"family_accepted\":\"no\",\"target_ambiguous\":true,\"features\":{\"bar\":\"unclear\",\"loop\":\"unclear\",\"foot\":\"unclear\"},\"confidence\":\"medium\",\"note\":\"The central paired tall strokes have an open top hook rather than an isolatable complete upper loop. The detached arc above does not resolve the target.\"},\n  {\"id\":\"C71ACD31E\",\"family_accepted\":\"yes\",\"target_ambiguous\":false,\"features\":{\"bar\":\"straight\",\"loop\":\"oval\",\"foot\":\"present\"},\"confidence\":\"high\",\"note\":\"The central complete tall form has a short straight connector, an oblong upper loop and a distinct lower right projection.\"},\n  {\"id\":\"CECB4A985\",\"family_accepted\":\"yes\",\"target_ambiguous\":false,\"features\":{\"bar\":\"straight\",\"loop\":\"oval\",\"foot\":\"present\"},\"confidence\":\"medium\",\"note\":\"The fully visible upper tall form is separable from the clipped form below. Its connector is fairly straight, loop oblong, and right base has a small projection.\"},\n  {\"id\":\"C958C1FC3\",\"family_accepted\":\"yes\",\"target_ambiguous\":false,\"features\":{\"closure\":\"open\",\"tip_position\":\"over\",\"loop_height\":\"high\"},\"confidence\":\"medium\",\"note\":\"Lower right terminal has a high broad return with a wide opening. The thin tip is approximately aligned over the final descending start.\"},\n  {\"id\":\"CD6F9FFAF\",\"family_accepted\":\"yes\",\"target_ambiguous\":false,\"features\":{\"bar\":\"straight\",\"loop\":\"oval\",\"foot\":\"present\"},\"confidence\":\"high\",\"note\":\"Complete central tall paired form shows a short straight cross connection, oval upper loop, and a clear right basal hook.\"},\n  {\"id\":\"CCBA390B5\",\"family_accepted\":\"yes\",\"target_ambiguous\":false,\"features\":{\"closure\":\"open\",\"tip_position\":\"over\",\"loop_height\":\"high\"},\"confidence\":\"medium\",\"note\":\"Rightmost complete terminal has a raised return tip approximately over the descending minim start. A gap wider than the local stroke remains.\"},\n  {\"id\":\"CBD866666\",\"family_accepted\":\"yes\",\"target_ambiguous\":false,\"features\":{\"bar\":\"straight\",\"loop\":\"oval\",\"foot\":\"present\"},\"confidence\":\"medium\",\"note\":\"The upper complete form has a nearly straight thick connector, oblong right upper loop, and a small projection at the right stem base.\"},\n  {\"id\":\"C987FF20C\",\"family_accepted\":\"yes\",\"target_ambiguous\":false,\"features\":{\"closure\":\"open\",\"tip_position\":\"over\",\"loop_height\":\"high\"},\"confidence\":\"medium\",\"note\":\"Final terminal has a high curved return and a clear opening. The return tip is approximately above the descending start within the coarse stroke width.\"},\n  {\"id\":\"C53B39DE2\",\"family_accepted\":\"yes\",\"target_ambiguous\":false,\"features\":{\"closure\":\"open\",\"tip_position\":\"over\",\"loop_height\":\"high\"},\"confidence\":\"medium\",\"note\":\"Lower sequence ends in a broad high return, with its tip nearly over the descending start and a wide intervening gap. Nearby upper-line ink is distinguishable.\"},\n  {\"id\":\"CB1C129BC\",\"family_accepted\":\"yes\",\"target_ambiguous\":false,\"features\":{\"closure\":\"open\",\"tip_position\":\"right\",\"loop_height\":\"high\"},\"confidence\":\"high\",\"note\":\"Final bowl curves upward to a short thick tip well right of the descending start. The opening is broad and the tip rises above preceding minims.\"},\n  {\"id\":\"C0393A6E7\",\"family_accepted\":\"yes\",\"target_ambiguous\":false,\"features\":{\"closure\":\"open\",\"tip_position\":\"right\",\"loop_height\":\"high\"},\"confidence\":\"high\",\"note\":\"Rightmost minim sequence ends in a tall open curve with a tip visibly to the right of the final descending start.\"},\n  {\"id\":\"CE4BDC7EF\",\"family_accepted\":\"yes\",\"target_ambiguous\":false,\"features\":{\"closure\":\"open\",\"tip_position\":\"right\",\"loop_height\":\"high\"},\"confidence\":\"high\",\"note\":\"The terminal returns high on the right, leaving a wide opening. Its short upper tip is clearly right of the descent start.\"},\n  {\"id\":\"CD1A0A45D\",\"family_accepted\":\"yes\",\"target_ambiguous\":false,\"features\":{\"closure\":\"open\",\"tip_position\":\"right\",\"loop_height\":\"high\"},\"confidence\":\"high\",\"note\":\"The rightmost complete terminal is an open raised curve. Its return tip lies right of the descending minim start and above preceding minims.\"},\n  {\"id\":\"C5A5381B8\",\"family_accepted\":\"yes\",\"target_ambiguous\":false,\"features\":{\"closure\":\"unclear\",\"tip_position\":\"unclear\",\"loop_height\":\"high\"},\"confidence\":\"low\",\"note\":\"A high terminal return is visible, but broken faint upper ink makes its endpoint and possible contact unresolved.\"},\n  {\"id\":\"CFA90DA1B\",\"family_accepted\":\"yes\",\"target_ambiguous\":false,\"features\":{\"bar\":\"bowed\",\"loop\":\"oval\",\"foot\":\"present\"},\"confidence\":\"medium\",\"note\":\"Central tall form has a dipping connector, oblong upper loop, and a small projecting base on the right stem.\"},\n  {\"id\":\"C48071DD4\",\"family_accepted\":\"yes\",\"target_ambiguous\":false,\"features\":{\"closure\":\"open\",\"tip_position\":\"right\",\"loop_height\":\"high\"},\"confidence\":\"medium\",\"note\":\"Lower central minim sequence ends in a large raised return curve. Its left-facing tip is still right of the descending start, with a broad opening.\"},\n  {\"id\":\"CBCA3C0B4\",\"family_accepted\":\"yes\",\"target_ambiguous\":false,\"features\":{\"bar\":\"straight\",\"loop\":\"oval\",\"foot\":\"present\"},\"confidence\":\"high\",\"note\":\"Complete central tall form shows a straight short connector, oval right upper loop, and a distinct diagonal basal projection.\"}\n]\n",
+      "reader_B/cards.json": "[\n  {\n    \"id\": \"C01C07929\",\n    \"file\": \"C01C07929.png\",\n    \"candidate_family\": \"K\",\n    \"sha256\": \"e4bef02343a3f88d6e3ee1f3d46787786d041772560e3775df76f3432a63b833\"\n  },\n  {\n    \"id\": \"CED83E66A\",\n    \"file\": \"CED83E66A.png\",\n    \"candidate_family\": \"K\",\n    \"sha256\": \"268b83426cdcf515ea9702f3128a55f560e89537ebdecd2b64d768b554a8a19b\"\n  },\n  {\n    \"id\": \"CDF05A997\",\n    \"file\": \"CDF05A997.png\",\n    \"candidate_family\": \"K\",\n    \"sha256\": \"6454f61abdd0c08cbf8f78a1a1d69f88d5ed69bb03f68fcfbfb97b5fdf4822eb\"\n  },\n  {\n    \"id\": \"CBE085FC8\",\n    \"file\": \"CBE085FC8.png\",\n    \"candidate_family\": \"N\",\n    \"sha256\": \"716041456cbd63066b22c26e92c9af9d4fefc74c0422435f192da19fbf0af234\"\n  },\n  {\n    \"id\": \"C2F471B93\",\n    \"file\": \"C2F471B93.png\",\n    \"candidate_family\": \"N\",\n    \"sha256\": \"06c31d4d442e84b9649eb4ce1a75d38f2ebe7c042c8583b5f95c493885f7d47d\"\n  },\n  {\n    \"id\": \"C795770EE\",\n    \"file\": \"C795770EE.png\",\n    \"candidate_family\": \"N\",\n    \"sha256\": \"20e6b308753549b84eeb0aa70d475dc9ae3e658b75fe36ae96305333384734ec\"\n  },\n  {\n    \"id\": \"CE0A2A2EF\",\n    \"file\": \"CE0A2A2EF.png\",\n    \"candidate_family\": \"N\",\n    \"sha256\": \"2a379d9647cd211bab76462a477b05d1eb0be1c7d24ffeefccc3c0c1ac144f14\"\n  },\n  {\n    \"id\": \"CEC774721\",\n    \"file\": \"CEC774721.png\",\n    \"candidate_family\": \"K\",\n    \"sha256\": \"9c6938712a2377df862af297ea9585dbc50b4ebd4754d7a15f2f4a10493657f1\"\n  },\n  {\n    \"id\": \"C71ACD31E\",\n    \"file\": \"C71ACD31E.png\",\n    \"candidate_family\": \"K\",\n    \"sha256\": \"f0a85f2e343865e7c518fad3c95fe930c90529b6e806f38c4947d5baa820069d\"\n  },\n  {\n    \"id\": \"CECB4A985\",\n    \"file\": \"CECB4A985.png\",\n    \"candidate_family\": \"K\",\n    \"sha256\": \"bf6a95a6307a6aaee9ce4d85b85bea1de8743938dbf7db88a507842b653f2150\"\n  },\n  {\n    \"id\": \"C958C1FC3\",\n    \"file\": \"C958C1FC3.png\",\n    \"candidate_family\": \"N\",\n    \"sha256\": \"4d352cd4e1e2b5e8816e2ef02d2b529b40223ac02e7c7a71155e7d2b9aea9813\"\n  },\n  {\n    \"id\": \"CD6F9FFAF\",\n    \"file\": \"CD6F9FFAF.png\",\n    \"candidate_family\": \"K\",\n    \"sha256\": \"d11dbc58066058b5e2733895625f922565c7c72925916500bb585f6ce4735f84\"\n  },\n  {\n    \"id\": \"CCBA390B5\",\n    \"file\": \"CCBA390B5.png\",\n    \"candidate_family\": \"N\",\n    \"sha256\": \"2ac6307d52ca5483bbef5edd2cfc3ea062b463d499d7679ddc10a68046300b0d\"\n  },\n  {\n    \"id\": \"CBD866666\",\n    \"file\": \"CBD866666.png\",\n    \"candidate_family\": \"K\",\n    \"sha256\": \"b7fd837f6f1878989df7aa3177af35d596170c8cb75aebe66e3857cdb95ff010\"\n  },\n  {\n    \"id\": \"C987FF20C\",\n    \"file\": \"C987FF20C.png\",\n    \"candidate_family\": \"N\",\n    \"sha256\": \"5b63c1d591dc5e953f6a9fce89b1cb0f20b381ca81a36601697148b29a28fea1\"\n  },\n  {\n    \"id\": \"C53B39DE2\",\n    \"file\": \"C53B39DE2.png\",\n    \"candidate_family\": \"N\",\n    \"sha256\": \"034742549fb467c8a621e08bec189b01e3798fc66e68276bb7573d62a1e9a3af\"\n  },\n  {\n    \"id\": \"CB1C129BC\",\n    \"file\": \"CB1C129BC.png\",\n    \"candidate_family\": \"N\",\n    \"sha256\": \"908c7b05cb76423db5cb4c51663cd9351105fde576e36f1ffc429fae1b6122ba\"\n  },\n  {\n    \"id\": \"C0393A6E7\",\n    \"file\": \"C0393A6E7.png\",\n    \"candidate_family\": \"N\",\n    \"sha256\": \"fb7bdc13d6733d772e72d693fd37ac69b6bdffe85e286dd458bed305ba467c99\"\n  },\n  {\n    \"id\": \"CE4BDC7EF\",\n    \"file\": \"CE4BDC7EF.png\",\n    \"candidate_family\": \"N\",\n    \"sha256\": \"a8a2d4b5e9506b1b887deb9c897f39bfbf84c982e74f61886d6b0197e2f0a981\"\n  },\n  {\n    \"id\": \"CD1A0A45D\",\n    \"file\": \"CD1A0A45D.png\",\n    \"candidate_family\": \"N\",\n    \"sha256\": \"3535343b1b663d2059a35bd25f9c552dc5e609e2c742eabfe07a336ee395c434\"\n  },\n  {\n    \"id\": \"C5A5381B8\",\n    \"file\": \"C5A5381B8.png\",\n    \"candidate_family\": \"N\",\n    \"sha256\": \"e9c67fee66b6542273ff05348a32705dcbac94c093e17f2cfbee8e329051e3d3\"\n  },\n  {\n    \"id\": \"CFA90DA1B\",\n    \"file\": \"CFA90DA1B.png\",\n    \"candidate_family\": \"K\",\n    \"sha256\": \"191bff300eda44e58c9190210d65b299e18c9cd1670cbcc1be28c9372d112e3a\"\n  },\n  {\n    \"id\": \"C48071DD4\",\n    \"file\": \"C48071DD4.png\",\n    \"candidate_family\": \"N\",\n    \"sha256\": \"e7e352a17627a3fb6d1a66d4d105d12e15f1ed64d64993921cc713664e1c849d\"\n  },\n  {\n    \"id\": \"CBCA3C0B4\",\n    \"file\": \"CBCA3C0B4.png\",\n    \"candidate_family\": \"K\",\n    \"sha256\": \"a6f9f662676cc13a7e7c41c65f7e81a9ab42030929e1b557bbff4cf0c0119009\"\n  }\n]\n",
+      "reader_B/rubric.json": "{\n  \"task\": \"Describe only the designated N-like terminal or K-like tall form in each card. Labels refer to candidate families, not accepted identities. Do not guess author, folio, section, date, or any hand label.\",\n  \"independence\": \"Use only this packet and its images. Do not inspect adjacent folders, source images, other readers, prior chat, internet or manuscript transcriptions. Commit all answers before seeing any source mapping or another reader. These are model-reader observations, not expert paleographic authentication.\",\n  \"target\": \"For N, assess the terminal returning curve of the rightmost complete minim/terminal sequence in the main crop. For K, assess the main complete tall two-stem upper-loop form. If another form or a cut-off target makes this ambiguous, mark target_ambiguous; do not substitute a different glyph.\",\n  \"required_each_card\": [\n    \"id\",\n    \"family_accepted: yes/no/unclear\",\n    \"target_ambiguous: true/false\",\n    \"features\",\n    \"confidence: high/medium/low\",\n    \"note\"\n  ],\n  \"N_features\": {\n    \"closure\": \"closed: actual return contact visible; near: visible gap no greater than local stroke thickness; open: wider visible gap; unclear: cannot resolve\",\n    \"tip_position\": \"left/over/right/unclear relative to upper start of the final descending minim\",\n    \"loop_height\": \"high/low/unclear relative to the preceding minim height\"\n  },\n  \"K_features\": {\n    \"bar\": \"straight/bowed/unclear\",\n    \"loop\": \"round/oval/unclear\",\n    \"foot\": \"present/absent/unclear; use unclear if adjacent letters or a crop boundary prevent isolating it\"\n  },\n  \"abstention\": \"Use unclear for indistinct ink or uncertain joins. A visible gap must not be inferred from expected glyph identity. Do not infer stroke order. Report broad similarities only after all individual cards have been coded.\",\n  \"output\": \"Write annotations.json as a JSON list, one entry per supplied card in order. No hand classification or accuracy claim.\"\n}\n"
+    },
+    "result_sha256": "573ed1280b46fc875cb86d43cdbb9425524fad9e66806c60d93210b69bcd1d05"
+  },
+  "sources": [
+    "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/645"
+  ]
+}
