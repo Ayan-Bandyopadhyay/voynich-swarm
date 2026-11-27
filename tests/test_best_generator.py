@@ -47,3 +47,42 @@ class BestGeneratorTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class ScriptedLeadTest(unittest.TestCase):
+    """Rules added with the 2026-11-27 audit: saturation, enciphered language, spread over fronts."""
+    def run_rules(self, record, open_steps):
+        with patch.object(registry, "read", side_effect=lambda type=None: [i for i in record if type is None or i["type"] == type]):
+            why = {}
+            return steps.rules_top(open_steps, why), why
+
+    def saturated_record(self, extra=()):
+        facts = [fact(f"F-{n:03d}") for n in range(1, 13)]
+        return facts + [gen("R-001", {f["id"]: f["id"] != "F-012" for f in facts})] + list(extra)
+
+    def step(self, i, program, title="t", how="agent"):
+        return {"id": i, "program": program, "title": title, "status": "open", "kind": "step", "how": how}
+
+    def test_saturated_facts_demote_text_statistics_and_the_generator_test(self):
+        top, why = self.run_rules(self.saturated_record(),
+                                  [self.step("P-L2-001", "L2"), self.step("G-every-fact", "G", how="rule"),
+                                   self.step("G-enciphered-language", "G", how="rule"), self.step("P-L4-001", "L4")])
+        self.assertEqual(top[:2], ["G-enciphered-language", "P-L4-001"])
+        self.assertEqual(top[-1], "P-L2-001")
+        self.assertIn("saturated", why["P-L2-001"])
+        self.assertIn("saturated", why["G-every-fact"])
+
+    def test_an_enciphered_language_test_is_not_a_refutation_and_not_the_best_generator(self):
+        enc = gen("R-009", {f"F-{n:03d}": True for n in range(1, 13)}, hypothesis="enciphered_language")
+        top, why = self.run_rules(self.saturated_record([enc]), [self.step("R-attack-F-012", "R", how="rule")])
+        self.assertIn("no attack has reproduced", why["R-attack-F-012"])
+        with patch.object(registry, "read", side_effect=lambda type=None: [i for i in self.saturated_record([enc]) if type is None or i["type"] == type]):
+            self.assertEqual(redteam.best_generator()["id"], "R-001")
+
+    def test_top_picks_are_spread_over_the_fronts(self):
+        top, _ = self.run_rules(self.saturated_record(), [self.step(f"P-L4-{n:03d}", "L4") for n in range(1, 6)]
+                                + [self.step("L3-first-latin-table-cipher", "L3", how="rule"),
+                                   self.step("L3-first-latin-substitution", "L3", how="rule")])
+        self.assertEqual(sum(t.startswith("P-L4-") for t in top), steps.TOP_PER_PROGRAM)
+        self.assertIn("L3-first-latin-table-cipher", top)
+        self.assertNotIn("L3-first-latin-substitution", top, "word-for-word letter cells stay last")

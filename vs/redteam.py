@@ -261,15 +261,15 @@ def run_attack(spec, split):
 
 def best_generator(attacks=None):
     """The meaningless whole-book generator on the record that reproduces the most established
-    facts (ties: the earlier one), as its registry item, or None. Invented-language tests are not
-    generators of meaningless text and are left out."""
+    facts (ties: the earlier one), as its registry item, or None. Invented-language and
+    enciphered-language tests are not generators of meaningless text and are left out."""
     from . import registry
     attacks = registry.read("attack") if attacks is None else attacks
     facts = {i["id"] for i in registry.read("fact") if i["verdict"] == "ESTABLISHED"}
     best = None
     for a in attacks:
         d, sub = a.get("detail") or {}, (a.get("submitted") or {}).get("attack.json") or {}
-        if d.get("attack") != "generator" or d.get("hypothesis") == "invented_language" or not sub.get("lines"):
+        if d.get("attack") != "generator" or d.get("hypothesis") in ("invented_language", "enciphered_language") or not sub.get("lines"):
             continue
         n = sum(1 for k, v in (d.get("per_fact") or {}).items() if v and k in facts)
         if best is None or n > best[0]:
