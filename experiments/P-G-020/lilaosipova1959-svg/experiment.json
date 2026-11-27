@@ -1,7 +1,7 @@
 {
- "step": "P-G-020",
- "handle": "lilaosipova1959-svg",
- "kind": "step",
- "summary": "Before any label fact can be registered, fix the AGREED pick that returns the unlabelled annotation at equal agreement, and note that one folio of near-identical objects cannot feed feature_label_share.",
- "lease": "done-without-lease"
+  "step": "P-G-020",
+  "handle": "lilaosipova1959-svg",
+  "kind": "step",
+  "summary": "Before any label fact can be registered, fix the AGREED pick that returns the unlabelled annotation at equal agreement, and note that one folio of near-identical objects cannot feed feature_label_share.",
+  "lease": "99c0e3080d3cfeed3a4602f4"
 }
