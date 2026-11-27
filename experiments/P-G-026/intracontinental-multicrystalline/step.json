@@ -1,0 +1,648 @@
+{
+  "title": "Calibrate long-range models on independent historical works before manuscript scoring",
+  "program": "G",
+  "on_path": false,
+  "hard": true,
+  "statement": "A normalized topic, bigram and finite-cache model selected on historical development windows improves local test log loss relative to the previous fixed-cache baseline on all four works. Its fixed 64-sample predictive interval contains the observed Taylor exponent at only 8 of 20 work-by-width comparisons, however, so the predeclared joint external gate fails on every work. All 20 observed exponents exceed the medians of both layout-matched test-fitted empirical-bigram and exact-frequency shuffle controls. The model was therefore not compared with manuscript data.",
+  "check": "Calibrate a model on genuinely separate historical works, not just disjoint windows within each work, and fix its search and external five-width gate before manuscript scoring. Check local predictive loss, calibrated interval coverage, unseen word behavior and transition probabilities. If the gate passes, identify a separate manuscript sample large enough for all five fixed widths and pre-register its split and comparison; otherwise report failure and stop. Include structured non-language and quire or sheet grouping only when independently supported by sufficient data.",
+  "method": "Use the same four pinned historical works and nonoverlapping 30,000-token train, development and test windows as P-G-026. Train the normalized bigram/unigram/character-backoff and 4,096-token cache from that pilot. Divide each training window into ten equal contiguous topic inventories. Each has a smoothed word distribution (3,000 observed topic tokens plus 1,000 units of the global backoff). A latent state initially uniform over topics stays or is uniformly redrawn with probability 1/period each token. Emissions mix the bigram and topic distributions, then mix with the finite cache; filtering uses the exact ten-state forward probabilities, so the claimed local loss and generator implement the same normalized model. Predefine six (topic weight, cache weight, mean period) candidates: (0,.3,8000), (.3,.3,2000), (.6,.3,2000), (.3,.3,8000), (.6,.3,8000), (.8,.1,8000). Select on development windows only by minimizing the average over books of [model bits/token minus fixed-cache bits/token + 10 times the average absolute difference between the observed five-width Taylor exponents and the median of four generated development samples]. This explicitly trades local prediction against long-range fit; the coefficient and candidate set are fixed pilot choices, not an established optimal model. The selected tuple is (.6,.3,8000).",
+  "gate": "Freeze selected parameters and the external test gate before any manuscript comparison. For each historical test window and each width 2,810, 4,215, 5,620, 7,025 and 8,430, require the observed exponent to exceed the medians of 32 exact-frequency shuffles and 32 empirical-bigram nulls fitted to that test, and lie between the 4th and 61st sorted values of 64 independent model samples. Also require test local loss no worse than both the fixed-cache and no-cache baselines. Every work and width must pass. Report observed exponents, order-statistic interval, sample min/median/max, null medians and complete block counts. This is an exploratory fixed pilot gate, not the original paper’s broader 16-work protocol or a guaranteed-coverage interval.",
+  "source": "Keito Yoshida, Convergent Physical-Bifolio Structure and Long-Range Model Failure in the Voynich Manuscript, https://raw.githubusercontent.com/seeton/Voynich-public/8920f2e506fce4c2c5a1245fb21a312f25655f1b/paper/voynich-structural-evidence-zenodo.md ; pinned Taylor module https://raw.githubusercontent.com/seeton/Voynich-public/8920f2e506fce4c2c5a1245fb21a312f25655f1b/analysis/calibration/taylor_metric.py, SHA-256 554276d115500f2960831ab45910d9fc1c9625e1d06ac79ccb37b0ca16d58545.",
+  "results": {
+    "config": {
+      "books": [
+        "it_dante",
+        "es_buenamor",
+        "en_paston",
+        "medieval_czech_01473c19"
+      ],
+      "tokens_per_partition": 30000,
+      "widths": [
+        2810,
+        4215,
+        5620,
+        7025,
+        8430
+      ],
+      "topics": 10,
+      "topic_alpha": 1000.0,
+      "cache_window": 4096,
+      "candidates": [
+        [
+          0.0,
+          0.3,
+          8000
+        ],
+        [
+          0.3,
+          0.3,
+          2000
+        ],
+        [
+          0.6,
+          0.3,
+          2000
+        ],
+        [
+          0.3,
+          0.3,
+          8000
+        ],
+        [
+          0.6,
+          0.3,
+          8000
+        ],
+        [
+          0.8,
+          0.1,
+          8000
+        ]
+      ],
+      "dev_draws": 4,
+      "test_draws": 64,
+      "null_draws": 32
+    },
+    "development": {
+      "0": {
+        "candidate": [
+          0.0,
+          0.3,
+          8000
+        ],
+        "score": 0.6342514235402024,
+        "books": [
+          {
+            "book": "it_dante",
+            "bits_per_token": 12.079168253351156,
+            "fixed_cache_bits_per_token": 12.079168253351156,
+            "mean_absolute_taylor_error": 0.04718033740095402
+          },
+          {
+            "book": "es_buenamor",
+            "bits_per_token": 14.484263453309387,
+            "fixed_cache_bits_per_token": 14.484263453309387,
+            "mean_absolute_taylor_error": 0.09423233600724609
+          },
+          {
+            "book": "en_paston",
+            "bits_per_token": 10.998156270014087,
+            "fixed_cache_bits_per_token": 10.998156270014087,
+            "mean_absolute_taylor_error": 0.046200670221180996
+          },
+          {
+            "book": "medieval_czech_01473c19",
+            "bits_per_token": 13.129870215029419,
+            "fixed_cache_bits_per_token": 13.129870215029419,
+            "mean_absolute_taylor_error": 0.06608722578669982
+          }
+        ]
+      },
+      "1": {
+        "candidate": [
+          0.3,
+          0.3,
+          2000
+        ],
+        "score": 0.1736793212483917,
+        "books": [
+          {
+            "book": "it_dante",
+            "bits_per_token": 11.65409471389993,
+            "fixed_cache_bits_per_token": 12.079168253351156,
+            "mean_absolute_taylor_error": 0.05377134826672871
+          },
+          {
+            "book": "es_buenamor",
+            "bits_per_token": 13.993346469699212,
+            "fixed_cache_bits_per_token": 14.484263453309387,
+            "mean_absolute_taylor_error": 0.0817471534409185
+          },
+          {
+            "book": "en_paston",
+            "bits_per_token": 10.650588558280177,
+            "fixed_cache_bits_per_token": 10.998156270014087,
+            "mean_absolute_taylor_error": 0.036615806058193166
+          },
+          {
+            "book": "medieval_czech_01473c19",
+            "bits_per_token": 12.765482413004642,
+            "fixed_cache_bits_per_token": 13.129870215029419,
+            "mean_absolute_taylor_error": 0.0601320244155251
+          }
+        ]
+      },
+      "2": {
+        "candidate": [
+          0.6,
+          0.3,
+          2000
+        ],
+        "score": 0.014917869522457994,
+        "books": [
+          {
+            "book": "it_dante",
+            "bits_per_token": 11.628664476103557,
+            "fixed_cache_bits_per_token": 12.079168253351156,
+            "mean_absolute_taylor_error": 0.06743169733408436
+          },
+          {
+            "book": "es_buenamor",
+            "bits_per_token": 13.920110842956824,
+            "fixed_cache_bits_per_token": 14.484263453309387,
+            "mean_absolute_taylor_error": 0.05562927960633961
+          },
+          {
+            "book": "en_paston",
+            "bits_per_token": 10.687708144489973,
+            "fixed_cache_bits_per_token": 10.998156270014087,
+            "mean_absolute_taylor_error": 0.01811200731330711
+          },
+          {
+            "book": "medieval_czech_01473c19",
+            "bits_per_token": 12.726847246901146,
+            "fixed_cache_bits_per_token": 13.129870215029419,
+            "mean_absolute_taylor_error": 0.037606911680507074
+          }
+        ]
+      },
+      "3": {
+        "candidate": [
+          0.3,
+          0.3,
+          8000
+        ],
+        "score": 0.1410080529391547,
+        "books": [
+          {
+            "book": "it_dante",
+            "bits_per_token": 11.660381745229824,
+            "fixed_cache_bits_per_token": 12.079168253351156,
+            "mean_absolute_taylor_error": 0.05111146648908169
+          },
+          {
+            "book": "es_buenamor",
+            "bits_per_token": 13.996189564800305,
+            "fixed_cache_bits_per_token": 14.484263453309387,
+            "mean_absolute_taylor_error": 0.07857486409583517
+          },
+          {
+            "book": "en_paston",
+            "bits_per_token": 10.654875119267214,
+            "fixed_cache_bits_per_token": 10.998156270014087,
+            "mean_absolute_taylor_error": 0.03550212015020367
+          },
+          {
+            "book": "medieval_czech_01473c19",
+            "bits_per_token": 12.771475140039689,
+            "fixed_cache_bits_per_token": 13.129870215029419,
+            "mean_absolute_taylor_error": 0.05206843267724311
+          }
+        ]
+      },
+      "4": {
+        "candidate": [
+          0.6,
+          0.3,
+          8000
+        ],
+        "score": -0.017558243732705925,
+        "books": [
+          {
+            "book": "it_dante",
+            "bits_per_token": 11.636642857065041,
+            "fixed_cache_bits_per_token": 12.079168253351156,
+            "mean_absolute_taylor_error": 0.06489648907421046
+          },
+          {
+            "book": "es_buenamor",
+            "bits_per_token": 13.924395472325882,
+            "fixed_cache_bits_per_token": 14.484263453309387,
+            "mean_absolute_taylor_error": 0.05439215364629402
+          },
+          {
+            "book": "en_paston",
+            "bits_per_token": 10.69280540513213,
+            "fixed_cache_bits_per_token": 10.998156270014087,
+            "mean_absolute_taylor_error": 0.01296897788836755
+          },
+          {
+            "book": "medieval_czech_01473c19",
+            "bits_per_token": 12.734441149822048,
+            "fixed_cache_bits_per_token": 13.129870215029419,
+            "mean_absolute_taylor_error": 0.03103641263394028
+          }
+        ]
+      },
+      "5": {
+        "candidate": [
+          0.8,
+          0.1,
+          8000
+        ],
+        "score": 0.11101796810582865,
+        "books": [
+          {
+            "book": "it_dante",
+            "bits_per_token": 11.668131101221292,
+            "fixed_cache_bits_per_token": 12.079168253351156,
+            "mean_absolute_taylor_error": 0.0318154315427283
+          },
+          {
+            "book": "es_buenamor",
+            "bits_per_token": 13.973916048387146,
+            "fixed_cache_bits_per_token": 14.484263453309387,
+            "mean_absolute_taylor_error": 0.06049271964990668
+          },
+          {
+            "book": "en_paston",
+            "bits_per_token": 10.829937801886123,
+            "fixed_cache_bits_per_token": 10.998156270014087,
+            "mean_absolute_taylor_error": 0.04265833051306456
+          },
+          {
+            "book": "medieval_czech_01473c19",
+            "bits_per_token": 12.837528895443958,
+            "fixed_cache_bits_per_token": 13.129870215029419,
+            "mean_absolute_taylor_error": 0.04763514001318499
+          }
+        ]
+      }
+    },
+    "test": {
+      "it_dante": {
+        "widths": {
+          "2810": {
+            "observed": {
+              "exponent": 0.5223741693398405,
+              "blocks": 10,
+              "used": 28100
+            },
+            "predictive_order4": 0.5318915294475737,
+            "predictive_order61": 0.552198397436853,
+            "model_min": 0.5288511534244089,
+            "model_median": 0.544936163592414,
+            "model_max": 0.5533997473361617,
+            "shuffle_median": 0.48183477125815594,
+            "bigram_median": 0.4830917234015664,
+            "null_direction_gate": true,
+            "predictive_interval_gate": false
+          },
+          "4215": {
+            "observed": {
+              "exponent": 0.5240725006981783,
+              "blocks": 7,
+              "used": 29505
+            },
+            "predictive_order4": 0.5440963255490364,
+            "predictive_order61": 0.5696161977159877,
+            "model_min": 0.5402067106150985,
+            "model_median": 0.5607576357235882,
+            "model_max": 0.5740752198608146,
+            "shuffle_median": 0.47101001304616164,
+            "bigram_median": 0.4736302106289176,
+            "null_direction_gate": true,
+            "predictive_interval_gate": false
+          },
+          "5620": {
+            "observed": {
+              "exponent": 0.522443326709496,
+              "blocks": 5,
+              "used": 28100
+            },
+            "predictive_order4": 0.5493568115645797,
+            "predictive_order61": 0.5781567108841215,
+            "model_min": 0.5411954788533354,
+            "model_median": 0.5679990627331726,
+            "model_max": 0.5844593438554662,
+            "shuffle_median": 0.45735991320625313,
+            "bigram_median": 0.45835140377573713,
+            "null_direction_gate": true,
+            "predictive_interval_gate": false
+          },
+          "7025": {
+            "observed": {
+              "exponent": 0.5124960226000755,
+              "blocks": 4,
+              "used": 28100
+            },
+            "predictive_order4": 0.5430918831089979,
+            "predictive_order61": 0.5822883744414614,
+            "model_min": 0.5318531076669493,
+            "model_median": 0.5683881677493583,
+            "model_max": 0.5869689466567682,
+            "shuffle_median": 0.4447394537252341,
+            "bigram_median": 0.44803726395426147,
+            "null_direction_gate": true,
+            "predictive_interval_gate": false
+          },
+          "8430": {
+            "observed": {
+              "exponent": 0.5126895365380226,
+              "blocks": 3,
+              "used": 25290
+            },
+            "predictive_order4": 0.5256508219126493,
+            "predictive_order61": 0.5777663751173349,
+            "model_min": 0.5115700508327806,
+            "model_median": 0.5594934935603229,
+            "model_max": 0.5823986464581784,
+            "shuffle_median": 0.4255717569623201,
+            "bigram_median": 0.4264620873146173,
+            "null_direction_gate": true,
+            "predictive_interval_gate": false
+          }
+        },
+        "selected_bits_per_token": 12.074089358628205,
+        "fixed_cache_bits_per_token": 12.5126500619262,
+        "no_cache_bits_per_token": 13.272943386346315,
+        "local_gate": true,
+        "joint_gate": false
+      },
+      "es_buenamor": {
+        "widths": {
+          "2810": {
+            "observed": {
+              "exponent": 0.6062288476989218,
+              "blocks": 10,
+              "used": 28100
+            },
+            "predictive_order4": 0.5310505361981648,
+            "predictive_order61": 0.5788208882624591,
+            "model_min": 0.5270465720957054,
+            "model_median": 0.5646784383045378,
+            "model_max": 0.5797567478273195,
+            "shuffle_median": 0.48102435680265443,
+            "bigram_median": 0.48096822469863054,
+            "null_direction_gate": true,
+            "predictive_interval_gate": false
+          },
+          "4215": {
+            "observed": {
+              "exponent": 0.6179654944471984,
+              "blocks": 7,
+              "used": 29505
+            },
+            "predictive_order4": 0.5428082218033372,
+            "predictive_order61": 0.6015504894262628,
+            "model_min": 0.5384185125397526,
+            "model_median": 0.5845694030572175,
+            "model_max": 0.6053052301049049,
+            "shuffle_median": 0.47057448476247976,
+            "bigram_median": 0.47175826099075,
+            "null_direction_gate": true,
+            "predictive_interval_gate": false
+          },
+          "5620": {
+            "observed": {
+              "exponent": 0.6169933015732936,
+              "blocks": 5,
+              "used": 28100
+            },
+            "predictive_order4": 0.5455813155106417,
+            "predictive_order61": 0.6180323526434047,
+            "model_min": 0.5372660638385057,
+            "model_median": 0.5956695074263487,
+            "model_max": 0.6276784132447882,
+            "shuffle_median": 0.45413749461284164,
+            "bigram_median": 0.4558028128703825,
+            "null_direction_gate": true,
+            "predictive_interval_gate": true
+          },
+          "7025": {
+            "observed": {
+              "exponent": 0.6132035581836743,
+              "blocks": 4,
+              "used": 28100
+            },
+            "predictive_order4": 0.5421627672023349,
+            "predictive_order61": 0.6251350818440303,
+            "model_min": 0.5359441912847073,
+            "model_median": 0.5998382415513872,
+            "model_max": 0.6374275476145951,
+            "shuffle_median": 0.44093119191528585,
+            "bigram_median": 0.44320521309568384,
+            "null_direction_gate": true,
+            "predictive_interval_gate": true
+          },
+          "8430": {
+            "observed": {
+              "exponent": 0.5591433205432019,
+              "blocks": 3,
+              "used": 25290
+            },
+            "predictive_order4": 0.5260697043277236,
+            "predictive_order61": 0.6346478802351257,
+            "model_min": 0.5166777662672265,
+            "model_median": 0.5943337399690747,
+            "model_max": 0.6412589062984525,
+            "shuffle_median": 0.42054055279291613,
+            "bigram_median": 0.4256929271074879,
+            "null_direction_gate": true,
+            "predictive_interval_gate": true
+          }
+        },
+        "selected_bits_per_token": 14.048241447305989,
+        "fixed_cache_bits_per_token": 14.589044302687425,
+        "no_cache_bits_per_token": 15.819803330528735,
+        "local_gate": true,
+        "joint_gate": false
+      },
+      "en_paston": {
+        "widths": {
+          "2810": {
+            "observed": {
+              "exponent": 0.5653876323415061,
+              "blocks": 10,
+              "used": 28100
+            },
+            "predictive_order4": 0.5277793504706308,
+            "predictive_order61": 0.564813369742029,
+            "model_min": 0.5210513482478786,
+            "model_median": 0.5511059195441255,
+            "model_max": 0.5690807506889349,
+            "shuffle_median": 0.4816141272069765,
+            "bigram_median": 0.48339894758609925,
+            "null_direction_gate": true,
+            "predictive_interval_gate": false
+          },
+          "4215": {
+            "observed": {
+              "exponent": 0.5654815585226511,
+              "blocks": 7,
+              "used": 29505
+            },
+            "predictive_order4": 0.5438115360052468,
+            "predictive_order61": 0.586441356826265,
+            "model_min": 0.5303344720539869,
+            "model_median": 0.5676672620728294,
+            "model_max": 0.5894612627371003,
+            "shuffle_median": 0.4733537744965788,
+            "bigram_median": 0.47396865171457864,
+            "null_direction_gate": true,
+            "predictive_interval_gate": true
+          },
+          "5620": {
+            "observed": {
+              "exponent": 0.5636998459442982,
+              "blocks": 5,
+              "used": 28100
+            },
+            "predictive_order4": 0.5369888731433954,
+            "predictive_order61": 0.5968402654288235,
+            "model_min": 0.5316132588570418,
+            "model_median": 0.5743136397501185,
+            "model_max": 0.605103059765171,
+            "shuffle_median": 0.46013816705061894,
+            "bigram_median": 0.46043165317597756,
+            "null_direction_gate": true,
+            "predictive_interval_gate": true
+          },
+          "7025": {
+            "observed": {
+              "exponent": 0.54768865250451,
+              "blocks": 4,
+              "used": 28100
+            },
+            "predictive_order4": 0.5331838633705542,
+            "predictive_order61": 0.6073142937790059,
+            "model_min": 0.5268431340028356,
+            "model_median": 0.5762284290260478,
+            "model_max": 0.615608959770974,
+            "shuffle_median": 0.44688595379897955,
+            "bigram_median": 0.4479800464744459,
+            "null_direction_gate": true,
+            "predictive_interval_gate": true
+          },
+          "8430": {
+            "observed": {
+              "exponent": 0.535185674322476,
+              "blocks": 3,
+              "used": 25290
+            },
+            "predictive_order4": 0.5126620323782215,
+            "predictive_order61": 0.6042842991068785,
+            "model_min": 0.49976420091230467,
+            "model_median": 0.5672713243832718,
+            "model_max": 0.6183307540685381,
+            "shuffle_median": 0.4264697055557967,
+            "bigram_median": 0.4281590953311317,
+            "null_direction_gate": true,
+            "predictive_interval_gate": true
+          }
+        },
+        "selected_bits_per_token": 10.182735195545645,
+        "fixed_cache_bits_per_token": 10.412269278708369,
+        "no_cache_bits_per_token": 11.50081355516947,
+        "local_gate": true,
+        "joint_gate": false
+      },
+      "medieval_czech_01473c19": {
+        "widths": {
+          "2810": {
+            "observed": {
+              "exponent": 0.6172093536135828,
+              "blocks": 10,
+              "used": 28100
+            },
+            "predictive_order4": 0.5314618188507666,
+            "predictive_order61": 0.5640510714053799,
+            "model_min": 0.5264861777409467,
+            "model_median": 0.5562147105357483,
+            "model_max": 0.565597989145171,
+            "shuffle_median": 0.4828374241263862,
+            "bigram_median": 0.4838458686161713,
+            "null_direction_gate": true,
+            "predictive_interval_gate": false
+          },
+          "4215": {
+            "observed": {
+              "exponent": 0.6126421324970841,
+              "blocks": 7,
+              "used": 29505
+            },
+            "predictive_order4": 0.5463425899180984,
+            "predictive_order61": 0.5856438208864637,
+            "model_min": 0.54106591864246,
+            "model_median": 0.5742389444899128,
+            "model_max": 0.589226514799968,
+            "shuffle_median": 0.47383294154242706,
+            "bigram_median": 0.47607575465492813,
+            "null_direction_gate": true,
+            "predictive_interval_gate": false
+          },
+          "5620": {
+            "observed": {
+              "exponent": 0.6156702596150797,
+              "blocks": 5,
+              "used": 28100
+            },
+            "predictive_order4": 0.5454653309333474,
+            "predictive_order61": 0.59783796329358,
+            "model_min": 0.5393498058019559,
+            "model_median": 0.5857902499590675,
+            "model_max": 0.6012270721808676,
+            "shuffle_median": 0.4599862735494533,
+            "bigram_median": 0.4637170061306103,
+            "null_direction_gate": true,
+            "predictive_interval_gate": false
+          },
+          "7025": {
+            "observed": {
+              "exponent": 0.6140256004116276,
+              "blocks": 4,
+              "used": 28100
+            },
+            "predictive_order4": 0.5424547872135276,
+            "predictive_order61": 0.6067339159693866,
+            "model_min": 0.5362080924826601,
+            "model_median": 0.5859711147679763,
+            "model_max": 0.6134740846172946,
+            "shuffle_median": 0.4446626870222029,
+            "bigram_median": 0.4495673590485717,
+            "null_direction_gate": true,
+            "predictive_interval_gate": false
+          },
+          "8430": {
+            "observed": {
+              "exponent": 0.5952596407602707,
+              "blocks": 3,
+              "used": 25290
+            },
+            "predictive_order4": 0.5255299580670784,
+            "predictive_order61": 0.6019630757369492,
+            "model_min": 0.5216614048276026,
+            "model_median": 0.5746938711460783,
+            "model_max": 0.6254854607544662,
+            "shuffle_median": 0.42291446727423526,
+            "bigram_median": 0.42815583139337854,
+            "null_direction_gate": true,
+            "predictive_interval_gate": true
+          }
+        },
+        "selected_bits_per_token": 12.152048736194427,
+        "fixed_cache_bits_per_token": 12.49498045878003,
+        "no_cache_bits_per_token": 14.049727117479069,
+        "local_gate": true,
+        "joint_gate": false
+      }
+    },
+    "selection": {
+      "candidate_index": 4,
+      "candidate": [
+        0.6,
+        0.3,
+        8000
+      ],
+      "rule": "min mean (dev loss − fixed-cache loss + 10 × mean absolute five-width dev exponent error); four simulated draws per book"
+    },
+    "all_works_gate": false
+  },
+  "reproduce": {
+    "instructions": "Save /tmp/voy_pg026_topic.py and /tmp/voy_k038_taylor.py from the scripts below, and fetch the exact pinned Taylor module to /tmp/taylor_metric.py. Fetch the pinned corpora with python3 -m vs fetch, then run PYTHONPATH=. python3 /tmp/voy_pg026_topic.py. The base script verifies the metric-module hash and the experiment verifies the corpus hashes.",
+    "script": "\"\"\"External-only calibration of a normalized bigram, cache and latent-topic model.\"\"\"\nimport hashlib,importlib.util,json,math,random,statistics,sys\nfrom collections import Counter,deque\nfrom vs import refcorpus\n\nsp=importlib.util.spec_from_file_location('base','/tmp/voy_k038_taylor.py');base=importlib.util.module_from_spec(sp);sp.loader.exec_module(base)\nBOOKS=('it_dante','es_buenamor','en_paston','medieval_czech_01473c19')\nN=30000;K=10;WINDOW=4096;TOPIC_ALPHA=1000.;DEV_DRAWS=4;TEST_DRAWS=64;NULL_DRAWS=32\n# (topic weight, cache weight, mean topic-switch interval); fixed before fitting.\nCANDIDATES=((0.,.3,8000),(.3,.3,2000),(.6,.3,2000),(.3,.3,8000),(.6,.3,8000),(.8,.1,8000))\n\nclass TopicModel:\n def __init__(self,train):\n  self.core=base.Model(train); self.parts=[train[i*N//K:(i+1)*N//K] for i in range(K)]\n  self.tc=[Counter(part) for part in self.parts]\n def probs(self,w,prev,queue,cache,topic_weight,cache_weight):\n  b=self.core.base(w);row=self.core.succ.get(prev,{});ct=sum(row.values())\n  big=(row.get(w,0)+base.ALPHA*b)/(ct+base.ALPHA)\n  cached=(cache[w]+base.ALPHA*b)/(len(queue)+base.ALPHA)\n  return [(1-cache_weight)*((1-topic_weight)*big+topic_weight*(c[w]+TOPIC_ALPHA*b)/(len(part)+TOPIC_ALPHA))+cache_weight*cached\n          for c,part in zip(self.tc,self.parts)]\n def logloss(self,words,candidate):\n  tw,cw,period=candidate;rho=1/period;weights=[1/K]*K;q=deque();cache=Counter();prev=None;loss=0.\n  for w in words:\n   probs=self.probs(w,prev,q,cache,tw,cw);p=sum(a*b for a,b in zip(weights,probs))\n   if p<=0:raise ValueError('unmodelled token '+repr(w))\n   loss-=math.log2(p);weights=[(1-rho)*(a*b/p)+rho/K for a,b in zip(weights,probs)]\n   q.append(w);cache[w]+=1\n   if len(q)>WINDOW:cache[q.popleft()]-=1\n   prev=w\n  return loss/len(words)\n def generate(self,n,candidate,seed):\n  tw,cw,period=candidate;rng=random.Random(seed);state=rng.randrange(K);q=deque();out=[];prev=None\n  for i in range(n):\n   if i and rng.random()<1/period:state=rng.randrange(K)\n   if rng.random()<cw:\n    w=rng.choice(q) if q and rng.random()<len(q)/(len(q)+base.ALPHA) else self.core.drawbase(rng)\n   elif rng.random()<tw:\n    part=self.parts[state];w=rng.choice(part) if rng.random()<len(part)/(len(part)+TOPIC_ALPHA) else self.core.drawbase(rng)\n   else:\n    row=self.core.succ_lists.get(prev,[]);w=rng.choice(row) if row and rng.random()<len(row)/(len(row)+base.ALPHA) else self.core.drawbase(rng)\n   out.append(w);q.append(w)\n   if len(q)>WINDOW:q.popleft()\n   prev=w\n  return out\n\ndef metrics(words):\n return {str(w):{'exponent':(r:=base.compute_taylor(words,width=w)).exponent,'blocks':r.n_windows,'used':r.n_used_tokens} for w in base.WIDTHS}\n\ndef main():\n pins={x['id']:x for x in refcorpus.pins()};models={};data={}\n for b in BOOKS:\n  with open(pins[b]['file'],'rb') as f:assert hashlib.sha256(f.read()).hexdigest()==pins[b]['sha256'],b\n  ws=' '.join(refcorpus.blocks_of(b)).split();assert len(ws)>=3*N and all(0<len(w)<=base.LIMIT and set(w)<=set(base.LETTERS) for w in ws[:3*N])\n  models[b]=TopicModel(ws[:N]);data[b]=(ws[N:2*N],ws[2*N:3*N])\n out={'config':{'books':BOOKS,'tokens_per_partition':N,'widths':base.WIDTHS,'topics':K,'topic_alpha':TOPIC_ALPHA,'cache_window':WINDOW,'candidates':CANDIDATES,'dev_draws':DEV_DRAWS,'test_draws':TEST_DRAWS,'null_draws':NULL_DRAWS},'development':{},'test':{}}\n # Fixed external-only objective: mean dev local loss minus fixed-cache loss,\n # plus ten times mean absolute five-width exponent error vs generator median.\n dev_real={b:metrics(data[b][0]) for b in BOOKS};dev_fixed={b:models[b].core.logloss(data[b][0],WINDOW,.3) for b in BOOKS}\n for ci,c in enumerate(CANDIDATES):\n  rows=[]\n  for bi,b in enumerate(BOOKS):\n   model=models[b];sample=[metrics(model.generate(N,c,100000+bi*1000+ci*10+i)) for i in range(DEV_DRAWS)]\n   errors=[abs(dev_real[b][str(w)]['exponent']-statistics.median(r[str(w)]['exponent'] for r in sample)) for w in base.WIDTHS]\n   ll=model.logloss(data[b][0],c);rows.append({'book':b,'bits_per_token':ll,'fixed_cache_bits_per_token':dev_fixed[b],'mean_absolute_taylor_error':statistics.mean(errors)})\n  obj=statistics.mean(r['bits_per_token']-r['fixed_cache_bits_per_token']+10*r['mean_absolute_taylor_error'] for r in rows)\n  out['development'][str(ci)]={'candidate':c,'score':obj,'books':rows}\n selected=min(out['development'],key=lambda x:(out['development'][x]['score'],int(x)));c=CANDIDATES[int(selected)]\n out['selection']={'candidate_index':int(selected),'candidate':c,'rule':'min mean (dev loss − fixed-cache loss + 10 × mean absolute five-width dev exponent error); four simulated draws per book'}\n # Freeze the selected model, rules and external gate before inspecting any manuscript.\n for bi,b in enumerate(BOOKS):\n  model=models[b];test=data[b][1];obs=metrics(test)\n  generated=[metrics(model.generate(N,c,400000+bi*1000+i)) for i in range(TEST_DRAWS)]\n  sh=[metrics(base.count_preserving_shuffle(test,seed=500000+bi*1000+i)) for i in range(NULL_DRAWS)]\n  bg=[metrics(base.sample_empirical_bigram(test,n_tokens=N,seed=600000+bi*1000+i)) for i in range(NULL_DRAWS)]\n  rows={}\n  for width in base.WIDTHS:\n   k=str(width);real=obs[k]['exponent'];vs=sorted(v[k]['exponent'] for v in generated);s=statistics.median(v[k]['exponent'] for v in sh);g=statistics.median(v[k]['exponent'] for v in bg)\n   rows[k]={'observed':obs[k],'predictive_order4':vs[3],'predictive_order61':vs[60],\n            'model_min':vs[0],'model_median':statistics.median(vs),'model_max':vs[-1],\n            'shuffle_median':s,'bigram_median':g,'null_direction_gate':real>s and real>g,\n            'predictive_interval_gate':vs[3]<=real<=vs[60]}\n  ll=model.logloss(test,c);fixed=model.core.logloss(test,WINDOW,.3);zero=model.core.logloss(test,WINDOW,0.)\n  local=ll<=fixed and ll<=zero\n  out['test'][b]={'widths':rows,'selected_bits_per_token':ll,'fixed_cache_bits_per_token':fixed,'no_cache_bits_per_token':zero,'local_gate':local,\n                  'joint_gate':local and all(x['null_direction_gate'] and x['predictive_interval_gate'] for x in rows.values())}\n  print('finished',b,file=sys.stderr,flush=True)\n out['all_works_gate']=all(v['joint_gate'] for v in out['test'].values())\n print(json.dumps(out,indent=2))\n\nif __name__=='__main__':main()\n",
+    "base_script": "\"\"\"External-first calibration of a normalized bigram/cache model, without Voynich data.\"\"\"\nimport hashlib,importlib.util,json,math,random,statistics\nfrom collections import Counter,defaultdict,deque\nfrom functools import lru_cache\nfrom vs import refcorpus\nMETRIC='/tmp/taylor_metric.py'\nwith open(METRIC,'rb') as f: assert hashlib.sha256(f.read()).hexdigest()=='554276d115500f2960831ab45910d9fc1c9625e1d06ac79ccb37b0ca16d58545'\nspec=importlib.util.spec_from_file_location('taylor_metric',METRIC)\nmetric=importlib.util.module_from_spec(spec)\n# dataclass resolves its class module at import time\nimport sys\nsys.modules[spec.name]=metric\nspec.loader.exec_module(metric)\ncompute_taylor=metric.compute_taylor\ncount_preserving_shuffle=metric.count_preserving_shuffle\nsample_empirical_bigram=metric.sample_empirical_bigram\n\nBOOKS=('it_dante','es_buenamor','en_paston','medieval_czech_01473c19')\nN=30000; WIDTHS=(2810,4215,5620,7025,8430); DRAWS=16\nCACHE_WEIGHTS=(0,.1,.3,.5); WINDOWS=(256,1024,4096)\nALPHA=4.;CHAR_MIX=.1; CHAR_SMOOTH=.2; LIMIT=30\nLETTERS='abcdefghijklmnopqrstuvwxyz'; CHARSET=LETTERS+'$'\n\nclass Model:\n def __init__(self,train):\n  self.words=list(train);self.wc=Counter(train);self.succ=defaultdict(Counter);self.succ_lists=defaultdict(list);self.cc=defaultdict(Counter)\n  for a,b in zip(train,train[1:]):self.succ[a][b]+=1;self.succ_lists[a].append(b)\n  for w in train:\n   for a,b in zip('$'+w,w+'$'):self.cc[a][b]+=1\n  self.chars={}\n  for a in CHARSET:\n   opts=LETTERS if a=='$' else CHARSET\n   weights=[self.cc[a][b]+CHAR_SMOOTH for b in opts];total=sum(weights)\n   self.chars[a]=(opts,weights,{b:w/total for b,w in zip(opts,weights)})\n @lru_cache(maxsize=100000)\n def cp(self,w):\n  if not w or len(w)>LIMIT or any(c not in LETTERS for c in w):return 0.\n  prob=1.;prev='$'\n  for c in w:prob*=self.chars[prev][2][c];prev=c\n  return prob*(self.chars[prev][2]['$'] if len(w)<LIMIT else 1.)\n @lru_cache(maxsize=100000)\n def base(self,w):return (1-CHAR_MIX)*self.wc[w]/len(self.words)+CHAR_MIX*self.cp(w)\n def logloss(self,words,W,weight):\n  queue=deque();cache=Counter();loss=0.;prev=None\n  for w in words:\n   base=self.base(w); row=self.succ.get(prev,{}); n=sum(row.values())\n   big=(row.get(w,0)+ALPHA*base)/(n+ALPHA)\n   cn=len(queue);cached=(cache[w]+ALPHA*base)/(cn+ALPHA)\n   prob=(1-weight)*big+weight*cached\n   if prob<=0:raise ValueError('unmodelled token '+repr(w))\n   loss-=math.log2(prob);queue.append(w);cache[w]+=1\n   if len(queue)>W:\n    old=queue.popleft();cache[old]-=1\n   prev=w\n  return loss/len(words)\n def drawbase(self,rng):\n  if rng.random()>=CHAR_MIX:return rng.choice(self.words)\n  out=[];prev='$'\n  while len(out)<LIMIT:\n   opts,weights,_=self.chars[prev]; c=rng.choices(opts,weights=weights,k=1)[0]\n   if c=='$':break\n   out.append(c);prev=c\n  return ''.join(out)\n def generate(self,n,W,weight,seed):\n  rng=random.Random(seed);q=deque();out=[];prev=None\n  for i in range(n):\n   if rng.random()<weight:\n    w=rng.choice(q) if q and rng.random()<len(q)/(len(q)+ALPHA) else self.drawbase(rng)\n   else:\n    row=self.succ_lists.get(prev,[])\n    w=rng.choice(row) if row and rng.random()<len(row)/(len(row)+ALPHA) else self.drawbase(rng)\n   out.append(w);q.append(w)\n   if len(q)>W:q.popleft()\n   prev=w\n  return out\n\ndef estimates(tokens):\n return {str(w):{'exponent':(r:=compute_taylor(tokens,width=w)).exponent,'blocks':r.n_windows,'used':r.n_used_tokens,'types':r.n_fitted_types} for w in WIDTHS}\n\ndef main():\n pins={e['id']:e for e in refcorpus.pins()};out={'config':{'books':BOOKS,'segment_tokens':N,'widths':WIDTHS,'draws':DRAWS,'weights':CACHE_WEIGHTS,'windows':WINDOWS,'alpha':ALPHA,'char_mix':CHAR_MIX,'char_smooth':CHAR_SMOOTH,'char_limit':LIMIT},'dev':{},'test':{}}\n models={};sets={}\n for b in BOOKS:\n  with open(pins[b]['file'],'rb') as f:assert hashlib.sha256(f.read()).hexdigest()==pins[b]['sha256'],b\n  words=' '.join(refcorpus.blocks_of(b)).split();assert len(words)>=3*N and all(0<len(w)<=LIMIT and set(w)<=set(LETTERS) for w in words[:3*N])\n  train,dev,test=words[:N],words[N:2*N],words[2*N:3*N];models[b]=Model(train);sets[b]=(dev,test)\n for W in WINDOWS:\n  for weight in CACHE_WEIGHTS:\n   key=f'{W}:{weight}';losses=[models[b].logloss(sets[b][0],W,weight) for b in BOOKS];out['dev'][key]=losses\n selected=min(out['dev'],key=lambda k:(statistics.mean(out['dev'][k]),k));W,w=selected.split(':');W=int(W);weight=float(w);out['selected']={'window':W,'weight':weight,'rule':'minimum mean dev bits/token across four books; ties lexicographic'}\n # Freeze all rules and parameters above, before any manuscript comparison. No manuscript is read here.\n for bi,b in enumerate(BOOKS):\n  model=models[b];test=sets[b][1];actual=estimates(test);modelsamples=[];shuffles=[];bigrams=[]\n  for i in range(DRAWS):\n   modelsamples.append(estimates(model.generate(N,W,weight,10000+bi*100+i)))\n   shuffles.append(estimates(count_preserving_shuffle(test,seed=20000+bi*100+i)))\n   bigrams.append(estimates(sample_empirical_bigram(test,n_tokens=N,seed=30000+bi*100+i)))\n  rows={}\n  for width in WIDTHS:\n   k=str(width);obs=actual[k]['exponent'];gen=[x[k]['exponent'] for x in modelsamples];sh=[x[k]['exponent'] for x in shuffles];bg=[x[k]['exponent'] for x in bigrams]\n   rows[k]={'observed':actual[k],'model_min':min(gen),'model_max':max(gen),'model_median':statistics.median(gen),'shuffle_median':statistics.median(sh),'bigram_median':statistics.median(bg),'external_direction_gate':obs>statistics.median(sh) and obs>statistics.median(bg),'in_model_range':min(gen)<=obs<=max(gen)}\n  ll=model.logloss(test,W,weight);baseline=model.logloss(test,W,0)\n  out['test'][b]={'widths':rows,'selected_bits_per_token':ll,'bigram_bits_per_token':baseline,'local_gate':ll<=baseline,'joint_gate':ll<=baseline and all(r['external_direction_gate'] and r['in_model_range'] for r in rows.values())}\n out['all_works_gate']=all(r['joint_gate'] for r in out['test'].values())\n print(json.dumps(out,indent=2))\n\nif __name__=='__main__':main()\n"
+  },
+  "validation": "A manual two-token forward-filter likelihood agrees to 1e-12; with topic weight zero the predictor matches the previous fixed-cache model to 1e-12. Generated streams have the requested length and repeat exactly at a fixed seed. Unknown normalized words receive positive character-backoff probability.",
+  "limitations": "The parameter objective was designed for this pilot and uses four simulated draws per candidate/book; it is not preregistered and does not establish model generality. The same four books supply disjoint windows across train, development and test, so the test is not a new set of works and the historical editions may have normalized orthography. The 64-sample order-statistic interval is a finite predictive range, not a proven confidence or coverage guarantee; the widest width has only three complete blocks. Test-fitted shuffle and empirical-bigram distributions are controls, not deployable predictors. Failure of these six fixed candidates does not prove all topic models fail. The code reads no manuscript tokens or secret split, and no Voynich generator scoreboard or physical-bifolio test was run after the external gate failed."
+}
