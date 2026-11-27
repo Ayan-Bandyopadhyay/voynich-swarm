@@ -1,0 +1,30 @@
+{
+  "title": "One-character variants among consecutive paragraph tokens",
+  "statement": "Among certain paragraph tokens of at least four EVA transcription characters, the share that differs from the preceding selected paragraph token on the same page by exactly one character insertion, deletion, or substitution exceeds the same statistic in every sample-size- and layout-matched pinned reference language, and exceeds a shuffle of all word slots within each page (199 permutations, one-sided p <= 0.01). The denominator includes the first selected token on each page. Consecutive refers to the filtered paragraph-token stream: it may cross a line break or an omitted uncertain or non-paragraph token. The scorer operates on transcription characters, so multi-character EVA glyph names are not treated as single units. This is a closer-range question than F-007, which uses the preceding ten selected words.",
+  "source": "Related work: Timm 2014 (K-005) and F-007 report near-copying over a wider window. Practice-training values for ZL, IT and RF are respectively 0.028440, 0.028496 and 0.027154. The preregistered comparison uses the strongest available matched reference, with no manuscript-fitted numerical margin, and a page-preserving shuffle. On the practice evaluation ZL, IT and RF values are 0.030601, 0.032709 and 0.030519, all exceeding their matched reference maxima and yielding p=0.005; these are exploratory results, not hidden-page results. On the same practice layout the submitted R-043 generator produces 0.011616 and fails this claim. This is a single negative control, not evidence that all meaningless procedures fail. The page shuffle includes non-paragraph words, and filtering can create apparent adjacency across omitted tokens; neither the test nor the matched reference corpora establishes meaning. As a descriptive practice check outside the submitted statistic, truly adjacent certain words on the same line have 122 one-character matches in 3,826 eligible ZL pairs, 132/3,875 in IT, and 98/3,159 in RF. RF also has 8 matches among 240 eligible same-line pairs separated by omitted words; the statistic counts those as adjacent after filtering. These descriptive counts are not a separate registered test.",
+  "spec": {
+    "select": {
+      "unit": [
+        "P"
+      ],
+      "certain": true
+    },
+    "statistic": {
+      "near_copy": {
+        "window": 1,
+        "min_length": 4
+      }
+    },
+    "compare": [
+      {
+        "reference": "above_all"
+      },
+      {
+        "null": "shuffle_within_page",
+        "perms": 199,
+        "p": 0.01,
+        "direction": "greater"
+      }
+    ]
+  }
+}
