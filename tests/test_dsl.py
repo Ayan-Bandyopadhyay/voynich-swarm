@@ -136,6 +136,55 @@ class HollowPassTest(unittest.TestCase):
         self.assertEqual(sel("not_para_first_line_rest"), {"b2"})
 
 
+class ParagraphGapStatTest(unittest.TestCase):
+    SPEC = {"select": {"unit": ["P"]},
+            "statistic": {"paragraph_gap_corr": {"symbol": "o"}},
+            "compare": [{"null": "shuffle_within_paragraph", "perms": 39, "p": 0.05,
+                         "direction": "greater"}]}
+
+    def test_statistic_requires_its_complete_selection_and_matching_null(self):
+        pages = iid_pages(random.Random(19))
+        for stat in ({"paragraph_gap_corr": {"symbol": "b"}},
+                     {"paragraph_gap_corr": {"symbol": "oo"}}):
+            with self.assertRaises(dsl.SpecError):
+                dsl.evaluate(dict(self.SPEC, statistic=stat), pages)
+        for select in ({"unit": ["L"]}, {"unit": ["P"], "position": "line_initial"},
+                       {"unit": ["P"], "certain": False}):
+            with self.assertRaises(dsl.SpecError):
+                dsl.evaluate(dict(self.SPEC, select=select), pages)
+        wrong_null = dict(self.SPEC, compare=[{"null": "shuffle_within_page", "perms": 39, "p": 0.05}])
+        with self.assertRaises(dsl.SpecError):
+            dsl.evaluate(wrong_null, pages)
+
+    def test_paragraph_shuffle_preserves_complete_word_stocks_and_is_seeded(self):
+        pages = iid_pages(random.Random(20))
+        all_toks = dsl.tokens(pages)
+        before = sorted(t["w"] for t in all_toks if t["unit"] == "P")
+        a = dsl._shuffled(all_toks, "shuffle_within_paragraph", random.Random(408), "paragraph_gap_corr")
+        b = dsl._shuffled(all_toks, "shuffle_within_paragraph", random.Random(408), "paragraph_gap_corr")
+        self.assertEqual(a, b)
+        self.assertEqual(before, sorted(t["w"] for t in a if t["unit"] == "P"))
+
+    @unittest.skipUnless(HAVE_DATA, "pinned practice corpus is not installed")
+    def test_practice_result_and_permutation_tail_match_independent_runner(self):
+        from vs import corpus
+        try:
+            from vs import gaps
+        except ImportError:
+            self.skipTest("independent paragraph-gap runner is not available on this branch")
+        for edition in ("zl", "it"):
+            pages = corpus.split_pages("practice", edition)[1]
+            eligible = gaps.eligible_line_ids(pages)
+            runs = gaps.paragraph_runs(pages, eligible)
+            expected = gaps.word_order_test(runs, "o", permutations=39)
+            spec = dict(self.SPEC, compare=[{"null": "shuffle_within_paragraph", "perms": 39,
+                                              "p": 0.05, "direction": "greater"}])
+            actual = dsl.evaluate(spec, pages)
+            self.assertAlmostEqual(actual["value"], expected["observed"], places=5)
+            self.assertEqual(actual["detail"]["pairs_by_lag"], expected["pairs_by_lag"])
+            self.assertAlmostEqual(actual["detail"]["shuffle_within_paragraph"]["p"], expected["p"], places=4)
+
+
 class NullsTest(unittest.TestCase):
     def _sections(self, label_o):
         rng = random.Random(3)
