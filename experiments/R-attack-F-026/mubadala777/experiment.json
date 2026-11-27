@@ -1,0 +1,7 @@
+{
+  "step": "R-attack-F-026",
+  "handle": "mubadala777",
+  "kind": "attack",
+  "summary": "Test whether word-independent glyph draws from a shared line palette reproduce the Currier B line-boundary effect.",
+  "lease": "9005f54d3f99501169f7c6f3"
+}
