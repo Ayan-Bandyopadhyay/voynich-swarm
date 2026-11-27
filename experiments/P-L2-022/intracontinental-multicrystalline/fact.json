@@ -1,0 +1,26 @@
+{
+  "title": "Matched ch-initial words occur farther right than sh-initial counterparts",
+  "statement": "Across paragraph lines of at least three tokens, the pooled mean relative interior position of certain ch-initial words with a matching sh-initial spelling is greater than that of the corresponding sh-initial words, with a whole-page bootstrap 95% lower bound above zero.",
+  "source": "Patrick Feaster (2022), https://ceur-ws.org/Vol-3313/paper12.pdf, reported rightward distributions. This operationalization and direction were examined on public practice pages in P-L2-022 and in the scorer PR; the registration precedes evaluation on hidden pages, but is not a blind preregistration relative to public data. All sections and line lengths are pooled, with no exploratory stratum selected. The matching vocabulary is derived separately within each evaluated sample; this token-weighted pooled difference may reflect page composition rather than a within-page shift. IT is a separate transcription of the same pages, not an independent manuscript sample.",
+  "spec": {
+    "select": {
+      "certain": true,
+      "unit": [
+        "P"
+      ]
+    },
+    "statistic": {
+      "matched_rightwardness": {
+        "contrast": "sh/ch",
+        "min_line": 3,
+        "max_line": 200
+      }
+    },
+    "compare": [
+      {
+        "page_bootstrap": "lower",
+        "value": 0
+      }
+    ]
+  }
+}
