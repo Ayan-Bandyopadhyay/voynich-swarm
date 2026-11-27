@@ -1,19 +1,25 @@
 {
-  "title": "An Analysis of the Relationship between Words within the Voynich Manuscript",
-  "authors": "Andrew Caruana, Colin Layfield, John Abela",
+  "title": "Rightward and Downward Grapheme Distributions in the Voynich Manuscript",
+  "authors": "Patrick Feaster",
   "year": 2022,
-  "url": "https://ceur-ws.org/Vol-3313/paper8.pdf",
-  "summary": "The authors compare directional word-pair frequencies in a Voynich transliteration and English and Italian texts with shuffled versions. Their exploratory comparison reports an excess of directionally skewed pairs in the manuscript, smaller than the excess in the comparison texts; it does not test a meaningless-text generator or establish that the text is linguistic.",
+  "url": "https://ceur-ws.org/Vol-3313/paper12.pdf",
+  "summary": "Feaster studies relative positions within lines and paragraphs, concentrating on matched word forms differing by one grapheme. Three selected case studies show differences within line interiors as well as at their edges; the paper describes positional explanations as possibilities, not established readings.",
   "established": [
-    "The analysis uses ZL version 1r and selected Bible books, two Shakespeare plays and Dante's Divina Commedia. It removes frequent words using empirically selected percentages and counts pairs within a three-word window; a pair is skewed if its count exceeds its reverse by more than five (sections 2.1–2.3).",
-    "Figure 2 compares each original with the average of three random shuffles. The authors report that the Voynich original has slightly more than twice the skewed-pair ratio of its shuffled counterpart, with a smaller original-to-shuffle gap than in the comparison texts (section 3.1).",
-    "For 10,000-word randomly selected segments, averaged over three runs, the paper reports an approximately inverse relationship between unique-word ratio and skewed-pair ratio across the works (section 3.2)."
+    "Using paragraph text in Zandbergen–Landini version 1.7, the study defines relative rightwardness as zero-based position divided by line token count minus one. It resolves annotated ambiguity using the first non-question-mark option and omits uncertain-space commas (section 2).",
+    "For matched forms beginning Sh and ch, mean positions in the line interior are 0.433 and 0.481 respectively. Nineteen of 21 frequent matched pairs retain the direction when line-edge words are excluded (section 2, Table 1).",
+    "For matched forms beginning qo and o, interior mean positions are 0.487 and 0.517 respectively; for matched k and t forms they are 0.490 and 0.541. The paper selects these cases to illustrate patterns and does not present them as a prespecified exhaustive search (section 2, Tables 2–3).",
+    "The paper proposes positional distributions as one possible contributor to cross-word boundary frequencies and illustrates this using y.q and n.q; it leaves generalization to other boundary combinations open (section 5)."
   ],
   "open": [
     {
-      "question": "How do the skewed-pair and unique-word measures behave on texts transformed by historically plausible ciphers, as compared with their unencoded sources?",
-      "front": "J",
-      "check": "Apply the published measures and prespecified frequency filtering to matched plaintext and cipher variants, using multiple samples and fixed random seeds; compare the resulting changes with the manuscript's public and hidden pages."
+      "question": "How do the reported line-interior positional differences vary with line length and manuscript section?",
+      "front": "L2",
+      "check": "Prespecify the Sh/ch, qo/o and k/t contrasts, measure relative interior positions by line-length and section strata in independent transcriptions, and evaluate the fixed comparisons on held-out pages."
+    },
+    {
+      "question": "How much of the observed cross-word boundary frequency structure is explained by line and paragraph position beyond the illustrated y.q and n.q examples?",
+      "front": "L2",
+      "check": "Use position-matched randomizations to compare a prespecified set of boundary pairs on public pages, and evaluate the fixed aggregate comparison on held-out pages."
     }
   ]
 }
