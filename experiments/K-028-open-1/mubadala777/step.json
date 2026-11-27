@@ -1,0 +1,1985 @@
+{
+  "title": "Test a fitted fragment-wheel dependency without increasing the wheel inventories",
+  "statement": "A second frozen fragment-wheel bank gained some previously unseen Stolfi grammar exceptions in both ZL and Takahashi, but independently spun wheel outputs missed the real short-length distribution and the abundance of near neighbors. Test whether a simple dependency within a bank can improve those properties with the same inventories.",
+  "program": "G",
+  "check": "Use the attached literal wheel banks or fit an explicitly specified equivalent solely on public training pages. Before evaluation freeze one low-parameter rule for favoring certain positions and occasionally sharing a fragment with the previous word, with the marginal-length weighting and sharing independently ablated. On the aligned public evaluation practice ZL and Takahashi pages report word- and type-length total variation, one-edit rates with and without exact repeats, and outside-grammar mass and unseen exception support. Compare with the attached two-bank independent draws and lengths-matched independent real control.",
+  "on_path": false,
+  "hard": true,
+  "evidence": {
+    "parent_question": "Left open by René Zandbergen (2021): The Cardan grille approach to the Voynich MS taken to the next level: Can a compact, prespecified bank of fragment wheels retain the length and edit-distance patterns while explaining tokens that fall outside the proposed word grammar?",
+    "answer": [
+      "A second bank raised public supported exception types from 15 to 60 of 271 in ZL and from 18 to 58 of 242 in Takahashi. Of types entirely absent from ZL training, it raised coverage from 12 to 32 of 227 in ZL and from 16 to 33 of 202 in Takahashi. An eligible type is supported if it occurs anywhere in the forward enumerated surface vocabulary.",
+      "Exact token-length total variation was 0.2790 and 0.2652 for the single bank and 0.2789 and 0.2651 for the mixture. For length distributions over distinct types in 30 matched-size draws, median distances for ZL and Takahashi were 0.1639 and 0.1676 single bank versus 0.1640 and 0.1667 mixture. These are surface glyph lengths, obtained by resegmentation after concatenation.",
+      "The two-bank exact-distance-one rates on 25,000 length-matched draws per transcription were 2.00% and 1.81%, versus 4.44% and 4.37% in actual adjacent eligible pairs on the common length support. The independent real vocabulary controls yielded 3.04% and 2.87%. Exact repeats separately were 0.22% and 0.13% in the mixture versus 0.98% and 1.01% in real adjacency.",
+      "Outside-grammar probability mass was 48.78% single bank and 49.72% mixture, versus 5.32% of eligible ZL training tokens and 5.07% and 4.67% on public ZL and Takahashi evaluation. Receiving some support and being generated at a plausible rate are different checks. The specialist's selection objective used canonical glyph-split support on training and held the original cell where no strict gain was found. All final coverage uses forward surface support.",
+      "With the same allowed lengths per role and no cap on distinct fragments per role, the union of all fragments encountered during training could form 223 of 227 unseen ZL and 201 of 202 unseen Takahashi exceptions. This post hoc diagnostic is not a fitted bank or an attainable 72-slot upper bound; it isolates the limited fitted support from outright lack of role fragments.",
+      "Both tested banks use independent uniform draws conditional on their bank choice, exact Table 5 length capacities, and train-derived literal fragments. A single bank stores 72 physical slots and the two bank variant stores 144. Token eligibility is assessed on the project parser output, including its ordinary handling of bracketed alternatives. Table 5 specifies length quotas and not the fragment strings used here. The modest coverage improvement and persistent mismatches are evidence for this particular design on the public split. They do not score every possible fragment-wheel, unbalanced rotor, or dependent wheel choice."
+    ],
+    "frozen_plan": {
+      "step": "K-028-open-1",
+      "primary_sources": {
+        "wheel_design": "https://arxiv.org/pdf/2104.12548, Table 5 binomial row and Table 6",
+        "grammar": "https://www.ic.unicamp.br/~stolfi/EXPORT/voynich/00-06-07-word-grammar/txt.n.html, root NormalWord"
+      },
+      "scope": "Use the official public practice training split of ZL for fitting only. Primary evaluation is the official public practice evaluation split for ZL and Takahashi. Retain certain ASCII lowercase paragraph tokens; split comma and dot by the project IVTFF parser. The separator treatment stays fixed before both stages. If a discarded token divides two others, those tokens do not form an adjacent pair.",
+      "alphabet": "Basic EVA. ch, sh, cth, ckh, cph and cfh take one position. Fragment quotas apply to explicit glyph tuples. Also reparse concatenated raw EVA strings to measure any length changes across joins.",
+      "wheel_slot_quotas": [
+        {
+          "0": 3,
+          "1": 9,
+          "2": 9,
+          "3": 3
+        },
+        {
+          "0": 3,
+          "1": 9,
+          "2": 9,
+          "3": 3
+        },
+        {
+          "1": 3,
+          "2": 9,
+          "3": 9,
+          "4": 3
+        }
+      ],
+      "primary_baseline": "Each positive-length wheel slot takes a distinct fragment. Use the top fragments by frequency-weighted eligible split responsibility on NormalWord training tokens. A word contributes equal portions to each allowable three-way split. Epsilon receives the three published slots in the first two wheels.",
+      "primary_extension": "A second equal-size wheel bank. Start from fragments ranked by split responsibility on distinct training types outside NormalWord, using normal training ranks only as fallback. Run two deterministic sweeps through the role and length cells. With other cells fixed, greedy refill of the same slots expands training abnormal-type coverage. Preserve the original cell on any non-improving replacement. Do not increase the 72-slot capacity or length maximum.",
+      "mixture": "Choose the second bank with probability equal to the abnormal-token proportion in ZL practice training. Spin each selected bank uniformly over its three 24-entry wheel inventories. Report the one-bank baseline, two-bank mixture, and support of the specialist bank alone, including coverage of held-apart exception types unseen in training.",
+      "metrics": [
+        "Raw spin combinations and unique surface word types, including collisions between slot boundaries",
+        "Nominal and reparsed length distributions, total-variation distance using both token and unique-type weighting, and 30 draws with the same token count as each public target",
+        "Out-of-NormalWord eligible token and type coverage overall and among types unseen in ZL training; record tokens physically longer than the ten-glyph cap",
+        "Probability mass on unseen types and on outside-grammar types, with no semantic classification of unattested output",
+        "Exact-repeat and edit-distance-one rates in adjacent public paragraph pairs. Compare with independent real and generated draws conditioned on each two-word length stratum, and record support before comparing"
+      ],
+      "sampling": {
+        "length_sample_replicates": 30,
+        "length_seed": 528201,
+        "pair_seed": 528202,
+        "pairs_per_available_stratum_total_scale": 25000
+      }
+    },
+    "frozen_fit": {
+      "schedule": {
+        "baseline": [
+          [
+            [],
+            [],
+            [],
+            [
+              "a"
+            ],
+            [
+              "ch"
+            ],
+            [
+              "d"
+            ],
+            [
+              "k"
+            ],
+            [
+              "l"
+            ],
+            [
+              "o"
+            ],
+            [
+              "q"
+            ],
+            [
+              "sh"
+            ],
+            [
+              "y"
+            ],
+            [
+              "a",
+              "i"
+            ],
+            [
+              "ch",
+              "e"
+            ],
+            [
+              "ch",
+              "o"
+            ],
+            [
+              "d",
+              "a"
+            ],
+            [
+              "o",
+              "k"
+            ],
+            [
+              "o",
+              "l"
+            ],
+            [
+              "o",
+              "t"
+            ],
+            [
+              "q",
+              "o"
+            ],
+            [
+              "sh",
+              "e"
+            ],
+            [
+              "d",
+              "a",
+              "i"
+            ],
+            [
+              "q",
+              "o",
+              "k"
+            ],
+            [
+              "q",
+              "o",
+              "t"
+            ]
+          ],
+          [
+            [],
+            [],
+            [],
+            [
+              "a"
+            ],
+            [
+              "ch"
+            ],
+            [
+              "d"
+            ],
+            [
+              "e"
+            ],
+            [
+              "i"
+            ],
+            [
+              "k"
+            ],
+            [
+              "o"
+            ],
+            [
+              "sh"
+            ],
+            [
+              "t"
+            ],
+            [
+              "a",
+              "i"
+            ],
+            [
+              "ch",
+              "e"
+            ],
+            [
+              "d",
+              "a"
+            ],
+            [
+              "e",
+              "d"
+            ],
+            [
+              "e",
+              "e"
+            ],
+            [
+              "k",
+              "e"
+            ],
+            [
+              "o",
+              "k"
+            ],
+            [
+              "o",
+              "t"
+            ],
+            [
+              "q",
+              "o"
+            ],
+            [
+              "a",
+              "i",
+              "i"
+            ],
+            [
+              "o",
+              "k",
+              "e"
+            ],
+            [
+              "q",
+              "o",
+              "k"
+            ]
+          ],
+          [
+            [
+              "l"
+            ],
+            [
+              "r"
+            ],
+            [
+              "y"
+            ],
+            [
+              "a",
+              "l"
+            ],
+            [
+              "a",
+              "m"
+            ],
+            [
+              "a",
+              "r"
+            ],
+            [
+              "ch",
+              "y"
+            ],
+            [
+              "d",
+              "y"
+            ],
+            [
+              "e",
+              "y"
+            ],
+            [
+              "i",
+              "n"
+            ],
+            [
+              "o",
+              "l"
+            ],
+            [
+              "o",
+              "r"
+            ],
+            [
+              "a",
+              "i",
+              "n"
+            ],
+            [
+              "ch",
+              "d",
+              "y"
+            ],
+            [
+              "ch",
+              "e",
+              "y"
+            ],
+            [
+              "d",
+              "a",
+              "r"
+            ],
+            [
+              "e",
+              "d",
+              "y"
+            ],
+            [
+              "e",
+              "e",
+              "y"
+            ],
+            [
+              "e",
+              "o",
+              "l"
+            ],
+            [
+              "i",
+              "i",
+              "n"
+            ],
+            [
+              "o",
+              "d",
+              "y"
+            ],
+            [
+              "a",
+              "i",
+              "i",
+              "n"
+            ],
+            [
+              "ch",
+              "e",
+              "d",
+              "y"
+            ],
+            [
+              "e",
+              "e",
+              "d",
+              "y"
+            ]
+          ]
+        ],
+        "exception_bank": [
+          [
+            [],
+            [],
+            [],
+            [
+              "a"
+            ],
+            [
+              "c"
+            ],
+            [
+              "ch"
+            ],
+            [
+              "d"
+            ],
+            [
+              "k"
+            ],
+            [
+              "o"
+            ],
+            [
+              "s"
+            ],
+            [
+              "sh"
+            ],
+            [
+              "y"
+            ],
+            [
+              "a",
+              "i"
+            ],
+            [
+              "ch",
+              "e"
+            ],
+            [
+              "o",
+              "k"
+            ],
+            [
+              "o",
+              "t"
+            ],
+            [
+              "o",
+              "y"
+            ],
+            [
+              "p",
+              "ch"
+            ],
+            [
+              "p",
+              "o"
+            ],
+            [
+              "t",
+              "ch"
+            ],
+            [
+              "t",
+              "o"
+            ],
+            [
+              "a",
+              "i",
+              "i"
+            ],
+            [
+              "d",
+              "a",
+              "i"
+            ],
+            [
+              "q",
+              "o",
+              "k"
+            ]
+          ],
+          [
+            [],
+            [],
+            [],
+            [
+              "a"
+            ],
+            [
+              "cth"
+            ],
+            [
+              "d"
+            ],
+            [
+              "i"
+            ],
+            [
+              "k"
+            ],
+            [
+              "l"
+            ],
+            [
+              "o"
+            ],
+            [
+              "r"
+            ],
+            [
+              "t"
+            ],
+            [
+              "a",
+              "l"
+            ],
+            [
+              "a",
+              "r"
+            ],
+            [
+              "e",
+              "o"
+            ],
+            [
+              "i",
+              "n"
+            ],
+            [
+              "k",
+              "h"
+            ],
+            [
+              "l",
+              "k"
+            ],
+            [
+              "l",
+              "sh"
+            ],
+            [
+              "o",
+              "k"
+            ],
+            [
+              "o",
+              "l"
+            ],
+            [
+              "a",
+              "i",
+              "r"
+            ],
+            [
+              "o",
+              "l",
+              "k"
+            ],
+            [
+              "o",
+              "r",
+              "ch"
+            ]
+          ],
+          [
+            [
+              "a"
+            ],
+            [
+              "g"
+            ],
+            [
+              "y"
+            ],
+            [
+              "a",
+              "l"
+            ],
+            [
+              "a",
+              "r"
+            ],
+            [
+              "ch",
+              "y"
+            ],
+            [
+              "d",
+              "y"
+            ],
+            [
+              "e",
+              "y"
+            ],
+            [
+              "h",
+              "y"
+            ],
+            [
+              "k",
+              "y"
+            ],
+            [
+              "o",
+              "l"
+            ],
+            [
+              "o",
+              "r"
+            ],
+            [
+              "a",
+              "i",
+              "n"
+            ],
+            [
+              "ch",
+              "d",
+              "y"
+            ],
+            [
+              "ch",
+              "e",
+              "y"
+            ],
+            [
+              "d",
+              "ch",
+              "y"
+            ],
+            [
+              "e",
+              "d",
+              "y"
+            ],
+            [
+              "e",
+              "e",
+              "y"
+            ],
+            [
+              "i",
+              "i",
+              "n"
+            ],
+            [
+              "o",
+              "d",
+              "y"
+            ],
+            [
+              "t",
+              "a",
+              "r"
+            ],
+            [
+              "a",
+              "i",
+              "i",
+              "n"
+            ],
+            [
+              "ch",
+              "e",
+              "d",
+              "y"
+            ],
+            [
+              "e",
+              "e",
+              "d",
+              "y"
+            ]
+          ]
+        ]
+      },
+      "training_scope": {
+        "public_training_pages": 192,
+        "accepted_paragraph_tokens": 29365,
+        "excluded_tokens": 187,
+        "ordinary_tokens": 27803,
+        "exception_tokens": 1562,
+        "ordinary_types": 4872,
+        "exception_types": 1382,
+        "exception_types_with_a_three_way_split": 1363
+      },
+      "exception_bank_draw_probability": 0.053192576196151885,
+      "training_optimization_events": [
+        {
+          "pass": 1,
+          "wheel_role_0_based": 0,
+          "fragment_glyph_count": 1,
+          "covered_training_exception_types_before": 163,
+          "covered_training_exception_types_after": 181,
+          "removed": [
+            "d",
+            "p",
+            "q",
+            "t"
+          ],
+          "added": [
+            "c",
+            "cth",
+            "s",
+            "y"
+          ]
+        },
+        {
+          "pass": 1,
+          "wheel_role_0_based": 0,
+          "fragment_glyph_count": 2,
+          "covered_training_exception_types_before": 181,
+          "covered_training_exception_types_after": 193,
+          "removed": [
+            "cho",
+            "da",
+            "qo"
+          ],
+          "added": [
+            "oy",
+            "pch",
+            "tch"
+          ]
+        },
+        {
+          "pass": 1,
+          "wheel_role_0_based": 0,
+          "fragment_glyph_count": 3,
+          "covered_training_exception_types_before": 193,
+          "covered_training_exception_types_after": 194,
+          "removed": [
+            "qot"
+          ],
+          "added": [
+            "air"
+          ]
+        },
+        {
+          "pass": 1,
+          "wheel_role_0_based": 1,
+          "fragment_glyph_count": 1,
+          "covered_training_exception_types_before": 194,
+          "covered_training_exception_types_after": 209,
+          "removed": [
+            "ch",
+            "e"
+          ],
+          "added": [
+            "cth",
+            "r"
+          ]
+        },
+        {
+          "pass": 1,
+          "wheel_role_0_based": 1,
+          "fragment_glyph_count": 2,
+          "covered_training_exception_types_before": 209,
+          "covered_training_exception_types_after": 231,
+          "removed": [
+            "ai",
+            "che",
+            "ee",
+            "ii"
+          ],
+          "added": [
+            "in",
+            "kch",
+            "kh",
+            "lsh"
+          ]
+        },
+        {
+          "pass": 1,
+          "wheel_role_0_based": 1,
+          "fragment_glyph_count": 3,
+          "covered_training_exception_types_before": 231,
+          "covered_training_exception_types_after": 246,
+          "removed": [
+            "aii",
+            "dai"
+          ],
+          "added": [
+            "air",
+            "orch"
+          ]
+        },
+        {
+          "pass": 1,
+          "wheel_role_0_based": 2,
+          "fragment_glyph_count": 1,
+          "covered_training_exception_types_before": 246,
+          "covered_training_exception_types_after": 257,
+          "removed": [
+            "r"
+          ],
+          "added": [
+            "a"
+          ]
+        },
+        {
+          "pass": 1,
+          "wheel_role_0_based": 2,
+          "fragment_glyph_count": 2,
+          "covered_training_exception_types_before": 257,
+          "covered_training_exception_types_after": 264,
+          "removed": [
+            "in"
+          ],
+          "added": [
+            "al"
+          ]
+        },
+        {
+          "pass": 1,
+          "wheel_role_0_based": 2,
+          "fragment_glyph_count": 3,
+          "covered_training_exception_types_before": 264,
+          "covered_training_exception_types_after": 267,
+          "removed": [
+            "kar"
+          ],
+          "added": [
+            "tar"
+          ]
+        },
+        {
+          "pass": 1,
+          "wheel_role_0_based": 2,
+          "fragment_glyph_count": 4,
+          "covered_training_exception_types_before": 267,
+          "covered_training_exception_types_after": 270,
+          "removed": [
+            "shedy"
+          ],
+          "added": [
+            "chedy"
+          ]
+        },
+        {
+          "pass": 2,
+          "wheel_role_0_based": 0,
+          "fragment_glyph_count": 1,
+          "covered_training_exception_types_before": 270,
+          "covered_training_exception_types_after": 271,
+          "removed": [
+            "cth"
+          ],
+          "added": [
+            "d"
+          ]
+        },
+        {
+          "pass": 2,
+          "wheel_role_0_based": 0,
+          "fragment_glyph_count": 3,
+          "covered_training_exception_types_before": 271,
+          "covered_training_exception_types_after": 278,
+          "removed": [
+            "air"
+          ],
+          "added": [
+            "aii"
+          ]
+        },
+        {
+          "pass": 2,
+          "wheel_role_0_based": 1,
+          "fragment_glyph_count": 2,
+          "covered_training_exception_types_before": 278,
+          "covered_training_exception_types_after": 279,
+          "removed": [
+            "kch"
+          ],
+          "added": [
+            "ar"
+          ]
+        }
+      ],
+      "design_file_sha256": "86a5fed6a29b8ad7426afe50f2840f543417d62559afe0520bb697e3cb09eec3",
+      "normal_word_parser_sha256": "f173fb3ef6d385d6bbe9cfe5fe46c08fb86e6fb272ec223969f3572c5a2b97a9"
+    },
+    "reference_tables_and_factorizations": {
+      "step": "K-028-open-1",
+      "zandbergen": {
+        "citation": "René Zandbergen (2021), The Cardan grille approach to the Voynich MS taken to the next level, arXiv:2104.12548v1",
+        "pdf": "https://arxiv.org/pdf/2104.12548v1",
+        "page_index_convention": "One-based PDF page numbers, counting the title page as 1",
+        "blocks": [
+          {
+            "pdf_pages": [
+              6,
+              7
+            ],
+            "section": "Changing the table",
+            "content": "Three independent 24-position wheels allow 13,824 position triples. The author leaves open whether 24 fragments per wheel can consistently generate a vocabulary covering the manuscript."
+          },
+          {
+            "pdf_pages": [
+              8,
+              9
+            ],
+            "section": "Word structure, Table 2",
+            "content": "Qualitative crust, mantle and core assignments suggest overlapping outer and central wheel contents. Several splits are possible even for the single qokeedy example. Table 2's ee is a mantle grammar component rather than a single length unit in Stolfi's factorization."
+          },
+          {
+            "pdf_pages": [
+              10,
+              11,
+              12,
+              13
+            ],
+            "section": "Word length distribution, footnote 14, Figures 6–7, Tables 3–6",
+            "content": "Figure 6 reproduces Stolfi's Figure 3 and compares observed text and label type distributions with a theoretical shifted binomial. Table 3 gives slot-length ratios, Table 4 gives the binomial counts, Table 5 gives those counts and two alternatives, and Table 6 counts position triples by summed glyph length. These tables specify multiplicities only."
+          },
+          {
+            "pdf_pages": [
+              15,
+              16,
+              17
+            ],
+            "section": "Table 8 and concluding remarks",
+            "content": "The paper sketches how nearby words could arise from replacing, inserting or deleting a glyph in wheel-generated forms. It gives no quantitative edit-distance benchmark, fully populated 24-position Voynich wheels, independent evaluation, or measured fit to grammar exceptions. The separate Figure 1/2 f9v grille is assembled from that page. Table 9's populated wheels generate Roman numerals."
+          }
+        ],
+        "table_5": {
+          "fragment_lengths_by_slot": {
+            "left": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "centre": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "right": [
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "binomial": {
+            "left": [
+              3,
+              9,
+              9,
+              3
+            ],
+            "centre": [
+              3,
+              9,
+              9,
+              3
+            ],
+            "right": [
+              3,
+              9,
+              9,
+              3
+            ]
+          },
+          "alternative_1": {
+            "left": [
+              2,
+              10,
+              8,
+              4
+            ],
+            "centre": [
+              3,
+              7,
+              10,
+              4
+            ],
+            "right": [
+              5,
+              7,
+              9,
+              3
+            ]
+          },
+          "alternative_2": {
+            "left": [
+              5,
+              7,
+              7,
+              5
+            ],
+            "centre": [
+              1,
+              11,
+              11,
+              1
+            ],
+            "right": [
+              4,
+              8,
+              8,
+              4
+            ]
+          },
+          "position_triples_per_design": 13824,
+          "table_6_counts_by_total_length_1_to_10": {
+            "binomial": [
+              27,
+              243,
+              972,
+              2268,
+              3402,
+              3402,
+              2268,
+              972,
+              243,
+              27
+            ],
+            "alternative_1": [
+              30,
+              262,
+              932,
+              2092,
+              3130,
+              3322,
+              2444,
+              1204,
+              360,
+              48
+            ],
+            "alternative_2": [
+              20,
+              288,
+              1092,
+              2284,
+              3228,
+              3228,
+              2284,
+              1092,
+              288,
+              20
+            ]
+          },
+          "usage": "The ranges in Table 5 apply per slot and to glyph counts, not raw character offsets. The preceding prose's fourth is a typo for the rightmost of three wheels. Multiple empty positions repeat one empty fragment. Other repeated fragments or ambiguous concatenation boundaries may further reduce distinct generated forms. Verify the positional histogram before deduplication and compare observed types with deduplicated model types separately."
+        }
+      },
+      "stolfi": {
+        "citation": "Jorge Stolfi (2000), On the VMS Word Length Distribution, definitions and Figures 1–3",
+        "page": "https://www.ic.unicamp.br/~stolfi/EXPORT/voynich/00-12-21-word-length-distr/",
+        "alphabet": "Currier-like symbol count over EVA spelling. Concatenation should preserve glyph tuples. Ordinary Swarm eva-basic reproduces every Stolfi source factorization in both tables after normalizing compound case. This equivalence covers the source tables and does not assert identical corpus filtering or coverage of rare symbols.",
+        "compound_glyphs_in_source_tables_lowercased": [
+          "ch",
+          "sh",
+          "cth",
+          "ckh",
+          "cph",
+          "cfh"
+        ],
+        "factorization_audit": {
+          "comparison": "For each four-field row, segment the lowercase spelling with vs.ivtff.segment(word, 'eva-basic'). Compare to lowercase brace-delimited factors and to the final length column.",
+          "text": {
+            "url": "https://www.ic.unicamp.br/~stolfi/EXPORT/voynich/00-12-21-word-length-distr/text/wd-len-basic.cts",
+            "sha256": "063910bd60f97510c91d8b6ba5e345a52e0b508d0582d52d84cb38c7c1ace680",
+            "rows": 6525,
+            "factorization_mismatches": 0,
+            "length_mismatches": 0
+          },
+          "labels": {
+            "url": "https://www.ic.unicamp.br/~stolfi/EXPORT/voynich/00-12-21-word-length-distr/labs/wd-len-basic.cts",
+            "sha256": "c4234c8252a787a7739e4e73856759bb303b40b78e611d00f2325e365ea154fb",
+            "rows": 721,
+            "factorization_mismatches": 0,
+            "length_mismatches": 0
+          }
+        },
+        "grammar": "https://www.ic.unicamp.br/~stolfi/EXPORT/voynich/00-06-07-word-grammar/txt.n.html"
+      }
+    },
+    "public_results": {
+      "inventory_sha256": "8d87cc1881fb5040bc89e29f45152b7a4cb53eedbd09de5094d9c49264b4f4ca",
+      "training_coverage": {
+        "all": {
+          "eligible": {
+            "tokens": 29365,
+            "types": 6254
+          },
+          "more_than_ten_glyphs": {
+            "tokens": 27,
+            "types": 25
+          },
+          "supported": {
+            "baseline": {
+              "types": 1333,
+              "tokens": 19142
+            },
+            "two_banks": {
+              "types": 1959,
+              "tokens": 21573
+            },
+            "exception_bank_alone": {
+              "types": 1169,
+              "tokens": 17264
+            }
+          }
+        },
+        "outside_grammar": {
+          "eligible": {
+            "tokens": 1562,
+            "types": 1382
+          },
+          "more_than_ten_glyphs": {
+            "tokens": 19,
+            "types": 19
+          },
+          "supported": {
+            "baseline": {
+              "types": 67,
+              "tokens": 82
+            },
+            "two_banks": {
+              "types": 301,
+              "tokens": 426
+            },
+            "exception_bank_alone": {
+              "types": 281,
+              "tokens": 406
+            }
+          },
+          "newly_covered_by_second_bank": {
+            "types": 234,
+            "tokens": 344
+          }
+        },
+        "outside_grammar_unseen_in_train": {
+          "eligible": {
+            "tokens": 0,
+            "types": 0
+          },
+          "more_than_ten_glyphs": {
+            "tokens": 0,
+            "types": 0
+          },
+          "supported": {
+            "baseline": {
+              "types": 0,
+              "tokens": 0
+            },
+            "two_banks": {
+              "types": 0,
+              "tokens": 0
+            },
+            "exception_bank_alone": {
+              "types": 0,
+              "tokens": 0
+            }
+          },
+          "newly_covered_by_second_bank": {
+            "types": 0,
+            "tokens": 0
+          }
+        }
+      },
+      "physical_spin_counts": {
+        "baseline": {
+          "nominal_length_counts": {
+            "1": 27,
+            "2": 243,
+            "3": 972,
+            "4": 2268,
+            "5": 3402,
+            "6": 3402,
+            "7": 2268,
+            "8": 972,
+            "9": 243,
+            "10": 27
+          },
+          "surface_length_counts": {
+            "1": 27,
+            "2": 243,
+            "3": 972,
+            "4": 2268,
+            "5": 3402,
+            "6": 3402,
+            "7": 2268,
+            "8": 972,
+            "9": 243,
+            "10": 27
+          },
+          "unique_surface_types": 9655,
+          "draws": 13824,
+          "joins_that_change_glyph_count": 0
+        },
+        "exception_bank": {
+          "nominal_length_counts": {
+            "1": 27,
+            "2": 243,
+            "3": 972,
+            "4": 2268,
+            "5": 3402,
+            "6": 3402,
+            "7": 2268,
+            "8": 972,
+            "9": 243,
+            "10": 27
+          },
+          "surface_length_counts": {
+            "1": 27,
+            "2": 254,
+            "3": 975,
+            "4": 2272,
+            "5": 3396,
+            "6": 3393,
+            "7": 2265,
+            "8": 972,
+            "9": 243,
+            "10": 27
+          },
+          "unique_surface_types": 10994,
+          "draws": 13824,
+          "joins_that_change_glyph_count": 32
+        }
+      },
+      "model_output": {
+        "baseline": {
+          "surface_types": 9655,
+          "outside_grammar_types": 5769,
+          "outside_grammar_probability_mass": 0.48777488425925924,
+          "unattested_in_training_types": 8322,
+          "unattested_in_training_probability_mass": 0.718532986111111,
+          "surface_token_length_probabilities": {
+            "1": 0.001953125,
+            "2": 0.017578125,
+            "3": 0.0703125,
+            "4": 0.1640625,
+            "5": 0.24609375,
+            "6": 0.24609375,
+            "7": 0.1640625,
+            "8": 0.0703125,
+            "9": 0.017578125,
+            "10": 0.001953125
+          },
+          "surface_type_length_counts": {
+            "1": 3,
+            "2": 38,
+            "3": 295,
+            "4": 1123,
+            "5": 2267,
+            "6": 2713,
+            "7": 2022,
+            "8": 927,
+            "9": 240,
+            "10": 27
+          }
+        },
+        "two_banks": {
+          "surface_types": 18665,
+          "outside_grammar_types": 12724,
+          "outside_grammar_probability_mass": 0.49716746806241363,
+          "unattested_in_training_types": 16706,
+          "unattested_in_training_probability_mass": 0.7235698120833884,
+          "surface_token_length_probabilities": {
+            "1": 0.001953125000000003,
+            "2": 0.017620451268674623,
+            "3": 0.07032404352782053,
+            "6": 0.24605911941653905,
+            "5": 0.24607066294435911,
+            "4": 0.1640778913704265,
+            "7": 0.16405095647218004,
+            "8": 0.07031250000000018,
+            "9": 0.01757812500000002,
+            "10": 0.0019531250000000017
+          },
+          "surface_type_length_counts": {
+            "1": 5,
+            "2": 74,
+            "3": 574,
+            "6": 5279,
+            "5": 4303,
+            "4": 2077,
+            "7": 3988,
+            "8": 1834,
+            "9": 477,
+            "10": 54
+          }
+        },
+        "exception_bank_alone": {
+          "surface_types": 10994,
+          "outside_grammar_types": 8035,
+          "outside_grammar_probability_mass": 0.6643518518518519,
+          "unattested_in_training_types": 9825,
+          "unattested_in_training_probability_mass": 0.8132233796296295,
+          "surface_token_length_probabilities": {
+            "1": 0.001953125,
+            "2": 0.01837384259259259,
+            "3": 0.0705295138888889,
+            "4": 0.16435185185185186,
+            "5": 0.2456597222222222,
+            "6": 0.24544270833333334,
+            "7": 0.1638454861111111,
+            "8": 0.0703125,
+            "9": 0.017578125,
+            "10": 0.001953125
+          },
+          "surface_type_length_counts": {
+            "1": 3,
+            "2": 51,
+            "3": 391,
+            "4": 1374,
+            "5": 2660,
+            "6": 3074,
+            "7": 2202,
+            "8": 969,
+            "9": 243,
+            "10": 27
+          }
+        }
+      },
+      "evaluation": {
+        "ZL": {
+          "public_evaluation_pages": 34,
+          "discarded_paragraph_tokens": 23,
+          "real_token_length_counts": {
+            "4": 1260,
+            "7": 385,
+            "2": 473,
+            "1": 194,
+            "3": 981,
+            "5": 1167,
+            "6": 880,
+            "9": 29,
+            "8": 84,
+            "10": 6,
+            "11": 2
+          },
+          "real_type_length_counts": {
+            "4": 381,
+            "7": 235,
+            "2": 58,
+            "1": 10,
+            "3": 195,
+            "5": 484,
+            "6": 429,
+            "9": 29,
+            "8": 78,
+            "10": 6,
+            "11": 2
+          },
+          "real_token_length_moments": {
+            "mean": 4.3852774217176345,
+            "variance": 2.626510951237154
+          },
+          "real_type_length_moments": {
+            "mean": 5.1604614577871,
+            "variance": 2.3864178258611157
+          },
+          "support": {
+            "all": {
+              "eligible": {
+                "tokens": 5461,
+                "types": 1907
+              },
+              "more_than_ten_glyphs": {
+                "tokens": 2,
+                "types": 2
+              },
+              "supported": {
+                "baseline": {
+                  "types": 665,
+                  "tokens": 3583
+                },
+                "two_banks": {
+                  "types": 878,
+                  "tokens": 3999
+                },
+                "exception_bank_alone": {
+                  "types": 541,
+                  "tokens": 3269
+                }
+              }
+            },
+            "outside_grammar": {
+              "eligible": {
+                "tokens": 277,
+                "types": 271
+              },
+              "more_than_ten_glyphs": {
+                "tokens": 2,
+                "types": 2
+              },
+              "supported": {
+                "baseline": {
+                  "types": 15,
+                  "tokens": 15
+                },
+                "two_banks": {
+                  "types": 60,
+                  "tokens": 63
+                },
+                "exception_bank_alone": {
+                  "types": 51,
+                  "tokens": 54
+                }
+              },
+              "newly_covered_by_second_bank": {
+                "types": 45,
+                "tokens": 48
+              }
+            },
+            "outside_grammar_unseen_in_train": {
+              "eligible": {
+                "tokens": 227,
+                "types": 227
+              },
+              "more_than_ten_glyphs": {
+                "tokens": 2,
+                "types": 2
+              },
+              "supported": {
+                "baseline": {
+                  "types": 12,
+                  "tokens": 12
+                },
+                "two_banks": {
+                  "types": 32,
+                  "tokens": 32
+                },
+                "exception_bank_alone": {
+                  "types": 23,
+                  "tokens": 23
+                }
+              },
+              "newly_covered_by_second_bank": {
+                "types": 20,
+                "tokens": 20
+              }
+            }
+          },
+          "lengths": {
+            "baseline": {
+              "exact_token_length_tv": 0.27896318783189894,
+              "complete_support_type_length_tv": 0.20698953975065834,
+              "model_token_length_moments": {
+                "mean": 5.5,
+                "variance": 2.25
+              },
+              "model_type_length_moments": {
+                "mean": 5.910823407560849,
+                "variance": 1.8997637445789632
+              },
+              "sample_token_length_tv": {
+                "median": 0.28126716718549716,
+                "p10": 0.27443691631569306,
+                "p90": 0.2878044314228163
+              },
+              "sample_type_length_tv": {
+                "median": 0.1639057578153129,
+                "p10": 0.15687966768792644,
+                "p90": 0.1702820602880642
+              },
+              "sample_unique_types": {
+                "median": 3649.0,
+                "p10": 3614.6,
+                "p90": 3683.0
+              },
+              "sample_tokens_per_draw": 5461,
+              "replicates": 30
+            },
+            "two_banks": {
+              "exact_token_length_tv": 0.2788939266649773,
+              "complete_support_type_length_tv": 0.21600543684770718,
+              "model_token_length_moments": {
+                "mean": 5.499776825128809,
+                "variance": 2.25058482226921
+              },
+              "model_type_length_moments": {
+                "mean": 5.935869274042325,
+                "variance": 1.901432387946888
+              },
+              "sample_token_length_tv": {
+                "median": 0.2788866507965574,
+                "p10": 0.27313678813404135,
+                "p90": 0.2861014466214979
+              },
+              "sample_type_length_tv": {
+                "median": 0.16395758784637848,
+                "p10": 0.1549330261675736,
+                "p90": 0.1705555568060042
+              },
+              "sample_unique_types": {
+                "median": 3737.0,
+                "p10": 3719.4,
+                "p90": 3769.0
+              },
+              "sample_tokens_per_draw": 5461,
+              "replicates": 30
+            }
+          },
+          "adjacency": {
+            "all_adjacent": {
+              "pairs": 4796,
+              "exact_repeats": 47,
+              "one_edit": 213,
+              "exact_repeat_rate": 0.009799833194328608,
+              "one_edit_rate": 0.04441201000834028,
+              "within_one_rate": 0.05421184320266889
+            },
+            "common_length_adjacent": {
+              "pairs": 4793,
+              "exact_repeats": 47,
+              "one_edit": 213,
+              "exact_repeat_rate": 0.009805967035259754,
+              "one_edit_rate": 0.044439808053411224,
+              "within_one_rate": 0.054245775088670976
+            },
+            "lost_adjacent_pairs": 3,
+            "available_word_lengths": {
+              "independent_real": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11
+              ],
+              "baseline": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ],
+              "two_banks": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            "available_length_strata": 88,
+            "independent_two_word_controls": {
+              "independent_real": {
+                "pairs": 25000,
+                "exact_repeats": 126,
+                "one_edit": 759,
+                "exact_repeat_rate": 0.00504,
+                "one_edit_rate": 0.03036,
+                "within_one_rate": 0.0354
+              },
+              "baseline": {
+                "pairs": 25000,
+                "exact_repeats": 53,
+                "one_edit": 513,
+                "exact_repeat_rate": 0.00212,
+                "one_edit_rate": 0.02052,
+                "within_one_rate": 0.02264
+              },
+              "two_banks": {
+                "pairs": 25000,
+                "exact_repeats": 55,
+                "one_edit": 499,
+                "exact_repeat_rate": 0.0022,
+                "one_edit_rate": 0.01996,
+                "within_one_rate": 0.02216
+              }
+            }
+          }
+        },
+        "IT": {
+          "public_evaluation_pages": 34,
+          "discarded_paragraph_tokens": 5,
+          "real_token_length_counts": {
+            "4": 1254,
+            "7": 384,
+            "2": 454,
+            "6": 908,
+            "3": 998,
+            "5": 1200,
+            "1": 93,
+            "9": 24,
+            "8": 75,
+            "10": 3,
+            "11": 1
+          },
+          "real_type_length_counts": {
+            "4": 392,
+            "7": 237,
+            "2": 54,
+            "6": 437,
+            "3": 191,
+            "5": 493,
+            "1": 9,
+            "9": 24,
+            "8": 69,
+            "10": 3,
+            "11": 1
+          },
+          "real_token_length_moments": {
+            "mean": 4.450129773822766,
+            "variance": 2.3735789597994668
+          },
+          "real_type_length_moments": {
+            "mean": 5.137696335078534,
+            "variance": 2.225542337106987
+          },
+          "support": {
+            "all": {
+              "eligible": {
+                "tokens": 5394,
+                "types": 1910
+              },
+              "more_than_ten_glyphs": {
+                "tokens": 1,
+                "types": 1
+              },
+              "supported": {
+                "baseline": {
+                  "types": 675,
+                  "tokens": 3541
+                },
+                "two_banks": {
+                  "types": 889,
+                  "tokens": 3979
+                },
+                "exception_bank_alone": {
+                  "types": 542,
+                  "tokens": 3258
+                }
+              }
+            },
+            "outside_grammar": {
+              "eligible": {
+                "tokens": 252,
+                "types": 242
+              },
+              "more_than_ten_glyphs": {
+                "tokens": 1,
+                "types": 1
+              },
+              "supported": {
+                "baseline": {
+                  "types": 18,
+                  "tokens": 18
+                },
+                "two_banks": {
+                  "types": 58,
+                  "tokens": 64
+                },
+                "exception_bank_alone": {
+                  "types": 49,
+                  "tokens": 55
+                }
+              },
+              "newly_covered_by_second_bank": {
+                "types": 40,
+                "tokens": 46
+              }
+            },
+            "outside_grammar_unseen_in_train": {
+              "eligible": {
+                "tokens": 203,
+                "types": 202
+              },
+              "more_than_ten_glyphs": {
+                "tokens": 1,
+                "types": 1
+              },
+              "supported": {
+                "baseline": {
+                  "types": 16,
+                  "tokens": 16
+                },
+                "two_banks": {
+                  "types": 33,
+                  "tokens": 33
+                },
+                "exception_bank_alone": {
+                  "types": 24,
+                  "tokens": 24
+                }
+              },
+              "newly_covered_by_second_bank": {
+                "types": 17,
+                "tokens": 17
+              }
+            }
+          },
+          "lengths": {
+            "baseline": {
+              "exact_token_length_tv": 0.26518904106414537,
+              "complete_support_type_length_tv": 0.21094460456427372,
+              "model_token_length_moments": {
+                "mean": 5.5,
+                "variance": 2.25
+              },
+              "model_type_length_moments": {
+                "mean": 5.910823407560849,
+                "variance": 1.8997637445789632
+              },
+              "sample_token_length_tv": {
+                "median": 0.2663144234334446,
+                "p10": 0.2601965146459028,
+                "p90": 0.27545420837968115
+              },
+              "sample_type_length_tv": {
+                "median": 0.16761050535140126,
+                "p10": 0.16096753771186556,
+                "p90": 0.17612711064724657
+              },
+              "sample_unique_types": {
+                "median": 3614.5,
+                "p10": 3576.2,
+                "p90": 3662.1
+              },
+              "sample_tokens_per_draw": 5394,
+              "replicates": 30
+            },
+            "two_banks": {
+              "exact_token_length_tv": 0.26511977989722374,
+              "complete_support_type_length_tv": 0.22005713860951495,
+              "model_token_length_moments": {
+                "mean": 5.499776825128809,
+                "variance": 2.25058482226921
+              },
+              "model_type_length_moments": {
+                "mean": 5.935869274042325,
+                "variance": 1.901432387946888
+              },
+              "sample_token_length_tv": {
+                "median": 0.2654801631442344,
+                "p10": 0.2597701149425288,
+                "p90": 0.27282165368928435
+              },
+              "sample_type_length_tv": {
+                "median": 0.16666727247732285,
+                "p10": 0.1590361902147031,
+                "p90": 0.17342663938204667
+              },
+              "sample_unique_types": {
+                "median": 3703.0,
+                "p10": 3674.8,
+                "p90": 3741.4
+              },
+              "sample_tokens_per_draw": 5394,
+              "replicates": 30
+            }
+          },
+          "adjacency": {
+            "all_adjacent": {
+              "pairs": 4740,
+              "exact_repeats": 48,
+              "one_edit": 207,
+              "exact_repeat_rate": 0.010126582278481013,
+              "one_edit_rate": 0.043670886075949364,
+              "within_one_rate": 0.05379746835443038
+            },
+            "common_length_adjacent": {
+              "pairs": 4738,
+              "exact_repeats": 48,
+              "one_edit": 207,
+              "exact_repeat_rate": 0.010130856901646263,
+              "one_edit_rate": 0.043689320388349516,
+              "within_one_rate": 0.05382017728999578
+            },
+            "lost_adjacent_pairs": 2,
+            "available_word_lengths": {
+              "independent_real": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11
+              ],
+              "baseline": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ],
+              "two_banks": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            "available_length_strata": 80,
+            "independent_two_word_controls": {
+              "independent_real": {
+                "pairs": 25000,
+                "exact_repeats": 119,
+                "one_edit": 717,
+                "exact_repeat_rate": 0.00476,
+                "one_edit_rate": 0.02868,
+                "within_one_rate": 0.03344
+              },
+              "baseline": {
+                "pairs": 25000,
+                "exact_repeats": 40,
+                "one_edit": 462,
+                "exact_repeat_rate": 0.0016,
+                "one_edit_rate": 0.01848,
+                "within_one_rate": 0.02008
+              },
+              "two_banks": {
+                "pairs": 25000,
+                "exact_repeats": 32,
+                "one_edit": 453,
+                "exact_repeat_rate": 0.00128,
+                "one_edit_rate": 0.01812,
+                "within_one_rate": 0.0194
+              }
+            }
+          }
+        }
+      }
+    },
+    "posthoc_unrestricted_fragment_support": {
+      "design": "Use every fragment from every admissible role split of every eligible ZL public-practice training form. Permit any combination of those fragments, without imposing 24 physical positions. Compare with the union of the two unchanged fitted banks, allowing cross-boundary resegmentation of the raw EVA surface in every case. No evaluation forms contribute fragments.",
+      "qualification": "The unlimited inventory is a descriptive upper bound under this training-derived role inventory. Its uncovered forms might be generated by assigning fragments to roles differently or by extrapolating fragments beyond those witnessed in the admissible training splits.",
+      "frozen_wheel_inventory_sha256": "8d87cc1881fb5040bc89e29f45152b7a4cb53eedbd09de5094d9c49264b4f4ca",
+      "training_types": 6254,
+      "train_role_inventory_size_by_length": [
+        {
+          "0": 1,
+          "1": 26,
+          "2": 247,
+          "3": 954
+        },
+        {
+          "0": 1,
+          "1": 29,
+          "2": 324,
+          "3": 1392
+        },
+        {
+          "1": 26,
+          "2": 220,
+          "3": 800,
+          "4": 1789
+        }
+      ],
+      "public_practice_evaluation": {
+        "zl": {
+          "partition": {
+            "all_exceptions": {
+              "generated_by_at_least_one_frozen_bank": {
+                "types": 60,
+                "tokens": 63
+              },
+              "training_inventory_support_but_absent_from_frozen_banks": {
+                "types": 207,
+                "tokens": 210
+              },
+              "missing_fragments_in_unlimited_role_inventory": {
+                "types": 2,
+                "tokens": 2
+              },
+              "too_long_for_slots": {
+                "types": 2,
+                "tokens": 2
+              }
+            },
+            "unseen_exceptions": {
+              "training_inventory_support_but_absent_from_frozen_banks": {
+                "types": 191,
+                "tokens": 191
+              },
+              "missing_fragments_in_unlimited_role_inventory": {
+                "types": 2,
+                "tokens": 2
+              },
+              "generated_by_at_least_one_frozen_bank": {
+                "types": 32,
+                "tokens": 32
+              },
+              "too_long_for_slots": {
+                "types": 2,
+                "tokens": 2
+              }
+            }
+          },
+          "support_by_bank": {
+            "all_exceptions": {
+              "unlimited_train": {
+                "types": 267,
+                "tokens": 273
+              },
+              "exception_bank": {
+                "types": 51,
+                "tokens": 54
+              },
+              "baseline": {
+                "types": 15,
+                "tokens": 15
+              }
+            },
+            "unseen_exceptions": {
+              "unlimited_train": {
+                "types": 223,
+                "tokens": 223
+              },
+              "exception_bank": {
+                "types": 23,
+                "tokens": 23
+              },
+              "baseline": {
+                "types": 12,
+                "tokens": 12
+              }
+            }
+          },
+          "surface_support_only_with_cross_boundary_resegmentation": {
+            "all_exceptions": {
+              "exception_bank": {
+                "types": 1,
+                "tokens": 1
+              }
+            },
+            "unseen_exceptions": {}
+          }
+        },
+        "it": {
+          "partition": {
+            "all_exceptions": {
+              "training_inventory_support_but_absent_from_frozen_banks": {
+                "types": 183,
+                "tokens": 187
+              },
+              "generated_by_at_least_one_frozen_bank": {
+                "types": 58,
+                "tokens": 64
+              },
+              "too_long_for_slots": {
+                "types": 1,
+                "tokens": 1
+              }
+            },
+            "unseen_exceptions": {
+              "training_inventory_support_but_absent_from_frozen_banks": {
+                "types": 168,
+                "tokens": 169
+              },
+              "generated_by_at_least_one_frozen_bank": {
+                "types": 33,
+                "tokens": 33
+              },
+              "too_long_for_slots": {
+                "types": 1,
+                "tokens": 1
+              }
+            }
+          },
+          "support_by_bank": {
+            "all_exceptions": {
+              "unlimited_train": {
+                "types": 241,
+                "tokens": 251
+              },
+              "exception_bank": {
+                "types": 49,
+                "tokens": 55
+              },
+              "baseline": {
+                "types": 18,
+                "tokens": 18
+              }
+            },
+            "unseen_exceptions": {
+              "unlimited_train": {
+                "types": 201,
+                "tokens": 202
+              },
+              "exception_bank": {
+                "types": 24,
+                "tokens": 24
+              },
+              "baseline": {
+                "types": 16,
+                "tokens": 16
+              }
+            }
+          },
+          "surface_support_only_with_cross_boundary_resegmentation": {
+            "all_exceptions": {
+              "exception_bank": {
+                "types": 1,
+                "tokens": 2
+              }
+            },
+            "unseen_exceptions": {}
+          }
+        }
+      }
+    },
+    "verification": {
+      "published_normal_word_grammar_alternatives_checked": 96,
+      "published_abnormal_plain_eva_examples_rejected": 1266,
+      "one_edit_classifier_levenshtein_fixture_pairs": 7225,
+      "frozen_inventory_refit": "Byte-identical in independent Python hash-seed runs",
+      "generator_sample_seed_for_word_length": 528201,
+      "generator_sample_seed_for_length_pairs": 528202,
+      "within_stratum_sample_seed": 528203
+    }
+  }
+}
