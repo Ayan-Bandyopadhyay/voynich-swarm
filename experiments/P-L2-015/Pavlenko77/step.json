@@ -1,0 +1,485 @@
+{
+  "title": "Scan pilot finds cross-section n/k compatibility but no exclusive hand3 diagnostic",
+  "program": "L2",
+  "on_path": false,
+  "hard": false,
+  "statement": "A single reader examined native Beinecke scan contexts from f94r/v (one botanical hand3 bifolio), f103r/f104r/f105r (three recipe hand3 bifolia), and controls f46r (hand2) and f41r (hand5). Returning n-like terminal curves and two-stem upper-loop k-like forms recur across the hand3 sections. Aperture and loop width vary, and broad n/k morphology also occurs in control2. Thin return junctions are not reliably resolved into closed/near/open categories. The initial planned ordinal glyph census was not completed; this is a coordinate-linked descriptive pilot under its explicit stop rule, with no feature rates or identification accuracy. No independent blind reader was used, and page labels were known. No exclusive visual diagnostic or revised hand attribution is established.",
+  "check": "Before a quantitative morphology test, have independent paleographic readers validate glyph localization and a complete same-context inventory, with source folio/hand labels hidden during coding. Fix measurable aperture/tip criteria with unresolved categories, retain every predefined eligible occurrence, and match scan scale and preceding-glyph context. Obtain a matched hand5 n control from a prospectively selected window; its absence in the current window must not be repaired by outcome-selected examples. Compare complete physical bifolia, not crops as independent observations.",
+  "plan": {
+    "task": "P-L2-015",
+    "type": "Single-model-reader descriptive scan morphology pilot, not a blind independent paleographer verdict. Reader already knows page/hand assignments.",
+    "pages": [
+      "94r",
+      "94v",
+      "103r",
+      "104r",
+      "105r",
+      "46r",
+      "41r"
+    ],
+    "physical_support": "Hand3 Q:2 botanical, T:1,T:2,T:3 recipe; controls hand2 E? f46=F:3 and hand5 F:1. Two94 sides share one physical bifolio.",
+    "source": "Pinned Beinecke MS408 IIIF manifest. Full native JPEG, no AI image enhancement. Retain sha256, native coordinate crops and source URLs.",
+    "selection": "On each page use the uppermost running-text block. Exclude its first decorated/paragraph-opening text line, then inspect the next3 ordinary lines. Record the first6 visually identifiable final EVA n-like forms in reading order and first3 ordinary EVA k-like forms, including uncertain junctions. Do not extend or search other parts of page to obtain a preferred pattern.",
+    "features": "For n: finial closure closed/near/open/unresolved, terminal tip relative to initial minim left/over/right/unresolved, loop height relative to minim high/low/unresolved. For k: crossbar bowed/straight/unresolved, loop round/oval/unresolved, terminal foot present/absent/unresolved. These are graphic observations, not inferred pen stroke order.",
+    "analysis": "Report within-page variation and cross-section overlap, retain controls and unresolved forms. No classifier accuracy, independent-reader agreement, or new hand assignment. Source descriptions guide feature choice but do not replace scan evidence.",
+    "stop": "If resolution or glyph identity prevents reliable categorical coding, publish a coordinate-linked descriptive panel and uncertainty instead of inventing counts."
+  },
+  "protocol_amendment": {
+    "reason": "A reliable ordinal six-n/three-k census was not obtained: upper bands have too few eligible n forms on some pages, f41r ordinary lines contain no n, and visual candidates can be confused with r or a compound gallows. The predeclared stop rule is used: coordinate-linked descriptive fragments only, no rates or classifier.",
+    "timing": "After visual band inspection, before final morphology descriptions.",
+    "identity_audit": "After scan-first selection, the first four pinned ZL lines were consulted to check glyph family only. A daiir/r candidate on f94r was rejected; a t/bench-gallows candidate on f104r/f105r was replaced by a plain-k context in the same prescribed ordinary lines. All candidate boxes are retained for audit.",
+    "94v_mapping": "Manifest label94v and95r is a7642px wide combined canvas. Only its left f94v panel is used; it is not an extra physical bifolio.",
+    "scale": "Original source pixels; crops preserve RGB, no binarization or enhancement; panel layout resizes uniformly to fit cells. Apparent topological contact at thin strokes is coded unresolved."
+  },
+  "metadata": {
+    "f41r": {
+      "hand": "5",
+      "section": "H",
+      "physical": "F:1"
+    },
+    "f46r": {
+      "hand": "2",
+      "section": "H",
+      "physical": "F:3"
+    },
+    "f94r": {
+      "hand": "3",
+      "section": "H",
+      "physical": "Q:2"
+    },
+    "f94v": {
+      "hand": "3",
+      "section": "H",
+      "physical": "Q:2"
+    },
+    "f103r": {
+      "hand": "3",
+      "section": "S",
+      "physical": "T:1"
+    },
+    "f104r": {
+      "hand": "3",
+      "section": "S",
+      "physical": "T:2"
+    },
+    "f105r": {
+      "hand": "3",
+      "section": "S",
+      "physical": "T:3"
+    }
+  },
+  "sources": [
+    {
+      "folio": "f41r",
+      "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006154",
+      "url": "https://collections.library.yale.edu/iiif/2/1006154/full/full/0/default.jpg",
+      "width": 2840,
+      "height": 3743,
+      "sha256": "7631b874dbb3e2f48ade864485a0210cb207f2c7878181e458582beba86877ba"
+    },
+    {
+      "folio": "f46r",
+      "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006164",
+      "url": "https://collections.library.yale.edu/iiif/2/1006164/full/full/0/default.jpg",
+      "width": 2865,
+      "height": 3719,
+      "sha256": "bc11de34e89d67f2b61c63473c3273256aa45d3d6beac4195c95625c07422740"
+    },
+    {
+      "folio": "f94r",
+      "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006240",
+      "url": "https://collections.library.yale.edu/iiif/2/1006240/full/full/0/default.jpg",
+      "width": 2728,
+      "height": 3754,
+      "sha256": "ad33592ad7f29a6e9fc6b9e45444286231f06a903d95b54d1195b17cfdca417b"
+    },
+    {
+      "folio": "f103r",
+      "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006254",
+      "url": "https://collections.library.yale.edu/iiif/2/1006254/full/full/0/default.jpg",
+      "width": 2688,
+      "height": 3805,
+      "sha256": "28a65644ebf9a16dc41c073e6535117d924765fae6af474dbd1e3fe2b167beda"
+    },
+    {
+      "folio": "f104r",
+      "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006256",
+      "url": "https://collections.library.yale.edu/iiif/2/1006256/full/full/0/default.jpg",
+      "width": 2677,
+      "height": 3811,
+      "sha256": "2ee5f2a32ed2e242d60dcb34398c9b8be6af0341872a476e3905f1314ebe716f"
+    },
+    {
+      "folio": "f105r",
+      "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006258",
+      "url": "https://collections.library.yale.edu/iiif/2/1006258/full/full/0/default.jpg",
+      "width": 2662,
+      "height": 3771,
+      "sha256": "0401750e6d83ed74cd4fea79f99c2aba5e2c8dcd90ed0f2641be81c7b722e82f"
+    },
+    {
+      "folio": "f94v-95r",
+      "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006241",
+      "url": "https://collections.library.yale.edu/iiif/2/1006241/full/full/0/default.jpg",
+      "width": 7642,
+      "height": 3801,
+      "sha256": "04405b1d121a3c73571bad7f5b887b8cf3776a829ee6482e8a82ca095918071d"
+    }
+  ],
+  "band_regions": {
+    "f94r": [
+      350,
+      400,
+      2250,
+      760
+    ],
+    "f103r": [
+      320,
+      180,
+      2400,
+      470
+    ],
+    "f104r": [
+      320,
+      130,
+      2480,
+      520
+    ],
+    "f105r": [
+      300,
+      470,
+      2480,
+      800
+    ],
+    "f41r": [
+      300,
+      250,
+      1140,
+      620
+    ],
+    "f46r": [
+      200,
+      300,
+      2350,
+      700
+    ],
+    "f94v-95r": [
+      980,
+      500,
+      2820,
+      850
+    ]
+  },
+  "detail_boxes": {
+    "f94r": {
+      "n1": [
+        770,
+        510,
+        910,
+        590
+      ],
+      "n2": [
+        2020,
+        480,
+        2240,
+        580
+      ],
+      "k": [
+        710,
+        485,
+        835,
+        580
+      ]
+    },
+    "f94v-95r": {
+      "n1": [
+        1200,
+        650,
+        1480,
+        730
+      ],
+      "n2": null,
+      "k": [
+        1230,
+        565,
+        1410,
+        665
+      ]
+    },
+    "f103r": {
+      "n1": [
+        350,
+        265,
+        470,
+        340
+      ],
+      "n2": [
+        375,
+        320,
+        580,
+        390
+      ],
+      "k": [
+        800,
+        250,
+        975,
+        365
+      ]
+    },
+    "f104r": {
+      "n1": [
+        355,
+        270,
+        590,
+        350
+      ],
+      "n2": [
+        1090,
+        355,
+        1310,
+        445
+      ],
+      "k": [
+        850,
+        310,
+        1040,
+        430
+      ]
+    },
+    "f105r": {
+      "n1": [
+        750,
+        535,
+        930,
+        615
+      ],
+      "n2": [
+        520,
+        575,
+        735,
+        685
+      ],
+      "k": [
+        1750,
+        515,
+        1900,
+        635
+      ]
+    },
+    "f46r": {
+      "n1": [
+        270,
+        405,
+        470,
+        500
+      ],
+      "n2": [
+        1225,
+        405,
+        1395,
+        500
+      ],
+      "k": [
+        545,
+        470,
+        690,
+        580
+      ]
+    },
+    "f41r": {
+      "n1": null,
+      "n2": null,
+      "k": [
+        610,
+        385,
+        720,
+        490
+      ]
+    }
+  },
+  "initial_candidate_boxes": {
+    "f94r": {
+      "n1": [
+        770,
+        510,
+        910,
+        590
+      ],
+      "n2": [
+        1480,
+        490,
+        1670,
+        580
+      ],
+      "k": [
+        710,
+        485,
+        835,
+        580
+      ]
+    },
+    "f94v-95r": {
+      "n1": [
+        1200,
+        650,
+        1480,
+        730
+      ],
+      "n2": null,
+      "k": [
+        1230,
+        565,
+        1410,
+        665
+      ]
+    },
+    "f103r": {
+      "n1": [
+        350,
+        265,
+        470,
+        340
+      ],
+      "n2": [
+        375,
+        320,
+        580,
+        390
+      ],
+      "k": [
+        800,
+        250,
+        975,
+        365
+      ]
+    },
+    "f104r": {
+      "n1": [
+        355,
+        270,
+        590,
+        350
+      ],
+      "n2": [
+        1090,
+        355,
+        1310,
+        445
+      ],
+      "k": [
+        580,
+        245,
+        720,
+        360
+      ]
+    },
+    "f105r": {
+      "n1": [
+        750,
+        535,
+        930,
+        615
+      ],
+      "n2": [
+        520,
+        575,
+        735,
+        685
+      ],
+      "k": [
+        930,
+        510,
+        1040,
+        625
+      ]
+    },
+    "f46r": {
+      "n1": [
+        270,
+        405,
+        470,
+        500
+      ],
+      "n2": [
+        1225,
+        405,
+        1395,
+        500
+      ],
+      "k": [
+        545,
+        470,
+        690,
+        580
+      ]
+    },
+    "f41r": {
+      "n1": [
+        650,
+        345,
+        840,
+        430
+      ],
+      "n2": null,
+      "k": [
+        770,
+        315,
+        905,
+        425
+      ]
+    }
+  },
+  "observations": {
+    "f94r": {
+      "n": "Return arcs curve upward/back; one narrow aperture and one rounder, apparently almost closed loop are visible. Contact/closure at the upper return is unresolved at native JPEG resolution.",
+      "k": "Two stems, upper-right loop and compact upper joining bar; loop is more oval than circular in this example. Foot/contact and pen-lift order not resolved."
+    },
+    "f94v-95r": {
+      "n": "Round returning terminal with a dark lower curve; upper junction is faint/ambiguous. Only one accepted context shown.",
+      "k": "Upper loop and two stems visible, with uneven ink density. Junction topology and foot unresolved. Left f94v panel only."
+    },
+    "f103r": {
+      "n": "Both selected contexts show a returning curved terminal after minims; visible open upper gap in one, narrower gap in the other. Shape family overlaps f94r; exact closure unresolved.",
+      "k": "Upper-right loop above two stems, short joining bar. A stem continues toward the baseline with no securely isolated foot. Not enough to infer pen lifts."
+    },
+    "f104r": {
+      "n": "Rounded returning terminals occur, with visibly different aperture/loop width between contexts. Thin upper trace in the second context is discontinuous/faint.",
+      "k": "Narrow upper-right loop and two uprights. Joining bar appears slightly inclined/curved; the difference from control2 is not securely diagnostic."
+    },
+    "f105r": {
+      "n": "Two open returning curves with wide upper apertures are visible. The second has a different preceding-character context, so it cannot be treated as a perfectly matched minim sequence.",
+      "k": "Upper-right oval loop/two uprights visible; upper joining curve has dark/overlapping strokes. Plain-k family checked against the same-line transcription; stroke sequence not inferred."
+    },
+    "f46r": {
+      "n": "Control2 also has upward/backward return curves: one larger raised arc, another rounder compact terminal. Broad shape therefore overlaps the attributed hand3 examples.",
+      "k": "Control2 also has two uprights and an upper-right loop. Crossbar/foot distinctions cannot be reliably scored from this one context."
+    },
+    "f41r": {
+      "n": "No accepted n example in the selected ordinary upper-left text band. ZL lines2–4 contain no n; a visually suspected context was rejected. No hand5 n-shape comparison follows.",
+      "k": "Thin two-stem upper-loop form is visible. Lower return and upper bar are faint; comparison is limited by ink visibility."
+    }
+  },
+  "limitations": [
+    "One model reader with known page labels; this is not blind, independent-reader agreement or an expert authentication.",
+    "Both94 sides shareQ:2; the three recipe samples areT:1–3 of one quire. Repeated crop examples do not increase independent physical support.",
+    "The plan called for6 n and3 k examples in reading order. Reliable systematic localization/census was not achieved; only descriptive contexts are retained, including explicit candidate corrections. No comparative counts or rates are inferred.",
+    "First scan-first contexts were subsequently checked against pinned ZL lines for glyph identity only. A candidate endingr and t/compound gallows contexts were rejected/corrected. Transcription is not evidence for fine stroke geometry.",
+    "Ink visibility, thin strokes, image compression, paper color, preceding characters and size affect apparent contact. No enhancement, thresholding, measured pen order or inferred authentic stroke joins.",
+    "This scan pilot does not imply that lexical distributions must transfer across sections, or that hand3 attribution is false. No hidden-page experiment or hidden seed was used."
+  ],
+  "reproduction": {
+    "usage": "Extract sources.json, detail-boxes.json and make_panel.py into one folder; run python make_panel.py with Pillow. It downloads exact native public images as needed, verifies source SHA256 and dimensions, and reproduces the coordinate panel. Source native fragments remain unenhanced; display crops scale uniformly within cells.",
+    "files": {
+      "sources.json": "[\n  {\n    \"folio\": \"f41r\",\n    \"canvas\": \"https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006154\",\n    \"url\": \"https://collections.library.yale.edu/iiif/2/1006154/full/full/0/default.jpg\",\n    \"width\": 2840,\n    \"height\": 3743,\n    \"sha256\": \"7631b874dbb3e2f48ade864485a0210cb207f2c7878181e458582beba86877ba\"\n  },\n  {\n    \"folio\": \"f46r\",\n    \"canvas\": \"https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006164\",\n    \"url\": \"https://collections.library.yale.edu/iiif/2/1006164/full/full/0/default.jpg\",\n    \"width\": 2865,\n    \"height\": 3719,\n    \"sha256\": \"bc11de34e89d67f2b61c63473c3273256aa45d3d6beac4195c95625c07422740\"\n  },\n  {\n    \"folio\": \"f94r\",\n    \"canvas\": \"https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006240\",\n    \"url\": \"https://collections.library.yale.edu/iiif/2/1006240/full/full/0/default.jpg\",\n    \"width\": 2728,\n    \"height\": 3754,\n    \"sha256\": \"ad33592ad7f29a6e9fc6b9e45444286231f06a903d95b54d1195b17cfdca417b\"\n  },\n  {\n    \"folio\": \"f103r\",\n    \"canvas\": \"https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006254\",\n    \"url\": \"https://collections.library.yale.edu/iiif/2/1006254/full/full/0/default.jpg\",\n    \"width\": 2688,\n    \"height\": 3805,\n    \"sha256\": \"28a65644ebf9a16dc41c073e6535117d924765fae6af474dbd1e3fe2b167beda\"\n  },\n  {\n    \"folio\": \"f104r\",\n    \"canvas\": \"https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006256\",\n    \"url\": \"https://collections.library.yale.edu/iiif/2/1006256/full/full/0/default.jpg\",\n    \"width\": 2677,\n    \"height\": 3811,\n    \"sha256\": \"2ee5f2a32ed2e242d60dcb34398c9b8be6af0341872a476e3905f1314ebe716f\"\n  },\n  {\n    \"folio\": \"f105r\",\n    \"canvas\": \"https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006258\",\n    \"url\": \"https://collections.library.yale.edu/iiif/2/1006258/full/full/0/default.jpg\",\n    \"width\": 2662,\n    \"height\": 3771,\n    \"sha256\": \"0401750e6d83ed74cd4fea79f99c2aba5e2c8dcd90ed0f2641be81c7b722e82f\"\n  },\n  {\n    \"folio\": \"f94v-95r\",\n    \"canvas\": \"https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006241\",\n    \"url\": \"https://collections.library.yale.edu/iiif/2/1006241/full/full/0/default.jpg\",\n    \"width\": 7642,\n    \"height\": 3801,\n    \"sha256\": \"04405b1d121a3c73571bad7f5b887b8cf3776a829ee6482e8a82ca095918071d\"\n  }\n]\n",
+      "detail-boxes.json": "{\n  \"f94r\": {\n    \"n1\": [\n      770,\n      510,\n      910,\n      590\n    ],\n    \"n2\": [\n      2020,\n      480,\n      2240,\n      580\n    ],\n    \"k\": [\n      710,\n      485,\n      835,\n      580\n    ]\n  },\n  \"f94v-95r\": {\n    \"n1\": [\n      1200,\n      650,\n      1480,\n      730\n    ],\n    \"n2\": null,\n    \"k\": [\n      1230,\n      565,\n      1410,\n      665\n    ]\n  },\n  \"f103r\": {\n    \"n1\": [\n      350,\n      265,\n      470,\n      340\n    ],\n    \"n2\": [\n      375,\n      320,\n      580,\n      390\n    ],\n    \"k\": [\n      800,\n      250,\n      975,\n      365\n    ]\n  },\n  \"f104r\": {\n    \"n1\": [\n      355,\n      270,\n      590,\n      350\n    ],\n    \"n2\": [\n      1090,\n      355,\n      1310,\n      445\n    ],\n    \"k\": [\n      850,\n      310,\n      1040,\n      430\n    ]\n  },\n  \"f105r\": {\n    \"n1\": [\n      750,\n      535,\n      930,\n      615\n    ],\n    \"n2\": [\n      520,\n      575,\n      735,\n      685\n    ],\n    \"k\": [\n      1750,\n      515,\n      1900,\n      635\n    ]\n  },\n  \"f46r\": {\n    \"n1\": [\n      270,\n      405,\n      470,\n      500\n    ],\n    \"n2\": [\n      1225,\n      405,\n      1395,\n      500\n    ],\n    \"k\": [\n      545,\n      470,\n      690,\n      580\n    ]\n  },\n  \"f41r\": {\n    \"n1\": null,\n    \"n2\": null,\n    \"k\": [\n      610,\n      385,\n      720,\n      490\n    ]\n  }\n}\n",
+      "make_panel.py": "\"\"\"Rebuild traceable scan fragments; no stroke enhancement or synthetic pixels.\"\"\"\nimport hashlib,json,urllib.request\nfrom pathlib import Path\nfrom PIL import Image,ImageDraw,ImageFont\n\nHERE=Path(__file__).resolve().parent\n\ndef main():\n    sources=json.loads((HERE/'sources.json').read_text())\n    for s in sources:\n        path=HERE/(s['folio']+'.jpg')\n        if not path.exists():path.write_bytes(urllib.request.urlopen(s['url'],timeout=60).read())\n        assert hashlib.sha256(path.read_bytes()).hexdigest()==s['sha256']\n        assert Image.open(path).size==(s['width'],s['height'])\n    boxes=json.loads((HERE/'detail-boxes.json').read_text())\n    try:\n        font=ImageFont.truetype('arial.ttf',20);small=ImageFont.truetype('arial.ttf',15)\n    except OSError:\n        font=ImageFont.load_default(size=20);small=ImageFont.load_default(size=15)\n    sheet=Image.new('RGB',(1500,1480),'white');draw=ImageDraw.Draw(sheet)\n    draw.text((20,10),'MS408: scan fragments / single reader, known labels / no quantified glyph census',font=font,fill='black')\n    for i,(f,items) in enumerate(boxes.items()):\n        y=55+i*200\n        label=('H3 herbal' if f.startswith('f94') else 'H3 recipes' if f.startswith('f10') else 'H2 control' if f=='f46r' else 'H5 control')\n        draw.text((15,y+15),f.replace('-95r','')+'\\n'+label,font=small,fill='black')\n        im=Image.open(HERE/(f+'.jpg'))\n        for j,(kind,box) in enumerate(items.items()):\n            x=180+j*440;draw.text((x,y),kind+' context / '+str(box),font=small,fill='black')\n            if box is None:\n                draw.text((x,y+60),'No accepted n example in this cell',font=small,fill='gray');continue\n            assert 0<=box[0]<box[2]<=im.width and 0<=box[1]<box[3]<=im.height\n            crop=im.crop(tuple(box));crop.save(HERE/(f+'-'+kind+'.png'))\n            scale=min(400/crop.width,145/crop.height)\n            crop=crop.resize((round(crop.width*scale),round(crop.height*scale)))\n            sheet.paste(crop,(x,y+27))\n    sheet.save(HERE/'comparison.png')\n\nif __name__=='__main__':main()\n"
+    },
+    "sha256": {
+      "plan.json": "0557c98aecc4fb5c01f5de72bc15cf50b6c66c072c161c5fe0589767ba4fc5a8",
+      "sources.json": "98f983c6c1838cff62d27dc4bc8ac4a7625579a38cadff5de58f2addee20a3ca",
+      "detail-boxes.json": "9c5c76dba692b399fc62ac469820c51b95368ce1fe3b9991294b320c5fd52a75",
+      "make_panel.py": "c9c7e0c55a1a3992e709d2344a3ba2ae2fad277b9dd5c3cd98d333d327f75260",
+      "comparison.png": "8236d663ea288679d167315f6aa849692ab8bb281d464030737b6e526a61063b"
+    }
+  }
+}
