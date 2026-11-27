@@ -1,0 +1,592 @@
+{
+  "title": "Test whether word boxes recover f68r1 star pairings when a label can sit on either side",
+  "statement": "Use the 29 word locations in mubadala777's P-L4-053 to test how reliably a mapped word can be assigned to a particular star on f68r1. With the Yale scan alone, have two independent readers mark star centres and pair each star with a visible word or mark it ambiguous. Use image locations as identifiers. Withhold locus IDs, transliterations, the position map and each other's marks until both lists are frozen. Then align the two lists on the scan by the actual drawn stars and words. Apply the three geometric pairing rules to the same centres and word locations. The independent check recorded below recovered .12, .26 and .30. On .30 two placements on or near the tall left upright differ by 34.37 native pixels. The separately checked .32 word is left of the adjacent star. Report these four known cases separately.",
+  "program": "L4",
+  "check": "Return 29 rows keyed by locus after unblinding. Retain both readers' choices, including uncertain or unmatched words. Compare three per-word rules using frozen centres from the first reader: nearest centre to the published first-sign point; nearest centre to the published word quadrilateral; same quadrilateral distance with centres restricted to the left of the quadrilateral's horizontal midpoint. Use Euclidean pixel distance (zero inside a quadrilateral), exact ties or no eligible centre are unassigned. Report for each rule correct, wrong and unassigned among agreed pairs; report observer disagreements, ambiguous/unmatched cases and repeated star choices separately. Do not force a global one-to-one assignment. For .30 repeat the point rule with each of the two recorded points; for .32 identify the star each rule selects. Show the four known loci separately from the other 25. No cross-panel features enter this test.",
+  "on_path": true,
+  "hard": false,
+  "evidence": {
+    "step": "P-L4-053",
+    "submitted_by": "ITurchenko",
+    "upstream_revision": "d3ef6526b931acda9b0fa92ea90072c638f1bb97",
+    "sources": {
+      "scan": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006196",
+      "full_resolution_jpeg": "https://archive.org/download/voynich/123.jpg",
+      "full_canvas_wh": [
+        7993,
+        3828
+      ],
+      "native_crop_xywh": [
+        175,
+        60,
+        2320,
+        3700
+      ],
+      "native_png_sha256": "59d4227a952d883f29af794092463391a88d0c2374390c5a9b96cc3e77cd29b2",
+      "source_map_by": "mubadala777",
+      "source_map_pr": "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/649",
+      "pinned_registry": "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/blob/d3ef6526b931acda9b0fa92ea90072c638f1bb97/registry/items.jsonl",
+      "map_path": "P-L4-053 / submitted / step.json / evidence / locus_positions",
+      "zl": "https://www.voynich.nu/data/ZL3b-n.txt",
+      "zl_full_sha256": "bf5b6d4ac1e3a51b1847a9c388318d609020441ccd56984c901c32b09beccafc"
+    },
+    "frozen_files_sha256": {
+      "blind-observations.json": "1f70bf8ba430c5217863ebd6e058d732b0021287d7bd4ad640b948b53b8cefe3",
+      "blind-method.md": "724186f8bba9f302a9f1a3518bba01ab4e1ca845c7533372444446ce4908f3cb"
+    },
+    "coordinates": "Full canvas, native pixels, x right, y down; dx and dy are blind minus published.",
+    "coverage": {
+      "zl_rows": 29,
+      "map_keys": 29,
+      "unique_indices": 29,
+      "missing": [],
+      "extra": [],
+      "repeated_indices": [],
+      "distinct_word_windows": 29
+    },
+    "window_method": "W01-W29 are manually selected native scan windows, chosen before unblinding. Their full-canvas rectangles are reported below. The published first point in each is checked after unblinding; only the four controls had independently assigned locus IDs and frozen first points.",
+    "all_loci": [
+      {
+        "locus": "f68r1.8",
+        "zl_raw": "okodaly",
+        "map_zl": "okodaly",
+        "takahashi": "okodaly",
+        "companion_box_index": 50,
+        "visible_window": "W01",
+        "window_native_xywh": [
+          791,
+          756,
+          208,
+          124
+        ]
+      },
+      {
+        "locus": "f68r1.9",
+        "zl_raw": "odchecthy",
+        "map_zl": "odchecthy",
+        "takahashi": "odchecthy",
+        "companion_box_index": 38,
+        "visible_window": "W02",
+        "window_native_xywh": [
+          1635,
+          730,
+          244,
+          124
+        ]
+      },
+      {
+        "locus": "f68r1.10",
+        "zl_raw": "otcheody",
+        "map_zl": "otcheody",
+        "takahashi": "otcheody",
+        "companion_box_index": 37,
+        "visible_window": "W04",
+        "window_native_xywh": [
+          528,
+          1000,
+          217,
+          127
+        ]
+      },
+      {
+        "locus": "f68r1.11",
+        "zl_raw": "okoaly",
+        "map_zl": "okoaly",
+        "takahashi": "okoaly",
+        "companion_box_index": 43,
+        "visible_window": "W06",
+        "window_native_xywh": [
+          958,
+          1123,
+          177,
+          124
+        ]
+      },
+      {
+        "locus": "f68r1.12",
+        "zl_raw": "chocfhy",
+        "map_zl": "chocfhy",
+        "takahashi": "chocphy",
+        "companion_box_index": 31,
+        "visible_window": "W07",
+        "window_native_xywh": [
+          1275,
+          1123,
+          210,
+          127
+        ]
+      },
+      {
+        "locus": "f68r1.13",
+        "zl_raw": "octhey",
+        "map_zl": "octhey",
+        "takahashi": "octhey",
+        "companion_box_index": 36,
+        "visible_window": "W03",
+        "window_native_xywh": [
+          1661,
+          953,
+          191,
+          124
+        ]
+      },
+      {
+        "locus": "f68r1.14",
+        "zl_raw": "otshey",
+        "map_zl": "otshey",
+        "takahashi": "otcsey",
+        "companion_box_index": 53,
+        "visible_window": "W09",
+        "window_native_xywh": [
+          391,
+          1313,
+          171,
+          131
+        ]
+      },
+      {
+        "locus": "f68r1.15",
+        "zl_raw": "otydy",
+        "map_zl": "otydy",
+        "takahashi": "otydy",
+        "companion_box_index": 54,
+        "visible_window": "W11",
+        "window_native_xywh": [
+          811,
+          1360,
+          151,
+          134
+        ]
+      },
+      {
+        "locus": "f68r1.16",
+        "zl_raw": "okear",
+        "map_zl": "okear",
+        "takahashi": "okeor",
+        "companion_box_index": 41,
+        "visible_window": "W12",
+        "window_native_xywh": [
+          1111,
+          1393,
+          161,
+          124
+        ]
+      },
+      {
+        "locus": "f68r1.17",
+        "zl_raw": "cphocthy",
+        "map_zl": "cphocthy",
+        "takahashi": "cphocthy",
+        "companion_box_index": 32,
+        "visible_window": "W08",
+        "window_native_xywh": [
+          1635,
+          1210,
+          254,
+          137
+        ]
+      },
+      {
+        "locus": "f68r1.18",
+        "zl_raw": "ytchody",
+        "map_zl": "ytchody",
+        "takahashi": "ytchody",
+        "companion_box_index": 48,
+        "visible_window": "W05",
+        "window_native_xywh": [
+          2065,
+          1046,
+          214,
+          121
+        ]
+      },
+      {
+        "locus": "f68r1.19",
+        "zl_raw": "otys",
+        "map_zl": "otys",
+        "takahashi": "otys",
+        "companion_box_index": 56,
+        "visible_window": "W15",
+        "window_native_xywh": [
+          458,
+          1600,
+          94,
+          114
+        ]
+      },
+      {
+        "locus": "f68r1.20",
+        "zl_raw": "olor",
+        "map_zl": "olor",
+        "takahashi": "olor",
+        "companion_box_index": 46,
+        "visible_window": "W16",
+        "window_native_xywh": [
+          638,
+          1636,
+          104,
+          111
+        ]
+      },
+      {
+        "locus": "f68r1.21",
+        "zl_raw": "ockhy",
+        "map_zl": "ockhy",
+        "takahashi": "ockhy",
+        "companion_box_index": 34,
+        "visible_window": "W17",
+        "window_native_xywh": [
+          858,
+          1673,
+          164,
+          124
+        ]
+      },
+      {
+        "locus": "f68r1.22",
+        "zl_raw": "ofcheor",
+        "map_zl": "ofcheor",
+        "takahashi": "ofcheor",
+        "companion_box_index": 39,
+        "visible_window": "W18",
+        "window_native_xywh": [
+          1308,
+          1643,
+          184,
+          147
+        ]
+      },
+      {
+        "locus": "f68r1.23",
+        "zl_raw": "otchdy",
+        "map_zl": "otchdy",
+        "takahashi": "otcsdo",
+        "companion_box_index": 59,
+        "visible_window": "W13",
+        "window_native_xywh": [
+          1808,
+          1470,
+          217,
+          140
+        ]
+      },
+      {
+        "locus": "f68r1.24",
+        "zl_raw": "otykchs",
+        "map_zl": "otykchs",
+        "takahashi": "otykchs",
+        "companion_box_index": 55,
+        "visible_window": "W10",
+        "window_native_xywh": [
+          2085,
+          1283,
+          240,
+          131
+        ]
+      },
+      {
+        "locus": "f68r1.25",
+        "zl_raw": "otol",
+        "map_zl": "otol",
+        "takahashi": "otol",
+        "companion_box_index": 51,
+        "visible_window": "W14",
+        "window_native_xywh": [
+          2255,
+          1453,
+          137,
+          147
+        ]
+      },
+      {
+        "locus": "f68r1.26",
+        "zl_raw": "otor",
+        "map_zl": "otor",
+        "takahashi": "otor",
+        "companion_box_index": 52,
+        "visible_window": "W19",
+        "window_native_xywh": [
+          411,
+          1830,
+          104,
+          117
+        ]
+      },
+      {
+        "locus": "f68r1.27",
+        "zl_raw": "oiinar",
+        "map_zl": "oiinar",
+        "takahashi": "oiinar",
+        "companion_box_index": 40,
+        "visible_window": "W22",
+        "window_native_xywh": [
+          615,
+          2030,
+          170,
+          110
+        ]
+      },
+      {
+        "locus": "f68r1.28",
+        "zl_raw": "okoldy",
+        "map_zl": "okoldy",
+        "takahashi": "okoldy",
+        "companion_box_index": 44,
+        "visible_window": "W23",
+        "window_native_xywh": [
+          1051,
+          1986,
+          191,
+          128
+        ]
+      },
+      {
+        "locus": "f68r1.29",
+        "zl_raw": "ykchdy",
+        "map_zl": "ykchdy",
+        "takahashi": "ykchdy",
+        "companion_box_index": 58,
+        "visible_window": "W20",
+        "window_native_xywh": [
+          1528,
+          1830,
+          221,
+          147
+        ]
+      },
+      {
+        "locus": "f68r1.30",
+        "zl_raw": "@167;oeeod{c@196;h}y",
+        "map_zl": "*oeeodc*hy",
+        "takahashi": "toeeodcthy",
+        "companion_box_index": 57,
+        "visible_window": "W21",
+        "window_native_xywh": [
+          1931,
+          1796,
+          278,
+          198
+        ]
+      },
+      {
+        "locus": "f68r1.31",
+        "zl_raw": "ocphy",
+        "map_zl": "ocphy",
+        "takahashi": "ocphy",
+        "companion_box_index": 35,
+        "visible_window": "W24",
+        "window_native_xywh": [
+          418,
+          2150,
+          131,
+          130
+        ]
+      },
+      {
+        "locus": "f68r1.32",
+        "zl_raw": "okeeodal",
+        "map_zl": "okeeodal",
+        "takahashi": "okeeodal",
+        "companion_box_index": 42,
+        "visible_window": "W27",
+        "window_native_xywh": [
+          495,
+          2336,
+          170,
+          134
+        ]
+      },
+      {
+        "locus": "f68r1.33",
+        "zl_raw": "okshor",
+        "map_zl": "okshor",
+        "takahashi": "okshor",
+        "companion_box_index": 45,
+        "visible_window": "W28",
+        "window_native_xywh": [
+          1031,
+          2233,
+          201,
+          137
+        ]
+      },
+      {
+        "locus": "f68r1.34",
+        "zl_raw": "osdaiin",
+        "map_zl": "osdaiin",
+        "takahashi": "ordaiin",
+        "companion_box_index": 47,
+        "visible_window": "W25",
+        "window_native_xywh": [
+          1501,
+          2180,
+          224,
+          120
+        ]
+      },
+      {
+        "locus": "f68r1.35",
+        "zl_raw": "otochedy",
+        "map_zl": "otochedy",
+        "takahashi": "otochedy",
+        "companion_box_index": 49,
+        "visible_window": "W26",
+        "window_native_xywh": [
+          1901,
+          2133,
+          264,
+          164
+        ]
+      },
+      {
+        "locus": "f68r1.36",
+        "zl_raw": "dolchedy",
+        "map_zl": "dolchedy",
+        "takahashi": "dolchedy",
+        "companion_box_index": 33,
+        "visible_window": "W29",
+        "window_native_xywh": [
+          1708,
+          2443,
+          257,
+          121
+        ]
+      }
+    ],
+    "controls": [
+      {
+        "locus": "f68r1.12",
+        "box_index": 31,
+        "blind_box_xywh": [
+          1291,
+          1147,
+          161,
+          81
+        ],
+        "blind_xy": [
+          1296,
+          1206
+        ],
+        "published_xy": [
+          1303,
+          1209
+        ],
+        "dx": -7,
+        "dy": -3,
+        "distance_px": 7.6158,
+        "published_point_in_blind_box": true,
+        "projected_boxes_containing_blind_point": [
+          "f68r1.12"
+        ]
+      },
+      {
+        "locus": "f68r1.26",
+        "box_index": 52,
+        "blind_box_xywh": [
+          421,
+          1847,
+          82,
+          80
+        ],
+        "blind_xy": [
+          425,
+          1915
+        ],
+        "published_xy": [
+          429,
+          1912
+        ],
+        "dx": -4,
+        "dy": 3,
+        "distance_px": 5.0,
+        "published_point_in_blind_box": true,
+        "projected_boxes_containing_blind_point": [
+          "f68r1.26"
+        ]
+      },
+      {
+        "locus": "f68r1.30",
+        "box_index": 57,
+        "blind_box_xywh": [
+          1940,
+          1819,
+          236,
+          146
+        ],
+        "blind_xy": [
+          1959,
+          1914
+        ],
+        "published_xy": [
+          1964,
+          1880
+        ],
+        "dx": -5,
+        "dy": 34,
+        "distance_px": 34.3657,
+        "published_point_in_blind_box": true,
+        "projected_boxes_containing_blind_point": [
+          "f68r1.30"
+        ]
+      },
+      {
+        "locus": "f68r1.32",
+        "box_index": 42,
+        "blind_box_xywh": [
+          503,
+          2375,
+          148,
+          80
+        ],
+        "blind_xy": [
+          508,
+          2441
+        ],
+        "published_xy": [
+          512,
+          2439
+        ],
+        "dx": -4,
+        "dy": 2,
+        "distance_px": 4.4721,
+        "published_point_in_blind_box": true,
+        "projected_boxes_containing_blind_point": [
+          "f68r1.32"
+        ]
+      }
+    ],
+    "comparison_scope": "Three prespecified checks (.12, .26, .30); .32 is a separate orientation check. Same-word evidence combines visual examination with mutual point/box containment. Placement is approximate, particularly on the linked upright of .30.",
+    "f68r1_picture_records": [
+      {
+        "id": "V-025",
+        "verdict": "DRAFT",
+        "blind": true,
+        "agreement": null
+      },
+      {
+        "id": "V-030",
+        "verdict": "DRAFT",
+        "blind": true,
+        "agreement": null
+      },
+      {
+        "id": "V-031",
+        "verdict": "DRAFT",
+        "blind": true,
+        "agreement": null
+      },
+      {
+        "id": "V-033",
+        "verdict": "DRAFT",
+        "blind": true,
+        "agreement": null
+      }
+    ],
+    "anchor_choices": {
+      "f68r1.12": "Left upright of the first low bench; following ligature remains ambiguous between editions.",
+      "f68r1.26": "Left stroke of the pale initial oval; the field competitor .25 has a different terminal glyph and the exact duplicate in f68r1.1 is in the paragraph.",
+      "f68r1.30": "Lower section of the left upright, below the star-ray contact; the published point is higher near the junction. Different points on the same tall form are distinguishable in the crop.",
+      "f68r1.32": "First small oval at the left end; the right end of the word meets the left ray of the adjacent star."
+    }
+  }
+}
