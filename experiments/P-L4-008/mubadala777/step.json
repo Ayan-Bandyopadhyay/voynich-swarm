@@ -1,0 +1,1671 @@
+{
+  "title": "Masked replication separates f35v fruit and foliage parallels and leaves some roots unscorable",
+  "statement": "Two independent readers agreed on 145 of 156 outline calls including 35 shared unknowns, and on 110 of 111 jointly definite calls. Each identified all 12 features on the f35v image. They jointly scored all three fruit features on four of 12 comparator cards, two Sloane grape views, BnF Brionia, and Egerton black ivy. Dropping F2 added the BnF black ivy. The prior single-reader seven became four because F2 was uncertain on the BnF ivy and the fruit outlines were unresolved on both elder illustrations. Egerton Galla was the only comparator with all three lower-leaf features agreed. The BnF Galla's lower-leaf attachment was uncertain to one reader. No comparator showed the C3 crossing or either of the f35v root shapes by both readers. The highest definite comparator score was 6/12 for Egerton Galla. Treating every uncertain call as possibly matching raises the maximum to 11/12, driven by an isolated Glandes twig with 11 unresolved features, so the prior seven-point upper bound did not replicate. Dropping C3 preserves the fruit and leaf results. The three herbal manuscripts are related witnesses. This panel establishes regional outline similarities with limited botanical specificity.",
+  "program": "L4",
+  "check": "Prepare caption-masked full-height plant images from a separately catalogued herbal tradition and repeat the published 12-feature rubric with two independent readers, retaining unknowns. Include complete and edge-truncated roots and quantify how much censoring changes specificity. Report each fruit, leaf, crown and root score alongside the two-reader agreement and the separate results after excluding F2 and C3. Use no Voynich text readings.",
+  "on_path": true,
+  "hard": true,
+  "provenance": {
+    "prior_outline_panel": "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/370",
+    "independent_f35v_close_view": "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/486",
+    "published_ivy_comparison": "https://voynich.nu/papers/Voynich100_RZ_2012.pdf#page=24",
+    "target_canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006143",
+    "catalogues": [
+      "https://portail.biblissima.fr/ark:/43093/ifdata306264506a84685b0f7486f00d66e160db74366d",
+      "https://searcharchives.bl.uk/catalog/032-001983805",
+      "https://searcharchives.bl.uk/catalog/040-002116409"
+    ]
+  },
+  "masked_method": "A separate preparer recreated the prior crop and cover rectangles, placed adjacent views side by side, and randomly ordered the same 13 renderings for each reader in fresh isolated contexts. Readers received only numbered images and the rubric, without specimen names, provenance, or predicted correspondences. Some residual text could remain outside the masked header areas, and recognizable drawings could cue identity. The comparison paired scores by the matching masked PNG hashes before revealing the manuscript mapping. Consensus requires identical definite reader marks, and otherwise retains an unknown. Full-scan audit notes were made after the frozen ratings and do not change them.",
+  "mask_spec": {
+    "coordinate_system": "Pixel XYXY at the reference dimensions in each view.",
+    "cover_rgb": [
+      228,
+      225,
+      215
+    ],
+    "max_image_dimensions": [
+      800,
+      720
+    ],
+    "shuffle_seeds": {
+      "reader_a": 351185,
+      "reader_b": 357159
+    }
+  },
+  "rubric": "Use only visible outlines. Color may locate a contour but adds no point. For each criterion record 1 when visible, 0 when clearly absent or discordant on a complete view, and ? when genuinely ambiguous or cropped. Record all 12 criteria across the whole card. Do not name plants or guess provenance.\n\nFruit (F)\nF1. At least two discrete clusters of three or more rounded enclosed units, counting each unit once; scattered solitary fruits do not count.\nF2. At least one such cluster terminates a distinct stalk, with recognizable grouping and no enclosing common fruit body or backing leaf.\nF3. No acorn-like cup, enclosing husk, or lobed capsule around the rounded units; mark unknown if outlines are unreadable, zero if no rounded units.\n\nLeaf (L)\nL1. At least two individually outlined side leaves attach at distinct levels below the top foliage.\nL2. Those side leaves are simple and visibly lobed, with at least two broad rounded lobes per side.\nL3. The strongest lobing repeats along the long axis on both sides of the leaf; do not count a three- to five-point palmate leaf, a smooth small leaf, or individual leaflets along a rachis.\n\nCrown/stems (C)\nC1. A compact upper foliage outline distinguishable from lower lateral leaves or fruit.\nC2. Multiple upward stalks fan toward that upper outline from a relatively narrow common point or band.\nC3. Two lower lateral stems visibly cross in front of or around a distinct upright axis; a single fork without crossing does not count.\n\nRoots (R)\nR1. Clearly drawn roots and aerial stems meet at a common basal junction.\nR2. Major lateral roots or primary branches bear at least three recognizable hooked or curved tips in aggregate.\nR3. Strongly asymmetric lateral spread, roughly 2:1 or greater from the stem center measured against opposite side, with the longest root roughly horizontal for much of its run.",
+  "masked_rating_sha256": {
+    "reader_a": "0ebfa0422b1c9a2a7582c58488ff5fd7e732096acadfb1e0ea12516e4002eaab",
+    "reader_b": "48295303f0d5e2b578440e1dbbd5c3c2e91fa020118d525adf41d694bb4feb74"
+  },
+  "agreement": {
+    "all": {
+      "exact_including_unknown": 145,
+      "total": 156,
+      "jointly_definite": 111,
+      "jointly_definite_matches": 110,
+      "both_unknown": 35
+    },
+    "fruit": {
+      "exact_including_unknown": 36,
+      "total": 39,
+      "jointly_definite": 30,
+      "jointly_definite_matches": 30,
+      "both_unknown": 6
+    },
+    "leaves": {
+      "exact_including_unknown": 37,
+      "total": 39,
+      "jointly_definite": 35,
+      "jointly_definite_matches": 35,
+      "both_unknown": 2
+    },
+    "crown": {
+      "exact_including_unknown": 33,
+      "total": 39,
+      "jointly_definite": 27,
+      "jointly_definite_matches": 26,
+      "both_unknown": 7
+    },
+    "roots": {
+      "exact_including_unknown": 39,
+      "total": 39,
+      "jointly_definite": 19,
+      "jointly_definite_matches": 19,
+      "both_unknown": 20
+    }
+  },
+  "target": {
+    "prior": {
+      "F1": "1",
+      "F2": "1",
+      "F3": "1",
+      "L1": "1",
+      "L2": "1",
+      "L3": "1",
+      "C1": "1",
+      "C2": "1",
+      "C3": "1",
+      "R1": "1",
+      "R2": "1",
+      "R3": "1"
+    },
+    "reader_a": {
+      "F1": "1",
+      "F2": "1",
+      "F3": "1",
+      "L1": "1",
+      "L2": "1",
+      "L3": "1",
+      "C1": "1",
+      "C2": "1",
+      "C3": "1",
+      "R1": "1",
+      "R2": "1",
+      "R3": "1"
+    },
+    "reader_b": {
+      "F1": "1",
+      "F2": "1",
+      "F3": "1",
+      "L1": "1",
+      "L2": "1",
+      "L3": "1",
+      "C1": "1",
+      "C2": "1",
+      "C3": "1",
+      "R1": "1",
+      "R2": "1",
+      "R3": "1"
+    },
+    "consensus": {
+      "F1": "1",
+      "F2": "1",
+      "F3": "1",
+      "L1": "1",
+      "L2": "1",
+      "L3": "1",
+      "C1": "1",
+      "C2": "1",
+      "C3": "1",
+      "R1": "1",
+      "R2": "1",
+      "R3": "1"
+    }
+  },
+  "sensitivity": {
+    "prior": {
+      "all": {
+        "full_fruit": [
+          "01",
+          "04",
+          "06",
+          "07",
+          "08",
+          "11",
+          "13"
+        ],
+        "full_leaves": [
+          "10"
+        ],
+        "visible_c3": [],
+        "max_total_definite": 6,
+        "max_total_possible": 7
+      },
+      "omit_F2": {
+        "full_fruit": [
+          "01",
+          "04",
+          "06",
+          "07",
+          "08",
+          "11",
+          "13"
+        ],
+        "full_leaves": [
+          "10"
+        ],
+        "visible_c3": [],
+        "max_total_definite": 6,
+        "max_total_possible": 7
+      },
+      "omit_C3": {
+        "full_fruit": [
+          "01",
+          "04",
+          "06",
+          "07",
+          "08",
+          "11",
+          "13"
+        ],
+        "full_leaves": [
+          "10"
+        ],
+        "visible_c3": [],
+        "max_total_definite": 6,
+        "max_total_possible": 7
+      },
+      "omit_both": {
+        "full_fruit": [
+          "01",
+          "04",
+          "06",
+          "07",
+          "08",
+          "11",
+          "13"
+        ],
+        "full_leaves": [
+          "10"
+        ],
+        "visible_c3": [],
+        "max_total_definite": 6,
+        "max_total_possible": 7
+      }
+    },
+    "reader_a": {
+      "all": {
+        "full_fruit": [
+          "13",
+          "06",
+          "01",
+          "08"
+        ],
+        "full_leaves": [
+          "10"
+        ],
+        "visible_c3": [],
+        "max_total_definite": 6,
+        "max_total_possible": 11
+      },
+      "omit_F2": {
+        "full_fruit": [
+          "13",
+          "06",
+          "01",
+          "04",
+          "08"
+        ],
+        "full_leaves": [
+          "10"
+        ],
+        "visible_c3": [],
+        "max_total_definite": 6,
+        "max_total_possible": 10
+      },
+      "omit_C3": {
+        "full_fruit": [
+          "13",
+          "06",
+          "01",
+          "08"
+        ],
+        "full_leaves": [
+          "10"
+        ],
+        "visible_c3": [],
+        "max_total_definite": 6,
+        "max_total_possible": 10
+      },
+      "omit_both": {
+        "full_fruit": [
+          "13",
+          "06",
+          "01",
+          "04",
+          "08"
+        ],
+        "full_leaves": [
+          "10"
+        ],
+        "visible_c3": [],
+        "max_total_definite": 6,
+        "max_total_possible": 9
+      }
+    },
+    "reader_b": {
+      "all": {
+        "full_fruit": [
+          "13",
+          "06",
+          "08",
+          "01",
+          "04"
+        ],
+        "full_leaves": [
+          "05",
+          "10"
+        ],
+        "visible_c3": [],
+        "max_total_definite": 6,
+        "max_total_possible": 11
+      },
+      "omit_F2": {
+        "full_fruit": [
+          "13",
+          "06",
+          "08",
+          "01",
+          "04"
+        ],
+        "full_leaves": [
+          "05",
+          "10"
+        ],
+        "visible_c3": [],
+        "max_total_definite": 6,
+        "max_total_possible": 10
+      },
+      "omit_C3": {
+        "full_fruit": [
+          "13",
+          "06",
+          "08",
+          "01",
+          "04"
+        ],
+        "full_leaves": [
+          "05",
+          "10"
+        ],
+        "visible_c3": [],
+        "max_total_definite": 6,
+        "max_total_possible": 10
+      },
+      "omit_both": {
+        "full_fruit": [
+          "13",
+          "06",
+          "08",
+          "01",
+          "04"
+        ],
+        "full_leaves": [
+          "05",
+          "10"
+        ],
+        "visible_c3": [],
+        "max_total_definite": 6,
+        "max_total_possible": 9
+      }
+    },
+    "consensus": {
+      "all": {
+        "full_fruit": [
+          "01",
+          "06",
+          "08",
+          "13"
+        ],
+        "full_leaves": [
+          "10"
+        ],
+        "visible_c3": [],
+        "max_total_definite": 6,
+        "max_total_possible": 11
+      },
+      "omit_F2": {
+        "full_fruit": [
+          "01",
+          "04",
+          "06",
+          "08",
+          "13"
+        ],
+        "full_leaves": [
+          "10"
+        ],
+        "visible_c3": [],
+        "max_total_definite": 6,
+        "max_total_possible": 10
+      },
+      "omit_C3": {
+        "full_fruit": [
+          "01",
+          "06",
+          "08",
+          "13"
+        ],
+        "full_leaves": [
+          "10"
+        ],
+        "visible_c3": [],
+        "max_total_definite": 6,
+        "max_total_possible": 10
+      },
+      "omit_both": {
+        "full_fruit": [
+          "01",
+          "04",
+          "06",
+          "08",
+          "13"
+        ],
+        "full_leaves": [
+          "10"
+        ],
+        "visible_c3": [],
+        "max_total_definite": 6,
+        "max_total_possible": 9
+      }
+    }
+  },
+  "agreed_comparator_matches": {
+    "01": 4,
+    "03": 1,
+    "04": 3,
+    "05": 4,
+    "06": 5,
+    "07": 2,
+    "08": 4,
+    "09": 0,
+    "10": 6,
+    "11": 4,
+    "12": 3,
+    "13": 4
+  },
+  "possible_comparator_matches_including_unknowns": {
+    "01": 4,
+    "03": 3,
+    "04": 10,
+    "05": 8,
+    "06": 7,
+    "07": 8,
+    "08": 8,
+    "09": 11,
+    "10": 7,
+    "11": 9,
+    "12": 7,
+    "13": 4
+  },
+  "native_scan_audit": {
+    "02": "Native crops at XYWH [1220,180,1600,2140] and [500,2700,2300,1060] show separately attached lower lobed leaves, a crossing near the upright axis, branching at the root junction, and at least three visible recurved ends. The longest lateral root extends left at about three times the right reach from the junction. Fine contours near the sheet edge remain difficult.",
+    "04": "The complete BnF ivy image runs to the lower sheet edge without revealing a root junction. The visible long basal roots belong to the left-hand plant.",
+    "05": "In BnF Galla, the lower lateral foliage of the right-hand tree partly overlaps the crown. The trunk continues to the lower sheet edge without a legible root spread. The conspicuous roots on the left belong to another specimen.",
+    "06": "On the complete BnF Brionia plate the long downward fork reaches the sheet edge. A junction is visible. The missing tips cannot be inferred from that outline, and the fork is chiefly vertical.",
+    "07": "The BnF Ebulus lateral root arms extend to the sheet edges, leaving an unknown full extent and terminal shape despite the visible junction.",
+    "09": "The Glandes is a short isolated marginal sprig with a cup. The wide root spread on the same sheet belongs to a separate plant, so the 11 unresolved calls cannot be lifted by including its roots.",
+    "10": "Egerton Galla shows offset rounded-lobed lower blades below the upper foliage and a visible basal junction. The roots fan downward and lack the f35v horizontal imbalance. Some narrow terminals are faint.",
+    "11": "The Egerton Ebulus does have a visible spread below its stalk. Its faint continuations into the parchment make terminal curvature and maximal reach uncertain.",
+    "12": "Egerton Brionia has a large downward fork with both ends at the lower sheet edge. Native coverage leaves the contour terminals unresolved.",
+    "13": "The exposed basal line of Egerton ivy tapers to a point above its caption. A faint nearby mark does not establish a continuous root junction or a measurable root spread."
+  },
+  "cards": {
+    "01": {
+      "plate": "BL Sloane MS 4016 f101r (three illustrated cuttings)",
+      "heading": "Vitis communis, agrestis and nigra",
+      "views": [
+        {
+          "covers_xyxy": [
+            [
+              87,
+              403,
+              199,
+              425
+            ],
+            [
+              376,
+              423,
+              518,
+              473
+            ],
+            [
+              216,
+              503,
+              343,
+              552
+            ]
+          ],
+          "crop_xyxy": [
+            45,
+            39,
+            551,
+            754
+          ],
+          "reference_dimensions": [
+            638,
+            850
+          ],
+          "source": "https://bl.digirati.io/images/ark:/81055/vdc_100165751215.0x0000cb/full/1250,/0/default.jpg"
+        }
+      ],
+      "reader_a": {
+        "masked_code": "A09",
+        "masked_sha256": "e91eee9225807fc8b27a07a6f90ce514353978ebf32d46eec4f0804763b711d2",
+        "features": {
+          "F1": "1",
+          "F2": "1",
+          "F3": "1",
+          "L1": "1",
+          "L2": "0",
+          "L3": "0",
+          "C1": "0",
+          "C2": "0",
+          "C3": "0",
+          "R1": "0",
+          "R2": "0",
+          "R3": "0"
+        },
+        "notes": "Terminal clusters and pointed palmate leaves; two stalks cross without a distinct upright axis, and the lower stem ends are separate."
+      },
+      "reader_b": {
+        "masked_code": "B11",
+        "masked_sha256": "e91eee9225807fc8b27a07a6f90ce514353978ebf32d46eec4f0804763b711d2",
+        "features": {
+          "F1": "1",
+          "F2": "1",
+          "F3": "1",
+          "L1": "1",
+          "L2": "0",
+          "L3": "0",
+          "C1": "0",
+          "C2": "0",
+          "C3": "0",
+          "R1": "0",
+          "R2": "0",
+          "R3": "0"
+        },
+        "notes": "Pointed palmate side blades. Two stems cross while the third is apart. All three have visible cut ends."
+      },
+      "consensus": {
+        "F1": "1",
+        "F2": "1",
+        "F3": "1",
+        "L1": "1",
+        "L2": "0",
+        "L3": "0",
+        "C1": "0",
+        "C2": "0",
+        "C3": "0",
+        "R1": "0",
+        "R2": "0",
+        "R3": "0"
+      }
+    },
+    "02": {
+      "plate": "Beinecke MS 408 f35v",
+      "heading": "Voynich f35v",
+      "views": [
+        {
+          "covers_xyxy": [
+            [
+              207,
+              158,
+              486,
+              733
+            ]
+          ],
+          "crop_xyxy": [
+            205,
+            48,
+            869,
+            1165
+          ],
+          "reference_dimensions": [
+            900,
+            1189
+          ],
+          "source": "https://collections.library.yale.edu/iiif/2/1006143/full/full/0/default.jpg"
+        }
+      ],
+      "reader_a": {
+        "masked_code": "A08",
+        "masked_sha256": "698ac01b71e24a377f9ec58e8d50dd32f375c7fa6055b36872addb9497370cd9",
+        "features": {
+          "F1": "1",
+          "F2": "1",
+          "F3": "1",
+          "L1": "1",
+          "L2": "1",
+          "L3": "1",
+          "C1": "1",
+          "C2": "1",
+          "C3": "1",
+          "R1": "1",
+          "R2": "1",
+          "R3": "1"
+        },
+        "notes": "Opposing diagonals cross the upright axis. The near-horizontal left root extends more than twice as far as the right."
+      },
+      "reader_b": {
+        "masked_code": "B09",
+        "masked_sha256": "698ac01b71e24a377f9ec58e8d50dd32f375c7fa6055b36872addb9497370cd9",
+        "features": {
+          "F1": "1",
+          "F2": "1",
+          "F3": "1",
+          "L1": "1",
+          "L2": "1",
+          "L3": "1",
+          "C1": "1",
+          "C2": "1",
+          "C3": "1",
+          "R1": "1",
+          "R2": "1",
+          "R3": "1"
+        },
+        "notes": "Two laterals cross at the upright. The near-horizontal root extends roughly 2.7 times farther left than right and has several curled tips."
+      },
+      "consensus": {
+        "F1": "1",
+        "F2": "1",
+        "F3": "1",
+        "L1": "1",
+        "L2": "1",
+        "L3": "1",
+        "C1": "1",
+        "C2": "1",
+        "C3": "1",
+        "R1": "1",
+        "R2": "1",
+        "R3": "1"
+      }
+    },
+    "03": {
+      "plate": "BnF Latin 6823 ff164v–165r (sinuous axis through gutter)",
+      "heading": "Vitis",
+      "views": [
+        {
+          "covers_xyxy": [
+            [
+              343,
+              111,
+              514,
+              251
+            ],
+            [
+              238,
+              173,
+              320,
+              359
+            ],
+            [
+              344,
+              554,
+              522,
+              596
+            ]
+          ],
+          "crop_xyxy": [
+            237,
+            49,
+            596,
+            750
+          ],
+          "reference_dimensions": [
+            623,
+            850
+          ],
+          "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/BnF_Latin_6823%2C_f.164v.jpg/960px-BnF_Latin_6823%2C_f.164v.jpg"
+        },
+        {
+          "covers_xyxy": [
+            [
+              103,
+              95,
+              166,
+              590
+            ]
+          ],
+          "crop_xyxy": [
+            28,
+            42,
+            166,
+            736
+          ],
+          "reference_dimensions": [
+            621,
+            850
+          ],
+          "source": "https://upload.wikimedia.org/wikipedia/commons/9/97/BnF_Latin_6823%2C_f.165r.jpg"
+        }
+      ],
+      "reader_a": {
+        "masked_code": "A04",
+        "masked_sha256": "2b9e90bfdce6a839e6b36be1e4e709cf93022719a09f559f958500469c496c9c",
+        "features": {
+          "F1": "0",
+          "F2": "0",
+          "F3": "0",
+          "L1": "1",
+          "L2": "0",
+          "L3": "0",
+          "C1": "?",
+          "C2": "?",
+          "C3": "0",
+          "R1": "0",
+          "R2": "0",
+          "R3": "0"
+        },
+        "notes": "Pointed palmate leaves and coiled tendril tips; upper masking interrupts crown and fan assessment, and visible stem ends have no drawn roots."
+      },
+      "reader_b": {
+        "masked_code": "B07",
+        "masked_sha256": "2b9e90bfdce6a839e6b36be1e4e709cf93022719a09f559f958500469c496c9c",
+        "features": {
+          "F1": "0",
+          "F2": "0",
+          "F3": "0",
+          "L1": "1",
+          "L2": "0",
+          "L3": "0",
+          "C1": "0",
+          "C2": "1",
+          "C3": "0",
+          "R1": "0",
+          "R2": "0",
+          "R3": "0"
+        },
+        "notes": "Curled ends are continuous tendrils. Upper stalks fan from a narrow junction; lower curves have no distinct upright or shared root junction."
+      },
+      "consensus": {
+        "F1": "0",
+        "F2": "0",
+        "F3": "0",
+        "L1": "1",
+        "L2": "0",
+        "L3": "0",
+        "C1": "?",
+        "C2": "?",
+        "C3": "0",
+        "R1": "0",
+        "R2": "0",
+        "R3": "0"
+      }
+    },
+    "04": {
+      "plate": "BnF Latin 6823 f60r (right)",
+      "heading": "Edera nigra",
+      "views": [
+        {
+          "covers_xyxy": [
+            [
+              245,
+              194,
+              311,
+              298
+            ],
+            [
+              245,
+              483,
+              270,
+              522
+            ]
+          ],
+          "crop_xyxy": [
+            245,
+            194,
+            474,
+            659
+          ],
+          "reference_dimensions": [
+            506,
+            700
+          ],
+          "source": "https://upload.wikimedia.org/wikipedia/commons/e/ed/BnF_Latin_6823%2C_f.060r.jpg"
+        }
+      ],
+      "reader_a": {
+        "masked_code": "A11",
+        "masked_sha256": "cf322afe2c4f993a703d265276c33f8b8297d3a06aba2567aaeed7fe3de3b303",
+        "features": {
+          "F1": "1",
+          "F2": "?",
+          "F3": "1",
+          "L1": "1",
+          "L2": "0",
+          "L3": "0",
+          "C1": "?",
+          "C2": "?",
+          "C3": "0",
+          "R1": "?",
+          "R2": "?",
+          "R3": "?"
+        },
+        "notes": "Multiple dot groups; exact stalk connection is faint, upper structure cropped, and basal stem continues off the bottom."
+      },
+      "reader_b": {
+        "masked_code": "B13",
+        "masked_sha256": "cf322afe2c4f993a703d265276c33f8b8297d3a06aba2567aaeed7fe3de3b303",
+        "features": {
+          "F1": "1",
+          "F2": "1",
+          "F3": "1",
+          "L1": "1",
+          "L2": "0",
+          "L3": "0",
+          "C1": "?",
+          "C2": "?",
+          "C3": "?",
+          "R1": "?",
+          "R2": "?",
+          "R3": "?"
+        },
+        "notes": "Open clusters of rounded units on fine stalks. Upper contours overlap and are clipped. The lowest contours and roots run out of frame."
+      },
+      "consensus": {
+        "F1": "1",
+        "F2": "?",
+        "F3": "1",
+        "L1": "1",
+        "L2": "0",
+        "L3": "0",
+        "C1": "?",
+        "C2": "?",
+        "C3": "?",
+        "R1": "?",
+        "R2": "?",
+        "R3": "?"
+      }
+    },
+    "05": {
+      "plate": "BnF Latin 6823 f74r (right)",
+      "heading": "Galla",
+      "views": [
+        {
+          "covers_xyxy": [
+            [
+              230,
+              227,
+              278,
+              383
+            ],
+            [
+              300,
+              227,
+              484,
+              252
+            ],
+            [
+              292,
+              486,
+              388,
+              640
+            ],
+            [
+              415,
+              509,
+              480,
+              638
+            ],
+            [
+              230,
+              505,
+              286,
+              796
+            ]
+          ],
+          "crop_xyxy": [
+            230,
+            227,
+            594,
+            796
+          ],
+          "reference_dimensions": [
+            628,
+            850
+          ],
+          "source": "https://upload.wikimedia.org/wikipedia/commons/d/de/BnF_Latin_6823%2C_f.074r.jpg"
+        }
+      ],
+      "reader_a": {
+        "masked_code": "A02",
+        "masked_sha256": "eb267a6d88d71fdbd20d80a1d1b43308e1904e2704ded2102ebe26455c982a8d",
+        "features": {
+          "F1": "0",
+          "F2": "0",
+          "F3": "0",
+          "L1": "?",
+          "L2": "1",
+          "L3": "1",
+          "C1": "1",
+          "C2": "1",
+          "C3": "0",
+          "R1": "?",
+          "R2": "?",
+          "R3": "?"
+        },
+        "notes": "Cup-bearing bodies occur singly; lateral lobing is visible, but masks hide lower leaf attachments and the fading base is unreadable."
+      },
+      "reader_b": {
+        "masked_code": "B02",
+        "masked_sha256": "eb267a6d88d71fdbd20d80a1d1b43308e1904e2704ded2102ebe26455c982a8d",
+        "features": {
+          "F1": "0",
+          "F2": "0",
+          "F3": "0",
+          "L1": "1",
+          "L2": "1",
+          "L3": "1",
+          "C1": "1",
+          "C2": "1",
+          "C3": "0",
+          "R1": "?",
+          "R2": "?",
+          "R3": "?"
+        },
+        "notes": "The rounded bodies have visible crosshatched cups. Lower side blades have repeated rounded lobes. Marks at the foot of the trunk are too faint to resolve as roots."
+      },
+      "consensus": {
+        "F1": "0",
+        "F2": "0",
+        "F3": "0",
+        "L1": "?",
+        "L2": "1",
+        "L3": "1",
+        "C1": "1",
+        "C2": "1",
+        "C3": "0",
+        "R1": "?",
+        "R2": "?",
+        "R3": "?"
+      }
+    },
+    "06": {
+      "plate": "BnF Latin 6823 f171r (large forked-root plant)",
+      "heading": "Brionia / Vitis alba",
+      "views": [
+        {
+          "covers_xyxy": [
+            [
+              90,
+              32,
+              252,
+              337
+            ],
+            [
+              267,
+              535,
+              329,
+              578
+            ],
+            [
+              477,
+              42,
+              538,
+              69
+            ]
+          ],
+          "crop_xyxy": [
+            25,
+            32,
+            587,
+            797
+          ],
+          "reference_dimensions": [
+            623,
+            850
+          ],
+          "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/BnF_Latin_6823%2C_f.171r.jpg/500px-BnF_Latin_6823%2C_f.171r.jpg"
+        }
+      ],
+      "reader_a": {
+        "masked_code": "A06",
+        "masked_sha256": "b9a7d2b21ae6a6209e223d737fe9931c5bf11f0d4b87c6fe923133aac67c53de",
+        "features": {
+          "F1": "1",
+          "F2": "1",
+          "F3": "1",
+          "L1": "1",
+          "L2": "0",
+          "L3": "0",
+          "C1": "?",
+          "C2": "0",
+          "C3": "0",
+          "R1": "1",
+          "R2": "?",
+          "R3": "0"
+        },
+        "notes": "Clear stalk-end clusters, angular leaves; upper mask limits crown assessment, and two thick descending root arms meet the bottom edge."
+      },
+      "reader_b": {
+        "masked_code": "B06",
+        "masked_sha256": "b9a7d2b21ae6a6209e223d737fe9931c5bf11f0d4b87c6fe923133aac67c53de",
+        "features": {
+          "F1": "1",
+          "F2": "1",
+          "F3": "1",
+          "L1": "1",
+          "L2": "0",
+          "L3": "0",
+          "C1": "0",
+          "C2": "0",
+          "C3": "0",
+          "R1": "1",
+          "R2": "?",
+          "R3": "0"
+        },
+        "notes": "Open groups end short stalks. The broad root body joins the stems and divides into two descending prongs whose tips are clipped."
+      },
+      "consensus": {
+        "F1": "1",
+        "F2": "1",
+        "F3": "1",
+        "L1": "1",
+        "L2": "0",
+        "L3": "0",
+        "C1": "?",
+        "C2": "0",
+        "C3": "0",
+        "R1": "1",
+        "R2": "?",
+        "R3": "0"
+      }
+    },
+    "07": {
+      "plate": "BnF Latin 6823 f63v (large plant at left)",
+      "heading": "Ebulus",
+      "views": [
+        {
+          "covers_xyxy": [
+            [
+              358,
+              220,
+              539,
+              368
+            ],
+            [
+              370,
+              373,
+              540,
+              629
+            ],
+            [
+              152,
+              589,
+              349,
+              632
+            ]
+          ],
+          "crop_xyxy": [
+            39,
+            218,
+            596,
+            792
+          ],
+          "reference_dimensions": [
+            625,
+            850
+          ],
+          "source": "https://upload.wikimedia.org/wikipedia/commons/e/ef/BnF_Latin_6823%2C_f.063v.jpg"
+        }
+      ],
+      "reader_a": {
+        "masked_code": "A12",
+        "masked_sha256": "f6be7d403d083781bc01ba18d3d16fb6e58e418794ef61c5f9db250a76ccf2aa",
+        "features": {
+          "F1": "?",
+          "F2": "?",
+          "F3": "?",
+          "L1": "1",
+          "L2": "0",
+          "L3": "0",
+          "C1": "0",
+          "C2": "0",
+          "C3": "0",
+          "R1": "1",
+          "R2": "?",
+          "R3": "?"
+        },
+        "notes": "Granular heads with uncertain unit separation and enclosure; lanceolate leaflets and lateral roots exit the frame."
+      },
+      "reader_b": {
+        "masked_code": "B01",
+        "masked_sha256": "f6be7d403d083781bc01ba18d3d16fb6e58e418794ef61c5f9db250a76ccf2aa",
+        "features": {
+          "F1": "?",
+          "F2": "?",
+          "F3": "?",
+          "L1": "1",
+          "L2": "0",
+          "L3": "0",
+          "C1": "0",
+          "C2": "1",
+          "C3": "0",
+          "R1": "1",
+          "R2": "?",
+          "R3": "?"
+        },
+        "notes": "Granular heads have unresolved unit boundaries. Upper stalks diverge from a narrow band. The root fork is visible below the mask, with lateral tips cut off at both edges."
+      },
+      "consensus": {
+        "F1": "?",
+        "F2": "?",
+        "F3": "?",
+        "L1": "1",
+        "L2": "0",
+        "L3": "0",
+        "C1": "0",
+        "C2": "?",
+        "C3": "0",
+        "R1": "1",
+        "R2": "?",
+        "R3": "?"
+      }
+    },
+    "08": {
+      "plate": "BL Sloane MS 4016 f108v (upper left)",
+      "heading": "Uva minoris",
+      "views": [
+        {
+          "covers_xyxy": [
+            [
+              258,
+              73,
+              341,
+              92
+            ]
+          ],
+          "crop_xyxy": [
+            77,
+            38,
+            341,
+            296
+          ],
+          "reference_dimensions": [
+            638,
+            850
+          ],
+          "source": "https://bl.digirati.io/images/ark:/81055/vdc_100165751215.0x0000da/full/1250,/0/default.jpg"
+        }
+      ],
+      "reader_a": {
+        "masked_code": "A13",
+        "masked_sha256": "1c6591bf78c9a7dfd1674a713b3db506e7c5ac3bb7b38e2ec0e49a02b77e251f",
+        "features": {
+          "F1": "1",
+          "F2": "1",
+          "F3": "1",
+          "L1": "1",
+          "L2": "0",
+          "L3": "0",
+          "C1": "0",
+          "C2": "0",
+          "C3": "?",
+          "R1": "?",
+          "R2": "?",
+          "R3": "?"
+        },
+        "notes": "Stalk-end clusters and palmate leaves on a curved axis; lower crossing and base uncertain in this crop."
+      },
+      "reader_b": {
+        "masked_code": "B08",
+        "masked_sha256": "1c6591bf78c9a7dfd1674a713b3db506e7c5ac3bb7b38e2ec0e49a02b77e251f",
+        "features": {
+          "F1": "1",
+          "F2": "1",
+          "F3": "1",
+          "L1": "1",
+          "L2": "0",
+          "L3": "0",
+          "C1": "0",
+          "C2": "0",
+          "C3": "0",
+          "R1": "?",
+          "R2": "?",
+          "R3": "?"
+        },
+        "notes": "Stalked groups contain discrete round outlines. The main shoot reaches the lower edge before the basal junction can be assessed."
+      },
+      "consensus": {
+        "F1": "1",
+        "F2": "1",
+        "F3": "1",
+        "L1": "1",
+        "L2": "0",
+        "L3": "0",
+        "C1": "0",
+        "C2": "0",
+        "C3": "?",
+        "R1": "?",
+        "R2": "?",
+        "R3": "?"
+      }
+    },
+    "09": {
+      "plate": "BnF Latin 6823 f74v (left)",
+      "heading": "Glandes",
+      "views": [
+        {
+          "covers_xyxy": [],
+          "crop_xyxy": [
+            29,
+            283,
+            140,
+            556
+          ],
+          "reference_dimensions": [
+            608,
+            850
+          ],
+          "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/BnF_Latin_6823%2C_f.074v.jpg/960px-BnF_Latin_6823%2C_f.074v.jpg"
+        }
+      ],
+      "reader_a": {
+        "masked_code": "A07",
+        "masked_sha256": "81a40658d02fb7f8523e87dd77711b23e7c1a0b2ccfb3959ad9df412a93da432",
+        "features": {
+          "F1": "?",
+          "F2": "?",
+          "F3": "0",
+          "L1": "?",
+          "L2": "?",
+          "L3": "1",
+          "C1": "?",
+          "C2": "?",
+          "C3": "?",
+          "R1": "?",
+          "R2": "?",
+          "R3": "?"
+        },
+        "notes": "Cropped fragment with visible cups and repeated long-axis lobing, but insufficient complete side leaves, crown, or roots."
+      },
+      "reader_b": {
+        "masked_code": "B05",
+        "masked_sha256": "81a40658d02fb7f8523e87dd77711b23e7c1a0b2ccfb3959ad9df412a93da432",
+        "features": {
+          "F1": "?",
+          "F2": "?",
+          "F3": "0",
+          "L1": "?",
+          "L2": "?",
+          "L3": "?",
+          "C1": "?",
+          "C2": "?",
+          "C3": "?",
+          "R1": "?",
+          "R2": "?",
+          "R3": "?"
+        },
+        "notes": "Cups are clear. The narrow fragment shows repeated lobing on visible blades, but lower attachment, crown and base are incomplete."
+      },
+      "consensus": {
+        "F1": "?",
+        "F2": "?",
+        "F3": "0",
+        "L1": "?",
+        "L2": "?",
+        "L3": "?",
+        "C1": "?",
+        "C2": "?",
+        "C3": "?",
+        "R1": "?",
+        "R2": "?",
+        "R3": "?"
+      }
+    },
+    "10": {
+      "plate": "BL Egerton MS 747 f44r (lower right)",
+      "heading": "Galla",
+      "views": [
+        {
+          "covers_xyxy": [
+            [
+              217,
+              519,
+              290,
+              553
+            ],
+            [
+              332,
+              523,
+              391,
+              551
+            ]
+          ],
+          "crop_xyxy": [
+            208,
+            388,
+            446,
+            677
+          ],
+          "reference_dimensions": [
+            479,
+            700
+          ],
+          "source": "https://bl.digirati.io/images/ark:/81055/vdc_100058663074.0x00005f/full/1500,/0/default.jpg"
+        }
+      ],
+      "reader_a": {
+        "masked_code": "A05",
+        "masked_sha256": "1b22ac08fad6fe6d1115ee2b055f2a7763742c6c1f4df73c5c03cc800be0e4e1",
+        "features": {
+          "F1": "0",
+          "F2": "0",
+          "F3": "0",
+          "L1": "1",
+          "L2": "1",
+          "L3": "1",
+          "C1": "1",
+          "C2": "1",
+          "C3": "0",
+          "R1": "1",
+          "R2": "?",
+          "R3": "0"
+        },
+        "notes": "Individual cup-bearing bodies, repeated broad lobing and upper fan; junction visible, fine descending tips partly clipped."
+      },
+      "reader_b": {
+        "masked_code": "B12",
+        "masked_sha256": "1b22ac08fad6fe6d1115ee2b055f2a7763742c6c1f4df73c5c03cc800be0e4e1",
+        "features": {
+          "F1": "0",
+          "F2": "0",
+          "F3": "0",
+          "L1": "1",
+          "L2": "1",
+          "L3": "1",
+          "C1": "1",
+          "C2": "1",
+          "C3": "0",
+          "R1": "1",
+          "R2": "?",
+          "R3": "0"
+        },
+        "notes": "Oval bodies in cups. Foliage fans from central trunk. Longest visible root runs diagonally; some tips reach lower edge."
+      },
+      "consensus": {
+        "F1": "0",
+        "F2": "0",
+        "F3": "0",
+        "L1": "1",
+        "L2": "1",
+        "L3": "1",
+        "C1": "1",
+        "C2": "1",
+        "C3": "0",
+        "R1": "1",
+        "R2": "?",
+        "R3": "0"
+      }
+    },
+    "11": {
+      "plate": "BL Egerton MS 747 f37r (left)",
+      "heading": "Ebulus",
+      "views": [
+        {
+          "covers_xyxy": [
+            [
+              46,
+              344,
+              202,
+              355
+            ],
+            [
+              52,
+              528,
+              90,
+              548
+            ]
+          ],
+          "crop_xyxy": [
+            26,
+            344,
+            226,
+            668
+          ],
+          "reference_dimensions": [
+            474,
+            700
+          ],
+          "source": "https://bl.digirati.io/images/ark:/81055/vdc_100058663074.0x000051/full/1500,/0/default.jpg"
+        }
+      ],
+      "reader_a": {
+        "masked_code": "A10",
+        "masked_sha256": "f8f89f127f63de721f585bb9f2efd96b13ca61cd12d2adbabd7ee0f921833843",
+        "features": {
+          "F1": "0",
+          "F2": "0",
+          "F3": "?",
+          "L1": "1",
+          "L2": "0",
+          "L3": "0",
+          "C1": "1",
+          "C2": "1",
+          "C3": "0",
+          "R1": "1",
+          "R2": "?",
+          "R3": "?"
+        },
+        "notes": "No clear groups of rounded bodies; finely divided upper outline with a fan, unlobed leaflets, and lateral roots cut off at the edges."
+      },
+      "reader_b": {
+        "masked_code": "B03",
+        "masked_sha256": "f8f89f127f63de721f585bb9f2efd96b13ca61cd12d2adbabd7ee0f921833843",
+        "features": {
+          "F1": "?",
+          "F2": "?",
+          "F3": "?",
+          "L1": "1",
+          "L2": "0",
+          "L3": "0",
+          "C1": "1",
+          "C2": "1",
+          "C3": "0",
+          "R1": "1",
+          "R2": "?",
+          "R3": "?"
+        },
+        "notes": "Small terminal heads have indistinct unit outlines. The upper spray is distinct. The basal join is visible, with the right root and a descending branch clipped."
+      },
+      "consensus": {
+        "F1": "?",
+        "F2": "?",
+        "F3": "?",
+        "L1": "1",
+        "L2": "0",
+        "L3": "0",
+        "C1": "1",
+        "C2": "1",
+        "C3": "0",
+        "R1": "1",
+        "R2": "?",
+        "R3": "?"
+      }
+    },
+    "12": {
+      "plate": "BL Egerton MS 747 f16v (lower plant)",
+      "heading": "Brionia",
+      "views": [
+        {
+          "covers_xyxy": [
+            [
+              79,
+              321,
+              213,
+              416
+            ],
+            [
+              79,
+              419,
+              219,
+              526
+            ],
+            [
+              308,
+              530,
+              413,
+              552
+            ],
+            [
+              291,
+              236,
+              428,
+              319
+            ]
+          ],
+          "crop_xyxy": [
+            7,
+            236,
+            440,
+            683
+          ],
+          "reference_dimensions": [
+            483,
+            700
+          ],
+          "source": "https://bl.digirati.io/images/ark:/81055/vdc_100058663074.0x000028/full/1500,/0/default.jpg"
+        }
+      ],
+      "reader_a": {
+        "masked_code": "A03",
+        "masked_sha256": "b49efe6e2444b3d3f9801f21a806ef7709d684750c0eb576d32461514b7ea466",
+        "features": {
+          "F1": "0",
+          "F2": "0",
+          "F3": "1",
+          "L1": "1",
+          "L2": "0",
+          "L3": "0",
+          "C1": "?",
+          "C2": "?",
+          "C3": "0",
+          "R1": "1",
+          "R2": "?",
+          "R3": "?"
+        },
+        "notes": "Separate rounded units occur singly; masking and cropping break the crown view, a basal fork is visible, and the prominent root tips run off the card."
+      },
+      "reader_b": {
+        "masked_code": "B10",
+        "masked_sha256": "b49efe6e2444b3d3f9801f21a806ef7709d684750c0eb576d32461514b7ea466",
+        "features": {
+          "F1": "0",
+          "F2": "0",
+          "F3": "1",
+          "L1": "1",
+          "L2": "0",
+          "L3": "0",
+          "C1": "?",
+          "C2": "?",
+          "C3": "0",
+          "R1": "1",
+          "R2": "?",
+          "R3": "?"
+        },
+        "notes": "Solitary rounded marks. Top is cut or masked. Main stems meet the descending root body whose tips are clipped."
+      },
+      "consensus": {
+        "F1": "0",
+        "F2": "0",
+        "F3": "1",
+        "L1": "1",
+        "L2": "0",
+        "L3": "0",
+        "C1": "?",
+        "C2": "?",
+        "C3": "0",
+        "R1": "1",
+        "R2": "?",
+        "R3": "?"
+      }
+    },
+    "13": {
+      "plate": "BL Egerton MS 747 f37r (right)",
+      "heading": "Edera nigra",
+      "views": [
+        {
+          "covers_xyxy": [],
+          "crop_xyxy": [
+            217,
+            206,
+            414,
+            508
+          ],
+          "reference_dimensions": [
+            474,
+            700
+          ],
+          "source": "https://bl.digirati.io/images/ark:/81055/vdc_100058663074.0x000051/full/1500,/0/default.jpg"
+        }
+      ],
+      "reader_a": {
+        "masked_code": "A01",
+        "masked_sha256": "e7efd096eec45cc07e651e3ed2e5761ff7230045ea54123b67558534be99482b",
+        "features": {
+          "F1": "1",
+          "F2": "1",
+          "F3": "1",
+          "L1": "1",
+          "L2": "0",
+          "L3": "0",
+          "C1": "0",
+          "C2": "0",
+          "C3": "0",
+          "R1": "0",
+          "R2": "0",
+          "R3": "0"
+        },
+        "notes": "Separated dot clusters hang from lateral stalks; top terminal shapes are dispersed and there is no distinct root junction."
+      },
+      "reader_b": {
+        "masked_code": "B04",
+        "masked_sha256": "e7efd096eec45cc07e651e3ed2e5761ff7230045ea54123b67558534be99482b",
+        "features": {
+          "F1": "1",
+          "F2": "1",
+          "F3": "1",
+          "L1": "1",
+          "L2": "0",
+          "L3": "0",
+          "C1": "0",
+          "C2": "0",
+          "C3": "0",
+          "R1": "0",
+          "R2": "0",
+          "R3": "0"
+        },
+        "notes": "Several short stalks end in open groups of rounded units. The lower center is winding, with no clear double crossing; the stem ends above the edge."
+      },
+      "consensus": {
+        "F1": "1",
+        "F2": "1",
+        "F3": "1",
+        "L1": "1",
+        "L2": "0",
+        "L3": "0",
+        "C1": "0",
+        "C2": "0",
+        "C3": "0",
+        "R1": "0",
+        "R2": "0",
+        "R3": "0"
+      }
+    }
+  },
+  "sources": {
+    "https://bl.digirati.io/images/ark:/81055/vdc_100058663074.0x000028/full/1500,/0/default.jpg": {
+      "sha256": "9d6730e73dfee0619207910fbb0e9f09e93ed1c59a979bc487e067dfae8c8775",
+      "size": [
+        1500,
+        2171
+      ]
+    },
+    "https://bl.digirati.io/images/ark:/81055/vdc_100058663074.0x000051/full/1500,/0/default.jpg": {
+      "sha256": "1f15e92da0f8ee39636a3532c2db7a17239d79a4c7e4e770ea110f15dbb15912",
+      "size": [
+        1500,
+        2216
+      ]
+    },
+    "https://bl.digirati.io/images/ark:/81055/vdc_100058663074.0x00005f/full/1500,/0/default.jpg": {
+      "sha256": "135f868bf279fdd49435d951806b79e7a3cd16a8b15d9ec4513281d994fe9084",
+      "size": [
+        1500,
+        2191
+      ]
+    },
+    "https://bl.digirati.io/images/ark:/81055/vdc_100165751215.0x0000cb/full/1250,/0/default.jpg": {
+      "sha256": "768b310b8b17287ad7770159ee05c3309f0f314eafebd14d51f4d6f4b4ea3a1b",
+      "size": [
+        1250,
+        1665
+      ]
+    },
+    "https://bl.digirati.io/images/ark:/81055/vdc_100165751215.0x0000da/full/1250,/0/default.jpg": {
+      "sha256": "ce01d8580c08949d5661379f5c40c84198c89dbf8acaea35ee7b24e1178d3bee",
+      "size": [
+        1250,
+        1665
+      ]
+    },
+    "https://collections.library.yale.edu/iiif/2/1006143/full/full/0/default.jpg": {
+      "sha256": "564412e99b04406f51afe2c8f9ab20320518b3e71b91deee48fb16ee1ad3ffbd",
+      "size": [
+        2853,
+        3769
+      ]
+    },
+    "https://upload.wikimedia.org/wikipedia/commons/9/97/BnF_Latin_6823%2C_f.165r.jpg": {
+      "sha256": "58976435928f88df8d48fca5e62ddd4ee6c6c6ecaa374168f832415be5ec04b3",
+      "size": [
+        1024,
+        1400
+      ]
+    },
+    "https://upload.wikimedia.org/wikipedia/commons/d/de/BnF_Latin_6823%2C_f.074r.jpg": {
+      "sha256": "16bcd645a46f43cb8bb242dcb0c0872279520ef7bdd05b10f8aca3e9ac1fd026",
+      "size": [
+        1024,
+        1386
+      ]
+    },
+    "https://upload.wikimedia.org/wikipedia/commons/e/ed/BnF_Latin_6823%2C_f.060r.jpg": {
+      "sha256": "509a0dbb9f0d3403578057dfe43665803853764e8cea53a4062203d52efe36a2",
+      "size": [
+        1024,
+        1416
+      ]
+    },
+    "https://upload.wikimedia.org/wikipedia/commons/e/ef/BnF_Latin_6823%2C_f.063v.jpg": {
+      "sha256": "0f667233549e06169b4543115a7be836fa564d6380db7e35da8a27523cfef7c4",
+      "size": [
+        1024,
+        1393
+      ]
+    },
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/BnF_Latin_6823%2C_f.164v.jpg/960px-BnF_Latin_6823%2C_f.164v.jpg": {
+      "sha256": "2e9bb58f9f4cdc6c1822ed15480db9e19fa1d4af352d51d4ad531bb1ea82a28e",
+      "size": [
+        960,
+        1310
+      ]
+    },
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/BnF_Latin_6823%2C_f.074v.jpg/960px-BnF_Latin_6823%2C_f.074v.jpg": {
+      "sha256": "3264ec57af87ecadf48e4ec956dcadcaaa3e5f82a275107797d3ce9165ea111a",
+      "size": [
+        960,
+        1342
+      ]
+    },
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/BnF_Latin_6823%2C_f.171r.jpg/500px-BnF_Latin_6823%2C_f.171r.jpg": {
+      "sha256": "5d9ba3d1997b20fdd1c837183c9c0794f1e484f624e825b5aebae78143b173c4",
+      "size": [
+        500,
+        682
+      ]
+    }
+  }
+}
