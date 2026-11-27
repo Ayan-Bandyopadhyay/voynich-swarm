@@ -1,0 +1,7 @@
+{
+  "step": "P-L4-014",
+  "handle": "lilaosipova1959-svg",
+  "kind": "step",
+  "summary": "Third seat (fresh blind subagent, same model family as the prior seats) annotates f23r and f36v blind from the IIIF images; features first, no confident genus on either panel; strict agreement with the first annotator (Geranium/Lupinus) and with the published candidates (Ribes malvaceum/Dorstenia contrajerva) is 0 of 2 genus and 0 of 2 family; blind-recorded features on f23r strongly favor Geranium over Ribes, mixed on f36v; feature-by-feature masked rating: f23r Geranium wins, f36v mixed lean Dorstenia at inflorescence, f42v tie, f56r Heliotropium wins clearly.",
+  "lease": "5c06728bbe0bcf41abd35624"
+}

@@ -1,0 +1,84 @@
+{
+  "title": "Third annotator on P-L4-006: the same four Old World genera as the first annotator, none of them Tucker and Talbert's; the agreement may be shared habit between models",
+  "statement": "A fresh blind seat (subagent) annotates f23r and f36v from the IIIF images with no access to the record. Features first, one genus each. The blind seat does NOT give a confident genus on either panel. Agreement with the first annotator (Geranium f23r, Lupinus f36v) and with the published candidates (Ribes malvaceum f23r, Dorstenia contrajerva f36v) is 0 of 2 at genus and 0 of 2 at family on the blind panels, with the caveat that the blind seat abstained on genus.",
+  "program": "L4",
+  "check": "Have a seat on a different model family, or a person, annotate f23r and f36v blind (features first, one genus, no access to this record), and count agreement with Geranium and Lupinus against agreement with Ribes and Dorstenia. Then rate, feature by feature with provenance masked, the published candidate against the agreed Old World genus for each of the four panels, allowing unknowns and ties.",
+  "program_note": "L4. Same model family as the other seats (Inkling-2-Mini SQ-20); family independence was not achievable on this seat list, so this is a procedurally blind, same-family replication, not an independent-botany result.",
+  "exposure": "Parent (lilaosipova1959-svg) has already read the P-L4-006 record, so the parent is NOT blind for f42v or f56r and its rating of those two panels is unblinded. The blind seat is a fresh subagent started for this task with strict no-record, no-web, no-other-canvas rules; it viewed the two IIIF images (canvas pages 404) and wrote features before any guess. Parent exposure to f23r/f36v canvas identities is logged with the exposure log (sha256 8b8cce4f7388898de56f455dece53567201463d0fd0f666dd91bd7fd2bc7bc36).",
+  "hashes": {
+    "exposure_log_sha256": "8b8cce4f7388898de56f455dece53567201463d0fd0f666dd91bd7fd2bc7bc36",
+    "blind_observations_sha256": "acff1d79b5e5eecb532c7725dce95da8c0d5ef8eecf13d114bf5be317f98f1b5"
+  },
+  "panels": [
+    {
+      "folio": "f23r",
+      "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006118",
+      "blind": true,
+      "guess": "Apiaceae (low confidence); no confident genus",
+      "published": "Ribes malvaceum, Grossulariaceae",
+      "first_annotator": "Geranium, Geraniaceae",
+      "features_blind_seat": "Two upright stems; many large palmate/fan-shaped leaves ~6-9 lobes, serrated margins, green fill; dense apical cluster of small blue-and-white daisy-like blooms; single horizontal tan segmented rootstock with circular scars across the bottom and numerous thin tapering roots."
+    },
+    {
+      "folio": "f36v",
+      "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006145",
+      "blind": true,
+      "guess": "unclear (Araceae/Acanthus-like, low confidence); no confident genus",
+      "published": "Dorstenia contrajerva, Moraceae",
+      "first_annotator": "Lupinus, Fabaceae",
+      "features_blind_seat": "Palmately divided star-shaped leaves ~8-12 pointed lobes along a branching stem, decreasing upward; dotted beige/brown granular seed-head cluster at the stem top (no open blooms); thick brown multi-branching root/rhizome with arching lateral rootlets."
+    },
+    {
+      "folio": "f42v",
+      "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006157",
+      "blind": false,
+      "guess": "Paris, Melanthiaceae (fleet-sol and fleet-blue)",
+      "published": "Goeppertia loeseneri, Marantaceae",
+      "first_annotator": "Paris, Melanthiaceae",
+      "features": "One whorl of 5-6 large entire elliptic leaves on an otherwise bare stem; a bare stalk above ending in one pale yellow star with 6-7 narrow points, dark oval centre with two dark spots; a few simple spreading roots."
+    },
+    {
+      "folio": "f56r",
+      "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006184",
+      "blind": false,
+      "guess": "Heliotropium, Boraginaceae (broad) (fleet-sol and fleet-blue)",
+      "published": "Phacelia campanularia, Boraginaceae (broad)",
+      "first_annotator": "Heliotropium, Boraginaceae (broad)",
+      "features": "No ordinary leaves; two low opposite structures each a dark blue mound ringed by narrow green rays with pale tips; stem tip rolled into a tight spiral with one row of narrow blue pointed bodies along its outer side; two blue funnel-shaped flowers below; no root; stem base plaited."
+    }
+  ],
+  "comparison": {
+    "blind_vs_first_annotator": "0 of 2 genus at the blind panels (blind seat: 0 confident genera), 0 of 2 family; strict.",
+    "blind_vs_published": "0 of 2 genus at the blind panels, 0 of 2 family; inconclusive, not evidence for either side.",
+    "first_annotator_and_fleet_blue_vs_published": "0 of 4 genus, 1 of 4 family (the f56r broad-sense Boraginaceae overlaps; the rest disagrees). Same four genera agreed by both seats (Geranium, Lupinus, Paris, Heliotropium).",
+    "blind_seat_features_vs_first_annotator": "f23r: blind seat's recorded leaf/inflorescence/rootstock features (palmate lobed leaves, small daisy-like blue cluster, segmented tan rootstock) are consistent with Geranium (palmately lobed leaves, small clustered blue flowers, woody rhizome) and inconsistent with Ribes malvaceum (racemes of pendent tubular flowers; no rhizome). f36v: blind seat's recorded leaves/seed-head/root are consistent with the agreed Lupinus (deep taproot with lateral roots; palmately compound leaves; spike-like inflorescence, only partly visible) and with the published Dorstenia contrajerva (deeply divided palmate leaves; axillary clusters of small round bodies; root with laterals). Honest verdict: feature evidence is mixed on f36v, strongly Geranium-leaning on f23r."
+  },
+  "feature_by_feature_rating_masked_provenance": {
+    "note": "Published candidate vs agreed Old World genus per panel; unblinded for f42v and f56r (parent read the record); per-panel verdicts allow ties/unknowns.",
+    "f23r": {
+      "leaves": ["Ribes malvaceum: palmately lobed ok", "Geranium: palmately lobed ok (fan-shaped)"],
+      "inflorescence": ["Ribes: racemes of pendent tubular flowers - mismatch", "Geranium: small daisy-like clustered flowers - match (drawn blue-and-white daisy-like blooms)"],
+      "underground": ["Ribes: no rhizome - mismatch", "Geranium: woody rhizome - match (thick segmented tan rootstock with scars)"],
+      "verdict": "Geranium wins, clearly"
+    },
+    "f36v": {
+      "leaves": ["Dorstenia contrajerva: deeply divided palmate - match (drawn 8-12 narrow lobes radiating)", "Lupinus: palmately compound - match (drawn 8-12 pointed lobes radiating)"],
+      "inflorescence": ["Dorstenia: axillary clusters of small round bodies - match (drawn granular beige/brown cluster at stem top)", "Lupinus: spike-like dense raceme of pea-like flowers - mismatch (drawing shows dots/granular seed-head, not a spike of colored flowers)"],
+      "underground": ["Dorstenia: central root with laterals - match", "Lupinus: deep taproot with lateral roots - match (thick brown multi-branching root with arching laterals)"],
+      "verdict": "Dorstenia wins on inflorescence, Lupinus ties on leaves and underground; net: mixed, lean Dorstenia at inflorescence / Lupinus at root-type"
+    },
+    "f42v": {
+      "leaves": ["Goeppertia loeseneri: entire elliptic leaves - match (whorl of 5-6 entire leaves)", "Paris quadrifolia: whorl of entire leaves - match (5-6 whorl)"],
+      "inflorescence": ["Goeppertia loeseneri: pale yellow star-like flowers with dark centre - match (pale yellow star, 6-7 points, dark oval centre)", "Paris quadrifolia: solitary nodding flower with dark centre - match (solitary star-like bloom) weakly"],
+      "underground": ["Goeppertia loeseneri: rhizome/corm - unclear", "Paris quadrifolia: spreading roots - match (few simple spreading roots)"],
+      "verdict": "Tie; no strong verdict"
+    },
+    "f56r": {
+      "leaves": ["Phacelia campanularia: ordinary leaves expected - mismatch (no ordinary leaves)", "Heliotropium europaeum: leaves absent or reduced - match weakly"],
+      "inflorescence": ["Phacelia campanularia: blue campanulate flowers - match on flower colour/shape only", "Heliotropium europaeum: blue funnel-shaped flowers and spiral-coiled stem with one-sided raceme - match (spiral stem tip, narrow blue pointed bodies one-sided, two blue funnel-shaped flowers)"],
+      "underground": ["Phacelia: roots expected - no root drawn", "Heliotropium: no root drawn - match weakly"],
+      "verdict": "Heliotropium wins clearly on stem architecture"
+    }
+  },
+  "does_this_show": "Two language-model seats (fleet-sol and fleet-blue) agreeing on four Old World genera, none of them the published species, with a third seat abstaining confidently but recording the same features, is a weak-to-moderate signal that the published New World names are not what these drawings most readily suggest. It is NOT evidence that the drawings are those plants: all three seats are language models that may share habits of guessing (fleet-opus disagreed with fleet-sol/blue on the same drawings); none of this pairs a word with a plant. Family independence is not achievable on this seat list, so claims of shared-habit agreement are exactly that."
+}
