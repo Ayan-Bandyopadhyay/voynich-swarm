@@ -1,0 +1,207 @@
+{
+  "id": "grid-albanian-syllabic-zl-practice-train",
+  "family": "syllabic",
+  "segmentation": "eva-basic",
+  "target": {
+    "language": "albanian",
+    "period": "modern Albanian (Tosk standard), pinned Unbound Bible C-007"
+  },
+  "key": {
+    "marker": "q",
+    "map": {
+      "*": "i",
+      "?": "a",
+      "a": "n",
+      "b": "e",
+      "c": "s",
+      "cfh": "a",
+      "ch": "a",
+      "ckh": "i",
+      "cph": "a",
+      "cth": "a",
+      "d": "a",
+      "e": "r",
+      "f": "a",
+      "g": "i",
+      "h": "r",
+      "i": "a",
+      "j": "e",
+      "k": "a",
+      "l": "e",
+      "m": "e",
+      "n": "r",
+      "o": "t",
+      "p": "a",
+      "r": "e",
+      "s": "a",
+      "sh": "a",
+      "t": "a",
+      "u": "i",
+      "v": "u",
+      "x": "i",
+      "y": "t",
+      "z": "a",
+      "qo": "lu",
+      "qe": "la",
+      "qk": "ve",
+      "qy": "ju",
+      "qcth": "la",
+      "qckh": "ve",
+      "qa": "ja",
+      "q*": "lu",
+      "q?": "je",
+      "qch": "ve",
+      "qcph": "bu"
+    }
+  },
+  "search": {
+    "budget": {
+      "syllable_candidates": 64,
+      "sign_limit": 24,
+      "lexical_sweeps": 5,
+      "restarts": 4,
+      "iterations": 6000,
+      "seed": 1404,
+      "bpe_merges": 30,
+      "verbose_segmentations": [
+        "bpe-greedy",
+        "fixed-2"
+      ],
+      "verbose_min_unit_share": 0.0005,
+      "substitution_group_swap": 0.2
+    }
+  },
+  "transliteration": "zl",
+  "reading_order": "normal",
+  "spaces": "word_breaks",
+  "scope_of_inference": "Fixed EVA-basic q marker, consuming exactly the following glyph within a word. At most 24 signs with at least three training appearances are fitted from 64 candidate written CV pairs. The pinned normalized reference uses aeiou as vowels and folds Albanian diacritics. The stock search retains the EVA word breaks and uses no practice evaluation pages in selecting the key. The result is specific to modern Tosk and the fixed marker, boundary and search rules.",
+  "sign_coverage": {
+    "training": {
+      "tokens": 32410,
+      "word_types": 7256,
+      "dangling_marker_count": 0,
+      "known_sign_occurrences": 4589,
+      "unmapped_sign_occurrences": 3,
+      "sign_occurrences": {
+        "qo": 4488,
+        "qe": 45,
+        "qk": 18,
+        "qy": 8,
+        "qcth": 7,
+        "qckh": 6,
+        "qa": 5,
+        "q*": 3,
+        "q?": 3,
+        "qch": 3,
+        "qcph": 3,
+        "qd": 1,
+        "qs": 1,
+        "qp": 1
+      }
+    },
+    "practice": {
+      "tokens": 6076,
+      "word_types": 2166,
+      "dangling_marker_count": 1,
+      "known_sign_occurrences": 827,
+      "unmapped_sign_occurrences": 3,
+      "sign_occurrences": {
+        "qo": 806,
+        "qe": 13,
+        "qk": 3,
+        "qs": 2,
+        "qa": 2,
+        "qcth": 1,
+        "qckh": 1,
+        "qf": 1,
+        "qch": 1
+      }
+    }
+  },
+  "control_runs": [
+    {
+      "seed": 0,
+      "noise": 0.0,
+      "tokens": 10800,
+      "matching_outputs": 10800,
+      "planted_matches_plaintext": 10786,
+      "fitted_matches_plaintext": 10786,
+      "ordinary_matches": 29,
+      "ordinary_total": 29,
+      "sign_matches": 20,
+      "sign_total": 20,
+      "fitted_evaluation": {
+        "compresses": true,
+        "reads": true,
+        "beats_decoys": true,
+        "savings": 0.04742
+      }
+    },
+    {
+      "seed": 0,
+      "noise": 0.02,
+      "tokens": 10800,
+      "matching_outputs": 10778,
+      "planted_matches_plaintext": 9937,
+      "fitted_matches_plaintext": 9940,
+      "ordinary_matches": 29,
+      "ordinary_total": 29,
+      "sign_matches": 20,
+      "sign_total": 20,
+      "fitted_evaluation": {
+        "compresses": true,
+        "reads": true,
+        "beats_decoys": true,
+        "savings": 0.01861
+      },
+      "planted_evaluation": {
+        "compresses": true,
+        "reads": true,
+        "beats_decoys": true,
+        "savings": 0.01772
+      }
+    },
+    {
+      "seed": 1,
+      "noise": 0.02,
+      "tokens": 10800,
+      "matching_outputs": 10787,
+      "planted_matches_plaintext": 9994,
+      "fitted_matches_plaintext": 9996,
+      "ordinary_matches": 29,
+      "ordinary_total": 29,
+      "sign_matches": 20,
+      "sign_total": 20
+    },
+    {
+      "seed": 2,
+      "noise": 0.02,
+      "tokens": 10800,
+      "matching_outputs": 1681,
+      "planted_matches_plaintext": 9919,
+      "fitted_matches_plaintext": 1660,
+      "ordinary_matches": 8,
+      "ordinary_total": 29,
+      "sign_matches": 6,
+      "sign_total": 20
+    }
+  ],
+  "control_provenance": "Pinned tests https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/594; extra seeds test mapping recovery only. Control normalized plaintext match counts are before the encoder excludes rare letters outside its fitted alphabet.",
+  "marker_calibration": {
+    "voynich_training": {
+      "marked_words": 4591,
+      "leading_marked_words": 4561,
+      "signs": 4592,
+      "top_sign": "qo",
+      "top_count": 4488
+    },
+    "noisy_control_evaluation": {
+      "marked_words": 5702,
+      "leading_marked_words": 2305,
+      "signs": 6840,
+      "top_sign_count": 869
+    },
+    "noise_note": "The generic replacement pool can erase q or change its follower but does not introduce new q markers."
+  },
+  "source": "https://voynichswarm.com/x/C-007.html"
+}
