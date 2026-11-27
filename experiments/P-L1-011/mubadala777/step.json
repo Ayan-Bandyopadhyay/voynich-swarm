@@ -1,0 +1,1375 @@
+{
+  "title": "Four native Yale checks trace anomalous separator widths to mistaken alignment",
+  "statement": "Two masked readers located the full separator-erased sequences on four Yale scan rows and agreed on all 16 endpoints within six native pixels. At f35r.8 the archived 242-pixel comma gap comes from the previous detected row. The intended comma gap averages 14 native pixels, versus 24 for its matched period. Across the four deliberately selected negative archive cases, the point differences period minus comma are +10, +12.5, +19 and +7 pixels. Conservative edge ranges still allow either sign for f35r.8 and f58r.41. No alternate row fit either reader's full glyph sequence. Equal detected and transcribed token counts coexist with two errors. A star is counted in one case. Separated ink fragments compensate for coalesced words in the other. The raw S47 reanalysis recovers the same 121 exact-pair records. Excluding only the confirmed f35r.8 row mismatch raises its equal-quire mean from +0.269 to +0.646 threshold units. The four selected checks do not estimate the frequency of errors in the archive.",
+  "program": "L1",
+  "check": "Reproduce the crop-free raw S47 exact-pair enumeration and inspect the documented Yale native rows using a freshly randomized separator-erased panel. Treat row assignment, within-row glyph mapping, and the endpoints of faded ink separately. Independently sample both archive contrast signs and page layouts before estimating the overall rate of registration and ordinal-alignment errors.",
+  "on_path": true,
+  "hard": true,
+  "evidence": {
+    "previous_pr": "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/533",
+    "accepted_predecessor_proposal": "P-L1-011",
+    "frozen_plan": {
+      "step": "P-L1-011",
+      "prior_pr": "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/533",
+      "primary": "Inspect the unresolved f35r.8 exact y-to-k pair, where the published 242px archive value strongly affects the quire mean.",
+      "supplementary_fixed_targets": [
+        {
+          "locus": "f115v.28",
+          "reason": "Largest remaining negative difference in the prior audit among equal detected and transcribed token counts."
+        },
+        {
+          "locus": "f56v.9",
+          "reason": "Most negative remaining unequal-count comparison in a quire distinct from f35r and f115v."
+        },
+        {
+          "locus": "f58r.41",
+          "reason": "Most negative remaining equal-count comparison in another distinct quire among the next archived rows."
+        }
+      ],
+      "scope": "These loci were selected for anomalous negative archived widths and do not establish the prevalence of either direction across the manuscript. The unmatched prior f35r.8 crop is reproduced as a locator check.",
+      "scan_reader_method": "Generate anonymous whole-line native image panels with coordinate ticks, and separately print the glyph sequence with all separators erased. List two transitions in randomized order and use exactly the same ordered glyph pair. No reader sees the raw transcription, separator categories, archive widths, candidate labels, or previous conclusions. At least two fresh readers independently record both neighboring glyph extrema, alternative alignments, and unresolved status.",
+      "decision": "Compare matching readers if the readings identify the same physical line and no main competing alignment changes the result. Use gap max(0, x_left_of_right_glyph - x_right_of_left_glyph - 1), and recompute under conservative alternative positions. Predeclare the old 20 native-pixel four-edge agreement and 10-pixel sensitivity. Never force numeric values from unresolved rows or a cut-off edge.",
+      "components": "Physical line localization may use old coordinates and the glyph sequence with boundaries erased from optical reader material. It is separated from the subsequent optical edge readings. Compare full scan and prior row clips, and preserve archive positions used for checks.",
+      "archive": "Dataset revision 713fa1003dd56e9526e8596f57128e60e18c02d6, positions hash 8284089a44b7a8da4240eb7b9c951f676a6906a3867dd67be789d73d694a6a19"
+    },
+    "frozen_plan_sha256": "b0f359cf41c1a6a0793840aef994eaa7fb0029f97dd30c8c99cc17603a7e996e",
+    "blind_readings_sha256": "d83b7bcaa5cf7cc20c0be6636ecd9de95362f905ec2791d586fe3daaf8a7ccee",
+    "blind_readings": {
+      "method": {
+        "readers": "Two independent image readers received only the four anonymous panel JPEG/JSON pairs, including the expanded T39W crop. Neither saw archive widths, IVTFF separator labels, or earlier readings before their estimates.",
+        "coordinates": "Both endpoints are native x pixels. The first is rightmost ink of the left glyph and the second is leftmost ink of the right glyph.",
+        "reader_uncertainty": "Reader A gave general endpoint uncertainty and explicit ranges on T15. Reader B supplied per-edge estimates. The intervals use those approximations conservatively, not as statistical confidence limits."
+      },
+      "panels": {
+        "T24": {
+          "A": {
+            "edges": {
+              "A": [
+                832,
+                846
+              ],
+              "B": [
+                732,
+                755
+              ]
+            },
+            "edge_ranges": {
+              "A": [
+                [
+                  829,
+                  835
+                ],
+                [
+                  843,
+                  849
+                ]
+              ],
+              "B": [
+                [
+                  729,
+                  735
+                ],
+                [
+                  752,
+                  758
+                ]
+              ]
+            },
+            "row_y": [
+              1208,
+              1212
+            ],
+            "alignment": "Unique bottom row. Diffuse stained edges."
+          },
+          "B": {
+            "edges": {
+              "A": [
+                832,
+                848
+              ],
+              "B": [
+                733,
+                760
+              ]
+            },
+            "edge_ranges": {
+              "A": [
+                [
+                  829,
+                  835
+                ],
+                [
+                  844,
+                  852
+                ]
+              ],
+              "B": [
+                [
+                  730,
+                  736
+                ],
+                [
+                  756,
+                  764
+                ]
+              ]
+            },
+            "row_y": [
+              1205,
+              1205
+            ],
+            "alignment": "Unique bottom row, baseline around 1217. Alternate early spelling leaves both transitions unchanged. Isolated discoloration near x840 was outside clear contiguous ink."
+          }
+        },
+        "T67": {
+          "A": {
+            "edges": {
+              "A": [
+                1130,
+                1159
+              ],
+              "B": [
+                596,
+                612
+              ]
+            },
+            "edge_ranges": {
+              "A": [
+                [
+                  1128,
+                  1132
+                ],
+                [
+                  1157,
+                  1161
+                ]
+              ],
+              "B": [
+                [
+                  594,
+                  598
+                ],
+                [
+                  610,
+                  614
+                ]
+              ]
+            },
+            "row_y": [
+              1899,
+              1918
+            ],
+            "alignment": "Unique short second row."
+          },
+          "B": {
+            "edges": {
+              "A": [
+                1130,
+                1158
+              ],
+              "B": [
+                597,
+                613
+              ]
+            },
+            "edge_ranges": {
+              "A": [
+                [
+                  1128,
+                  1132
+                ],
+                [
+                  1156,
+                  1160
+                ]
+              ],
+              "B": [
+                [
+                  595,
+                  599
+                ],
+                [
+                  611,
+                  615
+                ]
+              ]
+            },
+            "row_y": [
+              1897,
+              1915
+            ],
+            "alignment": "Unique second row. The local body y follows the slope of that row."
+          }
+        },
+        "T39W": {
+          "A": {
+            "edges": {
+              "A": [
+                1390,
+                1427
+              ],
+              "B": [
+                1565,
+                1579
+              ]
+            },
+            "edge_ranges": {
+              "A": [
+                [
+                  1387,
+                  1393
+                ],
+                [
+                  1424,
+                  1430
+                ]
+              ],
+              "B": [
+                [
+                  1562,
+                  1568
+                ],
+                [
+                  1576,
+                  1582
+                ]
+              ]
+            },
+            "row_y": [
+              2315,
+              2318
+            ],
+            "alignment": "Unique middle row. The first crop omits the full terminal oky. Expanded crop confirms it with unchanged transitions. The o edge at A is faded."
+          },
+          "B": {
+            "edges": {
+              "A": [
+                1396,
+                1427
+              ],
+              "B": [
+                1565,
+                1581
+              ]
+            },
+            "edge_ranges": {
+              "A": [
+                [
+                  1392,
+                  1400
+                ],
+                [
+                  1424,
+                  1430
+                ]
+              ],
+              "B": [
+                [
+                  1562,
+                  1568
+                ],
+                [
+                  1577,
+                  1585
+                ]
+              ]
+            },
+            "row_y": [
+              2310,
+              2310
+            ],
+            "alignment": "Unique middle row. The expanded crop confirms terminal o, k, and y and preserves the initial measurement."
+          }
+        },
+        "T15": {
+          "A": {
+            "edges": {
+              "A": [
+                1421,
+                1434
+              ],
+              "B": [
+                973,
+                993
+              ]
+            },
+            "edge_ranges": {
+              "A": [
+                [
+                  1420,
+                  1424
+                ],
+                [
+                  1430,
+                  1435
+                ]
+              ],
+              "B": [
+                [
+                  971,
+                  975
+                ],
+                [
+                  989,
+                  995
+                ]
+              ]
+            },
+            "row_y": [
+              2907,
+              2931
+            ],
+            "alignment": "Unique bottom row. Thin s edges have the recorded plausible ranges."
+          },
+          "B": {
+            "edges": {
+              "A": [
+                1424,
+                1434
+              ],
+              "B": [
+                974,
+                991
+              ]
+            },
+            "edge_ranges": {
+              "A": [
+                [
+                  1421,
+                  1427
+                ],
+                [
+                  1431,
+                  1437
+                ]
+              ],
+              "B": [
+                [
+                  971,
+                  977
+                ],
+                [
+                  986,
+                  996
+                ]
+              ]
+            },
+            "row_y": [
+              2910,
+              2930
+            ],
+            "alignment": "Unique bottom row. The upper s entrance on B is faint and has greater uncertainty."
+          }
+        }
+      }
+    },
+    "panels": {
+      "T24": {
+        "panel": "T24",
+        "page": "f35r",
+        "native_crop_xyxy": [
+          445,
+          1040,
+          1245,
+          1300
+        ],
+        "separator_erased_eva": "qokeeykykaiindaiin",
+        "alternative_erased_eva": "qotchykykaiindaiin",
+        "markers": {
+          "A": 8,
+          "B": 6
+        },
+        "pair": [
+          "y",
+          "k"
+        ],
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006142",
+        "native_region_url": "https://collections.library.yale.edu/iiif/2/1006142/445,1040,800,260/full/0/default.jpg",
+        "anonymous_display_sha256": "89661baab48cbd574d3b3ee866d51ce6cc37b8fda8a18e6d9bd55573074fd1c4",
+        "anonymous_metadata_sha256": "ae1acde0d8963ff7c808787beb2c287323ced113ee026c99cac332d4bce7e96a"
+      },
+      "T67": {
+        "panel": "T67",
+        "page": "f115v",
+        "native_crop_xyxy": [
+          331,
+          1815,
+          1650,
+          2050
+        ],
+        "separator_erased_eva": "ycheylcholorchedycholchedychdy",
+        "markers": {
+          "A": 17,
+          "B": 1
+        },
+        "pair": [
+          "y",
+          "ch"
+        ],
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006275",
+        "native_region_url": "https://collections.library.yale.edu/iiif/2/1006275/331,1815,1319,235/full/0/default.jpg",
+        "anonymous_display_sha256": "f29604fda875b9f64c532721a8339fe49f5b33ce021cbbeb1afc0843fed5848e",
+        "anonymous_metadata_sha256": "6c40b740c480c4647643780d423cc80aab11fbccfb1cf446ed43e2d5f8d43cd6"
+      },
+      "T39": {
+        "panel": "T39",
+        "page": "f56v",
+        "native_crop_xyxy": [
+          775,
+          2185,
+          1825,
+          2416
+        ],
+        "separator_erased_eva": "shotchotchokchokchokaiinoky",
+        "markers": {
+          "A": 15,
+          "B": 19
+        },
+        "pair": [
+          "o",
+          "k"
+        ],
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006185",
+        "native_region_url": "https://collections.library.yale.edu/iiif/2/1006185/775,2185,1050,231/full/0/default.jpg",
+        "anonymous_display_sha256": "02d33f70ab19269cc00a09be3272dec0a74f50abe8890acdde22ec62a44ad503",
+        "anonymous_metadata_sha256": "33e3affe6e2c428aed689ae7f40fc6b88f3de67c26add8498cde13abcf47a505"
+      },
+      "T15": {
+        "panel": "T15",
+        "page": "f58r",
+        "native_crop_xyxy": [
+          500,
+          2820,
+          1760,
+          3040
+        ],
+        "separator_erased_eva": "dcholchokalsaiindalokalsalchey",
+        "markers": {
+          "A": 23,
+          "B": 11
+        },
+        "pair": [
+          "l",
+          "s"
+        ],
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006188",
+        "native_region_url": "https://collections.library.yale.edu/iiif/2/1006188/500,2820,1260,220/full/0/default.jpg",
+        "anonymous_display_sha256": "f94e150d636f1658dcbc10d5cc92dccccea3801074531c1b37d26eac2ee04819",
+        "anonymous_metadata_sha256": "9857cc5d91735566311eea3294f864c8056b7cc36dc1ede9e04ffa2e4b86cc45"
+      },
+      "T39W": {
+        "panel": "T39W",
+        "page": "f56v",
+        "native_crop_xyxy": [
+          775,
+          2185,
+          2070,
+          2416
+        ],
+        "separator_erased_eva": "shotchotchokchokchokaiinoky",
+        "markers": {
+          "A": 15,
+          "B": 19
+        },
+        "pair": [
+          "o",
+          "k"
+        ],
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006185",
+        "native_region_url": "https://collections.library.yale.edu/iiif/2/1006185/775,2185,1295,231/full/0/default.jpg",
+        "anonymous_display_sha256": "ef2ca3b39a02e76ba02b7e0125451feac14defbfc7d2c61d311d442d826d8a00",
+        "anonymous_metadata_sha256": "57ca62f3936e7f958e994b205a943d0747c74c5e70dc67b0e61196767e040649"
+      }
+    },
+    "native_measurements_unmasked": {
+      "T24": {
+        "locus": "f35r.8",
+        "panel": "T24",
+        "transliterations": {
+          "ZL3b-n": "qokeey.ky,kaiin.daiin",
+          "IT2a-n": "qotchy.ky.kaiin.daiin",
+          "RF1b-e": "qokeey.kykaiin.daiin"
+        },
+        "ZL_marker_classes": {
+          "A": "comma",
+          "B": "period"
+        },
+        "prior_S47_row": {
+          "certain_left": true,
+          "certain_px": 9.0,
+          "counts_equal": false,
+          "difference": -12.875062164999722,
+          "folio": "f35r",
+          "glyph_distance": 2,
+          "locus": "f35r.8",
+          "pair": [
+            "y",
+            "k"
+          ],
+          "quire": "E",
+          "threshold": 18.097,
+          "uncertain_px": 242.0
+        },
+        "reported_S45_alignment": {
+          "det": [
+            6
+          ],
+          "loci": [
+            7
+          ],
+          "op": "1:1",
+          "n_ink": 3,
+          "n_words": 4,
+          "conf": 0.866,
+          "counts_equal": false
+        },
+        "native_detection_bbox": [
+          524,
+          1072,
+          1129,
+          1185
+        ],
+        "selected_detector_index_0_based": 6,
+        "S45_source_digest": "56c6ed0f54b56fbafd89e2c7dbacc9560436f7a20a5cc79c5cf53bb2fb34a02d",
+        "detector_x_group_intervals": [
+          [
+            524,
+            679
+          ],
+          [
+            921,
+            985
+          ],
+          [
+            1032,
+            1124
+          ]
+        ],
+        "detector_intervals_with_same_recorded_width": {
+          "certain_px": [],
+          "uncertain_px": [
+            [
+              679,
+              921
+            ]
+          ]
+        },
+        "detector_link_diagnosis": "The 242-pixel group gap lies on the preceding detected row.",
+        "edges": {
+          "comma": {
+            "left_glyph_right_edge": 832,
+            "right_glyph_left_edge": 847
+          },
+          "period": {
+            "left_glyph_right_edge": 732.5,
+            "right_glyph_left_edge": 757.5
+          }
+        },
+        "interreader_edge_differences": {
+          "A": [
+            0,
+            2
+          ],
+          "B": [
+            1,
+            5
+          ]
+        },
+        "maximum_interreader_edge_difference": 5,
+        "both_20px_and_10px_edge_agreement": true,
+        "per_reader_gaps_native_px": {
+          "A": {
+            "period_gap_native_px": 22,
+            "comma_gap_native_px": 13,
+            "period_minus_comma_native_px": 9,
+            "conservative_range_from_edge_estimates": [
+              -3,
+              21
+            ]
+          },
+          "B": {
+            "period_gap_native_px": 26,
+            "comma_gap_native_px": 15,
+            "period_minus_comma_native_px": 11,
+            "conservative_range_from_edge_estimates": [
+              -3,
+              25
+            ]
+          }
+        },
+        "mean_gap_native_px": {
+          "period": 24,
+          "comma": 14
+        },
+        "mean_difference_native_px": 10,
+        "worst_case_sign_range_native_px": [
+          -3,
+          25
+        ]
+      },
+      "T67": {
+        "locus": "f115v.28",
+        "panel": "T67",
+        "transliterations": {
+          "ZL3b-n": "y,chey.lcho.lor.chedy.chol.chedy.chdy",
+          "IT2a-n": "ychey.lcho.lor.chedy.chol.chedy.chdy",
+          "RF1b-e": "ychey.lcho.l,or.chedy.chol.chedy.chdy"
+        },
+        "ZL_marker_classes": {
+          "A": "period",
+          "B": "comma"
+        },
+        "prior_S47_row": {
+          "certain_left": false,
+          "certain_px": 25.0,
+          "counts_equal": true,
+          "difference": -2.697699021422904,
+          "folio": "f115v",
+          "glyph_distance": 13,
+          "locus": "f115v.28",
+          "pair": [
+            "y",
+            "ch"
+          ],
+          "quire": "T",
+          "threshold": 18.905,
+          "uncertain_px": 76.0
+        },
+        "reported_S45_alignment": {
+          "det": [
+            27
+          ],
+          "loci": [
+            27
+          ],
+          "op": "1:1",
+          "n_ink": 8,
+          "n_words": 8,
+          "conf": 1.0,
+          "counts_equal": true
+        },
+        "native_detection_bbox": [
+          382,
+          1836,
+          1533,
+          2012
+        ],
+        "selected_detector_index_0_based": 27,
+        "S45_source_digest": "b4e2fb3ec5ca031c5ab78d19da9f08ee35799c4700cabd1d144b9d037a883dd5",
+        "detector_x_group_intervals": [
+          [
+            388,
+            498
+          ],
+          [
+            574,
+            716
+          ],
+          [
+            745,
+            845
+          ],
+          [
+            881,
+            906
+          ],
+          [
+            925,
+            975
+          ],
+          [
+            1000,
+            1130
+          ],
+          [
+            1160,
+            1401
+          ],
+          [
+            1437,
+            1534
+          ]
+        ],
+        "detector_intervals_with_same_recorded_width": {
+          "certain_px": [
+            [
+              975,
+              1000
+            ]
+          ],
+          "uncertain_px": [
+            [
+              498,
+              574
+            ]
+          ]
+        },
+        "detector_link_diagnosis": "The first detected group at x388–498 contains the red-centered star. The 76-pixel interval reaches from its envelope to the first text group.",
+        "edges": {
+          "period": {
+            "left_glyph_right_edge": 1130,
+            "right_glyph_left_edge": 1158.5
+          },
+          "comma": {
+            "left_glyph_right_edge": 596.5,
+            "right_glyph_left_edge": 612.5
+          }
+        },
+        "interreader_edge_differences": {
+          "A": [
+            0,
+            1
+          ],
+          "B": [
+            1,
+            1
+          ]
+        },
+        "maximum_interreader_edge_difference": 1,
+        "both_20px_and_10px_edge_agreement": true,
+        "per_reader_gaps_native_px": {
+          "A": {
+            "period_gap_native_px": 28,
+            "comma_gap_native_px": 15,
+            "period_minus_comma_native_px": 13,
+            "conservative_range_from_edge_estimates": [
+              5,
+              21
+            ]
+          },
+          "B": {
+            "period_gap_native_px": 27,
+            "comma_gap_native_px": 15,
+            "period_minus_comma_native_px": 12,
+            "conservative_range_from_edge_estimates": [
+              4,
+              20
+            ]
+          }
+        },
+        "mean_gap_native_px": {
+          "period": 27.5,
+          "comma": 15
+        },
+        "mean_difference_native_px": 12.5,
+        "worst_case_sign_range_native_px": [
+          4,
+          21
+        ]
+      },
+      "T39W": {
+        "locus": "f56v.9",
+        "panel": "T39W",
+        "transliterations": {
+          "ZL3b-n": "shotchot.chokcho.kcho,kaiin.oky",
+          "IT2a-n": "shotchot.chokcho.kcho.kaiin.oky",
+          "RF1b-e": "shotchot.chokchy.kcho.kaiin.oky"
+        },
+        "ZL_marker_classes": {
+          "A": "period",
+          "B": "comma"
+        },
+        "prior_S47_row": {
+          "certain_left": true,
+          "certain_px": 16.0,
+          "counts_equal": false,
+          "difference": -2.178649237472767,
+          "folio": "f56v",
+          "glyph_distance": 3,
+          "locus": "f56v.9",
+          "pair": [
+            "o",
+            "k"
+          ],
+          "quire": "G",
+          "threshold": 11.934,
+          "uncertain_px": 42.0
+        },
+        "reported_S45_alignment": {
+          "det": [
+            8
+          ],
+          "loci": [
+            8
+          ],
+          "op": "1:1",
+          "n_ink": 12,
+          "n_words": 5,
+          "conf": 0.774,
+          "counts_equal": false
+        },
+        "native_detection_bbox": [
+          884,
+          2238,
+          1671,
+          2349
+        ],
+        "selected_detector_index_0_based": 8,
+        "S45_source_digest": "ffa0f5014487222060f4cea53c11e48168576a7c72082f2c51922dc5646d8c0d",
+        "detector_x_group_intervals": [
+          [
+            884,
+            938
+          ],
+          [
+            955,
+            978
+          ],
+          [
+            990,
+            999
+          ],
+          [
+            1020,
+            1135
+          ],
+          [
+            1154,
+            1169
+          ],
+          [
+            1202,
+            1247
+          ],
+          [
+            1263,
+            1314
+          ],
+          [
+            1346,
+            1386
+          ],
+          [
+            1428,
+            1526
+          ],
+          [
+            1539,
+            1563
+          ],
+          [
+            1581,
+            1591
+          ],
+          [
+            1603,
+            1672
+          ]
+        ],
+        "detector_intervals_with_same_recorded_width": {
+          "certain_px": [
+            [
+              1247,
+              1263
+            ]
+          ],
+          "uncertain_px": [
+            [
+              1386,
+              1428
+            ]
+          ]
+        },
+        "detector_link_diagnosis": "Twelve detected groups are aligned to five words. The interval x1386–1428 reported for the comma falls at the measured period transition.",
+        "edges": {
+          "period": {
+            "left_glyph_right_edge": 1393,
+            "right_glyph_left_edge": 1427
+          },
+          "comma": {
+            "left_glyph_right_edge": 1565,
+            "right_glyph_left_edge": 1580
+          }
+        },
+        "interreader_edge_differences": {
+          "A": [
+            6,
+            0
+          ],
+          "B": [
+            0,
+            2
+          ]
+        },
+        "maximum_interreader_edge_difference": 6,
+        "both_20px_and_10px_edge_agreement": true,
+        "per_reader_gaps_native_px": {
+          "A": {
+            "period_gap_native_px": 36,
+            "comma_gap_native_px": 13,
+            "period_minus_comma_native_px": 23,
+            "conservative_range_from_edge_estimates": [
+              11,
+              35
+            ]
+          },
+          "B": {
+            "period_gap_native_px": 30,
+            "comma_gap_native_px": 15,
+            "period_minus_comma_native_px": 15,
+            "conservative_range_from_edge_estimates": [
+              1,
+              29
+            ]
+          }
+        },
+        "mean_gap_native_px": {
+          "period": 33,
+          "comma": 14
+        },
+        "mean_difference_native_px": 19,
+        "worst_case_sign_range_native_px": [
+          1,
+          35
+        ]
+      },
+      "T15": {
+        "locus": "f58r.41",
+        "panel": "T15",
+        "transliterations": {
+          "ZL3b-n": "dchol.chokal.saiin.dal.okal,s,alchey",
+          "IT2a-n": "dchol.chokal.saiin.dal.okalsalchey",
+          "RF1b-e": "dchol.chokal.saiin.dal.okals.alchey"
+        },
+        "ZL_marker_classes": {
+          "A": "comma",
+          "B": "period"
+        },
+        "prior_S47_row": {
+          "certain_left": true,
+          "certain_px": 20.0,
+          "counts_equal": true,
+          "difference": -1.0574177857671565,
+          "folio": "f58r",
+          "glyph_distance": 10,
+          "locus": "f58r.41",
+          "pair": [
+            "l",
+            "s"
+          ],
+          "quire": "H",
+          "threshold": 18.914,
+          "uncertain_px": 40.0
+        },
+        "reported_S45_alignment": {
+          "det": [
+            41
+          ],
+          "loci": [
+            40
+          ],
+          "op": "1:1",
+          "n_ink": 7,
+          "n_words": 7,
+          "conf": 1.0,
+          "counts_equal": true
+        },
+        "native_detection_bbox": [
+          579,
+          2865,
+          1634,
+          2967
+        ],
+        "selected_detector_index_0_based": 41,
+        "S45_source_digest": "ad3e73b45b7c8ba6b9c39f5939a52946b5e9fa6227bccc6a6c1fb3ec28ce55fa",
+        "detector_x_group_intervals": [
+          [
+            591,
+            756
+          ],
+          [
+            792,
+            974
+          ],
+          [
+            994,
+            1020
+          ],
+          [
+            1051,
+            1058
+          ],
+          [
+            1088,
+            1130
+          ],
+          [
+            1170,
+            1250
+          ],
+          [
+            1307,
+            1618
+          ]
+        ],
+        "detector_intervals_with_same_recorded_width": {
+          "certain_px": [
+            [
+              974,
+              994
+            ]
+          ],
+          "uncertain_px": [
+            [
+              1130,
+              1170
+            ]
+          ]
+        },
+        "detector_link_diagnosis": "The reported 40-pixel interval x1130–1170 lies earlier in the row. The actual comma transition lies inside the last combined detector group.",
+        "edges": {
+          "comma": {
+            "left_glyph_right_edge": 1422.5,
+            "right_glyph_left_edge": 1434
+          },
+          "period": {
+            "left_glyph_right_edge": 973.5,
+            "right_glyph_left_edge": 992
+          }
+        },
+        "interreader_edge_differences": {
+          "A": [
+            3,
+            0
+          ],
+          "B": [
+            1,
+            2
+          ]
+        },
+        "maximum_interreader_edge_difference": 3,
+        "both_20px_and_10px_edge_agreement": true,
+        "per_reader_gaps_native_px": {
+          "A": {
+            "period_gap_native_px": 19,
+            "comma_gap_native_px": 12,
+            "period_minus_comma_native_px": 7,
+            "conservative_range_from_edge_estimates": [
+              -1,
+              18
+            ]
+          },
+          "B": {
+            "period_gap_native_px": 16,
+            "comma_gap_native_px": 9,
+            "period_minus_comma_native_px": 7,
+            "conservative_range_from_edge_estimates": [
+              -7,
+              21
+            ]
+          }
+        },
+        "mean_gap_native_px": {
+          "period": 17.5,
+          "comma": 10.5
+        },
+        "mean_difference_native_px": 7,
+        "worst_case_sign_range_native_px": [
+          -7,
+          21
+        ]
+      }
+    },
+    "retained_uncertainty": "The complete visible reference fixes the line and the two transitions in all four cases. The T39 panel was extended to the right to confirm the terminal oky and preserve the same readings. The published point directions agree between both readers. The broad endpoint ranges for f35r.8 and f58r.41 include a zero or negative period-minus-comma gap.",
+    "archive_lineage_f35r": {
+      "locus": "f35r.8",
+      "native_canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006142",
+      "native_dimensions": [
+        2793,
+        3743
+      ],
+      "native_context": "https://collections.library.yale.edu/iiif/2/1006142/430,820,1310,530/full/0/default.jpg",
+      "transliterations": {
+        "ZL3b-n": "qokeey.ky,kaiin.daiin<$>",
+        "IT2a-n": "qotchy.ky.kaiin.daiin<$>",
+        "RF1b-e": "qokeey.kykaiin.daiin"
+      },
+      "continuous_eva": "qokeeykykaiindaiin",
+      "targets_for_coordinator_only": [
+        {
+          "glyph_before_index_0_based": 5,
+          "glyph_after_index_0_based": 6,
+          "glyph_pair": [
+            "y",
+            "k"
+          ],
+          "zl_class": "period",
+          "separator_ordinal_1_based": 1
+        },
+        {
+          "glyph_before_index_0_based": 7,
+          "glyph_after_index_0_based": 8,
+          "glyph_pair": [
+            "y",
+            "k"
+          ],
+          "zl_class": "comma",
+          "separator_ordinal_1_based": 2
+        }
+      ],
+      "s45": {
+        "url": "https://raw.githubusercontent.com/thisisntjon/voynich/713fa1003dd56e9526e8596f57128e60e18c02d6/record/runs/s45/pages/f35r.json",
+        "sha256": "56c6ed0f54b56fbafd89e2c7dbacc9560436f7a20a5cc79c5cf53bb2fb34a02d",
+        "reported_assignment": {
+          "detection_indices_0_based": [
+            6
+          ],
+          "locus_indices_0_based": [
+            7
+          ],
+          "op": "1:1",
+          "confidence": 0.866,
+          "counts_equal": false,
+          "n_ink": 3,
+          "n_words": 4
+        },
+        "detection_6_bbox_native_xyxy": [
+          524,
+          1072,
+          1129,
+          1185
+        ],
+        "detection_6_group_x_intervals": [
+          [
+            524,
+            679
+          ],
+          [
+            921,
+            985
+          ],
+          [
+            1032,
+            1124
+          ]
+        ],
+        "following_assignment": {
+          "detection_indices_0_based": [
+            7,
+            8
+          ],
+          "locus_indices_0_based": [
+            8
+          ],
+          "op": "2:1",
+          "confidence": 0.891
+        },
+        "detection_7_bbox_native_xyxy": [
+          573,
+          1170,
+          1054,
+          1249
+        ],
+        "detection_8_bbox_native_xyxy": [
+          761,
+          2191,
+          1578,
+          2301
+        ],
+        "interpretation": "The archived locus index 7 is f35r.8. Its S45 detection 6 covers the row above the last line over the drawing. Native full context shows the requested qokeey kykaiin daiin line one row lower, in the area of S45 detection 7. S45 combines detection 7 with a disconnected area below the drawing and assigns both to the following locus. Detection 7's bounding box is partial and is not an ink extent for the independently identified target row."
+      },
+      "s47": {
+        "url": "https://raw.githubusercontent.com/thisisntjon/voynich/713fa1003dd56e9526e8596f57128e60e18c02d6/record/runs/s47/positions.tsv",
+        "sha256": "8284089a44b7a8da4240eb7b9c951f676a6906a3867dd67be789d73d694a6a19",
+        "row_key": [
+          "f35r",
+          8
+        ],
+        "ordinal_measured_labels": [
+          "N",
+          "N",
+          "N",
+          "N",
+          "D",
+          "N",
+          "C",
+          "N",
+          "N",
+          "D",
+          "N",
+          "N"
+        ],
+        "selected_widths_px": {
+          "period": 9,
+          "comma": 242
+        },
+        "threshold_px": 18.097,
+        "counts_equal": false,
+        "line_alignment_confidence": 0.866,
+        "lineage": "The 242 px width is the envelope difference x679 to x921 between the first two detected ink groups of S45 detection 6. This is the preceding row. Both target y-to-k transitions lie in the lower row represented by detection 7."
+      },
+      "previous_replication": {
+        "pull_request": "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/533",
+        "sample_id": "C11",
+        "panel_id": "B06",
+        "native_crop_xyxy": [
+          512,
+          1064,
+          1142,
+          1194
+        ],
+        "two_readers": "Both reported no visible row matches the detached reference. The old strip is centered on S45 detection 6 and clips the target row below."
+      }
+    },
+    "companion_row_locator_f35r": {
+      "case": "f35r.8 only",
+      "note": "Word-level companion positions locate the row. They were not shown to the optical readers and were not used for any ink-edge estimates.",
+      "boxes": [
+        {
+          "companion_box_index": 35,
+          "reading": "qotchy",
+          "native_bbox": [
+            491.4,
+            1150.8,
+            744.3,
+            1279.4
+          ]
+        },
+        {
+          "companion_box_index": 36,
+          "reading": "ky",
+          "native_bbox": [
+            754.8,
+            1145.1,
+            840.8,
+            1250.7
+          ]
+        },
+        {
+          "companion_box_index": 37,
+          "reading": "kaiin",
+          "native_bbox": [
+            840.7,
+            1146.7,
+            1004.7,
+            1231.0
+          ]
+        },
+        {
+          "companion_box_index": 38,
+          "reading": "daiin",
+          "native_bbox": [
+            1004.1,
+            1169.3,
+            1186.9,
+            1234.2
+          ]
+        }
+      ]
+    },
+    "archive_raw_recount": {
+      "examined_lines": 2441,
+      "reconstructed_lines": 121,
+      "archive_completed_lines": 121,
+      "shared_loci": 121,
+      "old_only": [],
+      "rebuilt_only": [],
+      "mismatched_fields": {},
+      "exclusions": {
+        "unmapped_or_editorial_line": 825,
+        "lacks_mixed_label_pair": 1433,
+        "unmeasured_width": 37,
+        "glyph_or_separator_alignment_mismatch": 25
+      },
+      "original_rows_report": {
+        "lines": 121,
+        "folios": 54,
+        "quires": 11,
+        "certain_larger": 99,
+        "equal": 0,
+        "pooled_mean": 0.5910934922491727,
+        "equal_quire_mean": 0.26876097465752863,
+        "quire_effects": {
+          "A": 1.1801812541478118,
+          "B": 1.2941117560819406,
+          "C": 0.8508297777547624,
+          "D": 0.330809691938478,
+          "E": -4.566962988676791,
+          "F": 0.5168231416086786,
+          "G": 0.35715927223635663,
+          "H": 0.6064080461616406,
+          "M": 1.046542404035095,
+          "O": 0.6870615462500904,
+          "T": 0.653406819694752
+        },
+        "bootstrap_quire_95": [
+          -0.7573964539497167,
+          0.8916953369051196
+        ]
+      },
+      "original_rows_minus_original_alignment_fault": {
+        "lines": 120,
+        "folios": 53,
+        "quires": 11,
+        "certain_larger": 99,
+        "equal": 0,
+        "pooled_mean": 0.7033114560595801,
+        "equal_quire_mean": 0.646401846308571,
+        "quire_effects": {
+          "A": 1.1801812541478118,
+          "B": 1.2941117560819406,
+          "C": 0.8508297777547624,
+          "D": 0.330809691938478,
+          "E": -0.4129134005153253,
+          "F": 0.5168231416086786,
+          "G": 0.35715927223635663,
+          "H": 0.6064080461616406,
+          "M": 1.046542404035095,
+          "O": 0.6870615462500904,
+          "T": 0.653406819694752
+        },
+        "bootstrap_quire_95": [
+          0.3627863274187206,
+          0.8923784601444049
+        ]
+      }
+    },
+    "archive_recount_note": "All 121 retained exact-pair records agree on every compared field. This recount logs 825 unmapped/editorial exclusions and 1433 lines without a mixed-class pair. The earlier audit logs 808 and 1450 respectively. The one-row sensitivity drops the physically misassigned row and keeps each remaining S47 width and denominator.",
+    "sources": {
+      "assets_by_page": {
+        "f35r": {
+          "yale_scan": "https://collections.library.yale.edu/iiif/2/1006142/full/full/0/default.jpg",
+          "yale_integrity": "d190cd19497ea5e59b702d3abaf8513b3b706b79f16cd24947b5615efa455d71",
+          "S45": "https://raw.githubusercontent.com/thisisntjon/voynich/713fa1003dd56e9526e8596f57128e60e18c02d6/record/runs/s45/pages/f35r.json",
+          "S45_integrity": "56c6ed0f54b56fbafd89e2c7dbacc9560436f7a20a5cc79c5cf53bb2fb34a02d"
+        },
+        "f115v": {
+          "yale_scan": "https://collections.library.yale.edu/iiif/2/1006275/full/full/0/default.jpg",
+          "yale_integrity": "5700486404459fe1abfc11f6347aa0171bd651e39bcf71d594beecfb170ed8a3",
+          "S45": "https://raw.githubusercontent.com/thisisntjon/voynich/713fa1003dd56e9526e8596f57128e60e18c02d6/record/runs/s45/pages/f115v.json",
+          "S45_integrity": "b4e2fb3ec5ca031c5ab78d19da9f08ee35799c4700cabd1d144b9d037a883dd5"
+        },
+        "f56v": {
+          "yale_scan": "https://collections.library.yale.edu/iiif/2/1006185/full/full/0/default.jpg",
+          "yale_integrity": "d92ba733bf53dc49e8d81df2d1873d5f36c52f98cf67292ea43e66a844a61cc9",
+          "S45": "https://raw.githubusercontent.com/thisisntjon/voynich/713fa1003dd56e9526e8596f57128e60e18c02d6/record/runs/s45/pages/f56v.json",
+          "S45_integrity": "ffa0f5014487222060f4cea53c11e48168576a7c72082f2c51922dc5646d8c0d"
+        },
+        "f58r": {
+          "yale_scan": "https://collections.library.yale.edu/iiif/2/1006188/full/full/0/default.jpg",
+          "yale_integrity": "2897cf3214d13176c9d708a9f4f9030752a50922271ade7286c0c2cd73b811fd",
+          "S45": "https://raw.githubusercontent.com/thisisntjon/voynich/713fa1003dd56e9526e8596f57128e60e18c02d6/record/runs/s45/pages/f58r.json",
+          "S45_integrity": "ad3e73b45b7c8ba6b9c39f5939a52946b5e9fa6227bccc6a6c1fb3ec28ce55fa"
+        }
+      },
+      "S47_raw": "https://raw.githubusercontent.com/thisisntjon/voynich/713fa1003dd56e9526e8596f57128e60e18c02d6/record/runs/s47/positions.tsv",
+      "S47_raw_sha256": "8284089a44b7a8da4240eb7b9c951f676a6906a3867dd67be789d73d694a6a19",
+      "published_S47_description": "https://simoneresearch.com/research/voynich/atlas/f-19/",
+      "ZL": "Pinned ZL3b-n.txt",
+      "independent_comparison_transliterations": [
+        "IT2a-n.txt",
+        "RF1b-e.txt"
+      ],
+      "companion_f35r_boxes": "https://raw.githubusercontent.com/YaleDHLab/voynich/c4d36f4595292c92da8c7428e30cb23b700a019b/utils/voynichese/coords/f35r.json",
+      "companion_f35r_boxes_sha256": "9df70212ad4d5692d30f395436df95fb9cc60341b761ae693117d401b65bfb59",
+      "printed_script_reference": "https://github.com/kreativekorp/voynich-unicode/blob/master/Voynich/VoynichEVA.ttf",
+      "printed_reference_font_sha256": "8d86c2cd85f0af4773250f2b63580ddf600a8aad2a74caae1476fe11c3e1b007"
+    },
+    "reproduction": "Recreate the four native regions and detached anonymous references. Read them under blind ordering. The final widths use max(0, x2−x1−1). Run the archived audit from the pinned raw ZL and S47 tables. Supplementary raw gap matches use the unrounded detector envelope differences.",
+    "scripts_as_text": {
+      "audit_archive_alignment.py": "\"\"\"Reconstruct the previous exact-pair S47 audit and its one-row sensitivity.\"\"\"\nfrom collections import Counter, defaultdict\nimport csv\nimport itertools\nimport json\nimport math\nfrom pathlib import Path\nimport random\nimport re\nimport statistics\n\n\nROOT = Path(__file__).resolve().parent\nLINE_RE = re.compile(r\"^<(f\\d+[rv]\\d*)\\.(\\d+),[^>]*P\\d*>\\s*(\\S+)\")\nPAGE_RE = re.compile(r\"^<(f\\d+[rv]\\d*)>\\s*<!.*?\\$Q=([A-Z])\")\nCLEAN = re.compile(r\"[a-z]+(?:[.,][a-z]+)*$\")\nSEGMENT = re.compile(r\"cth|ckh|cph|cfh|iiin|iin|iir|ch|sh|in|ir|ee|[a-z]\")\nPRIOR = ROOT / \"predecessor\" / \"gap-audit-spec.json\"\n\n\ndef read_zl(path):\n    metadata, transcribed = {}, {}\n    for line in path.read_text(encoding=\"utf-8-sig\").splitlines():\n        match = PAGE_RE.match(line)\n        if match:\n            metadata[match[1]] = match[2]\n        m = LINE_RE.match(line)\n        if m:\n            raw = m[3].removeprefix(\"<%>\").removesuffix(\"<$>\")\n            if CLEAN.fullmatch(raw):\n                transcribed[(m[1], int(m[2]))] = raw\n    return metadata, transcribed\n\n\ndef expected_positions(text):\n    words = re.split(r\"[.,]\", text)\n    separators = re.findall(r\"[.,]\", text)\n    glyph_words = [SEGMENT.findall(word) for word in words]\n    result = []\n    for index, glyphs in enumerate(glyph_words):\n        result.extend((\"N\", (a, b)) for a, b in itertools.pairwise(glyphs))\n        if index < len(separators):\n            kind = \"D\" if separators[index] == \".\" else \"C\"\n            result.append((kind, (glyphs[-1], glyph_words[index + 1][0])))\n    return result\n\n\ndef reconstruct(path, metadata, transcribed):\n    with path.open(newline=\"\", encoding=\"utf-8-sig\") as stream:\n        by_line = defaultdict(list)\n        for row in csv.DictReader(stream, delimiter=\"\\t\"):\n            by_line[(row[\"page\"], int(row[\"line\"]))].append(row)\n    excluded = Counter()\n    results = []\n    for (page, line_n), observations in by_line.items():\n        line = (page, line_n)\n        if line not in transcribed or page not in metadata:\n            excluded[\"unmapped_or_editorial_line\"] += 1\n            continue\n        expected = expected_positions(transcribed[line])\n        if [kind for kind, _ in expected] != [row[\"cls\"] for row in observations]:\n            excluded[\"glyph_or_separator_alignment_mismatch\"] += 1\n            continue\n        try:\n            widths = [float(row[\"w_px\"]) for row in observations]\n        except ValueError:\n            excluded[\"unmeasured_width\"] += 1\n            continue\n        options = []\n        for i, (kind, pair) in enumerate(expected):\n            if kind != \"D\":\n                continue\n            for j, (kind2, pair2) in enumerate(expected):\n                if kind2 == \"C\" and pair == pair2:\n                    options.append((abs(i - j), i, j, pair))\n        if not options:\n            excluded[\"lacks_mixed_label_pair\"] += 1\n            continue\n        distance, period, comma, pair = min(options)\n        threshold = float(observations[period][\"thr\"])\n        assert threshold == float(observations[comma][\"thr\"])\n        equal = observations[period][\"counts_equal\"] == \"1\"\n        results.append({\n            \"locus\": f\"{page}.{line_n}\", \"folio\": page, \"quire\": metadata[page],\n            \"pair\": list(pair), \"glyph_distance\": distance, \"certain_left\": period < comma,\n            \"certain_px\": widths[period], \"uncertain_px\": widths[comma], \"threshold\": threshold,\n            \"difference\": (widths[period] - widths[comma]) / threshold,\n            \"counts_equal\": equal,\n        })\n    return results, dict(excluded), len(by_line)\n\n\ndef summary(rows):\n    by_quire = defaultdict(list)\n    for row in rows:\n        by_quire[row[\"quire\"]].append(row[\"difference\"])\n    values = {q: statistics.mean(v) for q, v in sorted(by_quire.items())}\n    pool = list(values.values())\n    rng = random.Random(1947)\n    boot = sorted(statistics.mean(rng.choices(pool, k=len(pool))) for _ in range(4000))\n    return {\n        \"lines\": len(rows), \"folios\": len(set(row[\"folio\"] for row in rows)), \"quires\": len(pool),\n        \"certain_larger\": sum(row[\"difference\"] > 0 for row in rows),\n        \"equal\": sum(row[\"difference\"] == 0 for row in rows),\n        \"pooled_mean\": statistics.mean(row[\"difference\"] for row in rows),\n        \"equal_quire_mean\": statistics.mean(pool), \"quire_effects\": values,\n        \"bootstrap_quire_95\": [boot[int(.025 * len(boot))], boot[math.ceil(.975 * len(boot)) - 1]],\n    }\n\n\ndef main():\n    zl = ROOT.parent / \"voynich-swarm\" / \"data\" / \"raw\" / \"ZL3b-n.txt\"\n    observed = json.loads(PRIOR.read_text())[\"s47_reanalysis\"]\n    rows, excluded, examined = reconstruct(ROOT / \"predecessor/s47/positions.tsv\", *read_zl(zl))\n    old = {r[\"locus\"]: r for r in observed[\"rows\"]}\n    rebuilt = {r[\"locus\"]: r for r in rows}\n    common = sorted(old.keys() & rebuilt.keys())\n    fields = (\"folio\", \"quire\", \"pair\", \"glyph_distance\", \"certain_left\", \"certain_px\",\n              \"uncertain_px\", \"threshold\", \"difference\", \"counts_equal\")\n    mismatched = {key: {field: [old[key][field], rebuilt[key][field]]\n                        for field in fields if old[key][field] != rebuilt[key][field]}\n                  for key in common if any(old[key][field] != rebuilt[key][field] for field in fields)}\n    control = {\n        \"examined_lines\": examined, \"reconstructed_lines\": len(rows),\n        \"archive_completed_lines\": len(old), \"shared_loci\": len(common),\n        \"old_only\": sorted(old.keys() - rebuilt.keys()),\n        \"rebuilt_only\": sorted(rebuilt.keys() - old.keys()),\n        \"mismatched_fields\": mismatched, \"exclusions\": excluded,\n        \"original_rows_report\": summary(list(old.values())),\n        \"original_rows_minus_original_alignment_fault\": summary(\n            [r for r in old.values() if r[\"locus\"] != \"f35r.8\"]\n        ),\n    }\n    (ROOT / \"archive-recount.json\").write_text(json.dumps(control, indent=2) + \"\\n\")\n    print(json.dumps(control, indent=2))\n\n\nif __name__ == \"__main__\":\n    main()\n",
+      "compare_blind_edges.py": "\"\"\"Unmask the agreed optical readings and trace the source detector intervals.\"\"\"\nimport hashlib\nimport json\nfrom pathlib import Path\nimport re\nfrom statistics import mean\n\n\nROOT = Path(__file__).resolve().parent\nQ = {\n    \"T24\": (\"f35r.8\", 6, \"f35r\", \"The 242-pixel group gap lies on the preceding detected row.\"),\n    \"T67\": (\"f115v.28\", 27, \"f115v\", \"The first detected group at x388–498 contains the red-centered star. The 76-pixel interval reaches from its envelope to the first text group.\"),\n    \"T39W\": (\"f56v.9\", 8, \"f56v\", \"Twelve detected groups are aligned to five words. The interval x1386–1428 reported for the comma falls at the measured period transition.\"),\n    \"T15\": (\"f58r.41\", 41, \"f58r\", \"The reported 40-pixel interval x1130–1170 lies earlier in the row. The actual comma transition lies inside the last combined detector group.\"),\n}\n\n\ndef load(relative):\n    return json.loads((ROOT / relative).read_text())\n\n\ndef gap(x_edges):\n    return max(0, x_edges[1] - x_edges[0] - 1)\n\n\ndef bounds(ranges):\n    left, right = ranges\n    return gap((left[1], right[0])), gap((left[0], right[1]))\n\n\ndef extract_transcripts(locus):\n    result = {}\n    raw = ROOT.parent / \"voynich-swarm\" / \"data\" / \"raw\"\n    for edition in (\"ZL3b-n\", \"IT2a-n\", \"RF1b-e\"):\n        with (raw / (edition + \".txt\")).open(encoding=\"utf-8-sig\") as fh:\n            entries = [line.partition(\">\")[2].strip()\n                       for line in fh if line.startswith(f\"<{locus},\")]\n        assert len(entries) == 1, (edition, locus)\n        result[edition] = entries[0].removeprefix(\"<%>\").removesuffix(\"<$>\")\n    return result\n\n\ndef marker_classes(text):\n    classes = {}\n    continuous = 0\n    for char in text:\n        if char in \".,\":\n            classes[continuous] = \"period\" if char == \".\" else \"comma\"\n        else:\n            continuous += 1\n    return classes\n\n\ndef summarize(panel, locus, index, page, explanation, reads, old):\n    masked = load(f\"blind-read/{panel}.json\")\n    transcripts = extract_transcripts(locus)\n    assert re.sub(\"[.,]\", \"\", transcripts[\"ZL3b-n\"]) == masked[\"separator_erased_eva\"]\n    by_pos = marker_classes(transcripts[\"ZL3b-n\"])\n    classes = {name: by_pos[pos] for name, pos in masked[\"transition_after_eva_chars\"].items()}\n    assert set(classes.values()) == {\"period\", \"comma\"}\n    reverse = {kind: name for name, kind in classes.items()}\n    a, b = reads.values()\n    interreader = {\n        name: [abs(i - j) for i, j in zip(a[\"edges\"][name], b[\"edges\"][name], strict=True)]\n        for name in classes\n    }\n    assert max(all_values := [v for parts in interreader.values() for v in parts]) <= 10\n    tape = {}\n    for name, reader in reads.items():\n        dot, comma = (reverse[k] for k in (\"period\", \"comma\"))\n        point_d, point_c = (gap(reader[\"edges\"][k]) for k in (dot, comma))\n        lo_d, hi_d = bounds(reader[\"edge_ranges\"][dot])\n        lo_c, hi_c = bounds(reader[\"edge_ranges\"][comma])\n        tape[name] = {\n            \"period_gap_native_px\": point_d, \"comma_gap_native_px\": point_c,\n            \"period_minus_comma_native_px\": point_d - point_c,\n            \"conservative_range_from_edge_estimates\": [lo_d - hi_c, hi_d - lo_c],\n        }\n    path = f\"predecessor/s45/{page}.json\"\n    detector = load(path)\n    assigned = next(row for row in detector[\"alignment\"] if index in row[\"det\"])\n    groups = detector[\"lines\"][index][\"tokens\"]\n    measured_gap_origins = {\n        key: [[left[\"x1\"], right[\"x0\"]] for left, right in zip(groups[:-1], groups[1:])\n              if right[\"x0\"] - left[\"x1\"] == old[key]]\n        for key in (\"certain_px\", \"uncertain_px\")\n    }\n    outcome = {\n        \"locus\": locus, \"panel\": panel, \"transliterations\": transcripts, \"ZL_marker_classes\": classes,\n        \"prior_S47_row\": old, \"reported_S45_alignment\": assigned,\n        \"native_detection_bbox\": detector[\"lines\"][index][\"bbox\"],\n        \"selected_detector_index_0_based\": index,\n        \"S45_source_digest\": hashlib.sha256((ROOT / path).read_bytes()).hexdigest(),\n        \"detector_x_group_intervals\": [[row[\"x0\"], row[\"x1\"]] for row in groups],\n        \"detector_intervals_with_same_recorded_width\": measured_gap_origins,\n        \"detector_link_diagnosis\": explanation,\n        \"edges\": {name: {key: mean([a[\"edges\"][marker][i], b[\"edges\"][marker][i]])\n                         for i, key in enumerate((\"left_glyph_right_edge\", \"right_glyph_left_edge\"))}\n                  for name, marker in reverse.items()},\n        \"interreader_edge_differences\": interreader,\n        \"maximum_interreader_edge_difference\": max(all_values),\n        \"both_20px_and_10px_edge_agreement\": all(v <= 10 for v in all_values),\n        \"per_reader_gaps_native_px\": tape,\n        \"mean_gap_native_px\": {\n            name: mean(row[f\"{name}_gap_native_px\"] for row in tape.values())\n            for name in (\"period\", \"comma\")\n        },\n        \"mean_difference_native_px\": mean(row[\"period_minus_comma_native_px\"] for row in tape.values()),\n        \"worst_case_sign_range_native_px\": [\n            min(row[\"conservative_range_from_edge_estimates\"][0] for row in tape.values()),\n            max(row[\"conservative_range_from_edge_estimates\"][1] for row in tape.values()),\n        ],\n    }\n    return outcome\n\n\ndef main():\n    rows = load(\"blind-reads.json\")[\"panels\"]\n    archived = {r[\"locus\"]: r for r in load(\"predecessor/gap-audit-spec.json\")[\"s47_reanalysis\"][\"rows\"]}\n    results = {\n        panel: summarize(panel, locus, det, page, note, rows[panel], archived[locus])\n        for panel, (locus, det, page, note) in Q.items()\n    }\n    assert all(result[\"mean_difference_native_px\"] > 0 for result in results.values())\n    assert all(result[\"prior_S47_row\"][\"difference\"] < 0 for result in results.values())\n    (ROOT / \"native-edge-results.json\").write_text(json.dumps(results, indent=2) + \"\\n\")\n    for result in results.values():\n        print(result[\"locus\"], result[\"mean_gap_native_px\"], result[\"mean_difference_native_px\"],\n              result[\"worst_case_sign_range_native_px\"], result[\"detector_intervals_with_same_recorded_width\"])\n\n\nif __name__ == \"__main__\":\n    main()\n",
+      "render_blind_panel.py": "\"\"\"Render anonymous scan crops and detached separator-erased references.\"\"\"\nimport argparse\nimport json\nfrom pathlib import Path\n\nfrom PIL import Image, ImageDraw, ImageFont\n\nROOT = Path(__file__).resolve().parent\nFONT = ImageFont.truetype(\"/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf\", 15)\nREF_FONT = ImageFont.truetype(ROOT / \"VoynichEVA.ttf\", 32)\nMONO = ImageFont.truetype(\"/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf\", 15)\nINSET = 55\nHEADER = 43\n\n\ndef show(row):\n    x0, y0, x1, y1 = row[\"native_crop_xyxy\"]\n    image = Image.open(ROOT / \"assets\" / row[\"page\"] / \"yale.jpg\").convert(\"RGB\")\n    assert 0 <= x0 < x1 <= image.width and 0 <= y0 < y1 <= image.height\n    crop = image.crop((x0, y0, x1, y1))\n    canvas = Image.new(\"RGB\", (crop.width + INSET + 21, HEADER + crop.height + 146), (253, 252, 246))\n    canvas.paste(crop, (INSET, HEADER))\n    pen = ImageDraw.Draw(canvas)\n    black = (35, 39, 42)\n    ink = (24, 66, 109)\n    pen.text((13, 4), f\"{row['panel']}  /  native scan crop\", fill=black, font=FONT)\n    for pos in range(((x0 + 49) // 50) * 50, x1, 50):\n        pixel = INSET + pos - x0\n        pen.line((pixel, HEADER - 7, pixel, HEADER - 1), fill=ink, width=1)\n        pen.text((pixel - 14, HEADER - 25), str(pos), fill=ink, font=FONT)\n    for pos in range(((y0 + 24) // 25) * 25, y1, 25):\n        pixel = HEADER + pos - y0\n        pen.line((INSET - 9, pixel, INSET - 1, pixel), fill=ink, width=1)\n        pen.text((4, pixel - 8), str(pos), fill=ink, font=FONT)\n    y = HEADER + crop.height + 13\n    pen.text((12, y), \"Detached reference. Continuous EVA uses no separator marks.\", fill=black, font=FONT)\n    text = row[\"separator_erased_eva\"]\n    pen.text((12, y + 22), text, fill=black, font=MONO)\n    pen.text((12, y + 50), row.get(\"display_reference_eva\", text), fill=black, font=REF_FONT)\n    labels = {name: int(position) for name, position in row[\"markers\"].items()}\n    y += 99\n    for name, position in sorted(labels.items()):\n        pre, post = text[max(0, position-7):position], text[position:position+7]\n        tail = f\"{name}: offset {position}   {pre} | {post}\"\n        pen.text((12, y), tail, fill=ink, font=MONO)\n        y += 18\n    out = ROOT / \"blind-read\" / f\"{row['panel']}.jpg\"\n    canvas.save(out, quality=96)\n    metadata = {\n        \"panel\": row[\"panel\"], \"image\": out.name,\n        \"image_xy_origin_native\": [x0, y0],\n        \"scan_inset_xy\": [INSET, HEADER],\n        \"separator_erased_eva\": text,\n        \"alternative_erased_eva\": row.get(\"alternative_erased_eva\"),\n        \"transition_after_eva_chars\": labels,\n        \"transition_pair\": row[\"pair\"],\n    }\n    out.with_suffix(\".json\").write_text(json.dumps(metadata, indent=2) + \"\\n\")\n\n\ndef main():\n    parser = argparse.ArgumentParser()\n    parser.add_argument(\"spec\", type=Path)\n    args = parser.parse_args()\n    for row in json.loads(args.spec.read_text()):\n        show(row)\n\n\nif __name__ == \"__main__\":\n    main()\n"
+    }
+  }
+}
