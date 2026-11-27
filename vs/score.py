@@ -150,6 +150,16 @@ def score(d, pr=None):
         item = {"id": registry.next_id("F"), "type": "fact", "title": f["title"], "statement": f["statement"],
                 "verdict": verdict, "value": r["value"], "detail": det,
                 "program": "L2", "source": f.get("source", "")}
+        if verdict == "ESTABLISHED":
+            # the best meaningless generator on the record is run against every new fact at once:
+            # a fact it already reproduces is no evidence of structure and is not a top attack target
+            from . import redteam
+            try:
+                bg = redteam.against_best_generator(item, "heldout")
+            except Exception as ex:   # the fact stands; the check is recorded as not run
+                bg = {"error": str(ex)[:120]}
+            if bg:
+                item["detail"]["best_generator"] = bg
         kind = verdict.lower()
     elif e["kind"] == "key":
         sub = judge.load_key(os.path.join(d, "key.json"))

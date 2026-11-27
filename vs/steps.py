@@ -52,7 +52,8 @@ TRIED_ENOUGH = 3             # an agent-proposed step with this many submissions
 def rules_top(steps, reasons=None):
     """The scripted lead: when no lead seat has posted recently, rank open steps by rules that read
     the record, not by category alone.
-    1 an established fact no attack has reproduced;
+    1 an established fact no attack has reproduced, including the best generator on the record,
+      which the scorer runs against every new fact (detail.best_generator);
     2 the shared generator test, while no single procedure reproduces every established fact
       (the best result so far is named, with the facts it misses);
     3 invented-language tests; picture annotations, unless annotations are not reaching AGREED
@@ -77,6 +78,9 @@ def rules_top(steps, reasons=None):
             score = len(covered & set(facts))
             if best is None or score > best[0]:
                 best = (score, a["id"], [f for f in facts if f not in covered])
+    by_best = {i["id"]: i["detail"]["best_generator"]["attack"] for i in registry.read("fact")
+               if i["verdict"] == "ESTABLISHED" and ((i.get("detail") or {}).get("best_generator") or {}).get("reproduced")}
+    hit |= set(by_best)
     generator_done = bool(facts) and best is not None and best[0] == len(facts)
     pics = registry.read("picture")
     agreed = sum(p["verdict"] == "AGREED" for p in pics)
@@ -90,6 +94,8 @@ def rules_top(steps, reasons=None):
         t = (s.get("title") or "").lower()
         if i.startswith("R-attack-") and i[len("R-attack-"):] in facts and i[len("R-attack-"):] not in hit:
             return 1, f"{i[len('R-attack-'):]} is established and no attack has reproduced it"
+        if i.startswith("R-attack-") and i[len("R-attack-"):] in by_best:
+            return 7, f"{i[len('R-attack-'):]} is already reproduced by {by_best[i[len('R-attack-'):]]}, the best generator on the record"
         if i == "G-every-fact":
             if generator_done:
                 return 7, f"{best[1]} already reproduces all {len(facts)} established facts"
