@@ -1,0 +1,100 @@
+{
+ "title": "Public reproduction of the clock-aligned zodiac label test: 2 exact agreements in 2415 comparisons against 4.3 under random turning (p = 0.94); the declared same-ring-only variant gives 0 in 1239 (p = 1.00)",
+ "statement": "P-L4-028 reported that pairing the zodiac figure labels across signs by the clock position their figure carries - an alignment fixed by the page, with no rotation left free - yields 2 exact agreements in 2415 comparisons against a null mean of 4.1 (p = 0.94), within one glyph 37 against 33.7, and that the same-ring-only variant declared in its addendum gives 0 exact in 1239 comparisons against 2.0, within one glyph 15 against 16.0. This submission re-runs both measurements from the pinned Zandbergen-Landini file on the public pages, with the rings rebuilt from the transcription rather than taken from the author's listing.",
+ "program": "L4",
+ "check": "Run the embedded script from the repository root with data/raw/ZL3b-n.txt fetched; it prints the ring inventory, the clock-aligned run and the same-ring-only run.",
+ "on_path": false,
+ "hard": false,
+ "findings": [
+  "The rings rebuild exactly as the step describes: 21 rings and rows of figure labels (unit L, subtype z, each carrying a clock marker) on the twelve zodiac pages, holding 265 labels, with sizes 20, 19, 18, 18, 16, 16, 15, 12, 12, 12, 11, ten 10s, 9 and 7 - the same multiset the step lists (19 and 10; 10 on each of four pages; 15 and 9; 12, 11 and 7; 18 and 12 twice; 20 and 10; 16 and 10 twice).",
+  "Clock-aligned run: 2415 comparisons, 2 exact agreements, null mean 4.3 over 400 random turnings, p = 0.94. The comparison count and the exact-agreement count reproduce the step's 2415 and 2 exactly, and so does its p = 0.94.",
+  "Same-ring-only run (rings classed by size within their page, largest as outer - twelve, one per sign - and the rest as inner - nine; outer with outer and inner with inner, the two inner rings of f72r3 compared with each other): 1239 comparisons, 0 exact agreements, null mean 2.4, p = 1.00. The comparison count and the exact count reproduce the addendum's 1239 and 0.",
+  "Within one glyph: 36 observed against a null mean of 28.3 (p = 0.07) for the clock-aligned run, and 15 against 13.0 (p = 0.32) for the same-ring-only run. The observed counts sit at or just below the step's 37 and 15; the nulls come out lower than its 33.7 and 16.0."
+ ],
+ "interpretation": "The step's conclusion stands under an independent rebuild: with the alignment fixed by the page itself and no freedom to search a rotation, a label at a given place in the wheel is no more likely to recur at the same place on another sign than under a random turning (2 in 2415 against 4.3 expected). The declared same-ring-only variant, which is what a roster split by ring would actually predict, is weaker still: no exact agreement in 1239 comparisons. The one-glyph nulls differ from the step's by about five counts in the same direction in both runs, which is a difference in how the turned ring is sampled, not in the observed text: the observed one-glyph counts match (15 exactly, 36 against 37). Nothing here reopens the roster question in the labels' favour.",
+ "methods": "The clock position of every figure-label line is read from the raw pinned file's <!hh:mm> comment (the parser strips comments, so the marker is taken before parsing); the labels themselves come from vs/ivtff.parse, first word only, uncertain readings stripped to their first alternative. Rings are maximal runs of consecutive label line numbers within a page, kept at seven or more. Rings stand in manuscript page order (Page.order), so for each pair of rings on different pages 'the first' is the earlier page - this is what makes the comparison count come out at 2415 rather than the 2406 of a page-id ordering or the 5045 of ordered pairs. For every label of the first ring, the partner is the label of the second whose clock position is nearest on the circle. The null turns the second ring by an angle drawn uniformly from 0 to 360 degrees, independently for every ring pair, 400 times, seed 408. One glyph apart means edit distance one: one substitution at equal length, or one insertion or deletion at lengths differing by one.",
+ "results": {
+  "setup": {
+   "commit": "14720c460f57a89d933264518abadec7f1a6aef1",
+   "split": "practice (public pages)",
+   "transliteration": "ZL3b (pinned Zandbergen-Landini)",
+   "seed": 408,
+   "null_turns": 400
+  },
+  "rings": {
+   "count": 21,
+   "pages": 12,
+   "labels": 265,
+   "sizes_desc": [
+    20,
+    19,
+    18,
+    18,
+    16,
+    16,
+    15,
+    12,
+    12,
+    12,
+    11,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    9,
+    7
+   ]
+  },
+  "clock_aligned": {
+   "comparisons": 2415,
+   "exact": 2,
+   "null_mean_exact": 4.3,
+   "p_exact": 0.94,
+   "within_one_glyph": 36,
+   "null_mean_one_glyph": 28.3,
+   "p_one_glyph": 0.07,
+   "as_reported_by_the_step": {
+    "comparisons": 2415,
+    "exact": 2,
+    "null_mean_exact": 4.1,
+    "p_exact": 0.94,
+    "within_one_glyph": 37,
+    "null_mean_one_glyph": 33.7,
+    "p_one_glyph": 0.27
+   }
+  },
+  "same_ring_only": {
+   "outer_rings": 12,
+   "inner_rings": 9,
+   "comparisons": 1239,
+   "exact": 0,
+   "null_mean_exact": 2.4,
+   "p_exact": 1.0,
+   "within_one_glyph": 15,
+   "null_mean_one_glyph": 13.0,
+   "p_one_glyph": 0.32,
+   "as_reported_by_the_step": {
+    "comparisons": 1239,
+    "exact": 0,
+    "null_mean_exact": 2.0,
+    "within_one_glyph": 15,
+    "null_mean_one_glyph": 16.0,
+    "p_one_glyph": 0.65
+   }
+  }
+ },
+ "reproducibility": {
+  "instructions": "Save the embedded script as pl4028.py in the repository root and run `python3 pl4028.py` with data/raw/ZL3b-n.txt fetched. It prints the ring inventory, the clock-aligned run and the same-ring-only run. The run takes about two minutes on one core.",
+  "script": "\"\"\"P-L4-028 reproduction: zodiac figure labels (unit L, subtype z) paired across signs by the clock\nposition of their figure, alignment fixed by the page, no rotation free.\n\nAs the step declares it: the rings and rows of figure labels on the twelve zodiac pages that hold\nseven or more labels; for every pair of rings on different pages and every label of the first, the\nlabel of the second whose clock position is nearest; first word of the label only, uncertain\nreadings taken at their first alternative. Rings stand in manuscript page order, so \"the first\" is\nthe earlier page. Null: the second ring turned by a random angle, 400 times.\nAddendum variant: rings classed by size within their page, the largest as outer (twelve, one per\nsign) and the rest as inner (nine); only outer with outer and inner with inner are compared, the two\ninner rings of f72r3 thereby compared with each other.\n\"\"\"\nimport re, sys, random, collections\nsys.path.insert(0, \".\")\nfrom vs import ivtff\n\nRAW = \"data/raw/ZL3b-n.txt\"\nHEAD = re.compile(r\"^<(f\\d+[rv]\\d*)\\.(\\d+),([@+*=&~\\-])(\\w+)>\")\nCLOCK = re.compile(r\"<!\\s*(\\d{1,2}):(\\d{2})\\s*>\")\n\nclock = {}\nfor raw in open(RAW, encoding=\"utf-8\", errors=\"replace\"):\n    m = HEAD.match(raw)\n    if not m or m.group(4) != \"Lz\":\n        continue\n    cm = CLOCK.search(raw)\n    if cm:\n        clock[(m.group(1), int(m.group(2)))] = (int(cm.group(1)) * 60 + int(cm.group(2))) / 1440 * 360.0\n\nrings = collections.defaultdict(list)\norder = {}\nfor pg in ivtff.parse(RAW):\n    order[pg.id] = pg.order\n    for ln in pg.lines:\n        if ln.unit != \"L\" or ln.subtype != \"z\":\n            continue\n        d = clock.get((pg.id, ln.n))\n        if d is None or not ln.words:\n            continue\n        w = ln.words[0].strip(\"?*\")\n        if w:\n            rings[pg.id].append((ln.n, d, w))\n\ngroups = []\nfor p, rows in sorted(rings.items(), key=lambda kv: order[kv[0]]):\n    rows.sort()\n    cur = [rows[0]]\n    for r in rows[1:]:\n        if r[0] == cur[-1][0] + 1:\n            cur.append(r)\n        else:\n            groups.append((p, cur))\n            cur = [r]\n    groups.append((p, cur))\ngroups = [(p, g) for p, g in groups if len(g) >= 7]\nprint(\"rings of seven or more:\", len(groups), \"on\", len({p for p, _ in groups}), \"pages;\",\n      \"labels:\", sum(len(g) for _, g in groups),\n      \"; sizes:\", sorted((len(g) for _, g in groups), reverse=True))\n\n\ndef cdist(a, b):\n    d = abs(a - b) % 360\n    return min(d, 360 - d)\n\n\ndef one_glyph(a, b):\n    if a == b or abs(len(a) - len(b)) > 1:\n        return False\n    if len(a) == len(b):\n        return sum(x != y for x, y in zip(a, b)) == 1\n    lo, hi = (a, b) if len(a) < len(b) else (b, a)\n    i = 0\n    while i < len(lo) and lo[i] == hi[i]:\n        i += 1\n    return lo[i:] == hi[i + 1:]\n\n\ndef measure(pairs, turns=400, seed=408):\n    def once(rot_of):\n        e = n2 = 0\n        for i, j in pairs:\n            rot = rot_of()\n            for _n, d, t in groups[i][1]:\n                b = min(groups[j][1], key=lambda r: cdist(d + rot, r[1]))\n                if b[2] == t:\n                    e += 1\n                elif one_glyph(t, b[2]):\n                    n2 += 1\n        return e, n2\n    obs_e, obs_n = once(lambda: 0.0)\n    rng = random.Random(seed)\n    null = [once(lambda: rng.uniform(0, 360)) for _ in range(turns)]\n    me = sum(x[0] for x in null) / turns\n    mn = sum(x[1] for x in null) / turns\n    pe = (sum(1 for x in null if x[0] >= obs_e) + 1) / (turns + 1)\n    pn = (sum(1 for x in null if x[1] >= obs_n) + 1) / (turns + 1)\n    return sum(len(groups[i][1]) for i, j in pairs), obs_e, me, pe, obs_n, mn, pn\n\n\npairs = [(i, j) for i in range(len(groups)) for j in range(i + 1, len(groups))\n         if groups[i][0] != groups[j][0]]\nc, e, me, pe, n2, mn, pn = measure(pairs)\nprint(f\"every ring with every other: comparisons={c} exact={e} (null {me:.1f}, p={pe:.2f}); \"\n      f\"within one glyph {n2} (null {mn:.1f}, p={pn:.2f})\")\n\nouter, inner = [], []\nfor idx, (p, g) in enumerate(groups):\n    on_page = [k for k, (_p, _g) in enumerate(groups) if _p == p]\n    on_page.sort(key=lambda k: -len(groups[k][1]))\n    (outer if idx == on_page[0] else inner).append(idx)\nsame = []\nfor a in (outer, inner):\n    for i in a:\n        for j in a:\n            if i >= j:\n                continue\n            if groups[i][0] != groups[j][0] or (groups[i][0] == groups[j][0] == \"f72r3\"):\n                same.append((i, j))\nc2, e2, me2, pe2, n3, mn2, pn2 = measure(same)\nprint(f\"same-ring-only (outer with outer, inner with inner; {len(outer)} outer, {len(inner)} inner rings): \"\n      f\"comparisons={c2} exact={e2} (null {me2:.1f}, p={pe2:.2f}); within one glyph {n3} (null {mn2:.1f}, p={pn2:.2f})\")\n"
+ },
+ "limits": [
+  "One transliteration (ZL3b), as in the step; the labels are short and the file gives clock positions only to the nearest quarter or half hour, coarser than the figure spacing in the larger rings, so nearest-position pairing is off by a figure fairly often.",
+  "The one-glyph nulls come out lower than the step's (28.3 against 33.7, and 13.0 against 16.0). The step does not state how the turning angle is sampled; this run draws it continuously and independently per ring pair, which makes the turned pairing closer to a random pairing. The observed one-glyph counts are not affected, and the exact-agreement nulls agree closely (4.3 against 4.1, 2.4 against 2.0).",
+  "Rings are rebuilt from consecutive line numbers; the step's own listing is reproduced exactly, so this is not an independent segmentation claim, only an independent rebuild.",
+  "No hidden pages were read: every label used is on the public pages."
+ ]
+}

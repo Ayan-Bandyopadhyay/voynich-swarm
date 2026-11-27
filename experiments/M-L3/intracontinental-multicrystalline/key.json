@@ -1,0 +1,49 @@
+{
+  "id": "K-medieval_czech-table-cipher-001",
+  "family": "table-cipher",
+  "segmentation": "eva-basic",
+  "target": {
+    "language": "medieval_czech",
+    "period": "Jan Hus Postilla (1413), 1866 edition"
+  },
+  "key": {
+    "map": {
+      "a": "a",
+      "b": "b",
+      "d": "c",
+      "e": "d",
+      "f": "e",
+      "g": "f",
+      "i": "g",
+      "j": "h",
+      "k": "i",
+      "l": "j",
+      "m": "k",
+      "n": "l",
+      "o": "m",
+      "p": "n",
+      "q": "o",
+      "r": "p",
+      "s": "r",
+      "t": "s",
+      "u": "t",
+      "v": "u",
+      "x": "v",
+      "y": "y",
+      "z": "z"
+    },
+    "shifts": [
+      21,
+      8
+    ]
+  },
+  "search": {
+    "budget": {
+      "max_period": 4,
+      "sweeps": 4
+    }
+  },
+  "transliteration": "zl",
+  "reading_order": "normal",
+  "spaces": "word_breaks"
+}

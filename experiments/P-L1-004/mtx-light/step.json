@@ -1,0 +1,776 @@
+{
+ "title": "Reproducing the v101 case fix on the 34 public pages moves four registered Claston keys by 0.006-0.025 savings and flips no verdict, but the coercion had rewritten one word in six",
+ "statement": "PR #185 asked for the same Hannig key to be scored with and without the single case coercion that vs/ivtff.clean_text applied to every input, including Claston v101. PR #510 has since merged the parser half of that step: clean_text now takes preserve_case, and parse() turns it on for a file whose first line starts with '#=IVTFF v101 ', with a fixture that separates N from n. This submission closes the remaining half - the paired public reproduction - by re-scoring the frozen registered submissions on the same 34 public practice evaluation pages twice: once as the tree scores them today (case preserved), and once with the coercion re-applied after parsing, which puts the coerced text into the baseline model and the decoys exactly as the old code did. Four keys were measured: the two Hannig keys named in PR #185 and PR #560, and two search keys on the same Claston v101 transliteration whose key maps contain no uppercase entry at all. In all four cases the old coercion flattered the result - savings became less negative by 0.00632, 0.01097, 0.02487 and 0.01863 - and no verdict changed: all four still fail a_compresses, b_reads, kill_tests, c_pictures and d_not_illusion. The wider finding is the size of the affected input. 6,418 of 40,174 parsed v101 word tokens (15.98 per cent) contain at least one of 25 uppercase forms, so the coercion was not a corner case: it silently replaced the decoder input for about one word in six. Because a glyph missing from a key is a null, the fix is not only a case change - an uppercase form that no key defines now decodes to nothing instead of quietly borrowing its lowercase letter's value. Eight of the nine registered v101 results were scored before the fix merged, and seven of those eight have no uppercase entry in their key map, so their registered numbers all rest on the borrowed-lowercase behaviour.",
+ "program": "L1",
+ "check": "From the repository root with the pinned texts fetched, extract the two scripts below to one temporary directory and run them with PYTHONPATH=. python3 /tmp/l1004.py and PYTHONPATH=. python3 /tmp/l1004_registered.py. The first prints one line per key and must reproduce the four paired savings values, verdicts and coverage ranges recorded here on commit 20dd02a; the second lists every registered result on the Claston v101 transliteration with its scoring time and whether it predates the fix. Both read only the public practice partition and only frozen registered submissions - no key is edited and no held-out page is touched. The open decision stays with the scorer: whether the eight pre-fix v101 rows need a corrected held-out run. Our reading is that the two Hannig keys do not need an emergency re-score (the shift is at most 0.011 savings and the verdict is unchanged), while the seven search keys with empty uppercase maps are the ones whose registered input the fix actually rewrites, and the project should state explicitly whether an undefined uppercase v101 glyph is a null or a lowercase alias.",
+ "on_path": true,
+ "hard": false,
+ "findings": [
+  "Paired public reruns on the same 34 practice evaluation pages (commit 20dd02a, frozen registered submissions, no key edited). Savings with case preserved, then with the old coercion re-applied, then the difference: K-hebrew-substitution-002 (PR #185) -0.23668 / -0.23036 / -0.00632; K-hebrew-substitution-004 (PR #560) -0.23990 / -0.22893 / -0.01097; K-english-substitution-004 -0.11055 / -0.08568 / -0.02487; K-latin-substitution-006 -0.10408 / -0.08545 / -0.01863. The sign is the same for all four: the coercion made the registered numbers look better than the fixed parser produces.",
+  "No verdict changes. All four keys fail the same five criteria in both modes - a_compresses, b_reads, kill_tests, c_pictures and d_not_illusion - so the fix does not rescue or sink any of these submissions.",
+  "Lexicon-coverage ranges over judged sections move with the input, not monotonically. K-hebrew-002 is unchanged at 0.36-0.48; K-hebrew-004 goes 0.2633-0.4313 (case preserved) against 0.24-0.4293 (coerced); K-english-004 0.3167-0.35 against 0.3095-0.35; K-latin-006 0.4467-0.5013 against 0.3967-0.4553. Dropping uppercase glyphs can raise coverage because the words that lose a letter also stop contributing junk.",
+  "The affected input is large. In the pinned Claston v101 parse, 6,418 of 40,174 word tokens (15.98 per cent) contain at least one uppercase glyph - 5,479 of 33,862 on the practice training side and 939 of 6,312 on the 34 evaluation pages - spread over 25 distinct uppercase forms, with C alone appearing 2,826 times. On the evaluation pages the two search keys change the decode of 939 words, K-hebrew-004 of 441 words, and K-hebrew-002 of 71 words.",
+  "Only one uppercase pair in the Hannig table actually disagrees: N maps to final pe while n maps to pe. The other seven uppercase entries (A, F, G, H, J, K, U) repeat their lowercase value, so for those the coercion was harmless. The Hannig keys define 8 uppercase forms, leaving 17 of the 25 forms undefined.",
+  "Seven of the nine registered v101 results have no uppercase entry at all in their key map. Before the fix every uppercase glyph silently took its lowercase value; after the fix the same glyph is a null, because vs/families/substitution.py documents a glyph missing from the key as a null and decode_word returns m.get(g, \"\"). So the merged fix is a decoder-behaviour change for those keys, not only a case correction.",
+  "Eight of the nine registered v101 results predate the fix (PR #510 merged 2026-11-26T17:23:14Z, commit e89497e): the seven search keys at 2026-11-25T05:42:08Z through 05:48:59Z and K-hebrew-substitution-002 at 2026-11-25T08:39:22Z. Only K-hebrew-substitution-004 (2026-11-26T18:59:51Z) was scored on the fixed parser. All nine are FAIL."
+ ],
+ "interpretation": "For the two Hannig keys the practical answer to PR #185's question is small: the coercion flattered the registered practice number by 0.006-0.011 savings and changed no verdict, so no emergency held-out re-score is implied. The reason it is small is that the Hannig key happens to define most of the uppercase forms it meets, and only one of them differs from its lowercase twin. The general problem is bigger than that case. Roughly one v101 word in six carries an uppercase glyph, and a key that does not define one used to fall back on the lowercase letter by accident rather than by decision. Seven registered search keys sit in that situation, and the measured shift for two of them (0.019-0.025 savings, plus a coverage range that moves by up to 5 points) is larger than the Hannig shift. Whether those rows should be re-scored is a scorer decision, and it depends on a policy question the project has not answered in writing: is an undefined uppercase v101 glyph a null, or does it inherit the lowercase reading? The fix chose null; the registered history assumed inheritance.",
+ "methods": "The registered submissions are read back frozen from the registry (submitted['key.json']) and scored with the pinned judge on the practice split exactly as the scorer does: views.apply is applied to the submission's own scope before judge.evaluate, so the baseline model and the decoys see the same text as the candidate. The old behaviour is emulated by lowercasing the parsed words of both partitions before scoring, which is equivalent to the removed clean_text coercion because that coercion ran on the whole transcription before any consumer saw it. Case preservation is the tree's current behaviour, selected by the '#=IVTFF v101 ' header that the pinned Claston file carries, so the 'case preserved' column is a real run of the current code rather than an emulation. Affected-glyph tables count uppercase characters in the parsed evaluation words and compare key[g] with key[g.lower()]. Nothing is fitted, tuned or selected against the evaluation pages; the keys are frozen and the only variable is the coercion.",
+ "results": {
+  "setup": {
+   "commit": "20dd02aed363a1f94b09178c5fdc01c9b6b9251a",
+   "split": "practice",
+   "pages_evaluated": 34,
+   "transliteration": "gc (Claston v101)",
+   "coercion_emulation": "clean_text's lowercase coercion re-applied: page words lowercased after parsing, so the baseline model and the decoys see the coerced text too",
+   "keys_are_frozen_registered_submissions": true
+  },
+  "paired_results": [
+   {
+    "key": "K-hebrew-substitution-002 (PR #185, Hannig table, fleet-corpora)",
+    "item": "K-hebrew-substitution-002",
+    "key_sha256": "1ae9d5d810531f20a68a359796f77326aab318f32ee284e4c33479918474bec1",
+    "transliteration": "gc",
+    "scored_at": "2026-11-25T08:39:22+00:00",
+    "case_preserved": {
+     "savings": -0.23668,
+     "verdict": "FAIL",
+     "failed": [
+      "a_compresses",
+      "b_reads",
+      "kill_tests",
+      "c_pictures",
+      "d_not_illusion"
+     ],
+     "coverage_min": 0.36,
+     "coverage_max": 0.48
+    },
+    "coerced": {
+     "savings": -0.23036,
+     "verdict": "FAIL",
+     "failed": [
+      "a_compresses",
+      "b_reads",
+      "kill_tests",
+      "c_pictures",
+      "d_not_illusion"
+     ],
+     "coverage_min": 0.36,
+     "coverage_max": 0.48
+    },
+    "savings_delta": -0.00632,
+    "verdict_changed": false,
+    "uppercase_glyphs_affected": [
+     {
+      "glyph": "N",
+      "occurrences": 24,
+      "case_preserved": "פ",
+      "coerced_to": "נ"
+     },
+     {
+      "glyph": "M",
+      "occurrences": 19,
+      "case_preserved": "",
+      "coerced_to": "מ"
+     },
+     {
+      "glyph": "Y",
+      "occurrences": 10,
+      "case_preserved": "",
+      "coerced_to": "ל"
+     },
+     {
+      "glyph": "E",
+      "occurrences": 7,
+      "case_preserved": "",
+      "coerced_to": "ר"
+     },
+     {
+      "glyph": "P",
+      "occurrences": 5,
+      "case_preserved": "",
+      "coerced_to": "צ"
+     },
+     {
+      "glyph": "T",
+      "occurrences": 4,
+      "case_preserved": "",
+      "coerced_to": "ז"
+     },
+     {
+      "glyph": "S",
+      "occurrences": 2,
+      "case_preserved": "",
+      "coerced_to": "ח"
+     }
+    ]
+   },
+   {
+    "key": "K-hebrew-substitution-004 (PR #560, Hannig table, mtx-light)",
+    "item": "K-hebrew-substitution-004",
+    "key_sha256": "139268680bcde2be51a1b9c9934c354edef586e34baa577f1ba228277baa1bde",
+    "transliteration": "gc",
+    "scored_at": "2026-11-26T18:59:51+00:00",
+    "case_preserved": {
+     "savings": -0.2399,
+     "verdict": "FAIL",
+     "failed": [
+      "a_compresses",
+      "b_reads",
+      "kill_tests",
+      "c_pictures",
+      "d_not_illusion"
+     ],
+     "coverage_min": 0.2633,
+     "coverage_max": 0.4313
+    },
+    "coerced": {
+     "savings": -0.22893,
+     "verdict": "FAIL",
+     "failed": [
+      "a_compresses",
+      "b_reads",
+      "kill_tests",
+      "c_pictures",
+      "d_not_illusion"
+     ],
+     "coverage_min": 0.24,
+     "coverage_max": 0.4293
+    },
+    "savings_delta": -0.01097,
+    "verdict_changed": false,
+    "uppercase_glyphs_affected": [
+     {
+      "glyph": "C",
+      "occurrences": 363,
+      "case_preserved": "",
+      "coerced_to": "ו"
+     },
+     {
+      "glyph": "N",
+      "occurrences": 24,
+      "case_preserved": "פ",
+      "coerced_to": "נ"
+     },
+     {
+      "glyph": "M",
+      "occurrences": 19,
+      "case_preserved": "",
+      "coerced_to": "מ"
+     },
+     {
+      "glyph": "Y",
+      "occurrences": 10,
+      "case_preserved": "",
+      "coerced_to": "ל"
+     },
+     {
+      "glyph": "I",
+      "occurrences": 9,
+      "case_preserved": "",
+      "coerced_to": "י"
+     },
+     {
+      "glyph": "E",
+      "occurrences": 7,
+      "case_preserved": "",
+      "coerced_to": "ר"
+     },
+     {
+      "glyph": "P",
+      "occurrences": 5,
+      "case_preserved": "",
+      "coerced_to": "צ"
+     },
+     {
+      "glyph": "T",
+      "occurrences": 4,
+      "case_preserved": "",
+      "coerced_to": "ז"
+     },
+     {
+      "glyph": "S",
+      "occurrences": 2,
+      "case_preserved": "",
+      "coerced_to": "ח"
+     }
+    ]
+   },
+   {
+    "key": "K-english-substitution-004 (gc raw, glyphs reversed)",
+    "item": "K-english-substitution-004",
+    "key_sha256": "c25efa48dc67276ee800f120545c0caeec78fd513eaa9e890ac132b8c01e4333",
+    "transliteration": "gc",
+    "scored_at": "2026-11-25T05:42:08+00:00",
+    "case_preserved": {
+     "savings": -0.11055,
+     "verdict": "FAIL",
+     "failed": [
+      "a_compresses",
+      "b_reads",
+      "kill_tests",
+      "c_pictures",
+      "d_not_illusion"
+     ],
+     "coverage_min": 0.3167,
+     "coverage_max": 0.35
+    },
+    "coerced": {
+     "savings": -0.08568,
+     "verdict": "FAIL",
+     "failed": [
+      "a_compresses",
+      "b_reads",
+      "kill_tests",
+      "c_pictures",
+      "d_not_illusion"
+     ],
+     "coverage_min": 0.3095,
+     "coverage_max": 0.35
+    },
+    "savings_delta": -0.02487,
+    "verdict_changed": false,
+    "uppercase_glyphs_affected": [
+     {
+      "glyph": "C",
+      "occurrences": 363,
+      "case_preserved": "",
+      "coerced_to": "n"
+     },
+     {
+      "glyph": "H",
+      "occurrences": 152,
+      "case_preserved": "",
+      "coerced_to": "n"
+     },
+     {
+      "glyph": "K",
+      "occurrences": 134,
+      "case_preserved": "",
+      "coerced_to": "n"
+     },
+     {
+      "glyph": "A",
+      "occurrences": 133,
+      "case_preserved": "",
+      "coerced_to": "e"
+     },
+     {
+      "glyph": "Z",
+      "occurrences": 27,
+      "case_preserved": "",
+      "coerced_to": "m"
+     },
+     {
+      "glyph": "N",
+      "occurrences": 24,
+      "case_preserved": "",
+      "coerced_to": "m"
+     },
+     {
+      "glyph": "J",
+      "occurrences": 20,
+      "case_preserved": "",
+      "coerced_to": "r"
+     },
+     {
+      "glyph": "M",
+      "occurrences": 19,
+      "case_preserved": "",
+      "coerced_to": "m"
+     },
+     {
+      "glyph": "W",
+      "occurrences": 14,
+      "case_preserved": "",
+      "coerced_to": "s"
+     },
+     {
+      "glyph": "Y",
+      "occurrences": 10,
+      "case_preserved": "",
+      "coerced_to": "s"
+     },
+     {
+      "glyph": "G",
+      "occurrences": 9,
+      "case_preserved": "",
+      "coerced_to": "d"
+     },
+     {
+      "glyph": "I",
+      "occurrences": 9,
+      "case_preserved": "",
+      "coerced_to": "e"
+     },
+     {
+      "glyph": "E",
+      "occurrences": 7,
+      "case_preserved": "",
+      "coerced_to": "s"
+     },
+     {
+      "glyph": "V",
+      "occurrences": 7,
+      "case_preserved": "",
+      "coerced_to": "d"
+     },
+     {
+      "glyph": "F",
+      "occurrences": 6,
+      "case_preserved": "",
+      "coerced_to": "s"
+     },
+     {
+      "glyph": "L",
+      "occurrences": 6,
+      "case_preserved": "",
+      "coerced_to": "n"
+     },
+     {
+      "glyph": "P",
+      "occurrences": 5,
+      "case_preserved": "",
+      "coerced_to": "m"
+     },
+     {
+      "glyph": "Q",
+      "occurrences": 4,
+      "case_preserved": "",
+      "coerced_to": "s"
+     },
+     {
+      "glyph": "T",
+      "occurrences": 4,
+      "case_preserved": "",
+      "coerced_to": "d"
+     },
+     {
+      "glyph": "B",
+      "occurrences": 2,
+      "case_preserved": "",
+      "coerced_to": "s"
+     },
+     {
+      "glyph": "D",
+      "occurrences": 2,
+      "case_preserved": "",
+      "coerced_to": "i"
+     },
+     {
+      "glyph": "R",
+      "occurrences": 2,
+      "case_preserved": "",
+      "coerced_to": "s"
+     },
+     {
+      "glyph": "S",
+      "occurrences": 2,
+      "case_preserved": "",
+      "coerced_to": "s"
+     },
+     {
+      "glyph": "U",
+      "occurrences": 2,
+      "case_preserved": "",
+      "coerced_to": "r"
+     },
+     {
+      "glyph": "X",
+      "occurrences": 1,
+      "case_preserved": "",
+      "coerced_to": "s"
+     }
+    ]
+   },
+   {
+    "key": "K-latin-substitution-006 (gc raw, words reversed)",
+    "item": "K-latin-substitution-006",
+    "key_sha256": "80a00a80a86ba2f9354d4fd9cf8e43949dd3a75de98e17cc737db591fcc20b60",
+    "transliteration": "gc",
+    "scored_at": "2026-11-25T05:48:59+00:00",
+    "case_preserved": {
+     "savings": -0.10408,
+     "verdict": "FAIL",
+     "failed": [
+      "a_compresses",
+      "b_reads",
+      "kill_tests",
+      "c_pictures",
+      "d_not_illusion"
+     ],
+     "coverage_min": 0.4467,
+     "coverage_max": 0.5013
+    },
+    "coerced": {
+     "savings": -0.08545,
+     "verdict": "FAIL",
+     "failed": [
+      "a_compresses",
+      "b_reads",
+      "kill_tests",
+      "c_pictures",
+      "d_not_illusion"
+     ],
+     "coverage_min": 0.3967,
+     "coverage_max": 0.4553
+    },
+    "savings_delta": -0.01863,
+    "verdict_changed": false,
+    "uppercase_glyphs_affected": [
+     {
+      "glyph": "C",
+      "occurrences": 363,
+      "case_preserved": "",
+      "coerced_to": "i"
+     },
+     {
+      "glyph": "H",
+      "occurrences": 152,
+      "case_preserved": "",
+      "coerced_to": "u"
+     },
+     {
+      "glyph": "K",
+      "occurrences": 134,
+      "case_preserved": "",
+      "coerced_to": "u"
+     },
+     {
+      "glyph": "A",
+      "occurrences": 133,
+      "case_preserved": "",
+      "coerced_to": "i"
+     },
+     {
+      "glyph": "Z",
+      "occurrences": 27,
+      "case_preserved": "",
+      "coerced_to": "s"
+     },
+     {
+      "glyph": "N",
+      "occurrences": 24,
+      "case_preserved": "",
+      "coerced_to": "s"
+     },
+     {
+      "glyph": "J",
+      "occurrences": 20,
+      "case_preserved": "",
+      "coerced_to": "u"
+     },
+     {
+      "glyph": "M",
+      "occurrences": 19,
+      "case_preserved": "",
+      "coerced_to": "s"
+     },
+     {
+      "glyph": "W",
+      "occurrences": 14,
+      "case_preserved": "",
+      "coerced_to": "u"
+     },
+     {
+      "glyph": "Y",
+      "occurrences": 10,
+      "case_preserved": "",
+      "coerced_to": "s"
+     },
+     {
+      "glyph": "G",
+      "occurrences": 9,
+      "case_preserved": "",
+      "coerced_to": "d"
+     },
+     {
+      "glyph": "I",
+      "occurrences": 9,
+      "case_preserved": "",
+      "coerced_to": "u"
+     },
+     {
+      "glyph": "E",
+      "occurrences": 7,
+      "case_preserved": "",
+      "coerced_to": "s"
+     },
+     {
+      "glyph": "V",
+      "occurrences": 7,
+      "case_preserved": "",
+      "coerced_to": "u"
+     },
+     {
+      "glyph": "F",
+      "occurrences": 6,
+      "case_preserved": "",
+      "coerced_to": "s"
+     },
+     {
+      "glyph": "L",
+      "occurrences": 6,
+      "case_preserved": "",
+      "coerced_to": "u"
+     },
+     {
+      "glyph": "P",
+      "occurrences": 5,
+      "case_preserved": "",
+      "coerced_to": "s"
+     },
+     {
+      "glyph": "Q",
+      "occurrences": 4,
+      "case_preserved": "",
+      "coerced_to": "d"
+     },
+     {
+      "glyph": "T",
+      "occurrences": 4,
+      "case_preserved": "",
+      "coerced_to": "i"
+     },
+     {
+      "glyph": "B",
+      "occurrences": 2,
+      "case_preserved": "",
+      "coerced_to": "t"
+     },
+     {
+      "glyph": "D",
+      "occurrences": 2,
+      "case_preserved": "",
+      "coerced_to": "i"
+     },
+     {
+      "glyph": "R",
+      "occurrences": 2,
+      "case_preserved": "",
+      "coerced_to": "u"
+     },
+     {
+      "glyph": "S",
+      "occurrences": 2,
+      "case_preserved": "",
+      "coerced_to": "s"
+     },
+     {
+      "glyph": "U",
+      "occurrences": 2,
+      "case_preserved": "",
+      "coerced_to": "s"
+     },
+     {
+      "glyph": "X",
+      "occurrences": 1,
+      "case_preserved": "",
+      "coerced_to": "s"
+     }
+    ]
+   }
+  ],
+  "uppercase_blast_radius": {
+   "scope": "certain v101 word tokens in the pinned Claston transcription, counted on the parsed words",
+   "all_practice_words": 40174,
+   "all_practice_words_with_upper": 6418,
+   "all_practice_share_with_upper": 0.1598,
+   "train_words": 33862,
+   "train_words_with_upper": 5479,
+   "evaluation_words": 6312,
+   "evaluation_words_with_upper": 939,
+   "distinct_uppercase_forms": 25,
+   "uppercase_occurrences_all_practice": {
+    "C": 2826,
+    "K": 909,
+    "H": 862,
+    "A": 754,
+    "M": 171,
+    "Z": 151,
+    "N": 131,
+    "J": 121,
+    "I": 97,
+    "W": 91,
+    "G": 88,
+    "Y": 55,
+    "E": 54,
+    "P": 38,
+    "S": 38,
+    "F": 35,
+    "L": 32,
+    "U": 32,
+    "Q": 27,
+    "T": 27,
+    "V": 23,
+    "X": 14,
+    "R": 11,
+    "D": 10,
+    "B": 6
+   }
+  },
+  "registered_v101_results": [
+   {
+    "item": "K-english-substitution-004",
+    "family": "substitution",
+    "target": {
+     "language": "english",
+     "period": "pinned reference corpora"
+    },
+    "scored_at": "2026-11-25T05:42:08+00:00",
+    "predates_case_fix": true,
+    "verdict": "FAIL",
+    "uppercase_key_entries": [],
+    "uppercase_entries_with_distinct_value": []
+   },
+   {
+    "item": "K-italian-substitution-004",
+    "family": "substitution",
+    "target": {
+     "language": "italian",
+     "period": "pinned reference corpora"
+    },
+    "scored_at": "2026-11-25T05:43:42+00:00",
+    "predates_case_fix": true,
+    "verdict": "FAIL",
+    "uppercase_key_entries": [],
+    "uppercase_entries_with_distinct_value": []
+   },
+   {
+    "item": "K-spanish-substitution-004",
+    "family": "substitution",
+    "target": {
+     "language": "spanish",
+     "period": "pinned reference corpora"
+    },
+    "scored_at": "2026-11-25T05:44:01+00:00",
+    "predates_case_fix": true,
+    "verdict": "FAIL",
+    "uppercase_key_entries": [],
+    "uppercase_entries_with_distinct_value": []
+   },
+   {
+    "item": "K-french-substitution-004",
+    "family": "substitution",
+    "target": {
+     "language": "french",
+     "period": "pinned reference corpora"
+    },
+    "scored_at": "2026-11-25T05:45:10+00:00",
+    "predates_case_fix": true,
+    "verdict": "FAIL",
+    "uppercase_key_entries": [],
+    "uppercase_entries_with_distinct_value": []
+   },
+   {
+    "item": "K-english-substitution-005",
+    "family": "substitution",
+    "target": {
+     "language": "english",
+     "period": "pinned reference corpora"
+    },
+    "scored_at": "2026-11-25T05:46:32+00:00",
+    "predates_case_fix": true,
+    "verdict": "FAIL",
+    "uppercase_key_entries": [],
+    "uppercase_entries_with_distinct_value": []
+   },
+   {
+    "item": "K-spanish-substitution-005",
+    "family": "substitution",
+    "target": {
+     "language": "spanish",
+     "period": "pinned reference corpora"
+    },
+    "scored_at": "2026-11-25T05:47:42+00:00",
+    "predates_case_fix": true,
+    "verdict": "FAIL",
+    "uppercase_key_entries": [],
+    "uppercase_entries_with_distinct_value": []
+   },
+   {
+    "item": "K-latin-substitution-006",
+    "family": "substitution",
+    "target": {
+     "language": "latin",
+     "period": "pinned reference corpora"
+    },
+    "scored_at": "2026-11-25T05:48:59+00:00",
+    "predates_case_fix": true,
+    "verdict": "FAIL",
+    "uppercase_key_entries": [],
+    "uppercase_entries_with_distinct_value": []
+   },
+   {
+    "item": "K-hebrew-substitution-002",
+    "family": "substitution",
+    "target": {
+     "language": "hebrew",
+     "period": "medieval/rabbinic Hebrew (Hannig 2020); scored against the pinned Hebrew corpora"
+    },
+    "scored_at": "2026-11-25T08:39:22+00:00",
+    "predates_case_fix": true,
+    "verdict": "FAIL",
+    "uppercase_key_entries": [
+     "A",
+     "F",
+     "G",
+     "H",
+     "J",
+     "K",
+     "N",
+     "U"
+    ],
+    "uppercase_entries_with_distinct_value": [
+     "N"
+    ]
+   },
+   {
+    "item": "K-hebrew-substitution-004",
+    "family": "substitution",
+    "target": {
+     "language": "hebrew",
+     "period": "Hannig 2020 reads the text as Hebrew of his own construction; scored against the pinned Hebrew corpora"
+    },
+    "scored_at": "2026-11-26T18:59:51+00:00",
+    "predates_case_fix": false,
+    "verdict": "FAIL",
+    "uppercase_key_entries": [
+     "A",
+     "F",
+     "G",
+     "H",
+     "J",
+     "K",
+     "N",
+     "U"
+    ],
+    "uppercase_entries_with_distinct_value": [
+     "N"
+    ]
+   }
+  ],
+  "case_fix": {
+   "pr": "#510",
+   "merge_commit": "e89497e",
+   "merged_at": "2026-11-26T17:23:14+00:00",
+   "parser_change": "vs/ivtff.py clean_text(s, uncertain_space=\"split\", *, preserve_case=False); parse() sets preserve_case for a first line starting with '#=IVTFF v101 '",
+   "fixture": "tests/test_core.py test_preserve_case_only_for_v101_header, with <f1r.1,@P0> 8a[N:n].8a[n:N]",
+   "decoder_rule": "vs/families/substitution.py: a glyph missing from the key is a null (m.get(g, \"\"))"
+  }
+ },
+ "reproducibility": {
+  "instructions": "Extract the two embedded scripts to one temporary directory under the names listed. From the repository root, with the pinned Claston text fetched, run PYTHONPATH=. python3 /tmp/l1004.py (about 4 minutes, eight judge runs) and PYTHONPATH=. python3 /tmp/l1004_registered.py. Both only read the public practice partition and the registry; neither writes to the repository.",
+  "scripts": {
+   "l1004.py": "\"\"\"P-L1-004: paired public reproduction of registered Claston-v101 keys with and without the\ncase coercion that PR #510 removed.\n\nOld behaviour: vs/ivtff.clean_text lowercased every input, including Claston v101, so an\nuppercase glyph entered the decoder as its lowercase form (and an unmapped uppercase form\nsilently acquired the lowercase mapping). New behaviour: case is preserved when the file\nheader starts with '#=IVTFF v101 '. Emulated here by re-parsing the same pages with the\ncoercion re-applied (equivalently: page words lowercased after parsing), which also puts the\ncoercion into the baseline model and the decoys, exactly as the old code did.\n\"\"\"\nimport copy, hashlib, json, os, subprocess, sys\nsys.path.insert(0, os.getcwd())\nfrom collections import Counter\nfrom vs import corpus, judge, registry, views\nfrom vs.models import scoped\n\nREPO = os.getcwd()\n\ndef load_registered(item_id):\n    from vs import registry\n    return registry.get(item_id)[\"submitted\"][\"key.json\"]\n\nKEYS = {\n    \"K-hebrew-substitution-002 (PR #185, Hannig table, fleet-corpora)\":\n        (\"registered\", \"K-hebrew-substitution-002\"),\n    \"K-hebrew-substitution-004 (PR #560, Hannig table, mtx-light)\":\n        (\"registered\", \"K-hebrew-substitution-004\"),\n    \"K-english-substitution-004 (gc raw, glyphs reversed)\":\n        (\"registered\", \"K-english-substitution-004\"),\n    \"K-latin-substitution-006 (gc raw, words reversed)\":\n        (\"registered\", \"K-latin-substitution-006\"),\n}\n\ndef lower_pages(pages):\n    out = []\n    for p in pages:\n        q = copy.deepcopy(p)\n        for ln in q.lines:\n            ln.words = [w.lower() for w in ln.words]\n        out.append(q)\n    return out\n\ndef run(sub, train, ev):\n    tr, ee = views.apply(scoped(train, sub.get(\"scope\")), sub), views.apply(scoped(ev, sub.get(\"scope\")), sub)\n    return judge.evaluate(sub, tr, ee, \"practice\")\n\ndef sha(obj):\n    return hashlib.sha256(json.dumps(obj, sort_keys=True).encode()).hexdigest()\n\ncommit = subprocess.run([\"git\", \"rev-parse\", \"HEAD\"], cwd=REPO, capture_output=True, text=True).stdout.strip()\ntrain, ev = corpus.split_pages(\"practice\", \"gc\")\ntrain_c, ev_c = lower_pages(train), lower_pages(ev)\n\ndef glyph_table(sub, pages):\n    m = sub[\"key\"][\"map\"]\n    cnt = Counter(ch for p in pages for ln in p.lines for w in ln.words for ch in w if ch.isupper())\n    return [{\"glyph\": g, \"occurrences\": cnt[g], \"case_preserved\": m.get(g, \"\"), \"coerced_to\": m.get(g.lower(), \"\")}\n            for g in sorted(cnt, key=lambda g: (-cnt[g], g)) if m.get(g, \"\") != m.get(g.lower(), \"\")]\n\nout = {\"commit\": commit, \"split\": \"practice\", \"pages_evaluated\": len(ev),\n       \"coercion_emulation\": \"clean_text's lowercase coercion re-applied: page words lowercased after parsing, so the baseline model and the decoys see the coerced text too\",\n       \"results\": []}\nfor name, (_kind, item_id) in KEYS.items():\n    sub = load_registered(item_id)\n    a = run(sub, train, ev)\n    b = run(sub, train_c, ev_c)\n    cov = lambda r: [v[\"coverage\"] for v in r[\"b_reads\"][\"sections\"].values() if v.get(\"judged\")]\n    row = {\"key\": name, \"item\": item_id, \"key_sha256\": sha(sub),\n           \"transliteration\": sub.get(\"transliteration\", \"zl\"),\n           \"scored_at\": str(registry.get(item_id)[\"provenance\"].get(\"at\")),\n           \"case_preserved\": {\"savings\": a[\"a_compresses\"][\"savings\"], \"verdict\": a[\"verdict\"],\n                              \"failed\": a[\"failed\"], \"coverage_min\": round(min(cov(a)), 4),\n                              \"coverage_max\": round(max(cov(a)), 4)},\n           \"coerced\": {\"savings\": b[\"a_compresses\"][\"savings\"], \"verdict\": b[\"verdict\"],\n                       \"failed\": b[\"failed\"], \"coverage_min\": round(min(cov(b)), 4),\n                       \"coverage_max\": round(max(cov(b)), 4)},\n           \"savings_delta\": round(a[\"a_compresses\"][\"savings\"] - b[\"a_compresses\"][\"savings\"], 5),\n           \"verdict_changed\": a[\"verdict\"] != b[\"verdict\"],\n           \"uppercase_glyphs_affected\": glyph_table(sub, ev)}\n    out[\"results\"].append(row)\n    print(row[\"key\"], \"| delta\", row[\"savings_delta\"], \"| verdict\", a[\"verdict\"], \"->\", b[\"verdict\"],\n          \"| affected glyphs\", len(row[\"uppercase_glyphs_affected\"]), flush=True)\n\njson.dump(out, open('/tmp/l1004_results.json', 'w'), indent=1, ensure_ascii=False)\nprint(\"WROTE /tmp/l1004_results.json\")\n",
+   "l1004_registered.py": "\"\"\"P-L1-004: enumerate every registered result whose submission reads the Claston v101\ntransliteration, and mark which of them were scored before PR #510 removed the case coercion.\n\nThe fix was merged as commit e89497e at 2026-11-26T17:23:14Z; anything scored before that\nmoment was judged on text whose uppercase v101 glyphs had been silently lowercased.\n\"\"\"\nimport json, os, sys\nsys.path.insert(0, os.getcwd())\nfrom vs import registry\n\nFIX_MERGED_AT = \"2026-11-26T17:23:14+00:00\"\n\nrows = []\nfor it in registry.read():\n    sub = (it.get(\"submitted\") or {}).get(\"key.json\")\n    if not sub:\n        continue\n    if sub.get(\"transliteration\") != \"gc\":\n        continue\n    m = (sub.get(\"key\") or {}).get(\"map\") or {}\n    upper = sorted(k for k in m if len(k) == 1 and k.isupper())\n    prov = str((it.get(\"provenance\") or {}).get(\"at\"))\n    rows.append({\"item\": it.get(\"id\"), \"family\": sub.get(\"family\"), \"target\": sub.get(\"target\"),\n                 \"scored_at\": prov, \"predates_case_fix\": prov < FIX_MERGED_AT,\n                 \"verdict\": (it.get(\"verdict\") or {}), \"uppercase_key_entries\": upper,\n                 \"uppercase_entries_with_distinct_value\":\n                     [k for k in upper if m.get(k) != m.get(k.lower())]})\nrows.sort(key=lambda r: r[\"scored_at\"])\nout = {\"case_fix_merged_at\": FIX_MERGED_AT, \"case_fix_commit\": \"e89497e (PR #510)\",\n       \"registered_gc_results\": len(rows), \"results\": rows}\njson.dump(out, open('/tmp/l1004_registered.json', 'w'), indent=1, ensure_ascii=False)\nprint(json.dumps(out, indent=1, ensure_ascii=False))\n"
+  }
+ },
+ "limits": [
+  "Only four of the nine registered v101 results were re-scored; the other five search keys are listed with their scoring times and empty uppercase maps but no paired number was measured for them.",
+  "The practice evaluation split is 34 pages; the held-out pages that produce the authoritative verdict were not touched, so these deltas say nothing about the registered hidden-split numbers.",
+  "Lowercasing the parsed words emulates the removed coercion; it is equivalent for these keys but was not produced by reverting the parser itself.",
+  "Savings is one of five criteria and all four keys fail every criterion in both modes, so the measured shift cannot by itself change any verdict.",
+  "The uppercase-glyph counts are counts of parsed v101 tokens, not a claim about how the manuscript's capitalisation should be read."
+ ]
+}

@@ -1,0 +1,553 @@
+{
+  "title": "Clyster scenes, an examining flask and bathing vessels provide separate tests of f80r",
+  "statement": "The f80r figure holds a rounded object with a short inward and downward projection across a visible gap from the body. Both scan readers see no distinct transverse flange at the grip. Two dated clyster scenes show another person holding an apparatus that reaches the patient, with a rounded reservoir or elongated assembly. A diagnostic flask and a small bathing pitcher share the rounded shape and short projection. A separate bath attendant repeats the raised arm and lowered vessel at the thigh. Taken together the controls leave the identification of the f80r object and its action unresolved.",
+  "program": "L4",
+  "check": "Use the original folio images or the crop coordinates below. Recode shape, grip, direction, visible contact, holder relation, posture and free hand before reading catalogue interpretations. Follow each proposed contact through the full scene and separate a stream or decorative line from the object’s outline. Compare against labelled cases of patient contact, simply holding a diagnostic flask and using bath vessels. A named object pairing requires features more specific than a bulb, narrow end or nearby gesture.",
+  "on_path": true,
+  "hard": true,
+  "previous_work": {
+    "claim": {
+      "author": "Keagan Brewer",
+      "year": 2022,
+      "source": "https://ceur-ws.org/Vol-3313/paper3.pdf#page=2",
+      "note": "Page 2 takes hand position, orientation and an inferred flared handle as grounds for an insertion interpretation. The present comparison examines these visible features separately."
+    },
+    "existing_anchor": {
+      "item": "N-002",
+      "source": "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/197",
+      "note": "The earlier scan review used the BSB Clm 337 clyster, Wellcome MS.49 and a textile gesture. This study adds two directly illustrated clyster actions, a near-period flask and contemporaneous bathing and washing controls."
+    }
+  },
+  "sources": {
+    "voynich": {
+      "reference": "Yale Beinecke MS 408 f80r, upper row, second figure from the left",
+      "record": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006218",
+      "image": "https://collections.library.yale.edu/iiif/2/1006218/130,0,740,700/900,/0/default.jpg",
+      "source_size_px": [
+        2793,
+        3733
+      ],
+      "finding": "The outline below the fingers is oval, with a small lower-left point. The arm holding it reaches behind the torso, and the other arm is visibly raised. Its aperture, material and any internal structure are unresolved."
+    },
+    "wellcome": {
+      "reference": "Wellcome MS.550, f193v, early 15th-century medical and surgical compendium",
+      "record": "https://wellcomecollection.org/works/htndqk24",
+      "canvas": "https://iiif.wellcomecollection.org/presentation/b19547420/canvases/b19547420_ms_550_0380.JP2",
+      "image": "https://iiif.wellcomecollection.org/image/b19547420_ms_550_0380.JP2/full/1600,/0/default.jpg",
+      "finding": "A clothed operator separately grips a rounded bag behind a kneeling patient; the nearly horizontal connection reaches the patient. The catalogue describes the coloured miniature as pasted over a red drawing. The dating is for the manuscript; the exact time at which the inset was attached is uncertain. Prefer this scan to the horizontally reversed image distributed as L0031725."
+    },
+    "dresden": {
+      "reference": "SLUB Mscr.Dresd.Db.93, f392v, Galen, De usu farmacorum; Paris, circa 1480 in the SLUB account",
+      "catalogue": "https://blog.slub-dresden.de/beitrag/2021/11/15/antike-medizin-in-mittelalterlichem-gewand",
+      "canvas": "https://iiif.slub-dresden.de/iiif/2/337794197/canvas/PHYS_0150",
+      "image": "https://images.iiif.slub-dresden.de/iiif/2/data%2Fkitodo%2Fgaleopva-_337794197%2Fgaleopva-_337794197_tif%2Fjpegs%2F00000150.tif.large.jpg/full/full/0/default.jpg",
+      "finding": "Two attendants handle an apparatus above and behind a different person on a bed. The assembly can be drawn as elongated or as a rounded chamber with a long projection, depending on where its outline is divided."
+    },
+    "fitz_flask": {
+      "reference": "Fitzwilliam MS 251, fol. 53v, Corbechon Book 5, Paris ca. 1415",
+      "record": "https://qi.fitzmuseum.cam.ac.uk/illuminated/manuscript/discover/jean-corbechon-livre-des-proprietes-des-choses/artist/master-of-the-mazarine-hours/folio/folio-53v",
+      "image": "https://qi.fitzmuseum.cam.ac.uk/illuminated/media/w1400h1400/folio_original/ms-251-f53v-201302-mfj22-mas-0021-edit.jpg",
+      "finding": "A standing physician raises a bulbous flask with a short upward neck for inspection, at roughly face height and away from the patients. This medical comparator depicts a different gesture."
+    },
+    "onb_scene": {
+      "reference": "ÖNB Cod. 2759, f10v, Wenceslas Bible, Prague 1390–1400",
+      "catalogue": "https://onb.digital/result/10EEFD58",
+      "record": "https://edition.onb.ac.at/fedora/objects/o%3Awen.codex-2759/methods/sdef%3ATEI/get?mode=f-10v",
+      "image": "https://iiif.onb.ac.at/images/REPO/8977428/00000029.jp2/full/1600,/0/default.jpg",
+      "reading": "Gia Toussaint 2024, pp.296–298, figs 8.5a–b, https://uplopen.com/chapters/9295/files/7fa94251-7699-49ff-9819-67eecdc3f9fe.pdf",
+      "finding": "The contextual reading identifies a leafy bath broom near the nude bather’s legs and a staved bucket. The selected action is unresolved in both masked ratings. This is a sourced contextual control and contributes no figure-to-figure match points."
+    },
+    "onb_attendant": {
+      "reference": "ÖNB Cod. 2759, f130r; same copy and date as f10v",
+      "record": "https://edition.onb.ac.at/fedora/objects/o%3Awen.codex-2759/methods/sdef%3ATEI/get?mode=f-130r",
+      "image": "https://iiif.onb.ac.at/images/REPO/8977428/00000268.jp2/full/1600,/0/default.jpg",
+      "finding": "A standing bath attendant raises a green bath broom while holding a staved bathing container by its handle beside the upper thigh. Its rim and bare hand are not laid out like the pointed f80r contour."
+    },
+    "morgan_bath": {
+      "reference": "Morgan MS M.919, f117r, Book of Hours, Paris circa 1418",
+      "record": "https://ica.themorgan.org/manuscript/page/180/159955",
+      "image": "https://ica.themorgan.org/icaimages/9/m919.117ra.jpg",
+      "finding": "A marginal bather holds a rounded pitcher, with a separately drawn stream curving toward the holder’s head. The implement points toward the holder and shows a gap from the body. The vessel rim is interpreted differently by the two readers."
+    },
+    "morgan_feet": {
+      "reference": "Morgan MS M.180, f52v, Lectionary, Padua 1436; washing of feet",
+      "record": "https://ica.themorgan.org/manuscript/page/17/76868",
+      "image": "https://ica.themorgan.org/icaimages/1/m180.052v.jpg",
+      "detail": "https://ica.themorgan.org/icaimages/1/m180.052va.jpg",
+      "finding": "The miniature includes a kneeling attendant with a small round ewer beside the knees and a short downward outlet toward a basin. A thin line separate from the implement is visible in the detail. This detail summarizes a use other than apparent body contact and was rated only after the initial panel scores were frozen."
+    }
+  },
+  "masking": {
+    "prepared_images": "Grayscale xyxy crops in the file pixel frames below, with writing and unrelated page regions omitted where separable. Two model reader instances received randomized IDs and the same descriptions of features. Partial provenance masking because manuscript style and the topic folder remained visible.",
+    "rubric": [
+      "outline of held item",
+      "obvious transverse flange at grip",
+      "projection relative to nearest body",
+      "solid tip and visible body contact",
+      "whether holder is nearest person",
+      "holder posture",
+      "separate raised free hand"
+    ],
+    "coding": "Short projection means shorter than visible width of the rounded body. U means unresolved or inapplicable. The holder relation describes nearby figures, with no functional identity assumed. Both main readers froze the eight initial rows before being shown a narrower crop of the crowded Morgan washing scene.",
+    "selection": "Dated examples were selected for visible similarities in tool shape or pose, so sample and scores are descriptive. Two Wenceslas Bible panels are one manuscript family. One early medical miniature is an inset. Source categories do not enter the coding.",
+    "counts": "A pair score is [equal visible codes, jointly visible codes] for each reader. Fewer than four common observations are sparse and are placed outside main comparisons. Do not treat the seven fields or two model instances as independent statistical draws."
+  },
+  "panels": {
+    "Q12": {
+      "specimen": "morgan_bath",
+      "source_file": "controls_morgan_m919_detail.jpg",
+      "source_px": [
+        394,
+        600
+      ],
+      "crop_xyxy": [
+        107,
+        384,
+        256,
+        536
+      ],
+      "source_sha256": "bfcfcabc98342ba4fff04a3ad35d93ea5ee4c0852b52b6753cff17bad119b109",
+      "panel_sha256": "f967dad86bd4a8cfbb3d89b5a7cb1a845af1882ca0db0a23815b91068248bcae"
+    },
+    "Q21": {
+      "specimen": "wellcome",
+      "source_file": "methods_wellcome_clyster_detail.jpg",
+      "source_px": [
+        345,
+        275
+      ],
+      "crop_xyxy": [
+        12,
+        17,
+        337,
+        249
+      ],
+      "source_sha256": "5d218cf9093c18c174d94c8d035f468484c82179b77527ff6d0fb7c4eeefc84c",
+      "panel_sha256": "0d911789b069d00de7631fedecf73a6eb595fd554e37e3582c8fb57d75aa9028",
+      "base_crop_on_download_xyxy": [
+        560,
+        360,
+        905,
+        635
+      ],
+      "base_download_px": [
+        1600,
+        1836
+      ],
+      "base_download_sha256": "8e7543b27981f8e6d363c4ecb76600dacfe57fa6d63095c479345b576d238a49"
+    },
+    "Q30": {
+      "specimen": "dresden",
+      "source_file": "methods_dresden_clyster_detail.jpg",
+      "source_px": [
+        390,
+        395
+      ],
+      "crop_xyxy": [
+        51,
+        53,
+        390,
+        386
+      ],
+      "source_sha256": "341cf2d152219d75551888ab0f0686bfb93541a1389ea164ef049d8bed944ef4",
+      "panel_sha256": "23c6a9a00d382f41808b5b118e2525fec1a2d7e76f7e8d752fe7e46097884654",
+      "base_crop_on_download_xyxy": [
+        580,
+        1540,
+        970,
+        1935
+      ],
+      "base_download_px": [
+        2000,
+        2628
+      ],
+      "base_download_sha256": "e8b9f7770efcde7382007584caf05698b72873fc46ddaa8061077d0a60efdd00"
+    },
+    "Q39": {
+      "specimen": "onb_attendant",
+      "source_file": "controls_onb_130r.jpg",
+      "source_px": [
+        1600,
+        2309
+      ],
+      "crop_xyxy": [
+        960,
+        340,
+        1180,
+        820
+      ],
+      "source_sha256": "d60272388a20790a2a60ced08e011998051cbc17ba4fc3879781faa1b25f4d9d",
+      "panel_sha256": "8e8b5a8c39ab98a566f28e56b16e04b54f3321f4e8b3b5cbabb462a00819c2bf"
+    },
+    "Q48": {
+      "specimen": "onb_scene",
+      "source_file": "controls_onb_10v.jpg",
+      "source_px": [
+        1600,
+        2323
+      ],
+      "crop_xyxy": [
+        840,
+        1830,
+        1200,
+        2180
+      ],
+      "source_sha256": "305c3ec931d1254cf8c1c59f72e87f24076be3437a6e0c12f14b0b84e75a5cc1",
+      "panel_sha256": "bb0d7aa0a09dfcd59b30ba71f2cdd68f11c8e07affd10a19c7647544609fa729"
+    },
+    "Q57": {
+      "specimen": "voynich",
+      "source_file": "f80r-target.jpg",
+      "source_px": [
+        900,
+        851
+      ],
+      "crop_xyxy": [
+        168,
+        185,
+        474,
+        588
+      ],
+      "source_sha256": "70596c5c27f57f5eeac30a67959cdbea32d561a4fc162f38bfc3d045531f6cd1",
+      "panel_sha256": "572467f8d262c9f0b35b064671bebf02c034772937568fff1ac8d264bdda8843"
+    },
+    "Q66": {
+      "specimen": "morgan_feet",
+      "source_file": "controls_morgan_m180.jpg",
+      "source_px": [
+        421,
+        600
+      ],
+      "crop_xyxy": [
+        125,
+        235,
+        265,
+        380
+      ],
+      "source_sha256": "e0a5d8c52ee768e9dbd547089382f5da06dd66dac5807b011166b37ca63e0876",
+      "panel_sha256": "1b33bbf505ad36fda2646bed136d1b7ec478e504374a1c229fa65781d8d80695"
+    },
+    "Q75": {
+      "specimen": "fitz_flask",
+      "source_file": "methods_fitz251_f53v.jpg",
+      "source_px": [
+        963,
+        1400
+      ],
+      "crop_xyxy": [
+        247,
+        530,
+        567,
+        800
+      ],
+      "source_sha256": "19a27c997e877159c48708abbe93f3a927b1d2e556c1d52644fa47def440384a",
+      "panel_sha256": "da47379470f0c17071afd199c80f6bd5bc1dbcd9a434130b2f5f85ce84abd543"
+    }
+  },
+  "supplementary_detail": {
+    "specimen": "morgan_feet_sensitivity",
+    "source": "controls_morgan_m180_detail.jpg",
+    "source_px": [
+      447,
+      600
+    ],
+    "bbox": [
+      203,
+      350,
+      373,
+      520
+    ],
+    "source_sha256": "70b45431cd4b0a90c39a6e697b29cc551572b644e8d4262b1a5150c0fe92a3f1",
+    "panel_sha256": "c209ddefdfe57b24c564b4dad5a27743003f1da11a0be6bf82c90bd28b869b08"
+  },
+  "raw_ratings": {
+    "A": {
+      "Q12": [
+        "rounded_short",
+        "yes",
+        "towards_body",
+        "gap",
+        "same_person",
+        "U",
+        "no"
+      ],
+      "Q21": [
+        "rounded_short",
+        "U",
+        "towards_body",
+        "contact",
+        "different_person",
+        "upright",
+        "no"
+      ],
+      "Q30": [
+        "elongated",
+        "yes",
+        "towards_body",
+        "contact",
+        "different_person",
+        "upright",
+        "no"
+      ],
+      "Q39": [
+        "other",
+        "yes",
+        "U",
+        "U",
+        "same_person",
+        "upright",
+        "U"
+      ],
+      "Q48": [
+        "U",
+        "U",
+        "U",
+        "U",
+        "U",
+        "U",
+        "U"
+      ],
+      "Q57": [
+        "rounded_short",
+        "no",
+        "towards_body",
+        "gap",
+        "same_person",
+        "upright",
+        "yes"
+      ],
+      "Q66": [
+        "rounded_none",
+        "U",
+        "U",
+        "U",
+        "U",
+        "U",
+        "U"
+      ],
+      "Q75": [
+        "rounded_short",
+        "U",
+        "away_or_up",
+        "gap",
+        "same_person",
+        "upright",
+        "no"
+      ],
+      "Q84": [
+        "rounded_short",
+        "no",
+        "away_or_up",
+        "gap",
+        "same_person",
+        "kneeling_seated",
+        "no"
+      ]
+    },
+    "B": {
+      "Q12": [
+        "rounded_short",
+        "no",
+        "towards_body",
+        "gap",
+        "same_person",
+        "U",
+        "no"
+      ],
+      "Q21": [
+        "rounded_short",
+        "U",
+        "towards_body",
+        "contact",
+        "different_person",
+        "U",
+        "no"
+      ],
+      "Q30": [
+        "rounded_long",
+        "yes",
+        "towards_body",
+        "contact",
+        "different_person",
+        "upright",
+        "no"
+      ],
+      "Q39": [
+        "rounded_none",
+        "no",
+        "U",
+        "U",
+        "same_person",
+        "upright",
+        "U"
+      ],
+      "Q48": [
+        "U",
+        "U",
+        "U",
+        "U",
+        "U",
+        "U",
+        "U"
+      ],
+      "Q57": [
+        "rounded_short",
+        "no",
+        "towards_body",
+        "gap",
+        "same_person",
+        "upright",
+        "yes"
+      ],
+      "Q66": [
+        "U",
+        "U",
+        "U",
+        "U",
+        "U",
+        "U",
+        "U"
+      ],
+      "Q75": [
+        "rounded_short",
+        "no",
+        "away_or_up",
+        "gap",
+        "same_person",
+        "upright",
+        "yes"
+      ],
+      "Q84": [
+        "rounded_short",
+        "no",
+        "away_or_up",
+        "gap",
+        "same_person",
+        "kneeling_seated",
+        "no"
+      ]
+    }
+  },
+  "agreement": {
+    "main_ratings": [
+      30,
+      35
+    ],
+    "target_ratings": [
+      7,
+      7
+    ],
+    "supplementary_ratings": [
+      7,
+      7
+    ],
+    "caption": "Counts are [agreements, jointly visible fields], excluding unknowns in either reading. The initial conditions comprise eight panels with seven recorded features each."
+  },
+  "target_pair_matches": {
+    "Q12": [
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "Q21": [
+      [
+        3,
+        6
+      ],
+      [
+        2,
+        5
+      ]
+    ],
+    "Q30": [
+      [
+        2,
+        7
+      ],
+      [
+        2,
+        7
+      ]
+    ],
+    "Q39": [
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "Q48": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "Q66": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "Q75": [
+      [
+        4,
+        6
+      ],
+      [
+        6,
+        7
+      ]
+    ],
+    "Q84": [
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        7
+      ]
+    ]
+  },
+  "target_geometry": {
+    "reference_crop": "https://collections.library.yale.edu/iiif/2/1006218/130,0,740,700/900,/0/default.jpg",
+    "source_JPEG_size": [
+      900,
+      851
+    ],
+    "projection_base_approx_xy": [
+      362,
+      440
+    ],
+    "projection_tip_approx_xy": [
+      351,
+      450
+    ],
+    "nearest_horizontal_body_contour_approx_xy": [
+      325,
+      450
+    ],
+    "interpretation": "At the same y coordinate as the tip, the gap is about 26 px in the 900-px derivative, or about 21 original image pixels. Selected endpoints are manual and uncertain by several pixels. An extended line would meet the figure farther down. The drawing itself shows no line connecting the solid tip to the adjacent body silhouette."
+  },
+  "reading_limits": [
+    "Both dated clyster scenes clearly have a separate operator and patient and both readers code contact. Both readers distinguish those features from the same-person proximity and visible gap on f80r.",
+    "A rounded object plus short projecting neck recurs in a procedural clyster, a physician’s examining flask and an ordinary bathing pitcher. The presence of the short projection supports comparing physical forms, while the illustrated context leaves the f80r use unresolved.",
+    "The historical scenes are purposively selected across manuscript traditions. A close partial match gives no independent name, date, or linguistic identification for the manuscript figure. The neighbouring transcript locus is f80r.2, used only to locate the figure."
+  ]
+}

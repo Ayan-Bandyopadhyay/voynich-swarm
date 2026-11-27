@@ -1,0 +1,21 @@
+{
+  "title": "Probing the Statistical Properties of Unknown Texts: Application to the Voynich Manuscript",
+  "authors": "Diego R. Amancio, Eduardo G. Altmann, Diego Rybski, Osvaldo N. Oliveira Jr, Luciano da F. Costa",
+  "year": 2013,
+  "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0067310",
+  "doi": "10.1371/journal.pone.0067310",
+  "summary": "The authors compare word, network and recurrence-interval measures across texts and shuffled controls, then apply the framework to the Voynich manuscript. Their natural-language compatibility comparison is limited to the reference materials and metrics used, and they say the available dataset cannot faithfully identify the manuscript’s language.",
+  "established": [
+    "The framework uses the New Testament in 15 languages and different English and Portuguese books to compare variation across language and text; word statistics, adjacency-network features and intermittency are normalized against shuffled versions (abstract and Results).",
+    "The authors report that most selected manuscript measurements are compatible with their natural-text reference set, but the number of duplicated bigrams and intermittency of frequent words are exceptions. The comparison with randomly shuffled text does not on its own evaluate structured meaningless generators (Results, Figure 2).",
+    "The manuscript’s high-intermittency, frequent words are offered as keyword candidates. In the New Testament examples, the detected keywords vary among translations of the same content, and the highest-scoring word in three examples relates to genealogical passages (Results, Figure 3).",
+    "Word networks connect distinct types observed adjacent in the text. The method avoids removing stop words or lemmatizing because these operations cannot be justified semantically for an unknown text (Materials and Methods)."
+  ],
+  "open": [
+    {
+      "question": "Which specified generators can reproduce the residual local word-network signal after page and line effects are controlled?",
+      "front": "G",
+      "check": "Build on P-R-012, which already compares two structured generators to the paper’s measures. Freeze generator parameters and layout-matched comparison metrics on public pages, then evaluate residual network features on held-out manuscript pages."
+    }
+  ]
+}

@@ -1,5 +1,7 @@
 """Enforce one experiment per pull request: exactly one new directory experiments/<step>/<handle>/
-holding experiment.json (and key.json), and nothing else changed.
+holding experiment.json (and key.json), and nothing else changed. A file whose content in the PR is
+identical to the base (already merged, e.g. a branch stacked on an earlier, merged experiment) is
+not a change and is ignored.
 
   python3 tools/check_pr_shape.py <base> [--head <ref>] [--list] [--extract DIR]
 """
@@ -8,9 +10,17 @@ import os, re, subprocess, sys
 DIR = re.compile(r"^experiments/([A-Za-z0-9][A-Za-z0-9_.-]{1,80})/([A-Za-z0-9][A-Za-z0-9-]{0,38})/(experiment|key|attack|fact|anchor|step|corpus|source|model|picture)\.json$")
 
 
+def _blob(ref, name):
+    r = subprocess.run(["git", "rev-parse", "-q", "--verify", f"{ref}:{name}"], capture_output=True, text=True)
+    return r.stdout.strip() if r.returncode == 0 else None
+
+
 def changed(base, head):
     out = subprocess.run(["git", "diff", "--name-status", f"{base}...{head}"], capture_output=True, text=True, check=True).stdout
-    return [l.split("\t") for l in out.splitlines() if l.strip()]
+    rows = [l.split("\t") for l in out.splitlines() if l.strip()]
+    # already on the base with the same content: merged earlier, not part of this PR
+    return [r for r in rows if not (r[0][0] in ("A", "M") and _blob(head, r[-1]) is not None
+                                    and _blob(head, r[-1]) == _blob(base, r[-1]))]
 
 
 def main():
@@ -27,7 +37,8 @@ def main():
         else:
             dirs.add(os.path.dirname(name))
     if len(dirs) != 1:
-        errs.append(f"exactly one experiment directory per PR (found {len(dirs)})")
+        errs.append(f"exactly one experiment directory per PR (found {len(dirs)})"
+                    + (": split it into one pull request per directory: " + ", ".join(sorted(dirs)) if len(dirs) > 1 else ""))
     if errs:
         print("REFUSED:\n  " + "\n  ".join(errs))
         sys.exit(1)

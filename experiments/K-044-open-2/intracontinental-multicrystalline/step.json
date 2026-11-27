@@ -1,0 +1,551 @@
+{
+  "title": "Add a position-conditioned boundary-pair test with calibrated nulls",
+  "program": "L2",
+  "on_path": false,
+  "hard": true,
+  "statement": "For eight specified EVA boundary pairs, the public training pages retain large deviations after right-edge partners are permuted within page, paragraph-first-line status, exact line length and exact boundary index. In ZL, y.q occurs 2,956 times versus 2,219.86 on average under that null and n.q occurs 320 versus 572.86; IT gives 2,960 versus 2,201.28 and 317 versus 593.01. Aggregate discrepancies remain large for both transliterations. These are exploratory findings, not a held-out verdict or a percentage of association attributable to position.",
+  "check": "Implement a reviewed, prespecified aggregate boundary-pair statistic and a layout-conditioned null. Validate type-I error and power on multiple synthetic books with page, paragraph and position effects, including adjacent boundaries that share a word, sparse strata and exchangeability violations. Prespecify the eight pairs, the standardized discrepancy, grouping, minimum movable samples and the primary null before hidden-page evaluation; reproduce on independent IT. Report actual permutations and all cells, avoid treating percentage change of different null baselines as variance explained.",
+  "method": "ZL and IT public practice-training pages independently. Paragraph lines only; retain original adjacency and skip pairs with an uncertain token. EVA-basic last glyph of left word and first glyph of right word; chosen pairs y.q, n.q, y.o, n.o, y.ch, n.ch, y.d, n.d. Nulls: randomly permute the right endpoints globally, or within (section, paragraph-first-line indicator, exact line length, zero-based boundary index), or within (page, paragraph-first-line indicator, exact length, exact index). Preserve left endpoints and right endpoint multiset per pool; 199 draws, seed 39086. The aggregate sum of absolute observed-minus-simulation-mean counts divided by square root of simulation mean is exploratory and compared with simulated scores around the same Monte Carlo mean. Paragraph-first-line assignment follows vs.dsl.tokens.",
+  "source": "Patrick Feaster, Rightward and Downward Grapheme Distributions in the Voynich Manuscript (2022), https://ceur-ws.org/Vol-3313/paper12.pdf",
+  "results": {
+    "spec": {
+      "pairs": [
+        [
+          "y",
+          "q"
+        ],
+        [
+          "n",
+          "q"
+        ],
+        [
+          "y",
+          "o"
+        ],
+        [
+          "n",
+          "o"
+        ],
+        [
+          "y",
+          "ch"
+        ],
+        [
+          "n",
+          "ch"
+        ],
+        [
+          "y",
+          "d"
+        ],
+        [
+          "n",
+          "d"
+        ]
+      ],
+      "draws": 199,
+      "seed": 39086
+    },
+    "synthetic": {
+      "independent": 0.78,
+      "linked": 0.005
+    },
+    "transliterations": {
+      "zl": {
+        "global": {
+          "boundaries": 25796,
+          "groups": 1,
+          "fraction_in_groups_size_at_least_2": 1.0,
+          "pairs": {
+            "y.q": {
+              "observed": 2956,
+              "shuffle_mean": 1672.24,
+              "difference": 1283.76,
+              "shuffle_range": [
+                1597,
+                1761
+              ]
+            },
+            "n.q": {
+              "observed": 320,
+              "shuffle_mean": 663.05,
+              "difference": -343.05,
+              "shuffle_range": [
+                607,
+                734
+              ]
+            },
+            "y.o": {
+              "observed": 2004,
+              "shuffle_mean": 2329.78,
+              "difference": -325.78,
+              "shuffle_range": [
+                2247,
+                2429
+              ]
+            },
+            "n.o": {
+              "observed": 1249,
+              "shuffle_mean": 919.71,
+              "difference": 329.29,
+              "shuffle_range": [
+                850,
+                983
+              ]
+            },
+            "y.ch": {
+              "observed": 1363,
+              "shuffle_mean": 1891.69,
+              "difference": -528.69,
+              "shuffle_range": [
+                1804,
+                1981
+              ]
+            },
+            "n.ch": {
+              "observed": 1042,
+              "shuffle_mean": 742.64,
+              "difference": 299.36,
+              "shuffle_range": [
+                678,
+                796
+              ]
+            },
+            "y.d": {
+              "observed": 1034,
+              "shuffle_mean": 920.44,
+              "difference": 113.56,
+              "shuffle_range": [
+                862,
+                976
+              ]
+            },
+            "n.d": {
+              "observed": 318,
+              "shuffle_mean": 363.84,
+              "difference": -45.84,
+              "shuffle_range": [
+                321,
+                403
+              ]
+            }
+          },
+          "aggregate_abs_standardized_residual": 91.61,
+          "empirical_upper_tail": 0.005
+        },
+        "section_position": {
+          "boundaries": 25796,
+          "groups": 1437,
+          "fraction_in_groups_size_at_least_2": 0.9852,
+          "pairs": {
+            "y.q": {
+              "observed": 2956,
+              "shuffle_mean": 1867.62,
+              "difference": 1088.38,
+              "shuffle_range": [
+                1799,
+                1930
+              ]
+            },
+            "n.q": {
+              "observed": 320,
+              "shuffle_mean": 653.02,
+              "difference": -333.02,
+              "shuffle_range": [
+                608,
+                704
+              ]
+            },
+            "y.o": {
+              "observed": 2004,
+              "shuffle_mean": 2339.53,
+              "difference": -335.53,
+              "shuffle_range": [
+                2250,
+                2437
+              ]
+            },
+            "n.o": {
+              "observed": 1249,
+              "shuffle_mean": 940.67,
+              "difference": 308.33,
+              "shuffle_range": [
+                877,
+                1012
+              ]
+            },
+            "y.ch": {
+              "observed": 1363,
+              "shuffle_mean": 1809.98,
+              "difference": -446.98,
+              "shuffle_range": [
+                1732,
+                1885
+              ]
+            },
+            "n.ch": {
+              "observed": 1042,
+              "shuffle_mean": 768.76,
+              "difference": 273.24,
+              "shuffle_range": [
+                716,
+                830
+              ]
+            },
+            "y.d": {
+              "observed": 1034,
+              "shuffle_mean": 893.72,
+              "difference": 140.28,
+              "shuffle_range": [
+                841,
+                951
+              ]
+            },
+            "n.d": {
+              "observed": 318,
+              "shuffle_mean": 354.67,
+              "difference": -36.67,
+              "shuffle_range": [
+                306,
+                393
+              ]
+            }
+          },
+          "aggregate_abs_standardized_residual": 82.207,
+          "empirical_upper_tail": 0.005
+        },
+        "page_position": {
+          "boundaries": 25796,
+          "groups": 11117,
+          "fraction_in_groups_size_at_least_2": 0.7817,
+          "pairs": {
+            "y.q": {
+              "observed": 2956,
+              "shuffle_mean": 2219.86,
+              "difference": 736.14,
+              "shuffle_range": [
+                2157,
+                2283
+              ]
+            },
+            "n.q": {
+              "observed": 320,
+              "shuffle_mean": 572.86,
+              "difference": -252.86,
+              "shuffle_range": [
+                518,
+                625
+              ]
+            },
+            "y.o": {
+              "observed": 2004,
+              "shuffle_mean": 2217.97,
+              "difference": -213.97,
+              "shuffle_range": [
+                2147,
+                2276
+              ]
+            },
+            "n.o": {
+              "observed": 1249,
+              "shuffle_mean": 1047.27,
+              "difference": 201.73,
+              "shuffle_range": [
+                991,
+                1093
+              ]
+            },
+            "y.ch": {
+              "observed": 1363,
+              "shuffle_mean": 1647.4,
+              "difference": -284.4,
+              "shuffle_range": [
+                1585,
+                1730
+              ]
+            },
+            "n.ch": {
+              "observed": 1042,
+              "shuffle_mean": 822.65,
+              "difference": 219.35,
+              "shuffle_range": [
+                777,
+                860
+              ]
+            },
+            "y.d": {
+              "observed": 1034,
+              "shuffle_mean": 962.12,
+              "difference": 71.88,
+              "shuffle_range": [
+                929,
+                1012
+              ]
+            },
+            "n.d": {
+              "observed": 318,
+              "shuffle_mean": 349.61,
+              "difference": -31.61,
+              "shuffle_range": [
+                315,
+                380
+              ]
+            }
+          },
+          "aggregate_abs_standardized_residual": 55.629,
+          "empirical_upper_tail": 0.005
+        }
+      },
+      "it": {
+        "global": {
+          "boundaries": 25504,
+          "groups": 1,
+          "fraction_in_groups_size_at_least_2": 1.0,
+          "pairs": {
+            "y.q": {
+              "observed": 2960,
+              "shuffle_mean": 1689.78,
+              "difference": 1270.22,
+              "shuffle_range": [
+                1614,
+                1758
+              ]
+            },
+            "n.q": {
+              "observed": 317,
+              "shuffle_mean": 681.85,
+              "difference": -364.85,
+              "shuffle_range": [
+                631,
+                752
+              ]
+            },
+            "y.o": {
+              "observed": 2017,
+              "shuffle_mean": 2353.29,
+              "difference": -336.29,
+              "shuffle_range": [
+                2263,
+                2442
+              ]
+            },
+            "n.o": {
+              "observed": 1279,
+              "shuffle_mean": 944.68,
+              "difference": 334.32,
+              "shuffle_range": [
+                891,
+                1021
+              ]
+            },
+            "y.ch": {
+              "observed": 1333,
+              "shuffle_mean": 1876.57,
+              "difference": -543.57,
+              "shuffle_range": [
+                1803,
+                1965
+              ]
+            },
+            "n.ch": {
+              "observed": 1039,
+              "shuffle_mean": 754.69,
+              "difference": 284.31,
+              "shuffle_range": [
+                692,
+                811
+              ]
+            },
+            "y.d": {
+              "observed": 1030,
+              "shuffle_mean": 944.53,
+              "difference": 85.47,
+              "shuffle_range": [
+                878,
+                1024
+              ]
+            },
+            "n.d": {
+              "observed": 326,
+              "shuffle_mean": 379.29,
+              "difference": -53.29,
+              "shuffle_range": [
+                335,
+                434
+              ]
+            }
+          },
+          "aggregate_abs_standardized_residual": 91.097,
+          "empirical_upper_tail": 0.005
+        },
+        "section_position": {
+          "boundaries": 25504,
+          "groups": 1356,
+          "fraction_in_groups_size_at_least_2": 0.988,
+          "pairs": {
+            "y.q": {
+              "observed": 2960,
+              "shuffle_mean": 1876.25,
+              "difference": 1083.75,
+              "shuffle_range": [
+                1793,
+                1969
+              ]
+            },
+            "n.q": {
+              "observed": 317,
+              "shuffle_mean": 669.85,
+              "difference": -352.85,
+              "shuffle_range": [
+                590,
+                715
+              ]
+            },
+            "y.o": {
+              "observed": 2017,
+              "shuffle_mean": 2380.24,
+              "difference": -363.24,
+              "shuffle_range": [
+                2284,
+                2465
+              ]
+            },
+            "n.o": {
+              "observed": 1279,
+              "shuffle_mean": 967.42,
+              "difference": 311.58,
+              "shuffle_range": [
+                921,
+                1047
+              ]
+            },
+            "y.ch": {
+              "observed": 1333,
+              "shuffle_mean": 1801.01,
+              "difference": -468.01,
+              "shuffle_range": [
+                1705,
+                1875
+              ]
+            },
+            "n.ch": {
+              "observed": 1039,
+              "shuffle_mean": 773.4,
+              "difference": 265.6,
+              "shuffle_range": [
+                716,
+                832
+              ]
+            },
+            "y.d": {
+              "observed": 1030,
+              "shuffle_mean": 903.63,
+              "difference": 126.37,
+              "shuffle_range": [
+                849,
+                963
+              ]
+            },
+            "n.d": {
+              "observed": 326,
+              "shuffle_mean": 365.82,
+              "difference": -39.82,
+              "shuffle_range": [
+                322,
+                406
+              ]
+            }
+          },
+          "aggregate_abs_standardized_residual": 82.98,
+          "empirical_upper_tail": 0.005
+        },
+        "page_position": {
+          "boundaries": 25504,
+          "groups": 10753,
+          "fraction_in_groups_size_at_least_2": 0.7911,
+          "pairs": {
+            "y.q": {
+              "observed": 2960,
+              "shuffle_mean": 2201.28,
+              "difference": 758.72,
+              "shuffle_range": [
+                2131,
+                2275
+              ]
+            },
+            "n.q": {
+              "observed": 317,
+              "shuffle_mean": 593.01,
+              "difference": -276.01,
+              "shuffle_range": [
+                553,
+                632
+              ]
+            },
+            "y.o": {
+              "observed": 2017,
+              "shuffle_mean": 2260.74,
+              "difference": -243.74,
+              "shuffle_range": [
+                2197,
+                2321
+              ]
+            },
+            "n.o": {
+              "observed": 1279,
+              "shuffle_mean": 1068.83,
+              "difference": 210.17,
+              "shuffle_range": [
+                1006,
+                1122
+              ]
+            },
+            "y.ch": {
+              "observed": 1333,
+              "shuffle_mean": 1674.71,
+              "difference": -341.71,
+              "shuffle_range": [
+                1622,
+                1727
+              ]
+            },
+            "n.ch": {
+              "observed": 1039,
+              "shuffle_mean": 800.98,
+              "difference": 238.02,
+              "shuffle_range": [
+                758,
+                840
+              ]
+            },
+            "y.d": {
+              "observed": 1030,
+              "shuffle_mean": 954.08,
+              "difference": 75.92,
+              "shuffle_range": [
+                918,
+                995
+              ]
+            },
+            "n.d": {
+              "observed": 326,
+              "shuffle_mean": 368.13,
+              "difference": -42.13,
+              "shuffle_range": [
+                339,
+                401
+              ]
+            }
+          },
+          "aggregate_abs_standardized_residual": 60.474,
+          "empirical_upper_tail": 0.005
+        }
+      }
+    }
+  },
+  "reproduce": {
+    "command": "PYTHONPATH=. python3 /tmp/voy_k044_boundary.py",
+    "script": "import json, random, statistics\nfrom collections import Counter, defaultdict\nfrom vs import corpus, ivtff\n\nPAIRS=[('y','q'),('n','q'),('y','o'),('n','o'),('y','ch'),('n','ch'),('y','d'),('n','d')]\nDRAWS=199\n\ndef get_rows(trans):\n    pages,_=corpus.split_pages('practice',trans)\n    rows=[]\n    for p in pages:\n        first=True\n        for line in p.lines:\n            if not line.words: continue\n            pfl=line.unit=='P' and (line.para_start or first)\n            if line.unit=='P':\n                n=len(line.words)\n                for i,(a,b) in enumerate(zip(line.words,line.words[1:])):\n                    if ivtff.uncertain(a) or ivtff.uncertain(b): continue\n                    ga,gb=ivtff.segment(a),ivtff.segment(b)\n                    if ga and gb:\n                        rows.append((ga[-1],gb[0],p.id,p.section or '?',int(pfl),n,i))\n                first=line.para_end\n    return rows\n\ndef measure(rows,scheme):\n    pools=defaultdict(list)\n    for i,r in enumerate(rows):\n        key={'global':(), 'section_position':(r[3],r[4],r[5],r[6]), 'page_position':(r[2],r[4],r[5],r[6])}[scheme]\n        pools[key].append(i)\n    rng=random.Random(39086)\n    observed=Counter((r[0],r[1]) for r in rows)\n    sim=[]\n    for _ in range(DRAWS):\n        c=Counter()\n        for indices in pools.values():\n            right=[rows[i][1] for i in indices]\n            rng.shuffle(right)\n            c.update((rows[i][0],b) for i,b in zip(indices,right))\n        sim.append([c[pair] for pair in PAIRS])\n    expected=[statistics.mean(row[j] for row in sim) for j in range(len(PAIRS))]\n    # Centred discrepancy: exploratory, not a preregistered hypothesis test.\n    score=lambda vals:sum(abs(x-e)/(max(e,1)**.5) for x,e in zip(vals,expected))\n    obs=[observed[p] for p in PAIRS]\n    ss=score(obs)\n    return {'boundaries':len(rows),'groups':len(pools),'fraction_in_groups_size_at_least_2':round(sum(len(g) for g in pools.values() if len(g)>1)/len(rows),4),\n       'pairs':{'.'.join(p):{'observed':obs[j],'shuffle_mean':round(expected[j],2),'difference':round(obs[j]-expected[j],2),'shuffle_range':[min(s[j] for s in sim),max(s[j] for s in sim)]} for j,p in enumerate(PAIRS)},\n       'aggregate_abs_standardized_residual':round(ss,3),'empirical_upper_tail':round((1+sum(score(s)>=ss for s in sim))/(DRAWS+1),4)}\n\ndef synthetic():\n    # Both tables have identical layout; correlated pairs should survive a layout-conditioned shuffle.\n    rng=random.Random(7); null=[]; assoc=[]\n    for j in range(2400):\n        a=rng.choice(['y','n']); b=rng.choice(['q','o'])\n        base=(str(j//120),'H',j%2,8,j%7)\n        null.append((a,b,*base)); assoc.append((a,'q' if a=='y' else 'o',*base))\n    return {name:measure(rows,'page_position')['empirical_upper_tail'] for name,rows in [('independent',null),('linked',assoc)]}\n\nif __name__=='__main__':\n    result={'spec':{'pairs':PAIRS,'draws':DRAWS,'seed':39086},'synthetic':synthetic(),'transliterations':{}}\n    for t in ('zl','it'):\n        rows=get_rows(t)\n        result['transliterations'][t]={s:measure(rows,s) for s in ('global','section_position','page_position')}\n    print(json.dumps(result,indent=2))\n"
+  },
+  "limitations": "No held-out page identity accessed. 199 permutations yield minimum descriptive tail 0.005. Only 78.2% ZL and 79.1% IT of boundaries are in page-position groups with two or more entries; some of those groups are homogeneous and cannot change. Pool membership ignores whole-word consistency and adjacent boundaries share words; its exchangeability and null calibration are not established. Synthetic checks here are only single independent and linked toy datasets, not a calibrated false-positive study. Since a Monte Carlo centre is estimated from the same replicates, the reported tail is only exploratory. IT is an independent transcription of the same manuscript, not an independent sample of pages."
+}

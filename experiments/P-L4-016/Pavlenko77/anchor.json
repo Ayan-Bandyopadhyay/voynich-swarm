@@ -1,0 +1,17 @@
+{
+  "of": "N-001",
+  "assessment": "agree",
+  "title": "Second look at N-001: the freestanding label is beside the upper star, not the month word",
+  "statement": "I inspected all twelve zodiac centres on the eight full-page Yale JPEG canvases, separating ink inside each innermost disk from the circular text ring. I agree with N-001's limited observation: canvas 1006200 (f70v2) contains one freestanding Voynich-style word beside the upper star; a Latin-like word lies between the fish, and no drawn connector between the two inscriptions is visible. The other eleven centres contain no separate Voynich-style word inside the disk. In particular, f71r (canvas 1006202) shows ring text and a Latin-like word beneath the ram, but no separate Voynich-style word in the disk. I checked f71r at the full available JPEG size (1400×1886) and enlarged its center from that JPEG; enlargement disclosed no additional detail. Canvas 1006203 is a four-panel spread only 1400×476 pixels, so the small Latin-like words on its four centers are lower-confidence; this limitation does not affect the absence of a separate Voynich inscription visible at this resolution. These are descriptions of visible script style only. The scan does not support pairing the f70v2 Voynich word with the month word, and this review makes no claim about language, reading, or meaning.",
+  "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006200",
+  "sources": [
+    "Beinecke MS 408, Yale IIIF canvas 1006200: https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006200; full-page JPEG: https://collections.library.yale.edu/iiif/2/1006200/full/full/0/default.jpg",
+    "Beinecke MS 408, Yale IIIF canvas 1006201: https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006201; full-page JPEG: https://collections.library.yale.edu/iiif/2/1006201/full/full/0/default.jpg",
+    "Beinecke MS 408, Yale IIIF canvas 1006202: https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006202; full-page JPEG: https://collections.library.yale.edu/iiif/2/1006202/full/full/0/default.jpg",
+    "Beinecke MS 408, Yale IIIF canvas 1006203: https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006203; full-page JPEG: https://collections.library.yale.edu/iiif/2/1006203/full/full/0/default.jpg",
+    "Beinecke MS 408, Yale IIIF canvas 1006204: https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006204; full-page JPEG: https://collections.library.yale.edu/iiif/2/1006204/full/full/0/default.jpg",
+    "Beinecke MS 408, Yale IIIF canvas 1006205: https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006205; full-page JPEG: https://collections.library.yale.edu/iiif/2/1006205/full/full/0/default.jpg",
+    "Beinecke MS 408, Yale IIIF canvas 1006206: https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006206; full-page JPEG: https://collections.library.yale.edu/iiif/2/1006206/full/full/0/default.jpg",
+    "Beinecke MS 408, Yale IIIF canvas 1006207: https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006207; full-page JPEG: https://collections.library.yale.edu/iiif/2/1006207/full/full/0/default.jpg"
+  ]
+}

@@ -1,0 +1,1435 @@
+{
+  "title": "Test a less restrictive marker-free codebook against word structure and decoding cost",
+  "program": "L3",
+  "on_path": true,
+  "hard": true,
+  "statement": "A fixed mixed-radix codebook with nine optional binary glyph slots, an optional one-of-eight gallows slot, and zero, one or two occurrences of e has 13,823 nonempty reversible codewords without a compulsory end glyph. It permits repeated glyphs and never puts two gallows in a word. On public practice-training samples, however, only 1.05% of ZL and 0.95% of IT distinct paragraph-word types fit its fixed ordered grammar; 3.55% and 3.66% respectively contain multiple distinct gallows, which the model forbids. The model also produces roughly one-third repeated-glyph types versus about 55% in both witnesses. This specified toy fails as a literal explanation; it does not rule out richer codebooks.",
+  "check": "Specify a more flexible reversible codebook before evaluating manuscript text, allowing repeated non-e symbols and measured multi-gallows exceptions without a compulsory terminator. Require exact round-trip, report the paid dictionary/key size and the fraction of words representable, and test the same frozen rules on held-out pages and multiple transcriptions. Separately test whether codeword boundaries remain decodable when spaces are removed; do not assume the dictionary is free or that grammar fit establishes plaintext recovery.",
+  "method": "Nine binary ordered slots emit EVA-basic glyphs a,o,d,y,n,r,l,ch,sh. Between the first four and last five positions is one optional gallows slot from k,t,p,f,ckh,cth,cph,cfh, followed by an e slot of multiplicity 0, 1 or 2. The all-empty combination is excluded. This gives 2^9 × 3 × 9 − 1 = 13,823 distinct nonempty spellings. No glyph is required, and no end marker is appended; spaces delimit codewords. Verify all 13,823 concatenations segment back to the intended eva-basic glyph sequence and are distinct. Draw a seeded random permutation of codewords, assign each encountered plaintext type its next unused codeword, then invert the completed dictionary exactly. Use first 25,000 normalized tokens of each of four pinned historical works with seeds 17, 37, 73, and compare with first 25,000 certain ASCII paragraph tokens from public practice-training ZL and IT. Compare distinct-type and token distributions separately: glyph length, any repeated or adjacent repeated glyph, one or multiple gallows, last-glyph frequencies and membership in this exact fixed grammar. The codebook was specified for this pilot before examining these measurements but was not preregistered.",
+  "boundary_control": "The complete code space includes a, o and ao, so a space-delimited sequence a o and the single codeword ao become identical when the space is removed. The scheme therefore does not decode a continuous unspaced stream; it relies on visible word separation even though no dedicated terminating glyph is used. In the exhaustive code space e is the most widely present glyph (9,216/13,823 words) and sh is the most frequent final glyph (6,912/13,823), so neither is universal.",
+  "original_control": "Enumerating Stolfi’s original nine-bit marker construction gives 512 word types, with type-length counts choose(9,k−1), exactly as stated. The new code is a different, larger construction; its three-valued slot and optional gallows alter that length distribution.",
+  "source": "Jorge Stolfi, On the VMS Word Length Distribution (2000), https://mail.voynich.nu/hist/stolfi/word-length-distr.html",
+  "results": {
+    "code_space": 13823,
+    "fixed_bits": [
+      "a",
+      "o",
+      "d",
+      "y",
+      "n",
+      "r",
+      "l",
+      "ch",
+      "sh"
+    ],
+    "repeat_glyph": "e",
+    "gallows": [
+      "k",
+      "t",
+      "p",
+      "f",
+      "ckh",
+      "cth",
+      "cph",
+      "cfh"
+    ],
+    "n": 25000,
+    "stolfi_9bit_type_length_counts": {
+      "1": 1,
+      "2": 9,
+      "3": 36,
+      "4": 84,
+      "5": 126,
+      "6": 126,
+      "7": 84,
+      "8": 36,
+      "9": 9,
+      "10": 1
+    },
+    "unspaced_ambiguity": [
+      "a o",
+      "ao"
+    ],
+    "witnesses": {
+      "zl": {
+        "tokens": {
+          "n": 25000,
+          "mean_length": 4.42704,
+          "repeated_glyph_share": 0.36456,
+          "adjacent_repeat_share": 0.23912,
+          "gallows_present_share": 0.50128,
+          "multiple_gallows_share": 0.01136,
+          "distinct_gallows_share": 0.00824,
+          "length_hist": {
+            "1": 809,
+            "2": 2149,
+            "3": 4379,
+            "4": 5641,
+            "5": 5737,
+            "6": 3757,
+            "7": 1857,
+            "8": 468,
+            "9": 155,
+            "10": 30,
+            "11": 13,
+            "12": 5
+          },
+          "top_final": [
+            [
+              "y",
+              10280
+            ],
+            [
+              "n",
+              3948
+            ],
+            [
+              "l",
+              3915
+            ],
+            [
+              "r",
+              3753
+            ],
+            [
+              "s",
+              838
+            ]
+          ],
+          "grammar_membership": 0.07532
+        },
+        "types": {
+          "n": 5599,
+          "mean_length": 5.525272370066083,
+          "repeated_glyph_share": 0.5477763886408287,
+          "adjacent_repeat_share": 0.2587962136095731,
+          "gallows_present_share": 0.6644043579210573,
+          "multiple_gallows_share": 0.04929451687801393,
+          "distinct_gallows_share": 0.03554206108233613,
+          "length_hist": {
+            "1": 18,
+            "2": 97,
+            "3": 393,
+            "4": 918,
+            "5": 1411,
+            "6": 1343,
+            "7": 852,
+            "8": 376,
+            "9": 144,
+            "10": 30,
+            "11": 12,
+            "12": 5
+          },
+          "top_final": [
+            [
+              "y",
+              2234
+            ],
+            [
+              "r",
+              769
+            ],
+            [
+              "n",
+              668
+            ],
+            [
+              "l",
+              655
+            ],
+            [
+              "s",
+              310
+            ]
+          ],
+          "grammar_membership": 0.010537595999285587
+        }
+      },
+      "it": {
+        "tokens": {
+          "n": 25000,
+          "mean_length": 4.49004,
+          "repeated_glyph_share": 0.3746,
+          "adjacent_repeat_share": 0.24336,
+          "gallows_present_share": 0.50872,
+          "multiple_gallows_share": 0.01216,
+          "distinct_gallows_share": 0.00856,
+          "length_hist": {
+            "1": 455,
+            "2": 2050,
+            "3": 4420,
+            "4": 5726,
+            "5": 5941,
+            "6": 3888,
+            "7": 1881,
+            "8": 475,
+            "9": 124,
+            "10": 28,
+            "11": 8,
+            "12": 4
+          },
+          "top_final": [
+            [
+              "y",
+              10385
+            ],
+            [
+              "n",
+              4003
+            ],
+            [
+              "l",
+              3974
+            ],
+            [
+              "r",
+              3744
+            ],
+            [
+              "s",
+              783
+            ]
+          ],
+          "grammar_membership": 0.06156
+        },
+        "types": {
+          "n": 5659,
+          "mean_length": 5.514578547446545,
+          "repeated_glyph_share": 0.5518642869764976,
+          "adjacent_repeat_share": 0.2620604347057784,
+          "gallows_present_share": 0.6584202155857926,
+          "multiple_gallows_share": 0.051775932143488246,
+          "distinct_gallows_share": 0.03657890086587736,
+          "length_hist": {
+            "1": 14,
+            "2": 97,
+            "3": 384,
+            "4": 925,
+            "5": 1443,
+            "6": 1401,
+            "7": 847,
+            "8": 391,
+            "9": 117,
+            "10": 28,
+            "11": 8,
+            "12": 4
+          },
+          "top_final": [
+            [
+              "y",
+              2252
+            ],
+            [
+              "r",
+              776
+            ],
+            [
+              "n",
+              692
+            ],
+            [
+              "l",
+              661
+            ],
+            [
+              "s",
+              335
+            ]
+          ],
+          "grammar_membership": 0.009542321965011487
+        }
+      }
+    },
+    "planted": {
+      "it_dante": {
+        "17": {
+          "dictionary_size": 5257,
+          "decoded_exact": true,
+          "stats": {
+            "tokens": {
+              "n": 25000,
+              "mean_length": 6.24624,
+              "repeated_glyph_share": 0.3586,
+              "adjacent_repeat_share": 0.3586,
+              "gallows_present_share": 0.90232,
+              "multiple_gallows_share": 0.0,
+              "distinct_gallows_share": 0.0,
+              "length_hist": {
+                "1": 14,
+                "2": 356,
+                "3": 1849,
+                "4": 1360,
+                "5": 4717,
+                "6": 4845,
+                "7": 6197,
+                "8": 3335,
+                "9": 1680,
+                "10": 553,
+                "11": 49,
+                "12": 45
+              },
+              "top_final": [
+                [
+                  "sh",
+                  12582
+                ],
+                [
+                  "ch",
+                  5935
+                ],
+                [
+                  "l",
+                  2162
+                ],
+                [
+                  "r",
+                  1283
+                ],
+                [
+                  "cth",
+                  1234
+                ]
+              ],
+              "grammar_membership": 1.0
+            },
+            "types": {
+              "n": 5257,
+              "mean_length": 6.38463001712003,
+              "repeated_glyph_share": 0.3332699258132015,
+              "adjacent_repeat_share": 0.3332699258132015,
+              "gallows_present_share": 0.8845349058398326,
+              "multiple_gallows_share": 0.0,
+              "distinct_gallows_share": 0.0,
+              "length_hist": {
+                "1": 9,
+                "2": 48,
+                "3": 182,
+                "4": 486,
+                "5": 901,
+                "6": 1149,
+                "7": 1090,
+                "8": 809,
+                "9": 401,
+                "10": 147,
+                "11": 31,
+                "12": 4
+              },
+              "top_final": [
+                [
+                  "sh",
+                  2625
+                ],
+                [
+                  "ch",
+                  1316
+                ],
+                [
+                  "l",
+                  658
+                ],
+                [
+                  "r",
+                  317
+                ],
+                [
+                  "n",
+                  169
+                ]
+              ],
+              "grammar_membership": 1.0
+            }
+          }
+        },
+        "37": {
+          "dictionary_size": 5257,
+          "decoded_exact": true,
+          "stats": {
+            "tokens": {
+              "n": 25000,
+              "mean_length": 6.13196,
+              "repeated_glyph_share": 0.3476,
+              "adjacent_repeat_share": 0.3476,
+              "gallows_present_share": 0.84748,
+              "multiple_gallows_share": 0.0,
+              "distinct_gallows_share": 0.0,
+              "length_hist": {
+                "1": 10,
+                "2": 1385,
+                "3": 680,
+                "4": 2788,
+                "5": 3631,
+                "6": 6125,
+                "7": 4707,
+                "8": 3072,
+                "9": 1395,
+                "10": 972,
+                "11": 198,
+                "12": 37
+              },
+              "top_final": [
+                [
+                  "sh",
+                  11944
+                ],
+                [
+                  "ch",
+                  7494
+                ],
+                [
+                  "l",
+                  2370
+                ],
+                [
+                  "n",
+                  1308
+                ],
+                [
+                  "r",
+                  1247
+                ]
+              ],
+              "grammar_membership": 1.0
+            },
+            "types": {
+              "n": 5257,
+              "mean_length": 6.394902035381397,
+              "repeated_glyph_share": 0.33878638006467565,
+              "adjacent_repeat_share": 0.33878638006467565,
+              "gallows_present_share": 0.8881491344873502,
+              "multiple_gallows_share": 0.0,
+              "distinct_gallows_share": 0.0,
+              "length_hist": {
+                "1": 8,
+                "2": 49,
+                "3": 199,
+                "4": 485,
+                "5": 853,
+                "6": 1136,
+                "7": 1140,
+                "8": 792,
+                "9": 417,
+                "10": 137,
+                "11": 37,
+                "12": 4
+              },
+              "top_final": [
+                [
+                  "sh",
+                  2657
+                ],
+                [
+                  "ch",
+                  1276
+                ],
+                [
+                  "l",
+                  653
+                ],
+                [
+                  "r",
+                  326
+                ],
+                [
+                  "n",
+                  181
+                ]
+              ],
+              "grammar_membership": 1.0
+            }
+          }
+        },
+        "73": {
+          "dictionary_size": 5257,
+          "decoded_exact": true,
+          "stats": {
+            "tokens": {
+              "n": 25000,
+              "mean_length": 6.12076,
+              "repeated_glyph_share": 0.29076,
+              "adjacent_repeat_share": 0.29076,
+              "gallows_present_share": 0.90148,
+              "multiple_gallows_share": 0.0,
+              "distinct_gallows_share": 0.0,
+              "length_hist": {
+                "1": 9,
+                "2": 156,
+                "3": 1526,
+                "4": 3089,
+                "5": 3895,
+                "6": 6058,
+                "7": 5243,
+                "8": 2569,
+                "9": 1949,
+                "10": 426,
+                "11": 73,
+                "12": 7
+              },
+              "top_final": [
+                [
+                  "sh",
+                  12365
+                ],
+                [
+                  "ch",
+                  5990
+                ],
+                [
+                  "l",
+                  3317
+                ],
+                [
+                  "r",
+                  1934
+                ],
+                [
+                  "n",
+                  812
+                ]
+              ],
+              "grammar_membership": 1.0
+            },
+            "types": {
+              "n": 5257,
+              "mean_length": 6.407646946927906,
+              "repeated_glyph_share": 0.3412592733498193,
+              "adjacent_repeat_share": 0.3412592733498193,
+              "gallows_present_share": 0.8898611375309111,
+              "multiple_gallows_share": 0.0,
+              "distinct_gallows_share": 0.0,
+              "length_hist": {
+                "1": 6,
+                "2": 49,
+                "3": 174,
+                "4": 490,
+                "5": 828,
+                "6": 1185,
+                "7": 1171,
+                "8": 762,
+                "9": 408,
+                "10": 145,
+                "11": 34,
+                "12": 5
+              },
+              "top_final": [
+                [
+                  "sh",
+                  2618
+                ],
+                [
+                  "ch",
+                  1318
+                ],
+                [
+                  "l",
+                  659
+                ],
+                [
+                  "r",
+                  334
+                ],
+                [
+                  "n",
+                  169
+                ]
+              ],
+              "grammar_membership": 1.0
+            }
+          }
+        }
+      },
+      "es_buenamor": {
+        "17": {
+          "dictionary_size": 5799,
+          "decoded_exact": true,
+          "stats": {
+            "tokens": {
+              "n": 25000,
+              "mean_length": 6.14304,
+              "repeated_glyph_share": 0.3078,
+              "adjacent_repeat_share": 0.3078,
+              "gallows_present_share": 0.89572,
+              "multiple_gallows_share": 0.0,
+              "distinct_gallows_share": 0.0,
+              "length_hist": {
+                "1": 111,
+                "2": 133,
+                "3": 1251,
+                "4": 3076,
+                "5": 5666,
+                "6": 3869,
+                "7": 4946,
+                "8": 3224,
+                "9": 2185,
+                "10": 433,
+                "11": 83,
+                "12": 23
+              },
+              "top_final": [
+                [
+                  "sh",
+                  11851
+                ],
+                [
+                  "ch",
+                  5536
+                ],
+                [
+                  "l",
+                  4588
+                ],
+                [
+                  "r",
+                  1114
+                ],
+                [
+                  "cth",
+                  791
+                ]
+              ],
+              "grammar_membership": 1.0
+            },
+            "types": {
+              "n": 5799,
+              "mean_length": 6.3838592860838075,
+              "repeated_glyph_share": 0.3340231074323159,
+              "adjacent_repeat_share": 0.3340231074323159,
+              "gallows_present_share": 0.8865321607173651,
+              "multiple_gallows_share": 0.0,
+              "distinct_gallows_share": 0.0,
+              "length_hist": {
+                "1": 9,
+                "2": 53,
+                "3": 192,
+                "4": 548,
+                "5": 985,
+                "6": 1268,
+                "7": 1222,
+                "8": 886,
+                "9": 440,
+                "10": 158,
+                "11": 34,
+                "12": 4
+              },
+              "top_final": [
+                [
+                  "sh",
+                  2888
+                ],
+                [
+                  "ch",
+                  1459
+                ],
+                [
+                  "l",
+                  720
+                ],
+                [
+                  "r",
+                  354
+                ],
+                [
+                  "n",
+                  182
+                ]
+              ],
+              "grammar_membership": 1.0
+            }
+          }
+        },
+        "37": {
+          "dictionary_size": 5799,
+          "decoded_exact": true,
+          "stats": {
+            "tokens": {
+              "n": 25000,
+              "mean_length": 6.037,
+              "repeated_glyph_share": 0.361,
+              "adjacent_repeat_share": 0.361,
+              "gallows_present_share": 0.8578,
+              "multiple_gallows_share": 0.0,
+              "distinct_gallows_share": 0.0,
+              "length_hist": {
+                "1": 16,
+                "2": 886,
+                "3": 2351,
+                "4": 1943,
+                "5": 3560,
+                "6": 4982,
+                "7": 5725,
+                "8": 3864,
+                "9": 1196,
+                "10": 382,
+                "11": 91,
+                "12": 4
+              },
+              "top_final": [
+                [
+                  "sh",
+                  11905
+                ],
+                [
+                  "ch",
+                  5333
+                ],
+                [
+                  "r",
+                  3233
+                ],
+                [
+                  "l",
+                  3021
+                ],
+                [
+                  "n",
+                  969
+                ]
+              ],
+              "grammar_membership": 1.0
+            },
+            "types": {
+              "n": 5799,
+              "mean_length": 6.392136575271598,
+              "repeated_glyph_share": 0.3366097603035006,
+              "adjacent_repeat_share": 0.3366097603035006,
+              "gallows_present_share": 0.8901534747370237,
+              "multiple_gallows_share": 0.0,
+              "distinct_gallows_share": 0.0,
+              "length_hist": {
+                "1": 10,
+                "2": 55,
+                "3": 221,
+                "4": 533,
+                "5": 936,
+                "6": 1257,
+                "7": 1263,
+                "8": 871,
+                "9": 456,
+                "10": 153,
+                "11": 40,
+                "12": 4
+              },
+              "top_final": [
+                [
+                  "sh",
+                  2915
+                ],
+                [
+                  "ch",
+                  1414
+                ],
+                [
+                  "l",
+                  730
+                ],
+                [
+                  "r",
+                  363
+                ],
+                [
+                  "n",
+                  193
+                ]
+              ],
+              "grammar_membership": 1.0
+            }
+          }
+        },
+        "73": {
+          "dictionary_size": 5799,
+          "decoded_exact": true,
+          "stats": {
+            "tokens": {
+              "n": 25000,
+              "mean_length": 6.2718,
+              "repeated_glyph_share": 0.2952,
+              "adjacent_repeat_share": 0.2952,
+              "gallows_present_share": 0.89664,
+              "multiple_gallows_share": 0.0,
+              "distinct_gallows_share": 0.0,
+              "length_hist": {
+                "1": 12,
+                "2": 235,
+                "3": 882,
+                "4": 2424,
+                "5": 4839,
+                "6": 4938,
+                "7": 6344,
+                "8": 2798,
+                "9": 2012,
+                "10": 434,
+                "11": 76,
+                "12": 6
+              },
+              "top_final": [
+                [
+                  "sh",
+                  11932
+                ],
+                [
+                  "ch",
+                  6071
+                ],
+                [
+                  "l",
+                  3440
+                ],
+                [
+                  "r",
+                  2650
+                ],
+                [
+                  "n",
+                  416
+                ]
+              ],
+              "grammar_membership": 1.0
+            },
+            "types": {
+              "n": 5799,
+              "mean_length": 6.392998792895327,
+              "repeated_glyph_share": 0.33902396964993964,
+              "adjacent_repeat_share": 0.33902396964993964,
+              "gallows_present_share": 0.8884290394895672,
+              "multiple_gallows_share": 0.0,
+              "distinct_gallows_share": 0.0,
+              "length_hist": {
+                "1": 6,
+                "2": 56,
+                "3": 193,
+                "4": 550,
+                "5": 932,
+                "6": 1293,
+                "7": 1286,
+                "8": 836,
+                "9": 448,
+                "10": 158,
+                "11": 36,
+                "12": 5
+              },
+              "top_final": [
+                [
+                  "sh",
+                  2880
+                ],
+                [
+                  "ch",
+                  1475
+                ],
+                [
+                  "l",
+                  721
+                ],
+                [
+                  "r",
+                  363
+                ],
+                [
+                  "n",
+                  185
+                ]
+              ],
+              "grammar_membership": 1.0
+            }
+          }
+        }
+      },
+      "en_paston": {
+        "17": {
+          "dictionary_size": 3878,
+          "decoded_exact": true,
+          "stats": {
+            "tokens": {
+              "n": 25000,
+              "mean_length": 6.27616,
+              "repeated_glyph_share": 0.3692,
+              "adjacent_repeat_share": 0.3692,
+              "gallows_present_share": 0.84032,
+              "multiple_gallows_share": 0.0,
+              "distinct_gallows_share": 0.0,
+              "length_hist": {
+                "1": 262,
+                "2": 113,
+                "3": 2288,
+                "4": 1513,
+                "5": 4779,
+                "6": 3866,
+                "7": 4651,
+                "8": 5103,
+                "9": 1284,
+                "10": 1082,
+                "11": 56,
+                "12": 3
+              },
+              "top_final": [
+                [
+                  "sh",
+                  12682
+                ],
+                [
+                  "ch",
+                  7458
+                ],
+                [
+                  "l",
+                  2562
+                ],
+                [
+                  "r",
+                  911
+                ],
+                [
+                  "n",
+                  530
+                ]
+              ],
+              "grammar_membership": 1.0
+            },
+            "types": {
+              "n": 3878,
+              "mean_length": 6.382413615265601,
+              "repeated_glyph_share": 0.32723053120165035,
+              "adjacent_repeat_share": 0.32723053120165035,
+              "gallows_present_share": 0.8808664259927798,
+              "multiple_gallows_share": 0.0,
+              "distinct_gallows_share": 0.0,
+              "length_hist": {
+                "1": 7,
+                "2": 39,
+                "3": 133,
+                "4": 365,
+                "5": 662,
+                "6": 825,
+                "7": 816,
+                "8": 608,
+                "9": 288,
+                "10": 109,
+                "11": 23,
+                "12": 3
+              },
+              "top_final": [
+                [
+                  "sh",
+                  1963
+                ],
+                [
+                  "ch",
+                  957
+                ],
+                [
+                  "l",
+                  476
+                ],
+                [
+                  "r",
+                  235
+                ],
+                [
+                  "n",
+                  129
+                ]
+              ],
+              "grammar_membership": 1.0
+            }
+          }
+        },
+        "37": {
+          "dictionary_size": 3878,
+          "decoded_exact": true,
+          "stats": {
+            "tokens": {
+              "n": 25000,
+              "mean_length": 6.3068,
+              "repeated_glyph_share": 0.28984,
+              "adjacent_repeat_share": 0.28984,
+              "gallows_present_share": 0.86756,
+              "multiple_gallows_share": 0.0,
+              "distinct_gallows_share": 0.0,
+              "length_hist": {
+                "1": 26,
+                "2": 127,
+                "3": 624,
+                "4": 2291,
+                "5": 6171,
+                "6": 4157,
+                "7": 5342,
+                "8": 4325,
+                "9": 1108,
+                "10": 540,
+                "11": 277,
+                "12": 12
+              },
+              "top_final": [
+                [
+                  "sh",
+                  13492
+                ],
+                [
+                  "ch",
+                  5045
+                ],
+                [
+                  "l",
+                  3561
+                ],
+                [
+                  "r",
+                  1380
+                ],
+                [
+                  "e",
+                  633
+                ]
+              ],
+              "grammar_membership": 1.0
+            },
+            "types": {
+              "n": 3878,
+              "mean_length": 6.418514698298091,
+              "repeated_glyph_share": 0.33754512635379064,
+              "adjacent_repeat_share": 0.33754512635379064,
+              "gallows_present_share": 0.889118102114492,
+              "multiple_gallows_share": 0.0,
+              "distinct_gallows_share": 0.0,
+              "length_hist": {
+                "1": 5,
+                "2": 39,
+                "3": 133,
+                "4": 361,
+                "5": 635,
+                "6": 817,
+                "7": 843,
+                "8": 593,
+                "9": 309,
+                "10": 113,
+                "11": 28,
+                "12": 2
+              },
+              "top_final": [
+                [
+                  "sh",
+                  1971
+                ],
+                [
+                  "ch",
+                  932
+                ],
+                [
+                  "l",
+                  469
+                ],
+                [
+                  "r",
+                  241
+                ],
+                [
+                  "n",
+                  134
+                ]
+              ],
+              "grammar_membership": 1.0
+            }
+          }
+        },
+        "73": {
+          "dictionary_size": 3878,
+          "decoded_exact": true,
+          "stats": {
+            "tokens": {
+              "n": 25000,
+              "mean_length": 6.42208,
+              "repeated_glyph_share": 0.25784,
+              "adjacent_repeat_share": 0.25784,
+              "gallows_present_share": 0.90536,
+              "multiple_gallows_share": 0.0,
+              "distinct_gallows_share": 0.0,
+              "length_hist": {
+                "1": 11,
+                "2": 100,
+                "3": 801,
+                "4": 1755,
+                "5": 4041,
+                "6": 5726,
+                "7": 6775,
+                "8": 3702,
+                "9": 1665,
+                "10": 344,
+                "11": 69,
+                "12": 11
+              },
+              "top_final": [
+                [
+                  "sh",
+                  12799
+                ],
+                [
+                  "ch",
+                  6540
+                ],
+                [
+                  "l",
+                  2889
+                ],
+                [
+                  "n",
+                  1187
+                ],
+                [
+                  "r",
+                  1143
+                ]
+              ],
+              "grammar_membership": 1.0
+            },
+            "types": {
+              "n": 3878,
+              "mean_length": 6.385507993811243,
+              "repeated_glyph_share": 0.33935018050541516,
+              "adjacent_repeat_share": 0.33935018050541516,
+              "gallows_present_share": 0.8867973182052604,
+              "multiple_gallows_share": 0.0,
+              "distinct_gallows_share": 0.0,
+              "length_hist": {
+                "1": 5,
+                "2": 40,
+                "3": 134,
+                "4": 370,
+                "5": 600,
+                "6": 858,
+                "7": 891,
+                "8": 555,
+                "9": 304,
+                "10": 99,
+                "11": 19,
+                "12": 3
+              },
+              "top_final": [
+                [
+                  "sh",
+                  1922
+                ],
+                [
+                  "ch",
+                  999
+                ],
+                [
+                  "l",
+                  467
+                ],
+                [
+                  "r",
+                  245
+                ],
+                [
+                  "n",
+                  127
+                ]
+              ],
+              "grammar_membership": 1.0
+            }
+          }
+        }
+      },
+      "medieval_czech_01473c19": {
+        "17": {
+          "dictionary_size": 5619,
+          "decoded_exact": true,
+          "stats": {
+            "tokens": {
+              "n": 25000,
+              "mean_length": 6.44348,
+              "repeated_glyph_share": 0.33224,
+              "adjacent_repeat_share": 0.33224,
+              "gallows_present_share": 0.8522,
+              "multiple_gallows_share": 0.0,
+              "distinct_gallows_share": 0.0,
+              "length_hist": {
+                "1": 27,
+                "2": 160,
+                "3": 616,
+                "4": 2831,
+                "5": 4470,
+                "6": 4126,
+                "7": 6157,
+                "8": 3096,
+                "9": 2889,
+                "10": 325,
+                "11": 292,
+                "12": 11
+              },
+              "top_final": [
+                [
+                  "sh",
+                  11303
+                ],
+                [
+                  "ch",
+                  6321
+                ],
+                [
+                  "l",
+                  4179
+                ],
+                [
+                  "r",
+                  1372
+                ],
+                [
+                  "e",
+                  1077
+                ]
+              ],
+              "grammar_membership": 1.0
+            },
+            "types": {
+              "n": 5619,
+              "mean_length": 6.381562555614878,
+              "repeated_glyph_share": 0.3333333333333333,
+              "adjacent_repeat_share": 0.3333333333333333,
+              "gallows_present_share": 0.8861007296672005,
+              "multiple_gallows_share": 0.0,
+              "distinct_gallows_share": 0.0,
+              "length_hist": {
+                "1": 9,
+                "2": 52,
+                "3": 187,
+                "4": 532,
+                "5": 961,
+                "6": 1217,
+                "7": 1184,
+                "8": 862,
+                "9": 425,
+                "10": 154,
+                "11": 32,
+                "12": 4
+              },
+              "top_final": [
+                [
+                  "sh",
+                  2797
+                ],
+                [
+                  "ch",
+                  1417
+                ],
+                [
+                  "l",
+                  695
+                ],
+                [
+                  "r",
+                  343
+                ],
+                [
+                  "n",
+                  178
+                ]
+              ],
+              "grammar_membership": 1.0
+            }
+          }
+        },
+        "37": {
+          "dictionary_size": 5619,
+          "decoded_exact": true,
+          "stats": {
+            "tokens": {
+              "n": 25000,
+              "mean_length": 6.40344,
+              "repeated_glyph_share": 0.39792,
+              "adjacent_repeat_share": 0.39792,
+              "gallows_present_share": 0.85484,
+              "multiple_gallows_share": 0.0,
+              "distinct_gallows_share": 0.0,
+              "length_hist": {
+                "1": 16,
+                "2": 164,
+                "3": 1239,
+                "4": 2693,
+                "5": 3849,
+                "6": 5553,
+                "7": 3817,
+                "8": 3923,
+                "9": 3074,
+                "10": 492,
+                "11": 159,
+                "12": 21
+              },
+              "top_final": [
+                [
+                  "sh",
+                  12499
+                ],
+                [
+                  "ch",
+                  5504
+                ],
+                [
+                  "l",
+                  2697
+                ],
+                [
+                  "r",
+                  2119
+                ],
+                [
+                  "n",
+                  1073
+                ]
+              ],
+              "grammar_membership": 1.0
+            },
+            "types": {
+              "n": 5619,
+              "mean_length": 6.391706709378893,
+              "repeated_glyph_share": 0.3368926855312333,
+              "adjacent_repeat_share": 0.3368926855312333,
+              "gallows_present_share": 0.8889482114255206,
+              "multiple_gallows_share": 0.0,
+              "distinct_gallows_share": 0.0,
+              "length_hist": {
+                "1": 9,
+                "2": 54,
+                "3": 213,
+                "4": 514,
+                "5": 911,
+                "6": 1221,
+                "7": 1222,
+                "8": 844,
+                "9": 440,
+                "10": 149,
+                "11": 38,
+                "12": 4
+              },
+              "top_final": [
+                [
+                  "sh",
+                  2823
+                ],
+                [
+                  "ch",
+                  1373
+                ],
+                [
+                  "l",
+                  706
+                ],
+                [
+                  "r",
+                  352
+                ],
+                [
+                  "n",
+                  189
+                ]
+              ],
+              "grammar_membership": 1.0
+            }
+          }
+        },
+        "73": {
+          "dictionary_size": 5619,
+          "decoded_exact": true,
+          "stats": {
+            "tokens": {
+              "n": 25000,
+              "mean_length": 6.2794,
+              "repeated_glyph_share": 0.2946,
+              "adjacent_repeat_share": 0.2946,
+              "gallows_present_share": 0.89648,
+              "multiple_gallows_share": 0.0,
+              "distinct_gallows_share": 0.0,
+              "length_hist": {
+                "1": 22,
+                "2": 167,
+                "3": 1068,
+                "4": 2993,
+                "5": 3694,
+                "6": 5706,
+                "7": 5351,
+                "8": 3597,
+                "9": 1745,
+                "10": 468,
+                "11": 139,
+                "12": 50
+              },
+              "top_final": [
+                [
+                  "sh",
+                  11995
+                ],
+                [
+                  "ch",
+                  5974
+                ],
+                [
+                  "r",
+                  2385
+                ],
+                [
+                  "l",
+                  2234
+                ],
+                [
+                  "e",
+                  1589
+                ]
+              ],
+              "grammar_membership": 1.0
+            },
+            "types": {
+              "n": 5619,
+              "mean_length": 6.396333867236163,
+              "repeated_glyph_share": 0.3397401672895533,
+              "adjacent_repeat_share": 0.3397401672895533,
+              "gallows_present_share": 0.8882363409859405,
+              "multiple_gallows_share": 0.0,
+              "distinct_gallows_share": 0.0,
+              "length_hist": {
+                "1": 6,
+                "2": 51,
+                "3": 187,
+                "4": 530,
+                "5": 904,
+                "6": 1258,
+                "7": 1248,
+                "8": 807,
+                "9": 432,
+                "10": 157,
+                "11": 34,
+                "12": 5
+              },
+              "top_final": [
+                [
+                  "sh",
+                  2785
+                ],
+                [
+                  "ch",
+                  1433
+                ],
+                [
+                  "l",
+                  699
+                ],
+                [
+                  "r",
+                  356
+                ],
+                [
+                  "n",
+                  177
+                ]
+              ],
+              "grammar_membership": 1.0
+            }
+          }
+        }
+      }
+    }
+  },
+  "reproduce": {
+    "instructions": "Save the script as /tmp/voy_k040_codebook.py, fetch project-pinned inputs with python3 -m vs fetch, then run PYTHONPATH=. python3 /tmp/voy_k040_codebook.py from the repository root. It verifies input hashes and asserts full code-space uniqueness, segmentation and plaintext round trips.",
+    "script": "\"\"\"A fixed, space-delimited, marker-free mixed-radix codebook control.\"\"\"\nimport hashlib,json,random,statistics,math\nfrom collections import Counter\nfrom vs import corpus,ivtff,refcorpus\n\nBITS=('a','o','d','y','n','r','l','ch','sh')\nGALLOWS=('k','t','p','f','ckh','cth','cph','cfh')\nN=25000; SEEDS=(17,37,73)\nBOOKS=('it_dante','es_buenamor','en_paston','medieval_czech_01473c19')\n\ndef encode(mask,repeats,g):\n    # Gallow and e-run are ordinary optional slots, not compulsory terminators.\n    a=[BITS[i] for i in range(4) if mask&(1<<i)]\n    if g: a.append(GALLOWS[g-1])\n    a+=['e']*repeats\n    a += [BITS[i] for i in range(4,9) if mask&(1<<i)]\n    return ''.join(a)\n\ndef vocabulary():\n    codes=[encode(mask,r,g) for mask in range(1<<9) for r in range(3) for g in range(9) if mask or r or g]\n    assert len(codes)==13823 and len(set(codes))==len(codes)\n    # Ensure no cross-glyph ambiguity introduced by concatenating EVA-basic units.\n    for mask in range(1<<9):\n      for r in range(3):\n       for g in range(9):\n        if not (mask or r or g):continue\n        expected=[BITS[i] for i in range(4) if mask&(1<<i)]+([GALLOWS[g-1]] if g else [])+['e']*r+[BITS[i] for i in range(4,9) if mask&(1<<i)]\n        assert ivtff.segment(encode(mask,r,g))==expected\n    return codes\n\ndef stats(words, valid):\n    types=list(set(words)); result={}\n    for name,seq in [('tokens',words),('types',types)]:\n        segs=[ivtff.segment(w) for w in seq]\n        gc=[sum(g in GALLOWS for g in s) for s in segs]\n        ends=Counter(s[-1] for s in segs)\n        result[name]={'n':len(seq),'mean_length':sum(map(len,segs))/len(seq),\n           'repeated_glyph_share':sum(len(set(s))<len(s) for s in segs)/len(seq),\n           'adjacent_repeat_share':sum(any(a==b for a,b in zip(s,s[1:])) for s in segs)/len(seq),\n           'gallows_present_share':sum(n>0 for n in gc)/len(seq),\n           'multiple_gallows_share':sum(n>1 for n in gc)/len(seq),\n           'distinct_gallows_share':sum(len(set(s)&set(GALLOWS))>1 for s in segs)/len(seq),\n           'length_hist':dict(sorted(Counter(map(len,segs)).items())),\n           'top_final':ends.most_common(5), 'grammar_membership':sum(w in valid for w in seq)/len(seq)}\n    return result\n\ndef witness(name):\n    train,_=corpus.split_pages('practice',name)\n    ws=[w for p in train for line in p.lines if line.unit=='P' for w in line.words\n        if not ivtff.uncertain(w) and w.isascii() and w.isalpha() and w.islower()]\n    assert len(ws)>=N\n    return ws[:N]\n\ndef planted(words,codes,seed):\n    assert len(set(words))<=len(codes)\n    rng=random.Random(seed); shuffled=codes[:];rng.shuffle(shuffled)\n    # First occurrence assignment is independent of manuscript and reversible given the codebook.\n    table={w:shuffled[i] for i,w in enumerate(dict.fromkeys(words))}; reverse={v:k for k,v in table.items()}\n    encoded=[table[w] for w in words]\n    assert [reverse[w] for w in encoded]==words and len(table)==len(reverse)\n    return encoded, len(table)\n\nif __name__=='__main__':\n    codes=vocabulary();valid=set(codes)\n    stolfi=Counter(1+bin(mask).count('1') for mask in range(1<<9))\n    assert all(stolfi[k+1]==math.comb(9,k) for k in range(10))\n    # Spaces are structural: a+o and ao are both valid, so removing them is ambiguous.\n    assert {'a','o','ao'}<=valid\n    pins={e['id']:e for e in refcorpus.pins()}\n    for b in BOOKS:\n        with open(pins[b]['file'],'rb') as f: assert hashlib.sha256(f.read()).hexdigest()==pins[b]['sha256'],b\n    for w in ('zl','it'):\n        fn={'zl':'ZL3b-n.txt','it':'IT2a-n.txt'}[w]\n        h={'zl':'bf5b6d4ac1e3a51b1847a9c388318d609020441ccd56984c901c32b09beccafc','it':'7f27a8b0feed8f6de0a99900df6bf912dd1d295c38e5f830bac8b41c3f536fb5'}[w]\n        with open('data/raw/'+fn,'rb') as f: assert hashlib.sha256(f.read()).hexdigest()==h\n    out={'code_space':len(codes),'fixed_bits':BITS,'repeat_glyph':'e','gallows':GALLOWS,'n':N,'stolfi_9bit_type_length_counts':dict(sorted(stolfi.items())), 'unspaced_ambiguity':['a o','ao'], 'witnesses':{},'planted':{}}\n    for w in ('zl','it'):out['witnesses'][w]=stats(witness(w),valid)\n    for b in BOOKS:\n        words=' '.join(refcorpus.blocks_of(b)).split()[:N]; assert len(words)==N\n        out['planted'][b]={}\n        for seed in SEEDS:\n            enc,n=planted(words,codes,seed);out['planted'][b][seed]={'dictionary_size':n,'decoded_exact':True,'stats':stats(enc,valid)}\n    print(json.dumps(out,indent=2))\n"
+  },
+  "limitations": "The dictionary is built from the full planted plaintext and transmitted or shared as side information; exact round-trip demonstrates reversibility, not recovery of an unknown key or acceptable compression cost. Codeword assignment is random, not fitted for the Voynich manuscript, and no historical codebook is claimed. The slot inventory deliberately restricts spellings and gives a fixed alphabet and slot order; the low membership figure is a test of this toy, not of the entire family. The 25,000-token windows and seeds are limited, and the Voynich witnesses are different readings of the same manuscript. Public practice training is not held-out scoring, no page seed was accessed, and no formal cipher cell was ruled out."
+}

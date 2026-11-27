@@ -1,0 +1,46 @@
+{
+  "title": "Dating Results for Voynich Manuscript Parchment Leaves 8, 26, 47 and 68",
+  "authors": "Greg Hodgins, NSF-Arizona AMS Laboratory",
+  "year": 2009,
+  "date": "2009-02-17",
+  "url": "https://voynich.nu/papers/Carbon_GH_2009.pdf",
+  "document_type": "Original laboratory report addressed to Yale's conservator",
+  "sha256": "7a84d9582bcf5de74667742601a1e526c8a43c62a90688305de6b681493c5f45",
+  "summary": "The report presents AMS measurements of four parchment leaves, treatment details and calibrated age distributions. It dates the parchment and explicitly distinguishes that result from when writing was applied.",
+  "established": [
+    "Table 2 reports solvent-treated ages for leaves 8, 26, 47 and 68; a second leaf-68 measurement omits solvent extraction.",
+    "Using IntCal04 and OxCal 3.10, Figure 7 reports a four-sample mean of 516 ± 18 radiocarbon years BP and a 95.4% calendar interval of AD 1404–1438.",
+    "Page 3 motivates combining the measurements through a common-object assumption and cautions that parchment, rather than writing time, was dated."
+  ],
+  "open": [
+    {
+      "question": "Which Table 2 treatment selection reproduces the reported four-sample mean, given the conflicting exclusion wording on page 3?",
+      "front": "J",
+      "check": "Use the printed inverse-variance formula; compare four-leaf selections with either leaf-68 measurement. Report uncalibrated BP means and uncertainties separately from calendar dates; do not infer writing time.",
+      "hard": false
+    }
+  ],
+  "catalogue_note": "The prose names solvent-treated leaf 68 as excluded, while describing four Soxhlet-treated samples. This catalogue flags a reproducibility question, not a resolved correction.",
+  "reported_measurements": {
+    "location": "Table 2, PDF page 9",
+    "age_units": "uncalibrated radiocarbon years BP, before AD 1950",
+    "uncertainty_units": "one standard deviation, radiocarbon years",
+    "rows": [
+      {"sample": "AA84050", "leaf": 8, "solvent_extraction": true, "age_bp": 490, "sigma": 37},
+      {"sample": "AA84049", "leaf": 26, "solvent_extraction": true, "age_bp": 514, "sigma": 35},
+      {"sample": "AA84048", "leaf": 47, "solvent_extraction": true, "age_bp": 506, "sigma": 35},
+      {"sample": "AA84047", "leaf": 68, "solvent_extraction": true, "age_bp": 550, "sigma": 35},
+      {"sample": "AA84047", "leaf": 68, "solvent_extraction": false, "age_bp": 488, "sigma": 35}
+    ]
+  },
+  "review_provenance": {
+    "primary_document": true,
+    "openly_downloaded": true,
+    "relevant_complete_pages_rendered_and_inspected": [1, 2, 3, 8, 9],
+    "blank_last_page_checked": 10,
+    "key_locations": {"sampling_and_treatment": 1, "calibration_method": 2, "combination_and_limit": 3, "figure_7": 8, "tables_1_2": 9},
+    "catalogue_duplicate_check": "No radiocarbon, parchment, pigment, materials or McCrone source title in the current 35-source catalogue.",
+    "related_existing_question": "K-015-open-3",
+    "scope": "Report year is the dated 2009 letter, not the date the public copy was uploaded. Neither ink chronology nor a transcription/key result is added by this catalogue."
+  }
+}

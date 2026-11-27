@@ -1,0 +1,43 @@
+{
+  "id": "pahlavi-herrmann-2017-table1-first-value",
+  "family": "substitution",
+  "segmentation": "eva-iin",
+  "transliteration": "zl",
+  "reading_order": "normal",
+  "spaces": "word_breaks",
+  "target": {
+    "language": "middle_persian_pahlavi",
+    "period": "9th–10th-century Middle Persian compilation; 1910–1912 Bombay edition"
+  },
+  "key": {
+    "map": {
+      "a": "a",
+      "k": "b",
+      "sh": "d",
+      "m": "g",
+      "y": "y",
+      "o": "v",
+      "e": "h",
+      "f": "k",
+      "r": "r",
+      "ir": "r",
+      "iir": "r",
+      "iiir": "r",
+      "t": "m",
+      "d": "n",
+      "ee": "s",
+      "p": "p",
+      "s": "z",
+      "ch": "š",
+      "l": "t"
+    }
+  },
+  "search": {
+    "budget": 0
+  },
+  "source": "Herrmann (2017), arXiv:1709.01634v2, Table 1 and Box 1, pp. 4–5, https://arxiv.org/pdf/1709.01634v2#page=4",
+  "eva_reference": "Landini, EVA Alphabet Font Version 2 Reference, https://www.voynich.nu/hist/gabriel/eva2_reference.pdf",
+  "corpus": "C-058, Sanjana's Dēnkard Books VI–VII, volumes XI–XIII; 183,611 cleaned characters, https://voynichswarm.com/x/C-058.html",
+  "method": "Choose the first unbracketed transcription in each assigned Table 1 row before scoring. Use the printed glyphs and the public EVA chart for aliases. Use EVA m for the printed gimel glyph, consistent with the alignment of Herrmann's natag and EVA dalam at f67v2.19, even though his contextual g readings are not unique to that sign. Use the standard plumed bench sh for daleth, ch for shin, and greedy ee for the two-stroke samekh. Retain r in the EVA-iin groups ending in r by dropping their unassigned i strokes. Use v for waw, retain EVA word breaks and use normal reading order. The decoder normalizes š as s.",
+  "scope_of_inference": "A deterministic proxy for Table 1, with no fitted values, context rules, exceptional glyphs, inferred word breaks, or Table 2 ligature choices. The zayin row gives no sound. Unassigned EVA units map to the empty string by the stock decoder. In particular, the distinct rare plumed sign in that row is not positively equated with the standard sh. The corpus has OCR noise and the published positive controls do not establish power for this cell."
+}

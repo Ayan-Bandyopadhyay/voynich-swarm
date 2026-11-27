@@ -1,0 +1,273 @@
+{
+  "id": "grid-croatian-syllabic-zl-practice-train",
+  "family": "syllabic",
+  "segmentation": "eva-basic",
+  "target": {
+    "language": "croatian",
+    "period": "20th-century Croatian Bible, project reference C-026"
+  },
+  "key": {
+    "marker": "q",
+    "map": {
+      "*": "a",
+      "?": "a",
+      "a": "n",
+      "b": "n",
+      "c": "d",
+      "cfh": "a",
+      "ch": "d",
+      "ckh": "a",
+      "cph": "a",
+      "cth": "o",
+      "d": "o",
+      "e": "a",
+      "f": "a",
+      "g": "a",
+      "h": "a",
+      "i": "a",
+      "j": "a",
+      "k": "a",
+      "l": "a",
+      "m": "a",
+      "n": "n",
+      "o": "n",
+      "p": "a",
+      "r": "a",
+      "s": "o",
+      "sh": "d",
+      "t": "a",
+      "u": "n",
+      "v": "i",
+      "x": "a",
+      "y": "n",
+      "z": "a",
+      "qo": "ba",
+      "qe": "ba",
+      "qk": "da",
+      "qy": "da",
+      "qcth": "da",
+      "qckh": "da",
+      "qa": "jo",
+      "q*": "ba",
+      "q?": "da",
+      "qch": "da",
+      "qcph": "ba"
+    }
+  },
+  "search": {
+    "budget": {
+      "syllable_candidates": 64,
+      "sign_limit": 24,
+      "lexical_sweeps": 5,
+      "restarts": 4,
+      "iterations": 6000,
+      "seed": 1404,
+      "bpe_merges": 30,
+      "verbose_segmentations": [
+        "bpe-greedy",
+        "fixed-2"
+      ],
+      "verbose_min_unit_share": 0.0005,
+      "substitution_group_swap": 0.2
+    }
+  },
+  "transliteration": "zl",
+  "reading_order": "normal",
+  "spaces": "word_breaks",
+  "scope_of_inference": "Fixed EVA-basic q marker, consuming exactly the following glyph within a word. At most 24 signs with at least three training appearances are fitted from 64 candidate written CV pairs. The pinned normalization folds some Croatian diacritics and the marked pairs use aeiou as vowels. The stock search retains the EVA word breaks and uses no practice evaluation pages in selecting the key. The result is specific to modern Croatian and the fixed marker, boundary and search rules.",
+  "sign_coverage": {
+    "training": {
+      "tokens": 32410,
+      "word_types": 7256,
+      "dangling_marker_count": 0,
+      "known_sign_occurrences": 4589,
+      "unmapped_sign_occurrences": 3,
+      "sign_occurrences": {
+        "qo": 4488,
+        "qe": 45,
+        "qk": 18,
+        "qy": 8,
+        "qcth": 7,
+        "qckh": 6,
+        "qa": 5,
+        "q*": 3,
+        "q?": 3,
+        "qch": 3,
+        "qcph": 3,
+        "qd": 1,
+        "qs": 1,
+        "qp": 1
+      }
+    },
+    "practice": {
+      "tokens": 6076,
+      "word_types": 2166,
+      "dangling_marker_count": 1,
+      "known_sign_occurrences": 827,
+      "unmapped_sign_occurrences": 3,
+      "sign_occurrences": {
+        "qo": 806,
+        "qe": 13,
+        "qk": 3,
+        "qs": 2,
+        "qa": 2,
+        "qcth": 1,
+        "qckh": 1,
+        "qf": 1,
+        "qch": 1
+      }
+    }
+  },
+  "control_runs": [
+    {
+      "seed": 0,
+      "noise": 0.0,
+      "tokens": 9200,
+      "matching_outputs": 9200,
+      "planted_matches_plaintext": 9200,
+      "fitted_matches_plaintext": 9200,
+      "ordinary_matches": 29,
+      "ordinary_total": 29,
+      "sign_matches": 20,
+      "sign_total": 20,
+      "fitted_evaluation": {
+        "compresses": true,
+        "reads": true,
+        "beats_decoys": true,
+        "savings": 0.06936
+      }
+    },
+    {
+      "seed": 0,
+      "noise": 0.02,
+      "tokens": 9200,
+      "matching_outputs": 9185,
+      "planted_matches_plaintext": 8402,
+      "fitted_matches_plaintext": 8406,
+      "ordinary_matches": 29,
+      "ordinary_total": 29,
+      "sign_matches": 20,
+      "sign_total": 20,
+      "fitted_evaluation": {
+        "compresses": true,
+        "reads": true,
+        "beats_decoys": true,
+        "savings": 0.04116
+      }
+    },
+    {
+      "seed": 1,
+      "noise": 0.02,
+      "tokens": 9200,
+      "matching_outputs": 9181,
+      "planted_matches_plaintext": 8424,
+      "fitted_matches_plaintext": 8425,
+      "ordinary_matches": 29,
+      "ordinary_total": 29,
+      "sign_matches": 20,
+      "sign_total": 20
+    },
+    {
+      "seed": 2,
+      "noise": 0.02,
+      "tokens": 9200,
+      "matching_outputs": 9183,
+      "planted_matches_plaintext": 8418,
+      "fitted_matches_plaintext": 8420,
+      "ordinary_matches": 29,
+      "ordinary_total": 29,
+      "sign_matches": 20,
+      "sign_total": 20
+    }
+  ],
+  "marker_comparison": {
+    "manuscript_train": {
+      "words": 32410,
+      "marked_words": 4591,
+      "leading_marked_words": 4561,
+      "signs": 4592,
+      "top_five": [
+        [
+          "qo",
+          4488
+        ],
+        [
+          "qe",
+          45
+        ],
+        [
+          "qk",
+          18
+        ],
+        [
+          "qy",
+          8
+        ],
+        [
+          "qcth",
+          7
+        ]
+      ]
+    },
+    "seed0_control_0.0": {
+      "words": 9200,
+      "marked_words": 4239,
+      "leading_marked_words": 2026,
+      "signs": 5110,
+      "top_five": [
+        [
+          "qf",
+          593
+        ],
+        [
+          "qi",
+          554
+        ],
+        [
+          "qa",
+          303
+        ],
+        [
+          "qm",
+          295
+        ],
+        [
+          "qe",
+          239
+        ]
+      ]
+    },
+    "seed0_control_0.02": {
+      "words": 9200,
+      "marked_words": 4172,
+      "leading_marked_words": 1988,
+      "signs": 5009,
+      "top_five": [
+        [
+          "qz",
+          565
+        ],
+        [
+          "qf",
+          539
+        ],
+        [
+          "qn",
+          299
+        ],
+        [
+          "qj",
+          289
+        ],
+        [
+          "qi",
+          239
+        ]
+      ]
+    },
+    "normalization_sample": "c c s z đ dz lj nj crn"
+  },
+  "source": "Pinned Sveta Biblija https://voynichswarm.com/x/C-026.html",
+  "prior_calibration": "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/594",
+  "coverage_limits": "Noise can erase q or change a following glyph; the noise pool introduces no new q. Written CV units do not cover Croatian syllabic r. Additional seeds test mapping recovery only."
+}

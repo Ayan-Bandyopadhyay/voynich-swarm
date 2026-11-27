@@ -1005,6 +1005,58 @@
       "license": "cc-by",
       "encoding": "utf-8",
       "added_by": "mtx-light"
+    },
+    {
+      "id": "old_hungarian_8326f8ce",
+      "lang": "old_hungarian",
+      "period": "1466 (manuscript copy date), Old Hungarian",
+      "title": "Munich Codex, four Gospels in Old Hungarian (HGDS diplomatic transcription)",
+      "url": "https://raw.githubusercontent.com/mubadala777/voynich-swarm/02d68f81ef886f949d12d420bae4436456e0ca23/munich-codex-1466.txt",
+      "file": "data/raw/agent_old_hungarian_8326f8ce.txt",
+      "bytes": 487814,
+      "sha256": "8326f8ce4d897909393356adbf10992605b4035d347fcc45fb41f983d13f89c0",
+      "license": "cc-by",
+      "encoding": "utf-8",
+      "added_by": "mubadala777"
+    },
+    {
+      "id": "old_catalan_54a4ab12",
+      "lang": "old_catalan",
+      "period": "c. 1283, Old Catalan, published in the 1914 Palma edition",
+      "title": "Ramon Llull, Libre de Blanquerna (Palma 1914 edition)",
+      "url": "https://raw.githubusercontent.com/mubadala777/voynich-swarm/1b18408523f96c1772ed06d38899d0496b1e33d1/libre-de-blanquerna.txt",
+      "file": "data/raw/agent_old_catalan_54a4ab12.txt",
+      "bytes": 787372,
+      "sha256": "54a4ab12539d54c375033e6ca7d08cb1fcfc83b353995ee9b37d7ffd8a499753",
+      "license": "public-domain",
+      "encoding": "utf-8",
+      "added_by": "mubadala777"
+    },
+    {
+      "id": "middle_persian_pahlavi_c433306b",
+      "lang": "middle_persian_pahlavi",
+      "period": "9th–10th-century Middle Persian compilation; 1910–1912 Bombay edition",
+      "title": "Dēnkard Books VI–VII, Sanjana XI–XIII (Roman Book Pahlavi, scan OCR)",
+      "url": "https://raw.githubusercontent.com/mubadala777/voynich-swarm/c5c6bada47ce55f5576cb87e71063cdc1703d713/dinkard-roman-ocr-xi-xiii.txt",
+      "file": "data/raw/agent_middle_persian_pahlavi_c433306b.txt",
+      "bytes": 200670,
+      "sha256": "c433306b2c249f0efc48e01c9dc2eb899fc8a3213f6f79cb12cf85975f21f663",
+      "license": "public-domain",
+      "encoding": "utf-8",
+      "added_by": "mubadala777"
+    },
+    {
+      "id": "medieval_czech_01473c19",
+      "lang": "medieval_czech",
+      "period": "early fifteenth-century Old Czech sermon prose completed in 1413, in Erben's nineteenth-century textual edition",
+      "title": "Jan Hus, Postilla (1413), Czech sermon cycle, Erben edition (Prague, 1866), printed pp. 1–427",
+      "url": "https://raw.githubusercontent.com/mubadala777/voynich-swarm/1c32945509236b66132c9cc2c92b2fa347288ac3/corpora/hus-postilla-erben-1866/hus-postilla-erben-1866.txt",
+      "file": "data/raw/agent_medieval_czech_01473c19.txt",
+      "bytes": 1042190,
+      "sha256": "01473c190be9c9b73b373a29264c54b7747d4834ca1f81e2d159a5b8f398ecfe",
+      "license": "public-domain",
+      "encoding": "utf-8",
+      "added_by": "mubadala777"
     }
   ],
   "missing_corpora": {

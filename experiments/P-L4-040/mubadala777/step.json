@@ -1,0 +1,870 @@
+{
+  "title": "Matched scan crops show a gap on f80r and a readable narrow opening on a dated syringe drawing",
+  "statement": "Two independent detail readings and then context readings of nine coded crops find a short taper on f80r, fingers overlapping its rounded body, and a visible gap to the same figure’s flank. Known implements in Laud f96r and Arderne X 118 reach a separate figure. Both readers see transverse bands on the Arderne neck. In a supplementary late-medieval instrument drawing, both resolve a front-facing narrow opening across about six native pixels, plus an exposed broad mouth and external collar in a separate crop. The f80r taper is seen in profile and its end face remains unresolved. The reviewed f80r construction and posture leave its identity open.",
+  "program": "L4",
+  "check": "Find at least two independently dated late-medieval pictures of identified handheld objects with exposed working ends, including a medical assembly before contact and a nonmedical rounded object with a short neck if available. Keep the full-source orientation and locate any actual exposed aperture or discrete external shoulder. Freeze feature definitions and crop coordinates before masking. Ask two fresh readers to detect the same feature first at native resolution, then at f80r-scale body breadth and local tip width. Retain disagreements, and score the construction and use pose separately. An unresolvable positive control cannot support an absence claim. A matching preparation pose can keep an identification open, while identification needs both a compatible construction and compatible depicted use.",
+  "on_path": true,
+  "hard": true,
+  "source_step": {
+    "id": "P-L4-040",
+    "ref": "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/561"
+  },
+  "protocol": {
+    "summary": "Nine grayscale close crops and corresponding context crops. Downsample close crops by box averaging to at most the 43-native-pixel f80r body breadth. Lower-resolution controls retain their native sample count. Integer threefold nearest-neighbor enlargement is for display. Context crops preserve visible figure and tool relationships and are reduced to at most 700 by 620 pixels with Lanczos.",
+    "breadth": "Approximate horizontal breadth of the rounded body excluding shaft, projection and stream. The putative Morgan M.165 cup breadth is only approximate because of occlusion.",
+    "order": "Two fresh readers coded close crops independently. Both initial results were locked before the context pass. The key and catalogues were withheld throughout. Context readers noted a likely Voynich drawing, so masking cannot be treated as complete source anonymity.",
+    "coding": "V is a resolved visible feature. A is an exposed geometric negative at that view. U is unresolved or occluded. An A from a reader does not establish diagnostic absence when no analogous positive feature is resolved. Contacts exclude the gripping fingers. A visible gap is measured relative to the closest illustrated body outline, with intended recipient left open.",
+    "definition": {
+      "rim": "a broad opening with visible lip or interior",
+      "bore": "an exposed narrow-end opening with visible boundary",
+      "stop": "a discrete external crosswise shoulder distinct from fingers or adjacent lines",
+      "bands": "transverse wrap or parallel strokes on the neck, recorded separately from a silhouette shoulder"
+    }
+  },
+  "target_trace": {
+    "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006218",
+    "image": "https://collections.library.yale.edu/iiif/2/1006218/310,280,180,130/full/0/default.jpg",
+    "region_xywh_on_canvas_image": [
+      310,
+      280,
+      180,
+      130
+    ],
+    "coordinate_system": "approximate trace landmarks in the native 180 by 130 pixel derivative, x right and y down",
+    "exposed_oval_contour": [
+      [
+        132,
+        50
+      ],
+      [
+        117,
+        53
+      ],
+      [
+        110,
+        59
+      ],
+      [
+        107,
+        65
+      ],
+      [
+        107,
+        71
+      ],
+      [
+        110,
+        76
+      ],
+      [
+        113,
+        80
+      ],
+      [
+        121,
+        83
+      ],
+      [
+        128,
+        85
+      ],
+      [
+        137,
+        84
+      ],
+      [
+        145,
+        80
+      ],
+      [
+        148,
+        75
+      ]
+    ],
+    "projection_contour": [
+      [
+        113,
+        80
+      ],
+      [
+        111,
+        85
+      ],
+      [
+        110,
+        89
+      ],
+      [
+        112,
+        91
+      ],
+      [
+        117,
+        88
+      ],
+      [
+        121,
+        83
+      ]
+    ],
+    "finger_arc_landmarks": [
+      [
+        125,
+        31
+      ],
+      [
+        127,
+        43
+      ],
+      [
+        134,
+        52
+      ],
+      [
+        131,
+        62
+      ],
+      [
+        125,
+        67
+      ],
+      [
+        139,
+        56
+      ],
+      [
+        137,
+        66
+      ],
+      [
+        134,
+        70
+      ],
+      [
+        145,
+        60
+      ],
+      [
+        143,
+        67
+      ],
+      [
+        142,
+        71
+      ]
+    ],
+    "torso_outline": [
+      [
+        77,
+        1
+      ],
+      [
+        76,
+        17
+      ],
+      [
+        74,
+        30
+      ],
+      [
+        75,
+        46
+      ],
+      [
+        79,
+        59
+      ],
+      [
+        83,
+        73
+      ],
+      [
+        88,
+        84
+      ],
+      [
+        90,
+        97
+      ],
+      [
+        88,
+        108
+      ]
+    ],
+    "apparent_body_breadth_px": 43,
+    "open_space_across_y90_px": "roughly twenty native pixels between the torso contour and projection tip",
+    "limits": "An upper-right section of the object outline is overlapped by the fingers. Strokes are traced separately where exposed. The trace is approximate and not a new optical observation."
+  },
+  "sources": {
+    "target": {
+      "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006218",
+      "detail_image": "https://collections.library.yale.edu/iiif/2/1006218/310,280,180,130/900,/0/default.jpg",
+      "image": "https://collections.library.yale.edu/iiif/2/1006218/310,280,180,130/full/0/default.jpg",
+      "reference": "Yale, Beinecke MS 408, f80r, upper row, second figure from the left",
+      "context_image": "https://collections.library.yale.edu/iiif/2/1006218/130,0,740,700/full/0/default.jpg",
+      "source_image_for_crop": "https://collections.library.yale.edu/iiif/2/1006218/310,280,180,130/full/0/default.jpg"
+    },
+    "laud96r_hip": {
+      "canvas": "https://iiif.bodleian.ox.ac.uk/iiif/canvas/859c4725-3c16-4718-8f43-c4b461ac97be.json",
+      "catalogue": "https://medieval.bodleian.ox.ac.uk/catalog/manuscript_7501",
+      "catalogue_access": "The catalogue HTML returned an automated-access challenge; no attempt was made to bypass it. The public IIIF manifest and image were accessible.",
+      "date": "c.1400, England; the date statement is from the holding library's image manifest",
+      "detail_image": "https://iiif.bodleian.ox.ac.uk/iiif/image/859c4725-3c16-4718-8f43-c4b461ac97be/200,2800,1200,1300/1000,/0/default.jpg",
+      "image": "https://iiif.bodleian.ox.ac.uk/iiif/image/859c4725-3c16-4718-8f43-c4b461ac97be/full/1200,/0/default.jpg",
+      "manifest": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/a6e02525-9d5b-4637-a01a-c5862001e895.json",
+      "reference": "Oxford, Bodleian Library, MS. Laud Misc. 724, f96r, lower-left scene",
+      "relevance": "An alternative medical action to distinguish from insertion. It does not reproduce the f80r same-person grip, isolated object or gap. The attendant and recipient must not be merged into one figure when comparing gestures.",
+      "record": "https://digital.bodleian.ox.ac.uk/objects/a6e02525-9d5b-4637-a01a-c5862001e895/",
+      "access": "Public IIIF JPEG. The delivered full-size JPEG is capped at 4000 pixels high. Digitized from 35 mm. Photo © Bodleian Libraries, University of Oxford, CC BY-NC 4.0.",
+      "source_image_for_crop": "https://iiif.bodleian.ox.ac.uk/iiif/image/859c4725-3c16-4718-8f43-c4b461ac97be/full/full/0/default.jpg"
+    },
+    "laud96v_middle": {
+      "canvas": "https://iiif.bodleian.ox.ac.uk/iiif/canvas/4e06e40f-c135-4f3e-922b-c608f8b89695.json",
+      "image": "https://iiif.bodleian.ox.ac.uk/iiif/image/4e06e40f-c135-4f3e-922b-c608f8b89695/full/1200,/0/default.jpg",
+      "reference": "Same manuscript, f96v, three illustrated panels in the left column",
+      "manifest": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/a6e02525-9d5b-4637-a01a-c5862001e895.json",
+      "record": "https://digital.bodleian.ox.ac.uk/objects/a6e02525-9d5b-4637-a01a-c5862001e895/",
+      "access": "Public IIIF JPEG. The delivered full-size JPEG is capped at 4000 pixels high. Digitized from 35 mm. Photo © Bodleian Libraries, University of Oxford, CC BY-NC 4.0.",
+      "source_image_for_crop": "https://iiif.bodleian.ox.ac.uk/iiif/image/4e06e40f-c135-4f3e-922b-c608f8b89695/full/full/0/default.jpg"
+    },
+    "morgan_m165": {
+      "date": "France, perhaps Rouen, c.1440-1450, as catalogued by the holding library",
+      "detail_image": "https://ica.themorgan.org/icaimages/1/m165.024ra.jpg",
+      "image": "https://ica.themorgan.org/icaimages/1/m165.024r.jpg",
+      "record": "https://ica.themorgan.org/manuscript/page/12/77081",
+      "reference": "Morgan Library & Museum, MS M.165, f24r",
+      "source_image_for_crop": "https://ica.themorgan.org/icaimages/1/m165.024ra.jpg"
+    },
+    "wellcome": {
+      "canvas": "https://iiif.wellcomecollection.org/presentation/b19547420/canvases/b19547420_ms_550_0380.JP2",
+      "date": "The manuscript is catalogued Early 15th Century; the coloured miniature is a pasted inset whose attachment date is not separately established here",
+      "image": "https://iiif.wellcomecollection.org/image/b19547420_ms_550_0380.JP2/full/1600,/0/default.jpg",
+      "record": "https://wellcomecollection.org/works/htndqk24",
+      "reference": "Wellcome Collection, MS.550, f193v",
+      "source_image_for_crop": "https://iiif.wellcomecollection.org/image/b19547420_ms_550_0380.JP2/full/1600,/0/default.jpg"
+    },
+    "morgan_m919": {
+      "date": "Paris, c.1418, as catalogued by the holding library",
+      "image": "https://ica.themorgan.org/icaimages/9/m919.117ra.jpg",
+      "record": "https://ica.themorgan.org/manuscript/page/180/159955",
+      "reference": "Morgan Library & Museum, MS M.919, f117r, right margin",
+      "source_image_for_crop": "https://ica.themorgan.org/icaimages/9/m919.117ra.jpg"
+    },
+    "morgan_staff": {
+      "date": "Bologna, c.1270, as catalogued by the holding library; substantially earlier than the proposed Voynich milieu",
+      "image": "https://ica.themorgan.org/icaimages/3/g38.II.047ra.jpg",
+      "record": "https://ica.themorgan.org/manuscript/page/35/76954",
+      "reference": "Morgan Library & Museum, MS G.38.II, f47r, historiated initial D",
+      "source_image_for_crop": "https://ica.themorgan.org/icaimages/3/g38.II.047ra.jpg"
+    },
+    "morgan_bowl": {
+      "date": "Bologna, c.1270, as catalogued by the holding library; substantially earlier than the proposed Voynich milieu",
+      "image": "https://ica.themorgan.org/icaimages/3/g38.II.047ra.jpg",
+      "record": "https://ica.themorgan.org/manuscript/page/35/76954",
+      "reference": "Morgan Library & Museum, MS G.38.II, f47r, historiated initial D",
+      "source_image_for_crop": "https://ica.themorgan.org/icaimages/3/g38.II.047ra.jpg"
+    },
+    "arderne_x118": {
+      "reference": "National Library of Sweden, X 118, f1r, right margin",
+      "date": "About 1425–1435 for the manuscript, as catalogued",
+      "record": "https://www.manuscripta.se/ms/101000",
+      "canvas": "https://www.manuscripta.se/iiif/101000/canvas/c-1.json",
+      "image": "https://iiif.manuscripta.se/iiif/ms-101000/ms-101000_0001.tif/3500,25130,870,1030/full/0/default.jpg",
+      "relevance": "Banded attachment on a reservoir joined to a projected neck that reaches a separate recipient. The contact hides the tip.",
+      "source_image_for_crop": "https://iiif.manuscripta.se/iiif/ms-101000/ms-101000_0001.tif/3500,25130,870,1030/full/0/default.jpg"
+    }
+  },
+  "masked_crops": {
+    "V18": {
+      "specimen": "morgan_m919",
+      "asset_sha256": "bfcfcabc98342ba4fff04a3ad35d93ea5ee4c0852b52b6753cff17bad119b109",
+      "asset_native_px": [
+        394,
+        600
+      ],
+      "detail_rect_xywh": [
+        171,
+        379,
+        78,
+        73
+      ],
+      "native_body_width_px": 35,
+      "morph_scale": 1,
+      "nominal_matched_body_px_before_display_magnification": 35,
+      "morph_display_magnification": 3,
+      "detail_sha256": "2a5c2d618a286718da97ad485d4053f4601857a4da0eda2a9fcfedafc8abeb3d",
+      "scene_asset_sha256": "bfcfcabc98342ba4fff04a3ad35d93ea5ee4c0852b52b6753cff17bad119b109",
+      "context_rect_xywh": [
+        113,
+        385,
+        132,
+        136
+      ],
+      "context_sha256": "28476e2d5acaaf0c145608bf970695e15e1fc09b578f47422a1f6bbda56ec51e",
+      "source_image_url": "https://ica.themorgan.org/icaimages/9/m919.117ra.jpg",
+      "scene_image_url": "https://ica.themorgan.org/icaimages/9/m919.117ra.jpg"
+    },
+    "V25": {
+      "specimen": "morgan_staff",
+      "asset_sha256": "59502a86be712c4dbffffcaaccda6a48753afd8df071b9fbfa5d8d975021b9b7",
+      "asset_native_px": [
+        462,
+        600
+      ],
+      "detail_rect_xywh": [
+        126,
+        171,
+        123,
+        208
+      ],
+      "native_body_width_px": 33,
+      "morph_scale": 1,
+      "nominal_matched_body_px_before_display_magnification": 33,
+      "morph_display_magnification": 3,
+      "detail_sha256": "cf9a9979ba26d0e04b305dfa9ff6bb0364c8f19f3aaa206a97e8b9401d867169",
+      "scene_asset_sha256": "59502a86be712c4dbffffcaaccda6a48753afd8df071b9fbfa5d8d975021b9b7",
+      "context_rect_xywh": [
+        109,
+        148,
+        230,
+        304
+      ],
+      "context_sha256": "1167226ff774d032d3474cd02c87049fb9787692f41027f530889d68fda5eeb6",
+      "source_image_url": "https://ica.themorgan.org/icaimages/3/g38.II.047ra.jpg",
+      "scene_image_url": "https://ica.themorgan.org/icaimages/3/g38.II.047ra.jpg"
+    },
+    "V32": {
+      "specimen": "target",
+      "asset_sha256": "3367b096b7046982e517b565ff54c4c9174ec9f049ee801911386bedb2b63515",
+      "asset_native_px": [
+        180,
+        130
+      ],
+      "detail_rect_xywh": [
+        58,
+        20,
+        112,
+        97
+      ],
+      "native_body_width_px": 43,
+      "morph_scale": 1,
+      "nominal_matched_body_px_before_display_magnification": 43,
+      "morph_display_magnification": 3,
+      "detail_sha256": "1166158cd262dfa0c64e2c9212759a335339017bd993d485f12c7be2138c20ee",
+      "scene_asset_sha256": "9f727a3f9b89a2341fc944cd21ad57bf4367a64ccfe6386a4044821c6e56b166",
+      "context_rect_xywh": [
+        115,
+        151,
+        510,
+        342
+      ],
+      "context_sha256": "34678cc5c266583260b331386f589e18fb4e206ef06fb58f0c51e3ff72a300ff",
+      "source_image_url": "https://collections.library.yale.edu/iiif/2/1006218/310,280,180,130/full/0/default.jpg",
+      "scene_image_url": "https://collections.library.yale.edu/iiif/2/1006218/130,0,740,700/full/0/default.jpg"
+    },
+    "V39": {
+      "specimen": "laud96v_middle",
+      "asset_sha256": "adea6d050e715d9f0d35e03fcf78646c0b61600190154ce0973a1bf2af397f3e",
+      "asset_native_px": [
+        2641,
+        4000
+      ],
+      "detail_rect_xywh": [
+        875,
+        1950,
+        270,
+        240
+      ],
+      "native_body_width_px": 40,
+      "morph_scale": 1,
+      "nominal_matched_body_px_before_display_magnification": 40,
+      "morph_display_magnification": 3,
+      "detail_sha256": "bc4f3513be03d74d1cd2a41e5b2fc73c6d960ff36097688ea6f06dea088a75cd",
+      "scene_asset_sha256": "adea6d050e715d9f0d35e03fcf78646c0b61600190154ce0973a1bf2af397f3e",
+      "context_rect_xywh": [
+        400,
+        1495,
+        1080,
+        1160
+      ],
+      "context_sha256": "bb44c1b2ffd184383ac4138117768578f33b34d2b266f16d43ef0bbffad2ba39",
+      "source_image_url": "https://iiif.bodleian.ox.ac.uk/iiif/image/4e06e40f-c135-4f3e-922b-c608f8b89695/full/full/0/default.jpg",
+      "scene_image_url": "https://iiif.bodleian.ox.ac.uk/iiif/image/4e06e40f-c135-4f3e-922b-c608f8b89695/full/full/0/default.jpg"
+    },
+    "V46": {
+      "specimen": "laud96r_hip",
+      "asset_sha256": "ecae0fffcadd8f8be5e31c230acf1aa39b428faafdc96e245480bb486eca7f0c",
+      "asset_native_px": [
+        2651,
+        4000
+      ],
+      "detail_rect_xywh": [
+        665,
+        3150,
+        265,
+        260
+      ],
+      "native_body_width_px": 60,
+      "morph_scale": 0.716667,
+      "nominal_matched_body_px_before_display_magnification": 43,
+      "morph_display_magnification": 3,
+      "detail_sha256": "162ff9a02e87873a572555acc1df1257869fdac7cf7b4088f959e86a4f6cfd89",
+      "scene_asset_sha256": "ecae0fffcadd8f8be5e31c230acf1aa39b428faafdc96e245480bb486eca7f0c",
+      "context_rect_xywh": [
+        225,
+        2698,
+        950,
+        1110
+      ],
+      "context_sha256": "53f45ddfd9a19a930c72282d48d69526a8a947a802c099fec3b7ddcdbd0cc973",
+      "source_image_url": "https://iiif.bodleian.ox.ac.uk/iiif/image/859c4725-3c16-4718-8f43-c4b461ac97be/full/full/0/default.jpg",
+      "scene_image_url": "https://iiif.bodleian.ox.ac.uk/iiif/image/859c4725-3c16-4718-8f43-c4b461ac97be/full/full/0/default.jpg"
+    },
+    "V53": {
+      "specimen": "morgan_bowl",
+      "asset_sha256": "59502a86be712c4dbffffcaaccda6a48753afd8df071b9fbfa5d8d975021b9b7",
+      "asset_native_px": [
+        462,
+        600
+      ],
+      "detail_rect_xywh": [
+        214,
+        191,
+        119,
+        92
+      ],
+      "native_body_width_px": 86,
+      "morph_scale": 0.5,
+      "nominal_matched_body_px_before_display_magnification": 43,
+      "morph_display_magnification": 3,
+      "detail_sha256": "45de45565cc90c2d20a55de6829fbe8b910a9cf052557fc5027181c9d5b4dc5a",
+      "scene_asset_sha256": "59502a86be712c4dbffffcaaccda6a48753afd8df071b9fbfa5d8d975021b9b7",
+      "context_rect_xywh": [
+        110,
+        147,
+        230,
+        303
+      ],
+      "context_sha256": "1021a83268ebf5ea173f7d2482f4e304554c828065570bb89a5f42baf421af75",
+      "source_image_url": "https://ica.themorgan.org/icaimages/3/g38.II.047ra.jpg",
+      "scene_image_url": "https://ica.themorgan.org/icaimages/3/g38.II.047ra.jpg"
+    },
+    "V60": {
+      "specimen": "wellcome",
+      "asset_sha256": "8e7543b27981f8e6d363c4ecb76600dacfe57fa6d63095c479345b576d238a49",
+      "asset_native_px": [
+        1600,
+        1836
+      ],
+      "detail_rect_xywh": [
+        742,
+        467,
+        178,
+        143
+      ],
+      "native_body_width_px": 74,
+      "morph_scale": 0.581081,
+      "nominal_matched_body_px_before_display_magnification": 43,
+      "morph_display_magnification": 3,
+      "detail_sha256": "1c71a62a1181031d1e2cd0495569acb576f2fccd72fedd4c2382e56881dd1e8c",
+      "scene_asset_sha256": "8e7543b27981f8e6d363c4ecb76600dacfe57fa6d63095c479345b576d238a49",
+      "context_rect_xywh": [
+        580,
+        377,
+        340,
+        245
+      ],
+      "context_sha256": "78714ff1695ec08f51eef72bdac46d40763b6750a5e917d39d71421608438e0c",
+      "source_image_url": "https://iiif.wellcomecollection.org/image/b19547420_ms_550_0380.JP2/full/1600,/0/default.jpg",
+      "scene_image_url": "https://iiif.wellcomecollection.org/image/b19547420_ms_550_0380.JP2/full/1600,/0/default.jpg"
+    },
+    "V67": {
+      "specimen": "morgan_m165",
+      "asset_sha256": "216614393305a880b5260956d8896e66564499d6a0c6670f37f8e6947d080f0d",
+      "asset_native_px": [
+        600,
+        450
+      ],
+      "detail_rect_xywh": [
+        258,
+        151,
+        95,
+        88
+      ],
+      "native_body_width_px": 32,
+      "morph_scale": 1,
+      "nominal_matched_body_px_before_display_magnification": 32,
+      "morph_display_magnification": 3,
+      "detail_sha256": "841ef9ce6e24ad207a3c0928a1c3c1956b1d259a4cb0b2f941c377005cfa3d8c",
+      "scene_asset_sha256": "216614393305a880b5260956d8896e66564499d6a0c6670f37f8e6947d080f0d",
+      "context_rect_xywh": [
+        176,
+        111,
+        285,
+        255
+      ],
+      "context_sha256": "27a4b11f7e7f63f8ef3824343641146a1ac4c2a2bef3c6eb86815c5cfc175108",
+      "source_image_url": "https://ica.themorgan.org/icaimages/1/m165.024ra.jpg",
+      "scene_image_url": "https://ica.themorgan.org/icaimages/1/m165.024ra.jpg"
+    },
+    "V74": {
+      "specimen": "arderne_x118",
+      "asset_sha256": "05ebf44d35cd7cca06a03dfddf21d74edabd547343782b99844115da517ba902",
+      "asset_native_px": [
+        870,
+        1030
+      ],
+      "detail_rect_xywh": [
+        246,
+        53,
+        380,
+        271
+      ],
+      "native_body_width_px": 142,
+      "morph_scale": 0.302817,
+      "nominal_matched_body_px_before_display_magnification": 43,
+      "morph_display_magnification": 3,
+      "detail_sha256": "a0ae68d30226235fb3e863809ca907580a8e97a7a11368b2ce2baa6693d5f76e",
+      "scene_asset_sha256": "05ebf44d35cd7cca06a03dfddf21d74edabd547343782b99844115da517ba902",
+      "context_rect_xywh": [
+        25,
+        0,
+        760,
+        712
+      ],
+      "context_sha256": "8450bfafca66fea7d4823f37c43fb7ee200a074f9899f3b91402f51baa071ac5",
+      "source_image_url": "https://iiif.manuscripta.se/iiif/ms-101000/ms-101000_0001.tif/3500,25130,870,1030/full/0/default.jpg",
+      "scene_image_url": "https://iiif.manuscripta.se/iiif/ms-101000/ms-101000_0001.tif/3500,25130,870,1030/full/0/default.jpg"
+    }
+  },
+  "round_1_detail": {
+    "columns": [
+      "rim",
+      "bore",
+      "stop",
+      "bands"
+    ],
+    "A": {
+      "V18": "UUUU",
+      "V25": "AUAA",
+      "V32": "AUAA",
+      "V39": "UUUV",
+      "V46": "UUUU",
+      "V53": "UUUA",
+      "V60": "UUUU",
+      "V67": "UUUU",
+      "V74": "AUAV"
+    },
+    "B": {
+      "V18": "UUUU",
+      "V25": "AAAA",
+      "V32": "AAAA",
+      "V39": "UUUU",
+      "V46": "UAAA",
+      "V53": "UUAA",
+      "V60": "UUUA",
+      "V67": "UUUA",
+      "V74": "AUAV"
+    },
+    "lock": "Each detail-only report was received independently before either context task was issued. Neither reader named a recognized source. Both remarked that V25 and V53 appeared to be the same image."
+  },
+  "round_2_context": {
+    "columns": [
+      "grip",
+      "non_grip_contact",
+      "holder_and_approached_body",
+      "repeated"
+    ],
+    "A": {
+      "V18": [
+        "uncertain",
+        "unresolved or no body approached",
+        "N/A",
+        "no match visible"
+      ],
+      "V25": [
+        "shaft",
+        "no approached body",
+        "N/A",
+        "no"
+      ],
+      "V32": [
+        "rounded body near junction",
+        "gap to nearest flank",
+        "same if scoring nearest body",
+        "no"
+      ],
+      "V39": [
+        "upper hand at shaft and lower hand at cluster",
+        "shaft tip unresolved, oval meets hip",
+        "separate",
+        "multiple ovals, no repeat of shaft assembly"
+      ],
+      "V46": [
+        "rounded body or edge",
+        "continuous oval contact at lower back",
+        "separate",
+        "yes"
+      ],
+      "V53": [
+        "body near broad edge, fingers below",
+        "continuous line at mouth",
+        "same",
+        "no"
+      ],
+      "V60": [
+        "rounded body",
+        "narrow tip unresolved against hip",
+        "separate",
+        "no"
+      ],
+      "V67": [
+        "body and upper edge",
+        "rounded edge against shoulder, specific projection unresolved",
+        "separate",
+        "no"
+      ],
+      "V74": [
+        "rounded body with both hands",
+        "continuous neck ending at body",
+        "separate",
+        "no"
+      ]
+    },
+    "B": {
+      "V18": [
+        "raised hand at lower edge",
+        "no body approached clearly",
+        "N/A",
+        "no"
+      ],
+      "V25": [
+        "mid to lower shaft",
+        "neither terminal approaches body",
+        "N/A",
+        "no"
+      ],
+      "V32": [
+        "upper side of rounded body",
+        "gap to nearest same figure flank",
+        "same nearest body",
+        "no"
+      ],
+      "V39": [
+        "upper fingers around strokes, lower hand under junction",
+        "unresolved in crowded contours",
+        "separate",
+        "multiple ovals, no repeat of shaft assembly"
+      ],
+      "V46": [
+        "lower hand cups oval",
+        "continuous oval contact at lower back or hip",
+        "separate",
+        "yes"
+      ],
+      "V53": [
+        "underbody support",
+        "continuous line at mouth",
+        "same",
+        "no"
+      ],
+      "V60": [
+        "rounded body gripped from above",
+        "endpoint unresolved in overlap",
+        "separate",
+        "no"
+      ],
+      "V67": [
+        "upper and lower support of rounded body",
+        "general contact with upper back/shoulder",
+        "separate",
+        "no"
+      ],
+      "V74": [
+        "rounded body with both hands",
+        "continuous neck ending at rear body outline",
+        "separate",
+        "no"
+      ]
+    },
+    "recognition": "Both thought V32 resembled a bathing-section Voynich drawing, with no exact folio identified. Both saw V25 and V53 as two objects from the same scene. Neither named a control's source."
+  },
+  "detail_agreement_counts_out_of_9": {
+    "rim": {
+      "pairs": {
+        "AA": 3,
+        "UU": 6
+      },
+      "equal_codes": 9
+    },
+    "bore": {
+      "pairs": {
+        "UA": 3,
+        "UU": 6
+      },
+      "equal_codes": 6
+    },
+    "stop": {
+      "pairs": {
+        "AA": 3,
+        "UA": 2,
+        "UU": 4
+      },
+      "equal_codes": 7
+    },
+    "bands": {
+      "pairs": {
+        "AA": 3,
+        "UA": 3,
+        "UU": 1,
+        "VU": 1,
+        "VV": 1
+      },
+      "equal_codes": 5
+    }
+  },
+  "supplement_after_both_locked_rounds": {
+    "columns": [
+      "rim",
+      "bore",
+      "external_shoulder"
+    ],
+    "A": {
+      "H17": "VUU",
+      "H31": "AUV",
+      "H42": "VUU",
+      "H56": "AUA",
+      "H63": "AVA",
+      "H75": "VUV"
+    },
+    "B": {
+      "H17": "VUU",
+      "H31": "UUV",
+      "H42": "UUA",
+      "H56": "UUA",
+      "H63": "UVA",
+      "H75": "VAV"
+    },
+    "controls": {
+      "H17": {
+        "use": "wide tub, separate from the handheld form at the top of the scene",
+        "image": "https://ica.themorgan.org/icaimages/9/m919.117ra.jpg",
+        "rect_xywh": [
+          105,
+          425,
+          156,
+          109
+        ],
+        "resampled_crop_px": [
+          52,
+          36
+        ],
+        "display_zoom": 3,
+        "reading": "Both see the outer lip enclosing open interior. About 43 pixels of vessel breadth at comparison scale.",
+        "masked_image_sha256": "827e3311e03e68a6a7af49b42307657617508b652a70f39a003aadc80a553a56"
+      },
+      "H31": {
+        "use": "external collars on a side-profile photograph",
+        "date": "Retrieved from the Kronan wreck, which sank in 1676. Manufacture date unspecified.",
+        "citation": "Lindeke and Ohlson 2018, fig. 5a on printed p. 72",
+        "reference": "https://www.sidestone.com/openaccess/9789088906206.pdf#page=74",
+        "rect_xywh_on_pdf_embedded_image": [
+          40,
+          29,
+          503,
+          192
+        ],
+        "resampled_crop_px": [
+          113,
+          43
+        ],
+        "display_zoom": 3,
+        "shaft_width_px": "about 9 along the thin exposed shaft",
+        "reading": "Both see external shoulders at the widening rings. Both code the bore unresolved. The source is a photograph with high contrast, centuries later than the manuscript. A manufactured shoulder and a functional stop are separate claims.",
+        "masked_image_sha256": "f5c3d07dde51a3a79b6b94b863ce321e37d76f24bb80800f5d72566b27d164c3"
+      },
+      "H42": {
+        "use": "the V53 bowl at the native 86-pixel breadth",
+        "image": "https://ica.themorgan.org/icaimages/3/g38.II.047ra.jpg",
+        "rect_xywh": [
+          214,
+          191,
+          119,
+          92
+        ],
+        "display_zoom": 3,
+        "reading": "One reader saw a rim and the other found it unresolved. At the 43-pixel exposure both coded it unresolved.",
+        "masked_image_sha256": "0b016c3de8a7b1a5369f7fb3ca6fa26aae6134d147c1ce3cb0adbab446fa2555"
+      },
+      "H56": {
+        "reference": "Glasgow University Library, MS Hunter 251 (U.4.9), f43r, England, c.1475–1500",
+        "catalogue": "https://www.gla.ac.uk/myglasgow/library/files/special/exhibns/month/may2006.html",
+        "image": "https://www.gla.ac.uk/myglasgow/library/files/special/images/exhibitions/month/H251/H251_0043rwf.jpg",
+        "original_asset_px": [
+          333,
+          412
+        ],
+        "original_asset_sha256": "459ba435fd7ef7a7b670e1112a5886835cfe77bee76259d3b02a4e1de681c002",
+        "display_zoom": 5,
+        "use": "lower narrow end of the left detached syringe on the instrument sheet",
+        "rect_xywh": [
+          60,
+          267,
+          34,
+          54
+        ],
+        "reading": "Both found the narrow terminal mark unresolved despite an exposed tip. No new optical samples were added.",
+        "masked_image_sha256": "87791084060628b3dba3be962a1667f46885db9f861d089ef0f3dbed0dbc2a8a"
+      },
+      "H63": {
+        "reference": "Glasgow University Library, MS Hunter 251 (U.4.9), f43r, England, c.1475–1500",
+        "catalogue": "https://www.gla.ac.uk/myglasgow/library/files/special/exhibns/month/may2006.html",
+        "image": "https://www.gla.ac.uk/myglasgow/library/files/special/images/exhibitions/month/H251/H251_0043rwf.jpg",
+        "original_asset_px": [
+          333,
+          412
+        ],
+        "original_asset_sha256": "459ba435fd7ef7a7b670e1112a5886835cfe77bee76259d3b02a4e1de681c002",
+        "display_zoom": 5,
+        "use": "upper narrow end of the right detached syringe on the instrument sheet",
+        "rect_xywh": [
+          250,
+          75,
+          36,
+          58
+        ],
+        "native_terminal_breadth_px": "about 6",
+        "reading": "Both found a separate closed outline bounding a lighter center at the terminal and scored the very small depicted bore visible. That end faces the viewer. No new optical samples were added.",
+        "masked_image_sha256": "6229569e95cc2f17b83491c97810c22faaa63bb57cc915365bbbfccfeaab9f92"
+      },
+      "H75": {
+        "reference": "Glasgow University Library, MS Hunter 251 (U.4.9), f43r, England, c.1475–1500",
+        "catalogue": "https://www.gla.ac.uk/myglasgow/library/files/special/exhibns/month/may2006.html",
+        "image": "https://www.gla.ac.uk/myglasgow/library/files/special/images/exhibitions/month/H251/H251_0043rwf.jpg",
+        "original_asset_px": [
+          333,
+          412
+        ],
+        "original_asset_sha256": "459ba435fd7ef7a7b670e1112a5886835cfe77bee76259d3b02a4e1de681c002",
+        "display_zoom": 5,
+        "use": "wide face and separate collar on the right detached syringe",
+        "rect_xywh": [
+          244,
+          224,
+          56,
+          99
+        ],
+        "native_broad_rim_breadth_px": "about 43",
+        "reading": "Both see the broad nested-oval opening and a separate collar interrupting both shaft sides.",
+        "masked_image_sha256": "9226b3ffaa8dc5386bbc0a93c35196c252f45f0c4f2472725eadbd0b86744ca8"
+      }
+    }
+  },
+  "other_laud_panels": "Direct review of f96v top and bottom confirms repeated ovals at different positions on seated figures with a separate attendant. The middle scene is the coded f96v specimen. These are multiple images from one manuscript and remain one historical source.",
+  "limits": [
+    "Eight external specimen crops came from six manuscripts. The two Laud scenes and the two G.38.II held objects are paired within sources. This is a selected comparison set.",
+    "The coarse anatomical placement and visible gap do not fix the drawing’s intended role. A holding or preparation pose remains possible.",
+    "Body outlines, hands and applying edges overlap in several controls. The detached Hunter 251 instrument drawing gives a readable bore in one view and an unresolved terminal mark in another. Its angle, line contrast and grips differ from the corresponding details on f80r. The tub and late photograph offer supplementary checks for broad rim and geometric shoulder. A visible wrap and a discrete external shoulder are separate observations.",
+    "No external source provides a sufficiently readable independent identification of the target. This experiment assigns no label reading or historical function."
+  ]
+}

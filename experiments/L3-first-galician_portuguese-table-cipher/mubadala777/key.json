@@ -1,0 +1,380 @@
+{
+  "id": "K-galician_portuguese-table-cipher-001",
+  "family": "table-cipher",
+  "segmentation": "eva-basic",
+  "target": {
+    "language": "galician_portuguese",
+    "period": "13th–15th-century Galician-Portuguese lyric from the two pinned cantiga corpora."
+  },
+  "key": {
+    "map": {
+      "a": "a",
+      "b": "b",
+      "d": "c",
+      "e": "d",
+      "f": "e",
+      "g": "f",
+      "i": "g",
+      "j": "h",
+      "k": "i",
+      "l": "j",
+      "m": "l",
+      "n": "m",
+      "o": "n",
+      "p": "o",
+      "q": "p",
+      "r": "q",
+      "s": "r",
+      "t": "s",
+      "u": "t",
+      "v": "u",
+      "w": "v",
+      "x": "x",
+      "y": "y",
+      "z": "z"
+    },
+    "shifts": [
+      3,
+      8,
+      22,
+      22
+    ]
+  },
+  "search": {
+    "budget": {
+      "max_period": 4,
+      "sweeps": 4
+    },
+    "references": [
+      "galician_portuguese_a3107d41",
+      "galician_portuguese_e5366bed"
+    ],
+    "positive_control": {
+      "criteria_method": "season._short(judge.evaluate(key, train, evaluation, 'control'))",
+      "language": "galician_portuguese",
+      "cipher_family": "table-cipher",
+      "control_seed": 0,
+      "python_hash_seed": "0",
+      "noise": 0.02,
+      "search_tag": "control",
+      "search_budget": {
+        "max_period": 4,
+        "sweeps": 4
+      },
+      "training": {
+        "pages": 482,
+        "lines": 4812,
+        "words": 38495
+      },
+      "evaluation": {
+        "pages": 80,
+        "lines": 800,
+        "words": 6398
+      },
+      "passes_without_anchors": true,
+      "planted_passes_without_anchors": true,
+      "relative_compression_savings": 0.01299,
+      "planted_relative_compression_savings": 0.01299,
+      "mapping_recovery": {
+        "matching_planted_symbol_mappings": 24,
+        "planted_symbol_mappings": 24,
+        "fitted_symbol_mappings": 24,
+        "symbol_mapping_fixed_by_family": true,
+        "matching_shift_positions": 3,
+        "planted_shift_count": 3,
+        "fitted_shift_count": 3,
+        "planted_distinct_shift_count": 3,
+        "fitted_distinct_shift_count": 3,
+        "planted_shifts": [
+          22,
+          2,
+          3
+        ],
+        "fitted_shifts": [
+          22,
+          2,
+          3
+        ],
+        "exact_shift_sequence": true
+      },
+      "planted": {
+        "short": {
+          "submission": "control-galician_portuguese-table-cipher",
+          "family": "table-cipher",
+          "target": {
+            "language": "galician_portuguese",
+            "period": "control"
+          },
+          "verdict": "FAIL",
+          "failed": [
+            "c_pictures"
+          ],
+          "passes_without_anchors": true,
+          "savings": 0.01299,
+          "killed_by": []
+        },
+        "criteria": {
+          "a_compresses": {
+            "pass": true,
+            "savings": 0.01299,
+            "baseline_bits": 73153.2,
+            "candidate_bits": 72203.2,
+            "program_bits": 1650,
+            "key_bits": 864,
+            "bootstrap_lo95_bits": 176.4,
+            "baseline": {
+              "char_kn5": 73153.23379425114,
+              "word_unigram_escape": 76411.07880062948,
+              "chosen": "char_kn5"
+            },
+            "candidate": {
+              "plaintext_model": "char_kn5",
+              "plaintext_bits": 69689.2,
+              "choice_code": "unit_preimage",
+              "choice_bits": 0.0
+            }
+          },
+          "b_reads": {
+            "pass": true,
+            "sections": {
+              "H": {
+                "tokens": 6398,
+                "judged": true,
+                "H": 2.3124,
+                "coverage": 0.8921,
+                "ttr": 0.5808,
+                "pass": true
+              }
+            },
+            "calibration": {
+              "chunks": 298,
+              "H_max": 2.6104,
+              "cov_min": 0.7995,
+              "ttr_lo": 0.4433,
+              "ttr_hi": 0.68,
+              "H_median": 2.1073,
+              "order_gap": 2.622
+            },
+            "output_tokens": 6398,
+            "voynich_tokens": 6398
+          },
+          "kill_tests": {
+            "pass": true,
+            "real": {
+              "H": 2.3317,
+              "coverage": 0.8928,
+              "word_bits": 8.9698
+            },
+            "decoys": {
+              "D1_word_order_shuffled": {
+                "word_bits_gap": 2.1926,
+                "needed": 1.311,
+                "killed": false
+              },
+              "D2_glyphs_shuffled": {
+                "H": 5.8811,
+                "coverage": 0.3357,
+                "killed": false
+              },
+              "D3_random_glyphs": {
+                "H": 6.1867,
+                "coverage": 0.2457,
+                "killed": false
+              },
+              "D4_unrelated_text_enciphered": {
+                "H": 6.3025,
+                "coverage": 0.136,
+                "killed": false
+              }
+            }
+          },
+          "c_pictures": {
+            "confirmed": 1,
+            "pass": false,
+            "reason": "only 1 confirmed anchors (need 3): criterion (c) cannot pass yet"
+          },
+          "d_not_illusion": {
+            "shape": {
+              "top3_letter_share": 0.3566,
+              "band": [
+                0.3537,
+                0.3681
+              ],
+              "hapax_share": 0.7163,
+              "hapax_band": [
+                0.4947,
+                0.7913
+              ],
+              "pass": true
+            },
+            "phrase_repetition": {
+              "rate": 0.03221,
+              "language_low_end": 0.00587,
+              "language_mean": 0.06417,
+              "pass": true
+            },
+            "exclusive": {
+              "own_bits_per_char": 2.4688,
+              "best_rival": "spanish",
+              "rival_bits_per_char": 3.7871,
+              "pass": true
+            },
+            "matched_freedom": {
+              "pass": true,
+              "note": "no declared search budget: not applicable (keys from unknown searches are judged on (a)-(c) and the other checks)"
+            },
+            "pass": true
+          }
+        }
+      },
+      "fitted": {
+        "short": {
+          "submission": "grid-galician_portuguese-table-cipher-control",
+          "family": "table-cipher",
+          "target": {
+            "language": "galician_portuguese",
+            "period": "grid search"
+          },
+          "verdict": "FAIL",
+          "failed": [
+            "c_pictures",
+            "d_not_illusion"
+          ],
+          "passes_without_anchors": true,
+          "savings": 0.01299,
+          "killed_by": []
+        },
+        "criteria": {
+          "a_compresses": {
+            "pass": true,
+            "savings": 0.01299,
+            "baseline_bits": 73153.2,
+            "candidate_bits": 72203.2,
+            "program_bits": 1650,
+            "key_bits": 864,
+            "bootstrap_lo95_bits": 176.4,
+            "baseline": {
+              "char_kn5": 73153.23379425114,
+              "word_unigram_escape": 76411.07880062948,
+              "chosen": "char_kn5"
+            },
+            "candidate": {
+              "plaintext_model": "char_kn5",
+              "plaintext_bits": 69689.2,
+              "choice_code": "unit_preimage",
+              "choice_bits": 0.0
+            }
+          },
+          "b_reads": {
+            "pass": true,
+            "sections": {
+              "H": {
+                "tokens": 6398,
+                "judged": true,
+                "H": 2.3124,
+                "coverage": 0.8921,
+                "ttr": 0.5808,
+                "pass": true
+              }
+            },
+            "calibration": {
+              "chunks": 298,
+              "H_max": 2.6104,
+              "cov_min": 0.7995,
+              "ttr_lo": 0.4433,
+              "ttr_hi": 0.68,
+              "H_median": 2.1073,
+              "order_gap": 2.622
+            },
+            "output_tokens": 6398,
+            "voynich_tokens": 6398
+          },
+          "kill_tests": {
+            "pass": true,
+            "real": {
+              "H": 2.3317,
+              "coverage": 0.8928,
+              "word_bits": 8.9698
+            },
+            "decoys": {
+              "D1_word_order_shuffled": {
+                "word_bits_gap": 2.1926,
+                "needed": 1.311,
+                "killed": false
+              },
+              "D2_glyphs_shuffled": {
+                "H": 5.8811,
+                "coverage": 0.3357,
+                "killed": false
+              },
+              "D3_random_glyphs": {
+                "H": 6.1867,
+                "coverage": 0.2457,
+                "killed": false
+              },
+              "D4_unrelated_text_enciphered": {
+                "H": 6.3025,
+                "coverage": 0.136,
+                "killed": false
+              }
+            }
+          },
+          "c_pictures": {
+            "confirmed": 1,
+            "pass": false,
+            "reason": "only 1 confirmed anchors (need 3): criterion (c) cannot pass yet"
+          },
+          "d_not_illusion": {
+            "shape": {
+              "top3_letter_share": 0.3566,
+              "band": [
+                0.3537,
+                0.3681
+              ],
+              "hapax_share": 0.7163,
+              "hapax_band": [
+                0.4947,
+                0.7913
+              ],
+              "pass": true
+            },
+            "phrase_repetition": {
+              "rate": 0.03221,
+              "language_low_end": 0.00587,
+              "language_mean": 0.06417,
+              "pass": true
+            },
+            "exclusive": {
+              "own_bits_per_char": 2.4688,
+              "best_rival": "spanish",
+              "rival_bits_per_char": 3.7871,
+              "pass": true
+            },
+            "matched_freedom": {
+              "meaningless_savings": 0.00068,
+              "savings": 0.01299,
+              "pass": false
+            },
+            "pass": false
+          }
+        }
+      },
+      "search_seconds": 1.362,
+      "total_seconds": 70.774
+    },
+    "training": "Public ZL practice training only, EVA-basic and ordinary word breaks. Each shift cycle starts at the word boundary and uses the fixed ordered alphabet of the pinned family.",
+    "training_coverage": {
+      "period": 4,
+      "shifts": [
+        3,
+        8,
+        22,
+        22
+      ],
+      "ciphertext_units": 145468,
+      "recognized_units": 129997,
+      "recognized_unit_share": 0.8936467126790771
+    }
+  },
+  "transliteration": "zl"
+}

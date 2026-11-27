@@ -1,0 +1,222 @@
+{
+  "title": "Shared lunar-mansion layouts and a fourfold rosette leave the Persian attribution unresolved",
+  "statement": "Compare the diagram structures proposed in Herrmann's Pahlavi hypothesis against dated Arabic and Western comparators and the surviving Bundahišn horoscope. Source-masked readers agree that f69v has 28 alternating bars and that f67v2 has a fourfold pinwheel. Neither supplies the distinctive spatial and iconographic correspondences needed to favor a particular tradition.",
+  "program": "L4",
+  "check": "Repeat blind structural coding using unlabeled archive crops with prespecified features. Look for a separately identifiable zodiac tier, named directional markers, fixed-star and planetary-layer order, and an explicit support beneath upward flames. Compare a named sequence only after freezing label orders, phonetic rules and all allowed rotations or directions. A match should outperform Arabic-derived and Latin comparators as well as shuffled lists.",
+  "on_path": true,
+  "hard": true,
+  "sources": {
+    "claim": "J. Michael Herrmann (2017), The Voynich Manuscript is Written in Natural Language: The Pahlavi Hypothesis, arXiv v2, sections 3.3, 3.4, 4 and Appendix A. https://arxiv.org/pdf/1709.01634v2",
+    "precedent": "P-L4-002 documents a source-aware f69v count, the Or.133 comparison, the Latin Countway catalogue and an initial look at f67v2. This follow-up adds independent image-based observations, more dated images and the Iranian horoscope check. https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/203",
+    "bundahis_west": "E. W. West, Indian Bundahišn, ch. II, paragraphs 1–8, Pahlavi Texts Part I, Sacred Books of the East 5, first published 1880. https://original.sacred-texts.com/zor/sbe05/sbe0511.htm",
+    "greater_bundahis": "B. T. Anklesaria, Zand-Ākāsīh, Greater Bundahišn, ch. II paragraphs 2–14, ch. V A and ch. XVIII. https://avesta.org/mp/grb1.htm",
+    "recension_and_manuscripts": "D. N. MacKenzie, Bundahišn and Constellations, Encyclopaedia Iranica. https://www.iranicaonline.org/articles/bundahisn-primal-creation/ and https://www.iranicaonline.org/articles/constellations/",
+    "horoscope": "Michio Yano, Eastern Perspective of the Conference, Micrologus XXIV (2016), p. 459, fig. 3, TD2 p. 51 facsimile. https://www.cc.kyoto-su.ac.jp/~yanom/pdf/yano_papers/Yano_2016_page457-474.pdf. Read with Enrico G. Raffaelli, Zāyča, https://www.iranicaonline.org/articles/zayca/",
+    "yalefolios": "Beinecke MS 408 f67v and f69v–f70r, Yale Library. https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006195 and https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006199",
+    "arab_c90": "Book of Curiosities, Bodleian MS Arab. c. 90, ff. 2v–3r, manuscript dated 1190–1210. https://iiif.bodleian.ox.ac.uk/iiif/canvas/9939b9f2-899b-49be-9d80-7b7b78f0e37b.json. Identify bands with Yossef Rapoport and Emilie Savage-Smith, Lost Maps of the Caliphs, fig. 2.1 and plate 19, and Oxford's https://digital.humanities.ox.ac.uk/node/392471.",
+    "arab_or133": "Bodleian MS Bodl. Or. 133, ff. 117v–118r, Arabic chart in its 1333–34 component. https://iiif.bodleian.ox.ac.uk/iiif/canvas/6021232e-d3e1-4fcb-b57c-9bfb88b8b69f.json and https://iiif.bodleian.ox.ac.uk/iiif/canvas/99500391-88eb-4eb2-83f8-dd5e0a620368.json. Compare Savage-Smith, Islamic Celestial Mapping, fig. 2.22, https://press.uchicago.edu/books/hoc/HOC_V2_B1/HOC_Volume2_Book1_chapter2.pdf.",
+    "castilian_reg1283": "Libro de astromagia, c. 1280, Biblioteca Apostolica Vaticana Reg.lat.1283.pt.A f21r. https://digi.vatlib.it/iiif/MSS_Reg.lat.1283.pt.A/canvas/p0051. Source-lineage and rider identification from Laura Fernández Fernández (2023), Codex Aquilarensis 39, pp. 104–106, https://doi.org/10.61023/codexaq.2023.39.005.",
+    "latin_scot": "Michael Scot, Liber introductorius, BSB Clm 10268 f114r, mid-fourteenth-century Latin copy. https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00002270/canvas/231. Grid identification by the Saxl Project, p. 24, https://www.thesaxlproject.com/assets/Uploads/MSS-DESCRIPTIONS-Michael-Scot-Munich-10268-31-Oct-2016.pdf.",
+    "latin_winds": "Lambert of Saint-Omer, Liber floridus, ca. 1112–1121, Wolfenbüttel Cod. Guelf. 1 Gud. Lat. f16r. Reproduction in Winds and Continents, fig. 2.8, https://kartdok.staatsbibliothek-berlin.de/servlets/MCRFileNodeServlet/kartdok_derivate_00000287/10_1515_9781501516016.pdf.",
+    "sasanian_fire": "British Museum 1920,0515.239, reverse of a Sasanian silver drachm of Khusrau II, ca. 626. https://islamicworld.britishmuseum.org/collection/COC235218/. Compare the three altar variants described at https://www.iranicaonline.org/articles/coins-and-coinage/."
+  },
+  "claims_and_comparisons": {
+    "f69v": "Herrmann section 3.3 reports possible identifications of twenty of twenty-eight lunar mansions. His citation here is Justi's 1868 Bundehesh. He omits the identified positions and readings, so the claimed lexical correspondence cannot be reconstructed from the paper.",
+    "f67v2": "Herrmann section 3.4 interprets four words around a small swirling square as sacrifice, lot, power and foundation, and proposes a possible fire context. The attribution depends on his script readings and provides no cited depiction or diagram of a particular rite. The optical check treats the proposed script values as unused.",
+    "zodiac": "Appendix A proposes sign and month readings. Its notes acknowledge visually repeated ram and bull designs, where it tentatively assigns Capricorn and Aquarius. Unpublished lunar positions and tentative zodiac reinterpretations do not supply an objective order to impose on f69v.",
+    "explicit_text_structure": "The Indian and Greater texts describe twelve zodiacal constellations and twenty-eight subdividing asterisms, with four directional chieftains and a chief over them. West and Anklesaria differ in how they place Sataves and Vanand on the south and west axes. MacKenzie cautions that only twenty-seven mansion names are recoverable in the corrupt tradition. The Greater text also puts ordinary and then unmixed stars below the Moon and Sun, a potentially discriminating comparison only when objects and inside-out order are actually identifiable.",
+    "attested_persian_diagram": "The surviving Greater Bundahišn horoscope diagram is for chapter V A and is a different genre from a chapter II mansion list. It uses a central square and twelve peripheral houses, made by cutting four square corners diagonally. Raffaelli records the textual Cancer ascendant at nineteen degrees and associated zodiac assignments for Jupiter, Saturn, Mars, Venus and Mercury, the Sun, the Moon and the nodes. The manuscript diagrams have copying and placement discrepancies. The Iranian manuscript witnesses postdate the Voynich parchment dating interval. Their appropriate role here is an attested structural comparator and a source of conditional forecasts.",
+    "other_shared_structures": "The Arabic Book of Curiosities diagram independently uses a zodiac tier and a mansion tier. The scholars' reading distinguishes twelve zodiac constellations, thirty-six other classical constellations and twenty-eight mansions. Or.133 has distinct bands including zodiac and lunar stations with differing red dot patterns. Castilian f21r uses an Arabic-derived text and a radial figurative wheel. Latin Clm 10268 f114r puts asterisms into a grid. These comparators separate writing language from the transmission history of an astronomy system."
+  },
+  "visual_protocol": {
+    "selection": "Use the two named Voynich targets, an adjacent internal control, the earlier Or.133 comparator, two additional medieval mansion diagrams, one Latin non-mansion wind diagram and one definite historical altar. Use a supplementary attested Persian horoscope and a wider view of f67v2. Keep the differing purposes and media of these controls explicit.",
+    "blinding": "Randomize nine crops with seed 28067, then present two anonymous supplementary crops. Two auxiliary image-model readers receive anonymous images, a fixed structural rubric and no identifications or proposed readings. Published captions and article prose are outside the cropped diagrams. Script, media and recognizable stylistic details remain visible. Their absence of a name assignment means blinding is to supplied provenance and predictions.",
+    "rubric": "Record the dominant topology and visible repeating unit count, independently marked fours or twelves and their relation to the principal unit, alternation, differentiated star groups, central form and whether an upright support, rising flames, flanking people or a four-sided enclosure can be traced. Keep any uncertain count or ambiguous contour explicitly qualified. Code the supplementary f67v2 view for slender axes and separate diagonal decorated motifs.",
+    "inference": "A naked count or radial format shared with a well-identified comparator has low specificity. Identify a directional alignment only from differential markers with an independent anchor to the meaning of a direction. Identify an outside-to-inside sphere order only with evidence identifying two named layers. Zero explicit match on these structures leaves the proposed attribution unresolved. No composite similarity score or probability of origin is inferred."
+  },
+  "frame_locators": {
+    "f69v-f70r.jpg": "Yale canvas 1006199, full 2200 px wide, 2200×960",
+    "f67v.jpg": "Yale canvas 1006195, full 1600 px wide, 1600×1187",
+    "coin2.jpg": "https://islamicworld.britishmuseum.org/static/2-f2e776d7561ee15abcf8d9f194d0ae23.jpg, 640×319",
+    "alfonso.jpg": "Vatican Reg.lat.1283.pt.A f21r p0051, full 1000 px wide, 1000×1394",
+    "latin.jpg": "BSB bsb00002270_00231 f114r, full 1000 px wide, 1000×1585",
+    "curiosities.jpg": "Bodleian 9939b9f2-899b-49be-9d80-7b7b78f0e37b, full 1400×951",
+    "or133 pair": "Bodleian 118r left and 117v right, each full 1006×1500. Read two crop rectangles in that order, then join with a twelve-pixel gutter.",
+    "winds-page-072.jpg": "Winds and Continents PDF p. 72 at 110 dpi, printed p. 58 fig. 2.8, 672×997",
+    "yano-page-03.jpg": "Yano PDF p. 3 at 125 dpi, printed p. 459 fig. 3, 739×1157"
+  },
+  "visual_pairs": [
+    {
+      "panel": "M01",
+      "source": "sasanian_fire",
+      "frame": "coin2.jpg",
+      "crop": [
+        339,
+        19,
+        622,
+        306
+      ],
+      "reader_1": "Concentric bands with four separate cardinal ornaments. Central raised tiered object and two flanking humanlike figures. Possible short upward tongues at the top.",
+      "reader_2": "Concentric bands and four outer ornaments. A central upright stacked pedestal and inward-facing human figures flank it. Rising taper probable and exact tongue count uncertain."
+    },
+    {
+      "panel": "M02",
+      "source": "castilian_reg1283",
+      "frame": "alfonso.jpg",
+      "crop": [
+        92,
+        430,
+        899,
+        1232
+      ],
+      "reader_1": "About twenty-eight narrow radial sections with heterogeneous pictorial objects. No separate four or twelve grouping. The center has a rider on a long-eared animal.",
+      "reader_2": "Twenty-eight traced wedges with varied human and animal figures. No separate four or twelve grouping. A single mounted figure raises an arm in the center."
+    },
+    {
+      "panel": "M03",
+      "source": "latin_scot",
+      "frame": "latin.jpg",
+      "crop": [
+        93,
+        120,
+        822,
+        620
+      ],
+      "reader_1": "A five-column by six-row grid with two empty cells. Various dot or star patterns in the remaining cells.",
+      "reader_2": "A red five-by-six grid with twenty-eight populated cells. Star counts and arrangements vary. No central image or separate four- or twelve-part tier."
+    },
+    {
+      "panel": "M04",
+      "source": "yale_f69v",
+      "frame": "f69v-f70r.jpg",
+      "crop": [
+        172,
+        153,
+        744,
+        775
+      ],
+      "reader_1": "Fourteen long dark and fourteen shorter pale capped bars alternate. No clear independently marked four or twelve. A pale radial center lacks a raised base or flankers.",
+      "reader_2": "Exactly twenty-eight capped bars, fourteen elongated dark alternating with fourteen shorter pale. No independently marked four or twelve. Irregular light radial hub."
+    },
+    {
+      "panel": "M05",
+      "source": "yale_f67v2",
+      "frame": "f67v.jpg",
+      "crop": [
+        292,
+        313,
+        594,
+        618
+      ],
+      "reader_1": "A curved pinwheel inside a four-sided frame with four green corners and axial marks. No raised base, flanking people or separate upward flames.",
+      "reader_2": "A pinwheel in a four-sided frame, green corners and four axes. No upright flames, separate base or flankers."
+    },
+    {
+      "panel": "M06",
+      "source": "yale_f67v1",
+      "frame": "f67v.jpg",
+      "crop": [
+        808,
+        74,
+        1588,
+        941
+      ],
+      "reader_1": "A central face surrounded by wavy rays and variable stars. No visible ruled radial cells or dominant four or twelve grouping.",
+      "reader_2": "A face with wavy rays throughout all directions. About thirty-nine visible stars, three green. No ruled sectors or separately marked four and twelve."
+    },
+    {
+      "panel": "M07",
+      "source": "latin_winds",
+      "frame": "winds-page-072.jpg",
+      "crop": [
+        123,
+        171,
+        482,
+        506
+      ],
+      "reader_1": "Twelve radial bands plus four diagonal spike groups. The central disk has a probable fourfold subdivision. The fours do not partition the twelve.",
+      "reader_2": "Twelve radial motifs with twelve intervening blue scalloped fields. A fourfold cross seems visible in the green center, without rule connections assigning three outer sectors per quarter."
+    },
+    {
+      "panel": "M08",
+      "source": "arab_or133",
+      "frame": null,
+      "crop": [
+        [
+          315,
+          79,
+          1006,
+          1415
+        ],
+        [
+          0,
+          79,
+          695,
+          1415
+        ]
+      ],
+      "reader_1": "Twelve bounded inner sections, a finer outer tier of about twenty-eight interrupted by seams, red and black distinction in the inner band and diverse outer dot groups.",
+      "reader_2": "A separate twelve-cell band with dark and striped alternating sections. The outer ring has about twenty-eight heterogeneous red dot cells, with precise count obscured at the seam."
+    },
+    {
+      "panel": "M09",
+      "source": "arab_c90",
+      "frame": "curiosities.jpg",
+      "crop": [
+        226,
+        39,
+        1166,
+        930
+      ],
+      "reader_1": "A broad outer layer consistent with twelve fields, a dense mid-thirties set of finer cells and other finer rings. The middle is a ruled circular text panel.",
+      "reader_2": "Twelve broad outer sectors and an uneven finer dot tier with a mid-thirties count. Sparse and dense groups, no alternating bars. A circular ruled central text panel."
+    },
+    {
+      "panel": "M10",
+      "source": "bundahis_td2",
+      "frame": "yano-page-03.jpg",
+      "crop": [
+        344,
+        370,
+        508,
+        535
+      ],
+      "reader_1": "Nine main squares in three rows and columns. Four corner diagonals produce twelve peripheral compartments plus one central square.",
+      "reader_2": "A nine-cell square grid whose four corner diagonals yield twelve surrounding regions. The central square contains writing. No radiating bars or central figure."
+    },
+    {
+      "panel": "M11",
+      "source": "yale_f67v2_wide",
+      "frame": "f67v.jpg",
+      "crop": [
+        31,
+        88,
+        813,
+        980
+      ],
+      "reader_1": "Four axial marks and four separately drawn diagonal stems or heads. Neither delimits surrounding cells. A curved pinwheel sits in a green-cornered frame, without an upright scene.",
+      "reader_2": "A pinwheel framed by green corners and four slender axial lines with terminals. Four separate diagonal decorated stems are independent of the central square. No surrounding sectors."
+    }
+  ],
+  "results": {
+    "repeated_units": [
+      "f69v has twenty-eight repeated bars with two alternating paint and length treatments. The matched Castilian mansion wheel has twenty-eight pictorial sectors, Arabic examples have nested name, dot and zodiac tiers, and the Latin grid has twenty-eight used cells. The graphic realization of the count differs in every case. A known scheme's count is useful evidence of compatibility with a mansion reading, but lacks geographic specificity.",
+      "No independently marked twelve-supersector hierarchy or four identifiable directional leaders was resolved on f69v. The manuscript's cyclic alternation is preserved by fourteen rotations and fourteen reflections, giving twenty-eight equivalent assignments of the same pattern. Thus alternation alone cannot anchor any one named first unit or a sense of rotation.",
+      "Or.133 supplies a distinct example of visual alternation in a twelve-position band, alongside an independently divided outer mansion band. The Latin wind diagram combines a fourfold center with twelve surrounding units. Fourfold structure, concentric organization and repeated treatments recur outside the Persian text."
+    ],
+    "layer_order": "The Arabic charts visually present several separate rings, with known roles supplied independently by the manuscripts and scholarship. f69v has an inner hub and surrounding text bands, with no identified Moon or Sun ring or register for fixed asterisms. The Bundahišn layer-order prediction is therefore unscored on this figure, rather than contradicted.",
+    "central_motif": "The f67v2 crop and the wide supplement agree on a four-sided pinwheel and distinct axial and diagonal drawings. They supply no clear pedestal, bilaterally flanking figures or isolated upward flame. The known Sasanian example has a distinct raised altar and two flankers, detected despite uncertain details of the crest. This calibrates recognition of those features in one iconographic family. The difference in medium and centuries of transmission limits deductions about a highly stylized fire image.",
+    "bundahis_sample": "The TD2 figure draws a square-house horoscope with diagonal corners and twelve peripheral units. This is physically much more constrained than a round object with an arbitrary count and directly illustrates the value of a testable arrangement. It is from chapter V A, not a picture accompanying the chapter II mansion list. Its later copy and differing diagram labels warrant comparison of patterns, while an identification as the source exemplar would require independent evidence.",
+    "scope": "Two source-masked image-model readings per crop, no literal word reading, and selected historical controls. The supported observations concern the listed views and rulings. Neither the unpublished twenty readings nor a unique route of transmission can be tested here."
+  },
+  "extra_periodic_calendar_control": {
+    "panel": "M12",
+    "source": "Latin Pontifical de Pierre de la Jugie, Narbonne cathedral treasury MS 2 f12v, cycle keyed to 1350, Émilie Nadal, Calendriers et computs dans le Pontifical de Pierre de la Jugie en 1350, p. 113 fig. 9. https://societearcheologiquedumidi.fr/_samf/memoires/t_74/MSAMF_2014.pdf",
+    "primary_scan": "https://arca.irht.cnrs.fr/iiif/110227/canvas/canvas-1214589",
+    "native_detail": "https://iiif.irht.cnrs.fr/iiif/ark:/63955/v9m03eym4plh/999,2086,752,748/full/0/default.jpg",
+    "presentation": "Add one further source-masked crop after the original panels. Render PDF physical p. 115 at 144 dpi. Crop the full figure by PDF page rectangle (65.322, 99.212, 531.104, 298.537) in points, yielding about 933×400 pixels. Take the left wheel at pixel rectangle (65,3,449,397). Its accompanying caption is omitted.",
+    "reader_1": "Twenty-eight ruled outer cells with signs and a second inner band. The first red outer entry marks a place. Using that place as index 1, taller or doubled entries recur at 3, 7, 11, 15, 19, 23 and 27. No heavy quadrants or brackets bind every four cells.",
+    "reader_2": "Twenty-eight outer wedges with signs, one red as a single axial distinction. No bars, scenes or dot clusters and no periodic alternation visible to this reader. The mostly red inner band has a dark entry aligned with the red outer one.",
+    "interpretation": "Nadal identifies twenty-eight years of the Julian solar reckoning cycle, with pairs of dominical letters every fourth cell, plus a separate inner numerical register. This differs from a ring of twenty-eight lunar stations even though the radial count matches. The right wheel on the manuscript page uses nineteen places for the lunar golden number. These readings identify the control independently of the Voynich hypothesis."
+  }
+}

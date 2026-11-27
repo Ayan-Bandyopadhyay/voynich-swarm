@@ -1,0 +1,1781 @@
+{
+  "title": "Independent layout and mask draws reproduce the endpoint-fixation power loss",
+  "statement": "Replicate the 160-line, 1,500-book pilot and test whether its endpoint-locking power curve persists across three independently sampled public line layouts and independently seeded nested masks and outcome simulations. Compare the exact pilot before pooling results.",
+  "program": "J",
+  "check": "Compare all eight planted final rates under 0%, 50%, 90% and 100% fixed line endings. Confirm the baseline result matches the merged pilot, report per-seed power and uncertainty, and verify that 100% fixation produces no rejections by construction.",
+  "on_path": true,
+  "hard": false,
+  "findings": "The unchanged base plan reproduced every stored pilot rejection count and interval. Across the three new layout/mask/simulation seeds, at a 5% final rate and 1% interior rate, mean rejection probability was 0.713 (range 0.703\u20130.721) with no endpoints fixed, 0.370 (0.364\u20130.381) with half fixed, 0.037 (0.037\u20130.039) with 90% fixed, and 0 at full fixation. At a 10% final rate the corresponding means were 0.997, 0.889, 0.185 and 0. At the 1% null the mean rejection rate remained below alpha in every condition; fully fixed endpoints yielded zero rejections. The direction and scale of the power loss persisted across the three independent public layouts and masks.",
+  "interpretation": "The pilot conclusion is robust over these sampled public layouts: endpoint-fixing nulls can sharply reduce power to detect a terminal effect. At a 5% final versus 1% interior rate, fixing 90% of endpoints reduced detection from about 71% to about 4%. The absolute 90%-fixed estimate varied by about 0.003 across these three alternate seeds. At complete fixation the exact conditional test is immobile and cannot reject by construction. This is a simulation sensitivity result for the stated model, layout family, and inclusive Poisson-binomial upper tail. It does not estimate power for the production F-001 ratio rule, its word-level shuffle, real manuscripts, or other effect-generating mechanisms.",
+  "reproduction": "The original merged pilot is stored verbatim as python_source below. Run python -m vs fetch, then use the original plan plus three plan copies with (layout_seed, mask_seed, simulation_seed) (409,2402,20261127), (410,2403,20261128), and (411,2404,20261129). Execute python run_replicates.py from the repository root with Python 3.12. The run script uses null_power.run unchanged and reports all four result objects in full_results. The base plan reproduces the stored pilot; all masks are nested from one independently seeded shuffle within each plan.",
+  "python_source": "\"\"\"Calibrate a line-final permutation test while fixing selected endings.\"\"\"\n\nimport json\nfrom math import sqrt\nfrom pathlib import Path\nimport random\nfrom statistics import median\nimport sys\n\nfrom vs import corpus\n\n\ndef upper_tail(lines):\n    \"\"\"Exact inclusive tail for independent terminal draws conditional on each line total.\"\"\"\n    observed = 0\n    distribution = [1.0]\n    for eligible, positives, final in lines:\n        if positives in (0, eligible):\n            assert final == (positives == eligible)\n            continue\n        observed += final\n        probability = positives / eligible\n        distribution.append(0.0)\n        for k in range(len(distribution) - 1, 0, -1):\n            distribution[k] = (\n                distribution[k] * (1 - probability) + distribution[k - 1] * probability\n            )\n        distribution[0] *= 1 - probability\n    return min(1.0, sum(distribution[observed:]))\n\n\ndef wilson(successes, trials):\n    p = successes / trials\n    z = 1.959963984540054\n    scale = 1 + z * z / trials\n    centre = (p + z * z / (2 * trials)) / scale\n    radius = z * sqrt(p * (1 - p) / trials + z * z / (4 * trials * trials)) / scale\n    return [max(0.0, centre - radius), min(1.0, centre + radius)]\n\n\ndef public_line_lengths(plan):\n    public_training, _ = corpus.split_pages('practice', 'zl')\n    lengths = [\n        len(line.words)\n        for page in public_training if page.language == 'B'\n        for line in page.lines if line.unit == 'P' and len(line.words) >= 3\n    ]\n    return random.Random(plan['layout_seed']).choices(lengths, k=plan['lines_per_book'])\n\n\ndef run(plan):\n    lengths = public_line_lengths(plan)\n    order = list(range(len(lengths)))\n    random.Random(plan['mask_seed']).shuffle(order)\n    masks = {\n        str(fraction): sorted(order[round(fraction * len(lengths)):])\n        for fraction in plan['locked_fractions']\n    }\n    rng = random.Random(plan['simulation_seed'])\n    trials = plan['books_per_rate']\n    rows = {}\n    for final_rate in plan['final_rates']:\n        counts = dict.fromkeys(masks, 0)\n        for _ in range(trials):\n            lines = []\n            for length in lengths:\n                interior = sum(rng.random() < plan['interior_rate'] for _ in range(length - 2))\n                final = rng.random() < final_rate\n                lines.append((length - 1, interior + final, final))\n            for locked, free_indices in masks.items():\n                counts[locked] += upper_tail(lines[i] for i in free_indices) <= plan['alpha']\n        rows[str(final_rate)] = {\n            locked: {\n                'rejections': count,\n                'rate': count / trials,\n                'wilson_95': wilson(count, trials),\n            }\n            for locked, count in counts.items()\n        }\n    assert all(row['1']['rejections'] == 0 for row in rows.values())\n    return {\n        'plan': plan,\n        'layout': {'minimum': min(lengths), 'median': median(lengths), 'maximum': max(lengths)},\n        'power': rows,\n    }\n\n\ndef main():\n    assert upper_tail([]) == 1.0\n    assert abs(upper_tail([(5, 1, True)]) - .2) < 1e-12\n    assert abs(upper_tail([(5, 1, True), (4, 1, True)]) - .05) < 1e-12\n    assert upper_tail([(3, 3, True), (2, 0, False)]) == 1.0\n    plan = json.loads(Path(sys.argv[1]).read_text())\n    result = run(plan)\n    Path(sys.argv[2]).write_text(json.dumps(result, indent=2) + '\\n')\n    for rate, fractions in result['power'].items():\n        print(rate, {fraction: round(row['rate'], 3) for fraction, row in fractions.items()})\n\n\nif __name__ == '__main__':\n    main()\n",
+  "replicate_plans": [
+    {
+      "alpha": 0.01,
+      "books_per_rate": 1500,
+      "lines_per_book": 160,
+      "interior_rate": 0.01,
+      "final_rates": [
+        0.01,
+        0.02,
+        0.03,
+        0.05,
+        0.08,
+        0.1,
+        0.12,
+        0.18
+      ],
+      "locked_fractions": [
+        0,
+        0.5,
+        0.9,
+        1
+      ],
+      "layout_seed": 408,
+      "mask_seed": 2401,
+      "simulation_seed": 20261126
+    },
+    {
+      "alpha": 0.01,
+      "books_per_rate": 1500,
+      "lines_per_book": 160,
+      "interior_rate": 0.01,
+      "final_rates": [
+        0.01,
+        0.02,
+        0.03,
+        0.05,
+        0.08,
+        0.1,
+        0.12,
+        0.18
+      ],
+      "locked_fractions": [
+        0,
+        0.5,
+        0.9,
+        1
+      ],
+      "layout_seed": 409,
+      "mask_seed": 2402,
+      "simulation_seed": 20261127
+    },
+    {
+      "alpha": 0.01,
+      "books_per_rate": 1500,
+      "lines_per_book": 160,
+      "interior_rate": 0.01,
+      "final_rates": [
+        0.01,
+        0.02,
+        0.03,
+        0.05,
+        0.08,
+        0.1,
+        0.12,
+        0.18
+      ],
+      "locked_fractions": [
+        0,
+        0.5,
+        0.9,
+        1
+      ],
+      "layout_seed": 410,
+      "mask_seed": 2403,
+      "simulation_seed": 20261128
+    },
+    {
+      "alpha": 0.01,
+      "books_per_rate": 1500,
+      "lines_per_book": 160,
+      "interior_rate": 0.01,
+      "final_rates": [
+        0.01,
+        0.02,
+        0.03,
+        0.05,
+        0.08,
+        0.1,
+        0.12,
+        0.18
+      ],
+      "locked_fractions": [
+        0,
+        0.5,
+        0.9,
+        1
+      ],
+      "layout_seed": 411,
+      "mask_seed": 2404,
+      "simulation_seed": 20261129
+    }
+  ],
+  "power_summary": {
+    "0.01": {
+      "0": {
+        "mean": 0.004333,
+        "range": [
+          0.002667,
+          0.006
+        ],
+        "rejections": [
+          5,
+          9,
+          8,
+          4
+        ]
+      },
+      "0.5": {
+        "mean": 0.002833,
+        "range": [
+          0.002,
+          0.003333
+        ],
+        "rejections": [
+          5,
+          4,
+          5,
+          3
+        ]
+      },
+      "0.9": {
+        "mean": 0.000167,
+        "range": [
+          0.0,
+          0.000667
+        ],
+        "rejections": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "1": {
+        "mean": 0.0,
+        "range": [
+          0.0,
+          0.0
+        ],
+        "rejections": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "0.02": {
+      "0": {
+        "mean": 0.067333,
+        "range": [
+          0.061333,
+          0.077333
+        ],
+        "rejections": [
+          101,
+          116,
+          92,
+          95
+        ]
+      },
+      "0.5": {
+        "mean": 0.032333,
+        "range": [
+          0.029333,
+          0.035333
+        ],
+        "rejections": [
+          44,
+          48,
+          53,
+          49
+        ]
+      },
+      "0.9": {
+        "mean": 0.0045,
+        "range": [
+          0.002667,
+          0.006
+        ],
+        "rejections": [
+          4,
+          8,
+          9,
+          6
+        ]
+      },
+      "1": {
+        "mean": 0.0,
+        "range": [
+          0.0,
+          0.0
+        ],
+        "rejections": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "0.03": {
+      "0": {
+        "mean": 0.257833,
+        "range": [
+          0.246667,
+          0.268667
+        ],
+        "rejections": [
+          383,
+          391,
+          370,
+          403
+        ]
+      },
+      "0.5": {
+        "mean": 0.111667,
+        "range": [
+          0.106,
+          0.12
+        ],
+        "rejections": [
+          159,
+          170,
+          161,
+          180
+        ]
+      },
+      "0.9": {
+        "mean": 0.0115,
+        "range": [
+          0.005333,
+          0.017333
+        ],
+        "rejections": [
+          8,
+          14,
+          26,
+          21
+        ]
+      },
+      "1": {
+        "mean": 0.0,
+        "range": [
+          0.0,
+          0.0
+        ],
+        "rejections": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "0.05": {
+      "0": {
+        "mean": 0.7095,
+        "range": [
+          0.703333,
+          0.721333
+        ],
+        "rejections": [
+          1061,
+          1082,
+          1055,
+          1059
+        ]
+      },
+      "0.5": {
+        "mean": 0.373833,
+        "range": [
+          0.364,
+          0.382667
+        ],
+        "rejections": [
+          574,
+          551,
+          572,
+          546
+        ]
+      },
+      "0.9": {
+        "mean": 0.036,
+        "range": [
+          0.030667,
+          0.039333
+        ],
+        "rejections": [
+          46,
+          56,
+          55,
+          59
+        ]
+      },
+      "1": {
+        "mean": 0.0,
+        "range": [
+          0.0,
+          0.0
+        ],
+        "rejections": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "0.08": {
+      "0": {
+        "mean": 0.971333,
+        "range": [
+          0.97,
+          0.972
+        ],
+        "rejections": [
+          1458,
+          1458,
+          1455,
+          1457
+        ]
+      },
+      "0.5": {
+        "mean": 0.7495,
+        "range": [
+          0.738667,
+          0.763333
+        ],
+        "rejections": [
+          1116,
+          1128,
+          1145,
+          1108
+        ]
+      },
+      "0.9": {
+        "mean": 0.114,
+        "range": [
+          0.111333,
+          0.118667
+        ],
+        "rejections": [
+          167,
+          178,
+          169,
+          170
+        ]
+      },
+      "1": {
+        "mean": 0.0,
+        "range": [
+          0.0,
+          0.0
+        ],
+        "rejections": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "0.1": {
+      "0": {
+        "mean": 0.995833,
+        "range": [
+          0.994667,
+          0.998
+        ],
+        "rejections": [
+          1492,
+          1492,
+          1497,
+          1494
+        ]
+      },
+      "0.5": {
+        "mean": 0.890833,
+        "range": [
+          0.88,
+          0.896
+        ],
+        "rejections": [
+          1344,
+          1340,
+          1320,
+          1341
+        ]
+      },
+      "0.9": {
+        "mean": 0.176167,
+        "range": [
+          0.157333,
+          0.192
+        ],
+        "rejections": [
+          236,
+          263,
+          288,
+          270
+        ]
+      },
+      "1": {
+        "mean": 0.0,
+        "range": [
+          0.0,
+          0.0
+        ],
+        "rejections": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "0.12": {
+      "0": {
+        "mean": 0.999833,
+        "range": [
+          0.999333,
+          1.0
+        ],
+        "rejections": [
+          1500,
+          1499,
+          1500,
+          1500
+        ]
+      },
+      "0.5": {
+        "mean": 0.960833,
+        "range": [
+          0.956667,
+          0.965333
+        ],
+        "rejections": [
+          1448,
+          1444,
+          1438,
+          1435
+        ]
+      },
+      "0.9": {
+        "mean": 0.239,
+        "range": [
+          0.21,
+          0.267333
+        ],
+        "rejections": [
+          315,
+          358,
+          401,
+          360
+        ]
+      },
+      "1": {
+        "mean": 0.0,
+        "range": [
+          0.0,
+          0.0
+        ],
+        "rejections": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "0.18": {
+      "0": {
+        "mean": 1.0,
+        "range": [
+          1.0,
+          1.0
+        ],
+        "rejections": [
+          1500,
+          1500,
+          1500,
+          1500
+        ]
+      },
+      "0.5": {
+        "mean": 0.999,
+        "range": [
+          0.998,
+          0.999333
+        ],
+        "rejections": [
+          1499,
+          1499,
+          1497,
+          1499
+        ]
+      },
+      "0.9": {
+        "mean": 0.497,
+        "range": [
+          0.465333,
+          0.522
+        ],
+        "rejections": [
+          698,
+          776,
+          783,
+          725
+        ]
+      },
+      "1": {
+        "mean": 0.0,
+        "range": [
+          0.0,
+          0.0
+        ],
+        "rejections": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    }
+  },
+  "full_results": {
+    "replica": {
+      "plan": {
+        "alpha": 0.01,
+        "books_per_rate": 1500,
+        "lines_per_book": 160,
+        "interior_rate": 0.01,
+        "final_rates": [
+          0.01,
+          0.02,
+          0.03,
+          0.05,
+          0.08,
+          0.1,
+          0.12,
+          0.18
+        ],
+        "locked_fractions": [
+          0,
+          0.5,
+          0.9,
+          1
+        ],
+        "layout_seed": 408,
+        "mask_seed": 2401,
+        "simulation_seed": 20261126
+      },
+      "layout": {
+        "minimum": 3,
+        "median": 9.5,
+        "maximum": 15
+      },
+      "power": {
+        "0.01": {
+          "0": {
+            "rejections": 5,
+            "rate": 0.0033333333333333335,
+            "wilson_95": [
+              0.0014246155236142537,
+              0.00777945232509936
+            ]
+          },
+          "0.5": {
+            "rejections": 5,
+            "rate": 0.0033333333333333335,
+            "wilson_95": [
+              0.0014246155236142537,
+              0.00777945232509936
+            ]
+          },
+          "0.9": {
+            "rejections": 0,
+            "rate": 0.0,
+            "wilson_95": [
+              0.0,
+              0.002554430720181488
+            ]
+          },
+          "1": {
+            "rejections": 0,
+            "rate": 0.0,
+            "wilson_95": [
+              0.0,
+              0.002554430720181488
+            ]
+          }
+        },
+        "0.02": {
+          "0": {
+            "rejections": 101,
+            "rate": 0.06733333333333333,
+            "wilson_95": [
+              0.055724832625160745,
+              0.08115226809136962
+            ]
+          },
+          "0.5": {
+            "rejections": 44,
+            "rate": 0.029333333333333333,
+            "wilson_95": [
+              0.021922981949671613,
+              0.039148255501592566
+            ]
+          },
+          "0.9": {
+            "rejections": 4,
+            "rate": 0.0026666666666666666,
+            "wilson_95": [
+              0.0010374882451031462,
+              0.006836652177904041
+            ]
+          },
+          "1": {
+            "rejections": 0,
+            "rate": 0.0,
+            "wilson_95": [
+              0.0,
+              0.002554430720181488
+            ]
+          }
+        },
+        "0.03": {
+          "0": {
+            "rejections": 383,
+            "rate": 0.25533333333333336,
+            "wilson_95": [
+              0.23391097012776318,
+              0.27800566463797904
+            ]
+          },
+          "0.5": {
+            "rejections": 159,
+            "rate": 0.106,
+            "wilson_95": [
+              0.09141539039239177,
+              0.12259750101511124
+            ]
+          },
+          "0.9": {
+            "rejections": 8,
+            "rate": 0.005333333333333333,
+            "wilson_95": [
+              0.0027049287623018017,
+              0.010488921363531084
+            ]
+          },
+          "1": {
+            "rejections": 0,
+            "rate": 0.0,
+            "wilson_95": [
+              0.0,
+              0.002554430720181488
+            ]
+          }
+        },
+        "0.05": {
+          "0": {
+            "rejections": 1061,
+            "rate": 0.7073333333333334,
+            "wilson_95": [
+              0.6838019630520747,
+              0.7298054663426233
+            ]
+          },
+          "0.5": {
+            "rejections": 574,
+            "rate": 0.38266666666666665,
+            "wilson_95": [
+              0.35839953121412316,
+              0.40753324186154605
+            ]
+          },
+          "0.9": {
+            "rejections": 46,
+            "rate": 0.030666666666666665,
+            "wilson_95": [
+              0.02306947388821145,
+              0.04066161841446556
+            ]
+          },
+          "1": {
+            "rejections": 0,
+            "rate": 0.0,
+            "wilson_95": [
+              0.0,
+              0.002554430720181488
+            ]
+          }
+        },
+        "0.08": {
+          "0": {
+            "rejections": 1458,
+            "rate": 0.972,
+            "wilson_95": [
+              0.962369637905843,
+              0.9792189794943057
+            ]
+          },
+          "0.5": {
+            "rejections": 1116,
+            "rate": 0.744,
+            "wilson_95": [
+              0.7213105553951168,
+              0.7654428824134346
+            ]
+          },
+          "0.9": {
+            "rejections": 167,
+            "rate": 0.11133333333333334,
+            "wilson_95": [
+              0.09639767368628424,
+              0.12825463712687019
+            ]
+          },
+          "1": {
+            "rejections": 0,
+            "rate": 0.0,
+            "wilson_95": [
+              0.0,
+              0.002554430720181488
+            ]
+          }
+        },
+        "0.1": {
+          "0": {
+            "rejections": 1492,
+            "rate": 0.9946666666666667,
+            "wilson_95": [
+              0.9895110786364689,
+              0.9972950712376982
+            ]
+          },
+          "0.5": {
+            "rejections": 1344,
+            "rate": 0.896,
+            "wilson_95": [
+              0.8795270316938932,
+              0.9104498591757231
+            ]
+          },
+          "0.9": {
+            "rejections": 236,
+            "rate": 0.15733333333333333,
+            "wilson_95": [
+              0.13978498551865226,
+              0.17663231766824544
+            ]
+          },
+          "1": {
+            "rejections": 0,
+            "rate": 0.0,
+            "wilson_95": [
+              0.0,
+              0.002554430720181488
+            ]
+          }
+        },
+        "0.12": {
+          "0": {
+            "rejections": 1500,
+            "rate": 1.0,
+            "wilson_95": [
+              0.9974455692798185,
+              1.0
+            ]
+          },
+          "0.5": {
+            "rejections": 1448,
+            "rate": 0.9653333333333334,
+            "wilson_95": [
+              0.9548228339303267,
+              0.9734665092127578
+            ]
+          },
+          "0.9": {
+            "rejections": 315,
+            "rate": 0.21,
+            "wilson_95": [
+              0.19014154174898645,
+              0.23134002806871878
+            ]
+          },
+          "1": {
+            "rejections": 0,
+            "rate": 0.0,
+            "wilson_95": [
+              0.0,
+              0.002554430720181488
+            ]
+          }
+        },
+        "0.18": {
+          "0": {
+            "rejections": 1500,
+            "rate": 1.0,
+            "wilson_95": [
+              0.9974455692798185,
+              1.0
+            ]
+          },
+          "0.5": {
+            "rejections": 1499,
+            "rate": 0.9993333333333333,
+            "wilson_95": [
+              0.9962333345857864,
+              0.9998823072683257
+            ]
+          },
+          "0.9": {
+            "rejections": 698,
+            "rate": 0.4653333333333333,
+            "wilson_95": [
+              0.440211855917952,
+              0.4906319179453139
+            ]
+          },
+          "1": {
+            "rejections": 0,
+            "rate": 0.0,
+            "wilson_95": [
+              0.0,
+              0.002554430720181488
+            ]
+          }
+        }
+      }
+    },
+    "independent_1": {
+      "plan": {
+        "alpha": 0.01,
+        "books_per_rate": 1500,
+        "lines_per_book": 160,
+        "interior_rate": 0.01,
+        "final_rates": [
+          0.01,
+          0.02,
+          0.03,
+          0.05,
+          0.08,
+          0.1,
+          0.12,
+          0.18
+        ],
+        "locked_fractions": [
+          0,
+          0.5,
+          0.9,
+          1
+        ],
+        "layout_seed": 409,
+        "mask_seed": 2402,
+        "simulation_seed": 20261127
+      },
+      "layout": {
+        "minimum": 3,
+        "median": 10.0,
+        "maximum": 15
+      },
+      "power": {
+        "0.01": {
+          "0": {
+            "rejections": 9,
+            "rate": 0.006,
+            "wilson_95": [
+              0.0031598175797059123,
+              0.011363959971833398
+            ]
+          },
+          "0.5": {
+            "rejections": 4,
+            "rate": 0.0026666666666666666,
+            "wilson_95": [
+              0.0010374882451031462,
+              0.006836652177904041
+            ]
+          },
+          "0.9": {
+            "rejections": 0,
+            "rate": 0.0,
+            "wilson_95": [
+              0.0,
+              0.002554430720181488
+            ]
+          },
+          "1": {
+            "rejections": 0,
+            "rate": 0.0,
+            "wilson_95": [
+              0.0,
+              0.002554430720181488
+            ]
+          }
+        },
+        "0.02": {
+          "0": {
+            "rejections": 116,
+            "rate": 0.07733333333333334,
+            "wilson_95": [
+              0.06486930993335295,
+              0.09195670216877382
+            ]
+          },
+          "0.5": {
+            "rejections": 48,
+            "rate": 0.032,
+            "wilson_95": [
+              0.0242202185354456,
+              0.042170728618644286
+            ]
+          },
+          "0.9": {
+            "rejections": 8,
+            "rate": 0.005333333333333333,
+            "wilson_95": [
+              0.0027049287623018017,
+              0.010488921363531084
+            ]
+          },
+          "1": {
+            "rejections": 0,
+            "rate": 0.0,
+            "wilson_95": [
+              0.0,
+              0.002554430720181488
+            ]
+          }
+        },
+        "0.03": {
+          "0": {
+            "rejections": 391,
+            "rate": 0.26066666666666666,
+            "wilson_95": [
+              0.23908202486338676,
+              0.28347402930800675
+            ]
+          },
+          "0.5": {
+            "rejections": 170,
+            "rate": 0.11333333333333333,
+            "wilson_95": [
+              0.09826902230507747,
+              0.1303730707851962
+            ]
+          },
+          "0.9": {
+            "rejections": 14,
+            "rate": 0.009333333333333334,
+            "wilson_95": [
+              0.005567765171535828,
+              0.015605649508535607
+            ]
+          },
+          "1": {
+            "rejections": 0,
+            "rate": 0.0,
+            "wilson_95": [
+              0.0,
+              0.002554430720181488
+            ]
+          }
+        },
+        "0.05": {
+          "0": {
+            "rejections": 1082,
+            "rate": 0.7213333333333334,
+            "wilson_95": [
+              0.6981010219548798,
+              0.7434348833796534
+            ]
+          },
+          "0.5": {
+            "rejections": 551,
+            "rate": 0.36733333333333335,
+            "wilson_95": [
+              0.3433049601345669,
+              0.3920394821498546
+            ]
+          },
+          "0.9": {
+            "rejections": 56,
+            "rate": 0.037333333333333336,
+            "wilson_95": [
+              0.028861071509391153,
+              0.04816929505035013
+            ]
+          },
+          "1": {
+            "rejections": 0,
+            "rate": 0.0,
+            "wilson_95": [
+              0.0,
+              0.002554430720181488
+            ]
+          }
+        },
+        "0.08": {
+          "0": {
+            "rejections": 1458,
+            "rate": 0.972,
+            "wilson_95": [
+              0.962369637905843,
+              0.9792189794943057
+            ]
+          },
+          "0.5": {
+            "rejections": 1128,
+            "rate": 0.752,
+            "wilson_95": [
+              0.7295204074152511,
+              0.7731921595017773
+            ]
+          },
+          "0.9": {
+            "rejections": 178,
+            "rate": 0.11866666666666667,
+            "wilson_95": [
+              0.10326688365908077,
+              0.13601462883684434
+            ]
+          },
+          "1": {
+            "rejections": 0,
+            "rate": 0.0,
+            "wilson_95": [
+              0.0,
+              0.002554430720181488
+            ]
+          }
+        },
+        "0.1": {
+          "0": {
+            "rejections": 1492,
+            "rate": 0.9946666666666667,
+            "wilson_95": [
+              0.9895110786364689,
+              0.9972950712376982
+            ]
+          },
+          "0.5": {
+            "rejections": 1340,
+            "rate": 0.8933333333333333,
+            "wilson_95": [
+              0.8766947051717873,
+              0.9079624759950033
+            ]
+          },
+          "0.9": {
+            "rejections": 263,
+            "rate": 0.17533333333333334,
+            "wilson_95": [
+              0.15692632827552022,
+              0.19539901540545096
+            ]
+          },
+          "1": {
+            "rejections": 0,
+            "rate": 0.0,
+            "wilson_95": [
+              0.0,
+              0.002554430720181488
+            ]
+          }
+        },
+        "0.12": {
+          "0": {
+            "rejections": 1499,
+            "rate": 0.9993333333333333,
+            "wilson_95": [
+              0.9962333345857864,
+              0.9998823072683257
+            ]
+          },
+          "0.5": {
+            "rejections": 1444,
+            "rate": 0.9626666666666667,
+            "wilson_95": [
+              0.9518307049496499,
+              0.9711389284906089
+            ]
+          },
+          "0.9": {
+            "rejections": 358,
+            "rate": 0.23866666666666667,
+            "wilson_95": [
+              0.21777968481400842,
+              0.26088876430907304
+            ]
+          },
+          "1": {
+            "rejections": 0,
+            "rate": 0.0,
+            "wilson_95": [
+              0.0,
+              0.002554430720181488
+            ]
+          }
+        },
+        "0.18": {
+          "0": {
+            "rejections": 1500,
+            "rate": 1.0,
+            "wilson_95": [
+              0.9974455692798185,
+              1.0
+            ]
+          },
+          "0.5": {
+            "rejections": 1499,
+            "rate": 0.9993333333333333,
+            "wilson_95": [
+              0.9962333345857864,
+              0.9998823072683257
+            ]
+          },
+          "0.9": {
+            "rejections": 776,
+            "rate": 0.5173333333333333,
+            "wilson_95": [
+              0.4920335190035404,
+              0.5425445940648265
+            ]
+          },
+          "1": {
+            "rejections": 0,
+            "rate": 0.0,
+            "wilson_95": [
+              0.0,
+              0.002554430720181488
+            ]
+          }
+        }
+      }
+    },
+    "independent_2": {
+      "plan": {
+        "alpha": 0.01,
+        "books_per_rate": 1500,
+        "lines_per_book": 160,
+        "interior_rate": 0.01,
+        "final_rates": [
+          0.01,
+          0.02,
+          0.03,
+          0.05,
+          0.08,
+          0.1,
+          0.12,
+          0.18
+        ],
+        "locked_fractions": [
+          0,
+          0.5,
+          0.9,
+          1
+        ],
+        "layout_seed": 410,
+        "mask_seed": 2403,
+        "simulation_seed": 20261128
+      },
+      "layout": {
+        "minimum": 3,
+        "median": 10.0,
+        "maximum": 19
+      },
+      "power": {
+        "0.01": {
+          "0": {
+            "rejections": 8,
+            "rate": 0.005333333333333333,
+            "wilson_95": [
+              0.0027049287623018017,
+              0.010488921363531084
+            ]
+          },
+          "0.5": {
+            "rejections": 5,
+            "rate": 0.0033333333333333335,
+            "wilson_95": [
+              0.0014246155236142537,
+              0.00777945232509936
+            ]
+          },
+          "0.9": {
+            "rejections": 0,
+            "rate": 0.0,
+            "wilson_95": [
+              0.0,
+              0.002554430720181488
+            ]
+          },
+          "1": {
+            "rejections": 0,
+            "rate": 0.0,
+            "wilson_95": [
+              0.0,
+              0.002554430720181488
+            ]
+          }
+        },
+        "0.02": {
+          "0": {
+            "rejections": 92,
+            "rate": 0.06133333333333333,
+            "wilson_95": [
+              0.05027528227407119,
+              0.07463247161110136
+            ]
+          },
+          "0.5": {
+            "rejections": 53,
+            "rate": 0.035333333333333335,
+            "wilson_95": [
+              0.027114104896545657,
+              0.045926479386076344
+            ]
+          },
+          "0.9": {
+            "rejections": 9,
+            "rate": 0.006,
+            "wilson_95": [
+              0.0031598175797059123,
+              0.011363959971833398
+            ]
+          },
+          "1": {
+            "rejections": 0,
+            "rate": 0.0,
+            "wilson_95": [
+              0.0,
+              0.002554430720181488
+            ]
+          }
+        },
+        "0.03": {
+          "0": {
+            "rejections": 370,
+            "rate": 0.24666666666666667,
+            "wilson_95": [
+              0.22551725818994203,
+              0.2691103200416166
+            ]
+          },
+          "0.5": {
+            "rejections": 161,
+            "rate": 0.10733333333333334,
+            "wilson_95": [
+              0.09265984686884386,
+              0.12401289939007203
+            ]
+          },
+          "0.9": {
+            "rejections": 26,
+            "rate": 0.017333333333333333,
+            "wilson_95": [
+              0.011855871598742648,
+              0.02527667218980588
+            ]
+          },
+          "1": {
+            "rejections": 0,
+            "rate": 0.0,
+            "wilson_95": [
+              0.0,
+              0.002554430720181488
+            ]
+          }
+        },
+        "0.05": {
+          "0": {
+            "rejections": 1055,
+            "rate": 0.7033333333333334,
+            "wilson_95": [
+              0.6797213808428016,
+              0.725906483997658
+            ]
+          },
+          "0.5": {
+            "rejections": 572,
+            "rate": 0.38133333333333336,
+            "wilson_95": [
+              0.3570859267445233,
+              0.4061869914797332
+            ]
+          },
+          "0.9": {
+            "rejections": 55,
+            "rate": 0.03666666666666667,
+            "wilson_95": [
+              0.028277917491892006,
+              0.04742252164214284
+            ]
+          },
+          "1": {
+            "rejections": 0,
+            "rate": 0.0,
+            "wilson_95": [
+              0.0,
+              0.002554430720181488
+            ]
+          }
+        },
+        "0.08": {
+          "0": {
+            "rejections": 1455,
+            "rate": 0.97,
+            "wilson_95": [
+              0.9600945147964701,
+              0.9775043203265592
+            ]
+          },
+          "0.5": {
+            "rejections": 1145,
+            "rate": 0.7633333333333333,
+            "wilson_95": [
+              0.7411682357827225,
+              0.7841530973713151
+            ]
+          },
+          "0.9": {
+            "rejections": 169,
+            "rate": 0.11266666666666666,
+            "wilson_95": [
+              0.09764506278633239,
+              0.12966710287823488
+            ]
+          },
+          "1": {
+            "rejections": 0,
+            "rate": 0.0,
+            "wilson_95": [
+              0.0,
+              0.002554430720181488
+            ]
+          }
+        },
+        "0.1": {
+          "0": {
+            "rejections": 1497,
+            "rate": 0.998,
+            "wilson_95": [
+              0.9941361954746901,
+              0.9993195915280091
+            ]
+          },
+          "0.5": {
+            "rejections": 1320,
+            "rate": 0.88,
+            "wilson_95": [
+              0.8625766535982042,
+              0.8954819790544579
+            ]
+          },
+          "0.9": {
+            "rejections": 288,
+            "rate": 0.192,
+            "wilson_95": [
+              0.17286433602374174,
+              0.21270919329989008
+            ]
+          },
+          "1": {
+            "rejections": 0,
+            "rate": 0.0,
+            "wilson_95": [
+              0.0,
+              0.002554430720181488
+            ]
+          }
+        },
+        "0.12": {
+          "0": {
+            "rejections": 1500,
+            "rate": 1.0,
+            "wilson_95": [
+              0.9974455692798185,
+              1.0
+            ]
+          },
+          "0.5": {
+            "rejections": 1438,
+            "rate": 0.9586666666666667,
+            "wilson_95": [
+              0.9473662756084309,
+              0.9676237932775893
+            ]
+          },
+          "0.9": {
+            "rejections": 401,
+            "rate": 0.2673333333333333,
+            "wilson_95": [
+              0.2455517860351199,
+              0.29030354239333783
+            ]
+          },
+          "1": {
+            "rejections": 0,
+            "rate": 0.0,
+            "wilson_95": [
+              0.0,
+              0.002554430720181488
+            ]
+          }
+        },
+        "0.18": {
+          "0": {
+            "rejections": 1500,
+            "rate": 1.0,
+            "wilson_95": [
+              0.9974455692798185,
+              1.0
+            ]
+          },
+          "0.5": {
+            "rejections": 1497,
+            "rate": 0.998,
+            "wilson_95": [
+              0.9941361954746901,
+              0.9993195915280091
+            ]
+          },
+          "0.9": {
+            "rejections": 783,
+            "rate": 0.522,
+            "wilson_95": [
+              0.4966975256950255,
+              0.5471900793532867
+            ]
+          },
+          "1": {
+            "rejections": 0,
+            "rate": 0.0,
+            "wilson_95": [
+              0.0,
+              0.002554430720181488
+            ]
+          }
+        }
+      }
+    },
+    "independent_3": {
+      "plan": {
+        "alpha": 0.01,
+        "books_per_rate": 1500,
+        "lines_per_book": 160,
+        "interior_rate": 0.01,
+        "final_rates": [
+          0.01,
+          0.02,
+          0.03,
+          0.05,
+          0.08,
+          0.1,
+          0.12,
+          0.18
+        ],
+        "locked_fractions": [
+          0,
+          0.5,
+          0.9,
+          1
+        ],
+        "layout_seed": 411,
+        "mask_seed": 2404,
+        "simulation_seed": 20261129
+      },
+      "layout": {
+        "minimum": 4,
+        "median": 9.0,
+        "maximum": 15
+      },
+      "power": {
+        "0.01": {
+          "0": {
+            "rejections": 4,
+            "rate": 0.0026666666666666666,
+            "wilson_95": [
+              0.0010374882451031462,
+              0.006836652177904041
+            ]
+          },
+          "0.5": {
+            "rejections": 3,
+            "rate": 0.002,
+            "wilson_95": [
+              0.0006804084719908739,
+              0.005863804525309888
+            ]
+          },
+          "0.9": {
+            "rejections": 1,
+            "rate": 0.0006666666666666666,
+            "wilson_95": [
+              0.00011769273167436408,
+              0.0037666654142135486
+            ]
+          },
+          "1": {
+            "rejections": 0,
+            "rate": 0.0,
+            "wilson_95": [
+              0.0,
+              0.002554430720181488
+            ]
+          }
+        },
+        "0.02": {
+          "0": {
+            "rejections": 95,
+            "rate": 0.06333333333333334,
+            "wilson_95": [
+              0.05208839990254764,
+              0.07680913625974421
+            ]
+          },
+          "0.5": {
+            "rejections": 49,
+            "rate": 0.03266666666666666,
+            "wilson_95": [
+              0.02479710656901616,
+              0.042923768010780135
+            ]
+          },
+          "0.9": {
+            "rejections": 6,
+            "rate": 0.004,
+            "wilson_95": [
+              0.0018344861657217117,
+              0.008699509108698324
+            ]
+          },
+          "1": {
+            "rejections": 0,
+            "rate": 0.0,
+            "wilson_95": [
+              0.0,
+              0.002554430720181488
+            ]
+          }
+        },
+        "0.03": {
+          "0": {
+            "rejections": 403,
+            "rate": 0.26866666666666666,
+            "wilson_95": [
+              0.2468465178469807,
+              0.2916686654328899
+            ]
+          },
+          "0.5": {
+            "rejections": 180,
+            "rate": 0.12,
+            "wilson_95": [
+              0.10451802094554216,
+              0.13742334640179577
+            ]
+          },
+          "0.9": {
+            "rejections": 21,
+            "rate": 0.014,
+            "wilson_95": [
+              0.009174941314692178,
+              0.02130796534532423
+            ]
+          },
+          "1": {
+            "rejections": 0,
+            "rate": 0.0,
+            "wilson_95": [
+              0.0,
+              0.002554430720181488
+            ]
+          }
+        },
+        "0.05": {
+          "0": {
+            "rejections": 1059,
+            "rate": 0.706,
+            "wilson_95": [
+              0.6824415325439952,
+              0.7285060419992899
+            ]
+          },
+          "0.5": {
+            "rejections": 546,
+            "rate": 0.364,
+            "wilson_95": [
+              0.3400270074743273,
+              0.38866779768156207
+            ]
+          },
+          "0.9": {
+            "rejections": 59,
+            "rate": 0.03933333333333333,
+            "wilson_95": [
+              0.030615277481382798,
+              0.05040487135547774
+            ]
+          },
+          "1": {
+            "rejections": 0,
+            "rate": 0.0,
+            "wilson_95": [
+              0.0,
+              0.002554430720181488
+            ]
+          }
+        },
+        "0.08": {
+          "0": {
+            "rejections": 1457,
+            "rate": 0.9713333333333334,
+            "wilson_95": [
+              0.9616101063172817,
+              0.9786485836571606
+            ]
+          },
+          "0.5": {
+            "rejections": 1108,
+            "rate": 0.7386666666666667,
+            "wilson_95": [
+              0.715842724445047,
+              0.760271293957853
+            ]
+          },
+          "0.9": {
+            "rejections": 170,
+            "rate": 0.11333333333333333,
+            "wilson_95": [
+              0.09826902230507747,
+              0.1303730707851962
+            ]
+          },
+          "1": {
+            "rejections": 0,
+            "rate": 0.0,
+            "wilson_95": [
+              0.0,
+              0.002554430720181488
+            ]
+          }
+        },
+        "0.1": {
+          "0": {
+            "rejections": 1494,
+            "rate": 0.996,
+            "wilson_95": [
+              0.9913004908913017,
+              0.9981655138342782
+            ]
+          },
+          "0.5": {
+            "rejections": 1341,
+            "rate": 0.894,
+            "wilson_95": [
+              0.8774024989848888,
+              0.9085846096076082
+            ]
+          },
+          "0.9": {
+            "rejections": 270,
+            "rate": 0.18,
+            "wilson_95": [
+              0.16138285721776763,
+              0.20025197844314852
+            ]
+          },
+          "1": {
+            "rejections": 0,
+            "rate": 0.0,
+            "wilson_95": [
+              0.0,
+              0.002554430720181488
+            ]
+          }
+        },
+        "0.12": {
+          "0": {
+            "rejections": 1500,
+            "rate": 1.0,
+            "wilson_95": [
+              0.9974455692798185,
+              1.0
+            ]
+          },
+          "0.5": {
+            "rejections": 1435,
+            "rate": 0.9566666666666667,
+            "wilson_95": [
+              0.9451436901766708,
+              0.9658565964322301
+            ]
+          },
+          "0.9": {
+            "rejections": 360,
+            "rate": 0.24,
+            "wilson_95": [
+              0.21906856768806074,
+              0.2622597362864336
+            ]
+          },
+          "1": {
+            "rejections": 0,
+            "rate": 0.0,
+            "wilson_95": [
+              0.0,
+              0.002554430720181488
+            ]
+          }
+        },
+        "0.18": {
+          "0": {
+            "rejections": 1500,
+            "rate": 1.0,
+            "wilson_95": [
+              0.9974455692798185,
+              1.0
+            ]
+          },
+          "0.5": {
+            "rejections": 1499,
+            "rate": 0.9993333333333333,
+            "wilson_95": [
+              0.9962333345857864,
+              0.9998823072683257
+            ]
+          },
+          "0.9": {
+            "rejections": 725,
+            "rate": 0.48333333333333334,
+            "wilson_95": [
+              0.45811922631025903,
+              0.5086325880470803
+            ]
+          },
+          "1": {
+            "rejections": 0,
+            "rate": 0.0,
+            "wilson_95": [
+              0.0,
+              0.002554430720181488
+            ]
+          }
+        }
+      }
+    }
+  },
+  "runner_source": "import json, pathlib, sys\nsys.path.insert(0, str(pathlib.Path('vs').resolve()))\nsys.path.insert(0, str(pathlib.Path('..').resolve()))\nsys.path.insert(0, str(pathlib.Path.cwd()))\nimport importlib.util\np=pathlib.Path('../k024-work/null_power.py')\nspec=importlib.util.spec_from_file_location('null_power',p)\nm=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)\nbase=json.loads(pathlib.Path('../k024-work/plan-base.json').read_text(encoding='utf-8'))\nplans=[('replica',base)]\nfor j,(layout,mask,sim) in enumerate([(409,2402,20261127),(410,2403,20261128),(411,2404,20261129)],1):\n    q=dict(base,layout_seed=layout,mask_seed=mask,simulation_seed=sim)\n    plans.append((f'independent_{j}',q))\nsummary={}\nfor name,plan in plans:\n    print('START',name,plan['layout_seed'],plan['mask_seed'],plan['simulation_seed'],flush=True)\n    out=m.run(plan)\n    summary[name]=out\n    pathlib.Path(f'../k024-work/{name}.json').write_text(json.dumps(out,indent=2)+'\\n',encoding='utf-8')\n    print(name,'layout',out['layout'],flush=True)\n    for rate in ('0.02','0.03','0.05','0.08','0.1','0.18'):\n        print(rate,{k:round(v['rate'],3) for k,v in out['power'][rate].items()},flush=True)\npathlib.Path('../k024-work/all-runs.json').write_text(json.dumps(summary,indent=2)+'\\n',encoding='utf-8')\n",
+  "environment": {
+    "python": "3.12.14",
+    "pinned_inputs_sha256_verified": 81,
+    "season_split": "public practice training"
+  },
+  "source_pilot": "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/505"
+}

@@ -1,0 +1,146 @@
+{
+  "id": "grid-ancient_greek-table-cipher-zl-practice-train",
+  "family": "table-cipher",
+  "segmentation": "eva-basic",
+  "target": {
+    "language": "ancient_greek",
+    "period": "Koine Greek, Septuagint as printed with Brenton's edition"
+  },
+  "key": {
+    "map": {
+      "a": "ʼ",
+      "b": "α",
+      "ch": "β",
+      "d": "γ",
+      "e": "δ",
+      "f": "ε",
+      "g": "ζ",
+      "i": "η",
+      "j": "θ",
+      "k": "ι",
+      "l": "κ",
+      "m": "λ",
+      "n": "μ",
+      "o": "ν",
+      "p": "ξ",
+      "q": "ο",
+      "r": "π",
+      "s": "ρ",
+      "sh": "ς",
+      "t": "σ",
+      "u": "τ",
+      "v": "υ",
+      "w": "φ",
+      "x": "χ",
+      "y": "ψ",
+      "z": "ω"
+    },
+    "shifts": [
+      6,
+      25,
+      25,
+      25
+    ]
+  },
+  "search": {
+    "budget": {
+      "max_period": 4,
+      "sweeps": 4
+    }
+  },
+  "transliteration": "zl",
+  "reading_order": "normal",
+  "spaces": "word_breaks",
+  "controls": [
+    {
+      "seed": 0,
+      "noise": 0.0,
+      "planted_shifts": [
+        18,
+        11,
+        25
+      ],
+      "recovered_shifts": [
+        18,
+        11,
+        25
+      ],
+      "exact": true,
+      "control_evaluation_tokens": 7760,
+      "evaluation": {
+        "compresses": true,
+        "reads": true,
+        "beats_decoys": true,
+        "savings": 0.05417,
+        "decoys_that_kill_key": []
+      }
+    },
+    {
+      "seed": 0,
+      "noise": 0.02,
+      "planted_shifts": [
+        21,
+        19,
+        5
+      ],
+      "recovered_shifts": [
+        21,
+        19,
+        5
+      ],
+      "exact": true,
+      "control_evaluation_tokens": 7760,
+      "evaluation": {
+        "compresses": true,
+        "reads": true,
+        "beats_decoys": true,
+        "savings": 0.03351,
+        "decoys_that_kill_key": []
+      }
+    },
+    {
+      "seed": 1,
+      "noise": 0.02,
+      "planted_shifts": [
+        12,
+        22,
+        4
+      ],
+      "recovered_shifts": [
+        12,
+        22,
+        4
+      ],
+      "exact": true,
+      "control_evaluation_tokens": 7760
+    },
+    {
+      "seed": 2,
+      "noise": 0.02,
+      "planted_shifts": [
+        14,
+        7,
+        6
+      ],
+      "recovered_shifts": [
+        14,
+        7,
+        6
+      ],
+      "exact": true,
+      "control_evaluation_tokens": 7760
+    }
+  ],
+  "coverage": {
+    "practice_training": {
+      "total": 145468,
+      "unmapped": 2479
+    },
+    "practice_evaluation": {
+      "total": 26848,
+      "unmapped": 436
+    }
+  },
+  "source": "Pinned Septuagint Brenton corpus ancient_greek_f7725754, https://voynichswarm.com/x/C-034.html",
+  "scope_of_inference": "Fixed sorted EVA-basic glyph alphabet, ranks paired with the normalized Greek alphabet, one periodic cyclic shift string reset at each word. Unmapped glyphs occupy a shift slot and yield no plaintext. The published budget searches periods one through four with at most four sweeps. The same budget is used for the synthetic controls and the 192-page public practice training partition. The manuscript fit never selects a key using the public practice evaluation pages."
+}

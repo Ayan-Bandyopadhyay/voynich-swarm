@@ -1,0 +1,76 @@
+{
+  "of": "N-011",
+  "assessment": "dissent",
+  "title": "Second look at N-011: image location confirmed, Opuntia/name pairing remains unconfirmed",
+  "page": "f100r",
+  "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006248",
+  "statement": "I checked the Yale f100r scan at full-page and detail scales, the actual illustrated article, the pinned ZL label locus, and a within-manuscript comparator. The inset on printed page 72 of the publisher's full HerbalGram 100 PDF directly reproduces this exact object and its label, so the authors' plant No. 8 is securely located beside ZL f100r.8 soity; the inference from plant No. 4 is unnecessary. I agree with that location and with N-011's warning of uncertainty. I dissent from confirming the named lexical anchor: a flattened green outline with marginal projections and a few interior marks is compatible with a cactus pad but does not distinguish one from a leaf-like object in this drawing style. On the same page, marginal teeth occur on other drawings. The leaves on f26r provide a closer documented control for this inference: several have an oval-to-obovate outline with stout marginal projections, attached by long petioles to slender axes bearing terminal clusters. This does not prove they are the same plant as f100r.8; it demonstrates that this outline is not diagnostic of an Opuntia pad. I cannot resolve an organized areole/glochid pattern, a pad joint, or a distinctive fruit apex in f100r.8 at the scan scale reviewed. Those are unobserved details, not proof that a stylized drawing could not represent a cactus. Modern botanical guidance also cautions against two easy exclusions: O. ficus-indica can lack large spines, and detached stem fragments can root. Thus the narrow base/root and sparse spines are not decisive counterarguments. The reviewed literature supplies one proposed identification and its proposed Nahuatl reading, not two independent published identifications of this drawing. Agreement with a label's position does not independently verify its meaning. Keep the Opuntia/nochtli/nashtli association disputed pending diagnostic comparative evidence and an independently justified reading; do not replace it with an invented alternative taxon.",
+  "assessment_scope": {
+    "agree": [
+      "The pictured object is the one Tucker and Talbert call plant No. 8.",
+      "The nearby pinned ZL locus is f100r.8, transcribed soity.",
+      "A cactus-pad interpretation is possible and worth retaining as a hypothesis."
+    ],
+    "dissent": [
+      "The object is securely identified as Opuntia or O. ficus-indica.",
+      "The observed location establishes that soity denotes Opuntia, nochtli or nashtli.",
+      "The available evidence is sufficient to promote the candidate to a confirmed name anchor."
+    ],
+    "not_claimed": [
+      "Opuntia is excluded.",
+      "f26r and f100r.8 necessarily depict the same species or object.",
+      "No independent supporting publication exists anywhere; the statement concerns sources found and reviewed in this check.",
+      "A root or a lack of conspicuous spines alone disproves the cactus interpretation."
+    ]
+  },
+  "observations": [
+    {
+      "target": "f100r.8 drawing",
+      "region_xywh_in_original_scan": [880, 600, 340, 560],
+      "visible": "A single elongated green body, broad above and tapered below, with uneven marginal projections, several small interior marks, a narrow pale connection and reddish-brown lower structure. Label lies below/right.",
+      "interpretation": "Both a pad-like silhouette and a leaf-like silhouette remain possible. Interior marks cannot be assigned an areole function from this view."
+    },
+    {
+      "target": "f100r second register",
+      "region_xywh_in_original_scan": [60, 450, 1420, 650],
+      "visible": "The left, three-part green drawing has a toothed outline and internal oval marks. Other neighboring green elements also have jagged or toothed edges.",
+      "interpretation": "The artist uses such marks outside the candidate pad, so a projection or dot alone is a weak discriminator. No botanical names are assigned to these controls."
+    },
+    {
+      "target": "f26r",
+      "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006124",
+      "visible": "Repeated green oval-to-obovate elements with short blunt marginal protrusions are attached by long narrow petioles to slender branching axes. Terminal branches carry small blue/green oval units.",
+      "interpretation": "A within-manuscript example showing that a broadly similar margin and outline can occur as leaves in a different whole-plant architecture. Not a species identification or a proven repeated illustration."
+    }
+  ],
+  "publication_check": {
+    "publisher_pdf": "https://umb.herbalgram.org/media/3jojkmox/issue100.pdf",
+    "pdf_sha256": "ae0c497a5f7eb6fb1fae6652c7083905ff2dc6db521b7cbeb72a1c07de7be443",
+    "article_title": "A Preliminary Analysis of the Botany, Zoology, and Mineralogy of the Voynich Manuscript",
+    "authors": ["Arthur O. Tucker", "Rexford H. Talbert"],
+    "year": 2013,
+    "printed_pages_checked": [72, 80],
+    "zero_based_pdf_pages_checked": [73, 81],
+    "correction": "The full publisher issue has the relevant illustrated discussion on printed p.72 and Cactaceae appendix on p.80. N-011 cited p.76/p.79 in another PDF; use the identified version and explicit printed pagination here.",
+    "finding": "The article itself includes a magnified photograph of the exact f100r.8 drawing and adjacent label. It supports object location directly. It presents a cactus identification and a proposed reading; these are not independent validations of one another.",
+    "render_note": "Rendered both pages with Poppler and inspected the complete page PNGs. Poppler reported missing display fonts; the inset photograph used for locating the object was visible and legible. The glyph reading was checked against the Yale scan and pinned ZL, not inferred from a substituted font."
+  },
+  "transcription_check": {
+    "source": "data/raw/ZL3b-n.txt",
+    "sha256": "bf5b6d4ac1e3a51b1847a9c388318d609020441ccd56984c901c32b09beccafc",
+    "locus": "f100r.8,@Lf",
+    "reading": "soity",
+    "meaning": "Not established by a transliteration."
+  },
+  "exposure": "This is an unblinded independent second look by a different contributor, not a blind picture annotation. I read N-011 and the article's claim before inspecting the scan. I inspected f100r before reading J.K. Petersen's specific f26r comparison, then followed and credited that comparison and inspected the original Yale f26r scan. Modern botanical descriptions were consulted after the initial scan inspection.",
+  "sources": [
+    "Yale Beinecke Library, MS 408 f100r, verified canvas: https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006248 ; full-page image inspected: https://collections.library.yale.edu/iiif/2/1006248/full/2000,/0/default.jpg",
+    "f100r candidate detail, unaltered Yale IIIF region: https://collections.library.yale.edu/iiif/2/1006248/880,600,340,560/full/0/default.jpg ; SHA256 90aa20268f18bfff75f325ec79f24c69a110a95066f46bd1f20b69dd06a5f8d4",
+    "f100r second-register comparison, unaltered Yale IIIF region: https://collections.library.yale.edu/iiif/2/1006248/60,450,1420,650/full/0/default.jpg ; SHA256 8399f82f286855a98e2b1f7d2acad498979b7c54db78257e8c200ba6c1dee323",
+    "Tucker and Talbert (2013), HerbalGram 100, publisher's complete issue, printed pp.72 and 80, PDF pages 74 and 82: https://umb.herbalgram.org/media/3jojkmox/issue100.pdf",
+    "J.K. Petersen, A Prickly Pear-adigm, 28 January 2016, A Thorny Conundrum section: https://voynichportal.com/2016/01/28/a-prickly-pear-adigm/ . Original published critique proposing the f26r margin comparison; credited for that comparison, not treated as a botanical determination.",
+    "Yale Beinecke Library, MS 408 f26r, independently inspected original of the cited comparator: https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006124 ; image: https://collections.library.yale.edu/iiif/2/1006124/full/1500,/0/default.jpg ; SHA256 929aa263645bdd4288723c128df6956abcb1dcfd22ab52268ce223730fc28412",
+    "NSW Department of Primary Industries & Regional Development, Indian fig (Opuntia ficus-indica), What does it look like? and How does it spread?: https://weeds.dpi.nsw.gov.au/Weed/276 . Modern diagnostic and rooting reference; it does not identify the manuscript drawing.",
+    "Pinned Zandbergen–Landini 3b transliteration, f100r.8,@Lf, soity; local input data/raw/ZL3b-n.txt, source https://www.voynich.nu/data/ZL3b-n.txt"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+ "title": "The edge-glyph collapse at line breaks holds inside each Currier dialect separately",
+ "statement": "In certain paragraph tokens of Currier A, and again in those of Currier B taken on their own, the dependence between a word's last glyph and the next word's first glyph exceeds the same dependence across a line break by at least 0.08 bits, after subtracting the value on each page's shuffled words.",
+ "source": "Closes the generator half of P-G-001, whose fact half fleet-fable filed as F-010. F-010 states the within-minus-across gap for the manuscript as a whole; this submission asks whether it survives being split by dialect, which matters because a generator that mixes the two could pass the pooled claim while getting each dialect wrong. It does survive: on the practice split the gap is 0.1328 in Currier A (1898 tokens) and 0.2058 in Currier B (3336 tokens), both clearing the 0.08 bar and both at p=0.005 against 199 within-page shuffles. The split is also a sharper test of generators than the pooled claim. At the evaluation pages' shape, G-line-chain reproduces the gap in both dialects (A 0.1729, B 0.1546) and is the only pinned generator that does; G-grille reproduces it in A (0.0975) but not in B (-0.0212), which the pooled F-010 threshold lets it pass; G-table-cipher (-0.0416 / -0.0121) and G-self-citation (-0.0870 / -0.0253) reproduce it in neither. So the pooled claim is weaker than it looks: one of the four pinned generators passes it by doing the right thing in one dialect only, and the dialect split catches that. The substantive reading is that the mechanism which resets a line's glyph context is a property of each scribe's practice, not an artefact of pooling two hands. Scope by language rather than by hand, since Currier A and B are the split the manuscript itself offers and hand labels are missing on some pages. The practice comparison is advisory; only the hidden pages decide.",
+ "spec": {
+  "scope": {
+   "language": "A"
+  },
+  "select": {
+   "certain": true,
+   "unit": [
+    "P"
+   ]
+  },
+  "statistic": {
+   "edge_mi_break": true
+  },
+  "compare": [
+   {
+    "op": ">=",
+    "value": 0.08
+   },
+   {
+    "direction": "greater",
+    "null": "shuffle_within_page",
+    "p": 0.01,
+    "perms": 199
+   }
+  ]
+ }
+}

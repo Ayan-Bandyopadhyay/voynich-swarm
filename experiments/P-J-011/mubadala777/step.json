@@ -1,0 +1,2913 @@
+{
+  "title": "Known inverses separate fixed padding from noise on independently held texts",
+  "statement": "Repeat the public P-J-011 calculation on editorially trimmed Latin, Italian and Middle High German works, using separate train and evaluation works. Every fixed substitution gives the identical code length at every order. At order eight, constant letter padding lowers the forward rate per output symbol and raises it per original symbol in all three pairs. The order-eight Latin rates are 3.838 for identity, 2.307 per output and 4.266 per original symbol after constant letter padding. Some intermediate orders give a smaller per-source estimate after deterministic padding. The word suffix also has a smaller descriptive minimum in all three pairs. These are finite-context coding effects. An exact work-matched random permutation of deterministic pad symbols costs extra bits even with a known inverse.",
+  "program": "J",
+  "check": "Run a held-apart, source-context-matched comparison on these cleaned work pairs. Choose the source context order by blocked validation within each training work, then freeze it. For the inter-letter versions compare a forward character model with a model reaching the same number of preceding source symbols, using the actual pad alignment. Report the known-rule inverse benchmark and bill any alignment information unavailable to a decoder. Evaluate each fixed choice once on the independent work. Also compare the constant suffix with an explicit, decoder-computable word-boundary state on the unexpanded source.",
+  "on_path": false,
+  "hard": false,
+  "prior": {
+    "proposal": "P-J-011",
+    "prior_calibration": "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/426",
+    "pooled_plugin_comparison": "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/492",
+    "paper": "Claire Bowern and Daniel Gaskell, Enciphered after all? Word-level text metrics are compatible with some types of encipherment.",
+    "paper_url": "https://ceur-ws.org/Vol-3313/paper6.pdf"
+  },
+  "methods": {
+    "selection": "First 64 complete blocks after trimming the six independent source works. The boundaries are the existing project normalizer’s roughly 400-character blocks, not historical folio or line breaks. No manuscript text enters this calculation.",
+    "comparators": {
+      "identity": "source itself",
+      "substitution": "fixed Random(408) permutation of a–z",
+      "addB": "append B after every nonspace source letter",
+      "matched_deterministic": "append B or D according to the parity of the zero-based source letter index in the alphabet",
+      "matched_random": "uniformly permute that exact B/D multiset once per complete work split, using independent experimental train and evaluation seeds 40801 and 40802",
+      "suffix_B": "append B at the end of every source word"
+    },
+    "held_apart_codelength": "For each code and order 0–8, model ASCII letters and literal spaces plus that code’s pad alphabet. Fit counts on the training work only. Order zero uses one-half count per symbol. Each extra order interpolates context counts and the shorter order probability with prior mass 2. Reset at original work-block boundaries. Predict every symbol, using the available shorter context at block starts. Aggregate negative base-2 log probability over evaluation blocks, with probabilities fixed from training.",
+    "empirical_entropy": "Conditional plug-in entropy computed on evaluation only, for orders 0–8 using shorter available contexts at block starts. Also report first-order entropy per actual adjacent transition, with no transitions across blocks. These are descriptive statistics, separate from held-apart predictive code lengths.",
+    "denominators": "Original normalized letters plus literal spaces and transformed letters plus literal spaces and insertions, respectively. The block separator is never modeled or counted. Symbols, not UTF-8 bytes, are the units.",
+    "inverse_aware": "A decoder given the transform rules first decodes the original work with the same order model. All deterministic output symbols are recoverable from that source. For the random control the decoder must also recover the ordered B/D pad sequence. The source determines its exact histogram, and under the uniform-permutation model that sequence adds log2 binomial(N, number of B pads) bits once per work split. The random realization and PRNG seed are not given to that decoder. The recipe and shared training tables are conditioned on in all comparisons.",
+    "audit": "Exact inversion and word/space/block boundaries verified for all transforms in both splits. Exact encoded random streams reconstructed from original and ordered pads. Train and test marker histograms are identical for the deterministic and random two-marker controls on each work separately, and so are output lengths. All work pairs have distinct IDs, no shared complete normalized blocks, and no common exact 12-word windows in the trimmed spans. All order-normalization identities and substitution equalities checked. Independently hand-checked the model on ab/ba training and ab evaluation."
+  },
+  "sources": {
+    "pairs": {
+      "latin": {
+        "train": "la_augustine",
+        "evaluation": "la_vulg_daniel",
+        "rationale": "Autobiographical theological prose versus an independent biblical book. Augustine’s own brief scriptural quotations are part of his work. No consecutive 12-word passage overlaps the selected Daniel edition.",
+        "exact_shared_blocks": 0,
+        "exact_shared_distinct_12_word_windows": 0
+      },
+      "italian": {
+        "train": "it_dante",
+        "evaluation": "it_villani",
+        "rationale": "Dante’s narrative poem versus Matteo Villani’s historical chronicle. #426 used the same IDs, while these spans exclude Villani’s modern preface and reset the training and evaluation samples on actual medieval text.",
+        "exact_shared_blocks": 0,
+        "exact_shared_distinct_12_word_windows": 0
+      },
+      "german": {
+        "train": "de_nibelunge",
+        "evaluation": "de_walther",
+        "rationale": "Anonymous heroic epic versus a selection of Walther’s lyrics and songs. Separate works and corpus editions, with no translation or anthology that contains the epic.",
+        "exact_shared_blocks": 0,
+        "exact_shared_distinct_12_word_windows": 0
+      }
+    },
+    "works_by_corpus_id": {
+      "la_augustine": {
+        "work": "Augustine, Confessiones, Books I–II",
+        "start": "1. _Magnus es, Domine",
+        "stop": "\nLIBER TERTIUS.",
+        "cleaning": "Remove inline square-bracketed sidenotes and footnote calls, braced page numbers, and four-space-indented editorial summaries.",
+        "confidence": "High. Main prose of the first two books in the 1838 Latin edition. Augustine’s own Biblical quotations remain.",
+        "language": "latin",
+        "catalog_period": "c. 400 (late antique)",
+        "raw_url": "https://gutenberg.pglaf.org/3/3/8/4/33849/33849-0.txt",
+        "raw_sha256": "b9d4d33de51f661deb0137d3f9f191080d81959f21ae242d12b3ab0e278e8271",
+        "catalog_url": "https://www.gutenberg.org/ebooks/33849",
+        "rights": "Project Gutenberg catalog marks public domain in the USA.",
+        "encoding": "utf-8",
+        "span_start_stop": [
+          15753,
+          71210
+        ],
+        "normalized_symbols_including_spaces": 49790,
+        "normalized_nonspace_symbols": 41858,
+        "blocks": 124,
+        "sum_of_block_symbol_counts": 49667,
+        "symbols_in_first_64_blocks": 25768,
+        "normalized_sha256": "0e2861ab490c88d4aab01ec49e976ecd8c2aec80224a1765bfbd340c64af1dd1",
+        "newline_joined_blocks_sha256": "265d6a0e563992f3760c76ee6de60331a5c4d96cba7a0b1aedf2a2f84c0bb8ad"
+      },
+      "la_vulg_daniel": {
+        "work": "Clementine Vulgate, Daniel",
+        "start": "\n1:1 Anno tertio",
+        "stop": "\nPARALLELISMUS MEMBRORUM.",
+        "cleaning": "Keep only blank-line-delimited paragraphs opening with a decimal chapter:verse token. The project normalizer removes the verse numbers.",
+        "confidence": "High. The main verses only, independent of the English transcriber notes and Latin critical appendix. The Vulgate includes the Septuagint additions.",
+        "language": "latin",
+        "catalog_period": "Vulgate",
+        "raw_url": "https://gutenberg.pglaf.org/8/2/828/828.txt",
+        "raw_sha256": "d484bb3350bb25effef977c9f0e7a613bb758455b01bc257b2ffc31361094fce",
+        "catalog_url": "https://www.gutenberg.org/ebooks/828",
+        "rights": "Project Gutenberg catalog marks public domain in the USA.",
+        "encoding": "latin-1",
+        "span_start_stop": [
+          3030,
+          79226
+        ],
+        "normalized_symbols_including_spaces": 69316,
+        "normalized_nonspace_symbols": 58483,
+        "blocks": 172,
+        "sum_of_block_symbol_counts": 69145,
+        "symbols_in_first_64_blocks": 25761,
+        "normalized_sha256": "0f658573102dcd32c9e476a4af6a37c8796e10126f251541ff08e9d053248b26",
+        "newline_joined_blocks_sha256": "09493b2093f03b6ad593c1f0b788d0448aef52ed0be033fb1b1275a16b3f7133"
+      },
+      "it_dante": {
+        "work": "Dante, Commedia, Inferno",
+        "start": "Nel mezzo del cammin di nostra vita",
+        "stop": "\n  PURGATORIO",
+        "cleaning": "Remove remaining Inferno canto-title lines. The raw pin contains the whole Commedia, while this span is Inferno only.",
+        "confidence": "High. Starts at the first verse and ends after Inferno XXXIV.",
+        "language": "italian",
+        "catalog_period": "c. 1320",
+        "raw_url": "https://gutenberg.pglaf.org/1/0/1/1012/1012-0.txt",
+        "raw_sha256": "db0181a5820b1a60b93b87036351cad97b86ea3ab0d725b16dbc6017ab5ccd37",
+        "catalog_url": "https://www.gutenberg.org/ebooks/1012",
+        "rights": "Project Gutenberg catalog marks public domain in the USA.",
+        "encoding": "utf-8",
+        "span_start_stop": [
+          86,
+          187689
+        ],
+        "normalized_symbols_including_spaces": 168139,
+        "normalized_nonspace_symbols": 134000,
+        "blocks": 418,
+        "sum_of_block_symbol_counts": 167722,
+        "symbols_in_first_64_blocks": 25704,
+        "normalized_sha256": "ea1db3de9982c709d1ae358c06ee8ac5f5d64e88b8ee1854c810d9498e270f59",
+        "newline_joined_blocks_sha256": "664ae33d509633d81c7ee958bb0f61e5c9d0057ab6dba191a5be09e891cd4008"
+      },
+      "it_villani": {
+        "work": "Matteo Villani, Cronica, Book I",
+        "start": "Esaminando nell’animo la vostra esortazione",
+        "stop": "\nLIBRO SECONDO",
+        "cleaning": "Keep the original author’s prologue and main Book I. Chapter headings remain. No modern introduction or table of contents.",
+        "confidence": "High for main medieval prose. Chapter headings from the 1825 edition remain.",
+        "language": "italian",
+        "catalog_period": "c. 1350",
+        "raw_url": "https://gutenberg.pglaf.org/6/9/8/9/69898/69898-0.txt",
+        "raw_sha256": "3acf82f4b25b636048d915961bb8cec2262e9b7cf9ff860ff056ab4bf1e1fd6e",
+        "catalog_url": "https://www.gutenberg.org/ebooks/69898",
+        "rights": "Project Gutenberg catalog marks public domain in the USA.",
+        "encoding": "utf-8",
+        "span_start_stop": [
+          14739,
+          255397
+        ],
+        "normalized_symbols_including_spaces": 233794,
+        "normalized_nonspace_symbols": 192539,
+        "blocks": 581,
+        "sum_of_block_symbol_counts": 233214,
+        "symbols_in_first_64_blocks": 25704,
+        "normalized_sha256": "d5b3ff6f810d96bd58c03c46d913f62722903c2f630ed6355d34f20efd0946b0",
+        "newline_joined_blocks_sha256": "26e3e0f667ab5109c66f83c0288238b1a5eb667ac3dfd320569a131be53fc623"
+      },
+      "de_nibelunge": {
+        "work": "Der Nibelunge liet, Middle High German text",
+        "start": "Uns ist in alten mæren",
+        "stop": null,
+        "cleaning": "Drop letter-period-decimal manuscript and stanza tags, preserving the text of stanza and section headings. Use the text through its ending.",
+        "confidence": "High. Gutenberg #48888 is Simrock’s Middle High German text. His modern German translation and editorial introduction are a different Gutenberg file (#14915).",
+        "language": "german",
+        "catalog_period": "c. 1200 (Middle High German)",
+        "raw_url": "https://gutenberg.pglaf.org/4/8/8/8/48888/48888-0.txt",
+        "raw_sha256": "69eecd1f37ce1de573226ad6aa42c311fce7586444f71204ea6533810d5f10be",
+        "catalog_url": "https://www.gutenberg.org/ebooks/48888",
+        "rights": "Project Gutenberg catalog marks public domain in the USA.",
+        "encoding": "utf-8",
+        "span_start_stop": [
+          5290,
+          573709
+        ],
+        "normalized_symbols_including_spaces": 458732,
+        "normalized_nonspace_symbols": 373134,
+        "blocks": 1140,
+        "sum_of_block_symbol_counts": 457593,
+        "symbols_in_first_64_blocks": 25719,
+        "normalized_sha256": "85ae394c85322b4c63c3753416b414003c258be9e0a75d8d0850b092fbbf2894",
+        "newline_joined_blocks_sha256": "89da6a9a55ca045647fccabfe8774c354e13dbefa6b7b893e2925ea227c51c7b"
+      },
+      "de_walther": {
+        "work": "Walther von der Vogelweide, Gedichte und Sprüche in Auswahl, poems",
+        "start": "Uns hât der winter geschadet über al:",
+        "stop": "\nANMERKUNGEN",
+        "cleaning": "Omit all-uppercase section headings and bracket-initial editorial lines before the start of the commentary.",
+        "confidence": "High. A single-author selection of lyric poetry independent of the Nibelungen epic. The modern notes are after the stop marker.",
+        "language": "german",
+        "catalog_period": "c. 1200 (Middle High German)",
+        "raw_url": "https://gutenberg.pglaf.org/3/5/7/9/35795/35795-0.txt",
+        "raw_sha256": "4d451650467f8bbfe9b4e553301f3587a0d0f57dc8465e40c1e079df8a69fb69",
+        "catalog_url": "https://www.gutenberg.org/ebooks/35795",
+        "rights": "Project Gutenberg catalog marks public domain in the USA.",
+        "encoding": "utf-8",
+        "span_start_stop": [
+          561,
+          32372
+        ],
+        "normalized_symbols_including_spaces": 27694,
+        "normalized_nonspace_symbols": 22325,
+        "blocks": 69,
+        "sum_of_block_symbol_counts": 27626,
+        "symbols_in_first_64_blocks": 25691,
+        "normalized_sha256": "750907a2375a0aed75c024573291d3a2d5fff6603e9c42331113c1e0b2f2de8f",
+        "newline_joined_blocks_sha256": "d5bf92ce96a522c5b26d700585fbf5b610e75224505b7c2718abf0e6a4242a4d"
+      }
+    },
+    "extraction_order": "Decode the SHA-verified pinned file with universal newlines. Apply vs.refcorpus.strip_gutenberg. Find the literal start and stop markers, or use the end of the stripped file. Apply the listed per-work cleanup, then vs.refcorpus.normalize. Span offsets refer to the stripped decoded text before cleanup. Break at word boundaries once the same accounting as blocks_of reaches at least 400, keeping the final partial block. Counts including spaces treat each run of whitespace as one symbol.",
+    "pr_426": {
+      "url": "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/426",
+      "design": "First 100 training-work blocks and 30 evaluation-work blocks built directly with refcorpus.blocks_of, using Augustine/Erasmus, Dante/Villani, Lucanor/Buen Amor and Chaucer/Paston. Order 0–8 smoothed character models and several reversible padding controls were used.",
+      "editorial_confounds": "The pins start with editorial text in Augustine (1838 Latin Monitum), Erasmus (digital production and bilingual title line plus 20th-century transcriber corrections elsewhere), Villani (1825 editor address), Lucanor (editorial transcription note), Buen Amor (edition front matter and extensive notes), Chaucer (Purves’s table of contents and biography), and Paston (Gairdner’s early-20th-century critical edition’s preface and long historical introduction). These are risks for any claim about source-language coding rates from untrimmed beginnings."
+    }
+  },
+  "descriptive_summary": {
+    "latin": {
+      "identity": {
+        "order8": {
+          "order": 8,
+          "forward_bits": 98871.448991,
+          "forward_bits_per_source": 3.83802838,
+          "forward_bits_per_output": 3.83802838,
+          "empirical_bits_per_source": 0.17813943,
+          "empirical_bits_per_output": 0.17813943,
+          "inverse_bits": 98871.448991,
+          "inverse_bits_per_source": 3.83802838,
+          "inverse_bits_per_output": 3.83802838
+        },
+        "descriptive_minimum": {
+          "order": 2,
+          "forward_bits": 82143.476749,
+          "forward_bits_per_source": 3.18867578,
+          "forward_bits_per_output": 3.18867578,
+          "empirical_bits_per_source": 2.4618308,
+          "empirical_bits_per_output": 2.4618308,
+          "inverse_bits": 82143.476749,
+          "inverse_bits_per_source": 3.18867578,
+          "inverse_bits_per_output": 3.18867578
+        },
+        "orders_below_identity_per_source": [],
+        "expansion": 1.0
+      },
+      "substitution": {
+        "order8": {
+          "order": 8,
+          "forward_bits": 98871.448991,
+          "forward_bits_per_source": 3.83802838,
+          "forward_bits_per_output": 3.83802838,
+          "empirical_bits_per_source": 0.17813943,
+          "empirical_bits_per_output": 0.17813943,
+          "inverse_bits": 98871.448991,
+          "inverse_bits_per_source": 3.83802838,
+          "inverse_bits_per_output": 3.83802838
+        },
+        "descriptive_minimum": {
+          "order": 2,
+          "forward_bits": 82143.476749,
+          "forward_bits_per_source": 3.18867578,
+          "forward_bits_per_output": 3.18867578,
+          "empirical_bits_per_source": 2.4618308,
+          "empirical_bits_per_output": 2.4618308,
+          "inverse_bits": 82143.476749,
+          "inverse_bits_per_source": 3.18867578,
+          "inverse_bits_per_output": 3.18867578
+        },
+        "orders_below_identity_per_source": [],
+        "expansion": 1.0
+      },
+      "addB": {
+        "order8": {
+          "order": 8,
+          "forward_bits": 109906.851292,
+          "forward_bits_per_source": 4.26640469,
+          "forward_bits_per_output": 2.30717407,
+          "empirical_bits_per_source": 0.97013954,
+          "empirical_bits_per_output": 0.52462927,
+          "inverse_bits": 98871.448991,
+          "inverse_bits_per_source": 3.83802838,
+          "inverse_bits_per_output": 2.07551796
+        },
+        "descriptive_minimum": {
+          "order": 4,
+          "forward_bits": 83855.836323,
+          "forward_bits_per_source": 3.25514678,
+          "forward_bits_per_output": 1.76030893,
+          "empirical_bits_per_source": 2.45988511,
+          "empirical_bits_per_output": 1.3302496,
+          "inverse_bits": 87782.547202,
+          "inverse_bits_per_source": 3.4075753,
+          "inverse_bits_per_output": 1.84273878
+        },
+        "orders_below_identity_per_source": [
+          4,
+          5,
+          6
+        ],
+        "expansion": 1.84919064
+      },
+      "matched_deterministic": {
+        "order8": {
+          "order": 8,
+          "forward_bits": 111417.12657,
+          "forward_bits_per_source": 4.32503112,
+          "forward_bits_per_output": 2.3388779,
+          "empirical_bits_per_source": 0.90446954,
+          "empirical_bits_per_output": 0.48911644,
+          "inverse_bits": 98871.448991,
+          "inverse_bits_per_source": 3.83802838,
+          "inverse_bits_per_output": 2.07551796
+        },
+        "descriptive_minimum": {
+          "order": 4,
+          "forward_bits": 84653.791703,
+          "forward_bits_per_source": 3.28612211,
+          "forward_bits_per_output": 1.77705967,
+          "empirical_bits_per_source": 2.44283034,
+          "empirical_bits_per_output": 1.32102677,
+          "inverse_bits": 87782.547202,
+          "inverse_bits_per_source": 3.4075753,
+          "inverse_bits_per_output": 1.84273878
+        },
+        "orders_below_identity_per_source": [
+          4,
+          5
+        ],
+        "expansion": 1.84919064
+      },
+      "matched_random": {
+        "order8": {
+          "order": 8,
+          "forward_bits": 140523.004166,
+          "forward_bits_per_source": 5.45487381,
+          "forward_bits_per_output": 2.94987099,
+          "empirical_bits_per_source": 0.60659565,
+          "empirical_bits_per_output": 0.32803305,
+          "inverse_bits": 119102.170371,
+          "inverse_bits_per_source": 4.62335198,
+          "inverse_bits_per_output": 2.500203
+        },
+        "descriptive_minimum": {
+          "order": 3,
+          "forward_bits": 108746.603287,
+          "forward_bits_per_source": 4.22136576,
+          "forward_bits_per_output": 2.28281805,
+          "empirical_bits_per_source": 3.7862524,
+          "empirical_bits_per_output": 2.0475187,
+          "inverse_bits": 103283.09785,
+          "inverse_bits_per_source": 4.00928139,
+          "inverse_bits_per_output": 2.16812767
+        },
+        "orders_below_identity_per_source": [],
+        "expansion": 1.84919064
+      },
+      "suffix_B": {
+        "order8": {
+          "order": 8,
+          "forward_bits": 102990.043984,
+          "forward_bits_per_source": 3.99790552,
+          "forward_bits_per_output": 3.46651107,
+          "empirical_bits_per_source": 0.35423927,
+          "empirical_bits_per_output": 0.30715442,
+          "inverse_bits": 98871.448991,
+          "inverse_bits_per_source": 3.83802838,
+          "inverse_bits_per_output": 3.32788452
+        },
+        "descriptive_minimum": {
+          "order": 3,
+          "forward_bits": 81180.247575,
+          "forward_bits_per_source": 3.15128479,
+          "forward_bits_per_output": 2.73242166,
+          "empirical_bits_per_source": 1.71368718,
+          "empirical_bits_per_output": 1.48590694,
+          "inverse_bits": 83052.37647,
+          "inverse_bits_per_source": 3.22395778,
+          "inverse_bits_per_output": 2.79543509
+        },
+        "orders_below_identity_per_source": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "expansion": 1.15329374
+      }
+    },
+    "italian": {
+      "identity": {
+        "order8": {
+          "order": 8,
+          "forward_bits": 94715.878575,
+          "forward_bits_per_source": 3.68486923,
+          "forward_bits_per_output": 3.68486923,
+          "empirical_bits_per_source": 0.20027201,
+          "empirical_bits_per_output": 0.20027201,
+          "inverse_bits": 94715.878575,
+          "inverse_bits_per_source": 3.68486923,
+          "inverse_bits_per_output": 3.68486923
+        },
+        "descriptive_minimum": {
+          "order": 2,
+          "forward_bits": 76819.27669,
+          "forward_bits_per_source": 2.98861176,
+          "forward_bits_per_output": 2.98861176,
+          "empirical_bits_per_source": 2.49381596,
+          "empirical_bits_per_output": 2.49381596,
+          "inverse_bits": 76819.27669,
+          "inverse_bits_per_source": 2.98861176,
+          "inverse_bits_per_output": 2.98861176
+        },
+        "orders_below_identity_per_source": [],
+        "expansion": 1.0
+      },
+      "substitution": {
+        "order8": {
+          "order": 8,
+          "forward_bits": 94715.878575,
+          "forward_bits_per_source": 3.68486923,
+          "forward_bits_per_output": 3.68486923,
+          "empirical_bits_per_source": 0.20027201,
+          "empirical_bits_per_output": 0.20027201,
+          "inverse_bits": 94715.878575,
+          "inverse_bits_per_source": 3.68486923,
+          "inverse_bits_per_output": 3.68486923
+        },
+        "descriptive_minimum": {
+          "order": 2,
+          "forward_bits": 76819.27669,
+          "forward_bits_per_source": 2.98861176,
+          "forward_bits_per_output": 2.98861176,
+          "empirical_bits_per_source": 2.49381596,
+          "empirical_bits_per_output": 2.49381596,
+          "inverse_bits": 76819.27669,
+          "inverse_bits_per_source": 2.98861176,
+          "inverse_bits_per_output": 2.98861176
+        },
+        "orders_below_identity_per_source": [],
+        "expansion": 1.0
+      },
+      "addB": {
+        "order8": {
+          "order": 8,
+          "forward_bits": 102752.649253,
+          "forward_bits_per_source": 3.99753537,
+          "forward_bits_per_output": 2.18371763,
+          "empirical_bits_per_source": 1.11237649,
+          "empirical_bits_per_output": 0.60765344,
+          "inverse_bits": 94715.878575,
+          "inverse_bits_per_source": 3.68486923,
+          "inverse_bits_per_output": 2.01291874
+        },
+        "descriptive_minimum": {
+          "order": 4,
+          "forward_bits": 77746.533465,
+          "forward_bits_per_source": 3.02468618,
+          "forward_bits_per_output": 1.6522832,
+          "empirical_bits_per_source": 2.48274375,
+          "empirical_bits_per_output": 1.35623848,
+          "inverse_bits": 83745.41351,
+          "inverse_bits_per_source": 3.25806931,
+          "inverse_bits_per_output": 1.77977246
+        },
+        "orders_below_identity_per_source": [
+          4,
+          5,
+          6
+        ],
+        "expansion": 1.83061002
+      },
+      "matched_deterministic": {
+        "order8": {
+          "order": 8,
+          "forward_bits": 104367.744715,
+          "forward_bits_per_source": 4.06036978,
+          "forward_bits_per_output": 2.21804192,
+          "empirical_bits_per_source": 1.04144666,
+          "empirical_bits_per_output": 0.56890689,
+          "inverse_bits": 94715.878575,
+          "inverse_bits_per_source": 3.68486923,
+          "inverse_bits_per_output": 2.01291874
+        },
+        "descriptive_minimum": {
+          "order": 4,
+          "forward_bits": 77777.172709,
+          "forward_bits_per_source": 3.02587818,
+          "forward_bits_per_output": 1.65293435,
+          "empirical_bits_per_source": 2.46397511,
+          "empirical_bits_per_output": 1.34598581,
+          "inverse_bits": 83745.41351,
+          "inverse_bits_per_source": 3.25806931,
+          "inverse_bits_per_output": 1.77977246
+        },
+        "orders_below_identity_per_source": [
+          4,
+          5,
+          6
+        ],
+        "expansion": 1.83061002
+      },
+      "matched_random": {
+        "order8": {
+          "order": 8,
+          "forward_bits": 136100.669204,
+          "forward_bits_per_source": 5.29492177,
+          "forward_bits_per_output": 2.8924357,
+          "empirical_bits_per_source": 0.59619222,
+          "empirical_bits_per_output": 0.32567953,
+          "inverse_bits": 115190.621884,
+          "inverse_bits_per_source": 4.48142787,
+          "inverse_bits_per_output": 2.44805164
+        },
+        "descriptive_minimum": {
+          "order": 3,
+          "forward_bits": 102963.465452,
+          "forward_bits_per_source": 4.00573706,
+          "forward_bits_per_output": 2.18819793,
+          "empirical_bits_per_source": 3.71347005,
+          "empirical_bits_per_output": 2.0285424,
+          "inverse_bits": 98472.295789,
+          "inverse_bits_per_source": 3.83101057,
+          "inverse_bits_per_output": 2.09275079
+        },
+        "orders_below_identity_per_source": [],
+        "expansion": 1.83061002
+      },
+      "suffix_B": {
+        "order8": {
+          "order": 8,
+          "forward_bits": 98743.597053,
+          "forward_bits_per_source": 3.8415654,
+          "forward_bits_per_output": 3.2781222,
+          "empirical_bits_per_source": 0.39793149,
+          "empirical_bits_per_output": 0.33956679,
+          "inverse_bits": 94715.878575,
+          "inverse_bits_per_source": 3.68486923,
+          "inverse_bits_per_output": 3.14440869
+        },
+        "descriptive_minimum": {
+          "order": 3,
+          "forward_bits": 76697.879474,
+          "forward_bits_per_source": 2.98388887,
+          "forward_bits_per_output": 2.54624127,
+          "empirical_bits_per_source": 1.89726098,
+          "empirical_bits_per_output": 1.61898932,
+          "inverse_bits": 77997.55248,
+          "inverse_bits_per_source": 3.03445193,
+          "inverse_bits_per_output": 2.58938824
+        },
+        "orders_below_identity_per_source": [
+          3,
+          4,
+          5
+        ],
+        "expansion": 1.17187986
+      }
+    },
+    "german": {
+      "identity": {
+        "order8": {
+          "order": 8,
+          "forward_bits": 102448.270715,
+          "forward_bits_per_source": 3.98771051,
+          "forward_bits_per_output": 3.98771051,
+          "empirical_bits_per_source": 0.1617917,
+          "empirical_bits_per_output": 0.1617917,
+          "inverse_bits": 102448.270715,
+          "inverse_bits_per_source": 3.98771051,
+          "inverse_bits_per_output": 3.98771051
+        },
+        "descriptive_minimum": {
+          "order": 2,
+          "forward_bits": 78251.884342,
+          "forward_bits_per_source": 3.04588706,
+          "forward_bits_per_output": 3.04588706,
+          "empirical_bits_per_source": 2.34094453,
+          "empirical_bits_per_output": 2.34094453,
+          "inverse_bits": 78251.884342,
+          "inverse_bits_per_source": 3.04588706,
+          "inverse_bits_per_output": 3.04588706
+        },
+        "orders_below_identity_per_source": [],
+        "expansion": 1.0
+      },
+      "substitution": {
+        "order8": {
+          "order": 8,
+          "forward_bits": 102448.270715,
+          "forward_bits_per_source": 3.98771051,
+          "forward_bits_per_output": 3.98771051,
+          "empirical_bits_per_source": 0.1617917,
+          "empirical_bits_per_output": 0.1617917,
+          "inverse_bits": 102448.270715,
+          "inverse_bits_per_source": 3.98771051,
+          "inverse_bits_per_output": 3.98771051
+        },
+        "descriptive_minimum": {
+          "order": 2,
+          "forward_bits": 78251.884342,
+          "forward_bits_per_source": 3.04588706,
+          "forward_bits_per_output": 3.04588706,
+          "empirical_bits_per_source": 2.34094453,
+          "empirical_bits_per_output": 2.34094453,
+          "inverse_bits": 78251.884342,
+          "inverse_bits_per_source": 3.04588706,
+          "inverse_bits_per_output": 3.04588706
+        },
+        "orders_below_identity_per_source": [],
+        "expansion": 1.0
+      },
+      "addB": {
+        "order8": {
+          "order": 8,
+          "forward_bits": 112968.257464,
+          "forward_bits_per_source": 4.39719191,
+          "forward_bits_per_output": 2.43177823,
+          "empirical_bits_per_source": 1.29453904,
+          "empirical_bits_per_output": 0.71591868,
+          "inverse_bits": 102448.270715,
+          "inverse_bits_per_source": 3.98771051,
+          "inverse_bits_per_output": 2.2053228
+        },
+        "descriptive_minimum": {
+          "order": 4,
+          "forward_bits": 82183.251658,
+          "forward_bits_per_source": 3.19891213,
+          "forward_bits_per_output": 1.76909378,
+          "empirical_bits_per_source": 2.33784099,
+          "empirical_bits_per_output": 1.29289577,
+          "inverse_bits": 88691.648584,
+          "inverse_bits_per_source": 3.45224587,
+          "inverse_bits_per_output": 1.90919489
+        },
+        "orders_below_identity_per_source": [
+          4,
+          5,
+          6
+        ],
+        "expansion": 1.80822078
+      },
+      "matched_deterministic": {
+        "order8": {
+          "order": 8,
+          "forward_bits": 114505.432051,
+          "forward_bits_per_source": 4.45702511,
+          "forward_bits_per_output": 2.46486777,
+          "empirical_bits_per_source": 1.20943636,
+          "empirical_bits_per_output": 0.66885436,
+          "inverse_bits": 102448.270715,
+          "inverse_bits_per_source": 3.98771051,
+          "inverse_bits_per_output": 2.2053228
+        },
+        "descriptive_minimum": {
+          "order": 3,
+          "forward_bits": 82876.3973,
+          "forward_bits_per_source": 3.22589223,
+          "forward_bits_per_output": 1.78401458,
+          "empirical_bits_per_source": 2.70893094,
+          "empirical_bits_per_output": 1.49811957,
+          "inverse_bits": 81803.958555,
+          "inverse_bits_per_source": 3.18414848,
+          "inverse_bits_per_output": 1.76092904
+        },
+        "orders_below_identity_per_source": [
+          4,
+          5,
+          6
+        ],
+        "expansion": 1.80822078
+      },
+      "matched_random": {
+        "order8": {
+          "order": 8,
+          "forward_bits": 140011.540703,
+          "forward_bits_per_source": 5.44982837,
+          "forward_bits_per_output": 3.01391757,
+          "empirical_bits_per_source": 0.66825145,
+          "empirical_bits_per_output": 0.36956297,
+          "inverse_bits": 122823.009568,
+          "inverse_bits_per_source": 4.78077963,
+          "inverse_bits_per_output": 2.64391367
+        },
+        "descriptive_minimum": {
+          "order": 2,
+          "forward_bits": 106123.760504,
+          "forward_bits_per_source": 4.13077578,
+          "forward_bits_per_output": 2.28444216,
+          "empirical_bits_per_source": 3.7929975,
+          "empirical_bits_per_output": 2.0976407,
+          "inverse_bits": 98626.623194,
+          "inverse_bits_per_source": 3.83895618,
+          "inverse_bits_per_output": 2.12305722
+        },
+        "orders_below_identity_per_source": [],
+        "expansion": 1.80822078
+      },
+      "suffix_B": {
+        "order8": {
+          "order": 8,
+          "forward_bits": 109654.49989,
+          "forward_bits_per_source": 4.26820676,
+          "forward_bits_per_output": 3.57390326,
+          "empirical_bits_per_source": 0.46417512,
+          "empirical_bits_per_output": 0.38866837,
+          "inverse_bits": 102448.270715,
+          "inverse_bits_per_source": 3.98771051,
+          "inverse_bits_per_output": 3.33903496
+        },
+        "descriptive_minimum": {
+          "order": 2,
+          "forward_bits": 77869.941875,
+          "forward_bits_per_source": 3.03102027,
+          "forward_bits_per_output": 2.53796825,
+          "empirical_bits_per_source": 2.36428222,
+          "empirical_bits_per_output": 1.97968759,
+          "inverse_bits": 78251.884342,
+          "inverse_bits_per_source": 3.04588706,
+          "inverse_bits_per_output": 2.55041667
+        },
+        "orders_below_identity_per_source": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "expansion": 1.19427037
+      }
+    }
+  },
+  "results": {
+    "latin": {
+      "train_blocks": 64,
+      "eval_blocks": 64,
+      "train_symbols": 25768,
+      "eval_source_symbols": 25761,
+      "train_source_checksum": "8e94c1222278228eac8714a9e5d885852e3e75b9d556df3ad85f21b8781a9be8",
+      "eval_source_checksum": "b422e364017bab164ccc8c063f52b7b0332b0d7ca37b9ae00f62a350c41084d8",
+      "eval_spaces": 3885,
+      "exact_block_overlap": 0,
+      "modes": {
+        "identity": {
+          "output_symbols": 25761,
+          "output_train_symbols": 25768,
+          "output_checksum": "b422e364017bab164ccc8c063f52b7b0332b0d7ca37b9ae00f62a350c41084d8",
+          "train_output_checksum": "8e94c1222278228eac8714a9e5d885852e3e75b9d556df3ad85f21b8781a9be8",
+          "side_bits": 0.0,
+          "orders": [
+            {
+              "order": 0,
+              "forward_bits": 102007.095634,
+              "forward_bits_per_source": 3.95974906,
+              "forward_bits_per_output": 3.95974906,
+              "empirical_bits_per_source": 3.94396927,
+              "empirical_bits_per_output": 3.94396927,
+              "inverse_bits": 102007.095634,
+              "inverse_bits_per_source": 3.95974906,
+              "inverse_bits_per_output": 3.95974906
+            },
+            {
+              "order": 1,
+              "forward_bits": 88437.217956,
+              "forward_bits_per_source": 3.43298855,
+              "forward_bits_per_output": 3.43298855,
+              "empirical_bits_per_source": 3.27530016,
+              "empirical_bits_per_output": 3.27530016,
+              "inverse_bits": 88437.217956,
+              "inverse_bits_per_source": 3.43298855,
+              "inverse_bits_per_output": 3.43298855
+            },
+            {
+              "order": 2,
+              "forward_bits": 82143.476749,
+              "forward_bits_per_source": 3.18867578,
+              "forward_bits_per_output": 3.18867578,
+              "empirical_bits_per_source": 2.4618308,
+              "empirical_bits_per_output": 2.4618308,
+              "inverse_bits": 82143.476749,
+              "inverse_bits_per_source": 3.18867578,
+              "inverse_bits_per_output": 3.18867578
+            },
+            {
+              "order": 3,
+              "forward_bits": 83052.37647,
+              "forward_bits_per_source": 3.22395778,
+              "forward_bits_per_output": 3.22395778,
+              "empirical_bits_per_source": 1.59387847,
+              "empirical_bits_per_output": 1.59387847,
+              "inverse_bits": 83052.37647,
+              "inverse_bits_per_source": 3.22395778,
+              "inverse_bits_per_output": 3.22395778
+            },
+            {
+              "order": 4,
+              "forward_bits": 87782.547202,
+              "forward_bits_per_source": 3.4075753,
+              "forward_bits_per_output": 3.4075753,
+              "empirical_bits_per_source": 1.00875252,
+              "empirical_bits_per_output": 1.00875252,
+              "inverse_bits": 87782.547202,
+              "inverse_bits_per_source": 3.4075753,
+              "inverse_bits_per_output": 3.4075753
+            },
+            {
+              "order": 5,
+              "forward_bits": 92655.855617,
+              "forward_bits_per_source": 3.59674918,
+              "forward_bits_per_output": 3.59674918,
+              "empirical_bits_per_source": 0.65464934,
+              "empirical_bits_per_output": 0.65464934,
+              "inverse_bits": 92655.855617,
+              "inverse_bits_per_source": 3.59674918,
+              "inverse_bits_per_output": 3.59674918
+            },
+            {
+              "order": 6,
+              "forward_bits": 96209.62716,
+              "forward_bits_per_source": 3.73470079,
+              "forward_bits_per_output": 3.73470079,
+              "empirical_bits_per_source": 0.42644319,
+              "empirical_bits_per_output": 0.42644319,
+              "inverse_bits": 96209.62716,
+              "inverse_bits_per_source": 3.73470079,
+              "inverse_bits_per_output": 3.73470079
+            },
+            {
+              "order": 7,
+              "forward_bits": 98098.912107,
+              "forward_bits_per_source": 3.80803975,
+              "forward_bits_per_output": 3.80803975,
+              "empirical_bits_per_source": 0.27308517,
+              "empirical_bits_per_output": 0.27308517,
+              "inverse_bits": 98098.912107,
+              "inverse_bits_per_source": 3.80803975,
+              "inverse_bits_per_output": 3.80803975
+            },
+            {
+              "order": 8,
+              "forward_bits": 98871.448991,
+              "forward_bits_per_source": 3.83802838,
+              "forward_bits_per_output": 3.83802838,
+              "empirical_bits_per_source": 0.17813943,
+              "empirical_bits_per_output": 0.17813943,
+              "inverse_bits": 98871.448991,
+              "inverse_bits_per_source": 3.83802838,
+              "inverse_bits_per_output": 3.83802838
+            }
+          ],
+          "adjacent_empirical": {
+            "transitions": 25697,
+            "bits_per_transition": 3.27523015
+          },
+          "training_marker_counts": {},
+          "evaluation_marker_counts": {}
+        },
+        "substitution": {
+          "output_symbols": 25761,
+          "output_train_symbols": 25768,
+          "output_checksum": "169e649f934e9670f6a482af3de1a621b02b2057ceb9f7e37d23328fa874ecae",
+          "train_output_checksum": "2a99cf2f13d3984725880444226ef2d781f9b87f3b09dab8363bfdc82a92de77",
+          "side_bits": 0.0,
+          "orders": [
+            {
+              "order": 0,
+              "forward_bits": 102007.095634,
+              "forward_bits_per_source": 3.95974906,
+              "forward_bits_per_output": 3.95974906,
+              "empirical_bits_per_source": 3.94396927,
+              "empirical_bits_per_output": 3.94396927,
+              "inverse_bits": 102007.095634,
+              "inverse_bits_per_source": 3.95974906,
+              "inverse_bits_per_output": 3.95974906
+            },
+            {
+              "order": 1,
+              "forward_bits": 88437.217956,
+              "forward_bits_per_source": 3.43298855,
+              "forward_bits_per_output": 3.43298855,
+              "empirical_bits_per_source": 3.27530016,
+              "empirical_bits_per_output": 3.27530016,
+              "inverse_bits": 88437.217956,
+              "inverse_bits_per_source": 3.43298855,
+              "inverse_bits_per_output": 3.43298855
+            },
+            {
+              "order": 2,
+              "forward_bits": 82143.476749,
+              "forward_bits_per_source": 3.18867578,
+              "forward_bits_per_output": 3.18867578,
+              "empirical_bits_per_source": 2.4618308,
+              "empirical_bits_per_output": 2.4618308,
+              "inverse_bits": 82143.476749,
+              "inverse_bits_per_source": 3.18867578,
+              "inverse_bits_per_output": 3.18867578
+            },
+            {
+              "order": 3,
+              "forward_bits": 83052.37647,
+              "forward_bits_per_source": 3.22395778,
+              "forward_bits_per_output": 3.22395778,
+              "empirical_bits_per_source": 1.59387847,
+              "empirical_bits_per_output": 1.59387847,
+              "inverse_bits": 83052.37647,
+              "inverse_bits_per_source": 3.22395778,
+              "inverse_bits_per_output": 3.22395778
+            },
+            {
+              "order": 4,
+              "forward_bits": 87782.547202,
+              "forward_bits_per_source": 3.4075753,
+              "forward_bits_per_output": 3.4075753,
+              "empirical_bits_per_source": 1.00875252,
+              "empirical_bits_per_output": 1.00875252,
+              "inverse_bits": 87782.547202,
+              "inverse_bits_per_source": 3.4075753,
+              "inverse_bits_per_output": 3.4075753
+            },
+            {
+              "order": 5,
+              "forward_bits": 92655.855617,
+              "forward_bits_per_source": 3.59674918,
+              "forward_bits_per_output": 3.59674918,
+              "empirical_bits_per_source": 0.65464934,
+              "empirical_bits_per_output": 0.65464934,
+              "inverse_bits": 92655.855617,
+              "inverse_bits_per_source": 3.59674918,
+              "inverse_bits_per_output": 3.59674918
+            },
+            {
+              "order": 6,
+              "forward_bits": 96209.62716,
+              "forward_bits_per_source": 3.73470079,
+              "forward_bits_per_output": 3.73470079,
+              "empirical_bits_per_source": 0.42644319,
+              "empirical_bits_per_output": 0.42644319,
+              "inverse_bits": 96209.62716,
+              "inverse_bits_per_source": 3.73470079,
+              "inverse_bits_per_output": 3.73470079
+            },
+            {
+              "order": 7,
+              "forward_bits": 98098.912107,
+              "forward_bits_per_source": 3.80803975,
+              "forward_bits_per_output": 3.80803975,
+              "empirical_bits_per_source": 0.27308517,
+              "empirical_bits_per_output": 0.27308517,
+              "inverse_bits": 98098.912107,
+              "inverse_bits_per_source": 3.80803975,
+              "inverse_bits_per_output": 3.80803975
+            },
+            {
+              "order": 8,
+              "forward_bits": 98871.448991,
+              "forward_bits_per_source": 3.83802838,
+              "forward_bits_per_output": 3.83802838,
+              "empirical_bits_per_source": 0.17813943,
+              "empirical_bits_per_output": 0.17813943,
+              "inverse_bits": 98871.448991,
+              "inverse_bits_per_source": 3.83802838,
+              "inverse_bits_per_output": 3.83802838
+            }
+          ],
+          "adjacent_empirical": {
+            "transitions": 25697,
+            "bits_per_transition": 3.27523015
+          },
+          "training_marker_counts": {},
+          "evaluation_marker_counts": {}
+        },
+        "addB": {
+          "output_symbols": 47637,
+          "output_train_symbols": 47411,
+          "output_checksum": "e72b83f0c57848d4addbbb7ec3e0f51e7ce0b0b57202fa4b80c987157b5506af",
+          "train_output_checksum": "a86908daefbc0504fca879f639658ba89460fad534e807107afee3a3d3ec28bd",
+          "side_bits": 0.0,
+          "orders": [
+            {
+              "order": 0,
+              "forward_bits": 149416.41547,
+              "forward_bits_per_source": 5.80010153,
+              "forward_bits_per_output": 3.13656224,
+              "empirical_bits_per_source": 5.78427809,
+              "empirical_bits_per_output": 3.12800529,
+              "inverse_bits": 102007.095634,
+              "inverse_bits_per_source": 3.95974906,
+              "inverse_bits_per_output": 2.14134172
+            },
+            {
+              "order": 1,
+              "forward_bits": 100489.442023,
+              "forward_bits_per_source": 3.90083623,
+              "forward_bits_per_output": 2.10948301,
+              "empirical_bits_per_source": 3.85765164,
+              "empirical_bits_per_output": 2.08612977,
+              "inverse_bits": 88437.217956,
+              "inverse_bits_per_source": 3.43298855,
+              "inverse_bits_per_output": 1.85648168
+            },
+            {
+              "order": 2,
+              "forward_bits": 88550.976684,
+              "forward_bits_per_source": 3.43740448,
+              "forward_bits_per_output": 1.85886972,
+              "empirical_bits_per_source": 3.27530016,
+              "empirical_bits_per_output": 1.77120741,
+              "inverse_bits": 82143.476749,
+              "inverse_bits_per_source": 3.18867578,
+              "inverse_bits_per_output": 1.72436293
+            },
+            {
+              "order": 3,
+              "forward_bits": 86434.957112,
+              "forward_bits_per_source": 3.35526405,
+              "forward_bits_per_output": 1.81445005,
+              "empirical_bits_per_source": 3.05096429,
+              "empirical_bits_per_output": 1.6498917,
+              "inverse_bits": 83052.37647,
+              "inverse_bits_per_source": 3.22395778,
+              "inverse_bits_per_output": 1.74344263
+            },
+            {
+              "order": 4,
+              "forward_bits": 83855.836323,
+              "forward_bits_per_source": 3.25514678,
+              "forward_bits_per_output": 1.76030893,
+              "empirical_bits_per_source": 2.45988511,
+              "empirical_bits_per_output": 1.3302496,
+              "inverse_bits": 87782.547202,
+              "inverse_bits_per_source": 3.4075753,
+              "inverse_bits_per_output": 1.84273878
+            },
+            {
+              "order": 5,
+              "forward_bits": 89635.436525,
+              "forward_bits_per_source": 3.47950144,
+              "forward_bits_per_output": 1.88163479,
+              "empirical_bits_per_source": 2.15376607,
+              "empirical_bits_per_output": 1.16470743,
+              "inverse_bits": 92655.855617,
+              "inverse_bits_per_source": 3.59674918,
+              "inverse_bits_per_output": 1.94503969
+            },
+            {
+              "order": 6,
+              "forward_bits": 94215.409187,
+              "forward_bits_per_source": 3.65728851,
+              "forward_bits_per_output": 1.97777797,
+              "empirical_bits_per_source": 1.58344795,
+              "empirical_bits_per_output": 0.85629243,
+              "inverse_bits": 96209.62716,
+              "inverse_bits_per_source": 3.73470079,
+              "inverse_bits_per_output": 2.01964077
+            },
+            {
+              "order": 7,
+              "forward_bits": 102628.045793,
+              "forward_bits_per_source": 3.98385334,
+              "forward_bits_per_output": 2.15437676,
+              "empirical_bits_per_source": 1.23810381,
+              "empirical_bits_per_output": 0.66953822,
+              "inverse_bits": 98098.912107,
+              "inverse_bits_per_source": 3.80803975,
+              "inverse_bits_per_output": 2.0593008
+            },
+            {
+              "order": 8,
+              "forward_bits": 109906.851292,
+              "forward_bits_per_source": 4.26640469,
+              "forward_bits_per_output": 2.30717407,
+              "empirical_bits_per_source": 0.97013954,
+              "empirical_bits_per_output": 0.52462927,
+              "inverse_bits": 98871.448991,
+              "inverse_bits_per_source": 3.83802838,
+              "inverse_bits_per_output": 2.07551796
+            }
+          ],
+          "adjacent_empirical": {
+            "transitions": 47573,
+            "bits_per_transition": 2.08449216
+          },
+          "training_marker_counts": {
+            "B": 21643
+          },
+          "evaluation_marker_counts": {
+            "B": 21876
+          }
+        },
+        "matched_deterministic": {
+          "output_symbols": 47637,
+          "output_train_symbols": 47411,
+          "output_checksum": "528f01e178b0264506bf6d611867914ab3981b324658857a6a8af5e062482b07",
+          "train_output_checksum": "c86f231ca15b5aebe816cbc1345ba71357ac27b76ec205b1f52dcfa72fb8d62c",
+          "side_bits": 0.0,
+          "orders": [
+            {
+              "order": 0,
+              "forward_bits": 169675.888681,
+              "forward_bits_per_source": 6.58654123,
+              "forward_bits_per_output": 3.56185084,
+              "empirical_bits_per_source": 6.56989115,
+              "empirical_bits_per_output": 3.55284686,
+              "inverse_bits": 102007.095634,
+              "inverse_bits_per_source": 3.95974906,
+              "inverse_bits_per_output": 2.14134172
+            },
+            {
+              "order": 1,
+              "forward_bits": 97334.688381,
+              "forward_bits_per_source": 3.77837384,
+              "forward_bits_per_output": 2.04325815,
+              "empirical_bits_per_source": 3.72155498,
+              "empirical_bits_per_output": 2.01253181,
+              "inverse_bits": 88437.217956,
+              "inverse_bits_per_source": 3.43298855,
+              "inverse_bits_per_output": 1.85648168
+            },
+            {
+              "order": 2,
+              "forward_bits": 88759.910903,
+              "forward_bits_per_source": 3.44551496,
+              "forward_bits_per_output": 1.86325568,
+              "empirical_bits_per_source": 3.27060769,
+              "empirical_bits_per_output": 1.76866983,
+              "inverse_bits": 82143.476749,
+              "inverse_bits_per_source": 3.18867578,
+              "inverse_bits_per_output": 1.72436293
+            },
+            {
+              "order": 3,
+              "forward_bits": 85757.557167,
+              "forward_bits_per_source": 3.32896849,
+              "forward_bits_per_output": 1.80023001,
+              "empirical_bits_per_source": 2.97522669,
+              "empirical_bits_per_output": 1.60893454,
+              "inverse_bits": 83052.37647,
+              "inverse_bits_per_source": 3.22395778,
+              "inverse_bits_per_output": 1.74344263
+            },
+            {
+              "order": 4,
+              "forward_bits": 84653.791703,
+              "forward_bits_per_source": 3.28612211,
+              "forward_bits_per_output": 1.77705967,
+              "empirical_bits_per_source": 2.44283034,
+              "empirical_bits_per_output": 1.32102677,
+              "inverse_bits": 87782.547202,
+              "inverse_bits_per_source": 3.4075753,
+              "inverse_bits_per_output": 1.84273878
+            },
+            {
+              "order": 5,
+              "forward_bits": 90166.267955,
+              "forward_bits_per_source": 3.50010745,
+              "forward_bits_per_output": 1.89277805,
+              "empirical_bits_per_source": 2.03841454,
+              "empirical_bits_per_output": 1.10232796,
+              "inverse_bits": 92655.855617,
+              "inverse_bits_per_source": 3.59674918,
+              "inverse_bits_per_output": 1.94503969
+            },
+            {
+              "order": 6,
+              "forward_bits": 96299.323035,
+              "forward_bits_per_source": 3.73818264,
+              "forward_bits_per_output": 2.02152367,
+              "empirical_bits_per_source": 1.52596206,
+              "empirical_bits_per_output": 0.82520538,
+              "inverse_bits": 96209.62716,
+              "inverse_bits_per_source": 3.73470079,
+              "inverse_bits_per_output": 2.01964077
+            },
+            {
+              "order": 7,
+              "forward_bits": 104190.350151,
+              "forward_bits_per_source": 4.04449944,
+              "forward_bits_per_output": 2.18717279,
+              "empirical_bits_per_source": 1.16036443,
+              "empirical_bits_per_output": 0.62749854,
+              "inverse_bits": 98098.912107,
+              "inverse_bits_per_source": 3.80803975,
+              "inverse_bits_per_output": 2.0593008
+            },
+            {
+              "order": 8,
+              "forward_bits": 111417.12657,
+              "forward_bits_per_source": 4.32503112,
+              "forward_bits_per_output": 2.3388779,
+              "empirical_bits_per_source": 0.90446954,
+              "empirical_bits_per_output": 0.48911644,
+              "inverse_bits": 98871.448991,
+              "inverse_bits_per_source": 3.83802838,
+              "inverse_bits_per_output": 2.07551796
+            }
+          ],
+          "adjacent_empirical": {
+            "transitions": 47573,
+            "bits_per_transition": 2.01079519
+          },
+          "training_marker_counts": {
+            "D": 14651,
+            "B": 6992
+          },
+          "evaluation_marker_counts": {
+            "D": 14431,
+            "B": 7445
+          }
+        },
+        "matched_random": {
+          "output_symbols": 47637,
+          "output_train_symbols": 47411,
+          "output_checksum": "27571504269834dbce41f8d14e8610760d2df4f7ee193594d7f4edc9cb8362c0",
+          "train_output_checksum": "82d55220c5366d53caa0df316af5d2233a5c3f4c3fe50c53db9b2f695ef66ed1",
+          "side_bits": 20230.72138,
+          "orders": [
+            {
+              "order": 0,
+              "forward_bits": 169675.888681,
+              "forward_bits_per_source": 6.58654123,
+              "forward_bits_per_output": 3.56185084,
+              "empirical_bits_per_source": 6.56989115,
+              "empirical_bits_per_output": 3.55284686,
+              "inverse_bits": 122237.817014,
+              "inverse_bits_per_source": 4.74507267,
+              "inverse_bits_per_output": 2.56602677
+            },
+            {
+              "order": 1,
+              "forward_bits": 120897.052916,
+              "forward_bits_per_source": 4.69302639,
+              "forward_bits_per_output": 2.53788133,
+              "empirical_bits_per_source": 4.64176464,
+              "empirical_bits_per_output": 2.51016015,
+              "inverse_bits": 108667.939336,
+              "inverse_bits_per_source": 4.21831215,
+              "inverse_bits_per_output": 2.28116673
+            },
+            {
+              "order": 2,
+              "forward_bits": 109214.691495,
+              "forward_bits_per_source": 4.23953618,
+              "forward_bits_per_output": 2.29264419,
+              "empirical_bits_per_source": 4.05097328,
+              "empirical_bits_per_output": 2.19067369,
+              "inverse_bits": 102374.198129,
+              "inverse_bits_per_source": 3.97399938,
+              "inverse_bits_per_output": 2.14904797
+            },
+            {
+              "order": 3,
+              "forward_bits": 108746.603287,
+              "forward_bits_per_source": 4.22136576,
+              "forward_bits_per_output": 2.28281805,
+              "empirical_bits_per_source": 3.7862524,
+              "empirical_bits_per_output": 2.0475187,
+              "inverse_bits": 103283.09785,
+              "inverse_bits_per_source": 4.00928139,
+              "inverse_bits_per_output": 2.16812767
+            },
+            {
+              "order": 4,
+              "forward_bits": 110575.814255,
+              "forward_bits_per_source": 4.29237274,
+              "forward_bits_per_output": 2.321217,
+              "empirical_bits_per_source": 3.05493374,
+              "empirical_bits_per_output": 1.65203829,
+              "inverse_bits": 108013.268582,
+              "inverse_bits_per_source": 4.1928989,
+              "inverse_bits_per_output": 2.26742382
+            },
+            {
+              "order": 5,
+              "forward_bits": 120948.888166,
+              "forward_bits_per_source": 4.69503855,
+              "forward_bits_per_output": 2.53896946,
+              "empirical_bits_per_source": 2.4427005,
+              "empirical_bits_per_output": 1.32095656,
+              "inverse_bits": 112886.576996,
+              "inverse_bits_per_source": 4.38207278,
+              "inverse_bits_per_output": 2.36972473
+            },
+            {
+              "order": 6,
+              "forward_bits": 129344.073224,
+              "forward_bits_per_source": 5.02092594,
+              "forward_bits_per_output": 2.71520191,
+              "empirical_bits_per_source": 1.57262784,
+              "empirical_bits_per_output": 0.85044117,
+              "inverse_bits": 116440.348539,
+              "inverse_bits_per_source": 4.5200244,
+              "inverse_bits_per_output": 2.44432581
+            },
+            {
+              "order": 7,
+              "forward_bits": 135961.739826,
+              "forward_bits_per_source": 5.27781297,
+              "forward_bits_per_output": 2.85412053,
+              "empirical_bits_per_source": 0.99423285,
+              "empirical_bits_per_output": 0.53765838,
+              "inverse_bits": 118329.633487,
+              "inverse_bits_per_source": 4.59336336,
+              "inverse_bits_per_output": 2.48398584
+            },
+            {
+              "order": 8,
+              "forward_bits": 140523.004166,
+              "forward_bits_per_source": 5.45487381,
+              "forward_bits_per_output": 2.94987099,
+              "empirical_bits_per_source": 0.60659565,
+              "empirical_bits_per_output": 0.32803305,
+              "inverse_bits": 119102.170371,
+              "inverse_bits_per_source": 4.62335198,
+              "inverse_bits_per_output": 2.500203
+            }
+          ],
+          "adjacent_empirical": {
+            "transitions": 47573,
+            "bits_per_transition": 2.50909299
+          },
+          "training_marker_counts": {
+            "D": 14651,
+            "B": 6992
+          },
+          "evaluation_marker_counts": {
+            "B": 7445,
+            "D": 14431
+          }
+        },
+        "suffix_B": {
+          "output_symbols": 29710,
+          "output_train_symbols": 29957,
+          "output_checksum": "2cb1434e6d47a992a962ed4c34801444c563f5cb74216e60eb825939c19a21f3",
+          "train_output_checksum": "9b64a8c752193f8b5c58cb603c6456d7c1f4e381c32cab459dd249ec73e8688d",
+          "side_bits": 0.0,
+          "orders": [
+            {
+              "order": 0,
+              "forward_bits": 118813.278252,
+              "forward_bits_per_source": 4.61213766,
+              "forward_bits_per_output": 3.99910058,
+              "empirical_bits_per_source": 4.59602703,
+              "empirical_bits_per_output": 3.98513135,
+              "inverse_bits": 102007.095634,
+              "inverse_bits_per_source": 3.95974906,
+              "inverse_bits_per_output": 3.43342631
+            },
+            {
+              "order": 1,
+              "forward_bits": 88614.248338,
+              "forward_bits_per_source": 3.43986058,
+              "forward_bits_per_output": 2.98264047,
+              "empirical_bits_per_source": 3.28017001,
+              "empirical_bits_per_output": 2.84417568,
+              "inverse_bits": 88437.217956,
+              "inverse_bits_per_source": 3.43298855,
+              "inverse_bits_per_output": 2.97668186
+            },
+            {
+              "order": 2,
+              "forward_bits": 81814.897648,
+              "forward_bits_per_source": 3.17592087,
+              "forward_bits_per_output": 2.75378316,
+              "empirical_bits_per_source": 2.49107288,
+              "empirical_bits_per_output": 2.15996393,
+              "inverse_bits": 82143.476749,
+              "inverse_bits_per_source": 3.18867578,
+              "inverse_bits_per_output": 2.7648427
+            },
+            {
+              "order": 3,
+              "forward_bits": 81180.247575,
+              "forward_bits_per_source": 3.15128479,
+              "forward_bits_per_output": 2.73242166,
+              "empirical_bits_per_source": 1.71368718,
+              "empirical_bits_per_output": 1.48590694,
+              "inverse_bits": 83052.37647,
+              "inverse_bits_per_source": 3.22395778,
+              "inverse_bits_per_output": 2.79543509
+            },
+            {
+              "order": 4,
+              "forward_bits": 85117.869913,
+              "forward_bits_per_source": 3.30413687,
+              "forward_bits_per_output": 2.86495691,
+              "empirical_bits_per_source": 1.28516569,
+              "empirical_bits_per_output": 1.11434377,
+              "inverse_bits": 87782.547202,
+              "inverse_bits_per_source": 3.4075753,
+              "inverse_bits_per_output": 2.95464649
+            },
+            {
+              "order": 5,
+              "forward_bits": 91323.673357,
+              "forward_bits_per_source": 3.54503604,
+              "forward_bits_per_output": 3.0738362,
+              "empirical_bits_per_source": 0.93366524,
+              "empirical_bits_per_output": 0.80956413,
+              "inverse_bits": 92655.855617,
+              "inverse_bits_per_source": 3.59674918,
+              "inverse_bits_per_output": 3.11867572
+            },
+            {
+              "order": 6,
+              "forward_bits": 96138.704717,
+              "forward_bits_per_source": 3.7319477,
+              "forward_bits_per_output": 3.23590389,
+              "empirical_bits_per_source": 0.66348438,
+              "empirical_bits_per_output": 0.57529522,
+              "inverse_bits": 96209.62716,
+              "inverse_bits_per_source": 3.73470079,
+              "inverse_bits_per_output": 3.23829105
+            },
+            {
+              "order": 7,
+              "forward_bits": 100144.770783,
+              "forward_bits_per_source": 3.88745665,
+              "forward_bits_per_output": 3.37074287,
+              "empirical_bits_per_source": 0.49082765,
+              "empirical_bits_per_output": 0.42558772,
+              "inverse_bits": 98098.912107,
+              "inverse_bits_per_source": 3.80803975,
+              "inverse_bits_per_output": 3.30188193
+            },
+            {
+              "order": 8,
+              "forward_bits": 102990.043984,
+              "forward_bits_per_source": 3.99790552,
+              "forward_bits_per_output": 3.46651107,
+              "empirical_bits_per_source": 0.35423927,
+              "empirical_bits_per_output": 0.30715442,
+              "inverse_bits": 98871.448991,
+              "inverse_bits_per_source": 3.83802838,
+              "inverse_bits_per_output": 3.32788452
+            }
+          ],
+          "adjacent_empirical": {
+            "transitions": 29646,
+            "bits_per_transition": 2.84318428
+          },
+          "training_marker_counts": {
+            "B": 4189
+          },
+          "evaluation_marker_counts": {
+            "B": 3949
+          }
+        }
+      },
+      "work_metadata": {
+        "train": "la_augustine",
+        "evaluation": "la_vulg_daniel",
+        "rationale": "Autobiographical theological prose versus an independent biblical book. Augustine’s own brief scriptural quotations are part of his work. No consecutive 12-word passage overlaps the selected Daniel edition.",
+        "exact_shared_blocks": 0,
+        "exact_shared_distinct_12_word_windows": 0
+      }
+    },
+    "italian": {
+      "train_blocks": 64,
+      "eval_blocks": 64,
+      "train_symbols": 25704,
+      "eval_source_symbols": 25704,
+      "train_source_checksum": "1f6f749ee14f6bfb4919ecbfe2d48dfee90ea24e6cf5a4e510a661cb0a2671d2",
+      "eval_source_checksum": "e2ab0854b8816ebdf8096296853151a5b676a5bdc43e95593cfe639d820e5ff7",
+      "eval_spaces": 4354,
+      "exact_block_overlap": 0,
+      "modes": {
+        "identity": {
+          "output_symbols": 25704,
+          "output_train_symbols": 25704,
+          "output_checksum": "e2ab0854b8816ebdf8096296853151a5b676a5bdc43e95593cfe639d820e5ff7",
+          "train_output_checksum": "1f6f749ee14f6bfb4919ecbfe2d48dfee90ea24e6cf5a4e510a661cb0a2671d2",
+          "side_bits": 0.0,
+          "orders": [
+            {
+              "order": 0,
+              "forward_bits": 101675.901052,
+              "forward_bits_per_source": 3.95564508,
+              "forward_bits_per_output": 3.95564508,
+              "empirical_bits_per_source": 3.9397269,
+              "empirical_bits_per_output": 3.9397269,
+              "inverse_bits": 101675.901052,
+              "inverse_bits_per_source": 3.95564508,
+              "inverse_bits_per_output": 3.95564508
+            },
+            {
+              "order": 1,
+              "forward_bits": 82166.21638,
+              "forward_bits_per_source": 3.19663151,
+              "forward_bits_per_output": 3.19663151,
+              "empirical_bits_per_source": 3.09508749,
+              "empirical_bits_per_output": 3.09508749,
+              "inverse_bits": 82166.21638,
+              "inverse_bits_per_source": 3.19663151,
+              "inverse_bits_per_output": 3.19663151
+            },
+            {
+              "order": 2,
+              "forward_bits": 76819.27669,
+              "forward_bits_per_source": 2.98861176,
+              "forward_bits_per_output": 2.98861176,
+              "empirical_bits_per_source": 2.49381596,
+              "empirical_bits_per_output": 2.49381596,
+              "inverse_bits": 76819.27669,
+              "inverse_bits_per_source": 2.98861176,
+              "inverse_bits_per_output": 2.98861176
+            },
+            {
+              "order": 3,
+              "forward_bits": 77997.55248,
+              "forward_bits_per_source": 3.03445193,
+              "forward_bits_per_output": 3.03445193,
+              "empirical_bits_per_source": 1.78358302,
+              "empirical_bits_per_output": 1.78358302,
+              "inverse_bits": 77997.55248,
+              "inverse_bits_per_source": 3.03445193,
+              "inverse_bits_per_output": 3.03445193
+            },
+            {
+              "order": 4,
+              "forward_bits": 83745.41351,
+              "forward_bits_per_source": 3.25806931,
+              "forward_bits_per_output": 3.25806931,
+              "empirical_bits_per_source": 1.19093704,
+              "empirical_bits_per_output": 1.19093704,
+              "inverse_bits": 83745.41351,
+              "inverse_bits_per_source": 3.25806931,
+              "inverse_bits_per_output": 3.25806931
+            },
+            {
+              "order": 5,
+              "forward_bits": 88869.25832,
+              "forward_bits_per_source": 3.45740968,
+              "forward_bits_per_output": 3.45740968,
+              "empirical_bits_per_source": 0.76110128,
+              "empirical_bits_per_output": 0.76110128,
+              "inverse_bits": 88869.25832,
+              "inverse_bits_per_source": 3.45740968,
+              "inverse_bits_per_output": 3.45740968
+            },
+            {
+              "order": 6,
+              "forward_bits": 92002.248655,
+              "forward_bits_per_source": 3.57929694,
+              "forward_bits_per_output": 3.57929694,
+              "empirical_bits_per_source": 0.47902139,
+              "empirical_bits_per_output": 0.47902139,
+              "inverse_bits": 92002.248655,
+              "inverse_bits_per_source": 3.57929694,
+              "inverse_bits_per_output": 3.57929694
+            },
+            {
+              "order": 7,
+              "forward_bits": 93773.125824,
+              "forward_bits_per_source": 3.64819195,
+              "forward_bits_per_output": 3.64819195,
+              "empirical_bits_per_source": 0.29912028,
+              "empirical_bits_per_output": 0.29912028,
+              "inverse_bits": 93773.125824,
+              "inverse_bits_per_source": 3.64819195,
+              "inverse_bits_per_output": 3.64819195
+            },
+            {
+              "order": 8,
+              "forward_bits": 94715.878575,
+              "forward_bits_per_source": 3.68486923,
+              "forward_bits_per_output": 3.68486923,
+              "empirical_bits_per_source": 0.20027201,
+              "empirical_bits_per_output": 0.20027201,
+              "inverse_bits": 94715.878575,
+              "inverse_bits_per_source": 3.68486923,
+              "inverse_bits_per_output": 3.68486923
+            }
+          ],
+          "adjacent_empirical": {
+            "transitions": 25640,
+            "bits_per_transition": 3.09359795
+          },
+          "training_marker_counts": {},
+          "evaluation_marker_counts": {}
+        },
+        "substitution": {
+          "output_symbols": 25704,
+          "output_train_symbols": 25704,
+          "output_checksum": "a81c37eb3a0a4d48d0fa17e24f5a7774e417ab937608d8191ea0172e9396050b",
+          "train_output_checksum": "dc1ad9ca1786cae551b5070deda9533b0ade3ba4653fd79f69c78622fa49ff3a",
+          "side_bits": 0.0,
+          "orders": [
+            {
+              "order": 0,
+              "forward_bits": 101675.901052,
+              "forward_bits_per_source": 3.95564508,
+              "forward_bits_per_output": 3.95564508,
+              "empirical_bits_per_source": 3.9397269,
+              "empirical_bits_per_output": 3.9397269,
+              "inverse_bits": 101675.901052,
+              "inverse_bits_per_source": 3.95564508,
+              "inverse_bits_per_output": 3.95564508
+            },
+            {
+              "order": 1,
+              "forward_bits": 82166.21638,
+              "forward_bits_per_source": 3.19663151,
+              "forward_bits_per_output": 3.19663151,
+              "empirical_bits_per_source": 3.09508749,
+              "empirical_bits_per_output": 3.09508749,
+              "inverse_bits": 82166.21638,
+              "inverse_bits_per_source": 3.19663151,
+              "inverse_bits_per_output": 3.19663151
+            },
+            {
+              "order": 2,
+              "forward_bits": 76819.27669,
+              "forward_bits_per_source": 2.98861176,
+              "forward_bits_per_output": 2.98861176,
+              "empirical_bits_per_source": 2.49381596,
+              "empirical_bits_per_output": 2.49381596,
+              "inverse_bits": 76819.27669,
+              "inverse_bits_per_source": 2.98861176,
+              "inverse_bits_per_output": 2.98861176
+            },
+            {
+              "order": 3,
+              "forward_bits": 77997.55248,
+              "forward_bits_per_source": 3.03445193,
+              "forward_bits_per_output": 3.03445193,
+              "empirical_bits_per_source": 1.78358302,
+              "empirical_bits_per_output": 1.78358302,
+              "inverse_bits": 77997.55248,
+              "inverse_bits_per_source": 3.03445193,
+              "inverse_bits_per_output": 3.03445193
+            },
+            {
+              "order": 4,
+              "forward_bits": 83745.41351,
+              "forward_bits_per_source": 3.25806931,
+              "forward_bits_per_output": 3.25806931,
+              "empirical_bits_per_source": 1.19093704,
+              "empirical_bits_per_output": 1.19093704,
+              "inverse_bits": 83745.41351,
+              "inverse_bits_per_source": 3.25806931,
+              "inverse_bits_per_output": 3.25806931
+            },
+            {
+              "order": 5,
+              "forward_bits": 88869.25832,
+              "forward_bits_per_source": 3.45740968,
+              "forward_bits_per_output": 3.45740968,
+              "empirical_bits_per_source": 0.76110128,
+              "empirical_bits_per_output": 0.76110128,
+              "inverse_bits": 88869.25832,
+              "inverse_bits_per_source": 3.45740968,
+              "inverse_bits_per_output": 3.45740968
+            },
+            {
+              "order": 6,
+              "forward_bits": 92002.248655,
+              "forward_bits_per_source": 3.57929694,
+              "forward_bits_per_output": 3.57929694,
+              "empirical_bits_per_source": 0.47902139,
+              "empirical_bits_per_output": 0.47902139,
+              "inverse_bits": 92002.248655,
+              "inverse_bits_per_source": 3.57929694,
+              "inverse_bits_per_output": 3.57929694
+            },
+            {
+              "order": 7,
+              "forward_bits": 93773.125824,
+              "forward_bits_per_source": 3.64819195,
+              "forward_bits_per_output": 3.64819195,
+              "empirical_bits_per_source": 0.29912028,
+              "empirical_bits_per_output": 0.29912028,
+              "inverse_bits": 93773.125824,
+              "inverse_bits_per_source": 3.64819195,
+              "inverse_bits_per_output": 3.64819195
+            },
+            {
+              "order": 8,
+              "forward_bits": 94715.878575,
+              "forward_bits_per_source": 3.68486923,
+              "forward_bits_per_output": 3.68486923,
+              "empirical_bits_per_source": 0.20027201,
+              "empirical_bits_per_output": 0.20027201,
+              "inverse_bits": 94715.878575,
+              "inverse_bits_per_source": 3.68486923,
+              "inverse_bits_per_output": 3.68486923
+            }
+          ],
+          "adjacent_empirical": {
+            "transitions": 25640,
+            "bits_per_transition": 3.09359795
+          },
+          "training_marker_counts": {},
+          "evaluation_marker_counts": {}
+        },
+        "addB": {
+          "output_symbols": 47054,
+          "output_train_symbols": 46275,
+          "output_checksum": "e118b4eadf914f2479eb454b61ef83d2cf478f0c4b3c3a5fc1b2a3bb5b1f40c9",
+          "train_output_checksum": "cf115c8c883288b46552b06cc512c6484cda67e393234a370cdff1de9ca98460",
+          "side_bits": 0.0,
+          "orders": [
+            {
+              "order": 0,
+              "forward_bits": 148450.789075,
+              "forward_bits_per_source": 5.7753964,
+              "forward_bits_per_output": 3.15490265,
+              "empirical_bits_per_source": 5.75901434,
+              "empirical_bits_per_output": 3.14595368,
+              "inverse_bits": 101675.901052,
+              "inverse_bits_per_source": 3.95564508,
+              "inverse_bits_per_output": 2.16083438
+            },
+            {
+              "order": 1,
+              "forward_bits": 98183.082405,
+              "forward_bits_per_source": 3.81975889,
+              "forward_bits_per_output": 2.08660438,
+              "empirical_bits_per_source": 3.7832917,
+              "empirical_bits_per_output": 2.06668359,
+              "inverse_bits": 82166.21638,
+              "inverse_bits_per_source": 3.19663151,
+              "inverse_bits_per_output": 1.74621108
+            },
+            {
+              "order": 2,
+              "forward_bits": 82243.591289,
+              "forward_bits_per_source": 3.19964174,
+              "forward_bits_per_output": 1.74785547,
+              "empirical_bits_per_source": 3.09508749,
+              "empirical_bits_per_output": 1.69074104,
+              "inverse_bits": 76819.27669,
+              "inverse_bits_per_source": 2.98861176,
+              "inverse_bits_per_output": 1.63257697
+            },
+            {
+              "order": 3,
+              "forward_bits": 80968.735744,
+              "forward_bits_per_source": 3.15004419,
+              "forward_bits_per_output": 1.72076201,
+              "empirical_bits_per_source": 2.96288111,
+              "empirical_bits_per_output": 1.61852119,
+              "inverse_bits": 77997.55248,
+              "inverse_bits_per_source": 3.03445193,
+              "inverse_bits_per_output": 1.6576179
+            },
+            {
+              "order": 4,
+              "forward_bits": 77746.533465,
+              "forward_bits_per_source": 3.02468618,
+              "forward_bits_per_output": 1.6522832,
+              "empirical_bits_per_source": 2.48274375,
+              "empirical_bits_per_output": 1.35623848,
+              "inverse_bits": 83745.41351,
+              "inverse_bits_per_source": 3.25806931,
+              "inverse_bits_per_output": 1.77977246
+            },
+            {
+              "order": 5,
+              "forward_bits": 80791.867917,
+              "forward_bits_per_source": 3.14316324,
+              "forward_bits_per_output": 1.71700319,
+              "empirical_bits_per_source": 2.22664873,
+              "empirical_bits_per_output": 1.21634248,
+              "inverse_bits": 88869.25832,
+              "inverse_bits_per_source": 3.45740968,
+              "inverse_bits_per_output": 1.88866533
+            },
+            {
+              "order": 6,
+              "forward_bits": 85181.378629,
+              "forward_bits_per_source": 3.31393474,
+              "forward_bits_per_output": 1.81028985,
+              "empirical_bits_per_source": 1.75130189,
+              "empirical_bits_per_output": 0.95667666,
+              "inverse_bits": 92002.248655,
+              "inverse_bits_per_source": 3.57929694,
+              "inverse_bits_per_output": 1.9552482
+            },
+            {
+              "order": 7,
+              "forward_bits": 94205.85658,
+              "forward_bits_per_source": 3.6650271,
+              "forward_bits_per_output": 2.00207967,
+              "empirical_bits_per_source": 1.42050461,
+              "empirical_bits_per_output": 0.77597336,
+              "inverse_bits": 93773.125824,
+              "inverse_bits_per_source": 3.64819195,
+              "inverse_bits_per_output": 1.99288319
+            },
+            {
+              "order": 8,
+              "forward_bits": 102752.649253,
+              "forward_bits_per_source": 3.99753537,
+              "forward_bits_per_output": 2.18371763,
+              "empirical_bits_per_source": 1.11237649,
+              "empirical_bits_per_output": 0.60765344,
+              "inverse_bits": 94715.878575,
+              "inverse_bits_per_source": 3.68486923,
+              "inverse_bits_per_output": 2.01291874
+            }
+          ],
+          "adjacent_empirical": {
+            "transitions": 46990,
+            "bits_per_transition": 2.06447015
+          },
+          "training_marker_counts": {
+            "B": 20571
+          },
+          "evaluation_marker_counts": {
+            "B": 21350
+          }
+        },
+        "matched_deterministic": {
+          "output_symbols": 47054,
+          "output_train_symbols": 46275,
+          "output_checksum": "856ffbc8533d598dfbb6c3b66fbdc48519531f659d665231fe26fcc3722f9938",
+          "train_output_checksum": "79c27fa8ba6498515495717d30020dc1114c04d6b29691f40aff90f2b3d3a71f",
+          "side_bits": 0.0,
+          "orders": [
+            {
+              "order": 0,
+              "forward_bits": 168940.955218,
+              "forward_bits_per_source": 6.57255506,
+              "forward_bits_per_output": 3.59036331,
+              "empirical_bits_per_source": 6.5558638,
+              "empirical_bits_per_output": 3.58124544,
+              "inverse_bits": 101675.901052,
+              "inverse_bits_per_source": 3.95564508,
+              "inverse_bits_per_output": 2.16083438
+            },
+            {
+              "order": 1,
+              "forward_bits": 93524.440323,
+              "forward_bits_per_source": 3.63851697,
+              "forward_bits_per_output": 1.98759809,
+              "empirical_bits_per_source": 3.58837125,
+              "empirical_bits_per_output": 1.96020518,
+              "inverse_bits": 82166.21638,
+              "inverse_bits_per_source": 3.19663151,
+              "inverse_bits_per_output": 1.74621108
+            },
+            {
+              "order": 2,
+              "forward_bits": 82262.588653,
+              "forward_bits_per_source": 3.20038082,
+              "forward_bits_per_output": 1.74825921,
+              "empirical_bits_per_source": 3.09168316,
+              "empirical_bits_per_output": 1.68888137,
+              "inverse_bits": 76819.27669,
+              "inverse_bits_per_source": 2.98861176,
+              "inverse_bits_per_output": 1.63257697
+            },
+            {
+              "order": 3,
+              "forward_bits": 79988.226291,
+              "forward_bits_per_source": 3.111898,
+              "forward_bits_per_output": 1.69992405,
+              "empirical_bits_per_source": 2.88777671,
+              "empirical_bits_per_output": 1.57749421,
+              "inverse_bits": 77997.55248,
+              "inverse_bits_per_source": 3.03445193,
+              "inverse_bits_per_output": 1.6576179
+            },
+            {
+              "order": 4,
+              "forward_bits": 77777.172709,
+              "forward_bits_per_source": 3.02587818,
+              "forward_bits_per_output": 1.65293435,
+              "empirical_bits_per_source": 2.46397511,
+              "empirical_bits_per_output": 1.34598581,
+              "inverse_bits": 83745.41351,
+              "inverse_bits_per_source": 3.25806931,
+              "inverse_bits_per_output": 1.77977246
+            },
+            {
+              "order": 5,
+              "forward_bits": 81585.135217,
+              "forward_bits_per_source": 3.17402487,
+              "forward_bits_per_output": 1.73386184,
+              "empirical_bits_per_source": 2.13850441,
+              "empirical_bits_per_output": 1.16819223,
+              "inverse_bits": 88869.25832,
+              "inverse_bits_per_source": 3.45740968,
+              "inverse_bits_per_output": 1.88866533
+            },
+            {
+              "order": 6,
+              "forward_bits": 87298.102466,
+              "forward_bits_per_source": 3.39628472,
+              "forward_bits_per_output": 1.85527484,
+              "empirical_bits_per_source": 1.69839586,
+              "empirical_bits_per_output": 0.9277759,
+              "inverse_bits": 92002.248655,
+              "inverse_bits_per_source": 3.57929694,
+              "inverse_bits_per_output": 1.9552482
+            },
+            {
+              "order": 7,
+              "forward_bits": 96164.773506,
+              "forward_bits_per_source": 3.74123769,
+              "forward_bits_per_output": 2.04371092,
+              "empirical_bits_per_source": 1.34914356,
+              "empirical_bits_per_output": 0.73699125,
+              "inverse_bits": 93773.125824,
+              "inverse_bits_per_source": 3.64819195,
+              "inverse_bits_per_output": 1.99288319
+            },
+            {
+              "order": 8,
+              "forward_bits": 104367.744715,
+              "forward_bits_per_source": 4.06036978,
+              "forward_bits_per_output": 2.21804192,
+              "empirical_bits_per_source": 1.04144666,
+              "empirical_bits_per_output": 0.56890689,
+              "inverse_bits": 94715.878575,
+              "inverse_bits_per_source": 3.68486923,
+              "inverse_bits_per_output": 2.01291874
+            }
+          ],
+          "adjacent_empirical": {
+            "transitions": 46990,
+            "bits_per_transition": 1.95784672
+          },
+          "training_marker_counts": {
+            "B": 7629,
+            "D": 12942
+          },
+          "evaluation_marker_counts": {
+            "D": 13197,
+            "B": 8153
+          }
+        },
+        "matched_random": {
+          "output_symbols": 47054,
+          "output_train_symbols": 46275,
+          "output_checksum": "9ba8fd5daf9cf4716a67a15989c98bf72decbbfa4d9b645f23117556f8a9eb5d",
+          "train_output_checksum": "838a23895905f7166ccb9abf9c9aa5400e1059bfda71ea291fe1156e3ebb85c9",
+          "side_bits": 20474.743309,
+          "orders": [
+            {
+              "order": 0,
+              "forward_bits": 168940.955218,
+              "forward_bits_per_source": 6.57255506,
+              "forward_bits_per_output": 3.59036331,
+              "empirical_bits_per_source": 6.5558638,
+              "empirical_bits_per_output": 3.58124544,
+              "inverse_bits": 122150.644361,
+              "inverse_bits_per_source": 4.75220372,
+              "inverse_bits_per_output": 2.59596728
+            },
+            {
+              "order": 1,
+              "forward_bits": 118692.566192,
+              "forward_bits_per_source": 4.61766909,
+              "forward_bits_per_output": 2.52247559,
+              "empirical_bits_per_source": 4.57931547,
+              "empirical_bits_per_output": 2.50152431,
+              "inverse_bits": 102640.959689,
+              "inverse_bits_per_source": 3.99319015,
+              "inverse_bits_per_output": 2.18134398
+            },
+            {
+              "order": 2,
+              "forward_bits": 103009.515381,
+              "forward_bits_per_source": 4.00752861,
+              "forward_bits_per_output": 2.18917659,
+              "empirical_bits_per_source": 3.88319691,
+              "empirical_bits_per_output": 2.12125842,
+              "inverse_bits": 97294.019999,
+              "inverse_bits_per_source": 3.7851704,
+              "inverse_bits_per_output": 2.06770987
+            },
+            {
+              "order": 3,
+              "forward_bits": 102963.465452,
+              "forward_bits_per_source": 4.00573706,
+              "forward_bits_per_output": 2.18819793,
+              "empirical_bits_per_source": 3.71347005,
+              "empirical_bits_per_output": 2.0285424,
+              "inverse_bits": 98472.295789,
+              "inverse_bits_per_source": 3.83101057,
+              "inverse_bits_per_output": 2.09275079
+            },
+            {
+              "order": 4,
+              "forward_bits": 103991.406284,
+              "forward_bits_per_source": 4.04572854,
+              "forward_bits_per_output": 2.21004391,
+              "empirical_bits_per_source": 3.09422585,
+              "empirical_bits_per_output": 1.69027035,
+              "inverse_bits": 104220.156819,
+              "inverse_bits_per_source": 4.05462795,
+              "inverse_bits_per_output": 2.21490536
+            },
+            {
+              "order": 5,
+              "forward_bits": 114369.020707,
+              "forward_bits_per_source": 4.44946392,
+              "forward_bits_per_output": 2.43059083,
+              "empirical_bits_per_source": 2.52773219,
+              "empirical_bits_per_output": 1.38081414,
+              "inverse_bits": 109344.001629,
+              "inverse_bits_per_source": 4.25396832,
+              "inverse_bits_per_output": 2.32379822
+            },
+            {
+              "order": 6,
+              "forward_bits": 124099.764155,
+              "forward_bits_per_source": 4.82803315,
+              "forward_bits_per_output": 2.63739032,
+              "empirical_bits_per_source": 1.69235701,
+              "empirical_bits_per_output": 0.92447708,
+              "inverse_bits": 112476.991964,
+              "inverse_bits_per_source": 4.37585559,
+              "inverse_bits_per_output": 2.39038109
+            },
+            {
+              "order": 7,
+              "forward_bits": 131491.570459,
+              "forward_bits_per_source": 5.11560732,
+              "forward_bits_per_output": 2.79448231,
+              "empirical_bits_per_source": 1.04832472,
+              "empirical_bits_per_output": 0.57266414,
+              "inverse_bits": 114247.869133,
+              "inverse_bits_per_source": 4.44475059,
+              "inverse_bits_per_output": 2.42801609
+            },
+            {
+              "order": 8,
+              "forward_bits": 136100.669204,
+              "forward_bits_per_source": 5.29492177,
+              "forward_bits_per_output": 2.8924357,
+              "empirical_bits_per_source": 0.59619222,
+              "empirical_bits_per_output": 0.32567953,
+              "inverse_bits": 115190.621884,
+              "inverse_bits_per_source": 4.48142787,
+              "inverse_bits_per_output": 2.44805164
+            }
+          ],
+          "adjacent_empirical": {
+            "transitions": 46990,
+            "bits_per_transition": 2.49990312
+          },
+          "training_marker_counts": {
+            "B": 7629,
+            "D": 12942
+          },
+          "evaluation_marker_counts": {
+            "B": 8153,
+            "D": 13197
+          }
+        },
+        "suffix_B": {
+          "output_symbols": 30122,
+          "output_train_symbols": 30901,
+          "output_checksum": "910fc293f1ac6f5b81d67ef7b4ee6a6729b0b046fc8797b30867940fa7d5d617",
+          "train_output_checksum": "6b4d68a3a4083a8be7360ed4ac94785ea6f6ef7e01dac524e9c876a7aae77471",
+          "side_bits": 0.0,
+          "orders": [
+            {
+              "order": 0,
+              "forward_bits": 119866.707312,
+              "forward_bits_per_source": 4.6633484,
+              "forward_bits_per_output": 3.97937412,
+              "empirical_bits_per_source": 4.64454746,
+              "empirical_bits_per_output": 3.96333072,
+              "inverse_bits": 101675.901052,
+              "inverse_bits_per_source": 3.95564508,
+              "inverse_bits_per_output": 3.37546979
+            },
+            {
+              "order": 1,
+              "forward_bits": 82306.815804,
+              "forward_bits_per_source": 3.20210146,
+              "forward_bits_per_output": 2.73244857,
+              "empirical_bits_per_source": 3.09908609,
+              "empirical_bits_per_output": 2.64454249,
+              "inverse_bits": 82166.21638,
+              "inverse_bits_per_source": 3.19663151,
+              "inverse_bits_per_output": 2.7277809
+            },
+            {
+              "order": 2,
+              "forward_bits": 77001.728401,
+              "forward_bits_per_source": 2.99570994,
+              "forward_bits_per_output": 2.55632854,
+              "empirical_bits_per_source": 2.51961061,
+              "empirical_bits_per_output": 2.1500588,
+              "inverse_bits": 76819.27669,
+              "inverse_bits_per_source": 2.98861176,
+              "inverse_bits_per_output": 2.55027145
+            },
+            {
+              "order": 3,
+              "forward_bits": 76697.879474,
+              "forward_bits_per_source": 2.98388887,
+              "forward_bits_per_output": 2.54624127,
+              "empirical_bits_per_source": 1.89726098,
+              "empirical_bits_per_output": 1.61898932,
+              "inverse_bits": 77997.55248,
+              "inverse_bits_per_source": 3.03445193,
+              "inverse_bits_per_output": 2.58938824
+            },
+            {
+              "order": 4,
+              "forward_bits": 80406.882545,
+              "forward_bits_per_source": 3.1281856,
+              "forward_bits_per_output": 2.66937396,
+              "empirical_bits_per_source": 1.47317218,
+              "empirical_bits_per_output": 1.25710171,
+              "inverse_bits": 83745.41351,
+              "inverse_bits_per_source": 3.25806931,
+              "inverse_bits_per_output": 2.78020761
+            },
+            {
+              "order": 5,
+              "forward_bits": 86647.871111,
+              "forward_bits_per_source": 3.37098783,
+              "forward_bits_per_output": 2.87656434,
+              "empirical_bits_per_source": 1.11429909,
+              "empirical_bits_per_output": 0.95086461,
+              "inverse_bits": 88869.25832,
+              "inverse_bits_per_source": 3.45740968,
+              "inverse_bits_per_output": 2.95031068
+            },
+            {
+              "order": 6,
+              "forward_bits": 92016.723195,
+              "forward_bits_per_source": 3.57986007,
+              "forward_bits_per_output": 3.05480125,
+              "empirical_bits_per_source": 0.79046701,
+              "empirical_bits_per_output": 0.67452905,
+              "inverse_bits": 92002.248655,
+              "inverse_bits_per_source": 3.57929694,
+              "inverse_bits_per_output": 3.05432072
+            },
+            {
+              "order": 7,
+              "forward_bits": 95909.120562,
+              "forward_bits_per_source": 3.73129165,
+              "forward_bits_per_output": 3.18402233,
+              "empirical_bits_per_source": 0.57604034,
+              "empirical_bits_per_output": 0.49155239,
+              "inverse_bits": 93773.125824,
+              "inverse_bits_per_source": 3.64819195,
+              "inverse_bits_per_output": 3.11311088
+            },
+            {
+              "order": 8,
+              "forward_bits": 98743.597053,
+              "forward_bits_per_source": 3.8415654,
+              "forward_bits_per_output": 3.2781222,
+              "empirical_bits_per_source": 0.39793149,
+              "empirical_bits_per_output": 0.33956679,
+              "inverse_bits": 94715.878575,
+              "inverse_bits_per_source": 3.68486923,
+              "inverse_bits_per_output": 3.14440869
+            }
+          ],
+          "adjacent_empirical": {
+            "transitions": 30058,
+            "bits_per_transition": 2.64231259
+          },
+          "training_marker_counts": {
+            "B": 5197
+          },
+          "evaluation_marker_counts": {
+            "B": 4418
+          }
+        }
+      },
+      "work_metadata": {
+        "train": "it_dante",
+        "evaluation": "it_villani",
+        "rationale": "Dante’s narrative poem versus Matteo Villani’s historical chronicle. #426 used the same IDs, while these spans exclude Villani’s modern preface and reset the training and evaluation samples on actual medieval text.",
+        "exact_shared_blocks": 0,
+        "exact_shared_distinct_12_word_windows": 0
+      }
+    },
+    "german": {
+      "train_blocks": 64,
+      "eval_blocks": 64,
+      "train_symbols": 25719,
+      "eval_source_symbols": 25691,
+      "train_source_checksum": "cb3a351f7ea3ee3ece758816f98db3fb950ced4d8777204d6fda4b0fc990c891",
+      "eval_source_checksum": "654f393fb8b8e5b1bc70c50fd9f4664a5a8fca2e15456e7baba9986b0cd5d6a8",
+      "eval_spaces": 4927,
+      "exact_block_overlap": 0,
+      "modes": {
+        "identity": {
+          "output_symbols": 25691,
+          "output_train_symbols": 25719,
+          "output_checksum": "654f393fb8b8e5b1bc70c50fd9f4664a5a8fca2e15456e7baba9986b0cd5d6a8",
+          "train_output_checksum": "cb3a351f7ea3ee3ece758816f98db3fb950ced4d8777204d6fda4b0fc990c891",
+          "side_bits": 0.0,
+          "orders": [
+            {
+              "order": 0,
+              "forward_bits": 103078.857228,
+              "forward_bits_per_source": 4.01225555,
+              "forward_bits_per_output": 4.01225555,
+              "empirical_bits_per_source": 3.97901565,
+              "empirical_bits_per_output": 3.97901565,
+              "inverse_bits": 103078.857228,
+              "inverse_bits_per_source": 4.01225555,
+              "inverse_bits_per_output": 4.01225555
+            },
+            {
+              "order": 1,
+              "forward_bits": 84329.361042,
+              "forward_bits_per_source": 3.28244759,
+              "forward_bits_per_output": 3.28244759,
+              "empirical_bits_per_source": 3.01038493,
+              "empirical_bits_per_output": 3.01038493,
+              "inverse_bits": 84329.361042,
+              "inverse_bits_per_source": 3.28244759,
+              "inverse_bits_per_output": 3.28244759
+            },
+            {
+              "order": 2,
+              "forward_bits": 78251.884342,
+              "forward_bits_per_source": 3.04588706,
+              "forward_bits_per_output": 3.04588706,
+              "empirical_bits_per_source": 2.34094453,
+              "empirical_bits_per_output": 2.34094453,
+              "inverse_bits": 78251.884342,
+              "inverse_bits_per_source": 3.04588706,
+              "inverse_bits_per_output": 3.04588706
+            },
+            {
+              "order": 3,
+              "forward_bits": 81803.958555,
+              "forward_bits_per_source": 3.18414848,
+              "forward_bits_per_output": 3.18414848,
+              "empirical_bits_per_source": 1.83396165,
+              "empirical_bits_per_output": 1.83396165,
+              "inverse_bits": 81803.958555,
+              "inverse_bits_per_source": 3.18414848,
+              "inverse_bits_per_output": 3.18414848
+            },
+            {
+              "order": 4,
+              "forward_bits": 88691.648584,
+              "forward_bits_per_source": 3.45224587,
+              "forward_bits_per_output": 3.45224587,
+              "empirical_bits_per_source": 1.36175884,
+              "empirical_bits_per_output": 1.36175884,
+              "inverse_bits": 88691.648584,
+              "inverse_bits_per_source": 3.45224587,
+              "inverse_bits_per_output": 3.45224587
+            },
+            {
+              "order": 5,
+              "forward_bits": 94876.096293,
+              "forward_bits_per_source": 3.69297016,
+              "forward_bits_per_output": 3.69297016,
+              "empirical_bits_per_source": 0.92657841,
+              "empirical_bits_per_output": 0.92657841,
+              "inverse_bits": 94876.096293,
+              "inverse_bits_per_source": 3.69297016,
+              "inverse_bits_per_output": 3.69297016
+            },
+            {
+              "order": 6,
+              "forward_bits": 99148.539853,
+              "forward_bits_per_source": 3.85927133,
+              "forward_bits_per_output": 3.85927133,
+              "empirical_bits_per_source": 0.56294094,
+              "empirical_bits_per_output": 0.56294094,
+              "inverse_bits": 99148.539853,
+              "inverse_bits_per_source": 3.85927133,
+              "inverse_bits_per_output": 3.85927133
+            },
+            {
+              "order": 7,
+              "forward_bits": 101394.723087,
+              "forward_bits_per_source": 3.94670208,
+              "forward_bits_per_output": 3.94670208,
+              "empirical_bits_per_source": 0.30672589,
+              "empirical_bits_per_output": 0.30672589,
+              "inverse_bits": 101394.723087,
+              "inverse_bits_per_source": 3.94670208,
+              "inverse_bits_per_output": 3.94670208
+            },
+            {
+              "order": 8,
+              "forward_bits": 102448.270715,
+              "forward_bits_per_source": 3.98771051,
+              "forward_bits_per_output": 3.98771051,
+              "empirical_bits_per_source": 0.1617917,
+              "empirical_bits_per_output": 0.1617917,
+              "inverse_bits": 102448.270715,
+              "inverse_bits_per_source": 3.98771051,
+              "inverse_bits_per_output": 3.98771051
+            }
+          ],
+          "adjacent_empirical": {
+            "transitions": 25627,
+            "bits_per_transition": 3.00809133
+          },
+          "training_marker_counts": {},
+          "evaluation_marker_counts": {}
+        },
+        "substitution": {
+          "output_symbols": 25691,
+          "output_train_symbols": 25719,
+          "output_checksum": "79bb5c6bde79763b313117d416bbb599beaaa8bcae718538ec4770446b051b3d",
+          "train_output_checksum": "93e701b0a9a74f70ffbf7f6ffac5d5a18a811f71b1b3ce65864330b21e75c94a",
+          "side_bits": 0.0,
+          "orders": [
+            {
+              "order": 0,
+              "forward_bits": 103078.857228,
+              "forward_bits_per_source": 4.01225555,
+              "forward_bits_per_output": 4.01225555,
+              "empirical_bits_per_source": 3.97901565,
+              "empirical_bits_per_output": 3.97901565,
+              "inverse_bits": 103078.857228,
+              "inverse_bits_per_source": 4.01225555,
+              "inverse_bits_per_output": 4.01225555
+            },
+            {
+              "order": 1,
+              "forward_bits": 84329.361042,
+              "forward_bits_per_source": 3.28244759,
+              "forward_bits_per_output": 3.28244759,
+              "empirical_bits_per_source": 3.01038493,
+              "empirical_bits_per_output": 3.01038493,
+              "inverse_bits": 84329.361042,
+              "inverse_bits_per_source": 3.28244759,
+              "inverse_bits_per_output": 3.28244759
+            },
+            {
+              "order": 2,
+              "forward_bits": 78251.884342,
+              "forward_bits_per_source": 3.04588706,
+              "forward_bits_per_output": 3.04588706,
+              "empirical_bits_per_source": 2.34094453,
+              "empirical_bits_per_output": 2.34094453,
+              "inverse_bits": 78251.884342,
+              "inverse_bits_per_source": 3.04588706,
+              "inverse_bits_per_output": 3.04588706
+            },
+            {
+              "order": 3,
+              "forward_bits": 81803.958555,
+              "forward_bits_per_source": 3.18414848,
+              "forward_bits_per_output": 3.18414848,
+              "empirical_bits_per_source": 1.83396165,
+              "empirical_bits_per_output": 1.83396165,
+              "inverse_bits": 81803.958555,
+              "inverse_bits_per_source": 3.18414848,
+              "inverse_bits_per_output": 3.18414848
+            },
+            {
+              "order": 4,
+              "forward_bits": 88691.648584,
+              "forward_bits_per_source": 3.45224587,
+              "forward_bits_per_output": 3.45224587,
+              "empirical_bits_per_source": 1.36175884,
+              "empirical_bits_per_output": 1.36175884,
+              "inverse_bits": 88691.648584,
+              "inverse_bits_per_source": 3.45224587,
+              "inverse_bits_per_output": 3.45224587
+            },
+            {
+              "order": 5,
+              "forward_bits": 94876.096293,
+              "forward_bits_per_source": 3.69297016,
+              "forward_bits_per_output": 3.69297016,
+              "empirical_bits_per_source": 0.92657841,
+              "empirical_bits_per_output": 0.92657841,
+              "inverse_bits": 94876.096293,
+              "inverse_bits_per_source": 3.69297016,
+              "inverse_bits_per_output": 3.69297016
+            },
+            {
+              "order": 6,
+              "forward_bits": 99148.539853,
+              "forward_bits_per_source": 3.85927133,
+              "forward_bits_per_output": 3.85927133,
+              "empirical_bits_per_source": 0.56294094,
+              "empirical_bits_per_output": 0.56294094,
+              "inverse_bits": 99148.539853,
+              "inverse_bits_per_source": 3.85927133,
+              "inverse_bits_per_output": 3.85927133
+            },
+            {
+              "order": 7,
+              "forward_bits": 101394.723087,
+              "forward_bits_per_source": 3.94670208,
+              "forward_bits_per_output": 3.94670208,
+              "empirical_bits_per_source": 0.30672589,
+              "empirical_bits_per_output": 0.30672589,
+              "inverse_bits": 101394.723087,
+              "inverse_bits_per_source": 3.94670208,
+              "inverse_bits_per_output": 3.94670208
+            },
+            {
+              "order": 8,
+              "forward_bits": 102448.270715,
+              "forward_bits_per_source": 3.98771051,
+              "forward_bits_per_output": 3.98771051,
+              "empirical_bits_per_source": 0.1617917,
+              "empirical_bits_per_output": 0.1617917,
+              "inverse_bits": 102448.270715,
+              "inverse_bits_per_source": 3.98771051,
+              "inverse_bits_per_output": 3.98771051
+            }
+          ],
+          "adjacent_empirical": {
+            "transitions": 25627,
+            "bits_per_transition": 3.00809133
+          },
+          "training_marker_counts": {},
+          "evaluation_marker_counts": {}
+        },
+        "addB": {
+          "output_symbols": 46455,
+          "output_train_symbols": 46686,
+          "output_checksum": "07f6b2581bd108e8a57141c1dc29f041e2972cc8c96a6420f752942cf60b89c2",
+          "train_output_checksum": "a77e3b6f2bb3517ebb242f4caca68484b82a4bfa0edbdfb8612ffc0ac0f341c4",
+          "side_bits": 0.0,
+          "orders": [
+            {
+              "order": 0,
+              "forward_bits": 149156.751875,
+              "forward_bits_per_source": 5.80579782,
+              "forward_bits_per_output": 3.21077929,
+              "empirical_bits_per_source": 5.77253656,
+              "empirical_bits_per_output": 3.19238482,
+              "inverse_bits": 103078.857228,
+              "inverse_bits_per_source": 4.01225555,
+              "inverse_bits_per_output": 2.21889694
+            },
+            {
+              "order": 1,
+              "forward_bits": 99093.031294,
+              "forward_bits_per_source": 3.85711071,
+              "forward_bits_per_output": 2.13309722,
+              "empirical_bits_per_source": 3.7632418,
+              "empirical_bits_per_output": 2.08118491,
+              "inverse_bits": 84329.361042,
+              "inverse_bits_per_source": 3.28244759,
+              "inverse_bits_per_output": 1.81529138
+            },
+            {
+              "order": 2,
+              "forward_bits": 85295.126925,
+              "forward_bits_per_source": 3.32003919,
+              "forward_bits_per_output": 1.83608066,
+              "empirical_bits_per_source": 3.01038493,
+              "empirical_bits_per_output": 1.66483262,
+              "inverse_bits": 78251.884342,
+              "inverse_bits_per_source": 3.04588706,
+              "inverse_bits_per_output": 1.68446635
+            },
+            {
+              "order": 3,
+              "forward_bits": 83472.417307,
+              "forward_bits_per_source": 3.2490918,
+              "forward_bits_per_output": 1.79684463,
+              "empirical_bits_per_source": 2.79395758,
+              "empirical_bits_per_output": 1.54514184,
+              "inverse_bits": 81803.958555,
+              "inverse_bits_per_source": 3.18414848,
+              "inverse_bits_per_output": 1.76092904
+            },
+            {
+              "order": 4,
+              "forward_bits": 82183.251658,
+              "forward_bits_per_source": 3.19891213,
+              "forward_bits_per_output": 1.76909378,
+              "empirical_bits_per_source": 2.33784099,
+              "empirical_bits_per_output": 1.29289577,
+              "inverse_bits": 88691.648584,
+              "inverse_bits_per_source": 3.45224587,
+              "inverse_bits_per_output": 1.90919489
+            },
+            {
+              "order": 5,
+              "forward_bits": 89101.021888,
+              "forward_bits_per_source": 3.46818037,
+              "forward_bits_per_output": 1.91800714,
+              "empirical_bits_per_source": 2.12769832,
+              "empirical_bits_per_output": 1.1766806,
+              "inverse_bits": 94876.096293,
+              "inverse_bits_per_source": 3.69297016,
+              "inverse_bits_per_output": 2.0423226
+            },
+            {
+              "order": 6,
+              "forward_bits": 95512.625945,
+              "forward_bits_per_source": 3.71774652,
+              "forward_bits_per_output": 2.05602467,
+              "empirical_bits_per_source": 1.81621971,
+              "empirical_bits_per_output": 1.00442365,
+              "inverse_bits": 99148.539853,
+              "inverse_bits_per_source": 3.85927133,
+              "inverse_bits_per_output": 2.13429211
+            },
+            {
+              "order": 7,
+              "forward_bits": 103997.611104,
+              "forward_bits_per_source": 4.04801725,
+              "forward_bits_per_output": 2.23867422,
+              "empirical_bits_per_source": 1.47045314,
+              "empirical_bits_per_output": 0.81320443,
+              "inverse_bits": 101394.723087,
+              "inverse_bits_per_source": 3.94670208,
+              "inverse_bits_per_output": 2.18264392
+            },
+            {
+              "order": 8,
+              "forward_bits": 112968.257464,
+              "forward_bits_per_source": 4.39719191,
+              "forward_bits_per_output": 2.43177823,
+              "empirical_bits_per_source": 1.29453904,
+              "empirical_bits_per_output": 0.71591868,
+              "inverse_bits": 102448.270715,
+              "inverse_bits_per_source": 3.98771051,
+              "inverse_bits_per_output": 2.2053228
+            }
+          ],
+          "adjacent_empirical": {
+            "transitions": 46391,
+            "bits_per_transition": 2.07863599
+          },
+          "training_marker_counts": {
+            "B": 20967
+          },
+          "evaluation_marker_counts": {
+            "B": 20764
+          }
+        },
+        "matched_deterministic": {
+          "output_symbols": 46455,
+          "output_train_symbols": 46686,
+          "output_checksum": "4c3fa390596c0767217f6cc998ca55f937ee230bc500542a99260fdaa98a8985",
+          "train_output_checksum": "b027486188785b7534c4f94a222b64ee39689826a17a11348263596eae2152ef",
+          "side_bits": 0.0,
+          "orders": [
+            {
+              "order": 0,
+              "forward_bits": 169538.996622,
+              "forward_bits_per_source": 6.59915911,
+              "forward_bits_per_output": 3.64953173,
+              "empirical_bits_per_source": 6.56589677,
+              "empirical_bits_per_output": 3.63113667,
+              "inverse_bits": 103078.857228,
+              "inverse_bits_per_source": 4.01225555,
+              "inverse_bits_per_output": 2.21889694
+            },
+            {
+              "order": 1,
+              "forward_bits": 96187.17685,
+              "forward_bits_per_source": 3.74400284,
+              "forward_bits_per_output": 2.07054519,
+              "empirical_bits_per_source": 3.61560754,
+              "empirical_bits_per_output": 1.99953876,
+              "inverse_bits": 84329.361042,
+              "inverse_bits_per_source": 3.28244759,
+              "inverse_bits_per_output": 1.81529138
+            },
+            {
+              "order": 2,
+              "forward_bits": 85370.07448,
+              "forward_bits_per_source": 3.32295646,
+              "forward_bits_per_output": 1.83769399,
+              "empirical_bits_per_source": 3.00875287,
+              "empirical_bits_per_output": 1.66393004,
+              "inverse_bits": 78251.884342,
+              "inverse_bits_per_source": 3.04588706,
+              "inverse_bits_per_output": 1.68446635
+            },
+            {
+              "order": 3,
+              "forward_bits": 82876.3973,
+              "forward_bits_per_source": 3.22589223,
+              "forward_bits_per_output": 1.78401458,
+              "empirical_bits_per_source": 2.70893094,
+              "empirical_bits_per_output": 1.49811957,
+              "inverse_bits": 81803.958555,
+              "inverse_bits_per_source": 3.18414848,
+              "inverse_bits_per_output": 1.76092904
+            },
+            {
+              "order": 4,
+              "forward_bits": 83188.161345,
+              "forward_bits_per_source": 3.23802738,
+              "forward_bits_per_output": 1.79072568,
+              "empirical_bits_per_source": 2.32505785,
+              "empirical_bits_per_output": 1.28582631,
+              "inverse_bits": 88691.648584,
+              "inverse_bits_per_source": 3.45224587,
+              "inverse_bits_per_output": 1.90919489
+            },
+            {
+              "order": 5,
+              "forward_bits": 89716.191483,
+              "forward_bits_per_source": 3.49212532,
+              "forward_bits_per_output": 1.93124941,
+              "empirical_bits_per_source": 2.06069041,
+              "empirical_bits_per_output": 1.13962323,
+              "inverse_bits": 94876.096293,
+              "inverse_bits_per_source": 3.69297016,
+              "inverse_bits_per_output": 2.0423226
+            },
+            {
+              "order": 6,
+              "forward_bits": 97137.227831,
+              "forward_bits_per_source": 3.78098275,
+              "forward_bits_per_output": 2.09099619,
+              "empirical_bits_per_source": 1.76113377,
+              "empirical_bits_per_output": 0.97395948,
+              "inverse_bits": 99148.539853,
+              "inverse_bits_per_source": 3.85927133,
+              "inverse_bits_per_output": 2.13429211
+            },
+            {
+              "order": 7,
+              "forward_bits": 105772.249365,
+              "forward_bits_per_source": 4.11709351,
+              "forward_bits_per_output": 2.27687546,
+              "empirical_bits_per_source": 1.43100471,
+              "empirical_bits_per_output": 0.79138827,
+              "inverse_bits": 101394.723087,
+              "inverse_bits_per_source": 3.94670208,
+              "inverse_bits_per_output": 2.18264392
+            },
+            {
+              "order": 8,
+              "forward_bits": 114505.432051,
+              "forward_bits_per_source": 4.45702511,
+              "forward_bits_per_output": 2.46486777,
+              "empirical_bits_per_source": 1.20943636,
+              "empirical_bits_per_output": 0.66885436,
+              "inverse_bits": 102448.270715,
+              "inverse_bits_per_source": 3.98771051,
+              "inverse_bits_per_output": 2.2053228
+            }
+          ],
+          "adjacent_empirical": {
+            "transitions": 46391,
+            "bits_per_transition": 1.99687721
+          },
+          "training_marker_counts": {
+            "D": 12167,
+            "B": 8800
+          },
+          "evaluation_marker_counts": {
+            "D": 12036,
+            "B": 8728
+          }
+        },
+        "matched_random": {
+          "output_symbols": 46455,
+          "output_train_symbols": 46686,
+          "output_checksum": "9e677aa368c587b55cea307181b2b0311a9c927ccb8f3f01fde0e0bf27d7d7a5",
+          "train_output_checksum": "42fe16cc425206f9bfbede5a2eef6c34562b7907a3012fbfd2f189d5141386fd",
+          "side_bits": 20374.738852,
+          "orders": [
+            {
+              "order": 0,
+              "forward_bits": 169538.996622,
+              "forward_bits_per_source": 6.59915911,
+              "forward_bits_per_output": 3.64953173,
+              "empirical_bits_per_source": 6.56589677,
+              "empirical_bits_per_output": 3.63113667,
+              "inverse_bits": 123453.59608,
+              "inverse_bits_per_source": 4.80532467,
+              "inverse_bits_per_output": 2.65748781
+            },
+            {
+              "order": 1,
+              "forward_bits": 119516.250081,
+              "forward_bits_per_source": 4.65206687,
+              "forward_bits_per_output": 2.57273168,
+              "empirical_bits_per_source": 4.55572934,
+              "empirical_bits_per_output": 2.51945415,
+              "inverse_bits": 104704.099895,
+              "inverse_bits_per_source": 4.07551671,
+              "inverse_bits_per_output": 2.25388225
+            },
+            {
+              "order": 2,
+              "forward_bits": 106123.760504,
+              "forward_bits_per_source": 4.13077578,
+              "forward_bits_per_output": 2.28444216,
+              "empirical_bits_per_source": 3.7929975,
+              "empirical_bits_per_output": 2.0976407,
+              "inverse_bits": 98626.623194,
+              "inverse_bits_per_source": 3.83895618,
+              "inverse_bits_per_output": 2.12305722
+            },
+            {
+              "order": 3,
+              "forward_bits": 106390.083892,
+              "forward_bits_per_source": 4.14114219,
+              "forward_bits_per_output": 2.29017509,
+              "empirical_bits_per_source": 3.53264835,
+              "empirical_bits_per_output": 1.95365986,
+              "inverse_bits": 102178.697407,
+              "inverse_bits_per_source": 3.9772176,
+              "inverse_bits_per_output": 2.19951991
+            },
+            {
+              "order": 4,
+              "forward_bits": 107367.946572,
+              "forward_bits_per_source": 4.17920465,
+              "forward_bits_per_output": 2.31122477,
+              "empirical_bits_per_source": 2.94047609,
+              "empirical_bits_per_output": 1.62617094,
+              "inverse_bits": 109066.387436,
+              "inverse_bits_per_source": 4.24531499,
+              "inverse_bits_per_output": 2.34778576
+            },
+            {
+              "order": 5,
+              "forward_bits": 117333.361129,
+              "forward_bits_per_source": 4.56709981,
+              "forward_bits_per_output": 2.52574236,
+              "empirical_bits_per_source": 2.44228869,
+              "empirical_bits_per_output": 1.35065846,
+              "inverse_bits": 115250.835146,
+              "inverse_bits_per_source": 4.48603928,
+              "inverse_bits_per_output": 2.48091347
+            },
+            {
+              "order": 6,
+              "forward_bits": 126821.80292,
+              "forward_bits_per_source": 4.93642921,
+              "forward_bits_per_output": 2.72999253,
+              "empirical_bits_per_source": 1.77000201,
+              "empirical_bits_per_output": 0.97886388,
+              "inverse_bits": 119523.278705,
+              "inverse_bits_per_source": 4.65234046,
+              "inverse_bits_per_output": 2.57288298
+            },
+            {
+              "order": 7,
+              "forward_bits": 134436.067957,
+              "forward_bits_per_source": 5.23280791,
+              "forward_bits_per_output": 2.89389878,
+              "empirical_bits_per_source": 1.09620004,
+              "empirical_bits_per_output": 0.6062313,
+              "inverse_bits": 121769.461939,
+              "inverse_bits_per_source": 4.7397712,
+              "inverse_bits_per_output": 2.62123479
+            },
+            {
+              "order": 8,
+              "forward_bits": 140011.540703,
+              "forward_bits_per_source": 5.44982837,
+              "forward_bits_per_output": 3.01391757,
+              "empirical_bits_per_source": 0.66825145,
+              "empirical_bits_per_output": 0.36956297,
+              "inverse_bits": 122823.009568,
+              "inverse_bits_per_source": 4.78077963,
+              "inverse_bits_per_output": 2.64391367
+            }
+          ],
+          "adjacent_empirical": {
+            "transitions": 46391,
+            "bits_per_transition": 2.51750986
+          },
+          "training_marker_counts": {
+            "D": 12167,
+            "B": 8800
+          },
+          "evaluation_marker_counts": {
+            "D": 12036,
+            "B": 8728
+          }
+        },
+        "suffix_B": {
+          "output_symbols": 30682,
+          "output_train_symbols": 30535,
+          "output_checksum": "f1aed9ddb58bcf6739c1a28f7d7a51a7ad2a385492cd05647fea01d2383e2abb",
+          "train_output_checksum": "31bbaa51cfb36d5305c90824b241f6a88d5d2317b39a7c6b84d579b1c363b84a",
+          "side_bits": 0.0,
+          "orders": [
+            {
+              "order": 0,
+              "forward_bits": 122739.59592,
+              "forward_bits_per_source": 4.77753283,
+              "forward_bits_per_output": 4.00037794,
+              "empirical_bits_per_source": 4.74413188,
+              "empirical_bits_per_output": 3.97241028,
+              "inverse_bits": 103078.857228,
+              "inverse_bits_per_source": 4.01225555,
+              "inverse_bits_per_output": 3.35958729
+            },
+            {
+              "order": 1,
+              "forward_bits": 84527.835309,
+              "forward_bits_per_source": 3.29017303,
+              "forward_bits_per_output": 2.75496497,
+              "empirical_bits_per_source": 3.01446493,
+              "empirical_bits_per_output": 2.52410594,
+              "inverse_bits": 84329.361042,
+              "inverse_bits_per_source": 3.28244759,
+              "inverse_bits_per_output": 2.74849622
+            },
+            {
+              "order": 2,
+              "forward_bits": 77869.941875,
+              "forward_bits_per_source": 3.03102027,
+              "forward_bits_per_output": 2.53796825,
+              "empirical_bits_per_source": 2.36428222,
+              "empirical_bits_per_output": 1.97968759,
+              "inverse_bits": 78251.884342,
+              "inverse_bits_per_source": 3.04588706,
+              "inverse_bits_per_output": 2.55041667
+            },
+            {
+              "order": 3,
+              "forward_bits": 80456.378307,
+              "forward_bits_per_source": 3.13169508,
+              "forward_bits_per_output": 2.62226642,
+              "empirical_bits_per_source": 1.94643579,
+              "empirical_bits_per_output": 1.62981167,
+              "inverse_bits": 81803.958555,
+              "inverse_bits_per_source": 3.18414848,
+              "inverse_bits_per_output": 2.66618729
+            },
+            {
+              "order": 4,
+              "forward_bits": 87068.344634,
+              "forward_bits_per_source": 3.38906016,
+              "forward_bits_per_output": 2.83776627,
+              "empirical_bits_per_source": 1.66641598,
+              "empirical_bits_per_output": 1.39534231,
+              "inverse_bits": 88691.648584,
+              "inverse_bits_per_source": 3.45224587,
+              "inverse_bits_per_output": 2.89067364
+            },
+            {
+              "order": 5,
+              "forward_bits": 94723.310993,
+              "forward_bits_per_source": 3.68702312,
+              "forward_bits_per_output": 3.08725999,
+              "empirical_bits_per_source": 1.31698018,
+              "empirical_bits_per_output": 1.10274877,
+              "inverse_bits": 94876.096293,
+              "inverse_bits_per_source": 3.69297016,
+              "inverse_bits_per_output": 3.09223963
+            },
+            {
+              "order": 6,
+              "forward_bits": 101103.091188,
+              "forward_bits_per_source": 3.93535056,
+              "forward_bits_per_output": 3.29519233,
+              "empirical_bits_per_source": 0.95043994,
+              "empirical_bits_per_output": 0.79583314,
+              "inverse_bits": 99148.539853,
+              "inverse_bits_per_source": 3.85927133,
+              "inverse_bits_per_output": 3.23148882
+            },
+            {
+              "order": 7,
+              "forward_bits": 106019.947039,
+              "forward_bits_per_source": 4.12673493,
+              "forward_bits_per_output": 3.45544446,
+              "empirical_bits_per_source": 0.69034174,
+              "empirical_bits_per_output": 0.57804477,
+              "inverse_bits": 101394.723087,
+              "inverse_bits_per_source": 3.94670208,
+              "inverse_bits_per_output": 3.30469732
+            },
+            {
+              "order": 8,
+              "forward_bits": 109654.49989,
+              "forward_bits_per_source": 4.26820676,
+              "forward_bits_per_output": 3.57390326,
+              "empirical_bits_per_source": 0.46417512,
+              "empirical_bits_per_output": 0.38866837,
+              "inverse_bits": 102448.270715,
+              "inverse_bits_per_source": 3.98771051,
+              "inverse_bits_per_output": 3.33903496
+            }
+          ],
+          "adjacent_empirical": {
+            "transitions": 30618,
+            "bits_per_transition": 2.52116976
+          },
+          "training_marker_counts": {
+            "B": 4816
+          },
+          "evaluation_marker_counts": {
+            "B": 4991
+          }
+        }
+      },
+      "work_metadata": {
+        "train": "de_nibelunge",
+        "evaluation": "de_walther",
+        "rationale": "Anonymous heroic epic versus a selection of Walther’s lyrics and songs. Separate works and corpus editions, with no translation or anthology that contains the epic.",
+        "exact_shared_blocks": 0,
+        "exact_shared_distinct_12_word_windows": 0
+      }
+    }
+  },
+  "limits": [
+    "Finite-order predictive code lengths depend on the representation, reconstructed vocabulary, amount of training and disjoint-work distribution shift. A reversible transform preserves joint source information when its rule is known.",
+    "Minima describe the tested grid on these evaluation works. An out-of-sample claim for the choice of order requires choosing the order using training only.",
+    "The chosen pairings compare genres as well as words within a language. Identical normalized evaluation input for all transforms within each pair is the primary control."
+  ],
+  "reproduction": {
+    "instruction": "From repository root with the pinned inputs fetched, put the three script strings into a temporary directory under the indicated filenames. Set PYTHONPATH to the repository’s absolute directory. Run extract_works.py and then battery.py. It writes the complete per-order results.json and source-selection provenance locally.",
+    "scripts": {
+      "extract_works.py": "\"\"\"Prepare six pinned, public-domain reference work spans for P-J-011.\"\"\"\nimport hashlib\nimport json\nfrom pathlib import Path\nimport re\n\nfrom vs import path, refcorpus\n\n\nWORKS = {\n    \"la_augustine\": {\n        \"work\": \"Augustine, Confessiones, Books I–II\",\n        \"start\": \"1. _Magnus es, Domine\",\n        \"stop\": \"\\nLIBER TERTIUS.\",\n        \"cleaning\": \"Remove inline square-bracketed sidenotes and footnote calls, braced page numbers, and four-space-indented editorial summaries.\",\n        \"confidence\": \"High. Main prose of the first two books in the 1838 Latin edition. Augustine’s own Biblical quotations remain.\",\n    },\n    \"la_vulg_daniel\": {\n        \"work\": \"Clementine Vulgate, Daniel\",\n        \"start\": \"\\n1:1 Anno tertio\",\n        \"stop\": \"\\nPARALLELISMUS MEMBRORUM.\",\n        \"cleaning\": \"Keep only blank-line-delimited paragraphs opening with a decimal chapter:verse token. The project normalizer removes the verse numbers.\",\n        \"confidence\": \"High. The main verses only, independent of the English transcriber notes and Latin critical appendix. The Vulgate includes the Septuagint additions.\",\n    },\n    \"it_dante\": {\n        \"work\": \"Dante, Commedia, Inferno\",\n        \"start\": \"Nel mezzo del cammin di nostra vita\",\n        \"stop\": \"\\n  PURGATORIO\",\n        \"cleaning\": \"Remove remaining Inferno canto-title lines. The raw pin contains the whole Commedia, while this span is Inferno only.\",\n        \"confidence\": \"High. Starts at the first verse and ends after Inferno XXXIV.\",\n    },\n    \"it_villani\": {\n        \"work\": \"Matteo Villani, Cronica, Book I\",\n        \"start\": \"Esaminando nell’animo la vostra esortazione\",\n        \"stop\": \"\\nLIBRO SECONDO\",\n        \"cleaning\": \"Keep the original author’s prologue and main Book I. Chapter headings remain. No modern introduction or table of contents.\",\n        \"confidence\": \"High for main medieval prose. Chapter headings from the 1825 edition remain.\",\n    },\n    \"de_nibelunge\": {\n        \"work\": \"Der Nibelunge liet, Middle High German text\",\n        \"start\": \"Uns ist in alten mæren\",\n        \"stop\": None,\n        \"cleaning\": \"Drop letter-period-decimal manuscript and stanza tags, preserving the text of stanza and section headings. Use the text through its ending.\",\n        \"confidence\": \"High. Gutenberg #48888 is Simrock’s Middle High German text. His modern German translation and editorial introduction are a different Gutenberg file (#14915).\",\n    },\n    \"de_walther\": {\n        \"work\": \"Walther von der Vogelweide, Gedichte und Sprüche in Auswahl, poems\",\n        \"start\": \"Uns hât der winter geschadet über al:\",\n        \"stop\": \"\\nANMERKUNGEN\",\n        \"cleaning\": \"Omit all-uppercase section headings and bracket-initial editorial lines before the start of the commentary.\",\n        \"confidence\": \"High. A single-author selection of lyric poetry independent of the Nibelungen epic. The modern notes are after the stop marker.\",\n    },\n}\nPAIRS = {\n    \"latin\": {\n        \"train\": \"la_augustine\",\n        \"evaluation\": \"la_vulg_daniel\",\n        \"rationale\": \"Autobiographical theological prose versus an independent biblical book. Augustine’s own brief scriptural quotations are part of his work. No consecutive 12-word passage overlaps the selected Daniel edition.\",\n    },\n    \"italian\": {\n        \"train\": \"it_dante\",\n        \"evaluation\": \"it_villani\",\n        \"rationale\": \"Dante’s narrative poem versus Matteo Villani’s historical chronicle. #426 used the same IDs, while these spans exclude Villani’s modern preface and reset the training and evaluation samples on actual medieval text.\",\n    },\n    \"german\": {\n        \"train\": \"de_nibelunge\",\n        \"evaluation\": \"de_walther\",\n        \"rationale\": \"Anonymous heroic epic versus a selection of Walther’s lyrics and songs. Separate works and corpus editions, with no translation or anthology that contains the epic.\",\n    },\n}\n\n\ndef sha256(s):\n    return hashlib.sha256(s).hexdigest()\n\n\ndef extraction(cid, text):\n    if cid == \"la_augustine\":\n        return re.sub(r\"\\[[^\\[\\]]*\\]|\\{\\d+\\}|^    .*$\", \"\", text, flags=re.M)\n    if cid == \"la_vulg_daniel\":\n        return \"\\n\".join(p for p in text.split(\"\\n\\n\") if re.match(r\"^\\d+:\\d+ \", p.strip()))\n    if cid == \"it_dante\":\n        return re.sub(r\"^\\s*Inferno • Canto.*$\", \"\", text, flags=re.M)\n    if cid == \"de_nibelunge\":\n        return re.sub(r\"\\s+[A-Z][.]\\d+(?:[*a-z]?)\", \"\", text)\n    if cid == \"de_walther\":\n        return \"\\n\".join(line for line in text.splitlines()\n                         if not (line.strip().isupper() or line.lstrip().startswith(\"[\")))\n    return text\n\n\ndef blocks(text):\n    out, current, length = [], [], 0\n    for word in text.split():\n        current.append(word)\n        length += len(word) + 1\n        if length >= 400:\n            out.append(\" \".join(current))\n            current, length = [], 0\n    if current:\n        out.append(\" \".join(current))\n    return out\n\n\ndef ngrams(text, n):\n    words = text.split()\n    return {tuple(words[i:i+n]) for i in range(len(words)-n+1)}\n\n\ndef main():\n    refs = {e[\"id\"]: e for e in refcorpus.pins()}\n    archive, work_meta, texts = {}, {}, {}\n    for cid, recipe in WORKS.items():\n        e = refs[cid]\n        source_file = Path(path(e[\"file\"]))\n        raw = source_file.read_bytes()\n        assert sha256(raw) == e[\"sha256\"], cid\n        with source_file.open(encoding=e.get(\"encoding\", \"utf-8\"), errors=\"replace\") as src:\n            stripped = refcorpus.strip_gutenberg(src.read())\n        start = stripped.index(recipe[\"start\"])\n        stop = stripped.index(recipe[\"stop\"], start + len(recipe[\"start\"])) if recipe[\"stop\"] else len(stripped)\n        normalized = refcorpus.normalize(extraction(cid, stripped[start:stop]), e[\"lang\"])\n        texts[cid] = normalized\n        archive[cid] = blocks(normalized)\n        assert \" \".join(archive[cid]) == normalized\n        work_meta[cid] = {\n            **recipe,\n            \"language\": e[\"lang\"],\n            \"catalog_period\": e[\"period\"],\n            \"raw_url\": e[\"url\"],\n            \"raw_sha256\": e[\"sha256\"],\n            \"catalog_url\": f\"https://www.gutenberg.org/ebooks/{e['gutenberg']}\",\n            \"rights\": \"Project Gutenberg catalog marks public domain in the USA.\",\n            \"encoding\": e.get(\"encoding\", \"utf-8\"),\n            \"span_start_stop\": [start, stop],\n            \"normalized_symbols_including_spaces\": len(normalized),\n            \"normalized_nonspace_symbols\": len(normalized.replace(\" \", \"\")),\n            \"blocks\": len(archive[cid]),\n            \"sum_of_block_symbol_counts\": sum(map(len, archive[cid])),\n            \"symbols_in_first_64_blocks\": sum(map(len, archive[cid][:64])),\n            \"normalized_sha256\": sha256(normalized.encode()),\n            \"newline_joined_blocks_sha256\": sha256(\"\\n\".join(archive[cid]).encode()),\n        }\n    pair_meta = {lang: dict(pair) for lang, pair in PAIRS.items()}\n    for lang, pair in pair_meta.items():\n        a, b = pair[\"train\"], pair[\"evaluation\"]\n        pair[\"exact_shared_blocks\"] = len(set(archive[a]) & set(archive[b]))\n        pair[\"exact_shared_distinct_12_word_windows\"] = len(ngrams(texts[a], 12) & ngrams(texts[b], 12))\n        assert not pair[\"exact_shared_blocks\"]\n    out = {\n        \"pairs\": pair_meta,\n        \"works_by_corpus_id\": work_meta,\n        \"extraction_order\": \"Decode the SHA-verified pinned file with universal newlines. Apply vs.refcorpus.strip_gutenberg. Find the literal start and stop markers, or use the end of the stripped file. Apply the listed per-work cleanup, then vs.refcorpus.normalize. Span offsets refer to the stripped decoded text before cleanup. Break at word boundaries once the same accounting as blocks_of reaches at least 400, keeping the final partial block. Counts including spaces treat each run of whitespace as one symbol.\",\n        \"pr_426\": {\n            \"url\": \"https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/426\",\n            \"design\": \"First 100 training-work blocks and 30 evaluation-work blocks built directly with refcorpus.blocks_of, using Augustine/Erasmus, Dante/Villani, Lucanor/Buen Amor and Chaucer/Paston. Order 0–8 smoothed character models and several reversible padding controls were used.\",\n            \"editorial_confounds\": \"The pins start with editorial text in Augustine (1838 Latin Monitum), Erasmus (digital production and bilingual title line plus 20th-century transcriber corrections elsewhere), Villani (1825 editor address), Lucanor (editorial transcription note), Buen Amor (edition front matter and extensive notes), Chaucer (Purves’s table of contents and biography), and Paston (Gairdner’s early-20th-century critical edition’s preface and long historical introduction). These are risks for any claim about source-language coding rates from untrimmed beginnings.\",\n        },\n    }\n    dest = Path(__file__).parent\n    (dest / \"works.json\").write_text(json.dumps(out, ensure_ascii=False, indent=2) + \"\\n\", encoding=\"utf-8\")\n    (dest / \"clean_works.json\").write_text(json.dumps(archive, ensure_ascii=False) + \"\\n\", encoding=\"utf-8\")\n    print(json.dumps(pair_meta, ensure_ascii=False, indent=2))\n    for cid, e in work_meta.items():\n        print(cid, e[\"normalized_symbols_including_spaces\"], e[\"normalized_nonspace_symbols\"], e[\"blocks\"], e[\"symbols_in_first_64_blocks\"])\n\n\nif __name__ == \"__main__\":\n    main()\n",
+      "transforms.py": "\"\"\"Boundary-preserving transforms for normalized lowercase ASCII work blocks.\n\nSpaces remain word separators. Newlines can join a work's blocks for a single\nmatched shuffle while remaining available for model resets. The source and\nmarker alphabets below exclude those block separators.\n\"\"\"\n\nfrom itertools import repeat\nfrom math import comb, log2\nfrom random import Random\nimport re\nfrom string import ascii_lowercase\n\n\nSOURCE_ALPHABET = ascii_lowercase + \" \"\nMARKER_ALPHABETS = {\n    \"identity\": \"\",\n    \"substitution\": \"\",\n    \"addB\": \"B\",\n    \"matched_deterministic\": \"BD\",\n    \"matched_random\": \"BD\",\n    \"suffix_B\": \"B\",\n}\nKINDS = tuple(MARKER_ALPHABETS)\nDEFAULT_SEED = 408\n\n_BOUNDARIES = frozenset(\" \\n\")\n_SOURCE_SYMBOLS = frozenset(SOURCE_ALPHABET) | _BOUNDARIES\n_PARITY_PAD = {letter: \"DB\"[i % 2] for i, letter in enumerate(ascii_lowercase)}\n_WORD = re.compile(r\"[a-z]+\")\n_RANDOM_PADDING = re.compile(r\"(?:[a-z][BD]|[ \\n])*\")\n_STRIP_PADDING = str.maketrans(\"\", \"\", \"BD\")\n\n_substitution = list(ascii_lowercase)\nRandom(408).shuffle(_substitution)\n_FORWARD = str.maketrans(ascii_lowercase, \"\".join(_substitution))\n_BACKWARD = str.maketrans(\"\".join(_substitution), ascii_lowercase)\n\n\ndef _check_source(text: str, kind: str) -> None:\n    if kind not in MARKER_ALPHABETS:\n        raise ValueError(f\"unknown transform {kind!r}\")\n    if not _SOURCE_SYMBOLS.issuperset(text):\n        raise ValueError(\"source must contain only lowercase ASCII letters, spaces, and newlines\")\n\n\ndef encode(text: str, kind: str, seed: int = DEFAULT_SEED) -> str:\n    \"\"\"Transform a block or newline-joined work without changing its separators.\n\n    Matched deterministic markers follow zero-based letter-index parity, with\n    even indices producing D and odd indices producing B. Matched random uses a\n    uniform shuffle of that exact marker multiset across the input's letters.\n    The call's seed affects only the shuffle. Substitution uses a fixed key.\n    \"\"\"\n    _check_source(text, kind)\n    if kind == \"identity\":\n        return text\n    if kind == \"substitution\":\n        return text.translate(_FORWARD)\n    if kind == \"suffix_B\":\n        return _WORD.sub(lambda word: word.group() + \"B\", text)\n\n    if kind == \"addB\":\n        markers = repeat(\"B\")\n    else:\n        pads = [_PARITY_PAD[letter] for letter in text if letter not in _BOUNDARIES]\n        if kind == \"matched_random\":\n            Random(seed).shuffle(pads)\n        markers = iter(pads)\n    return \"\".join(c if c in _BOUNDARIES else c + next(markers) for c in text)\n\n\ndef decode(text: str, kind: str) -> str:\n    \"\"\"Recover the original source. Reject misplaced or mismatched markers.\"\"\"\n    if kind in (\"identity\", \"substitution\"):\n        _check_source(text, kind)\n        return text.translate(_BACKWARD) if kind == \"substitution\" else text\n\n    source = text.translate(_STRIP_PADDING)\n    _check_source(source, kind)\n    if kind == \"matched_random\":\n        expected_b = sum(_PARITY_PAD.get(c) == \"B\" for c in source)\n        valid = _RANDOM_PADDING.fullmatch(text) is not None and text.count(\"B\") == expected_b\n    else:\n        valid = encode(source, kind) == text\n    if not valid:\n        raise ValueError(f\"invalid {kind} markers\")\n    return source\n\n\ndef side_bits(source: str, kind: str) -> float:\n    \"\"\"Conditional marker-code length for a source block or joined work.\n\n    The source determines the number of marker locations n and B markers k.\n    In matched random, all C(n,k) arrangements are equiprobable, so the ideal\n    code length is log2(C(n,k)). Deterministic markers need zero side bits.\n    \"\"\"\n    _check_source(source, kind)\n    if kind != \"matched_random\":\n        return 0.0\n    n = sum(c not in _BOUNDARIES for c in source)\n    k = sum(_PARITY_PAD.get(c) == \"B\" for c in source)\n    return log2(comb(n, k))\n",
+      "battery.py": "\"\"\"Character code lengths and sample entropy with train and evaluation works separated.\"\"\"\nfrom collections import Counter\nfrom dataclasses import dataclass\nfrom hashlib import sha256\nimport json\nfrom math import isclose, log2\nfrom pathlib import Path\n\nMAX_ORDER = 8\nPRIOR_STRENGTH = 2\nPSEUDOCOUNT = 0.5\nPAD_ALPHABETS = {\n    'identity': '', 'substitution': '', 'addB': 'B',\n    'matched_deterministic': 'BD', 'matched_random': 'BD', 'suffix_B': 'B',\n}\nSOURCE = 'abcdefghijklmnopqrstuvwxyz '\n\n\n@dataclass\nclass Markov:\n    alphabet: str\n    counts: list\n    totals: list\n\n    @classmethod\n    def fit(cls, blocks, alphabet, max_order=MAX_ORDER):\n        counts = [dict() for _ in range(max_order + 1)]\n        for block in blocks:\n            if set(block) - set(alphabet):\n                raise ValueError('training contains a symbol outside the declared alphabet')\n            for i, symbol in enumerate(block):\n                for order in range(min(i, max_order) + 1):\n                    ctx = block[i-order:i]\n                    table = counts[order].setdefault(ctx, Counter())\n                    table[symbol] += 1\n        if not counts[0]:\n            raise ValueError('the training work is empty')\n        totals = [{ctx: row.total() for ctx, row in table.items()} for table in counts]\n        return cls(alphabet, counts, totals)\n\n    def probabilities(self, symbol, context):\n        if symbol not in self.alphabet:\n            raise ValueError(f'evaluation contains a symbol outside the declared alphabet: {symbol!r}')\n        cells = self.counts[0]['']\n        prior = (cells[symbol] + PSEUDOCOUNT) / (self.totals[0][''] + PSEUDOCOUNT * len(self.alphabet))\n        yield prior\n        for order in range(1, len(self.counts)):\n            if len(context) >= order:\n                ctx = context[-order:]\n                row = self.counts[order].get(ctx)\n                if row is not None:\n                    prior = (row[symbol] + PRIOR_STRENGTH * prior) / (self.totals[order][ctx] + PRIOR_STRENGTH)\n            yield prior\n\n    def bits(self, blocks):\n        result = [0.0] * len(self.counts)\n        for block in blocks:\n            for i, symbol in enumerate(block):\n                context = block[max(0, i-len(result)+1):i]\n                for order, probability in enumerate(self.probabilities(symbol, context)):\n                    result[order] -= log2(probability)\n        return result\n\n\ndef sample_entropy_bits(blocks, max_order=MAX_ORDER):\n    \"\"\"Empirical conditional entropy, allowing shorter context at each block start.\"\"\"\n    histograms = [dict() for _ in range(max_order + 1)]\n    for block in blocks:\n        for i, symbol in enumerate(block):\n            for order in range(max_order + 1):\n                ctx = block[max(0, i-order):i]\n                table = histograms[order].setdefault(ctx, Counter())\n                table[symbol] += 1\n    totals = []\n    for order in range(max_order + 1):\n        bits = 0.0\n        for row in histograms[order].values():\n            total = row.total()\n            bits -= sum(n * log2(n / total) for n in row.values())\n        totals.append(bits)\n    return totals\n\n\ndef adjacent_entropy(blocks):\n    pairs = {}\n    for block in blocks:\n        for left, right in zip(block, block[1:]):\n            pairs.setdefault(left, Counter())[right] += 1\n    transitions, bits = 0, 0.0\n    for row in pairs.values():\n        count = row.total()\n        transitions += count\n        bits -= sum(n * log2(n/count) for n in row.values())\n    return {'transitions': transitions,\n            'bits_per_transition': round(bits/transitions, 8) if transitions else None}\n\n\ndef digest(text):\n    return sha256(text.encode()).hexdigest()\n\n\ndef evaluate(train, test, kinds, encode, decode, side_bits):\n    train_text = '\\n'.join(train)\n    test_text = '\\n'.join(test)\n    source_count = sum(map(len, test))\n    if not source_count or not sum(map(len, train)):\n        raise ValueError('both disjoint works must have nonempty normalised blocks')\n    hashes_train = {digest(block) for block in train}\n    hashes_test = {digest(block) for block in test}\n    if hashes_train & hashes_test:\n        raise ValueError('an exact normalised block occurs in both works')\n\n    identity = Markov.fit(train, SOURCE).bits(test)\n    result = {}\n    for kind in kinds:\n        encoded_train = encode(train_text, kind, seed=40801)\n        encoded_test = encode(test_text, kind, seed=40802)\n        assert decode(encoded_train, kind) == train_text\n        assert decode(encoded_test, kind) == test_text\n        train_blocks = encoded_train.split('\\n')\n        test_blocks = encoded_test.split('\\n')\n        assert len(train_blocks) == len(train) and len(test_blocks) == len(test)\n        assert [text.count(' ') for text in train_blocks] == [text.count(' ') for text in train]\n        assert [text.count(' ') for text in test_blocks] == [text.count(' ') for text in test]\n        if kind == 'matched_random':\n            for raw, encoded in ((train_text, encoded_train), (test_text, encoded_test)):\n                ordered_pads = (ch for ch in encoded if ch in 'BD')\n                reconstructed = ''.join(ch if ch in ' \\n' else ch + next(ordered_pads) for ch in raw)\n                assert reconstructed == encoded and next(ordered_pads, None) is None\n        output_count = sum(map(len, test_blocks))\n        alphabet = SOURCE + PAD_ALPHABETS[kind]\n        forward = Markov.fit(train_blocks, alphabet).bits(test_blocks)\n        empirical = sample_entropy_bits(test_blocks)\n        side = side_bits(test_text, kind)\n        inverse = [raw + side for raw in identity]\n        rows = []\n        for order, (a, b, c) in enumerate(zip(forward, empirical, inverse)):\n            assert isclose((a/source_count) * source_count, (a/output_count) * output_count)\n            rows.append({'order': order, 'forward_bits': round(a, 6),\n                         'forward_bits_per_source': round(a/source_count, 8),\n                         'forward_bits_per_output': round(a/output_count, 8),\n                         'empirical_bits_per_source': round(b/source_count, 8),\n                         'empirical_bits_per_output': round(b/output_count, 8),\n                         'inverse_bits': round(c, 6),\n                         'inverse_bits_per_source': round(c/source_count, 8),\n                         'inverse_bits_per_output': round(c/output_count, 8)})\n        result[kind] = {'output_symbols': output_count, 'output_train_symbols': sum(map(len, train_blocks)),\n                        'output_checksum': digest(encoded_test), 'train_output_checksum': digest(encoded_train),\n                        'side_bits': round(side, 6), 'orders': rows,\n                        'adjacent_empirical': adjacent_entropy(test_blocks),\n                        'training_marker_counts': dict(Counter(ch for ch in encoded_train if ch in 'BD')),\n                        'evaluation_marker_counts': dict(Counter(ch for ch in encoded_test if ch in 'BD'))}\n        if kind in ('identity', 'substitution'):\n            assert all(isclose(raw, transformed, rel_tol=1e-11) for raw, transformed in zip(identity, forward))\n    a = result['matched_deterministic']\n    b = result['matched_random']\n    assert a['output_symbols'] == b['output_symbols']\n    assert a['output_train_symbols'] == b['output_train_symbols']\n    assert a['training_marker_counts'] == b['training_marker_counts']\n    assert a['evaluation_marker_counts'] == b['evaluation_marker_counts']\n    return {'train_blocks': len(train), 'eval_blocks': len(test), 'train_symbols': sum(map(len, train)),\n            'eval_source_symbols': source_count, 'train_source_checksum': digest(train_text),\n            'eval_source_checksum': digest(test_text), 'eval_spaces': test_text.count(' '),\n            'exact_block_overlap': 0, 'modes': result}\n\n\ndef main():\n    from transforms import KINDS, encode, decode, side_bits\n\n    base = Path(__file__).resolve().parent\n    works = json.loads((base/'clean_works.json').read_text())\n    selection = json.loads((base/'works.json').read_text())\n    output = {}\n    for name, pair in selection['pairs'].items():\n        train_id, test_id = pair['train'], pair['evaluation']\n        assert train_id != test_id and len(works[train_id]) >= 64 and len(works[test_id]) >= 64\n        print('Scoring', name, 'independent', train_id, '->', test_id, flush=True)\n        output[name] = evaluate(works[train_id][:64], works[test_id][:64], KINDS, encode, decode, side_bits)\n        output[name]['work_metadata'] = pair\n        for mode, result in output[name]['modes'].items():\n            last = result['orders'][-1]\n            print(mode, 'output', result['output_symbols'], 'source', last['forward_bits_per_source'],\n                  'output_rate', last['forward_bits_per_output'], 'inverse', last['inverse_bits_per_source'], flush=True)\n        (base/'results.json').write_text(json.dumps(output, ensure_ascii=False, indent=2)+'\\n')\n\n\nif __name__ == '__main__':\n    main()\n"
+    },
+    "result_sha256": "1c50a66a87275a29f8f1b677b27e00cd23eb5a8201cea6f731cbb7f1f0e54084"
+  }
+}

@@ -1,0 +1,380 @@
+{
+  "title": "Four extracted determinations reproduce the parchment report's mean despite its exclusion wording",
+  "program": "J",
+  "on_path": false,
+  "hard": false,
+  "statement": "Hodgins's Table 2 and printed inverse-variance formula reproduce Figure 7 when leaves 8, 26, 47 and solvent-extracted 68 are combined: 515.675169 ± 17.734735 radiocarbon years BP, rounded 516 ± 18. Replacing extracted leaf 68 (550 ± 35) with its no-extraction result (488 ± 35) gives 499.756564 ± 17.734735, rounded 500 ± 18. Those are the only two four-row choices that represent each physical leaf once. Omitting both leaf-68 determinations gives three leaves at 503.817815 ± 20.571110; using all five gives 510.021191 ± 15.819763 and duplicates leaf 68. Thus the numerical result fits the paragraph's description of four Soxhlet-treated samples, not its sentence saying solvent-treated leaf 68 was excluded. A wording error is the most direct interpretation of this internal numerical reconciliation; it is an inference, not an author-confirmed erratum. No source document is edited.",
+  "check": "Reproduce all five four-row combinations from the five reported Table 2 rows with exact rational inverse-variance weights. Identify the two selections with one determination per physical leaf. Compare their rounded means and standard errors to Figure 7; retain three-leaf and all-five cases as diagnostics. Verify the arithmetic controls. Reconcile report wording without recalibrating dates or inferring when the text was written.",
+  "source": {
+    "record": "K-036",
+    "author": "Greg Hodgins, NSF-Arizona AMS Laboratory",
+    "date": "2009-02-17",
+    "url": "https://voynich.nu/papers/Carbon_GH_2009.pdf",
+    "sha256": "7a84d9582bcf5de74667742601a1e526c8a43c62a90688305de6b681493c5f45",
+    "locations": {
+      "treatment_context": "PDF pp.1–2",
+      "formula_and_exclusion_wording": "PDF p.3",
+      "reported_result": "Figure 7, PDF p.8",
+      "input_values": "Table 2, PDF p.9"
+    }
+  },
+  "method": {
+    "weight": "1 / sigma_i^2",
+    "mean": "sum(weight_i * age_i) / sum(weight_i)",
+    "standard_error": "sqrt(1 / sum(weight_i))",
+    "arithmetic": "Exact fractions for weights, mean and variance; independent floating formula checked within 1e-10. Weighted least-squares derivative is exactly zero at each rational mean.",
+    "inputs": "Published integer ages and one-sigma uncertainties, transcribed from the visually inspected table.",
+    "selection": "Enumerate every four-row combination; do not select a set merely because its rounded result matches. Physical-leaf uniqueness is checked separately."
+  },
+  "results": {
+    "source": "https://voynich.nu/papers/Carbon_GH_2009.pdf",
+    "table": "Table 2",
+    "reported_mean_bp": 516,
+    "reported_standard_error_bp": 18,
+    "reported_n": 4,
+    "input_rows": [
+      {
+        "sample": "AA84050",
+        "leaf": 8,
+        "extracted": true,
+        "age_bp": 490,
+        "sigma": 37
+      },
+      {
+        "sample": "AA84049",
+        "leaf": 26,
+        "extracted": true,
+        "age_bp": 514,
+        "sigma": 35
+      },
+      {
+        "sample": "AA84048",
+        "leaf": 47,
+        "extracted": true,
+        "age_bp": 506,
+        "sigma": 35
+      },
+      {
+        "sample": "AA84047",
+        "leaf": 68,
+        "extracted": true,
+        "age_bp": 550,
+        "sigma": 35
+      },
+      {
+        "sample": "AA84047",
+        "leaf": 68,
+        "extracted": false,
+        "age_bp": 488,
+        "sigma": 35
+      }
+    ],
+    "controls": {
+      "equal_error_arithmetic_mean": true,
+      "known_516_plusminus_18": true,
+      "translation_invariance": true,
+      "row_order_invariance": true,
+      "rational_and_float_agree": true,
+      "weighted_least_squares_derivative_zero": true
+    },
+    "all_four_row_choices": [
+      {
+        "n_determinations": 4,
+        "physical_leaves": [
+          8,
+          26,
+          47,
+          68
+        ],
+        "ages_bp": [
+          490,
+          514,
+          506,
+          550
+        ],
+        "sigmas": [
+          37,
+          35,
+          35,
+          35
+        ],
+        "mean_bp": 515.6751687921981,
+        "standard_error_bp": 17.734734779647148,
+        "mean_exact_fraction": "687395/1333",
+        "variance_exact_fraction": "1677025/5332",
+        "rounded_mean_bp": 516,
+        "rounded_standard_error_bp": 18,
+        "matches_reported_516_plusminus_18_after_rounding": true,
+        "independent_error_formula": true,
+        "each_of_four_leaves_once": true,
+        "leaf68_extraction_flags": [
+          true
+        ]
+      },
+      {
+        "n_determinations": 4,
+        "physical_leaves": [
+          8,
+          26,
+          47,
+          68
+        ],
+        "ages_bp": [
+          490,
+          514,
+          506,
+          488
+        ],
+        "sigmas": [
+          37,
+          35,
+          35,
+          35
+        ],
+        "mean_bp": 499.75656414103526,
+        "standard_error_bp": 17.734734779647148,
+        "mean_exact_fraction": "1332351/2666",
+        "variance_exact_fraction": "1677025/5332",
+        "rounded_mean_bp": 500,
+        "rounded_standard_error_bp": 18,
+        "matches_reported_516_plusminus_18_after_rounding": false,
+        "independent_error_formula": true,
+        "each_of_four_leaves_once": true,
+        "leaf68_extraction_flags": [
+          false
+        ]
+      },
+      {
+        "n_determinations": 4,
+        "physical_leaves": [
+          8,
+          26,
+          68,
+          68
+        ],
+        "ages_bp": [
+          490,
+          514,
+          550,
+          488
+        ],
+        "sigmas": [
+          37,
+          35,
+          35,
+          35
+        ],
+        "mean_bp": 511.0536384096024,
+        "standard_error_bp": 17.734734779647148,
+        "mean_exact_fraction": "1362469/2666",
+        "variance_exact_fraction": "1677025/5332",
+        "rounded_mean_bp": 511,
+        "rounded_standard_error_bp": 18,
+        "matches_reported_516_plusminus_18_after_rounding": false,
+        "independent_error_formula": true,
+        "each_of_four_leaves_once": false,
+        "leaf68_extraction_flags": [
+          true,
+          false
+        ]
+      },
+      {
+        "n_determinations": 4,
+        "physical_leaves": [
+          8,
+          47,
+          68,
+          68
+        ],
+        "ages_bp": [
+          490,
+          506,
+          550,
+          488
+        ],
+        "sigmas": [
+          37,
+          35,
+          35,
+          35
+        ],
+        "mean_bp": 508.99962490622653,
+        "standard_error_bp": 17.734734779647148,
+        "mean_exact_fraction": "1356993/2666",
+        "variance_exact_fraction": "1677025/5332",
+        "rounded_mean_bp": 509,
+        "rounded_standard_error_bp": 18,
+        "matches_reported_516_plusminus_18_after_rounding": false,
+        "independent_error_formula": true,
+        "each_of_four_leaves_once": false,
+        "leaf68_extraction_flags": [
+          true,
+          false
+        ]
+      },
+      {
+        "n_determinations": 4,
+        "physical_leaves": [
+          26,
+          47,
+          68,
+          68
+        ],
+        "ages_bp": [
+          514,
+          506,
+          550,
+          488
+        ],
+        "sigmas": [
+          35,
+          35,
+          35,
+          35
+        ],
+        "mean_bp": 514.5,
+        "standard_error_bp": 17.5,
+        "mean_exact_fraction": "1029/2",
+        "variance_exact_fraction": "1225/4",
+        "rounded_mean_bp": 514,
+        "rounded_standard_error_bp": 18,
+        "matches_reported_516_plusminus_18_after_rounding": false,
+        "independent_error_formula": true,
+        "each_of_four_leaves_once": false,
+        "leaf68_extraction_flags": [
+          true,
+          false
+        ]
+      }
+    ],
+    "all_four_extracted": {
+      "n_determinations": 4,
+      "physical_leaves": [
+        8,
+        26,
+        47,
+        68
+      ],
+      "ages_bp": [
+        490,
+        514,
+        506,
+        550
+      ],
+      "sigmas": [
+        37,
+        35,
+        35,
+        35
+      ],
+      "mean_bp": 515.6751687921981,
+      "standard_error_bp": 17.734734779647148,
+      "mean_exact_fraction": "687395/1333",
+      "variance_exact_fraction": "1677025/5332",
+      "rounded_mean_bp": 516,
+      "rounded_standard_error_bp": 18,
+      "matches_reported_516_plusminus_18_after_rounding": true,
+      "independent_error_formula": true
+    },
+    "replace_extracted_leaf68_with_unextracted": {
+      "n_determinations": 4,
+      "physical_leaves": [
+        8,
+        26,
+        47,
+        68
+      ],
+      "ages_bp": [
+        490,
+        514,
+        506,
+        488
+      ],
+      "sigmas": [
+        37,
+        35,
+        35,
+        35
+      ],
+      "mean_bp": 499.75656414103526,
+      "standard_error_bp": 17.734734779647148,
+      "mean_exact_fraction": "1332351/2666",
+      "variance_exact_fraction": "1677025/5332",
+      "rounded_mean_bp": 500,
+      "rounded_standard_error_bp": 18,
+      "matches_reported_516_plusminus_18_after_rounding": false,
+      "independent_error_formula": true
+    },
+    "omit_both_leaf68_measurements": {
+      "n_determinations": 3,
+      "physical_leaves": [
+        8,
+        26,
+        47
+      ],
+      "ages_bp": [
+        490,
+        514,
+        506
+      ],
+      "sigmas": [
+        37,
+        35,
+        35
+      ],
+      "mean_bp": 503.8178147867777,
+      "standard_error_bp": 20.57111027254161,
+      "mean_exact_fraction": "1996630/3963",
+      "variance_exact_fraction": "1677025/3963",
+      "rounded_mean_bp": 504,
+      "rounded_standard_error_bp": 21,
+      "matches_reported_516_plusminus_18_after_rounding": false,
+      "independent_error_formula": true
+    },
+    "all_five_diagnostic_only": {
+      "n_determinations": 5,
+      "physical_leaves": [
+        8,
+        26,
+        47,
+        68,
+        68
+      ],
+      "ages_bp": [
+        490,
+        514,
+        506,
+        550,
+        488
+      ],
+      "sigmas": [
+        37,
+        35,
+        35,
+        35,
+        35
+      ],
+      "mean_bp": 510.02119086703476,
+      "standard_error_bp": 15.819762508897997,
+      "mean_exact_fraction": "3417652/6701",
+      "variance_exact_fraction": "1677025/6701",
+      "rounded_mean_bp": 510,
+      "rounded_standard_error_bp": 16,
+      "matches_reported_516_plusminus_18_after_rounding": false,
+      "independent_error_formula": true
+    },
+    "mean_shift_if_unextracted_replaces_extracted_bp": -15.91860465116281
+  },
+  "limits": [
+    "Displayed decimal digits describe reproducible arithmetic on rounded table inputs; they are not additional measurement precision.",
+    "Uncertainties follow the report's inverse-variance formula. Shared systematic or calibration errors and covariance between paired treatments are not modeled. The all-five calculation is a diagnostic of a mistaken selection, not a recommended independent-sample combination.",
+    "All computed numbers are uncalibrated radiocarbon years BP. Subtracting them from AD 1950 does not produce calibrated calendar dates.",
+    "The report's AD 1404–1438 interval comes from its original IntCal04/OxCal calibration. This calculation does not independently reproduce, revise or strengthen that calendar interval.",
+    "The source explicitly dates parchment rather than the application of writing. Neither this reconciliation nor averaging establishes the time between parchment production and writing.",
+    "This is an openly reproducible report audit, recorded as a step result. It is not a new hidden-page manuscript fact or an independent laboratory measurement."
+  ],
+  "reproduction": {
+    "instructions": "Run the embedded Python 3 standard-library script locally. It requires no manuscript input, network, hidden split or calibration package; it writes parchment_mean_results.json next to itself. The scorer treats it as reproduction data and does not execute it.",
+    "script": "\"\"\"Reconcile Table 2 treatment choices in radiocarbon BP, without calendar recalibration.\"\"\"\nfrom fractions import Fraction\nimport itertools\nimport json\nimport math\nfrom pathlib import Path\n\nROWS = [\n    {\"sample\": \"AA84050\", \"leaf\": 8, \"extracted\": True, \"age_bp\": 490, \"sigma\": 37},\n    {\"sample\": \"AA84049\", \"leaf\": 26, \"extracted\": True, \"age_bp\": 514, \"sigma\": 35},\n    {\"sample\": \"AA84048\", \"leaf\": 47, \"extracted\": True, \"age_bp\": 506, \"sigma\": 35},\n    {\"sample\": \"AA84047\", \"leaf\": 68, \"extracted\": True, \"age_bp\": 550, \"sigma\": 35},\n    {\"sample\": \"AA84047\", \"leaf\": 68, \"extracted\": False, \"age_bp\": 488, \"sigma\": 35},\n]\n\n\ndef estimate(rows):\n    weights = [Fraction(1, r[\"sigma\"] ** 2) for r in rows]\n    total = sum(weights)\n    mean = sum(w * r[\"age_bp\"] for w, r in zip(weights, rows)) / total\n    variance = 1 / total\n    # Independent floating implementation of the printed formula.\n    float_weights = [1 / r[\"sigma\"] ** 2 for r in rows]\n    float_mean = sum(w * r[\"age_bp\"] for w, r in zip(float_weights, rows)) / sum(float_weights)\n    assert math.isclose(float(mean), float_mean, rel_tol=0, abs_tol=1e-10)\n    assert math.isclose(float(variance), 1 / sum(float_weights), rel_tol=0, abs_tol=1e-10)\n    # The rational weighted least-squares first derivative is exactly zero.\n    assert sum(w * (r[\"age_bp\"] - mean) for w, r in zip(weights, rows)) == 0\n    sigma = math.sqrt(float(variance))\n    return {\"n_determinations\": len(rows), \"physical_leaves\": [r[\"leaf\"] for r in rows],\n            \"ages_bp\": [r[\"age_bp\"] for r in rows], \"sigmas\": [r[\"sigma\"] for r in rows],\n            \"mean_bp\": float(mean), \"standard_error_bp\": sigma,\n            \"mean_exact_fraction\": str(mean), \"variance_exact_fraction\": str(variance),\n            \"rounded_mean_bp\": round(float(mean)), \"rounded_standard_error_bp\": round(sigma),\n            \"matches_reported_516_plusminus_18_after_rounding\": round(float(mean)) == 516 and round(sigma) == 18,\n            \"independent_error_formula\": True}\n\n\ndef controls():\n    equal_sigma = [{\"age_bp\": x, \"sigma\": 10, \"leaf\": i} for i, x in enumerate((100, 200, 300, 400))]\n    result = estimate(equal_sigma)\n    assert result[\"mean_bp\"] == 250 and result[\"standard_error_bp\"] == 5\n    known = [{\"age_bp\": 516, \"sigma\": 36, \"leaf\": i} for i in range(4)]\n    assert estimate(known)[\"mean_bp\"] == 516 and estimate(known)[\"standard_error_bp\"] == 18\n    before = estimate(ROWS[:4])\n    shifted = [dict(r, age_bp=r[\"age_bp\"] + 1000) for r in ROWS[:4]]\n    assert math.isclose(estimate(shifted)[\"mean_bp\"] - before[\"mean_bp\"], 1000, abs_tol=1e-10)\n    assert estimate(shifted)[\"standard_error_bp\"] == before[\"standard_error_bp\"]\n    assert estimate(list(reversed(ROWS[:4]))) == dict(before, physical_leaves=list(reversed(before[\"physical_leaves\"])),\n                                                      ages_bp=list(reversed(before[\"ages_bp\"])), sigmas=list(reversed(before[\"sigmas\"])))\n    return {\"equal_error_arithmetic_mean\": True, \"known_516_plusminus_18\": True,\n            \"translation_invariance\": True, \"row_order_invariance\": True,\n            \"rational_and_float_agree\": True, \"weighted_least_squares_derivative_zero\": True}\n\n\ndef run():\n    candidates = []\n    # Every four-row choice is shown. Only two contain all four physical leaves once.\n    for rows in itertools.combinations(ROWS, 4):\n        estimate_row = estimate(rows)\n        estimate_row[\"each_of_four_leaves_once\"] = len({r[\"leaf\"] for r in rows}) == 4\n        estimate_row[\"leaf68_extraction_flags\"] = [r[\"extracted\"] for r in rows if r[\"leaf\"] == 68]\n        candidates.append(estimate_row)\n    result = {\"source\": \"https://voynich.nu/papers/Carbon_GH_2009.pdf\",\n              \"table\": \"Table 2\", \"reported_mean_bp\": 516, \"reported_standard_error_bp\": 18,\n              \"reported_n\": 4, \"input_rows\": ROWS, \"controls\": controls(), \"all_four_row_choices\": candidates,\n              \"all_four_extracted\": estimate(ROWS[:4]),\n              \"replace_extracted_leaf68_with_unextracted\": estimate(ROWS[:3] + [ROWS[4]]),\n              \"omit_both_leaf68_measurements\": estimate(ROWS[:3]),\n              \"all_five_diagnostic_only\": estimate(ROWS)}\n    result[\"mean_shift_if_unextracted_replaces_extracted_bp\"] = (\n        result[\"replace_extracted_leaf68_with_unextracted\"][\"mean_bp\"] - result[\"all_four_extracted\"][\"mean_bp\"])\n    valid = [r for r in candidates if r[\"each_of_four_leaves_once\"]]\n    assert len(valid) == 2\n    assert sum(r[\"matches_reported_516_plusminus_18_after_rounding\"] for r in valid) == 1\n    out = Path(__file__).resolve().parent / \"parchment_mean_results.json\"\n    out.write_text(json.dumps(result, indent=2) + \"\\n\", encoding=\"utf-8\")\n    print(json.dumps({k: result[k] for k in (\"all_four_extracted\", \"replace_extracted_leaf68_with_unextracted\",\n                                           \"omit_both_leaf68_measurements\", \"all_five_diagnostic_only\",\n                                           \"mean_shift_if_unextracted_replaces_extracted_bp\", \"controls\")}, indent=1))\n\n\nif __name__ == \"__main__\":\n    run()\n"
+  }
+}

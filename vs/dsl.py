@@ -55,6 +55,27 @@ statistics:
                                                            or without that label are left out. Every page stays whole, so page-level reuse cancels;
                                                            test it against shuffle_page_labels and rotate_page_labels
   {"page_reuse": {"min_length": L}}                        share of words of length >= L already written earlier on the page
+  {"picture_label": {"test": T, "min_objects": n}}         labels against AGREED picture annotations (registry type picture;
+                                                           one annotation per folio, the best-agreeing). An object counts when
+                                                           its "label" is a label line (unit L) on the scored pages; its label
+                                                           is that line's words. T is
+       same_object_label    pairs of objects on different folios that look alike (same kind, and at least 80% of at
+                            least two shared features equal) have labels identical or one glyph apart, minus the
+                            same rate over all other cross-folio pairs
+       feature_label_share  pairs of objects of the same kind sharing at least one feature value have labels that
+                            share a first or last glyph pair (eva-basic), minus the rate for pairs sharing none
+       label_in_page_text   share of labels with a word (3+ glyphs) in their own page's running text, minus the
+                            mean share for the other scored pages' running text
+                            Objects with no "label" but a ring (outer | middle | inner) and an angle
+                            ("angle_deg_clockwise_from_top", or "clock_position" 1-12) are joined to the label
+                            line in that ring nearest their angle, using the clock positions ZL3b records on
+                            circular pages (<!hh:mm> comments), within 20 degrees; a line goes to the closest
+                            object only. Rings are the label runs between circular text lines, outermost first;
+                            a run before the first circular line (figures outside the circle) is not a ring.
+                            Layout fields (ring, order, angle, clock, position, label, note, count, group) are not
+                            looks and are ignored. n (default 20, at least 10) labelled objects are required, and 5
+                            pairs in each group compared; fewer is undefined (refused). Test it against
+                            shuffle_picture_labels.
   {"context_mi": {"feature": F, "by": B}}                  MI between the feature and where the word stands; B is
                                                            page | section | unit | line_position (initial/mid/final).
                                                            Plug-in MI is biased upward: only meaningful against a null
@@ -68,6 +89,7 @@ compare (one to four; all must pass; a spec with none is refused):
        features carry over to another script (not rate, ratio or context_mi).
   {"null": "shuffle_within_line" | "shuffle_within_line_length" | "shuffle_within_page" | "shuffle_within_section" | "shuffle_across_pages"
            | "shuffle_labels" | "shuffle_labels_within_page" | "shuffle_page_labels" | "rotate_page_labels",
+           | "shuffle_picture_labels",
    "perms": N (<= 400), "p": alpha (<= 0.05), "direction": "greater" | "less"}
        the statistic must be extreme against the null (one-sided permutation p-value, ties count against).
        shuffle_labels reassigns which words of a section are the labels (labels trade places with words
@@ -80,6 +102,8 @@ compare (one to four; all must pass; a spec with none is refused):
        of the n pages are tried, so p cannot be below 1/n), which a text that merely changes slowly from
        front to back does not beat. Both leave the words where they are: they test only statistics that read
        the labels (page_group_similarity, context_mi by section).
+       shuffle_picture_labels keeps every label line's words together and deals them among the label lines that
+       agreed picture objects point at, so labels move between objects (and pages) while running text stays put.
 
 Rules that keep a pass from being hollow (each has a test in tests/test_dsl.py):
   - unknown keys anywhere are refused (a misspelt "scope" or "select" used to be silently ignored);
@@ -162,7 +186,7 @@ def tokens(pages, scope=None):
             for k, w in enumerate(ln.words):
                 out.append({"w": w, "page": pi, "section": p.section, "line": (pi, ln.n), "k": k, "n": n,
                             "language": p.language, "hand": str(p.hand), "unit": ln.unit, "pfl": pfl, "pinit": pfl and k == 0,
-                            "order": p.order})
+                            "order": p.order, "lid": ln.id, "folio": p.id})
             first_line = ln.para_end if ln.unit == "P" else first_line
     return out
 
@@ -395,6 +419,11 @@ def check_statistic(st):
     elif name == "page_reuse":
         _keys(arg, {"min_length"}, name)
         _int(arg.get("min_length", 1), 1, 40, "page_reuse min_length")
+    elif name == "picture_label":
+        _keys(arg, {"test", "min_objects"}, name, ("test",))
+        if arg["test"] not in PICTURE_TESTS:
+            raise SpecError(f"picture_label.test is one of {sorted(PICTURE_TESTS)}")
+        _int(arg.get("min_objects", 20), 10, 10_000, "picture_label min_objects")
     elif name == "context_mi":
         _keys(arg, {"feature", "by"}, name, ("feature", "by"))
         check_feature(arg["feature"])
@@ -417,6 +446,8 @@ def statistic(st, toks, all_toks):
         r = lambda ts: sum(any(v in vals for v in feature(arg["feature"], t["w"])) for t in ts) / len(ts)
         a, b = r(num), r(den)
         return a / b if b else (float("inf") if a else NAN)
+    if name == "picture_label":
+        return _picture_label(arg["test"], all_toks, arg.get("min_objects", 20))
     if len(toks) < MIN_TOKENS:
         return NAN
     if name == "rate":
@@ -539,6 +570,208 @@ def statistic(st, toks, all_toks):
     raise SpecError(f"unknown statistic {name!r}")
 
 
+# ------------------------------------------------------------- pictures
+
+PICTURE_TESTS = {"same_object_label", "feature_label_share", "label_in_page_text"}
+PICTURES = None          # {folio: [object, ...]}; None reads AGREED annotations from the record (tests set it)
+MIN_PICTURE_PAIRS = 5
+_PICTURE_CACHE = None
+_FEATURE_SKIP = ("label", "order", "angle", "clock", "position", "note", "count", "ring", "group")   # layout, not looks
+
+
+def pictures():
+    """AGREED picture annotations on the record, one per folio (the best-agreeing seat's)."""
+    global _PICTURE_CACHE
+    if PICTURES is not None:
+        return PICTURES
+    if _PICTURE_CACHE is not None:
+        return _PICTURE_CACHE
+    from . import registry
+    best = {}
+    for i in registry.read("picture"):
+        if i.get("verdict") != "AGREED":
+            continue
+        d = i.get("detail") or {}
+        f = str(d.get("folio"))
+        if f not in best or i.get("agreement", 0) > best[f][0]:
+            best[f] = (i.get("agreement", 0), d.get("objects") or [])
+    _PICTURE_CACHE = {f: objs for f, (_, objs) in best.items()}
+    return _PICTURE_CACHE
+
+
+def _looks(o):
+    """The object's visible features, normalised, without layout fields."""
+    fs = o.get("features") if isinstance(o.get("features"), dict) else {}
+    return {k: str(v).strip().lower() for k, v in fs.items()
+            if not any(x in k.lower() for x in _FEATURE_SKIP) and str(v).strip()}
+
+
+LABEL_POSITIONS = None   # {folio: [[(locus, degrees), ...] per ring, outermost first]}; None reads ZL3b (tests set it)
+_POSITION_CACHE = None
+JOIN_TOLERANCE = 20.0
+
+
+def label_positions():
+    """Clock positions of label lines on circular pages, from the comments in the pinned ZL3b file."""
+    global _POSITION_CACHE
+    if LABEL_POSITIONS is not None:
+        return LABEL_POSITIONS
+    if _POSITION_CACHE is not None:
+        return _POSITION_CACHE
+    import re, os
+    from . import path
+    out, fn = {}, path("data", "raw", "ZL3b-n.txt")
+    if os.path.exists(fn):
+        line_re = re.compile(r"^<(f\d+[rv]\d*)\.(\d+),.([A-Z])(.)>\s*(?:<!(\d\d):(\d\d)>)?")
+        state = {}
+        for raw in open(fn, encoding="utf-8", errors="replace"):
+            m = line_re.match(raw)
+            if not m:
+                continue
+            folio, n, unit = m.group(1), m.group(2), m.group(3)
+            st = state.setdefault(folio, {"seen_circle": False, "runs": [], "cur": None})
+            if unit == "C":
+                st["seen_circle"] = True
+                st["cur"] = None
+            elif unit == "L" and st["seen_circle"] and m.group(5):
+                if st["cur"] is None:
+                    st["cur"] = []
+                    st["runs"].append(st["cur"])
+                hh, mm = int(m.group(5)) % 12, int(m.group(6))
+                st["cur"].append((f"{folio}.{n}", (hh * 60 + mm) / 720 * 360))
+        out = {f: st["runs"] for f, st in state.items() if st["runs"]}
+    _POSITION_CACHE = out
+    return out
+
+
+def _angle_of(o):
+    fs = o.get("features") if isinstance(o.get("features"), dict) else {}
+    a = fs.get("angle_deg_clockwise_from_top")
+    if isinstance(a, (int, float)) and not isinstance(a, bool):
+        return float(a) % 360
+    c = fs.get("clock_position")
+    if isinstance(c, (int, float)) and not isinstance(c, bool) and 1 <= c <= 12:
+        return (float(c) % 12) * 30
+    return None
+
+
+def _joined_labels(folio, objs):
+    """{object index: locus} for unlabelled ring objects, nearest label line in the same ring by angle."""
+    runs = label_positions().get(folio) or []
+    names = {2: ["outer", "inner"], 3: ["outer", "middle", "inner"]}.get(len(runs), ["outer"] if len(runs) == 1 else [])
+    rings = dict(zip(names, runs))
+    claims = {}
+    for i, o in enumerate(objs):
+        if not isinstance(o, dict) or o.get("label"):
+            continue
+        fs = o.get("features") if isinstance(o.get("features"), dict) else {}
+        ring, ang = str(fs.get("ring", "")).lower(), _angle_of(o)
+        if ring not in rings or ang is None:
+            continue
+        best = min(rings[ring], key=lambda la: min(abs(la[1] - ang), 360 - abs(la[1] - ang)))
+        d = min(abs(best[1] - ang), 360 - abs(best[1] - ang))
+        if d <= JOIN_TOLERANCE and (best[0] not in claims or d < claims[best[0]][1]):
+            claims[best[0]] = (i, d)
+    return {i: locus for locus, (i, _) in claims.items()}
+
+
+def _picture_objects(all_toks):
+    """[(folio, kind, looks, label line id, label words)] for agreed objects whose label line is on these pages."""
+    lines = {}
+    for t in all_toks:
+        if t["unit"] == "L" and t.get("lid"):
+            lines.setdefault(t["lid"], []).append(t["w"])
+    out, seen = [], set()
+    for folio, objs in pictures().items():
+        joined = _joined_labels(folio, objs)
+        for idx, o in enumerate(objs):
+            if not isinstance(o, dict):
+                continue
+            lab = o.get("label") or joined.get(idx)
+            if not isinstance(lab, str) or lab not in lines or lab in seen:
+                continue
+            seen.add(lab)      # a label line counts once, for the first object that names it
+            out.append((folio, o.get("kind"), _looks(o), lab, tuple(lines[lab])))
+    return out
+
+
+def _glyph_pairs(words):
+    out = set()
+    for w in words:
+        g = SEG(w)
+        if len(g) >= 2:
+            out.add(("first", tuple(g[:2])))
+            out.add(("last", tuple(g[-2:])))
+    return out
+
+
+def _rate_diff(pairs, is_a, hit):
+    a = [hit(x, y) for x, y in pairs if is_a(x, y)]
+    b = [hit(x, y) for x, y in pairs if not is_a(x, y)]
+    if len(a) < MIN_PICTURE_PAIRS or len(b) < MIN_PICTURE_PAIRS:
+        return NAN
+    return sum(a) / len(a) - sum(b) / len(b)
+
+
+def _picture_label(test, all_toks, min_objects):
+    objs = _picture_objects(all_toks)
+    if len(objs) < min_objects:
+        return NAN
+    if test == "label_in_page_text":
+        text = {}
+        for t in all_toks:
+            if t["unit"] == "P":
+                text.setdefault(t["folio"], set()).add(t["w"])
+        if len(text) < 2:
+            return NAN
+        own, other, n = 0.0, 0.0, 0
+        for folio, _, _, _, ws in objs:
+            long_ = {w for w in ws if len(SEG(w)) >= 3}
+            if folio not in text or not long_:
+                continue
+            n += 1
+            own += bool(long_ & text[folio])
+            rest = [f for f in text if f != folio]
+            other += sum(bool(long_ & text[f]) for f in rest) / len(rest)
+        return (own - other) / n if n >= min_objects else NAN
+    pairs = [(x, y) for i, x in enumerate(objs) for y in objs[i + 1:]]
+    if test == "feature_label_share":
+        def alike(x, y):
+            return x[1] == y[1] and any(x[2].get(k) == v for k, v in y[2].items())
+        return _rate_diff(pairs, alike, lambda x, y: bool(_glyph_pairs(x[4]) & _glyph_pairs(y[4])))
+    # same_object_label: across folios only
+    pairs = [(x, y) for x, y in pairs if x[0] != y[0]]
+    def same(x, y):
+        if x[1] != y[1]:
+            return False
+        shared = set(x[2]) & set(y[2])
+        return len(shared) >= 2 and sum(x[2][k] == y[2][k] for k in shared) >= 0.8 * len(shared)
+    def close(x, y):
+        return any(a == b or _edit1(a, b) for a in x[4] for b in y[4])
+    return _rate_diff(pairs, same, close)
+
+
+def _shuffle_picture_labels(all_toks, rng):
+    """Deal whole label lines among the label lines agreed objects point at; everything else stays."""
+    targets = sorted({o[3] for o in _picture_objects(all_toks)})
+    if len(targets) < 2:
+        return all_toks
+    words = {lid: [t["w"] for t in all_toks if t.get("lid") == lid] for lid in targets}
+    src = list(targets)
+    rng.shuffle(src)
+    new = dict(zip(targets, (words[s] for s in src)))
+    out, done = [], set()
+    for t in all_toks:
+        lid = t.get("lid")
+        if lid not in new:
+            out.append(t)
+        elif lid not in done:
+            done.add(lid)
+            ws = new[lid]
+            out += [dict(t, w=w, k=k, n=len(ws)) for k, w in enumerate(ws)]
+    return out
+
+
 # ------------------------------------------------------------- nulls and references
 
 # statistics whose features mean the same thing in another script, so a reference language can be measured
@@ -551,7 +784,7 @@ _NULL_KEY = {"shuffle_within_line": lambda t: t["line"], "shuffle_within_page": 
              "shuffle_within_line_length": None,
              "shuffle_within_section": lambda t: t["section"], "shuffle_across_pages": lambda t: 0,
              "shuffle_labels": lambda t: t["section"], "shuffle_labels_within_page": lambda t: t["page"],
-             "shuffle_page_labels": None, "rotate_page_labels": None}
+             "shuffle_page_labels": None, "rotate_page_labels": None, "shuffle_picture_labels": None}
 _PAGE_LABELS = ("section", "language", "hand")
 
 
@@ -592,6 +825,8 @@ def _edge_length_movable_pairs(toks):
 def _shuffled(all_toks, how, rng):
     if how not in _NULL_KEY:
         raise SpecError(f"unknown null {how!r}")
+    if how == "shuffle_picture_labels":
+        return _shuffle_picture_labels(all_toks, rng)
     if how == "shuffle_page_labels":
         order, labels = _page_labels(all_toks)
         rng.shuffle(labels)
@@ -723,6 +958,8 @@ def canonical(spec):
         arg = {"min_length": arg.get("min_length", 4)}
     elif name == "page_group_similarity":
         arg = {"by": arg["by"], "min_words": arg.get("min_words", 40)}
+    elif name == "picture_label":
+        arg = {"test": arg["test"], "min_objects": arg.get("min_objects", 20)}
     tests = set()
     for c in spec["compare"]:
         if "op" in c:
@@ -744,6 +981,11 @@ def evaluate(spec, pages):
         raise SpecError("the selection is empty")
     st = spec["statistic"]
     v = statistic(st, toks, all_toks)
+    if v != v and "picture_label" in st:
+        a = st["picture_label"]
+        raise SpecError(f"picture_label is undefined here: {len(_picture_objects(all_toks))} labelled objects from AGREED "
+                        f"picture annotations on these pages (at least {a.get('min_objects', 20)} needed, and "
+                        f"{MIN_PICTURE_PAIRS} pairs in each group compared)")
     if v != v:
         raise SpecError(f"the statistic is undefined on this selection ({len(toks)} tokens): it needs at least "
                         f"{MIN_TOKENS} tokens, and {MIN_TOKENS} pairs / n-grams / long words where it counts those")

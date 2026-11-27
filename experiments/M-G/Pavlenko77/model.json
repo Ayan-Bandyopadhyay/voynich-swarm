@@ -1,0 +1,16 @@
+{
+  "title": "Hand 2: position and preceding-edge spelling alongside copying and templates",
+  "statement": "For scribal hand 2, predict each word using a fitted mixture of a glyph-trigram speller, spelling conditioned on line position or the previous word's final glyph, a line-position vocabulary, page-local exact or one-glyph copying, and a prefix-core-suffix template. This tests how much predictive structure can be captured by spelling and local reuse rules without assigning meanings. Page breaks and line-position labels are supplied; the preceding-word context continues across line breaks within a page.",
+  "scope": {"hand": "2"},
+  "components": [
+    {"type": "letters", "order": 3},
+    {"type": "position_letters", "order": 3},
+    {"type": "boundary_letters", "order": 3},
+    {"type": "position"},
+    {"type": "copy", "window": 50, "edits": 0},
+    {"type": "copy", "window": 50, "edits": 1},
+    {"type": "template", "prefix": 2, "suffix": 3}
+  ],
+  "weights": "fit",
+  "source": "Trusted components in vs/models.py. M-001 and M-003 motivate the fixed order-3, window-50 and prefix-2/suffix-3 settings; the four registered production models did not include position_letters or boundary_letters."
+}

@@ -1,0 +1,43 @@
+{
+  "step": "L3-first-old_catalan-substitution",
+  "handle": "Pavlenko77",
+  "agent": "Codex",
+  "kind": "key",
+  "summary": "An Old Catalan substitution key fitted on the public practice training pages at the pinned four-restart, 6000-iteration budget.",
+  "lease": "e5810ce8c5f0dca8a2d47e95",
+  "local_advisory": {
+    "split": "practice",
+    "verdict": "FAIL",
+    "failed": ["a_compresses", "b_reads", "kill_tests", "c_pictures", "d_not_illusion"],
+    "pages_evaluated": 34,
+    "pages_passing": 0,
+    "key_changes_after_result": false
+  },
+  "local_control": {
+    "entry_point": "vs.season.calibrate_cell('old_catalan', 'substitution')",
+    "control": "homophonic",
+    "evaluation_tokens": 2000,
+    "search_cracks_control_clean": true,
+    "noise": 0.02,
+    "true_key_passes_noisy": true,
+    "search_cracks_control": true,
+    "clean_true_key_savings": 0.12689,
+    "clean_search_key_savings": 0.12689,
+    "clean_full_verdict": "FAIL",
+    "clean_failed": ["c_pictures"],
+    "interpretation": "The synthetic text has no picture anchors. Compression, reading and kill-test criteria pass for both planted and searched keys, including the noisy control, under the project's calibration rule."
+  },
+  "method": {
+    "source_commit": "2f5b65cd994b0aeb5f525fb051ea9a43726522d4",
+    "entry_point": "vs.search.search_cell('old_catalan', 'substitution', practice_train, tag='cell')",
+    "training_split": "practice training complement",
+    "corpus": "old_catalan_54a4ab12",
+    "title": "Ramon Llull, Libre de Blanquerna (Palma 1914 edition)",
+    "sha256": "54a4ab12539d54c375033e6ca7d08cb1fcfc83b353995ee9b37d7ffd8a499753",
+    "segmentation": "eva-basic",
+    "transliteration": "zl",
+    "reading_order": "normal",
+    "spaces": "word_breaks",
+    "selection": "One manuscript search at the pinned cell budget, with its standard deterministic seed. No adaptation to a hidden result."
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "step": "M-L3",
+  "handle": "intracontinental-multicrystalline",
+  "kind": "key",
+  "summary": "Search medieval Czech table cipher at the pinned budget with planted clean and noisy controls.",
+  "lease": "8c727126103a3eea44009d04",
+  "control": {
+    "language": "medieval_czech",
+    "family": "table-cipher",
+    "control": "table-cipher",
+    "control_tokens": 2319,
+    "true_key": {
+      "submission": "control-medieval_czech-table-cipher",
+      "family": "table-cipher",
+      "target": {
+        "language": "medieval_czech",
+        "period": "control"
+      },
+      "verdict": "FAIL",
+      "failed": [
+        "c_pictures"
+      ],
+      "passes_without_anchors": true,
+      "savings": 0.04189,
+      "killed_by": []
+    },
+    "true_key_passes": true,
+    "search_key": {
+      "submission": "grid-medieval_czech-table-cipher-control",
+      "family": "table-cipher",
+      "target": {
+        "language": "medieval_czech",
+        "period": "grid search"
+      },
+      "verdict": "FAIL",
+      "failed": [
+        "c_pictures"
+      ],
+      "passes_without_anchors": true,
+      "savings": 0.04189,
+      "killed_by": []
+    },
+    "search_cracks_control_clean": true,
+    "noise": 0.02,
+    "true_key_passes_noisy": true,
+    "search_cracks_control": true
+  },
+  "method": {
+    "entry_point": "vs.search.search_cell('medieval_czech', 'table-cipher', practice_train, tag='cell')",
+    "training_split": "public practice-training pages only",
+    "corpus": "medieval_czech_01473c19",
+    "corpus_sha256": "01473c190be9c9b73b373a29264c54b7747d4834ca1f81e2d159a5b8f398ecfe",
+    "selection": "One pinned-budget search with its standard deterministic seed. The reference is a nineteenth-century edition of a 1413 Czech work."
+  },
+  "local_advisory": {
+    "split": "practice",
+    "verdict": "FAIL",
+    "failed": [
+      "a_compresses",
+      "b_reads",
+      "kill_tests",
+      "c_pictures",
+      "d_not_illusion"
+    ]
+  }
+}

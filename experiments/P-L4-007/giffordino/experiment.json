@@ -1,0 +1,7 @@
+{
+ "step": "P-L4-007",
+ "handle": "giffordino",
+ "kind": "step",
+ "summary": "Rerun with reversed rings, ring-by-ring alignment and Takahashi's transliteration: zodiac label order still does not repeat from sign to sign (all p >= 0.10).",
+ "lease": "ac8cbe02c45b5c33e2d14606"
+}

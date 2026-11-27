@@ -1,0 +1,774 @@
+{
+  "folio": "f69r",
+  "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006198",
+  "blind": true,
+  "statement": "One round diagram with a six-pointed ochre center, twelve solid painted radial strips, a narrow stippled and hatched strip, and forty-five painted lobes on the perimeter.",
+  "orientation": "Upright Yale scan with foliation at upper right. Bearings are approximate clockwise degrees from the upward vertical. The perimeter enumeration starts with the first lobe clockwise from this vertical. A few lobe patches touch a painted strip or are difficult to distinguish as blue or green.",
+  "observations": "Six isolated ink marks lie between the central rays. A narrow band of writing circles that field. Other writing is radial or follows the outer circumference. The drawing inventory records the figure, its painted and hatched strips, and its scallops. Fine rules and concentric outlines are described as features of the whole diagram.",
+  "label_inventory": {
+    "method": "Use only ZL locus IDs and type tags after recording the picture features.",
+    "paragraph_id_range": [
+      "f69r.1",
+      "f69r.4"
+    ],
+    "label_id_ranges": [
+      [
+        "f69r.5",
+        "f69r.20"
+      ],
+      [
+        "f69r.44",
+        "f69r.49"
+      ]
+    ],
+    "radial_id_range": [
+      "f69r.21",
+      "f69r.42"
+    ],
+    "circular_id": "f69r.43",
+    "mapping": "No clear pointer links a unique locus ID to a specific lobe, spoke or center motif. The six final label IDs have the expected count for the six isolated central marks, but their individual order cannot be assigned from the IDs alone."
+  },
+  "objects": [
+    {
+      "id": "wheel",
+      "kind": "diagram",
+      "features": {
+        "shape": "circular",
+        "region": "middle_page",
+        "outer_lobes": 45,
+        "colored_radial_strips": 12,
+        "green_radial_strips": 4,
+        "blue_or_blue_green_radial_strips": 8,
+        "hatched_radial_strips": 1,
+        "center_points": 6,
+        "boundaries": "two fine circular outlines around the center with a narrow text band between them",
+        "divisions": "numerous fine rules run outward from the inner text band"
+      },
+      "label": null
+    },
+    {
+      "id": "central_star",
+      "kind": "star",
+      "features": {
+        "shape": "six_pointed",
+        "region": "center",
+        "color": "ochre",
+        "points": 6,
+        "point_shape": "tapering",
+        "fill": "light",
+        "line_extensions": "fine lines continue from the points toward the circular boundary",
+        "marks_between_points": 6
+      },
+      "label": null
+    },
+    {
+      "id": "spoke_01",
+      "kind": "other",
+      "features": {
+        "shape": "radial_strip",
+        "region": "middle_ring",
+        "color": "blue-green",
+        "bearing_clockwise_deg": 6,
+        "fill": "solid",
+        "extent": "from the outer edge of the inner band to the lobed perimeter"
+      },
+      "label": null
+    },
+    {
+      "id": "spoke_02",
+      "kind": "other",
+      "features": {
+        "shape": "radial_strip",
+        "region": "middle_ring",
+        "color": "green",
+        "bearing_clockwise_deg": 46,
+        "fill": "solid",
+        "extent": "from the outer edge of the inner band to the lobed perimeter"
+      },
+      "label": null
+    },
+    {
+      "id": "spoke_03",
+      "kind": "other",
+      "features": {
+        "shape": "radial_strip",
+        "region": "middle_ring",
+        "color": "blue-green",
+        "bearing_clockwise_deg": 84,
+        "fill": "solid",
+        "extent": "from the outer edge of the inner band to the lobed perimeter"
+      },
+      "label": null
+    },
+    {
+      "id": "spoke_04",
+      "kind": "other",
+      "features": {
+        "shape": "radial_strip",
+        "region": "middle_ring",
+        "color": "blue",
+        "bearing_clockwise_deg": 99,
+        "fill": "solid",
+        "extent": "from the outer edge of the inner band to the lobed perimeter"
+      },
+      "label": null
+    },
+    {
+      "id": "spoke_05",
+      "kind": "other",
+      "features": {
+        "shape": "radial_strip",
+        "region": "middle_ring",
+        "color": "green",
+        "bearing_clockwise_deg": 129,
+        "fill": "solid",
+        "extent": "from the outer edge of the inner band to the lobed perimeter"
+      },
+      "label": null
+    },
+    {
+      "id": "spoke_06",
+      "kind": "other",
+      "features": {
+        "shape": "radial_strip",
+        "region": "middle_ring",
+        "color": "blue-green",
+        "bearing_clockwise_deg": 164,
+        "fill": "solid",
+        "extent": "from the outer edge of the inner band to the lobed perimeter"
+      },
+      "label": null
+    },
+    {
+      "id": "spoke_07",
+      "kind": "other",
+      "features": {
+        "shape": "radial_strip",
+        "region": "middle_ring",
+        "color": "blue",
+        "bearing_clockwise_deg": 182,
+        "fill": "solid",
+        "extent": "from the outer edge of the inner band to the lobed perimeter"
+      },
+      "label": null
+    },
+    {
+      "id": "spoke_08",
+      "kind": "other",
+      "features": {
+        "shape": "radial_strip",
+        "region": "middle_ring",
+        "color": "green",
+        "bearing_clockwise_deg": 211,
+        "fill": "solid",
+        "extent": "from the outer edge of the inner band to the lobed perimeter"
+      },
+      "label": null
+    },
+    {
+      "id": "spoke_09",
+      "kind": "other",
+      "features": {
+        "shape": "radial_strip",
+        "region": "middle_ring",
+        "color": "blue-green",
+        "bearing_clockwise_deg": 258,
+        "fill": "solid",
+        "extent": "from the outer edge of the inner band to the lobed perimeter"
+      },
+      "label": null
+    },
+    {
+      "id": "spoke_10",
+      "kind": "other",
+      "features": {
+        "shape": "radial_strip",
+        "region": "middle_ring",
+        "color": "blue-green",
+        "bearing_clockwise_deg": 269,
+        "fill": "solid",
+        "extent": "from the outer edge of the inner band to the lobed perimeter"
+      },
+      "label": null
+    },
+    {
+      "id": "spoke_11",
+      "kind": "other",
+      "features": {
+        "shape": "radial_strip",
+        "region": "middle_ring",
+        "color": "green",
+        "bearing_clockwise_deg": 307,
+        "fill": "solid",
+        "extent": "from the outer edge of the inner band to the lobed perimeter"
+      },
+      "label": null
+    },
+    {
+      "id": "spoke_12",
+      "kind": "other",
+      "features": {
+        "shape": "radial_strip",
+        "region": "middle_ring",
+        "color": "blue-green",
+        "bearing_clockwise_deg": 351,
+        "fill": "solid",
+        "extent": "from the outer edge of the inner band to the lobed perimeter"
+      },
+      "label": null
+    },
+    {
+      "id": "hatched_strip",
+      "kind": "other",
+      "features": {
+        "shape": "radial_strip",
+        "region": "middle_ring",
+        "color": "unpainted",
+        "bearing_clockwise_deg": 61,
+        "fill": "short strokes and dots",
+        "extent": "from near the inner band to the lobed perimeter"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_01",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 5,
+        "color": "green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_02",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 12,
+        "color": "green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_03",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 20,
+        "color": "green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_04",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 31,
+        "color": "dark green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_05",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 40,
+        "color": "green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_06",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 47,
+        "color": "blue-green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_07",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 53,
+        "color": "green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_08",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 62,
+        "color": "blue-green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_09",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 71,
+        "color": "green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_10",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 78,
+        "color": "dark green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_11",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 86,
+        "color": "green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_12",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 94,
+        "color": "blue-green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_13",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 102,
+        "color": "green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_14",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 109,
+        "color": "blue",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_15",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 118,
+        "color": "green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_16",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 127,
+        "color": "blue",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_17",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 135,
+        "color": "green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_18",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 144,
+        "color": "blue-green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_19",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 153,
+        "color": "green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_20",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 162,
+        "color": "blue-green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_21",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 168,
+        "color": "blue-green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_22",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 175,
+        "color": "green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_23",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 184,
+        "color": "blue-green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_24",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 192,
+        "color": "green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_25",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 200,
+        "color": "green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_26",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 207,
+        "color": "blue-green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_27",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 215,
+        "color": "green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_28",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 222,
+        "color": "blue-green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_29",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 232,
+        "color": "green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_30",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 239,
+        "color": "green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_31",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 246,
+        "color": "green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_32",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 253,
+        "color": "dark green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_33",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 261,
+        "color": "blue",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_34",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 268,
+        "color": "green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_35",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 277,
+        "color": "blue",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_36",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 286,
+        "color": "green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_37",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 294,
+        "color": "blue",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_38",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 302,
+        "color": "green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_39",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 310,
+        "color": "blue",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_40",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 316,
+        "color": "green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_41",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 322,
+        "color": "blue",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_42",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 331,
+        "color": "green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_43",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 339,
+        "color": "blue",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_44",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 348,
+        "color": "green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    },
+    {
+      "id": "lobe_45",
+      "kind": "other",
+      "features": {
+        "shape": "scallop",
+        "region": "outer_ring",
+        "bearing_clockwise_deg": 357,
+        "color": "blue-green",
+        "fill": "small patch at inward edge"
+      },
+      "label": null
+    }
+  ]
+}

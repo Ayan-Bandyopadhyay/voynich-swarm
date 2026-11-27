@@ -1,0 +1,1185 @@
+{
+  "title": "Physical-bifolio audit limits independent hand evidence to two reused blocks",
+  "program": "L2",
+  "on_path": false,
+  "hard": false,
+  "statement": "The published P-L2-008 metadata table reproduces exactly. The prior same-Currier pair rules independently reproduce 3 strict pairs (5 page sides, 4 folios, 4 physical bifolia) and 14 wider pairs (13 sides, 7 folios, 6 bifolia). Both contain at most two bifolio-disjoint comparisons. Every one of those 3/14 test pairs has both test bifolia represented in its original training fold. Removing their complete physical bifolia leaves only one hand-5 training bifolio in every case. The earlier 10 matched triads occupy six bifolia but at most two disjoint comparisons; two triads contain only two physical bifolia. The separate public evaluation has only one trainable pair, f50v–f66v (G:2/H:1), reusing the physical blocks already present in the earlier evidence. Hand 3 has six eligible panels on Q:2 and no evaluation panel. These designs do not provide three independent replications or three-hand support.",
+  "check": "For a future hand-specific estimate, hold out all pages and panels of each physical bifolio, identify it by (quire,bifolio), and require at least two distinct training bifolia per candidate hand plus physically disjoint evaluation contrasts. Acquire additional independent hand-5 and hand-3 support before claiming a replicated effect. Retain both transliterations and copying/planted controls when the physical geometry permits fitting. Current sample cannot satisfy these independent-block conditions.",
+  "interpretation": "This is a metadata/support audit of public practice partitions, not a refutation of any manuscript handwriting attribution. The original folds held folios apart as declared but were not complete-bifolio holdouts. Shared paper blocks can carry location-related lexical structure; no model accuracies were recomputed, and no causal explanation follows. Quire-disjointness is a stronger restriction than bifolio-disjointness. ZL and Takahashi are paired transcriptions of the same manuscript. Bifolio counts use fixed ZL metadata Q and B; metadata may itself require codicological review.",
+  "sources": [
+    "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/570",
+    "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/348",
+    "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/506"
+  ],
+  "results": {
+    "protocol": {
+      "task": "P-L2-008",
+      "selection": "Paired practice ZL/IT paragraph token counts >=40, agreeing H/B/hand2,3,5 metadata. Prior triple geometry uses >=50 as published.",
+      "unit": "Physical bifolio identified by the pair (ZL Q,B), never B alone. All recto/verso/panels share their physical folio.",
+      "comparisons": "Reproduce prior metadata table; independently enumerate original pair fold matching and triple matching. Count distinct bifolia, disjoint contrasts, and overlap between scored bifolia and training bifolia. No lexical model or hidden split.",
+      "stop": "Retain original match cutoffs. Report absent hand and sparse support before any accuracy claim."
+    },
+    "prior_pair_counts_match": true,
+    "metadata_table_exact_match": true,
+    "independent_evaluation": [
+      {
+        "id": "f41r",
+        "folio": "f41",
+        "order": 39,
+        "number": 41,
+        "hand": "5",
+        "section": "H",
+        "language": "B",
+        "lengths": [
+          97,
+          97
+        ],
+        "quire": "F",
+        "bifolio": "1",
+        "physical": "F:1"
+      },
+      {
+        "id": "f50v",
+        "folio": "f50",
+        "order": 48,
+        "number": 50,
+        "hand": "2",
+        "section": "H",
+        "language": "B",
+        "lengths": [
+          100,
+          98
+        ],
+        "quire": "G",
+        "bifolio": "2",
+        "physical": "G:2"
+      },
+      {
+        "id": "f66v",
+        "folio": "f66",
+        "order": 58,
+        "number": 66,
+        "hand": "5",
+        "section": "H",
+        "language": "B",
+        "lengths": [
+          114,
+          113
+        ],
+        "quire": "H",
+        "bifolio": "1",
+        "physical": "H:1"
+      }
+    ],
+    "independent": {
+      "local": {
+        "raw": {
+          "comparisons": 2,
+          "page_sides": 3,
+          "folios": 3,
+          "bifolia": [
+            "F:1",
+            "G:2",
+            "H:1"
+          ],
+          "bifolia_per_comparison": {
+            "2": 2
+          },
+          "max_bifolio_disjoint": 1,
+          "max_quire_disjoint": 1,
+          "witnesses": [
+            [
+              "G:2",
+              "H:1"
+            ]
+          ]
+        },
+        "trainable": {
+          "comparisons": 1,
+          "page_sides": 2,
+          "folios": 2,
+          "bifolia": [
+            "G:2",
+            "H:1"
+          ],
+          "bifolia_per_comparison": {
+            "2": 1
+          },
+          "max_bifolio_disjoint": 1,
+          "max_quire_disjoint": 1,
+          "witnesses": [
+            [
+              "G:2",
+              "H:1"
+            ]
+          ]
+        },
+        "details": [
+          {
+            "pages": [
+              "f41r",
+              "f50v"
+            ],
+            "bifolia": [
+              "F:1",
+              "G:2"
+            ],
+            "training_folios": {
+              "2": 6,
+              "5": 1
+            }
+          },
+          {
+            "pages": [
+              "f50v",
+              "f66v"
+            ],
+            "bifolia": [
+              "G:2",
+              "H:1"
+            ],
+            "training_folios": {
+              "2": 8,
+              "5": 2
+            }
+          }
+        ]
+      },
+      "wide": {
+        "raw": {
+          "comparisons": 2,
+          "page_sides": 3,
+          "folios": 3,
+          "bifolia": [
+            "F:1",
+            "G:2",
+            "H:1"
+          ],
+          "bifolia_per_comparison": {
+            "2": 2
+          },
+          "max_bifolio_disjoint": 1,
+          "max_quire_disjoint": 1,
+          "witnesses": [
+            [
+              "G:2",
+              "H:1"
+            ]
+          ]
+        },
+        "trainable": {
+          "comparisons": 1,
+          "page_sides": 2,
+          "folios": 2,
+          "bifolia": [
+            "G:2",
+            "H:1"
+          ],
+          "bifolia_per_comparison": {
+            "2": 1
+          },
+          "max_bifolio_disjoint": 1,
+          "max_quire_disjoint": 1,
+          "witnesses": [
+            [
+              "G:2",
+              "H:1"
+            ]
+          ]
+        },
+        "details": [
+          {
+            "pages": [
+              "f41r",
+              "f50v"
+            ],
+            "bifolia": [
+              "F:1",
+              "G:2"
+            ],
+            "training_folios": {
+              "2": 6,
+              "5": 1
+            }
+          },
+          {
+            "pages": [
+              "f50v",
+              "f66v"
+            ],
+            "bifolia": [
+              "G:2",
+              "H:1"
+            ],
+            "training_folios": {
+              "2": 8,
+              "5": 2
+            }
+          }
+        ]
+      }
+    },
+    "prior_pairs": {
+      "strict": {
+        "support": {
+          "comparisons": 3,
+          "page_sides": 5,
+          "folios": 4,
+          "bifolia": [
+            "F:1",
+            "F:3",
+            "G:2",
+            "H:1"
+          ],
+          "bifolia_per_comparison": {
+            "2": 3
+          },
+          "max_bifolio_disjoint": 2,
+          "max_quire_disjoint": 2,
+          "witnesses": [
+            [
+              "F:1",
+              "F:3"
+            ],
+            [
+              "G:2",
+              "H:1"
+            ]
+          ]
+        },
+        "pairs": [
+          [
+            "f55v",
+            "f57r"
+          ],
+          [
+            "f46v",
+            "f48r"
+          ],
+          [
+            "f46v",
+            "f48v"
+          ]
+        ],
+        "training_overlap": [
+          {
+            "pages": [
+              "f55v",
+              "f57r"
+            ],
+            "shared": [
+              "G:2",
+              "H:1"
+            ]
+          },
+          {
+            "pages": [
+              "f46v",
+              "f48r"
+            ],
+            "shared": [
+              "F:1",
+              "F:3"
+            ]
+          },
+          {
+            "pages": [
+              "f46v",
+              "f48v"
+            ],
+            "shared": [
+              "F:1",
+              "F:3"
+            ]
+          }
+        ],
+        "bifolio_excluded_training": [
+          {
+            "pages": [
+              "f55v",
+              "f57r"
+            ],
+            "folios_by_hand": {
+              "2": 14,
+              "5": 1
+            },
+            "bifolia_by_hand": {
+              "2": [
+                "D:2",
+                "E:1",
+                "E:2",
+                "F:3",
+                "M:1",
+                "M:2",
+                "M:3",
+                "M:4",
+                "N:1"
+              ],
+              "5": [
+                "F:1"
+              ]
+            }
+          },
+          {
+            "pages": [
+              "f46v",
+              "f48r"
+            ],
+            "folios_by_hand": {
+              "2": 15,
+              "5": 2
+            },
+            "bifolia_by_hand": {
+              "2": [
+                "D:2",
+                "E:1",
+                "E:2",
+                "G:2",
+                "M:1",
+                "M:2",
+                "M:3",
+                "M:4",
+                "M:5"
+              ],
+              "5": [
+                "H:1"
+              ]
+            }
+          },
+          {
+            "pages": [
+              "f46v",
+              "f48v"
+            ],
+            "folios_by_hand": {
+              "2": 15,
+              "5": 2
+            },
+            "bifolia_by_hand": {
+              "2": [
+                "D:2",
+                "E:1",
+                "E:2",
+                "G:2",
+                "M:1",
+                "M:2",
+                "M:3",
+                "M:4",
+                "M:5"
+              ],
+              "5": [
+                "H:1"
+              ]
+            }
+          }
+        ]
+      },
+      "wide": {
+        "support": {
+          "comparisons": 14,
+          "page_sides": 13,
+          "folios": 7,
+          "bifolia": [
+            "D:2",
+            "E:1",
+            "F:1",
+            "F:3",
+            "G:2",
+            "H:1"
+          ],
+          "bifolia_per_comparison": {
+            "2": 14
+          },
+          "max_bifolio_disjoint": 2,
+          "max_quire_disjoint": 2,
+          "witnesses": [
+            [
+              "F:1",
+              "F:3"
+            ],
+            [
+              "G:2",
+              "H:1"
+            ]
+          ]
+        },
+        "pairs": [
+          [
+            "f40r",
+            "f57r"
+          ],
+          [
+            "f40v",
+            "f57r"
+          ],
+          [
+            "f55r",
+            "f57r"
+          ],
+          [
+            "f55v",
+            "f57r"
+          ],
+          [
+            "f31r",
+            "f48r"
+          ],
+          [
+            "f31r",
+            "f48v"
+          ],
+          [
+            "f31v",
+            "f48r"
+          ],
+          [
+            "f31v",
+            "f48v"
+          ],
+          [
+            "f33r",
+            "f48r"
+          ],
+          [
+            "f33v",
+            "f48r"
+          ],
+          [
+            "f33v",
+            "f48v"
+          ],
+          [
+            "f46r",
+            "f48v"
+          ],
+          [
+            "f46v",
+            "f48r"
+          ],
+          [
+            "f46v",
+            "f48v"
+          ]
+        ],
+        "training_overlap": [
+          {
+            "pages": [
+              "f40r",
+              "f57r"
+            ],
+            "shared": [
+              "E:1",
+              "H:1"
+            ]
+          },
+          {
+            "pages": [
+              "f40v",
+              "f57r"
+            ],
+            "shared": [
+              "E:1",
+              "H:1"
+            ]
+          },
+          {
+            "pages": [
+              "f55r",
+              "f57r"
+            ],
+            "shared": [
+              "G:2",
+              "H:1"
+            ]
+          },
+          {
+            "pages": [
+              "f55v",
+              "f57r"
+            ],
+            "shared": [
+              "G:2",
+              "H:1"
+            ]
+          },
+          {
+            "pages": [
+              "f31r",
+              "f48r"
+            ],
+            "shared": [
+              "D:2",
+              "F:1"
+            ]
+          },
+          {
+            "pages": [
+              "f31r",
+              "f48v"
+            ],
+            "shared": [
+              "D:2",
+              "F:1"
+            ]
+          },
+          {
+            "pages": [
+              "f31v",
+              "f48r"
+            ],
+            "shared": [
+              "D:2",
+              "F:1"
+            ]
+          },
+          {
+            "pages": [
+              "f31v",
+              "f48v"
+            ],
+            "shared": [
+              "D:2",
+              "F:1"
+            ]
+          },
+          {
+            "pages": [
+              "f33r",
+              "f48r"
+            ],
+            "shared": [
+              "E:1",
+              "F:1"
+            ]
+          },
+          {
+            "pages": [
+              "f33v",
+              "f48r"
+            ],
+            "shared": [
+              "E:1",
+              "F:1"
+            ]
+          },
+          {
+            "pages": [
+              "f33v",
+              "f48v"
+            ],
+            "shared": [
+              "E:1",
+              "F:1"
+            ]
+          },
+          {
+            "pages": [
+              "f46r",
+              "f48v"
+            ],
+            "shared": [
+              "F:1",
+              "F:3"
+            ]
+          },
+          {
+            "pages": [
+              "f46v",
+              "f48r"
+            ],
+            "shared": [
+              "F:1",
+              "F:3"
+            ]
+          },
+          {
+            "pages": [
+              "f46v",
+              "f48v"
+            ],
+            "shared": [
+              "F:1",
+              "F:3"
+            ]
+          }
+        ],
+        "bifolio_excluded_training": [
+          {
+            "pages": [
+              "f40r",
+              "f57r"
+            ],
+            "folios_by_hand": {
+              "2": 14,
+              "5": 1
+            },
+            "bifolia_by_hand": {
+              "2": [
+                "D:2",
+                "E:2",
+                "F:3",
+                "G:2",
+                "M:1",
+                "M:2",
+                "M:3",
+                "M:4",
+                "N:1"
+              ],
+              "5": [
+                "F:1"
+              ]
+            }
+          },
+          {
+            "pages": [
+              "f40v",
+              "f57r"
+            ],
+            "folios_by_hand": {
+              "2": 14,
+              "5": 1
+            },
+            "bifolia_by_hand": {
+              "2": [
+                "D:2",
+                "E:2",
+                "F:3",
+                "G:2",
+                "M:1",
+                "M:2",
+                "M:3",
+                "M:4",
+                "N:1"
+              ],
+              "5": [
+                "F:1"
+              ]
+            }
+          },
+          {
+            "pages": [
+              "f55r",
+              "f57r"
+            ],
+            "folios_by_hand": {
+              "2": 14,
+              "5": 1
+            },
+            "bifolia_by_hand": {
+              "2": [
+                "D:2",
+                "E:1",
+                "E:2",
+                "F:3",
+                "M:1",
+                "M:2",
+                "M:3",
+                "M:4",
+                "N:1"
+              ],
+              "5": [
+                "F:1"
+              ]
+            }
+          },
+          {
+            "pages": [
+              "f55v",
+              "f57r"
+            ],
+            "folios_by_hand": {
+              "2": 14,
+              "5": 1
+            },
+            "bifolia_by_hand": {
+              "2": [
+                "D:2",
+                "E:1",
+                "E:2",
+                "F:3",
+                "M:1",
+                "M:2",
+                "M:3",
+                "M:4",
+                "N:1"
+              ],
+              "5": [
+                "F:1"
+              ]
+            }
+          },
+          {
+            "pages": [
+              "f31r",
+              "f48r"
+            ],
+            "folios_by_hand": {
+              "2": 15,
+              "5": 2
+            },
+            "bifolia_by_hand": {
+              "2": [
+                "E:1",
+                "E:2",
+                "F:3",
+                "G:2",
+                "M:1",
+                "M:2",
+                "M:3",
+                "M:4",
+                "M:5"
+              ],
+              "5": [
+                "H:1"
+              ]
+            }
+          },
+          {
+            "pages": [
+              "f31r",
+              "f48v"
+            ],
+            "folios_by_hand": {
+              "2": 15,
+              "5": 2
+            },
+            "bifolia_by_hand": {
+              "2": [
+                "E:1",
+                "E:2",
+                "F:3",
+                "G:2",
+                "M:1",
+                "M:2",
+                "M:3",
+                "M:4",
+                "M:5"
+              ],
+              "5": [
+                "H:1"
+              ]
+            }
+          },
+          {
+            "pages": [
+              "f31v",
+              "f48r"
+            ],
+            "folios_by_hand": {
+              "2": 15,
+              "5": 2
+            },
+            "bifolia_by_hand": {
+              "2": [
+                "E:1",
+                "E:2",
+                "F:3",
+                "G:2",
+                "M:1",
+                "M:2",
+                "M:3",
+                "M:4",
+                "M:5"
+              ],
+              "5": [
+                "H:1"
+              ]
+            }
+          },
+          {
+            "pages": [
+              "f31v",
+              "f48v"
+            ],
+            "folios_by_hand": {
+              "2": 15,
+              "5": 2
+            },
+            "bifolia_by_hand": {
+              "2": [
+                "E:1",
+                "E:2",
+                "F:3",
+                "G:2",
+                "M:1",
+                "M:2",
+                "M:3",
+                "M:4",
+                "M:5"
+              ],
+              "5": [
+                "H:1"
+              ]
+            }
+          },
+          {
+            "pages": [
+              "f33r",
+              "f48r"
+            ],
+            "folios_by_hand": {
+              "2": 15,
+              "5": 2
+            },
+            "bifolia_by_hand": {
+              "2": [
+                "D:2",
+                "E:2",
+                "F:3",
+                "G:2",
+                "M:1",
+                "M:2",
+                "M:3",
+                "M:4",
+                "M:5"
+              ],
+              "5": [
+                "H:1"
+              ]
+            }
+          },
+          {
+            "pages": [
+              "f33v",
+              "f48r"
+            ],
+            "folios_by_hand": {
+              "2": 15,
+              "5": 2
+            },
+            "bifolia_by_hand": {
+              "2": [
+                "D:2",
+                "E:2",
+                "F:3",
+                "G:2",
+                "M:1",
+                "M:2",
+                "M:3",
+                "M:4",
+                "M:5"
+              ],
+              "5": [
+                "H:1"
+              ]
+            }
+          },
+          {
+            "pages": [
+              "f33v",
+              "f48v"
+            ],
+            "folios_by_hand": {
+              "2": 15,
+              "5": 2
+            },
+            "bifolia_by_hand": {
+              "2": [
+                "D:2",
+                "E:2",
+                "F:3",
+                "G:2",
+                "M:1",
+                "M:2",
+                "M:3",
+                "M:4",
+                "M:5"
+              ],
+              "5": [
+                "H:1"
+              ]
+            }
+          },
+          {
+            "pages": [
+              "f46r",
+              "f48v"
+            ],
+            "folios_by_hand": {
+              "2": 15,
+              "5": 2
+            },
+            "bifolia_by_hand": {
+              "2": [
+                "D:2",
+                "E:1",
+                "E:2",
+                "G:2",
+                "M:1",
+                "M:2",
+                "M:3",
+                "M:4",
+                "M:5"
+              ],
+              "5": [
+                "H:1"
+              ]
+            }
+          },
+          {
+            "pages": [
+              "f46v",
+              "f48r"
+            ],
+            "folios_by_hand": {
+              "2": 15,
+              "5": 2
+            },
+            "bifolia_by_hand": {
+              "2": [
+                "D:2",
+                "E:1",
+                "E:2",
+                "G:2",
+                "M:1",
+                "M:2",
+                "M:3",
+                "M:4",
+                "M:5"
+              ],
+              "5": [
+                "H:1"
+              ]
+            }
+          },
+          {
+            "pages": [
+              "f46v",
+              "f48v"
+            ],
+            "folios_by_hand": {
+              "2": 15,
+              "5": 2
+            },
+            "bifolia_by_hand": {
+              "2": [
+                "D:2",
+                "E:1",
+                "E:2",
+                "G:2",
+                "M:1",
+                "M:2",
+                "M:3",
+                "M:4",
+                "M:5"
+              ],
+              "5": [
+                "H:1"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "prior_triads": {
+      "support": {
+        "comparisons": 10,
+        "page_sides": 14,
+        "folios": 10,
+        "bifolia": [
+          "E:1",
+          "E:2",
+          "F:1",
+          "F:3",
+          "G:2",
+          "H:1"
+        ],
+        "bifolia_per_comparison": {
+          "3": 8,
+          "2": 2
+        },
+        "max_bifolio_disjoint": 2,
+        "max_quire_disjoint": 2,
+        "witnesses": [
+          [
+            "E:2",
+            "F:1",
+            "F:3"
+          ],
+          [
+            "G:2",
+            "H:1"
+          ]
+        ]
+      },
+      "blocks": {
+        "2": {
+          "comparisons": 9,
+          "page_sides": 11,
+          "folios": 7,
+          "bifolia": [
+            "E:1",
+            "E:2",
+            "F:1",
+            "F:3"
+          ],
+          "bifolia_per_comparison": {
+            "3": 8,
+            "2": 1
+          },
+          "max_bifolio_disjoint": 1,
+          "max_quire_disjoint": 1,
+          "witnesses": [
+            [
+              "E:2",
+              "F:1",
+              "F:3"
+            ]
+          ]
+        },
+        "3": {
+          "comparisons": 1,
+          "page_sides": 3,
+          "folios": 3,
+          "bifolia": [
+            "G:2",
+            "H:1"
+          ],
+          "bifolia_per_comparison": {
+            "2": 1
+          },
+          "max_bifolio_disjoint": 1,
+          "max_quire_disjoint": 1,
+          "witnesses": [
+            [
+              "G:2",
+              "H:1"
+            ]
+          ]
+        }
+      },
+      "rows": [
+        [
+          "f40r",
+          "f46v",
+          "f48r"
+        ],
+        [
+          "f40v",
+          "f33v",
+          "f48v"
+        ],
+        [
+          "f40v",
+          "f34v",
+          "f48v"
+        ],
+        [
+          "f40v",
+          "f46v",
+          "f48r"
+        ],
+        [
+          "f40v",
+          "f46v",
+          "f48v"
+        ],
+        [
+          "f43r",
+          "f39r",
+          "f48v"
+        ],
+        [
+          "f43r",
+          "f39v",
+          "f48v"
+        ],
+        [
+          "f43v",
+          "f39r",
+          "f48v"
+        ],
+        [
+          "f43v",
+          "f39v",
+          "f48v"
+        ],
+        [
+          "f50r",
+          "f55v",
+          "f57r"
+        ]
+      ]
+    },
+    "inventory": {
+      "2": {
+        "pages": [
+          "f26r",
+          "f26v",
+          "f31r",
+          "f31v",
+          "f33r",
+          "f33v",
+          "f34r",
+          "f34v",
+          "f39r",
+          "f39v",
+          "f40r",
+          "f40v",
+          "f43r",
+          "f43v",
+          "f46r",
+          "f46v",
+          "f50r",
+          "f55r",
+          "f55v",
+          "f50v"
+        ],
+        "bifolia": [
+          "D:2",
+          "E:1",
+          "E:2",
+          "F:3",
+          "G:2"
+        ]
+      },
+      "3": {
+        "pages": [
+          "f94r",
+          "f94v",
+          "f95r1",
+          "f95r2",
+          "f95v2",
+          "f95v1"
+        ],
+        "bifolia": [
+          "Q:2"
+        ]
+      },
+      "5": {
+        "pages": [
+          "f41v",
+          "f48r",
+          "f48v",
+          "f57r",
+          "f41r",
+          "f66v"
+        ],
+        "bifolia": [
+          "F:1",
+          "H:1"
+        ]
+      }
+    },
+    "hashes": {
+      "data/raw/ZL3b-n.txt": "bf5b6d4ac1e3a51b1847a9c388318d609020441ccd56984c901c32b09beccafc",
+      "data/raw/IT2a-n.txt": "7f27a8b0feed8f6de0a99900df6bf912dd1d295c38e5f830bac8b41c3f536fb5"
+    }
+  },
+  "reproduction": {
+    "usage": "From repository root: set PYTHONPATH to repository; python layout.py plan.json > layout-reproduced.json; python audit.py. Standard library only. All outputs refer to public practice split, never hidden split.",
+    "files": {
+      "plan-independent.json": "{\n  \"task\": \"P-L2-008\",\n  \"selection\": \"Paired practice ZL/IT paragraph token counts >=40, agreeing H/B/hand2,3,5 metadata. Prior triple geometry uses >=50 as published.\",\n  \"unit\": \"Physical bifolio identified by the pair (ZL Q,B), never B alone. All recto/verso/panels share their physical folio.\",\n  \"comparisons\": \"Reproduce prior metadata table; independently enumerate original pair fold matching and triple matching. Count distinct bifolia, disjoint contrasts, and overlap between scored bifolia and training bifolia. No lexical model or hidden split.\",\n  \"stop\": \"Retain original match cutoffs. Report absent hand and sparse support before any accuracy claim.\"\n}\n",
+      "layout.py": "\"\"\"Count metadata-only support for the frozen P-L2-002 comparison.\"\"\"\nfrom collections import defaultdict\nfrom functools import lru_cache\nfrom itertools import combinations\nimport json\nfrom pathlib import Path\nimport re\nimport sys\n\nsys.path.insert(0, str(Path.cwd()))\nfrom vs import corpus, ivtff\n\nHANDS = ('2', '3', '5')\nEDITION = ('zl', 'it')\n\n\ndef folio(page_id):\n    return re.match(r'f\\d+', page_id).group()\n\n\ndef certain_words(page):\n    return sum(not ivtff.uncertain(word) for line in page.lines if line.unit == 'P' for word in line.words)\n\n\ndef sample(pages, folio_order):\n    by_edition = {edition: {page.id: page for page in pages[edition]} for edition in EDITION}\n    for pid, zl in by_edition['zl'].items():\n        it = by_edition['it'].get(pid)\n        if it is None or zl.section != 'H' or zl.language != 'B' or str(zl.hand) not in HANDS:\n            continue\n        if (zl.section, zl.language, str(zl.hand)) != (it.section, it.language, str(it.hand)):\n            continue\n        lengths = [certain_words(zl), certain_words(it)]\n        if min(lengths) >= 40 and zl.meta.get('Q'):\n            yield {'id': pid, 'folio': folio(pid), 'hand': str(zl.hand), 'quire': zl.meta['Q'],\n                   'order': folio_order[folio(pid)], 'lengths': lengths, 'bifolio': zl.meta.get('B')}\n\n\ndef pair_support(edges):\n    incident = defaultdict(set)\n    for left, right in edges:\n        incident[left].add(right)\n    assigned = {}\n\n    def augment(left, visited):\n        for right in sorted(incident[left] - visited):\n            visited.add(right)\n            if right not in assigned or augment(assigned[right], visited):\n                assigned[right] = left\n                return True\n        return False\n\n    for left in sorted(incident):\n        augment(left, set())\n    return len(assigned)\n\n\ndef quire_support(blocks):\n    groups = tuple(sorted(blocks))\n\n    @lru_cache(maxsize=None)\n    def maximum(index, used):\n        if index == len(groups):\n            return 0\n        best = maximum(index + 1, used)\n        block = frozenset(groups[index])\n        if block.isdisjoint(used):\n            best = max(best, 1 + maximum(index + 1, used | block))\n        return best\n\n    return maximum(0, frozenset())\n\n\ndef support(pairs):\n    folio_edges = {(a['folio'], b['folio']) for a, b, _ in pairs}\n    blocks = {tuple(sorted({a['quire'], b['quire']})) for a, b, _ in pairs}\n    return {'page_pairs': len(pairs), 'pages': sorted({p['id'] for a,b,_ in pairs for p in (a,b)}),\n            'folio_pairs': sorted(folio_edges), 'folios': sorted({f for edge in folio_edges for f in edge}),\n            'quire_blocks': [list(x) for x in sorted(blocks)], 'folio_disjoint_pairs': pair_support(folio_edges),\n            'quire_disjoint_pairs': quire_support(blocks)}\n\n\ndef enumerate_pairs(test, train, rule, contrast):\n    a_hand, b_hand = contrast\n    left = [p for p in test if p['hand'] == a_hand]\n    right = [p for p in test if p['hand'] == b_hand]\n    for a in left:\n        for b in right:\n            distance = abs(a['order'] - b['order'])\n            if not 0 < distance <= rule['max_folio_distance']:\n                continue\n            length_ratio = max(max(x, y)/min(x, y) for x, y in zip(a['lengths'], b['lengths']))\n            if length_ratio > rule['max_length_ratio']:\n                continue\n            eligible = [r for r in train if r['quire'] not in (a['quire'], b['quire'])\n                        and r['folio'] not in (a['folio'], b['folio'])]\n            fit = {hand: len({r['folio'] for r in eligible if r['hand'] == hand}) for hand in contrast}\n            yield a, b, fit\n\n\ndef main():\n    plan = json.loads(Path(sys.argv[1]).read_text())\n    all_folios = list(dict.fromkeys(folio(page.id) for page in corpus.pages('zl')))\n    folio_order = {name: i for i, name in enumerate(all_folios)}\n    partitions = {edition: corpus.split_pages('practice', edition) for edition in EDITION}\n    train = list(sample({edition: partitions[edition][0] for edition in EDITION}, folio_order))\n    test = list(sample({edition: partitions[edition][1] for edition in EDITION}, folio_order))\n    rows = {}\n    for name, rule in plan['matches'].items():\n        results = {}\n        for contrast in combinations(HANDS, 2):\n            eligible = list(enumerate_pairs(test, train, rule, contrast))\n            trainable = [(a,b,fit) for a,b,fit in eligible if min(fit.values()) >= 2]\n            same_quire = [(a,b,fit) for a,b,fit in trainable if a['quire'] == b['quire']]\n            results['-'.join(contrast)] = {'raw': support(eligible), 'trainable': support(trainable),\n                'trainable_same_quire': support(same_quire),\n                'pair_details': [{'pages':[a['id'], b['id']], 'quires':[a['quire'], b['quire']],\n                                  'training_folios':fit} for a,b,fit in eligible]}\n        rows[name] = results\n    proximity = {}\n    for hand in ('2', '5'):\n        distance, left, right = min((abs(a['order'] - b['order']), a['folio'], b['folio'])\n                                    for a in train + test for b in train + test\n                                    if a['hand'] == '3' and b['hand'] == hand)\n        proximity['3-' + hand] = {'distance': distance, 'folios': [left, right]}\n    print(json.dumps({'public_practice_training':train,'public_practice_evaluation':test,\n                      'minimum_distances_to_hand_3':proximity,'matches':rows}, indent=2))\n\n\nif __name__ == '__main__':\n    main()\n",
+      "plan.json": "{\n  \"step\": \"P-L2-002\",\n  \"primary_sample\": \"The evaluation partition of the public practice split was not used as a scored page in #348. Keep ZL/IT intersection with shared herbal section H, Currier B, annotated hand 2, 3 or 5, and at least 40 certain paragraph words in each edition.\",\n  \"metadata\": \"Use the canonical ZL folio sequence, one physical folio for recto, verso and panels, and quire from the fixed ZL metadata. Match paragraph word counts in each edition.\",\n  \"matches\": {\n    \"local\": {\"max_folio_distance\": 12, \"max_length_ratio\": 1.25},\n    \"wider_sensitivity\": {\"max_folio_distance\": 24, \"max_length_ratio\": 1.5}\n  },\n  \"match_criteria\": \"Candidates have different hands on different physical folios and pass both editions' length ratios. The same-quire subset of each rule is reported separately as a physical-block diagnostic.\",\n  \"train\": \"Use the same paired eligibility on practice training. For each target pair, leave both evaluation folios and each of their source quires out before building any vocabulary, IDF, topic basis and hand centroids. Each candidate hand needs two distinct training folios.\",\n  \"support\": \"Before reading any lexical outcomes, report unique page sides, physical folios and quire-pair blocks for each hand contrast, including the largest independent sets by folio and by disjoint quire sets. Three-hand inference needs support connecting all three hands and eligible contrasts in at least two physically disjoint quire blocks. Sparse support permits pair-specific accounting only. A scored pair-specific result still needs at least two distinct, disjoint quire blocks.\",\n  \"controls\": \"Preserve the pinned G-self-citation backgrounds (seeds 401–406) and the 10% hand-exclusive, same-length planted word control from #348 when the independent geometry permits a fit. Otherwise reproduce these controls on the prior public geometry as a diagnostic and report the distinction.\"\n}\n",
+      "audit.py": "\"\"\"Metadata-only independent physical-support audit; run from repository root.\"\"\"\nimport json, re, hashlib\nfrom collections import Counter\nfrom functools import lru_cache\nfrom itertools import combinations\nfrom pathlib import Path\nfrom vs import corpus, ivtff\n\nOUT = Path(__file__).resolve().parent\nROOT = Path.cwd()\n\ndef collect(part, minimum=40):\n    editions = {e: corpus.split_pages('practice', e)[part] for e in ('zl','it')}\n    it = {p.id:p for p in editions['it']}\n    order = list(dict.fromkeys(re.match(r'f\\d+',p.id)[0] for p in corpus.pages('zl')))\n    rows = []\n    for p in editions['zl']:\n        q = it.get(p.id)\n        if q is None or (p.hand,p.section,p.language)!=(q.hand,q.section,q.language): continue\n        lengths = [sum(not ivtff.uncertain(w) for ln in x.lines if ln.unit=='P' for w in ln.words) for x in (p,q)]\n        if min(lengths)<minimum or not p.hand or not p.section: continue\n        folio = re.match(r'f\\d+',p.id)[0]\n        rows.append(dict(id=p.id,folio=folio,order=order.index(folio),number=int(folio[1:]),hand=p.hand,\n                         section=p.section,language=p.language,lengths=lengths,quire=p.meta.get('Q'),\n                         bifolio=p.meta.get('B'),physical=(p.meta.get('Q','?')+':'+p.meta.get('B','?'))))\n    return rows\n\ndef pack(sets):\n    sets = tuple(sorted({tuple(sorted(s)) for s in sets}))\n    @lru_cache(None)\n    def solve(i,used):\n        if i==len(sets): return ()\n        best=solve(i+1,used)\n        if not set(sets[i]) & set(used):\n            candidate=(sets[i],)+solve(i+1,tuple(sorted(set(used)|set(sets[i]))))\n            if len(candidate)>len(best): best=candidate\n        return best\n    return solve(0,())\n\ndef support(edges):\n    pages={p['id']:p for edge in edges for p in edge}\n    return dict(comparisons=len(edges),page_sides=len(pages),folios=len({p['folio'] for p in pages.values()}),\n                bifolia=sorted({p['physical'] for p in pages.values()}),\n                bifolia_per_comparison=dict(Counter(len({p['physical'] for p in edge}) for edge in edges)),\n                max_bifolio_disjoint=len(pack([{p['physical'] for p in edge} for edge in edges])),\n                max_quire_disjoint=len(pack([{p['quire'] for p in edge} for edge in edges])),\n                witnesses=pack([{p['physical'] for p in edge} for edge in edges]))\n\ndef match(a,b,distance,ratio):\n    return (a['section']==b['section'] and 0<abs(a['order']-b['order'])<=distance\n            and all(max(x,y)/min(x,y)<=ratio for x,y in zip(a['lengths'],b['lengths'])))\n\ndef main():\n    train,test=collect(0),collect(1)\n    eligible=lambda rows:[p for p in rows if p['section']=='H' and p['language']=='B' and p['hand'] in ('2','3','5')]\n    tr,ev=eligible(train),eligible(test)\n    independent={}\n    for name,dist,ratio in [('local',12,1.25),('wide',24,1.5)]:\n        raw=[(a,b) for a,b in combinations(ev,2) if a['hand']!=b['hand'] and match(a,b,dist,ratio)]\n        details=[]\n        for a,b in raw:\n            fit=[p for p in tr if p['quire'] not in (a['quire'],b['quire'])]\n            counts={h:len({p['folio'] for p in fit if p['hand']==h}) for h in ('2','5')}\n            details.append(dict(pages=[a['id'],b['id']],bifolia=[a['physical'],b['physical']],training_folios=counts))\n        good=[edge for edge,d in zip(raw,details) if min(d['training_folios'].values())>=2]\n        independent[name]=dict(raw=support(raw),trainable=support(good),details=details)\n    # Reconstruct the original four-folio modulo-four test folds and both Currier-matched rules.\n    prior={}\n    for name,dist,ratio in [('strict',12,1.25),('wide',24,1.5)]:\n        edges=[]; overlap=[]; clean_training=[]\n        for fold in range(4):\n            fit=[p for p in train if (p['order']//4)%4!=fold]\n            held=[p for p in train if (p['order']//4)%4==fold]\n            for a,b in combinations(held,2):\n                if a['hand']==b['hand'] or min(sum(p['hand']==h for p in fit) for h in (a['hand'],b['hand']))<2: continue\n                if a['language']!=b['language'] or not match(a,b,dist,ratio): continue\n                edges.append((a,b))\n                shared={a['physical'],b['physical']} & {p['physical'] for p in fit}\n                if shared: overlap.append(dict(pages=[a['id'],b['id']],shared=sorted(shared)))\n                clean=[p for p in fit if p['physical'] not in (a['physical'],b['physical'])]\n                clean_training.append(dict(pages=[a['id'],b['id']],folios_by_hand={h:len({p['folio'] for p in clean if p['hand']==h}) for h in (a['hand'],b['hand'])},bifolia_by_hand={h:sorted({p['physical'] for p in clean if p['hand']==h}) for h in (a['hand'],b['hand'])}))\n        prior[name]=dict(support=support(edges),pairs=[[a['id'],b['id']] for a,b in edges],training_overlap=overlap,\n                         bifolio_excluded_training=clean_training)\n    # Reconstruct prior same-Currier triads under its original numeric-folio 16-leaf blocks.\n    tri_docs=collect(0,50); triads=[]; grouped={}\n    for a in tri_docs:\n        for b in tri_docs:\n            for c in tri_docs:\n                if len({a['folio'],b['folio'],c['folio']})!=3: continue\n                if len({(x['number']-1)//16 for x in (a,b,c)})!=1: continue\n                if a['hand']!=b['hand'] or a['hand']==c['hand']: continue\n                if len({x['section'] for x in (a,b,c)})!=1 or len({x['language'] for x in (a,b,c)})!=1: continue\n                da,dc=abs(a['number']-b['number']),abs(a['number']-c['number'])\n                if max(da,dc)>12 or abs(da-dc)>2: continue\n                if any(max(x['lengths'][j] for x in (a,b,c))/min(x['lengths'][j] for x in (a,b,c))>1.25 for j in (0,1)): continue\n                triads.append((a,b,c));grouped.setdefault(str((a['number']-1)//16),[]).append((a,b,c))\n    expected_pairs=json.loads((ROOT/'experiments/K-030-open-1/fleet-sol/step.json').read_text())['practice']['totals']\n    pair_counts_match=(prior['strict']['support']['comparisons']==expected_pairs['section and Currier and matched']['pairs']\n                       and prior['wide']['support']['comparisons']==expected_pairs['section and Currier and wider match']['pairs'])\n    assert pair_counts_match\n    assert len(triads)==10\n    result=dict(protocol=json.loads((OUT/'plan-independent.json').read_text()),prior_pair_counts_match=pair_counts_match,\n                metadata_table_exact_match=json.loads((OUT/'layout-reproduced.json').read_text(encoding='utf-8-sig'))==json.loads((ROOT/'experiments/P-L2-002/mubadala777/step.json').read_text())['metadata_results'],\n                independent_evaluation=ev,independent=independent,prior_pairs=prior,\n                prior_triads=dict(support=support(triads),blocks={k:support(v) for k,v in grouped.items()},\n                                  rows=[[p['id'] for p in edge] for edge in triads]),\n                inventory={h:dict(pages=[p['id'] for p in tr+ev if p['hand']==h],bifolia=sorted({p['physical'] for p in tr+ev if p['hand']==h})) for h in ('2','3','5')},\n                hashes={name:hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in ('data/raw/ZL3b-n.txt','data/raw/IT2a-n.txt')})\n    (OUT/'result.json').write_text(json.dumps(result,indent=2)+'\\n')\n    print(json.dumps(result,indent=2))\n\nif __name__=='__main__': main()\n"
+    },
+    "sha256": {
+      "plan-independent.json": "954f46ef660009c8c24147bbe061eee8d6cb48e4da7d12dbaea62190f8a773f9",
+      "layout.py": "6bd9557fa94e58e0d2083d4f72cf683f7b093fc8b6ad5583576fa63f2c10c6a7",
+      "plan.json": "67bf2249f152c7d48f7e4186ed4ca7df78adf1129f259d8154aa40fe40f4e212",
+      "audit.py": "7e12099cb83c590f68f956839918ba9d1fe856507b55330dc60868fe8229950f",
+      "result.json": "0682bfde9c5fd0a71250c0e48b3775496028ae3a6ee1b331d77e0a7e0214abf8"
+    }
+  }
+}

@@ -44,40 +44,87 @@ PIC_OPEN_MAX = 6          # picture-annotation steps open at once
 LEAD_STALE_HOURS = 2      # after this long without a lead dispatch, rules choose the top picks
 
 
-def rules_top(steps):
-    """The scripted lead: when no lead seat has posted recently, rank open steps by fixed rules.
-    1 an established fact no attack has reproduced; 2 a generator or invented-language test against
-    every fact; 3 pictures (annotations, then anchor second looks); 4 test power for a family with no
-    planted control; 5 everything else agent-proposed; grid cells last."""
+PIC_AGREEMENT_FLOOR = 0.25   # below this share of AGREED among compared folios, new annotations wait
+PIC_MIN_COMPARED = 10        # ...once at least this many folios have been compared
+TRIED_ENOUGH = 3             # an agent-proposed step with this many submissions has been worked
+
+
+def rules_top(steps, reasons=None):
+    """The scripted lead: when no lead seat has posted recently, rank open steps by rules that read
+    the record, not by category alone.
+    1 an established fact no attack has reproduced;
+    2 the shared generator test, while no single procedure reproduces every established fact
+      (the best result so far is named, with the facts it misses);
+    3 invented-language tests; picture annotations, unless annotations are not reaching AGREED
+      (then they wait, rank 8, until the annotation format changes);
+    4 anchors and other picture steps; 5 test power;
+    6 everything else agent-proposed, including other generator variants;
+    grid cells last. Within a rank, steps fewer people have submitted to come first, and an
+    agent-proposed step that already has TRIED_ENOUGH submissions drops three ranks (never below 8).
+    `reasons`, if given, is filled with {step id: why it was picked}."""
+    from collections import Counter
     from . import registry
+    reasons = {} if reasons is None else reasons
     facts = [i["id"] for i in registry.read("fact") if i["verdict"] == "ESTABLISHED"]
-    hit = set()
+    hit, best = set(), None
     for a in registry.read("attack"):
         if a["verdict"] == "SUCCEEDED":
             hit.add(a.get("target"))
-        for k, v in ((a.get("detail") or {}).get("per_fact") or {}).items():
-            if v:
-                hit.add(k)
+        per_fact = (a.get("detail") or {}).get("per_fact") or {}
+        covered = {k for k, v in per_fact.items() if v}
+        hit |= covered
+        if per_fact:
+            score = len(covered & set(facts))
+            if best is None or score > best[0]:
+                best = (score, a["id"], [f for f in facts if f not in covered])
+    generator_done = bool(facts) and best is not None and best[0] == len(facts)
+    pics = registry.read("picture")
+    agreed = sum(p["verdict"] == "AGREED" for p in pics)
+    compared = agreed + sum(p["verdict"] == "DISAGREE" for p in pics)
+    pics_stalled = compared >= PIC_MIN_COMPARED and agreed / compared < PIC_AGREEMENT_FLOOR
+    tried = Counter((i.get("provenance") or {}).get("step") for i in registry.read())
     open_ = [s for s in steps if s.get("status", "open") == "open" and s.get("kind") != "mandate"]
 
     def rank(s):
         i = s["id"]
-        if i.startswith("R-attack-") and i[len("R-attack-"):] in facts and i[len("R-attack-"):] not in hit:
-            return 1
         t = (s.get("title") or "").lower()
-        if i == "G-every-fact" or "invented-language" in t or "generator test" in t:
-            return 2
+        if i.startswith("R-attack-") and i[len("R-attack-"):] in facts and i[len("R-attack-"):] not in hit:
+            return 1, f"{i[len('R-attack-'):]} is established and no attack has reproduced it"
+        if i == "G-every-fact":
+            if generator_done:
+                return 7, f"{best[1]} already reproduces all {len(facts)} established facts"
+            if best:
+                return 2, (f"best single procedure so far: {best[1]}, {best[0]} of {len(facts)} facts; "
+                           f"misses {', '.join(best[2]) or 'none'}")
+            return 2, "no generator has been run against the established facts"
+        if "invented-language" in t:
+            return 3, "an invented language against every fact"
+        if "generator test" in t:
+            return 6, "a generator variant; G-every-fact is the shared generator test"
         if i.startswith("PIC-"):
-            return 3
+            if pics_stalled:
+                return 8, f"annotations are not agreeing ({agreed} AGREED of {compared} compared); new ones wait"
+            return 3, "picture annotation"
         if i.startswith("L4-confirm-") or s.get("program") == "L4":
-            return 4
+            return 4, "anchors and pictures"
         if i.startswith("M-J-") or s.get("program") == "J":
-            return 5
+            return 5, "test power"
         if i.startswith(("L3-first-", "L3-close-", "J-power-")):
-            return 9
-        return 6
-    ranked = sorted(open_, key=lambda s: (rank(s), s["id"]))
-    return [s["id"] for s in ranked if rank(s) < 9][:TOP_MAX]
+            return 9, "grid cell"
+        return 6, "agent-proposed step"
+
+    def key(s):
+        r, why = rank(s)
+        n = tried.get(s["id"], 0)
+        if s.get("how") != "rule" and n >= TRIED_ENOUGH and r < 9:
+            r, why = min(r + 3, 8), why + f"; already {n} submissions"
+        return r, n, s["id"], why
+
+    ranked = sorted((key(s) for s in open_), key=lambda k: k[:3])
+    top = [k for k in ranked if k[0] < 9][:TOP_MAX]
+    for _, _, i, why in top:
+        reasons[i] = why
+    return [i for _, _, i, _ in top]
 
 
 def derived_steps():
@@ -239,7 +286,8 @@ def build(split=None):
             pass
     source = {"by": "lead", "at": last_at}
     if stale or not top:
-        top, source = rules_top(steps), {"by": "rules", "at": _dt.datetime.now(_dt.timezone.utc).isoformat(timespec="seconds"),
+        why_each = {}
+        top, source = rules_top(steps, why_each), {"by": "rules", "reasons": why_each, "at": _dt.datetime.now(_dt.timezone.utc).isoformat(timespec="seconds"),
                                          "why": "no lead dispatch in the last %d hours" % LEAD_STALE_HOURS if last_at else "no lead dispatch yet"}
     for s_ in steps:
         if s_["id"] in top:

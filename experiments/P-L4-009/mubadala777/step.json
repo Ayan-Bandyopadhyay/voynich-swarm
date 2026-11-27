@@ -1,0 +1,110 @@
+{
+  "title": "Two masked readers recover shared plant forms on f42v and f56r with only one tentative family guess",
+  "statement": "Two fresh image readers independently described coded Yale scans in opposite orders before making optional first family guesses. The organizer had seen the published and previous guesses. Both readers recognized the manuscript format but reported no recognition of the individual plant drawings or prior guesses. A folio-like mark remained visible on one image. On f42v both describe an unbranched upright axis, a single cluster of broad smooth-margined blade-like shapes, a solitary yellow radiate tip with two dark marks, and diverging reddish root-like arms. This agrees with the coarse observations in P-L4-006 and P-L4-009. Five visible blades in both new readings versus about eight in one previous report leaves the exact count and leaf attachment uncertain. On f56r both describe lower paired dark rounded centers with green pointed fringes, a large coil carrying blue pointed units, two blue lobed upper-left structures, and overlapping pale lower strips. These drawings support the coarse landmarks in both earlier readings while leaving their organ identities unresolved. There was one low-confidence Melanthiaceae guess for f42v, matching the Paris-like guess in P-L4-006, plus three abstentions. The f56r coil and basal overlap correspond geometrically to features used by Tucker and Talbert, but neither new reader identified a scorpioid inflorescence or a toothed leaf. On this two-panel sample the observations supply recognizable shapes and no confirmed family, species, geographic assignment, or label anchor.",
+  "program": "L4",
+  "check": "Ask separate human readers to score the exact summarized shapes on full-resolution Yale crops with folio marks covered. For f42v record blade insertion and attachment counts, floral part counts, and which marks belong to the terminal body. For f56r predefine tests for a toothed blade, individual flower attachment along the curl, and overlapping lower structures. Report unresolved regions and separate morphological agreement from family guesses and abstentions.",
+  "on_path": true,
+  "hard": false,
+  "sample": {
+    "method": "The coordinator assigned two fresh readers only the two coded whole-folio JPEGs, no candidate names or records, in reversed orders. Morphology was requested before any guess, and abstention was permitted. The readers may share model-family priors. The coordinator reconciled feature descriptions against the historical reads after collection. There was no comparison with control drawings.",
+    "image_transform": "ImageMagick convert INPUT -strip -resize 960x960 -quality 94 OUTPUT. The folio-like ink on the page image itself was retained. No image elements were added.",
+    "observations_sha256": "8d7d8d1985443d954a599d02ab57692e52458f40f1b695c8741308dcdc52579a",
+    "readings": {
+      "reader_1": {
+        "order": [
+          "J351",
+          "J764"
+        ],
+        "exposure": "Recognized the general Voynich manuscript style without recognizing either drawing or recalling a candidate. Saw a folio-like annotation on J764 and ignored it.",
+        "J351": {
+          "axis_and_blades": "A slender upright axis continues bare above five visible broad pointed green blades near a common level. Mostly smooth blade margins. Separate leaves versus a palmately divided unit unresolved.",
+          "terminal": "One pale yellow angular form with uneven rays and a dark paired oval-like interior. Organ identity and ray count uncertain.",
+          "base": "Four conspicuous reddish tapering arms with some fine strokes, about two on each side of the crown.",
+          "family": null
+        },
+        "J764": {
+          "axis_and_lower_bodies": "One slender erect axis, two lower diverging laterals with dark blue rounded centers and long outward green points, two short upper-left laterals, and one large inward coil to the right.",
+          "upper_forms": "Dark blue pointed units along the coil. Two lobed dark blue forms with pale centers on the short left laterals. The identities of the pointed units and lobes are unresolved.",
+          "base": "Pale outlined elongate form built of overlapping oblique pointed strips. Roots and ground boundary ambiguous.",
+          "family": null
+        }
+      },
+      "reader_2": {
+        "order": [
+          "J764",
+          "J351"
+        ],
+        "exposure": "Recognized the general Voynich manuscript format without recollection of either drawing or any candidate. Consulted only the two supplied images.",
+        "J351": {
+          "axis_and_blades": "One pale upright stem and bare terminal stalk. Five visible broad pointed green blades converge and overlap at one level. Whorl versus compound structure unresolved. Mostly smooth margins and indistinct venation.",
+          "terminal": "One pale yellow star-like form with pointed rays. Small central oval with two adjacent dark marks. Exact ray count and organ identity unclear.",
+          "base": "About four prominent orange-brown tapering roots from a common crown with fine lateral strokes.",
+          "family": "Melanthiaceae",
+          "rationale": "Low confidence. A Paris-like combination of possibly whorled broad leaves and a solitary radiate terminal form with a dark center."
+        },
+        "J764": {
+          "axis_and_lower_bodies": "A pale upright axis with two low curved laterals bearing dark rounded fields fringed with green tapered rays, two higher short left laterals, and a large inward spiral to the upper right.",
+          "upper_forms": "Pointed blue units along the spiral. Two blue lobed structures with pale centers on the short left laterals. Leaves versus bracts versus reproductive parts uncertain.",
+          "base": "Overlapping pointed pale basal scales or blades above faint spreading strokes. Underground status unresolved.",
+          "family": null
+        }
+      }
+    },
+    "panels": [
+      {
+        "code": "J351",
+        "folio": "f42v",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006157",
+        "input": "https://collections.library.yale.edu/iiif/2/1006157/full/full/0/default.jpg",
+        "input_sha256": "bd2a7f2bbaf4c789d51f239248d81c151f4fc1c9f5ab6f51c148646a9d301f66",
+        "masked_sha256": "9181f66a33a2457ccb871da17a4c28ee4ebd2cbc505d9dba32addddfe721ece2",
+        "historical_guesses": [
+          "Paris, Melanthiaceae (P-L4-006)",
+          "Asparagaceae, with Gentiana as an alternative (P-L4-009)",
+          "Calathea allied to C. loeseneri, Marantaceae (Tucker and Talbert, 2013)"
+        ],
+        "shared_shapes": [
+          "A single foliage cluster with broad blade-like shapes",
+          "A solitary radiate terminal form with a dark center",
+          "Reddish diverging basal arms"
+        ],
+        "unresolved": [
+          "Exact blade count and attachment",
+          "Venation",
+          "Terminal ray count and organ identities"
+        ]
+      },
+      {
+        "code": "J764",
+        "folio": "f56r",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006184",
+        "input": "https://collections.library.yale.edu/iiif/2/1006184/full/1200,/0/default.jpg",
+        "input_sha256": "c379e2e2211aacdf1e2609164ddb035b1da625702806203dbc0ef755c024f7d9",
+        "masked_sha256": "e2a2b6ca5286400dd66c79c4e2e2ac64b75a9ae8919d6093455c12c49d40ef49",
+        "historical_guesses": [
+          "Heliotropium, Boraginaceae s.l. (P-L4-006)",
+          "Convolvulaceae, with Asteraceae as an alternative (P-L4-009)",
+          "Phacelia campanularia, Boraginaceae s.l. or Hydrophyllaceae (Tucker and Talbert, 2013)"
+        ],
+        "shared_shapes": [
+          "Paired rounded lower forms with green pointed fringes",
+          "A curved axis turning inward with dark pointed units",
+          "Two blue lobed forms on short upper-left laterals",
+          "Overlapping elongated structures at the base"
+        ],
+        "unresolved": [
+          "Whether the paired forms are leaves, bracts or flower heads",
+          "Whether the pointed units on the coil are flowers or attached leaves",
+          "Whether the lower overlap is subterranean or above the root"
+        ]
+      }
+    ],
+    "comparison_sources": [
+      "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/373",
+      "https://umb.herbalgram.org/media/3jojkmox/issue100.pdf"
+    ],
+    "new_family_guesses": 1,
+    "family_abstentions": 3,
+    "observations_hash_encoding": "SHA-256 of UTF-8 JSON for readings with sorted keys, no whitespace around separators and no trailing newline."
+  }
+}

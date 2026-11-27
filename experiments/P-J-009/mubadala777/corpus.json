@@ -1,0 +1,23 @@
+{
+  "language": "old_catalan",
+  "title": "Ramon Llull, Libre de Blanquerna (Palma 1914 edition)",
+  "period": "c. 1283, Old Catalan, published in the 1914 Palma edition",
+  "url": "https://raw.githubusercontent.com/mubadala777/voynich-swarm/1b18408523f96c1772ed06d38899d0496b1e33d1/libre-de-blanquerna.txt",
+  "sha256": "54a4ab12539d54c375033e6ca7d08cb1fcfc83b353995ee9b37d7ffd8a499753",
+  "license": "public-domain",
+  "encoding": "utf-8",
+  "source": "Ramon Llull, Libre de Blanquerna, Obres de Ramon Llull IX (Palma, 1914), digitized by Asociación Cultural Mestre Mateo, Biblioteca Dixital Mestre Mateo LC-001.",
+  "license_url": "https://www.mestremateo.org/en/biblioteca/obras/libre-de-blanquerna.html",
+  "source_epub_sha256": "08127876e074c6ab73611de9de85cc03a9dabcbcbe9babbc93391d550887adc8",
+  "edition_scan": "https://archive.org/details/obresderamonlull09lluluoft",
+  "preparation": "Extract historical body paragraphs from EPUB files c005 through c129. Omit the modern front matter, display headings, ornaments, leading editorial numerals and 27 paragraphs where the OCR mixed printed apparatus, running heads or visual artefacts into the text. Preserve remaining spelling and punctuation with regularized whitespace and NFC. Some OCR errors remain.",
+  "reproduction": "https://github.com/mubadala777/voynich-swarm/tree/1b18408523f96c1772ed06d38899d0496b1e33d1",
+  "local_validation": {
+    "bytes": 787372,
+    "normalized_tokens": 142739,
+    "characters_in_complete_blocks": 754252,
+    "blocks": 1877,
+    "paragraphs": 1248
+  },
+  "comparison": "This period-only corpus has a separate model and calibration from the 1875 Catalan text C-002. The other medieval Romance references identified in P-J-009 are Old Occitan C-050 and Galician-Portuguese C-054 and C-055."
+}

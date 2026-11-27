@@ -1,0 +1,892 @@
+{
+  "title": "Masked readers distinguish the v101 terminal curls in three jointly resolved pairs",
+  "program": "L1",
+  "on_path": false,
+  "hard": false,
+  "statement": "Two independently prompted readers each saw ten whole-word crops from five new same-stem pairs and four older controls. On the seven new crops both readers could resolve, both assigned the same class and agreed with the v101 reading. Counting unresolved as missing matches gives nine of ten and seven of ten for the two readers. Both saw fewer short strokes before N than n in the three jointly resolved pairs. The first reader resolved the same direction in one additional pair; f80r remained unresolved in the within-pair test. Three of four controls matched each reader’s expected class. One attempted new pair was rejected before annotation because adjacent-line ink obscured the terminal. These are image-model judgments on selected matched words, so the reading difference supports a graphic contrast in this sample and can motivate human annotation.",
+  "check": "Have human readers replicate the masked count on both sets with fixed criteria for separating the terminal return curl from the preceding letter. Preserve unresolved crops, test controls separately, and report exact agreement, broad curl-family agreement and pair-relative comparisons. Use a stratified selection of further folios to test whether the effect survives the original study’s same-page and nearest-match selection.",
+  "sources": {
+    "pilot": "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/511",
+    "claston_key": "https://voynich.nu/img/extra/v101a.jpg",
+    "iiif_manifest": "https://collections.library.yale.edu/manifests/oid/2002046",
+    "transcription_pins": "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/blob/93ce2f2/pins/sources.json"
+  },
+  "plan": {
+    "scope": "New manuscript folios from the public practice training partition; exclude every physical folio in pilot #511. Test visual terminal curls classified by two independent blinded model readers using the same neutral reference shapes as the pilot.",
+    "selection": "Use the case-sensitive pinned v101 reading. Restrict to certain paragraph words of length at least three ending in n or N with identical preceding strings on the same page. Take one pair per physical folio and at most three folios per hand for hands 1, 2, 3. Rank by absolute line-number distance, then absolute within-line ordinal difference, canonical page order, uppercase line and ordinal, and lowercase line and ordinal. Inspect the first three per hand or all where fewer than three exist. Keep failures to match the scan visible. Read only complete pairs in the primary comparison.",
+    "controls": "Mix in the same four calibrated control crops from #511 using their native scan pixels, including two longer curls and two other endings. They are excluded from the denominator for the new sample.",
+    "blinding": "Separate crop preparers from readers. Generate random opaque IDs and independent display order per reader. Send only a numbered image panel, a keyhole chart relabelled A, B, C, and the fixed classification rubric. Readers have no page IDs, word strings, pair assignments, or access to one another's response.",
+    "outcomes": "A = terminal return curl with zero independent short strokes preceding it; B = exactly one; C = two or more; D = visually different terminal; U = unresolved. Report all attempted and accepted pairs, joint readable denominator, broad curl-family versus other agreement, exact agreement, agreement with v101 (N maps to A, n maps to B), undecided rates, and whether relative stroke count is smaller, tied, larger, or unresolved for N versus n in the matching pair. Report by hand descriptively. Leave human rereading and inference about separate letters outside the measured claim."
+  },
+  "candidates": {
+    "available_independent_folios_by_hand": {
+      "1": 7,
+      "2": 2,
+      "3": 1
+    },
+    "attempted": 6,
+    "accepted": 5,
+    "reject": {
+      "page": "f36r",
+      "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006144",
+      "locus": "f36r.6",
+      "word_ordinals": [
+        7,
+        5
+      ],
+      "xyxy_in_that_order": [
+        [
+          1911,
+          950,
+          2040,
+          1010
+        ],
+        [
+          1340,
+          981,
+          1467,
+          1038
+        ]
+      ],
+      "reason": "A long stroke from the preceding line meets or crosses the second word’s terminal extension."
+    }
+  },
+  "pilot_replay": "The registered classifier agreement table and nearest-pair results reproduce exactly using the published score script. No new judgments were assigned to the prior targets. The four control crops are included in the new panel.",
+  "quality": {
+    "preparation": "Three preparers used adjacent word sequences to locate complete words independently of the readers. Individual source regions list the neighboring ink where relevant. No neighboring mark was digitally erased.",
+    "reader_a": {
+      "Q746": "Patchy terminal ink.",
+      "Q330": "Dark terminal blot.",
+      "Q856": "Low contrast and tight spacing, read as a continuous curl."
+    },
+    "reader_b": {
+      "Q330": "Ambiguous or degraded terminal.",
+      "Q746": "Ambiguous or degraded terminal.",
+      "Q856": "Separation from the preceding glyph unclear.",
+      "Q958": "Separation from the preceding glyph unclear."
+    },
+    "limits": "Five pairs were selected for a shared v101 stem, nearby text and an identifiable complete word. The result does not estimate all terminal-locus frequencies or identify the marks as separate letters. The two readers were fresh isolated image agents without access to the folio identities, word strings, expected categories, pairing, or each other’s judgments."
+  },
+  "results": {
+    "summary": {
+      "all": {
+        "trials": 14,
+        "both_readable": 10,
+        "exact_agreement": 10,
+        "family_agreement": 10,
+        "correct_including_unresolved": {
+          "a": 12,
+          "b": 10
+        },
+        "confusion": {
+          "a": {
+            "A": {
+              "A": 4,
+              "U": 1
+            },
+            "B": {
+              "B": 5
+            },
+            "C": {
+              "C": 2
+            },
+            "D": {
+              "D": 1,
+              "U": 1
+            }
+          },
+          "b": {
+            "A": {
+              "A": 3,
+              "U": 2
+            },
+            "B": {
+              "B": 4,
+              "U": 1
+            },
+            "C": {
+              "C": 2
+            },
+            "D": {
+              "D": 1,
+              "U": 1
+            }
+          }
+        }
+      },
+      "new": {
+        "trials": 10,
+        "both_readable": 7,
+        "exact_agreement": 7,
+        "family_agreement": 7,
+        "correct_including_unresolved": {
+          "a": 9,
+          "b": 7
+        },
+        "confusion": {
+          "a": {
+            "A": {
+              "A": 4,
+              "U": 1
+            },
+            "B": {
+              "B": 5
+            }
+          },
+          "b": {
+            "A": {
+              "A": 3,
+              "U": 2
+            },
+            "B": {
+              "B": 4,
+              "U": 1
+            }
+          }
+        }
+      },
+      "controls": {
+        "trials": 4,
+        "both_readable": 3,
+        "exact_agreement": 3,
+        "family_agreement": 3,
+        "correct_including_unresolved": {
+          "a": 3,
+          "b": 3
+        },
+        "confusion": {
+          "a": {
+            "C": {
+              "C": 2
+            },
+            "D": {
+              "D": 1,
+              "U": 1
+            }
+          },
+          "b": {
+            "C": {
+              "C": 2
+            },
+            "D": {
+              "D": 1,
+              "U": 1
+            }
+          }
+        }
+      },
+      "by_hand": {
+        "1": {
+          "trials": 4,
+          "both_readable": 3,
+          "exact_agreement": 3,
+          "family_agreement": 3,
+          "correct_including_unresolved": {
+            "a": 4,
+            "b": 3
+          },
+          "confusion": {
+            "a": {
+              "A": {
+                "A": 2
+              },
+              "B": {
+                "B": 2
+              }
+            },
+            "b": {
+              "A": {
+                "U": 1,
+                "A": 1
+              },
+              "B": {
+                "B": 2
+              }
+            }
+          }
+        },
+        "2": {
+          "trials": 4,
+          "both_readable": 2,
+          "exact_agreement": 2,
+          "family_agreement": 2,
+          "correct_including_unresolved": {
+            "a": 3,
+            "b": 2
+          },
+          "confusion": {
+            "a": {
+              "A": {
+                "A": 1,
+                "U": 1
+              },
+              "B": {
+                "B": 2
+              }
+            },
+            "b": {
+              "A": {
+                "A": 1,
+                "U": 1
+              },
+              "B": {
+                "B": 1,
+                "U": 1
+              }
+            }
+          }
+        },
+        "3": {
+          "trials": 2,
+          "both_readable": 2,
+          "exact_agreement": 2,
+          "family_agreement": 2,
+          "correct_including_unresolved": {
+            "a": 2,
+            "b": 2
+          },
+          "confusion": {
+            "a": {
+              "A": {
+                "A": 1
+              },
+              "B": {
+                "B": 1
+              }
+            },
+            "b": {
+              "A": {
+                "A": 1
+              },
+              "B": {
+                "B": 1
+              }
+            }
+          }
+        }
+      },
+      "relative": {
+        "a": {
+          "fewer": 4,
+          "unresolved": 1
+        },
+        "b": {
+          "fewer": 3,
+          "unresolved": 2
+        }
+      }
+    },
+    "pairs": [
+      {
+        "pair": "f116r",
+        "hand": "3",
+        "classes_N_then_n": {
+          "a": "AB",
+          "b": "AB"
+        },
+        "relative": {
+          "a": "fewer",
+          "b": "fewer"
+        }
+      },
+      {
+        "pair": "f28v",
+        "hand": "1",
+        "classes_N_then_n": {
+          "a": "AB",
+          "b": "UB"
+        },
+        "relative": {
+          "a": "fewer",
+          "b": "unresolved"
+        }
+      },
+      {
+        "pair": "f42v",
+        "hand": "1",
+        "classes_N_then_n": {
+          "a": "AB",
+          "b": "AB"
+        },
+        "relative": {
+          "a": "fewer",
+          "b": "fewer"
+        }
+      },
+      {
+        "pair": "f79v",
+        "hand": "2",
+        "classes_N_then_n": {
+          "a": "AB",
+          "b": "AB"
+        },
+        "relative": {
+          "a": "fewer",
+          "b": "fewer"
+        }
+      },
+      {
+        "pair": "f80r",
+        "hand": "2",
+        "classes_N_then_n": {
+          "a": "UB",
+          "b": "UU"
+        },
+        "relative": {
+          "a": "unresolved",
+          "b": "unresolved"
+        }
+      }
+    ],
+    "trials": [
+      {
+        "locus": "f103v.13",
+        "word_ordinal": 11,
+        "v101": "oe2c9",
+        "xyxy": [
+          2237,
+          888,
+          2443,
+          960
+        ],
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006255/2237,888,206,72/full/0/default.jpg",
+        "source": "control",
+        "expected": "D",
+        "tile": "Q937",
+        "reads": {
+          "a": "D",
+          "b": "D"
+        }
+      },
+      {
+        "pair": "f116r",
+        "hand": "3",
+        "locus": "f116r.48",
+        "word_ordinal": 10,
+        "v101": "okaN",
+        "xyxy": [
+          1638,
+          3055,
+          1807,
+          3120
+        ],
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006276/1638,3055,169,65/full/0/default.jpg",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006276",
+        "registration_note": "A preceding-line stroke enters the upper edge of the upper-case crop. Both whole words are identifiable.",
+        "source": "new",
+        "expected": "A",
+        "tile": "Q261",
+        "reads": {
+          "a": "A",
+          "b": "A"
+        }
+      },
+      {
+        "pair": "f116r",
+        "hand": "3",
+        "locus": "f116r.48",
+        "word_ordinal": 11,
+        "v101": "okan",
+        "xyxy": [
+          1823,
+          3048,
+          1983,
+          3111
+        ],
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006276/1823,3048,160,63/full/0/default.jpg",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006276",
+        "registration_note": "A preceding-line stroke enters the upper edge of the upper-case crop. Both whole words are identifiable.",
+        "source": "new",
+        "expected": "B",
+        "tile": "Q858",
+        "reads": {
+          "a": "B",
+          "b": "B"
+        }
+      },
+      {
+        "pair": "f28v",
+        "hand": "1",
+        "locus": "f28v.8",
+        "word_ordinal": 2,
+        "v101": "1aN",
+        "xyxy": [
+          1134,
+          1045,
+          1263,
+          1100
+        ],
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006129/1134,1045,129,55/full/0/default.jpg",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006129",
+        "registration_note": "The lower-case crop contains a neighboring line descender at the far upper left, away from terminal ink.",
+        "source": "new",
+        "expected": "A",
+        "tile": "Q856",
+        "reads": {
+          "a": "A",
+          "b": "U"
+        }
+      },
+      {
+        "pair": "f28v",
+        "hand": "1",
+        "locus": "f28v.8",
+        "word_ordinal": 3,
+        "v101": "1an",
+        "xyxy": [
+          1298,
+          1052,
+          1465,
+          1107
+        ],
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006129/1298,1052,167,55/full/0/default.jpg",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006129",
+        "registration_note": "The lower-case crop contains a neighboring line descender at the far upper left, away from terminal ink.",
+        "source": "new",
+        "expected": "B",
+        "tile": "Q160",
+        "reads": {
+          "a": "B",
+          "b": "B"
+        }
+      },
+      {
+        "locus": "f2r.5",
+        "word_ordinal": 6,
+        "v101": "9k1am",
+        "xyxy": [
+          1668,
+          810,
+          1974,
+          883
+        ],
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006078/1668,810,306,73/full/0/default.jpg",
+        "source": "control",
+        "expected": "C",
+        "tile": "Q242",
+        "reads": {
+          "a": "C",
+          "b": "C"
+        }
+      },
+      {
+        "pair": "f42v",
+        "hand": "1",
+        "locus": "f42v.2",
+        "word_ordinal": 7,
+        "v101": "8aN",
+        "xyxy": [
+          1974,
+          744,
+          2086,
+          810
+        ],
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006157/1974,744,112,66/full/0/default.jpg",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006157",
+        "registration_note": "The first word falls to the left of the central plant stalk and the second just to its right.",
+        "source": "new",
+        "expected": "A",
+        "tile": "Q152",
+        "reads": {
+          "a": "A",
+          "b": "A"
+        }
+      },
+      {
+        "pair": "f42v",
+        "hand": "1",
+        "locus": "f42v.2",
+        "word_ordinal": 8,
+        "v101": "8an",
+        "xyxy": [
+          2146,
+          731,
+          2297,
+          799
+        ],
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006157/2146,731,151,68/full/0/default.jpg",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006157",
+        "registration_note": "The first word falls to the left of the central plant stalk and the second just to its right.",
+        "source": "new",
+        "expected": "B",
+        "tile": "Q593",
+        "reads": {
+          "a": "B",
+          "b": "B"
+        }
+      },
+      {
+        "locus": "f5r.3",
+        "word_ordinal": 4,
+        "v101": "8am",
+        "xyxy": [
+          920,
+          717,
+          1080,
+          780
+        ],
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006084/920,717,160,63/full/0/default.jpg",
+        "source": "control",
+        "expected": "C",
+        "tile": "Q615",
+        "reads": {
+          "a": "C",
+          "b": "C"
+        }
+      },
+      {
+        "locus": "f75r.2",
+        "word_ordinal": 8,
+        "v101": "yoy",
+        "xyxy": [
+          2388,
+          444,
+          2482,
+          498
+        ],
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006208/2388,444,94,54/full/0/default.jpg",
+        "source": "control",
+        "expected": "D",
+        "tile": "Q746",
+        "reads": {
+          "a": "U",
+          "b": "U"
+        }
+      },
+      {
+        "pair": "f79v",
+        "hand": "2",
+        "locus": "f79v.30",
+        "word_ordinal": 1,
+        "v101": "4ohan",
+        "xyxy": [
+          965,
+          2154,
+          1138,
+          2228
+        ],
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006217/965,2154,173,74/full/0/default.jpg",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006217",
+        "registration_note": "The upper-case crop is the last word of its line and the lower-case crop starts its line.",
+        "source": "new",
+        "expected": "B",
+        "tile": "Q200",
+        "reads": {
+          "a": "B",
+          "b": "B"
+        }
+      },
+      {
+        "pair": "f79v",
+        "hand": "2",
+        "locus": "f79v.35",
+        "word_ordinal": 11,
+        "v101": "4ohaN",
+        "xyxy": [
+          2330,
+          2521,
+          2500,
+          2593
+        ],
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006217/2330,2521,170,72/full/0/default.jpg",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006217",
+        "registration_note": "The upper-case crop is the last word of its line and the lower-case crop starts its line.",
+        "source": "new",
+        "expected": "A",
+        "tile": "Q276",
+        "reads": {
+          "a": "A",
+          "b": "A"
+        }
+      },
+      {
+        "pair": "f80r",
+        "hand": "2",
+        "locus": "f80r.44",
+        "word_ordinal": 1,
+        "v101": "4ohan",
+        "xyxy": [
+          528,
+          2504,
+          726,
+          2589
+        ],
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006218/528,2504,198,85/full/0/default.jpg",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006218",
+        "registration_note": "Both crops may contain small neighboring ink fragments at their edges. The upper-case crop has dark speckling.",
+        "source": "new",
+        "expected": "B",
+        "tile": "Q958",
+        "reads": {
+          "a": "B",
+          "b": "U"
+        }
+      },
+      {
+        "pair": "f80r",
+        "hand": "2",
+        "locus": "f80r.45",
+        "word_ordinal": 3,
+        "v101": "4ohaN",
+        "xyxy": [
+          918,
+          2575,
+          1090,
+          2662
+        ],
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006218/918,2575,172,87/full/0/default.jpg",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006218",
+        "registration_note": "Both crops may contain small neighboring ink fragments at their edges. The upper-case crop has dark speckling.",
+        "source": "new",
+        "expected": "A",
+        "tile": "Q330",
+        "reads": {
+          "a": "U",
+          "b": "U"
+        }
+      }
+    ]
+  },
+  "reproduction": {
+    "listed_regions": "Every bound is left/top inclusive and right/bottom exclusive in the published native Yale JPEG. The matching crop URL is in each row.",
+    "neutral_reference_boxes": [
+      [
+        204,
+        391,
+        236,
+        423
+      ],
+      [
+        102,
+        391,
+        134,
+        423
+      ],
+      [
+        102,
+        364,
+        134,
+        394
+      ]
+    ],
+    "panel_shuffles": {
+      "opaque_ids_seed": 374201,
+      "reader_a_order_seed": 49741,
+      "reader_b_order_seed": 92651
+    },
+    "reader_responses": {
+      "a": {
+        "Q958": "B",
+        "Q152": "A",
+        "Q593": "B",
+        "Q276": "A",
+        "Q261": "A",
+        "Q615": "C",
+        "Q856": "A",
+        "Q200": "B",
+        "Q160": "B",
+        "Q746": "U",
+        "Q242": "C",
+        "Q858": "B",
+        "Q330": "U",
+        "Q937": "D"
+      },
+      "b": {
+        "Q937": "D",
+        "Q200": "B",
+        "Q152": "A",
+        "Q593": "B",
+        "Q330": "U",
+        "Q856": "U",
+        "Q958": "U",
+        "Q858": "B",
+        "Q615": "C",
+        "Q276": "A",
+        "Q746": "U",
+        "Q261": "A",
+        "Q242": "C",
+        "Q160": "B"
+      }
+    },
+    "sha256": {
+      "plan.json": "7eca3adb3168d20d0f8b7d42625a048f2b70af0ee6b9746e193202432207a332",
+      "candidates.json": "1ca33bf49f2be56a18c1618b8aed46e7886d8d64859da3639f3832e7f47ab833",
+      "selected-crops.json": "8a700571e3f168cfbd333d7a0a5af68cfe34ca79aa3887eeb1c24cd23c7ce3ae",
+      "panels.py": "c64558f85ba14d43175a23538a8b3d272abd470bd01c820cc9fd751eefd68d72",
+      "score.py": "565701f399631e927d00358e18da8d35a1d9f0fc30089525e1fe3f2d0d3b8d7d",
+      "masked-reference.png": "ed920582fe7af5dc82dfe9107d7346ec53f0718c194800fe2e5f701434d4e0d5",
+      "masked-panel-a.png": "b90b0c77982c312f2f0366238c09dde48c0db319d95aca16272da7b61f3fb384",
+      "masked-panel-b.png": "0bde66f7a4c2115f65ec24cc69f7d08cc6205a50fc717058913dc378a7b7fa9d",
+      "sealed-key.json": "bac2b6f872e45fe35e6a4f199b9ebbe1ccb32462be44767f6503f874df472e47",
+      "reader-a.json": "c50cbc47a19d07c49d3f87b6d07b694c2e2e2685f9cca63ea1fa1682b4725067",
+      "reader-b.json": "750d50f01bc9e091e401fda46abce3dff1a163a94c841e24d910d94759b18e16",
+      "results.json": "29f4c353d499f4f4725256724b50d878eff9fd7eaaab78439db233222639c0f5"
+    },
+    "scripts": {
+      "panels.py": "\"\"\"Make two randomly ordered masked panels using unchanged Yale crop pixels.\"\"\"\nimport json\nfrom pathlib import Path\nfrom random import Random\nimport sys\n\nfrom PIL import Image, ImageDraw, ImageFont\n\nwork = Path(sys.argv[1])\nold = work.parent / 'voynich-v101-scan-work'\nsource = Path('experiments/K-010-open-1/mubadala777/step.json')\nnew = json.loads((work / 'selected-crops.json').read_text())\nold_rows = json.loads(source.read_text())['results']['trials']\ncontrols = [row for row in old_rows if row['v101_shape'] in ('C','D')]\nrows = [{'locus': row['locus'], 'word_ordinal': row['word_ordinal'], 'v101': row['v101'],\n         'xyxy': row['xyxy'], 'scan_crop': row['scan_crop'], 'source': 'control', 'expected': row['v101_shape']}\n        for row in controls]\nrows += [dict(row, source='new', expected={'N':'A','n':'B'}[row['v101'][-1]]) for row in new]\nrows.sort(key=lambda row:(row['locus'],row['word_ordinal']))\nrng = Random(374201)\nlabels = rng.sample(range(100, 1000), len(rows))\nfor label, row in zip(labels, rows):\n    row['tile'] = f'Q{label:03d}'\n(work / 'sealed-key.json').write_text(json.dumps(rows, indent=2) + '\\n')\n\nfont = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf', 18)\ncolumns, width, height = 3, 320, 140\nfor reader, seed in [('a',49741),('b',92651)]:\n    shuffled = list(rows)\n    Random(seed).shuffle(shuffled)\n    panel = Image.new('RGB', (columns * width, ((len(rows)+columns-1)//columns)*height), 'white')\n    draw = ImageDraw.Draw(panel)\n    for i,row in enumerate(shuffled):\n        page = row['locus'].partition('.')[0]\n        image_path = (old if row['source']=='control' else work) / f'{page}.jpg'\n        with Image.open(image_path) as image:\n            letter = image.crop(tuple(row['xyxy']))\n        scale = min(1.5, 290 / letter.width, 104 / letter.height)\n        letter = letter.resize((round(letter.width * scale),round(letter.height * scale)), Image.Resampling.LANCZOS)\n        x,y = (i % columns)*width,(i // columns)*height\n        draw.text((x+8,y+3),row['tile'],font=font,fill='black')\n        panel.paste(letter,(x+(width-letter.width)//2,y+29+(104-letter.height)//2))\n        draw.rectangle((x,y,x+width-1,y+height-1),outline='#d4d4d4')\n    panel.save(work/f'masked-panel-{reader}.png')\n",
+      "score.py": "\"\"\"Score blind glyph readings after freezing both masked response files.\"\"\"\nimport json\nfrom collections import Counter, defaultdict\nfrom pathlib import Path\nimport sys\n\nwork = Path(sys.argv[1])\nrows = json.loads((work/'sealed-key.json').read_text())\nreaders = {name: json.loads((work/f'reader-{name}.json').read_text()) for name in ('a','b')}\nfor name,codes in readers.items():\n    assert set(codes) == {row['tile'] for row in rows}, name\n    assert all(code in {'A','B','C','D','U'} for code in codes.values()), name\nfor row in rows:\n    row['reads'] = {name: codes[row['tile']] for name,codes in readers.items()}\n\n\ndef agreement(sample):\n    paired = [(r['reads']['a'], r['reads']['b']) for r in sample]\n    paired = [(a,b) for a,b in paired if a != 'U' and b != 'U']\n    return {'trials': len(sample), 'both_readable': len(paired),\n            'exact_agreement': sum(a==b for a,b in paired),\n            'family_agreement': sum((a in 'ABC')==(b in 'ABC') for a,b in paired),\n            'correct_including_unresolved': {name:sum(r['expected']==r['reads'][name] for r in sample) for name in readers},\n            'confusion': {name:{expected:dict(Counter(r['reads'][name] for r in sample if r['expected']==expected))\n                               for expected in 'ABCD' if any(r['expected']==expected for r in sample)} for name in readers}}\n\n\nfresh = [row for row in rows if row['source']=='new']\nby_pair = defaultdict(dict)\nfor row in fresh:\n    by_pair[row['pair']][row['v101'][-1]] = row\npair_results = []\nfor pair, cases in by_pair.items():\n    assert set(cases) == {'N','n'}\n    labels = {}\n    classes = {}\n    for name in readers:\n        upper,lower = (cases[c]['reads'][name] for c in ('N','n'))\n        classes[name] = upper+lower\n        if upper not in 'ABC' or lower not in 'ABC':\n            labels[name] = 'unresolved'\n        else:\n            labels[name] = 'fewer' if upper<lower else 'more' if upper>lower else 'equal'\n    pair_results.append({'pair':pair, 'hand':cases['N']['hand'], 'classes_N_then_n':classes,'relative':labels})\n\nsummary = {'all':agreement(rows),'new':agreement(fresh),'controls':agreement([r for r in rows if r['source']=='control']),\n           'by_hand':{hand:agreement([r for r in fresh if r['hand']==hand]) for hand in ('1','2','3')},\n           'relative':{name:dict(Counter(pair['relative'][name] for pair in pair_results)) for name in readers}}\nprint(json.dumps({'summary':summary,'pairs':pair_results,'trials':rows},indent=2))\n"
+    },
+    "selected_crops": [
+      {
+        "pair": "f28v",
+        "hand": "1",
+        "locus": "f28v.8",
+        "word_ordinal": 2,
+        "v101": "1aN",
+        "xyxy": [
+          1134,
+          1045,
+          1263,
+          1100
+        ],
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006129/1134,1045,129,55/full/0/default.jpg",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006129",
+        "registration_note": "The lower-case crop contains a neighboring line descender at the far upper left, away from terminal ink."
+      },
+      {
+        "pair": "f28v",
+        "hand": "1",
+        "locus": "f28v.8",
+        "word_ordinal": 3,
+        "v101": "1an",
+        "xyxy": [
+          1298,
+          1052,
+          1465,
+          1107
+        ],
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006129/1298,1052,167,55/full/0/default.jpg",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006129",
+        "registration_note": "The lower-case crop contains a neighboring line descender at the far upper left, away from terminal ink."
+      },
+      {
+        "pair": "f42v",
+        "hand": "1",
+        "locus": "f42v.2",
+        "word_ordinal": 7,
+        "v101": "8aN",
+        "xyxy": [
+          1974,
+          744,
+          2086,
+          810
+        ],
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006157/1974,744,112,66/full/0/default.jpg",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006157",
+        "registration_note": "The first word falls to the left of the central plant stalk and the second just to its right."
+      },
+      {
+        "pair": "f42v",
+        "hand": "1",
+        "locus": "f42v.2",
+        "word_ordinal": 8,
+        "v101": "8an",
+        "xyxy": [
+          2146,
+          731,
+          2297,
+          799
+        ],
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006157/2146,731,151,68/full/0/default.jpg",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006157",
+        "registration_note": "The first word falls to the left of the central plant stalk and the second just to its right."
+      },
+      {
+        "pair": "f80r",
+        "hand": "2",
+        "locus": "f80r.45",
+        "word_ordinal": 3,
+        "v101": "4ohaN",
+        "xyxy": [
+          918,
+          2575,
+          1090,
+          2662
+        ],
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006218/918,2575,172,87/full/0/default.jpg",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006218",
+        "registration_note": "Both crops may contain small neighboring ink fragments at their edges. The upper-case crop has dark speckling."
+      },
+      {
+        "pair": "f80r",
+        "hand": "2",
+        "locus": "f80r.44",
+        "word_ordinal": 1,
+        "v101": "4ohan",
+        "xyxy": [
+          528,
+          2504,
+          726,
+          2589
+        ],
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006218/528,2504,198,85/full/0/default.jpg",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006218",
+        "registration_note": "Both crops may contain small neighboring ink fragments at their edges. The upper-case crop has dark speckling."
+      },
+      {
+        "pair": "f79v",
+        "hand": "2",
+        "locus": "f79v.35",
+        "word_ordinal": 11,
+        "v101": "4ohaN",
+        "xyxy": [
+          2330,
+          2521,
+          2500,
+          2593
+        ],
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006217/2330,2521,170,72/full/0/default.jpg",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006217",
+        "registration_note": "The upper-case crop is the last word of its line and the lower-case crop starts its line."
+      },
+      {
+        "pair": "f79v",
+        "hand": "2",
+        "locus": "f79v.30",
+        "word_ordinal": 1,
+        "v101": "4ohan",
+        "xyxy": [
+          965,
+          2154,
+          1138,
+          2228
+        ],
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006217/965,2154,173,74/full/0/default.jpg",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006217",
+        "registration_note": "The upper-case crop is the last word of its line and the lower-case crop starts its line."
+      },
+      {
+        "pair": "f116r",
+        "hand": "3",
+        "locus": "f116r.48",
+        "word_ordinal": 10,
+        "v101": "okaN",
+        "xyxy": [
+          1638,
+          3055,
+          1807,
+          3120
+        ],
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006276/1638,3055,169,65/full/0/default.jpg",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006276",
+        "registration_note": "A preceding-line stroke enters the upper edge of the upper-case crop. Both whole words are identifiable."
+      },
+      {
+        "pair": "f116r",
+        "hand": "3",
+        "locus": "f116r.48",
+        "word_ordinal": 11,
+        "v101": "okan",
+        "xyxy": [
+          1823,
+          3048,
+          1983,
+          3111
+        ],
+        "scan_crop": "https://collections.library.yale.edu/iiif/2/1006276/1823,3048,160,63/full/0/default.jpg",
+        "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006276",
+        "registration_note": "A preceding-line stroke enters the upper edge of the upper-case crop. Both whole words are identifiable."
+      }
+    ]
+  }
+}

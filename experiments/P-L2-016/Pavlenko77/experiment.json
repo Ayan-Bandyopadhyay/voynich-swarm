@@ -1,0 +1,7 @@
+{
+  "step": "P-L2-016",
+  "handle": "Pavlenko77",
+  "kind": "step",
+  "lease": "0fca4b1970bf4dbc9e20ddeb",
+  "summary": "Two fresh-context masked model readers agree on n return openness but not all k details; both reproduce six hidden repeats, without establishing hand specificity."
+}
