@@ -47,6 +47,9 @@ statistics:
                                                            length >= L (default 4) with a word at edit distance exactly 1 on the
                                                            previous numbered line, minus the share with one four lines back
   {"repeat_ngram": n}                                      share of word n-grams (n<=6) that occur at least twice
+  {"repeated_pair_types": true}                            share of distinct directed within-line word pairs appearing
+                                                           at least twice; certain P words, with gaps as barriers.
+                                                           shuffle_within_line permutes within each certain run.
   {"hapax_share": true} | {"zipf_slope": ranks} | {"mean_length": true}
   {"near_copy": {"window": k, "min_length": L}}            share of words of length >= L within edit distance exactly 1
                                                            of one of the previous k (1..50) on the page
@@ -456,7 +459,7 @@ def check_statistic(st):
         _int(arg, 1, 6, "repeat_ngram n")
     elif name == "zipf_slope":
         _int(arg, 3, 100_000, "zipf_slope ranks")
-    elif name in ("edge_mi", "edge_mi_break", "edge_length_cmi", "hapax_share", "mean_length", "line_repeat_excess"):
+    elif name in ("edge_mi", "edge_mi_break", "edge_length_cmi", "hapax_share", "mean_length", "line_repeat_excess", "repeated_pair_types"):
         if arg is not True:
             raise SpecError(f"{name} takes true")
     elif name == "line_near_excess":
@@ -523,6 +526,12 @@ def statistic(st, toks, all_toks):
         return _matched_rightwardness(toks, arg)
     if len(toks) < MIN_TOKENS:
         return NAN
+    if name == "repeated_pair_types":
+        eligible = [t for t in toks if t['unit'] == 'P' and t['w'] and not UNCERTAIN(t['w'])]
+        pairs = Counter((a['w'], b['w']) for run in runs_of(eligible) for a, b in zip(run, run[1:]))
+        if sum(pairs.values()) < MIN_TOKENS:
+            return NAN
+        return sum(n >= 2 for n in pairs.values()) / len(pairs)
     if name == "paragraph_gap_corr":
         return _paragraph_gap_value(all_toks, arg["symbol"])[0]
     if name == "rate":
@@ -919,6 +928,17 @@ def _shuffled(all_toks, how, rng, statistic_name=None):
             for i, w in zip(g, ws):
                 words[i] = w
         return [dict(t, w=w) for t, w in zip(all_toks, words)]
+    if statistic_name == "repeated_pair_types" and how == "shuffle_within_line":
+        eligible = [t for t in all_toks if t['unit'] == 'P' and t['w'] and not UNCERTAIN(t['w'])]
+        indexes = {(t['line'], t['k']): i for i, t in enumerate(all_toks)}
+        words = [t['w'] for t in all_toks]
+        for run in runs_of(eligible):
+            idx = [indexes[t['line'], t['k']] for t in run]
+            shuffled = [words[i] for i in idx]
+            rng.shuffle(shuffled)
+            for i, word in zip(idx, shuffled):
+                words[i] = word
+        return [dict(t, w=w) for t, w in zip(all_toks, words)]
     if statistic_name == "paragraph_gap_corr" and how in ("shuffle_within_paragraph", "shuffle_within_line"):
         groups = (_paragraph_gap_groups(all_toks) if how == "shuffle_within_paragraph"
                   else _paragraph_gap_groups(all_toks, by_line=True))
@@ -1068,6 +1088,11 @@ def check(spec):
         raise SpecError("scope values are strings")
     check_select(spec.get("select"))
     name = check_statistic(spec["statistic"])
+    if name == "repeated_pair_types":
+        sel = spec.get("select") or {}
+        if (set(sel.get("unit") or []) != {"P"} or sel.get("position", "any") != "any"
+                or not sel.get("certain", True) or "language" in sel):
+            raise SpecError("repeated_pair_types requires all certain paragraph words")
     if name == "edge_length_cmi":
         sel = spec.get("select") or {}
         if set(sel.get("unit") or []) != {"P"} or sel.get("position", "any") != "any" or not sel.get("certain", True):
@@ -1109,6 +1134,8 @@ def check(spec):
                 raise SpecError("edge_length_cmi uses only shuffle_within_line_length; this null is reserved for it")
             if name == "paragraph_gap_corr" and c["null"] not in ("shuffle_within_paragraph", "shuffle_within_line"):
                 raise SpecError("paragraph_gap_corr uses shuffle_within_paragraph or shuffle_within_line")
+            if name == "repeated_pair_types" and c["null"] != "shuffle_within_line":
+                raise SpecError("repeated_pair_types uses only shuffle_within_line")
             if c["null"] == "shuffle_within_paragraph" and name != "paragraph_gap_corr":
                 raise SpecError("shuffle_within_paragraph is defined only for paragraph_gap_corr")
             if c.get("direction", "greater") not in ("greater", "less"):
