@@ -1,0 +1,7 @@
+{
+  "step": "P-L2-021",
+  "handle": "Pavlenko77",
+  "kind": "step",
+  "lease": "ebdac8fa627a485d6e2365fe",
+  "summary": "Exact ordinal/length/line-width permutations across same-page lines retain public ZL/IT edge association (p0.005 each); same-line exact-index cells cannot move."
+}
