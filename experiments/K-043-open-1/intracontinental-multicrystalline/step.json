@@ -1,0 +1,733 @@
+{
+  "title": "Implement and calibrate the directional skew-pair statistic for held-out evaluation",
+  "statement": "In an exploratory public-training comparison, one-to-one substitution leaves the measured pair statistic and distinct-type share exactly unchanged in every one of twelve 9,000-token samples. An independently randomized three-homophone-per-character encoding reduces skewed pair-type counts sharply and increases distinct-type share. This does not establish a manuscript result or model a particular historical cipher: the toy homophonic code permits three equiprobable signs for every character, and the scorer currently has no skew-pair statistic. A 3,000-token pilot was inspected before choosing the reported 9,000-token windows, so the results are exploratory.",
+  "program": "J",
+  "on_path": true,
+  "hard": false,
+  "check": "Implement a reviewed scorer primitive for the paper’s directional pair statistic and its unique-word measure. Resolve the paper’s ambiguous pair denominator, stop-word percentage and unique-word definition before fixing a specification. Calibrate fixed window sizes, tokenization, sample-matched historical texts and cipher controls, and fix thresholds before measuring hidden manuscript pages. Verify monoalphabetic invariance, power against planted asymmetric sequences, multiple seeded homophonic and natural-language controls, and independent transliterations. The current local pilot does not satisfy the hidden-page part of K-043-open-1.",
+  "local_method": {
+    "source": "https://ceur-ws.org/Vol-3313/paper8.pdf",
+    "samples": "Three consecutive 9,000-word windows from each public training text: Latin, Italian, English, medieval Czech and certain paragraph tokens of ZL manuscript training pages. Windows are not independent corpora.",
+    "filter": "Remove the single most common token separately from each sample and treatment. This explicit pilot policy is not asserted to reproduce the paper’s percentage-based stopword rule.",
+    "statistic": "After filtering, count ordered unequal-token pairs at forward distances one through three. Each unordered pair type counts once in the denominator; the numerator counts those with absolute forward-minus-reverse frequency greater than five. Unique ratio is distinct token types divided by retained tokens, not necessarily the paper’s intended meaning.",
+    "transforms": "One-to-one fixed substitution and independent uniform choice among three disjoint codes per plaintext character, seeds 1404–1406. Five independently shuffled token-order controls per sample/treatment. Code labels are fixed-width, so concatenation remains unambiguous.",
+    "limitations": "Not a full replication: no historical cipher implementation, text-boundary control, frequency-threshold sensitivity, independent confirmation, or hidden-page evaluation; random 3,000-word pilot observed first. Monoalphabetic invariance is expected by construction.",
+    "results": {
+      "latin": [
+        {
+          "plain": {
+            "tokens": 8525,
+            "removed_token_count": 475,
+            "unique_ratio": 0.414545,
+            "skew_pair_types": 22,
+            "pair_types": 22070,
+            "skew_ratio": 0.000997,
+            "shuffle_skew_ratios": [
+              0.000171,
+              0.000171,
+              0.0,
+              0.000128,
+              0.000299
+            ]
+          },
+          "simple": {
+            "tokens": 8525,
+            "removed_token_count": 475,
+            "unique_ratio": 0.414545,
+            "skew_pair_types": 22,
+            "pair_types": 22070,
+            "skew_ratio": 0.000997,
+            "shuffle_skew_ratios": [
+              0.000128,
+              0.000171,
+              4.3e-05,
+              8.5e-05,
+              0.000256
+            ]
+          },
+          "homophonic": {
+            "tokens": 8939,
+            "removed_token_count": 61,
+            "unique_ratio": 0.794496,
+            "skew_pair_types": 0,
+            "pair_types": 26666,
+            "skew_ratio": 0.0,
+            "shuffle_skew_ratios": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        {
+          "plain": {
+            "tokens": 8365,
+            "removed_token_count": 635,
+            "unique_ratio": 0.405499,
+            "skew_pair_types": 19,
+            "pair_types": 21754,
+            "skew_ratio": 0.000873,
+            "shuffle_skew_ratios": [
+              0.000133,
+              0.000353,
+              0.000177,
+              0.000132,
+              0.000221
+            ]
+          },
+          "simple": {
+            "tokens": 8365,
+            "removed_token_count": 635,
+            "unique_ratio": 0.405499,
+            "skew_pair_types": 19,
+            "pair_types": 21754,
+            "skew_ratio": 0.000873,
+            "shuffle_skew_ratios": [
+              0.00022,
+              0.000221,
+              0.00022,
+              0.000308,
+              8.8e-05
+            ]
+          },
+          "homophonic": {
+            "tokens": 8918,
+            "removed_token_count": 82,
+            "unique_ratio": 0.770576,
+            "skew_pair_types": 0,
+            "pair_types": 26540,
+            "skew_ratio": 0.0,
+            "shuffle_skew_ratios": [
+              0.0,
+              3.8e-05,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        {
+          "plain": {
+            "tokens": 8525,
+            "removed_token_count": 475,
+            "unique_ratio": 0.420293,
+            "skew_pair_types": 20,
+            "pair_types": 22800,
+            "skew_ratio": 0.000877,
+            "shuffle_skew_ratios": [
+              0.0,
+              0.00017,
+              0.00017,
+              4.2e-05,
+              0.000127
+            ]
+          },
+          "simple": {
+            "tokens": 8525,
+            "removed_token_count": 475,
+            "unique_ratio": 0.420293,
+            "skew_pair_types": 20,
+            "pair_types": 22800,
+            "skew_ratio": 0.000877,
+            "shuffle_skew_ratios": [
+              8.5e-05,
+              0.00017,
+              0.000212,
+              4.2e-05,
+              0.00017
+            ]
+          },
+          "homophonic": {
+            "tokens": 8929,
+            "removed_token_count": 71,
+            "unique_ratio": 0.803001,
+            "skew_pair_types": 0,
+            "pair_types": 26704,
+            "skew_ratio": 0.0,
+            "shuffle_skew_ratios": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        }
+      ],
+      "italian": [
+        {
+          "plain": {
+            "tokens": 8554,
+            "removed_token_count": 446,
+            "unique_ratio": 0.295885,
+            "skew_pair_types": 78,
+            "pair_types": 19991,
+            "skew_ratio": 0.003902,
+            "shuffle_skew_ratios": [
+              0.000782,
+              0.000981,
+              0.000881,
+              0.000931,
+              0.001028
+            ]
+          },
+          "simple": {
+            "tokens": 8554,
+            "removed_token_count": 446,
+            "unique_ratio": 0.295885,
+            "skew_pair_types": 78,
+            "pair_types": 19991,
+            "skew_ratio": 0.003902,
+            "shuffle_skew_ratios": [
+              0.000978,
+              0.001175,
+              0.000589,
+              0.000786,
+              0.000933
+            ]
+          },
+          "homophonic": {
+            "tokens": 8841,
+            "removed_token_count": 159,
+            "unique_ratio": 0.631037,
+            "skew_pair_types": 3,
+            "pair_types": 25919,
+            "skew_ratio": 0.000116,
+            "shuffle_skew_ratios": [
+              0.0,
+              0.0,
+              7.7e-05,
+              3.9e-05,
+              0.0
+            ]
+          }
+        },
+        {
+          "plain": {
+            "tokens": 8571,
+            "removed_token_count": 429,
+            "unique_ratio": 0.313149,
+            "skew_pair_types": 92,
+            "pair_types": 19975,
+            "skew_ratio": 0.004606,
+            "shuffle_skew_ratios": [
+              0.001081,
+              0.00098,
+              0.000835,
+              0.000936,
+              0.000637
+            ]
+          },
+          "simple": {
+            "tokens": 8571,
+            "removed_token_count": 429,
+            "unique_ratio": 0.313149,
+            "skew_pair_types": 92,
+            "pair_types": 19975,
+            "skew_ratio": 0.004606,
+            "shuffle_skew_ratios": [
+              0.001178,
+              0.001034,
+              0.000935,
+              0.001527,
+              0.000934
+            ]
+          },
+          "homophonic": {
+            "tokens": 8841,
+            "removed_token_count": 159,
+            "unique_ratio": 0.625269,
+            "skew_pair_types": 1,
+            "pair_types": 25883,
+            "skew_ratio": 3.9e-05,
+            "shuffle_skew_ratios": [
+              7.8e-05,
+              0.0,
+              0.0,
+              3.9e-05,
+              3.9e-05
+            ]
+          }
+        },
+        {
+          "plain": {
+            "tokens": 8588,
+            "removed_token_count": 412,
+            "unique_ratio": 0.306358,
+            "skew_pair_types": 78,
+            "pair_types": 19847,
+            "skew_ratio": 0.00393,
+            "shuffle_skew_ratios": [
+              0.001194,
+              0.001145,
+              0.001191,
+              0.000891,
+              0.001239
+            ]
+          },
+          "simple": {
+            "tokens": 8588,
+            "removed_token_count": 412,
+            "unique_ratio": 0.306358,
+            "skew_pair_types": 78,
+            "pair_types": 19847,
+            "skew_ratio": 0.00393,
+            "shuffle_skew_ratios": [
+              0.001145,
+              0.001338,
+              0.000845,
+              0.001191,
+              0.000993
+            ]
+          },
+          "homophonic": {
+            "tokens": 8850,
+            "removed_token_count": 150,
+            "unique_ratio": 0.618192,
+            "skew_pair_types": 0,
+            "pair_types": 25868,
+            "skew_ratio": 0.0,
+            "shuffle_skew_ratios": [
+              3.9e-05,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        }
+      ],
+      "english": [
+        {
+          "plain": {
+            "tokens": 8162,
+            "removed_token_count": 838,
+            "unique_ratio": 0.279221,
+            "skew_pair_types": 97,
+            "pair_types": 17760,
+            "skew_ratio": 0.005462,
+            "shuffle_skew_ratios": [
+              0.001688,
+              0.001798,
+              0.00147,
+              0.001527,
+              0.001572
+            ]
+          },
+          "simple": {
+            "tokens": 8162,
+            "removed_token_count": 838,
+            "unique_ratio": 0.279221,
+            "skew_pair_types": 97,
+            "pair_types": 17760,
+            "skew_ratio": 0.005462,
+            "shuffle_skew_ratios": [
+              0.001954,
+              0.001415,
+              0.001469,
+              0.001568,
+              0.001086
+            ]
+          },
+          "homophonic": {
+            "tokens": 8930,
+            "removed_token_count": 70,
+            "unique_ratio": 0.619709,
+            "skew_pair_types": 0,
+            "pair_types": 25999,
+            "skew_ratio": 0.0,
+            "shuffle_skew_ratios": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              3.9e-05
+            ]
+          }
+        },
+        {
+          "plain": {
+            "tokens": 8600,
+            "removed_token_count": 400,
+            "unique_ratio": 0.287326,
+            "skew_pair_types": 79,
+            "pair_types": 18353,
+            "skew_ratio": 0.004304,
+            "shuffle_skew_ratios": [
+              0.002042,
+              0.001251,
+              0.001569,
+              0.001362,
+              0.000992
+            ]
+          },
+          "simple": {
+            "tokens": 8600,
+            "removed_token_count": 400,
+            "unique_ratio": 0.287326,
+            "skew_pair_types": 79,
+            "pair_types": 18353,
+            "skew_ratio": 0.004304,
+            "shuffle_skew_ratios": [
+              0.001933,
+              0.001304,
+              0.001414,
+              0.001829,
+              0.00162
+            ]
+          },
+          "homophonic": {
+            "tokens": 8892,
+            "removed_token_count": 108,
+            "unique_ratio": 0.619996,
+            "skew_pair_types": 0,
+            "pair_types": 26194,
+            "skew_ratio": 0.0,
+            "shuffle_skew_ratios": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        {
+          "plain": {
+            "tokens": 8566,
+            "removed_token_count": 434,
+            "unique_ratio": 0.234298,
+            "skew_pair_types": 89,
+            "pair_types": 17919,
+            "skew_ratio": 0.004967,
+            "shuffle_skew_ratios": [
+              0.001473,
+              0.00174,
+              0.001322,
+              0.001212,
+              0.00116
+            ]
+          },
+          "simple": {
+            "tokens": 8566,
+            "removed_token_count": 434,
+            "unique_ratio": 0.234298,
+            "skew_pair_types": 89,
+            "pair_types": 17919,
+            "skew_ratio": 0.004967,
+            "shuffle_skew_ratios": [
+              0.00132,
+              0.001056,
+              0.001839,
+              0.001319,
+              0.001473
+            ]
+          },
+          "homophonic": {
+            "tokens": 8940,
+            "removed_token_count": 60,
+            "unique_ratio": 0.621588,
+            "skew_pair_types": 0,
+            "pair_types": 26498,
+            "skew_ratio": 0.0,
+            "shuffle_skew_ratios": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        }
+      ],
+      "medieval_czech": [
+        {
+          "plain": {
+            "tokens": 8525,
+            "removed_token_count": 475,
+            "unique_ratio": 0.316364,
+            "skew_pair_types": 66,
+            "pair_types": 20353,
+            "skew_ratio": 0.003243,
+            "shuffle_skew_ratios": [
+              0.000538,
+              0.000224,
+              0.000404,
+              0.000225,
+              0.000404
+            ]
+          },
+          "simple": {
+            "tokens": 8525,
+            "removed_token_count": 475,
+            "unique_ratio": 0.316364,
+            "skew_pair_types": 66,
+            "pair_types": 20353,
+            "skew_ratio": 0.003243,
+            "shuffle_skew_ratios": [
+              0.00036,
+              0.00018,
+              0.000314,
+              0.00018,
+              0.000405
+            ]
+          },
+          "homophonic": {
+            "tokens": 8827,
+            "removed_token_count": 173,
+            "unique_ratio": 0.72958,
+            "skew_pair_types": 0,
+            "pair_types": 26006,
+            "skew_ratio": 0.0,
+            "shuffle_skew_ratios": [
+              0.0,
+              0.0,
+              0.0,
+              3.8e-05,
+              0.0
+            ]
+          }
+        },
+        {
+          "plain": {
+            "tokens": 8534,
+            "removed_token_count": 466,
+            "unique_ratio": 0.312163,
+            "skew_pair_types": 58,
+            "pair_types": 20429,
+            "skew_ratio": 0.002839,
+            "shuffle_skew_ratios": [
+              0.000685,
+              0.000274,
+              0.000319,
+              0.000274,
+              0.000501
+            ]
+          },
+          "simple": {
+            "tokens": 8534,
+            "removed_token_count": 466,
+            "unique_ratio": 0.312163,
+            "skew_pair_types": 58,
+            "pair_types": 20429,
+            "skew_ratio": 0.002839,
+            "shuffle_skew_ratios": [
+              0.000411,
+              0.000366,
+              0.000274,
+              0.000229,
+              0.000502
+            ]
+          },
+          "homophonic": {
+            "tokens": 8842,
+            "removed_token_count": 158,
+            "unique_ratio": 0.721217,
+            "skew_pair_types": 0,
+            "pair_types": 26086,
+            "skew_ratio": 0.0,
+            "shuffle_skew_ratios": [
+              0.0,
+              0.0,
+              0.0,
+              3.8e-05,
+              0.0
+            ]
+          }
+        },
+        {
+          "plain": {
+            "tokens": 8581,
+            "removed_token_count": 419,
+            "unique_ratio": 0.32502,
+            "skew_pair_types": 65,
+            "pair_types": 20716,
+            "skew_ratio": 0.003138,
+            "shuffle_skew_ratios": [
+              0.000359,
+              0.00027,
+              0.000269,
+              0.000358,
+              0.000314
+            ]
+          },
+          "simple": {
+            "tokens": 8581,
+            "removed_token_count": 419,
+            "unique_ratio": 0.32502,
+            "skew_pair_types": 65,
+            "pair_types": 20716,
+            "skew_ratio": 0.003138,
+            "shuffle_skew_ratios": [
+              0.000449,
+              0.000493,
+              0.000403,
+              0.000537,
+              0.000581
+            ]
+          },
+          "homophonic": {
+            "tokens": 8842,
+            "removed_token_count": 158,
+            "unique_ratio": 0.727211,
+            "skew_pair_types": 0,
+            "pair_types": 26092,
+            "skew_ratio": 0.0,
+            "shuffle_skew_ratios": [
+              3.8e-05,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        }
+      ],
+      "voynich_practice_training": [
+        {
+          "plain": {
+            "tokens": 8622,
+            "removed_token_count": 378,
+            "unique_ratio": 0.321271,
+            "skew_pair_types": 15,
+            "pair_types": 21658,
+            "skew_ratio": 0.000693,
+            "shuffle_skew_ratios": [
+              0.000178,
+              0.000358,
+              0.000358,
+              0.000134,
+              0.000134
+            ]
+          },
+          "simple": {
+            "tokens": 8622,
+            "removed_token_count": 378,
+            "unique_ratio": 0.321271,
+            "skew_pair_types": 15,
+            "pair_types": 21658,
+            "skew_ratio": 0.000693,
+            "shuffle_skew_ratios": [
+              0.000269,
+              0.000401,
+              0.000223,
+              0.000134,
+              0.000134
+            ]
+          },
+          "homophonic": {
+            "tokens": 8953,
+            "removed_token_count": 47,
+            "unique_ratio": 0.804088,
+            "skew_pair_types": 0,
+            "pair_types": 26758,
+            "skew_ratio": 0.0,
+            "shuffle_skew_ratios": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        {
+          "plain": {
+            "tokens": 8750,
+            "removed_token_count": 250,
+            "unique_ratio": 0.273943,
+            "skew_pair_types": 23,
+            "pair_types": 20079,
+            "skew_ratio": 0.001145,
+            "shuffle_skew_ratios": [
+              0.000668,
+              0.000714,
+              0.00057,
+              0.00057,
+              0.000429
+            ]
+          },
+          "simple": {
+            "tokens": 8750,
+            "removed_token_count": 250,
+            "unique_ratio": 0.273943,
+            "skew_pair_types": 23,
+            "pair_types": 20079,
+            "skew_ratio": 0.001145,
+            "shuffle_skew_ratios": [
+              0.000758,
+              0.000618,
+              0.000618,
+              0.000524,
+              0.000618
+            ]
+          },
+          "homophonic": {
+            "tokens": 8962,
+            "removed_token_count": 38,
+            "unique_ratio": 0.833185,
+            "skew_pair_types": 0,
+            "pair_types": 26802,
+            "skew_ratio": 0.0,
+            "shuffle_skew_ratios": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        {
+          "plain": {
+            "tokens": 8842,
+            "removed_token_count": 158,
+            "unique_ratio": 0.310563,
+            "skew_pair_types": 13,
+            "pair_types": 21987,
+            "skew_ratio": 0.000591,
+            "shuffle_skew_ratios": [
+              0.000306,
+              0.000482,
+              0.000219,
+              0.000175,
+              0.000132
+            ]
+          },
+          "simple": {
+            "tokens": 8842,
+            "removed_token_count": 158,
+            "unique_ratio": 0.310563,
+            "skew_pair_types": 13,
+            "pair_types": 21987,
+            "skew_ratio": 0.000591,
+            "shuffle_skew_ratios": [
+              0.000264,
+              0.000306,
+              0.000176,
+              0.00022,
+              0.000264
+            ]
+          },
+          "homophonic": {
+            "tokens": 8970,
+            "removed_token_count": 30,
+            "unique_ratio": 0.866444,
+            "skew_pair_types": 0,
+            "pair_types": 26853,
+            "skew_ratio": 0.0,
+            "shuffle_skew_ratios": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
