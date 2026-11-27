@@ -1,0 +1,850 @@
+{
+  "folio": "f68r2",
+  "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006196",
+  "blind": true,
+  "statement": "The middle panel contains 59 individually rayed star figures and two roundels with human faces. The upper roundel has an ochre crescent and encircling text. The lower has a tilted face, blue blocks, and encircling text. A second reader counted the stars independently on the same scan and confirmed the faint rays of the two lower-right stars separately from stains. Native centers are approximate and stars are ordered from top to bottom. The visual inventory was frozen before extracting the locus headers. No transcription words or prior annotation were consulted. The scan shows 24 adjacent writing groups, one to the left of its star and 23 to the right. The label-only locus tags give 24 candidate Ls lines, but no positional metadata establishes which numbered locus belongs to any given star. No numeric-to-spatial correspondence has been inferred from their matching counts. The two Cc running texts are not standalone label loci.",
+  "inspection_region_native_xywh": [
+    2470,
+    720,
+    2050,
+    2100
+  ],
+  "label_loci_for_independent_mapping": [
+    "f68r2.7",
+    "f68r2.8",
+    "f68r2.9",
+    "f68r2.10",
+    "f68r2.11",
+    "f68r2.12",
+    "f68r2.13",
+    "f68r2.14",
+    "f68r2.15",
+    "f68r2.16",
+    "f68r2.17",
+    "f68r2.18",
+    "f68r2.19",
+    "f68r2.20",
+    "f68r2.21",
+    "f68r2.22",
+    "f68r2.23",
+    "f68r2.24",
+    "f68r2.25",
+    "f68r2.26",
+    "f68r2.27",
+    "f68r2.28",
+    "f68r2.29",
+    "f68r2.30"
+  ],
+  "objects": [
+    {
+      "id": "star-01",
+      "kind": "star",
+      "features": {
+        "center_fill": "pale",
+        "adjacent_annotation": "none",
+        "rays": 6
+      },
+      "label": null,
+      "native_center": [
+        3178,
+        884
+      ]
+    },
+    {
+      "id": "star-02",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "none",
+        "rays": 7
+      },
+      "label": null,
+      "native_center": [
+        3934,
+        954
+      ]
+    },
+    {
+      "id": "star-03",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "none"
+      },
+      "label": null,
+      "native_center": [
+        3020,
+        958
+      ]
+    },
+    {
+      "id": "star-04",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "none"
+      },
+      "label": null,
+      "native_center": [
+        2868,
+        1062
+      ]
+    },
+    {
+      "id": "star-05",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "none"
+      },
+      "label": null,
+      "native_center": [
+        4090,
+        1070
+      ]
+    },
+    {
+      "id": "star-06",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "none"
+      },
+      "label": null,
+      "native_center": [
+        3790,
+        1088
+      ]
+    },
+    {
+      "id": "star-07",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "right"
+      },
+      "label": null,
+      "native_center": [
+        3118,
+        1104
+      ]
+    },
+    {
+      "id": "star-08",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "none"
+      },
+      "label": null,
+      "native_center": [
+        4200,
+        1188
+      ]
+    },
+    {
+      "id": "star-09",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "right"
+      },
+      "label": null,
+      "native_center": [
+        3664,
+        1210
+      ]
+    },
+    {
+      "id": "star-10",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "none"
+      },
+      "label": null,
+      "native_center": [
+        2752,
+        1222
+      ]
+    },
+    {
+      "id": "star-11",
+      "kind": "star",
+      "features": {
+        "center_fill": "hollow",
+        "adjacent_annotation": "right",
+        "center_structure": "outline_ring"
+      },
+      "label": null,
+      "native_center": [
+        2934,
+        1240
+      ]
+    },
+    {
+      "id": "star-12",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "none"
+      },
+      "label": null,
+      "native_center": [
+        3970,
+        1254
+      ]
+    },
+    {
+      "id": "star-13",
+      "kind": "star",
+      "features": {
+        "center_fill": "pale",
+        "adjacent_annotation": "right"
+      },
+      "label": null,
+      "native_center": [
+        3274,
+        1276
+      ]
+    },
+    {
+      "id": "star-14",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "none"
+      },
+      "label": null,
+      "native_center": [
+        4300,
+        1348
+      ]
+    },
+    {
+      "id": "star-15",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "none"
+      },
+      "label": null,
+      "native_center": [
+        2670,
+        1388
+      ]
+    },
+    {
+      "id": "star-16",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "none"
+      },
+      "label": null,
+      "native_center": [
+        3070,
+        1394
+      ]
+    },
+    {
+      "id": "star-17",
+      "kind": "star",
+      "features": {
+        "center_fill": "ringed",
+        "adjacent_annotation": "right",
+        "center_structure": "outline_ring"
+      },
+      "label": null,
+      "native_center": [
+        3818,
+        1406
+      ]
+    },
+    {
+      "id": "star-18",
+      "kind": "star",
+      "features": {
+        "center_fill": "dark_ochre",
+        "adjacent_annotation": "none",
+        "center_structure": "irregular"
+      },
+      "label": null,
+      "native_center": [
+        4156,
+        1458
+      ]
+    },
+    {
+      "id": "star-19",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "left",
+        "rays": 8
+      },
+      "label": null,
+      "native_center": [
+        3600,
+        1468
+      ]
+    },
+    {
+      "id": "star-20",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "right"
+      },
+      "label": null,
+      "native_center": [
+        2802,
+        1490
+      ]
+    },
+    {
+      "id": "star-21",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "none"
+      },
+      "label": null,
+      "native_center": [
+        4350,
+        1510
+      ]
+    },
+    {
+      "id": "star-22",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "none"
+      },
+      "label": null,
+      "native_center": [
+        3914,
+        1524
+      ]
+    },
+    {
+      "id": "star-23",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "right"
+      },
+      "label": null,
+      "native_center": [
+        3094,
+        1544
+      ]
+    },
+    {
+      "id": "star-24",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "none"
+      },
+      "label": null,
+      "native_center": [
+        2598,
+        1598
+      ]
+    },
+    {
+      "id": "star-25",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "none"
+      },
+      "label": null,
+      "native_center": [
+        3312,
+        1642
+      ]
+    },
+    {
+      "id": "star-26",
+      "kind": "star",
+      "features": {
+        "center_fill": "hollow",
+        "adjacent_annotation": "right",
+        "center_structure": "outline_ring"
+      },
+      "label": null,
+      "native_center": [
+        4032,
+        1654
+      ]
+    },
+    {
+      "id": "star-27",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "none"
+      },
+      "label": null,
+      "native_center": [
+        4418,
+        1666
+      ]
+    },
+    {
+      "id": "star-28",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "right",
+        "rays": 7
+      },
+      "label": null,
+      "native_center": [
+        3554,
+        1668
+      ]
+    },
+    {
+      "id": "star-29",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "right"
+      },
+      "label": null,
+      "native_center": [
+        2764,
+        1710
+      ]
+    },
+    {
+      "id": "star-30",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "right"
+      },
+      "label": null,
+      "native_center": [
+        3046,
+        1738
+      ]
+    },
+    {
+      "id": "star-31",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "none"
+      },
+      "label": null,
+      "native_center": [
+        4272,
+        1778
+      ]
+    },
+    {
+      "id": "star-32",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "none"
+      },
+      "label": null,
+      "native_center": [
+        3318,
+        1792
+      ]
+    },
+    {
+      "id": "star-33",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "none"
+      },
+      "label": null,
+      "native_center": [
+        4140,
+        1806
+      ]
+    },
+    {
+      "id": "star-34",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "right"
+      },
+      "label": null,
+      "native_center": [
+        3714,
+        1826
+      ]
+    },
+    {
+      "id": "star-35",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "none"
+      },
+      "label": null,
+      "native_center": [
+        4436,
+        1842
+      ]
+    },
+    {
+      "id": "star-36",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "none"
+      },
+      "label": null,
+      "native_center": [
+        2624,
+        1846
+      ]
+    },
+    {
+      "id": "star-37",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "none"
+      },
+      "label": null,
+      "native_center": [
+        3506,
+        1898
+      ]
+    },
+    {
+      "id": "star-38",
+      "kind": "star",
+      "features": {
+        "center_fill": "ringed",
+        "adjacent_annotation": "right",
+        "center_structure": "outline_ring"
+      },
+      "label": null,
+      "native_center": [
+        2770,
+        1916
+      ]
+    },
+    {
+      "id": "star-39",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "right"
+      },
+      "label": null,
+      "native_center": [
+        3110,
+        1950
+      ]
+    },
+    {
+      "id": "star-40",
+      "kind": "star",
+      "features": {
+        "center_fill": "ringed",
+        "adjacent_annotation": "right",
+        "center_structure": "outline_ring"
+      },
+      "label": null,
+      "native_center": [
+        4010,
+        1970
+      ]
+    },
+    {
+      "id": "star-41",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "none"
+      },
+      "label": null,
+      "native_center": [
+        2914,
+        2030
+      ]
+    },
+    {
+      "id": "star-42",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "none"
+      },
+      "label": null,
+      "native_center": [
+        4402,
+        2038
+      ]
+    },
+    {
+      "id": "star-43",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "right"
+      },
+      "label": null,
+      "native_center": [
+        3614,
+        2042
+      ]
+    },
+    {
+      "id": "star-44",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "none"
+      },
+      "label": null,
+      "native_center": [
+        2674,
+        2094
+      ]
+    },
+    {
+      "id": "star-45",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "right"
+      },
+      "label": null,
+      "native_center": [
+        3304,
+        2148
+      ]
+    },
+    {
+      "id": "star-46",
+      "kind": "star",
+      "features": {
+        "center_fill": "ringed",
+        "adjacent_annotation": "right",
+        "center_structure": "outline_ring"
+      },
+      "label": null,
+      "native_center": [
+        4100,
+        2152
+      ]
+    },
+    {
+      "id": "star-47",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "right"
+      },
+      "label": null,
+      "native_center": [
+        3846,
+        2158
+      ]
+    },
+    {
+      "id": "star-48",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "right"
+      },
+      "label": null,
+      "native_center": [
+        2942,
+        2170
+      ]
+    },
+    {
+      "id": "star-49",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "none"
+      },
+      "label": null,
+      "native_center": [
+        4320,
+        2230
+      ]
+    },
+    {
+      "id": "star-50",
+      "kind": "star",
+      "features": {
+        "center_fill": "hollow",
+        "adjacent_annotation": "right",
+        "center_structure": "outline_ring"
+      },
+      "label": null,
+      "native_center": [
+        3454,
+        2250
+      ]
+    },
+    {
+      "id": "star-51",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "none"
+      },
+      "label": null,
+      "native_center": [
+        2780,
+        2268
+      ]
+    },
+    {
+      "id": "star-52",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "right",
+        "rays": 8
+      },
+      "label": null,
+      "native_center": [
+        3790,
+        2302
+      ]
+    },
+    {
+      "id": "star-53",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "right"
+      },
+      "label": null,
+      "native_center": [
+        3096,
+        2388
+      ]
+    },
+    {
+      "id": "star-54",
+      "kind": "star",
+      "features": {
+        "center_fill": "pale",
+        "adjacent_annotation": "none"
+      },
+      "label": null,
+      "native_center": [
+        4190,
+        2408
+      ]
+    },
+    {
+      "id": "star-55",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "none"
+      },
+      "label": null,
+      "native_center": [
+        2918,
+        2454
+      ]
+    },
+    {
+      "id": "star-56",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "none"
+      },
+      "label": null,
+      "native_center": [
+        3870,
+        2500
+      ]
+    },
+    {
+      "id": "star-57",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "none"
+      },
+      "label": null,
+      "native_center": [
+        4024,
+        2546
+      ]
+    },
+    {
+      "id": "star-58",
+      "kind": "star",
+      "features": {
+        "center_fill": "ochre",
+        "adjacent_annotation": "none"
+      },
+      "label": null,
+      "native_center": [
+        3106,
+        2610
+      ]
+    },
+    {
+      "id": "star-59",
+      "kind": "star",
+      "features": {
+        "center_fill": "pale",
+        "adjacent_annotation": "none"
+      },
+      "label": null,
+      "native_center": [
+        3830,
+        2674
+      ]
+    },
+    {
+      "id": "upper-face-roundel",
+      "kind": "moon",
+      "features": {
+        "face": "upright",
+        "border": "single_ring_with_writing",
+        "crescent": "ochre_left",
+        "body_shape": "round"
+      },
+      "label": null,
+      "native_center": [
+        3550,
+        934
+      ]
+    },
+    {
+      "id": "lower-face-roundel",
+      "kind": "diagram",
+      "features": {
+        "face": "slanted",
+        "border": "single_ring_with_writing",
+        "colored_marks": "separate_blue_radial_blocks",
+        "body_shape": "round"
+      },
+      "label": null,
+      "native_center": [
+        3492,
+        2578
+      ]
+    }
+  ]
+}
