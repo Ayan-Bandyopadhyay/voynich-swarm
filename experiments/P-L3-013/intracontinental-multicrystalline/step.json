@@ -1,0 +1,1273 @@
+{
+  "title": "Calibrate Polygraphia row schedules and unknown-key recovery on independent tables",
+  "program": "L3",
+  "on_path": true,
+  "hard": false,
+  "statement": "For a follow-up fixed locally before reading public evaluation results, use the prior pilot\u2019s 40 and 48 initial rows, stay probability 1/8, 5,000 plaintext letters at offsets 20,000\u201324,999 of Augustine, Erasmus and Nibelungenlied, and schedule seeds 2001\u20132003. Every clean sample is inverted exactly using its known row schedule and table. Add a separate 2% independent raw-character substitution noise condition, preserving word length. Four exploratory acceptance intervals centered on the prior public-training values are word entropy 8.795\u20139.795 bits, raw glyph entropy 3.636\u20134.036, within-word conditional glyph entropy 1.336\u20131.736, and adjacent edit-one share 0.0291\u20130.0591. On 18 clean and 18 noisy samples, zero meet all four fixed intervals under either public evaluation layout; all miss the conditional-glyph range. On the ZL layout clean conditional entropy spans 2.312\u20132.503 bits and noisy 2.117\u20132.286, versus public ZL 1.517 and IT 1.557. Those intervals are hand-chosen sensitivities around an already inspected training pilot, not calibrated acceptance thresholds. Public evaluation was measured after locally freezing the plan; the earlier row counts were selected adaptively, no independent timestamped preregistration was made, and the actual historical table is shared. This is a descriptive constraint on this narrow procedure, not a cell exclusion or unknown-key recovery.",
+  "check": "Fix a broader historical schedule family and noise model before examining independent works or layouts; use separately drawn cipher tables or distinct historical tables when available. Calibrate uncertainty and joint acceptance via independent positive and null controls, examine source and tokenization sensitivity, and charge the full row schedule and lexicon when used as a reading. Implement a reviewed declarative evaluator and unknown-key recovery with blinded, disjoint planted keys before using any cipher-family verdict.",
+  "method": {
+    "input": "Fixed historical table from https://github.com/hermesj/R_Voynich_Stats/blob/0ef1439fa9d90aeab42951a51d0d5a0e27db1f8f/R%20code/Historical_ciphers/keys/ciphers_poly_III_in_order.csv SHA-256 fe3f24a46dbc6b655eab8dbbd75addf84ee4a7dbd387ad802af75d02edfe5b4d. Plaintexts are pinned Gutenberg files normalized by refcorpus.blocks_of. Their selected windows have not been editorially audited and may contain edition or transcription material.",
+    "layouts": "First 5,000 certain lowercase ASCII paragraph tokens on each ZL/IT public practice-evaluation split; adjacency never bridges uncertain tokens or line ends. Four metrics and tokenization follow the P-L3-009 embedded helper.",
+    "selection": "Prewritten local plan tests 40,48 rows and three fresh schedule seeds at 1/8 stay, each in three different plaintext windows. These row sizes stem from an earlier adaptive search. Acceptance intervals are broad round margins chosen from that earlier training sample, not historical confidence bounds.",
+    "noise": "Each cipher word\u2019s raw character independently changes with probability .02 to another character sampled uniformly from the clean sample glyph inventory; fixed seed by schedule and row count. This can produce a word absent from the fixed table, and is a synthetic transcription perturbation, not a historical noise model. Clean inversion discloses the row schedule; no claim of unknown-key decoding.",
+    "limits": "Only three related runs per book and one fixed table; manuscript witnesses are alternate transcriptions of the same object, not independent manuscripts. Acceptance intervals are exploratory and no production model or metadata lengths are paid."
+  },
+  "results": {
+    "plan": {
+      "sources": [
+        "la_augustine",
+        "la_erasmus",
+        "de_nibelunge"
+      ],
+      "offset": 20000,
+      "source_characters": 5000,
+      "row_counts": [
+        40,
+        48
+      ],
+      "stay_probability": 0.125,
+      "schedule_seeds": [
+        2001,
+        2002,
+        2003
+      ],
+      "noise_rate": 0.02,
+      "acceptance": {
+        "word_entropy": [
+          8.7950116,
+          9.7950116
+        ],
+        "glyph_entropy": [
+          3.6356971,
+          4.0356971
+        ],
+        "glyph_conditional_entropy": [
+          1.336021,
+          1.736021
+        ],
+        "adjacent_edit1_share": [
+          0.0290694,
+          0.0590694
+        ]
+      },
+      "note": "Exploratory fixed margins around prior training sample, not statistically calibrated; no model or evaluation evidence has been viewed for this follow-up. Same historical table; independent random schedules are not independent cipher tables."
+    },
+    "practice_evaluation_baselines": {
+      "zl": {
+        "tokens": 5000,
+        "types": 1747,
+        "word_entropy": 9.387884257739147,
+        "glyph_entropy": 3.8731631771449546,
+        "glyph_conditional_entropy": 1.5173406066426196,
+        "adjacent_pairs": 4380,
+        "adjacent_edit1_share": 0.03881278538812785
+      },
+      "it": {
+        "tokens": 5000,
+        "types": 1767,
+        "word_entropy": 9.449845935954196,
+        "glyph_entropy": 3.868719449646511,
+        "glyph_conditional_entropy": 1.5568821439704692,
+        "adjacent_pairs": 4386,
+        "adjacent_edit1_share": 0.03670770633834929
+      }
+    },
+    "rows": [
+      {
+        "book": "la_augustine",
+        "sha256": "b9d4d33de51f661deb0137d3f9f191080d81959f21ae242d12b3ab0e278e8271",
+        "rows": 40,
+        "seed": 2001,
+        "status": "clean",
+        "changed_glyphs": 0,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 728,
+            "word_entropy": 9.128607642622217,
+            "glyph_entropy": 3.882299126812639,
+            "glyph_conditional_entropy": 2.3123315612200486,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.040639269406392696
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 728,
+            "word_entropy": 9.128607642622217,
+            "glyph_entropy": 3.882299126812639,
+            "glyph_conditional_entropy": 2.3123315612200486,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.04149566803465572
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      },
+      {
+        "book": "la_augustine",
+        "sha256": "b9d4d33de51f661deb0137d3f9f191080d81959f21ae242d12b3ab0e278e8271",
+        "rows": 40,
+        "seed": 2001,
+        "status": "noise",
+        "changed_glyphs": 497,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 1160,
+            "word_entropy": 9.518186604477684,
+            "glyph_entropy": 3.903475851918003,
+            "glyph_conditional_entropy": 2.1796465829527456,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.03515981735159817
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 1160,
+            "word_entropy": 9.518186604477684,
+            "glyph_entropy": 3.903475851918003,
+            "glyph_conditional_entropy": 2.1796465829527456,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.03533971728226174
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      },
+      {
+        "book": "la_augustine",
+        "sha256": "b9d4d33de51f661deb0137d3f9f191080d81959f21ae242d12b3ab0e278e8271",
+        "rows": 40,
+        "seed": 2002,
+        "status": "clean",
+        "changed_glyphs": 0,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 734,
+            "word_entropy": 9.132088860624323,
+            "glyph_entropy": 3.8868382612407535,
+            "glyph_conditional_entropy": 2.3160323667202625,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.04657534246575343
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 734,
+            "word_entropy": 9.132088860624323,
+            "glyph_entropy": 3.8868382612407535,
+            "glyph_conditional_entropy": 2.3160323667202625,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.0449156406748746
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      },
+      {
+        "book": "la_augustine",
+        "sha256": "b9d4d33de51f661deb0137d3f9f191080d81959f21ae242d12b3ab0e278e8271",
+        "rows": 40,
+        "seed": 2002,
+        "status": "noise",
+        "changed_glyphs": 530,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 1206,
+            "word_entropy": 9.561759711963374,
+            "glyph_entropy": 3.91747475509572,
+            "glyph_conditional_entropy": 2.138301017064105,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.03858447488584475
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 1206,
+            "word_entropy": 9.561759711963374,
+            "glyph_entropy": 3.91747475509572,
+            "glyph_conditional_entropy": 2.138301017064105,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.03761969904240766
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      },
+      {
+        "book": "la_augustine",
+        "sha256": "b9d4d33de51f661deb0137d3f9f191080d81959f21ae242d12b3ab0e278e8271",
+        "rows": 40,
+        "seed": 2003,
+        "status": "clean",
+        "changed_glyphs": 0,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 734,
+            "word_entropy": 9.133022330744446,
+            "glyph_entropy": 3.8853876692002074,
+            "glyph_conditional_entropy": 2.3233161696567803,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.04497716894977169
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 734,
+            "word_entropy": 9.133022330744446,
+            "glyph_entropy": 3.8853876692002074,
+            "glyph_conditional_entropy": 2.3233161696567803,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.0449156406748746
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      },
+      {
+        "book": "la_augustine",
+        "sha256": "b9d4d33de51f661deb0137d3f9f191080d81959f21ae242d12b3ab0e278e8271",
+        "rows": 40,
+        "seed": 2003,
+        "status": "noise",
+        "changed_glyphs": 525,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 1199,
+            "word_entropy": 9.551402511759271,
+            "glyph_entropy": 3.907067974156845,
+            "glyph_conditional_entropy": 2.1939351887373952,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.03767123287671233
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 1199,
+            "word_entropy": 9.551402511759271,
+            "glyph_entropy": 3.907067974156845,
+            "glyph_conditional_entropy": 2.1939351887373952,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.03761969904240766
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      },
+      {
+        "book": "la_augustine",
+        "sha256": "b9d4d33de51f661deb0137d3f9f191080d81959f21ae242d12b3ab0e278e8271",
+        "rows": 48,
+        "seed": 2001,
+        "status": "clean",
+        "changed_glyphs": 0,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 837,
+            "word_entropy": 9.339209618854394,
+            "glyph_entropy": 3.930294231068312,
+            "glyph_conditional_entropy": 2.469579896777421,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.0408675799086758
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 837,
+            "word_entropy": 9.339209618854394,
+            "glyph_entropy": 3.930294231068312,
+            "glyph_conditional_entropy": 2.469579896777421,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.04126766985864113
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      },
+      {
+        "book": "la_augustine",
+        "sha256": "b9d4d33de51f661deb0137d3f9f191080d81959f21ae242d12b3ab0e278e8271",
+        "rows": 48,
+        "seed": 2001,
+        "status": "noise",
+        "changed_glyphs": 495,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 1273,
+            "word_entropy": 9.710268740837185,
+            "glyph_entropy": 3.955398634986744,
+            "glyph_conditional_entropy": 2.2546945688963627,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.03675799086757991
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 1273,
+            "word_entropy": 9.710268740837185,
+            "glyph_entropy": 3.955398634986744,
+            "glyph_conditional_entropy": 2.2546945688963627,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.03784769721842225
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      },
+      {
+        "book": "la_augustine",
+        "sha256": "b9d4d33de51f661deb0137d3f9f191080d81959f21ae242d12b3ab0e278e8271",
+        "rows": 48,
+        "seed": 2002,
+        "status": "clean",
+        "changed_glyphs": 0,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 839,
+            "word_entropy": 9.339661383510586,
+            "glyph_entropy": 3.929540518082338,
+            "glyph_conditional_entropy": 2.472513055656379,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.047488584474885846
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 839,
+            "word_entropy": 9.339661383510586,
+            "glyph_entropy": 3.929540518082338,
+            "glyph_conditional_entropy": 2.472513055656379,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.045599635202918376
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      },
+      {
+        "book": "la_augustine",
+        "sha256": "b9d4d33de51f661deb0137d3f9f191080d81959f21ae242d12b3ab0e278e8271",
+        "rows": 48,
+        "seed": 2002,
+        "status": "noise",
+        "changed_glyphs": 516,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 1291,
+            "word_entropy": 9.733242168120306,
+            "glyph_entropy": 3.9540934269453905,
+            "glyph_conditional_entropy": 2.2619895746802383,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.04223744292237443
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 1291,
+            "word_entropy": 9.733242168120306,
+            "glyph_entropy": 3.9540934269453905,
+            "glyph_conditional_entropy": 2.2619895746802383,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.039443684450524395
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      },
+      {
+        "book": "la_augustine",
+        "sha256": "b9d4d33de51f661deb0137d3f9f191080d81959f21ae242d12b3ab0e278e8271",
+        "rows": 48,
+        "seed": 2003,
+        "status": "clean",
+        "changed_glyphs": 0,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 836,
+            "word_entropy": 9.325117957874975,
+            "glyph_entropy": 3.938612247332559,
+            "glyph_conditional_entropy": 2.489927713377993,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.04474885844748858
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 836,
+            "word_entropy": 9.325117957874975,
+            "glyph_entropy": 3.938612247332559,
+            "glyph_conditional_entropy": 2.489927713377993,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.04445964432284542
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      },
+      {
+        "book": "la_augustine",
+        "sha256": "b9d4d33de51f661deb0137d3f9f191080d81959f21ae242d12b3ab0e278e8271",
+        "rows": 48,
+        "seed": 2003,
+        "status": "noise",
+        "changed_glyphs": 471,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 1239,
+            "word_entropy": 9.676714671058118,
+            "glyph_entropy": 3.959022523893657,
+            "glyph_conditional_entropy": 2.25232748615651,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.03881278538812785
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 1239,
+            "word_entropy": 9.676714671058118,
+            "glyph_entropy": 3.959022523893657,
+            "glyph_conditional_entropy": 2.25232748615651,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.0392156862745098
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      },
+      {
+        "book": "la_erasmus",
+        "sha256": "dd5eca711a98d4eac5fa1d239821893ee29b4cadca01238019a90fcffee83c9c",
+        "rows": 40,
+        "seed": 2001,
+        "status": "clean",
+        "changed_glyphs": 0,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 725,
+            "word_entropy": 9.142102240457614,
+            "glyph_entropy": 3.883086006042908,
+            "glyph_conditional_entropy": 2.3195424680623797,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.04200913242009133
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 725,
+            "word_entropy": 9.142102240457614,
+            "glyph_entropy": 3.883086006042908,
+            "glyph_conditional_entropy": 2.3195424680623797,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.04354765161878705
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      },
+      {
+        "book": "la_erasmus",
+        "sha256": "dd5eca711a98d4eac5fa1d239821893ee29b4cadca01238019a90fcffee83c9c",
+        "rows": 40,
+        "seed": 2001,
+        "status": "noise",
+        "changed_glyphs": 499,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 1175,
+            "word_entropy": 9.552555004530666,
+            "glyph_entropy": 3.909481558835467,
+            "glyph_conditional_entropy": 2.1172129755769182,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.03767123287671233
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 1175,
+            "word_entropy": 9.552555004530666,
+            "glyph_entropy": 3.909481558835467,
+            "glyph_conditional_entropy": 2.1172129755769182,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.0392156862745098
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      },
+      {
+        "book": "la_erasmus",
+        "sha256": "dd5eca711a98d4eac5fa1d239821893ee29b4cadca01238019a90fcffee83c9c",
+        "rows": 40,
+        "seed": 2002,
+        "status": "clean",
+        "changed_glyphs": 0,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 721,
+            "word_entropy": 9.158318133591694,
+            "glyph_entropy": 3.883409996981734,
+            "glyph_conditional_entropy": 2.32981518419169,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.04771689497716895
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 721,
+            "word_entropy": 9.158318133591694,
+            "glyph_entropy": 3.883409996981734,
+            "glyph_conditional_entropy": 2.32981518419169,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.0449156406748746
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      },
+      {
+        "book": "la_erasmus",
+        "sha256": "dd5eca711a98d4eac5fa1d239821893ee29b4cadca01238019a90fcffee83c9c",
+        "rows": 40,
+        "seed": 2002,
+        "status": "noise",
+        "changed_glyphs": 531,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 1202,
+            "word_entropy": 9.595566858659895,
+            "glyph_entropy": 3.910683628835125,
+            "glyph_conditional_entropy": 2.1332194712772843,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.03995433789954338
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 1202,
+            "word_entropy": 9.595566858659895,
+            "glyph_entropy": 3.910683628835125,
+            "glyph_conditional_entropy": 2.1332194712772843,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.038075695394436844
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      },
+      {
+        "book": "la_erasmus",
+        "sha256": "dd5eca711a98d4eac5fa1d239821893ee29b4cadca01238019a90fcffee83c9c",
+        "rows": 40,
+        "seed": 2003,
+        "status": "clean",
+        "changed_glyphs": 0,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 723,
+            "word_entropy": 9.156366868202836,
+            "glyph_entropy": 3.8840916956179714,
+            "glyph_conditional_entropy": 2.327696576518667,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.05114155251141553
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 723,
+            "word_entropy": 9.156366868202836,
+            "glyph_entropy": 3.8840916956179714,
+            "glyph_conditional_entropy": 2.327696576518667,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.05107159142726858
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      },
+      {
+        "book": "la_erasmus",
+        "sha256": "dd5eca711a98d4eac5fa1d239821893ee29b4cadca01238019a90fcffee83c9c",
+        "rows": 40,
+        "seed": 2003,
+        "status": "noise",
+        "changed_glyphs": 527,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 1177,
+            "word_entropy": 9.567532700017773,
+            "glyph_entropy": 3.9083703349692556,
+            "glyph_conditional_entropy": 2.195402723889557,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.04406392694063927
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 1177,
+            "word_entropy": 9.567532700017773,
+            "glyph_entropy": 3.9083703349692556,
+            "glyph_conditional_entropy": 2.195402723889557,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.04377564979480164
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      },
+      {
+        "book": "la_erasmus",
+        "sha256": "dd5eca711a98d4eac5fa1d239821893ee29b4cadca01238019a90fcffee83c9c",
+        "rows": 48,
+        "seed": 2001,
+        "status": "clean",
+        "changed_glyphs": 0,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 830,
+            "word_entropy": 9.349439077893292,
+            "glyph_entropy": 3.92992480528162,
+            "glyph_conditional_entropy": 2.4898343007940675,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.04223744292237443
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 830,
+            "word_entropy": 9.349439077893292,
+            "glyph_entropy": 3.92992480528162,
+            "glyph_conditional_entropy": 2.4898343007940675,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.04377564979480164
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      },
+      {
+        "book": "la_erasmus",
+        "sha256": "dd5eca711a98d4eac5fa1d239821893ee29b4cadca01238019a90fcffee83c9c",
+        "rows": 48,
+        "seed": 2001,
+        "status": "noise",
+        "changed_glyphs": 498,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 1271,
+            "word_entropy": 9.721965077038368,
+            "glyph_entropy": 3.9543775973308297,
+            "glyph_conditional_entropy": 2.2480620728223704,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.036986301369863014
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 1271,
+            "word_entropy": 9.721965077038368,
+            "glyph_entropy": 3.9543775973308297,
+            "glyph_conditional_entropy": 2.2480620728223704,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.03784769721842225
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      },
+      {
+        "book": "la_erasmus",
+        "sha256": "dd5eca711a98d4eac5fa1d239821893ee29b4cadca01238019a90fcffee83c9c",
+        "rows": 48,
+        "seed": 2002,
+        "status": "clean",
+        "changed_glyphs": 0,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 837,
+            "word_entropy": 9.365222784760581,
+            "glyph_entropy": 3.92584924368715,
+            "glyph_conditional_entropy": 2.4884027769746297,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.04863013698630137
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 837,
+            "word_entropy": 9.365222784760581,
+            "glyph_entropy": 3.92584924368715,
+            "glyph_conditional_entropy": 2.4884027769746297,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.04582763337893297
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      },
+      {
+        "book": "la_erasmus",
+        "sha256": "dd5eca711a98d4eac5fa1d239821893ee29b4cadca01238019a90fcffee83c9c",
+        "rows": 48,
+        "seed": 2002,
+        "status": "noise",
+        "changed_glyphs": 516,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 1297,
+            "word_entropy": 9.759461346075325,
+            "glyph_entropy": 3.947702211806841,
+            "glyph_conditional_entropy": 2.275204132468043,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.04269406392694064
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 1297,
+            "word_entropy": 9.759461346075325,
+            "glyph_entropy": 3.947702211806841,
+            "glyph_conditional_entropy": 2.275204132468043,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.0392156862745098
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      },
+      {
+        "book": "la_erasmus",
+        "sha256": "dd5eca711a98d4eac5fa1d239821893ee29b4cadca01238019a90fcffee83c9c",
+        "rows": 48,
+        "seed": 2003,
+        "status": "clean",
+        "changed_glyphs": 0,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 834,
+            "word_entropy": 9.362617778140303,
+            "glyph_entropy": 3.9287330987817293,
+            "glyph_conditional_entropy": 2.4708858253359773,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.05045662100456621
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 834,
+            "word_entropy": 9.362617778140303,
+            "glyph_entropy": 3.9287330987817293,
+            "glyph_conditional_entropy": 2.4708858253359773,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.050159598723210214
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      },
+      {
+        "book": "la_erasmus",
+        "sha256": "dd5eca711a98d4eac5fa1d239821893ee29b4cadca01238019a90fcffee83c9c",
+        "rows": 48,
+        "seed": 2003,
+        "status": "noise",
+        "changed_glyphs": 471,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 1250,
+            "word_entropy": 9.722388300903253,
+            "glyph_entropy": 3.948015591760333,
+            "glyph_conditional_entropy": 2.2413060967905976,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.04474885844748858
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 1250,
+            "word_entropy": 9.722388300903253,
+            "glyph_entropy": 3.948015591760333,
+            "glyph_conditional_entropy": 2.2413060967905976,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.04468764249886001
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      },
+      {
+        "book": "de_nibelunge",
+        "sha256": "69eecd1f37ce1de573226ad6aa42c311fce7586444f71204ea6533810d5f10be",
+        "rows": 40,
+        "seed": 2001,
+        "status": "clean",
+        "changed_glyphs": 0,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 741,
+            "word_entropy": 9.114338779601693,
+            "glyph_entropy": 3.9054735014795514,
+            "glyph_conditional_entropy": 2.3550698706024265,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.036301369863013695
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 741,
+            "word_entropy": 9.114338779601693,
+            "glyph_entropy": 3.9054735014795514,
+            "glyph_conditional_entropy": 2.3550698706024265,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.038075695394436844
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      },
+      {
+        "book": "de_nibelunge",
+        "sha256": "69eecd1f37ce1de573226ad6aa42c311fce7586444f71204ea6533810d5f10be",
+        "rows": 40,
+        "seed": 2001,
+        "status": "noise",
+        "changed_glyphs": 498,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 1182,
+            "word_entropy": 9.515133816326674,
+            "glyph_entropy": 3.9299512929529636,
+            "glyph_conditional_entropy": 2.1549977108852962,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.031050228310502283
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 1182,
+            "word_entropy": 9.515133816326674,
+            "glyph_entropy": 3.9299512929529636,
+            "glyph_conditional_entropy": 2.1549977108852962,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.03237574099407205
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      },
+      {
+        "book": "de_nibelunge",
+        "sha256": "69eecd1f37ce1de573226ad6aa42c311fce7586444f71204ea6533810d5f10be",
+        "rows": 40,
+        "seed": 2002,
+        "status": "clean",
+        "changed_glyphs": 0,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 751,
+            "word_entropy": 9.129930761404882,
+            "glyph_entropy": 3.9056010333215987,
+            "glyph_conditional_entropy": 2.3353016179983808,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.029908675799086758
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 751,
+            "word_entropy": 9.129930761404882,
+            "glyph_entropy": 3.9056010333215987,
+            "glyph_conditional_entropy": 2.3353016179983808,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.031235750113999088
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      },
+      {
+        "book": "de_nibelunge",
+        "sha256": "69eecd1f37ce1de573226ad6aa42c311fce7586444f71204ea6533810d5f10be",
+        "rows": 40,
+        "seed": 2002,
+        "status": "noise",
+        "changed_glyphs": 530,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 1236,
+            "word_entropy": 9.565275586723237,
+            "glyph_entropy": 3.933259621986273,
+            "glyph_conditional_entropy": 2.1589447455418123,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.028767123287671233
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 1236,
+            "word_entropy": 9.565275586723237,
+            "glyph_entropy": 3.933259621986273,
+            "glyph_conditional_entropy": 2.1589447455418123,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.02895576835385317
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      },
+      {
+        "book": "de_nibelunge",
+        "sha256": "69eecd1f37ce1de573226ad6aa42c311fce7586444f71204ea6533810d5f10be",
+        "rows": 40,
+        "seed": 2003,
+        "status": "clean",
+        "changed_glyphs": 0,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 747,
+            "word_entropy": 9.130024597294133,
+            "glyph_entropy": 3.9097637345291063,
+            "glyph_conditional_entropy": 2.350055931020932,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.03858447488584475
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 747,
+            "word_entropy": 9.130024597294133,
+            "glyph_entropy": 3.9097637345291063,
+            "glyph_conditional_entropy": 2.350055931020932,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.040583675330597355
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      },
+      {
+        "book": "de_nibelunge",
+        "sha256": "69eecd1f37ce1de573226ad6aa42c311fce7586444f71204ea6533810d5f10be",
+        "rows": 40,
+        "seed": 2003,
+        "status": "noise",
+        "changed_glyphs": 524,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 1206,
+            "word_entropy": 9.541904135230276,
+            "glyph_entropy": 3.936236552229001,
+            "glyph_conditional_entropy": 2.1511198339741977,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.034018264840182645
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 1206,
+            "word_entropy": 9.541904135230276,
+            "glyph_entropy": 3.936236552229001,
+            "glyph_conditional_entropy": 2.1511198339741977,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.035795713634290925
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      },
+      {
+        "book": "de_nibelunge",
+        "sha256": "69eecd1f37ce1de573226ad6aa42c311fce7586444f71204ea6533810d5f10be",
+        "rows": 48,
+        "seed": 2001,
+        "status": "clean",
+        "changed_glyphs": 0,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 861,
+            "word_entropy": 9.332782222024372,
+            "glyph_entropy": 3.950913256795101,
+            "glyph_conditional_entropy": 2.503436944852702,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.03675799086757991
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 861,
+            "word_entropy": 9.332782222024372,
+            "glyph_entropy": 3.950913256795101,
+            "glyph_conditional_entropy": 2.503436944852702,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.038075695394436844
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      },
+      {
+        "book": "de_nibelunge",
+        "sha256": "69eecd1f37ce1de573226ad6aa42c311fce7586444f71204ea6533810d5f10be",
+        "rows": 48,
+        "seed": 2001,
+        "status": "noise",
+        "changed_glyphs": 492,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 1299,
+            "word_entropy": 9.711469037876991,
+            "glyph_entropy": 3.973055488042883,
+            "glyph_conditional_entropy": 2.263867385541399,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.03287671232876712
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 1299,
+            "word_entropy": 9.711469037876991,
+            "glyph_entropy": 3.973055488042883,
+            "glyph_conditional_entropy": 2.263867385541399,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.0337437300501596
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      },
+      {
+        "book": "de_nibelunge",
+        "sha256": "69eecd1f37ce1de573226ad6aa42c311fce7586444f71204ea6533810d5f10be",
+        "rows": 48,
+        "seed": 2002,
+        "status": "clean",
+        "changed_glyphs": 0,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 858,
+            "word_entropy": 9.330452896782544,
+            "glyph_entropy": 3.9463895212560476,
+            "glyph_conditional_entropy": 2.4883645471826528,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.028767123287671233
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 858,
+            "word_entropy": 9.330452896782544,
+            "glyph_entropy": 3.9463895212560476,
+            "glyph_conditional_entropy": 2.4883645471826528,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.03032375740994072
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      },
+      {
+        "book": "de_nibelunge",
+        "sha256": "69eecd1f37ce1de573226ad6aa42c311fce7586444f71204ea6533810d5f10be",
+        "rows": 48,
+        "seed": 2002,
+        "status": "noise",
+        "changed_glyphs": 514,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 1313,
+            "word_entropy": 9.713175677760264,
+            "glyph_entropy": 3.9704435352928784,
+            "glyph_conditional_entropy": 2.2858937844831217,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.025342465753424658
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 1313,
+            "word_entropy": 9.713175677760264,
+            "glyph_entropy": 3.9704435352928784,
+            "glyph_conditional_entropy": 2.2858937844831217,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.02667578659370725
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      },
+      {
+        "book": "de_nibelunge",
+        "sha256": "69eecd1f37ce1de573226ad6aa42c311fce7586444f71204ea6533810d5f10be",
+        "rows": 48,
+        "seed": 2003,
+        "status": "clean",
+        "changed_glyphs": 0,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 850,
+            "word_entropy": 9.321449222177549,
+            "glyph_entropy": 3.946854267951935,
+            "glyph_conditional_entropy": 2.4828741966521086,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.03881278538812785
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 850,
+            "word_entropy": 9.321449222177549,
+            "glyph_entropy": 3.946854267951935,
+            "glyph_conditional_entropy": 2.4828741966521086,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.04035567715458276
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      },
+      {
+        "book": "de_nibelunge",
+        "sha256": "69eecd1f37ce1de573226ad6aa42c311fce7586444f71204ea6533810d5f10be",
+        "rows": 48,
+        "seed": 2003,
+        "status": "noise",
+        "changed_glyphs": 468,
+        "metrics": {
+          "zl": {
+            "tokens": 5000,
+            "types": 1272,
+            "word_entropy": 9.685757993842799,
+            "glyph_entropy": 3.966874733448439,
+            "glyph_conditional_entropy": 2.237644692691701,
+            "adjacent_pairs": 4380,
+            "adjacent_edit1_share": 0.03356164383561644
+          },
+          "it": {
+            "tokens": 5000,
+            "types": 1272,
+            "word_entropy": 9.685757993842799,
+            "glyph_entropy": 3.966874733448439,
+            "glyph_conditional_entropy": 2.237644692691701,
+            "adjacent_pairs": 4386,
+            "adjacent_edit1_share": 0.034655722754217966
+          }
+        },
+        "passes_fixed_ranges": {
+          "zl": false,
+          "it": false
+        }
+      }
+    ]
+  },
+  "reproduction": {
+    "instruction": "Extract metric_helpers from experiments/P-L3-009/intracontinental-multicrystalline/step.json into /tmp/voy_k046_joint.py; download the cited CSV to /tmp/voy-piii.csv and verify its hash. Save the plan as /tmp/voy-poly-plan.json and this script as /tmp/voy-poly-followup.py. Run with /tmp and the repository root on PYTHONPATH and pinned inputs fetched.",
+    "plan": {
+      "sources": [
+        "la_augustine",
+        "la_erasmus",
+        "de_nibelunge"
+      ],
+      "offset": 20000,
+      "source_characters": 5000,
+      "row_counts": [
+        40,
+        48
+      ],
+      "stay_probability": 0.125,
+      "schedule_seeds": [
+        2001,
+        2002,
+        2003
+      ],
+      "noise_rate": 0.02,
+      "acceptance": {
+        "word_entropy": [
+          8.7950116,
+          9.7950116
+        ],
+        "glyph_entropy": [
+          3.6356971,
+          4.0356971
+        ],
+        "glyph_conditional_entropy": [
+          1.336021,
+          1.736021
+        ],
+        "adjacent_edit1_share": [
+          0.0290694,
+          0.0590694
+        ]
+      },
+      "note": "Exploratory fixed margins around prior training sample, not statistically calibrated; no model or evaluation evidence has been viewed for this follow-up. Same historical table; independent random schedules are not independent cipher tables."
+    },
+    "script": "import json,random,hashlib\nimport voy_k046_joint as j\nfrom vs import refcorpus\nplan=json.load(open('/tmp/voy-poly-plan.json'));pins={e['id']:e for e in refcorpus.pins()};layouts={w:j.witness(w) for w in ('zl','it')};out={'plan':plan,'practice_evaluation_baselines':{w:j.values(*lay) for w,lay in layouts.items()},'rows':[]}\nfor book in plan['sources']:\n pin=pins[book];assert hashlib.sha256(open(pin['file'],'rb').read()).hexdigest()==pin['sha256'];plain=j.text(book)[20000:25000];assert len(plain)==5000\n for size in plan['row_counts']:\n  inv=[{v:k for k,v in r.items()} for r in j.table[:size]]\n  for seed in plan['schedule_seeds']:\n   rng=random.Random(seed);r=0;seq=[]\n   for i in range(5000):\n    if i and rng.random()>=.125:r=(r+1)%size\n    seq.append(r)\n   enc=[j.table[row][c] for row,c in zip(seq,plain)];assert ''.join(inv[row][w] for row,w in zip(seq,enc))==plain\n   glyphs=sorted(set(''.join(enc)));noise_rng=random.Random(seed+100000+size);corrupted=[];changed=0\n   for w in enc:\n    v=[]\n    for ch in w:\n     if noise_rng.random()<.02: v.append(noise_rng.choice([g for g in glyphs if g!=ch]));changed+=1\n     else:v.append(ch)\n    corrupted.append(''.join(v))\n   for status,words in (('clean',enc),('noise',corrupted)):\n    metrics={w:j.values(words,lay[1]) for w,lay in layouts.items()};passed={w:all(lo<=v[k]<=hi for k,(lo,hi) in plan['acceptance'].items()) for w,v in metrics.items()};out['rows'].append({'book':book,'sha256':pin['sha256'],'rows':size,'seed':seed,'status':status,'changed_glyphs':changed if status=='noise' else 0,'metrics':metrics,'passes_fixed_ranges':passed})\nprint(json.dumps(out,indent=2))\n"
+  }
+}
