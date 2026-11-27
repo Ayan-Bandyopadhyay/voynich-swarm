@@ -1,0 +1,7 @@
+{
+  "step": "P-G-025",
+  "handle": "intracontinental-multicrystalline",
+  "kind": "step",
+  "summary": "The six published practice measurements replay; the multi-seed generator sweep needs a reproducible implementation.",
+  "lease": "22f0eafe8b6589c683f7543d"
+}

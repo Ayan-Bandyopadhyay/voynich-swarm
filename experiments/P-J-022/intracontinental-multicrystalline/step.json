@@ -1,0 +1,1701 @@
+{
+  "program": "J",
+  "title": "Freeze and calibrate directional-pair definitions before scorer integration",
+  "statement": "A new exploratory check uses the first 7,000 normalized words from each of three cleaned works (Augustine, Dante and Nibelungenlied), ten shuffles, one random monoalphabetic substitution and three independent equal-probability three-sign homophonic encodings. For each plaintext sample compare no removals, the single most frequent type, and the top ceil(1% of plaintext distinct types); use the same number of removals in each transformed sample. Ties are broken by first appearance. Count forward unequal-word pairs at distances 1\u20133, mark an unordered pair type skewed when absolute forward minus reverse counts exceed 5, and divide by the number of observed unordered pair types. Original skew ratios with no removals versus 1% removal are Latin 0.001982 to 0.000141, Italian 0.003644 to 0.000301, German 0.005210 to 0.000746. A bijective character substitution preserves the results exactly, and a planted five-symbol directional cycle is detected; in the tested toy homophonic encodings skew ratios are zero or near zero. In the no-removal samples, distinct types per token are 0.392, 0.307, 0.207, while hapax types per token are 0.289, 0.214, 0.107. These are different readings of unique words. Pair-type and pair-occurrence denominators also differ. This is a sensitivity pilot, not an exact replication or a manuscript result.",
+  "check": "Resolve or explicitly choose the pair denominator, stopword percentage interpretation and unique-word measure, and preserve type/count semantics in a reviewed scorer primitive. Preregister sample length, window boundaries, stopword tie and cross-gap rules and evaluate on separate held-apart historical works; use multiple languages, independent witness transcriptions and planted positive and negative controls. Report both all pair types and occurrences, both distinct and singleton definitions, sensitivity to filtering, repeated seeded encodings and uncertainty. Freeze threshold and null calibration before any hidden-page evaluation.",
+  "on_path": true,
+  "hard": false,
+  "methods": {
+    "paper": "https://ceur-ws.org/Vol-3313/paper8.pdf, pages 3\u20135. Paper reports a 3-word forward/backward window, T=5, percentage frequency filtering and an ambiguous unique-word description; it does not justify treating this pilot as an exact implementation.",
+    "sample": "First 7,000 words of each P-J-011 cleaned training work. These source works have appeared in earlier calibration and are not independent confirmations. No manuscript words or hidden split read.",
+    "pairing": "After removal, concatenate retained tokens within each sample; count unequal ordered pairs forward at distances 1\u20133, group by unordered types. Count |forward-reverse| > 5 once per unordered type. The fixed 7,000-token windows and 1% grid were selected for this exploratory pilot, not used for any confirmatory threshold.",
+    "controls": "Distinct fixed-width 3-way random code for each character position, independent seeds 0\u20132; count removal k fixed to plaintext k even if encrypted vocabulary grows. Ten seeded word-order shuffles; monoalphabetic random permutation seed 408. Planted five-symbol cycle repeated 400 times; this is one easy positive control.",
+    "limits": "Samples are work beginnings, not randomized or independent works per language. Only one positive construction, three homophonic seeds, ten null permutations and a toy cipher. Stopword removal may create artificial adjacencies. No independent transcription comparison, review, full calibration or scorer primitive is complete."
+  },
+  "results": {
+    "la_augustine": {
+      "0": {
+        "original": {
+          "tokens": 7000,
+          "types": 2747,
+          "hapax": 2026,
+          "pairs": 17158,
+          "pair_occurrences": 20834,
+          "skewed": 34,
+          "skew_type_ratio": 0.0019815829350740177,
+          "skew_instance_ratio": 0.0016319477776711145,
+          "types_per_token": 0.3924285714285714,
+          "hapax_per_token": 0.2894285714285714
+        },
+        "mono": {
+          "tokens": 7000,
+          "types": 2747,
+          "hapax": 2026,
+          "pairs": 17158,
+          "pair_occurrences": 20834,
+          "skewed": 34,
+          "skew_type_ratio": 0.0019815829350740177,
+          "skew_instance_ratio": 0.0016319477776711145,
+          "types_per_token": 0.3924285714285714,
+          "hapax_per_token": 0.2894285714285714
+        },
+        "homophonic": [
+          {
+            "tokens": 7000,
+            "types": 5454,
+            "hapax": 5001,
+            "pairs": 20837,
+            "pair_occurrences": 20980,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.7791428571428571,
+            "hapax_per_token": 0.7144285714285714
+          },
+          {
+            "tokens": 7000,
+            "types": 5447,
+            "hapax": 4971,
+            "pairs": 20857,
+            "pair_occurrences": 20986,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.7781428571428571,
+            "hapax_per_token": 0.7101428571428572
+          },
+          {
+            "tokens": 7000,
+            "types": 5471,
+            "hapax": 5023,
+            "pairs": 20851,
+            "pair_occurrences": 20984,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.7815714285714286,
+            "hapax_per_token": 0.7175714285714285
+          }
+        ],
+        "shuffle": [
+          {
+            "tokens": 7000,
+            "types": 2747,
+            "hapax": 2026,
+            "pairs": 17989,
+            "pair_occurrences": 20867,
+            "skewed": 5,
+            "skew_type_ratio": 0.000277947634665629,
+            "skew_instance_ratio": 0.000239612785738247,
+            "types_per_token": 0.3924285714285714,
+            "hapax_per_token": 0.2894285714285714
+          },
+          {
+            "tokens": 7000,
+            "types": 2747,
+            "hapax": 2026,
+            "pairs": 17969,
+            "pair_occurrences": 20863,
+            "skewed": 14,
+            "skew_type_ratio": 0.0007791195948578107,
+            "skew_instance_ratio": 0.0006710444327277956,
+            "types_per_token": 0.3924285714285714,
+            "hapax_per_token": 0.2894285714285714
+          },
+          {
+            "tokens": 7000,
+            "types": 2747,
+            "hapax": 2026,
+            "pairs": 17940,
+            "pair_occurrences": 20851,
+            "skewed": 11,
+            "skew_type_ratio": 0.000613154960981048,
+            "skew_instance_ratio": 0.0005275526353652103,
+            "types_per_token": 0.3924285714285714,
+            "hapax_per_token": 0.2894285714285714
+          },
+          {
+            "tokens": 7000,
+            "types": 2747,
+            "hapax": 2026,
+            "pairs": 17968,
+            "pair_occurrences": 20844,
+            "skewed": 6,
+            "skew_type_ratio": 0.00033392698130008905,
+            "skew_instance_ratio": 0.0002878526194588371,
+            "types_per_token": 0.3924285714285714,
+            "hapax_per_token": 0.2894285714285714
+          },
+          {
+            "tokens": 7000,
+            "types": 2747,
+            "hapax": 2026,
+            "pairs": 18007,
+            "pair_occurrences": 20866,
+            "skewed": 8,
+            "skew_type_ratio": 0.000444271672127506,
+            "skew_instance_ratio": 0.00038339883063356656,
+            "types_per_token": 0.3924285714285714,
+            "hapax_per_token": 0.2894285714285714
+          },
+          {
+            "tokens": 7000,
+            "types": 2747,
+            "hapax": 2026,
+            "pairs": 18030,
+            "pair_occurrences": 20874,
+            "skewed": 11,
+            "skew_type_ratio": 0.0006100942872989462,
+            "skew_instance_ratio": 0.0005269713519210501,
+            "types_per_token": 0.3924285714285714,
+            "hapax_per_token": 0.2894285714285714
+          },
+          {
+            "tokens": 7000,
+            "types": 2747,
+            "hapax": 2026,
+            "pairs": 17994,
+            "pair_occurrences": 20851,
+            "skewed": 19,
+            "skew_type_ratio": 0.0010559075247304657,
+            "skew_instance_ratio": 0.0009112272792671815,
+            "types_per_token": 0.3924285714285714,
+            "hapax_per_token": 0.2894285714285714
+          },
+          {
+            "tokens": 7000,
+            "types": 2747,
+            "hapax": 2026,
+            "pairs": 17909,
+            "pair_occurrences": 20857,
+            "skewed": 8,
+            "skew_type_ratio": 0.00044670277514099056,
+            "skew_instance_ratio": 0.00038356427098815745,
+            "types_per_token": 0.3924285714285714,
+            "hapax_per_token": 0.2894285714285714
+          },
+          {
+            "tokens": 7000,
+            "types": 2747,
+            "hapax": 2026,
+            "pairs": 17937,
+            "pair_occurrences": 20842,
+            "skewed": 13,
+            "skew_type_ratio": 0.0007247588782962591,
+            "skew_instance_ratio": 0.0006237405239420402,
+            "types_per_token": 0.3924285714285714,
+            "hapax_per_token": 0.2894285714285714
+          },
+          {
+            "tokens": 7000,
+            "types": 2747,
+            "hapax": 2026,
+            "pairs": 18023,
+            "pair_occurrences": 20892,
+            "skewed": 6,
+            "skew_type_ratio": 0.00033290795095156187,
+            "skew_instance_ratio": 0.0002871912693854107,
+            "types_per_token": 0.3924285714285714,
+            "hapax_per_token": 0.2894285714285714
+          }
+        ]
+      },
+      "1": {
+        "original": {
+          "tokens": 6574,
+          "types": 2746,
+          "hapax": 2026,
+          "pairs": 16915,
+          "pair_occurrences": 19599,
+          "skewed": 19,
+          "skew_type_ratio": 0.0011232633757020396,
+          "skew_instance_ratio": 0.0009694372161844992,
+          "types_per_token": 0.4177061149984789,
+          "hapax_per_token": 0.30818375418314575
+        },
+        "mono": {
+          "tokens": 6574,
+          "types": 2746,
+          "hapax": 2026,
+          "pairs": 16915,
+          "pair_occurrences": 19599,
+          "skewed": 19,
+          "skew_type_ratio": 0.0011232633757020396,
+          "skew_instance_ratio": 0.0009694372161844992,
+          "types_per_token": 0.4177061149984789,
+          "hapax_per_token": 0.30818375418314575
+        },
+        "homophonic": [
+          {
+            "tokens": 6943,
+            "types": 5453,
+            "hapax": 5001,
+            "pairs": 20680,
+            "pair_occurrences": 20809,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.785395362235345,
+            "hapax_per_token": 0.7202938211147919
+          },
+          {
+            "tokens": 6944,
+            "types": 5446,
+            "hapax": 4971,
+            "pairs": 20709,
+            "pair_occurrences": 20819,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.7842741935483871,
+            "hapax_per_token": 0.7158698156682027
+          },
+          {
+            "tokens": 6943,
+            "types": 5470,
+            "hapax": 5023,
+            "pairs": 20694,
+            "pair_occurrences": 20813,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.7878438715252772,
+            "hapax_per_token": 0.7234624801958808
+          }
+        ],
+        "shuffle": [
+          {
+            "tokens": 6574,
+            "types": 2746,
+            "hapax": 2026,
+            "pairs": 17874,
+            "pair_occurrences": 19663,
+            "skewed": 1,
+            "skew_type_ratio": 5.594718585655141e-05,
+            "skew_instance_ratio": 5.085693942938514e-05,
+            "types_per_token": 0.4177061149984789,
+            "hapax_per_token": 0.30818375418314575
+          },
+          {
+            "tokens": 6574,
+            "types": 2746,
+            "hapax": 2026,
+            "pairs": 17834,
+            "pair_occurrences": 19655,
+            "skewed": 3,
+            "skew_type_ratio": 0.000168218010541662,
+            "skew_instance_ratio": 0.00015263291783261258,
+            "types_per_token": 0.4177061149984789,
+            "hapax_per_token": 0.30818375418314575
+          },
+          {
+            "tokens": 6574,
+            "types": 2746,
+            "hapax": 2026,
+            "pairs": 17876,
+            "pair_occurrences": 19657,
+            "skewed": 1,
+            "skew_type_ratio": 5.594092638174088e-05,
+            "skew_instance_ratio": 5.087246273592104e-05,
+            "types_per_token": 0.4177061149984789,
+            "hapax_per_token": 0.30818375418314575
+          },
+          {
+            "tokens": 6574,
+            "types": 2746,
+            "hapax": 2026,
+            "pairs": 17882,
+            "pair_occurrences": 19650,
+            "skewed": 1,
+            "skew_type_ratio": 5.592215635834918e-05,
+            "skew_instance_ratio": 5.089058524173028e-05,
+            "types_per_token": 0.4177061149984789,
+            "hapax_per_token": 0.30818375418314575
+          },
+          {
+            "tokens": 6574,
+            "types": 2746,
+            "hapax": 2026,
+            "pairs": 17856,
+            "pair_occurrences": 19658,
+            "skewed": 3,
+            "skew_type_ratio": 0.00016801075268817206,
+            "skew_instance_ratio": 0.00015260962458032352,
+            "types_per_token": 0.4177061149984789,
+            "hapax_per_token": 0.30818375418314575
+          },
+          {
+            "tokens": 6574,
+            "types": 2746,
+            "hapax": 2026,
+            "pairs": 17938,
+            "pair_occurrences": 19668,
+            "skewed": 4,
+            "skew_type_ratio": 0.0002229902999219534,
+            "skew_instance_ratio": 0.0002033760423022168,
+            "types_per_token": 0.4177061149984789,
+            "hapax_per_token": 0.30818375418314575
+          },
+          {
+            "tokens": 6574,
+            "types": 2746,
+            "hapax": 2026,
+            "pairs": 17878,
+            "pair_occurrences": 19647,
+            "skewed": 3,
+            "skew_type_ratio": 0.0001678040049222508,
+            "skew_instance_ratio": 0.00015269506794930523,
+            "types_per_token": 0.4177061149984789,
+            "hapax_per_token": 0.30818375418314575
+          },
+          {
+            "tokens": 6574,
+            "types": 2746,
+            "hapax": 2026,
+            "pairs": 17833,
+            "pair_occurrences": 19650,
+            "skewed": 1,
+            "skew_type_ratio": 5.607581450120563e-05,
+            "skew_instance_ratio": 5.089058524173028e-05,
+            "types_per_token": 0.4177061149984789,
+            "hapax_per_token": 0.30818375418314575
+          },
+          {
+            "tokens": 6574,
+            "types": 2746,
+            "hapax": 2026,
+            "pairs": 17844,
+            "pair_occurrences": 19654,
+            "skewed": 1,
+            "skew_type_ratio": 5.6041246357318986e-05,
+            "skew_instance_ratio": 5.0880227943421185e-05,
+            "types_per_token": 0.4177061149984789,
+            "hapax_per_token": 0.30818375418314575
+          },
+          {
+            "tokens": 6574,
+            "types": 2746,
+            "hapax": 2026,
+            "pairs": 17888,
+            "pair_occurrences": 19679,
+            "skewed": 3,
+            "skew_type_ratio": 0.0001677101967799642,
+            "skew_instance_ratio": 0.00015244677066924132,
+            "types_per_token": 0.4177061149984789,
+            "hapax_per_token": 0.30818375418314575
+          }
+        ]
+      },
+      "28": {
+        "original": {
+          "tokens": 5104,
+          "types": 2719,
+          "hapax": 2026,
+          "pairs": 14183,
+          "pair_occurrences": 15186,
+          "skewed": 2,
+          "skew_type_ratio": 0.000141013889868152,
+          "skew_instance_ratio": 0.00013170025023047545,
+          "types_per_token": 0.5327194357366771,
+          "hapax_per_token": 0.3969435736677116
+        },
+        "mono": {
+          "tokens": 5104,
+          "types": 2719,
+          "hapax": 2026,
+          "pairs": 14183,
+          "pair_occurrences": 15186,
+          "skewed": 2,
+          "skew_type_ratio": 0.000141013889868152,
+          "skew_instance_ratio": 0.00013170025023047545,
+          "types_per_token": 0.5327194357366771,
+          "hapax_per_token": 0.3969435736677116
+        },
+        "homophonic": [
+          {
+            "tokens": 6269,
+            "types": 5426,
+            "hapax": 5001,
+            "pairs": 18774,
+            "pair_occurrences": 18796,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.8655287924708885,
+            "hapax_per_token": 0.7977348859467219
+          },
+          {
+            "tokens": 6275,
+            "types": 5419,
+            "hapax": 4971,
+            "pairs": 18795,
+            "pair_occurrences": 18817,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.863585657370518,
+            "hapax_per_token": 0.792191235059761
+          },
+          {
+            "tokens": 6275,
+            "types": 5443,
+            "hapax": 5023,
+            "pairs": 18799,
+            "pair_occurrences": 18818,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.867410358565737,
+            "hapax_per_token": 0.8004780876494024
+          }
+        ],
+        "shuffle": [
+          {
+            "tokens": 5104,
+            "types": 2719,
+            "hapax": 2026,
+            "pairs": 14980,
+            "pair_occurrences": 15290,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.5327194357366771,
+            "hapax_per_token": 0.3969435736677116
+          },
+          {
+            "tokens": 5104,
+            "types": 2719,
+            "hapax": 2026,
+            "pairs": 14960,
+            "pair_occurrences": 15285,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.5327194357366771,
+            "hapax_per_token": 0.3969435736677116
+          },
+          {
+            "tokens": 5104,
+            "types": 2719,
+            "hapax": 2026,
+            "pairs": 14998,
+            "pair_occurrences": 15292,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.5327194357366771,
+            "hapax_per_token": 0.3969435736677116
+          },
+          {
+            "tokens": 5104,
+            "types": 2719,
+            "hapax": 2026,
+            "pairs": 15011,
+            "pair_occurrences": 15292,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.5327194357366771,
+            "hapax_per_token": 0.3969435736677116
+          },
+          {
+            "tokens": 5104,
+            "types": 2719,
+            "hapax": 2026,
+            "pairs": 15027,
+            "pair_occurrences": 15296,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.5327194357366771,
+            "hapax_per_token": 0.3969435736677116
+          },
+          {
+            "tokens": 5104,
+            "types": 2719,
+            "hapax": 2026,
+            "pairs": 15042,
+            "pair_occurrences": 15298,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.5327194357366771,
+            "hapax_per_token": 0.3969435736677116
+          },
+          {
+            "tokens": 5104,
+            "types": 2719,
+            "hapax": 2026,
+            "pairs": 15005,
+            "pair_occurrences": 15292,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.5327194357366771,
+            "hapax_per_token": 0.3969435736677116
+          },
+          {
+            "tokens": 5104,
+            "types": 2719,
+            "hapax": 2026,
+            "pairs": 14976,
+            "pair_occurrences": 15292,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.5327194357366771,
+            "hapax_per_token": 0.3969435736677116
+          },
+          {
+            "tokens": 5104,
+            "types": 2719,
+            "hapax": 2026,
+            "pairs": 15002,
+            "pair_occurrences": 15288,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.5327194357366771,
+            "hapax_per_token": 0.3969435736677116
+          },
+          {
+            "tokens": 5104,
+            "types": 2719,
+            "hapax": 2026,
+            "pairs": 14994,
+            "pair_occurrences": 15297,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.5327194357366771,
+            "hapax_per_token": 0.3969435736677116
+          }
+        ]
+      }
+    },
+    "it_dante": {
+      "0": {
+        "original": {
+          "tokens": 7000,
+          "types": 2150,
+          "hapax": 1498,
+          "pairs": 15916,
+          "pair_occurrences": 20871,
+          "skewed": 58,
+          "skew_type_ratio": 0.0036441316913797435,
+          "skew_instance_ratio": 0.002778975612093335,
+          "types_per_token": 0.30714285714285716,
+          "hapax_per_token": 0.214
+        },
+        "mono": {
+          "tokens": 7000,
+          "types": 2150,
+          "hapax": 1498,
+          "pairs": 15916,
+          "pair_occurrences": 20871,
+          "skewed": 58,
+          "skew_type_ratio": 0.0036441316913797435,
+          "skew_instance_ratio": 0.002778975612093335,
+          "types_per_token": 0.30714285714285716,
+          "hapax_per_token": 0.214
+        },
+        "homophonic": [
+          {
+            "tokens": 7000,
+            "types": 4435,
+            "hapax": 3950,
+            "pairs": 20440,
+            "pair_occurrences": 20980,
+            "skewed": 2,
+            "skew_type_ratio": 9.784735812133073e-05,
+            "skew_instance_ratio": 9.532888465204957e-05,
+            "types_per_token": 0.6335714285714286,
+            "hapax_per_token": 0.5642857142857143
+          },
+          {
+            "tokens": 7000,
+            "types": 4442,
+            "hapax": 3950,
+            "pairs": 20451,
+            "pair_occurrences": 20976,
+            "skewed": 2,
+            "skew_type_ratio": 9.779472886411422e-05,
+            "skew_instance_ratio": 9.534706331045004e-05,
+            "types_per_token": 0.6345714285714286,
+            "hapax_per_token": 0.5642857142857143
+          },
+          {
+            "tokens": 7000,
+            "types": 4418,
+            "hapax": 3906,
+            "pairs": 20465,
+            "pair_occurrences": 20978,
+            "skewed": 1,
+            "skew_type_ratio": 4.886391399951136e-05,
+            "skew_instance_ratio": 4.766898655734579e-05,
+            "types_per_token": 0.6311428571428571,
+            "hapax_per_token": 0.558
+          }
+        ],
+        "shuffle": [
+          {
+            "tokens": 7000,
+            "types": 2150,
+            "hapax": 1498,
+            "pairs": 16187,
+            "pair_occurrences": 20789,
+            "skewed": 13,
+            "skew_type_ratio": 0.0008031136096867857,
+            "skew_instance_ratio": 0.0006253307037375535,
+            "types_per_token": 0.30714285714285716,
+            "hapax_per_token": 0.214
+          },
+          {
+            "tokens": 7000,
+            "types": 2150,
+            "hapax": 1498,
+            "pairs": 16249,
+            "pair_occurrences": 20829,
+            "skewed": 16,
+            "skew_type_ratio": 0.0009846759800603115,
+            "skew_instance_ratio": 0.0007681597772336646,
+            "types_per_token": 0.30714285714285716,
+            "hapax_per_token": 0.214
+          },
+          {
+            "tokens": 7000,
+            "types": 2150,
+            "hapax": 1498,
+            "pairs": 16292,
+            "pair_occurrences": 20835,
+            "skewed": 17,
+            "skew_type_ratio": 0.0010434569113675423,
+            "skew_instance_ratio": 0.0008159347252219822,
+            "types_per_token": 0.30714285714285716,
+            "hapax_per_token": 0.214
+          },
+          {
+            "tokens": 7000,
+            "types": 2150,
+            "hapax": 1498,
+            "pairs": 16270,
+            "pair_occurrences": 20833,
+            "skewed": 18,
+            "skew_type_ratio": 0.0011063306699446835,
+            "skew_instance_ratio": 0.0008640138242211876,
+            "types_per_token": 0.30714285714285716,
+            "hapax_per_token": 0.214
+          },
+          {
+            "tokens": 7000,
+            "types": 2150,
+            "hapax": 1498,
+            "pairs": 16212,
+            "pair_occurrences": 20807,
+            "skewed": 13,
+            "skew_type_ratio": 0.0008018751542067604,
+            "skew_instance_ratio": 0.0006247897342240592,
+            "types_per_token": 0.30714285714285716,
+            "hapax_per_token": 0.214
+          },
+          {
+            "tokens": 7000,
+            "types": 2150,
+            "hapax": 1498,
+            "pairs": 16191,
+            "pair_occurrences": 20809,
+            "skewed": 18,
+            "skew_type_ratio": 0.0011117287381878821,
+            "skew_instance_ratio": 0.0008650103320678552,
+            "types_per_token": 0.30714285714285716,
+            "hapax_per_token": 0.214
+          },
+          {
+            "tokens": 7000,
+            "types": 2150,
+            "hapax": 1498,
+            "pairs": 16311,
+            "pair_occurrences": 20841,
+            "skewed": 13,
+            "skew_type_ratio": 0.0007970081540064987,
+            "skew_instance_ratio": 0.0006237704524734897,
+            "types_per_token": 0.30714285714285716,
+            "hapax_per_token": 0.214
+          },
+          {
+            "tokens": 7000,
+            "types": 2150,
+            "hapax": 1498,
+            "pairs": 16248,
+            "pair_occurrences": 20837,
+            "skewed": 24,
+            "skew_type_ratio": 0.0014771048744460858,
+            "skew_instance_ratio": 0.0011517972836780728,
+            "types_per_token": 0.30714285714285716,
+            "hapax_per_token": 0.214
+          },
+          {
+            "tokens": 7000,
+            "types": 2150,
+            "hapax": 1498,
+            "pairs": 16282,
+            "pair_occurrences": 20827,
+            "skewed": 20,
+            "skew_type_ratio": 0.0012283503255128363,
+            "skew_instance_ratio": 0.0009602919287463389,
+            "types_per_token": 0.30714285714285716,
+            "hapax_per_token": 0.214
+          },
+          {
+            "tokens": 7000,
+            "types": 2150,
+            "hapax": 1498,
+            "pairs": 16174,
+            "pair_occurrences": 20816,
+            "skewed": 18,
+            "skew_type_ratio": 0.0011128972424879436,
+            "skew_instance_ratio": 0.0008647194465795542,
+            "types_per_token": 0.30714285714285716,
+            "hapax_per_token": 0.214
+          }
+        ]
+      },
+      "1": {
+        "original": {
+          "tokens": 6657,
+          "types": 2149,
+          "hapax": 1498,
+          "pairs": 15771,
+          "pair_occurrences": 19863,
+          "skewed": 46,
+          "skew_type_ratio": 0.0029167459260668314,
+          "skew_instance_ratio": 0.0023158636661128732,
+          "types_per_token": 0.3228180862250263,
+          "hapax_per_token": 0.22502628811777076
+        },
+        "mono": {
+          "tokens": 6657,
+          "types": 2149,
+          "hapax": 1498,
+          "pairs": 15771,
+          "pair_occurrences": 19863,
+          "skewed": 46,
+          "skew_type_ratio": 0.0029167459260668314,
+          "skew_instance_ratio": 0.0023158636661128732,
+          "types_per_token": 0.3228180862250263,
+          "hapax_per_token": 0.22502628811777076
+        },
+        "homophonic": [
+          {
+            "tokens": 6881,
+            "types": 4434,
+            "hapax": 3950,
+            "pairs": 20203,
+            "pair_occurrences": 20626,
+            "skewed": 1,
+            "skew_type_ratio": 4.949759936643073e-05,
+            "skew_instance_ratio": 4.84824978182876e-05,
+            "types_per_token": 0.6443830838540909,
+            "hapax_per_token": 0.5740444702804824
+          },
+          {
+            "tokens": 6878,
+            "types": 4441,
+            "hapax": 3950,
+            "pairs": 20198,
+            "pair_occurrences": 20613,
+            "skewed": 1,
+            "skew_type_ratio": 4.9509852460639665e-05,
+            "skew_instance_ratio": 4.8513074273516714e-05,
+            "types_per_token": 0.6456818842686828,
+            "hapax_per_token": 0.574294853154987
+          },
+          {
+            "tokens": 6872,
+            "types": 4417,
+            "hapax": 3906,
+            "pairs": 20195,
+            "pair_occurrences": 20598,
+            "skewed": 1,
+            "skew_type_ratio": 4.951720722951226e-05,
+            "skew_instance_ratio": 4.854840275754928e-05,
+            "types_per_token": 0.6427532013969732,
+            "hapax_per_token": 0.5683934807916181
+          }
+        ],
+        "shuffle": [
+          {
+            "tokens": 6657,
+            "types": 2149,
+            "hapax": 1498,
+            "pairs": 16081,
+            "pair_occurrences": 19808,
+            "skewed": 7,
+            "skew_type_ratio": 0.00043529631241838196,
+            "skew_instance_ratio": 0.0003533925686591276,
+            "types_per_token": 0.3228180862250263,
+            "hapax_per_token": 0.22502628811777076
+          },
+          {
+            "tokens": 6657,
+            "types": 2149,
+            "hapax": 1498,
+            "pairs": 16164,
+            "pair_occurrences": 19848,
+            "skewed": 12,
+            "skew_type_ratio": 0.0007423904974016332,
+            "skew_instance_ratio": 0.0006045949214026602,
+            "types_per_token": 0.3228180862250263,
+            "hapax_per_token": 0.22502628811777076
+          },
+          {
+            "tokens": 6657,
+            "types": 2149,
+            "hapax": 1498,
+            "pairs": 16194,
+            "pair_occurrences": 19857,
+            "skewed": 10,
+            "skew_type_ratio": 0.0006175126590095097,
+            "skew_instance_ratio": 0.0005036007453291031,
+            "types_per_token": 0.3228180862250263,
+            "hapax_per_token": 0.22502628811777076
+          },
+          {
+            "tokens": 6657,
+            "types": 2149,
+            "hapax": 1498,
+            "pairs": 16167,
+            "pair_occurrences": 19845,
+            "skewed": 14,
+            "skew_type_ratio": 0.0008659615265664626,
+            "skew_instance_ratio": 0.0007054673721340388,
+            "types_per_token": 0.3228180862250263,
+            "hapax_per_token": 0.22502628811777076
+          },
+          {
+            "tokens": 6657,
+            "types": 2149,
+            "hapax": 1498,
+            "pairs": 16111,
+            "pair_occurrences": 19814,
+            "skewed": 9,
+            "skew_type_ratio": 0.0005586245422382223,
+            "skew_instance_ratio": 0.0004542242858584839,
+            "types_per_token": 0.3228180862250263,
+            "hapax_per_token": 0.22502628811777076
+          },
+          {
+            "tokens": 6657,
+            "types": 2149,
+            "hapax": 1498,
+            "pairs": 16082,
+            "pair_occurrences": 19822,
+            "skewed": 7,
+            "skew_type_ratio": 0.00043526924511876633,
+            "skew_instance_ratio": 0.0003531429724548482,
+            "types_per_token": 0.3228180862250263,
+            "hapax_per_token": 0.22502628811777076
+          },
+          {
+            "tokens": 6657,
+            "types": 2149,
+            "hapax": 1498,
+            "pairs": 16206,
+            "pair_occurrences": 19855,
+            "skewed": 9,
+            "skew_type_ratio": 0.0005553498704183636,
+            "skew_instance_ratio": 0.00045328632586250317,
+            "types_per_token": 0.3228180862250263,
+            "hapax_per_token": 0.22502628811777076
+          },
+          {
+            "tokens": 6657,
+            "types": 2149,
+            "hapax": 1498,
+            "pairs": 16141,
+            "pair_occurrences": 19839,
+            "skewed": 16,
+            "skew_type_ratio": 0.0009912644817545381,
+            "skew_instance_ratio": 0.0008064922627148546,
+            "types_per_token": 0.3228180862250263,
+            "hapax_per_token": 0.22502628811777076
+          },
+          {
+            "tokens": 6657,
+            "types": 2149,
+            "hapax": 1498,
+            "pairs": 16180,
+            "pair_occurrences": 19845,
+            "skewed": 12,
+            "skew_type_ratio": 0.0007416563658838071,
+            "skew_instance_ratio": 0.0006046863189720333,
+            "types_per_token": 0.3228180862250263,
+            "hapax_per_token": 0.22502628811777076
+          },
+          {
+            "tokens": 6657,
+            "types": 2149,
+            "hapax": 1498,
+            "pairs": 16070,
+            "pair_occurrences": 19817,
+            "skewed": 12,
+            "skew_type_ratio": 0.00074673304293715,
+            "skew_instance_ratio": 0.0006055406973810365,
+            "types_per_token": 0.3228180862250263,
+            "hapax_per_token": 0.22502628811777076
+          }
+        ]
+      },
+      "22": {
+        "original": {
+          "tokens": 4696,
+          "types": 2128,
+          "hapax": 1498,
+          "pairs": 13306,
+          "pair_occurrences": 14033,
+          "skewed": 4,
+          "skew_type_ratio": 0.0003006162633398467,
+          "skew_instance_ratio": 0.00028504240005700846,
+          "types_per_token": 0.45315161839863716,
+          "hapax_per_token": 0.31899488926746167
+        },
+        "mono": {
+          "tokens": 4696,
+          "types": 2128,
+          "hapax": 1498,
+          "pairs": 13306,
+          "pair_occurrences": 14033,
+          "skewed": 4,
+          "skew_type_ratio": 0.0003006162633398467,
+          "skew_instance_ratio": 0.00028504240005700846,
+          "types_per_token": 0.45315161839863716,
+          "hapax_per_token": 0.31899488926746167
+        },
+        "homophonic": [
+          {
+            "tokens": 6074,
+            "types": 4413,
+            "hapax": 3950,
+            "pairs": 18135,
+            "pair_occurrences": 18210,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.7265393480408298,
+            "hapax_per_token": 0.650312808692789
+          },
+          {
+            "tokens": 6077,
+            "types": 4420,
+            "hapax": 3950,
+            "pairs": 18164,
+            "pair_occurrences": 18220,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.7273325654105645,
+            "hapax_per_token": 0.6499917722560474
+          },
+          {
+            "tokens": 6074,
+            "types": 4396,
+            "hapax": 3906,
+            "pairs": 18139,
+            "pair_occurrences": 18213,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.7237405334211393,
+            "hapax_per_token": 0.6430688179124135
+          }
+        ],
+        "shuffle": [
+          {
+            "tokens": 4696,
+            "types": 2128,
+            "hapax": 1498,
+            "pairs": 13579,
+            "pair_occurrences": 14049,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.45315161839863716,
+            "hapax_per_token": 0.31899488926746167
+          },
+          {
+            "tokens": 4696,
+            "types": 2128,
+            "hapax": 1498,
+            "pairs": 13606,
+            "pair_occurrences": 14060,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.45315161839863716,
+            "hapax_per_token": 0.31899488926746167
+          },
+          {
+            "tokens": 4696,
+            "types": 2128,
+            "hapax": 1498,
+            "pairs": 13624,
+            "pair_occurrences": 14062,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.45315161839863716,
+            "hapax_per_token": 0.31899488926746167
+          },
+          {
+            "tokens": 4696,
+            "types": 2128,
+            "hapax": 1498,
+            "pairs": 13641,
+            "pair_occurrences": 14063,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.45315161839863716,
+            "hapax_per_token": 0.31899488926746167
+          },
+          {
+            "tokens": 4696,
+            "types": 2128,
+            "hapax": 1498,
+            "pairs": 13573,
+            "pair_occurrences": 14052,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.45315161839863716,
+            "hapax_per_token": 0.31899488926746167
+          },
+          {
+            "tokens": 4696,
+            "types": 2128,
+            "hapax": 1498,
+            "pairs": 13560,
+            "pair_occurrences": 14056,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.45315161839863716,
+            "hapax_per_token": 0.31899488926746167
+          },
+          {
+            "tokens": 4696,
+            "types": 2128,
+            "hapax": 1498,
+            "pairs": 13653,
+            "pair_occurrences": 14068,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.45315161839863716,
+            "hapax_per_token": 0.31899488926746167
+          },
+          {
+            "tokens": 4696,
+            "types": 2128,
+            "hapax": 1498,
+            "pairs": 13611,
+            "pair_occurrences": 14065,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.45315161839863716,
+            "hapax_per_token": 0.31899488926746167
+          },
+          {
+            "tokens": 4696,
+            "types": 2128,
+            "hapax": 1498,
+            "pairs": 13627,
+            "pair_occurrences": 14063,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.45315161839863716,
+            "hapax_per_token": 0.31899488926746167
+          },
+          {
+            "tokens": 4696,
+            "types": 2128,
+            "hapax": 1498,
+            "pairs": 13610,
+            "pair_occurrences": 14065,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.45315161839863716,
+            "hapax_per_token": 0.31899488926746167
+          }
+        ]
+      }
+    },
+    "de_nibelunge": {
+      "0": {
+        "original": {
+          "tokens": 7000,
+          "types": 1446,
+          "hapax": 751,
+          "pairs": 14970,
+          "pair_occurrences": 20909,
+          "skewed": 78,
+          "skew_type_ratio": 0.0052104208416833666,
+          "skew_instance_ratio": 0.003730451001960878,
+          "types_per_token": 0.20657142857142857,
+          "hapax_per_token": 0.10728571428571429
+        },
+        "mono": {
+          "tokens": 7000,
+          "types": 1446,
+          "hapax": 751,
+          "pairs": 14970,
+          "pair_occurrences": 20909,
+          "skewed": 78,
+          "skew_type_ratio": 0.0052104208416833666,
+          "skew_instance_ratio": 0.003730451001960878,
+          "types_per_token": 0.20657142857142857,
+          "hapax_per_token": 0.10728571428571429
+        },
+        "homophonic": [
+          {
+            "tokens": 7000,
+            "types": 4824,
+            "hapax": 4146,
+            "pairs": 20932,
+            "pair_occurrences": 20993,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.6891428571428572,
+            "hapax_per_token": 0.5922857142857143
+          },
+          {
+            "tokens": 7000,
+            "types": 4769,
+            "hapax": 4040,
+            "pairs": 20930,
+            "pair_occurrences": 20992,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.6812857142857143,
+            "hapax_per_token": 0.5771428571428572
+          },
+          {
+            "tokens": 7000,
+            "types": 4800,
+            "hapax": 4099,
+            "pairs": 20927,
+            "pair_occurrences": 20992,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.6857142857142857,
+            "hapax_per_token": 0.5855714285714285
+          }
+        ],
+        "shuffle": [
+          {
+            "tokens": 7000,
+            "types": 1446,
+            "hapax": 751,
+            "pairs": 15571,
+            "pair_occurrences": 20865,
+            "skewed": 22,
+            "skew_type_ratio": 0.0014128829233832124,
+            "skew_instance_ratio": 0.0010543973160795591,
+            "types_per_token": 0.20657142857142857,
+            "hapax_per_token": 0.10728571428571429
+          },
+          {
+            "tokens": 7000,
+            "types": 1446,
+            "hapax": 751,
+            "pairs": 15638,
+            "pair_occurrences": 20867,
+            "skewed": 15,
+            "skew_type_ratio": 0.0009592019439826065,
+            "skew_instance_ratio": 0.0007188383572147409,
+            "types_per_token": 0.20657142857142857,
+            "hapax_per_token": 0.10728571428571429
+          },
+          {
+            "tokens": 7000,
+            "types": 1446,
+            "hapax": 751,
+            "pairs": 15671,
+            "pair_occurrences": 20859,
+            "skewed": 22,
+            "skew_type_ratio": 0.0014038670155063493,
+            "skew_instance_ratio": 0.001054700608849897,
+            "types_per_token": 0.20657142857142857,
+            "hapax_per_token": 0.10728571428571429
+          },
+          {
+            "tokens": 7000,
+            "types": 1446,
+            "hapax": 751,
+            "pairs": 15622,
+            "pair_occurrences": 20861,
+            "skewed": 15,
+            "skew_type_ratio": 0.0009601843553962361,
+            "skew_instance_ratio": 0.0007190451080964479,
+            "types_per_token": 0.20657142857142857,
+            "hapax_per_token": 0.10728571428571429
+          },
+          {
+            "tokens": 7000,
+            "types": 1446,
+            "hapax": 751,
+            "pairs": 15627,
+            "pair_occurrences": 20842,
+            "skewed": 14,
+            "skew_type_ratio": 0.0008958853266781852,
+            "skew_instance_ratio": 0.000671720564245274,
+            "types_per_token": 0.20657142857142857,
+            "hapax_per_token": 0.10728571428571429
+          },
+          {
+            "tokens": 7000,
+            "types": 1446,
+            "hapax": 751,
+            "pairs": 15650,
+            "pair_occurrences": 20865,
+            "skewed": 18,
+            "skew_type_ratio": 0.0011501597444089457,
+            "skew_instance_ratio": 0.0008626887131560029,
+            "types_per_token": 0.20657142857142857,
+            "hapax_per_token": 0.10728571428571429
+          },
+          {
+            "tokens": 7000,
+            "types": 1446,
+            "hapax": 751,
+            "pairs": 15697,
+            "pair_occurrences": 20850,
+            "skewed": 18,
+            "skew_type_ratio": 0.0011467159329808243,
+            "skew_instance_ratio": 0.0008633093525179857,
+            "types_per_token": 0.20657142857142857,
+            "hapax_per_token": 0.10728571428571429
+          },
+          {
+            "tokens": 7000,
+            "types": 1446,
+            "hapax": 751,
+            "pairs": 15587,
+            "pair_occurrences": 20835,
+            "skewed": 15,
+            "skew_type_ratio": 0.0009623404118816963,
+            "skew_instance_ratio": 0.0007199424046076314,
+            "types_per_token": 0.20657142857142857,
+            "hapax_per_token": 0.10728571428571429
+          },
+          {
+            "tokens": 7000,
+            "types": 1446,
+            "hapax": 751,
+            "pairs": 15707,
+            "pair_occurrences": 20872,
+            "skewed": 23,
+            "skew_type_ratio": 0.0014643152734449608,
+            "skew_instance_ratio": 0.0011019547719432732,
+            "types_per_token": 0.20657142857142857,
+            "hapax_per_token": 0.10728571428571429
+          },
+          {
+            "tokens": 7000,
+            "types": 1446,
+            "hapax": 751,
+            "pairs": 15581,
+            "pair_occurrences": 20845,
+            "skewed": 22,
+            "skew_type_ratio": 0.0014119761247673448,
+            "skew_instance_ratio": 0.0010554089709762533,
+            "types_per_token": 0.20657142857142857,
+            "hapax_per_token": 0.10728571428571429
+          }
+        ]
+      },
+      "1": {
+        "original": {
+          "tokens": 6806,
+          "types": 1445,
+          "hapax": 751,
+          "pairs": 14908,
+          "pair_occurrences": 20340,
+          "skewed": 67,
+          "skew_type_ratio": 0.004494231285215991,
+          "skew_instance_ratio": 0.0032940019665683383,
+          "types_per_token": 0.21231266529532766,
+          "hapax_per_token": 0.11034381428151631
+        },
+        "mono": {
+          "tokens": 6806,
+          "types": 1445,
+          "hapax": 751,
+          "pairs": 14908,
+          "pair_occurrences": 20340,
+          "skewed": 67,
+          "skew_type_ratio": 0.004494231285215991,
+          "skew_instance_ratio": 0.0032940019665683383,
+          "types_per_token": 0.21231266529532766,
+          "hapax_per_token": 0.11034381428151631
+        },
+        "homophonic": [
+          {
+            "tokens": 6975,
+            "types": 4823,
+            "hapax": 4146,
+            "pairs": 20860,
+            "pair_occurrences": 20917,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.6914695340501792,
+            "hapax_per_token": 0.5944086021505376
+          },
+          {
+            "tokens": 6972,
+            "types": 4768,
+            "hapax": 4040,
+            "pairs": 20849,
+            "pair_occurrences": 20908,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.6838783706253586,
+            "hapax_per_token": 0.5794606999426276
+          },
+          {
+            "tokens": 6974,
+            "types": 4799,
+            "hapax": 4099,
+            "pairs": 20850,
+            "pair_occurrences": 20914,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.6881273300831661,
+            "hapax_per_token": 0.5877545167765988
+          }
+        ],
+        "shuffle": [
+          {
+            "tokens": 6806,
+            "types": 1445,
+            "hapax": 751,
+            "pairs": 15444,
+            "pair_occurrences": 20291,
+            "skewed": 19,
+            "skew_type_ratio": 0.0012302512302512303,
+            "skew_instance_ratio": 0.0009363757330836331,
+            "types_per_token": 0.21231266529532766,
+            "hapax_per_token": 0.11034381428151631
+          },
+          {
+            "tokens": 6806,
+            "types": 1445,
+            "hapax": 751,
+            "pairs": 15509,
+            "pair_occurrences": 20298,
+            "skewed": 14,
+            "skew_type_ratio": 0.0009027016571023276,
+            "skew_instance_ratio": 0.0006897231254310769,
+            "types_per_token": 0.21231266529532766,
+            "hapax_per_token": 0.11034381428151631
+          },
+          {
+            "tokens": 6806,
+            "types": 1445,
+            "hapax": 751,
+            "pairs": 15556,
+            "pair_occurrences": 20280,
+            "skewed": 20,
+            "skew_type_ratio": 0.0012856775520699408,
+            "skew_instance_ratio": 0.0009861932938856016,
+            "types_per_token": 0.21231266529532766,
+            "hapax_per_token": 0.11034381428151631
+          },
+          {
+            "tokens": 6806,
+            "types": 1445,
+            "hapax": 751,
+            "pairs": 15521,
+            "pair_occurrences": 20296,
+            "skewed": 17,
+            "skew_type_ratio": 0.001095290251916758,
+            "skew_instance_ratio": 0.0008376034686637761,
+            "types_per_token": 0.21231266529532766,
+            "hapax_per_token": 0.11034381428151631
+          },
+          {
+            "tokens": 6806,
+            "types": 1445,
+            "hapax": 751,
+            "pairs": 15500,
+            "pair_occurrences": 20274,
+            "skewed": 10,
+            "skew_type_ratio": 0.0006451612903225806,
+            "skew_instance_ratio": 0.0004932425766992207,
+            "types_per_token": 0.21231266529532766,
+            "hapax_per_token": 0.11034381428151631
+          },
+          {
+            "tokens": 6806,
+            "types": 1445,
+            "hapax": 751,
+            "pairs": 15530,
+            "pair_occurrences": 20290,
+            "skewed": 14,
+            "skew_type_ratio": 0.0009014810045074051,
+            "skew_instance_ratio": 0.0006899950714637752,
+            "types_per_token": 0.21231266529532766,
+            "hapax_per_token": 0.11034381428151631
+          },
+          {
+            "tokens": 6806,
+            "types": 1445,
+            "hapax": 751,
+            "pairs": 15591,
+            "pair_occurrences": 20286,
+            "skewed": 15,
+            "skew_type_ratio": 0.0009620935154897056,
+            "skew_instance_ratio": 0.0007394262052647146,
+            "types_per_token": 0.21231266529532766,
+            "hapax_per_token": 0.11034381428151631
+          },
+          {
+            "tokens": 6806,
+            "types": 1445,
+            "hapax": 751,
+            "pairs": 15463,
+            "pair_occurrences": 20273,
+            "skewed": 14,
+            "skew_type_ratio": 0.0009053870529651426,
+            "skew_instance_ratio": 0.0006905736694125191,
+            "types_per_token": 0.21231266529532766,
+            "hapax_per_token": 0.11034381428151631
+          },
+          {
+            "tokens": 6806,
+            "types": 1445,
+            "hapax": 751,
+            "pairs": 15589,
+            "pair_occurrences": 20307,
+            "skewed": 20,
+            "skew_type_ratio": 0.0012829559304637886,
+            "skew_instance_ratio": 0.0009848820603732703,
+            "types_per_token": 0.21231266529532766,
+            "hapax_per_token": 0.11034381428151631
+          },
+          {
+            "tokens": 6806,
+            "types": 1445,
+            "hapax": 751,
+            "pairs": 15468,
+            "pair_occurrences": 20275,
+            "skewed": 17,
+            "skew_type_ratio": 0.0010990431859322473,
+            "skew_instance_ratio": 0.0008384710234278669,
+            "types_per_token": 0.21231266529532766,
+            "hapax_per_token": 0.11034381428151631
+          }
+        ]
+      },
+      "15": {
+        "original": {
+          "tokens": 5156,
+          "types": 1431,
+          "hapax": 751,
+          "pairs": 13413,
+          "pair_occurrences": 15440,
+          "skewed": 10,
+          "skew_type_ratio": 0.0007455453664355476,
+          "skew_instance_ratio": 0.0006476683937823834,
+          "types_per_token": 0.2775407292474787,
+          "hapax_per_token": 0.145655546935609
+        },
+        "mono": {
+          "tokens": 5156,
+          "types": 1431,
+          "hapax": 751,
+          "pairs": 13413,
+          "pair_occurrences": 15440,
+          "skewed": 10,
+          "skew_type_ratio": 0.0007455453664355476,
+          "skew_instance_ratio": 0.0006476683937823834,
+          "types_per_token": 0.2775407292474787,
+          "hapax_per_token": 0.145655546935609
+        },
+        "homophonic": [
+          {
+            "tokens": 6730,
+            "types": 4809,
+            "hapax": 4146,
+            "pairs": 20144,
+            "pair_occurrences": 20183,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.7145616641901932,
+            "hapax_per_token": 0.6160475482912333
+          },
+          {
+            "tokens": 6717,
+            "types": 4754,
+            "hapax": 4040,
+            "pairs": 20109,
+            "pair_occurrences": 20144,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.7077564388864076,
+            "hapax_per_token": 0.6014589846657734
+          },
+          {
+            "tokens": 6725,
+            "types": 4785,
+            "hapax": 4099,
+            "pairs": 20128,
+            "pair_occurrences": 20168,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.7115241635687732,
+            "hapax_per_token": 0.6095167286245353
+          }
+        ],
+        "shuffle": [
+          {
+            "tokens": 5156,
+            "types": 1431,
+            "hapax": 751,
+            "pairs": 13863,
+            "pair_occurrences": 15419,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.2775407292474787,
+            "hapax_per_token": 0.145655546935609
+          },
+          {
+            "tokens": 5156,
+            "types": 1431,
+            "hapax": 751,
+            "pairs": 13860,
+            "pair_occurrences": 15420,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.2775407292474787,
+            "hapax_per_token": 0.145655546935609
+          },
+          {
+            "tokens": 5156,
+            "types": 1431,
+            "hapax": 751,
+            "pairs": 13920,
+            "pair_occurrences": 15420,
+            "skewed": 1,
+            "skew_type_ratio": 7.183908045977011e-05,
+            "skew_instance_ratio": 6.485084306095979e-05,
+            "types_per_token": 0.2775407292474787,
+            "hapax_per_token": 0.145655546935609
+          },
+          {
+            "tokens": 5156,
+            "types": 1431,
+            "hapax": 751,
+            "pairs": 13895,
+            "pair_occurrences": 15425,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.2775407292474787,
+            "hapax_per_token": 0.145655546935609
+          },
+          {
+            "tokens": 5156,
+            "types": 1431,
+            "hapax": 751,
+            "pairs": 13860,
+            "pair_occurrences": 15415,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.2775407292474787,
+            "hapax_per_token": 0.145655546935609
+          },
+          {
+            "tokens": 5156,
+            "types": 1431,
+            "hapax": 751,
+            "pairs": 13883,
+            "pair_occurrences": 15413,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.2775407292474787,
+            "hapax_per_token": 0.145655546935609
+          },
+          {
+            "tokens": 5156,
+            "types": 1431,
+            "hapax": 751,
+            "pairs": 13952,
+            "pair_occurrences": 15404,
+            "skewed": 1,
+            "skew_type_ratio": 7.167431192660551e-05,
+            "skew_instance_ratio": 6.491820306413918e-05,
+            "types_per_token": 0.2775407292474787,
+            "hapax_per_token": 0.145655546935609
+          },
+          {
+            "tokens": 5156,
+            "types": 1431,
+            "hapax": 751,
+            "pairs": 13879,
+            "pair_occurrences": 15410,
+            "skewed": 1,
+            "skew_type_ratio": 7.20513005259745e-05,
+            "skew_instance_ratio": 6.489292667099286e-05,
+            "types_per_token": 0.2775407292474787,
+            "hapax_per_token": 0.145655546935609
+          },
+          {
+            "tokens": 5156,
+            "types": 1431,
+            "hapax": 751,
+            "pairs": 13948,
+            "pair_occurrences": 15423,
+            "skewed": 1,
+            "skew_type_ratio": 7.169486664754803e-05,
+            "skew_instance_ratio": 6.483822861959411e-05,
+            "types_per_token": 0.2775407292474787,
+            "hapax_per_token": 0.145655546935609
+          },
+          {
+            "tokens": 5156,
+            "types": 1431,
+            "hapax": 751,
+            "pairs": 13899,
+            "pair_occurrences": 15406,
+            "skewed": 0,
+            "skew_type_ratio": 0.0,
+            "skew_instance_ratio": 0.0,
+            "types_per_token": 0.2775407292474787,
+            "hapax_per_token": 0.145655546935609
+          }
+        ]
+      }
+    }
+  },
+  "reproduction": {
+    "instruction": "Extract experiments/P-J-011/mubadala777/step.json reproduction scripts to a temporary directory and run extract_works.py with PYTHONPATH set to the repository root. Put this script alongside clean_works.json, adjust its absolute path and run with Python 3.",
+    "script": "import json,random,math,collections\nfrom pathlib import Path\nW=json.loads(Path('/tmp/voy-entropy/clean_works.json').read_text())\ndef calc(words,k):\n counts=collections.Counter(words);stop=set(w for w,_ in sorted(counts.items(),key=lambda x:-x[1])[:k]); seq=[w for w in words if w not in stop]; c=collections.Counter((a,b) for i,a in enumerate(seq) for b in seq[i+1:i+4] if a!=b); pair={tuple(sorted((a,b))) for a,b in c}; skew=sum(abs(c[a,b]-c[b,a])>5 for a,b in pair); f=collections.Counter(seq);return {'tokens':len(seq),'types':len(f),'hapax':sum(v==1 for v in f.values()),'pairs':len(pair),'pair_occurrences':sum(c.values()),'skewed':skew,'skew_type_ratio':skew/len(pair) if pair else 0,'skew_instance_ratio':skew/sum(c.values()) if c else 0,'types_per_token':len(f)/len(seq),'hapax_per_token':sum(v==1 for v in f.values())/len(seq)}\ndef encode(words,mode,seed):\n rng=random.Random(seed); abc='abcdefghijklmnopqrstuvwxyz'; perms=list(abc);rng.shuffle(perms); mapping=dict(zip(abc,perms));return [''.join(mapping[ch] if mode=='simple' else mapping[ch]+str(rng.randrange(3)) for ch in w) for w in words]\n# Planted asymmetric sequence has repeated A B C, random order preserves counts.\ntoy=['a','b','c','d','e']*400; assert calc(toy,0)['skewed']>0\nout={}\nfor cid in ('la_augustine','it_dante','de_nibelunge'):\n words=' '.join(W[cid]).split()[:7000];assert len(words)==7000\n ranks=[0,1,math.ceil(len(set(words))*.01)]; rr={}\n for k in ranks:\n  r={'original':calc(words,k),'mono':calc(encode(words,'simple',408),k),'homophonic':[calc(encode(words,'homophonic',seed),k) for seed in range(3)],'shuffle':[]}\n  for seed in range(10):\n   shuffled=words.copy();random.Random(seed).shuffle(shuffled);r['shuffle'].append(calc(shuffled,k))\n  assert r['original']==r['mono']; rr[str(k)]=r\n out[cid]=rr\nprint(json.dumps(out,indent=2));\n"
+  }
+}

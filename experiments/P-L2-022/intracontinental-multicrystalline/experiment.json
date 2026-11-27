@@ -1,0 +1,7 @@
+{
+  "step": "P-L2-022",
+  "handle": "intracontinental-multicrystalline",
+  "kind": "fact",
+  "summary": "Test whether matched ch-initial words occur farther right than their sh-initial counterparts in paragraph-line interiors.",
+  "lease": "b904d2f1c5820ab17d4cfd4f"
+}

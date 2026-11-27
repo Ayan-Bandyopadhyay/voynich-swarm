@@ -1,0 +1,248 @@
+{
+  "title": "Whole-word position shuffles preserve overlapping boundaries but also detect latent line mixtures",
+  "program": "L2",
+  "on_path": false,
+  "hard": true,
+  "statement": "A proposed layout-conditioned null shuffles intact certain words jointly within (page, paragraph-first-line flag, exact line token count, exact word position) cells; adjacent boundaries then share the same shuffled word. On 20 synthetic books with independent conditional word choices it rejects 1/20 at 0.05; on 20 planted first-order dependent books it rejects 20/20. However, it also rejects 20/20 books with a shared latent line state, showing that the null can flag line-level heterogeneity without a direct transition mechanism. A sparse layout with no movable cells is refused. Exploratory practice-training and practice-evaluation results show positive aggregate discrepancies in ZL and IT; neither the null nor those results are registered held-out facts.",
+  "check": "Implement and review this complete-word, fixed-cell permutation as a trusted primitive with explicit sample and movement checks; independently test exact marginals, uncertain-token barriers, duplicate tokens, pair accounting, shared words and Monte Carlo calibration. Develop a stronger control for latent line-level mixtures, prespecify the eight edge pairs, aggregate score, minimum support, seed and permutation budget, then test held-out ZL and IT without interpreting a null rejection as proof of direct transitions.",
+  "method": "Select certain nonempty paragraph words and preserve original positions and gaps. Groups are (page, paragraph-first-line flag, exact original line length, zero-based position); independently permute full word identities inside each cell. Count eight ordered last/first EVA-basic glyph pairs (y or n) \u00d7 (q, o, ch, d) over truly adjacent selected words. For each pair, its expected count is the sum over eligible boundaries of the product of the relevant left and right cell marginal probabilities. The frozen aggregate score is sum((observed - expected)^2 / (expected + 1)) over the eight pairs. Use this same analytic expectation for every shuffle and add-one permutation p-values; 39 permutations for each synthetic example and 99 for each public example. Refuse fewer than 30 cells with at least two distinct words. This minimum does not guarantee statistic movement; a reviewed scorer must also refuse invariant statistics.",
+  "results": {
+    "practice": {
+      "zl-train": {
+        "tokens": 29365,
+        "edges": 25796,
+        "groups": 12701,
+        "movable_groups": 6220,
+        "score": 539.0382255778163,
+        "p": 0.01,
+        "observed": [
+          2956,
+          320,
+          2004,
+          1249,
+          1363,
+          1042,
+          1034,
+          318
+        ],
+        "expected": [
+          2213.3313145188145,
+          574.2991855366855,
+          2221.796880896881,
+          1047.6504467754467,
+          1646.8013098013098,
+          819.3109473859474,
+          962.6273878898879,
+          350.04686147186146
+        ],
+        "permutation_mean": [
+          2210.4343434343436,
+          574.2020202020202,
+          2222.050505050505,
+          1048.8080808080808,
+          1646.1616161616162,
+          818.5151515151515,
+          963.3838383838383,
+          348.27272727272725
+        ]
+      },
+      "zl-eval": {
+        "tokens": 5461,
+        "edges": 4796,
+        "groups": 2110,
+        "movable_groups": 1115,
+        "score": 104.30128227408363,
+        "p": 0.01,
+        "observed": [
+          503,
+          68,
+          320,
+          226,
+          237,
+          237,
+          183,
+          48
+        ],
+        "expected": [
+          371.11249306249306,
+          110.29307359307359,
+          352.8986124986125,
+          190.32288822288822,
+          303.68979076479076,
+          184.35737318237318,
+          163.8760212010212,
+          48.60468975468975
+        ],
+        "permutation_mean": [
+          373.17171717171715,
+          110.05050505050505,
+          352.57575757575756,
+          191.66666666666666,
+          302.42424242424244,
+          184.55555555555554,
+          163.6969696969697,
+          49.43434343434343
+        ]
+      },
+      "it-train": {
+        "tokens": 29017,
+        "edges": 25504,
+        "groups": 12307,
+        "movable_groups": 6146,
+        "score": 607.1915775120166,
+        "p": 0.01,
+        "observed": [
+          2960,
+          317,
+          2017,
+          1279,
+          1333,
+          1039,
+          1030,
+          326
+        ],
+        "expected": [
+          2200.6602924852923,
+          592.2681068931068,
+          2260.953318903319,
+          1067.0359834609835,
+          1672.6650543900544,
+          803.4216117216117,
+          951.7185564435564,
+          368.30312465312466
+        ],
+        "permutation_mean": [
+          2197.919191919192,
+          594.3434343434343,
+          2259.868686868687,
+          1066.1818181818182,
+          1676.1616161616162,
+          801.3838383838383,
+          951.5454545454545,
+          368.27272727272725
+        ]
+      },
+      "it-eval": {
+        "tokens": 5394,
+        "edges": 4740,
+        "groups": 1972,
+        "movable_groups": 1049,
+        "score": 109.32116390015028,
+        "p": 0.01,
+        "observed": [
+          503,
+          69,
+          327,
+          229,
+          231,
+          245,
+          182,
+          49
+        ],
+        "expected": [
+          370.3690476190476,
+          117.90286935286935,
+          352.55494505494505,
+          195.3468559218559,
+          295.5032967032967,
+          185.52921245421246,
+          167.87738095238095,
+          50.61749084249084
+        ],
+        "permutation_mean": [
+          368.3636363636364,
+          117.12121212121212,
+          352.4848484848485,
+          194.25252525252526,
+          297.2020202020202,
+          185.17171717171718,
+          168.06060606060606,
+          50.666666666666664
+        ]
+      }
+    },
+    "synthetic": {
+      "null": {
+        "p_values": [
+          0.45,
+          0.95,
+          0.25,
+          0.025,
+          0.625,
+          0.625,
+          0.95,
+          0.325,
+          0.625,
+          0.1,
+          0.9,
+          0.425,
+          0.075,
+          0.65,
+          0.45,
+          0.275,
+          0.275,
+          0.525,
+          0.95,
+          0.425
+        ],
+        "passes": 1
+      },
+      "markov": {
+        "p_values": [
+          0.025,
+          0.025,
+          0.025,
+          0.025,
+          0.025,
+          0.025,
+          0.025,
+          0.025,
+          0.025,
+          0.025,
+          0.025,
+          0.025,
+          0.025,
+          0.025,
+          0.025,
+          0.025,
+          0.025,
+          0.025,
+          0.025,
+          0.025
+        ],
+        "passes": 20
+      },
+      "latent_line": {
+        "p_values": [
+          0.025,
+          0.025,
+          0.025,
+          0.025,
+          0.025,
+          0.025,
+          0.025,
+          0.025,
+          0.025,
+          0.025,
+          0.025,
+          0.025,
+          0.025,
+          0.025,
+          0.025,
+          0.025,
+          0.025,
+          0.025,
+          0.025,
+          0.025
+        ],
+        "passes": 20
+      }
+    },
+    "sparse": "fewer than 30 movable groups"
+  },
+  "reproduce": {
+    "command": "Save as /tmp/reproduce_boundary.py and run PYTHONPATH=. python3 /tmp/reproduce_boundary.py from the checkout after fetching inputs.",
+    "script": "import random,math,json,statistics\nfrom collections import Counter,defaultdict\nfrom functools import lru_cache\nfrom vs import dsl,corpus,ivtff\nfrom tests.test_dsl import page\nPAIRS=[('y','q'),('n','q'),('y','o'),('n','o'),('y','ch'),('n','ch'),('y','d'),('n','d')]\n\ndef prep(pages):\n ts=[t for t in dsl.tokens(pages) if t['unit']=='P' and t['w'] and not ivtff.uncertain(t['w']) and ivtff.segment(t['w'])]\n groups=defaultdict(list)\n for i,t in enumerate(ts):groups[t['page'],t['pfl'],t['n'],t['k']].append(i)\n edge=[(a,b) for run in dsl.runs_of(ts) for a,b in zip(run,run[1:])]\n ix={(t['line'],t['k']):i for i,t in enumerate(ts)}\n pairs=[(ix[a['line'],a['k']],ix[b['line'],b['k']]) for a,b in edge]\n return ts,list(groups.values()),pairs\n\ndef calc(pages,draws=99,seed=23):\n ts,groups,edges=prep(pages)\n @lru_cache(None)\n def first(w):return ivtff.segment(w)[0]\n @lru_cache(None)\n def last(w):return ivtff.segment(w)[-1]\n words=[t['w'] for t in ts]; gp={i:g for g in groups for i in g}\n movable=sum(len({words[i] for i in g})>1 for g in groups)\n if movable<30: raise ValueError('fewer than 30 movable groups')\n start={i:Counter(first(words[j]) for j in g) for g in groups for i in g};end={i:Counter(last(words[j]) for j in g) for g in groups for i in g}\n expected=[sum(end[a][x]/len(gp[a])*start[b][y]/len(gp[b]) for a,b in edges) for x,y in PAIRS]\n def counts(w):\n  c=Counter((last(w[a]),first(w[b])) for a,b in edges);return [c[p] for p in PAIRS]\n def score(c):return sum((v-e)**2/(e+1) for v,e in zip(c,expected))\n obs=counts(words); st=score(obs);rng=random.Random(seed); simulated=[]; sm=[0]*8\n for _ in range(draws):\n  sh=words[:]\n  for g in groups:\n   ws=[words[i] for i in g];rng.shuffle(ws)\n   for i,w in zip(g,ws):sh[i]=w\n  cs=counts(sh);simulated.append(score(cs));sm=[a+b for a,b in zip(sm,cs)]\n return {'tokens':len(ts),'edges':len(edges),'groups':len(groups),'movable_groups':movable,'score':st,'p':(1+sum(s>=st-1e-12 for s in simulated))/(draws+1),'observed':obs,'expected':expected,'permutation_mean':[x/draws for x in sm]}\n\ndef synthetic(seed,mode):\n rng=random.Random(seed); pages=[]\n for p in range(8):\n  rows=[]\n  for line in range(20):\n   shared=rng.choice([0,1]); prev=rng.choice([0,1]); ws=[]\n   for j in range(8):\n    # Position and page marginals vary, but every glyph choice is independent under null.\n    if mode=='null': a=(rng.random()<(.25+.5*((p+j)%2))); b=(rng.random()<(.25+.5*((p+2*j)%2)))\n    elif mode=='markov':\n     a=prev if rng.random()<.9 else not prev; b=rng.choice([0,1]); prev=b\n    else:a=b=shared\n    ws.append(('q' if a else 'o')+'a'+('y' if b else 'n'))\n   rows.append(ws)\n  pages.append(page(f'p{p}',rows,order=p))\n return pages\n\nif __name__=='__main__':\n out={'practice':{},'synthetic':{}}\n for kind in ('null','markov','latent_line'):\n  vals=[calc(synthetic(i,kind),39,900+i)['p'] for i in range(20)]\n  out['synthetic'][kind]={'p_values':vals,'passes':sum(p<=.05 for p in vals)}\n sparse=[page('s', [['qay','oan']*(n//2)+(['qay'] if n%2 else []) for n in range(3,83)])]\n try:calc(sparse,39);out['sparse']='unexpectedly accepted'\n except ValueError as e:out['sparse']=str(e)\n for tr in ('zl','it'):\n  train,ev=corpus.split_pages('practice',tr)\n  for name,pages in [('train',train),('eval',ev)]:out['practice'][tr+'-'+name]=calc(pages,99)\n print(json.dumps(out,indent=2))\n"
+  },
+  "limitations": "This is a local prototype, not a reviewed or registered scorer. The 20 null books and 20 alternatives each give very imprecise error and power estimates, and the Markov and latent-line examples are deliberately strong. A latent line state violates the permutation exchangeability assumption and can mimic a direct adjacent-word signal; the experiment cannot determine which explanation applies to the manuscript. The independent cell shuffle preserves each cell inventory but not the word inventory of each individual line. Different witness transcriptions share the manuscript, and public practice evaluation is already inspected. No hidden pages were used. The actual p-value resolution is 0.025 for 39 and 0.01 for 99 permutations."
+}

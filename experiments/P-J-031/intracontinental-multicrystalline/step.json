@@ -1,0 +1,1623 @@
+{
+  "program": "J",
+  "title": "Calibrate skew-pair thresholds against sparse and high-frequency controls",
+  "statement": "Using three separate works from the prior directional-pair pilot (the Vulgate Daniel, Villani and Walther), take the first 5,000 normalized words, remove one most frequent type and compare 99 within-block shuffles. Count unequal pairs at distances 1\u20133, call an unordered type skewed if the absolute directional count difference exceeds five, and divide by observed unordered pair types. Under both compressing removed tokens and treating them as barriers, all three originals exceed every shuffle (plus-one p=.01). The two gap policies give different denominators and scores; for Latin they count 10,189 versus 8,126 pair types. After filtering, distinct-type shares are .356/.323/.305 and singleton-type shares .223/.204/.188. As a non-language positive control, ten books of a five-token periodic cycle with randomized block phases yield zero rejections under either gap policy; the uncorrected skew fraction is often near one even under shuffling. Thirty iid five-token books also give zero rejections under each policy. The small control count means the two-sided 95% Wilson upper bounds for a zero rate are about 27.8% and 11.4%, respectively. These are diagnostic examples, not estimated general power or evidence that language alone produces the historical result.",
+  "check": "Prespecify a candidate measure, tie rule, gap behavior, token and independent-block boundaries, and all thresholds before using untouched historical corpora or manuscript evaluation pages. In particular calibrate the fixed count threshold under highly frequent and sparse vocabularies, multiple nonlanguage transition processes, equal-frequency stopword ties, deterministic substitutions, noisy and planted ciphers, and clustered page nulls. A significance result relative to random word shuffles only indicates nonexchangeable local order under that null. Build and review a declarative scorer primitive only after its finite-sample and vocabulary dependence is characterized; keep distinct type counts, singleton counts and occurrence denominators separately named.",
+  "hard": false,
+  "on_path": true,
+  "method": {
+    "pairing": "Within each original roughly 400-character normalized block, consider unequal forward pairs at distances 1\u20133. In compress mode remove stopwords before measuring distances; in barrier mode a removed token terminates the local window. Pairs never cross block boundaries. Remove the most frequent type, breaking equal frequency ties lexicographically and holding it fixed across shuffled replicates. This tie rule can break substitution invariance at a frequency tie.",
+    "null": "Shuffle words independently inside each source block 99 times and compute plus-one one-sided tail for the same fixed stopword; no across-block moves. Periodic controls use 80-token blocks of a five-word cycle with random phases, and iid controls use the same block sizes and vocabulary. The five-word period is smaller than the natural vocabularies and is an adversarial saturation example, not a model of any manuscript.",
+    "selection": "Source works differ from the three prior directional pilot works but were used in other project calculations; first 5,000 words are not randomly chosen. Plan file was written before the first run, then the tie rule and barrier implementation were corrected after inspecting initial outputs. Treat all results as exploratory, not an untouched preregistration.",
+    "limits": "Only three historical works, 10 cycles and 30 iid samples; 99 random shuffles each. No manuscript outcomes, independent witnesses, historical cipher controls, reviewed scorer metric or calibrated production threshold. Original work extraction and editorial-cleaning caveats are in P-J-011."
+  },
+  "results": {
+    "plan": {
+      "sources": [
+        "la_vulg_daniel",
+        "it_villani",
+        "de_walther"
+      ],
+      "tokens": 5000,
+      "stop_types": 1,
+      "window": 3,
+      "skew_threshold": 5,
+      "seeds": [
+        19,
+        23,
+        29,
+        31,
+        37,
+        41,
+        43,
+        47,
+        53,
+        59
+      ],
+      "shuffles": 99,
+      "boundary": "independent pre-existing normalizer blocks; never count across blocks",
+      "stop_tie": "lexicographic token order, fixed for each observed sequence and its permutations",
+      "compare": "two stopword policies: compress filtered tokens versus original-position barriers",
+      "synthetic": "stationary ordered five-token cycle with random phase per block; count-preserving within-block shuffle",
+      "negative": "30 iid uniform five-token books; same 80-token blocks"
+    },
+    "sources": {
+      "la_vulg_daniel": {
+        "types_per_token": 0.3564400715563506,
+        "hapax_per_token": 0.22316636851520572,
+        "retained_tokens": 4472,
+        "policies": {
+          "compress": {
+            "observed": {
+              "type_ratio": 0.0040239473942487,
+              "skewed_types": 41,
+              "pair_types": 10189,
+              "pair_occurrences": 12865,
+              "instance_ratio": 0.0031869413136416634
+            },
+            "null_mean": 0.0004562724795646752,
+            "null_min": 9.078529278256922e-05,
+            "null_max": 0.0010972933430870519,
+            "p": 0.01
+          },
+          "barrier": {
+            "observed": {
+              "type_ratio": 0.0038149150873738615,
+              "skewed_types": 31,
+              "pair_types": 8126,
+              "pair_occurrences": 10076,
+              "instance_ratio": 0.003076617705438666
+            },
+            "null_mean": 0.00042619933502318583,
+            "null_min": 0.0,
+            "null_max": 0.0008925582952136561,
+            "p": 0.01
+          }
+        }
+      },
+      "it_villani": {
+        "types_per_token": 0.32328236054275256,
+        "hapax_per_token": 0.20396295498600042,
+        "retained_tokens": 4643,
+        "policies": {
+          "compress": {
+            "observed": {
+              "type_ratio": 0.0034550378186572043,
+              "skewed_types": 37,
+              "pair_types": 10709,
+              "pair_occurrences": 13405,
+              "instance_ratio": 0.0027601641178664677
+            },
+            "null_mean": 0.00044637823998608313,
+            "null_min": 0.0,
+            "null_max": 0.0010712372790573112,
+            "p": 0.01
+          },
+          "barrier": {
+            "observed": {
+              "type_ratio": 0.004034016572176188,
+              "skewed_types": 37,
+              "pair_types": 9172,
+              "pair_occurrences": 11479,
+              "instance_ratio": 0.003223277288962453
+            },
+            "null_mean": 0.0004007414265838784,
+            "null_min": 0.0,
+            "null_max": 0.0009162170416369745,
+            "p": 0.01
+          }
+        }
+      },
+      "de_walther": {
+        "types_per_token": 0.3047817047817048,
+        "hapax_per_token": 0.18814968814968816,
+        "retained_tokens": 4810,
+        "policies": {
+          "compress": {
+            "observed": {
+              "type_ratio": 0.0008757334267448988,
+              "skewed_types": 10,
+              "pair_types": 11419,
+              "pair_occurrences": 13969,
+              "instance_ratio": 0.0007158708568974157
+            },
+            "null_mean": 0.0003345899332138454,
+            "null_min": 0.0,
+            "null_max": 0.0007761966364812419,
+            "p": 0.01
+          },
+          "barrier": {
+            "observed": {
+              "type_ratio": 0.0008495374740419105,
+              "skewed_types": 9,
+              "pair_types": 10594,
+              "pair_occurrences": 12891,
+              "instance_ratio": 0.0006981615080288574
+            },
+            "null_mean": 0.0002900962167558113,
+            "null_min": 9.151642719868216e-05,
+            "null_max": 0.0007366482504604051,
+            "p": 0.01
+          }
+        }
+      }
+    },
+    "cycle": [
+      {
+        "seed": 19,
+        "result": {
+          "types_per_token": 0.001,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 4000,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 0.8333333333333334,
+                "skewed_types": 5,
+                "pair_types": 6,
+                "pair_occurrences": 11622,
+                "instance_ratio": 0.00043021855102392013
+              },
+              "null_mean": 0.8501683501683502,
+              "null_min": 0.3333333333333333,
+              "null_max": 1.0,
+              "p": 0.8
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 5872,
+                "instance_ratio": 0.0010217983651226157
+              },
+              "null_mean": 0.8518518518518517,
+              "null_min": 0.3333333333333333,
+              "null_max": 1.0,
+              "p": 0.45
+            }
+          }
+        }
+      },
+      {
+        "seed": 23,
+        "result": {
+          "types_per_token": 0.001,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 4000,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 11622,
+                "instance_ratio": 0.0005162622612287042
+              },
+              "null_mean": 0.8636363636363636,
+              "null_min": 0.3333333333333333,
+              "null_max": 1.0,
+              "p": 0.44
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 5875,
+                "instance_ratio": 0.0010212765957446808
+              },
+              "null_mean": 0.8417508417508417,
+              "null_min": 0.3333333333333333,
+              "null_max": 1.0,
+              "p": 0.36
+            }
+          }
+        }
+      },
+      {
+        "seed": 29,
+        "result": {
+          "types_per_token": 0.001,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 4000,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 0.6666666666666666,
+                "skewed_types": 4,
+                "pair_types": 6,
+                "pair_occurrences": 11622,
+                "instance_ratio": 0.00034417484081913615
+              },
+              "null_mean": 0.8653198653198654,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.97
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 5848,
+                "instance_ratio": 0.0010259917920656635
+              },
+              "null_mean": 0.8602693602693603,
+              "null_min": 0.3333333333333333,
+              "null_max": 1.0,
+              "p": 0.44
+            }
+          }
+        }
+      },
+      {
+        "seed": 31,
+        "result": {
+          "types_per_token": 0.001,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 4000,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 11622,
+                "instance_ratio": 0.0005162622612287042
+              },
+              "null_mean": 0.8569023569023568,
+              "null_min": 0.3333333333333333,
+              "null_max": 1.0,
+              "p": 0.44
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 5905,
+                "instance_ratio": 0.0010160880609652837
+              },
+              "null_mean": 0.8468013468013468,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.41
+            }
+          }
+        }
+      },
+      {
+        "seed": 37,
+        "result": {
+          "types_per_token": 0.001,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 4000,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 11622,
+                "instance_ratio": 0.0005162622612287042
+              },
+              "null_mean": 0.8552188552188552,
+              "null_min": 0.3333333333333333,
+              "null_max": 1.0,
+              "p": 0.43
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 5874,
+                "instance_ratio": 0.0010214504596527069
+              },
+              "null_mean": 0.8434343434343434,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.36
+            }
+          }
+        }
+      },
+      {
+        "seed": 41,
+        "result": {
+          "types_per_token": 0.001,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 4000,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 0.8333333333333334,
+                "skewed_types": 5,
+                "pair_types": 6,
+                "pair_occurrences": 11622,
+                "instance_ratio": 0.00043021855102392013
+              },
+              "null_mean": 0.8585858585858586,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.79
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 5896,
+                "instance_ratio": 0.0010176390773405698
+              },
+              "null_mean": 0.8602693602693603,
+              "null_min": 0.3333333333333333,
+              "null_max": 1.0,
+              "p": 0.42
+            }
+          }
+        }
+      },
+      {
+        "seed": 43,
+        "result": {
+          "types_per_token": 0.001,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 4000,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 11622,
+                "instance_ratio": 0.0005162622612287042
+              },
+              "null_mean": 0.8047138047138047,
+              "null_min": 0.16666666666666666,
+              "null_max": 1.0,
+              "p": 0.31
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 5877,
+                "instance_ratio": 0.0010209290454313426
+              },
+              "null_mean": 0.8215488215488215,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.37
+            }
+          }
+        }
+      },
+      {
+        "seed": 47,
+        "result": {
+          "types_per_token": 0.001,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 4000,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 11622,
+                "instance_ratio": 0.0005162622612287042
+              },
+              "null_mean": 0.867003367003367,
+              "null_min": 0.3333333333333333,
+              "null_max": 1.0,
+              "p": 0.46
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 5860,
+                "instance_ratio": 0.0010238907849829352
+              },
+              "null_mean": 0.8484848484848485,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.35
+            }
+          }
+        }
+      },
+      {
+        "seed": 53,
+        "result": {
+          "types_per_token": 0.001,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 4000,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 0.8333333333333334,
+                "skewed_types": 5,
+                "pair_types": 6,
+                "pair_occurrences": 11622,
+                "instance_ratio": 0.00043021855102392013
+              },
+              "null_mean": 0.8400673400673401,
+              "null_min": 0.3333333333333333,
+              "null_max": 1.0,
+              "p": 0.72
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 5887,
+                "instance_ratio": 0.0010191948360794973
+              },
+              "null_mean": 0.8518518518518517,
+              "null_min": 0.6666666666666666,
+              "null_max": 1.0,
+              "p": 0.33
+            }
+          }
+        }
+      },
+      {
+        "seed": 59,
+        "result": {
+          "types_per_token": 0.001,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 4000,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 11622,
+                "instance_ratio": 0.0005162622612287042
+              },
+              "null_mean": 0.8282828282828283,
+              "null_min": 0.3333333333333333,
+              "null_max": 1.0,
+              "p": 0.36
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 5874,
+                "instance_ratio": 0.0010214504596527069
+              },
+              "null_mean": 0.877104377104377,
+              "null_min": 0.3333333333333333,
+              "null_max": 1.0,
+              "p": 0.44
+            }
+          }
+        }
+      }
+    ],
+    "iid": [
+      {
+        "seed": 0,
+        "result": {
+          "types_per_token": 0.001008827238335435,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 3965,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 0.6666666666666666,
+                "skewed_types": 4,
+                "pair_types": 6,
+                "pair_occurrences": 8703,
+                "instance_ratio": 0.0004596116281741928
+              },
+              "null_mean": 0.8350168350168351,
+              "null_min": 0.3333333333333333,
+              "null_max": 1.0,
+              "p": 0.95
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 0.8333333333333334,
+                "skewed_types": 5,
+                "pair_types": 6,
+                "pair_occurrences": 5520,
+                "instance_ratio": 0.0009057971014492754
+              },
+              "null_mean": 0.8619528619528619,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.83
+            }
+          }
+        }
+      },
+      {
+        "seed": 1,
+        "result": {
+          "types_per_token": 0.0010075566750629723,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 3970,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 0.8333333333333334,
+                "skewed_types": 5,
+                "pair_types": 6,
+                "pair_occurrences": 8575,
+                "instance_ratio": 0.0005830903790087463
+              },
+              "null_mean": 0.8417508417508417,
+              "null_min": 0.3333333333333333,
+              "null_max": 1.0,
+              "p": 0.74
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 0.8333333333333334,
+                "skewed_types": 5,
+                "pair_types": 6,
+                "pair_occurrences": 5486,
+                "instance_ratio": 0.0009114108640174991
+              },
+              "null_mean": 0.872053872053872,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.84
+            }
+          }
+        }
+      },
+      {
+        "seed": 2,
+        "result": {
+          "types_per_token": 0.0010045203415369162,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 3982,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 0.8333333333333334,
+                "skewed_types": 5,
+                "pair_types": 6,
+                "pair_occurrences": 8648,
+                "instance_ratio": 0.000578168362627197
+              },
+              "null_mean": 0.8737373737373737,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.82
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 0.6666666666666666,
+                "skewed_types": 4,
+                "pair_types": 6,
+                "pair_occurrences": 5701,
+                "instance_ratio": 0.0007016312927556569
+              },
+              "null_mean": 0.8636363636363636,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.96
+            }
+          }
+        }
+      },
+      {
+        "seed": 3,
+        "result": {
+          "types_per_token": 0.001007302946361118,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 3971,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 0.8333333333333334,
+                "skewed_types": 5,
+                "pair_types": 6,
+                "pair_occurrences": 8609,
+                "instance_ratio": 0.0005807875479149727
+              },
+              "null_mean": 0.8451178451178452,
+              "null_min": 0.3333333333333333,
+              "null_max": 1.0,
+              "p": 0.75
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 5598,
+                "instance_ratio": 0.0010718113612004287
+              },
+              "null_mean": 0.8535353535353535,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.39
+            }
+          }
+        }
+      },
+      {
+        "seed": 4,
+        "result": {
+          "types_per_token": 0.0010017530678687703,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 3993,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 0.8333333333333334,
+                "skewed_types": 5,
+                "pair_types": 6,
+                "pair_occurrences": 8690,
+                "instance_ratio": 0.0005753739930955121
+              },
+              "null_mean": 0.8181818181818182,
+              "null_min": 0.3333333333333333,
+              "null_max": 1.0,
+              "p": 0.68
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 0.8333333333333334,
+                "skewed_types": 5,
+                "pair_types": 6,
+                "pair_occurrences": 5707,
+                "instance_ratio": 0.0008761170492377782
+              },
+              "null_mean": 0.8215488215488215,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.65
+            }
+          }
+        }
+      },
+      {
+        "seed": 5,
+        "result": {
+          "types_per_token": 0.001008318628686665,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 3967,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 0.6666666666666666,
+                "skewed_types": 4,
+                "pair_types": 6,
+                "pair_occurrences": 8678,
+                "instance_ratio": 0.0004609356994699239
+              },
+              "null_mean": 0.8434343434343434,
+              "null_min": 0.3333333333333333,
+              "null_max": 1.0,
+              "p": 0.94
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 5673,
+                "instance_ratio": 0.0010576414595452142
+              },
+              "null_mean": 0.8468013468013468,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.33
+            }
+          }
+        }
+      },
+      {
+        "seed": 6,
+        "result": {
+          "types_per_token": 0.0010126582278481013,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 3950,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 0.6666666666666666,
+                "skewed_types": 4,
+                "pair_types": 6,
+                "pair_occurrences": 8559,
+                "instance_ratio": 0.00046734431592475756
+              },
+              "null_mean": 0.8518518518518517,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.95
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 0.6666666666666666,
+                "skewed_types": 4,
+                "pair_types": 6,
+                "pair_occurrences": 5536,
+                "instance_ratio": 0.000722543352601156
+              },
+              "null_mean": 0.8468013468013468,
+              "null_min": 0.3333333333333333,
+              "null_max": 1.0,
+              "p": 0.92
+            }
+          }
+        }
+      },
+      {
+        "seed": 7,
+        "result": {
+          "types_per_token": 0.001004016064257028,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 3984,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 8657,
+                "instance_ratio": 0.0006930807439066651
+              },
+              "null_mean": 0.8417508417508417,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.36
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 5560,
+                "instance_ratio": 0.001079136690647482
+              },
+              "null_mean": 0.8552188552188552,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.41
+            }
+          }
+        }
+      },
+      {
+        "seed": 8,
+        "result": {
+          "types_per_token": 0.0010136847440446021,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 3946,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 0.6666666666666666,
+                "skewed_types": 4,
+                "pair_types": 6,
+                "pair_occurrences": 8544,
+                "instance_ratio": 0.00046816479400749064
+              },
+              "null_mean": 0.8602693602693603,
+              "null_min": 0.16666666666666666,
+              "null_max": 1.0,
+              "p": 0.94
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 0.8333333333333334,
+                "skewed_types": 5,
+                "pair_types": 6,
+                "pair_occurrences": 5498,
+                "instance_ratio": 0.0009094216078574026
+              },
+              "null_mean": 0.8434343434343434,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.73
+            }
+          }
+        }
+      },
+      {
+        "seed": 9,
+        "result": {
+          "types_per_token": 0.0010126582278481013,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 3950,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 0.6666666666666666,
+                "skewed_types": 4,
+                "pair_types": 6,
+                "pair_occurrences": 8598,
+                "instance_ratio": 0.00046522447080716444
+              },
+              "null_mean": 0.8282828282828283,
+              "null_min": 0.3333333333333333,
+              "null_max": 1.0,
+              "p": 0.93
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 5588,
+                "instance_ratio": 0.0010737294201861132
+              },
+              "null_mean": 0.8552188552188552,
+              "null_min": 0.3333333333333333,
+              "null_max": 1.0,
+              "p": 0.41
+            }
+          }
+        }
+      },
+      {
+        "seed": 10,
+        "result": {
+          "types_per_token": 0.0010116337885685382,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 3954,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 8487,
+                "instance_ratio": 0.0007069635913750442
+              },
+              "null_mean": 0.8535353535353535,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.43
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 0.8333333333333334,
+                "skewed_types": 5,
+                "pair_types": 6,
+                "pair_occurrences": 5417,
+                "instance_ratio": 0.0009230201218386561
+              },
+              "null_mean": 0.8501683501683502,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.79
+            }
+          }
+        }
+      },
+      {
+        "seed": 11,
+        "result": {
+          "types_per_token": 0.0010141987829614604,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 3944,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 0.8333333333333334,
+                "skewed_types": 5,
+                "pair_types": 6,
+                "pair_occurrences": 8597,
+                "instance_ratio": 0.0005815982319413749
+              },
+              "null_mean": 0.8333333333333334,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.7
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 0.8333333333333334,
+                "skewed_types": 5,
+                "pair_types": 6,
+                "pair_occurrences": 5448,
+                "instance_ratio": 0.0009177679882525697
+              },
+              "null_mean": 0.8754208754208754,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.82
+            }
+          }
+        }
+      },
+      {
+        "seed": 12,
+        "result": {
+          "types_per_token": 0.0010141987829614604,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 3944,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 8502,
+                "instance_ratio": 0.0007057163020465773
+              },
+              "null_mean": 0.8468013468013468,
+              "null_min": 0.3333333333333333,
+              "null_max": 1.0,
+              "p": 0.41
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 5439,
+                "instance_ratio": 0.0011031439602868175
+              },
+              "null_mean": 0.8215488215488215,
+              "null_min": 0.16666666666666666,
+              "null_max": 1.0,
+              "p": 0.3
+            }
+          }
+        }
+      },
+      {
+        "seed": 13,
+        "result": {
+          "types_per_token": 0.0010037641154328732,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 3985,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 8653,
+                "instance_ratio": 0.0006934011325551831
+              },
+              "null_mean": 0.8249158249158249,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.32
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 0.6666666666666666,
+                "skewed_types": 4,
+                "pair_types": 6,
+                "pair_occurrences": 5710,
+                "instance_ratio": 0.0007005253940455342
+              },
+              "null_mean": 0.8383838383838383,
+              "null_min": 0.3333333333333333,
+              "null_max": 1.0,
+              "p": 0.94
+            }
+          }
+        }
+      },
+      {
+        "seed": 14,
+        "result": {
+          "types_per_token": 0.0010052777079668257,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 3979,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 0.8333333333333334,
+                "skewed_types": 5,
+                "pair_types": 6,
+                "pair_occurrences": 8616,
+                "instance_ratio": 0.0005803156917363045
+              },
+              "null_mean": 0.8400673400673401,
+              "null_min": 0.3333333333333333,
+              "null_max": 1.0,
+              "p": 0.77
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 0.8333333333333334,
+                "skewed_types": 5,
+                "pair_types": 6,
+                "pair_occurrences": 5631,
+                "instance_ratio": 0.000887941751021133
+              },
+              "null_mean": 0.8333333333333334,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.72
+            }
+          }
+        }
+      },
+      {
+        "seed": 15,
+        "result": {
+          "types_per_token": 0.0010180707559175363,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 3929,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 8548,
+                "instance_ratio": 0.0007019185774450163
+              },
+              "null_mean": 0.8265993265993266,
+              "null_min": 0.3333333333333333,
+              "null_max": 1.0,
+              "p": 0.35
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 0.8333333333333334,
+                "skewed_types": 5,
+                "pair_types": 6,
+                "pair_occurrences": 5424,
+                "instance_ratio": 0.0009218289085545723
+              },
+              "null_mean": 0.867003367003367,
+              "null_min": 0.3333333333333333,
+              "null_max": 1.0,
+              "p": 0.82
+            }
+          }
+        }
+      },
+      {
+        "seed": 16,
+        "result": {
+          "types_per_token": 0.0010095911155981827,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 3962,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 0.6666666666666666,
+                "skewed_types": 4,
+                "pair_types": 6,
+                "pair_occurrences": 8587,
+                "instance_ratio": 0.00046582042622569
+              },
+              "null_mean": 0.8434343434343434,
+              "null_min": 0.16666666666666666,
+              "null_max": 1.0,
+              "p": 0.94
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 0.8333333333333334,
+                "skewed_types": 5,
+                "pair_types": 6,
+                "pair_occurrences": 5509,
+                "instance_ratio": 0.0009076057360682519
+              },
+              "null_mean": 0.8619528619528619,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.78
+            }
+          }
+        }
+      },
+      {
+        "seed": 17,
+        "result": {
+          "types_per_token": 0.0010057832537088258,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 3977,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 0.8333333333333334,
+                "skewed_types": 5,
+                "pair_types": 6,
+                "pair_occurrences": 8694,
+                "instance_ratio": 0.0005751092707614447
+              },
+              "null_mean": 0.8484848484848485,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.81
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 5627,
+                "instance_ratio": 0.0010662875422072153
+              },
+              "null_mean": 0.8417508417508417,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.37
+            }
+          }
+        }
+      },
+      {
+        "seed": 18,
+        "result": {
+          "types_per_token": 0.001005530417295123,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 3978,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 0.8333333333333334,
+                "skewed_types": 5,
+                "pair_types": 6,
+                "pair_occurrences": 8746,
+                "instance_ratio": 0.0005716899153898925
+              },
+              "null_mean": 0.8383838383838383,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.74
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 0.8333333333333334,
+                "skewed_types": 5,
+                "pair_types": 6,
+                "pair_occurrences": 5635,
+                "instance_ratio": 0.0008873114463176575
+              },
+              "null_mean": 0.8552188552188552,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.82
+            }
+          }
+        }
+      },
+      {
+        "seed": 19,
+        "result": {
+          "types_per_token": 0.0010080645161290322,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 3968,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 8657,
+                "instance_ratio": 0.0006930807439066651
+              },
+              "null_mean": 0.8653198653198654,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.44
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 0.8333333333333334,
+                "skewed_types": 5,
+                "pair_types": 6,
+                "pair_occurrences": 5602,
+                "instance_ratio": 0.0008925383791503035
+              },
+              "null_mean": 0.8282828282828283,
+              "null_min": 0.3333333333333333,
+              "null_max": 1.0,
+              "p": 0.69
+            }
+          }
+        }
+      },
+      {
+        "seed": 20,
+        "result": {
+          "types_per_token": 0.0010080645161290322,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 3968,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 8651,
+                "instance_ratio": 0.0006935614379840481
+              },
+              "null_mean": 0.8316498316498316,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.34
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 5601,
+                "instance_ratio": 0.0010712372790573112
+              },
+              "null_mean": 0.8535353535353535,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.46
+            }
+          }
+        }
+      },
+      {
+        "seed": 21,
+        "result": {
+          "types_per_token": 0.001005530417295123,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 3978,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 0.8333333333333334,
+                "skewed_types": 5,
+                "pair_types": 6,
+                "pair_occurrences": 8690,
+                "instance_ratio": 0.0005753739930955121
+              },
+              "null_mean": 0.8282828282828283,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.73
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 0.8333333333333334,
+                "skewed_types": 5,
+                "pair_types": 6,
+                "pair_occurrences": 5653,
+                "instance_ratio": 0.0008844861135680169
+              },
+              "null_mean": 0.8518518518518517,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.75
+            }
+          }
+        }
+      },
+      {
+        "seed": 22,
+        "result": {
+          "types_per_token": 0.001007302946361118,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 3971,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 8659,
+                "instance_ratio": 0.0006929206605843631
+              },
+              "null_mean": 0.8501683501683502,
+              "null_min": 0.3333333333333333,
+              "null_max": 1.0,
+              "p": 0.41
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 5611,
+                "instance_ratio": 0.0010693281055070398
+              },
+              "null_mean": 0.8451178451178452,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.39
+            }
+          }
+        }
+      },
+      {
+        "seed": 23,
+        "result": {
+          "types_per_token": 0.001008318628686665,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 3967,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 0.5,
+                "skewed_types": 3,
+                "pair_types": 6,
+                "pair_occurrences": 8669,
+                "instance_ratio": 0.0003460606759718537
+              },
+              "null_mean": 0.8484848484848485,
+              "null_min": 0.3333333333333333,
+              "null_max": 1.0,
+              "p": 0.97
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 0.8333333333333334,
+                "skewed_types": 5,
+                "pair_types": 6,
+                "pair_occurrences": 5535,
+                "instance_ratio": 0.0009033423667570009
+              },
+              "null_mean": 0.8468013468013468,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.76
+            }
+          }
+        }
+      },
+      {
+        "seed": 24,
+        "result": {
+          "types_per_token": 0.001008827238335435,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 3965,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 0.8333333333333334,
+                "skewed_types": 5,
+                "pair_types": 6,
+                "pair_occurrences": 8514,
+                "instance_ratio": 0.0005872680291284943
+              },
+              "null_mean": 0.8518518518518517,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.83
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 0.5,
+                "skewed_types": 3,
+                "pair_types": 6,
+                "pair_occurrences": 5433,
+                "instance_ratio": 0.0005521811154058532
+              },
+              "null_mean": 0.8501683501683502,
+              "null_min": 0.3333333333333333,
+              "null_max": 1.0,
+              "p": 0.99
+            }
+          }
+        }
+      },
+      {
+        "seed": 25,
+        "result": {
+          "types_per_token": 0.0010067958721369243,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 3973,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 8686,
+                "instance_ratio": 0.000690766751093714
+              },
+              "null_mean": 0.8434343434343434,
+              "null_min": 0.3333333333333333,
+              "null_max": 1.0,
+              "p": 0.41
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 5592,
+                "instance_ratio": 0.001072961373390558
+              },
+              "null_mean": 0.8434343434343434,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.34
+            }
+          }
+        }
+      },
+      {
+        "seed": 26,
+        "result": {
+          "types_per_token": 0.001008827238335435,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 3965,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 8687,
+                "instance_ratio": 0.0006906872337976287
+              },
+              "null_mean": 0.8350168350168351,
+              "null_min": 0.3333333333333333,
+              "null_max": 1.0,
+              "p": 0.34
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 5602,
+                "instance_ratio": 0.0010710460549803642
+              },
+              "null_mean": 0.8569023569023568,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.41
+            }
+          }
+        }
+      },
+      {
+        "seed": 27,
+        "result": {
+          "types_per_token": 0.0010111223458038423,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 3956,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 0.8333333333333334,
+                "skewed_types": 5,
+                "pair_types": 6,
+                "pair_occurrences": 8621,
+                "instance_ratio": 0.0005799791207516529
+              },
+              "null_mean": 0.8468013468013468,
+              "null_min": 0.3333333333333333,
+              "null_max": 1.0,
+              "p": 0.77
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 0.8333333333333334,
+                "skewed_types": 5,
+                "pair_types": 6,
+                "pair_occurrences": 5576,
+                "instance_ratio": 0.000896700143472023
+              },
+              "null_mean": 0.867003367003367,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.8
+            }
+          }
+        }
+      },
+      {
+        "seed": 28,
+        "result": {
+          "types_per_token": 0.0010095911155981827,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 3962,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 0.8333333333333334,
+                "skewed_types": 5,
+                "pair_types": 6,
+                "pair_occurrences": 8574,
+                "instance_ratio": 0.000583158385817588
+              },
+              "null_mean": 0.8434343434343434,
+              "null_min": 0.16666666666666666,
+              "null_max": 1.0,
+              "p": 0.79
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 0.6666666666666666,
+                "skewed_types": 4,
+                "pair_types": 6,
+                "pair_occurrences": 5451,
+                "instance_ratio": 0.000733810310034856
+              },
+              "null_mean": 0.8434343434343434,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 0.96
+            }
+          }
+        }
+      },
+      {
+        "seed": 29,
+        "result": {
+          "types_per_token": 0.0010154861640010156,
+          "hapax_per_token": 0.0,
+          "retained_tokens": 3939,
+          "policies": {
+            "compress": {
+              "observed": {
+                "type_ratio": 1.0,
+                "skewed_types": 6,
+                "pair_types": 6,
+                "pair_occurrences": 8555,
+                "instance_ratio": 0.0007013442431326709
+              },
+              "null_mean": 0.8434343434343434,
+              "null_min": 0.3333333333333333,
+              "null_max": 1.0,
+              "p": 0.43
+            },
+            "barrier": {
+              "observed": {
+                "type_ratio": 0.3333333333333333,
+                "skewed_types": 2,
+                "pair_types": 6,
+                "pair_occurrences": 5546,
+                "instance_ratio": 0.0003606202668589975
+              },
+              "null_mean": 0.8383838383838383,
+              "null_min": 0.5,
+              "null_max": 1.0,
+              "p": 1.0
+            }
+          }
+        }
+      }
+    ]
+  },
+  "reproduction": {
+    "instruction": "Reconstruct clean_works.json by extracting extract_works.py from P-J-011/mubadala777/step.json and running it with pinned project inputs. Save the included plan and script in /tmp using the named paths, and run the script; edit paths if another scratch directory is used.",
+    "plan": {
+      "sources": [
+        "la_vulg_daniel",
+        "it_villani",
+        "de_walther"
+      ],
+      "tokens": 5000,
+      "stop_types": 1,
+      "window": 3,
+      "skew_threshold": 5,
+      "seeds": [
+        19,
+        23,
+        29,
+        31,
+        37,
+        41,
+        43,
+        47,
+        53,
+        59
+      ],
+      "shuffles": 99,
+      "boundary": "independent pre-existing normalizer blocks; never count across blocks",
+      "stop_tie": "lexicographic token order, fixed for each observed sequence and its permutations",
+      "compare": "two stopword policies: compress filtered tokens versus original-position barriers",
+      "synthetic": "stationary ordered five-token cycle with random phase per block; count-preserving within-block shuffle",
+      "negative": "30 iid uniform five-token books; same 80-token blocks"
+    },
+    "script": "import json,random,math,collections\nfrom pathlib import Path\np=json.load(open('/tmp/voy-skew2-plan.json'));works=json.load(open('/tmp/voy-entropy/clean_works.json'))\ndef take(bs,n):\n out=[]\n for b in bs:\n  a=b.split()[:n];out.append(a);n-=len(a)\n  if not n:break\n assert n==0\n return out\ndef stat(blocks,stop,policy):\n c=collections.Counter()\n for b in blocks:\n  if policy=='compress': seq=[w for w in b if w not in stop]\n  else:seq=[None if w in stop else w for w in b]\n  for i,a in enumerate(seq):\n   if a is None:continue\n   for v in seq[i+1:i+4]:\n    if v is None: break\n    if a!=v:c[a,v]+=1\n pairs={tuple(sorted((a,b))) for a,b in c};skew=sum(abs(c[a,b]-c[b,a])>5 for a,b in pairs);n=sum(c.values());return {'type_ratio':skew/len(pairs) if pairs else 0,'skewed_types':skew,'pair_types':len(pairs),'pair_occurrences':n,'instance_ratio':skew/n if n else 0}\ndef measurement(blocks,seed):\n flat=[w for b in blocks for w in b];counts=collections.Counter(flat);stops=set(w for w,n in sorted(counts.items(),key=lambda p:(-p[1],p[0]))[:1]);kept=[w for w in flat if w not in stops];freq=collections.Counter(kept);rng=random.Random(seed);res={}\n for policy in ('compress','barrier'):\n  observed=stat(blocks,stops,policy);null=[]\n  for _ in range(p['shuffles']):\n   draws=[]\n   for b in blocks:\n    c=b.copy();rng.shuffle(c);draws.append(c)\n   null.append(stat(draws,stops,policy)['type_ratio'])\n  res[policy]={'observed':observed,'null_mean':sum(null)/len(null),'null_min':min(null),'null_max':max(null),'p':(1+sum(x>=observed['type_ratio'] for x in null))/(1+len(null))}\n return {'types_per_token':len(freq)/len(kept),'hapax_per_token':sum(c==1 for c in freq.values())/len(kept),'retained_tokens':len(kept),'policies':res}\nout={'plan':p,'sources':{},'cycle':[],'iid':[]}\nfor cid in p['sources']:\n blocks=take(works[cid],p['tokens']);out['sources'][cid]=measurement(blocks,20261127)\nfor seed in p['seeds']:\n rng=random.Random(seed);blocks=[];n=5000\n while n:\n  k=min(80,n);offset=rng.randrange(5);blocks.append([f'w{(i+offset)%5}' for i in range(k)]);n-=k\n out['cycle'].append({'seed':seed,'result':measurement(blocks,seed+1000)})\nfor seed in range(30):\n rng=random.Random(seed+3000);blocks=[];n=5000\n while n:\n  k=min(80,n);blocks.append([f'w{rng.randrange(5)}' for i in range(k)]);n-=k\n out['iid'].append({'seed':seed,'result':measurement(blocks,seed+5000)})\nprint(json.dumps(out,indent=2))\n"
+  }
+}

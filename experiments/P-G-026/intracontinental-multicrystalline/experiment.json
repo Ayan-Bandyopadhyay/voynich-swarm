@@ -1,0 +1,7 @@
+{
+  "step": "P-G-026",
+  "handle": "intracontinental-multicrystalline",
+  "kind": "step",
+  "summary": "Calibrate a normalized topic-and-cache model on disjoint historical windows and stop at the external gate.",
+  "lease": "d73165f1dd813efa8d5a889e"
+}

@@ -1,0 +1,77 @@
+{
+  "id": "K-dutch-syllabic-001",
+  "family": "syllabic",
+  "segmentation": "eva-basic",
+  "target": {
+    "language": "dutch",
+    "period": "1637 Dutch Statenvertaling, early modern proxy"
+  },
+  "key": {
+    "marker": "q",
+    "map": {
+      "e": "e",
+      "o": "e",
+      "y": "s",
+      "a": "e",
+      "d": "n",
+      "i": "e",
+      "ch": "e",
+      "l": "n",
+      "k": "n",
+      "r": "n",
+      "n": "n",
+      "t": "n",
+      "sh": "e",
+      "s": "n",
+      "m": "n",
+      "p": "n",
+      "cth": "d",
+      "ckh": "n",
+      "f": "n",
+      "h": "e",
+      "cph": "d",
+      "?": "e",
+      "c": "e",
+      "g": "s",
+      "*": "n",
+      "cfh": "e",
+      "x": "s",
+      "v": "u",
+      "j": "n",
+      "b": "n",
+      "z": "e",
+      "u": "a",
+      "qo": "zo",
+      "qe": "he",
+      "qk": "di",
+      "qy": "de",
+      "qcth": "we",
+      "qckh": "de",
+      "qa": "he",
+      "q*": "me",
+      "q?": "he",
+      "qch": "di",
+      "qcph": "we"
+    }
+  },
+  "search": {
+    "budget": {
+      "syllable_candidates": 64,
+      "sign_limit": 24,
+      "lexical_sweeps": 5,
+      "restarts": 4,
+      "iterations": 6000,
+      "seed": 1404,
+      "bpe_merges": 30,
+      "verbose_segmentations": [
+        "bpe-greedy",
+        "fixed-2"
+      ],
+      "verbose_min_unit_share": 0.0005,
+      "substitution_group_swap": 0.2
+    }
+  },
+  "transliteration": "zl",
+  "reading_order": "normal",
+  "spaces": "word_breaks"
+}

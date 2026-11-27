@@ -1,0 +1,7 @@
+{
+  "step": "P-J-026",
+  "handle": "intracontinental-multicrystalline",
+  "kind": "step",
+  "summary": "Test ciphertext-only period inference against harmonics and a periodic-plaintext confound.",
+  "lease": "5c0ac9619b72fc7f758df4eb"
+}

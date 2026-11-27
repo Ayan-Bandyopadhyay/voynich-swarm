@@ -1,0 +1,6 @@
+{
+ "title": "Matched t variants occur farther right than k variants",
+ "statement": "Across certain paragraph tokens in the interiors of lines of at least three words, t-side words having a spelling differing by exactly one k/t substitution have a greater pooled mean relative position than their k-side counterparts, with a whole-page bootstrap 95% lower bound above zero. Words with matching substitutions on both sides are excluded.",
+ "source": "Patrick Feaster (2022), https://ceur-ws.org/Vol-3313/paper12.pdf, studies rightward grapheme distributions. This operationalization and direction were explored on public practice pages before registration; it is not blind relative to public data. Public ZL gives 0.0691 (95% page bootstrap 0.0391 to 0.1036) and IT 0.0761 (0.0436 to 0.1121). The comparison pools tokens and can reflect composition across pages, and the matched vocabulary is re-derived in each sample. The two transcriptions are not independent manuscript samples. This fact does not claim a linguistic cause or that the pattern cannot be generated without meaning.",
+ "spec": {"select": {"certain": true, "unit": ["P"]}, "statistic": {"matched_rightwardness": {"contrast": "k/t", "min_line": 3, "max_line": 200}}, "compare": [{"page_bootstrap": "lower", "value": 0}]}
+}

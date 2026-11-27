@@ -1,0 +1,51 @@
+{
+  "id": "K-croatian-table-cipher-001",
+  "family": "table-cipher",
+  "segmentation": "eva-basic",
+  "target": {
+    "language": "croatian",
+    "period": "20th-century Croatian Bible translation (period proxy)"
+  },
+  "key": {
+    "map": {
+      "a": "a",
+      "b": "b",
+      "d": "c",
+      "e": "d",
+      "f": "e",
+      "g": "f",
+      "i": "g",
+      "j": "h",
+      "k": "i",
+      "l": "j",
+      "m": "k",
+      "n": "l",
+      "o": "m",
+      "p": "n",
+      "q": "o",
+      "r": "p",
+      "s": "r",
+      "t": "s",
+      "u": "t",
+      "v": "u",
+      "x": "v",
+      "y": "z",
+      "z": "đ"
+    },
+    "shifts": [
+      21,
+      16,
+      7,
+      7
+    ]
+  },
+  "search": {
+    "budget": {
+      "max_period": 4,
+      "sweeps": 4
+    }
+  },
+  "transliteration": "zl",
+  "reading_order": "normal",
+  "spaces": "word_breaks"
+}

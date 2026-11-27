@@ -1,0 +1,513 @@
+{
+  "title": "Fixed-prefix competitor information separates four books from letter-shuffled types in an exploratory pilot",
+  "program": "J",
+  "on_path": true,
+  "hard": true,
+  "statement": "A fixed two-character competing-prefix score depends on prefix-neighbour counts as well as word frequency, avoiding the uniqueness-position telescope. In four 30,000-token historical book samples, each of 20 length-stratified means is below every one of its three type-letter-shuffle controls; source slopes against log frequency are negative in 19 of 20 groups. This is an exploratory comparison with one simple control, not a language test or a replication of the authors’ implementation.",
+  "check": "Before a manuscript or hidden-page claim, obtain the authors’ code if possible; independently validate this different score against hand cases, fixed-seed synthetic lexicons and count-preserving structured non-language procedures. Freeze tokenization, alphabet, prefix depth, sample size, books, type weighting, support and uncertainty; compare independent books and multiple structured generators. Add a reviewed scorer primitive and prespecify thresholds before any held-out run. Do not interpret this pilot as proving specificity to language.",
+  "definition": "For token count N, type count c(w), and token prefix count C2(w), define score S2(w)=log2((N-c(w)+1)/(C2(w)-c(w)+1)), on words of at least two characters. C2 counts all tokens whose spelling starts with the same two characters, regardless of their lengths. This is minus the log of the add-one competitor fraction, not a normalized conditional probability. Fixing N and c does not fix C2, so S2 cannot be a function of frequency and uniqueness position alone. If prefix segment surprisals use the same add-one competitor counts, their first two terms telescope exactly to this S2; unlike averaging through the uniqueness point, the terminal competitor count generally varies. The end-of-word marker is not counted as a character; a word which prefixes another remains a competitor at depth two.",
+  "hand_checks": {
+    "counts": {
+      "cat": 2,
+      "cats": 1,
+      "dog": 1
+    },
+    "N": 4,
+    "cat": {
+      "count": 2,
+      "prefix_ca": 3,
+      "score": 0.5849625007211562
+    },
+    "cats": {
+      "count": 1,
+      "prefix_ca": 3,
+      "score": 0.4150374992788438
+    },
+    "dog": {
+      "count": 1,
+      "prefix_do": 1,
+      "score": 2.0
+    },
+    "same_frequency_counterexample": {
+      "counts": {
+        "cat": 1,
+        "car": 1,
+        "dog": 1,
+        "eel": 1
+      },
+      "cat": {
+        "count": 1,
+        "prefix_ca": 2,
+        "uniqueness_point": 3,
+        "score": 1
+      },
+      "dog": {
+        "count": 1,
+        "prefix_do": 1,
+        "uniqueness_point": 1,
+        "score": 2
+      },
+      "note": "To hold uniqueness position fixed too, compare cat (prefix ca shared by car) with dog in corpus cat, car, dog, dot, dot: both are count 1, have uniqueness point 3, but ca has two tokens and do has three, so scores are log2(5/2) and log2(5/3)."
+    }
+  },
+  "method": {
+    "sample": "First 30,000 normalized tokens of each pinned work: la_augustine (late antique), it_villani (c. 1350), fr_rose (13th c.) and en_chaucer (c. 1390). These are distinct from the four books in the parent pilot but the editions and genre differ; no manuscript data measured.",
+    "processing": "vs.refcorpus.blocks_of strips Gutenberg wrappers and normalizes each reference language, including Latin j/v mapping; blocks were rejoined in source order. Segments are normalized characters, not EVA-basic units. Prefix counts include all token lengths. For each length 4–8, regress S2 on log2(type count/N) with equal weight per distinct type, reporting mean and slope; all groups have at least 100 types.",
+    "control": "For each seed 827, 828, 829, iterate original types in sorted order, randomly shuffle each type’s character multiset once using random.Random(seed), and replace all occurrences of the type consistently. Recount resulting types and prefixes; collisions merge types, so frequency spectrum need not remain exactly invariant. This destroys positional structure but preserves each token’s character multiset, length, ordering and total tokens. The three controls are not independent books or historically plausible production mechanisms.",
+    "limitations": "Exploratory, thresholds not preregistered, no uncertainty interval and only three randomizations per book. Shared prefix counts create dependencies; samples within a single book are not replicates. The raw statistic remains sensitive to c and N, alphabet/normalization and +1 smoothing. No authors’ implementation was located or reproduced. The control is a permutation of a language source, not an independent structured generator. No manuscript claim or held-out comparison is made."
+  },
+  "results": {
+    "la_augustine": {
+      "tokens": 30000,
+      "source": {
+        "4": {
+          "types": 370,
+          "slope": -0.3149,
+          "mean": 7.56322
+        },
+        "5": {
+          "types": 798,
+          "slope": -0.164,
+          "mean": 7.32754
+        },
+        "6": {
+          "types": 1053,
+          "slope": -0.22007,
+          "mean": 7.16206
+        },
+        "7": {
+          "types": 1350,
+          "slope": -0.14792,
+          "mean": 6.97888
+        },
+        "8": {
+          "types": 1373,
+          "slope": -0.15376,
+          "mean": 6.93479
+        }
+      },
+      "type_letter_shuffle": [
+        {
+          "4": {
+            "types": 369,
+            "slope": -0.12051,
+            "mean": 8.26255
+          },
+          "5": {
+            "types": 798,
+            "slope": -0.05335,
+            "mean": 8.23044
+          },
+          "6": {
+            "types": 1053,
+            "slope": 0.04803,
+            "mean": 8.2192
+          },
+          "7": {
+            "types": 1350,
+            "slope": 0.07485,
+            "mean": 8.23421
+          },
+          "8": {
+            "types": 1373,
+            "slope": 0.06833,
+            "mean": 8.22043
+          }
+        },
+        {
+          "4": {
+            "types": 370,
+            "slope": -0.01108,
+            "mean": 8.09231
+          },
+          "5": {
+            "types": 798,
+            "slope": -0.08846,
+            "mean": 8.20049
+          },
+          "6": {
+            "types": 1053,
+            "slope": 0.01377,
+            "mean": 8.1623
+          },
+          "7": {
+            "types": 1350,
+            "slope": 0.03211,
+            "mean": 8.14805
+          },
+          "8": {
+            "types": 1373,
+            "slope": 0.0209,
+            "mean": 8.23531
+          }
+        },
+        {
+          "4": {
+            "types": 367,
+            "slope": -0.05206,
+            "mean": 8.24934
+          },
+          "5": {
+            "types": 798,
+            "slope": -0.0837,
+            "mean": 8.23241
+          },
+          "6": {
+            "types": 1053,
+            "slope": 0.0908,
+            "mean": 8.18963
+          },
+          "7": {
+            "types": 1350,
+            "slope": -0.01717,
+            "mean": 8.21971
+          },
+          "8": {
+            "types": 1373,
+            "slope": -0.02723,
+            "mean": 8.22589
+          }
+        }
+      ]
+    },
+    "it_villani": {
+      "tokens": 30000,
+      "source": {
+        "4": {
+          "types": 253,
+          "slope": -0.17961,
+          "mean": 7.51084
+        },
+        "5": {
+          "types": 557,
+          "slope": -0.12462,
+          "mean": 7.2874
+        },
+        "6": {
+          "types": 631,
+          "slope": -0.12042,
+          "mean": 7.30287
+        },
+        "7": {
+          "types": 807,
+          "slope": -0.05476,
+          "mean": 7.07398
+        },
+        "8": {
+          "types": 710,
+          "slope": -0.05347,
+          "mean": 6.89558
+        }
+      },
+      "type_letter_shuffle": [
+        {
+          "4": {
+            "types": 252,
+            "slope": -0.05833,
+            "mean": 8.70106
+          },
+          "5": {
+            "types": 557,
+            "slope": -0.07109,
+            "mean": 8.55547
+          },
+          "6": {
+            "types": 631,
+            "slope": 0.02827,
+            "mean": 8.56341
+          },
+          "7": {
+            "types": 807,
+            "slope": -0.08643,
+            "mean": 8.61604
+          },
+          "8": {
+            "types": 710,
+            "slope": -0.00053,
+            "mean": 8.60331
+          }
+        },
+        {
+          "4": {
+            "types": 250,
+            "slope": 0.02373,
+            "mean": 8.61694
+          },
+          "5": {
+            "types": 557,
+            "slope": -0.05242,
+            "mean": 8.61618
+          },
+          "6": {
+            "types": 631,
+            "slope": 0.0424,
+            "mean": 8.60616
+          },
+          "7": {
+            "types": 807,
+            "slope": 0.04074,
+            "mean": 8.63759
+          },
+          "8": {
+            "types": 710,
+            "slope": -0.01188,
+            "mean": 8.60226
+          }
+        },
+        {
+          "4": {
+            "types": 250,
+            "slope": 0.01668,
+            "mean": 8.58
+          },
+          "5": {
+            "types": 557,
+            "slope": -0.10076,
+            "mean": 8.64979
+          },
+          "6": {
+            "types": 631,
+            "slope": -0.03189,
+            "mean": 8.59713
+          },
+          "7": {
+            "types": 807,
+            "slope": -0.05157,
+            "mean": 8.47329
+          },
+          "8": {
+            "types": 710,
+            "slope": 0.01594,
+            "mean": 8.65761
+          }
+        }
+      ]
+    },
+    "fr_rose": {
+      "tokens": 30000,
+      "source": {
+        "4": {
+          "types": 519,
+          "slope": -0.20181,
+          "mean": 7.55282
+        },
+        "5": {
+          "types": 789,
+          "slope": -0.13633,
+          "mean": 7.2779
+        },
+        "6": {
+          "types": 1053,
+          "slope": -0.18321,
+          "mean": 7.09368
+        },
+        "7": {
+          "types": 1030,
+          "slope": -0.18527,
+          "mean": 7.02352
+        },
+        "8": {
+          "types": 764,
+          "slope": -0.16992,
+          "mean": 6.9079
+        }
+      },
+      "type_letter_shuffle": [
+        {
+          "4": {
+            "types": 517,
+            "slope": -0.01473,
+            "mean": 8.66938
+          },
+          "5": {
+            "types": 789,
+            "slope": -0.03299,
+            "mean": 8.5107
+          },
+          "6": {
+            "types": 1053,
+            "slope": -0.05518,
+            "mean": 8.58225
+          },
+          "7": {
+            "types": 1030,
+            "slope": 0.03813,
+            "mean": 8.49829
+          },
+          "8": {
+            "types": 764,
+            "slope": 0.0977,
+            "mean": 8.60395
+          }
+        },
+        {
+          "4": {
+            "types": 516,
+            "slope": -0.03106,
+            "mean": 8.73283
+          },
+          "5": {
+            "types": 789,
+            "slope": -0.07696,
+            "mean": 8.50484
+          },
+          "6": {
+            "types": 1053,
+            "slope": 0.01186,
+            "mean": 8.50552
+          },
+          "7": {
+            "types": 1030,
+            "slope": 0.02104,
+            "mean": 8.47907
+          },
+          "8": {
+            "types": 764,
+            "slope": 0.0036,
+            "mean": 8.50033
+          }
+        },
+        {
+          "4": {
+            "types": 513,
+            "slope": 0.02488,
+            "mean": 8.77361
+          },
+          "5": {
+            "types": 789,
+            "slope": 0.00352,
+            "mean": 8.54592
+          },
+          "6": {
+            "types": 1053,
+            "slope": -0.11937,
+            "mean": 8.63835
+          },
+          "7": {
+            "types": 1030,
+            "slope": 0.04402,
+            "mean": 8.46549
+          },
+          "8": {
+            "types": 764,
+            "slope": -0.05902,
+            "mean": 8.36653
+          }
+        }
+      ]
+    },
+    "en_chaucer": {
+      "tokens": 30000,
+      "source": {
+        "4": {
+          "types": 667,
+          "slope": -0.15627,
+          "mean": 7.62494
+        },
+        "5": {
+          "types": 866,
+          "slope": -0.20762,
+          "mean": 7.86537
+        },
+        "6": {
+          "types": 984,
+          "slope": -0.13063,
+          "mean": 7.61751
+        },
+        "7": {
+          "types": 866,
+          "slope": -0.12753,
+          "mean": 7.62862
+        },
+        "8": {
+          "types": 667,
+          "slope": 0.00552,
+          "mean": 7.53553
+        }
+      },
+      "type_letter_shuffle": [
+        {
+          "4": {
+            "types": 665,
+            "slope": -0.09479,
+            "mean": 9.03415
+          },
+          "5": {
+            "types": 866,
+            "slope": 0.0251,
+            "mean": 9.16192
+          },
+          "6": {
+            "types": 984,
+            "slope": 0.05657,
+            "mean": 9.05809
+          },
+          "7": {
+            "types": 866,
+            "slope": -0.10039,
+            "mean": 9.16788
+          },
+          "8": {
+            "types": 667,
+            "slope": 0.04052,
+            "mean": 9.10283
+          }
+        },
+        {
+          "4": {
+            "types": 662,
+            "slope": -0.08099,
+            "mean": 9.16247
+          },
+          "5": {
+            "types": 866,
+            "slope": -0.02294,
+            "mean": 9.17376
+          },
+          "6": {
+            "types": 984,
+            "slope": 0.03597,
+            "mean": 9.04175
+          },
+          "7": {
+            "types": 866,
+            "slope": -0.02799,
+            "mean": 9.06333
+          },
+          "8": {
+            "types": 667,
+            "slope": 0.09024,
+            "mean": 9.05347
+          }
+        },
+        {
+          "4": {
+            "types": 666,
+            "slope": -0.07088,
+            "mean": 9.13658
+          },
+          "5": {
+            "types": 865,
+            "slope": -0.06063,
+            "mean": 9.13693
+          },
+          "6": {
+            "types": 984,
+            "slope": -0.07331,
+            "mean": 9.10327
+          },
+          "7": {
+            "types": 866,
+            "slope": -0.16489,
+            "mean": 9.15871
+          },
+          "8": {
+            "types": 667,
+            "slope": -0.15444,
+            "mean": 9.12361
+          }
+        }
+      ]
+    }
+  }
+}

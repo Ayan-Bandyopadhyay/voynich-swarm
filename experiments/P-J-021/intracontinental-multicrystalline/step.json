@@ -1,0 +1,237 @@
+{
+  "program": "J",
+  "title": "Obtain independently paired picture labels and paragraph text before recurrence scoring",
+  "statement": "Using repository main 800a4a4, the public practice split and the current picture selector, the two AGREED annotation records are both f72v1. The selected objects link to 28 certain ZL and 30 certain IT training label lines, but there are zero certain paragraph tokens on that folio; no selected folio appears in the public evaluation split. No recurrence outcomes were inspected, and there are currently zero usable label/body folios for this design. An independently implemented synthetic check of 12 folios, 12 matched pairs and six two-folio blocks gives 30/720 false rejections with correct block signs, 74/720 if treating folios as independent, and 193/720 if treating pairs as independent in the shared-bias zero-dose layout. At dose 0.25 the correct-block count is 107/720. These broadly reproduce the prior study\u2019s direction with new seeds, not its exact draws. In a second synthetic role-blind one-table layout, page-specific word weights generate body words while two disjoint candidate streams are sampled symmetrically; actual label-only hits are planted by replacing equal-length noncandidate filler words. Correct-block rejection is 19/720 at zero dose and 519/720 at dose .25. These synthetic assignment and independence assumptions do not follow from observational annotations.",
+  "check": "Before outcome access, independently review the object-label attachment and scan-derived selection, and define a searchable certain P-line body that excludes labels and nonparagraph units. For each target on the same folio, select a distinct non-target L-line sham with equal token count, EVA-basic lengths and line-slot category, and a train-only frequency bin; enforce one-to-one matching or leave unmatched. Predeclare quire or other defensible independent clusters and preserve all unmatched counts. Audit attachment shifts and matching without reading recurrence outcomes; report eligible objects, folios and nonzero blocks. A one-sided exact sign test needs at least five nonzero independent blocks to attain alpha .05 (minimum 1/32); ties and dependence can reduce support. Require simulated power and error targets to pass, defend real-world label/sham exchangeability, and establish viable public practice support before proposing a manuscript fact.",
+  "on_path": true,
+  "hard": false,
+  "evidence": {
+    "public_feasibility_method": "Use dsl.pictures(), dsl.tokens(), dsl.select({certain:true}) and dsl._picture_objects on corpus.split_pages(practice) separately for ZL and IT. Count objects and P-unit tokens only; no words or overlap outcomes are emitted. The referenced commit is the then-current public main; the source can change.",
+    "simulations": {
+      "shared_bias": {
+        "0": {
+          "rejections": [
+            30,
+            74,
+            193
+          ],
+          "wilson": [
+            [
+              0.029340004432634875,
+              0.058858119676899676
+            ],
+            [
+              0.08266355707943308,
+              0.12710815048216353
+            ],
+            [
+              0.23699459577748658,
+              0.301578394302187
+            ]
+          ],
+          "nonzero_blocks": {
+            "6": 718,
+            "5": 2
+          },
+          "attained_insertions": 0
+        },
+        "0.1": {
+          "rejections": [
+            59,
+            132,
+            290
+          ],
+          "wilson": [
+            [
+              0.06405913047396201,
+              0.10426703727443164
+            ],
+            [
+              0.15677550530724346,
+              0.21325228953207134
+            ],
+            [
+              0.36756050237877524,
+              0.43902697849294436
+            ]
+          ],
+          "nonzero_blocks": {
+            "6": 702,
+            "5": 18
+          },
+          "attained_insertions": 7070
+        },
+        "0.25": {
+          "rejections": [
+            107,
+            295,
+            476
+          ],
+          "wilson": [
+            [
+              0.12449603374363231,
+              0.17645586140701086
+            ],
+            [
+              0.3743720428957487,
+              0.4460306179137052
+            ],
+            [
+              0.6257635033398135,
+              0.6947486712156228
+            ]
+          ],
+          "nonzero_blocks": {
+            "6": 641,
+            "5": 74,
+            "4": 5
+          },
+          "attained_insertions": 17422
+        },
+        "0.5": {
+          "rejections": [
+            388,
+            625,
+            691
+          ],
+          "wilson": [
+            [
+              0.5023675257892578,
+              0.5749974818620543
+            ],
+            [
+              0.8413705428930789,
+              0.8908339938068404
+            ],
+            [
+              0.9427532163554655,
+              0.9718116955225469
+            ]
+          ],
+          "nonzero_blocks": {
+            "4": 35,
+            "5": 163,
+            "6": 522
+          },
+          "attained_insertions": 34892
+        }
+      },
+      "one_table": {
+        "0": {
+          "rejections": [
+            19,
+            27,
+            28
+          ],
+          "wilson": [
+            [
+              0.0169579562251923,
+              0.04084677202132675
+            ],
+            [
+              0.025898344062752612,
+              0.05401067208414134
+            ],
+            [
+              0.027041010928719664,
+              0.05563104120572117
+            ]
+          ],
+          "nonzero_blocks": {
+            "6": 319,
+            "4": 95,
+            "5": 280,
+            "3": 21,
+            "2": 5
+          },
+          "attained_insertions": 0
+        },
+        "0.1": {
+          "rejections": [
+            141,
+            191,
+            219
+          ],
+          "wilson": [
+            [
+              0.16849288624198452,
+              0.22640223248525207
+            ],
+            [
+              0.23433768943766486,
+              0.29870922866691507
+            ],
+            [
+              0.2716751946788518,
+              0.3387367310770403
+            ]
+          ],
+          "nonzero_blocks": {
+            "6": 361,
+            "4": 66,
+            "5": 274,
+            "3": 16,
+            "2": 3
+          },
+          "attained_insertions": 7191
+        },
+        "0.25": {
+          "rejections": [
+            519,
+            622,
+            647
+          ],
+          "wilson": [
+            [
+              0.6869608398341993,
+              0.7523618821857523
+            ],
+            [
+              0.8369026229621875,
+              0.8870128057750913
+            ],
+            [
+              0.8744050418179758,
+              0.9185862866079746
+            ]
+          ],
+          "nonzero_blocks": {
+            "6": 536,
+            "5": 159,
+            "4": 25
+          },
+          "attained_insertions": 18350
+        },
+        "0.5": {
+          "rejections": [
+            719,
+            720,
+            720
+          ],
+          "wilson": [
+            [
+              0.9921751346091384,
+              0.9997547849201863
+            ],
+            [
+              0.9946929555168715,
+              1.0000000000000002
+            ],
+            [
+              0.9946929555168715,
+              1.0000000000000002
+            ]
+          ],
+          "nonzero_blocks": {
+            "6": 701,
+            "5": 19
+          },
+          "attained_insertions": 36579
+        }
+      }
+    },
+    "simulation_method": "720 independent worlds per cell; 12 folios, 12 pairs per folio, six two-folio sign blocks, one-sided exact tie-inclusive randomization tail <=.05; Wilson 95% intervals. Shared bias has pre-assignment hit rates .52/.12 and a block-level fair orientation. The independent seed and per-dose draws differ from the original 720-replicate sweep. One-table uses 120 equally long symbols, 50 body tokens from page-specific exponential random weights, 24 uniformly sampled distinct candidate symbols, block-level fair role assignment, and up to 12 actual insertions per folio by replacing noncandidate body tokens. Candidate roles and body share a vocabulary but candidates are sampled uniformly, not from the body table. Simulated groups are equal-length and disjoint, but the simulation does not implement actual manuscript frequency bins or observational sampling.",
+    "limitations": "No exact replication of the original random draws, no empirical exchangeability proof, no verified sham match in actual annotations, and no claim about manuscript recurrence. All doses have separate RNG seeds, unlike the original paired-dose plan.",
+    "script": "import random,math,json,collections\n\ndef tail(xs):\n xs=[x for x in xs if x]; d=collections.Counter({0:1})\n for x in xs:\n  e=collections.Counter()\n  for s,n in d.items():e[s+x]+=n;e[s-x]+=n\n  d=e\n return sum(n for s,n in d.items() if s>=sum(xs))/(2**len(xs))\ndef pairtail(xs):\n n=sum(x!=0 for x in xs);positive=sum(x>0 for x in xs);return sum(math.comb(n,i) for i in range(positive,n+1))/(2**n)\ndef wilson(k,n):\n z=1.959963984540054;p=k/n;d=1+z*z/n;center=(p+z*z/(2*n))/d;w=z*math.sqrt(p*(1-p)/n+z*z/(4*n*n))/d;return [center-w,center+w]\ndef run(scenario,dose):\n rng=random.Random(20261127000+int(dose*1000)+(100 if scenario=='one_table' else 0));n=720; reject=[0,0,0];nonzero=collections.Counter(); planted=0\n for rep in range(n):\n  sums=[];pairs=[]\n  for b in range(6):\n   orient=rng.randrange(2)\n   for fol in range(2):\n    diffs=[]\n    if scenario=='one_table':\n     # Common page-local weights generate body; two unlabeled candidate streams\n     # sampled symmetrically. Distinct candidate words and fillers have equal length.\n     pop=list(range(120));weights=[rng.expovariate(1) for _ in pop];body=rng.choices(pop,weights,k=50);candidates=rng.sample(pop,24); left=candidates[:12];right=candidates[12:];labels,shams=(left,right) if orient else (right,left)\n     fillers=[i for i,w in enumerate(body) if w not in candidates]\n     for word in labels:\n      if word not in body and rng.random()<dose and fillers:\n       body[fillers.pop()]=word;planted+=1\n     present=set(body)\n     diffs=[int(a in present)-int(c in present) for a,c in zip(labels,shams)]\n    else:\n     for j in range(12):\n      left=int(rng.random()<.52);right=int(rng.random()<.12);l,r=(left,right) if orient else (right,left)\n      if not l and rng.random()<dose:l=1;planted+=1\n      diffs.append(l-r)\n    sums.append(sum(diffs));pairs.extend(diffs)\n  block=[sums[i]+sums[i+1] for i in range(0,12,2)];nonzero[sum(x!=0 for x in block)]+=1\n  for i,p in enumerate((tail(block),tail(sums),pairtail(pairs))):reject[i]+=p<=.05\n return {'rejections':reject,'wilson':[wilson(k,n) for k in reject],'nonzero_blocks':dict(nonzero),'attained_insertions':planted}\nout={s:{str(d):run(s,d) for d in (0,.1,.25,.5)} for s in ('shared_bias','one_table')};print(json.dumps(out,indent=2))\n"
+  }
+}
