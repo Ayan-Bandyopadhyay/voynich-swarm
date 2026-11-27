@@ -1,26 +1,19 @@
 {
-  "title": "Line-Conditioned Orthographic Organization in the Voynich Manuscript",
-  "authors": "Matthew Dominik",
-  "year": 2026,
-  "url": "https://zenodo.org/records/23407412",
-  "doi": "10.5281/zenodo.23407412",
-  "summary": "This preprint tests whether a previous word’s orthographic class improves prediction of the next class beyond section and relative line position. It reports positive gains across shifted folio-based partitions of one reconstructed transcription, while emphasizing incomplete source verification, exploratory model development, and the lack of independently confirmed physical line boundaries.",
+  "title": "An Analysis of the Relationship between Words within the Voynich Manuscript",
+  "authors": "Andrew Caruana, Colin Layfield, John Abela",
+  "year": 2022,
+  "url": "https://ceur-ws.org/Vol-3313/paper8.pdf",
+  "summary": "The authors compare directional word-pair frequencies in a Voynich transliteration and English and Italian texts with shuffled versions. Their exploratory comparison reports an excess of directionally skewed pairs in the manuscript, smaller than the excess in the comparison texts; it does not test a meaningless-text generator or establish that the text is linguistic.",
   "established": [
-    "The reconstructed ZL3b working corpus contains 37,602 accepted tokens across 227 folio identifiers. Eighteen classes use word openings and length, and are operational spelling bins rather than grammatical categories (sections 2.1–2.2).",
-    "In three overlapping folio-grouped test partitions, development-tuned first-order models improve next-class log loss over section and line-position baselines by 0.0415, 0.0644 and 0.0413 nats per eligible token; folio bootstrap intervals exclude zero. Maximum gains in 30 position-matched random-predecessor placebos are lower in every split (sections 2.3 and 3.1–3.2).",
-    "A source audit checked 3,387 records containing 23,036 tokens against a PDF rendering; it did not establish complete byte-accurate reconstruction. A separate exclusion sensitivity retained positive gains but changed both the corpus and partitions, so its estimates are not paired with the originals (sections 3.6–3.7).",
-    "A position-aware selection and copying simulator did not recover the observed transition gain under the tested parameters, which were not jointly optimized for the relevant constraints; the authors do not rule out other copying mechanisms (sections 2.4 and 4)."
+    "The analysis uses ZL version 1r and selected Bible books, two Shakespeare plays and Dante's Divina Commedia. It removes frequent words using empirically selected percentages and counts pairs within a three-word window; a pair is skewed if its count exceeds its reverse by more than five (sections 2.1–2.3).",
+    "Figure 2 compares each original with the average of three random shuffles. The authors report that the Voynich original has slightly more than twice the skewed-pair ratio of its shuffled counterpart, with a smaller original-to-shuffle gap than in the comparison texts (section 3.1).",
+    "For 10,000-word randomly selected segments, averaged over three runs, the paper reports an approximately inverse relationship between unique-word ratio and skewed-pair ratio across the works (section 3.2)."
   ],
   "open": [
     {
-      "question": "Does the held-out next-class prediction gain persist using a byte-verified IVTFF import and independent transliterations?",
-      "front": "L2",
-      "check": "Freeze the class definitions, folio-grouped splits and model-selection procedure, reconstruct the source from its original file, then compare the gain and position-matched predecessor controls across independent transcription witnesses."
-    },
-    {
-      "question": "Can the claimed change in predecessor prediction at line boundaries be confirmed for physical handwritten lines?",
-      "front": "L1",
-      "check": "Blindly verify a prespecified sample of transcription line boundaries against high-resolution images and rerun the boundary comparison on verified cases."
+      "question": "How do the skewed-pair and unique-word measures behave on texts transformed by historically plausible ciphers, as compared with their unencoded sources?",
+      "front": "J",
+      "check": "Apply the published measures and prespecified frequency filtering to matched plaintext and cipher variants, using multiple samples and fixed random seeds; compare the resulting changes with the manuscript's public and hidden pages."
     }
   ]
 }
