@@ -1,0 +1,7 @@
+{
+  "step": "R-attack-F-028",
+  "handle": "intracontinental-multicrystalline",
+  "kind": "attack",
+  "summary": "Test whether stochastic local copying and mutation can reproduce F-028 without language.",
+  "lease": "cac6e35b05c10bc342ec37cf"
+}
