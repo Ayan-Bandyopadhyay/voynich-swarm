@@ -1,0 +1,67 @@
+{
+  "title": "Native-scan controls qualify the f115v–f116r contact without fixing quire 20 order",
+  "statement": "Public native Yale scans are consistent with the previously reported f115v–f116r red-mark contact at some undated stage: the two main-leaf marks are separate from the photographed f116r sliver, and an independent y-only calibration from three black stars visible on both images places the recipient red marks within about 6 px of the projected positions. This is weaker than precise two-dimensional pigment registration. A four-hole reflected-similarity fit gives leave-one-hole-out errors up to 25.26 px and predicts the two recipient red marks with errors of 72.50 and 19.13 px at the primary dark threshold; an axis-affine sensitivity fit gives 19.91 px maximum leave-one-out error and red errors 23.78 and 13.71 px. The same-leaf reverse-side control f115r has similar red-pair spacing but its registration misses both recipient marks by roughly 61 and 94 px under similarity, showing that spacing alone is non-diagnostic. Candidate red-pair spacing is 378.25 px, recipient spacing 379.94 px, reverse-side control 371.43 px, and the photographed sliver 383.06 px at the primary chromatic threshold. These pixel values are exploratory native-canvas measurements, not physical dimensions or confidence intervals. The contact can constrain a layout only conditional on its date and direction; it does not establish pigment identity, initial-production chronology, or a unique binding sequence. The current facing pair remains compatible with the current nested arrangement, while Layfield–Davis's highest stacked arrangement places f115v against f106r and f116r against f103v. Several alternative sequences therefore survive.",
+  "program": "L1",
+  "check": "Inspect native Yale scans and retain the prior published contact observation. Exclude the next-leaf sliver from the recipient mask. Fit reflected similarity and axis-affine transforms to four irregular holes, never to the red marks; report leave-one-landmark-out errors and red-mark predictions. Use three uncolored black stars on the photographed sliver as an independent vertical positive control. Compare red-pair spacings against same-leaf reverse-side and neighboring-page controls. Preserve all threshold/model sensitivities and state that the analyst was unblinded.",
+  "on_path": true,
+  "hard": true,
+  "sources": {
+    "proposal": "Colin Layfield and Lisa Fagin Davis, Singulion Structure and the Voynich Manuscript (2026), https://doi.org/10.4000/16k0a",
+    "scan_catalogue": "Yale Beinecke MS 408, https://collections.library.yale.edu/catalog/2002046",
+    "scan_images": {
+      "f115v": "https://collections.library.yale.edu/iiif/2/1006275/full/full/0/default.jpg",
+      "f116r": "https://collections.library.yale.edu/iiif/2/1006276/full/full/0/default.jpg",
+      "f115r": "https://collections.library.yale.edu/iiif/2/1006274/full/full/0/default.jpg",
+      "f103v": "https://collections.library.yale.edu/iiif/2/1006255/full/full/0/default.jpg",
+      "f106r": "https://collections.library.yale.edu/iiif/2/1006260/full/full/0/default.jpg"
+    },
+    "contact_observation": "Nick Pelling, Quire 20, order from chaos (Part 1: Evidence), 2022-12-20, https://ciphermysteries.com/2022/12/20/quire-20-order-from-chaos-part-1-evidence"
+  },
+  "method": {
+    "analyst": "One unblinded analyst; prior candidate folios, approximate red-mark coordinates and the published contact were known before measurement. No independent-observer or confirmatory-p-value claim.",
+    "coordinates": "Native Yale IIIF canvas pixels, origin top-left; no physical DPI conversion.",
+    "registration": "Four manually selected irregular hole ROIs A–D on each leaf were thresholded at dark levels 120, 145 and 165. All-pixel centroids were used. Reflected complex similarity is primary; independent x/y affine is a sensitivity model. Red marks were predictions only, never fit points.",
+    "vertical_control": "Three black stars visible in both f116r and the photographed sliver were line-fitted in y only, then used to project the candidate red marks to f115v. This controls page identification/scale, not chemical identity or full 2D registration.",
+    "spacing_screen": "Red-pair spacings were computed at chromatic thresholds 0.68, 0.74 and 0.80. A broad 5% band was retained as a descriptive screen after unblinded inspection, not as a calibrated false-match probability. Full measurements and negative controls remain in the accompanying local research record.",
+    "synthetic_controls": "Exact-recovery tests for both transform implementations returned maximum numerical error below 1e-8 px."
+  },
+  "results": {
+    "primary_threshold": 0.74,
+    "spacings_px": {
+      "recipient_f115v": 379.9388,
+      "candidate_f116r": 378.2547,
+      "same_leaf_reverse_f115r": 371.4341,
+      "photographed_sliver": 383.0588
+    },
+    "candidate_reflected_similarity": {
+      "dark_120": {"max_leave_one_hole_out_px": 31.64, "red_prediction_errors_px": [82.53, 23.21]},
+      "dark_145": {"max_leave_one_hole_out_px": 25.26, "red_prediction_errors_px": [72.50, 19.13]},
+      "dark_165": {"max_leave_one_hole_out_px": 21.14, "red_prediction_errors_px": [71.64, 20.09]}
+    },
+    "candidate_axis_affine_sensitivity": {
+      "dark_120": {"max_leave_one_hole_out_px": 32.15, "red_prediction_errors_px": [35.21, 19.17]},
+      "dark_145": {"max_leave_one_hole_out_px": 19.91, "red_prediction_errors_px": [23.78, 13.71]},
+      "dark_165": {"max_leave_one_hole_out_px": 15.26, "red_prediction_errors_px": [29.58, 14.69]}
+    },
+    "reverse_control_reflected_similarity": {
+      "dark_145": {"max_leave_one_hole_out_px": 13.51, "red_prediction_errors_px": [60.83, 94.28]}
+    },
+    "black_star_vertical_control": {
+      "dark_145": {"scale": 0.987688555, "offset_px": -26.44472, "recipient_minus_projected_red_y_px": [-5.9993, 0.3417]}
+    },
+    "alternative_layouts": {
+      "current_nested_surviving_sheets": ["103|116", "104|115", "105|114", "106|113", "107|112", "108|111"],
+      "published_highest_stacked": ["105|114", "104|115", "106|113", "107|112", "108|111", "103|116"],
+      "current_pair": "f115v facing f116r",
+      "highest_stacked_pairings": ["f115v facing f106r", "f116r facing f103v"]
+    }
+  },
+  "interpretation": "The native scans strengthen the claim that the f115v–f116r marks are a real photographed contact relationship, while leaving its time and mechanism open. The positive sliver control and separation of the main-leaf mask from the sliver rule out the simplest page-identity mistake. The transform sensitivity and same-leaf spacing control rule out treating the two-point resemblance as a unique registration or sequence proof. The observations are compatible with several quire-20 orders, including the current nested arrangement and alternatives reported by Layfield and Davis. No claim is made about decoding, pigment chemistry, or when the contact was produced.",
+  "limits": [
+    "The paper's publisher page was inaccessible during this run; arrangement labels and prior candidate comparisons are taken from its public proposal and the repository's earlier scan audit.",
+    "Hole centroids come from manually selected coarse ROIs and thresholded all-pixel masks; adjacent ink and threshold sensitivity can shift them.",
+    "The four-hole fit is extrapolated to red marks roughly 400 px away, and parchment curvature or camera geometry can matter.",
+    "No physical scale, pigment assay, dating of the contact, or independent second reader is available.",
+    "A broad spacing collision count would be post-selection and is not a probability of a false contact."
+  ]
+}
