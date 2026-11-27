@@ -1,0 +1,763 @@
+{
+  "program": "J",
+  "title": "Recompute order-dependent tie selection inside the shuffle",
+  "hard": false,
+  "on_path": true,
+  "statement": "For 20 iid equal-count books, reselecting the first-occurring most-frequent type inside each within-block shuffle changes 18 of 20 compress p values and 19 of 20 barrier p values relative to freezing the observed stopword; neither version rejects at .05 in these samples. For 20 independent twenty-type periodic controls, both reject all runs under both gap policies. The corrected full-statistic permutation is invariant to bijective relabeling with a fixed random stream, but these limited simulations do not establish a general false-alarm rate or power.",
+  "check": "Expand to independent historical and synthetic books with ties and no ties, realistic unequal frequencies, nonstationary structured controls and noisy planted ciphers. Quantify uncertainty and validate the complete order-dependent selection under the intended null; ensure blocks are independently justified and test performance under realistic exchangeability violations.",
+  "method": "Generate 5,000 tokens with 20 types, each exactly 250 times. For iid controls, randomly permute the full equal-count multiset, then partition into 50 blocks of 100. For cycles, make 50 independently phased blocks of five full 20-type cycles, hence equal counts. For each book, choose the earliest occurring type among those tied for highest count, and compute the P-J-039 unequal-pair directional imbalance statistic for distances 1\u20133. Compare 99 within-block permutations using either the observed stopword for every shuffle or reselecting it independently within each shuffled book; use one-sided add-one p <= .05. Separate compression and barrier rules. Seeds and exact pseudorandom operations are in the script.",
+  "limitations": "Only 20 synthetic books per condition; equal-count iid controls are exchangeable conditional on their block counts, and cycling is a highly regular alternative. The same books and shuffles are shared across fixed and reselected rules and gap policies. No historical work, manuscript text or general alternative is tested. Deterministic first-appearance tie selection is substitution-invariant but order-sensitive, which is why it is recomputed under the null.",
+  "summary_results": {
+    "iid_conditional": {
+      "compress": {
+        "fixed_rejections": 0,
+        "reselected_rejections": 0,
+        "p_values_changed": 18,
+        "runs": 20
+      },
+      "barrier": {
+        "fixed_rejections": 0,
+        "reselected_rejections": 0,
+        "p_values_changed": 19,
+        "runs": 20
+      }
+    },
+    "cycle": {
+      "compress": {
+        "fixed_rejections": 20,
+        "reselected_rejections": 20,
+        "p_values_changed": 0,
+        "runs": 20
+      },
+      "barrier": {
+        "fixed_rejections": 20,
+        "reselected_rejections": 20,
+        "p_values_changed": 0,
+        "runs": 20
+      }
+    }
+  },
+  "individual_results": [
+    {
+      "kind": "iid_conditional",
+      "seed": 0,
+      "policies": {
+        "compress": {
+          "score": 0.4678362573099415,
+          "fixed_p": 0.87,
+          "reselected_p": 0.88,
+          "observed_stop": "w12"
+        },
+        "barrier": {
+          "score": 0.4619883040935672,
+          "fixed_p": 0.76,
+          "reselected_p": 0.82,
+          "observed_stop": "w12"
+        }
+      }
+    },
+    {
+      "kind": "iid_conditional",
+      "seed": 1,
+      "policies": {
+        "compress": {
+          "score": 0.5497076023391813,
+          "fixed_p": 0.2,
+          "reselected_p": 0.13,
+          "observed_stop": "w04"
+        },
+        "barrier": {
+          "score": 0.47953216374269003,
+          "fixed_p": 0.71,
+          "reselected_p": 0.7,
+          "observed_stop": "w04"
+        }
+      }
+    },
+    {
+      "kind": "iid_conditional",
+      "seed": 2,
+      "policies": {
+        "compress": {
+          "score": 0.49707602339181284,
+          "fixed_p": 0.63,
+          "reselected_p": 0.65,
+          "observed_stop": "w19"
+        },
+        "barrier": {
+          "score": 0.4678362573099415,
+          "fixed_p": 0.71,
+          "reselected_p": 0.7,
+          "observed_stop": "w19"
+        }
+      }
+    },
+    {
+      "kind": "iid_conditional",
+      "seed": 3,
+      "policies": {
+        "compress": {
+          "score": 0.47953216374269003,
+          "fixed_p": 0.8,
+          "reselected_p": 0.82,
+          "observed_stop": "w17"
+        },
+        "barrier": {
+          "score": 0.5087719298245614,
+          "fixed_p": 0.41,
+          "reselected_p": 0.43,
+          "observed_stop": "w17"
+        }
+      }
+    },
+    {
+      "kind": "iid_conditional",
+      "seed": 4,
+      "policies": {
+        "compress": {
+          "score": 0.45614035087719296,
+          "fixed_p": 0.89,
+          "reselected_p": 0.88,
+          "observed_stop": "w14"
+        },
+        "barrier": {
+          "score": 0.49122807017543857,
+          "fixed_p": 0.54,
+          "reselected_p": 0.57,
+          "observed_stop": "w14"
+        }
+      }
+    },
+    {
+      "kind": "iid_conditional",
+      "seed": 5,
+      "policies": {
+        "compress": {
+          "score": 0.543859649122807,
+          "fixed_p": 0.16,
+          "reselected_p": 0.22,
+          "observed_stop": "w02"
+        },
+        "barrier": {
+          "score": 0.4678362573099415,
+          "fixed_p": 0.8,
+          "reselected_p": 0.81,
+          "observed_stop": "w02"
+        }
+      }
+    },
+    {
+      "kind": "iid_conditional",
+      "seed": 6,
+      "policies": {
+        "compress": {
+          "score": 0.5321637426900585,
+          "fixed_p": 0.33,
+          "reselected_p": 0.36,
+          "observed_stop": "w10"
+        },
+        "barrier": {
+          "score": 0.49122807017543857,
+          "fixed_p": 0.56,
+          "reselected_p": 0.66,
+          "observed_stop": "w10"
+        }
+      }
+    },
+    {
+      "kind": "iid_conditional",
+      "seed": 7,
+      "policies": {
+        "compress": {
+          "score": 0.5146198830409356,
+          "fixed_p": 0.51,
+          "reselected_p": 0.49,
+          "observed_stop": "w10"
+        },
+        "barrier": {
+          "score": 0.52046783625731,
+          "fixed_p": 0.23,
+          "reselected_p": 0.23,
+          "observed_stop": "w10"
+        }
+      }
+    },
+    {
+      "kind": "iid_conditional",
+      "seed": 8,
+      "policies": {
+        "compress": {
+          "score": 0.47953216374269003,
+          "fixed_p": 0.75,
+          "reselected_p": 0.81,
+          "observed_stop": "w12"
+        },
+        "barrier": {
+          "score": 0.45614035087719296,
+          "fixed_p": 0.83,
+          "reselected_p": 0.85,
+          "observed_stop": "w12"
+        }
+      }
+    },
+    {
+      "kind": "iid_conditional",
+      "seed": 9,
+      "policies": {
+        "compress": {
+          "score": 0.5029239766081871,
+          "fixed_p": 0.55,
+          "reselected_p": 0.6,
+          "observed_stop": "w00"
+        },
+        "barrier": {
+          "score": 0.4619883040935672,
+          "fixed_p": 0.85,
+          "reselected_p": 0.9,
+          "observed_stop": "w00"
+        }
+      }
+    },
+    {
+      "kind": "iid_conditional",
+      "seed": 10,
+      "policies": {
+        "compress": {
+          "score": 0.47953216374269003,
+          "fixed_p": 0.69,
+          "reselected_p": 0.72,
+          "observed_stop": "w05"
+        },
+        "barrier": {
+          "score": 0.43859649122807015,
+          "fixed_p": 0.87,
+          "reselected_p": 0.9,
+          "observed_stop": "w05"
+        }
+      }
+    },
+    {
+      "kind": "iid_conditional",
+      "seed": 11,
+      "policies": {
+        "compress": {
+          "score": 0.49122807017543857,
+          "fixed_p": 0.82,
+          "reselected_p": 0.68,
+          "observed_stop": "w13"
+        },
+        "barrier": {
+          "score": 0.45614035087719296,
+          "fixed_p": 0.89,
+          "reselected_p": 0.87,
+          "observed_stop": "w13"
+        }
+      }
+    },
+    {
+      "kind": "iid_conditional",
+      "seed": 12,
+      "policies": {
+        "compress": {
+          "score": 0.5672514619883041,
+          "fixed_p": 0.09,
+          "reselected_p": 0.1,
+          "observed_stop": "w11"
+        },
+        "barrier": {
+          "score": 0.5146198830409356,
+          "fixed_p": 0.26,
+          "reselected_p": 0.32,
+          "observed_stop": "w11"
+        }
+      }
+    },
+    {
+      "kind": "iid_conditional",
+      "seed": 13,
+      "policies": {
+        "compress": {
+          "score": 0.47368421052631576,
+          "fixed_p": 0.78,
+          "reselected_p": 0.74,
+          "observed_stop": "w17"
+        },
+        "barrier": {
+          "score": 0.4853801169590643,
+          "fixed_p": 0.61,
+          "reselected_p": 0.54,
+          "observed_stop": "w17"
+        }
+      }
+    },
+    {
+      "kind": "iid_conditional",
+      "seed": 14,
+      "policies": {
+        "compress": {
+          "score": 0.49707602339181284,
+          "fixed_p": 0.67,
+          "reselected_p": 0.7,
+          "observed_stop": "w17"
+        },
+        "barrier": {
+          "score": 0.47953216374269003,
+          "fixed_p": 0.68,
+          "reselected_p": 0.67,
+          "observed_stop": "w17"
+        }
+      }
+    },
+    {
+      "kind": "iid_conditional",
+      "seed": 15,
+      "policies": {
+        "compress": {
+          "score": 0.5730994152046783,
+          "fixed_p": 0.06,
+          "reselected_p": 0.06,
+          "observed_stop": "w04"
+        },
+        "barrier": {
+          "score": 0.5555555555555556,
+          "fixed_p": 0.06,
+          "reselected_p": 0.08,
+          "observed_stop": "w04"
+        }
+      }
+    },
+    {
+      "kind": "iid_conditional",
+      "seed": 16,
+      "policies": {
+        "compress": {
+          "score": 0.52046783625731,
+          "fixed_p": 0.45,
+          "reselected_p": 0.52,
+          "observed_stop": "w11"
+        },
+        "barrier": {
+          "score": 0.49707602339181284,
+          "fixed_p": 0.57,
+          "reselected_p": 0.49,
+          "observed_stop": "w11"
+        }
+      }
+    },
+    {
+      "kind": "iid_conditional",
+      "seed": 17,
+      "policies": {
+        "compress": {
+          "score": 0.4502923976608187,
+          "fixed_p": 0.97,
+          "reselected_p": 0.97,
+          "observed_stop": "w14"
+        },
+        "barrier": {
+          "score": 0.4327485380116959,
+          "fixed_p": 0.96,
+          "reselected_p": 0.91,
+          "observed_stop": "w14"
+        }
+      }
+    },
+    {
+      "kind": "iid_conditional",
+      "seed": 18,
+      "policies": {
+        "compress": {
+          "score": 0.4678362573099415,
+          "fixed_p": 0.87,
+          "reselected_p": 0.84,
+          "observed_stop": "w05"
+        },
+        "barrier": {
+          "score": 0.47368421052631576,
+          "fixed_p": 0.63,
+          "reselected_p": 0.65,
+          "observed_stop": "w05"
+        }
+      }
+    },
+    {
+      "kind": "iid_conditional",
+      "seed": 19,
+      "policies": {
+        "compress": {
+          "score": 0.43859649122807015,
+          "fixed_p": 0.99,
+          "reselected_p": 0.97,
+          "observed_stop": "w19"
+        },
+        "barrier": {
+          "score": 0.4152046783625731,
+          "fixed_p": 0.99,
+          "reselected_p": 1.0,
+          "observed_stop": "w19"
+        }
+      }
+    },
+    {
+      "kind": "cycle",
+      "seed": 0,
+      "policies": {
+        "compress": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w18"
+        },
+        "barrier": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w18"
+        }
+      }
+    },
+    {
+      "kind": "cycle",
+      "seed": 1,
+      "policies": {
+        "compress": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w11"
+        },
+        "barrier": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w11"
+        }
+      }
+    },
+    {
+      "kind": "cycle",
+      "seed": 2,
+      "policies": {
+        "compress": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w10"
+        },
+        "barrier": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w10"
+        }
+      }
+    },
+    {
+      "kind": "cycle",
+      "seed": 3,
+      "policies": {
+        "compress": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w17"
+        },
+        "barrier": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w17"
+        }
+      }
+    },
+    {
+      "kind": "cycle",
+      "seed": 4,
+      "policies": {
+        "compress": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w10"
+        },
+        "barrier": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w10"
+        }
+      }
+    },
+    {
+      "kind": "cycle",
+      "seed": 5,
+      "policies": {
+        "compress": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w07"
+        },
+        "barrier": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w07"
+        }
+      }
+    },
+    {
+      "kind": "cycle",
+      "seed": 6,
+      "policies": {
+        "compress": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w03"
+        },
+        "barrier": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w03"
+        }
+      }
+    },
+    {
+      "kind": "cycle",
+      "seed": 7,
+      "policies": {
+        "compress": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w06"
+        },
+        "barrier": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w06"
+        }
+      }
+    },
+    {
+      "kind": "cycle",
+      "seed": 8,
+      "policies": {
+        "compress": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w04"
+        },
+        "barrier": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w04"
+        }
+      }
+    },
+    {
+      "kind": "cycle",
+      "seed": 9,
+      "policies": {
+        "compress": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w00"
+        },
+        "barrier": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w00"
+        }
+      }
+    },
+    {
+      "kind": "cycle",
+      "seed": 10,
+      "policies": {
+        "compress": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w04"
+        },
+        "barrier": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w04"
+        }
+      }
+    },
+    {
+      "kind": "cycle",
+      "seed": 11,
+      "policies": {
+        "compress": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w01"
+        },
+        "barrier": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w01"
+        }
+      }
+    },
+    {
+      "kind": "cycle",
+      "seed": 12,
+      "policies": {
+        "compress": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w06"
+        },
+        "barrier": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w06"
+        }
+      }
+    },
+    {
+      "kind": "cycle",
+      "seed": 13,
+      "policies": {
+        "compress": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w06"
+        },
+        "barrier": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w06"
+        }
+      }
+    },
+    {
+      "kind": "cycle",
+      "seed": 14,
+      "policies": {
+        "compress": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w07"
+        },
+        "barrier": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w07"
+        }
+      }
+    },
+    {
+      "kind": "cycle",
+      "seed": 15,
+      "policies": {
+        "compress": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w18"
+        },
+        "barrier": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w18"
+        }
+      }
+    },
+    {
+      "kind": "cycle",
+      "seed": 16,
+      "policies": {
+        "compress": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w06"
+        },
+        "barrier": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w06"
+        }
+      }
+    },
+    {
+      "kind": "cycle",
+      "seed": 17,
+      "policies": {
+        "compress": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w12"
+        },
+        "barrier": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w12"
+        }
+      }
+    },
+    {
+      "kind": "cycle",
+      "seed": 18,
+      "policies": {
+        "compress": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w05"
+        },
+        "barrier": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w05"
+        }
+      }
+    },
+    {
+      "kind": "cycle",
+      "seed": 19,
+      "policies": {
+        "compress": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w03"
+        },
+        "barrier": {
+          "score": 1.0,
+          "fixed_p": 0.01,
+          "reselected_p": 0.01,
+          "observed_stop": "w03"
+        }
+      }
+    }
+  ],
+  "reproduction_python": "import json,random,collections\ndef stat(blocks,stop,policy):\n c=collections.Counter()\n for b in blocks:\n  if policy=='compress': seq=[w for w in b if w not in stop]\n  else:seq=[None if w in stop else w for w in b]\n  for i,a in enumerate(seq):\n   if a is None:continue\n   for v in seq[i+1:i+4]:\n    if v is None: break\n    if a!=v:c[a,v]+=1\n pairs={tuple(sorted((a,b))) for a,b in c};skew=sum(abs(c[a,b]-c[b,a])>5 for a,b in pairs);n=sum(c.values());return {'type_ratio':skew/len(pairs) if pairs else 0,'skewed_types':skew,'pair_types':len(pairs),'pair_occurrences':n,'instance_ratio':skew/n if n else 0}\n\ndef first(blocks):\n flat=[w for b in blocks for w in b];f=collections.Counter(flat);m=max(f.values());return next(w for w in flat if f[w]==m)\ndef evals(blocks,seed,policy):\n stop=first(blocks);obs=stat(blocks,{stop},policy)['type_ratio'];r=random.Random(seed);fixed=[];reselected=[]\n for _ in range(99):\n  sh=[]\n  for b in blocks:\n   a=b.copy();r.shuffle(a);sh.append(a)\n  fixed.append(stat(sh,{stop},policy)['type_ratio']);reselected.append(stat(sh,{first(sh)},policy)['type_ratio'])\n return {'score':obs,'fixed_p':(1+sum(v>=obs for v in fixed))/100,'reselected_p':(1+sum(v>=obs for v in reselected))/100,'observed_stop':stop}\nout=[]\nfor kind in ('iid_conditional','cycle'):\n for seed in range(20):\n  r=random.Random(76000+seed);tokens=[f'w{i:02}' for i in range(20) for _ in range(250)]\n  if kind=='iid_conditional':\n   r.shuffle(tokens);blocks=[tokens[i:i+100] for i in range(0,5000,100)]\n  else:blocks=[[f'w{(i+r.randrange(1))%20:02}' for i in range(100)] for _ in range(50)]\n  # Independently randomize each cyclic block phase without changing global counts.\n  if kind=='cycle':\n   blocks=[]\n   for _ in range(50):\n    phase=r.randrange(20);blocks.append([f'w{(i+phase)%20:02}' for i in range(100)])\n  out.append({'kind':kind,'seed':seed,'policies':{pol:evals(blocks,88000+seed,pol) for pol in ('compress','barrier')}})\n print(kind,'done',flush=True)\nprint(json.dumps(out,indent=2))\n"
+}
