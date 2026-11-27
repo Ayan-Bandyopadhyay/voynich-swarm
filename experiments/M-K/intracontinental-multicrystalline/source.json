@@ -1,19 +1,26 @@
 {
-  "title": "Word Probability Findings in the Voynich Manuscript",
-  "authors": "Colin Layfield, Lonneke van der Plas, Michael Rosner, John Abela",
-  "year": 2020,
-  "url": "https://aclanthology.org/2020.lt4hala-1.11/",
-  "summary": "The authors compare word probability with segment information and the position at which a word becomes unique among words sharing its beginning. They report relationships in the Voynich transcription resembling those in their natural-language comparisons, while noting that those comparison corpora were generally larger and modern, and that written characters are not phonemic transcriptions.",
+  "title": "Line-Conditioned Orthographic Organization in the Voynich Manuscript",
+  "authors": "Matthew Dominik",
+  "year": 2026,
+  "url": "https://zenodo.org/records/23407412",
+  "doi": "10.5281/zenodo.23407412",
+  "summary": "This preprint tests whether a previous word’s orthographic class improves prediction of the next class beyond section and relative line position. It reports positive gains across shifted folio-based partitions of one reconstructed transcription, while emphasizing incomplete source verification, exploratory model development, and the lack of independently confirmed physical line boundaries.",
   "established": [
-    "Using the ZL 1b EVA transcription, the study retained 32,216 of 36,249 word tokens after excluding uncertain characters, sequences and spaces; 7,283 retained word types were distinct (section 4.1).",
-    "For word lengths four through eight, the manuscript's less frequent word forms had more informative segments on average, in the same direction as the five displayed natural-language comparisons (section 5 and figure 2). The information calculation removes the word's own count from its segment counts.",
-    "The authors report significantly earlier relative uniqueness points for less probable manuscript words across the tested word lengths (section 5 and figure 3). A uniqueness point is the first prefix that identifies a word among the retained word types."
+    "The reconstructed ZL3b working corpus contains 37,602 accepted tokens across 227 folio identifiers. Eighteen classes use word openings and length, and are operational spelling bins rather than grammatical categories (sections 2.1–2.2).",
+    "In three overlapping folio-grouped test partitions, development-tuned first-order models improve next-class log loss over section and line-position baselines by 0.0415, 0.0644 and 0.0413 nats per eligible token; folio bootstrap intervals exclude zero. Maximum gains in 30 position-matched random-predecessor placebos are lower in every split (sections 2.3 and 3.1–3.2).",
+    "A source audit checked 3,387 records containing 23,036 tokens against a PDF rendering; it did not establish complete byte-accurate reconstruction. A separate exclusion sensitivity retained positive gains but changed both the corpus and partitions, so its estimates are not paired with the originals (sections 3.6–3.7).",
+    "A position-aware selection and copying simulator did not recover the observed transition gain under the tested parameters, which were not jointly optimized for the relevant constraints; the authors do not rule out other copying mechanisms (sections 2.4 and 4)."
   ],
   "open": [
     {
-      "question": "Do the reported relationships between word probability, segment information and relative uniqueness-point position persist when compared with written corpora of similar size from roughly the manuscript's period?",
-      "front": "J",
-      "check": "Reproduce the paper's word-length-stratified measures on the public transcription and size-matched historical corpora, then compare the same prespecified relationships on hidden manuscript pages."
+      "question": "Does the held-out next-class prediction gain persist using a byte-verified IVTFF import and independent transliterations?",
+      "front": "L2",
+      "check": "Freeze the class definitions, folio-grouped splits and model-selection procedure, reconstruct the source from its original file, then compare the gain and position-matched predecessor controls across independent transcription witnesses."
+    },
+    {
+      "question": "Can the claimed change in predecessor prediction at line boundaries be confirmed for physical handwritten lines?",
+      "front": "L1",
+      "check": "Blindly verify a prespecified sample of transcription line boundaries against high-resolution images and rerun the boundary comparison on verified cases."
     }
   ]
 }
