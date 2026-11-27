@@ -1,0 +1,1136 @@
+{
+  "title": "Register cyclic Polygraphia III joint metrics only after a calibrated recovery search",
+  "program": "L3",
+  "on_path": true,
+  "hard": true,
+  "statement": "On two 5,000-token public practice-evaluation samples, raw word entropy is 9.388 and 9.450 bits and within-line adjacent one-edit shares are 0.0388 and 0.0367. A fixed cyclic use of 10, 24 or 120 rows of Hermes’s P.III table gives substantially different combinations: in the ZL layout, across nine plaintext windows per size, word entropy ranges 7.181–7.311, 8.405–8.513 and 10.344–10.447 bits respectively, while one-edit shares are at most .0041, .0011 and .0005. These descriptive discrepancies do not rule out other selection rules, tables or encodings. The fixed keys round-trip exactly when the table, period and phase are known; separate unknown-key controls show much weaker recovery.",
+  "check": "Implement a reviewed declarative, multi-metric evaluator and a calibrated unknown-key search before registering a held-out hypothesis. Fix text and segmentation conventions, row inventory, cycle and phase, acceptable ranges, layout and comparisons before scoring. Include disjoint plaintext controls at the same search budget, joint uncertainty and alternative independently frozen column-selection procedures. Separate guaranteed known-key reversibility from demonstrated ability to recover unknown tables; do not mark a language/cipher cell ruled out on the basis of this toy search or public pilot.",
+  "method": "Freeze the first 10, 24, or 120 rows of the Hermes repository Polygraphia III CSV; each selected row maps all 24 plaintext letters to distinct artificial words. Select rows cyclically from row 1, with known period and phase, advancing one row per plaintext letter; word spaces delimit replacements. The first 120 rows are internally collision-free. Exact round-trip follows by inverting the row for each known position; words can collide across different rows, so phase and position are necessary. Encode 5,000 normalized Latin letters at offsets 0, 5,000 and 10,000 in each of Augustine, Erasmus and Vulgate Daniel, preserving no plaintext word boundaries. Compare to the first 5,000 certain ASCII lowercase paragraph words in the public practice-evaluation split of ZL and IT. For each witness, lay each generated stream onto the witness’s selected-token layout and compare only adjacent pairs that were adjacent in the original line, never across an uncertain token or line break. Word entropy uses the token-count plug-in estimator; glyph entropy is over EVA raw characters; conditional glyph entropy is H(pair)−H(first character) using pairs within words only; one-edit share counts within-line adjacent unequal strings at exact raw-character Levenshtein distance one. These conventions are fixed for this pilot and are not assumed identical to Hermes’s measures.",
+  "recovery_controls": "All 27 fixed-row plaintext windows invert exactly with the known table and phase. For separate plaintexts Patrick and Vulgate Esther, reuse the two-sweep unknown-column suffix/bigram search from P-J-023 with 10, 24 and 120 randomly selected rows, cyclic selection and seeds 41, 71 and 103; the exact row sets differ from the joint-metric trials. Across these 18 cases, held-out character accuracy spans 0.0615–0.2015. The comparator that knows each token’s column still ranks mappings by frequency and is not given the true table. This is a limited positive-control search with no demonstrated high recovery power.",
+  "source": "Jürgen Hermes, Polygraphia III: The cipher that pretends to be an artificial language, https://ceur-ws.org/Vol-3313/paper7.pdf; table https://github.com/hermesj/R_Voynich_Stats/blob/0ef1439fa9d90aeab42951a51d0d5a0e27db1f8f/R%20code/Historical_ciphers/keys/ciphers_poly_III_in_order.csv",
+  "results": {
+    "n": 5000,
+    "column_counts": [
+      10,
+      24,
+      120
+    ],
+    "sources": [
+      "la_augustine",
+      "la_erasmus",
+      "la_vulg_daniel"
+    ],
+    "offsets": [
+      0,
+      5000,
+      10000
+    ],
+    "witnesses": {
+      "zl": {
+        "tokens": 5000,
+        "types": 1747,
+        "word_entropy": 9.387884257739147,
+        "glyph_entropy": 3.8731631771449546,
+        "glyph_conditional_entropy": 1.5173406066426196,
+        "adjacent_pairs": 4380,
+        "adjacent_edit1_share": 0.03881278538812785
+      },
+      "it": {
+        "tokens": 5000,
+        "types": 1767,
+        "word_entropy": 9.449845935954196,
+        "glyph_entropy": 3.868719449646511,
+        "glyph_conditional_entropy": 1.5568821439704692,
+        "adjacent_pairs": 4386,
+        "adjacent_edit1_share": 0.03670770633834929
+      }
+    },
+    "planted": {
+      "la_augustine": {
+        "10": {
+          "0": {
+            "roundtrip_exact": true,
+            "by_layout": {
+              "zl": {
+                "tokens": 5000,
+                "types": 203,
+                "word_entropy": 7.2505020273781735,
+                "glyph_entropy": 3.5665558027941557,
+                "glyph_conditional_entropy": 1.8552119147843253,
+                "adjacent_pairs": 4380,
+                "adjacent_edit1_share": 0.00410958904109589
+              },
+              "it": {
+                "tokens": 5000,
+                "types": 203,
+                "word_entropy": 7.2505020273781735,
+                "glyph_entropy": 3.5665558027941557,
+                "glyph_conditional_entropy": 1.8552119147843253,
+                "adjacent_pairs": 4386,
+                "adjacent_edit1_share": 0.004559963520291838
+              }
+            }
+          },
+          "5000": {
+            "roundtrip_exact": true,
+            "by_layout": {
+              "zl": {
+                "tokens": 5000,
+                "types": 203,
+                "word_entropy": 7.226992000358248,
+                "glyph_entropy": 3.5651852666725774,
+                "glyph_conditional_entropy": 1.8388074545427875,
+                "adjacent_pairs": 4380,
+                "adjacent_edit1_share": 0.0018264840182648401
+              },
+              "it": {
+                "tokens": 5000,
+                "types": 203,
+                "word_entropy": 7.226992000358248,
+                "glyph_entropy": 3.5651852666725774,
+                "glyph_conditional_entropy": 1.8388074545427875,
+                "adjacent_pairs": 4386,
+                "adjacent_edit1_share": 0.001823985408116735
+              }
+            }
+          },
+          "10000": {
+            "roundtrip_exact": true,
+            "by_layout": {
+              "zl": {
+                "tokens": 5000,
+                "types": 199,
+                "word_entropy": 7.1810683172130005,
+                "glyph_entropy": 3.5592840925637037,
+                "glyph_conditional_entropy": 1.842915131737748,
+                "adjacent_pairs": 4380,
+                "adjacent_edit1_share": 0.0027397260273972603
+              },
+              "it": {
+                "tokens": 5000,
+                "types": 199,
+                "word_entropy": 7.1810683172130005,
+                "glyph_entropy": 3.5592840925637037,
+                "glyph_conditional_entropy": 1.842915131737748,
+                "adjacent_pairs": 4386,
+                "adjacent_edit1_share": 0.0031919744642042863
+              }
+            }
+          }
+        },
+        "24": {
+          "0": {
+            "roundtrip_exact": true,
+            "by_layout": {
+              "zl": {
+                "tokens": 5000,
+                "types": 463,
+                "word_entropy": 8.472828214328775,
+                "glyph_entropy": 3.791931842566036,
+                "glyph_conditional_entropy": 2.18446503735248,
+                "adjacent_pairs": 4380,
+                "adjacent_edit1_share": 0.0009132420091324201
+              },
+              "it": {
+                "tokens": 5000,
+                "types": 463,
+                "word_entropy": 8.472828214328775,
+                "glyph_entropy": 3.791931842566036,
+                "glyph_conditional_entropy": 2.18446503735248,
+                "adjacent_pairs": 4386,
+                "adjacent_edit1_share": 0.0009119927040583675
+              }
+            }
+          },
+          "5000": {
+            "roundtrip_exact": true,
+            "by_layout": {
+              "zl": {
+                "tokens": 5000,
+                "types": 459,
+                "word_entropy": 8.449868482398818,
+                "glyph_entropy": 3.790725300778396,
+                "glyph_conditional_entropy": 2.184570701743215,
+                "adjacent_pairs": 4380,
+                "adjacent_edit1_share": 0.001141552511415525
+              },
+              "it": {
+                "tokens": 5000,
+                "types": 459,
+                "word_entropy": 8.449868482398818,
+                "glyph_entropy": 3.790725300778396,
+                "glyph_conditional_entropy": 2.184570701743215,
+                "adjacent_pairs": 4386,
+                "adjacent_edit1_share": 0.0013679890560875513
+              }
+            }
+          },
+          "10000": {
+            "roundtrip_exact": true,
+            "by_layout": {
+              "zl": {
+                "tokens": 5000,
+                "types": 451,
+                "word_entropy": 8.404658640547346,
+                "glyph_entropy": 3.7871409435071444,
+                "glyph_conditional_entropy": 2.163631488486201,
+                "adjacent_pairs": 4380,
+                "adjacent_edit1_share": 0.0006849315068493151
+              },
+              "it": {
+                "tokens": 5000,
+                "types": 451,
+                "word_entropy": 8.404658640547346,
+                "glyph_entropy": 3.7871409435071444,
+                "glyph_conditional_entropy": 2.163631488486201,
+                "adjacent_pairs": 4386,
+                "adjacent_edit1_share": 0.0009119927040583675
+              }
+            }
+          }
+        },
+        "120": {
+          "0": {
+            "roundtrip_exact": true,
+            "by_layout": {
+              "zl": {
+                "tokens": 5000,
+                "types": 1683,
+                "word_entropy": 10.412871670559623,
+                "glyph_entropy": 3.970666552800919,
+                "glyph_conditional_entropy": 2.5213213378479624,
+                "adjacent_pairs": 4380,
+                "adjacent_edit1_share": 0.00045662100456621003
+              },
+              "it": {
+                "tokens": 5000,
+                "types": 1683,
+                "word_entropy": 10.412871670559623,
+                "glyph_entropy": 3.970666552800919,
+                "glyph_conditional_entropy": 2.5213213378479624,
+                "adjacent_pairs": 4386,
+                "adjacent_edit1_share": 0.00045599635202918376
+              }
+            }
+          },
+          "5000": {
+            "roundtrip_exact": true,
+            "by_layout": {
+              "zl": {
+                "tokens": 5000,
+                "types": 1660,
+                "word_entropy": 10.394447796091509,
+                "glyph_entropy": 3.969017235134637,
+                "glyph_conditional_entropy": 2.5149292541345964,
+                "adjacent_pairs": 4380,
+                "adjacent_edit1_share": 0.00022831050228310502
+              },
+              "it": {
+                "tokens": 5000,
+                "types": 1660,
+                "word_entropy": 10.394447796091509,
+                "glyph_entropy": 3.969017235134637,
+                "glyph_conditional_entropy": 2.5149292541345964,
+                "adjacent_pairs": 4386,
+                "adjacent_edit1_share": 0.00045599635202918376
+              }
+            }
+          },
+          "10000": {
+            "roundtrip_exact": true,
+            "by_layout": {
+              "zl": {
+                "tokens": 5000,
+                "types": 1626,
+                "word_entropy": 10.344053643443504,
+                "glyph_entropy": 3.9725752927264226,
+                "glyph_conditional_entropy": 2.5239320743870133,
+                "adjacent_pairs": 4380,
+                "adjacent_edit1_share": 0.0
+              },
+              "it": {
+                "tokens": 5000,
+                "types": 1626,
+                "word_entropy": 10.344053643443504,
+                "glyph_entropy": 3.9725752927264226,
+                "glyph_conditional_entropy": 2.5239320743870133,
+                "adjacent_pairs": 4386,
+                "adjacent_edit1_share": 0.0
+              }
+            }
+          }
+        }
+      },
+      "la_erasmus": {
+        "10": {
+          "0": {
+            "roundtrip_exact": true,
+            "by_layout": {
+              "zl": {
+                "tokens": 5000,
+                "types": 217,
+                "word_entropy": 7.281874774391765,
+                "glyph_entropy": 3.553234354431166,
+                "glyph_conditional_entropy": 1.8593706117890973,
+                "adjacent_pairs": 4380,
+                "adjacent_edit1_share": 0.0029680365296803654
+              },
+              "it": {
+                "tokens": 5000,
+                "types": 217,
+                "word_entropy": 7.281874774391765,
+                "glyph_entropy": 3.553234354431166,
+                "glyph_conditional_entropy": 1.8593706117890973,
+                "adjacent_pairs": 4386,
+                "adjacent_edit1_share": 0.0029639762881896944
+              }
+            }
+          },
+          "5000": {
+            "roundtrip_exact": true,
+            "by_layout": {
+              "zl": {
+                "tokens": 5000,
+                "types": 200,
+                "word_entropy": 7.230050907672265,
+                "glyph_entropy": 3.5655666553221756,
+                "glyph_conditional_entropy": 1.8552869129965677,
+                "adjacent_pairs": 4380,
+                "adjacent_edit1_share": 0.0018264840182648401
+              },
+              "it": {
+                "tokens": 5000,
+                "types": 200,
+                "word_entropy": 7.230050907672265,
+                "glyph_entropy": 3.5655666553221756,
+                "glyph_conditional_entropy": 1.8552869129965677,
+                "adjacent_pairs": 4386,
+                "adjacent_edit1_share": 0.002051983584131327
+              }
+            }
+          },
+          "10000": {
+            "roundtrip_exact": true,
+            "by_layout": {
+              "zl": {
+                "tokens": 5000,
+                "types": 202,
+                "word_entropy": 7.247010530640883,
+                "glyph_entropy": 3.5680742597928217,
+                "glyph_conditional_entropy": 1.870599145815547,
+                "adjacent_pairs": 4380,
+                "adjacent_edit1_share": 0.0018264840182648401
+              },
+              "it": {
+                "tokens": 5000,
+                "types": 202,
+                "word_entropy": 7.247010530640883,
+                "glyph_entropy": 3.5680742597928217,
+                "glyph_conditional_entropy": 1.870599145815547,
+                "adjacent_pairs": 4386,
+                "adjacent_edit1_share": 0.002051983584131327
+              }
+            }
+          }
+        },
+        "24": {
+          "0": {
+            "roundtrip_exact": true,
+            "by_layout": {
+              "zl": {
+                "tokens": 5000,
+                "types": 484,
+                "word_entropy": 8.493641993438487,
+                "glyph_entropy": 3.7825885710136085,
+                "glyph_conditional_entropy": 2.176536492595223,
+                "adjacent_pairs": 4380,
+                "adjacent_edit1_share": 0.0
+              },
+              "it": {
+                "tokens": 5000,
+                "types": 484,
+                "word_entropy": 8.493641993438487,
+                "glyph_entropy": 3.7825885710136085,
+                "glyph_conditional_entropy": 2.176536492595223,
+                "adjacent_pairs": 4386,
+                "adjacent_edit1_share": 0.00022799817601459188
+              }
+            }
+          },
+          "5000": {
+            "roundtrip_exact": true,
+            "by_layout": {
+              "zl": {
+                "tokens": 5000,
+                "types": 465,
+                "word_entropy": 8.461457371692804,
+                "glyph_entropy": 3.78732866352013,
+                "glyph_conditional_entropy": 2.1801058415813483,
+                "adjacent_pairs": 4380,
+                "adjacent_edit1_share": 0.00022831050228310502
+              },
+              "it": {
+                "tokens": 5000,
+                "types": 465,
+                "word_entropy": 8.461457371692804,
+                "glyph_entropy": 3.78732866352013,
+                "glyph_conditional_entropy": 2.1801058415813483,
+                "adjacent_pairs": 4386,
+                "adjacent_edit1_share": 0.00045599635202918376
+              }
+            }
+          },
+          "10000": {
+            "roundtrip_exact": true,
+            "by_layout": {
+              "zl": {
+                "tokens": 5000,
+                "types": 463,
+                "word_entropy": 8.464960248245092,
+                "glyph_entropy": 3.7870230543634236,
+                "glyph_conditional_entropy": 2.1772927130838506,
+                "adjacent_pairs": 4380,
+                "adjacent_edit1_share": 0.001141552511415525
+              },
+              "it": {
+                "tokens": 5000,
+                "types": 463,
+                "word_entropy": 8.464960248245092,
+                "glyph_entropy": 3.7870230543634236,
+                "glyph_conditional_entropy": 2.1772927130838506,
+                "adjacent_pairs": 4386,
+                "adjacent_edit1_share": 0.0009119927040583675
+              }
+            }
+          }
+        },
+        "120": {
+          "0": {
+            "roundtrip_exact": true,
+            "by_layout": {
+              "zl": {
+                "tokens": 5000,
+                "types": 1698,
+                "word_entropy": 10.42837578052412,
+                "glyph_entropy": 3.966766515062067,
+                "glyph_conditional_entropy": 2.5226084136879408,
+                "adjacent_pairs": 4380,
+                "adjacent_edit1_share": 0.0
+              },
+              "it": {
+                "tokens": 5000,
+                "types": 1698,
+                "word_entropy": 10.42837578052412,
+                "glyph_entropy": 3.966766515062067,
+                "glyph_conditional_entropy": 2.5226084136879408,
+                "adjacent_pairs": 4386,
+                "adjacent_edit1_share": 0.00022799817601459188
+              }
+            }
+          },
+          "5000": {
+            "roundtrip_exact": true,
+            "by_layout": {
+              "zl": {
+                "tokens": 5000,
+                "types": 1650,
+                "word_entropy": 10.395180156039817,
+                "glyph_entropy": 3.969899132232032,
+                "glyph_conditional_entropy": 2.517957414130824,
+                "adjacent_pairs": 4380,
+                "adjacent_edit1_share": 0.0
+              },
+              "it": {
+                "tokens": 5000,
+                "types": 1650,
+                "word_entropy": 10.395180156039817,
+                "glyph_entropy": 3.969899132232032,
+                "glyph_conditional_entropy": 2.517957414130824,
+                "adjacent_pairs": 4386,
+                "adjacent_edit1_share": 0.00022799817601459188
+              }
+            }
+          },
+          "10000": {
+            "roundtrip_exact": true,
+            "by_layout": {
+              "zl": {
+                "tokens": 5000,
+                "types": 1680,
+                "word_entropy": 10.407328221211012,
+                "glyph_entropy": 3.9698459023291957,
+                "glyph_conditional_entropy": 2.5179036470543688,
+                "adjacent_pairs": 4380,
+                "adjacent_edit1_share": 0.00022831050228310502
+              },
+              "it": {
+                "tokens": 5000,
+                "types": 1680,
+                "word_entropy": 10.407328221211012,
+                "glyph_entropy": 3.9698459023291957,
+                "glyph_conditional_entropy": 2.5179036470543688,
+                "adjacent_pairs": 4386,
+                "adjacent_edit1_share": 0.00022799817601459188
+              }
+            }
+          }
+        }
+      },
+      "la_vulg_daniel": {
+        "10": {
+          "0": {
+            "roundtrip_exact": true,
+            "by_layout": {
+              "zl": {
+                "tokens": 5000,
+                "types": 228,
+                "word_entropy": 7.310919280958909,
+                "glyph_entropy": 3.567897462205946,
+                "glyph_conditional_entropy": 1.870721536445751,
+                "adjacent_pairs": 4380,
+                "adjacent_edit1_share": 0.0015981735159817352
+              },
+              "it": {
+                "tokens": 5000,
+                "types": 228,
+                "word_entropy": 7.310919280958909,
+                "glyph_entropy": 3.567897462205946,
+                "glyph_conditional_entropy": 1.870721536445751,
+                "adjacent_pairs": 4386,
+                "adjacent_edit1_share": 0.001823985408116735
+              }
+            }
+          },
+          "5000": {
+            "roundtrip_exact": true,
+            "by_layout": {
+              "zl": {
+                "tokens": 5000,
+                "types": 208,
+                "word_entropy": 7.208995299003194,
+                "glyph_entropy": 3.561872199813398,
+                "glyph_conditional_entropy": 1.8582504762247476,
+                "adjacent_pairs": 4380,
+                "adjacent_edit1_share": 0.002054794520547945
+              },
+              "it": {
+                "tokens": 5000,
+                "types": 208,
+                "word_entropy": 7.208995299003194,
+                "glyph_entropy": 3.561872199813398,
+                "glyph_conditional_entropy": 1.8582504762247476,
+                "adjacent_pairs": 4386,
+                "adjacent_edit1_share": 0.001823985408116735
+              }
+            }
+          },
+          "10000": {
+            "roundtrip_exact": true,
+            "by_layout": {
+              "zl": {
+                "tokens": 5000,
+                "types": 207,
+                "word_entropy": 7.231447548133642,
+                "glyph_entropy": 3.574042830869719,
+                "glyph_conditional_entropy": 1.8653021517502775,
+                "adjacent_pairs": 4380,
+                "adjacent_edit1_share": 0.00228310502283105
+              },
+              "it": {
+                "tokens": 5000,
+                "types": 207,
+                "word_entropy": 7.231447548133642,
+                "glyph_entropy": 3.574042830869719,
+                "glyph_conditional_entropy": 1.8653021517502775,
+                "adjacent_pairs": 4386,
+                "adjacent_edit1_share": 0.002051983584131327
+              }
+            }
+          }
+        },
+        "24": {
+          "0": {
+            "roundtrip_exact": true,
+            "by_layout": {
+              "zl": {
+                "tokens": 5000,
+                "types": 500,
+                "word_entropy": 8.513166564001958,
+                "glyph_entropy": 3.792734918224797,
+                "glyph_conditional_entropy": 2.2012707482837803,
+                "adjacent_pairs": 4380,
+                "adjacent_edit1_share": 0.00045662100456621003
+              },
+              "it": {
+                "tokens": 5000,
+                "types": 500,
+                "word_entropy": 8.513166564001958,
+                "glyph_entropy": 3.792734918224797,
+                "glyph_conditional_entropy": 2.2012707482837803,
+                "adjacent_pairs": 4386,
+                "adjacent_edit1_share": 0.00045599635202918376
+              }
+            }
+          },
+          "5000": {
+            "roundtrip_exact": true,
+            "by_layout": {
+              "zl": {
+                "tokens": 5000,
+                "types": 467,
+                "word_entropy": 8.419496601966218,
+                "glyph_entropy": 3.793604298233459,
+                "glyph_conditional_entropy": 2.1964929633695713,
+                "adjacent_pairs": 4380,
+                "adjacent_edit1_share": 0.0009132420091324201
+              },
+              "it": {
+                "tokens": 5000,
+                "types": 467,
+                "word_entropy": 8.419496601966218,
+                "glyph_entropy": 3.793604298233459,
+                "glyph_conditional_entropy": 2.1964929633695713,
+                "adjacent_pairs": 4386,
+                "adjacent_edit1_share": 0.0006839945280437756
+              }
+            }
+          },
+          "10000": {
+            "roundtrip_exact": true,
+            "by_layout": {
+              "zl": {
+                "tokens": 5000,
+                "types": 476,
+                "word_entropy": 8.45834778683068,
+                "glyph_entropy": 3.79174233168076,
+                "glyph_conditional_entropy": 2.194302427737591,
+                "adjacent_pairs": 4380,
+                "adjacent_edit1_share": 0.001141552511415525
+              },
+              "it": {
+                "tokens": 5000,
+                "types": 476,
+                "word_entropy": 8.45834778683068,
+                "glyph_entropy": 3.79174233168076,
+                "glyph_conditional_entropy": 2.194302427737591,
+                "adjacent_pairs": 4386,
+                "adjacent_edit1_share": 0.0011399908800729594
+              }
+            }
+          }
+        },
+        "120": {
+          "0": {
+            "roundtrip_exact": true,
+            "by_layout": {
+              "zl": {
+                "tokens": 5000,
+                "types": 1737,
+                "word_entropy": 10.44684376577562,
+                "glyph_entropy": 3.9739765783152565,
+                "glyph_conditional_entropy": 2.533075042805984,
+                "adjacent_pairs": 4380,
+                "adjacent_edit1_share": 0.00022831050228310502
+              },
+              "it": {
+                "tokens": 5000,
+                "types": 1737,
+                "word_entropy": 10.44684376577562,
+                "glyph_entropy": 3.9739765783152565,
+                "glyph_conditional_entropy": 2.533075042805984,
+                "adjacent_pairs": 4386,
+                "adjacent_edit1_share": 0.00022799817601459188
+              }
+            }
+          },
+          "5000": {
+            "roundtrip_exact": true,
+            "by_layout": {
+              "zl": {
+                "tokens": 5000,
+                "types": 1645,
+                "word_entropy": 10.362477777142567,
+                "glyph_entropy": 3.97347282374268,
+                "glyph_conditional_entropy": 2.5308214271426843,
+                "adjacent_pairs": 4380,
+                "adjacent_edit1_share": 0.0
+              },
+              "it": {
+                "tokens": 5000,
+                "types": 1645,
+                "word_entropy": 10.362477777142567,
+                "glyph_entropy": 3.97347282374268,
+                "glyph_conditional_entropy": 2.5308214271426843,
+                "adjacent_pairs": 4386,
+                "adjacent_edit1_share": 0.0
+              }
+            }
+          },
+          "10000": {
+            "roundtrip_exact": true,
+            "by_layout": {
+              "zl": {
+                "tokens": 5000,
+                "types": 1679,
+                "word_entropy": 10.398390655797813,
+                "glyph_entropy": 3.9750966404130175,
+                "glyph_conditional_entropy": 2.5423290273336487,
+                "adjacent_pairs": 4380,
+                "adjacent_edit1_share": 0.00022831050228310502
+              },
+              "it": {
+                "tokens": 5000,
+                "types": 1679,
+                "word_entropy": 10.398390655797813,
+                "glyph_entropy": 3.9750966404130175,
+                "glyph_conditional_entropy": 2.5423290273336487,
+                "adjacent_pairs": 4386,
+                "adjacent_edit1_share": 0.00022799817601459188
+              }
+            }
+          }
+        }
+      }
+    },
+    "unknown_key_controls": [
+      {
+        "book": "la_patrick",
+        "columns": 10,
+        "selection": "sequential",
+        "seed": 41,
+        "kind": "real",
+        "cipher_train_types": 204,
+        "suffix_groups": 60,
+        "unseen_suffix_fraction": 0.0,
+        "baseline_accuracy": 0.0765,
+        "context_accuracy": 0.1517,
+        "oracle_accuracy": 0.2885,
+        "context_type_accuracy_macro": 0.0769,
+        "decoded_alphabet_size": 5,
+        "decoded_max_letter_share": 0.626,
+        "baseline_train_nll": 3.80695,
+        "baseline_test_nll": 3.72633,
+        "context_train_nll": 2.27423,
+        "context_test_nll": 2.28521,
+        "shuffle_mean_nll": 2.35068,
+        "shuffle_p": 0.05,
+        "period_shuffle_mean_nll": 2.29964,
+        "period_shuffle_p": 0.1
+      },
+      {
+        "book": "la_patrick",
+        "columns": 10,
+        "selection": "sequential",
+        "seed": 71,
+        "kind": "real",
+        "cipher_train_types": 204,
+        "suffix_groups": 52,
+        "unseen_suffix_fraction": 0.0,
+        "baseline_accuracy": 0.1052,
+        "context_accuracy": 0.1618,
+        "oracle_accuracy": 0.2885,
+        "context_type_accuracy_macro": 0.0872,
+        "decoded_alphabet_size": 4,
+        "decoded_max_letter_share": 0.6757,
+        "baseline_train_nll": 3.81968,
+        "baseline_test_nll": 3.79342,
+        "context_train_nll": 2.26385,
+        "context_test_nll": 2.27008,
+        "shuffle_mean_nll": 2.32191,
+        "shuffle_p": 0.05,
+        "period_shuffle_mean_nll": 2.31283,
+        "period_shuffle_p": 0.05
+      },
+      {
+        "book": "la_patrick",
+        "columns": 10,
+        "selection": "sequential",
+        "seed": 103,
+        "kind": "real",
+        "cipher_train_types": 204,
+        "suffix_groups": 55,
+        "unseen_suffix_fraction": 0.0,
+        "baseline_accuracy": 0.077,
+        "context_accuracy": 0.1353,
+        "oracle_accuracy": 0.2905,
+        "context_type_accuracy_macro": 0.0718,
+        "decoded_alphabet_size": 6,
+        "decoded_max_letter_share": 0.7175,
+        "baseline_train_nll": 3.77768,
+        "baseline_test_nll": 3.77535,
+        "context_train_nll": 2.24319,
+        "context_test_nll": 2.25216,
+        "shuffle_mean_nll": 2.31648,
+        "shuffle_p": 0.05,
+        "period_shuffle_mean_nll": 2.27947,
+        "period_shuffle_p": 0.05
+      },
+      {
+        "book": "la_patrick",
+        "columns": 24,
+        "selection": "sequential",
+        "seed": 41,
+        "kind": "real",
+        "cipher_train_types": 473,
+        "suffix_groups": 80,
+        "unseen_suffix_fraction": 0.0003,
+        "baseline_accuracy": 0.1205,
+        "context_accuracy": 0.1772,
+        "oracle_accuracy": 0.221,
+        "context_type_accuracy_macro": 0.0998,
+        "decoded_alphabet_size": 5,
+        "decoded_max_letter_share": 0.6703,
+        "baseline_train_nll": 3.85086,
+        "baseline_test_nll": 3.87188,
+        "context_train_nll": 2.26101,
+        "context_test_nll": 2.25626,
+        "shuffle_mean_nll": 2.32468,
+        "shuffle_p": 0.05,
+        "period_shuffle_mean_nll": 2.29743,
+        "period_shuffle_p": 0.05
+      },
+      {
+        "book": "la_patrick",
+        "columns": 24,
+        "selection": "sequential",
+        "seed": 71,
+        "kind": "real",
+        "cipher_train_types": 458,
+        "suffix_groups": 63,
+        "unseen_suffix_fraction": 0.0,
+        "baseline_accuracy": 0.1435,
+        "context_accuracy": 0.099,
+        "oracle_accuracy": 0.229,
+        "context_type_accuracy_macro": 0.053,
+        "decoded_alphabet_size": 6,
+        "decoded_max_letter_share": 0.3332,
+        "baseline_train_nll": 3.79958,
+        "baseline_test_nll": 3.79356,
+        "context_train_nll": 2.42324,
+        "context_test_nll": 2.4332,
+        "shuffle_mean_nll": 2.66434,
+        "shuffle_p": 0.05,
+        "period_shuffle_mean_nll": 2.6523,
+        "period_shuffle_p": 0.05
+      },
+      {
+        "book": "la_patrick",
+        "columns": 24,
+        "selection": "sequential",
+        "seed": 103,
+        "kind": "real",
+        "cipher_train_types": 467,
+        "suffix_groups": 81,
+        "unseen_suffix_fraction": 0.0,
+        "baseline_accuracy": 0.0665,
+        "context_accuracy": 0.0828,
+        "oracle_accuracy": 0.2263,
+        "context_type_accuracy_macro": 0.052,
+        "decoded_alphabet_size": 5,
+        "decoded_max_letter_share": 0.6833,
+        "baseline_train_nll": 3.81627,
+        "baseline_test_nll": 3.78476,
+        "context_train_nll": 2.2576,
+        "context_test_nll": 2.25978,
+        "shuffle_mean_nll": 2.32173,
+        "shuffle_p": 0.05,
+        "period_shuffle_mean_nll": 2.3118,
+        "period_shuffle_p": 0.05
+      },
+      {
+        "book": "la_patrick",
+        "columns": 120,
+        "selection": "sequential",
+        "seed": 41,
+        "kind": "real",
+        "cipher_train_types": 1919,
+        "suffix_groups": 111,
+        "unseen_suffix_fraction": 0.0,
+        "baseline_accuracy": 0.091,
+        "context_accuracy": 0.2015,
+        "oracle_accuracy": 0.1492,
+        "context_type_accuracy_macro": 0.1496,
+        "decoded_alphabet_size": 5,
+        "decoded_max_letter_share": 0.6587,
+        "baseline_train_nll": 3.74794,
+        "baseline_test_nll": 3.70852,
+        "context_train_nll": 2.26199,
+        "context_test_nll": 2.2699,
+        "shuffle_mean_nll": 2.3255,
+        "shuffle_p": 0.05,
+        "period_shuffle_mean_nll": 2.31244,
+        "period_shuffle_p": 0.05
+      },
+      {
+        "book": "la_patrick",
+        "columns": 120,
+        "selection": "sequential",
+        "seed": 71,
+        "kind": "real",
+        "cipher_train_types": 1935,
+        "suffix_groups": 119,
+        "unseen_suffix_fraction": 0.0,
+        "baseline_accuracy": 0.1057,
+        "context_accuracy": 0.1727,
+        "oracle_accuracy": 0.1487,
+        "context_type_accuracy_macro": 0.1329,
+        "decoded_alphabet_size": 5,
+        "decoded_max_letter_share": 0.652,
+        "baseline_train_nll": 3.77437,
+        "baseline_test_nll": 3.78538,
+        "context_train_nll": 2.23724,
+        "context_test_nll": 2.2422,
+        "shuffle_mean_nll": 2.33041,
+        "shuffle_p": 0.05,
+        "period_shuffle_mean_nll": 2.31664,
+        "period_shuffle_p": 0.05
+      },
+      {
+        "book": "la_patrick",
+        "columns": 120,
+        "selection": "sequential",
+        "seed": 103,
+        "kind": "real",
+        "cipher_train_types": 1922,
+        "suffix_groups": 118,
+        "unseen_suffix_fraction": 0.0005,
+        "baseline_accuracy": 0.096,
+        "context_accuracy": 0.1087,
+        "oracle_accuracy": 0.1467,
+        "context_type_accuracy_macro": 0.0885,
+        "decoded_alphabet_size": 8,
+        "decoded_max_letter_share": 0.72,
+        "baseline_train_nll": 3.77774,
+        "baseline_test_nll": 3.77956,
+        "context_train_nll": 2.2856,
+        "context_test_nll": 2.29087,
+        "shuffle_mean_nll": 2.31962,
+        "shuffle_p": 0.05,
+        "period_shuffle_mean_nll": 2.31197,
+        "period_shuffle_p": 0.05
+      },
+      {
+        "book": "la_vulg_esther_a",
+        "columns": 10,
+        "selection": "sequential",
+        "seed": 41,
+        "kind": "real",
+        "cipher_train_types": 228,
+        "suffix_groups": 64,
+        "unseen_suffix_fraction": 0.0003,
+        "baseline_accuracy": 0.137,
+        "context_accuracy": 0.155,
+        "oracle_accuracy": 0.3965,
+        "context_type_accuracy_macro": 0.0891,
+        "decoded_alphabet_size": 5,
+        "decoded_max_letter_share": 0.6402,
+        "baseline_train_nll": 3.87309,
+        "baseline_test_nll": 3.90278,
+        "context_train_nll": 2.25631,
+        "context_test_nll": 2.27216,
+        "shuffle_mean_nll": 2.3361,
+        "shuffle_p": 0.05,
+        "period_shuffle_mean_nll": 2.30791,
+        "period_shuffle_p": 0.05
+      },
+      {
+        "book": "la_vulg_esther_a",
+        "columns": 10,
+        "selection": "sequential",
+        "seed": 71,
+        "kind": "real",
+        "cipher_train_types": 228,
+        "suffix_groups": 56,
+        "unseen_suffix_fraction": 0.0,
+        "baseline_accuracy": 0.0722,
+        "context_accuracy": 0.1472,
+        "oracle_accuracy": 0.396,
+        "context_type_accuracy_macro": 0.0842,
+        "decoded_alphabet_size": 5,
+        "decoded_max_letter_share": 0.6725,
+        "baseline_train_nll": 3.85883,
+        "baseline_test_nll": 3.90897,
+        "context_train_nll": 2.25133,
+        "context_test_nll": 2.26999,
+        "shuffle_mean_nll": 2.32032,
+        "shuffle_p": 0.05,
+        "period_shuffle_mean_nll": 2.30837,
+        "period_shuffle_p": 0.05
+      },
+      {
+        "book": "la_vulg_esther_a",
+        "columns": 10,
+        "selection": "sequential",
+        "seed": 103,
+        "kind": "real",
+        "cipher_train_types": 228,
+        "suffix_groups": 56,
+        "unseen_suffix_fraction": 0.0003,
+        "baseline_accuracy": 0.0848,
+        "context_accuracy": 0.0615,
+        "oracle_accuracy": 0.396,
+        "context_type_accuracy_macro": 0.0396,
+        "decoded_alphabet_size": 5,
+        "decoded_max_letter_share": 0.6508,
+        "baseline_train_nll": 3.85794,
+        "baseline_test_nll": 3.83803,
+        "context_train_nll": 2.2476,
+        "context_test_nll": 2.24768,
+        "shuffle_mean_nll": 2.33887,
+        "shuffle_p": 0.05,
+        "period_shuffle_mean_nll": 2.27655,
+        "period_shuffle_p": 0.05
+      },
+      {
+        "book": "la_vulg_esther_a",
+        "columns": 24,
+        "selection": "sequential",
+        "seed": 41,
+        "kind": "real",
+        "cipher_train_types": 509,
+        "suffix_groups": 82,
+        "unseen_suffix_fraction": 0.0003,
+        "baseline_accuracy": 0.0965,
+        "context_accuracy": 0.1742,
+        "oracle_accuracy": 0.3302,
+        "context_type_accuracy_macro": 0.1007,
+        "decoded_alphabet_size": 7,
+        "decoded_max_letter_share": 0.619,
+        "baseline_train_nll": 3.90102,
+        "baseline_test_nll": 3.86503,
+        "context_train_nll": 2.281,
+        "context_test_nll": 2.29845,
+        "shuffle_mean_nll": 2.35578,
+        "shuffle_p": 0.05,
+        "period_shuffle_mean_nll": 2.34454,
+        "period_shuffle_p": 0.05
+      },
+      {
+        "book": "la_vulg_esther_a",
+        "columns": 24,
+        "selection": "sequential",
+        "seed": 71,
+        "kind": "real",
+        "cipher_train_types": 492,
+        "suffix_groups": 66,
+        "unseen_suffix_fraction": 0.0,
+        "baseline_accuracy": 0.1153,
+        "context_accuracy": 0.1375,
+        "oracle_accuracy": 0.329,
+        "context_type_accuracy_macro": 0.0896,
+        "decoded_alphabet_size": 4,
+        "decoded_max_letter_share": 0.6915,
+        "baseline_train_nll": 3.88382,
+        "baseline_test_nll": 3.90791,
+        "context_train_nll": 2.26565,
+        "context_test_nll": 2.27183,
+        "shuffle_mean_nll": 2.32021,
+        "shuffle_p": 0.05,
+        "period_shuffle_mean_nll": 2.31244,
+        "period_shuffle_p": 0.05
+      },
+      {
+        "book": "la_vulg_esther_a",
+        "columns": 24,
+        "selection": "sequential",
+        "seed": 103,
+        "kind": "real",
+        "cipher_train_types": 504,
+        "suffix_groups": 85,
+        "unseen_suffix_fraction": 0.0,
+        "baseline_accuracy": 0.0683,
+        "context_accuracy": 0.1232,
+        "oracle_accuracy": 0.3295,
+        "context_type_accuracy_macro": 0.0778,
+        "decoded_alphabet_size": 6,
+        "decoded_max_letter_share": 0.6607,
+        "baseline_train_nll": 3.85057,
+        "baseline_test_nll": 3.80175,
+        "context_train_nll": 2.24726,
+        "context_test_nll": 2.26009,
+        "shuffle_mean_nll": 2.32676,
+        "shuffle_p": 0.05,
+        "period_shuffle_mean_nll": 2.29793,
+        "period_shuffle_p": 0.05
+      },
+      {
+        "book": "la_vulg_esther_a",
+        "columns": 120,
+        "selection": "sequential",
+        "seed": 41,
+        "kind": "real",
+        "cipher_train_types": 2001,
+        "suffix_groups": 109,
+        "unseen_suffix_fraction": 0.0003,
+        "baseline_accuracy": 0.0985,
+        "context_accuracy": 0.1698,
+        "oracle_accuracy": 0.1792,
+        "context_type_accuracy_macro": 0.1276,
+        "decoded_alphabet_size": 7,
+        "decoded_max_letter_share": 0.6815,
+        "baseline_train_nll": 3.77805,
+        "baseline_test_nll": 3.81671,
+        "context_train_nll": 2.27398,
+        "context_test_nll": 2.2909,
+        "shuffle_mean_nll": 2.32597,
+        "shuffle_p": 0.05,
+        "period_shuffle_mean_nll": 2.32331,
+        "period_shuffle_p": 0.05
+      },
+      {
+        "book": "la_vulg_esther_a",
+        "columns": 120,
+        "selection": "sequential",
+        "seed": 71,
+        "kind": "real",
+        "cipher_train_types": 2027,
+        "suffix_groups": 121,
+        "unseen_suffix_fraction": 0.0008,
+        "baseline_accuracy": 0.1353,
+        "context_accuracy": 0.1447,
+        "oracle_accuracy": 0.181,
+        "context_type_accuracy_macro": 0.1183,
+        "decoded_alphabet_size": 6,
+        "decoded_max_letter_share": 0.6723,
+        "baseline_train_nll": 3.77891,
+        "baseline_test_nll": 3.73268,
+        "context_train_nll": 2.26044,
+        "context_test_nll": 2.28147,
+        "shuffle_mean_nll": 2.32258,
+        "shuffle_p": 0.05,
+        "period_shuffle_mean_nll": 2.31787,
+        "period_shuffle_p": 0.05
+      },
+      {
+        "book": "la_vulg_esther_a",
+        "columns": 120,
+        "selection": "sequential",
+        "seed": 103,
+        "kind": "real",
+        "cipher_train_types": 2012,
+        "suffix_groups": 119,
+        "unseen_suffix_fraction": 0.0003,
+        "baseline_accuracy": 0.0958,
+        "context_accuracy": 0.114,
+        "oracle_accuracy": 0.1797,
+        "context_type_accuracy_macro": 0.098,
+        "decoded_alphabet_size": 5,
+        "decoded_max_letter_share": 0.6867,
+        "baseline_train_nll": 3.78396,
+        "baseline_test_nll": 3.77835,
+        "context_train_nll": 2.27945,
+        "context_test_nll": 2.28054,
+        "shuffle_mean_nll": 2.31699,
+        "shuffle_p": 0.05,
+        "period_shuffle_mean_nll": 2.31506,
+        "period_shuffle_p": 0.05
+      }
+    ]
+  },
+  "reproduce": {
+    "instructions": "Save the exact pinned table as /tmp/voy-piii.csv and both scripts as /tmp/voy_k046_joint.py and /tmp/voy_piii_unknown.py; run python3 -m vs fetch, then PYTHONPATH=. python3 /tmp/voy_k046_joint.py from the repository root. Scripts verify the table and corpus input hashes.",
+    "script": "\"\"\"Fixed cyclic Polygraphia III: exact round trips and public-practice metric comparison.\"\"\"\nimport csv,json,hashlib,math,importlib.util\nfrom collections import Counter\nfrom vs import corpus,ivtff,refcorpus,dsl\n\nN=5000; COLS=(10,24,120); SOURCES=('la_augustine','la_erasmus','la_vulg_daniel'); CONTROL=('la_patrick','la_vulg_esther_a'); OFFSETS=(0,5000,10000)\nraw=open('/tmp/voy-piii.csv','rb').read();assert hashlib.sha256(raw).hexdigest()=='fe3f24a46dbc6b655eab8dbbd75addf84ee4a7dbd387ad802af75d02edfe5b4d'\ntable=list(csv.DictReader(raw.decode('utf-8-sig').splitlines())); alphabet=list(table[0]); allowed=set(alphabet)\nfor row in table:\n for c in row: row[c]=row[c].strip()\nassert all(len(set(row.values()))==len(row) for row in table[:max(COLS)])\npins={e['id']:e for e in refcorpus.pins()}\nfor b in SOURCES+CONTROL:\n with open(pins[b]['file'],'rb') as f:assert hashlib.sha256(f.read()).hexdigest()==pins[b]['sha256']\n\ndef entropy(c):\n n=sum(c.values());return -sum((v/n)*math.log2(v/n) for v in c.values()) if n else 0\n\ndef values(words,adj):\n chars=Counter(''.join(words));pairs=Counter((a,b) for w in words for a,b in zip(w,w[1:]));prev=Counter(a for a,b in pairs)\n return {'tokens':len(words),'types':len(set(words)),'word_entropy':entropy(Counter(words)),\n  'glyph_entropy':entropy(chars),'glyph_conditional_entropy':entropy(pairs)-entropy(prev),\n  'adjacent_pairs':len(adj),'adjacent_edit1_share':sum(dsl._edit1(words[i],words[j]) for i,j in adj)/len(adj)}\n\ndef witness(name):\n expected={'zl':'bf5b6d4ac1e3a51b1847a9c388318d609020441ccd56984c901c32b09beccafc','it':'7f27a8b0feed8f6de0a99900df6bf912dd1d295c38e5f830bac8b41c3f536fb5'}\n fn={'zl':'ZL3b-n.txt','it':'IT2a-n.txt'}[name]\n with open('data/raw/'+fn,'rb') as f:assert hashlib.sha256(f.read()).hexdigest()==expected[name]\n _,ev=corpus.split_pages('practice',name);ws=[];adj=[]\n for p in ev:\n  for line in p.lines:\n   if line.unit!='P':continue\n   last=None\n   for k,w in enumerate(line.words):\n    if ivtff.uncertain(w) or not(w.isascii() and w.isalpha() and w.islower()):last=None;continue\n    if len(ws)==N:return ws,adj\n    i=len(ws);ws.append(w)\n    if last is not None and last[0]==k-1:adj.append((last[1],i))\n    last=(k,i)\n assert len(ws)==N\n return ws,adj\n\ndef text(b):return ''.join(c for part in refcorpus.blocks_of(b) for c in part if c in allowed)\n\ndef encode(plain,n):\n inv=[{word:c for c,word in row.items()} for row in table[:n]]\n enc=[table[i%n][c] for i,c in enumerate(plain)]\n assert ''.join(inv[i%n][w] for i,w in enumerate(enc))==plain\n return enc\n\ndef run():\n witnesses={w:witness(w) for w in ('zl','it')}; result={'n':N,'column_counts':COLS,'sources':SOURCES,'offsets':OFFSETS,\n  'witnesses':{w:values(*x) for w,x in witnesses.items()},'planted':{},'unknown_key_controls':[]}\n for book in SOURCES:\n  plain=text(book);result['planted'][book]={}\n  for n in COLS:\n   result['planted'][book][str(n)]={}\n   for offset in OFFSETS:\n    src=plain[offset:offset+N];assert len(src)==N;enc=encode(src,n)\n    result['planted'][book][str(n)][str(offset)]={'roundtrip_exact':True,'by_layout':{w:values(enc,pairs) for w,(ws,pairs) in witnesses.items()}}\n # Separately benchmark the existing unknown-key suffix+bigram search, which\n # chooses random row subsets and therefore is not the same planted key.\n spec=importlib.util.spec_from_file_location('unknown','/tmp/voy_piii_unknown.py');mod=importlib.util.module_from_spec(spec);spec.loader.exec_module(mod)\n for b in CONTROL:\n  for n in COLS:\n   for seed in (41,71,103): result['unknown_key_controls'].append(mod.experiment(b,n,'sequential',seed,'real'))\n return result\n\nif __name__=='__main__':print(json.dumps(run(),indent=2))\n",
+    "unknown_key_script": "import csv, hashlib, json, math, random\nfrom collections import Counter, defaultdict\nfrom functools import lru_cache\nfrom vs import refcorpus\n\nPATH='/tmp/voy-piii.csv'\nraw=open(PATH,'rb').read()\nassert hashlib.sha256(raw).hexdigest()=='fe3f24a46dbc6b655eab8dbbd75addf84ee4a7dbd387ad802af75d02edfe5b4d'\ntable=list(csv.DictReader(raw.decode('utf-8-sig').splitlines())); alphabet=list(table[0]); allowed=set(alphabet)\nfor row in table:\n for c in row: row[c]=row[c].strip()\nBOOKS=('la_augustine','la_erasmus','la_vulg_daniel','la_patrick','la_vulg_esther_a')\nREFERENCE=BOOKS+('la_vulg_jonah',)\nTRAIN=12000; TEST=4000; SWEEPS=2; SHUFFLES=19; SEEDS=(41,71,103)\ndef book(id): return ''.join(c for b in refcorpus.blocks_of(id) for c in b if c in allowed)\npins={e['id']:e for e in refcorpus.pins()}\nfor k in REFERENCE:\n    with open(pins[k]['file'],'rb') as f:\n        assert hashlib.sha256(f.read()).hexdigest()==pins[k]['sha256'], k\ntexts={k:book(k) for k in REFERENCE}\n\n@lru_cache(maxsize=None)\ndef model(exclude):\n    ref=''.join(texts[k] for k in REFERENCE if k!=exclude)\n    prior=Counter(ref); rank=sorted(alphabet,key=lambda x:(-prior[x],x)); count=Counter(zip(ref,ref[1:])); sums=Counter(ref[:-1]); n=len(alphabet)\n    score={(a,b):math.log((count[a,b]+1)/(sums[a]+n)) for a in alphabet for b in alphabet}\n    return prior,rank,score\n\ndef make_plain(rng, real, kind, prior, score):\n    if kind=='real': return real[:TRAIN+TEST]\n    if kind=='iid': return ''.join(rng.choices(alphabet,weights=[prior[c] for c in alphabet],k=TRAIN+TEST))\n    # Markov null preserves fitted first-order transitions but has no syntax or meaning.\n    text=[rng.choices(alphabet,weights=[prior[c] for c in alphabet])[0]]\n    for _ in range(TRAIN+TEST-1):\n        text.append(rng.choices(alphabet,weights=[math.exp(score[text[-1],c]) for c in alphabet])[0])\n    return ''.join(text)\n\ndef loss(seq,mapping,score,default):\n    decoded=[mapping.get(s,default) for s in seq]\n    return -sum(score[a,b] for a,b in zip(decoded,decoded[1:]))/max(1,len(seq)-1)\n\ndef initial(groups,rank):\n    cnt=Counter(groups); ordered=sorted(cnt,key=lambda x:(-cnt[x],x)); return {x:rank[i] if i<len(rank) else rank[0] for i,x in enumerate(ordered)}\n\ndef optimize(groups,key,score):\n    # Coordinate ascent: count all adjacent-group transitions; optimize one assignment\n    # at a time. Exact local score includes self transitions only once.\n    edges=Counter(zip(groups,groups[1:])); outgoing=defaultdict(Counter); incoming=defaultdict(Counter)\n    for (a,b),n in edges.items(): outgoing[a][b]=n; incoming[b][a]=n\n    for _ in range(SWEEPS):\n      for g in sorted(key):\n        def contribution(c):\n            return sum(n*score[c, c if h==g else key[h]] for h,n in outgoing[g].items()) + sum(n*score[key[h],c] for h,n in incoming[g].items() if h!=g)\n        key[g]=max(alphabet,key=lambda c:contribution(c))\n    return key\n\ndef experiment(book_id,ncol,strategy,seed,kind):\n    prior,rank,score=model(book_id); rng=random.Random(seed); plain=make_plain(random.Random(seed+100000),texts[book_id],kind,prior,score)\n    assert len(plain)==TRAIN+TEST\n    cols=rng.sample(range(len(table)),ncol)\n    selected=[rng.randrange(ncol) if strategy=='random' else i%ncol for i in range(len(plain))]\n    pairs=[(cols[c],table[cols[c]][letter]) for c,letter in zip(selected,plain)]\n    # Search sees only each artificial word, never the generating column or plaintext.\n    words=[word for _,word in pairs]; gr=[w[-2:] for w in words]\n    base=initial(gr[:TRAIN],rank); opt=optimize(gr[:TRAIN],dict(base),score)\n    # Same-cipher known-column frequency benchmark, a deliberately strong oracle.\n    counts=defaultdict(Counter)\n    for col,word in pairs[:TRAIN]: counts[col][word]+=1\n    oracle={}\n    for col,cnt in counts.items():\n      for w,letter in zip(sorted(cnt,key=lambda w:(-cnt[w],w)),rank): oracle[col,w]=letter\n    true=plain[TRAIN:]; held=gr[TRAIN:]; bseq=[base.get(x,rank[0]) for x in held]; oseq=[opt.get(x,rank[0]) for x in held]\n    op=[oracle.get(x,rank[0]) for x in pairs[TRAIN:]]\n    # Shuffle ciphertext groups at test time without knowing columns.\n    null=[]\n    for _ in range(SHUFFLES):\n      shuffled=held[:];rng.shuffle(shuffled);null.append(loss(shuffled,opt,score,rank[0]))\n    actual=loss(held,opt,score,rank[0]); p=(1+sum(v<=actual for v in null))/(SHUFFLES+1)\n    # If the selection period is known, shuffle only within position modulo that period.\n    # This preserves cycle-specific token marginals but does not give column IDs to the decoder.\n    period_null=[]\n    for _ in range(SHUFFLES):\n      shuffled=held[:]\n      for offset in range(ncol):\n        ids=list(range(offset,len(held),ncol)); vals=[held[i] for i in ids]; rng.shuffle(vals)\n        for i,v in zip(ids,vals): shuffled[i]=v\n      period_null.append(loss(shuffled,opt,score,rank[0]))\n    period_p=(1+sum(v<=actual for v in period_null))/(SHUFFLES+1)\n    def acc(a): return round(sum(x==y for x,y in zip(a,true))/len(true),4)\n    # Measures compatibility with actual held-out word/letter observations, including collisions.\n    pertype=defaultdict(list)\n    for w,x,y in zip(words[TRAIN:],oseq,true): pertype[w].append(x==y)\n    return {'book':book_id,'columns':ncol,'selection':strategy,'seed':seed,'kind':kind,\n       'cipher_train_types':len(set(words[:TRAIN])),'suffix_groups':len(set(gr[:TRAIN])),\n       'unseen_suffix_fraction':round(sum(g not in opt for g in held)/len(held),4),\n       'baseline_accuracy':acc(bseq),'context_accuracy':acc(oseq),'oracle_accuracy':acc(op),\n       'context_type_accuracy_macro':round(sum(sum(v)/len(v) for v in pertype.values())/len(pertype),4),\n       'decoded_alphabet_size':len(set(oseq)), 'decoded_max_letter_share':round(max(Counter(oseq).values())/len(oseq),4),\n       'baseline_train_nll':round(loss(gr[:TRAIN],base,score,rank[0]),5),'baseline_test_nll':round(loss(held,base,score,rank[0]),5),'context_train_nll':round(loss(gr[:TRAIN],opt,score,rank[0]),5),\n       'context_test_nll':round(actual,5),'shuffle_mean_nll':round(sum(null)/len(null),5),'shuffle_p':p,\n       'period_shuffle_mean_nll':round(sum(period_null)/len(period_null),5),'period_shuffle_p':period_p}\n\nif __name__=='__main__':\n print(json.dumps({'table_sha256':hashlib.sha256(raw).hexdigest(),'books':{k:len(v) for k,v in texts.items()},'train':TRAIN,'test':TEST,'sweeps':SWEEPS,'shuffles':SHUFFLES,\n  'rows':[experiment(b,n,mode,s,k) for b in BOOKS for n in (10,24,131) for mode in ('random','sequential') for s in SEEDS for k in ('real','iid','markov')]},indent=2))\n"
+  },
+  "limitations": "This is a public practice split, not the secret held-out evaluation; no hidden-page identities were accessed. The two witnesses describe the same manuscript, and windows from one plaintext are not independent books. The selection rules and metrics were fixed for this local pilot, not formally preregistered, and no thresholds or joint statistical test were fixed. Reference Latin words are reduced to letters, whereas Voynich words are observed transcription tokens; character alphabets and treatment of uncertain transcription affect the comparison. Synthetic placements follow selected-token layout only, not full manuscript production. Positive controls with unknown keys use other row sets and a weak suffix heuristic; exact known-key decryption does not demonstrate unknown-key recoverability. The scorer currently lacks this generation and joint comparison, so the requested authoritative held-out test remains open."
+}
