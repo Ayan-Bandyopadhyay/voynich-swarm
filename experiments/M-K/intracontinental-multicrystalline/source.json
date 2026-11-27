@@ -1,19 +1,19 @@
 {
-  "title": "Word Probability Findings in the Voynich Manuscript",
-  "authors": "Colin Layfield, Lonneke van der Plas, Michael Rosner, John Abela",
-  "year": 2020,
-  "url": "https://aclanthology.org/2020.lt4hala-1.11/",
-  "summary": "The authors compare word probability with segment information and the position at which a word becomes unique among words sharing its beginning. They report relationships in the Voynich transcription resembling those in their natural-language comparisons, while noting that those comparison corpora were generally larger and modern, and that written characters are not phonemic transcriptions.",
+  "title": "An Analysis of the Relationship between Words within the Voynich Manuscript",
+  "authors": "Andrew Caruana, Colin Layfield, John Abela",
+  "year": 2022,
+  "url": "https://www.um.edu.mt/library/oar/handle/123456789/132232",
+  "summary": "The authors compare directional word-pair frequencies in a Voynich transliteration and English and Italian texts with shuffled versions. Their exploratory comparison reports an excess of directionally skewed pairs in the manuscript, smaller than the excess in the comparison texts; it does not test a meaningless-text generator or establish that the text is linguistic.",
   "established": [
-    "Using the ZL 1b EVA transcription, the study retained 32,216 of 36,249 word tokens after excluding uncertain characters, sequences and spaces; 7,283 retained word types were distinct (section 4.1).",
-    "For word lengths four through eight, the manuscript's less frequent word forms had more informative segments on average, in the same direction as the five displayed natural-language comparisons (section 5 and figure 2). The information calculation removes the word's own count from its segment counts.",
-    "The authors report significantly earlier relative uniqueness points for less probable manuscript words across the tested word lengths (section 5 and figure 3). A uniqueness point is the first prefix that identifies a word among the retained word types."
+    "The analysis uses ZL version 1r and selected Bible books, two Shakespeare plays and Dante's Divina Commedia. It removes frequent words using empirically selected percentages and counts pairs within a three-word window; a pair is skewed if its count exceeds its reverse by more than five (sections 2.1–2.3).",
+    "Figure 2 compares each original with the average of three random shuffles. The authors report that the Voynich original has slightly more than twice the skewed-pair ratio of its shuffled counterpart, with a smaller original-to-shuffle gap than in the comparison texts (section 3.1).",
+    "For 10,000-word randomly selected segments, averaged over three runs, the paper reports an approximately inverse relationship between unique-word ratio and skewed-pair ratio across the works (section 3.2)."
   ],
   "open": [
     {
-      "question": "Do the reported relationships between word probability, segment information and relative uniqueness-point position persist when compared with written corpora of similar size from roughly the manuscript's period?",
+      "question": "How do the skewed-pair and unique-word measures behave on texts transformed by historically plausible ciphers, as compared with their unencoded sources?",
       "front": "J",
-      "check": "Reproduce the paper's word-length-stratified measures on the public transcription and size-matched historical corpora, then compare the same prespecified relationships on hidden manuscript pages."
+      "check": "Apply the published measures and prespecified frequency filtering to matched plaintext and cipher variants, using multiple samples and fixed random seeds; compare the resulting changes with the manuscript's public and hidden pages."
     }
   ]
 }
