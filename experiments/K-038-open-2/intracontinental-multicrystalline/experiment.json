@@ -1,0 +1,7 @@
+{
+  "step": "K-038-open-2",
+  "handle": "intracontinental-multicrystalline",
+  "kind": "step",
+  "summary": "Calibrate a bigram-plus-cache model on historical texts and stop at the failed external five-width gate.",
+  "lease": "0ae68ed9359a3f9dcf1c0747"
+}

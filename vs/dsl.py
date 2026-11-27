@@ -25,10 +25,22 @@ statistics:
   {"adjacent_mi": F}                                       adjacent mutual information minus the same after shuffling
                                                            each line (so page and section vocabulary cancel)
   {"edge_mi": true}                                        MI between a word's last glyph and the next word's first glyph
+  {"edge_length_cmi": true}                               conditional MI of those edges given both exact EVA-basic word
+                                                           lengths, weighted by adjacent-pair count (bits). Certain P
+                                                           words only, position any; gaps remain barriers. At least 30 pairs.
+                                                           Its null shuffle_within_line_length permutes intact certain P
+                                                           words inside (original line, exact glyph length) cells, preserving
+                                                           the length sequence; at least 30 potentially movable pairs needed.
   {"edge_mi_break": true}                                  edge MI within lines minus edge MI across line breaks (a line's
                                                            last word with the next line's first word, same page); each
                                                            shuffle-corrected, within-line pairs subsampled to the
                                                            across-line count (10 fixed draws) so both carry equal bias
+  {"paragraph_gap_corr": {"symbol": "o"}}                 pooled endpoint-centered correlation of successive raw-character
+                                                           occurrence gaps at lags 1..5, averaged; requires complete,
+                                                           certain P lines containing only the eligible EVA alphabet and
+                                                           at least 25 contributing pairs at every lag. It accepts
+                                                           shuffle_within_paragraph and shuffle_within_line, which permute
+                                                           intact words inside eligible runs or original lines.
   {"line_repeat_excess": true}                              share of words repeated on the previous numbered line minus the share
                                                            repeated four lines back, within a page, excluding one-character words
   {"line_near_excess": {"min_length": L}}                  the same comparison for similar words (Timm 2014): share of words of
@@ -95,7 +107,7 @@ compare (one to four; all must pass; a spec with none is refused):
        the selected tokens (same pages, lines, gaps and count), so size and shape are matched. Languages with
        fewer words than the selection are left out; at least three must remain. Only for statistics whose
        features carry over to another script (not rate, ratio or context_mi).
-  {"null": "shuffle_within_line" | "shuffle_within_page" | "shuffle_within_section" | "shuffle_across_pages"
+  {"null": "shuffle_within_line" | "shuffle_within_line_length" | "shuffle_within_page" | "shuffle_within_section" | "shuffle_across_pages"
            | "shuffle_labels" | "shuffle_labels_within_page" | "shuffle_page_labels" | "rotate_page_labels",
            | "shuffle_picture_labels",
    "perms": N (<= 400), "p": alpha (<= 0.05), "direction": "greater" | "less"}
@@ -129,6 +141,8 @@ Bounded cost by construction: n-grams <= 6, windows <= 50, permutations <= 400 p
 import math, random
 from collections import Counter
 from functools import lru_cache
+from math import fsum, sqrt
+from statistics import mean
 from . import ivtff
 
 UNCERTAIN = ivtff.uncertain
@@ -442,7 +456,7 @@ def check_statistic(st):
         _int(arg, 1, 6, "repeat_ngram n")
     elif name == "zipf_slope":
         _int(arg, 3, 100_000, "zipf_slope ranks")
-    elif name in ("edge_mi", "edge_mi_break", "hapax_share", "mean_length", "line_repeat_excess"):
+    elif name in ("edge_mi", "edge_mi_break", "edge_length_cmi", "hapax_share", "mean_length", "line_repeat_excess"):
         if arg is not True:
             raise SpecError(f"{name} takes true")
     elif name == "line_near_excess":
@@ -482,6 +496,10 @@ def check_statistic(st):
         check_feature(arg["feature"])
         if arg["by"] not in ("page", "section", "unit", "line_position"):
             raise SpecError("context_mi.by is page | section | unit | line_position")
+    elif name == "paragraph_gap_corr":
+        _keys(arg, {"symbol"}, name, ("symbol",))
+        if not isinstance(arg["symbol"], str) or len(arg["symbol"]) != 1 or arg["symbol"] not in "acdefghiklmnopqrsty":
+            raise SpecError("paragraph_gap_corr.symbol must be one eligible EVA character")
     else:
         raise SpecError(f"unknown statistic {name!r}")
     return name
@@ -505,11 +523,27 @@ def statistic(st, toks, all_toks):
         return _matched_rightwardness(toks, arg)
     if len(toks) < MIN_TOKENS:
         return NAN
+    if name == "paragraph_gap_corr":
+        return _paragraph_gap_value(all_toks, arg["symbol"])[0]
     if name == "rate":
         vals = set(arg["in"])
         return sum(any(v in vals for v in feature(arg["feature"], t["w"])) for t in toks) / len(toks)
     if name == "entropy":
         return _entropy(Counter(v for t in toks for v in feature(arg, t["w"])))
+    if name == "edge_length_cmi":
+        pairs = _edge_length_pairs(toks)
+        if len(pairs) < MIN_TOKENS:
+            return NAN
+        joint, left, right, strata = Counter(), Counter(), Counter(), Counter()
+        for a, b in pairs:
+            x, y = SEG(a["w"]), SEG(b["w"])
+            z = (len(x), len(y))
+            joint[z, x[-1], y[0]] += 1
+            left[z, x[-1]] += 1
+            right[z, y[0]] += 1
+            strata[z] += 1
+        return sum(n * math.log2(n * strata[z] / (left[z, x] * right[z, y]))
+                   for (z, x, y), n in joint.items()) / len(pairs)
     if name in ("cond_entropy", "adjacent_mi", "edge_mi"):
         runs = runs_of(toks)
         if sum(len(r) - 1 for r in runs) < MIN_TOKENS:
@@ -621,7 +655,7 @@ _FEATURE_SKIP = ("label", "order", "angle", "clock", "position", "note", "count"
 
 
 def pictures():
-    """AGREED picture annotations on the record, one per folio (the best-agreeing seat's)."""
+    """Select the best-agreeing annotation per folio, using explicit label coverage to break ties."""
     global _PICTURE_CACHE
     if PICTURES is not None:
         return PICTURES
@@ -634,8 +668,12 @@ def pictures():
             continue
         d = i.get("detail") or {}
         f = str(d.get("folio"))
-        if f not in best or i.get("agreement", 0) > best[f][0]:
-            best[f] = (i.get("agreement", 0), d.get("objects") or [])
+        objects = d.get("objects") or []
+        labels = {o["label"].strip() for o in objects
+                  if isinstance(o, dict) and isinstance(o.get("label"), str) and o["label"].strip()}
+        rank = (i.get("agreement", 0), len(labels))
+        if f not in best or rank > best[f][0]:
+            best[f] = (rank, objects)
     _PICTURE_CACHE = {f: objs for f, (_, objs) in best.items()}
     return _PICTURE_CACHE
 
@@ -822,7 +860,9 @@ LAYOUT_FREE = {"entropy", "hapax_share", "zipf_slope", "mean_length", "repeat_ng
 MIN_REFERENCES = 3
 
 _NULL_KEY = {"shuffle_within_line": lambda t: t["line"], "shuffle_within_page": lambda t: t["page"],
+             "shuffle_within_line_length": None,
              "shuffle_within_section": lambda t: t["section"], "shuffle_across_pages": lambda t: 0,
+             "shuffle_within_paragraph": lambda t: t.get("para"),
              "shuffle_labels": lambda t: t["section"], "shuffle_labels_within_page": lambda t: t["page"],
              "shuffle_page_labels": None, "rotate_page_labels": None, "shuffle_picture_labels": None}
 _PAGE_LABELS = ("section", "language", "hand")
@@ -842,7 +882,27 @@ def _page_labels(all_toks):
     return order, [lab[p] for p in order]
 
 
-def _shuffled(all_toks, how, rng):
+def _edge_length_pairs(toks):
+    eligible = [t for t in toks if t["unit"] == "P" and not UNCERTAIN(t["w"]) and SEG(t["w"])]
+    return [(a, b) for run in runs_of(eligible) for a, b in zip(run, run[1:])]
+
+
+def _line_length_groups(toks):
+    groups = {}
+    for i, t in enumerate(toks):
+        if t["unit"] == "P" and not UNCERTAIN(t["w"]) and SEG(t["w"]):
+            groups.setdefault((t["line"], len(SEG(t["w"]))), []).append(i)
+    return list(groups.values())
+
+
+def _edge_length_movable_pairs(toks):
+    movable = {(toks[i]["line"], toks[i]["k"])
+               for g in _line_length_groups(toks) if len({toks[j]["w"] for j in g}) > 1 for i in g}
+    return sum((a["line"], a["k"]) in movable or (b["line"], b["k"]) in movable
+               for a, b in _edge_length_pairs(toks))
+
+
+def _shuffled(all_toks, how, rng, statistic_name=None):
     if how not in _NULL_KEY:
         raise SpecError(f"unknown null {how!r}")
     if how == "shuffle_picture_labels":
@@ -851,6 +911,24 @@ def _shuffled(all_toks, how, rng):
         order, labels = _page_labels(all_toks)
         rng.shuffle(labels)
         return _relabelled(all_toks, order, labels)
+    if how == "shuffle_within_line_length":
+        words = [t["w"] for t in all_toks]
+        for g in _line_length_groups(all_toks):
+            ws = [words[i] for i in g]
+            rng.shuffle(ws)
+            for i, w in zip(g, ws):
+                words[i] = w
+        return [dict(t, w=w) for t, w in zip(all_toks, words)]
+    if statistic_name == "paragraph_gap_corr" and how in ("shuffle_within_paragraph", "shuffle_within_line"):
+        groups = (_paragraph_gap_groups(all_toks) if how == "shuffle_within_paragraph"
+                  else _paragraph_gap_groups(all_toks, by_line=True))
+        words = [t["w"] for t in all_toks]
+        for group in groups:
+            shuffled = [words[i] for i in group]
+            rng.shuffle(shuffled)
+            for i, word in zip(group, shuffled):
+                words[i] = word
+        return [dict(t, w=w) for t, w in zip(all_toks, words)]
     key = _NULL_KEY[how]
     groups = {}
     for i, t in enumerate(all_toks):
@@ -880,6 +958,92 @@ def _shuffled(all_toks, how, rng):
     return [dict(t, w=w) for t, w in zip(all_toks, words)]
 
 
+_GAP_EVA = frozenset("acdefghiklmnopqrsty")
+_GAP_LAGS = tuple(range(1, 6))
+_GAP_MIN_PAIRS = 25
+
+
+def _paragraph_gap_groups(all_toks, by_line=False):
+    """Return word indices in complete, certain, alphabet-eligible paragraph runs."""
+    lines = {}
+    for i, token in enumerate(all_toks):
+        if token["unit"] == "P":
+            lines.setdefault(token["line"], []).append((i, token))
+    ordered = sorted(lines.values(), key=lambda row: (row[0][1]["page"], row[0][1]["line"][1]))
+    groups, run = [], []
+    previous_page = previous_para = current_page = None
+    paragraph_index = -1
+
+    def flush():
+        nonlocal run
+        if run:
+            groups.append(run)
+            run = []
+
+    for row in ordered:
+        indices, tokens_on_line = [v[0] for v in row], [v[1] for v in row]
+        first = tokens_on_line[0]
+        if first["page"] != current_page:
+            current_page, paragraph_index = first["page"], -1
+        if first["pfl"]:
+            paragraph_index += 1
+        paragraph = (first["page"], paragraph_index)
+        complete = (len(tokens_on_line) == first["n"]
+                    and [t["k"] for t in tokens_on_line] == list(range(first["n"]))
+                    and all(not ivtff.uncertain(t["w"]) and t["w"]
+                            and set(t["w"]) <= _GAP_EVA for t in tokens_on_line))
+        contiguous = first["page"] == previous_page and paragraph == previous_para
+        if not complete or (run and not contiguous):
+            flush()
+        if complete:
+            if by_line:
+                groups.append(indices)
+            else:
+                run.extend(indices)
+        previous_page = first["page"] if complete else None
+        previous_para = paragraph if complete else None
+        if by_line:
+            flush()
+    flush()
+    return groups
+
+
+def _gap_curve(runs, symbol):
+    """Pooled endpoint-centered gap correlations at the fixed lags 1..5."""
+    centered = []
+    for words in runs:
+        hits, offset = [], 0
+        for word in words:
+            hits.extend(offset + i for i, char in enumerate(word) if char == symbol)
+            offset += len(word) + 1
+        gaps = [b - a for a, b in zip(hits, hits[1:])]
+        if len(gaps) > 2:
+            center = mean(gaps)
+            centered.append([gap - center for gap in gaps])
+    curve = {}
+    for lag in _GAP_LAGS:
+        left, right = [], []
+        for gaps in centered:
+            if len(gaps) > lag + 1:
+                left.extend(gaps[:-lag])
+                right.extend(gaps[lag:])
+        pairs = len(left)
+        xx, yy = fsum(x*x for x in left), fsum(y*y for y in right)
+        xy = fsum(x*y for x, y in zip(left, right))
+        value = xy / sqrt(xx * yy) if pairs >= _GAP_MIN_PAIRS and xx and yy else None
+        curve[lag] = (value, pairs)
+    return curve
+
+
+def _paragraph_gap_value(all_toks, symbol):
+    index_runs = _paragraph_gap_groups(all_toks)
+    runs = [[all_toks[i]["w"] for i in indices] for indices in index_runs]
+    curve = _gap_curve(runs, symbol)
+    if any(curve[lag][0] is None for lag in _GAP_LAGS):
+        return NAN, {lag: curve[lag][1] for lag in _GAP_LAGS}
+    return mean(curve[lag][0] for lag in _GAP_LAGS), {lag: curve[lag][1] for lag in _GAP_LAGS}
+
+
 def _reference_values(st, toks):
     """The statistic on each reference language poured into the layout of the selected tokens."""
     from .facts import ref_langs, ref_words
@@ -904,6 +1068,15 @@ def check(spec):
         raise SpecError("scope values are strings")
     check_select(spec.get("select"))
     name = check_statistic(spec["statistic"])
+    if name == "edge_length_cmi":
+        sel = spec.get("select") or {}
+        if set(sel.get("unit") or []) != {"P"} or sel.get("position", "any") != "any" or not sel.get("certain", True):
+            raise SpecError("edge_length_cmi requires certain P words at position any")
+    if name == "paragraph_gap_corr":
+        selection = spec.get("select") or {}
+        if (set(selection.get("unit") or []) != {"P"} or selection.get("position", "any") != "any"
+                or not selection.get("certain", True) or "language" in selection):
+            raise SpecError("paragraph_gap_corr requires the complete certain paragraph-text selection")
     cmp_ = spec["compare"]
     if not isinstance(cmp_, list) or not 1 <= len(cmp_) <= MAX_COMPARE:
         raise SpecError(f"compare is a list of 1 to {MAX_COMPARE} tests (a claim with no test is not a claim)")
@@ -932,6 +1105,12 @@ def check(spec):
             _keys(c, {"null", "perms", "p", "direction"}, "comparison")
             if c["null"] not in _NULL_KEY:
                 raise SpecError(f"unknown null {c['null']!r}")
+            if (name == "edge_length_cmi") != (c["null"] == "shuffle_within_line_length"):
+                raise SpecError("edge_length_cmi uses only shuffle_within_line_length; this null is reserved for it")
+            if name == "paragraph_gap_corr" and c["null"] not in ("shuffle_within_paragraph", "shuffle_within_line"):
+                raise SpecError("paragraph_gap_corr uses shuffle_within_paragraph or shuffle_within_line")
+            if c["null"] == "shuffle_within_paragraph" and name != "paragraph_gap_corr":
+                raise SpecError("shuffle_within_paragraph is defined only for paragraph_gap_corr")
             if c.get("direction", "greater") not in ("greater", "less"):
                 raise SpecError("direction is greater or less")
             alpha = _num(c.get("p", 0.01), "p")
@@ -993,6 +1172,7 @@ def evaluate(spec, pages):
     if not toks:
         raise SpecError("the selection is empty")
     st = spec["statistic"]
+    (name, _arg), = st.items()
     v = statistic(st, toks, all_toks)
     if v != v and "picture_label" in st:
         a = st["picture_label"]
@@ -1000,12 +1180,24 @@ def evaluate(spec, pages):
                         f"picture annotations on these pages (at least {a.get('min_objects', 20)} needed, and "
                         f"{MIN_PICTURE_PAIRS} pairs in each group compared)")
     if v != v:
+        if name == "paragraph_gap_corr":
+            _unused, support = _paragraph_gap_value(all_toks, st[name]["symbol"])
+            raise SpecError(f"paragraph_gap_corr needs at least {_GAP_MIN_PAIRS} supported pairs at each lag 1..5; "
+                            f"observed pairs by lag: {support}")
         raise SpecError(f"the statistic is undefined on this selection ({len(toks)} tokens): it needs at least "
                         f"{MIN_TOKENS} tokens, and {MIN_TOKENS} pairs / n-grams / long words where it counts those")
     finite = math.isfinite(v)
     detail, ok = {"tokens": len(toks)}, finite
     if 'matched_rightwardness' in st:
         _, detail['matched_rightwardness'] = _matched_rightwardness(toks, st['matched_rightwardness'], True)
+    if "edge_length_cmi" in st:
+        movable = _edge_length_movable_pairs(toks)
+        detail.update(adjacent_pairs=len(_edge_length_pairs(toks)), potentially_movable_pairs=movable)
+        if any(c.get("null") == "shuffle_within_line_length" for c in spec["compare"]) and movable < MIN_TOKENS:
+            raise SpecError("shuffle_within_line_length needs at least 30 potentially movable adjacent pairs")
+    if "paragraph_gap_corr" in st:
+        _value, support = _paragraph_gap_value(all_toks, st["paragraph_gap_corr"]["symbol"])
+        detail["pairs_by_lag"] = support
     if not finite:
         detail["not_finite"] = "a value that is not finite never passes"
     for c in spec["compare"]:
@@ -1060,7 +1252,7 @@ def evaluate(spec, pages):
                 if c["null"] == "rotate_page_labels":
                     sh = _relabelled(all_toks, order, labels[k + 1:] + labels[:k + 1])
                 else:
-                    sh = _shuffled(all_toks, c["null"], rng)
+                    sh = _shuffled(all_toks, c["null"], rng, name)
                 sv = statistic(st, select(sh, spec.get("select")), sh)
                 moved |= sv == sv and abs(sv - v) > 1e-12 if finite else sv != v
                 # an undefined permuted value counts against the claim

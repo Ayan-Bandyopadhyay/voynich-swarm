@@ -1,0 +1,4252 @@
+{
+  "title": "Evaluate paid training-vocabulary codebooks without treating literal escapes as readings",
+  "program": "L3",
+  "on_path": true,
+  "hard": true,
+  "statement": "Randomly assigned dictionaries made from 6,253 certain ZL practice-training word types allow repeated non-e glyphs and multi-gallows entries, but coverage and key cost trade off. Across four historical works and three assignment seeds, a 5,000-entry key covers on average 67.0% of tokens and 48–49% of types in the public ZL and IT practice-evaluation samples; its compressed dictionary alone costs 224,376–245,864 bits, or 8.98–9.83 bits per 25,000-token planted test. A reversible escape handles unknown plaintext words, but its output is not constrained to the Voynich glyph inventory. No matching key or real plaintext is inferred from these coverage figures.",
+  "check": "Build a reviewed cipher family or declarative model with a fully charged dictionary and a historically plausible, bounded escape channel. Calibrate unknown-key recovery, including out-of-vocabulary and boundary tests, on disjoint planted controls at the same budget. Only then register a frozen key or scored family and evaluate held-out manuscript pages against description length and red-team controls. Report dictionary-only, escape-only and combined results separately and include program, dictionary, plaintext and preimage costs.",
+  "method": "Build an observed ciphertext vocabulary from certain ASCII-lowercase paragraph tokens on public ZL practice-training pages, excluding words beginning with z to reserve that prefix for escapes. For each of Dante, Libro de Buen Amor, the Paston Letters and Jan Hus Postilla, choose the 500, 2,000 or 5,000 most frequent plaintext types in the first 50,000 normalized tokens. Independently shuffle the sorted ciphertext vocabulary with seeds 17, 37 and 73 and assign the first K entries to those plaintext types. Encode the next 25,000 tokens: dictionary words use their assigned ciphertext word; other words use z plus fixed ROT13 on their literal spelling. The z prefix is an escape introducer, not a mandatory terminal glyph. The completed map and escape rule recover every planted test exactly, as asserted. The plaintext frequency training window and test window do not overlap, and the ZL codeword sample is separate from public practice-evaluation ZL and IT pages. Evaluate only dictionary membership of the observed words in the assigned ciphertext side of the key; this is a syntactic coverage measurement, not a prediction that the random paired plaintext is correct. The escape channel can produce non-EVA letters, so its appearance is counted separately from dictionary output.",
+  "key_cost": "Serialize only {\"map\": ciphertext-to-plaintext} with vs.judge.canonical and apply vs.judge.compressed_bits (raw LZMA2 preset 9 extreme). Report raw bytes and the compressed bits charged by the judge’s key-cost function, plus compressed key bits divided by 25,000 test tokens. This is a key-only cost: it omits the escape program, plaintext encoding and preimage charges and is not a full judge verdict. The literal escape spends arbitrary unmodeled text and does not make a free dictionary.",
+  "boundary_control": "The escape syntax accepts arbitrary lowercase words. For unseen a=xxqxqxx and b=qqxqqxq, the two escaped codewords for a and b concatenate to exactly the single escaped codeword for c=a+m+b because ROT13(m)=z. All three are checked absent from the fitted plaintext map. Thus known word spaces remain necessary: removing them yields an ambiguous stream despite the absence of a universal terminator.",
+  "results": {
+    "lexicon_source": "ZL public practice-training paragraph words excluding z-prefix",
+    "candidate_types": 6253,
+    "witness_shapes": {
+      "zl": {
+        "tokens": 5461,
+        "types": 1907,
+        "repeated_non_e": 0.23622047244094488,
+        "multiple_distinct_gallows": 0.005127266068485625,
+        "top_last": [
+          [
+            "y",
+            2117
+          ],
+          [
+            "l",
+            956
+          ],
+          [
+            "n",
+            947
+          ],
+          [
+            "r",
+            789
+          ],
+          [
+            "s",
+            176
+          ]
+        ]
+      },
+      "it": {
+        "tokens": 5394,
+        "types": 1910,
+        "repeated_non_e": 0.2450871338524286,
+        "multiple_distinct_gallows": 0.005190952910641453,
+        "top_last": [
+          [
+            "y",
+            2105
+          ],
+          [
+            "n",
+            963
+          ],
+          [
+            "l",
+            951
+          ],
+          [
+            "r",
+            778
+          ],
+          [
+            "s",
+            167
+          ]
+        ]
+      }
+    },
+    "books": {
+      "it_dante": {
+        "500": {
+          "17": {
+            "key_entries": 500,
+            "key_json_bytes": 8463,
+            "key_compressed_bits": 23968,
+            "key_bits_per_test_token": 0.95872,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.31772,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 5236,
+              "repeated_non_e": 0.47896,
+              "multiple_distinct_gallows": 0.07916,
+              "top_last": [
+                [
+                  "y",
+                  8012
+                ],
+                [
+                  "r",
+                  4318
+                ],
+                [
+                  "n",
+                  3460
+                ],
+                [
+                  "b",
+                  1927
+                ],
+                [
+                  "l",
+                  1529
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 17057,
+              "types": 495,
+              "repeated_non_e": 0.3920384592835786,
+              "multiple_distinct_gallows": 0.06249633581520783,
+              "top_last": [
+                [
+                  "y",
+                  7937
+                ],
+                [
+                  "r",
+                  2482
+                ],
+                [
+                  "l",
+                  1529
+                ],
+                [
+                  "n",
+                  1485
+                ],
+                [
+                  "m",
+                  976
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 7943,
+              "types": 4741,
+              "repeated_non_e": 0.6656175248646607,
+              "multiple_distinct_gallows": 0.11494397582777288,
+              "top_last": [
+                [
+                  "n",
+                  1975
+                ],
+                [
+                  "b",
+                  1927
+                ],
+                [
+                  "r",
+                  1836
+                ],
+                [
+                  "v",
+                  1233
+                ],
+                [
+                  "e",
+                  510
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.06885185863394983,
+                "type_dictionary_coverage": 0.04614577871001573,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.06748238783833889,
+                "type_dictionary_coverage": 0.04293193717277487,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          },
+          "37": {
+            "key_entries": 500,
+            "key_json_bytes": 8357,
+            "key_compressed_bits": 23960,
+            "key_bits_per_test_token": 0.9584,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.31772,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 5236,
+              "repeated_non_e": 0.4336,
+              "multiple_distinct_gallows": 0.07816,
+              "top_last": [
+                [
+                  "y",
+                  5542
+                ],
+                [
+                  "r",
+                  4937
+                ],
+                [
+                  "n",
+                  4212
+                ],
+                [
+                  "b",
+                  1927
+                ],
+                [
+                  "l",
+                  1540
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 17057,
+              "types": 495,
+              "repeated_non_e": 0.3255554904144926,
+              "multiple_distinct_gallows": 0.06103066189834086,
+              "top_last": [
+                [
+                  "y",
+                  5467
+                ],
+                [
+                  "r",
+                  3101
+                ],
+                [
+                  "n",
+                  2237
+                ],
+                [
+                  "l",
+                  1540
+                ],
+                [
+                  "m",
+                  1380
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 7943,
+              "types": 4741,
+              "repeated_non_e": 0.6656175248646607,
+              "multiple_distinct_gallows": 0.11494397582777288,
+              "top_last": [
+                [
+                  "n",
+                  1975
+                ],
+                [
+                  "b",
+                  1927
+                ],
+                [
+                  "r",
+                  1836
+                ],
+                [
+                  "v",
+                  1233
+                ],
+                [
+                  "e",
+                  510
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.05823109320637246,
+                "type_dictionary_coverage": 0.04981646565285789,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.053021876158694844,
+                "type_dictionary_coverage": 0.048167539267015703,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          },
+          "73": {
+            "key_entries": 500,
+            "key_json_bytes": 8506,
+            "key_compressed_bits": 24040,
+            "key_bits_per_test_token": 0.9616,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.31772,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 5236,
+              "repeated_non_e": 0.47248,
+              "multiple_distinct_gallows": 0.08008,
+              "top_last": [
+                [
+                  "n",
+                  6520
+                ],
+                [
+                  "y",
+                  4494
+                ],
+                [
+                  "r",
+                  4083
+                ],
+                [
+                  "l",
+                  1973
+                ],
+                [
+                  "b",
+                  1927
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 17057,
+              "types": 495,
+              "repeated_non_e": 0.3825408923022806,
+              "multiple_distinct_gallows": 0.06384475581872545,
+              "top_last": [
+                [
+                  "n",
+                  4545
+                ],
+                [
+                  "y",
+                  4419
+                ],
+                [
+                  "r",
+                  2247
+                ],
+                [
+                  "l",
+                  1973
+                ],
+                [
+                  "s",
+                  1216
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 7943,
+              "types": 4741,
+              "repeated_non_e": 0.6656175248646607,
+              "multiple_distinct_gallows": 0.11494397582777288,
+              "top_last": [
+                [
+                  "n",
+                  1975
+                ],
+                [
+                  "b",
+                  1927
+                ],
+                [
+                  "r",
+                  1836
+                ],
+                [
+                  "v",
+                  1233
+                ],
+                [
+                  "e",
+                  510
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.07672587438198132,
+                "type_dictionary_coverage": 0.05243838489774515,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.07897664071190211,
+                "type_dictionary_coverage": 0.05287958115183246,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          }
+        },
+        "2000": {
+          "17": {
+            "key_entries": 2000,
+            "key_json_bytes": 35609,
+            "key_compressed_bits": 89320,
+            "key_bits_per_test_token": 3.5728,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.19456,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 5236,
+              "repeated_non_e": 0.45912,
+              "multiple_distinct_gallows": 0.07328,
+              "top_last": [
+                [
+                  "y",
+                  9323
+                ],
+                [
+                  "r",
+                  3978
+                ],
+                [
+                  "n",
+                  2976
+                ],
+                [
+                  "l",
+                  1927
+                ],
+                [
+                  "m",
+                  1108
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 20136,
+              "types": 1528,
+              "repeated_non_e": 0.39556019070321813,
+              "multiple_distinct_gallows": 0.05775725069527215,
+              "top_last": [
+                [
+                  "y",
+                  9275
+                ],
+                [
+                  "r",
+                  2914
+                ],
+                [
+                  "l",
+                  1927
+                ],
+                [
+                  "n",
+                  1761
+                ],
+                [
+                  "m",
+                  1108
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 4864,
+              "types": 3708,
+              "repeated_non_e": 0.7222450657894737,
+              "multiple_distinct_gallows": 0.13754111842105263,
+              "top_last": [
+                [
+                  "n",
+                  1215
+                ],
+                [
+                  "b",
+                  1085
+                ],
+                [
+                  "r",
+                  1064
+                ],
+                [
+                  "v",
+                  860
+                ],
+                [
+                  "e",
+                  316
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.3089177806262589,
+                "type_dictionary_coverage": 0.19874147876245413,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.3045977011494253,
+                "type_dictionary_coverage": 0.1973821989528796,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          },
+          "37": {
+            "key_entries": 2000,
+            "key_json_bytes": 35530,
+            "key_compressed_bits": 89784,
+            "key_bits_per_test_token": 3.59136,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.19456,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 5236,
+              "repeated_non_e": 0.40996,
+              "multiple_distinct_gallows": 0.07308,
+              "top_last": [
+                [
+                  "y",
+                  6796
+                ],
+                [
+                  "r",
+                  4557
+                ],
+                [
+                  "n",
+                  3840
+                ],
+                [
+                  "l",
+                  1887
+                ],
+                [
+                  "m",
+                  1516
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 20136,
+              "types": 1528,
+              "repeated_non_e": 0.33452522844656335,
+              "multiple_distinct_gallows": 0.05750893921334922,
+              "top_last": [
+                [
+                  "y",
+                  6748
+                ],
+                [
+                  "r",
+                  3493
+                ],
+                [
+                  "n",
+                  2625
+                ],
+                [
+                  "l",
+                  1887
+                ],
+                [
+                  "m",
+                  1516
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 4864,
+              "types": 3708,
+              "repeated_non_e": 0.7222450657894737,
+              "multiple_distinct_gallows": 0.13754111842105263,
+              "top_last": [
+                [
+                  "n",
+                  1215
+                ],
+                [
+                  "b",
+                  1085
+                ],
+                [
+                  "r",
+                  1064
+                ],
+                [
+                  "v",
+                  860
+                ],
+                [
+                  "e",
+                  316
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.28090093389489107,
+                "type_dictionary_coverage": 0.20660723649711588,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.2760474601408973,
+                "type_dictionary_coverage": 0.20418848167539266,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          },
+          "73": {
+            "key_entries": 2000,
+            "key_json_bytes": 35571,
+            "key_compressed_bits": 90016,
+            "key_bits_per_test_token": 3.60064,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.19456,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 5236,
+              "repeated_non_e": 0.45324,
+              "multiple_distinct_gallows": 0.07384,
+              "top_last": [
+                [
+                  "n",
+                  6078
+                ],
+                [
+                  "y",
+                  5639
+                ],
+                [
+                  "r",
+                  3705
+                ],
+                [
+                  "l",
+                  2363
+                ],
+                [
+                  "s",
+                  1381
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 20136,
+              "types": 1528,
+              "repeated_non_e": 0.38825983313468415,
+              "multiple_distinct_gallows": 0.05845252284465634,
+              "top_last": [
+                [
+                  "y",
+                  5591
+                ],
+                [
+                  "n",
+                  4863
+                ],
+                [
+                  "r",
+                  2641
+                ],
+                [
+                  "l",
+                  2363
+                ],
+                [
+                  "s",
+                  1381
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 4864,
+              "types": 3708,
+              "repeated_non_e": 0.7222450657894737,
+              "multiple_distinct_gallows": 0.13754111842105263,
+              "top_last": [
+                [
+                  "n",
+                  1215
+                ],
+                [
+                  "b",
+                  1085
+                ],
+                [
+                  "r",
+                  1064
+                ],
+                [
+                  "v",
+                  860
+                ],
+                [
+                  "e",
+                  316
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.2832814502838308,
+                "type_dictionary_coverage": 0.20136339800734138,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.2875417130144605,
+                "type_dictionary_coverage": 0.20261780104712043,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          }
+        },
+        "5000": {
+          "17": {
+            "key_entries": 5000,
+            "key_json_bytes": 93203,
+            "key_compressed_bits": 224376,
+            "key_bits_per_test_token": 8.97504,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.14528,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 5236,
+              "repeated_non_e": 0.44932,
+              "multiple_distinct_gallows": 0.06956,
+              "top_last": [
+                [
+                  "y",
+                  9780
+                ],
+                [
+                  "r",
+                  3879
+                ],
+                [
+                  "n",
+                  2797
+                ],
+                [
+                  "l",
+                  2087
+                ],
+                [
+                  "m",
+                  1160
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 21368,
+              "types": 2316,
+              "repeated_non_e": 0.3996630475477349,
+              "multiple_distinct_gallows": 0.056767128416323476,
+              "top_last": [
+                [
+                  "y",
+                  9739
+                ],
+                [
+                  "r",
+                  3068
+                ],
+                [
+                  "l",
+                  2087
+                ],
+                [
+                  "n",
+                  1918
+                ],
+                [
+                  "m",
+                  1160
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 3632,
+              "types": 2920,
+              "repeated_non_e": 0.7414647577092511,
+              "multiple_distinct_gallows": 0.1448237885462555,
+              "top_last": [
+                [
+                  "n",
+                  879
+                ],
+                [
+                  "r",
+                  811
+                ],
+                [
+                  "b",
+                  792
+                ],
+                [
+                  "v",
+                  652
+                ],
+                [
+                  "e",
+                  233
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.6332173594579747,
+                "type_dictionary_coverage": 0.4740429994756162,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.6308861698183167,
+                "type_dictionary_coverage": 0.4801047120418848,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          },
+          "37": {
+            "key_entries": 5000,
+            "key_json_bytes": 93208,
+            "key_compressed_bits": 224464,
+            "key_bits_per_test_token": 8.97856,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.14528,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 5236,
+              "repeated_non_e": 0.3998,
+              "multiple_distinct_gallows": 0.06944,
+              "top_last": [
+                [
+                  "y",
+                  7260
+                ],
+                [
+                  "r",
+                  4459
+                ],
+                [
+                  "n",
+                  3670
+                ],
+                [
+                  "l",
+                  2065
+                ],
+                [
+                  "m",
+                  1558
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 21368,
+              "types": 2316,
+              "repeated_non_e": 0.3417259453388244,
+              "multiple_distinct_gallows": 0.05662673156121303,
+              "top_last": [
+                [
+                  "y",
+                  7219
+                ],
+                [
+                  "r",
+                  3648
+                ],
+                [
+                  "n",
+                  2791
+                ],
+                [
+                  "l",
+                  2065
+                ],
+                [
+                  "m",
+                  1558
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 3632,
+              "types": 2920,
+              "repeated_non_e": 0.7414647577092511,
+              "multiple_distinct_gallows": 0.1448237885462555,
+              "top_last": [
+                [
+                  "n",
+                  879
+                ],
+                [
+                  "r",
+                  811
+                ],
+                [
+                  "b",
+                  792
+                ],
+                [
+                  "v",
+                  652
+                ],
+                [
+                  "e",
+                  233
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.6919978026002563,
+                "type_dictionary_coverage": 0.4876769795490299,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.6942899517982944,
+                "type_dictionary_coverage": 0.4931937172774869,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          },
+          "73": {
+            "key_entries": 5000,
+            "key_json_bytes": 93161,
+            "key_compressed_bits": 225024,
+            "key_bits_per_test_token": 9.00096,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.14528,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 5236,
+              "repeated_non_e": 0.44088,
+              "multiple_distinct_gallows": 0.07008,
+              "top_last": [
+                [
+                  "y",
+                  6110
+                ],
+                [
+                  "n",
+                  5911
+                ],
+                [
+                  "r",
+                  3594
+                ],
+                [
+                  "l",
+                  2508
+                ],
+                [
+                  "s",
+                  1448
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 21368,
+              "types": 2316,
+              "repeated_non_e": 0.38978846873830025,
+              "multiple_distinct_gallows": 0.05737551478846874,
+              "top_last": [
+                [
+                  "y",
+                  6069
+                ],
+                [
+                  "n",
+                  5032
+                ],
+                [
+                  "r",
+                  2783
+                ],
+                [
+                  "l",
+                  2508
+                ],
+                [
+                  "s",
+                  1448
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 3632,
+              "types": 2920,
+              "repeated_non_e": 0.7414647577092511,
+              "multiple_distinct_gallows": 0.1448237885462555,
+              "top_last": [
+                [
+                  "n",
+                  879
+                ],
+                [
+                  "r",
+                  811
+                ],
+                [
+                  "b",
+                  792
+                ],
+                [
+                  "v",
+                  652
+                ],
+                [
+                  "e",
+                  233
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.6855887200146493,
+                "type_dictionary_coverage": 0.4855794441531201,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.6842788283277716,
+                "type_dictionary_coverage": 0.49581151832460735,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          }
+        }
+      },
+      "es_buenamor": {
+        "500": {
+          "17": {
+            "key_entries": 500,
+            "key_json_bytes": 8558,
+            "key_compressed_bits": 24280,
+            "key_bits_per_test_token": 0.9712,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.42604,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 7102,
+              "repeated_non_e": 0.49488,
+              "multiple_distinct_gallows": 0.09812,
+              "top_last": [
+                [
+                  "y",
+                  6528
+                ],
+                [
+                  "n",
+                  3725
+                ],
+                [
+                  "r",
+                  3156
+                ],
+                [
+                  "b",
+                  2208
+                ],
+                [
+                  "f",
+                  1985
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 14349,
+              "types": 436,
+              "repeated_non_e": 0.38378981113666455,
+              "multiple_distinct_gallows": 0.05233814203080354,
+              "top_last": [
+                [
+                  "y",
+                  6336
+                ],
+                [
+                  "r",
+                  1997
+                ],
+                [
+                  "n",
+                  1511
+                ],
+                [
+                  "l",
+                  956
+                ],
+                [
+                  "m",
+                  923
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 10651,
+              "types": 6666,
+              "repeated_non_e": 0.6445404187400244,
+              "multiple_distinct_gallows": 0.15979720214064408,
+              "top_last": [
+                [
+                  "n",
+                  2214
+                ],
+                [
+                  "b",
+                  2208
+                ],
+                [
+                  "f",
+                  1985
+                ],
+                [
+                  "r",
+                  1159
+                ],
+                [
+                  "e",
+                  973
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.06885185863394983,
+                "type_dictionary_coverage": 0.04614577871001573,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.06748238783833889,
+                "type_dictionary_coverage": 0.04293193717277487,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          },
+          "37": {
+            "key_entries": 500,
+            "key_json_bytes": 8452,
+            "key_compressed_bits": 24256,
+            "key_bits_per_test_token": 0.97024,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.42604,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 7102,
+              "repeated_non_e": 0.45276,
+              "multiple_distinct_gallows": 0.10712,
+              "top_last": [
+                [
+                  "y",
+                  4815
+                ],
+                [
+                  "n",
+                  4131
+                ],
+                [
+                  "r",
+                  3440
+                ],
+                [
+                  "b",
+                  2208
+                ],
+                [
+                  "f",
+                  1990
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 14349,
+              "types": 436,
+              "repeated_non_e": 0.310404906265245,
+              "multiple_distinct_gallows": 0.06801867725973935,
+              "top_last": [
+                [
+                  "y",
+                  4623
+                ],
+                [
+                  "r",
+                  2281
+                ],
+                [
+                  "n",
+                  1917
+                ],
+                [
+                  "l",
+                  1583
+                ],
+                [
+                  "m",
+                  1115
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 10651,
+              "types": 6666,
+              "repeated_non_e": 0.6445404187400244,
+              "multiple_distinct_gallows": 0.15979720214064408,
+              "top_last": [
+                [
+                  "n",
+                  2214
+                ],
+                [
+                  "b",
+                  2208
+                ],
+                [
+                  "f",
+                  1985
+                ],
+                [
+                  "r",
+                  1159
+                ],
+                [
+                  "e",
+                  973
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.05823109320637246,
+                "type_dictionary_coverage": 0.04981646565285789,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.053021876158694844,
+                "type_dictionary_coverage": 0.048167539267015703,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          },
+          "73": {
+            "key_entries": 500,
+            "key_json_bytes": 8601,
+            "key_compressed_bits": 24400,
+            "key_bits_per_test_token": 0.976,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.42604,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 7102,
+              "repeated_non_e": 0.49776,
+              "multiple_distinct_gallows": 0.1112,
+              "top_last": [
+                [
+                  "n",
+                  6217
+                ],
+                [
+                  "y",
+                  3637
+                ],
+                [
+                  "r",
+                  3224
+                ],
+                [
+                  "b",
+                  2208
+                ],
+                [
+                  "f",
+                  2008
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 14349,
+              "types": 436,
+              "repeated_non_e": 0.388807582409924,
+              "multiple_distinct_gallows": 0.07512718656352359,
+              "top_last": [
+                [
+                  "n",
+                  4003
+                ],
+                [
+                  "y",
+                  3445
+                ],
+                [
+                  "r",
+                  2065
+                ],
+                [
+                  "l",
+                  1557
+                ],
+                [
+                  "o",
+                  1109
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 10651,
+              "types": 6666,
+              "repeated_non_e": 0.6445404187400244,
+              "multiple_distinct_gallows": 0.15979720214064408,
+              "top_last": [
+                [
+                  "n",
+                  2214
+                ],
+                [
+                  "b",
+                  2208
+                ],
+                [
+                  "f",
+                  1985
+                ],
+                [
+                  "r",
+                  1159
+                ],
+                [
+                  "e",
+                  973
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.07672587438198132,
+                "type_dictionary_coverage": 0.05243838489774515,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.07897664071190211,
+                "type_dictionary_coverage": 0.05287958115183246,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          }
+        },
+        "2000": {
+          "17": {
+            "key_entries": 2000,
+            "key_json_bytes": 36253,
+            "key_compressed_bits": 93120,
+            "key_bits_per_test_token": 3.7248,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.31944,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 7102,
+              "repeated_non_e": 0.48364,
+              "multiple_distinct_gallows": 0.08748,
+              "top_last": [
+                [
+                  "y",
+                  7608
+                ],
+                [
+                  "n",
+                  3376
+                ],
+                [
+                  "r",
+                  3314
+                ],
+                [
+                  "f",
+                  1582
+                ],
+                [
+                  "b",
+                  1575
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 17014,
+              "types": 1306,
+              "repeated_non_e": 0.38721053250264487,
+              "multiple_distinct_gallows": 0.04790172798871518,
+              "top_last": [
+                [
+                  "y",
+                  7476
+                ],
+                [
+                  "r",
+                  2373
+                ],
+                [
+                  "n",
+                  1736
+                ],
+                [
+                  "l",
+                  1332
+                ],
+                [
+                  "m",
+                  1028
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 7986,
+              "types": 5796,
+              "repeated_non_e": 0.6890808915602304,
+              "multiple_distinct_gallows": 0.1718006511394941,
+              "top_last": [
+                [
+                  "n",
+                  1640
+                ],
+                [
+                  "f",
+                  1580
+                ],
+                [
+                  "b",
+                  1572
+                ],
+                [
+                  "r",
+                  941
+                ],
+                [
+                  "e",
+                  735
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.3089177806262589,
+                "type_dictionary_coverage": 0.19874147876245413,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.3045977011494253,
+                "type_dictionary_coverage": 0.1973821989528796,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          },
+          "37": {
+            "key_entries": 2000,
+            "key_json_bytes": 36174,
+            "key_compressed_bits": 93016,
+            "key_bits_per_test_token": 3.72064,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.31944,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 7102,
+              "repeated_non_e": 0.44592,
+              "multiple_distinct_gallows": 0.09644,
+              "top_last": [
+                [
+                  "y",
+                  5795
+                ],
+                [
+                  "n",
+                  3920
+                ],
+                [
+                  "r",
+                  3583
+                ],
+                [
+                  "l",
+                  1885
+                ],
+                [
+                  "f",
+                  1585
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 17014,
+              "types": 1306,
+              "repeated_non_e": 0.33178558833901495,
+              "multiple_distinct_gallows": 0.061067356294816036,
+              "top_last": [
+                [
+                  "y",
+                  5663
+                ],
+                [
+                  "r",
+                  2642
+                ],
+                [
+                  "n",
+                  2280
+                ],
+                [
+                  "l",
+                  1871
+                ],
+                [
+                  "m",
+                  1197
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 7986,
+              "types": 5796,
+              "repeated_non_e": 0.6890808915602304,
+              "multiple_distinct_gallows": 0.1718006511394941,
+              "top_last": [
+                [
+                  "n",
+                  1640
+                ],
+                [
+                  "f",
+                  1580
+                ],
+                [
+                  "b",
+                  1572
+                ],
+                [
+                  "r",
+                  941
+                ],
+                [
+                  "e",
+                  735
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.28090093389489107,
+                "type_dictionary_coverage": 0.20660723649711588,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.2760474601408973,
+                "type_dictionary_coverage": 0.20418848167539266,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          },
+          "73": {
+            "key_entries": 2000,
+            "key_json_bytes": 36215,
+            "key_compressed_bits": 93072,
+            "key_bits_per_test_token": 3.72288,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.31944,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 7102,
+              "repeated_non_e": 0.49016,
+              "multiple_distinct_gallows": 0.10172,
+              "top_last": [
+                [
+                  "n",
+                  5920
+                ],
+                [
+                  "y",
+                  4555
+                ],
+                [
+                  "r",
+                  3320
+                ],
+                [
+                  "l",
+                  1955
+                ],
+                [
+                  "f",
+                  1620
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 17014,
+              "types": 1306,
+              "repeated_non_e": 0.39679087810038793,
+              "multiple_distinct_gallows": 0.0688256729751969,
+              "top_last": [
+                [
+                  "y",
+                  4423
+                ],
+                [
+                  "n",
+                  4280
+                ],
+                [
+                  "r",
+                  2379
+                ],
+                [
+                  "l",
+                  1941
+                ],
+                [
+                  "o",
+                  1182
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 7986,
+              "types": 5796,
+              "repeated_non_e": 0.6890808915602304,
+              "multiple_distinct_gallows": 0.1718006511394941,
+              "top_last": [
+                [
+                  "n",
+                  1640
+                ],
+                [
+                  "f",
+                  1580
+                ],
+                [
+                  "b",
+                  1572
+                ],
+                [
+                  "r",
+                  941
+                ],
+                [
+                  "e",
+                  735
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.2832814502838308,
+                "type_dictionary_coverage": 0.20136339800734138,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.2875417130144605,
+                "type_dictionary_coverage": 0.20261780104712043,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          }
+        },
+        "5000": {
+          "17": {
+            "key_entries": 5000,
+            "key_json_bytes": 94130,
+            "key_compressed_bits": 231736,
+            "key_bits_per_test_token": 9.26944,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.25808,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 7102,
+              "repeated_non_e": 0.46968,
+              "multiple_distinct_gallows": 0.0814,
+              "top_last": [
+                [
+                  "y",
+                  8140
+                ],
+                [
+                  "r",
+                  3377
+                ],
+                [
+                  "n",
+                  3180
+                ],
+                [
+                  "l",
+                  1553
+                ],
+                [
+                  "f",
+                  1377
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 18548,
+              "types": 2098,
+              "repeated_non_e": 0.3906081518222989,
+              "multiple_distinct_gallows": 0.04615052835885271,
+              "top_last": [
+                [
+                  "y",
+                  8040
+                ],
+                [
+                  "r",
+                  2590
+                ],
+                [
+                  "n",
+                  1911
+                ],
+                [
+                  "l",
+                  1546
+                ],
+                [
+                  "m",
+                  1088
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 6452,
+              "types": 5004,
+              "repeated_non_e": 0.6969931804091755,
+              "multiple_distinct_gallows": 0.18273403595784252,
+              "top_last": [
+                [
+                  "f",
+                  1373
+                ],
+                [
+                  "n",
+                  1269
+                ],
+                [
+                  "b",
+                  1219
+                ],
+                [
+                  "r",
+                  787
+                ],
+                [
+                  "e",
+                  612
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.6332173594579747,
+                "type_dictionary_coverage": 0.4740429994756162,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.6308861698183167,
+                "type_dictionary_coverage": 0.4801047120418848,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          },
+          "37": {
+            "key_entries": 5000,
+            "key_json_bytes": 94135,
+            "key_compressed_bits": 231592,
+            "key_bits_per_test_token": 9.26368,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.25808,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 7102,
+              "repeated_non_e": 0.43144,
+              "multiple_distinct_gallows": 0.0924,
+              "top_last": [
+                [
+                  "y",
+                  6382
+                ],
+                [
+                  "n",
+                  3735
+                ],
+                [
+                  "r",
+                  3617
+                ],
+                [
+                  "l",
+                  2038
+                ],
+                [
+                  "f",
+                  1381
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 18548,
+              "types": 2098,
+              "repeated_non_e": 0.33906620659909426,
+              "multiple_distinct_gallows": 0.06097692473582057,
+              "top_last": [
+                [
+                  "y",
+                  6282
+                ],
+                [
+                  "r",
+                  2830
+                ],
+                [
+                  "n",
+                  2466
+                ],
+                [
+                  "l",
+                  2031
+                ],
+                [
+                  "m",
+                  1268
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 6452,
+              "types": 5004,
+              "repeated_non_e": 0.6969931804091755,
+              "multiple_distinct_gallows": 0.18273403595784252,
+              "top_last": [
+                [
+                  "f",
+                  1373
+                ],
+                [
+                  "n",
+                  1269
+                ],
+                [
+                  "b",
+                  1219
+                ],
+                [
+                  "r",
+                  787
+                ],
+                [
+                  "e",
+                  612
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.6919978026002563,
+                "type_dictionary_coverage": 0.4876769795490299,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.6942899517982944,
+                "type_dictionary_coverage": 0.4931937172774869,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          },
+          "73": {
+            "key_entries": 5000,
+            "key_json_bytes": 94088,
+            "key_compressed_bits": 231528,
+            "key_bits_per_test_token": 9.26112,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.25808,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 7102,
+              "repeated_non_e": 0.47688,
+              "multiple_distinct_gallows": 0.0968,
+              "top_last": [
+                [
+                  "n",
+                  5739
+                ],
+                [
+                  "y",
+                  5135
+                ],
+                [
+                  "r",
+                  3427
+                ],
+                [
+                  "l",
+                  2091
+                ],
+                [
+                  "f",
+                  1417
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 18548,
+              "types": 2098,
+              "repeated_non_e": 0.4003127021781324,
+              "multiple_distinct_gallows": 0.06690748328660773,
+              "top_last": [
+                [
+                  "y",
+                  5035
+                ],
+                [
+                  "n",
+                  4470
+                ],
+                [
+                  "r",
+                  2640
+                ],
+                [
+                  "l",
+                  2084
+                ],
+                [
+                  "o",
+                  1254
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 6452,
+              "types": 5004,
+              "repeated_non_e": 0.6969931804091755,
+              "multiple_distinct_gallows": 0.18273403595784252,
+              "top_last": [
+                [
+                  "f",
+                  1373
+                ],
+                [
+                  "n",
+                  1269
+                ],
+                [
+                  "b",
+                  1219
+                ],
+                [
+                  "r",
+                  787
+                ],
+                [
+                  "e",
+                  612
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.6855887200146493,
+                "type_dictionary_coverage": 0.4855794441531201,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.6842788283277716,
+                "type_dictionary_coverage": 0.49581151832460735,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          }
+        }
+      },
+      "en_paston": {
+        "500": {
+          "17": {
+            "key_entries": 500,
+            "key_json_bytes": 8786,
+            "key_compressed_bits": 26216,
+            "key_bits_per_test_token": 1.04864,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.27244,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 3700,
+              "repeated_non_e": 0.47088,
+              "multiple_distinct_gallows": 0.093,
+              "top_last": [
+                [
+                  "y",
+                  8886
+                ],
+                [
+                  "r",
+                  3627
+                ],
+                [
+                  "l",
+                  2365
+                ],
+                [
+                  "n",
+                  1507
+                ],
+                [
+                  "m",
+                  1361
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 18189,
+              "types": 480,
+              "repeated_non_e": 0.3942492715377426,
+              "multiple_distinct_gallows": 0.06009126395073946,
+              "top_last": [
+                [
+                  "y",
+                  8585
+                ],
+                [
+                  "r",
+                  2650
+                ],
+                [
+                  "l",
+                  1602
+                ],
+                [
+                  "n",
+                  1499
+                ],
+                [
+                  "m",
+                  1360
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 6811,
+              "types": 3220,
+              "repeated_non_e": 0.6755248862134782,
+              "multiple_distinct_gallows": 0.18088386433710174,
+              "top_last": [
+                [
+                  "q",
+                  1204
+                ],
+                [
+                  "f",
+                  982
+                ],
+                [
+                  "r",
+                  977
+                ],
+                [
+                  "l",
+                  763
+                ],
+                [
+                  "a",
+                  601
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.06885185863394983,
+                "type_dictionary_coverage": 0.04614577871001573,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.06748238783833889,
+                "type_dictionary_coverage": 0.04293193717277487,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          },
+          "37": {
+            "key_entries": 500,
+            "key_json_bytes": 8680,
+            "key_compressed_bits": 26144,
+            "key_bits_per_test_token": 1.04576,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.27244,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 3700,
+              "repeated_non_e": 0.40448,
+              "multiple_distinct_gallows": 0.10932,
+              "top_last": [
+                [
+                  "y",
+                  6586
+                ],
+                [
+                  "r",
+                  4329
+                ],
+                [
+                  "l",
+                  2360
+                ],
+                [
+                  "n",
+                  2134
+                ],
+                [
+                  "t",
+                  1681
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 18189,
+              "types": 480,
+              "repeated_non_e": 0.30298532079828466,
+              "multiple_distinct_gallows": 0.08252240365055803,
+              "top_last": [
+                [
+                  "y",
+                  6285
+                ],
+                [
+                  "r",
+                  3352
+                ],
+                [
+                  "n",
+                  2126
+                ],
+                [
+                  "l",
+                  1597
+                ],
+                [
+                  "t",
+                  1329
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 6811,
+              "types": 3220,
+              "repeated_non_e": 0.6755248862134782,
+              "multiple_distinct_gallows": 0.18088386433710174,
+              "top_last": [
+                [
+                  "q",
+                  1204
+                ],
+                [
+                  "f",
+                  982
+                ],
+                [
+                  "r",
+                  977
+                ],
+                [
+                  "l",
+                  763
+                ],
+                [
+                  "a",
+                  601
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.05823109320637246,
+                "type_dictionary_coverage": 0.04981646565285789,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.053021876158694844,
+                "type_dictionary_coverage": 0.048167539267015703,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          },
+          "73": {
+            "key_entries": 500,
+            "key_json_bytes": 8829,
+            "key_compressed_bits": 26248,
+            "key_bits_per_test_token": 1.04992,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.27244,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 3700,
+              "repeated_non_e": 0.43724,
+              "multiple_distinct_gallows": 0.08508,
+              "top_last": [
+                [
+                  "n",
+                  4980
+                ],
+                [
+                  "y",
+                  4422
+                ],
+                [
+                  "r",
+                  3571
+                ],
+                [
+                  "l",
+                  2591
+                ],
+                [
+                  "o",
+                  1594
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 18189,
+              "types": 480,
+              "repeated_non_e": 0.34801253504865576,
+              "multiple_distinct_gallows": 0.04920556380229809,
+              "top_last": [
+                [
+                  "n",
+                  4972
+                ],
+                [
+                  "y",
+                  4121
+                ],
+                [
+                  "r",
+                  2594
+                ],
+                [
+                  "l",
+                  1828
+                ],
+                [
+                  "o",
+                  1589
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 6811,
+              "types": 3220,
+              "repeated_non_e": 0.6755248862134782,
+              "multiple_distinct_gallows": 0.18088386433710174,
+              "top_last": [
+                [
+                  "q",
+                  1204
+                ],
+                [
+                  "f",
+                  982
+                ],
+                [
+                  "r",
+                  977
+                ],
+                [
+                  "l",
+                  763
+                ],
+                [
+                  "a",
+                  601
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.07672587438198132,
+                "type_dictionary_coverage": 0.05243838489774515,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.07897664071190211,
+                "type_dictionary_coverage": 0.05287958115183246,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          }
+        },
+        "2000": {
+          "17": {
+            "key_entries": 2000,
+            "key_json_bytes": 37598,
+            "key_compressed_bits": 100296,
+            "key_bits_per_test_token": 4.01184,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.1372,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 3700,
+              "repeated_non_e": 0.44152,
+              "multiple_distinct_gallows": 0.07596,
+              "top_last": [
+                [
+                  "y",
+                  10024
+                ],
+                [
+                  "r",
+                  3643
+                ],
+                [
+                  "l",
+                  2329
+                ],
+                [
+                  "n",
+                  1958
+                ],
+                [
+                  "m",
+                  1516
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 21570,
+              "types": 1459,
+              "repeated_non_e": 0.3999072786277237,
+              "multiple_distinct_gallows": 0.055771905424200276,
+              "top_last": [
+                [
+                  "y",
+                  9864
+                ],
+                [
+                  "r",
+                  3113
+                ],
+                [
+                  "l",
+                  1995
+                ],
+                [
+                  "n",
+                  1950
+                ],
+                [
+                  "m",
+                  1515
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 3430,
+              "types": 2241,
+              "repeated_non_e": 0.7032069970845481,
+              "multiple_distinct_gallows": 0.20291545189504373,
+              "top_last": [
+                [
+                  "q",
+                  569
+                ],
+                [
+                  "f",
+                  552
+                ],
+                [
+                  "r",
+                  530
+                ],
+                [
+                  "l",
+                  334
+                ],
+                [
+                  "g",
+                  292
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.3089177806262589,
+                "type_dictionary_coverage": 0.19874147876245413,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.3045977011494253,
+                "type_dictionary_coverage": 0.1973821989528796,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          },
+          "37": {
+            "key_entries": 2000,
+            "key_json_bytes": 37519,
+            "key_compressed_bits": 100288,
+            "key_bits_per_test_token": 4.01152,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.1372,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 3700,
+              "repeated_non_e": 0.37336,
+              "multiple_distinct_gallows": 0.09452,
+              "top_last": [
+                [
+                  "y",
+                  7828
+                ],
+                [
+                  "r",
+                  4380
+                ],
+                [
+                  "n",
+                  2566
+                ],
+                [
+                  "l",
+                  2297
+                ],
+                [
+                  "t",
+                  1538
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 21570,
+              "types": 1459,
+              "repeated_non_e": 0.3209086694483078,
+              "multiple_distinct_gallows": 0.07728326379230413,
+              "top_last": [
+                [
+                  "y",
+                  7668
+                ],
+                [
+                  "r",
+                  3850
+                ],
+                [
+                  "n",
+                  2558
+                ],
+                [
+                  "l",
+                  1963
+                ],
+                [
+                  "t",
+                  1337
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 3430,
+              "types": 2241,
+              "repeated_non_e": 0.7032069970845481,
+              "multiple_distinct_gallows": 0.20291545189504373,
+              "top_last": [
+                [
+                  "q",
+                  569
+                ],
+                [
+                  "f",
+                  552
+                ],
+                [
+                  "r",
+                  530
+                ],
+                [
+                  "l",
+                  334
+                ],
+                [
+                  "g",
+                  292
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.28090093389489107,
+                "type_dictionary_coverage": 0.20660723649711588,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.2760474601408973,
+                "type_dictionary_coverage": 0.20418848167539266,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          },
+          "73": {
+            "key_entries": 2000,
+            "key_json_bytes": 37560,
+            "key_compressed_bits": 100560,
+            "key_bits_per_test_token": 4.0224,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.1372,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 3700,
+              "repeated_non_e": 0.41052,
+              "multiple_distinct_gallows": 0.06852,
+              "top_last": [
+                [
+                  "y",
+                  5635
+                ],
+                [
+                  "n",
+                  5390
+                ],
+                [
+                  "r",
+                  3547
+                ],
+                [
+                  "l",
+                  2609
+                ],
+                [
+                  "o",
+                  1721
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 21570,
+              "types": 1459,
+              "repeated_non_e": 0.3639777468706537,
+              "multiple_distinct_gallows": 0.047148817802503476,
+              "top_last": [
+                [
+                  "y",
+                  5475
+                ],
+                [
+                  "n",
+                  5382
+                ],
+                [
+                  "r",
+                  3017
+                ],
+                [
+                  "l",
+                  2275
+                ],
+                [
+                  "o",
+                  1716
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 3430,
+              "types": 2241,
+              "repeated_non_e": 0.7032069970845481,
+              "multiple_distinct_gallows": 0.20291545189504373,
+              "top_last": [
+                [
+                  "q",
+                  569
+                ],
+                [
+                  "f",
+                  552
+                ],
+                [
+                  "r",
+                  530
+                ],
+                [
+                  "l",
+                  334
+                ],
+                [
+                  "g",
+                  292
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.2832814502838308,
+                "type_dictionary_coverage": 0.20136339800734138,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.2875417130144605,
+                "type_dictionary_coverage": 0.20261780104712043,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          }
+        },
+        "5000": {
+          "17": {
+            "key_entries": 5000,
+            "key_json_bytes": 97491,
+            "key_compressed_bits": 245840,
+            "key_bits_per_test_token": 9.8336,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.08664,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 3700,
+              "repeated_non_e": 0.42956,
+              "multiple_distinct_gallows": 0.06728,
+              "top_last": [
+                [
+                  "y",
+                  10468
+                ],
+                [
+                  "r",
+                  3639
+                ],
+                [
+                  "l",
+                  2362
+                ],
+                [
+                  "n",
+                  2133
+                ],
+                [
+                  "m",
+                  1593
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 22834,
+              "types": 2184,
+              "repeated_non_e": 0.40404659717964436,
+              "multiple_distinct_gallows": 0.05522466497328545,
+              "top_last": [
+                [
+                  "y",
+                  10361
+                ],
+                [
+                  "r",
+                  3258
+                ],
+                [
+                  "l",
+                  2155
+                ],
+                [
+                  "n",
+                  2126
+                ],
+                [
+                  "m",
+                  1592
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 2166,
+              "types": 1516,
+              "repeated_non_e": 0.698522622345337,
+              "multiple_distinct_gallows": 0.19436749769159742,
+              "top_last": [
+                [
+                  "r",
+                  381
+                ],
+                [
+                  "f",
+                  358
+                ],
+                [
+                  "q",
+                  304
+                ],
+                [
+                  "l",
+                  207
+                ],
+                [
+                  "a",
+                  172
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.6332173594579747,
+                "type_dictionary_coverage": 0.4740429994756162,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.6308861698183167,
+                "type_dictionary_coverage": 0.4801047120418848,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          },
+          "37": {
+            "key_entries": 5000,
+            "key_json_bytes": 97496,
+            "key_compressed_bits": 245808,
+            "key_bits_per_test_token": 9.83232,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.08664,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 3700,
+              "repeated_non_e": 0.35788,
+              "multiple_distinct_gallows": 0.08516,
+              "top_last": [
+                [
+                  "y",
+                  8302
+                ],
+                [
+                  "r",
+                  4392
+                ],
+                [
+                  "n",
+                  2726
+                ],
+                [
+                  "l",
+                  2303
+                ],
+                [
+                  "t",
+                  1482
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 22834,
+              "types": 2184,
+              "repeated_non_e": 0.325567136725935,
+              "multiple_distinct_gallows": 0.07480073574494175,
+              "top_last": [
+                [
+                  "y",
+                  8195
+                ],
+                [
+                  "r",
+                  4011
+                ],
+                [
+                  "n",
+                  2719
+                ],
+                [
+                  "l",
+                  2096
+                ],
+                [
+                  "m",
+                  1351
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 2166,
+              "types": 1516,
+              "repeated_non_e": 0.698522622345337,
+              "multiple_distinct_gallows": 0.19436749769159742,
+              "top_last": [
+                [
+                  "r",
+                  381
+                ],
+                [
+                  "f",
+                  358
+                ],
+                [
+                  "q",
+                  304
+                ],
+                [
+                  "l",
+                  207
+                ],
+                [
+                  "a",
+                  172
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.6919978026002563,
+                "type_dictionary_coverage": 0.4876769795490299,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.6942899517982944,
+                "type_dictionary_coverage": 0.4931937172774869,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          },
+          "73": {
+            "key_entries": 5000,
+            "key_json_bytes": 97449,
+            "key_compressed_bits": 245864,
+            "key_bits_per_test_token": 9.83456,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.08664,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 3700,
+              "repeated_non_e": 0.3972,
+              "multiple_distinct_gallows": 0.0594,
+              "top_last": [
+                [
+                  "y",
+                  6061
+                ],
+                [
+                  "n",
+                  5570
+                ],
+                [
+                  "r",
+                  3542
+                ],
+                [
+                  "l",
+                  2646
+                ],
+                [
+                  "o",
+                  1765
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 22834,
+              "types": 2184,
+              "repeated_non_e": 0.36861697468687044,
+              "multiple_distinct_gallows": 0.04659717964438995,
+              "top_last": [
+                [
+                  "y",
+                  5954
+                ],
+                [
+                  "n",
+                  5563
+                ],
+                [
+                  "r",
+                  3161
+                ],
+                [
+                  "l",
+                  2439
+                ],
+                [
+                  "o",
+                  1763
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 2166,
+              "types": 1516,
+              "repeated_non_e": 0.698522622345337,
+              "multiple_distinct_gallows": 0.19436749769159742,
+              "top_last": [
+                [
+                  "r",
+                  381
+                ],
+                [
+                  "f",
+                  358
+                ],
+                [
+                  "q",
+                  304
+                ],
+                [
+                  "l",
+                  207
+                ],
+                [
+                  "a",
+                  172
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.6855887200146493,
+                "type_dictionary_coverage": 0.4855794441531201,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.6842788283277716,
+                "type_dictionary_coverage": 0.49581151832460735,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          }
+        }
+      },
+      "medieval_czech_01473c19": {
+        "500": {
+          "17": {
+            "key_entries": 500,
+            "key_json_bytes": 8518,
+            "key_compressed_bits": 24584,
+            "key_bits_per_test_token": 0.98336,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.35484,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 4982,
+              "repeated_non_e": 0.47044,
+              "multiple_distinct_gallows": 0.05452,
+              "top_last": [
+                [
+                  "y",
+                  7970
+                ],
+                [
+                  "r",
+                  4403
+                ],
+                [
+                  "n",
+                  2126
+                ],
+                [
+                  "v",
+                  2081
+                ],
+                [
+                  "l",
+                  2045
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 16129,
+              "types": 481,
+              "repeated_non_e": 0.3985987971975944,
+              "multiple_distinct_gallows": 0.06144212288424577,
+              "top_last": [
+                [
+                  "y",
+                  7431
+                ],
+                [
+                  "r",
+                  2372
+                ],
+                [
+                  "l",
+                  1537
+                ],
+                [
+                  "n",
+                  1506
+                ],
+                [
+                  "m",
+                  844
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 8871,
+              "types": 4501,
+              "repeated_non_e": 0.6010596325104273,
+              "multiple_distinct_gallows": 0.04193439296584376,
+              "top_last": [
+                [
+                  "v",
+                  2081
+                ],
+                [
+                  "r",
+                  2031
+                ],
+                [
+                  "n",
+                  620
+                ],
+                [
+                  "y",
+                  539
+                ],
+                [
+                  "z",
+                  511
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.06885185863394983,
+                "type_dictionary_coverage": 0.04614577871001573,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.06748238783833889,
+                "type_dictionary_coverage": 0.04293193717277487,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          },
+          "37": {
+            "key_entries": 500,
+            "key_json_bytes": 8412,
+            "key_compressed_bits": 24304,
+            "key_bits_per_test_token": 0.97216,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.35484,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 4982,
+              "repeated_non_e": 0.43572,
+              "multiple_distinct_gallows": 0.04672,
+              "top_last": [
+                [
+                  "y",
+                  6009
+                ],
+                [
+                  "r",
+                  4672
+                ],
+                [
+                  "n",
+                  2656
+                ],
+                [
+                  "v",
+                  2081
+                ],
+                [
+                  "l",
+                  1933
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 16129,
+              "types": 481,
+              "repeated_non_e": 0.3447826895653791,
+              "multiple_distinct_gallows": 0.049352098704197406,
+              "top_last": [
+                [
+                  "y",
+                  5470
+                ],
+                [
+                  "r",
+                  2641
+                ],
+                [
+                  "n",
+                  2036
+                ],
+                [
+                  "l",
+                  1425
+                ],
+                [
+                  "m",
+                  1416
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 8871,
+              "types": 4501,
+              "repeated_non_e": 0.6010596325104273,
+              "multiple_distinct_gallows": 0.04193439296584376,
+              "top_last": [
+                [
+                  "v",
+                  2081
+                ],
+                [
+                  "r",
+                  2031
+                ],
+                [
+                  "n",
+                  620
+                ],
+                [
+                  "y",
+                  539
+                ],
+                [
+                  "z",
+                  511
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.05823109320637246,
+                "type_dictionary_coverage": 0.04981646565285789,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.053021876158694844,
+                "type_dictionary_coverage": 0.048167539267015703,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          },
+          "73": {
+            "key_entries": 500,
+            "key_json_bytes": 8561,
+            "key_compressed_bits": 24664,
+            "key_bits_per_test_token": 0.98656,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.35484,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 4982,
+              "repeated_non_e": 0.46016,
+              "multiple_distinct_gallows": 0.05,
+              "top_last": [
+                [
+                  "y",
+                  5037
+                ],
+                [
+                  "n",
+                  4961
+                ],
+                [
+                  "r",
+                  3979
+                ],
+                [
+                  "v",
+                  2081
+                ],
+                [
+                  "l",
+                  2051
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 16129,
+              "types": 481,
+              "repeated_non_e": 0.38266476532953064,
+              "multiple_distinct_gallows": 0.054436108872217746,
+              "top_last": [
+                [
+                  "y",
+                  4498
+                ],
+                [
+                  "n",
+                  4341
+                ],
+                [
+                  "r",
+                  1948
+                ],
+                [
+                  "l",
+                  1543
+                ],
+                [
+                  "s",
+                  1129
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 8871,
+              "types": 4501,
+              "repeated_non_e": 0.6010596325104273,
+              "multiple_distinct_gallows": 0.04193439296584376,
+              "top_last": [
+                [
+                  "v",
+                  2081
+                ],
+                [
+                  "r",
+                  2031
+                ],
+                [
+                  "n",
+                  620
+                ],
+                [
+                  "y",
+                  539
+                ],
+                [
+                  "z",
+                  511
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.07672587438198132,
+                "type_dictionary_coverage": 0.05243838489774515,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.07897664071190211,
+                "type_dictionary_coverage": 0.05287958115183246,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          }
+        },
+        "2000": {
+          "17": {
+            "key_entries": 2000,
+            "key_json_bytes": 36131,
+            "key_compressed_bits": 92552,
+            "key_bits_per_test_token": 3.70208,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.22204,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 4982,
+              "repeated_non_e": 0.45012,
+              "multiple_distinct_gallows": 0.05408,
+              "top_last": [
+                [
+                  "y",
+                  9072
+                ],
+                [
+                  "r",
+                  4194
+                ],
+                [
+                  "l",
+                  2249
+                ],
+                [
+                  "n",
+                  2235
+                ],
+                [
+                  "v",
+                  1373
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 19449,
+              "types": 1383,
+              "repeated_non_e": 0.3984266543267006,
+              "multiple_distinct_gallows": 0.056918093475242945,
+              "top_last": [
+                [
+                  "y",
+                  8725
+                ],
+                [
+                  "r",
+                  2866
+                ],
+                [
+                  "l",
+                  1963
+                ],
+                [
+                  "n",
+                  1855
+                ],
+                [
+                  "m",
+                  998
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 5551,
+              "types": 3599,
+              "repeated_non_e": 0.6312376148441722,
+              "multiple_distinct_gallows": 0.044136191677175286,
+              "top_last": [
+                [
+                  "v",
+                  1373
+                ],
+                [
+                  "r",
+                  1328
+                ],
+                [
+                  "n",
+                  380
+                ],
+                [
+                  "y",
+                  347
+                ],
+                [
+                  "h",
+                  336
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.3089177806262589,
+                "type_dictionary_coverage": 0.19874147876245413,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.3045977011494253,
+                "type_dictionary_coverage": 0.1973821989528796,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          },
+          "37": {
+            "key_entries": 2000,
+            "key_json_bytes": 36052,
+            "key_compressed_bits": 92272,
+            "key_bits_per_test_token": 3.69088,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.22204,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 4982,
+              "repeated_non_e": 0.41952,
+              "multiple_distinct_gallows": 0.04676,
+              "top_last": [
+                [
+                  "y",
+                  7214
+                ],
+                [
+                  "r",
+                  4385
+                ],
+                [
+                  "n",
+                  2879
+                ],
+                [
+                  "l",
+                  2057
+                ],
+                [
+                  "m",
+                  1644
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 19449,
+              "types": 1383,
+              "repeated_non_e": 0.35909301249421566,
+              "multiple_distinct_gallows": 0.04750886935060929,
+              "top_last": [
+                [
+                  "y",
+                  6867
+                ],
+                [
+                  "r",
+                  3057
+                ],
+                [
+                  "n",
+                  2499
+                ],
+                [
+                  "l",
+                  1771
+                ],
+                [
+                  "m",
+                  1581
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 5551,
+              "types": 3599,
+              "repeated_non_e": 0.6312376148441722,
+              "multiple_distinct_gallows": 0.044136191677175286,
+              "top_last": [
+                [
+                  "v",
+                  1373
+                ],
+                [
+                  "r",
+                  1328
+                ],
+                [
+                  "n",
+                  380
+                ],
+                [
+                  "y",
+                  347
+                ],
+                [
+                  "h",
+                  336
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.28090093389489107,
+                "type_dictionary_coverage": 0.20660723649711588,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.2760474601408973,
+                "type_dictionary_coverage": 0.20418848167539266,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          },
+          "73": {
+            "key_entries": 2000,
+            "key_json_bytes": 36093,
+            "key_compressed_bits": 92536,
+            "key_bits_per_test_token": 3.70144,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.22204,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 4982,
+              "repeated_non_e": 0.44668,
+              "multiple_distinct_gallows": 0.04936,
+              "top_last": [
+                [
+                  "y",
+                  6022
+                ],
+                [
+                  "n",
+                  5013
+                ],
+                [
+                  "r",
+                  3859
+                ],
+                [
+                  "l",
+                  2286
+                ],
+                [
+                  "v",
+                  1373
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 19449,
+              "types": 1383,
+              "repeated_non_e": 0.3940048331533755,
+              "multiple_distinct_gallows": 0.05085094349323873,
+              "top_last": [
+                [
+                  "y",
+                  5675
+                ],
+                [
+                  "n",
+                  4633
+                ],
+                [
+                  "r",
+                  2531
+                ],
+                [
+                  "l",
+                  2000
+                ],
+                [
+                  "s",
+                  1251
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 5551,
+              "types": 3599,
+              "repeated_non_e": 0.6312376148441722,
+              "multiple_distinct_gallows": 0.044136191677175286,
+              "top_last": [
+                [
+                  "v",
+                  1373
+                ],
+                [
+                  "r",
+                  1328
+                ],
+                [
+                  "n",
+                  380
+                ],
+                [
+                  "y",
+                  347
+                ],
+                [
+                  "h",
+                  336
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.2832814502838308,
+                "type_dictionary_coverage": 0.20136339800734138,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.2875417130144605,
+                "type_dictionary_coverage": 0.20261780104712043,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          }
+        },
+        "5000": {
+          "17": {
+            "key_entries": 5000,
+            "key_json_bytes": 92891,
+            "key_compressed_bits": 229976,
+            "key_bits_per_test_token": 9.19904,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.166,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 4982,
+              "repeated_non_e": 0.44396,
+              "multiple_distinct_gallows": 0.0542,
+              "top_last": [
+                [
+                  "y",
+                  9534
+                ],
+                [
+                  "r",
+                  4029
+                ],
+                [
+                  "n",
+                  2331
+                ],
+                [
+                  "l",
+                  2310
+                ],
+                [
+                  "m",
+                  1074
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 20850,
+              "types": 2028,
+              "repeated_non_e": 0.4016306954436451,
+              "multiple_distinct_gallows": 0.055635491606714625,
+              "top_last": [
+                [
+                  "y",
+                  9276
+                ],
+                [
+                  "r",
+                  3090
+                ],
+                [
+                  "l",
+                  2107
+                ],
+                [
+                  "n",
+                  2036
+                ],
+                [
+                  "m",
+                  1028
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 4150,
+              "types": 2954,
+              "repeated_non_e": 0.6566265060240963,
+              "multiple_distinct_gallows": 0.046987951807228916,
+              "top_last": [
+                [
+                  "v",
+                  1034
+                ],
+                [
+                  "r",
+                  939
+                ],
+                [
+                  "n",
+                  295
+                ],
+                [
+                  "y",
+                  258
+                ],
+                [
+                  "h",
+                  245
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.6332173594579747,
+                "type_dictionary_coverage": 0.4740429994756162,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.6308861698183167,
+                "type_dictionary_coverage": 0.4801047120418848,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          },
+          "37": {
+            "key_entries": 5000,
+            "key_json_bytes": 92896,
+            "key_compressed_bits": 229632,
+            "key_bits_per_test_token": 9.18528,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.166,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 4982,
+              "repeated_non_e": 0.4072,
+              "multiple_distinct_gallows": 0.04608,
+              "top_last": [
+                [
+                  "y",
+                  7685
+                ],
+                [
+                  "r",
+                  4194
+                ],
+                [
+                  "n",
+                  2951
+                ],
+                [
+                  "l",
+                  2122
+                ],
+                [
+                  "m",
+                  1681
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 20850,
+              "types": 2028,
+              "repeated_non_e": 0.3575539568345324,
+              "multiple_distinct_gallows": 0.04589928057553957,
+              "top_last": [
+                [
+                  "y",
+                  7427
+                ],
+                [
+                  "r",
+                  3255
+                ],
+                [
+                  "n",
+                  2656
+                ],
+                [
+                  "l",
+                  1919
+                ],
+                [
+                  "m",
+                  1635
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 4150,
+              "types": 2954,
+              "repeated_non_e": 0.6566265060240963,
+              "multiple_distinct_gallows": 0.046987951807228916,
+              "top_last": [
+                [
+                  "v",
+                  1034
+                ],
+                [
+                  "r",
+                  939
+                ],
+                [
+                  "n",
+                  295
+                ],
+                [
+                  "y",
+                  258
+                ],
+                [
+                  "h",
+                  245
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.6919978026002563,
+                "type_dictionary_coverage": 0.4876769795490299,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.6942899517982944,
+                "type_dictionary_coverage": 0.4931937172774869,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          },
+          "73": {
+            "key_entries": 5000,
+            "key_json_bytes": 92849,
+            "key_compressed_bits": 230216,
+            "key_bits_per_test_token": 9.20864,
+            "plaintext_test_tokens": 25000,
+            "escaped_token_share": 0.166,
+            "exact_roundtrip": true,
+            "ciphertext_shape": {
+              "tokens": 25000,
+              "types": 4982,
+              "repeated_non_e": 0.43876,
+              "multiple_distinct_gallows": 0.04904,
+              "top_last": [
+                [
+                  "y",
+                  6551
+                ],
+                [
+                  "n",
+                  5087
+                ],
+                [
+                  "r",
+                  3652
+                ],
+                [
+                  "l",
+                  2337
+                ],
+                [
+                  "s",
+                  1342
+                ]
+              ]
+            },
+            "dictionary_only_shape": {
+              "tokens": 20850,
+              "types": 2028,
+              "repeated_non_e": 0.3953956834532374,
+              "multiple_distinct_gallows": 0.0494484412470024,
+              "top_last": [
+                [
+                  "y",
+                  6293
+                ],
+                [
+                  "n",
+                  4792
+                ],
+                [
+                  "r",
+                  2713
+                ],
+                [
+                  "l",
+                  2134
+                ],
+                [
+                  "s",
+                  1327
+                ]
+              ]
+            },
+            "escaped_only_shape": {
+              "tokens": 4150,
+              "types": 2954,
+              "repeated_non_e": 0.6566265060240963,
+              "multiple_distinct_gallows": 0.046987951807228916,
+              "top_last": [
+                [
+                  "v",
+                  1034
+                ],
+                [
+                  "r",
+                  939
+                ],
+                [
+                  "n",
+                  295
+                ],
+                [
+                  "y",
+                  258
+                ],
+                [
+                  "h",
+                  245
+                ]
+              ]
+            },
+            "manuscript_membership": {
+              "zl": {
+                "token_dictionary_coverage": 0.6855887200146493,
+                "type_dictionary_coverage": 0.4855794441531201,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              },
+              "it": {
+                "token_dictionary_coverage": 0.6842788283277716,
+                "type_dictionary_coverage": 0.49581151832460735,
+                "token_escape_syntax": 0.0,
+                "type_escape_syntax": 0.0
+              }
+            },
+            "unspaced_ambiguity": {
+              "two_plain_words": [
+                "xxqxqxx",
+                "qqxqqxq"
+              ],
+              "one_plain_word": "xxqxqxxmqqxqqxq",
+              "glyph_stream": "zkkdkdkkzddkddkd"
+            }
+          }
+        }
+      }
+    }
+  },
+  "reproduce": {
+    "instructions": "Save the script as /tmp/voy_pl3008_codebook.py; run python3 -m vs fetch, then PYTHONPATH=. python3 /tmp/voy_pl3008_codebook.py. It verifies the input hashes and asserts unique maps and exact plaintext round trips in all 36 settings.",
+    "script": "\"\"\"Public-training-derived codebook with a reversible nonterminal escape.\"\"\"\nimport hashlib,json,random,codecs\nfrom collections import Counter\nfrom vs import corpus,ivtff,refcorpus,judge\n\nBOOKS=('it_dante','es_buenamor','en_paston','medieval_czech_01473c19')\nSIZES=(500,2000,5000);SEEDS=(17,37,73);TRAIN=50000;TEST=25000;ESC='z'\nGALLOWS={'k','t','p','f','ckh','cth','cph','cfh'}\n\ndef words(pages):\n return [w for p in pages for l in p.lines if l.unit=='P' for w in l.words if not ivtff.uncertain(w)\n         and w.isascii() and w.isalpha() and w.islower()]\n\ndef shape(words):\n s=[ivtff.segment(w) for w in words];n=len(words)\n return {'tokens':n,'types':len(set(words)),\n   'repeated_non_e':sum(any(g!='e' and v>1 for g,v in Counter(z).items()) for z in s)/n,\n   'multiple_distinct_gallows':sum(len(set(z)&GALLOWS)>1 for z in s)/n,\n   'top_last':Counter(z[-1] for z in s).most_common(5)}\n\ndef evaluate(train,test,lexicon,n,seed,evalw):\n frequencies=Counter(train);common=sorted(frequencies,key=lambda w:(-frequencies[w],w))[:n]; assert len(common)==n<=len(lexicon)\n candidates=sorted(lexicon);rng=random.Random(seed);rng.shuffle(candidates)\n enc=dict(zip(common,candidates));dec={v:k for k,v in enc.items()};assert len(dec)==n and all(not x.startswith(ESC) for x in dec)\n # Fixed rot13 escape carries unseen words without adding an end marker; not a secrecy claim.\n out=[enc[w] if w in enc else ESC+codecs.encode(w,'rot_13') for w in test]\n decoded=[codecs.decode(w[1:],'rot_13') if w.startswith(ESC) else dec[w] for w in out]\n assert decoded==test\n key={'map':dec};raw=judge.canonical(key);bits=judge.compressed_bits(raw)\n membership={}\n for name,ws in evalw.items():\n  types=set(ws);membership[name]={'token_dictionary_coverage':sum(w in dec for w in ws)/len(ws),\n    'type_dictionary_coverage':sum(w in dec for w in types)/len(types),\n    'token_escape_syntax':sum(w.startswith(ESC) and len(w)>1 for w in ws)/len(ws),\n    'type_escape_syntax':sum(w.startswith(ESC) and len(w)>1 for w in types)/len(types)}\n # Three novel words show that spaces remain required even for the escape channel.\n a='xxqxqxx';b='qqxqqxq';c=a+'m'+b # rot13(z) is m\n assert all(x not in enc for x in (a,b,c))\n ea=ESC+codecs.encode(a,'rot_13');eb=ESC+codecs.encode(b,'rot_13');ec=ESC+codecs.encode(c,'rot_13')\n assert ea+eb==ec\n return {'key_entries':n,'key_json_bytes':len(raw),'key_compressed_bits':bits,'key_bits_per_test_token':bits/len(test),\n  'plaintext_test_tokens':len(test),'escaped_token_share':sum(w not in enc for w in test)/len(test),\n  'exact_roundtrip':True,'ciphertext_shape':shape(out),\n  'dictionary_only_shape':shape([code for w,code in zip(test,out) if w in enc]),\n  'escaped_only_shape':shape([code for w,code in zip(test,out) if w not in enc]),'manuscript_membership':membership,\n  'unspaced_ambiguity':{'two_plain_words':[a,b],'one_plain_word':c,'glyph_stream':ec}}\n\nif __name__=='__main__':\n pins={e['id']:e for e in refcorpus.pins()}\n for b in BOOKS:\n  with open(pins[b]['file'],'rb') as f:assert hashlib.sha256(f.read()).hexdigest()==pins[b]['sha256']\n for k,fn,expected in [('zl','ZL3b-n.txt','bf5b6d4ac1e3a51b1847a9c388318d609020441ccd56984c901c32b09beccafc'),('it','IT2a-n.txt','7f27a8b0feed8f6de0a99900df6bf912dd1d295c38e5f830bac8b41c3f536fb5')]:\n  with open('data/raw/'+fn,'rb') as f:assert hashlib.sha256(f.read()).hexdigest()==expected\n tr,_=corpus.split_pages('practice','zl');lexicon={w for w in words(tr) if not w.startswith(ESC)}\n ev={w:words(corpus.split_pages('practice',w)[1]) for w in ('zl','it')}\n out={'lexicon_source':'ZL public practice-training paragraph words excluding z-prefix','candidate_types':len(lexicon),\n      'witness_shapes':{k:shape(v) for k,v in ev.items()},'books':{}}\n for book in BOOKS:\n  ws=' '.join(refcorpus.blocks_of(book)).split();assert len(ws)>=TRAIN+TEST\n  assert all(w.isascii() and w.isalpha() and w.islower() for w in ws[:TRAIN+TEST])\n  out['books'][book]={}\n  for n in SIZES:\n   out['books'][book][str(n)]={str(seed):evaluate(ws[:TRAIN],ws[TRAIN:TRAIN+TEST],lexicon,n,seed,ev) for seed in SEEDS}\n print(json.dumps(out,indent=2))\n"
+  },
+  "limitations": "The ciphertext vocabulary is fitted directly to public Voynich training pages and assignment to plaintext is random; neither the key nor the model is claimed as historical or deciphering. The plaintext dictionary is selected on the preceding portion of the same book, so held-out sections are not independent books. Escape output permits all ASCII letters, including glyphs not recognized as ordinary EVA, and its fixed ROT13 is merely reversible, not a security claim. The presented compressed key bits are not the complete description length or a comparison with the Voynich-only baseline. The existing codebook family does not implement the escape and the trusted scorer does not run this local script. Evaluation uses the public practice split and two readings of the same manuscript, not the secret held-out pages. No claimed language/cipher cell was ruled out."
+}
