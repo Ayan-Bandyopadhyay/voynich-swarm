@@ -61,6 +61,14 @@ statistics:
                                                            or without that label are left out. Every page stays whole, so page-level reuse cancels;
                                                            test it against shuffle_page_labels and rotate_page_labels
   {"page_reuse": {"min_length": L}}                        share of words of length >= L already written earlier on the page
+  {"matched_rightwardness": {"contrast": C, "min_line": a, "max_line": b}}
+                                                           Mean relative interior position of the second member of a
+                                                           matched-word contrast minus the first, pooled by token.
+                                                           C is sh/ch, qo/o or k/t; line lengths are original token counts.
+                                                           Matching uses certain paragraph tokens in the selected sample.
+                                                           At least 30 tokens per side and 5 pages are required.
+                                                           This is a pooled contrast: page-specific composition can
+                                                           create a difference even with no within-page difference.
   {"picture_label": {"test": T, "min_objects": n}}         labels against AGREED picture annotations (registry type picture;
                                                            one annotation per folio, the best-agreeing). An object counts when
                                                            its "label" is a label line (unit L) on the scored pages; its label
@@ -88,6 +96,12 @@ statistics:
 
 compare (one to four; all must pass; a spec with none is refused):
   {"op": ">=" | "<=" | ">" | "<", "value": x}              x finite
+  {"page_bootstrap": "lower" | "upper", "value": x}         matched_rightwardness only: 95% two-sided percentile
+                                                           interval from 399 whole-page resamples, fixed seed. Lower
+                                                           must exceed x, or upper must be below x, respectively.
+                                                           Requires at least 10 pages with matched tokens; coverage is
+                                                           not guaranteed for sparse or unrepresentative pages.
+                                                           The matched vocabulary is rebuilt on each resample.
   {"reference": "below_all" | "above_all" | "inside_range", "margin": m}     m >= 0
        the same statistic on every reference language, on that language's words poured into the exact layout of
        the selected tokens (same pages, lines, gaps and count), so size and shape are matched. Languages with
@@ -384,6 +398,43 @@ def _context(t, by):
     return t[by]
 
 
+def _matched_rightwardness(toks, arg, with_counts=False):
+    """Pooled second-minus-first relative positions, with a sample-derived matched vocabulary.
+
+    Prefix contrasts match the remaining spelling exactly. For k/t, a counterpart must
+    differ at exactly one k/t character; a word with multiple counterparts is counted once.
+    Original line indices and lengths are retained after selection and uncertainty filtering.
+    """
+    ts = [t for t in toks if t['unit'] == 'P' and not UNCERTAIN(t['w']) and
+          arg['min_line'] <= t['n'] <= arg['max_line'] and 0 < t['k'] < t['n'] - 1]
+    vocab = {t['w'] for t in ts}
+    contrast = arg['contrast']
+
+    def side(w):
+        if contrast == 'sh/ch':
+            return 0 if w.startswith('sh') and 'ch' + w[2:] in vocab else \
+                   1 if w.startswith('ch') and 'sh' + w[2:] in vocab else None
+        if contrast == 'qo/o':
+            return 0 if w.startswith('qo') and w[1:] in vocab else \
+                   1 if w.startswith('o') and 'q' + w in vocab else None
+        matches = {0 if c == 'k' else 1 for i, c in enumerate(w) if c in 'kt' and
+                   w[:i] + ('t' if c == 'k' else 'k') + w[i + 1:] in vocab}
+        # Mixed k/t words with matches on both sides cannot be assigned uniquely.
+        return next(iter(matches)) if len(matches) == 1 else None
+
+    groups = [[], []]
+    used_pages = set()
+    for t in ts:
+        s = side(t['w'])
+        if s is not None:
+            groups[s].append(t['k'] / (t['n'] - 1))
+            used_pages.add(t['page'])
+    counts = {'first': len(groups[0]), 'second': len(groups[1]), 'pages': len(used_pages)}
+    value = NAN if min(map(len, groups)) < MIN_TOKENS or len(used_pages) < 5 else \
+        sum(groups[1]) / len(groups[1]) - sum(groups[0]) / len(groups[0])
+    return (value, counts) if with_counts else value
+
+
 def check_statistic(st):
     if not isinstance(st, dict) or len(st) != 1:
         raise SpecError("statistic is one {name: args}")
@@ -427,6 +478,14 @@ def check_statistic(st):
     elif name == "page_reuse":
         _keys(arg, {"min_length"}, name)
         _int(arg.get("min_length", 1), 1, 40, "page_reuse min_length")
+    elif name == "matched_rightwardness":
+        _keys(arg, {"contrast", "min_line", "max_line"}, name, ("contrast", "min_line", "max_line"))
+        if arg["contrast"] not in ("sh/ch", "qo/o", "k/t"):
+            raise SpecError("matched_rightwardness contrast is sh/ch | qo/o | k/t")
+        lo = _int(arg["min_line"], 3, 200, "min_line")
+        hi = _int(arg["max_line"], 3, 200, "max_line")
+        if lo > hi:
+            raise SpecError("min_line must not exceed max_line")
     elif name == "picture_label":
         _keys(arg, {"test", "min_objects"}, name, ("test",))
         if arg["test"] not in PICTURE_TESTS:
@@ -460,6 +519,8 @@ def statistic(st, toks, all_toks):
         return a / b if b else (float("inf") if a else NAN)
     if name == "picture_label":
         return _picture_label(arg["test"], all_toks, arg.get("min_objects", 20))
+    if name == "matched_rightwardness":
+        return _matched_rightwardness(toks, arg)
     if len(toks) < MIN_TOKENS:
         return NAN
     if name == "paragraph_gap_corr":
@@ -1020,9 +1081,14 @@ def check(spec):
     if not isinstance(cmp_, list) or not 1 <= len(cmp_) <= MAX_COMPARE:
         raise SpecError(f"compare is a list of 1 to {MAX_COMPARE} tests (a claim with no test is not a claim)")
     for c in cmp_:
-        if not isinstance(c, dict) or sum(k in c for k in ("op", "reference", "null")) != 1:
+        if not isinstance(c, dict) or sum(k in c for k in ("op", "reference", "null", "page_bootstrap")) != 1:
             raise SpecError(f"unknown comparison {c!r}")
-        if "op" in c:
+        if "page_bootstrap" in c:
+            _keys(c, {"page_bootstrap", "value"}, "comparison", ("value",))
+            if name != "matched_rightwardness" or c["page_bootstrap"] not in ("lower", "upper"):
+                raise SpecError("page_bootstrap is lower | upper and only for matched_rightwardness")
+            _num(c["value"], "bootstrap threshold")
+        elif "op" in c:
             _keys(c, {"op", "value"}, "comparison", ("value",))
             if c["op"] not in (">=", "<=", ">", "<"):
                 raise SpecError(f"unknown op {c['op']!r}")
@@ -1086,7 +1152,9 @@ def canonical(spec):
         arg = {"test": arg["test"], "min_objects": arg.get("min_objects", 20)}
     tests = set()
     for c in spec["compare"]:
-        if "op" in c:
+        if "page_bootstrap" in c:
+            tests.add("page_bootstrap:" + c["page_bootstrap"])
+        elif "op" in c:
             tests.add("op" + c["op"][0])
         elif "reference" in c:
             tests.add("reference:" + c["reference"])
@@ -1120,6 +1188,8 @@ def evaluate(spec, pages):
                         f"{MIN_TOKENS} tokens, and {MIN_TOKENS} pairs / n-grams / long words where it counts those")
     finite = math.isfinite(v)
     detail, ok = {"tokens": len(toks)}, finite
+    if 'matched_rightwardness' in st:
+        _, detail['matched_rightwardness'] = _matched_rightwardness(toks, st['matched_rightwardness'], True)
     if "edge_length_cmi" in st:
         movable = _edge_length_movable_pairs(toks)
         detail.update(adjacent_pairs=len(_edge_length_pairs(toks)), potentially_movable_pairs=movable)
@@ -1131,7 +1201,31 @@ def evaluate(spec, pages):
     if not finite:
         detail["not_finite"] = "a value that is not finite never passes"
     for c in spec["compare"]:
-        if "op" in c:
+        if "page_bootstrap" in c:
+            # Resample pages as blocks, including repeated pages with distinct identifiers.
+            if detail['matched_rightwardness']['pages'] < 10:
+                raise SpecError("page bootstrap needs at least 10 pages with matched tokens")
+            by_page = {}
+            for t in toks:
+                by_page.setdefault(t['page'], []).append(t)
+            ids = list(by_page)
+            rng = random.Random(408)
+            values = []
+            for _ in range(399):
+                sampled = [dict(t, page=i) for i, page in enumerate(rng.choices(ids, k=len(ids)))
+                           for t in by_page[page]]
+                sv = statistic(st, sampled, sampled)
+                if not math.isfinite(sv):
+                    raise SpecError("page bootstrap produced an undefined replicate; sample is too sparse")
+                values.append(sv)
+            values.sort()
+            lo, hi = values[9], values[389]
+            direction = c['page_bootstrap']
+            r = lo > float(c['value']) if direction == 'lower' else hi < float(c['value'])
+            detail['page_bootstrap:' + direction] = {'lower': round(lo, 6), 'upper': round(hi, 6),
+                                                     'draws': 399, 'threshold': float(c['value']), 'pass': r}
+            ok &= r
+        elif "op" in c:
             x = float(c["value"])
             r = finite and {">=": v >= x, "<=": v <= x, ">": v > x, "<": v < x}[c["op"]]
             detail[f"{c['op']} {x}"] = r
