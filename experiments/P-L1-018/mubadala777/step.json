@@ -1,0 +1,4727 @@
+{
+  "title": "Matched Latin ending contexts tie while informative internal matches are sparse",
+  "statement": "The original role-correct scores were calibrated on 48 UD Latin LLCT development charters and run without retuning on 51 independent test charters. With exact left matching, all 626 word-final us/um pairs tie for each tested score, including 75 singular masculine pairs sharing lemma, visible prefix and part of speech with nominative versus accusative endings. The inclusive position-aware cutoff accepts both sides of these ties. Only 32 nonfinal pairs are available, three after matching part of speech, case and number, and zero among test lemmas absent from train and development, so these arms abstain at the preserved 40-site minimum. All scoring gaps in pooled us/um runs come from the right direction, for which only 31–32 of 657–658 matched pairs differ. The pooled target ranks ahead of its decoy in all five repeats, but the strict position-info cutoff accepts neither. Across in/is and er/es, all three methods accept all ten planted targets and also accept five decoys at the frozen thresholds. The repeats share documents and are not independent. No manuscript candidates were tested.",
+  "program": "L1",
+  "check": "Reproduce the disjoint charter splits, frozen calibration and held-apart assessment. Before reusing this family of scores, report the number of actual disagreements among matched exterior contexts, and separately quantify classification of planted alternatives and acceptance of standalone-letter nonreplacement controls. Source new documents with enough matched internal tokens for a balanced morphology-restricted test.",
+  "on_path": true,
+  "hard": false,
+  "evidence": {
+    "prior_experiment": "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/623",
+    "prior_context_source": "position_context.py embedded in registry item P-L1-018",
+    "prior_replay": {
+      "pr": "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/623",
+      "runtime_base": "7127aee5d2472676f1e8ec3a99cf5f40a098f505",
+      "plan_commit": "ee8f34799aca0f626eee10193cc3c8742d924c96",
+      "calibration_freeze_commit": "7ca696c451d86cbf9192b1157cfb57dae10ef229",
+      "public_plan_sha_verified": "73570a5a6e55943b7302a74f4b589ec6347634f3cc9129499153759d4d49550b",
+      "public_freeze_contains_identical_plan": true,
+      "formal_launcher_verification": "The bundled launcher verified the inputs and initial scripts and stopped at the calibration byte SHA mismatch. The original evaluation and verification scripts were then run without editing the published corpus, algorithms or thresholds.",
+      "runtime_version": "Python 3.12.14 on Linux",
+      "published_score_tolerance": 1e-12,
+      "structured_comparisons": {
+        "calibration": {
+          "floating_point_differences": 7,
+          "maximum_absolute_floating_point_difference": 5.551115123125783e-17,
+          "other_differences": [],
+          "equal_within_existing_score_tolerance": true
+        },
+        "evaluation_shared_public_fields_excluding_calibration_digest": {
+          "floating_point_differences": 4,
+          "maximum_absolute_floating_point_difference": 5.551115123125783e-17,
+          "other_differences": [],
+          "equal_within_existing_score_tolerance": true
+        },
+        "independent_verification": {
+          "floating_point_differences": 0,
+          "maximum_absolute_floating_point_difference": 0.0,
+          "other_differences": [],
+          "equal_within_existing_score_tolerance": true
+        },
+        "negative_control_published_summaries": {
+          "floating_point_differences": 5,
+          "maximum_absolute_floating_point_difference": 2.7755575615628914e-17,
+          "other_differences": [],
+          "equal_within_existing_score_tolerance": true
+        }
+      },
+      "sha_checks": {
+        "calibration.json": {
+          "expected": "fe8d756f7744667f129e7e33594c137dda56c6dfb8179696ec9ae3e6f4634e9b",
+          "observed": "60587032731304736630dc0a6df44978828b2589c20d14802d771a65d1bf0191",
+          "byte_exact": false
+        },
+        "evaluation.json": {
+          "expected": "9628636e76f15636c685a8bd50d2b3bffff0d88514671eb7eda190bd47d57135",
+          "observed": "fb4f3fe479c507448701441f73bc1060050ef7e6c9cc7cc165603a4957ed9c9d",
+          "byte_exact": false
+        },
+        "verification.json": {
+          "expected": "32b50e9986119cc8a3df8e763df8019f6869d0d221e37cd12ed9aef77b4188f7",
+          "observed": "32b50e9986119cc8a3df8e763df8019f6869d0d221e37cd12ed9aef77b4188f7",
+          "byte_exact": true
+        }
+      },
+      "scope": "The archived evaluation contains additional negative-control details outside the compared summary. This distinguishes structured numerical reproduction and agreement of pairing, threshold and acceptance decisions from byte-for-byte identity."
+    },
+    "design": {
+      "step": "P-L1-018",
+      "prior": "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/623",
+      "corpus": "UD_Latin-LLCT r2.18, df63d06c5a7788b457f50bf37526146e9225c27d",
+      "source_release": "https://universaldependencies.org/treebanks/la_llct/",
+      "license": "CC-BY-SA-4.0",
+      "split": {
+        "dev": "Calibrate thresholds using only the original Latin in/is and er/es decoys in the independently partitioned development charters.",
+        "test": "Evaluate frozen thresholds on the separately partitioned test charters. Report overlaps at the charter level and keep the annotation source distinct from the manuscript."
+      },
+      "methods": [
+        "unconditioned",
+        "position_all",
+        "position_info"
+      ],
+      "calibration_pairs": [
+        [
+          "in",
+          "is"
+        ],
+        [
+          "er",
+          "es"
+        ]
+      ],
+      "focus_pair": [
+        "us",
+        "um"
+      ],
+      "seeds": [
+        66103,
+        66109,
+        66113,
+        66121,
+        66137
+      ],
+      "candidate_minimum": 40,
+      "position_reference_minimum": 20,
+      "threshold": "Among common supported development runs, set each strict threshold to the empirical 5th-percentile order statistic of the decoy losses, as in PR 623. Score all test results without retuning. Show sensitivity and specificity and all abstentions. The five seeds reuse the same charter split and do not provide independent sampling units.",
+      "matching": {
+        "all": "Match initial and final flags and immediate left character, on orthographic surface tokens.",
+        "terminal": "Same matching restricted to terminal candidates.",
+        "terminal_same_stem_case": "Use only singular masculine nouns, adjectives and proper nouns. Pair final us (nominative) to um (accusative) with same prefix before ending, normalized lemma, part of speech, and initial status.",
+        "internal": "Use nonfinal candidates, with mass matched on left context and initial status. A nonfinal occurrence can still span a morpheme boundary.",
+        "internal_same_morph": "Use nonfinal candidates matched additionally on UPOS, Case and Number. Report comparable support before interpreting effects.",
+        "internal_new_lemma": "Use nonfinal test candidates from single-token lemmas absent in both training and development, as a declared sensitivity. A result can abstain from limited support.",
+        "pair_exclusion": "Two substitutions cannot be in the same surface word. This preserves outside characters at all planted positions. Match seed is a deterministic tie-breaker per stratum."
+      },
+      "controls": {
+        "both_sides_matched": "A subset matched on both exterior characters gives identical lossy observables for the planted symbols. Report support, equality and any cutoff accepting both.",
+        "negative": "Run the same threshold on unaltered natural letters q, t, r and n when they are not the claimed components. Test against us, in and er. These are operational decoys, not proven historical simple letters."
+      },
+      "prediction": "Both-matched immediate contexts and left-matched word-final cases tie exactly wherever supported, independent of contextual grammar or morphology. A nonfinal difference may reflect lexical distributions. A case-labelled difference alone would not identify the historical composition of a written sign.",
+      "no_manuscript": "No Voynich candidates evaluated and no hidden text used."
+    },
+    "calibration_sha256": "68969fa012a788d66d7128f330226bce1d3f0ec8a8bbb6e07142e0eb73899409",
+    "calibration": {
+      "calibration_common_rows": 10,
+      "parser_sha256": "2d45395745dd45786b542b3db7d1567c7c65ce69203aaa4126a2ff58091fd679",
+      "plan_sha256": "98550cdedd1cb8a78102a5e44732e4288314395bfcdf4d326e29590fc2ffb35d",
+      "prior_context_sha256": "20797e1a25ee061886235fef5cf4903a9b5d665062c4229465ce52c67462a98a",
+      "rows": [
+        {
+          "case_counts": [
+            {
+              "Abl": 92,
+              "Acc": 66,
+              "Dat": 2,
+              "Gen": 26,
+              "Nom": 26,
+              "_": 42
+            },
+            {
+              "Abl": 21,
+              "Acc": 78,
+              "Gen": 19,
+              "Nom": 60,
+              "_": 76
+            }
+          ],
+          "decoy": "is",
+          "mode": "all",
+          "paired_unique_lemmas": [
+            46,
+            39
+          ],
+          "pairs": 254,
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 30
+          },
+          "same_right_context": 31,
+          "scores": {
+            "X": {
+              "position_all": 0.26139226773914875,
+              "position_info": 0.2777976401913966,
+              "unconditioned": 0.26228287990415744
+            },
+            "Z": {
+              "position_all": 0.3547024176371961,
+              "position_info": 0.3769640756478988,
+              "unconditioned": 0.3787157426053145
+            }
+          },
+          "seed": 66103,
+          "support": {
+            "shared_nonempty_strata": 13,
+            "source_sites": [
+              1801,
+              1447
+            ],
+            "stratum_unrestricted_upper_bound": 254
+          },
+          "target": "in"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 88,
+              "Acc": 69,
+              "Dat": 3,
+              "Gen": 22,
+              "Nom": 25,
+              "_": 47
+            },
+            {
+              "Abl": 22,
+              "Acc": 77,
+              "Gen": 19,
+              "Nom": 60,
+              "_": 76
+            }
+          ],
+          "decoy": "is",
+          "mode": "all",
+          "paired_unique_lemmas": [
+            49,
+            38
+          ],
+          "pairs": 254,
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 30
+          },
+          "same_right_context": 33,
+          "scores": {
+            "X": {
+              "position_all": 0.2524709883724312,
+              "position_info": 0.2683164478937135,
+              "unconditioned": 0.2616173842349824
+            },
+            "Z": {
+              "position_all": 0.3594542728787436,
+              "position_info": 0.38201416448201203,
+              "unconditioned": 0.3832614582755281
+            }
+          },
+          "seed": 66109,
+          "support": {
+            "shared_nonempty_strata": 13,
+            "source_sites": [
+              1801,
+              1447
+            ],
+            "stratum_unrestricted_upper_bound": 254
+          },
+          "target": "in"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 95,
+              "Acc": 59,
+              "Dat": 6,
+              "Gen": 24,
+              "Nom": 25,
+              "_": 45
+            },
+            {
+              "Abl": 21,
+              "Acc": 80,
+              "Gen": 19,
+              "Nom": 60,
+              "_": 74
+            }
+          ],
+          "decoy": "is",
+          "mode": "all",
+          "paired_unique_lemmas": [
+            45,
+            39
+          ],
+          "pairs": 254,
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 30
+          },
+          "same_right_context": 33,
+          "scores": {
+            "X": {
+              "position_all": 0.2538904967390227,
+              "position_info": 0.26982504674356383,
+              "unconditioned": 0.258679097054267
+            },
+            "Z": {
+              "position_all": 0.35551163189790924,
+              "position_info": 0.3778240774145144,
+              "unconditioned": 0.37934315753553904
+            }
+          },
+          "seed": 66113,
+          "support": {
+            "shared_nonempty_strata": 13,
+            "source_sites": [
+              1801,
+              1447
+            ],
+            "stratum_unrestricted_upper_bound": 254
+          },
+          "target": "in"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 83,
+              "Acc": 69,
+              "Dat": 6,
+              "Gen": 23,
+              "Nom": 24,
+              "_": 49
+            },
+            {
+              "Abl": 21,
+              "Acc": 79,
+              "Gen": 20,
+              "Nom": 60,
+              "_": 74
+            }
+          ],
+          "decoy": "is",
+          "mode": "all",
+          "paired_unique_lemmas": [
+            48,
+            40
+          ],
+          "pairs": 254,
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 30
+          },
+          "same_right_context": 35,
+          "scores": {
+            "X": {
+              "position_all": 0.2385087801117653,
+              "position_info": 0.2534779504116669,
+              "unconditioned": 0.23989319089083455
+            },
+            "Z": {
+              "position_all": 0.35491802647688875,
+              "position_info": 0.377193216423137,
+              "unconditioned": 0.37897559204492526
+            }
+          },
+          "seed": 66121,
+          "support": {
+            "shared_nonempty_strata": 13,
+            "source_sites": [
+              1801,
+              1447
+            ],
+            "stratum_unrestricted_upper_bound": 254
+          },
+          "target": "in"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 95,
+              "Acc": 67,
+              "Dat": 4,
+              "Gen": 23,
+              "Nom": 21,
+              "_": 44
+            },
+            {
+              "Abl": 21,
+              "Acc": 78,
+              "Gen": 20,
+              "Nom": 60,
+              "_": 75
+            }
+          ],
+          "decoy": "is",
+          "mode": "all",
+          "paired_unique_lemmas": [
+            44,
+            40
+          ],
+          "pairs": 254,
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 30
+          },
+          "same_right_context": 36,
+          "scores": {
+            "X": {
+              "position_all": 0.2531227515610378,
+              "position_info": 0.2690091167217724,
+              "unconditioned": 0.2610076779879731
+            },
+            "Z": {
+              "position_all": 0.35384189686685513,
+              "position_info": 0.3760495472978293,
+              "unconditioned": 0.3779334555384405
+            }
+          },
+          "seed": 66137,
+          "support": {
+            "shared_nonempty_strata": 13,
+            "source_sites": [
+              1801,
+              1447
+            ],
+            "stratum_unrestricted_upper_bound": 254
+          },
+          "target": "in"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 170,
+              "Acc": 128,
+              "Dat": 2,
+              "Gen": 30,
+              "Nom": 43,
+              "_": 380
+            },
+            {
+              "Abl": 260,
+              "Acc": 238,
+              "Dat": 38,
+              "Gen": 95,
+              "Nom": 32,
+              "_": 90
+            }
+          ],
+          "decoy": "es",
+          "mode": "all",
+          "paired_unique_lemmas": [
+            91,
+            39
+          ],
+          "pairs": 753,
+          "position_counts": {
+            "word_final": 123,
+            "word_initial": 50
+          },
+          "same_right_context": 198,
+          "scores": {
+            "X": {
+              "position_all": 0.2809881524591145,
+              "position_info": 0.3174554820730881,
+              "unconditioned": 0.25874531593298067
+            },
+            "Z": {
+              "position_all": 0.3831573081745028,
+              "position_info": 0.4328844006832717,
+              "unconditioned": 0.3872405266534412
+            }
+          },
+          "seed": 66103,
+          "support": {
+            "shared_nonempty_strata": 15,
+            "source_sites": [
+              2385,
+              1620
+            ],
+            "stratum_unrestricted_upper_bound": 770
+          },
+          "target": "er"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 168,
+              "Acc": 139,
+              "Dat": 2,
+              "Gen": 29,
+              "Nom": 38,
+              "_": 379
+            },
+            {
+              "Abl": 265,
+              "Acc": 241,
+              "Dat": 40,
+              "Gen": 87,
+              "Nom": 30,
+              "_": 92
+            }
+          ],
+          "decoy": "es",
+          "mode": "all",
+          "paired_unique_lemmas": [
+            90,
+            37
+          ],
+          "pairs": 755,
+          "position_counts": {
+            "word_final": 110,
+            "word_initial": 50
+          },
+          "same_right_context": 182,
+          "scores": {
+            "X": {
+              "position_all": 0.2736561858665275,
+              "position_info": 0.3060895115988567,
+              "unconditioned": 0.2500528560419044
+            },
+            "Z": {
+              "position_all": 0.3868415454813711,
+              "position_info": 0.4326894323532373,
+              "unconditioned": 0.3900158311198258
+            }
+          },
+          "seed": 66109,
+          "support": {
+            "shared_nonempty_strata": 15,
+            "source_sites": [
+              2385,
+              1620
+            ],
+            "stratum_unrestricted_upper_bound": 770
+          },
+          "target": "er"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 164,
+              "Acc": 125,
+              "Gen": 30,
+              "Nom": 41,
+              "_": 395
+            },
+            {
+              "Abl": 262,
+              "Acc": 253,
+              "Dat": 37,
+              "Gen": 86,
+              "Nom": 29,
+              "_": 88
+            }
+          ],
+          "decoy": "es",
+          "mode": "all",
+          "paired_unique_lemmas": [
+            91,
+            37
+          ],
+          "pairs": 755,
+          "position_counts": {
+            "word_final": 123,
+            "word_initial": 50
+          },
+          "same_right_context": 196,
+          "scores": {
+            "X": {
+              "position_all": 0.27770712138397985,
+              "position_info": 0.31364080275976786,
+              "unconditioned": 0.2560460733628865
+            },
+            "Z": {
+              "position_all": 0.38533843935852097,
+              "position_info": 0.4351989853637746,
+              "unconditioned": 0.38959272601937
+            }
+          },
+          "seed": 66113,
+          "support": {
+            "shared_nonempty_strata": 15,
+            "source_sites": [
+              2385,
+              1620
+            ],
+            "stratum_unrestricted_upper_bound": 770
+          },
+          "target": "er"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 166,
+              "Acc": 134,
+              "Dat": 1,
+              "Gen": 23,
+              "Nom": 44,
+              "_": 387
+            },
+            {
+              "Abl": 263,
+              "Acc": 237,
+              "Dat": 36,
+              "Gen": 95,
+              "Nom": 31,
+              "_": 93
+            }
+          ],
+          "decoy": "es",
+          "mode": "all",
+          "paired_unique_lemmas": [
+            88,
+            38
+          ],
+          "pairs": 755,
+          "position_counts": {
+            "word_final": 123,
+            "word_initial": 50
+          },
+          "same_right_context": 200,
+          "scores": {
+            "X": {
+              "position_all": 0.27667112818039685,
+              "position_info": 0.3124707580795806,
+              "unconditioned": 0.2540176849500928
+            },
+            "Z": {
+              "position_all": 0.3858766842959795,
+              "position_info": 0.4358068760560426,
+              "unconditioned": 0.3902287101790822
+            }
+          },
+          "seed": 66121,
+          "support": {
+            "shared_nonempty_strata": 15,
+            "source_sites": [
+              2385,
+              1620
+            ],
+            "stratum_unrestricted_upper_bound": 770
+          },
+          "target": "er"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 173,
+              "Acc": 127,
+              "Dat": 2,
+              "Gen": 28,
+              "Nom": 40,
+              "_": 385
+            },
+            {
+              "Abl": 268,
+              "Acc": 238,
+              "Dat": 36,
+              "Gen": 93,
+              "Nom": 30,
+              "_": 90
+            }
+          ],
+          "decoy": "es",
+          "mode": "all",
+          "paired_unique_lemmas": [
+            90,
+            38
+          ],
+          "pairs": 755,
+          "position_counts": {
+            "word_final": 123,
+            "word_initial": 50
+          },
+          "same_right_context": 200,
+          "scores": {
+            "X": {
+              "position_all": 0.26899451481353936,
+              "position_info": 0.30380083572808114,
+              "unconditioned": 0.24729381371161618
+            },
+            "Z": {
+              "position_all": 0.3817532047046415,
+              "position_info": 0.43114984226178665,
+              "unconditioned": 0.3855899938138739
+            }
+          },
+          "seed": 66137,
+          "support": {
+            "shared_nonempty_strata": 15,
+            "source_sites": [
+              2385,
+              1620
+            ],
+            "stratum_unrestricted_upper_bound": 770
+          },
+          "target": "er"
+        }
+      ],
+      "runner_sha256": "9b43067ea66825e5f59b83693d48740893811f756b79e6c9e408689b38663807",
+      "source": {
+        "documents": [
+          "84:42",
+          "84:43",
+          "84:44",
+          "84:46",
+          "84:47",
+          "85:1",
+          "85:10",
+          "85:11",
+          "85:12",
+          "85:13",
+          "85:14",
+          "85:15",
+          "85:16",
+          "85:17",
+          "85:18",
+          "85:19",
+          "85:2",
+          "85:20",
+          "85:21",
+          "85:22",
+          "85:23",
+          "85:24",
+          "85:26",
+          "85:27",
+          "85:28",
+          "85:29",
+          "85:3",
+          "85:30",
+          "85:31",
+          "85:32",
+          "85:33",
+          "85:34",
+          "85:35",
+          "85:36",
+          "85:37",
+          "85:38",
+          "85:39",
+          "85:4",
+          "85:41",
+          "85:42",
+          "85:43",
+          "85:45",
+          "85:46",
+          "85:5",
+          "85:6",
+          "85:7",
+          "85:8",
+          "85:9"
+        ],
+        "normalized_words": 20699,
+        "sentences": 850,
+        "sha256": "040457f2e47265a5676c83ce236e1d625af41eda8f779812841e8ba84e28480c",
+        "surface_tokens_with_punctuation": 24186
+      },
+      "summary": {
+        "er/es/all": {
+          "common_supported_seeds": 5,
+          "methods": {
+            "position_all": {
+              "decoy_accepted": 0,
+              "decoy_wins": 0,
+              "genuine_accepted": 5,
+              "genuine_wins": 5,
+              "supported_seeds": 5,
+              "ties": 0
+            },
+            "position_info": {
+              "decoy_accepted": 0,
+              "decoy_wins": 0,
+              "genuine_accepted": 5,
+              "genuine_wins": 5,
+              "supported_seeds": 5,
+              "ties": 0
+            },
+            "unconditioned": {
+              "decoy_accepted": 0,
+              "decoy_wins": 0,
+              "genuine_accepted": 5,
+              "genuine_wins": 5,
+              "supported_seeds": 5,
+              "ties": 0
+            }
+          },
+          "support_range_by_seed": [
+            753,
+            755
+          ]
+        },
+        "in/is/all": {
+          "common_supported_seeds": 5,
+          "methods": {
+            "position_all": {
+              "decoy_accepted": 0,
+              "decoy_wins": 0,
+              "genuine_accepted": 5,
+              "genuine_wins": 5,
+              "supported_seeds": 5,
+              "ties": 0
+            },
+            "position_info": {
+              "decoy_accepted": 0,
+              "decoy_wins": 0,
+              "genuine_accepted": 5,
+              "genuine_wins": 5,
+              "supported_seeds": 5,
+              "ties": 0
+            },
+            "unconditioned": {
+              "decoy_accepted": 0,
+              "decoy_wins": 0,
+              "genuine_accepted": 5,
+              "genuine_wins": 5,
+              "supported_seeds": 5,
+              "ties": 0
+            }
+          },
+          "support_range_by_seed": [
+            254,
+            254
+          ]
+        }
+      },
+      "thresholds": {
+        "position_all": 0.35384189686685513,
+        "position_info": 0.3760495472978293,
+        "unconditioned": 0.3779334555384405
+      }
+    },
+    "held_apart_evaluation_sha256": "2edb138f74fe1ee641c23254a88c3a9757c8df0e1f60b07eab50d3d312f3892c",
+    "held_apart_evaluation": {
+      "calibration_sha256": "68969fa012a788d66d7128f330226bce1d3f0ec8a8bbb6e07142e0eb73899409",
+      "dev_source": {
+        "documents": [
+          "84:42",
+          "84:43",
+          "84:44",
+          "84:46",
+          "84:47",
+          "85:1",
+          "85:10",
+          "85:11",
+          "85:12",
+          "85:13",
+          "85:14",
+          "85:15",
+          "85:16",
+          "85:17",
+          "85:18",
+          "85:19",
+          "85:2",
+          "85:20",
+          "85:21",
+          "85:22",
+          "85:23",
+          "85:24",
+          "85:26",
+          "85:27",
+          "85:28",
+          "85:29",
+          "85:3",
+          "85:30",
+          "85:31",
+          "85:32",
+          "85:33",
+          "85:34",
+          "85:35",
+          "85:36",
+          "85:37",
+          "85:38",
+          "85:39",
+          "85:4",
+          "85:41",
+          "85:42",
+          "85:43",
+          "85:45",
+          "85:46",
+          "85:5",
+          "85:6",
+          "85:7",
+          "85:8",
+          "85:9"
+        ],
+        "normalized_words": 20699,
+        "sentences": 850,
+        "sha256": "040457f2e47265a5676c83ce236e1d625af41eda8f779812841e8ba84e28480c",
+        "surface_tokens_with_punctuation": 24186
+      },
+      "document_sets_disjoint": true,
+      "negative_controls": [
+        {
+          "acceptances": {
+            "position_all": false,
+            "position_info": false,
+            "unconditioned": false
+          },
+          "scores": {
+            "position_all": 0.4481986975889267,
+            "position_info": 0.8214691725432113,
+            "unconditioned": 0.6505541918908304
+          },
+          "standalone_letter": "q",
+          "target": "us"
+        },
+        {
+          "acceptances": {
+            "position_all": true,
+            "position_info": false,
+            "unconditioned": true
+          },
+          "scores": {
+            "position_all": 0.32627609382680345,
+            "position_info": 0.3945704208455853,
+            "unconditioned": 0.2555269425527806
+          },
+          "standalone_letter": "t",
+          "target": "us"
+        },
+        {
+          "acceptances": {
+            "position_all": true,
+            "position_info": true,
+            "unconditioned": true
+          },
+          "scores": {
+            "position_all": 0.337476723130406,
+            "position_info": 0.3750815484806575,
+            "unconditioned": 0.3193064566109113
+          },
+          "standalone_letter": "r",
+          "target": "us"
+        },
+        {
+          "acceptances": {
+            "position_all": true,
+            "position_info": false,
+            "unconditioned": true
+          },
+          "scores": {
+            "position_all": 0.3479014438612382,
+            "position_info": 0.3857028898793102,
+            "unconditioned": 0.3455519989782924
+          },
+          "standalone_letter": "n",
+          "target": "us"
+        },
+        {
+          "acceptances": {
+            "position_all": false,
+            "position_info": false,
+            "unconditioned": false
+          },
+          "scores": {
+            "position_all": 0.44776423921737385,
+            "position_info": 0.8206728869651765,
+            "unconditioned": 0.7292294533194971
+          },
+          "standalone_letter": "q",
+          "target": "in"
+        },
+        {
+          "acceptances": {
+            "position_all": true,
+            "position_info": false,
+            "unconditioned": true
+          },
+          "scores": {
+            "position_all": 0.3415777050592412,
+            "position_info": 0.4130748816314969,
+            "unconditioned": 0.32270549517172914
+          },
+          "standalone_letter": "t",
+          "target": "in"
+        },
+        {
+          "acceptances": {
+            "position_all": true,
+            "position_info": false,
+            "unconditioned": true
+          },
+          "scores": {
+            "position_all": 0.3421506095955759,
+            "position_info": 0.3802762432629145,
+            "unconditioned": 0.29964777483367333
+          },
+          "standalone_letter": "r",
+          "target": "in"
+        },
+        {
+          "acceptances": {
+            "position_all": false,
+            "position_info": false,
+            "unconditioned": false
+          },
+          "scores": {
+            "position_all": 0.45888238477147353,
+            "position_info": 0.841050487073506,
+            "unconditioned": 0.697423438593924
+          },
+          "standalone_letter": "q",
+          "target": "er"
+        },
+        {
+          "acceptances": {
+            "position_all": true,
+            "position_info": true,
+            "unconditioned": true
+          },
+          "scores": {
+            "position_all": 0.3098987861672543,
+            "position_info": 0.37476510474119384,
+            "unconditioned": 0.2671256749919264
+          },
+          "standalone_letter": "t",
+          "target": "er"
+        },
+        {
+          "acceptances": {
+            "position_all": false,
+            "position_info": false,
+            "unconditioned": true
+          },
+          "scores": {
+            "position_all": 0.42473326050598836,
+            "position_info": 0.47088291496244017,
+            "unconditioned": 0.3547508321986064
+          },
+          "standalone_letter": "n",
+          "target": "er"
+        }
+      ],
+      "new_test_lemmas": 151,
+      "parser_sha256": "2d45395745dd45786b542b3db7d1567c7c65ce69203aaa4126a2ff58091fd679",
+      "plan_sha256": "98550cdedd1cb8a78102a5e44732e4288314395bfcdf4d326e29590fc2ffb35d",
+      "prior_context_sha256": "20797e1a25ee061886235fef5cf4903a9b5d665062c4229465ce52c67462a98a",
+      "rows": [
+        {
+          "case_counts": [
+            {
+              "Abl": 97,
+              "Acc": 47,
+              "Dat": 1,
+              "Gen": 60,
+              "Nom": 38,
+              "_": 70
+            },
+            {
+              "Abl": 16,
+              "Acc": 86,
+              "Dat": 2,
+              "Gen": 60,
+              "Nom": 41,
+              "_": 108
+            }
+          ],
+          "decoy": "is",
+          "mode": "all",
+          "paired_unique_lemmas": [
+            66,
+            50
+          ],
+          "pairs": 313,
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 23
+          },
+          "same_right_context": 52,
+          "scores": {
+            "X": {
+              "position_all": 0.2148341354173788,
+              "position_info": 0.223028472257511,
+              "unconditioned": 0.22498468634405505
+            },
+            "Z": {
+              "position_all": 0.303565741522039,
+              "position_info": 0.315144534316412,
+              "unconditioned": 0.3312164179900683
+            }
+          },
+          "seed": 66103,
+          "support": {
+            "shared_nonempty_strata": 16,
+            "source_sites": [
+              1832,
+              1561
+            ],
+            "stratum_unrestricted_upper_bound": 313
+          },
+          "target": "in"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 101,
+              "Acc": 50,
+              "Dat": 1,
+              "Gen": 54,
+              "Nom": 43,
+              "_": 64
+            },
+            {
+              "Abl": 16,
+              "Acc": 90,
+              "Dat": 2,
+              "Gen": 57,
+              "Nom": 42,
+              "_": 106
+            }
+          ],
+          "decoy": "is",
+          "mode": "all",
+          "paired_unique_lemmas": [
+            61,
+            49
+          ],
+          "pairs": 313,
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 23
+          },
+          "same_right_context": 50,
+          "scores": {
+            "X": {
+              "position_all": 0.2157730321706417,
+              "position_info": 0.22400318099307082,
+              "unconditioned": 0.22550766732748634
+            },
+            "Z": {
+              "position_all": 0.3015615780889981,
+              "position_info": 0.31306392683866135,
+              "unconditioned": 0.3278167837844046
+            }
+          },
+          "seed": 66109,
+          "support": {
+            "shared_nonempty_strata": 16,
+            "source_sites": [
+              1832,
+              1561
+            ],
+            "stratum_unrestricted_upper_bound": 313
+          },
+          "target": "in"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 95,
+              "Acc": 56,
+              "Dat": 2,
+              "Gen": 53,
+              "Nom": 48,
+              "_": 59
+            },
+            {
+              "Abl": 17,
+              "Acc": 90,
+              "Dat": 2,
+              "Gen": 57,
+              "Nom": 44,
+              "_": 103
+            }
+          ],
+          "decoy": "is",
+          "mode": "all",
+          "paired_unique_lemmas": [
+            60,
+            50
+          ],
+          "pairs": 313,
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 23
+          },
+          "same_right_context": 44,
+          "scores": {
+            "X": {
+              "position_all": 0.22360805084265983,
+              "position_info": 0.23213704780680772,
+              "unconditioned": 0.23175101011119587
+            },
+            "Z": {
+              "position_all": 0.29692560890696934,
+              "position_info": 0.3082511296447144,
+              "unconditioned": 0.32357139403726887
+            }
+          },
+          "seed": 66113,
+          "support": {
+            "shared_nonempty_strata": 16,
+            "source_sites": [
+              1832,
+              1561
+            ],
+            "stratum_unrestricted_upper_bound": 313
+          },
+          "target": "in"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 97,
+              "Acc": 51,
+              "Dat": 1,
+              "Gen": 53,
+              "Nom": 43,
+              "_": 68
+            },
+            {
+              "Abl": 18,
+              "Acc": 90,
+              "Dat": 2,
+              "Gen": 58,
+              "Nom": 42,
+              "_": 103
+            }
+          ],
+          "decoy": "is",
+          "mode": "all",
+          "paired_unique_lemmas": [
+            60,
+            48
+          ],
+          "pairs": 313,
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 23
+          },
+          "same_right_context": 51,
+          "scores": {
+            "X": {
+              "position_all": 0.21093228948293283,
+              "position_info": 0.218977799695383,
+              "unconditioned": 0.23099245645186553
+            },
+            "Z": {
+              "position_all": 0.30238950813729987,
+              "position_info": 0.3139234363083743,
+              "unconditioned": 0.3298924312010568
+            }
+          },
+          "seed": 66121,
+          "support": {
+            "shared_nonempty_strata": 16,
+            "source_sites": [
+              1832,
+              1561
+            ],
+            "stratum_unrestricted_upper_bound": 313
+          },
+          "target": "in"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 102,
+              "Acc": 46,
+              "Dat": 1,
+              "Gen": 58,
+              "Nom": 46,
+              "_": 59
+            },
+            {
+              "Abl": 19,
+              "Acc": 87,
+              "Dat": 2,
+              "Gen": 57,
+              "Nom": 43,
+              "_": 104
+            }
+          ],
+          "decoy": "is",
+          "mode": "all",
+          "paired_unique_lemmas": [
+            69,
+            52
+          ],
+          "pairs": 312,
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 23
+          },
+          "same_right_context": 48,
+          "scores": {
+            "X": {
+              "position_all": 0.20413554355015429,
+              "position_info": 0.21194771909367102,
+              "unconditioned": 0.2221163694551505
+            },
+            "Z": {
+              "position_all": 0.30489599579662935,
+              "position_info": 0.31656422858085975,
+              "unconditioned": 0.33340697286377485
+            }
+          },
+          "seed": 66137,
+          "support": {
+            "shared_nonempty_strata": 16,
+            "source_sites": [
+              1832,
+              1561
+            ],
+            "stratum_unrestricted_upper_bound": 313
+          },
+          "target": "in"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 216,
+              "Acc": 122,
+              "Dat": 5,
+              "Gen": 50,
+              "Nom": 54,
+              "_": 337
+            },
+            {
+              "Abl": 339,
+              "Acc": 244,
+              "Dat": 31,
+              "Gen": 84,
+              "Nom": 32,
+              "_": 54
+            }
+          ],
+          "decoy": "es",
+          "mode": "all",
+          "paired_unique_lemmas": [
+            99,
+            36
+          ],
+          "pairs": 784,
+          "position_counts": {
+            "word_final": 134,
+            "word_initial": 23
+          },
+          "same_right_context": 203,
+          "scores": {
+            "X": {
+              "position_all": 0.295060157805417,
+              "position_info": 0.3278910896094216,
+              "unconditioned": 0.27643361554509005
+            },
+            "Z": {
+              "position_all": 0.40019636151575205,
+              "position_info": 0.44472565191828434,
+              "unconditioned": 0.40926237258715503
+            }
+          },
+          "seed": 66103,
+          "support": {
+            "shared_nonempty_strata": 12,
+            "source_sites": [
+              2437,
+              1733
+            ],
+            "stratum_unrestricted_upper_bound": 797
+          },
+          "target": "er"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 215,
+              "Acc": 119,
+              "Dat": 7,
+              "Gen": 47,
+              "Nom": 54,
+              "_": 351
+            },
+            {
+              "Abl": 340,
+              "Acc": 251,
+              "Dat": 29,
+              "Gen": 83,
+              "Nom": 31,
+              "_": 59
+            }
+          ],
+          "decoy": "es",
+          "mode": "all",
+          "paired_unique_lemmas": [
+            100,
+            37
+          ],
+          "pairs": 793,
+          "position_counts": {
+            "word_final": 133,
+            "word_initial": 23
+          },
+          "same_right_context": 203,
+          "scores": {
+            "X": {
+              "position_all": 0.2896338006967691,
+              "position_info": 0.3212302153182348,
+              "unconditioned": 0.2687239656853472
+            },
+            "Z": {
+              "position_all": 0.3870329293325972,
+              "position_info": 0.4292547034416078,
+              "unconditioned": 0.3951976954159022
+            }
+          },
+          "seed": 66109,
+          "support": {
+            "shared_nonempty_strata": 12,
+            "source_sites": [
+              2437,
+              1733
+            ],
+            "stratum_unrestricted_upper_bound": 797
+          },
+          "target": "er"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 202,
+              "Acc": 127,
+              "Dat": 6,
+              "Gen": 52,
+              "Nom": 55,
+              "_": 342
+            },
+            {
+              "Abl": 340,
+              "Acc": 236,
+              "Dat": 38,
+              "Gen": 88,
+              "Nom": 28,
+              "_": 54
+            }
+          ],
+          "decoy": "es",
+          "mode": "all",
+          "paired_unique_lemmas": [
+            99,
+            36
+          ],
+          "pairs": 784,
+          "position_counts": {
+            "word_final": 134,
+            "word_initial": 23
+          },
+          "same_right_context": 199,
+          "scores": {
+            "X": {
+              "position_all": 0.2963431005194194,
+              "position_info": 0.3293167835680012,
+              "unconditioned": 0.2760976103334429
+            },
+            "Z": {
+              "position_all": 0.39860341989945114,
+              "position_info": 0.44295546591235957,
+              "unconditioned": 0.40738775117383264
+            }
+          },
+          "seed": 66113,
+          "support": {
+            "shared_nonempty_strata": 12,
+            "source_sites": [
+              2437,
+              1733
+            ],
+            "stratum_unrestricted_upper_bound": 797
+          },
+          "target": "er"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 210,
+              "Acc": 122,
+              "Dat": 7,
+              "Gen": 50,
+              "Nom": 51,
+              "_": 354
+            },
+            {
+              "Abl": 341,
+              "Acc": 245,
+              "Dat": 34,
+              "Gen": 82,
+              "Nom": 34,
+              "_": 58
+            }
+          ],
+          "decoy": "es",
+          "mode": "all",
+          "paired_unique_lemmas": [
+            101,
+            40
+          ],
+          "pairs": 794,
+          "position_counts": {
+            "word_final": 134,
+            "word_initial": 23
+          },
+          "same_right_context": 200,
+          "scores": {
+            "X": {
+              "position_all": 0.29077670232487457,
+              "position_info": 0.322678828296227,
+              "unconditioned": 0.2680184461238892
+            },
+            "Z": {
+              "position_all": 0.38892639417881864,
+              "position_info": 0.43159686509850737,
+              "unconditioned": 0.3973045907541142
+            }
+          },
+          "seed": 66121,
+          "support": {
+            "shared_nonempty_strata": 12,
+            "source_sites": [
+              2437,
+              1733
+            ],
+            "stratum_unrestricted_upper_bound": 797
+          },
+          "target": "er"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 207,
+              "Acc": 129,
+              "Dat": 7,
+              "Gen": 46,
+              "Nom": 51,
+              "_": 353
+            },
+            {
+              "Abl": 339,
+              "Acc": 243,
+              "Dat": 30,
+              "Gen": 91,
+              "Nom": 30,
+              "_": 60
+            }
+          ],
+          "decoy": "es",
+          "mode": "all",
+          "paired_unique_lemmas": [
+            100,
+            37
+          ],
+          "pairs": 793,
+          "position_counts": {
+            "word_final": 134,
+            "word_initial": 23
+          },
+          "same_right_context": 201,
+          "scores": {
+            "X": {
+              "position_all": 0.2893764784311657,
+              "position_info": 0.32116941552962125,
+              "unconditioned": 0.26730573276989766
+            },
+            "Z": {
+              "position_all": 0.38911210319453693,
+              "position_info": 0.4318626981571278,
+              "unconditioned": 0.3977864261264071
+            }
+          },
+          "seed": 66137,
+          "support": {
+            "shared_nonempty_strata": 12,
+            "source_sites": [
+              2437,
+              1733
+            ],
+            "stratum_unrestricted_upper_bound": 797
+          },
+          "target": "er"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 5,
+              "Acc": 46,
+              "Gen": 57,
+              "Nom": 519,
+              "_": 30
+            },
+            {
+              "Abl": 26,
+              "Acc": 333,
+              "Gen": 27,
+              "Nom": 148,
+              "_": 123
+            }
+          ],
+          "decoy": "um",
+          "mode": "all",
+          "paired_unique_lemmas": [
+            84,
+            90
+          ],
+          "pairs": 657,
+          "position_counts": {
+            "word_final": 625,
+            "word_initial": 7
+          },
+          "same_right_context": 626,
+          "scores": {
+            "X": {
+              "position_all": 0.2145218219898765,
+              "position_info": 0.41331623767550985,
+              "unconditioned": 0.3743376418633456
+            },
+            "Z": {
+              "position_all": 0.21872722287916288,
+              "position_info": 0.4214187256058945,
+              "unconditioned": 0.3862546511410104
+            }
+          },
+          "seed": 66103,
+          "support": {
+            "shared_nonempty_strata": 16,
+            "source_sites": [
+              1979,
+              1057
+            ],
+            "stratum_unrestricted_upper_bound": 658
+          },
+          "target": "us"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 7,
+              "Acc": 45,
+              "Gen": 68,
+              "Nom": 513,
+              "_": 25
+            },
+            {
+              "Abl": 26,
+              "Acc": 339,
+              "Gen": 25,
+              "Nom": 147,
+              "_": 121
+            }
+          ],
+          "decoy": "um",
+          "mode": "all",
+          "paired_unique_lemmas": [
+            87,
+            88
+          ],
+          "pairs": 658,
+          "position_counts": {
+            "word_final": 626,
+            "word_initial": 7
+          },
+          "same_right_context": 626,
+          "scores": {
+            "X": {
+              "position_all": 0.21486963240673598,
+              "position_info": 0.4140094234952629,
+              "unconditioned": 0.373213857735037
+            },
+            "Z": {
+              "position_all": 0.21910921955462573,
+              "position_info": 0.42217823269968885,
+              "unconditioned": 0.38663084442384166
+            }
+          },
+          "seed": 66109,
+          "support": {
+            "shared_nonempty_strata": 16,
+            "source_sites": [
+              1979,
+              1057
+            ],
+            "stratum_unrestricted_upper_bound": 658
+          },
+          "target": "us"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 5,
+              "Acc": 46,
+              "Gen": 66,
+              "Nom": 517,
+              "_": 23
+            },
+            {
+              "Abl": 29,
+              "Acc": 326,
+              "Gen": 32,
+              "Nom": 146,
+              "_": 124
+            }
+          ],
+          "decoy": "um",
+          "mode": "all",
+          "paired_unique_lemmas": [
+            86,
+            92
+          ],
+          "pairs": 657,
+          "position_counts": {
+            "word_final": 626,
+            "word_initial": 7
+          },
+          "same_right_context": 626,
+          "scores": {
+            "X": {
+              "position_all": 0.21468595077626795,
+              "position_info": 0.4142398521586139,
+              "unconditioned": 0.3752189581913284
+            },
+            "Z": {
+              "position_all": 0.21880060190440595,
+              "position_info": 0.4221791349521137,
+              "unconditioned": 0.38894232683610386
+            }
+          },
+          "seed": 66113,
+          "support": {
+            "shared_nonempty_strata": 16,
+            "source_sites": [
+              1979,
+              1057
+            ],
+            "stratum_unrestricted_upper_bound": 658
+          },
+          "target": "us"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 7,
+              "Acc": 41,
+              "Gen": 67,
+              "Nom": 516,
+              "_": 27
+            },
+            {
+              "Abl": 27,
+              "Acc": 333,
+              "Gen": 28,
+              "Nom": 148,
+              "_": 122
+            }
+          ],
+          "decoy": "um",
+          "mode": "all",
+          "paired_unique_lemmas": [
+            81,
+            91
+          ],
+          "pairs": 658,
+          "position_counts": {
+            "word_final": 626,
+            "word_initial": 7
+          },
+          "same_right_context": 627,
+          "scores": {
+            "X": {
+              "position_all": 0.2148453398747499,
+              "position_info": 0.41396261680112867,
+              "unconditioned": 0.37179604883723955
+            },
+            "Z": {
+              "position_all": 0.21949965453984324,
+              "position_info": 0.4229305203139586,
+              "unconditioned": 0.38671872310313704
+            }
+          },
+          "seed": 66121,
+          "support": {
+            "shared_nonempty_strata": 16,
+            "source_sites": [
+              1979,
+              1057
+            ],
+            "stratum_unrestricted_upper_bound": 658
+          },
+          "target": "us"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 6,
+              "Acc": 43,
+              "Gen": 63,
+              "Nom": 516,
+              "_": 30
+            },
+            {
+              "Abl": 29,
+              "Acc": 340,
+              "Gen": 29,
+              "Nom": 143,
+              "_": 117
+            }
+          ],
+          "decoy": "um",
+          "mode": "all",
+          "paired_unique_lemmas": [
+            89,
+            97
+          ],
+          "pairs": 658,
+          "position_counts": {
+            "word_final": 626,
+            "word_initial": 7
+          },
+          "same_right_context": 626,
+          "scores": {
+            "X": {
+              "position_all": 0.21491017878932012,
+              "position_info": 0.4140875480040194,
+              "unconditioned": 0.3747834069030518
+            },
+            "Z": {
+              "position_all": 0.21943239980139567,
+              "position_info": 0.4228009343171841,
+              "unconditioned": 0.3866760690351756
+            }
+          },
+          "seed": 66137,
+          "support": {
+            "shared_nonempty_strata": 16,
+            "source_sites": [
+              1979,
+              1057
+            ],
+            "stratum_unrestricted_upper_bound": 658
+          },
+          "target": "us"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 2,
+              "Acc": 33,
+              "Gen": 61,
+              "Nom": 511,
+              "_": 19
+            },
+            {
+              "Abl": 25,
+              "Acc": 329,
+              "Gen": 25,
+              "Nom": 131,
+              "_": 116
+            }
+          ],
+          "decoy": "um",
+          "mode": "terminal",
+          "paired_unique_lemmas": [
+            75,
+            81
+          ],
+          "pairs": 626,
+          "position_counts": {
+            "word_final": 626,
+            "word_initial": 0
+          },
+          "same_right_context": 626,
+          "scores": {
+            "X": {
+              "position_all": 0.20491328329162797,
+              "position_info": 0.40982656658325595,
+              "unconditioned": 0.4443568405556338
+            },
+            "Z": {
+              "position_all": 0.20491328329162797,
+              "position_info": 0.40982656658325595,
+              "unconditioned": 0.4443568405556338
+            }
+          },
+          "seed": 66103,
+          "support": {
+            "shared_nonempty_strata": 10,
+            "source_sites": [
+              1772,
+              943
+            ],
+            "stratum_unrestricted_upper_bound": 626
+          },
+          "target": "us"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 2,
+              "Acc": 32,
+              "Gen": 63,
+              "Nom": 514,
+              "_": 15
+            },
+            {
+              "Abl": 23,
+              "Acc": 329,
+              "Gen": 28,
+              "Nom": 129,
+              "_": 117
+            }
+          ],
+          "decoy": "um",
+          "mode": "terminal",
+          "paired_unique_lemmas": [
+            75,
+            83
+          ],
+          "pairs": 626,
+          "position_counts": {
+            "word_final": 626,
+            "word_initial": 0
+          },
+          "same_right_context": 626,
+          "scores": {
+            "X": {
+              "position_all": 0.20491328329162797,
+              "position_info": 0.40982656658325595,
+              "unconditioned": 0.4443568405556338
+            },
+            "Z": {
+              "position_all": 0.20491328329162797,
+              "position_info": 0.40982656658325595,
+              "unconditioned": 0.4443568405556338
+            }
+          },
+          "seed": 66109,
+          "support": {
+            "shared_nonempty_strata": 10,
+            "source_sites": [
+              1772,
+              943
+            ],
+            "stratum_unrestricted_upper_bound": 626
+          },
+          "target": "us"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 2,
+              "Acc": 39,
+              "Gen": 52,
+              "Nom": 515,
+              "_": 18
+            },
+            {
+              "Abl": 22,
+              "Acc": 343,
+              "Gen": 19,
+              "Nom": 127,
+              "_": 115
+            }
+          ],
+          "decoy": "um",
+          "mode": "terminal",
+          "paired_unique_lemmas": [
+            81,
+            84
+          ],
+          "pairs": 626,
+          "position_counts": {
+            "word_final": 626,
+            "word_initial": 0
+          },
+          "same_right_context": 626,
+          "scores": {
+            "X": {
+              "position_all": 0.20491328329162797,
+              "position_info": 0.40982656658325595,
+              "unconditioned": 0.4443568405556338
+            },
+            "Z": {
+              "position_all": 0.20491328329162797,
+              "position_info": 0.40982656658325595,
+              "unconditioned": 0.4443568405556338
+            }
+          },
+          "seed": 66113,
+          "support": {
+            "shared_nonempty_strata": 10,
+            "source_sites": [
+              1772,
+              943
+            ],
+            "stratum_unrestricted_upper_bound": 626
+          },
+          "target": "us"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 3,
+              "Acc": 33,
+              "Gen": 55,
+              "Nom": 518,
+              "_": 17
+            },
+            {
+              "Abl": 22,
+              "Acc": 330,
+              "Gen": 27,
+              "Nom": 130,
+              "_": 117
+            }
+          ],
+          "decoy": "um",
+          "mode": "terminal",
+          "paired_unique_lemmas": [
+            78,
+            83
+          ],
+          "pairs": 626,
+          "position_counts": {
+            "word_final": 626,
+            "word_initial": 0
+          },
+          "same_right_context": 626,
+          "scores": {
+            "X": {
+              "position_all": 0.20491328329162797,
+              "position_info": 0.40982656658325595,
+              "unconditioned": 0.4443568405556338
+            },
+            "Z": {
+              "position_all": 0.20491328329162797,
+              "position_info": 0.40982656658325595,
+              "unconditioned": 0.4443568405556338
+            }
+          },
+          "seed": 66121,
+          "support": {
+            "shared_nonempty_strata": 10,
+            "source_sites": [
+              1772,
+              943
+            ],
+            "stratum_unrestricted_upper_bound": 626
+          },
+          "target": "us"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 2,
+              "Acc": 32,
+              "Gen": 59,
+              "Nom": 517,
+              "_": 16
+            },
+            {
+              "Abl": 26,
+              "Acc": 331,
+              "Gen": 23,
+              "Nom": 130,
+              "_": 116
+            }
+          ],
+          "decoy": "um",
+          "mode": "terminal",
+          "paired_unique_lemmas": [
+            78,
+            83
+          ],
+          "pairs": 626,
+          "position_counts": {
+            "word_final": 626,
+            "word_initial": 0
+          },
+          "same_right_context": 626,
+          "scores": {
+            "X": {
+              "position_all": 0.20491328329162797,
+              "position_info": 0.40982656658325595,
+              "unconditioned": 0.4443568405556338
+            },
+            "Z": {
+              "position_all": 0.20491328329162797,
+              "position_info": 0.40982656658325595,
+              "unconditioned": 0.4443568405556338
+            }
+          },
+          "seed": 66137,
+          "support": {
+            "shared_nonempty_strata": 10,
+            "source_sites": [
+              1772,
+              943
+            ],
+            "stratum_unrestricted_upper_bound": 626
+          },
+          "target": "us"
+        },
+        {
+          "case_counts": [
+            {
+              "Nom": 75
+            },
+            {
+              "Acc": 75
+            }
+          ],
+          "decoy": "um",
+          "mode": "terminal_same_stem_case",
+          "paired_unique_lemmas": [
+            9,
+            9
+          ],
+          "pairs": 75,
+          "position_counts": {
+            "word_final": 75,
+            "word_initial": 0
+          },
+          "same_right_context": 75,
+          "scores": {
+            "X": {
+              "position_all": 0.25353311498741277,
+              "position_info": 0.5070662299748255,
+              "unconditioned": 0.47778127633028683
+            },
+            "Z": {
+              "position_all": 0.25353311498741277,
+              "position_info": 0.5070662299748255,
+              "unconditioned": 0.47778127633028683
+            }
+          },
+          "seed": 66103,
+          "support": {
+            "shared_nonempty_strata": 9,
+            "source_sites": [
+              625,
+              164
+            ],
+            "stratum_unrestricted_upper_bound": 75
+          },
+          "target": "us"
+        },
+        {
+          "case_counts": [
+            {
+              "Nom": 75
+            },
+            {
+              "Acc": 75
+            }
+          ],
+          "decoy": "um",
+          "mode": "terminal_same_stem_case",
+          "paired_unique_lemmas": [
+            9,
+            9
+          ],
+          "pairs": 75,
+          "position_counts": {
+            "word_final": 75,
+            "word_initial": 0
+          },
+          "same_right_context": 75,
+          "scores": {
+            "X": {
+              "position_all": 0.25353311498741277,
+              "position_info": 0.5070662299748255,
+              "unconditioned": 0.47778127633028683
+            },
+            "Z": {
+              "position_all": 0.25353311498741277,
+              "position_info": 0.5070662299748255,
+              "unconditioned": 0.47778127633028683
+            }
+          },
+          "seed": 66109,
+          "support": {
+            "shared_nonempty_strata": 9,
+            "source_sites": [
+              625,
+              164
+            ],
+            "stratum_unrestricted_upper_bound": 75
+          },
+          "target": "us"
+        },
+        {
+          "case_counts": [
+            {
+              "Nom": 75
+            },
+            {
+              "Acc": 75
+            }
+          ],
+          "decoy": "um",
+          "mode": "terminal_same_stem_case",
+          "paired_unique_lemmas": [
+            9,
+            9
+          ],
+          "pairs": 75,
+          "position_counts": {
+            "word_final": 75,
+            "word_initial": 0
+          },
+          "same_right_context": 75,
+          "scores": {
+            "X": {
+              "position_all": 0.25353311498741277,
+              "position_info": 0.5070662299748255,
+              "unconditioned": 0.47778127633028683
+            },
+            "Z": {
+              "position_all": 0.25353311498741277,
+              "position_info": 0.5070662299748255,
+              "unconditioned": 0.47778127633028683
+            }
+          },
+          "seed": 66113,
+          "support": {
+            "shared_nonempty_strata": 9,
+            "source_sites": [
+              625,
+              164
+            ],
+            "stratum_unrestricted_upper_bound": 75
+          },
+          "target": "us"
+        },
+        {
+          "case_counts": [
+            {
+              "Nom": 75
+            },
+            {
+              "Acc": 75
+            }
+          ],
+          "decoy": "um",
+          "mode": "terminal_same_stem_case",
+          "paired_unique_lemmas": [
+            9,
+            9
+          ],
+          "pairs": 75,
+          "position_counts": {
+            "word_final": 75,
+            "word_initial": 0
+          },
+          "same_right_context": 75,
+          "scores": {
+            "X": {
+              "position_all": 0.25353311498741277,
+              "position_info": 0.5070662299748255,
+              "unconditioned": 0.47778127633028683
+            },
+            "Z": {
+              "position_all": 0.25353311498741277,
+              "position_info": 0.5070662299748255,
+              "unconditioned": 0.47778127633028683
+            }
+          },
+          "seed": 66121,
+          "support": {
+            "shared_nonempty_strata": 9,
+            "source_sites": [
+              625,
+              164
+            ],
+            "stratum_unrestricted_upper_bound": 75
+          },
+          "target": "us"
+        },
+        {
+          "case_counts": [
+            {
+              "Nom": 75
+            },
+            {
+              "Acc": 75
+            }
+          ],
+          "decoy": "um",
+          "mode": "terminal_same_stem_case",
+          "paired_unique_lemmas": [
+            9,
+            9
+          ],
+          "pairs": 75,
+          "position_counts": {
+            "word_final": 75,
+            "word_initial": 0
+          },
+          "same_right_context": 75,
+          "scores": {
+            "X": {
+              "position_all": 0.25353311498741277,
+              "position_info": 0.5070662299748255,
+              "unconditioned": 0.47778127633028683
+            },
+            "Z": {
+              "position_all": 0.25353311498741277,
+              "position_info": 0.5070662299748255,
+              "unconditioned": 0.47778127633028683
+            }
+          },
+          "seed": 66137,
+          "support": {
+            "shared_nonempty_strata": 9,
+            "source_sites": [
+              625,
+              164
+            ],
+            "stratum_unrestricted_upper_bound": 75
+          },
+          "target": "us"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 5,
+              "Acc": 13,
+              "Gen": 4,
+              "Nom": 1,
+              "_": 9
+            },
+            {
+              "Abl": 5,
+              "Gen": 4,
+              "Nom": 18,
+              "_": 5
+            }
+          ],
+          "decoy": "um",
+          "mode": "internal",
+          "paired_unique_lemmas": [
+            10,
+            11
+          ],
+          "pairs": 32,
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 7
+          },
+          "same_right_context": 0,
+          "scores": {
+            "X": {
+              "position_all": null,
+              "position_info": null,
+              "unconditioned": null
+            },
+            "Z": {
+              "position_all": null,
+              "position_info": null,
+              "unconditioned": null
+            }
+          },
+          "seed": 66103,
+          "support": {
+            "shared_nonempty_strata": 6,
+            "source_sites": [
+              207,
+              114
+            ],
+            "stratum_unrestricted_upper_bound": 32
+          },
+          "target": "us"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 5,
+              "Acc": 12,
+              "Gen": 3,
+              "Nom": 1,
+              "_": 11
+            },
+            {
+              "Abl": 4,
+              "Acc": 1,
+              "Gen": 4,
+              "Nom": 18,
+              "_": 5
+            }
+          ],
+          "decoy": "um",
+          "mode": "internal",
+          "paired_unique_lemmas": [
+            9,
+            12
+          ],
+          "pairs": 32,
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 7
+          },
+          "same_right_context": 1,
+          "scores": {
+            "X": {
+              "position_all": null,
+              "position_info": null,
+              "unconditioned": null
+            },
+            "Z": {
+              "position_all": null,
+              "position_info": null,
+              "unconditioned": null
+            }
+          },
+          "seed": 66109,
+          "support": {
+            "shared_nonempty_strata": 6,
+            "source_sites": [
+              207,
+              114
+            ],
+            "stratum_unrestricted_upper_bound": 32
+          },
+          "target": "us"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 5,
+              "Acc": 12,
+              "Gen": 6,
+              "Nom": 1,
+              "_": 8
+            },
+            {
+              "Abl": 4,
+              "Acc": 1,
+              "Gen": 4,
+              "Nom": 18,
+              "_": 5
+            }
+          ],
+          "decoy": "um",
+          "mode": "internal",
+          "paired_unique_lemmas": [
+            10,
+            12
+          ],
+          "pairs": 32,
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 7
+          },
+          "same_right_context": 0,
+          "scores": {
+            "X": {
+              "position_all": null,
+              "position_info": null,
+              "unconditioned": null
+            },
+            "Z": {
+              "position_all": null,
+              "position_info": null,
+              "unconditioned": null
+            }
+          },
+          "seed": 66113,
+          "support": {
+            "shared_nonempty_strata": 6,
+            "source_sites": [
+              207,
+              114
+            ],
+            "stratum_unrestricted_upper_bound": 32
+          },
+          "target": "us"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 5,
+              "Acc": 11,
+              "Gen": 5,
+              "Nom": 1,
+              "_": 10
+            },
+            {
+              "Abl": 3,
+              "Gen": 4,
+              "Nom": 20,
+              "_": 5
+            }
+          ],
+          "decoy": "um",
+          "mode": "internal",
+          "paired_unique_lemmas": [
+            9,
+            10
+          ],
+          "pairs": 32,
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 7
+          },
+          "same_right_context": 1,
+          "scores": {
+            "X": {
+              "position_all": null,
+              "position_info": null,
+              "unconditioned": null
+            },
+            "Z": {
+              "position_all": null,
+              "position_info": null,
+              "unconditioned": null
+            }
+          },
+          "seed": 66121,
+          "support": {
+            "shared_nonempty_strata": 6,
+            "source_sites": [
+              207,
+              114
+            ],
+            "stratum_unrestricted_upper_bound": 32
+          },
+          "target": "us"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 5,
+              "Acc": 12,
+              "Gen": 3,
+              "Nom": 1,
+              "_": 11
+            },
+            {
+              "Abl": 4,
+              "Acc": 1,
+              "Gen": 4,
+              "Nom": 18,
+              "_": 5
+            }
+          ],
+          "decoy": "um",
+          "mode": "internal",
+          "paired_unique_lemmas": [
+            9,
+            11
+          ],
+          "pairs": 32,
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 7
+          },
+          "same_right_context": 1,
+          "scores": {
+            "X": {
+              "position_all": null,
+              "position_info": null,
+              "unconditioned": null
+            },
+            "Z": {
+              "position_all": null,
+              "position_info": null,
+              "unconditioned": null
+            }
+          },
+          "seed": 66137,
+          "support": {
+            "shared_nonempty_strata": 6,
+            "source_sites": [
+              207,
+              114
+            ],
+            "stratum_unrestricted_upper_bound": 32
+          },
+          "target": "us"
+        },
+        {
+          "case_counts": [
+            {
+              "Acc": 1,
+              "_": 2
+            },
+            {
+              "Acc": 1,
+              "_": 2
+            }
+          ],
+          "decoy": "um",
+          "mode": "internal_same_morph",
+          "paired_unique_lemmas": [
+            3,
+            3
+          ],
+          "pairs": 3,
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 1
+          },
+          "same_right_context": 1,
+          "scores": {
+            "X": {
+              "position_all": null,
+              "position_info": null,
+              "unconditioned": null
+            },
+            "Z": {
+              "position_all": null,
+              "position_info": null,
+              "unconditioned": null
+            }
+          },
+          "seed": 66103,
+          "support": {
+            "shared_nonempty_strata": 3,
+            "source_sites": [
+              206,
+              114
+            ],
+            "stratum_unrestricted_upper_bound": 3
+          },
+          "target": "us"
+        },
+        {
+          "case_counts": [
+            {
+              "Acc": 1,
+              "_": 2
+            },
+            {
+              "Acc": 1,
+              "_": 2
+            }
+          ],
+          "decoy": "um",
+          "mode": "internal_same_morph",
+          "paired_unique_lemmas": [
+            3,
+            3
+          ],
+          "pairs": 3,
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 1
+          },
+          "same_right_context": 1,
+          "scores": {
+            "X": {
+              "position_all": null,
+              "position_info": null,
+              "unconditioned": null
+            },
+            "Z": {
+              "position_all": null,
+              "position_info": null,
+              "unconditioned": null
+            }
+          },
+          "seed": 66109,
+          "support": {
+            "shared_nonempty_strata": 3,
+            "source_sites": [
+              206,
+              114
+            ],
+            "stratum_unrestricted_upper_bound": 3
+          },
+          "target": "us"
+        },
+        {
+          "case_counts": [
+            {
+              "Acc": 1,
+              "_": 2
+            },
+            {
+              "Acc": 1,
+              "_": 2
+            }
+          ],
+          "decoy": "um",
+          "mode": "internal_same_morph",
+          "paired_unique_lemmas": [
+            3,
+            3
+          ],
+          "pairs": 3,
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 1
+          },
+          "same_right_context": 1,
+          "scores": {
+            "X": {
+              "position_all": null,
+              "position_info": null,
+              "unconditioned": null
+            },
+            "Z": {
+              "position_all": null,
+              "position_info": null,
+              "unconditioned": null
+            }
+          },
+          "seed": 66113,
+          "support": {
+            "shared_nonempty_strata": 3,
+            "source_sites": [
+              206,
+              114
+            ],
+            "stratum_unrestricted_upper_bound": 3
+          },
+          "target": "us"
+        },
+        {
+          "case_counts": [
+            {
+              "Acc": 1,
+              "_": 2
+            },
+            {
+              "Acc": 1,
+              "_": 2
+            }
+          ],
+          "decoy": "um",
+          "mode": "internal_same_morph",
+          "paired_unique_lemmas": [
+            3,
+            3
+          ],
+          "pairs": 3,
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 1
+          },
+          "same_right_context": 1,
+          "scores": {
+            "X": {
+              "position_all": null,
+              "position_info": null,
+              "unconditioned": null
+            },
+            "Z": {
+              "position_all": null,
+              "position_info": null,
+              "unconditioned": null
+            }
+          },
+          "seed": 66121,
+          "support": {
+            "shared_nonempty_strata": 3,
+            "source_sites": [
+              206,
+              114
+            ],
+            "stratum_unrestricted_upper_bound": 3
+          },
+          "target": "us"
+        },
+        {
+          "case_counts": [
+            {
+              "Acc": 1,
+              "_": 2
+            },
+            {
+              "Acc": 1,
+              "_": 2
+            }
+          ],
+          "decoy": "um",
+          "mode": "internal_same_morph",
+          "paired_unique_lemmas": [
+            3,
+            3
+          ],
+          "pairs": 3,
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 1
+          },
+          "same_right_context": 1,
+          "scores": {
+            "X": {
+              "position_all": null,
+              "position_info": null,
+              "unconditioned": null
+            },
+            "Z": {
+              "position_all": null,
+              "position_info": null,
+              "unconditioned": null
+            }
+          },
+          "seed": 66137,
+          "support": {
+            "shared_nonempty_strata": 3,
+            "source_sites": [
+              206,
+              114
+            ],
+            "stratum_unrestricted_upper_bound": 3
+          },
+          "target": "us"
+        },
+        {
+          "case_counts": [
+            {},
+            {}
+          ],
+          "decoy": "um",
+          "mode": "internal_new_lemma",
+          "paired_unique_lemmas": [
+            0,
+            0
+          ],
+          "pairs": 0,
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 0
+          },
+          "same_right_context": 0,
+          "scores": {
+            "X": {
+              "position_all": null,
+              "position_info": null,
+              "unconditioned": null
+            },
+            "Z": {
+              "position_all": null,
+              "position_info": null,
+              "unconditioned": null
+            }
+          },
+          "seed": 66103,
+          "support": {
+            "shared_nonempty_strata": 0,
+            "source_sites": [
+              3,
+              2
+            ],
+            "stratum_unrestricted_upper_bound": 0
+          },
+          "target": "us"
+        },
+        {
+          "case_counts": [
+            {},
+            {}
+          ],
+          "decoy": "um",
+          "mode": "internal_new_lemma",
+          "paired_unique_lemmas": [
+            0,
+            0
+          ],
+          "pairs": 0,
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 0
+          },
+          "same_right_context": 0,
+          "scores": {
+            "X": {
+              "position_all": null,
+              "position_info": null,
+              "unconditioned": null
+            },
+            "Z": {
+              "position_all": null,
+              "position_info": null,
+              "unconditioned": null
+            }
+          },
+          "seed": 66109,
+          "support": {
+            "shared_nonempty_strata": 0,
+            "source_sites": [
+              3,
+              2
+            ],
+            "stratum_unrestricted_upper_bound": 0
+          },
+          "target": "us"
+        },
+        {
+          "case_counts": [
+            {},
+            {}
+          ],
+          "decoy": "um",
+          "mode": "internal_new_lemma",
+          "paired_unique_lemmas": [
+            0,
+            0
+          ],
+          "pairs": 0,
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 0
+          },
+          "same_right_context": 0,
+          "scores": {
+            "X": {
+              "position_all": null,
+              "position_info": null,
+              "unconditioned": null
+            },
+            "Z": {
+              "position_all": null,
+              "position_info": null,
+              "unconditioned": null
+            }
+          },
+          "seed": 66113,
+          "support": {
+            "shared_nonempty_strata": 0,
+            "source_sites": [
+              3,
+              2
+            ],
+            "stratum_unrestricted_upper_bound": 0
+          },
+          "target": "us"
+        },
+        {
+          "case_counts": [
+            {},
+            {}
+          ],
+          "decoy": "um",
+          "mode": "internal_new_lemma",
+          "paired_unique_lemmas": [
+            0,
+            0
+          ],
+          "pairs": 0,
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 0
+          },
+          "same_right_context": 0,
+          "scores": {
+            "X": {
+              "position_all": null,
+              "position_info": null,
+              "unconditioned": null
+            },
+            "Z": {
+              "position_all": null,
+              "position_info": null,
+              "unconditioned": null
+            }
+          },
+          "seed": 66121,
+          "support": {
+            "shared_nonempty_strata": 0,
+            "source_sites": [
+              3,
+              2
+            ],
+            "stratum_unrestricted_upper_bound": 0
+          },
+          "target": "us"
+        },
+        {
+          "case_counts": [
+            {},
+            {}
+          ],
+          "decoy": "um",
+          "mode": "internal_new_lemma",
+          "paired_unique_lemmas": [
+            0,
+            0
+          ],
+          "pairs": 0,
+          "position_counts": {
+            "word_final": 0,
+            "word_initial": 0
+          },
+          "same_right_context": 0,
+          "scores": {
+            "X": {
+              "position_all": null,
+              "position_info": null,
+              "unconditioned": null
+            },
+            "Z": {
+              "position_all": null,
+              "position_info": null,
+              "unconditioned": null
+            }
+          },
+          "seed": 66137,
+          "support": {
+            "shared_nonempty_strata": 0,
+            "source_sites": [
+              3,
+              2
+            ],
+            "stratum_unrestricted_upper_bound": 0
+          },
+          "target": "us"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 3,
+              "Acc": 31,
+              "Gen": 66,
+              "Nom": 511,
+              "_": 16
+            },
+            {
+              "Abl": 26,
+              "Acc": 338,
+              "Gen": 21,
+              "Nom": 128,
+              "_": 114
+            }
+          ],
+          "decoy": "um",
+          "mode": "both_sides_matched",
+          "paired_unique_lemmas": [
+            79,
+            84
+          ],
+          "pairs": 627,
+          "position_counts": {
+            "word_final": 626,
+            "word_initial": 1
+          },
+          "same_right_context": 627,
+          "scores": {
+            "X": {
+              "position_all": 0.2053769355755523,
+              "position_info": 0.4107538711511046,
+              "unconditioned": 0.44093609785269805
+            },
+            "Z": {
+              "position_all": 0.2053769355755523,
+              "position_info": 0.4107538711511046,
+              "unconditioned": 0.44093609785269805
+            }
+          },
+          "seed": 66103,
+          "support": {
+            "shared_nonempty_strata": 11,
+            "source_sites": [
+              1979,
+              1057
+            ],
+            "stratum_unrestricted_upper_bound": 627
+          },
+          "target": "us"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 2,
+              "Acc": 30,
+              "Gen": 52,
+              "Nom": 524,
+              "_": 19
+            },
+            {
+              "Abl": 28,
+              "Acc": 327,
+              "Gen": 25,
+              "Nom": 129,
+              "_": 118
+            }
+          ],
+          "decoy": "um",
+          "mode": "both_sides_matched",
+          "paired_unique_lemmas": [
+            77,
+            85
+          ],
+          "pairs": 627,
+          "position_counts": {
+            "word_final": 626,
+            "word_initial": 1
+          },
+          "same_right_context": 627,
+          "scores": {
+            "X": {
+              "position_all": 0.2053769355755523,
+              "position_info": 0.4107538711511046,
+              "unconditioned": 0.44093609785269805
+            },
+            "Z": {
+              "position_all": 0.2053769355755523,
+              "position_info": 0.4107538711511046,
+              "unconditioned": 0.44093609785269805
+            }
+          },
+          "seed": 66109,
+          "support": {
+            "shared_nonempty_strata": 11,
+            "source_sites": [
+              1979,
+              1057
+            ],
+            "stratum_unrestricted_upper_bound": 627
+          },
+          "target": "us"
+        },
+        {
+          "case_counts": [
+            {
+              "Acc": 33,
+              "Gen": 60,
+              "Nom": 509,
+              "_": 25
+            },
+            {
+              "Abl": 24,
+              "Acc": 332,
+              "Gen": 24,
+              "Nom": 129,
+              "_": 118
+            }
+          ],
+          "decoy": "um",
+          "mode": "both_sides_matched",
+          "paired_unique_lemmas": [
+            81,
+            84
+          ],
+          "pairs": 627,
+          "position_counts": {
+            "word_final": 626,
+            "word_initial": 1
+          },
+          "same_right_context": 627,
+          "scores": {
+            "X": {
+              "position_all": 0.2053769355755523,
+              "position_info": 0.4107538711511046,
+              "unconditioned": 0.44093609785269805
+            },
+            "Z": {
+              "position_all": 0.2053769355755523,
+              "position_info": 0.4107538711511046,
+              "unconditioned": 0.44093609785269805
+            }
+          },
+          "seed": 66113,
+          "support": {
+            "shared_nonempty_strata": 11,
+            "source_sites": [
+              1979,
+              1057
+            ],
+            "stratum_unrestricted_upper_bound": 627
+          },
+          "target": "us"
+        },
+        {
+          "case_counts": [
+            {
+              "Abl": 2,
+              "Acc": 33,
+              "Gen": 57,
+              "Nom": 519,
+              "_": 16
+            },
+            {
+              "Abl": 25,
+              "Acc": 331,
+              "Gen": 26,
+              "Nom": 126,
+              "_": 119
+            }
+          ],
+          "decoy": "um",
+          "mode": "both_sides_matched",
+          "paired_unique_lemmas": [
+            74,
+            85
+          ],
+          "pairs": 627,
+          "position_counts": {
+            "word_final": 626,
+            "word_initial": 1
+          },
+          "same_right_context": 627,
+          "scores": {
+            "X": {
+              "position_all": 0.2053769355755523,
+              "position_info": 0.4107538711511046,
+              "unconditioned": 0.44093609785269805
+            },
+            "Z": {
+              "position_all": 0.2053769355755523,
+              "position_info": 0.4107538711511046,
+              "unconditioned": 0.44093609785269805
+            }
+          },
+          "seed": 66121,
+          "support": {
+            "shared_nonempty_strata": 11,
+            "source_sites": [
+              1979,
+              1057
+            ],
+            "stratum_unrestricted_upper_bound": 627
+          },
+          "target": "us"
+        },
+        {
+          "case_counts": [
+            {
+              "Acc": 35,
+              "Gen": 61,
+              "Nom": 511,
+              "_": 20
+            },
+            {
+              "Abl": 24,
+              "Acc": 336,
+              "Gen": 23,
+              "Nom": 127,
+              "_": 117
+            }
+          ],
+          "decoy": "um",
+          "mode": "both_sides_matched",
+          "paired_unique_lemmas": [
+            75,
+            83
+          ],
+          "pairs": 627,
+          "position_counts": {
+            "word_final": 626,
+            "word_initial": 1
+          },
+          "same_right_context": 627,
+          "scores": {
+            "X": {
+              "position_all": 0.2053769355755523,
+              "position_info": 0.4107538711511046,
+              "unconditioned": 0.44093609785269805
+            },
+            "Z": {
+              "position_all": 0.2053769355755523,
+              "position_info": 0.4107538711511046,
+              "unconditioned": 0.44093609785269805
+            }
+          },
+          "seed": 66137,
+          "support": {
+            "shared_nonempty_strata": 11,
+            "source_sites": [
+              1979,
+              1057
+            ],
+            "stratum_unrestricted_upper_bound": 627
+          },
+          "target": "us"
+        }
+      ],
+      "runner_sha256": "9b43067ea66825e5f59b83693d48740893811f756b79e6c9e408689b38663807",
+      "source": {
+        "documents": [
+          "85:47",
+          "85:48",
+          "85:49",
+          "86:1",
+          "86:10",
+          "86:11",
+          "86:12",
+          "86:13",
+          "86:14",
+          "86:15",
+          "86:16",
+          "86:17",
+          "86:18",
+          "86:19",
+          "86:2",
+          "86:20",
+          "86:21",
+          "86:22",
+          "86:23",
+          "86:24",
+          "86:25",
+          "86:26",
+          "86:27",
+          "86:28",
+          "86:29",
+          "86:3",
+          "86:30",
+          "86:31",
+          "86:32",
+          "86:33",
+          "86:34",
+          "86:35",
+          "86:36",
+          "86:37",
+          "86:39",
+          "86:4",
+          "86:40",
+          "86:41",
+          "86:42",
+          "86:43",
+          "86:44",
+          "86:45",
+          "86:46",
+          "86:47",
+          "86:48",
+          "86:49",
+          "86:5",
+          "86:50",
+          "86:7",
+          "86:8",
+          "86:9"
+        ],
+        "normalized_words": 20725,
+        "sentences": 884,
+        "sha256": "81d9f57de66d83303ad4df54a60cd445ac089b50070d369831a632b4cf948e64",
+        "surface_tokens_with_punctuation": 24077
+      },
+      "summary": {
+        "er/es/all": {
+          "common_supported_seeds": 5,
+          "methods": {
+            "position_all": {
+              "decoy_accepted": 0,
+              "decoy_wins": 0,
+              "genuine_accepted": 5,
+              "genuine_wins": 5,
+              "supported_seeds": 5,
+              "ties": 0
+            },
+            "position_info": {
+              "decoy_accepted": 0,
+              "decoy_wins": 0,
+              "genuine_accepted": 5,
+              "genuine_wins": 5,
+              "supported_seeds": 5,
+              "ties": 0
+            },
+            "unconditioned": {
+              "decoy_accepted": 0,
+              "decoy_wins": 0,
+              "genuine_accepted": 5,
+              "genuine_wins": 5,
+              "supported_seeds": 5,
+              "ties": 0
+            }
+          },
+          "support_range_by_seed": [
+            784,
+            794
+          ]
+        },
+        "in/is/all": {
+          "common_supported_seeds": 5,
+          "methods": {
+            "position_all": {
+              "decoy_accepted": 5,
+              "decoy_wins": 0,
+              "genuine_accepted": 5,
+              "genuine_wins": 5,
+              "supported_seeds": 5,
+              "ties": 0
+            },
+            "position_info": {
+              "decoy_accepted": 5,
+              "decoy_wins": 0,
+              "genuine_accepted": 5,
+              "genuine_wins": 5,
+              "supported_seeds": 5,
+              "ties": 0
+            },
+            "unconditioned": {
+              "decoy_accepted": 5,
+              "decoy_wins": 0,
+              "genuine_accepted": 5,
+              "genuine_wins": 5,
+              "supported_seeds": 5,
+              "ties": 0
+            }
+          },
+          "support_range_by_seed": [
+            312,
+            313
+          ]
+        },
+        "us/um/all": {
+          "common_supported_seeds": 5,
+          "methods": {
+            "position_all": {
+              "decoy_accepted": 5,
+              "decoy_wins": 0,
+              "genuine_accepted": 5,
+              "genuine_wins": 5,
+              "supported_seeds": 5,
+              "ties": 0
+            },
+            "position_info": {
+              "decoy_accepted": 0,
+              "decoy_wins": 0,
+              "genuine_accepted": 0,
+              "genuine_wins": 5,
+              "supported_seeds": 5,
+              "ties": 0
+            },
+            "unconditioned": {
+              "decoy_accepted": 0,
+              "decoy_wins": 0,
+              "genuine_accepted": 5,
+              "genuine_wins": 5,
+              "supported_seeds": 5,
+              "ties": 0
+            }
+          },
+          "support_range_by_seed": [
+            657,
+            658
+          ]
+        },
+        "us/um/both_sides_matched": {
+          "common_supported_seeds": 5,
+          "methods": {
+            "position_all": {
+              "decoy_accepted": 5,
+              "decoy_wins": 0,
+              "genuine_accepted": 5,
+              "genuine_wins": 0,
+              "supported_seeds": 5,
+              "ties": 5
+            },
+            "position_info": {
+              "decoy_accepted": 0,
+              "decoy_wins": 0,
+              "genuine_accepted": 0,
+              "genuine_wins": 0,
+              "supported_seeds": 5,
+              "ties": 5
+            },
+            "unconditioned": {
+              "decoy_accepted": 0,
+              "decoy_wins": 0,
+              "genuine_accepted": 0,
+              "genuine_wins": 0,
+              "supported_seeds": 5,
+              "ties": 5
+            }
+          },
+          "support_range_by_seed": [
+            627,
+            627
+          ]
+        },
+        "us/um/internal": {
+          "common_supported_seeds": 0,
+          "methods": {
+            "position_all": {
+              "decoy_accepted": 0,
+              "decoy_wins": 0,
+              "genuine_accepted": 0,
+              "genuine_wins": 0,
+              "supported_seeds": 0,
+              "ties": 0
+            },
+            "position_info": {
+              "decoy_accepted": 0,
+              "decoy_wins": 0,
+              "genuine_accepted": 0,
+              "genuine_wins": 0,
+              "supported_seeds": 0,
+              "ties": 0
+            },
+            "unconditioned": {
+              "decoy_accepted": 0,
+              "decoy_wins": 0,
+              "genuine_accepted": 0,
+              "genuine_wins": 0,
+              "supported_seeds": 0,
+              "ties": 0
+            }
+          },
+          "support_range_by_seed": [
+            32,
+            32
+          ]
+        },
+        "us/um/internal_new_lemma": {
+          "common_supported_seeds": 0,
+          "methods": {
+            "position_all": {
+              "decoy_accepted": 0,
+              "decoy_wins": 0,
+              "genuine_accepted": 0,
+              "genuine_wins": 0,
+              "supported_seeds": 0,
+              "ties": 0
+            },
+            "position_info": {
+              "decoy_accepted": 0,
+              "decoy_wins": 0,
+              "genuine_accepted": 0,
+              "genuine_wins": 0,
+              "supported_seeds": 0,
+              "ties": 0
+            },
+            "unconditioned": {
+              "decoy_accepted": 0,
+              "decoy_wins": 0,
+              "genuine_accepted": 0,
+              "genuine_wins": 0,
+              "supported_seeds": 0,
+              "ties": 0
+            }
+          },
+          "support_range_by_seed": [
+            0,
+            0
+          ]
+        },
+        "us/um/internal_same_morph": {
+          "common_supported_seeds": 0,
+          "methods": {
+            "position_all": {
+              "decoy_accepted": 0,
+              "decoy_wins": 0,
+              "genuine_accepted": 0,
+              "genuine_wins": 0,
+              "supported_seeds": 0,
+              "ties": 0
+            },
+            "position_info": {
+              "decoy_accepted": 0,
+              "decoy_wins": 0,
+              "genuine_accepted": 0,
+              "genuine_wins": 0,
+              "supported_seeds": 0,
+              "ties": 0
+            },
+            "unconditioned": {
+              "decoy_accepted": 0,
+              "decoy_wins": 0,
+              "genuine_accepted": 0,
+              "genuine_wins": 0,
+              "supported_seeds": 0,
+              "ties": 0
+            }
+          },
+          "support_range_by_seed": [
+            3,
+            3
+          ]
+        },
+        "us/um/terminal": {
+          "common_supported_seeds": 5,
+          "methods": {
+            "position_all": {
+              "decoy_accepted": 5,
+              "decoy_wins": 0,
+              "genuine_accepted": 5,
+              "genuine_wins": 0,
+              "supported_seeds": 5,
+              "ties": 5
+            },
+            "position_info": {
+              "decoy_accepted": 0,
+              "decoy_wins": 0,
+              "genuine_accepted": 0,
+              "genuine_wins": 0,
+              "supported_seeds": 5,
+              "ties": 5
+            },
+            "unconditioned": {
+              "decoy_accepted": 0,
+              "decoy_wins": 0,
+              "genuine_accepted": 0,
+              "genuine_wins": 0,
+              "supported_seeds": 5,
+              "ties": 5
+            }
+          },
+          "support_range_by_seed": [
+            626,
+            626
+          ]
+        },
+        "us/um/terminal_same_stem_case": {
+          "common_supported_seeds": 5,
+          "methods": {
+            "position_all": {
+              "decoy_accepted": 5,
+              "decoy_wins": 0,
+              "genuine_accepted": 5,
+              "genuine_wins": 0,
+              "supported_seeds": 5,
+              "ties": 5
+            },
+            "position_info": {
+              "decoy_accepted": 0,
+              "decoy_wins": 0,
+              "genuine_accepted": 0,
+              "genuine_wins": 0,
+              "supported_seeds": 5,
+              "ties": 5
+            },
+            "unconditioned": {
+              "decoy_accepted": 0,
+              "decoy_wins": 0,
+              "genuine_accepted": 0,
+              "genuine_wins": 0,
+              "supported_seeds": 5,
+              "ties": 5
+            }
+          },
+          "support_range_by_seed": [
+            75,
+            75
+          ]
+        }
+      },
+      "thresholds": {
+        "position_all": 0.35384189686685513,
+        "position_info": 0.3760495472978293,
+        "unconditioned": 0.3779334555384405
+      },
+      "train_source": {
+        "documents": [
+          "36:1047",
+          "36:1048",
+          "36:1049",
+          "36:1050",
+          "36:1051",
+          "36:1052",
+          "36:1053",
+          "36:1056",
+          "36:1057",
+          "36:1058",
+          "36:1059",
+          "36:1060",
+          "36:1061",
+          "36:1063",
+          "36:1064",
+          "36:1065",
+          "36:1067",
+          "37:1070",
+          "37:1071",
+          "37:1077",
+          "37:1078",
+          "37:1080",
+          "37:1081",
+          "37:1086",
+          "37:1087",
+          "37:1088",
+          "37:1090",
+          "38:1097",
+          "38:1099",
+          "38:1101",
+          "38:1102",
+          "38:1103",
+          "38:1104",
+          "38:1107",
+          "38:1111",
+          "38:1116",
+          "38:1118",
+          "38:1119",
+          "38:1120",
+          "38:1121",
+          "38:1122",
+          "38:1123",
+          "38:1125",
+          "39:1126",
+          "39:1128",
+          "39:1129",
+          "39:1131",
+          "39:1132",
+          "39:1140",
+          "39:1141",
+          "39:1145",
+          "39:1147",
+          "39:1152",
+          "39:1153",
+          "39:1154",
+          "40:1157",
+          "40:1159",
+          "40:1160",
+          "40:1161",
+          "40:1162",
+          "40:1164",
+          "40:1165",
+          "40:1167",
+          "40:1173",
+          "40:1174",
+          "40:1176",
+          "40:1177",
+          "40:1178",
+          "40:1179",
+          "40:1180",
+          "40:1181",
+          "40:1182",
+          "40:1183",
+          "40:1184",
+          "40:1185",
+          "72:1",
+          "72:23",
+          "72:25",
+          "72:26",
+          "72:27",
+          "72:31",
+          "72:33",
+          "72:34",
+          "72:35",
+          "72:40",
+          "72:42",
+          "72:43",
+          "72:44",
+          "72:45",
+          "72:46",
+          "72:47",
+          "72:48",
+          "72:50",
+          "72:7",
+          "73:10",
+          "73:11",
+          "73:12",
+          "73:13",
+          "73:14",
+          "73:16",
+          "73:17",
+          "73:18",
+          "73:19",
+          "73:2",
+          "73:20",
+          "73:21",
+          "73:22",
+          "73:23",
+          "73:24",
+          "73:26",
+          "73:27",
+          "73:3",
+          "73:30",
+          "73:31",
+          "73:35",
+          "73:37",
+          "73:4",
+          "73:40",
+          "73:41",
+          "73:43",
+          "73:44",
+          "73:46",
+          "73:5",
+          "73:6",
+          "73:7",
+          "73:8",
+          "73:9",
+          "74:11",
+          "74:14",
+          "74:17",
+          "74:18",
+          "74:19",
+          "74:2",
+          "74:20",
+          "74:21",
+          "74:22",
+          "74:23",
+          "74:27",
+          "74:3",
+          "74:30",
+          "74:31",
+          "74:32",
+          "74:36",
+          "74:37",
+          "74:40",
+          "74:43",
+          "74:44",
+          "74:45",
+          "74:49",
+          "74:6",
+          "74:7",
+          "75:1",
+          "75:15",
+          "75:18",
+          "75:2",
+          "75:25",
+          "75:27",
+          "75:28",
+          "75:29",
+          "75:30",
+          "75:31",
+          "75:34",
+          "75:35",
+          "75:38",
+          "75:39",
+          "75:40",
+          "75:44",
+          "75:45",
+          "75:46",
+          "75:47",
+          "75:5",
+          "75:50",
+          "75:7",
+          "75:8",
+          "75:9",
+          "76:1",
+          "76:13",
+          "76:17",
+          "76:26",
+          "76:27",
+          "76:28",
+          "76:34",
+          "76:37",
+          "76:43",
+          "76:44",
+          "76:5",
+          "76:6",
+          "76:7",
+          "77:13",
+          "77:17",
+          "77:18",
+          "77:19",
+          "77:20",
+          "77:28",
+          "77:29",
+          "77:3",
+          "77:30",
+          "77:31",
+          "77:32",
+          "77:33",
+          "77:39",
+          "77:40",
+          "77:41",
+          "77:42",
+          "77:44",
+          "77:45",
+          "77:50",
+          "77:8",
+          "78:13",
+          "78:14",
+          "78:15",
+          "78:16",
+          "78:19",
+          "78:20",
+          "78:22",
+          "78:23",
+          "78:24",
+          "78:26",
+          "78:28",
+          "78:29",
+          "78:30",
+          "78:31",
+          "78:32",
+          "78:33",
+          "78:34",
+          "78:35",
+          "78:36",
+          "78:37",
+          "78:38",
+          "78:39",
+          "78:4",
+          "78:41",
+          "78:45",
+          "78:48",
+          "79:1",
+          "79:10",
+          "79:14",
+          "79:15",
+          "79:16",
+          "79:17",
+          "79:18",
+          "79:19",
+          "79:2",
+          "79:20",
+          "79:21",
+          "79:22",
+          "79:23",
+          "79:24",
+          "79:25",
+          "79:26",
+          "79:29",
+          "79:3",
+          "79:30",
+          "79:32",
+          "79:34",
+          "79:35",
+          "79:36",
+          "79:37",
+          "79:38",
+          "79:39",
+          "79:40",
+          "79:41",
+          "79:42",
+          "79:43",
+          "79:44",
+          "79:45",
+          "79:46",
+          "79:47",
+          "79:49",
+          "79:5",
+          "79:6",
+          "79:8",
+          "80:10",
+          "80:12",
+          "80:17",
+          "80:19",
+          "80:2",
+          "80:23",
+          "80:24",
+          "80:25",
+          "80:26",
+          "80:28",
+          "80:29",
+          "80:3",
+          "80:30",
+          "80:31",
+          "80:32",
+          "80:33",
+          "80:34",
+          "80:35",
+          "80:4",
+          "80:40",
+          "80:47",
+          "80:48",
+          "80:49",
+          "80:5",
+          "80:50",
+          "80:6",
+          "80:7",
+          "80:8",
+          "81:1",
+          "81:10",
+          "81:11",
+          "81:12",
+          "81:2",
+          "81:25",
+          "81:27",
+          "81:28",
+          "81:29",
+          "81:36",
+          "81:38",
+          "81:44",
+          "81:45",
+          "81:50",
+          "81:6",
+          "81:8",
+          "81:9",
+          "82:12",
+          "82:13",
+          "82:14",
+          "82:21",
+          "82:22",
+          "82:23",
+          "82:24",
+          "82:25",
+          "82:34",
+          "82:38",
+          "82:39",
+          "82:40",
+          "82:41",
+          "82:42",
+          "82:43",
+          "82:44",
+          "82:45",
+          "82:46",
+          "82:47",
+          "82:5",
+          "82:6",
+          "82:7",
+          "82:8",
+          "83:1",
+          "83:10",
+          "83:11",
+          "83:12",
+          "83:13",
+          "83:14",
+          "83:15",
+          "83:16",
+          "83:17",
+          "83:18",
+          "83:19",
+          "83:2",
+          "83:20",
+          "83:21",
+          "83:22",
+          "83:23",
+          "83:24",
+          "83:25",
+          "83:26",
+          "83:27",
+          "83:28",
+          "83:29",
+          "83:3",
+          "83:30",
+          "83:31",
+          "83:32",
+          "83:33",
+          "83:34",
+          "83:35",
+          "83:36",
+          "83:37",
+          "83:38",
+          "83:39",
+          "83:40",
+          "83:41",
+          "83:42",
+          "83:43",
+          "83:44",
+          "83:45",
+          "83:46",
+          "83:5",
+          "83:6",
+          "83:7",
+          "83:8",
+          "83:9",
+          "84:1",
+          "84:10",
+          "84:11",
+          "84:12",
+          "84:13",
+          "84:14",
+          "84:15",
+          "84:17",
+          "84:18",
+          "84:19",
+          "84:2",
+          "84:20",
+          "84:22",
+          "84:23",
+          "84:24",
+          "84:25",
+          "84:26",
+          "84:28",
+          "84:29",
+          "84:3",
+          "84:30",
+          "84:31",
+          "84:32",
+          "84:34",
+          "84:35",
+          "84:36",
+          "84:37",
+          "84:38",
+          "84:39",
+          "84:4",
+          "84:40",
+          "84:41",
+          "84:5",
+          "84:6",
+          "84:7",
+          "84:8",
+          "84:9"
+        ],
+        "normalized_words": 165513,
+        "sentences": 7289,
+        "sha256": "8aabc8735c7a623a9e4820e13861a87459dd0fb5b2d238f0583854143526a643",
+        "surface_tokens_with_punctuation": 194128
+      }
+    },
+    "matched_contrast_support": {
+      "derived_after_evaluation": true,
+      "rule": "An exterior character that is equal within every matched pair gives no direct information for the ranking on that side. The guard shown here counts matched rows with distinct right characters and uses the earlier numerical 40-candidate cutoff as an illustrative pair-level requirement. It does not alter the calibrated decisions or justify a threshold for unpaired or manuscript data.",
+      "contrasts": {
+        "in/is": [
+          {
+            "seed": 66103,
+            "matched_pairs": 313,
+            "exterior_right_differs": 261,
+            "right_contribution_to_decoy_minus_target_unconditioned_loss": 0.10623173164601322,
+            "illustrative_pair_count_guard_pass": true
+          },
+          {
+            "seed": 66109,
+            "matched_pairs": 313,
+            "exterior_right_differs": 263,
+            "right_contribution_to_decoy_minus_target_unconditioned_loss": 0.10230911645691826,
+            "illustrative_pair_count_guard_pass": true
+          },
+          {
+            "seed": 66113,
+            "matched_pairs": 313,
+            "exterior_right_differs": 269,
+            "right_contribution_to_decoy_minus_target_unconditioned_loss": 0.09182038392607297,
+            "illustrative_pair_count_guard_pass": true
+          },
+          {
+            "seed": 66121,
+            "matched_pairs": 313,
+            "exterior_right_differs": 262,
+            "right_contribution_to_decoy_minus_target_unconditioned_loss": 0.09889997474919127,
+            "illustrative_pair_count_guard_pass": true
+          },
+          {
+            "seed": 66137,
+            "matched_pairs": 312,
+            "exterior_right_differs": 264,
+            "right_contribution_to_decoy_minus_target_unconditioned_loss": 0.11129060340862439,
+            "illustrative_pair_count_guard_pass": true
+          }
+        ],
+        "er/es": [
+          {
+            "seed": 66103,
+            "matched_pairs": 784,
+            "exterior_right_differs": 581,
+            "right_contribution_to_decoy_minus_target_unconditioned_loss": 0.13282875704206495,
+            "illustrative_pair_count_guard_pass": true
+          },
+          {
+            "seed": 66109,
+            "matched_pairs": 793,
+            "exterior_right_differs": 590,
+            "right_contribution_to_decoy_minus_target_unconditioned_loss": 0.12647372973055498,
+            "illustrative_pair_count_guard_pass": true
+          },
+          {
+            "seed": 66113,
+            "matched_pairs": 784,
+            "exterior_right_differs": 585,
+            "right_contribution_to_decoy_minus_target_unconditioned_loss": 0.13129014084038976,
+            "illustrative_pair_count_guard_pass": true
+          },
+          {
+            "seed": 66121,
+            "matched_pairs": 794,
+            "exterior_right_differs": 594,
+            "right_contribution_to_decoy_minus_target_unconditioned_loss": 0.12928614463022498,
+            "illustrative_pair_count_guard_pass": true
+          },
+          {
+            "seed": 66137,
+            "matched_pairs": 793,
+            "exterior_right_differs": 592,
+            "right_contribution_to_decoy_minus_target_unconditioned_loss": 0.13048069335650941,
+            "illustrative_pair_count_guard_pass": true
+          }
+        ],
+        "us/um": [
+          {
+            "seed": 66103,
+            "matched_pairs": 657,
+            "exterior_right_differs": 31,
+            "right_contribution_to_decoy_minus_target_unconditioned_loss": 0.011917009277664758,
+            "illustrative_pair_count_guard_pass": false
+          },
+          {
+            "seed": 66109,
+            "matched_pairs": 658,
+            "exterior_right_differs": 32,
+            "right_contribution_to_decoy_minus_target_unconditioned_loss": 0.013416986688804589,
+            "illustrative_pair_count_guard_pass": false
+          },
+          {
+            "seed": 66113,
+            "matched_pairs": 657,
+            "exterior_right_differs": 31,
+            "right_contribution_to_decoy_minus_target_unconditioned_loss": 0.013723368644775469,
+            "illustrative_pair_count_guard_pass": false
+          },
+          {
+            "seed": 66121,
+            "matched_pairs": 658,
+            "exterior_right_differs": 31,
+            "right_contribution_to_decoy_minus_target_unconditioned_loss": 0.014922674265897523,
+            "illustrative_pair_count_guard_pass": false
+          },
+          {
+            "seed": 66137,
+            "matched_pairs": 658,
+            "exterior_right_differs": 32,
+            "right_contribution_to_decoy_minus_target_unconditioned_loss": 0.011892662132123755,
+            "illustrative_pair_count_guard_pass": false
+          }
+        ]
+      },
+      "standalone_letter_controls": {
+        "position_all": {
+          "supported": 10,
+          "accepted": 6
+        },
+        "position_info": {
+          "supported": 10,
+          "accepted": 2
+        },
+        "unconditioned": {
+          "supported": 10,
+          "accepted": 7
+        }
+      }
+    },
+    "reproduction": {
+      "source_file_urls_and_hashes": {
+        "train": {
+          "url": "https://raw.githubusercontent.com/UniversalDependencies/UD_Latin-LLCT/df63d06c5a7788b457f50bf37526146e9225c27d/la_llct-ud-train.conllu",
+          "sha256": "8aabc8735c7a623a9e4820e13861a87459dd0fb5b2d238f0583854143526a643"
+        },
+        "dev": {
+          "url": "https://raw.githubusercontent.com/UniversalDependencies/UD_Latin-LLCT/df63d06c5a7788b457f50bf37526146e9225c27d/la_llct-ud-dev.conllu",
+          "sha256": "040457f2e47265a5676c83ce236e1d625af41eda8f779812841e8ba84e28480c"
+        },
+        "test": {
+          "url": "https://raw.githubusercontent.com/UniversalDependencies/UD_Latin-LLCT/df63d06c5a7788b457f50bf37526146e9225c27d/la_llct-ud-test.conllu",
+          "sha256": "81d9f57de66d83303ad4df54a60cd445ac089b50070d369831a632b4cf948e64"
+        }
+      },
+      "treebank_catalogue": "https://universaldependencies.org/treebanks/la_llct/",
+      "data_paper": "https://aclanthology.org/2020.lrec-1.117/",
+      "license": "CC BY-SA 4.0",
+      "python_runtime": "standard library and vs.refcorpus from the project worktree for the verbatim prior module",
+      "protocol": [
+        "PYTHONPATH=publish python3 charter_context.py calibrate",
+        "PYTHONPATH=publish python3 charter_context.py evaluate",
+        "PYTHONPATH=publish python3 contrast_support.py",
+        "PYTHONPATH=publish python3 audit_morphology_support.py"
+      ],
+      "scripts_as_text": {
+        "latin_corpus.py": "\"\"\"Surface-token and document input for the Latin LLCT context experiment.\n\nThe UD r2.18 LLCT split files identify each charter in the sentence's\n``# reference = document_id='…'-span='…'`` comment. The complete quoted\nidentifier is interpreted consistently across split files, and the span is a separate\nwithin-document locator. A ``# newdoc id`` can also identify documents in\nother CoNLL-U sources. Sentence order and all source split labels stay intact.\n\"\"\"\n\nfrom collections import defaultdict\nfrom dataclasses import dataclass\nfrom pathlib import Path\nimport re\nimport unicodedata\n\n\n_SPECIAL = {\n    \"ß\": \"ss\", \"æ\": \"ae\", \"œ\": \"oe\", \"þ\": \"th\", \"ð\": \"d\",\n    \"ȝ\": \"y\", \"ſ\": \"s\", \"ø\": \"o\", \"ł\": \"l\",\n}\n_NON_ASCII_LETTERS = re.compile(r\"[^a-z]+\")\n_NEW_DOC = re.compile(r\"^#\\s*newdoc(?:\\s+id\\s*=\\s*(\\S.*))?\\s*$\")\n_REFERENCE = re.compile(r\"^#\\s*reference\\s*=\")\n_REFERENCE_DOC = re.compile(r\"\\bdocument_id\\s*=\\s*(['\\\"])(.*?)\\1\")\n_REFERENCE_SPAN = re.compile(r\"\\bspan\\s*=\\s*(['\\\"])(.*?)\\1\")\n_SENT_ID = re.compile(r\"^#\\s*sent_id\\s*=\\s*(\\S+)\\s*$\")\n_TEXT = re.compile(r\"^#\\s*text\\s*=\\s*(.*)$\")\n_WORD_ID = re.compile(r\"[1-9][0-9]*\\Z\")\n_RANGE_ID = re.compile(r\"([1-9][0-9]*)-([1-9][0-9]*)\\Z\")\n_EMPTY_ID = re.compile(r\"[0-9]+\\.[1-9][0-9]*\\Z\")\n\n\n@dataclass(frozen=True, slots=True)\nclass Morphology:\n    lemma: str | None\n    lemma_ascii: str | None\n    upos: str | None\n    case: str | None\n    number: str | None\n    gender: str | None\n\n\n@dataclass(frozen=True, slots=True)\nclass SyntacticWord:\n    index: int\n    form: str\n    morphology: Morphology\n\n\n@dataclass(frozen=True, slots=True)\nclass SurfaceToken:\n    id: str\n    form: str\n    ascii_parts: tuple[str, ...]\n    words: tuple[SyntacticWord, ...]\n    space_after: bool\n\n    @property\n    def morphology(self) -> Morphology | None:\n        \"\"\"Single-word analysis only; a multiword token has several analyses.\"\"\"\n        if len(self.words) != 1 or len(self.ascii_parts) != 1:\n            return None\n        return self.words[0].morphology\n\n\n@dataclass(frozen=True, slots=True)\nclass Sentence:\n    split: str\n    doc_id: str | None\n    span: str | None\n    sent_id: str\n    text: str | None\n    tokens: tuple[SurfaceToken, ...]\n\n\n@dataclass(frozen=True, slots=True)\nclass Occurrence:\n    split: str\n    doc_id: str | None\n    span: str | None\n    sent_id: str\n    token_id: str\n    word: str\n    part_index: int\n    pair: str\n    start: int\n    left: str\n    right: str\n    role: str\n    morphology: Morphology | None\n    terminal_morphology: Morphology | None\n\n    @property\n    def word_initial(self) -> bool:\n        return self.role in (\"initial\", \"whole_word\")\n\n    @property\n    def word_final(self) -> bool:\n        return self.role in (\"terminal\", \"whole_word\")\n\n\ndef normalize_latin(text: str) -> str:\n    \"\"\"Use the pinned #623 Latin normalization, including j→i and v→u.\"\"\"\n    lowered = text.lower()\n    for source, replacement in _SPECIAL.items():\n        lowered = lowered.replace(source, replacement)\n    unaccented = \"\".join(c for c in unicodedata.normalize(\"NFKD\", lowered)\n                         if not unicodedata.combining(c))\n    return _NON_ASCII_LETTERS.sub(\" \", unaccented).strip().replace(\"j\", \"i\").replace(\"v\", \"u\")\n\n\ndef _maybe(value: str) -> str | None:\n    return None if value == \"_\" else value\n\n\ndef _field_pairs(features: str) -> dict[str, str]:\n    if features == \"_\":\n        return {}\n    output = {}\n    for entry in features.split(\"|\"):\n        key, sep, value = entry.partition(\"=\")\n        if not sep or not key or not value or key in output:\n            raise ValueError(f\"invalid or repeated CoNLL-U morphological feature: {entry!r}\")\n        output[key] = value\n    return output\n\n\ndef _word(row: list[str]) -> SyntacticWord:\n    lemma = _maybe(row[2])\n    feat = _field_pairs(row[5])\n    return SyntacticWord(int(row[0]), row[1], Morphology(\n        lemma=lemma,\n        lemma_ascii=(normalize_latin(lemma) or None) if lemma is not None else None,\n        upos=_maybe(row[3]),\n        case=feat.get(\"Case\"),\n        number=feat.get(\"Number\"),\n        gender=feat.get(\"Gender\"),\n    ))\n\n\ndef _sentence_blocks(path):\n    with Path(path).open(encoding=\"utf-8-sig\") as src:\n        comments, rows = [], []\n        for line in src:\n            line = line.rstrip(\"\\r\\n\")\n            if not line:\n                if rows:\n                    yield comments, rows\n                    comments, rows = [], []\n                continue\n            if line.startswith(\"#\"):\n                if rows:\n                    raise ValueError(f\"mid-sentence comment in {path}\")\n                comments.append(line)\n            else:\n                rows.append(line)\n        if rows:\n            yield comments, rows\n\n\ndef _identity(comments, active_doc, path):\n    sent_id, text, ref_doc, span = None, None, None, None\n    for line in comments:\n        newdoc = _NEW_DOC.fullmatch(line)\n        if newdoc:\n            active_doc = newdoc[1].strip() if newdoc[1] is not None else None\n        if match := _SENT_ID.fullmatch(line):\n            if sent_id is not None:\n                raise ValueError(f\"repeated sent_id in {path}\")\n            sent_id = match[1]\n        if match := _TEXT.fullmatch(line):\n            text = match[1]\n        if _REFERENCE.match(line):\n            if match := _REFERENCE_DOC.search(line):\n                if ref_doc is not None and ref_doc != match[2]:\n                    raise ValueError(f\"conflicting document_id values in {path}\")\n                ref_doc = match[2]\n            if match := _REFERENCE_SPAN.search(line):\n                span = match[2]\n    if sent_id is None:\n        raise ValueError(f\"missing sent_id in {path}\")\n    if active_doc is not None and ref_doc is not None and active_doc != ref_doc:\n        raise ValueError(f\"newdoc and reference identify different documents in {path}, {sent_id}\")\n    return active_doc, ref_doc or active_doc, span, sent_id, text\n\n\ndef _surface_tokens(raw_rows, sent_id):\n    word_rows = {}\n    surface_rows = []\n    covered = set()\n    expected = 1\n    for line in raw_rows:\n        row = line.split(\"\\t\")\n        if len(row) != 10:\n            raise ValueError(f\"expected 10 CoNLL-U fields in {sent_id}\")\n        locator = row[0]\n        if _EMPTY_ID.fullmatch(locator):\n            continue\n        if match := _RANGE_ID.fullmatch(locator):\n            start, end = map(int, match.groups())\n            if start != expected or end <= start or start in covered:\n                raise ValueError(f\"misplaced or overlapping multiword token {locator} in {sent_id}\")\n            covered.update(range(start, end + 1))\n            surface_rows.append((row, start, end))\n        elif _WORD_ID.fullmatch(locator):\n            index = int(locator)\n            if index != expected:\n                raise ValueError(f\"nonconsecutive syntactic word ID {locator} in {sent_id}\")\n            expected += 1\n            word_rows[index] = row\n            if index not in covered:\n                surface_rows.append((row, index, index))\n        else:\n            raise ValueError(f\"unrecognized CoNLL-U ID {locator!r} in {sent_id}\")\n    if not covered <= word_rows.keys():\n        raise ValueError(f\"missing syntactic words for a multiword token in {sent_id}\")\n    return tuple(SurfaceToken(\n        id=row[0], form=row[1], ascii_parts=tuple(normalize_latin(row[1]).split()),\n        words=tuple(_word(word_rows[i]) for i in range(start, end + 1)),\n        space_after=\"SpaceAfter=No\" not in row[9].split(\"|\"),\n    ) for row, start, end in surface_rows)\n\n\ndef iter_sentences(path, *, split: str | None = None):\n    \"\"\"Read sentences and emit each orthographic surface token exactly once.\"\"\"\n    declared_split = Path(path).stem if split is None else split\n    active_doc = None\n    for comments, raw_rows in _sentence_blocks(path):\n        active_doc, doc, span, sent_id, text = _identity(comments, active_doc, path)\n        yield Sentence(declared_split, doc, span, sent_id, text, _surface_tokens(raw_rows, sent_id))\n\n\ndef document_membership(paths_by_split, *, require_ids=True):\n    \"\"\"Index raw document IDs by their named source splits, before scoring.\n\n    IDs present in multiple partitions are visible as multiple memberships.\n    Do not infer a new identity from the filename, sentence ID, or span.\n    \"\"\"\n    membership = defaultdict(set)\n    for split, path in paths_by_split.items():\n        active_doc = None\n        for comments, _ in _sentence_blocks(path):\n            active_doc, doc, _, sent_id, _ = _identity(comments, active_doc, path)\n            if doc is None:\n                if require_ids:\n                    raise ValueError(f\"missing document identity in {path}, {sent_id}\")\n                continue\n            membership[doc].add(split)\n    return {doc: frozenset(splits) for doc, splits in sorted(membership.items())}\n\n\ndef iter_occurrences(sentences, pairs=(\"us\", \"um\"), *, include_fragments=False):\n    \"\"\"Yield observable contexts without assuming that terminal letters are morphemes.\n\n    Each context uses exactly one intra-word ASCII character per side and a\n    virtual space at a word edge, as in #623. Default matching skips tokens\n    whose normalization has introduced an internal word break. When enabled\n    for a sensitivity, such fragments get character contexts only. A whole\n    two-letter word has a role separate from terminal pairs with a stem.\n    \"\"\"\n    pairs = frozenset(pairs)\n    if any(not isinstance(pair, str) or not re.fullmatch(r\"[a-z]{2}\", pair) for pair in pairs):\n        raise ValueError(\"pairs must be lowercase ASCII bigrams\")\n    for sentence in sentences:\n        for token in sentence.tokens:\n            if len(token.ascii_parts) > 1 and not include_fragments:\n                continue\n            morphology = token.morphology\n            for part_index, word in enumerate(token.ascii_parts):\n                for start in range(len(word) - 1):\n                    end = start + 2\n                    pair = word[start:end]\n                    if pair not in pairs:\n                        continue\n                    if start == 0:\n                        role = \"whole_word\" if end == len(word) else \"initial\"\n                    else:\n                        role = \"terminal\" if end == len(word) else \"interior\"\n                    yield Occurrence(\n                        sentence.split, sentence.doc_id, sentence.span, sentence.sent_id,\n                        token.id, word, part_index, pair, start,\n                        word[start-1] if start else \" \", word[end] if end < len(word) else \" \",\n                        role, morphology, morphology if role == \"terminal\" else None,\n                    )\n",
+        "charter_context.py": "\"\"\"Apply the published context scores to charter-document controls.\"\"\"\nfrom collections import Counter, defaultdict\nfrom dataclasses import dataclass\nimport argparse\nimport hashlib\nimport importlib.util\nfrom importlib.machinery import SourceFileLoader\nimport json\nimport math\nfrom pathlib import Path\nimport random\n\nfrom latin_corpus import iter_sentences\n\n\nROOT = Path(__file__).resolve().parent\nPLAN_PATH = ROOT / \"plan.json\"\nPLAN = json.loads(PLAN_PATH.read_text())\nAMBIENT = (\"all\", \"terminal\", \"terminal_same_stem_case\", \"internal\",\n           \"internal_same_morph\", \"internal_new_lemma\", \"both_sides_matched\")\nTOL = 1e-12\nprior_loader = SourceFileLoader(\"prior_position\", str(ROOT / \"prior-position_context.py\"))\nprior_spec = importlib.util.spec_from_loader(prior_loader.name, prior_loader)\nprior = importlib.util.module_from_spec(prior_spec)\nprior_loader.exec_module(prior)\nMETHODS = tuple(PLAN[\"methods\"])\nassert METHODS == prior.METHODS\n\n\n@dataclass(frozen=True)\nclass Word:\n    index: int\n    surface_index: int\n    form: str\n    lemma: str\n    upos: str\n    case: str\n    number: str\n    gender: str\n\n\n@dataclass(frozen=True)\nclass Site:\n    word: Word\n    onset: int\n    before: str\n    after: str\n\n\ndef sha(path):\n    return hashlib.sha256(path.read_bytes()).hexdigest()\n\n\ndef read_words(split):\n    words = []\n    chars = Counter()\n    surface_no = 0\n    path = ROOT / \"corpus\" / f\"{split}.conllu\"\n    for sentence in iter_sentences(path, split=split):\n        chars[sentence.doc_id] += 1\n        for token in sentence.tokens:\n            surface_no += 1\n            morphology = token.morphology\n            if morphology is None:\n                lemma = upos = case = number = gender = \"\"\n            else:\n                lemma = morphology.lemma_ascii or \"\"\n                if \" \" in lemma:\n                    lemma = \"\"\n                upos = morphology.upos or \"\"\n                case = morphology.case or \"\"\n                number = morphology.number or \"\"\n                gender = morphology.gender or \"\"\n            for part in token.ascii_parts:\n                words.append(Word(len(words), surface_no, part, lemma, upos, case, number, gender))\n    assert chars and words\n    return words, {\"sha256\": sha(path), \"documents\": sorted(chars), \"sentences\": sum(chars.values()),\n                   \"normalized_words\": len(words), \"surface_tokens_with_punctuation\": surface_no}\n\n\ndef all_sites(words, target, decoy):\n    sites = []\n    for word in words:\n        for index in range(len(word.form) - 1):\n            pair = word.form[index:index + 2]\n            if pair in (target, decoy):\n                previous = word.form[index - 1] if index else \" \"\n                following = word.form[index + 2] if index + 2 < len(word.form) else \" \"\n                sites.append((pair == decoy, Site(word, index, previous, following)))\n    return sites\n\n\ndef stratum(site, decoy, mode, new_lemmas):\n    initial = site.onset == 0\n    final = site.after == \" \"\n    basic = (initial, final, site.before)\n    word = site.word\n    if mode == \"all\":\n        return basic\n    if mode == \"both_sides_matched\":\n        return (*basic, site.after)\n    if mode == \"terminal\":\n        return basic if final else None\n    if mode == \"terminal_same_stem_case\":\n        eligible = (\n            final and word.lemma and word.upos in (\"NOUN\", \"ADJ\", \"PROPN\")\n            and word.number == \"Sing\" and word.gender == \"Masc\"\n            and word.case == (\"Acc\" if decoy else \"Nom\")\n        )\n        if eligible:\n            return (*basic, word.lemma, word.upos, word.form[:-2])\n        return None\n    if final:\n        return None\n    if mode == \"internal\":\n        return basic\n    if mode == \"internal_same_morph\":\n        return (*basic, word.upos, word.case, word.number) if word.upos else None\n    if mode == \"internal_new_lemma\":\n        return basic if word.lemma in new_lemmas else None\n    raise ValueError(mode)\n\n\ndef make_pairs(sites, mode, seed, new_lemmas):\n    groups = defaultdict(lambda: ([], []))\n    for decoy, site in sites:\n        key = stratum(site, decoy, mode, new_lemmas)\n        if key is not None:\n            groups[key][decoy].append(site)\n    counts = [sum(len(pool[side]) for pool in groups.values()) for side in (0, 1)]\n    unlimited = sum(min(len(left), len(right)) for left, right in groups.values())\n    rng = random.Random(seed)\n    matched = []\n    used = set()\n    group_keys = sorted(groups)\n    rng.shuffle(group_keys)\n    for key in group_keys:\n        left, right = groups[key]\n        rng.shuffle(left)\n        rng.shuffle(right)\n        cursor = 0\n        for x in left:\n            if x.word.surface_index in used:\n                continue\n            while cursor < len(right) and right[cursor].word.surface_index in used:\n                cursor += 1\n            if cursor == len(right):\n                break\n            choice = cursor\n            while choice < len(right) and (\n                right[choice].word.surface_index in used\n                or right[choice].word.surface_index == x.word.surface_index\n            ):\n                choice += 1\n            if choice == len(right):\n                continue\n            right[cursor], right[choice] = right[choice], right[cursor]\n            z = right[cursor]\n            cursor += 1\n            used.update((x.word.surface_index, z.word.surface_index))\n            matched.append((x, z))\n    return matched, {\"source_sites\": counts, \"stratum_unrestricted_upper_bound\": unlimited,\n                     \"shared_nonempty_strata\": sum(bool(left and right) for left, right in groups.values())}\n\n\ndef planted_context(words, pairs, target, decoy):\n    edited = [word.form for word in words]\n    for a, b in pairs:\n        assert a.word.form[a.onset:a.onset + 2] == target\n        assert b.word.form[b.onset:b.onset + 2] == decoy\n        for marker, location in ((\"X\", a), (\"Z\", b)):\n            form = location.word.form\n            start = location.onset\n            edited[location.word.index] = form[:start] + marker + form[start + 2:]\n    return prior.Context(\" \".join(edited))\n\n\ndef assess(words, sites, target, decoy, group, seed, new_lemmas):\n    pairs, support = make_pairs(sites, group, seed, new_lemmas)\n    assert all(a.before == b.before and (a.after == \" \") == (b.after == \" \") for a, b in pairs)\n    outer_match = sum(a.after == b.after for a, b in pairs)\n    if group in (\"terminal\", \"terminal_same_stem_case\", \"both_sides_matched\"):\n        assert outer_match == len(pairs)\n    if len(pairs) < PLAN[\"candidate_minimum\"]:\n        values = {marker: dict.fromkeys(METHODS) for marker in (\"X\", \"Z\")}\n    else:\n        context = planted_context(words, pairs, target, decoy)\n        assert context.all[\"X\"][\"n\"] == context.all[\"Z\"][\"n\"] == len(pairs)\n        values = {marker: context.scores(marker, *target) for marker in (\"X\", \"Z\")}\n        if outer_match == len(pairs):\n            assert values[\"X\"] == values[\"Z\"]\n    return {\n        \"target\": target, \"decoy\": decoy, \"mode\": group, \"seed\": seed, \"pairs\": len(pairs),\n        \"same_right_context\": outer_match, \"support\": support, \"scores\": values,\n        \"paired_unique_lemmas\": [\n            len({pair[side].word.lemma for pair in pairs if pair[side].word.lemma})\n            for side in (0, 1)\n        ],\n        \"position_counts\": {\n            \"word_final\": sum(a.after == \" \" for a, _ in pairs),\n            \"word_initial\": sum(a.onset == 0 for a, _ in pairs),\n        },\n        \"case_counts\": [\n            dict(Counter(pair[side].word.case or \"_\" for pair in pairs))\n            for side in (0, 1)\n        ],\n    }\n\n\ndef run_rows(words, pairs, modes, new_lemmas):\n    output = []\n    for target, decoy in pairs:\n        sites = all_sites(words, target, decoy)\n        for mode in modes:\n            for seed in PLAN[\"seeds\"]:\n                output.append(assess(words, sites, target, decoy, mode, seed, new_lemmas))\n    return output\n\n\ndef common(row):\n    return all(row[\"scores\"][marker][method] is not None\n               for marker in (\"X\", \"Z\") for method in METHODS)\n\n\ndef accepted(value, threshold):\n    return value is not None and threshold is not None and value < threshold - TOL\n\n\ndef summarized(rows, thresholds):\n    reports = {}\n    groups = sorted({(row[\"target\"], row[\"decoy\"], row[\"mode\"]) for row in rows})\n    for target, decoy, mode in groups:\n        selected = [r for r in rows if (r[\"target\"], r[\"decoy\"], r[\"mode\"]) == (target, decoy, mode)]\n        results = {}\n        for method in METHODS:\n            scores = [(r[\"scores\"][\"X\"][method], r[\"scores\"][\"Z\"][method]) for r in selected]\n            paired = [(x, z) for x, z in scores if x is not None and z is not None]\n            threshold = thresholds[method]\n            results[method] = {\n                \"supported_seeds\": len(paired),\n                \"genuine_wins\": sum(x < z - TOL for x, z in paired),\n                \"decoy_wins\": sum(z < x - TOL for x, z in paired),\n                \"ties\": sum(abs(x - z) <= TOL for x, z in paired),\n                \"genuine_accepted\": sum(accepted(x, threshold) for x, _ in paired),\n                \"decoy_accepted\": sum(accepted(z, threshold) for _, z in paired),\n            }\n        reports[\"/\".join((target, decoy, mode))] = {\n            \"support_range_by_seed\": [min(r[\"pairs\"] for r in selected), max(r[\"pairs\"] for r in selected)],\n            \"common_supported_seeds\": sum(common(r) for r in selected),\n            \"methods\": results,\n        }\n    return reports\n\n\ndef negative_controls(words, thresholds):\n    context = prior.Context(\" \".join(w.form for w in words))\n    rows = []\n    for target in (\"us\", \"in\", \"er\"):\n        for letter in \"qtrn\":\n            if letter in target:\n                continue\n            values = context.scores(letter, *target)\n            rows.append({\n                \"target\": target, \"standalone_letter\": letter,\n                \"scores\": values,\n                \"acceptances\": {method: accepted(value, thresholds[method]) for method, value in values.items()},\n            })\n    return rows\n\n\ndef main():\n    parser = argparse.ArgumentParser()\n    parser.add_argument(\"phase\", choices=[\"calibrate\", \"evaluate\"])\n    args = parser.parse_args()\n    split = \"dev\" if args.phase == \"calibrate\" else \"test\"\n    words, info = read_words(split)\n    base = {\"plan_sha256\": sha(PLAN_PATH), \"runner_sha256\": sha(Path(__file__)),\n            \"parser_sha256\": sha(ROOT / \"latin_corpus.py\"),\n            \"prior_context_sha256\": sha(ROOT / \"prior-position_context.py\"),\n            \"source\": info}\n    if args.phase == \"calibrate\":\n        all_rows = run_rows(words, PLAN[\"calibration_pairs\"], (\"all\",), set())\n        valid = [r for r in all_rows if common(r)]\n        thresholds = {}\n        for method in METHODS:\n            decoys = sorted(r[\"scores\"][\"Z\"][method] for r in valid)\n            thresholds[method] = decoys[math.floor(.05 * len(decoys))] if decoys else None\n        base.update({\"thresholds\": thresholds, \"calibration_common_rows\": len(valid),\n                     \"summary\": summarized(all_rows, thresholds), \"rows\": all_rows})\n        result = ROOT / \"calibration.json\"\n    else:\n        frozen_path = ROOT / \"calibration.json\"\n        frozen = json.loads(frozen_path.read_text())\n        for key in (\"plan_sha256\", \"runner_sha256\", \"parser_sha256\", \"prior_context_sha256\"):\n            assert base[key] == frozen[key]\n        train, train_info = read_words(\"train\")\n        dev, dev_info = read_words(\"dev\")\n        doc_sets = [set(meta[\"documents\"]) for meta in (train_info, dev_info, info)]\n        assert not any(doc_sets[i] & doc_sets[j] for i, j in ((0, 1), (0, 2), (1, 2)))\n        observed_lemmas = {x.lemma for x in train + dev if x.lemma}\n        new_lemmas = {x.lemma for x in words if x.lemma} - observed_lemmas\n        thresholds = frozen[\"thresholds\"]\n        normal = run_rows(words, PLAN[\"calibration_pairs\"], (\"all\",), new_lemmas)\n        focus = run_rows(words, [PLAN[\"focus_pair\"]], AMBIENT, new_lemmas)\n        base.update({\"calibration_sha256\": sha(frozen_path), \"thresholds\": thresholds,\n                     \"document_sets_disjoint\": True, \"train_source\": train_info, \"dev_source\": dev_info,\n                     \"new_test_lemmas\": len(new_lemmas), \"summary\": summarized(normal + focus, thresholds),\n                     \"rows\": normal + focus, \"negative_controls\": negative_controls(words, thresholds)})\n        result = ROOT / \"evaluation.json\"\n    result.write_text(json.dumps(base, indent=2, sort_keys=True) + \"\\n\")\n    print(json.dumps({\"result\": result.name, \"thresholds\": thresholds, \"summary\": base[\"summary\"]}, indent=2))\n\n\nif __name__ == \"__main__\":\n    main()\n",
+        "prior-position_context.py": "\"\"\"Frozen public reference-text test of role-correct word-position contexts.\"\"\"\nimport argparse\nimport hashlib\nimport json\nimport math\nimport random\nfrom collections import Counter, defaultdict\nfrom pathlib import Path\n\nfrom vs import refcorpus\n\nROOT = Path(__file__).resolve().parent\nPLAN_BYTES = (ROOT/'plan.json').read_bytes()\nPLAN = json.loads(PLAN_BYTES)\nMETHODS = ('unconditioned', 'position_all', 'position_info')\nTOL = 1e-12\n\n\ndef save(name, value):\n    (ROOT/name).write_bytes((json.dumps(value, indent=2)+'\\n').encode())\n\n\ndef sha(data):\n    return hashlib.sha256(data).hexdigest()\n\n\ndef js(p, q):\n    np, nq = sum(p.values()), sum(q.values())\n    assert np and nq\n    total = 0.0\n    for s in sorted(p.keys() | q.keys()):\n        x, y = p[s]/np, q[s]/nq\n        middle = (x+y)/2\n        if x:\n            total += x*math.log2(x/middle)/2\n        if y:\n            total += y*math.log2(y/middle)/2\n    return total\n\n\ndef cell():\n    return {'n': 0, 'left': Counter(), 'right': Counter()}\n\n\nclass Context:\n    def __init__(self, text):\n        self.positions = defaultdict(lambda: defaultdict(cell))\n        self.all = defaultdict(cell)\n        for word in text.split():\n            for i, c in enumerate(word):\n                key = (i == 0, i == len(word)-1)\n                before = word[i-1] if i else ' '\n                after = word[i+1] if i+1 < len(word) else ' '\n                for record in (self.positions[c][key], self.all[c]):\n                    record['n'] += 1\n                    record['left'][before] += 1\n                    record['right'][after] += 1\n\n    def scores(self, c, a, b):\n        out = dict.fromkeys(METHODS)\n        if any(self.all[s]['n'] < 40 for s in (c, a, b)):\n            return out\n        out['unconditioned'] = (js(self.all[c]['left'], self.all[a]['left'])+\n                                js(self.all[c]['right'], self.all[b]['right']))/2\n        for method in ('position_all', 'position_info'):\n            numerator = 0.0\n            denominator = informative_occurrences = 0\n            supported = True\n            for (initial, final), record in self.positions[c].items():\n                directions = []\n                if method == 'position_all' or not initial:\n                    directions.append(('left', self.positions[a][initial, False]))\n                if method == 'position_all' or not final:\n                    directions.append(('right', self.positions[b][False, final]))\n                if directions:\n                    informative_occurrences += record['n']\n                for direction, reference in directions:\n                    if reference['n'] < 20:\n                        supported = False\n                        break\n                    numerator += record['n']*js(record[direction], reference[direction])\n                    denominator += record['n']\n                if not supported:\n                    break\n            if supported and denominator and (method != 'position_info' or informative_occurrences >= 40):\n                out[method] = numerator/denominator\n        return out\n\n\ndef source(language, partition):\n    loader, offset = {\n        'calibration': (refcorpus.calib_text, 40000),\n        'evaluation': (refcorpus.control_text, 80000),\n        'training': (refcorpus.train_text, 40000),\n        'old_evaluation': (refcorpus.control_text, 40000),\n    }[partition]\n    text = ' '.join(loader(language))[offset:].split(' ', 1)[1]\n    return ' '+text[:40000].rsplit(' ', 1)[0]+' '\n\n\ndef pool(text, target, decoy, mode, seed):\n    groups = defaultdict(lambda: ([], []))\n    offset = 0\n    for word in text.split(' '):\n        for i in range(len(word)-1):\n            pair = word[i:i+2]\n            if pair not in (target, decoy):\n                continue\n            start = offset+i\n            key = (i == 0, i+2 == len(word))\n            if mode in ('left', 'both'):\n                key += (text[start-1],)\n            if mode == 'both':\n                key += (text[start+2],)\n            groups[key][pair == decoy].append(start)\n        offset += len(word)+1\n    rng = random.Random(seed)\n    blocked, pairs = set(), []\n    for key, (true, wrong) in sorted(groups.items()):\n        rng.shuffle(true)\n        rng.shuffle(wrong)\n        for i, j in zip(true, wrong):\n            if abs(i-j) < 3 or i in blocked or j in blocked:\n                continue\n            pairs.append((i, j))\n            blocked.update(range(i-2, i+3))\n            blocked.update(range(j-2, j+3))\n    rng.shuffle(pairs)\n    return pairs\n\n\ndef plant(text, pairs):\n    edits = sorted([(i, 'X') for i, j in pairs]+[(j, 'Z') for i, j in pairs])\n    pieces, previous = [], 0\n    for i, c in edits:\n        pieces += [text[previous:i], c]\n        previous = i+2\n    pieces.append(text[previous:])\n    return ''.join(pieces)\n\n\ndef trial(text, language, target, decoy, mode, fraction, seed, partition):\n    matched = pool(text, target, decoy, mode, seed)\n    pairs = matched[:len(matched)//2] if fraction == .5 else matched\n    calc = Context(plant(text, pairs))\n    assert calc.all['X']['n'] == calc.all['Z']['n'] == len(pairs)\n    for i, j in pairs:\n        assert text[i:i+2] == target and text[j:j+2] == decoy\n        assert (text[i-1] == ' ', text[i+2] == ' ') == (text[j-1] == ' ', text[j+2] == ' ')\n        if mode in ('left', 'both'):\n            assert text[i-1] == text[j-1]\n        if mode == 'both':\n            assert text[i+2] == text[j+2]\n    x, z = calc.scores('X', *target), calc.scores('Z', *target)\n    if mode == 'both':\n        for m in METHODS:\n            assert (x[m] is None) == (z[m] is None)\n            assert x[m] is None or abs(x[m]-z[m]) <= TOL\n    return {'language': language, 'partition': partition, 'target': target, 'decoy': decoy,\n            'mode': mode, 'fraction': fraction, 'seed': seed, 'pairs': len(pairs),\n            'scores': {'X': x, 'Z': z},\n            'common_eligible': all(x[m] is not None and z[m] is not None for m in METHODS),\n            'candidate_position_counts': {str(key): record['n'] for key, record in calc.positions['X'].items()}}\n\n\ndef paired(partition):\n    rows, sources = [], []\n    for language, contrasts in PLAN['primary_contrasts'].items():\n        text = source(language, partition)\n        sources.append({'language': language, 'characters': len(text), 'sha256': sha(text.encode())})\n        for target, decoy in contrasts:\n            for mode in PLAN['matching_modes']:\n                for fraction in PLAN['fractions']:\n                    for seed in PLAN['seeds']:\n                        rows.append(trial(text, language, target, decoy, mode, fraction, seed, partition))\n    return rows, sources\n\n\ndef primary(rows):\n    return [r for r in rows if r['mode'] == 'left' and r['fraction'] == 1 and r['common_eligible']]\n\n\ndef accept(score, threshold):\n    return score is not None and threshold is not None and score < threshold-TOL\n\n\ndef summarize(rows, thresholds):\n    out = []\n    for mode in PLAN['matching_modes']:\n        for fraction in PLAN['fractions']:\n            selected = [r for r in rows if r['mode'] == mode and r['fraction'] == fraction]\n            common = [r for r in selected if r['common_eligible']]\n            methods = {}\n            for m in METHODS:\n                count = Counter({'genuine_win': 0, 'decoy_win': 0, 'tie': 0, 'accepted_X': 0, 'accepted_Z': 0})\n                for r in common:\n                    x, z = r['scores']['X'][m], r['scores']['Z'][m]\n                    count['genuine_win' if x < z-TOL else 'decoy_win' if z < x-TOL else 'tie'] += 1\n                    count['accepted_X'] += accept(x, thresholds[m])\n                    count['accepted_Z'] += accept(z, thresholds[m])\n                methods[m] = dict(count)\n            out.append({'mode': mode, 'fraction': fraction, 'attempted': len(selected),\n                        'common_eligible': len(common),\n                        'supported_by_method': {m: sum(all(r['scores'][c][m] is not None for c in ('X', 'Z')) for r in selected) for m in METHODS},\n                        'methods': methods})\n    return out\n\n\ndef negatives(thresholds):\n    rows = []\n    for language, contrasts in PLAN['primary_contrasts'].items():\n        evaluation = source(language, 'evaluation')\n        streams = [('natural', None, evaluation)]\n        train = source(language, 'training').strip()\n        outgoing = defaultdict(Counter)\n        for a, b in zip(train, train[1:]):\n            outgoing[a][b] += 1\n        starts = Counter(w[0] for w in train.split())\n        def draw(rng, counts):\n            point = rng.randrange(sum(counts.values()))\n            for c, n in sorted(counts.items()):\n                if point < n:\n                    return c\n                point -= n\n            raise AssertionError('draw')\n        for seed in PLAN['chain_seeds']:\n            rng = random.Random(seed)\n            letters = [draw(rng, starts)]\n            while len(letters) < len(evaluation)-2:\n                choices = outgoing[letters[-1]]\n                if len(letters) == len(evaluation)-3:\n                    choices = Counter({s: n for s, n in choices.items() if s != ' '})\n                letters.append(draw(rng, choices or starts))\n            streams.append(('direct_chain', seed, ' '+''.join(letters)+' '))\n        for origin, seed, text in streams:\n            calc = Context(text)\n            for target, _ in contrasts:\n                candidates = []\n                for c in sorted(calc.all):\n                    if c in target or not c.islower() or calc.all[c]['n'] < 40:\n                        continue\n                    values = calc.scores(c, *target)\n                    candidates.append({'candidate': c, 'scores': values,\n                                       'accepted': {m: accept(values[m], thresholds[m]) for m in METHODS}})\n                rows.append({'language': language, 'origin': origin, 'seed': seed, 'target': target,\n                             'characters': len(text), 'sha256': sha(text.encode()), 'candidates': candidates})\n    return rows\n\n\ndef diagnostic(thresholds):\n    rows = []\n    for partition, seeds in [('old_evaluation', [58471, 58477, 58481, 58487, 58493]),\n                             ('evaluation', PLAN['seeds'])]:\n        text = source('latin', partition)\n        for seed in seeds:\n            row = trial(text, 'latin', 'us', 'um', 'left', 1, seed, partition)\n            row['source_sha256'] = sha(text.encode())\n            row['accepted'] = {c: {m: accept(row['scores'][c][m], thresholds[m]) for m in METHODS} for c in ('X', 'Z')}\n            rows.append(row)\n    text = ' '.join(['x ab aba bab']*100)\n    scores = Context(text).scores('x', 'a', 'b')\n    assert scores['position_all'] == 0 and scores['position_info'] is None\n    return {'us_um': rows, 'boundary_trap': {'text_recipe': 'x ab aba bab repeated 100 times', 'scores': scores,\n            'accepted': {m: accept(scores[m], thresholds[m]) for m in METHODS}}}\n\n\ndef main():\n    parser = argparse.ArgumentParser()\n    parser.add_argument('phase', choices=('calibrate', 'evaluate'))\n    phase = parser.parse_args().phase\n    if phase == 'calibrate':\n        rows, sources = paired('calibration')\n        supported = primary(rows)\n        thresholds = {}\n        for m in METHODS:\n            scores = sorted(r['scores']['Z'][m] for r in supported)\n            thresholds[m] = scores[math.floor(.05*len(scores))] if scores else None\n        output = {'plan_sha256': sha(PLAN_BYTES), 'script_sha256': sha(Path(__file__).read_bytes()),\n                  'thresholds': thresholds, 'calibration_negative_count': len(supported), 'sources': sources,\n                  'summary': summarize(rows, thresholds), 'paired_rows': rows}\n        name = 'calibration.json'\n    else:\n        frozen = (ROOT/'calibration.json').read_bytes()\n        calibration = json.loads(frozen)\n        assert calibration['plan_sha256'] == sha(PLAN_BYTES)\n        assert calibration['script_sha256'] == sha(Path(__file__).read_bytes())\n        thresholds = calibration['thresholds']\n        rows, sources = paired('evaluation')\n        output = {'plan_sha256': sha(PLAN_BYTES), 'calibration_sha256': sha(frozen), 'thresholds': thresholds,\n                  'sources': sources, 'summary': summarize(rows, thresholds), 'paired_rows': rows,\n                  'negative_controls': negatives(thresholds), 'diagnostics': diagnostic(thresholds)}\n        name = 'evaluation.json'\n    save(name, output)\n    print(json.dumps({'phase': phase, 'primary_common': len(primary(rows)), 'thresholds': thresholds,\n                      'summary': output['summary']}, indent=2))\n\n\nif __name__ == '__main__':\n    main()\n\n",
+        "contrast_support.py": "\"\"\"Describe how much of each matched contrast can change its contextual ranking.\"\"\"\nfrom collections import Counter\nimport json\nfrom pathlib import Path\n\nfrom charter_context import all_sites, make_pairs, planted_context, read_words\n\n\nROOT = Path(__file__).resolve().parent\nTOL = 1e-10\n\n\ndef verify_gap(row, words, sites):\n    matched, _ = make_pairs(sites, row[\"mode\"], row[\"seed\"], set())\n    assert len(matched) == row[\"pairs\"]\n    context = planted_context(words, matched, row[\"target\"], row[\"decoy\"])\n    candidate, control = context.all[\"X\"], context.all[\"Z\"]\n    assert candidate[\"left\"] == control[\"left\"]\n    left_match_counts = Counter((a.before, a.after == \" \") for a, _ in matched)\n    assert left_match_counts == Counter((b.before, b.after == \" \") for _, b in matched)\n    assert all(a.after == b.after for a, b in matched if a.after == \" \")\n    across = sum(a.after != b.after for a, b in matched)\n    assert across == row[\"pairs\"] - row[\"same_right_context\"]\n    from charter_context import prior\n    right_reference = context.all[row[\"target\"][1]][\"right\"]\n    right_gap = (prior.js(control[\"right\"], right_reference) - prior.js(candidate[\"right\"], right_reference)) / 2\n    baseline_gap = row[\"scores\"][\"Z\"][\"unconditioned\"] - row[\"scores\"][\"X\"][\"unconditioned\"]\n    assert abs(baseline_gap - right_gap) < TOL\n    return {\n        \"seed\": row[\"seed\"], \"matched_pairs\": row[\"pairs\"],\n        \"exterior_right_differs\": across,\n        \"right_contribution_to_decoy_minus_target_unconditioned_loss\": right_gap,\n        \"illustrative_pair_count_guard_pass\": across >= 40,\n    }\n\n\ndef main():\n    evaluation = json.loads((ROOT / \"evaluation.json\").read_text())\n    words, _ = read_words(\"test\")\n    tests = {}\n    for target, decoy in ((\"in\", \"is\"), (\"er\", \"es\"), (\"us\", \"um\")):\n        selected = [row for row in evaluation[\"rows\"]\n                    if row[\"target\"] == target and row[\"decoy\"] == decoy and row[\"mode\"] == \"all\"]\n        sites = all_sites(words, target, decoy)\n        tests[f\"{target}/{decoy}\"] = [verify_gap(row, words, sites) for row in selected]\n    negative = {\n        method: {\n            \"supported\": sum(row[\"scores\"][method] is not None\n                             for row in evaluation[\"negative_controls\"]),\n            \"accepted\": sum(row[\"acceptances\"][method]\n                            for row in evaluation[\"negative_controls\"]),\n        }\n        for method in evaluation[\"thresholds\"]\n    }\n    result = {\n        \"derived_after_evaluation\": True,\n        \"rule\": (\n            \"An exterior character that is equal within every matched pair gives no direct \"\n            \"information for the ranking on that side. The guard shown here counts matched \"\n            \"rows with distinct right characters and uses the earlier numerical 40-candidate \"\n            \"cutoff as an illustrative pair-level requirement. It does not alter the \"\n            \"calibrated decisions or justify a threshold for unpaired or manuscript data.\"\n        ),\n        \"contrasts\": tests, \"standalone_letter_controls\": negative,\n    }\n    (ROOT / \"contrast-support.json\").write_text(json.dumps(result, indent=2) + \"\\n\")\n\n\nif __name__ == \"__main__\":\n    main()\n",
+        "verify_prior_experiment.py": "\"\"\"Check prior PR 623 replay against the published structured outputs.\"\"\"\nimport hashlib\nimport json\nfrom pathlib import Path\n\n\nROOT = Path(__file__).resolve().parent / \"prior-reproduction\"\nTOLERANCE = 1e-12\n\n\ndef load(path):\n    return json.loads(path.read_bytes())\n\n\ndef compare(expected, actual):\n    floating = []\n    structural = []\n\n    def walk(a, b, key):\n        if isinstance(a, dict) and isinstance(b, dict) and a.keys() == b.keys():\n            for field in a:\n                walk(a[field], b[field], key + [field])\n        elif isinstance(a, list) and isinstance(b, list) and len(a) == len(b):\n            for index, pair in enumerate(zip(a, b, strict=True)):\n                walk(*pair, key + [str(index)])\n        elif a != b:\n            if isinstance(a, float) and isinstance(b, float):\n                floating.append(abs(a - b))\n            else:\n                structural.append(\"/\".join(key))\n\n    walk(expected, actual, [])\n    return {\n        \"floating_point_differences\": len(floating),\n        \"maximum_absolute_floating_point_difference\": max(floating, default=0.0),\n        \"other_differences\": structural,\n        \"equal_within_existing_score_tolerance\": not structural and max(floating, default=0.0) <= TOLERANCE,\n    }\n\n\ndef summarize_negative(rows):\n    results = []\n    for row in rows:\n        candidates = row[\"candidates\"]\n        common = [c for c in candidates if all(v is not None for v in c[\"scores\"].values())]\n        result = {k: v for k, v in row.items() if k != \"candidates\"}\n        result.update({\"candidate_count\": len(candidates), \"common_supported\": len(common), \"methods\": {}})\n        for method in (\"unconditioned\", \"position_all\", \"position_info\"):\n            supported = [c[\"scores\"][method] for c in candidates if c[\"scores\"][method] is not None]\n            result[\"methods\"][method] = {\n                \"accepted_candidates\": [c[\"candidate\"] for c in candidates if c[\"accepted\"][method]],\n                \"common_accepted_candidates\": [c[\"candidate\"] for c in common if c[\"accepted\"][method]],\n                \"minimum_loss\": min(supported) if supported else None,\n                \"supported\": len(supported),\n            }\n        results.append(result)\n    return results\n\n\ndef main():\n    previous = load(ROOT / \"previous-spec.json\")\n    frozen = load(ROOT / \"public/calibration-freeze.json\")\n    public_plan = load(ROOT / \"public/preregistered.json\")\n    assert previous[\"plan_sha256\"] == public_plan[\"plan_sha256\"] == frozen[\"plan_sha256\"]\n    assert public_plan[\"reproduction\"][\"plan_json_bytes\"] == frozen[\"reproduction\"][\"plan_json_bytes\"]\n    preregistered_cutoffs = frozen[\"calibration_frozen_before_evaluation\"]\n    assert preregistered_cutoffs[\"thresholds\"] == previous[\"results\"][\"calibration\"][\"thresholds\"]\n    assert preregistered_cutoffs[\"sha256\"] == previous[\"output_digests\"][\"calibration.json\"]\n    cal = load(ROOT / \"run/calibration.json\")\n    ev = load(ROOT / \"run/evaluation.json\")\n    verification = load(ROOT / \"run/verification.json\")\n    expected_eval = {k: v for k, v in previous[\"results\"][\"evaluation\"].items() if k != \"calibration_sha256\"}\n    eval_overlap = {k: ev[k] for k in expected_eval}\n    archived = {}\n    for filename in (\"calibration.json\", \"evaluation.json\", \"verification.json\"):\n        recorded = previous[\"output_digests\"][filename]\n        found = hashlib.sha256((ROOT / \"run\" / filename).read_bytes()).hexdigest()\n        archived[filename] = {\"expected\": recorded, \"observed\": found, \"byte_exact\": recorded == found}\n    tests = {\n        \"calibration\": compare(previous[\"results\"][\"calibration\"], cal),\n        \"evaluation_shared_public_fields_excluding_calibration_digest\": compare(expected_eval, eval_overlap),\n        \"independent_verification\": compare(previous[\"results\"][\"independent_verification\"], verification),\n        \"negative_control_published_summaries\": compare(\n            previous[\"results\"][\"negative_control_sample_results\"], summarize_negative(ev[\"negative_controls\"]),\n        ),\n    }\n    assert tests[\"calibration\"][\"equal_within_existing_score_tolerance\"]\n    assert tests[\"evaluation_shared_public_fields_excluding_calibration_digest\"][\"equal_within_existing_score_tolerance\"]\n    assert tests[\"independent_verification\"][\"equal_within_existing_score_tolerance\"]\n    assert tests[\"negative_control_published_summaries\"][\"equal_within_existing_score_tolerance\"]\n    assert verification[\"all_support_and_acceptance_decisions_match\"]\n    result = {\n        \"pr\": \"https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/623\",\n        \"runtime_base\": previous[\"runtime_base\"],\n        \"plan_commit\": previous[\"preregistration_commit\"],\n        \"calibration_freeze_commit\": previous[\"calibration_freeze_commit\"],\n        \"public_plan_sha_verified\": previous[\"plan_sha256\"],\n        \"public_freeze_contains_identical_plan\": True,\n        \"formal_launcher_verification\": \"The bundled launcher verified the inputs and initial scripts and stopped at the calibration byte SHA mismatch. The original evaluation and verification scripts were then run without editing the published corpus, algorithms or thresholds.\",\n        \"runtime_version\": \"Python 3.12.14 on Linux\",\n        \"published_score_tolerance\": TOLERANCE,\n        \"structured_comparisons\": tests,\n        \"sha_checks\": archived,\n        \"scope\": \"The archived evaluation contains additional negative-control details outside the compared summary. This distinguishes structured numerical reproduction and agreement of pairing, threshold and acceptance decisions from byte-for-byte identity.\",\n    }\n    (ROOT / \"reproduction-result.json\").write_text(json.dumps(result, indent=2) + \"\\n\")\n    print(json.dumps(result, indent=2))\n\n\nif __name__ == \"__main__\":\n    main()\n",
+        "audit_morphology_support.py": "\"\"\"Count the charter, lexical and word-position support of frozen us/um matches.\n\nUses only the annotated test corpus and the frozen matching functions. Never\nconstructs a Context object, calculates a score, or changes a reported cutoff.\n\"\"\"\n\nfrom collections import Counter, defaultdict\nfrom hashlib import sha256\nimport json\nfrom pathlib import Path\n\nfrom charter_context import Site, Word, make_pairs\nfrom latin_corpus import iter_occurrences, iter_sentences\n\n\nROOT = Path(__file__).resolve().parent\nFOCUS = (\"us\", \"um\")\n\n\ndef digest(path):\n    return sha256(path.read_bytes()).hexdigest()\n\n\ndef _build_input(path):\n    sentences = list(iter_sentences(path, split=\"test\"))\n    documents = {}\n    words = {}\n    ordinal = 0\n    for sentence in sentences:\n        for token in sentence.tokens:\n            ordinal += 1\n            morph = token.morphology\n            lemma = morph.lemma_ascii or \"\" if morph is not None else \"\"\n            fields = (\n                morph.upos or \"\", morph.case or \"\", morph.number or \"\", morph.gender or \"\"\n            ) if morph is not None else (\"\", \"\", \"\", \"\")\n            for part, form in enumerate(token.ascii_parts):\n                index = len(words)\n                words[sentence.sent_id, token.id, part] = Word(\n                    index, ordinal, form, lemma if \" \" not in lemma else \"\", *fields,\n                )\n                documents[index] = sentence.doc_id\n\n    occurrences = list(iter_occurrences(sentences, FOCUS, include_fragments=True))\n    sites = [\n        (o.pair == FOCUS[1], Site(words[o.sent_id, o.token_id, o.part_index], o.start, o.left, o.right))\n        for o in occurrences\n    ]\n    return occurrences, sites, documents\n\n\ndef _internal_support(occurrences):\n    strata = defaultdict(Counter)\n    for o in occurrences:\n        if o.role in (\"initial\", \"interior\"):\n            strata[o.role, o.left][o.pair] += 1\n    by_role = {}\n    for role in (\"initial\", \"interior\"):\n        groups = {left: count for (kind, left), count in strata.items() if kind == role}\n        raw = {pair: sum(count[pair] for count in groups.values()) for pair in FOCUS}\n        by_role[role] = {\n            \"source_occurrences\": raw,\n            \"upper_bound_matching_only_role\": min(raw.values()),\n            \"upper_bound_matching_role_and_immediate_left\": sum(min(c[p] for p in FOCUS) for c in groups.values()),\n            \"nonempty_exact_left_strata\": sum(all(c[p] for p in FOCUS) for c in groups.values()),\n            \"left_strata_with_both\": [\n                {\"left\": left, \"source_occurrences\": {p: count[p] for p in FOCUS},\n                 \"pair_upper_bound\": min(count[p] for p in FOCUS)}\n                for left, count in sorted(groups.items()) if all(count[p] for p in FOCUS)\n            ],\n        }\n    return {\n        \"source_occurrences\": {pair: sum(row[\"source_occurrences\"][pair] for row in by_role.values()) for pair in FOCUS},\n        \"upper_bound_matching_role_and_immediate_left\": sum(row[\"upper_bound_matching_role_and_immediate_left\"] for row in by_role.values()),\n        \"by_role\": by_role,\n    }\n\n\ndef _terminal_summary(pairs, documents):\n    groups = Counter()\n    docs_by_group = defaultdict(set)\n    sides = [Counter(), Counter()]\n    for a, b in pairs:\n        key = (a.word.lemma, a.word.form[:-2], a.word.upos)\n        assert key == (b.word.lemma, b.word.form[:-2], b.word.upos)\n        groups[key] += 1\n        for i, site in enumerate((a, b)):\n            doc = documents[site.word.index]\n            assert doc is not None\n            sides[i][doc] += 1\n            docs_by_group[key].add(doc)\n    docs = sides[0] + sides[1]\n    rows = [{\"lemma\": lemma, \"stem\": stem, \"upos\": upos, \"matched_pairs\": n,\n             \"share_of_pairs\": n / len(pairs), \"contributing_charters\": len(docs_by_group[lemma, stem, upos])}\n            for (lemma, stem, upos), n in sorted(groups.items(), key=lambda row: (-row[1], row[0]))]\n    return {\n        \"matched_pairs\": len(pairs), \"matched_occurrence_slots\": 2 * len(pairs),\n        \"charters_either_side\": len(docs),\n        \"charters_us_side\": len(sides[0]), \"charters_um_side\": len(sides[1]),\n        \"charters_both_sides\": len(sides[0].keys() & sides[1].keys()),\n        \"same_charter_matched_pairs\": sum(documents[a.word.index] == documents[b.word.index] for a, b in pairs),\n        \"lemma_stem_upos_groups\": len(groups), \"groups\": rows,\n        \"largest_charter_matched_slots\": max(docs.values()),\n        \"largest_charters\": [doc for doc in sorted(docs) if docs[doc] == max(docs.values())],\n    }\n\n\ndef main():\n    corpus = ROOT / \"corpus\" / \"test.conllu\"\n    frozen = ROOT / \"evaluation.json\"\n    evaluation = json.loads(frozen.read_text(encoding=\"utf-8\"))\n    assert evaluation[\"source\"][\"sha256\"] == digest(corpus)\n    assert evaluation[\"parser_sha256\"] == digest(ROOT / \"latin_corpus.py\")\n    assert evaluation[\"runner_sha256\"] == digest(ROOT / \"charter_context.py\")\n    occurrences, sites, documents = _build_input(corpus)\n    by_mode = {mode: {r[\"seed\"]: r for r in evaluation[\"rows\"] if (r[\"target\"], r[\"decoy\"]) == FOCUS and r[\"mode\"] == mode}\n               for mode in (\"internal\", \"terminal_same_stem_case\")}\n    internal = _internal_support(occurrences)\n    terminal = []\n    union_slots = set()\n    union_docs = set()\n    for seed, row in sorted(by_mode[\"terminal_same_stem_case\"].items()):\n        pairs, support = make_pairs(sites, \"terminal_same_stem_case\", seed, frozenset())\n        assert len(pairs) == row[\"pairs\"] and support == row[\"support\"]\n        terminal.append({\"seed\": seed, **_terminal_summary(pairs, documents)})\n        union_slots.update((site.word.index, site.onset) for pair in pairs for site in pair)\n        union_docs.update(documents[site.word.index] for pair in pairs for site in pair)\n    for row in by_mode[\"internal\"].values():\n        assert row[\"support\"][\"source_sites\"] == [internal[\"source_occurrences\"][p] for p in FOCUS]\n        assert row[\"support\"][\"stratum_unrestricted_upper_bound\"] == internal[\"upper_bound_matching_role_and_immediate_left\"]\n        assert row[\"position_counts\"][\"word_initial\"] == internal[\"by_role\"][\"initial\"][\"upper_bound_matching_role_and_immediate_left\"]\n    report = {\n        \"scope\": \"UD Latin LLCT test charters only. Support and concentration from the same frozen match, with no new scores. Counts per matched seed reuse source charters and are not independent observations.\",\n        \"evaluation_sha256\": digest(frozen), \"test_sha256\": digest(corpus),\n        \"internal_us_um\": internal,\n        \"terminal_same_stem_case\": {\n            \"unique_occurrence_slots_across_seeds\": len(union_slots),\n            \"unique_charters_across_seeds\": len(union_docs),\n            \"seeds\": terminal,\n        },\n    }\n    (ROOT / \"morphology_support.json\").write_text(json.dumps(report, indent=2) + \"\\n\", encoding=\"utf-8\")\n    print(internal)\n    for row in terminal:\n        print(row[\"seed\"], row[\"charters_either_side\"], row[\"charters_us_side\"], row[\"charters_um_side\"],\n              row[\"lemma_stem_upos_groups\"], row[\"groups\"][0])\n    print(\"unique across seeds\", len(union_slots), \"slots and\", len(union_docs), \"charters\")\n\n\nif __name__ == \"__main__\":\n    main()\n"
+      }
+    },
+    "scope": "Atomic replacement is planted, not an assertion about actual Latin writing. Ties are a consequence of the immediate exterior-context observables and their position strata. These comparisons cannot identify historical glyph composition. Word-internal forms may span a morpheme boundary. The annotated evidence comes from the charters. Natural single letters in the unedited text are operational no-replacement controls, not claims about their historical graphogenesis.",
+    "morphology_coverage_audit": {
+      "scope": "UD Latin LLCT test charters only. Support and concentration from the same frozen match, with no new scores. Counts per matched seed reuse source charters and are not independent observations.",
+      "evaluation_sha256": "2edb138f74fe1ee641c23254a88c3a9757c8df0e1f60b07eab50d3d312f3892c",
+      "test_sha256": "81d9f57de66d83303ad4df54a60cd445ac089b50070d369831a632b4cf948e64",
+      "internal_us_um": {
+        "source_occurrences": {
+          "us": 207,
+          "um": 114
+        },
+        "upper_bound_matching_role_and_immediate_left": 32,
+        "by_role": {
+          "initial": {
+            "source_occurrences": {
+              "us": 21,
+              "um": 7
+            },
+            "upper_bound_matching_only_role": 7,
+            "upper_bound_matching_role_and_immediate_left": 7,
+            "nonempty_exact_left_strata": 1,
+            "left_strata_with_both": [
+              {
+                "left": " ",
+                "source_occurrences": {
+                  "us": 21,
+                  "um": 7
+                },
+                "pair_upper_bound": 7
+              }
+            ]
+          },
+          "interior": {
+            "source_occurrences": {
+              "us": 186,
+              "um": 107
+            },
+            "upper_bound_matching_only_role": 107,
+            "upper_bound_matching_role_and_immediate_left": 25,
+            "nonempty_exact_left_strata": 5,
+            "left_strata_with_both": [
+              {
+                "left": "c",
+                "source_occurrences": {
+                  "us": 10,
+                  "um": 17
+                },
+                "pair_upper_bound": 10
+              },
+              {
+                "left": "g",
+                "source_occurrences": {
+                  "us": 35,
+                  "um": 2
+                },
+                "pair_upper_bound": 2
+              },
+              {
+                "left": "l",
+                "source_occurrences": {
+                  "us": 4,
+                  "um": 12
+                },
+                "pair_upper_bound": 4
+              },
+              {
+                "left": "n",
+                "source_occurrences": {
+                  "us": 2,
+                  "um": 25
+                },
+                "pair_upper_bound": 2
+              },
+              {
+                "left": "s",
+                "source_occurrences": {
+                  "us": 23,
+                  "um": 7
+                },
+                "pair_upper_bound": 7
+              }
+            ]
+          }
+        }
+      },
+      "terminal_same_stem_case": {
+        "unique_occurrence_slots_across_seeds": 271,
+        "unique_charters_across_seeds": 51,
+        "seeds": [
+          {
+            "seed": 66103,
+            "matched_pairs": 75,
+            "matched_occurrence_slots": 150,
+            "charters_either_side": 51,
+            "charters_us_side": 39,
+            "charters_um_side": 49,
+            "charters_both_sides": 37,
+            "same_charter_matched_pairs": 1,
+            "lemma_stem_upos_groups": 9,
+            "groups": [
+              {
+                "lemma": "notarius",
+                "stem": "notari",
+                "upos": "NOUN",
+                "matched_pairs": 48,
+                "share_of_pairs": 0.64,
+                "contributing_charters": 50
+              },
+              {
+                "lemma": "petrus",
+                "stem": "petr",
+                "upos": "PROPN",
+                "matched_pairs": 8,
+                "share_of_pairs": 0.10666666666666667,
+                "contributing_charters": 14
+              },
+              {
+                "lemma": "teuderadus",
+                "stem": "teuderand",
+                "upos": "PROPN",
+                "matched_pairs": 8,
+                "share_of_pairs": 0.10666666666666667,
+                "contributing_charters": 8
+              },
+              {
+                "lemma": "teudimundus",
+                "stem": "teudimund",
+                "upos": "PROPN",
+                "matched_pairs": 4,
+                "share_of_pairs": 0.05333333333333334,
+                "contributing_charters": 7
+              },
+              {
+                "lemma": "cospertus",
+                "stem": "cospert",
+                "upos": "PROPN",
+                "matched_pairs": 3,
+                "share_of_pairs": 0.04,
+                "contributing_charters": 6
+              },
+              {
+                "lemma": "adalpertus",
+                "stem": "adalpert",
+                "upos": "PROPN",
+                "matched_pairs": 1,
+                "share_of_pairs": 0.013333333333333334,
+                "contributing_charters": 2
+              },
+              {
+                "lemma": "austripertus",
+                "stem": "ostripert",
+                "upos": "PROPN",
+                "matched_pairs": 1,
+                "share_of_pairs": 0.013333333333333334,
+                "contributing_charters": 2
+              },
+              {
+                "lemma": "missus",
+                "stem": "miss",
+                "upos": "NOUN",
+                "matched_pairs": 1,
+                "share_of_pairs": 0.013333333333333334,
+                "contributing_charters": 2
+              },
+              {
+                "lemma": "rachifonsus",
+                "stem": "rachifons",
+                "upos": "PROPN",
+                "matched_pairs": 1,
+                "share_of_pairs": 0.013333333333333334,
+                "contributing_charters": 2
+              }
+            ],
+            "largest_charter_matched_slots": 10,
+            "largest_charters": [
+              "86:47"
+            ]
+          },
+          {
+            "seed": 66109,
+            "matched_pairs": 75,
+            "matched_occurrence_slots": 150,
+            "charters_either_side": 50,
+            "charters_us_side": 34,
+            "charters_um_side": 49,
+            "charters_both_sides": 33,
+            "same_charter_matched_pairs": 5,
+            "lemma_stem_upos_groups": 9,
+            "groups": [
+              {
+                "lemma": "notarius",
+                "stem": "notari",
+                "upos": "NOUN",
+                "matched_pairs": 48,
+                "share_of_pairs": 0.64,
+                "contributing_charters": 49
+              },
+              {
+                "lemma": "petrus",
+                "stem": "petr",
+                "upos": "PROPN",
+                "matched_pairs": 8,
+                "share_of_pairs": 0.10666666666666667,
+                "contributing_charters": 13
+              },
+              {
+                "lemma": "teuderadus",
+                "stem": "teuderand",
+                "upos": "PROPN",
+                "matched_pairs": 8,
+                "share_of_pairs": 0.10666666666666667,
+                "contributing_charters": 9
+              },
+              {
+                "lemma": "teudimundus",
+                "stem": "teudimund",
+                "upos": "PROPN",
+                "matched_pairs": 4,
+                "share_of_pairs": 0.05333333333333334,
+                "contributing_charters": 6
+              },
+              {
+                "lemma": "cospertus",
+                "stem": "cospert",
+                "upos": "PROPN",
+                "matched_pairs": 3,
+                "share_of_pairs": 0.04,
+                "contributing_charters": 5
+              },
+              {
+                "lemma": "adalpertus",
+                "stem": "adalpert",
+                "upos": "PROPN",
+                "matched_pairs": 1,
+                "share_of_pairs": 0.013333333333333334,
+                "contributing_charters": 2
+              },
+              {
+                "lemma": "austripertus",
+                "stem": "ostripert",
+                "upos": "PROPN",
+                "matched_pairs": 1,
+                "share_of_pairs": 0.013333333333333334,
+                "contributing_charters": 2
+              },
+              {
+                "lemma": "missus",
+                "stem": "miss",
+                "upos": "NOUN",
+                "matched_pairs": 1,
+                "share_of_pairs": 0.013333333333333334,
+                "contributing_charters": 2
+              },
+              {
+                "lemma": "rachifonsus",
+                "stem": "rachifons",
+                "upos": "PROPN",
+                "matched_pairs": 1,
+                "share_of_pairs": 0.013333333333333334,
+                "contributing_charters": 1
+              }
+            ],
+            "largest_charter_matched_slots": 10,
+            "largest_charters": [
+              "86:47"
+            ]
+          },
+          {
+            "seed": 66113,
+            "matched_pairs": 75,
+            "matched_occurrence_slots": 150,
+            "charters_either_side": 51,
+            "charters_us_side": 37,
+            "charters_um_side": 49,
+            "charters_both_sides": 35,
+            "same_charter_matched_pairs": 6,
+            "lemma_stem_upos_groups": 9,
+            "groups": [
+              {
+                "lemma": "notarius",
+                "stem": "notari",
+                "upos": "NOUN",
+                "matched_pairs": 48,
+                "share_of_pairs": 0.64,
+                "contributing_charters": 50
+              },
+              {
+                "lemma": "petrus",
+                "stem": "petr",
+                "upos": "PROPN",
+                "matched_pairs": 8,
+                "share_of_pairs": 0.10666666666666667,
+                "contributing_charters": 15
+              },
+              {
+                "lemma": "teuderadus",
+                "stem": "teuderand",
+                "upos": "PROPN",
+                "matched_pairs": 8,
+                "share_of_pairs": 0.10666666666666667,
+                "contributing_charters": 9
+              },
+              {
+                "lemma": "teudimundus",
+                "stem": "teudimund",
+                "upos": "PROPN",
+                "matched_pairs": 4,
+                "share_of_pairs": 0.05333333333333334,
+                "contributing_charters": 6
+              },
+              {
+                "lemma": "cospertus",
+                "stem": "cospert",
+                "upos": "PROPN",
+                "matched_pairs": 3,
+                "share_of_pairs": 0.04,
+                "contributing_charters": 4
+              },
+              {
+                "lemma": "adalpertus",
+                "stem": "adalpert",
+                "upos": "PROPN",
+                "matched_pairs": 1,
+                "share_of_pairs": 0.013333333333333334,
+                "contributing_charters": 2
+              },
+              {
+                "lemma": "austripertus",
+                "stem": "ostripert",
+                "upos": "PROPN",
+                "matched_pairs": 1,
+                "share_of_pairs": 0.013333333333333334,
+                "contributing_charters": 2
+              },
+              {
+                "lemma": "missus",
+                "stem": "miss",
+                "upos": "NOUN",
+                "matched_pairs": 1,
+                "share_of_pairs": 0.013333333333333334,
+                "contributing_charters": 2
+              },
+              {
+                "lemma": "rachifonsus",
+                "stem": "rachifons",
+                "upos": "PROPN",
+                "matched_pairs": 1,
+                "share_of_pairs": 0.013333333333333334,
+                "contributing_charters": 1
+              }
+            ],
+            "largest_charter_matched_slots": 8,
+            "largest_charters": [
+              "86:16",
+              "86:47"
+            ]
+          },
+          {
+            "seed": 66121,
+            "matched_pairs": 75,
+            "matched_occurrence_slots": 150,
+            "charters_either_side": 51,
+            "charters_us_side": 41,
+            "charters_um_side": 49,
+            "charters_both_sides": 39,
+            "same_charter_matched_pairs": 4,
+            "lemma_stem_upos_groups": 9,
+            "groups": [
+              {
+                "lemma": "notarius",
+                "stem": "notari",
+                "upos": "NOUN",
+                "matched_pairs": 48,
+                "share_of_pairs": 0.64,
+                "contributing_charters": 50
+              },
+              {
+                "lemma": "petrus",
+                "stem": "petr",
+                "upos": "PROPN",
+                "matched_pairs": 8,
+                "share_of_pairs": 0.10666666666666667,
+                "contributing_charters": 14
+              },
+              {
+                "lemma": "teuderadus",
+                "stem": "teuderand",
+                "upos": "PROPN",
+                "matched_pairs": 8,
+                "share_of_pairs": 0.10666666666666667,
+                "contributing_charters": 8
+              },
+              {
+                "lemma": "teudimundus",
+                "stem": "teudimund",
+                "upos": "PROPN",
+                "matched_pairs": 4,
+                "share_of_pairs": 0.05333333333333334,
+                "contributing_charters": 7
+              },
+              {
+                "lemma": "cospertus",
+                "stem": "cospert",
+                "upos": "PROPN",
+                "matched_pairs": 3,
+                "share_of_pairs": 0.04,
+                "contributing_charters": 4
+              },
+              {
+                "lemma": "adalpertus",
+                "stem": "adalpert",
+                "upos": "PROPN",
+                "matched_pairs": 1,
+                "share_of_pairs": 0.013333333333333334,
+                "contributing_charters": 2
+              },
+              {
+                "lemma": "austripertus",
+                "stem": "ostripert",
+                "upos": "PROPN",
+                "matched_pairs": 1,
+                "share_of_pairs": 0.013333333333333334,
+                "contributing_charters": 1
+              },
+              {
+                "lemma": "missus",
+                "stem": "miss",
+                "upos": "NOUN",
+                "matched_pairs": 1,
+                "share_of_pairs": 0.013333333333333334,
+                "contributing_charters": 1
+              },
+              {
+                "lemma": "rachifonsus",
+                "stem": "rachifons",
+                "upos": "PROPN",
+                "matched_pairs": 1,
+                "share_of_pairs": 0.013333333333333334,
+                "contributing_charters": 2
+              }
+            ],
+            "largest_charter_matched_slots": 7,
+            "largest_charters": [
+              "86:21",
+              "86:47"
+            ]
+          },
+          {
+            "seed": 66137,
+            "matched_pairs": 75,
+            "matched_occurrence_slots": 150,
+            "charters_either_side": 50,
+            "charters_us_side": 33,
+            "charters_um_side": 49,
+            "charters_both_sides": 32,
+            "same_charter_matched_pairs": 2,
+            "lemma_stem_upos_groups": 9,
+            "groups": [
+              {
+                "lemma": "notarius",
+                "stem": "notari",
+                "upos": "NOUN",
+                "matched_pairs": 48,
+                "share_of_pairs": 0.64,
+                "contributing_charters": 49
+              },
+              {
+                "lemma": "petrus",
+                "stem": "petr",
+                "upos": "PROPN",
+                "matched_pairs": 8,
+                "share_of_pairs": 0.10666666666666667,
+                "contributing_charters": 14
+              },
+              {
+                "lemma": "teuderadus",
+                "stem": "teuderand",
+                "upos": "PROPN",
+                "matched_pairs": 8,
+                "share_of_pairs": 0.10666666666666667,
+                "contributing_charters": 9
+              },
+              {
+                "lemma": "teudimundus",
+                "stem": "teudimund",
+                "upos": "PROPN",
+                "matched_pairs": 4,
+                "share_of_pairs": 0.05333333333333334,
+                "contributing_charters": 6
+              },
+              {
+                "lemma": "cospertus",
+                "stem": "cospert",
+                "upos": "PROPN",
+                "matched_pairs": 3,
+                "share_of_pairs": 0.04,
+                "contributing_charters": 5
+              },
+              {
+                "lemma": "adalpertus",
+                "stem": "adalpert",
+                "upos": "PROPN",
+                "matched_pairs": 1,
+                "share_of_pairs": 0.013333333333333334,
+                "contributing_charters": 2
+              },
+              {
+                "lemma": "austripertus",
+                "stem": "ostripert",
+                "upos": "PROPN",
+                "matched_pairs": 1,
+                "share_of_pairs": 0.013333333333333334,
+                "contributing_charters": 2
+              },
+              {
+                "lemma": "missus",
+                "stem": "miss",
+                "upos": "NOUN",
+                "matched_pairs": 1,
+                "share_of_pairs": 0.013333333333333334,
+                "contributing_charters": 1
+              },
+              {
+                "lemma": "rachifonsus",
+                "stem": "rachifons",
+                "upos": "PROPN",
+                "matched_pairs": 1,
+                "share_of_pairs": 0.013333333333333334,
+                "contributing_charters": 2
+              }
+            ],
+            "largest_charter_matched_slots": 9,
+            "largest_charters": [
+              "86:47"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
