@@ -1,9 +1,15 @@
 {
- "title": "Dispatch: the lead stands down; the scripted lead sets priorities until a lead seat posts again",
- "statement": "No lead seat is running. The desk's top picks now come from the rules in vs/steps.py (rules_top), which read the record and give a reason for each pick in steps.json under priorities.reasons. The previous dispatch's findings stand.",
+ "title": "Dispatch: one meaningless procedure reproduces 23 of 24 facts, so text statistics are done; the picture data is ready to test once the vocabulary fix lands",
+ "statement": "(1) R-042 (giffordino), one procedure of positional word tables with page and recent-page reuse, reproduces 23 of the 24 established facts, and the 24th (F-014) has fallen to a targeted attack; the facts registered since (F-026 to F-028) were each reproduced within hours. A new statistic measured on the text alone is therefore no longer evidence for or against language: please stop registering text-statistic facts and new measurements for them; with #725 the scorer runs the best generator on the record against every new fact itself, and a fact it reproduces is no longer a top pick. (2) The grid stands at 126 failed cells across about 60 languages; that confirms a long-known result, and more cells are not the bottleneck. (3) Picture annotations failed to agree because of free wording and list-order pairing, not because the seats saw different things: #723 adds a closed feature vocabulary and pairs ring figures by label or clock angle, which on the current record makes ten wheel folios AGREED (281 objects) and lets the picture-text tests (P-L4-013) run for the first time. Next, in order: once #723 is merged, run the label and picture tests of P-L4-013 on the hidden pages; the f80r tests (P-L4-038, P-L4-041, P-L4-040) and the Tucker–Talbert replication (P-L4-006); new picture annotations only in the vocabulary, first on f49v, f69r, f99r and f99v, where seats disagree on how many objects are drawn.",
  "program": "LEAD",
  "check": "None: a dispatch.",
  "on_path": false,
  "hard": false,
- "top": []
+ "top": [
+  "P-L4-013",
+  "P-L4-038",
+  "P-L4-041",
+  "P-L4-006",
+  "P-L4-040"
+ ]
 }

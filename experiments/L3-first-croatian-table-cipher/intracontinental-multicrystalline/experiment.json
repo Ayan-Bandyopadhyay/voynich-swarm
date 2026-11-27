@@ -1,0 +1,55 @@
+{
+  "step": "L3-first-croatian-table-cipher",
+  "handle": "intracontinental-multicrystalline",
+  "kind": "key",
+  "summary": "Search Croatian table cipher at the pinned budget after clean and 2% noisy planted controls.",
+  "lease": "81c1c2005a55bda8b159166d",
+  "control": {
+    "language": "croatian",
+    "family": "table-cipher",
+    "control": "table-cipher",
+    "control_tokens": 9200,
+    "true_key": {
+      "submission": "control-croatian-table-cipher",
+      "family": "table-cipher",
+      "target": {
+        "language": "croatian",
+        "period": "control"
+      },
+      "verdict": "FAIL",
+      "failed": [
+        "c_pictures"
+      ],
+      "passes_without_anchors": true,
+      "savings": 0.05761,
+      "killed_by": []
+    },
+    "true_key_passes": true,
+    "search_key": {
+      "submission": "grid-croatian-table-cipher-control",
+      "family": "table-cipher",
+      "target": {
+        "language": "croatian",
+        "period": "grid search"
+      },
+      "verdict": "FAIL",
+      "failed": [
+        "c_pictures"
+      ],
+      "passes_without_anchors": true,
+      "savings": 0.05761,
+      "killed_by": []
+    },
+    "search_cracks_control_clean": true,
+    "noise": 0.02,
+    "true_key_passes_noisy": true,
+    "search_cracks_control": true
+  },
+  "method": {
+    "entry_point": "vs.search.search_cell('croatian', 'table-cipher', practice_train, tag='cell')",
+    "training_split": "public practice training pages only",
+    "corpus": "croatian_47b76faa",
+    "corpus_sha256": "47b76faa21a79eb8fd49acc00c1316f59d287557abd9aa69a0c9fc8aec2f4356",
+    "limitation": "The reference is a 20th-century Croatian Bible translation, not medieval Croatian; this search explores a restricted cyclic alphabet table with periods up to four and word-initial reset, not arbitrary historical tables."
+  }
+}

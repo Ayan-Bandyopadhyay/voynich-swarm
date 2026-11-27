@@ -1,0 +1,441 @@
+{
+  "title": "A paid long-word escape round-trips but has high explicit transmission cost",
+  "program": "L3",
+  "on_path": true,
+  "hard": true,
+  "statement": "A synthetic dictionary and ternary escape with a separately framed long-word fallback round-trips every word in nine 25,000-token planted samples. For seed 19, the combined scheme’s explicit codec, dictionary and ciphertext framing costs about 1.36–1.45 million bits per sample, while a normalized simple plaintext reference costs 0.57–0.67 million bits. Dictionary-only and combined have identical bit costs under this particular framing because their fallback and bounded escape markers each occupy one character. No unknown-key recovery or manuscript reading is claimed.",
+  "check": "Find and document an historically motivated channel and pre-register any syntax on genuinely independent training data. Calibrate unknown-key recovery and false positives across independent keys, books and non-language controls, with matched budgets. Compare explicit code lengths with stronger normalized language and ciphertext models, state every shared interpreter and format assumption, and include key and search costs. Separately verify both transcription witnesses and use hidden-page scoring only after the calibrated search has meaningful power; do not count arbitrary dictionary hits as a reading.",
+  "codec": "Domain is sequences of nonempty lowercase ASCII words; normalization has already removed punctuation, so this is not a byte-exact edition codec. Reserve initial y for bounded escapes and q for long-word fallback, excluding both from dictionary codewords. Map each letter 0–25 to three base-3 digits drawn from a,k,r; reject the unused value 26. Encode OOV words of length 1–16 as y plus those digits and longer ones as q plus those digits. Dictionary-only uses q for every OOV word; escape-only uses no dictionary; combined uses a dictionary first and then the bounded and long-word escapes. The decoder validates marker rules, length, alphabet and unused digit triple. Unlike the parent bounded channel, the long fallback has no fixed word-length ceiling within this domain. The format is synthetic and its historical provenance is not established.",
+  "framing_and_models": "For a nonempty word write Elias gamma(length) then each lowercase letter as a five-bit code 0–25; six bit patterns are unused and rejected. Prefix the ciphertext sequence with gamma(number of words+1). The dictionary begins with gamma(number of entries+1), then each sorted plaintext/ciphertext pair as two framed words; decoding verifies exact recovery. The codec source is stored as gamma(UTF-8 byte length) plus eight bits per byte, followed by two bits selecting one of the three variants. A shared Python interpreter and this framing convention are assumed. Summing those three framed components gives the explicit transmission cost, without claiming optimal compression or adding plaintext bits a second time. As a separate normalized reference for nonempty lowercase words use P(w)=52^-len(w): summing over 26^L words gives 2^-L for each L>=1. Framed gamma length and uniform five-bit symbols likewise define a normalized model over the full 32-symbol code alphabet; invalid or unused symbols receive probability but are rejected by this codec. Since dictionary words exclude both escape markers and all three components are reversible, the conditional preimage cost for an accepted ciphertext given the exact key and codec is zero.",
+  "design": "On ZL public practice-training paragraph tokens, choose unique certain lowercase ASCII dictionary candidates not beginning with q or y. For each pinned book (Villani, Roman de la Rose and Chaucer), fit the 1,000 most frequent plaintext types from the first 50,000 normalized tokens, tie-break lexically, randomly assign candidate ciphertext types using seeds 19, 37 and 73, then encode the following 25,000 words. Input hashes are checked. All 27 dictionary-only, escape-only and combined runs build and parse actual framed dictionary and ciphertext bitstrings and check every decoded token against its source. The codec-source header length is computed from its exact embedded UTF-8 text and variant tag; it is not compressed.",
+  "limitations": "The Villani split and all three works have appeared in previous exploratory work, so these are not independently frozen test books. No experimental data from manuscript evaluation pages are used; vocabulary is public-training-derived. The single geometric/uniform plaintext model is a weak baseline, and the framed uniform ciphertext is deliberately inefficient; neither represents a fitted historical language model. The self-delimited source convention assumes a shared Python runtime, alphabet and framing semantics, and no search-computation cost is included. Unknown dictionary/codec recovery, discrimination from random text, credible historical grounding and a hidden-page hypothesis remain open. Reported bit costs do not prove impossibility or establish a reading.",
+  "results": {
+    "config": {
+      "books": [
+        "it_villani",
+        "fr_rose",
+        "en_chaucer"
+      ],
+      "seeds": [
+        19,
+        37,
+        73
+      ],
+      "code_candidates": 5077,
+      "marker_escape": "y",
+      "marker_fallback": "q",
+      "digits": "akr",
+      "limit": 16,
+      "codec_source_bytes": 2159,
+      "codec_source_and_variant_bits": 17297,
+      "plain_model": "P(w)=52^(-len(w)) for nonempty lowercase ASCII words"
+    },
+    "results": {
+      "it_villani": {
+        "19": {
+          "dictionary_only": {
+            "tokens": 25000,
+            "dictionary_tokens": 19975,
+            "bounded_escape_tokens": 0,
+            "fallback_tokens": 5025,
+            "cipher_chars": 241480,
+            "cipher_stream_bits": 1356597,
+            "dictionary_bits": 73364,
+            "codec_bits": 17297,
+            "explicit_components_total_bits": 1447258,
+            "plaintext_model_bits": 672013.437492217,
+            "preimage_bits_given_key_and_cipher": 0,
+            "exact_roundtrip": true
+          },
+          "escape_only": {
+            "tokens": 25000,
+            "dictionary_tokens": 0,
+            "bounded_escape_tokens": 24991,
+            "fallback_tokens": 9,
+            "cipher_chars": 378664,
+            "cipher_stream_bits": 2080963,
+            "dictionary_bits": 1,
+            "codec_bits": 17297,
+            "explicit_components_total_bits": 2098261,
+            "plaintext_model_bits": 672013.437492217,
+            "preimage_bits_given_key_and_cipher": 0,
+            "exact_roundtrip": true
+          },
+          "combined": {
+            "tokens": 25000,
+            "dictionary_tokens": 19975,
+            "bounded_escape_tokens": 5016,
+            "fallback_tokens": 9,
+            "cipher_chars": 241480,
+            "cipher_stream_bits": 1356597,
+            "dictionary_bits": 73364,
+            "codec_bits": 17297,
+            "explicit_components_total_bits": 1447258,
+            "plaintext_model_bits": 672013.437492217,
+            "preimage_bits_given_key_and_cipher": 0,
+            "exact_roundtrip": true
+          }
+        },
+        "37": {
+          "dictionary_only": {
+            "tokens": 25000,
+            "dictionary_tokens": 19975,
+            "bounded_escape_tokens": 0,
+            "fallback_tokens": 5025,
+            "cipher_chars": 240255,
+            "cipher_stream_bits": 1353436,
+            "dictionary_bits": 73173,
+            "codec_bits": 17297,
+            "explicit_components_total_bits": 1443906,
+            "plaintext_model_bits": 672013.437492217,
+            "preimage_bits_given_key_and_cipher": 0,
+            "exact_roundtrip": true
+          },
+          "escape_only": {
+            "tokens": 25000,
+            "dictionary_tokens": 0,
+            "bounded_escape_tokens": 24991,
+            "fallback_tokens": 9,
+            "cipher_chars": 378664,
+            "cipher_stream_bits": 2080963,
+            "dictionary_bits": 1,
+            "codec_bits": 17297,
+            "explicit_components_total_bits": 2098261,
+            "plaintext_model_bits": 672013.437492217,
+            "preimage_bits_given_key_and_cipher": 0,
+            "exact_roundtrip": true
+          },
+          "combined": {
+            "tokens": 25000,
+            "dictionary_tokens": 19975,
+            "bounded_escape_tokens": 5016,
+            "fallback_tokens": 9,
+            "cipher_chars": 240255,
+            "cipher_stream_bits": 1353436,
+            "dictionary_bits": 73173,
+            "codec_bits": 17297,
+            "explicit_components_total_bits": 1443906,
+            "plaintext_model_bits": 672013.437492217,
+            "preimage_bits_given_key_and_cipher": 0,
+            "exact_roundtrip": true
+          }
+        },
+        "73": {
+          "dictionary_only": {
+            "tokens": 25000,
+            "dictionary_tokens": 19975,
+            "bounded_escape_tokens": 0,
+            "fallback_tokens": 5025,
+            "cipher_chars": 251240,
+            "cipher_stream_bits": 1411571,
+            "dictionary_bits": 73108,
+            "codec_bits": 17297,
+            "explicit_components_total_bits": 1501976,
+            "plaintext_model_bits": 672013.437492217,
+            "preimage_bits_given_key_and_cipher": 0,
+            "exact_roundtrip": true
+          },
+          "escape_only": {
+            "tokens": 25000,
+            "dictionary_tokens": 0,
+            "bounded_escape_tokens": 24991,
+            "fallback_tokens": 9,
+            "cipher_chars": 378664,
+            "cipher_stream_bits": 2080963,
+            "dictionary_bits": 1,
+            "codec_bits": 17297,
+            "explicit_components_total_bits": 2098261,
+            "plaintext_model_bits": 672013.437492217,
+            "preimage_bits_given_key_and_cipher": 0,
+            "exact_roundtrip": true
+          },
+          "combined": {
+            "tokens": 25000,
+            "dictionary_tokens": 19975,
+            "bounded_escape_tokens": 5016,
+            "fallback_tokens": 9,
+            "cipher_chars": 251240,
+            "cipher_stream_bits": 1411571,
+            "dictionary_bits": 73108,
+            "codec_bits": 17297,
+            "explicit_components_total_bits": 1501976,
+            "plaintext_model_bits": 672013.437492217,
+            "preimage_bits_given_key_and_cipher": 0,
+            "exact_roundtrip": true
+          }
+        }
+      },
+      "fr_rose": {
+        "19": {
+          "dictionary_only": {
+            "tokens": 25000,
+            "dictionary_tokens": 18750,
+            "bounded_escape_tokens": 0,
+            "fallback_tokens": 6250,
+            "cipher_chars": 241488,
+            "cipher_stream_bits": 1359537,
+            "dictionary_bits": 67318,
+            "codec_bits": 17297,
+            "explicit_components_total_bits": 1444152,
+            "plaintext_model_bits": 574741.1341418574,
+            "preimage_bits_given_key_and_cipher": 0,
+            "exact_roundtrip": true
+          },
+          "escape_only": {
+            "tokens": 25000,
+            "dictionary_tokens": 0,
+            "bounded_escape_tokens": 25000,
+            "fallback_tokens": 0,
+            "cipher_chars": 327472,
+            "cipher_stream_bits": 1814917,
+            "dictionary_bits": 1,
+            "codec_bits": 17297,
+            "explicit_components_total_bits": 1832215,
+            "plaintext_model_bits": 574741.1341418574,
+            "preimage_bits_given_key_and_cipher": 0,
+            "exact_roundtrip": true
+          },
+          "combined": {
+            "tokens": 25000,
+            "dictionary_tokens": 18750,
+            "bounded_escape_tokens": 6250,
+            "fallback_tokens": 0,
+            "cipher_chars": 241488,
+            "cipher_stream_bits": 1359537,
+            "dictionary_bits": 67318,
+            "codec_bits": 17297,
+            "explicit_components_total_bits": 1444152,
+            "plaintext_model_bits": 574741.1341418574,
+            "preimage_bits_given_key_and_cipher": 0,
+            "exact_roundtrip": true
+          }
+        },
+        "37": {
+          "dictionary_only": {
+            "tokens": 25000,
+            "dictionary_tokens": 18750,
+            "bounded_escape_tokens": 0,
+            "fallback_tokens": 6250,
+            "cipher_chars": 241242,
+            "cipher_stream_bits": 1361691,
+            "dictionary_bits": 67127,
+            "codec_bits": 17297,
+            "explicit_components_total_bits": 1446115,
+            "plaintext_model_bits": 574741.1341418574,
+            "preimage_bits_given_key_and_cipher": 0,
+            "exact_roundtrip": true
+          },
+          "escape_only": {
+            "tokens": 25000,
+            "dictionary_tokens": 0,
+            "bounded_escape_tokens": 25000,
+            "fallback_tokens": 0,
+            "cipher_chars": 327472,
+            "cipher_stream_bits": 1814917,
+            "dictionary_bits": 1,
+            "codec_bits": 17297,
+            "explicit_components_total_bits": 1832215,
+            "plaintext_model_bits": 574741.1341418574,
+            "preimage_bits_given_key_and_cipher": 0,
+            "exact_roundtrip": true
+          },
+          "combined": {
+            "tokens": 25000,
+            "dictionary_tokens": 18750,
+            "bounded_escape_tokens": 6250,
+            "fallback_tokens": 0,
+            "cipher_chars": 241242,
+            "cipher_stream_bits": 1361691,
+            "dictionary_bits": 67127,
+            "codec_bits": 17297,
+            "explicit_components_total_bits": 1446115,
+            "plaintext_model_bits": 574741.1341418574,
+            "preimage_bits_given_key_and_cipher": 0,
+            "exact_roundtrip": true
+          }
+        },
+        "73": {
+          "dictionary_only": {
+            "tokens": 25000,
+            "dictionary_tokens": 18750,
+            "bounded_escape_tokens": 0,
+            "fallback_tokens": 6250,
+            "cipher_chars": 250192,
+            "cipher_stream_bits": 1407833,
+            "dictionary_bits": 67062,
+            "codec_bits": 17297,
+            "explicit_components_total_bits": 1492192,
+            "plaintext_model_bits": 574741.1341418574,
+            "preimage_bits_given_key_and_cipher": 0,
+            "exact_roundtrip": true
+          },
+          "escape_only": {
+            "tokens": 25000,
+            "dictionary_tokens": 0,
+            "bounded_escape_tokens": 25000,
+            "fallback_tokens": 0,
+            "cipher_chars": 327472,
+            "cipher_stream_bits": 1814917,
+            "dictionary_bits": 1,
+            "codec_bits": 17297,
+            "explicit_components_total_bits": 1832215,
+            "plaintext_model_bits": 574741.1341418574,
+            "preimage_bits_given_key_and_cipher": 0,
+            "exact_roundtrip": true
+          },
+          "combined": {
+            "tokens": 25000,
+            "dictionary_tokens": 18750,
+            "bounded_escape_tokens": 6250,
+            "fallback_tokens": 0,
+            "cipher_chars": 250192,
+            "cipher_stream_bits": 1407833,
+            "dictionary_bits": 67062,
+            "codec_bits": 17297,
+            "explicit_components_total_bits": 1492192,
+            "plaintext_model_bits": 574741.1341418574,
+            "preimage_bits_given_key_and_cipher": 0,
+            "exact_roundtrip": true
+          }
+        }
+      },
+      "en_chaucer": {
+        "19": {
+          "dictionary_only": {
+            "tokens": 25000,
+            "dictionary_tokens": 19501,
+            "bounded_escape_tokens": 0,
+            "fallback_tokens": 5499,
+            "cipher_chars": 224643,
+            "cipher_stream_bits": 1271270,
+            "dictionary_bits": 66851,
+            "codec_bits": 17297,
+            "explicit_components_total_bits": 1355418,
+            "plaintext_model_bits": 572825.786396562,
+            "preimage_bits_given_key_and_cipher": 0,
+            "exact_roundtrip": true
+          },
+          "escape_only": {
+            "tokens": 25000,
+            "dictionary_tokens": 0,
+            "bounded_escape_tokens": 25000,
+            "fallback_tokens": 0,
+            "cipher_chars": 326464,
+            "cipher_stream_bits": 1812175,
+            "dictionary_bits": 1,
+            "codec_bits": 17297,
+            "explicit_components_total_bits": 1829473,
+            "plaintext_model_bits": 572825.786396562,
+            "preimage_bits_given_key_and_cipher": 0,
+            "exact_roundtrip": true
+          },
+          "combined": {
+            "tokens": 25000,
+            "dictionary_tokens": 19501,
+            "bounded_escape_tokens": 5499,
+            "fallback_tokens": 0,
+            "cipher_chars": 224643,
+            "cipher_stream_bits": 1271270,
+            "dictionary_bits": 66851,
+            "codec_bits": 17297,
+            "explicit_components_total_bits": 1355418,
+            "plaintext_model_bits": 572825.786396562,
+            "preimage_bits_given_key_and_cipher": 0,
+            "exact_roundtrip": true
+          }
+        },
+        "37": {
+          "dictionary_only": {
+            "tokens": 25000,
+            "dictionary_tokens": 19501,
+            "bounded_escape_tokens": 0,
+            "fallback_tokens": 5499,
+            "cipher_chars": 223652,
+            "cipher_stream_bits": 1267329,
+            "dictionary_bits": 66660,
+            "codec_bits": 17297,
+            "explicit_components_total_bits": 1351286,
+            "plaintext_model_bits": 572825.786396562,
+            "preimage_bits_given_key_and_cipher": 0,
+            "exact_roundtrip": true
+          },
+          "escape_only": {
+            "tokens": 25000,
+            "dictionary_tokens": 0,
+            "bounded_escape_tokens": 25000,
+            "fallback_tokens": 0,
+            "cipher_chars": 326464,
+            "cipher_stream_bits": 1812175,
+            "dictionary_bits": 1,
+            "codec_bits": 17297,
+            "explicit_components_total_bits": 1829473,
+            "plaintext_model_bits": 572825.786396562,
+            "preimage_bits_given_key_and_cipher": 0,
+            "exact_roundtrip": true
+          },
+          "combined": {
+            "tokens": 25000,
+            "dictionary_tokens": 19501,
+            "bounded_escape_tokens": 5499,
+            "fallback_tokens": 0,
+            "cipher_chars": 223652,
+            "cipher_stream_bits": 1267329,
+            "dictionary_bits": 66660,
+            "codec_bits": 17297,
+            "explicit_components_total_bits": 1351286,
+            "plaintext_model_bits": 572825.786396562,
+            "preimage_bits_given_key_and_cipher": 0,
+            "exact_roundtrip": true
+          }
+        },
+        "73": {
+          "dictionary_only": {
+            "tokens": 25000,
+            "dictionary_tokens": 19501,
+            "bounded_escape_tokens": 0,
+            "fallback_tokens": 5499,
+            "cipher_chars": 234792,
+            "cipher_stream_bits": 1326985,
+            "dictionary_bits": 66595,
+            "codec_bits": 17297,
+            "explicit_components_total_bits": 1410877,
+            "plaintext_model_bits": 572825.786396562,
+            "preimage_bits_given_key_and_cipher": 0,
+            "exact_roundtrip": true
+          },
+          "escape_only": {
+            "tokens": 25000,
+            "dictionary_tokens": 0,
+            "bounded_escape_tokens": 25000,
+            "fallback_tokens": 0,
+            "cipher_chars": 326464,
+            "cipher_stream_bits": 1812175,
+            "dictionary_bits": 1,
+            "codec_bits": 17297,
+            "explicit_components_total_bits": 1829473,
+            "plaintext_model_bits": 572825.786396562,
+            "preimage_bits_given_key_and_cipher": 0,
+            "exact_roundtrip": true
+          },
+          "combined": {
+            "tokens": 25000,
+            "dictionary_tokens": 19501,
+            "bounded_escape_tokens": 5499,
+            "fallback_tokens": 0,
+            "cipher_chars": 234792,
+            "cipher_stream_bits": 1326985,
+            "dictionary_bits": 66595,
+            "codec_bits": 17297,
+            "explicit_components_total_bits": 1410877,
+            "plaintext_model_bits": 572825.786396562,
+            "preimage_bits_given_key_and_cipher": 0,
+            "exact_roundtrip": true
+          }
+        }
+      }
+    }
+  },
+  "reproducibility": {
+    "script": "import collections,hashlib,inspect,json,math,random,string\nfrom vs import corpus,ivtff,refcorpus\nDIGITS='akr';LETTERS=string.ascii_lowercase;LIMIT=16\n\ndef payload(w):\n return ''.join(''.join(DIGITS[(ord(c)-97)//3**d%3] for d in (2,1,0)) for c in w)\ndef unpayload(s):\n if not s or len(s)%3 or any(c not in DIGITS for c in s):raise ValueError('bad digits')\n vals=[sum(DIGITS.index(s[i+j])*3**(2-j) for j in range(3)) for i in range(0,len(s),3)]\n if any(x>=26 for x in vals):raise ValueError('bad code')\n return ''.join(chr(97+x) for x in vals)\ndef encode(w,enc,variant):\n if not w or any(c not in LETTERS for c in w):raise ValueError('plaintext outside a-z')\n if variant!='escape_only' and w in enc:return enc[w]\n return ('q' if variant=='dictionary_only' or len(w)>LIMIT else 'y')+payload(w)\ndef decode(w,dec,variant):\n if not w:raise ValueError('empty cipher')\n if w[0] in ('q','y'):\n  out=unpayload(w[1:])\n  if w[0]=='y' and (variant=='dictionary_only' or len(out)>LIMIT):raise ValueError('bad bounded escape')\n  if w[0]=='q' and variant!='dictionary_only' and len(out)<=LIMIT:raise ValueError('bad fallback')\n  return out\n return dec[w]\n\ndef gamma(n):\n assert n>0\n b=bin(n)[2:];return '0'*(len(b)-1)+b\ndef ungamma(s,i):\n j=i\n while j<len(s) and s[j]=='0':j+=1\n if j==len(s):raise ValueError('truncated gamma')\n n=j-i+1;end=j+n\n if end>len(s):raise ValueError('truncated gamma')\n return int(s[j:end],2),end\ndef word(w):\n assert w and all(c in LETTERS for c in w)\n return gamma(len(w))+''.join(format(ord(c)-97,'05b') for c in w)\ndef unword(s,i):\n n,i=ungamma(s,i);end=i+5*n\n if end>len(s):raise ValueError('truncated word')\n bits=s[i:end];values=[int(bits[j:j+5],2) for j in range(0,len(bits),5)]\n if any(v>=26 for v in values):raise ValueError('unused alphabet code')\n return ''.join(chr(v+97) for v in values),end\ndef dictbits(enc):\n s=gamma(len(enc)+1)\n for k,v in sorted(enc.items()):s+=word(k)+word(v)\n return s\ndef undict(s):\n n,i=ungamma(s,0);out={}\n for _ in range(n-1):\n  a,i=unword(s,i);b,i=unword(s,i);out[a]=b\n assert i==len(s);return out\ndef stream(ws):return gamma(len(ws)+1)+''.join(word(w) for w in ws)\ndef unstream(s):\n n,i=ungamma(s,0);out=[]\n for _ in range(n-1):w,i=unword(s,i);out.append(w)\n assert i==len(s);return out\n\ncodec_src=\"import string\\nDIGITS='akr'; LETTERS=string.ascii_lowercase; LIMIT=16\\n\"+''.join(inspect.getsource(f) for f in (payload,unpayload,encode,decode,gamma,ungamma,word,unword,dictbits,undict,stream,unstream))\n# Fixed header stores the exact codec source as gamma(byte count)+UTF-8 bits;\n# interpreter and variant convention are shared across all compared schemes.\ncodec_bits=len(gamma(len(codec_src.encode())))+8*len(codec_src.encode())+2\nBOOKS=('it_villani','fr_rose','en_chaucer');seeds=(19,37,73);train,_=corpus.split_pages('practice','zl')\ncodes=sorted(set(w for p in train for l in p.lines if l.unit=='P' for w in l.words if w and w.isascii() and w.islower() and w.isalpha() and not ivtff.uncertain(w) and w[0] not in 'qy'))\nassert len(codes)>=1000\nout={'config':{'books':BOOKS,'seeds':seeds,'code_candidates':len(codes),'marker_escape':'y','marker_fallback':'q','digits':DIGITS,'limit':LIMIT,'codec_source_bytes':len(codec_src.encode()),'codec_source_and_variant_bits':codec_bits,'plain_model':'P(w)=52^(-len(w)) for nonempty lowercase ASCII words'},'results':{}}\nfor book in BOOKS:\n e=next(x for x in refcorpus.pins() if x['id']==book);assert hashlib.sha256(open(e['file'],'rb').read()).hexdigest()==e['sha256'];words=' '.join(refcorpus.blocks_of(book)).split();assert len(words)>=75000 and all(w and all(c in LETTERS for c in w) for w in words[:75000]);freq=collections.Counter(words[:50000]);common=sorted(freq,key=lambda w:(-freq[w],w))[:1000];test=words[50000:75000];out['results'][book]={}\n for seed in seeds:\n  pool=codes[:];random.Random(seed).shuffle(pool);enc=dict(zip(common,pool));dec={v:k for k,v in enc.items()};assert len(dec)==1000\n  rr={}\n  for variant in ('dictionary_only','escape_only','combined'):\n   key={} if variant=='escape_only' else enc;rawkey=dictbits(key);assert undict(rawkey)==key\n   cipher=[encode(w,key,variant) for w in test];wire=stream(cipher);returned=unstream(wire);inv={v:k for k,v in key.items()};assert [decode(w,inv,variant) for w in returned]==test\n   rr[variant]={'tokens':len(test),'dictionary_tokens':sum(w in key for w in test),'bounded_escape_tokens':sum(w.startswith('y') for w in cipher),'fallback_tokens':sum(w.startswith('q') for w in cipher),'cipher_chars':sum(map(len,cipher)),'cipher_stream_bits':len(wire),'dictionary_bits':len(rawkey),'codec_bits':codec_bits,'explicit_components_total_bits':len(wire)+len(rawkey)+codec_bits,'plaintext_model_bits':sum(len(w) for w in test)*math.log2(52),'preimage_bits_given_key_and_cipher':0,'exact_roundtrip':True}\n  out['results'][book][str(seed)]=rr\nprint(json.dumps(out,indent=2))\n"
+  }
+}

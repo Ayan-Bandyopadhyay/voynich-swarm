@@ -1,0 +1,61 @@
+{
+  "step": "L3-first-danish-syllabic",
+  "handle": "intracontinental-multicrystalline",
+  "kind": "key",
+  "summary": "Search Danish syllabic family at the pinned budget, noting the clean control fails although the 2% noisy control passes.",
+  "lease": "fcc0eaf9d85efb8733dcf10b",
+  "control": {
+    "language": "danish",
+    "family": "syllabic",
+    "control": "syllabic",
+    "control_tokens": 10160,
+    "true_key": {
+      "submission": "control-danish-syllabic",
+      "family": "syllabic",
+      "target": {
+        "language": "danish",
+        "period": "control"
+      },
+      "verdict": "FAIL",
+      "failed": [
+        "c_pictures"
+      ],
+      "passes_without_anchors": true,
+      "savings": 0.04569,
+      "killed_by": []
+    },
+    "true_key_passes": true,
+    "search_key": {
+      "submission": "grid-danish-syllabic-control",
+      "family": "syllabic",
+      "target": {
+        "language": "danish",
+        "period": "grid search"
+      },
+      "verdict": "FAIL",
+      "failed": [
+        "a_compresses",
+        "b_reads",
+        "kill_tests",
+        "c_pictures",
+        "d_not_illusion"
+      ],
+      "passes_without_anchors": false,
+      "savings": -0.0311,
+      "killed_by": [
+        "D1_word_order_shuffled"
+      ]
+    },
+    "search_cracks_control_clean": false,
+    "noise": 0.02,
+    "true_key_passes_noisy": true,
+    "search_cracks_control": true
+  },
+  "method": {
+    "entry_point": "vs.search.search_cell('danish', 'syllabic', practice_train, tag='cell')",
+    "training_split": "public practice training pages only",
+    "corpus": "danish_c6e4a469",
+    "corpus_sha256": "c6e4a46970837b1ece3775ebc07f0ce2289b367e566d8fb5c8ef12b7c7baedf9",
+    "limitation": "The reference is a 19th/early 20th-century Bible and this search assumes a fixed q marker, word boundaries, and a limited CV-sign inventory. The noisy planted search passes but the clean planted search fails, so one noisy control alone is weak evidence of broad search power."
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "id": "grid-czech-syllabic-practice",
+  "family": "syllabic",
+  "segmentation": "eva-basic",
+  "target": {
+    "language": "czech",
+    "period": "grid search"
+  },
+  "key": {
+    "marker": "q",
+    "map": {
+      "*": "z",
+      "?": "i",
+      "a": "a",
+      "b": "i",
+      "c": "a",
+      "cfh": "n",
+      "ch": "d",
+      "ckh": "n",
+      "cph": "n",
+      "cth": "n",
+      "d": "n",
+      "e": "i",
+      "f": "z",
+      "g": "i",
+      "h": "i",
+      "i": "s",
+      "j": "n",
+      "k": "z",
+      "l": "l",
+      "m": "s",
+      "n": "e",
+      "o": "a",
+      "p": "z",
+      "r": "l",
+      "s": "z",
+      "sh": "d",
+      "t": "z",
+      "u": "a",
+      "v": "a",
+      "x": "v",
+      "y": "i",
+      "z": "n",
+      "qo": "ka",
+      "qe": "ka",
+      "qk": "ma",
+      "qy": "na",
+      "qcth": "ha",
+      "qckh": "me",
+      "qa": "me",
+      "q*": "ka",
+      "q?": "ma",
+      "qch": "li",
+      "qcph": "za"
+    }
+  },
+  "search": {
+    "budget": {
+      "syllable_candidates": 64,
+      "sign_limit": 24,
+      "lexical_sweeps": 5,
+      "restarts": 4,
+      "iterations": 6000,
+      "seed": 1404,
+      "bpe_merges": 30,
+      "verbose_segmentations": [
+        "bpe-greedy",
+        "fixed-2"
+      ],
+      "verbose_min_unit_share": 0.0005,
+      "substitution_group_swap": 0.2
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "step": "R-attack-F-029",
+  "handle": "intracontinental-multicrystalline",
+  "kind": "attack",
+  "summary": "Test a general position-binned word-table generator against the matched-word rightwardness fact.",
+  "lease": "aa45d6917373fc37c57993b5"
+}

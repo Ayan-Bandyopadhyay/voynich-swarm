@@ -1,0 +1,274 @@
+{
+  "program": "L1",
+  "title": "Test od/ed spelling with independent leaf and hand comparisons",
+  "statement": "Timm (2014, section 9, https://arxiv.org/pdf/1407.6639v3) uses the distribution of od/ed spellings to argue for an A-before-B production order. Prior P-L1-001 showed an asymmetric preference and exceptions to a strict one-way generalization. In public practice-training paragraph tokens, this descriptive sensitivity counts each certain word containing literal EVA ed or od at most once per substring; the two counts can overlap. ZL ed share B minus A is 0.2051 (95% page-bootstrap interval 0.1807\u20130.2304); within section H it is 0.1548 (0.1261\u20130.1825). IT gives 0.2069 overall and 0.1534 in H; RF gives 0.1605 and 0.0992. Each uses 2,000 within-group page resamples, seed 503. The interval describes page-sampling sensitivity only, not independent-leaf sampling or uncertainty in handwriting. The H contrast has 79 A pages all assigned hand 1 and 29 B pages assigned hands 2, 3 or 5; section restriction therefore does not separate hand from language. The only same-hand/same-section contrast here is hand 3, section S: one A page versus 19 B pages (ZL 2/377 versus 1780/8796 ed tokens), too little A-side replication for an independent hand-matched conclusion. Token-weighted and page-mean results and od counts are included. This supports a distributional contrast but cannot order production or explain its cause.",
+  "check": "On an independently chosen set, pair physical leaves or bifolia across A and B where the same hand and section overlap; measure both exact ed/od variant pairs and rates, verify image readings and account for transcription uncertainty. Treat leaf or larger physical clusters as the resampling unit and report effective sample size. Obtain an independent physical or scribal direction indicator before interpreting any spelling asymmetry chronologically; preregister the analysis before unseen-page evaluation. If overlap remains insufficient, report that limitation rather than replacing physical matching with token-level sampling.",
+  "on_path": true,
+  "hard": false,
+  "method": {
+    "selection": "Public practice-training pages only; ZL3b, IT2a and RF1b, certain paragraph tokens, Currier A or B. Each page grouped by its declared section and hand. ed and od are literal substring predicates, not exhaustive variant-pair matches or semantic equivalences.",
+    "bootstrap": "Independent page resampling within Currier group, 2,000 draws per contrast and transcription, seed 503; difference of pooled ed token shares B minus A, percentile order statistics 50 and 1950 (1-indexed). In the one-A-page case the bootstrap does not reflect A-population variation and must not be interpreted as hand-matched uncertainty.",
+    "limits": "Pages are not necessarily independent physical leaves; section and hand remain confounded in H, and transcriptions are not independent manuscripts. This analysis was exploratory and did not independently inspect scans or fit chronology."
+  },
+  "results": {
+    "zl": {
+      "all": {
+        "A": {
+          "pages": 95,
+          "tokens": 9333,
+          "ed": 25,
+          "od": 763,
+          "mean_page_ed_share": 0.0022259683285935465,
+          "mean_page_od_share": 0.08087568330693916
+        },
+        "B": {
+          "pages": 72,
+          "tokens": 19711,
+          "ed": 4096,
+          "od": 927,
+          "mean_page_ed_share": 0.19378447912456623,
+          "mean_page_od_share": 0.05470722106158479
+        },
+        "ed_rate_difference_B_minus_A": 0.20512408263839785,
+        "page_bootstrap_95": [
+          0.18066288815247886,
+          0.23038173330646672
+        ]
+      },
+      "herbal_H": {
+        "A": {
+          "pages": 79,
+          "tokens": 6693,
+          "ed": 9,
+          "od": 535,
+          "mean_page_ed_share": 0.0014356552338446685,
+          "mean_page_od_share": 0.07811759052808345
+        },
+        "B": {
+          "pages": 29,
+          "tokens": 3151,
+          "ed": 492,
+          "od": 214,
+          "mean_page_ed_share": 0.15461803487147865,
+          "mean_page_od_share": 0.07092850227942021
+        },
+        "ed_rate_difference_B_minus_A": 0.1547962191678636,
+        "page_bootstrap_95": [
+          0.12609682543298834,
+          0.18253684422055785
+        ]
+      },
+      "hand3_stars_S": {
+        "A": {
+          "pages": 1,
+          "tokens": 377,
+          "ed": 2,
+          "od": 20,
+          "mean_page_ed_share": 0.005305039787798408,
+          "mean_page_od_share": 0.05305039787798409
+        },
+        "B": {
+          "pages": 19,
+          "tokens": 8796,
+          "ed": 1780,
+          "od": 484,
+          "mean_page_ed_share": 0.20010811296346107,
+          "mean_page_od_share": 0.05783090905138953
+        },
+        "ed_rate_difference_B_minus_A": 0.19705967144457992,
+        "page_bootstrap_95": [
+          0.162945695672713,
+          0.23278495911197053
+        ]
+      },
+      "page_groups": {
+        "('A', 'T', '1')": 1,
+        "('A', 'H', '1')": 79,
+        "('B', 'H', '2')": 19,
+        "('B', 'H', '5')": 4,
+        "('A', 'S', '3')": 1,
+        "('B', 'T', '5')": 1,
+        "('B', 'B', '2')": 16,
+        "('B', 'T', '2')": 3,
+        "('B', 'C', '2')": 3,
+        "('A', 'P', '1')": 14,
+        "('B', 'H', '3')": 6,
+        "('B', 'S', '3')": 19,
+        "('B', 'S', 'None')": 1
+      }
+    },
+    "it": {
+      "all": {
+        "A": {
+          "pages": 95,
+          "tokens": 9204,
+          "ed": 28,
+          "od": 769,
+          "mean_page_ed_share": 0.0024282093937565952,
+          "mean_page_od_share": 0.0828607896823917
+        },
+        "B": {
+          "pages": 72,
+          "tokens": 19499,
+          "ed": 4094,
+          "od": 935,
+          "mean_page_ed_share": 0.1945836598142775,
+          "mean_page_od_share": 0.05594504539704079
+        },
+        "ed_rate_difference_B_minus_A": 0.20691732951727163,
+        "page_bootstrap_95": [
+          0.182555733383966,
+          0.232151950889646
+        ]
+      },
+      "herbal_H": {
+        "A": {
+          "pages": 79,
+          "tokens": 6604,
+          "ed": 10,
+          "od": 538,
+          "mean_page_ed_share": 0.0015393607678978085,
+          "mean_page_od_share": 0.07994925942706366
+        },
+        "B": {
+          "pages": 29,
+          "tokens": 3124,
+          "ed": 484,
+          "od": 215,
+          "mean_page_ed_share": 0.15333869234769723,
+          "mean_page_od_share": 0.07195017114505334
+        },
+        "ed_rate_difference_B_minus_A": 0.15341534366709036,
+        "page_bootstrap_95": [
+          0.12530354126399323,
+          0.1795250726285209
+        ]
+      },
+      "hand3_stars_S": {
+        "A": {
+          "pages": 1,
+          "tokens": 367,
+          "ed": 2,
+          "od": 20,
+          "mean_page_ed_share": 0.005449591280653951,
+          "mean_page_od_share": 0.05449591280653951
+        },
+        "B": {
+          "pages": 19,
+          "tokens": 8662,
+          "ed": 1788,
+          "od": 484,
+          "mean_page_ed_share": 0.2039906081563816,
+          "mean_page_od_share": 0.05886275182124275
+        },
+        "ed_rate_difference_B_minus_A": 0.20096924963368454,
+        "page_bootstrap_95": [
+          0.16686517035059245,
+          0.23677263094156828
+        ]
+      },
+      "page_groups": {
+        "('A', 'T', '1')": 1,
+        "('A', 'H', '1')": 79,
+        "('B', 'H', '2')": 19,
+        "('B', 'H', '5')": 4,
+        "('A', 'S', '3')": 1,
+        "('B', 'T', '5')": 1,
+        "('B', 'B', '2')": 16,
+        "('B', 'T', '2')": 3,
+        "('B', 'C', '2')": 3,
+        "('A', 'P', '1')": 14,
+        "('B', 'H', '3')": 6,
+        "('B', 'S', '3')": 19,
+        "('B', 'S', 'None')": 1
+      }
+    },
+    "rf": {
+      "all": {
+        "A": {
+          "pages": 95,
+          "tokens": 8677,
+          "ed": 21,
+          "od": 690,
+          "mean_page_ed_share": 0.0020868988593452566,
+          "mean_page_od_share": 0.07960453337347372
+        },
+        "B": {
+          "pages": 72,
+          "tokens": 17261,
+          "ed": 2812,
+          "od": 760,
+          "mean_page_ed_share": 0.14651132000561282,
+          "mean_page_od_share": 0.05123487270306881
+        },
+        "ed_rate_difference_B_minus_A": 0.16049041641804435,
+        "page_bootstrap_95": [
+          0.13918054229362659,
+          0.18281558199419057
+        ]
+      },
+      "herbal_H": {
+        "A": {
+          "pages": 79,
+          "tokens": 6260,
+          "ed": 8,
+          "od": 500,
+          "mean_page_ed_share": 0.001401237574316433,
+          "mean_page_od_share": 0.07816609726105231
+        },
+        "B": {
+          "pages": 29,
+          "tokens": 2517,
+          "ed": 253,
+          "od": 161,
+          "mean_page_ed_share": 0.10118705495168644,
+          "mean_page_od_share": 0.06637848350325364
+        },
+        "ed_rate_difference_B_minus_A": 0.0992385326108342,
+        "page_bootstrap_95": [
+          0.07652797611056188,
+          0.12367899499524491
+        ]
+      },
+      "hand3_stars_S": {
+        "A": {
+          "pages": 1,
+          "tokens": 332,
+          "ed": 1,
+          "od": 14,
+          "mean_page_ed_share": 0.0030120481927710845,
+          "mean_page_od_share": 0.04216867469879518
+        },
+        "B": {
+          "pages": 19,
+          "tokens": 7866,
+          "ed": 1277,
+          "od": 403,
+          "mean_page_ed_share": 0.16196889576730475,
+          "mean_page_od_share": 0.0538632556773505
+        },
+        "ed_rate_difference_B_minus_A": 0.1593322182704885,
+        "page_bootstrap_95": [
+          0.13028824913131215,
+          0.1900490195322321
+        ]
+      },
+      "page_groups": {
+        "('A', 'T', '1')": 1,
+        "('A', 'H', '1')": 79,
+        "('B', 'H', '2')": 19,
+        "('B', 'H', '5')": 4,
+        "('A', 'S', '3')": 1,
+        "('B', 'T', '5')": 1,
+        "('B', 'B', '2')": 16,
+        "('B', 'T', '2')": 3,
+        "('B', 'C', '2')": 3,
+        "('A', 'P', '1')": 14,
+        "('B', 'H', '3')": 6,
+        "('B', 'S', '3')": 19,
+        "('B', 'S', 'None')": 1
+      }
+    }
+  },
+  "reproduction_python": "from vs import corpus,dsl\nfrom collections import defaultdict,Counter\nimport random,json\nout={}\nfor trans in ('zl','it','rf'):\n pages,_=corpus.split_pages('practice',trans); toks=dsl.select(dsl.tokens(pages),{'unit':['P'],'certain':True}); by=defaultdict(lambda:Counter())\n for t in toks:\n  if t['language'] not in ('A','B'):continue\n  key=(t['folio'],t['language'],t['section'],t['hand']); w=t['w'];by[key]['n']+=1;by[key]['ed']+=('ed' in w);by[key]['od']+=('od' in w)\n def summarize(section, hand=None):\n  groups={lang:[v for (p,l,s,h),v in by.items() if l==lang and (section is None or s==section) and (hand is None or h==hand)] for lang in ('A','B')}; res={}\n  for lang,vs in groups.items():\n   tot=sum(v['n'] for v in vs);res[lang]={'pages':len(vs),'tokens':tot,'ed':sum(v['ed'] for v in vs),'od':sum(v['od'] for v in vs),'mean_page_ed_share':sum(v['ed']/v['n'] for v in vs)/len(vs) if vs else None,'mean_page_od_share':sum(v['od']/v['n'] for v in vs)/len(vs) if vs else None}\n  if all(groups.values()):\n   rng=random.Random(503); ds=[]\n   for i in range(2000):\n    vals={}\n    for lang,vs in groups.items():\n     sample=[rng.choice(vs) for _ in vs]; vals[lang]=sum(v['ed'] for v in sample)/sum(v['n'] for v in sample)\n    ds.append(vals['B']-vals['A'])\n   ds.sort();res['ed_rate_difference_B_minus_A']=(res['B']['ed']/res['B']['tokens'])-(res['A']['ed']/res['A']['tokens']);res['page_bootstrap_95']=[ds[49],ds[1949]]\n  return res\n out[trans]={'all':summarize(None),'herbal_H':summarize('H'),'hand3_stars_S':summarize('S','3'),'page_groups':dict(Counter(str((l,s,h)) for (p,l,s,h) in by))}\nprint(json.dumps(out,indent=2))\n"
+}

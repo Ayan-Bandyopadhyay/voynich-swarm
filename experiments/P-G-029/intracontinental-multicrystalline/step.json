@@ -1,0 +1,524 @@
+{
+  "title": "Retuned topic-cache candidates still fail the five-width gate on three other works",
+  "program": "G",
+  "on_path": false,
+  "hard": true,
+  "statement": "Re-selecting among six fixed topic-cache parameter settings on the previous three-book external sample chooses the original (0.6, 0.3, 8000) setting. On three other historical works it beats the two local-loss baselines, but only 3/5, 3/5 and 2/5 Taylor widths lie inside the predictive intervals; all three joint external gates fail. No manuscript data were scored, and no genuinely better model was found.",
+  "check": "Develop and calibrate a different production model on multiple independent works, with held-back works not used to design or tune it. Check probability normalization, unseen types, local predictive loss, independently seeded predictive intervals and all five fixed-width comparisons. Retain the original joint gate, assess calibration and structured non-language comparators, and do not score manuscript pages until an external model passes; do not infer general impossibility from this model family’s failure.",
+  "selection": "Reuse P-G-027’s Villani, Roman de la Rose and Chaucer 30,000-token test windows as development windows; they are no longer independent confirmation data. Their first 30,000 tokens fit each book-specific model. Before inspecting the new test-work outcomes, compare the six fixed tuples (topic weight, cache weight, mean topic duration): (.6,.3,8000), (.8,.1,8000), (.6,.3,32000), (.8,.1,32000), (.9,.1,8000), (.9,.1,32000). For each candidate and development book draw four seeded model samples and minimize the mean of [test bits/token minus fixed-cache bits/token + 10 × mean absolute error from generated median Taylor exponents across five widths]. Candidate zero is the pre-existing P-G-026 setting; it is selected again. The candidate family was selected after earlier work and is not a blind population-wide model search.",
+  "evaluation": "On three different pinned works (Augustine Confessiones, El conde Lucanor and Nibelungenlied), fit separate inventories, bigrams, cache and topics to each work’s first 30,000 normalized tokens and test on its next 30,000. Hash-check inputs; train and test book windows do not overlap. Freeze the selected tuple before using the test windows. Use widths 2,810, 4,215, 5,620, 7,025 and 8,430; at each, require the observed exponent to exceed the medians of 32 fixed-frequency shuffles and 32 test-fitted empirical-bigram draws, and lie between sorted values 4 and 61 of 64 independently seeded model samples. Also require model log loss no worse than both fixed-cache and no-cache baselines. Every condition must pass for every work before any manuscript comparison. All unseen test word types have positive backoff probability; their counts and complete width metrics are reported.",
+  "normalization": "The model and generator are the normalized bounded-character backoff, bigram, finite-cache and ten-state topic mixture documented in P-G-027. Its component distributions and state transition are convex normalized mixtures; this repeat checks positive support for unseen observed test types, not an independent exhaustive normalization proof.",
+  "limitations": "Development books were previously used to evaluate P-G-027 and this model family was designed with those results in mind; only the three test works are new to this model-selection chain, not fresh to all repository analyses. Each model is fitted to its own work’s training window, and works, languages, editions and genres remain limited. Four development draws per candidate are noisy; 64-sample intervals and the strict five-width joint gate are exploratory rather than proven nominal-coverage guarantees. Widths are correlated. This tuning does not add a distinct structured non-language generator or independently establish sheet grouping. No manuscript data were accessed and no exclusion of language or text-production families follows.",
+  "results": {
+    "development_books": [
+      "it_villani",
+      "fr_rose",
+      "en_chaucer"
+    ],
+    "test_books": [
+      "la_augustine",
+      "es_lucanor",
+      "de_nibelunge"
+    ],
+    "tokens_per_window": 30000,
+    "candidates": [
+      [
+        0.6,
+        0.3,
+        8000
+      ],
+      [
+        0.8,
+        0.1,
+        8000
+      ],
+      [
+        0.6,
+        0.3,
+        32000
+      ],
+      [
+        0.8,
+        0.1,
+        32000
+      ],
+      [
+        0.9,
+        0.1,
+        8000
+      ],
+      [
+        0.9,
+        0.1,
+        32000
+      ]
+    ],
+    "development": {
+      "0": {
+        "candidate": [
+          0.6,
+          0.3,
+          8000
+        ],
+        "mean_objective": -0.16810783985356656,
+        "books": {
+          "it_villani": {
+            "loss": 10.40188641959645,
+            "fixed_cache_loss": 10.634981102579998,
+            "mean_error": 0.019012274918720262,
+            "objective": -0.042971933796345674
+          },
+          "fr_rose": {
+            "loss": 11.424159502278421,
+            "fixed_cache_loss": 11.870162738452857,
+            "mean_error": 0.026704402495290647,
+            "objective": -0.17895921122152925
+          },
+          "en_chaucer": {
+            "loss": 11.480008864890117,
+            "fixed_cache_loss": 11.958870926327306,
+            "mean_error": 0.01964696868943643,
+            "objective": -0.28239237454282473
+          }
+        }
+      },
+      "1": {
+        "candidate": [
+          0.8,
+          0.1,
+          8000
+        ],
+        "mean_objective": -0.07579034374550993,
+        "books": {
+          "it_villani": {
+            "loss": 10.539785826365712,
+            "fixed_cache_loss": 10.634981102579998,
+            "mean_error": 0.017748837142214046,
+            "objective": 0.08229309520785488
+          },
+          "fr_rose": {
+            "loss": 11.508874662865612,
+            "fixed_cache_loss": 11.870162738452857,
+            "mean_error": 0.03036223364770312,
+            "objective": -0.057665739110213776
+          },
+          "en_chaucer": {
+            "loss": 11.55153589810985,
+            "fixed_cache_loss": 11.958870926327306,
+            "mean_error": 0.015533664088328392,
+            "objective": -0.2519983873341709
+          }
+        }
+      },
+      "2": {
+        "candidate": [
+          0.6,
+          0.3,
+          32000
+        ],
+        "mean_objective": 0.004969085354173434,
+        "books": {
+          "it_villani": {
+            "loss": 10.405955970643033,
+            "fixed_cache_loss": 10.634981102579998,
+            "mean_error": 0.027692042969781318,
+            "objective": 0.047895297760848665
+          },
+          "fr_rose": {
+            "loss": 11.428336934061619,
+            "fixed_cache_loss": 11.870162738452857,
+            "mean_error": 0.03648989827529121,
+            "objective": -0.07692682163832565
+          },
+          "en_chaucer": {
+            "loss": 11.484454838835552,
+            "fixed_cache_loss": 11.958870926327306,
+            "mean_error": 0.05183548674317513,
+            "objective": 0.043938779939997286
+          }
+        }
+      },
+      "3": {
+        "candidate": [
+          0.8,
+          0.1,
+          32000
+        ],
+        "mean_objective": 0.3923575451500361,
+        "books": {
+          "it_villani": {
+            "loss": 10.54439714071139,
+            "fixed_cache_loss": 10.634981102579998,
+            "mean_error": 0.059923240409581635,
+            "objective": 0.508648442227208
+          },
+          "fr_rose": {
+            "loss": 11.513760342387725,
+            "fixed_cache_loss": 11.870162738452857,
+            "mean_error": 0.10984994954475831,
+            "objective": 0.7420970993824512
+          },
+          "en_chaucer": {
+            "loss": 11.556772638292557,
+            "fixed_cache_loss": 11.958870926327306,
+            "mean_error": 0.03284253818751979,
+            "objective": -0.07367290615955069
+          }
+        }
+      },
+      "4": {
+        "candidate": [
+          0.9,
+          0.1,
+          8000
+        ],
+        "mean_objective": 0.17472045395701227,
+        "books": {
+          "it_villani": {
+            "loss": 10.702362312063293,
+            "fixed_cache_loss": 10.634981102579998,
+            "mean_error": 0.02021072477779564,
+            "objective": 0.26948845726125215
+          },
+          "fr_rose": {
+            "loss": 11.596884747691533,
+            "fixed_cache_loss": 11.870162738452857,
+            "mean_error": 0.06053522556787032,
+            "objective": 0.33207426491737935
+          },
+          "en_chaucer": {
+            "loss": 11.641175430605815,
+            "fixed_cache_loss": 11.958870926327306,
+            "mean_error": 0.024029413541389634,
+            "objective": -0.0774013603075947
+          }
+        }
+      },
+      "5": {
+        "candidate": [
+          0.9,
+          0.1,
+          32000
+        ],
+        "mean_objective": 0.5288884346444291,
+        "books": {
+          "it_villani": {
+            "loss": 10.707148887531726,
+            "fixed_cache_loss": 10.634981102579998,
+            "mean_error": 0.06127116330560787,
+            "objective": 0.6848794180078075
+          },
+          "fr_rose": {
+            "loss": 11.602228530666185,
+            "fixed_cache_loss": 11.870162738452857,
+            "mean_error": 0.06957551434519049,
+            "objective": 0.42782093566523316
+          },
+          "en_chaucer": {
+            "loss": 11.646957013587407,
+            "fixed_cache_loss": 11.958870926327306,
+            "mean_error": 0.07858788630001452,
+            "objective": 0.47396495026024676
+          }
+        }
+      }
+    },
+    "test": {
+      "la_augustine": {
+        "widths": {
+          "2810": {
+            "observed": {
+              "exponent": 0.597182275816664,
+              "blocks": 10,
+              "used": 28100
+            },
+            "interval": [
+              0.5362290022921932,
+              0.5679870346681237
+            ],
+            "model_median": 0.5584313681889981,
+            "shuffle_median": 0.48134132596717905,
+            "bigram_median": 0.48239336390205073,
+            "within_interval": false,
+            "exceeds_nulls": true
+          },
+          "4215": {
+            "observed": {
+              "exponent": 0.6006399327355245,
+              "blocks": 7,
+              "used": 29505
+            },
+            "interval": [
+              0.5499620392615944,
+              0.5918244241236311
+            ],
+            "model_median": 0.5786824575761832,
+            "shuffle_median": 0.4701773101696811,
+            "bigram_median": 0.4716163451589829,
+            "within_interval": false,
+            "exceeds_nulls": true
+          },
+          "5620": {
+            "observed": {
+              "exponent": 0.5869703677436335,
+              "blocks": 5,
+              "used": 28100
+            },
+            "interval": [
+              0.5550193206049592,
+              0.6072697675445085
+            ],
+            "model_median": 0.5882207483225251,
+            "shuffle_median": 0.456271089165481,
+            "bigram_median": 0.4567379700806916,
+            "within_interval": true,
+            "exceeds_nulls": true
+          },
+          "7025": {
+            "observed": {
+              "exponent": 0.6015989433892063,
+              "blocks": 4,
+              "used": 28100
+            },
+            "interval": [
+              0.5490230754870407,
+              0.6180694574740571
+            ],
+            "model_median": 0.5934887919553625,
+            "shuffle_median": 0.44134649204702314,
+            "bigram_median": 0.446137877172761,
+            "within_interval": true,
+            "exceeds_nulls": true
+          },
+          "8430": {
+            "observed": {
+              "exponent": 0.5664955312246249,
+              "blocks": 3,
+              "used": 25290
+            },
+            "interval": [
+              0.5361060748114473,
+              0.6181593687481031
+            ],
+            "model_median": 0.5881070149788148,
+            "shuffle_median": 0.42076048827590007,
+            "bigram_median": 0.42437493598829557,
+            "within_interval": true,
+            "exceeds_nulls": true
+          }
+        },
+        "candidate_loss": 15.05353651776539,
+        "fixed_cache_loss": 15.52496403229545,
+        "no_cache_loss": 16.66251441812123,
+        "local_pass": true,
+        "joint_pass": false,
+        "unseen_types": 5190,
+        "unseen_tokens": 6583,
+        "all_unseen_positive": true,
+        "source_sha256": "b9d4d33de51f661deb0137d3f9f191080d81959f21ae242d12b3ab0e278e8271"
+      },
+      "es_lucanor": {
+        "widths": {
+          "2810": {
+            "observed": {
+              "exponent": 0.6064248082382852,
+              "blocks": 10,
+              "used": 28100
+            },
+            "interval": [
+              0.5277494516362407,
+              0.5726052507726824
+            ],
+            "model_median": 0.5497099974092285,
+            "shuffle_median": 0.4828553524401835,
+            "bigram_median": 0.4826784248547748,
+            "within_interval": false,
+            "exceeds_nulls": true
+          },
+          "4215": {
+            "observed": {
+              "exponent": 0.6050283934375931,
+              "blocks": 7,
+              "used": 29505
+            },
+            "interval": [
+              0.5373386328490343,
+              0.5950940275532627
+            ],
+            "model_median": 0.5663771869331449,
+            "shuffle_median": 0.47372916961755,
+            "bigram_median": 0.4744979639661706,
+            "within_interval": false,
+            "exceeds_nulls": true
+          },
+          "5620": {
+            "observed": {
+              "exponent": 0.5975960622490423,
+              "blocks": 5,
+              "used": 28100
+            },
+            "interval": [
+              0.5367359447698202,
+              0.6105579698588701
+            ],
+            "model_median": 0.5744084354529344,
+            "shuffle_median": 0.46133339374073157,
+            "bigram_median": 0.4639664577451864,
+            "within_interval": true,
+            "exceeds_nulls": true
+          },
+          "7025": {
+            "observed": {
+              "exponent": 0.5914671856912971,
+              "blocks": 4,
+              "used": 28100
+            },
+            "interval": [
+              0.5290013002684302,
+              0.6271984058497161
+            ],
+            "model_median": 0.5748870145250744,
+            "shuffle_median": 0.44982888469674776,
+            "bigram_median": 0.4519361341975016,
+            "within_interval": true,
+            "exceeds_nulls": true
+          },
+          "8430": {
+            "observed": {
+              "exponent": 0.5816675006687375,
+              "blocks": 3,
+              "used": 25290
+            },
+            "interval": [
+              0.5162207810100307,
+              0.6116188492820089
+            ],
+            "model_median": 0.5659952970201167,
+            "shuffle_median": 0.42395070419032377,
+            "bigram_median": 0.4303979603611787,
+            "within_interval": true,
+            "exceeds_nulls": true
+          }
+        },
+        "candidate_loss": 9.226044052779162,
+        "fixed_cache_loss": 9.339984037285353,
+        "no_cache_loss": 10.61463609230686,
+        "local_pass": true,
+        "joint_pass": false,
+        "unseen_types": 1726,
+        "unseen_tokens": 3061,
+        "all_unseen_positive": true,
+        "source_sha256": "86d4d832a39a3647fd752ed0a9953d853855136cbf061a041334ad818d199ff4"
+      },
+      "de_nibelunge": {
+        "widths": {
+          "2810": {
+            "observed": {
+              "exponent": 0.5747126122832644,
+              "blocks": 10,
+              "used": 28100
+            },
+            "interval": [
+              0.5227234813131957,
+              0.5481434654720241
+            ],
+            "model_median": 0.5377313542781084,
+            "shuffle_median": 0.4824961353424164,
+            "bigram_median": 0.48509275143019714,
+            "within_interval": false,
+            "exceeds_nulls": true
+          },
+          "4215": {
+            "observed": {
+              "exponent": 0.5732399754052844,
+              "blocks": 7,
+              "used": 29505
+            },
+            "interval": [
+              0.5289967198728828,
+              0.5626324243177465
+            ],
+            "model_median": 0.5516045130837977,
+            "shuffle_median": 0.4740294408091818,
+            "bigram_median": 0.47656382155913135,
+            "within_interval": false,
+            "exceeds_nulls": true
+          },
+          "5620": {
+            "observed": {
+              "exponent": 0.5760751868589911,
+              "blocks": 5,
+              "used": 28100
+            },
+            "interval": [
+              0.5315301359263885,
+              0.5704289988139727
+            ],
+            "model_median": 0.5555577598449183,
+            "shuffle_median": 0.46095023406316826,
+            "bigram_median": 0.46588698917459886,
+            "within_interval": false,
+            "exceeds_nulls": true
+          },
+          "7025": {
+            "observed": {
+              "exponent": 0.5608222002371489,
+              "blocks": 4,
+              "used": 28100
+            },
+            "interval": [
+              0.5247827810826837,
+              0.5720619002776833
+            ],
+            "model_median": 0.5563137772596796,
+            "shuffle_median": 0.4474457469931509,
+            "bigram_median": 0.4525387944596799,
+            "within_interval": true,
+            "exceeds_nulls": true
+          },
+          "8430": {
+            "observed": {
+              "exponent": 0.550522190684638,
+              "blocks": 3,
+              "used": 25290
+            },
+            "interval": [
+              0.505854596058835,
+              0.5648700056703719
+            ],
+            "model_median": 0.5450809701611552,
+            "shuffle_median": 0.42727789055529164,
+            "bigram_median": 0.4315581245693681,
+            "within_interval": true,
+            "exceeds_nulls": true
+          }
+        },
+        "candidate_loss": 9.741894009410846,
+        "fixed_cache_loss": 9.973784338824183,
+        "no_cache_loss": 10.92061174575231,
+        "local_pass": true,
+        "joint_pass": false,
+        "unseen_types": 1507,
+        "unseen_tokens": 2246,
+        "all_unseen_positive": true,
+        "source_sha256": "69eecd1f37ce1de573226ad6aa42c311fce7586444f71204ea6533810d5f10be"
+      }
+    },
+    "selected": {
+      "index": 0,
+      "candidate": [
+        0.6,
+        0.3,
+        8000
+      ]
+    },
+    "all_gate": false
+  },
+  "reproducibility": {
+    "runner": "import hashlib,importlib.util,json,statistics,sys\nfrom vs import refcorpus\nsp=importlib.util.spec_from_file_location('topic','/tmp/voy_pg026_topic.py');topic=importlib.util.module_from_spec(sp);sp.loader.exec_module(topic);base=topic.base\nDEV=('it_villani','fr_rose','en_chaucer');TEST=('la_augustine','es_lucanor','de_nibelunge');N=30000\nC=((.6,.3,8000),(.8,.1,8000),(.6,.3,32000),(.8,.1,32000),(.9,.1,8000),(.9,.1,32000));pins={x['id']:x for x in refcorpus.pins()};data={}\nfor b in DEV+TEST:\n e=pins[b];assert hashlib.sha256(open(e['file'],'rb').read()).hexdigest()==e['sha256'];ws=' '.join(refcorpus.blocks_of(b)).split();assert len(ws)>=2*N and all(0<len(w)<=base.LIMIT and set(w)<=set(base.LETTERS) for w in ws[:2*N]);data[b]=(topic.TopicModel(ws[:N]),ws[N:2*N])\nout={'development_books':DEV,'test_books':TEST,'tokens_per_window':N,'candidates':C,'development':{},'test':{}}\nfor ci,c in enumerate(C):\n vals=[];details={}\n for bi,b in enumerate(DEV):\n  model,test=data[b];obs=topic.metrics(test);generated=[topic.metrics(model.generate(N,c,940000+bi*1000+ci*10+i)) for i in range(4)]\n  err=statistics.mean(abs(obs[str(w)]['exponent']-statistics.median(x[str(w)]['exponent'] for x in generated)) for w in base.WIDTHS);ll=model.logloss(test,c);fixed=model.core.logloss(test,topic.WINDOW,.3);val=ll-fixed+10*err;vals.append(val);details[b]={'loss':ll,'fixed_cache_loss':fixed,'mean_error':err,'objective':val}\n out['development'][str(ci)]={'candidate':c,'mean_objective':statistics.mean(vals),'books':details};print('dev',ci,file=sys.stderr,flush=True)\nidx=min(range(len(C)),key=lambda i:(out['development'][str(i)]['mean_objective'],i));sel=C[idx];out['selected']={'index':idx,'candidate':sel}\nfor bi,b in enumerate(TEST):\n model,test=data[b];obs=topic.metrics(test);sim=[topic.metrics(model.generate(N,sel,970000+bi*1000+i)) for i in range(64)];sh=[topic.metrics(base.count_preserving_shuffle(test,seed=980000+bi*1000+i)) for i in range(32)];bg=[topic.metrics(base.sample_empirical_bigram(test,n_tokens=N,seed=990000+bi*1000+i)) for i in range(32)];wdata={}\n for w in base.WIDTHS:\n  k=str(w);v=obs[k]['exponent'];ys=sorted(y[k]['exponent'] for y in sim);s=statistics.median(y[k]['exponent'] for y in sh);g=statistics.median(y[k]['exponent'] for y in bg)\n  wdata[k]={'observed':obs[k],'interval':[ys[3],ys[60]],'model_median':statistics.median(ys),'shuffle_median':s,'bigram_median':g,'within_interval':ys[3]<=v<=ys[60],'exceeds_nulls':v>s and v>g}\n loss=model.logloss(test,sel);fixed=model.core.logloss(test,topic.WINDOW,.3);no=model.core.logloss(test,topic.WINDOW,0.);local=loss<=fixed and loss<=no;unseen=set(test)-set(model.core.words)\n out['test'][b]={'widths':wdata,'candidate_loss':loss,'fixed_cache_loss':fixed,'no_cache_loss':no,'local_pass':local,'joint_pass':local and all(d['within_interval'] and d['exceeds_nulls'] for d in wdata.values()),'unseen_types':len(unseen),'unseen_tokens':sum(w not in model.core.wc for w in test),'all_unseen_positive':all(model.core.base(w)>0 for w in unseen),'source_sha256':pins[b]['sha256']};print('test',b,file=sys.stderr,flush=True)\nout['all_gate']=all(x['joint_pass'] for x in out['test'].values());print(json.dumps(out,indent=2))\n",
+    "topic_model": "\"\"\"External-only calibration of a normalized bigram, cache and latent-topic model.\"\"\"\nimport hashlib,importlib.util,json,math,random,statistics,sys\nfrom collections import Counter,deque\nfrom vs import refcorpus\n\nsp=importlib.util.spec_from_file_location('base','/tmp/voy_k038_taylor.py');base=importlib.util.module_from_spec(sp);sp.loader.exec_module(base)\nBOOKS=('it_dante','es_buenamor','en_paston','medieval_czech_01473c19')\nN=30000;K=10;WINDOW=4096;TOPIC_ALPHA=1000.;DEV_DRAWS=4;TEST_DRAWS=64;NULL_DRAWS=32\n# (topic weight, cache weight, mean topic-switch interval); fixed before fitting.\nCANDIDATES=((0.,.3,8000),(.3,.3,2000),(.6,.3,2000),(.3,.3,8000),(.6,.3,8000),(.8,.1,8000))\n\nclass TopicModel:\n def __init__(self,train):\n  self.core=base.Model(train); self.parts=[train[i*N//K:(i+1)*N//K] for i in range(K)]\n  self.tc=[Counter(part) for part in self.parts]\n def probs(self,w,prev,queue,cache,topic_weight,cache_weight):\n  b=self.core.base(w);row=self.core.succ.get(prev,{});ct=sum(row.values())\n  big=(row.get(w,0)+base.ALPHA*b)/(ct+base.ALPHA)\n  cached=(cache[w]+base.ALPHA*b)/(len(queue)+base.ALPHA)\n  return [(1-cache_weight)*((1-topic_weight)*big+topic_weight*(c[w]+TOPIC_ALPHA*b)/(len(part)+TOPIC_ALPHA))+cache_weight*cached\n          for c,part in zip(self.tc,self.parts)]\n def logloss(self,words,candidate):\n  tw,cw,period=candidate;rho=1/period;weights=[1/K]*K;q=deque();cache=Counter();prev=None;loss=0.\n  for w in words:\n   probs=self.probs(w,prev,q,cache,tw,cw);p=sum(a*b for a,b in zip(weights,probs))\n   if p<=0:raise ValueError('unmodelled token '+repr(w))\n   loss-=math.log2(p);weights=[(1-rho)*(a*b/p)+rho/K for a,b in zip(weights,probs)]\n   q.append(w);cache[w]+=1\n   if len(q)>WINDOW:cache[q.popleft()]-=1\n   prev=w\n  return loss/len(words)\n def generate(self,n,candidate,seed):\n  tw,cw,period=candidate;rng=random.Random(seed);state=rng.randrange(K);q=deque();out=[];prev=None\n  for i in range(n):\n   if i and rng.random()<1/period:state=rng.randrange(K)\n   if rng.random()<cw:\n    w=rng.choice(q) if q and rng.random()<len(q)/(len(q)+base.ALPHA) else self.core.drawbase(rng)\n   elif rng.random()<tw:\n    part=self.parts[state];w=rng.choice(part) if rng.random()<len(part)/(len(part)+TOPIC_ALPHA) else self.core.drawbase(rng)\n   else:\n    row=self.core.succ_lists.get(prev,[]);w=rng.choice(row) if row and rng.random()<len(row)/(len(row)+base.ALPHA) else self.core.drawbase(rng)\n   out.append(w);q.append(w)\n   if len(q)>WINDOW:q.popleft()\n   prev=w\n  return out\n\ndef metrics(words):\n return {str(w):{'exponent':(r:=base.compute_taylor(words,width=w)).exponent,'blocks':r.n_windows,'used':r.n_used_tokens} for w in base.WIDTHS}\n\ndef main():\n pins={x['id']:x for x in refcorpus.pins()};models={};data={}\n for b in BOOKS:\n  with open(pins[b]['file'],'rb') as f:assert hashlib.sha256(f.read()).hexdigest()==pins[b]['sha256'],b\n  ws=' '.join(refcorpus.blocks_of(b)).split();assert len(ws)>=3*N and all(0<len(w)<=base.LIMIT and set(w)<=set(base.LETTERS) for w in ws[:3*N])\n  models[b]=TopicModel(ws[:N]);data[b]=(ws[N:2*N],ws[2*N:3*N])\n out={'config':{'books':BOOKS,'tokens_per_partition':N,'widths':base.WIDTHS,'topics':K,'topic_alpha':TOPIC_ALPHA,'cache_window':WINDOW,'candidates':CANDIDATES,'dev_draws':DEV_DRAWS,'test_draws':TEST_DRAWS,'null_draws':NULL_DRAWS},'development':{},'test':{}}\n # Fixed external-only objective: mean dev local loss minus fixed-cache loss,\n # plus ten times mean absolute five-width exponent error vs generator median.\n dev_real={b:metrics(data[b][0]) for b in BOOKS};dev_fixed={b:models[b].core.logloss(data[b][0],WINDOW,.3) for b in BOOKS}\n for ci,c in enumerate(CANDIDATES):\n  rows=[]\n  for bi,b in enumerate(BOOKS):\n   model=models[b];sample=[metrics(model.generate(N,c,100000+bi*1000+ci*10+i)) for i in range(DEV_DRAWS)]\n   errors=[abs(dev_real[b][str(w)]['exponent']-statistics.median(r[str(w)]['exponent'] for r in sample)) for w in base.WIDTHS]\n   ll=model.logloss(data[b][0],c);rows.append({'book':b,'bits_per_token':ll,'fixed_cache_bits_per_token':dev_fixed[b],'mean_absolute_taylor_error':statistics.mean(errors)})\n  obj=statistics.mean(r['bits_per_token']-r['fixed_cache_bits_per_token']+10*r['mean_absolute_taylor_error'] for r in rows)\n  out['development'][str(ci)]={'candidate':c,'score':obj,'books':rows}\n selected=min(out['development'],key=lambda x:(out['development'][x]['score'],int(x)));c=CANDIDATES[int(selected)]\n out['selection']={'candidate_index':int(selected),'candidate':c,'rule':'min mean (dev loss − fixed-cache loss + 10 × mean absolute five-width dev exponent error); four simulated draws per book'}\n # Freeze the selected model, rules and external gate before inspecting any manuscript.\n for bi,b in enumerate(BOOKS):\n  model=models[b];test=data[b][1];obs=metrics(test)\n  generated=[metrics(model.generate(N,c,400000+bi*1000+i)) for i in range(TEST_DRAWS)]\n  sh=[metrics(base.count_preserving_shuffle(test,seed=500000+bi*1000+i)) for i in range(NULL_DRAWS)]\n  bg=[metrics(base.sample_empirical_bigram(test,n_tokens=N,seed=600000+bi*1000+i)) for i in range(NULL_DRAWS)]\n  rows={}\n  for width in base.WIDTHS:\n   k=str(width);real=obs[k]['exponent'];vs=sorted(v[k]['exponent'] for v in generated);s=statistics.median(v[k]['exponent'] for v in sh);g=statistics.median(v[k]['exponent'] for v in bg)\n   rows[k]={'observed':obs[k],'predictive_order4':vs[3],'predictive_order61':vs[60],\n            'model_min':vs[0],'model_median':statistics.median(vs),'model_max':vs[-1],\n            'shuffle_median':s,'bigram_median':g,'null_direction_gate':real>s and real>g,\n            'predictive_interval_gate':vs[3]<=real<=vs[60]}\n  ll=model.logloss(test,c);fixed=model.core.logloss(test,WINDOW,.3);zero=model.core.logloss(test,WINDOW,0.)\n  local=ll<=fixed and ll<=zero\n  out['test'][b]={'widths':rows,'selected_bits_per_token':ll,'fixed_cache_bits_per_token':fixed,'no_cache_bits_per_token':zero,'local_gate':local,\n                  'joint_gate':local and all(x['null_direction_gate'] and x['predictive_interval_gate'] for x in rows.values())}\n  print('finished',b,file=sys.stderr,flush=True)\n out['all_works_gate']=all(v['joint_gate'] for v in out['test'].values())\n print(json.dumps(out,indent=2))\n\nif __name__=='__main__':main()\n",
+    "baseline_model": "\"\"\"External-first calibration of a normalized bigram/cache model, without Voynich data.\"\"\"\nimport hashlib,importlib.util,json,math,random,statistics\nfrom collections import Counter,defaultdict,deque\nfrom functools import lru_cache\nfrom vs import refcorpus\nMETRIC='/tmp/taylor_metric.py'\nwith open(METRIC,'rb') as f: assert hashlib.sha256(f.read()).hexdigest()=='554276d115500f2960831ab45910d9fc1c9625e1d06ac79ccb37b0ca16d58545'\nspec=importlib.util.spec_from_file_location('taylor_metric',METRIC)\nmetric=importlib.util.module_from_spec(spec)\n# dataclass resolves its class module at import time\nimport sys\nsys.modules[spec.name]=metric\nspec.loader.exec_module(metric)\ncompute_taylor=metric.compute_taylor\ncount_preserving_shuffle=metric.count_preserving_shuffle\nsample_empirical_bigram=metric.sample_empirical_bigram\n\nBOOKS=('it_dante','es_buenamor','en_paston','medieval_czech_01473c19')\nN=30000; WIDTHS=(2810,4215,5620,7025,8430); DRAWS=16\nCACHE_WEIGHTS=(0,.1,.3,.5); WINDOWS=(256,1024,4096)\nALPHA=4.;CHAR_MIX=.1; CHAR_SMOOTH=.2; LIMIT=30\nLETTERS='abcdefghijklmnopqrstuvwxyz'; CHARSET=LETTERS+'$'\n\nclass Model:\n def __init__(self,train):\n  self.words=list(train);self.wc=Counter(train);self.succ=defaultdict(Counter);self.succ_lists=defaultdict(list);self.cc=defaultdict(Counter)\n  for a,b in zip(train,train[1:]):self.succ[a][b]+=1;self.succ_lists[a].append(b)\n  for w in train:\n   for a,b in zip('$'+w,w+'$'):self.cc[a][b]+=1\n  self.chars={}\n  for a in CHARSET:\n   opts=LETTERS if a=='$' else CHARSET\n   weights=[self.cc[a][b]+CHAR_SMOOTH for b in opts];total=sum(weights)\n   self.chars[a]=(opts,weights,{b:w/total for b,w in zip(opts,weights)})\n @lru_cache(maxsize=100000)\n def cp(self,w):\n  if not w or len(w)>LIMIT or any(c not in LETTERS for c in w):return 0.\n  prob=1.;prev='$'\n  for c in w:prob*=self.chars[prev][2][c];prev=c\n  return prob*(self.chars[prev][2]['$'] if len(w)<LIMIT else 1.)\n @lru_cache(maxsize=100000)\n def base(self,w):return (1-CHAR_MIX)*self.wc[w]/len(self.words)+CHAR_MIX*self.cp(w)\n def logloss(self,words,W,weight):\n  queue=deque();cache=Counter();loss=0.;prev=None\n  for w in words:\n   base=self.base(w); row=self.succ.get(prev,{}); n=sum(row.values())\n   big=(row.get(w,0)+ALPHA*base)/(n+ALPHA)\n   cn=len(queue);cached=(cache[w]+ALPHA*base)/(cn+ALPHA)\n   prob=(1-weight)*big+weight*cached\n   if prob<=0:raise ValueError('unmodelled token '+repr(w))\n   loss-=math.log2(prob);queue.append(w);cache[w]+=1\n   if len(queue)>W:\n    old=queue.popleft();cache[old]-=1\n   prev=w\n  return loss/len(words)\n def drawbase(self,rng):\n  if rng.random()>=CHAR_MIX:return rng.choice(self.words)\n  out=[];prev='$'\n  while len(out)<LIMIT:\n   opts,weights,_=self.chars[prev]; c=rng.choices(opts,weights=weights,k=1)[0]\n   if c=='$':break\n   out.append(c);prev=c\n  return ''.join(out)\n def generate(self,n,W,weight,seed):\n  rng=random.Random(seed);q=deque();out=[];prev=None\n  for i in range(n):\n   if rng.random()<weight:\n    w=rng.choice(q) if q and rng.random()<len(q)/(len(q)+ALPHA) else self.drawbase(rng)\n   else:\n    row=self.succ_lists.get(prev,[])\n    w=rng.choice(row) if row and rng.random()<len(row)/(len(row)+ALPHA) else self.drawbase(rng)\n   out.append(w);q.append(w)\n   if len(q)>W:q.popleft()\n   prev=w\n  return out\n\ndef estimates(tokens):\n return {str(w):{'exponent':(r:=compute_taylor(tokens,width=w)).exponent,'blocks':r.n_windows,'used':r.n_used_tokens,'types':r.n_fitted_types} for w in WIDTHS}\n\ndef main():\n pins={e['id']:e for e in refcorpus.pins()};out={'config':{'books':BOOKS,'segment_tokens':N,'widths':WIDTHS,'draws':DRAWS,'weights':CACHE_WEIGHTS,'windows':WINDOWS,'alpha':ALPHA,'char_mix':CHAR_MIX,'char_smooth':CHAR_SMOOTH,'char_limit':LIMIT},'dev':{},'test':{}}\n models={};sets={}\n for b in BOOKS:\n  with open(pins[b]['file'],'rb') as f:assert hashlib.sha256(f.read()).hexdigest()==pins[b]['sha256'],b\n  words=' '.join(refcorpus.blocks_of(b)).split();assert len(words)>=3*N and all(0<len(w)<=LIMIT and set(w)<=set(LETTERS) for w in words[:3*N])\n  train,dev,test=words[:N],words[N:2*N],words[2*N:3*N];models[b]=Model(train);sets[b]=(dev,test)\n for W in WINDOWS:\n  for weight in CACHE_WEIGHTS:\n   key=f'{W}:{weight}';losses=[models[b].logloss(sets[b][0],W,weight) for b in BOOKS];out['dev'][key]=losses\n selected=min(out['dev'],key=lambda k:(statistics.mean(out['dev'][k]),k));W,w=selected.split(':');W=int(W);weight=float(w);out['selected']={'window':W,'weight':weight,'rule':'minimum mean dev bits/token across four books; ties lexicographic'}\n # Freeze all rules and parameters above, before any manuscript comparison. No manuscript is read here.\n for bi,b in enumerate(BOOKS):\n  model=models[b];test=sets[b][1];actual=estimates(test);modelsamples=[];shuffles=[];bigrams=[]\n  for i in range(DRAWS):\n   modelsamples.append(estimates(model.generate(N,W,weight,10000+bi*100+i)))\n   shuffles.append(estimates(count_preserving_shuffle(test,seed=20000+bi*100+i)))\n   bigrams.append(estimates(sample_empirical_bigram(test,n_tokens=N,seed=30000+bi*100+i)))\n  rows={}\n  for width in WIDTHS:\n   k=str(width);obs=actual[k]['exponent'];gen=[x[k]['exponent'] for x in modelsamples];sh=[x[k]['exponent'] for x in shuffles];bg=[x[k]['exponent'] for x in bigrams]\n   rows[k]={'observed':actual[k],'model_min':min(gen),'model_max':max(gen),'model_median':statistics.median(gen),'shuffle_median':statistics.median(sh),'bigram_median':statistics.median(bg),'external_direction_gate':obs>statistics.median(sh) and obs>statistics.median(bg),'in_model_range':min(gen)<=obs<=max(gen)}\n  ll=model.logloss(test,W,weight);baseline=model.logloss(test,W,0)\n  out['test'][b]={'widths':rows,'selected_bits_per_token':ll,'bigram_bits_per_token':baseline,'local_gate':ll<=baseline,'joint_gate':ll<=baseline and all(r['external_direction_gate'] and r['in_model_range'] for r in rows.values())}\n out['all_works_gate']=all(r['joint_gate'] for r in out['test'].values())\n print(json.dumps(out,indent=2))\n\nif __name__=='__main__':main()\n",
+    "taylor_metric_sha256": "554276d115500f2960831ab45910d9fc1c9625e1d06ac79ccb37b0ca16d58545",
+    "metric_url": "https://raw.githubusercontent.com/seeton/Voynich-public/8920f2e506fce4c2c5a1245fb21a312f25655f1b/analysis/calibration/taylor_metric.py"
+  }
+}
