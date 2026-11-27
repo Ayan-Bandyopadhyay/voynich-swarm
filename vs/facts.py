@@ -381,7 +381,7 @@ def run(train, evalp, ids=None):
             continue
         if "spec" in f:
             from . import dsl
-            out[f["id"]] = dsl.evaluate(f["spec"], evalp)
+            out[f["id"]] = dsl.evaluate(f["spec"], evalp, train)
         else:
             out[f["id"]] = METRICS[f["metric"]](train, evalp, **f["params"])
     return out

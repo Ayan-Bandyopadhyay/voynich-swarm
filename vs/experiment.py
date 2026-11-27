@@ -59,7 +59,7 @@ def validate(d):
         if "spec" in f:
             from . import dsl
             try:
-                dsl.evaluate(f["spec"], corpus.split_pages("practice")[1])
+                dsl.evaluate(f["spec"], corpus.split_pages("practice")[1], corpus.split_pages("practice")[0])
             except dsl.SpecError as ex:
                 errs.append(f"spec: {ex}")
         elif f.get("metric") not in _facts.METRICS:
@@ -154,7 +154,7 @@ def main(d, split="practice"):
         train, ev = corpus.split_pages(split)
         if "spec" in f:
             from . import dsl
-            r = dsl.evaluate(f["spec"], ev)
+            r = dsl.evaluate(f["spec"], ev, train)
         else:
             r = _facts.METRICS[f["metric"]](train, ev, **f["params"])
         print(json.dumps(r, indent=1, default=str))
