@@ -1,0 +1,20 @@
+{
+  "title": "On the VMS Word Length Distribution",
+  "authors": "Jorge Stolfi",
+  "year": 2000,
+  "url": "https://mail.voynich.nu/hist/stolfi/word-length-distr.html",
+  "summary": "Stolfi counted distinct spellings and their occurrences separately in running text and labels. Counting each spelling once gave similar, nearly symmetric length distributions in the two samples. He illustrated how a codebook could produce that shape and identified manuscript features his example leaves unexplained.",
+  "established": [
+    "The counts use a majority-vote transcription and Currier-style symbol lengths. Stolfi excluded words containing rare, unreadable or unresolved characters.",
+    "Figures 1–3 show that the length distributions for distinct spellings in text and labels are similar and close to one plus a binomial variable with nine trials at probability one half. Counting every occurrence gives different profiles for text and labels.",
+    "The illustrative nine-bit code records the positions of set bits and adds a marker. Its maximum length is ten. The published text table includes nine distinct spellings of length eleven and three of length twelve."
+  ],
+  "open": [
+    {
+      "question": "Can a codebook explain repeated glyphs and mutually exclusive gallows within words without a visible end marker?",
+      "front": "L3",
+      "check": "Specify an encoding in advance and compare its predictions for repetitions, gallows co-occurrence and word boundaries with the transcription.",
+      "hard": true
+    }
+  ]
+}
