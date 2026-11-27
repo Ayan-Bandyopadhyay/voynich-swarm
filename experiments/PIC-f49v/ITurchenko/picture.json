@@ -1,0 +1,83 @@
+{
+  "folio": "f49v",
+  "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006171",
+  "blind": true,
+  "statement": "One plant occupies the right side of the page. The records distinguish the whole plant, its stalk, three visible regions of the crown, a small flower-like form above it and a rounded structure at the base. The short entries form a column to the left of the writing. None visibly points to an individual part of the drawing.",
+  "objects": [
+    {
+      "id": "plant",
+      "kind": "plant",
+      "features": {
+        "position": "right side of page",
+        "form": "broad rounded crown on a single long narrow stalk"
+      },
+      "label": null
+    },
+    {
+      "id": "stalk",
+      "kind": "plant_part",
+      "features": {
+        "part": "stem",
+        "colour": "pale green",
+        "shape": "long and narrow, nearly vertical, bending right near the base",
+        "branching": "several fine stalks fan out into the crown"
+      },
+      "label": null
+    },
+    {
+      "id": "left-foliage",
+      "kind": "leaf",
+      "features": {
+        "position": "left side of crown",
+        "colour": "green",
+        "leaf_shape": "broad rounded outline curling inward around a pale crescent",
+        "margin": "smooth curved edges with overlapping bands"
+      },
+      "label": null
+    },
+    {
+      "id": "middle-foliage",
+      "kind": "leaf",
+      "features": {
+        "position": "upper centre of crown",
+        "colour": "pale with a short dark crescent inside",
+        "leaf_shape": "rounded with a notch at the lower edge where a fine stalk enters"
+      },
+      "label": null
+    },
+    {
+      "id": "right-foliage",
+      "kind": "leaf",
+      "features": {
+        "position": "right side of crown",
+        "colour": "green and olive green",
+        "leaf_shape": "broad rounded outline curling inward around a pale crescent",
+        "margin": "smooth curved edges with overlapping bands"
+      },
+      "label": null
+    },
+    {
+      "id": "upper-flower",
+      "kind": "flower",
+      "features": {
+        "position": "above the crown at upper right",
+        "colour": "dark blue around a pale centre",
+        "visible_coloured_lobes": 6,
+        "shape": "small radial cluster of oblong marks",
+        "attachment": "faint lines underneath, connection to the crown uncertain"
+      },
+      "label": null
+    },
+    {
+      "id": "base",
+      "kind": "root",
+      "features": {
+        "position": "bottom right, at the lower end of the stalk",
+        "root": "rounded mass with a scalloped outline",
+        "colour": "mostly unpainted",
+        "surface": "many small open curved marks"
+      },
+      "label": null
+    }
+  ]
+}
