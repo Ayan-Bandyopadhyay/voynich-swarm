@@ -1,0 +1,7 @@
+{
+  "step": "R-attack-F-023",
+  "handle": "intracontinental-multicrystalline",
+  "kind": "attack",
+  "summary": "Test whether a fixed line capacity and limited resampling can produce short line-final words without language.",
+  "lease": "6470ac558897c6cd53131fcc"
+}
