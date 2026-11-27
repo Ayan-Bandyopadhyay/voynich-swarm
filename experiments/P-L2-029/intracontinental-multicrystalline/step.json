@@ -1,0 +1,59 @@
+{
+  "title": "A specified first-glyph predecessor model gains on both public witnesses",
+  "program": "L2",
+  "on_path": false,
+  "hard": true,
+  "statement": "A simple, explicitly specified 18-class first-glyph predictor trained on 175 ZL public-training folios gains 0.0234 nats per target token over a position-only model on 3,140 ZL tokens and 0.0223 on 3,162 IT tokens from equal-length matched public evaluation lines. Paired whole-folio bootstrap intervals for each fixed model exclude zero, and each measured gain exceeds 100 within-folio, position-bin predecessor shuffles. This is an exploratory alternative classification, not a reproduction of the paper’s unpublished 18 classes or its model.",
+  "check": "Recover the original class definitions, preprocessing and model code, or register and review this alternate first-glyph predictor explicitly as a separate claim. Freeze row selection, four position bins, smoothing and class scheme before independent evaluation, train on folios disjoint from evaluation, include both witnesses with aligned tokenization and measure excluded or shifted lines. Fit multiple models on independently resampled training folios, then quantify uncertainty and compare against line- and position-matched predecessor nulls on an untouched evaluation partition. Investigate whether effects survive controls for word class, line length, paragraph position and page-level composition. Do not treat correlated witnesses as independent replications or these nats as a reproduction of Dominik’s gains.",
+  "selection": "Use project IVTFF reader and the public practice split only, with ZL training and the same ZL or IT evaluation folios (no season-heldout seed). Paragraph unit P; use a target and its immediate physical-line predecessor only when both are certain nonempty lowercase ASCII alphabetic words, do not bridge rejected tokens. Exclude the first token of each line. Match evaluation lines by folio and line id, require equal raw token counts, and calculate each witness separately; matching count alone does not guarantee same word segmentation. There are 3,140 common valid ordinal positions, of which both previous and target first-glyph classes agree at 2,989. The ZL and IT analyses have slightly different valid positions.",
+  "model": "Define 17 first-character classes acdefgiklmnopqrsy plus OTHER. These classes are a simple independent alternative, not the paper’s classes. Position bins are target index 1, indices 2–3, 4–6, and 7+ (zero based). Train two categorical distributions on all eligible ZL training pairs: baseline target class conditional on position bin, and alternative target class conditional on position and immediate predecessor class. Each gets independent add-one smoothing over 18 possible classes. Score on public evaluation rows as log P_alt - log P_base in nats, using the single fixed fit; each row receives equal weight.",
+  "uncertainty": "For each witness, resample whole evaluation folios with replacement 2,000 times, seed 29111, preserving all rows and token weighting; percentile entries 49 and 1949 are reported. Intervals condition on one fitted model and are not independent-model training intervals. For each of 100 seeds 0–99, shuffle predecessor classes among rows within each folio and position bin and rescore the same targets with the fixed model. This retains predecessor marginal counts per folio/bin but destroys local pairing; it is not a complete line-structure or causal control.",
+  "source_integrity": {
+    "ZL3b-n.txt_sha256": "bf5b6d4ac1e3a51b1847a9c388318d609020441ccd56984c901c32b09beccafc",
+    "IT2a-n.txt_sha256": "7f27a8b0feed8f6de0a99900df6bf912dd1d295c38e5f830bac8b41c3f536fb5"
+  },
+  "limitations": "The public practice split is not the season holdout. Both transcription witnesses describe the same folios and agree on most checked classes; they are not independent page samples. The evaluation rows are selected for matching line lengths and can still be misaligned, and the two witness row sets differ. Training only uses ZL, so IT is external to training transcription but not an independent model fit. One class scheme, one fit, conditional bootstrap, and preliminary permutation checks do not prove a language mechanism. No original code or class definitions have been obtained.",
+  "results": {
+    "training_tokens": 25796,
+    "training_folios": 175,
+    "classes": "acdefgiklmnopqrsy+OTHER",
+    "results": {
+      "zl": {
+        "tokens": 3140,
+        "folios": 31,
+        "gain_nats": 0.02339439557184188,
+        "bootstrap_95": [
+          0.009626290990215966,
+          0.03699536789400606
+        ],
+        "permutation_gain_range": [
+          -0.04168995712584186,
+          -0.011865188848224168
+        ],
+        "permutation_mean": -0.025592220601759013,
+        "observed_greater_permutations": 100
+      },
+      "it": {
+        "tokens": 3162,
+        "folios": 31,
+        "gain_nats": 0.02225617486950183,
+        "bootstrap_95": [
+          0.010207383225912789,
+          0.03396067708219965
+        ],
+        "permutation_gain_range": [
+          -0.03772331537626905,
+          -0.009835460642522019
+        ],
+        "permutation_mean": -0.02640227131865612,
+        "observed_greater_permutations": 100
+      }
+    },
+    "matched_equal_length_lines": 460,
+    "both_witness_positions": 3140,
+    "both_classes_agree": 2989
+  },
+  "reproducibility": {
+    "script": "from vs import corpus,ivtff\nfrom collections import Counter,defaultdict\nimport math,random,json\nCHARS='acdefgiklmnopqrsy' # 17 plus other => 18\nassert len(CHARS)==17 and len(set(CHARS))==17\nK=18\n\ndef cls(w):return CHARS.index(w[0]) if w[0] in CHARS else 17\n\ndef keep(w):return bool(w) and w.isascii() and w.islower() and w.isalpha() and not ivtff.uncertain(w)\ndef rows(pages):\n out=[]\n for p in pages:\n  for ln in p.lines:\n   if ln.unit!='P':continue\n   for i in range(1,len(ln.words)):\n    a,b=ln.words[i-1:i+1]\n    if keep(a) and keep(b):out.append((p.id,ln.id,i,cls(a),cls(b)))\n return out\n\ndef pos(i):return 0 if i==1 else 1 if i<=3 else 2 if i<=6 else 3\ntrain=rows(corpus.split_pages('practice','zl')[0]); contexts=Counter(); base=Counter(); totals=Counter(); btot=Counter()\nfor p,l,i,a,b in train:\n j=pos(i);contexts[j,a,b]+=1;totals[j,a]+=1;base[j,b]+=1;btot[j]+=1\n\ndef gain(row):\n p,l,i,a,b=row;j=pos(i);return math.log((contexts[j,a,b]+1)/(totals[j,a]+K))-math.log((base[j,b]+1)/(btot[j]+K))\n\ndef assess(rs):\n gs=[gain(r) for r in rs];groups=defaultdict(list)\n for r,g in zip(rs,gs):groups[r[0]].append(g)\n keys=sorted(groups);rng=random.Random(29111);boot=[]\n for _ in range(2000):\n  sampled=[rng.choice(keys) for i in keys];boot.append(sum(sum(groups[p]) for p in sampled)/sum(len(groups[p]) for p in sampled))\n boot.sort(); shuffled=[]\n for seed in range(100):\n  rng=random.Random(seed); buckets=defaultdict(list)\n  for r in rs:buckets[(r[0],pos(r[2]))].append(r[3])\n  for v in buckets.values():rng.shuffle(v)\n  vals=[]\n  for p,l,i,a,b in rs:vals.append(gain((p,l,i,buckets[p,pos(i)].pop(),b)))\n  shuffled.append(sum(vals)/len(vals))\n return {'tokens':len(rs),'folios':len(keys),'gain_nats':sum(gs)/len(gs),'bootstrap_95':[boot[49],boot[1949]],'permutation_gain_range':[min(shuffled),max(shuffled)],'permutation_mean':sum(shuffled)/len(shuffled),'observed_greater_permutations':sum(sum(gs)/len(gs)>v for v in shuffled)}\nout={'training_tokens':len(train),'training_folios':len({r[0] for r in train}),'classes':CHARS+'+OTHER','results':{}}\nep={t:corpus.split_pages('practice',t)[1] for t in ('zl','it')}\nlines={t:{(p.id,l.id):len(l.words) for p in ep[t] for l in p.lines if l.unit=='P'} for t in ep}\nmatched={k for k,v in lines['zl'].items() if lines['it'].get(k)==v}\nrr={t:[r for r in rows(ep[t]) if (r[0],r[1]) in matched] for t in ep}\nindices={t:{(r[0],r[1],r[2]):r for r in rr[t]} for t in rr}\ncommon=indices['zl'].keys() & indices['it'].keys()\nout['matched_equal_length_lines']=len(matched);out['both_witness_positions']=len(common)\nout['both_classes_agree']=sum(indices['zl'][k][3:]==indices['it'][k][3:] for k in common)\nfor t in rr:out['results'][t]=assess(rr[t])\nprint(json.dumps(out,indent=2))\n"
+  }
+}
