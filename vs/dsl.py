@@ -25,6 +25,12 @@ statistics:
   {"adjacent_mi": F}                                       adjacent mutual information minus the same after shuffling
                                                            each line (so page and section vocabulary cancel)
   {"edge_mi": true}                                        MI between a word's last glyph and the next word's first glyph
+  {"edge_length_cmi": true}                               conditional MI of those edges given both exact EVA-basic word
+                                                           lengths, weighted by adjacent-pair count (bits). Certain P
+                                                           words only, position any; gaps remain barriers. At least 30 pairs.
+                                                           Its null shuffle_within_line_length permutes intact certain P
+                                                           words inside (original line, exact glyph length) cells, preserving
+                                                           the length sequence; at least 30 potentially movable pairs needed.
   {"edge_mi_break": true}                                  edge MI within lines minus edge MI across line breaks (a line's
                                                            last word with the next line's first word, same page); each
                                                            shuffle-corrected, within-line pairs subsampled to the
@@ -60,7 +66,7 @@ compare (one to four; all must pass; a spec with none is refused):
        the selected tokens (same pages, lines, gaps and count), so size and shape are matched. Languages with
        fewer words than the selection are left out; at least three must remain. Only for statistics whose
        features carry over to another script (not rate, ratio or context_mi).
-  {"null": "shuffle_within_line" | "shuffle_within_page" | "shuffle_within_section" | "shuffle_across_pages"
+  {"null": "shuffle_within_line" | "shuffle_within_line_length" | "shuffle_within_page" | "shuffle_within_section" | "shuffle_across_pages"
            | "shuffle_labels" | "shuffle_labels_within_page" | "shuffle_page_labels" | "rotate_page_labels",
    "perms": N (<= 400), "p": alpha (<= 0.05), "direction": "greater" | "less"}
        the statistic must be extreme against the null (one-sided permutation p-value, ties count against).
@@ -367,7 +373,7 @@ def check_statistic(st):
         _int(arg, 1, 6, "repeat_ngram n")
     elif name == "zipf_slope":
         _int(arg, 3, 100_000, "zipf_slope ranks")
-    elif name in ("edge_mi", "edge_mi_break", "hapax_share", "mean_length", "line_repeat_excess"):
+    elif name in ("edge_mi", "edge_mi_break", "edge_length_cmi", "hapax_share", "mean_length", "line_repeat_excess"):
         if arg is not True:
             raise SpecError(f"{name} takes true")
     elif name == "line_near_excess":
@@ -418,6 +424,20 @@ def statistic(st, toks, all_toks):
         return sum(any(v in vals for v in feature(arg["feature"], t["w"])) for t in toks) / len(toks)
     if name == "entropy":
         return _entropy(Counter(v for t in toks for v in feature(arg, t["w"])))
+    if name == "edge_length_cmi":
+        pairs = _edge_length_pairs(toks)
+        if len(pairs) < MIN_TOKENS:
+            return NAN
+        joint, left, right, strata = Counter(), Counter(), Counter(), Counter()
+        for a, b in pairs:
+            x, y = SEG(a["w"]), SEG(b["w"])
+            z = (len(x), len(y))
+            joint[z, x[-1], y[0]] += 1
+            left[z, x[-1]] += 1
+            right[z, y[0]] += 1
+            strata[z] += 1
+        return sum(n * math.log2(n * strata[z] / (left[z, x] * right[z, y]))
+                   for (z, x, y), n in joint.items()) / len(pairs)
     if name in ("cond_entropy", "adjacent_mi", "edge_mi"):
         runs = runs_of(toks)
         if sum(len(r) - 1 for r in runs) < MIN_TOKENS:
@@ -528,6 +548,7 @@ LAYOUT_FREE = {"entropy", "hapax_share", "zipf_slope", "mean_length", "repeat_ng
 MIN_REFERENCES = 3
 
 _NULL_KEY = {"shuffle_within_line": lambda t: t["line"], "shuffle_within_page": lambda t: t["page"],
+             "shuffle_within_line_length": None,
              "shuffle_within_section": lambda t: t["section"], "shuffle_across_pages": lambda t: 0,
              "shuffle_labels": lambda t: t["section"], "shuffle_labels_within_page": lambda t: t["page"],
              "shuffle_page_labels": None, "rotate_page_labels": None}
@@ -548,6 +569,26 @@ def _page_labels(all_toks):
     return order, [lab[p] for p in order]
 
 
+def _edge_length_pairs(toks):
+    eligible = [t for t in toks if t["unit"] == "P" and not UNCERTAIN(t["w"]) and SEG(t["w"])]
+    return [(a, b) for run in runs_of(eligible) for a, b in zip(run, run[1:])]
+
+
+def _line_length_groups(toks):
+    groups = {}
+    for i, t in enumerate(toks):
+        if t["unit"] == "P" and not UNCERTAIN(t["w"]) and SEG(t["w"]):
+            groups.setdefault((t["line"], len(SEG(t["w"]))), []).append(i)
+    return list(groups.values())
+
+
+def _edge_length_movable_pairs(toks):
+    movable = {(toks[i]["line"], toks[i]["k"])
+               for g in _line_length_groups(toks) if len({toks[j]["w"] for j in g}) > 1 for i in g}
+    return sum((a["line"], a["k"]) in movable or (b["line"], b["k"]) in movable
+               for a, b in _edge_length_pairs(toks))
+
+
 def _shuffled(all_toks, how, rng):
     if how not in _NULL_KEY:
         raise SpecError(f"unknown null {how!r}")
@@ -555,6 +596,14 @@ def _shuffled(all_toks, how, rng):
         order, labels = _page_labels(all_toks)
         rng.shuffle(labels)
         return _relabelled(all_toks, order, labels)
+    if how == "shuffle_within_line_length":
+        words = [t["w"] for t in all_toks]
+        for g in _line_length_groups(all_toks):
+            ws = [words[i] for i in g]
+            rng.shuffle(ws)
+            for i, w in zip(g, ws):
+                words[i] = w
+        return [dict(t, w=w) for t, w in zip(all_toks, words)]
     key = _NULL_KEY[how]
     groups = {}
     for i, t in enumerate(all_toks):
@@ -608,6 +657,10 @@ def check(spec):
         raise SpecError("scope values are strings")
     check_select(spec.get("select"))
     name = check_statistic(spec["statistic"])
+    if name == "edge_length_cmi":
+        sel = spec.get("select") or {}
+        if set(sel.get("unit") or []) != {"P"} or sel.get("position", "any") != "any" or not sel.get("certain", True):
+            raise SpecError("edge_length_cmi requires certain P words at position any")
     cmp_ = spec["compare"]
     if not isinstance(cmp_, list) or not 1 <= len(cmp_) <= MAX_COMPARE:
         raise SpecError(f"compare is a list of 1 to {MAX_COMPARE} tests (a claim with no test is not a claim)")
@@ -631,6 +684,8 @@ def check(spec):
             _keys(c, {"null", "perms", "p", "direction"}, "comparison")
             if c["null"] not in _NULL_KEY:
                 raise SpecError(f"unknown null {c['null']!r}")
+            if (name == "edge_length_cmi") != (c["null"] == "shuffle_within_line_length"):
+                raise SpecError("edge_length_cmi uses only shuffle_within_line_length; this null is reserved for it")
             if c.get("direction", "greater") not in ("greater", "less"):
                 raise SpecError("direction is greater or less")
             alpha = _num(c.get("p", 0.01), "p")
@@ -694,6 +749,11 @@ def evaluate(spec, pages):
                         f"{MIN_TOKENS} tokens, and {MIN_TOKENS} pairs / n-grams / long words where it counts those")
     finite = math.isfinite(v)
     detail, ok = {"tokens": len(toks)}, finite
+    if "edge_length_cmi" in st:
+        movable = _edge_length_movable_pairs(toks)
+        detail.update(adjacent_pairs=len(_edge_length_pairs(toks)), potentially_movable_pairs=movable)
+        if any(c.get("null") == "shuffle_within_line_length" for c in spec["compare"]) and movable < MIN_TOKENS:
+            raise SpecError("shuffle_within_line_length needs at least 30 potentially movable adjacent pairs")
     if not finite:
         detail["not_finite"] = "a value that is not finite never passes"
     for c in spec["compare"]:
