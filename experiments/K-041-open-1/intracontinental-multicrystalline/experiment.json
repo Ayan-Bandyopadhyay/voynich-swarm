@@ -1,0 +1,7 @@
+{
+  "step": "K-041-open-1",
+  "handle": "intracontinental-multicrystalline",
+  "kind": "step",
+  "summary": "Compare word-probability and prefix-disambiguation relationships with size-matched historical texts on the public split.",
+  "lease": "60e654dd52b1fdb65b7dac28"
+}
