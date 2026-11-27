@@ -13330,5 +13330,299 @@
   "noise": 0.02,
   "true_key_passes_noisy": false,
   "search_cracks_control": false
+ },
+ {
+  "language": "medieval_czech",
+  "family": "substitution",
+  "control": "homophonic",
+  "control_tokens": 2319,
+  "true_key": {
+   "submission": "control-medieval_czech-homophonic",
+   "family": "substitution",
+   "target": {
+    "language": "medieval_czech",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.12293,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-medieval_czech-substitution-control",
+   "family": "substitution",
+   "target": {
+    "language": "medieval_czech",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.12163,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true,
+  "added_with": "medieval_czech_01473c19"
+ },
+ {
+  "language": "medieval_czech",
+  "family": "verbose",
+  "control": "verbose",
+  "control_tokens": 2319,
+  "true_key": {
+   "submission": "control-medieval_czech-verbose",
+   "family": "verbose",
+   "target": {
+    "language": "medieval_czech",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05963,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-medieval_czech-verbose-control",
+   "family": "verbose",
+   "target": {
+    "language": "medieval_czech",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05795,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true,
+  "added_with": "medieval_czech_01473c19"
+ },
+ {
+  "language": "medieval_czech",
+  "family": "nomenclator",
+  "control": "nomenclator",
+  "control_tokens": 2319,
+  "true_key": {
+   "submission": "control-medieval_czech-nomenclator",
+   "family": "nomenclator",
+   "target": {
+    "language": "medieval_czech",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06385,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-medieval_czech-nomenclator-control",
+   "family": "nomenclator",
+   "target": {
+    "language": "medieval_czech",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.06004,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false,
+  "added_with": "medieval_czech_01473c19"
+ },
+ {
+  "language": "medieval_czech",
+  "family": "table-cipher",
+  "control": "table-cipher",
+  "control_tokens": 2319,
+  "true_key": {
+   "submission": "control-medieval_czech-table-cipher",
+   "family": "table-cipher",
+   "target": {
+    "language": "medieval_czech",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04189,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-medieval_czech-table-cipher-control",
+   "family": "table-cipher",
+   "target": {
+    "language": "medieval_czech",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04189,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true,
+  "added_with": "medieval_czech_01473c19"
+ },
+ {
+  "language": "medieval_czech",
+  "family": "abbreviation",
+  "control": "abbreviation",
+  "control_tokens": 2319,
+  "true_key": {
+   "submission": "control-medieval_czech-abbreviation",
+   "family": "abbreviation",
+   "target": {
+    "language": "medieval_czech",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04544,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-medieval_czech-abbreviation-control",
+   "family": "abbreviation",
+   "target": {
+    "language": "medieval_czech",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04374,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true,
+  "added_with": "medieval_czech_01473c19"
+ },
+ {
+  "language": "medieval_czech",
+  "family": "syllabic",
+  "control": "syllabic",
+  "control_tokens": 2319,
+  "true_key": {
+   "submission": "control-medieval_czech-syllabic",
+   "family": "syllabic",
+   "target": {
+    "language": "medieval_czech",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04524,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-medieval_czech-syllabic-control",
+   "family": "syllabic",
+   "target": {
+    "language": "medieval_czech",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04524,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": false,
+  "added_with": "medieval_czech_01473c19"
+ },
+ {
+  "language": "medieval_czech",
+  "family": "nulls",
+  "control": "nulls",
+  "control_tokens": 2880,
+  "true_key": {
+   "submission": "control-medieval_czech-nulls",
+   "family": "nulls",
+   "target": {
+    "language": "medieval_czech",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08576,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-medieval_czech-nulls-control",
+   "family": "nulls",
+   "target": {
+    "language": "medieval_czech",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08306,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false,
+  "added_with": "medieval_czech_01473c19"
  }
 ]

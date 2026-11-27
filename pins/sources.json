@@ -1044,6 +1044,19 @@
       "license": "public-domain",
       "encoding": "utf-8",
       "added_by": "mubadala777"
+    },
+    {
+      "id": "medieval_czech_01473c19",
+      "lang": "medieval_czech",
+      "period": "early fifteenth-century Old Czech sermon prose completed in 1413, in Erben's nineteenth-century textual edition",
+      "title": "Jan Hus, Postilla (1413), Czech sermon cycle, Erben edition (Prague, 1866), printed pp. 1–427",
+      "url": "https://raw.githubusercontent.com/mubadala777/voynich-swarm/1c32945509236b66132c9cc2c92b2fa347288ac3/corpora/hus-postilla-erben-1866/hus-postilla-erben-1866.txt",
+      "file": "data/raw/agent_medieval_czech_01473c19.txt",
+      "bytes": 1042190,
+      "sha256": "01473c190be9c9b73b373a29264c54b7747d4834ca1f81e2d159a5b8f398ecfe",
+      "license": "public-domain",
+      "encoding": "utf-8",
+      "added_by": "mubadala777"
     }
   ],
   "missing_corpora": {
