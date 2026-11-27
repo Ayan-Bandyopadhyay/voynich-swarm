@@ -112,5 +112,239 @@
     "scripts": {
       "position_context.py": "\"\"\"Frozen public reference-text test of role-correct word-position contexts.\"\"\"\nimport argparse\nimport hashlib\nimport json\nimport math\nimport random\nfrom collections import Counter, defaultdict\nfrom pathlib import Path\n\nfrom vs import refcorpus\n\nROOT = Path(__file__).resolve().parent\nPLAN_BYTES = (ROOT/'plan.json').read_bytes()\nPLAN = json.loads(PLAN_BYTES)\nMETHODS = ('unconditioned', 'position_all', 'position_info')\nTOL = 1e-12\n\n\ndef save(name, value):\n    (ROOT/name).write_bytes((json.dumps(value, indent=2)+'\\n').encode())\n\n\ndef sha(data):\n    return hashlib.sha256(data).hexdigest()\n\n\ndef js(p, q):\n    np, nq = sum(p.values()), sum(q.values())\n    assert np and nq\n    total = 0.0\n    for s in sorted(p.keys() | q.keys()):\n        x, y = p[s]/np, q[s]/nq\n        middle = (x+y)/2\n        if x:\n            total += x*math.log2(x/middle)/2\n        if y:\n            total += y*math.log2(y/middle)/2\n    return total\n\n\ndef cell():\n    return {'n': 0, 'left': Counter(), 'right': Counter()}\n\n\nclass Context:\n    def __init__(self, text):\n        self.positions = defaultdict(lambda: defaultdict(cell))\n        self.all = defaultdict(cell)\n        for word in text.split():\n            for i, c in enumerate(word):\n                key = (i == 0, i == len(word)-1)\n                before = word[i-1] if i else ' '\n                after = word[i+1] if i+1 < len(word) else ' '\n                for record in (self.positions[c][key], self.all[c]):\n                    record['n'] += 1\n                    record['left'][before] += 1\n                    record['right'][after] += 1\n\n    def scores(self, c, a, b):\n        out = dict.fromkeys(METHODS)\n        if any(self.all[s]['n'] < 40 for s in (c, a, b)):\n            return out\n        out['unconditioned'] = (js(self.all[c]['left'], self.all[a]['left'])+\n                                js(self.all[c]['right'], self.all[b]['right']))/2\n        for method in ('position_all', 'position_info'):\n            numerator = 0.0\n            denominator = informative_occurrences = 0\n            supported = True\n            for (initial, final), record in self.positions[c].items():\n                directions = []\n                if method == 'position_all' or not initial:\n                    directions.append(('left', self.positions[a][initial, False]))\n                if method == 'position_all' or not final:\n                    directions.append(('right', self.positions[b][False, final]))\n                if directions:\n                    informative_occurrences += record['n']\n                for direction, reference in directions:\n                    if reference['n'] < 20:\n                        supported = False\n                        break\n                    numerator += record['n']*js(record[direction], reference[direction])\n                    denominator += record['n']\n                if not supported:\n                    break\n            if supported and denominator and (method != 'position_info' or informative_occurrences >= 40):\n                out[method] = numerator/denominator\n        return out\n\n\ndef source(language, partition):\n    loader, offset = {\n        'calibration': (refcorpus.calib_text, 40000),\n        'evaluation': (refcorpus.control_text, 80000),\n        'training': (refcorpus.train_text, 40000),\n        'old_evaluation': (refcorpus.control_text, 40000),\n    }[partition]\n    text = ' '.join(loader(language))[offset:].split(' ', 1)[1]\n    return ' '+text[:40000].rsplit(' ', 1)[0]+' '\n\n\ndef pool(text, target, decoy, mode, seed):\n    groups = defaultdict(lambda: ([], []))\n    offset = 0\n    for word in text.split(' '):\n        for i in range(len(word)-1):\n            pair = word[i:i+2]\n            if pair not in (target, decoy):\n                continue\n            start = offset+i\n            key = (i == 0, i+2 == len(word))\n            if mode in ('left', 'both'):\n                key += (text[start-1],)\n            if mode == 'both':\n                key += (text[start+2],)\n            groups[key][pair == decoy].append(start)\n        offset += len(word)+1\n    rng = random.Random(seed)\n    blocked, pairs = set(), []\n    for key, (true, wrong) in sorted(groups.items()):\n        rng.shuffle(true)\n        rng.shuffle(wrong)\n        for i, j in zip(true, wrong):\n            if abs(i-j) < 3 or i in blocked or j in blocked:\n                continue\n            pairs.append((i, j))\n            blocked.update(range(i-2, i+3))\n            blocked.update(range(j-2, j+3))\n    rng.shuffle(pairs)\n    return pairs\n\n\ndef plant(text, pairs):\n    edits = sorted([(i, 'X') for i, j in pairs]+[(j, 'Z') for i, j in pairs])\n    pieces, previous = [], 0\n    for i, c in edits:\n        pieces += [text[previous:i], c]\n        previous = i+2\n    pieces.append(text[previous:])\n    return ''.join(pieces)\n\n\ndef trial(text, language, target, decoy, mode, fraction, seed, partition):\n    matched = pool(text, target, decoy, mode, seed)\n    pairs = matched[:len(matched)//2] if fraction == .5 else matched\n    calc = Context(plant(text, pairs))\n    assert calc.all['X']['n'] == calc.all['Z']['n'] == len(pairs)\n    for i, j in pairs:\n        assert text[i:i+2] == target and text[j:j+2] == decoy\n        assert (text[i-1] == ' ', text[i+2] == ' ') == (text[j-1] == ' ', text[j+2] == ' ')\n        if mode in ('left', 'both'):\n            assert text[i-1] == text[j-1]\n        if mode == 'both':\n            assert text[i+2] == text[j+2]\n    x, z = calc.scores('X', *target), calc.scores('Z', *target)\n    if mode == 'both':\n        for m in METHODS:\n            assert (x[m] is None) == (z[m] is None)\n            assert x[m] is None or abs(x[m]-z[m]) <= TOL\n    return {'language': language, 'partition': partition, 'target': target, 'decoy': decoy,\n            'mode': mode, 'fraction': fraction, 'seed': seed, 'pairs': len(pairs),\n            'scores': {'X': x, 'Z': z},\n            'common_eligible': all(x[m] is not None and z[m] is not None for m in METHODS),\n            'candidate_position_counts': {str(key): record['n'] for key, record in calc.positions['X'].items()}}\n\n\ndef paired(partition):\n    rows, sources = [], []\n    for language, contrasts in PLAN['primary_contrasts'].items():\n        text = source(language, partition)\n        sources.append({'language': language, 'characters': len(text), 'sha256': sha(text.encode())})\n        for target, decoy in contrasts:\n            for mode in PLAN['matching_modes']:\n                for fraction in PLAN['fractions']:\n                    for seed in PLAN['seeds']:\n                        rows.append(trial(text, language, target, decoy, mode, fraction, seed, partition))\n    return rows, sources\n\n\ndef primary(rows):\n    return [r for r in rows if r['mode'] == 'left' and r['fraction'] == 1 and r['common_eligible']]\n\n\ndef accept(score, threshold):\n    return score is not None and threshold is not None and score < threshold-TOL\n\n\ndef summarize(rows, thresholds):\n    out = []\n    for mode in PLAN['matching_modes']:\n        for fraction in PLAN['fractions']:\n            selected = [r for r in rows if r['mode'] == mode and r['fraction'] == fraction]\n            common = [r for r in selected if r['common_eligible']]\n            methods = {}\n            for m in METHODS:\n                count = Counter({'genuine_win': 0, 'decoy_win': 0, 'tie': 0, 'accepted_X': 0, 'accepted_Z': 0})\n                for r in common:\n                    x, z = r['scores']['X'][m], r['scores']['Z'][m]\n                    count['genuine_win' if x < z-TOL else 'decoy_win' if z < x-TOL else 'tie'] += 1\n                    count['accepted_X'] += accept(x, thresholds[m])\n                    count['accepted_Z'] += accept(z, thresholds[m])\n                methods[m] = dict(count)\n            out.append({'mode': mode, 'fraction': fraction, 'attempted': len(selected),\n                        'common_eligible': len(common),\n                        'supported_by_method': {m: sum(all(r['scores'][c][m] is not None for c in ('X', 'Z')) for r in selected) for m in METHODS},\n                        'methods': methods})\n    return out\n\n\ndef negatives(thresholds):\n    rows = []\n    for language, contrasts in PLAN['primary_contrasts'].items():\n        evaluation = source(language, 'evaluation')\n        streams = [('natural', None, evaluation)]\n        train = source(language, 'training').strip()\n        outgoing = defaultdict(Counter)\n        for a, b in zip(train, train[1:]):\n            outgoing[a][b] += 1\n        starts = Counter(w[0] for w in train.split())\n        def draw(rng, counts):\n            point = rng.randrange(sum(counts.values()))\n            for c, n in sorted(counts.items()):\n                if point < n:\n                    return c\n                point -= n\n            raise AssertionError('draw')\n        for seed in PLAN['chain_seeds']:\n            rng = random.Random(seed)\n            letters = [draw(rng, starts)]\n            while len(letters) < len(evaluation)-2:\n                choices = outgoing[letters[-1]]\n                if len(letters) == len(evaluation)-3:\n                    choices = Counter({s: n for s, n in choices.items() if s != ' '})\n                letters.append(draw(rng, choices or starts))\n            streams.append(('direct_chain', seed, ' '+''.join(letters)+' '))\n        for origin, seed, text in streams:\n            calc = Context(text)\n            for target, _ in contrasts:\n                candidates = []\n                for c in sorted(calc.all):\n                    if c in target or not c.islower() or calc.all[c]['n'] < 40:\n                        continue\n                    values = calc.scores(c, *target)\n                    candidates.append({'candidate': c, 'scores': values,\n                                       'accepted': {m: accept(values[m], thresholds[m]) for m in METHODS}})\n                rows.append({'language': language, 'origin': origin, 'seed': seed, 'target': target,\n                             'characters': len(text), 'sha256': sha(text.encode()), 'candidates': candidates})\n    return rows\n\n\ndef diagnostic(thresholds):\n    rows = []\n    for partition, seeds in [('old_evaluation', [58471, 58477, 58481, 58487, 58493]),\n                             ('evaluation', PLAN['seeds'])]:\n        text = source('latin', partition)\n        for seed in seeds:\n            row = trial(text, 'latin', 'us', 'um', 'left', 1, seed, partition)\n            row['source_sha256'] = sha(text.encode())\n            row['accepted'] = {c: {m: accept(row['scores'][c][m], thresholds[m]) for m in METHODS} for c in ('X', 'Z')}\n            rows.append(row)\n    text = ' '.join(['x ab aba bab']*100)\n    scores = Context(text).scores('x', 'a', 'b')\n    assert scores['position_all'] == 0 and scores['position_info'] is None\n    return {'us_um': rows, 'boundary_trap': {'text_recipe': 'x ab aba bab repeated 100 times', 'scores': scores,\n            'accepted': {m: accept(scores[m], thresholds[m]) for m in METHODS}}}\n\n\ndef main():\n    parser = argparse.ArgumentParser()\n    parser.add_argument('phase', choices=('calibrate', 'evaluate'))\n    phase = parser.parse_args().phase\n    if phase == 'calibrate':\n        rows, sources = paired('calibration')\n        supported = primary(rows)\n        thresholds = {}\n        for m in METHODS:\n            scores = sorted(r['scores']['Z'][m] for r in supported)\n            thresholds[m] = scores[math.floor(.05*len(scores))] if scores else None\n        output = {'plan_sha256': sha(PLAN_BYTES), 'script_sha256': sha(Path(__file__).read_bytes()),\n                  'thresholds': thresholds, 'calibration_negative_count': len(supported), 'sources': sources,\n                  'summary': summarize(rows, thresholds), 'paired_rows': rows}\n        name = 'calibration.json'\n    else:\n        frozen = (ROOT/'calibration.json').read_bytes()\n        calibration = json.loads(frozen)\n        assert calibration['plan_sha256'] == sha(PLAN_BYTES)\n        assert calibration['script_sha256'] == sha(Path(__file__).read_bytes())\n        thresholds = calibration['thresholds']\n        rows, sources = paired('evaluation')\n        output = {'plan_sha256': sha(PLAN_BYTES), 'calibration_sha256': sha(frozen), 'thresholds': thresholds,\n                  'sources': sources, 'summary': summarize(rows, thresholds), 'paired_rows': rows,\n                  'negative_controls': negatives(thresholds), 'diagnostics': diagnostic(thresholds)}\n        name = 'evaluation.json'\n    save(name, output)\n    print(json.dumps({'phase': phase, 'primary_common': len(primary(rows)), 'thresholds': thresholds,\n                      'summary': output['summary']}, indent=2))\n\n\nif __name__ == '__main__':\n    main()\n"
     }
+  },
+  "preregistration_commit": "ee8f34799aca0f626eee10193cc3c8742d924c96",
+  "runtime_base": "7127aee5d2472676f1e8ec3a99cf5f40a098f505",
+  "calibration_frozen_before_evaluation": {
+    "sha256": "fe8d756f7744667f129e7e33594c137dda56c6dfb8179696ec9ae3e6f4634e9b",
+    "thresholds": {
+      "unconditioned": 0.18289741936306347,
+      "position_all": 0.18727184112382556,
+      "position_info": 0.21297581931729181
+    },
+    "negative_count": 25,
+    "summary": [
+      {
+        "mode": "slots",
+        "fraction": 0.5,
+        "attempted": 30,
+        "common_eligible": 26,
+        "supported_by_method": {
+          "unconditioned": 30,
+          "position_all": 26,
+          "position_info": 30
+        },
+        "methods": {
+          "unconditioned": {
+            "genuine_win": 21,
+            "decoy_win": 5,
+            "tie": 0,
+            "accepted_X": 11,
+            "accepted_Z": 0
+          },
+          "position_all": {
+            "genuine_win": 18,
+            "decoy_win": 8,
+            "tie": 0,
+            "accepted_X": 13,
+            "accepted_Z": 6
+          },
+          "position_info": {
+            "genuine_win": 18,
+            "decoy_win": 8,
+            "tie": 0,
+            "accepted_X": 6,
+            "accepted_Z": 9
+          }
+        }
+      },
+      {
+        "mode": "slots",
+        "fraction": 1.0,
+        "attempted": 30,
+        "common_eligible": 25,
+        "supported_by_method": {
+          "unconditioned": 30,
+          "position_all": 25,
+          "position_info": 30
+        },
+        "methods": {
+          "unconditioned": {
+            "genuine_win": 20,
+            "decoy_win": 5,
+            "tie": 0,
+            "accepted_X": 15,
+            "accepted_Z": 1
+          },
+          "position_all": {
+            "genuine_win": 16,
+            "decoy_win": 9,
+            "tie": 0,
+            "accepted_X": 12,
+            "accepted_Z": 10
+          },
+          "position_info": {
+            "genuine_win": 16,
+            "decoy_win": 9,
+            "tie": 0,
+            "accepted_X": 3,
+            "accepted_Z": 10
+          }
+        }
+      },
+      {
+        "mode": "left",
+        "fraction": 0.5,
+        "attempted": 30,
+        "common_eligible": 29,
+        "supported_by_method": {
+          "unconditioned": 30,
+          "position_all": 29,
+          "position_info": 30
+        },
+        "methods": {
+          "unconditioned": {
+            "genuine_win": 27,
+            "decoy_win": 2,
+            "tie": 0,
+            "accepted_X": 18,
+            "accepted_Z": 1
+          },
+          "position_all": {
+            "genuine_win": 25,
+            "decoy_win": 4,
+            "tie": 0,
+            "accepted_X": 16,
+            "accepted_Z": 1
+          },
+          "position_info": {
+            "genuine_win": 25,
+            "decoy_win": 4,
+            "tie": 0,
+            "accepted_X": 12,
+            "accepted_Z": 8
+          }
+        }
+      },
+      {
+        "mode": "left",
+        "fraction": 1.0,
+        "attempted": 30,
+        "common_eligible": 25,
+        "supported_by_method": {
+          "unconditioned": 30,
+          "position_all": 25,
+          "position_info": 30
+        },
+        "methods": {
+          "unconditioned": {
+            "genuine_win": 21,
+            "decoy_win": 4,
+            "tie": 0,
+            "accepted_X": 17,
+            "accepted_Z": 1
+          },
+          "position_all": {
+            "genuine_win": 25,
+            "decoy_win": 0,
+            "tie": 0,
+            "accepted_X": 15,
+            "accepted_Z": 1
+          },
+          "position_info": {
+            "genuine_win": 25,
+            "decoy_win": 0,
+            "tie": 0,
+            "accepted_X": 10,
+            "accepted_Z": 1
+          }
+        }
+      },
+      {
+        "mode": "both",
+        "fraction": 0.5,
+        "attempted": 30,
+        "common_eligible": 9,
+        "supported_by_method": {
+          "unconditioned": 10,
+          "position_all": 9,
+          "position_info": 10
+        },
+        "methods": {
+          "unconditioned": {
+            "genuine_win": 0,
+            "decoy_win": 0,
+            "tie": 9,
+            "accepted_X": 0,
+            "accepted_Z": 0
+          },
+          "position_all": {
+            "genuine_win": 0,
+            "decoy_win": 0,
+            "tie": 9,
+            "accepted_X": 7,
+            "accepted_Z": 7
+          },
+          "position_info": {
+            "genuine_win": 0,
+            "decoy_win": 0,
+            "tie": 9,
+            "accepted_X": 4,
+            "accepted_Z": 4
+          }
+        }
+      },
+      {
+        "mode": "both",
+        "fraction": 1.0,
+        "attempted": 30,
+        "common_eligible": 25,
+        "supported_by_method": {
+          "unconditioned": 30,
+          "position_all": 25,
+          "position_info": 30
+        },
+        "methods": {
+          "unconditioned": {
+            "genuine_win": 0,
+            "decoy_win": 0,
+            "tie": 25,
+            "accepted_X": 0,
+            "accepted_Z": 0
+          },
+          "position_all": {
+            "genuine_win": 0,
+            "decoy_win": 0,
+            "tie": 25,
+            "accepted_X": 10,
+            "accepted_Z": 10
+          },
+          "position_info": {
+            "genuine_win": 0,
+            "decoy_win": 0,
+            "tie": 25,
+            "accepted_X": 0,
+            "accepted_Z": 0
+          }
+        }
+      }
+    ],
+    "sources": [
+      {
+        "language": "english",
+        "characters": 40001,
+        "sha256": "a634d385059ff3a7a5da609b2e9098799a50f4016067d90ca96a7aaafbae6e27"
+      },
+      {
+        "language": "latin",
+        "characters": 39996,
+        "sha256": "fa937c8f74f967585d86dfedc195a2c0ed4c3e37ccb59be6c38b015882d6f3a4"
+      },
+      {
+        "language": "italian",
+        "characters": 40000,
+        "sha256": "e95ccfe6c18a058688b67a4aa74a7461e304fdf955e04b93932d93d3aa7c60f8"
+      }
+    ]
   }
 }
