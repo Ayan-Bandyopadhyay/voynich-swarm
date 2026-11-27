@@ -1,0 +1,7 @@
+{
+  "step": "P-L3-009",
+  "handle": "intracontinental-multicrystalline",
+  "kind": "step",
+  "summary": "Test block and randomized row reuse against joint public-training cipher statistics.",
+  "lease": "43ebc4976143ecbbeb80ef76"
+}
