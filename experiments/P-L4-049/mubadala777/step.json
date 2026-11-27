@@ -1,0 +1,605 @@
+{
+  "title": "The Pisces star label is detached and month glosses have no direct label link in the twelve zodiac centres",
+  "statement": "We traced the two requested inner rings from their indicated west starts on the pinned native Yale scans. On f70v2, the text begins at the west seam near the 09:00 ZL start, follows the narrow circular band clockwise, and returns to the west below the gap. The word right of the upper star lies inward of the upper ring with a visible parchment gap. ZL comments Central star immediately before recording this as f70v2.33, a separate Lz locus after f70v2.32 (Cc). ZL and RF read otolal and IT reads otylal. The upper fish falls between that star label and the dark mars gloss. Their centres are about 450 native pixels apart. On f72v1, the pale writing below the scales follows the circular baseline from the 09:30 west seam back to the other side of the seam. ZL f72v1.33 is a Cc locus, with no later Lz on the folio. The dark octobre gloss under the scales is separate from that peripheral text. A second independent reader confirmed the two visual classifications. We measured approximate gloss-to-label geometry on all twelve zodiac panels, excluding every word on a running circular baseline. The rounded nearest-label distances range from about 170 to 450 native scan pixels, which are not physical distances and are not comparable across scans without scale. Eleven panels put the nearest plausible discrete Voynich labels outside the inner disk. The exception is the detached Pisces star label. Close radial alignment is possible without proximity or shared enclosure, so there is no basis here for confirming a bilingual month word. The readings concern layout; no dating or ink attribution is made.",
+  "program": "L4",
+  "check": "Open the cited canvas regions at native scale. Independently mark the ruled inner disk, month gloss and nearest discrete Voynich word-group before consulting ZL. Track the two claimed centre strings relative to their own baselines and to the figures, verify the two locus classifications in ZL, IT and RF, and assess whether any approach to a month gloss carries a drawn link or an explicit bilingual correspondence.",
+  "on_path": true,
+  "hard": false,
+  "provenance": {
+    "prior_panel_survey": "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/245",
+    "prior_f72v1_tracing": "https://github.com/Ayan-Bandyopadhyay/voynich-swarm/pull/617",
+    "prior_star_anchor": "https://voynichswarm.com/x/N-001.html",
+    "transcriptions": [
+      "https://www.voynich.nu/data/ZL3b-n.txt",
+      "https://www.voynich.nu/data/IT2a-n.txt",
+      "https://www.voynich.nu/data/RF1b-e.txt"
+    ],
+    "pinned_manifest": "https://collections.library.yale.edu/manifests/oid/2002046"
+  },
+  "geometry_method": "Each marker is in a 660-by-660 undistorted half-scale crop. Native canvas pixels equal crop origin plus two times each coordinate. Directions are clockwise from the top of the scan. Disk center is the midpoint of the innermost ruled boundary's horizontal and vertical extents. Text points are visual midpoints of inscription bounds. Points are approximate, not instrument-derived ink centroids. The observed images were reviewed by two independent visual readers across the panel set, then checked on crops enlarged and rotated where lettering was pale. Candidate order is by straight-line distance to the gloss, not by angle or by the position of the label's associated nymph. Positions separated by at most 12 crop pixels in distance are retained as near ties. The angular interval is the range over independent ±8 crop-pixel perturbations to each marker on a three-value Cartesian grid. It is an annotation sensitivity check, not a probability interval.",
+  "observations": [
+    {
+      "folio": "f70v2",
+      "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006200",
+      "crop_native_xywh": [
+        1350,
+        1074,
+        1320,
+        1320
+      ],
+      "disk_center_native": [
+        1998,
+        1716
+      ],
+      "gloss_midpoint_native": [
+        1906,
+        1778
+      ],
+      "gloss_angle_degrees": 236,
+      "gloss_radius_native_pixels": 110,
+      "nearest_visible_discrete_label_candidates": [
+        {
+          "xy": [
+            333,
+            135
+          ],
+          "locus": "f70v2.33",
+          "visual": "freestanding central star label above the upper fish",
+          "native_midpoint": [
+            2016,
+            1344
+          ],
+          "angle_degrees": 3,
+          "gloss_gap_degrees": 127,
+          "gap_under_marker_perturbation_degrees": [
+            101,
+            156
+          ],
+          "gloss_distance_native_pixels": 450
+        }
+      ]
+    },
+    {
+      "folio": "f70v1",
+      "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006201",
+      "crop_native_xywh": [
+        1023,
+        1005,
+        1320,
+        1320
+      ],
+      "disk_center_native": [
+        1679,
+        1677
+      ],
+      "gloss_midpoint_native": [
+        1705,
+        1789
+      ],
+      "gloss_angle_degrees": 167,
+      "gloss_radius_native_pixels": 110,
+      "nearest_visible_discrete_label_candidates": [
+        {
+          "xy": [
+            276,
+            573
+          ],
+          "locus": "f70v1.16",
+          "visual": "long lower label beside the lowest inner star bearer",
+          "native_midpoint": [
+            1575,
+            2151
+          ],
+          "angle_degrees": 192,
+          "gloss_gap_degrees": 25,
+          "gap_under_marker_perturbation_degrees": [
+            8,
+            49
+          ],
+          "gloss_distance_native_pixels": 380
+        }
+      ]
+    },
+    {
+      "folio": "f71r",
+      "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006202",
+      "crop_native_xywh": [
+        615,
+        1098,
+        1320,
+        1320
+      ],
+      "disk_center_native": [
+        1281,
+        1772
+      ],
+      "gloss_midpoint_native": [
+        1285,
+        1906
+      ],
+      "gloss_angle_degrees": 178,
+      "gloss_radius_native_pixels": 130,
+      "nearest_visible_discrete_label_candidates": [
+        {
+          "xy": [
+            229,
+            592
+          ],
+          "locus": "f71r.16",
+          "visual": "label left of the bottom inner figure",
+          "native_midpoint": [
+            1073,
+            2282
+          ],
+          "angle_degrees": 202,
+          "gloss_gap_degrees": 24,
+          "gap_under_marker_perturbation_degrees": [
+            7,
+            43
+          ],
+          "gloss_distance_native_pixels": 430
+        }
+      ]
+    },
+    {
+      "folio": "f71v",
+      "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006203",
+      "crop_native_xywh": [
+        744,
+        807,
+        1320,
+        1320
+      ],
+      "disk_center_native": [
+        1426,
+        1427
+      ],
+      "gloss_midpoint_native": [
+        1344,
+        1565
+      ],
+      "gloss_angle_degrees": 211,
+      "gloss_radius_native_pixels": 160,
+      "nearest_visible_discrete_label_candidates": [
+        {
+          "xy": [
+            259,
+            517
+          ],
+          "visual": "label next to the star below the bottom inner figure",
+          "native_midpoint": [
+            1262,
+            1841
+          ],
+          "angle_degrees": 202,
+          "gloss_gap_degrees": 9,
+          "gap_under_marker_perturbation_degrees": [
+            0,
+            25
+          ],
+          "gloss_distance_native_pixels": 290
+        }
+      ]
+    },
+    {
+      "folio": "f72r1",
+      "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006203",
+      "crop_native_xywh": [
+        2562,
+        747,
+        1320,
+        1320
+      ],
+      "disk_center_native": [
+        3234,
+        1387
+      ],
+      "gloss_midpoint_native": [
+        3118,
+        1513
+      ],
+      "gloss_angle_degrees": 223,
+      "gloss_radius_native_pixels": 170,
+      "nearest_visible_discrete_label_candidates": [
+        {
+          "xy": [
+            172,
+            459
+          ],
+          "visual": "sloping label above the lower-left star",
+          "native_midpoint": [
+            2906,
+            1665
+          ],
+          "angle_degrees": 230,
+          "gloss_gap_degrees": 7,
+          "gap_under_marker_perturbation_degrees": [
+            0,
+            22
+          ],
+          "gloss_distance_native_pixels": 260
+        }
+      ]
+    },
+    {
+      "folio": "f72r2",
+      "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006203",
+      "crop_native_xywh": [
+        4476,
+        792,
+        1320,
+        1320
+      ],
+      "disk_center_native": [
+        5126,
+        1424
+      ],
+      "gloss_midpoint_native": [
+        5086,
+        1486
+      ],
+      "gloss_angle_degrees": 213,
+      "gloss_radius_native_pixels": 70,
+      "nearest_visible_discrete_label_candidates": [
+        {
+          "xy": [
+            253,
+            500
+          ],
+          "visual": "label to the left of the two bottom inner stars",
+          "native_midpoint": [
+            4982,
+            1792
+          ],
+          "angle_degrees": 201,
+          "gloss_gap_degrees": 11,
+          "gap_under_marker_perturbation_degrees": [
+            0,
+            46
+          ],
+          "gloss_distance_native_pixels": 320
+        },
+        {
+          "xy": [
+            353,
+            502
+          ],
+          "visual": "label to the right, immediately above the bottom star",
+          "native_midpoint": [
+            5182,
+            1796
+          ],
+          "angle_degrees": 171,
+          "gloss_gap_degrees": 41,
+          "gap_under_marker_perturbation_degrees": [
+            13,
+            77
+          ],
+          "gloss_distance_native_pixels": 320
+        },
+        {
+          "xy": [
+            155,
+            420
+          ],
+          "visual": "label by the star between the two lower-left inner figures",
+          "native_midpoint": [
+            4786,
+            1632
+          ],
+          "angle_degrees": 239,
+          "gloss_gap_degrees": 26,
+          "gap_under_marker_perturbation_degrees": [
+            0,
+            55
+          ],
+          "gloss_distance_native_pixels": 330
+        }
+      ]
+    },
+    {
+      "folio": "f72r3",
+      "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006203",
+      "crop_native_xywh": [
+        6384,
+        777,
+        1320,
+        1320
+      ],
+      "disk_center_native": [
+        7028,
+        1455
+      ],
+      "gloss_midpoint_native": [
+        6960,
+        1567
+      ],
+      "gloss_angle_degrees": 211,
+      "gloss_radius_native_pixels": 130,
+      "nearest_visible_discrete_label_candidates": [
+        {
+          "xy": [
+            244,
+            521
+          ],
+          "visual": "label beside the figure and star below disk",
+          "native_midpoint": [
+            6872,
+            1819
+          ],
+          "angle_degrees": 203,
+          "gloss_gap_degrees": 8,
+          "gap_under_marker_perturbation_degrees": [
+            0,
+            28
+          ],
+          "gloss_distance_native_pixels": 270
+        },
+        {
+          "xy": [
+            152,
+            395
+          ],
+          "visual": "label just below and left of the disk beside the lower-left star",
+          "native_midpoint": [
+            6688,
+            1567
+          ],
+          "angle_degrees": 252,
+          "gloss_gap_degrees": 41,
+          "gap_under_marker_perturbation_degrees": [
+            20,
+            59
+          ],
+          "gloss_distance_native_pixels": 270
+        }
+      ]
+    },
+    {
+      "folio": "f72v3",
+      "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006204",
+      "crop_native_xywh": [
+        1623,
+        1092,
+        1320,
+        1320
+      ],
+      "disk_center_native": [
+        2289,
+        1768
+      ],
+      "gloss_midpoint_native": [
+        2221,
+        1978
+      ],
+      "gloss_angle_degrees": 198,
+      "gloss_radius_native_pixels": 220,
+      "nearest_visible_discrete_label_candidates": [
+        {
+          "xy": [
+            177,
+            606
+          ],
+          "locus": "f72v3.29",
+          "visual": "slanting label between the lower-left inner figure and its star",
+          "native_midpoint": [
+            1977,
+            2304
+          ],
+          "angle_degrees": 210,
+          "gloss_gap_degrees": 12,
+          "gap_under_marker_perturbation_degrees": [
+            1,
+            22
+          ],
+          "gloss_distance_native_pixels": 410
+        }
+      ]
+    },
+    {
+      "folio": "f72v2",
+      "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006204",
+      "crop_native_xywh": [
+        3978,
+        1125,
+        1320,
+        1320
+      ],
+      "disk_center_native": [
+        4608,
+        1785
+      ],
+      "gloss_midpoint_native": [
+        4458,
+        1877
+      ],
+      "gloss_angle_degrees": 238,
+      "gloss_radius_native_pixels": 180,
+      "nearest_visible_discrete_label_candidates": [
+        {
+          "xy": [
+            111,
+            476
+          ],
+          "locus": "f72v2.30",
+          "visual": "label beside the lower-left inner star",
+          "native_midpoint": [
+            4200,
+            2077
+          ],
+          "angle_degrees": 234,
+          "gloss_gap_degrees": 4,
+          "gap_under_marker_perturbation_degrees": [
+            0,
+            17
+          ],
+          "gloss_distance_native_pixels": 330
+        },
+        {
+          "xy": [
+            74,
+            359
+          ],
+          "locus": "f72v2.31",
+          "visual": "faint vertical label beside the left inner figure",
+          "native_midpoint": [
+            4126,
+            1843
+          ],
+          "angle_degrees": 263,
+          "gloss_gap_degrees": 25,
+          "gap_under_marker_perturbation_degrees": [
+            11,
+            40
+          ],
+          "gloss_distance_native_pixels": 330
+        }
+      ]
+    },
+    {
+      "folio": "f72v1",
+      "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006205",
+      "crop_native_xywh": [
+        1005,
+        1050,
+        1320,
+        1320
+      ],
+      "disk_center_native": [
+        1657,
+        1700
+      ],
+      "gloss_midpoint_native": [
+        1697,
+        1844
+      ],
+      "gloss_angle_degrees": 164,
+      "gloss_radius_native_pixels": 150,
+      "nearest_visible_discrete_label_candidates": [
+        {
+          "xy": [
+            445,
+            510
+          ],
+          "identification": "unassigned",
+          "visual": "short label beside the lower-right star bearer",
+          "native_midpoint": [
+            1895,
+            2070
+          ],
+          "angle_degrees": 147,
+          "gloss_gap_degrees": 17,
+          "gap_under_marker_perturbation_degrees": [
+            0,
+            32
+          ],
+          "gloss_distance_native_pixels": 300
+        },
+        {
+          "xy": [
+            328,
+            547
+          ],
+          "locus": "f72v1.30",
+          "identification": "likely",
+          "visual": "upside-down label between the two bottom figures",
+          "native_midpoint": [
+            1661,
+            2144
+          ],
+          "angle_degrees": 179,
+          "gloss_gap_degrees": 15,
+          "gap_under_marker_perturbation_degrees": [
+            2,
+            32
+          ],
+          "gloss_distance_native_pixels": 300
+        }
+      ]
+    },
+    {
+      "folio": "f73r",
+      "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006206",
+      "crop_native_xywh": [
+        597,
+        1080,
+        1320,
+        1320
+      ],
+      "disk_center_native": [
+        1259,
+        1726
+      ],
+      "gloss_midpoint_native": [
+        1235,
+        1932
+      ],
+      "gloss_angle_degrees": 187,
+      "gloss_radius_native_pixels": 210,
+      "nearest_visible_discrete_label_candidates": [
+        {
+          "xy": [
+            273,
+            499
+          ],
+          "locus": "f73r.28",
+          "identification": "likely",
+          "visual": "label near the six-o'clock inner figure",
+          "native_midpoint": [
+            1143,
+            2078
+          ],
+          "angle_degrees": 198,
+          "gloss_gap_degrees": 12,
+          "gap_under_marker_perturbation_degrees": [
+            0,
+            23
+          ],
+          "gloss_distance_native_pixels": 170
+        }
+      ]
+    },
+    {
+      "folio": "f73v",
+      "canvas": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006207",
+      "crop_native_xywh": [
+        1005,
+        1038,
+        1320,
+        1320
+      ],
+      "disk_center_native": [
+        1671,
+        1704
+      ],
+      "gloss_midpoint_native": [
+        1721,
+        1886
+      ],
+      "gloss_angle_degrees": 165,
+      "gloss_radius_native_pixels": 190,
+      "nearest_visible_discrete_label_candidates": [
+        {
+          "xy": [
+            416,
+            499
+          ],
+          "locus": "f73v.29",
+          "identification": "likely",
+          "visual": "label below and right of the centre figure",
+          "native_midpoint": [
+            1837,
+            2036
+          ],
+          "angle_degrees": 153,
+          "gloss_gap_degrees": 11,
+          "gap_under_marker_perturbation_degrees": [
+            0,
+            23
+          ],
+          "gloss_distance_native_pixels": 190
+        }
+      ]
+    }
+  ]
+}
