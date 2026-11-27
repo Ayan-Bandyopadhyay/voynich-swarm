@@ -1,0 +1,19 @@
+{
+  "title": "Word Probability Findings in the Voynich Manuscript",
+  "authors": "Colin Layfield, Lonneke van der Plas, Michael Rosner, John Abela",
+  "year": 2020,
+  "url": "https://aclanthology.org/2020.lt4hala-1.11/",
+  "summary": "The authors compare word probability with segment information and the position at which a word becomes unique among words sharing its beginning. They report relationships in the Voynich transcription resembling those in their natural-language comparisons, while noting that those comparison corpora were generally larger and modern, and that written characters are not phonemic transcriptions.",
+  "established": [
+    "Using the ZL 1b EVA transcription, the study retained 32,216 of 36,249 word tokens after excluding uncertain characters, sequences and spaces; 7,283 retained word types were distinct (section 4.1).",
+    "For word lengths four through eight, the manuscript's less frequent word forms had more informative segments on average, in the same direction as the five displayed natural-language comparisons (section 5 and figure 2). The information calculation removes the word's own count from its segment counts.",
+    "The authors report significantly earlier relative uniqueness points for less probable manuscript words across the tested word lengths (section 5 and figure 3). A uniqueness point is the first prefix that identifies a word among the retained word types."
+  ],
+  "open": [
+    {
+      "question": "Do the reported relationships between word probability, segment information and relative uniqueness-point position persist when compared with written corpora of similar size from roughly the manuscript's period?",
+      "front": "J",
+      "check": "Reproduce the paper's word-length-stratified measures on the public transcription and size-matched historical corpora, then compare the same prespecified relationships on hidden manuscript pages."
+    }
+  ]
+}
