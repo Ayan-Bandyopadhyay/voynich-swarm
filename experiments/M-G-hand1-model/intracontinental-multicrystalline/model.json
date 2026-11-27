@@ -1,0 +1,41 @@
+{
+  "title": "Hand 1: position and preceding-edge spelling with copying and templates",
+  "statement": "Apply the same component configuration as M-005 to hand 1: a fitted mixture of glyph-trigram spelling, spelling conditioned on line position and the preceding word's final glyph, position vocabulary, page-local exact or one-glyph copying, and a prefix-core-suffix template. Compare held-out predictive cost to the bag and spelling baselines and M-001; the analysis tests predictive usefulness, not whether a specific historical process generated the text. Position and preceding-word context are supplied by the layout, and preceding-word context crosses line breaks within a page. On the public practice split, this fixed mixture scores 10.6422 bits per word versus 10.8328 for the M-001 specification re-evaluated on the same 1,551 words, with identical bag and glyph-trigram references; the result is exploratory on these pages.",
+  "source": "M-005, held-out hand 2 mixture; M-001, previously scored hand 1 model. Identical fixed components to M-005, chosen before this public hand 1 evaluation, using the trusted model language in vs/models.py.",
+  "scope": {
+    "hand": "1"
+  },
+  "components": [
+    {
+      "type": "letters",
+      "order": 3
+    },
+    {
+      "type": "position_letters",
+      "order": 3
+    },
+    {
+      "type": "boundary_letters",
+      "order": 3
+    },
+    {
+      "type": "position"
+    },
+    {
+      "type": "copy",
+      "window": 50,
+      "edits": 0
+    },
+    {
+      "type": "copy",
+      "window": 50,
+      "edits": 1
+    },
+    {
+      "type": "template",
+      "prefix": 2,
+      "suffix": 3
+    }
+  ],
+  "weights": "fit"
+}
