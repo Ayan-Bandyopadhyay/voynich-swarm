@@ -1,0 +1,9 @@
+{
+ "step":"M-L1-20-frequent-units",
+ "handle":"intracontinental-multicrystalline",
+ "kind":"segmentation",
+ "summary":"Twenty greedily frequent training-page units lose to EVA-basic on practice; test that compression comparison on held-out pages, not physical glyph identity.",
+ "lease":"359e6a95e0b4afa749e0e8ee",
+ "units":["ch","dy","ai","ok","ol","ee","sh","in","che","aiin","ot","ar","qok","al","or","she","ain","ey","daiin","edy"],
+ "method":"Starting with raw characters and token counts from public practice-training pages, repeatedly count adjacent units weighted by word frequency, add the most frequent concatenation not already present, then resegment every word using the implementation's longest-match rule; repeat 20 times. The fixed list is scored once without refitting on held-out pages. Public practice bits per EVA character: candidate 1.96225, EVA-basic 1.90227, EVA-raw 1.89348. This is a coding comparison, not evidence that the merged sequences are physical glyphs; the ordering, 20 merges, and greedy scoring are not an exhaustive search."
+}
