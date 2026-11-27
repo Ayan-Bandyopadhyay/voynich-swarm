@@ -1,0 +1,262 @@
+{
+  "of": "K-006",
+  "assessment": "agree",
+  "citation": "Michael A. Greshko (2025), The Naibbe cipher, Cryptologia, doi:10.1080/01611194.2025.2566408.",
+  "url": "https://github.com/greshko/naibbe-cipher/tree/5145f526b52741a6dca14201147f687e62c7162e",
+  "statement": "A position-known, explicit marker extension exceeds the numerical F-003, F-008 and F-019 ratio thresholds in six synthetic runs while recovering the normalized plaintext, but raises the observed token vocabulary and entropy; the constructed positional effect is not independent evidence for this mechanism in the manuscript.",
+  "methods": [
+    "Use naibbe_v2.py at the linked revision, 78-card deck, RESPACING=17, UNAMBIGUOUS=True, before optional space deletion. Independent pinned texts are la_erasmus and it_dante; apply clean_line to joined vs.refcorpus.blocks_of, taking up to 32,000 letters. Seeds 0, 1, 2 seed Python random. Retain the respaced plaintext tokens. Pack output into 8 tokens per line and 4 lines per paragraph, including final partial paragraph.",
+    "Freeze the following extension independent of plaintext and ciphertext: prefix EVA p to the first and third token of every paragraph; leave all other tokens unchanged. Decode by stripping exactly that marker at those known positions, then apply Naibbe decoding. This is an explicit positional null, not a claim that these marks have been identified in the manuscript. It depends on preserved word and paragraph boundaries and does not restore original spaces, punctuation, capitalization or diacritics.",
+    "Construct the reverse map from all unigram spellings and only those bigram spellings that are not unigram spellings and have exactly one prefix/suffix code pair, as the unambiguous generator requires. Count any output whose reverse map is not a single plaintext token, and concatenate decoded tokens to verify exact normalized input recovery.",
+    "For each output measure p/f-initial fraction at paragraph openings divided by line interiors (excluding first and last words), on first lines divided by other lines, and first-line noninitial words divided by other-line noninitial words; compare to F-003 >=10, F-008 >=3 and F-019 >=3 numeric thresholds only. No page-shuffle significance or manuscript held-out test was run. Also count token types, average raw EVA character length and first-order character conditional entropy with ^ and $ token-edge symbols; these raw character metrics are not EVA-basic glyph counts."
+  ],
+  "results": [
+    {
+      "corpus": "la_erasmus",
+      "seed": 0,
+      "words": 18926,
+      "baseline": {
+        "para_mid": 1.023,
+        "firstline_rest": 0.865,
+        "firstline_noninitial": 0.812,
+        "rates": [
+          0.02703,
+          0.02642,
+          0.02238,
+          0.02586,
+          0.02172,
+          0.02674
+        ],
+        "glyph_h2": 2.0947,
+        "mean_length": 5.2898,
+        "types": 4343
+      },
+      "marked": {
+        "para_mid": 14.911,
+        "firstline_rest": 10.279,
+        "firstline_noninitial": 6.019,
+        "rates": [
+          1.0,
+          0.06707,
+          0.26584,
+          0.02586,
+          0.16096,
+          0.02674
+        ],
+        "glyph_h2": 2.1266,
+        "mean_length": 5.3524,
+        "types": 4839
+      },
+      "marker_count": 1184,
+      "ambiguous_tokens": 0,
+      "roundtrip": true,
+      "retries": 883
+    },
+    {
+      "corpus": "la_erasmus",
+      "seed": 1,
+      "words": 18968,
+      "baseline": {
+        "para_mid": 0.97,
+        "firstline_rest": 0.957,
+        "firstline_noninitial": 0.971,
+        "rates": [
+          0.0253,
+          0.02608,
+          0.02508,
+          0.02622,
+          0.02505,
+          0.02579
+        ],
+        "glyph_h2": 2.0967,
+        "mean_length": 5.258,
+        "types": 4308
+      },
+      "marked": {
+        "para_mid": 14.991,
+        "firstline_rest": 10.249,
+        "firstline_noninitial": 6.37,
+        "rates": [
+          1.0,
+          0.06671,
+          0.26876,
+          0.02622,
+          0.1643,
+          0.02579
+        ],
+        "glyph_h2": 2.1286,
+        "mean_length": 5.3205,
+        "types": 4810
+      },
+      "marker_count": 1186,
+      "ambiguous_tokens": 0,
+      "roundtrip": true,
+      "retries": 858
+    },
+    {
+      "corpus": "la_erasmus",
+      "seed": 2,
+      "words": 18976,
+      "baseline": {
+        "para_mid": 1.012,
+        "firstline_rest": 1.012,
+        "firstline_noninitial": 1.028,
+        "rates": [
+          0.02361,
+          0.02333,
+          0.0234,
+          0.02312,
+          0.02337,
+          0.02273
+        ],
+        "glyph_h2": 2.0864,
+        "mean_length": 5.2893,
+        "types": 4341
+      },
+      "marked": {
+        "para_mid": 15.622,
+        "firstline_rest": 11.571,
+        "firstline_noninitial": 7.166,
+        "rates": [
+          1.0,
+          0.06401,
+          0.2675,
+          0.02312,
+          0.16285,
+          0.02273
+        ],
+        "glyph_h2": 2.119,
+        "mean_length": 5.3518,
+        "types": 4865
+      },
+      "marker_count": 1186,
+      "ambiguous_tokens": 0,
+      "roundtrip": true,
+      "retries": 920
+    },
+    {
+      "corpus": "it_dante",
+      "seed": 0,
+      "words": 20918,
+      "baseline": {
+        "para_mid": 1.326,
+        "firstline_rest": 1.055,
+        "firstline_noninitial": 0.977,
+        "rates": [
+          0.01682,
+          0.01268,
+          0.01319,
+          0.0125,
+          0.01267,
+          0.01297
+        ],
+        "glyph_h2": 2.1198,
+        "mean_length": 5.2712,
+        "types": 4502
+      },
+      "marked": {
+        "para_mid": 18.523,
+        "firstline_rest": 20.803,
+        "firstline_noninitial": 11.891,
+        "rates": [
+          1.0,
+          0.05399,
+          0.25994,
+          0.0125,
+          0.15422,
+          0.01297
+        ],
+        "glyph_h2": 2.1554,
+        "mean_length": 5.3337,
+        "types": 5099
+      },
+      "marker_count": 1308,
+      "ambiguous_tokens": 0,
+      "roundtrip": true,
+      "retries": 826
+    },
+    {
+      "corpus": "it_dante",
+      "seed": 1,
+      "words": 20936,
+      "baseline": {
+        "para_mid": 1.491,
+        "firstline_rest": 0.909,
+        "firstline_noninitial": 0.83,
+        "rates": [
+          0.01985,
+          0.01331,
+          0.01221,
+          0.01344,
+          0.01112,
+          0.0134
+        ],
+        "glyph_h2": 2.1204,
+        "mean_length": 5.2563,
+        "types": 4513
+      },
+      "marked": {
+        "para_mid": 18.301,
+        "firstline_rest": 19.236,
+        "firstline_noninitial": 11.396,
+        "rates": [
+          1.0,
+          0.05464,
+          0.25859,
+          0.01344,
+          0.15267,
+          0.0134
+        ],
+        "glyph_h2": 2.1552,
+        "mean_length": 5.3189,
+        "types": 5109
+      },
+      "marker_count": 1310,
+      "ambiguous_tokens": 0,
+      "roundtrip": true,
+      "retries": 817
+    },
+    {
+      "corpus": "it_dante",
+      "seed": 2,
+      "words": 20968,
+      "baseline": {
+        "para_mid": 1.332,
+        "firstline_rest": 1.273,
+        "firstline_noninitial": 1.205,
+        "rates": [
+          0.01829,
+          0.01374,
+          0.01562,
+          0.01228,
+          0.01524,
+          0.01265
+        ],
+        "glyph_h2": 2.121,
+        "mean_length": 5.2447,
+        "types": 4496
+      },
+      "marked": {
+        "para_mid": 18.329,
+        "firstline_rest": 21.232,
+        "firstline_noninitial": 12.257,
+        "rates": [
+          1.0,
+          0.05456,
+          0.26067,
+          0.01228,
+          0.15505,
+          0.01265
+        ],
+        "glyph_h2": 2.1558,
+        "mean_length": 5.3073,
+        "types": 5079
+      },
+      "marker_count": 1312,
+      "ambiguous_tokens": 0,
+      "roundtrip": true,
+      "retries": 875
+    }
+  ],
+  "limitations": "The p insertion is deterministic and intentionally builds the tested positional signal into the text. It is not the original cipher, and observed threshold crossings alone do not establish a historical cipher or a match on other manuscript statistics. Fixed layout is artificial; type counts are uncorrected for corpus size."
+}

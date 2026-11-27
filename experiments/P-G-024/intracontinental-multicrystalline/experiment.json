@@ -1,0 +1,7 @@
+{
+  "step": "P-G-024",
+  "handle": "intracontinental-multicrystalline",
+  "kind": "step",
+  "summary": "Test frozen training-length weighting and 10% fragment sharing against both independent ablations on public paired pages.",
+  "lease": "12211585dd765ce259a07b5b"
+}

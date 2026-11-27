@@ -1,0 +1,900 @@
+{
+  "program": "J",
+  "title": "Block nulls trade short-period cipher power for resistance to periodic plaintext",
+  "hard": false,
+  "on_path": true,
+  "statement": "For three historical texts and three independently seeded row schedules per text, global shuffles recover and confirm all nine planted periods 10, 24 and 131. Shuffling whole 50-token blocks recovers and confirms all nine at 24 and 131, but confirms none at period 10. A ten-character repeated plaintext with randomly chosen cipher rows yields nine confirmed lag-10 signals under global shuffles and none under the block shuffle. Historical plaintext under random rows yields no confirmed lag under either null. The 50-token block length is intentionally aligned to period 10; these are limited synthetic controls, not a general calibration.",
+  "check": "Calibrate several block lengths and offsets, plaintext structures, source works and cipher periods on independent inputs, including cases where null blocks accidentally align with or suppress the mechanism of interest. Prespecify a null that matches the scientific question and report both false-positive and planted-signal behavior before any manuscript period inference or exclusion.",
+  "method": "Use the P-J-038 frozen scan of lags 2\u2013160 and 49 shuffle maxima on 4,000 ciphertext words; choose the shortest significant lag at add-one p <= .05 and test it on the next 4,000 words using 49 fixed-lag shuffles. Compare global permutations of all tokens against permutations of intact consecutive 50-token blocks, preserving within-block order. Both segments have lengths divisible by 50. Use normalized alphabetic characters 4,001\u201312,000 of each pinned Erasmus, Dante and Walther work; draw distinct 10, 24 or 131 rows cyclically, or choose independently from 131 rows for the random control. The adversarial periodic plaintext is a random ten-character motif repeated to 8,000 characters with independently random row choices. Per-book seed offsets give distinct schedules and motifs. Check source and table hashes; cipher table and source are those in P-J-040.",
+  "limitations": "The texts were already used in P-J-040; three seeds reuse one passage per book and are not nine independent documents. The block null preserves any within-block dependence, including short cipher structure, and the 50-token boundaries align to period 10 by design; a different block size or phase can behave differently. This is a conditional synthetic comparison, not a justified null for the manuscript, and the selected lag is not a recovered key.",
+  "environment": "Python and NumPy 2.5.4; table at https://github.com/hermesj/R_Voynich_Stats/blob/0ef1439fa9d90aeab42951a51d0d5a0e27db1f8f/R%20code/Historical_ciphers/keys/ciphers_poly_III_in_order.csv SHA-256 fe3f24a46dbc6b655eab8dbbd75addf84ee4a7dbd387ad802af75d02edfe5b4d.",
+  "summary_results": {
+    "cyclic-10-global": {
+      "selected_lags": {
+        "10": 9
+      },
+      "confirmed": 9,
+      "runs": 9
+    },
+    "cyclic-10-block50": {
+      "selected_lags": {
+        "None": 7,
+        "150": 2
+      },
+      "confirmed": 0,
+      "runs": 9
+    },
+    "cyclic-24-global": {
+      "selected_lags": {
+        "24": 9
+      },
+      "confirmed": 9,
+      "runs": 9
+    },
+    "cyclic-24-block50": {
+      "selected_lags": {
+        "24": 9
+      },
+      "confirmed": 9,
+      "runs": 9
+    },
+    "cyclic-131-global": {
+      "selected_lags": {
+        "131": 9
+      },
+      "confirmed": 9,
+      "runs": 9
+    },
+    "cyclic-131-block50": {
+      "selected_lags": {
+        "131": 9
+      },
+      "confirmed": 9,
+      "runs": 9
+    },
+    "motif-131-global": {
+      "selected_lags": {
+        "10": 9
+      },
+      "confirmed": 9,
+      "runs": 9
+    },
+    "motif-131-block50": {
+      "selected_lags": {
+        "None": 9
+      },
+      "confirmed": 0,
+      "runs": 9
+    },
+    "random-131-global": {
+      "selected_lags": {
+        "None": 8,
+        "159": 1
+      },
+      "confirmed": 0,
+      "runs": 9
+    },
+    "random-131-block50": {
+      "selected_lags": {
+        "None": 8,
+        "159": 1
+      },
+      "confirmed": 0,
+      "runs": 9
+    }
+  },
+  "individual_results": [
+    {
+      "book": "la_erasmus",
+      "seed": 1201,
+      "mode": "cyclic",
+      "period": 10,
+      "null": "global",
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "la_erasmus",
+      "seed": 1201,
+      "mode": "cyclic",
+      "period": 10,
+      "null": "block50",
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "la_erasmus",
+      "seed": 1201,
+      "mode": "cyclic",
+      "period": 24,
+      "null": "global",
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "la_erasmus",
+      "seed": 1201,
+      "mode": "cyclic",
+      "period": 24,
+      "null": "block50",
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "la_erasmus",
+      "seed": 1201,
+      "mode": "cyclic",
+      "period": 131,
+      "null": "global",
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "la_erasmus",
+      "seed": 1201,
+      "mode": "cyclic",
+      "period": 131,
+      "null": "block50",
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "la_erasmus",
+      "seed": 1201,
+      "mode": "random",
+      "period": 131,
+      "null": "global",
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "la_erasmus",
+      "seed": 1201,
+      "mode": "random",
+      "period": 131,
+      "null": "block50",
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "la_erasmus",
+      "seed": 1201,
+      "mode": "motif",
+      "period": 131,
+      "null": "global",
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "la_erasmus",
+      "seed": 1201,
+      "mode": "motif",
+      "period": 131,
+      "null": "block50",
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "la_erasmus",
+      "seed": 2201,
+      "mode": "cyclic",
+      "period": 10,
+      "null": "global",
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "la_erasmus",
+      "seed": 2201,
+      "mode": "cyclic",
+      "period": 10,
+      "null": "block50",
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "la_erasmus",
+      "seed": 2201,
+      "mode": "cyclic",
+      "period": 24,
+      "null": "global",
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "la_erasmus",
+      "seed": 2201,
+      "mode": "cyclic",
+      "period": 24,
+      "null": "block50",
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "la_erasmus",
+      "seed": 2201,
+      "mode": "cyclic",
+      "period": 131,
+      "null": "global",
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "la_erasmus",
+      "seed": 2201,
+      "mode": "cyclic",
+      "period": 131,
+      "null": "block50",
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "la_erasmus",
+      "seed": 2201,
+      "mode": "random",
+      "period": 131,
+      "null": "global",
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "la_erasmus",
+      "seed": 2201,
+      "mode": "random",
+      "period": 131,
+      "null": "block50",
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "la_erasmus",
+      "seed": 2201,
+      "mode": "motif",
+      "period": 131,
+      "null": "global",
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "la_erasmus",
+      "seed": 2201,
+      "mode": "motif",
+      "period": 131,
+      "null": "block50",
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "la_erasmus",
+      "seed": 3301,
+      "mode": "cyclic",
+      "period": 10,
+      "null": "global",
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "la_erasmus",
+      "seed": 3301,
+      "mode": "cyclic",
+      "period": 10,
+      "null": "block50",
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "la_erasmus",
+      "seed": 3301,
+      "mode": "cyclic",
+      "period": 24,
+      "null": "global",
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "la_erasmus",
+      "seed": 3301,
+      "mode": "cyclic",
+      "period": 24,
+      "null": "block50",
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "la_erasmus",
+      "seed": 3301,
+      "mode": "cyclic",
+      "period": 131,
+      "null": "global",
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "la_erasmus",
+      "seed": 3301,
+      "mode": "cyclic",
+      "period": 131,
+      "null": "block50",
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "la_erasmus",
+      "seed": 3301,
+      "mode": "random",
+      "period": 131,
+      "null": "global",
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "la_erasmus",
+      "seed": 3301,
+      "mode": "random",
+      "period": 131,
+      "null": "block50",
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "la_erasmus",
+      "seed": 3301,
+      "mode": "motif",
+      "period": 131,
+      "null": "global",
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "la_erasmus",
+      "seed": 3301,
+      "mode": "motif",
+      "period": 131,
+      "null": "block50",
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "it_dante",
+      "seed": 1201,
+      "mode": "cyclic",
+      "period": 10,
+      "null": "global",
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "it_dante",
+      "seed": 1201,
+      "mode": "cyclic",
+      "period": 10,
+      "null": "block50",
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "it_dante",
+      "seed": 1201,
+      "mode": "cyclic",
+      "period": 24,
+      "null": "global",
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "it_dante",
+      "seed": 1201,
+      "mode": "cyclic",
+      "period": 24,
+      "null": "block50",
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "it_dante",
+      "seed": 1201,
+      "mode": "cyclic",
+      "period": 131,
+      "null": "global",
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "it_dante",
+      "seed": 1201,
+      "mode": "cyclic",
+      "period": 131,
+      "null": "block50",
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "it_dante",
+      "seed": 1201,
+      "mode": "random",
+      "period": 131,
+      "null": "global",
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "it_dante",
+      "seed": 1201,
+      "mode": "random",
+      "period": 131,
+      "null": "block50",
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "it_dante",
+      "seed": 1201,
+      "mode": "motif",
+      "period": 131,
+      "null": "global",
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "it_dante",
+      "seed": 1201,
+      "mode": "motif",
+      "period": 131,
+      "null": "block50",
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "it_dante",
+      "seed": 2201,
+      "mode": "cyclic",
+      "period": 10,
+      "null": "global",
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "it_dante",
+      "seed": 2201,
+      "mode": "cyclic",
+      "period": 10,
+      "null": "block50",
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "it_dante",
+      "seed": 2201,
+      "mode": "cyclic",
+      "period": 24,
+      "null": "global",
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "it_dante",
+      "seed": 2201,
+      "mode": "cyclic",
+      "period": 24,
+      "null": "block50",
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "it_dante",
+      "seed": 2201,
+      "mode": "cyclic",
+      "period": 131,
+      "null": "global",
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "it_dante",
+      "seed": 2201,
+      "mode": "cyclic",
+      "period": 131,
+      "null": "block50",
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "it_dante",
+      "seed": 2201,
+      "mode": "random",
+      "period": 131,
+      "null": "global",
+      "lag": 159,
+      "eval_p": 0.08
+    },
+    {
+      "book": "it_dante",
+      "seed": 2201,
+      "mode": "random",
+      "period": 131,
+      "null": "block50",
+      "lag": 159,
+      "eval_p": 0.06
+    },
+    {
+      "book": "it_dante",
+      "seed": 2201,
+      "mode": "motif",
+      "period": 131,
+      "null": "global",
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "it_dante",
+      "seed": 2201,
+      "mode": "motif",
+      "period": 131,
+      "null": "block50",
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "it_dante",
+      "seed": 3301,
+      "mode": "cyclic",
+      "period": 10,
+      "null": "global",
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "it_dante",
+      "seed": 3301,
+      "mode": "cyclic",
+      "period": 10,
+      "null": "block50",
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "it_dante",
+      "seed": 3301,
+      "mode": "cyclic",
+      "period": 24,
+      "null": "global",
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "it_dante",
+      "seed": 3301,
+      "mode": "cyclic",
+      "period": 24,
+      "null": "block50",
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "it_dante",
+      "seed": 3301,
+      "mode": "cyclic",
+      "period": 131,
+      "null": "global",
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "it_dante",
+      "seed": 3301,
+      "mode": "cyclic",
+      "period": 131,
+      "null": "block50",
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "it_dante",
+      "seed": 3301,
+      "mode": "random",
+      "period": 131,
+      "null": "global",
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "it_dante",
+      "seed": 3301,
+      "mode": "random",
+      "period": 131,
+      "null": "block50",
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "it_dante",
+      "seed": 3301,
+      "mode": "motif",
+      "period": 131,
+      "null": "global",
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "it_dante",
+      "seed": 3301,
+      "mode": "motif",
+      "period": 131,
+      "null": "block50",
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "de_walther",
+      "seed": 1201,
+      "mode": "cyclic",
+      "period": 10,
+      "null": "global",
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "de_walther",
+      "seed": 1201,
+      "mode": "cyclic",
+      "period": 10,
+      "null": "block50",
+      "lag": 150,
+      "eval_p": 0.98
+    },
+    {
+      "book": "de_walther",
+      "seed": 1201,
+      "mode": "cyclic",
+      "period": 24,
+      "null": "global",
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "de_walther",
+      "seed": 1201,
+      "mode": "cyclic",
+      "period": 24,
+      "null": "block50",
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "de_walther",
+      "seed": 1201,
+      "mode": "cyclic",
+      "period": 131,
+      "null": "global",
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "de_walther",
+      "seed": 1201,
+      "mode": "cyclic",
+      "period": 131,
+      "null": "block50",
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "de_walther",
+      "seed": 1201,
+      "mode": "random",
+      "period": 131,
+      "null": "global",
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "de_walther",
+      "seed": 1201,
+      "mode": "random",
+      "period": 131,
+      "null": "block50",
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "de_walther",
+      "seed": 1201,
+      "mode": "motif",
+      "period": 131,
+      "null": "global",
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "de_walther",
+      "seed": 1201,
+      "mode": "motif",
+      "period": 131,
+      "null": "block50",
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "de_walther",
+      "seed": 2201,
+      "mode": "cyclic",
+      "period": 10,
+      "null": "global",
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "de_walther",
+      "seed": 2201,
+      "mode": "cyclic",
+      "period": 10,
+      "null": "block50",
+      "lag": 150,
+      "eval_p": 1.0
+    },
+    {
+      "book": "de_walther",
+      "seed": 2201,
+      "mode": "cyclic",
+      "period": 24,
+      "null": "global",
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "de_walther",
+      "seed": 2201,
+      "mode": "cyclic",
+      "period": 24,
+      "null": "block50",
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "de_walther",
+      "seed": 2201,
+      "mode": "cyclic",
+      "period": 131,
+      "null": "global",
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "de_walther",
+      "seed": 2201,
+      "mode": "cyclic",
+      "period": 131,
+      "null": "block50",
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "de_walther",
+      "seed": 2201,
+      "mode": "random",
+      "period": 131,
+      "null": "global",
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "de_walther",
+      "seed": 2201,
+      "mode": "random",
+      "period": 131,
+      "null": "block50",
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "de_walther",
+      "seed": 2201,
+      "mode": "motif",
+      "period": 131,
+      "null": "global",
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "de_walther",
+      "seed": 2201,
+      "mode": "motif",
+      "period": 131,
+      "null": "block50",
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "de_walther",
+      "seed": 3301,
+      "mode": "cyclic",
+      "period": 10,
+      "null": "global",
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "de_walther",
+      "seed": 3301,
+      "mode": "cyclic",
+      "period": 10,
+      "null": "block50",
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "de_walther",
+      "seed": 3301,
+      "mode": "cyclic",
+      "period": 24,
+      "null": "global",
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "de_walther",
+      "seed": 3301,
+      "mode": "cyclic",
+      "period": 24,
+      "null": "block50",
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "de_walther",
+      "seed": 3301,
+      "mode": "cyclic",
+      "period": 131,
+      "null": "global",
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "de_walther",
+      "seed": 3301,
+      "mode": "cyclic",
+      "period": 131,
+      "null": "block50",
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "de_walther",
+      "seed": 3301,
+      "mode": "random",
+      "period": 131,
+      "null": "global",
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "de_walther",
+      "seed": 3301,
+      "mode": "random",
+      "period": 131,
+      "null": "block50",
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "de_walther",
+      "seed": 3301,
+      "mode": "motif",
+      "period": 131,
+      "null": "global",
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "de_walther",
+      "seed": 3301,
+      "mode": "motif",
+      "period": 131,
+      "null": "block50",
+      "lag": null,
+      "eval_p": null
+    }
+  ],
+  "reproduction_python": "import random,json,hashlib,csv\nimport numpy as np\nfrom vs import refcorpus\nraw=open('/tmp/voy-piii.csv','rb').read();assert hashlib.sha256(raw).hexdigest()=='fe3f24a46dbc6b655eab8dbbd75addf84ee4a7dbd387ad802af75d02edfe5b4d'\ntable=list(csv.DictReader(raw.decode('utf-8-sig').splitlines()));allowed=set(table[0]);alphabet=list(table[0])\nfor row in table:\n for c in row:row[c]=row[c].strip()\ndef score(a,k):return float(np.mean(a[:-k]==a[k:]))\ndef shuffle(a,r,kind):\n if kind=='global':return r.permutation(a)\n return r.permutation(a.reshape(-1,50),axis=0).reshape(-1)\ndef infer(a,seed,kind):\n rates=[score(a,k) for k in range(2,161)];rng=np.random.default_rng(seed);null=[]\n for _ in range(49):\n  b=shuffle(a,rng,kind);null.append(max(score(b,k) for k in range(2,161)))\n return next((i+2 for i,v in enumerate(rates) if (1+sum(z>=v for z in null))/50<=.05),None)\ndef confirm(a,k,seed,kind):\n rng=np.random.default_rng(seed);v=score(a,k);return (1+sum(score(shuffle(a,rng,kind),k)>=v for _ in range(49)))/50\ndef make(plain,period,mode,seed):\n r=random.Random(seed);rows=r.sample(range(len(table)),period);words=[]\n for i,c in enumerate(plain):words.append(table[rows[r.randrange(period) if mode=='random' else i%period]][c])\n codes={w:i for i,w in enumerate(sorted(set(words)))};return np.array([codes[w] for w in words],dtype=np.int32)\nout=[]\nfor bi,book in enumerate(('la_erasmus','it_dante','de_walther')):\n pin=next(x for x in refcorpus.pins() if x['id']==book);assert hashlib.sha256(open(pin['file'],'rb').read()).hexdigest()==pin['sha256']\n plain=''.join(c for b in refcorpus.blocks_of(book) for c in b if c in allowed)[4000:12000];assert len(plain)==8000\n for seed in (1201,2201,3301):\n  ss=seed+10000*bi\n  for mode,period in (('cyclic',10),('cyclic',24),('cyclic',131),('random',131),('motif',131)):\n   use=plain\n   if mode=='motif':\n    rng=random.Random(ss+77);motif=rng.choices(alphabet,k=10);use=''.join(motif[i%10] for i in range(8000))\n   a=make(use,period,'random' if mode=='motif' else mode,ss)\n   for kind in ('global','block50'):\n    k=infer(a[:4000],ss+100,kind);p=confirm(a[4000:],k,ss+200,kind) if k else None\n    out.append({'book':book,'seed':seed,'mode':mode,'period':period,'null':kind,'lag':k,'eval_p':p})\nprint(json.dumps(out,indent=2))\n",
+  "script_sha256": "c19a193caed6ad3bcd59f41e0f151156d938e5a2d8016e52ac69880372479cb3"
+}

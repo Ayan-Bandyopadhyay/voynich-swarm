@@ -1,0 +1,7 @@
+{
+  "step": "P-J-040",
+  "handle": "intracontinental-multicrystalline",
+  "kind": "step",
+  "lease": "ece7ed0a0022a7d43c8a8da2",
+  "summary": "Block-preserving shuffle removes a repeated-plaintext false signal but also loses a planted short cipher period."
+}
