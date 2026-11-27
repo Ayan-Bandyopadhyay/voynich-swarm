@@ -560,7 +560,7 @@ _FEATURE_SKIP = ("label", "order", "angle", "clock", "position", "note", "count"
 
 
 def pictures():
-    """AGREED picture annotations on the record, one per folio (the best-agreeing seat's)."""
+    """Select the best-agreeing annotation per folio, using explicit label coverage to break ties."""
     global _PICTURE_CACHE
     if PICTURES is not None:
         return PICTURES
@@ -573,8 +573,12 @@ def pictures():
             continue
         d = i.get("detail") or {}
         f = str(d.get("folio"))
-        if f not in best or i.get("agreement", 0) > best[f][0]:
-            best[f] = (i.get("agreement", 0), d.get("objects") or [])
+        objects = d.get("objects") or []
+        labels = {o["label"].strip() for o in objects
+                  if isinstance(o, dict) and isinstance(o.get("label"), str) and o["label"].strip()}
+        rank = (i.get("agreement", 0), len(labels))
+        if f not in best or rank > best[f][0]:
+            best[f] = (rank, objects)
     _PICTURE_CACHE = {f: objs for f, (_, objs) in best.items()}
     return _PICTURE_CACHE
 
