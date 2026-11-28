@@ -24,6 +24,9 @@ statistics:
                                                            boundaries as a symbol (k=1 is Bennett's second-order entropy)
   {"adjacent_mi": F}                                       adjacent mutual information minus the same after shuffling
                                                            each line (so page and section vocabulary cancel)
+  {"boundary_class_rate": true}                         Fraction of within-line eligible pairs whose left ending is end-preferring
+                                                           and right onset start-preferring. Classes are fitted ONLY on training
+                                                           pages with a fixed 2:1 rule and Parisel pool; requires training pages.
   {"edge_mi": true}                                        MI between a word's last glyph and the next word's first glyph
   {"edge_length_cmi": true}                               conditional MI of those edges given both exact EVA-basic word
                                                            lengths, weighted by adjacent-pair count (bits). Certain P
@@ -487,6 +490,48 @@ def _filtered_vocab_counts(toks, arg):
             'distinct_types': len(counts), 'singleton_types': sum(v == 1 for v in counts.values())}
 
 
+# Fixed pool used by the released Parisel grille tokenizer. Longest matches first.
+_BOUNDARY_UNITS = tuple(sorted({"o", "a", "q", "d", "s", "t", "k", "p", "f", "c", "ch", "sh", "ck", "cth", "cph", "ok", "ot", "ol", "or", "k2", "t2", "p2", "f2", "d2", "s2", "ch2", "sh2", "ckh", "cth2", "cfh", "dy", "dl", "dm", "ds", "dar", "dal", "iin", "in", "ir", "iir", "iiir", "al", "am", "an", "ar", "ain", "aiin", "ey", "ed", "es", "edy", "eey", "eedy", "ly", "ry", "ny", "my", "ldy"}, key=lambda x: (-len(x), x)))
+
+
+def _boundary_seg(word):
+    out = []
+    while word:
+        match = next((u for u in _BOUNDARY_UNITS if word.startswith(u)), word[0])
+        out.append(match)
+        word = word[len(match):]
+    return out
+
+
+def _boundary_eligible(t):
+    w = t["w"]
+    return t["unit"] == "P" and len(w) > 1 and w.isalpha() and not UNCERTAIN(w)
+
+
+def _boundary_classes(toks):
+    start, end = Counter(), Counter()
+    for t in toks:
+        if _boundary_eligible(t):
+            g = _boundary_seg(t["w"])
+            start[g[0]] += 1
+            end[g[-1]] += 1
+    if sum(start.values()) < 100:
+        raise SpecError("boundary_class_rate needs at least 100 eligible training words")
+    return {g: ("start" if start[g] > 2 * end[g] else "end" if end[g] > 2 * start[g] else "ambig")
+            for g in set(start) | set(end)}
+
+
+def _boundary_class_value(toks, classes):
+    pairs = [(a, b) for run in runs_of([t for t in toks if _boundary_eligible(t)])
+             for a, b in zip(run, run[1:])]
+    if len(pairs) < MIN_TOKENS:
+        return NAN, {"pairs": len(pairs), "unknown_pairs": 0}
+    edges = [(_boundary_seg(a["w"])[-1], _boundary_seg(b["w"])[0]) for a, b in pairs]
+    unknown = sum(a not in classes or b not in classes for a, b in edges)
+    rate = sum(classes.get(a) == "end" and classes.get(b) == "start" for a, b in edges) / len(edges)
+    return rate, {"pairs": len(edges), "unknown_pairs": unknown}
+
+
 def check_statistic(st):
     if not isinstance(st, dict) or len(st) != 1:
         raise SpecError("statistic is one {name: args}")
@@ -530,6 +575,9 @@ def check_statistic(st):
     elif name == "page_reuse":
         _keys(arg, {"min_length"}, name)
         _int(arg.get("min_length", 1), 1, 40, "page_reuse min_length")
+    elif name == "boundary_class_rate":
+        if arg is not True:
+            raise SpecError("boundary_class_rate must be true")
     elif name == "matched_rightwardness":
         _keys(arg, {"contrast", "min_line", "max_line"}, name, ("contrast", "min_line", "max_line"))
         if arg["contrast"] not in ("sh/ch", "qo/o", "k/t"):
@@ -994,6 +1042,16 @@ def _shuffled(all_toks, how, rng, statistic_name=None):
             for i, w in zip(g, ws):
                 words[i] = w
         return [dict(t, w=w) for t, w in zip(all_toks, words)]
+    if statistic_name == "boundary_class_rate" and how == "shuffle_within_line":
+        words = [t["w"] for t in all_toks]
+        idx = {(t["line"], t["k"]): i for i, t in enumerate(all_toks)}
+        for run in runs_of([t for t in all_toks if _boundary_eligible(t)]):
+            indices = [idx[(t["line"], t["k"])] for t in run]
+            ws = [words[i] for i in indices]
+            rng.shuffle(ws)
+            for i, w in zip(indices, ws):
+                words[i] = w
+        return [dict(t, w=w) for t, w in zip(all_toks, words)]
     if statistic_name == "repeated_pair_types" and how == "shuffle_within_line":
         eligible = [t for t in all_toks if t['unit'] == 'P' and t['w'] and not UNCERTAIN(t['w'])]
         indexes = {(t['line'], t['k']): i for i, t in enumerate(all_toks)}
@@ -1159,10 +1217,11 @@ def check(spec):
         if (set(sel.get("unit") or []) != {"P"} or sel.get("position", "any") != "any"
                 or not sel.get("certain", True) or "language" in sel):
             raise SpecError("repeated_pair_types requires all certain paragraph words")
-    if name == "edge_length_cmi":
+    if name in ("edge_length_cmi", "boundary_class_rate"):
         sel = spec.get("select") or {}
-        if set(sel.get("unit") or []) != {"P"} or sel.get("position", "any") != "any" or not sel.get("certain", True):
-            raise SpecError("edge_length_cmi requires certain P words at position any")
+        if (set(sel.get("unit") or []) != {"P"} or sel.get("position", "any") != "any"
+                or not sel.get("certain", True) or (name == "boundary_class_rate" and "language" in sel)):
+            raise SpecError(f"{name} requires certain P words at position any")
     if name == "paragraph_gap_corr":
         selection = spec.get("select") or {}
         if (set(selection.get("unit") or []) != {"P"} or selection.get("position", "any") != "any"
@@ -1198,6 +1257,8 @@ def check(spec):
                 raise SpecError(f"unknown null {c['null']!r}")
             if (name == "edge_length_cmi") != (c["null"] == "shuffle_within_line_length"):
                 raise SpecError("edge_length_cmi uses only shuffle_within_line_length; this null is reserved for it")
+            if name == "boundary_class_rate" and c["null"] != "shuffle_within_line":
+                raise SpecError("boundary_class_rate uses only shuffle_within_line")
             if name == "paragraph_gap_corr" and c["null"] not in ("shuffle_within_paragraph", "shuffle_within_line"):
                 raise SpecError("paragraph_gap_corr uses shuffle_within_paragraph or shuffle_within_line")
             if name == "repeated_pair_types" and c["null"] != "shuffle_within_line":
@@ -1260,7 +1321,7 @@ def canonical(spec):
             "select": sel(spec.get("select")), "statistic": {name: arg}, "tests": sorted(tests)}
 
 
-def evaluate(spec, pages):
+def evaluate(spec, pages, train_pages=None):
     """Returns {"value", "pass", "detail"} for a spec on these pages."""
     check(spec)
     all_toks = tokens(pages, spec.get("scope"))
@@ -1269,7 +1330,16 @@ def evaluate(spec, pages):
         raise SpecError("the selection is empty")
     st = spec["statistic"]
     (name, _arg), = st.items()
-    v = statistic(st, toks, all_toks)
+    boundary_classes = None
+    if name == "boundary_class_rate":
+        if train_pages is None:
+            raise SpecError("boundary_class_rate requires separate training pages")
+        if {p.id for p in pages} & {p.id for p in train_pages}:
+            raise SpecError("boundary_class_rate training and evaluation pages overlap")
+        boundary_classes = _boundary_classes(tokens(train_pages, spec.get("scope")))
+        v, boundary_detail = _boundary_class_value(toks, boundary_classes)
+    else:
+        v = statistic(st, toks, all_toks)
     if v != v and "picture_label" in st:
         a = st["picture_label"]
         raise SpecError(f"picture_label is undefined here: {len(_picture_objects(all_toks))} labelled objects from AGREED "
@@ -1284,6 +1354,8 @@ def evaluate(spec, pages):
                         f"{MIN_TOKENS} tokens, and {MIN_TOKENS} pairs / n-grams / long words where it counts those")
     finite = math.isfinite(v)
     detail, ok = {"tokens": len(toks)}, finite
+    if name == "boundary_class_rate":
+        detail["boundary_class_rate"] = boundary_detail
     if 'matched_rightwardness' in st:
         _, detail['matched_rightwardness'] = _matched_rightwardness(toks, st['matched_rightwardness'], True)
     if "edge_length_cmi" in st:
@@ -1353,7 +1425,10 @@ def evaluate(spec, pages):
                     sh = _relabelled(all_toks, order, labels[k + 1:] + labels[:k + 1])
                 else:
                     sh = _shuffled(all_toks, c["null"], rng, name)
-                sv = statistic(st, select(sh, spec.get("select")), sh)
+                if name == "boundary_class_rate":
+                    sv, _ = _boundary_class_value(select(sh, spec.get("select")), boundary_classes)
+                else:
+                    sv = statistic(st, select(sh, spec.get("select")), sh)
                 moved |= sv == sv and abs(sv - v) > 1e-12 if finite else sv != v
                 # an undefined permuted value counts against the claim
                 more += (sv != sv) or ((sv >= v) if greater else (sv <= v))

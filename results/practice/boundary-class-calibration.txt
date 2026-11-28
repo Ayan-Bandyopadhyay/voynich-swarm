@@ -1,0 +1,15 @@
+P-L1-024: fixed-class boundary rate calibration, public reference texts and synthetic data only.
+Run: PYTHONPATH=. python3 tools/calibrate_boundary_class.py
+independent_null 1 / 20
+planted 20 / 20
+latin rate 0.134793 p 0.38 pairs 868 unknown 0
+italian rate 0.646434 p 0.01 pairs 659 unknown 2
+english rate 0.381295 p 0.95 pairs 834 unknown 1
+
+The null simulations use independent within-line permutations of the same two words, and the
+strong alternative alternates them mechanically. Twenty trials are far too few for a precise
+false-positive rate. The natural-text entries are one fixed training/control slice per language,
+with eight words per synthetic line; they do not estimate language-wide behavior. In particular,
+the Italian result shows that a significant result under this shuffle is not evidence of meaning
+or its absence. This calibration does not establish manuscript-wide power, glyph identity, or
+any held-out fact. The parser's treatment of uncertain spaces is not a parameter of this primitive.

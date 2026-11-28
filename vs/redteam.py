@@ -217,7 +217,7 @@ def fact_attack(fact_id, lines, split, fact_item=None, cut="tokens", first_lines
     if "spec" in fact_item["detail"]:
         from . import dsl
         spec = fact_item["detail"]["spec"]
-        real, got = dsl.evaluate(spec, ev), dsl.evaluate(spec, fake)
+        real, got = dsl.evaluate(spec, ev, train), dsl.evaluate(spec, fake, train)
     else:
         m, prm = fact_item["detail"]["metric"], fact_item["detail"]["params"]
         real = facts.METRICS[m](train, ev, **prm)

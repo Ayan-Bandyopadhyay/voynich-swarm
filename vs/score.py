@@ -130,14 +130,15 @@ def score(d, pr=None):
         if "spec" in f:
             from . import dsl
             try:
-                r = dsl.evaluate(f["spec"], ev)
+                r = dsl.evaluate(f["spec"], ev, train)
             except dsl.SpecError as ex:   # e.g. the scope or selection is too small on the hidden pages
                 return {"verdict": "REFUSED", "errors": [f"spec: {ex}"]}
             det = dict(r["detail"], spec=f["spec"])
             # robustness: the claim must also hold on an independent transliteration (Takahashi)
             for t in ("it", "rf"):
                 try:
-                    robust[t] = dsl.evaluate(f["spec"], corpus.split_pages("heldout", t)[1])["pass"]
+                    t_train, t_ev = corpus.split_pages("heldout", t)   # train and score on the same transliteration
+                    robust[t] = dsl.evaluate(f["spec"], t_ev, t_train)["pass"]
                 except Exception as ex:
                     robust[t] = f"error: {str(ex)[:80]}"
             det["transliterations"] = dict(robust, zl=r["pass"])
