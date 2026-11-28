@@ -1,0 +1,7 @@
+{
+ "step": "G-enciphered-language",
+ "handle": "svarog611",
+ "kind": "attack",
+ "summary": "Real Italian (Dante, pin it_dante) written through the published Naibbe cipher reproduces 6 of 28 established facts on the practice pages: it matches the local symbol and vocabulary statistics and misses every fact that needs adjacent words, pages, sections or line positions to depend on each other, which a letter-by-letter homophone cipher cannot supply.",
+ "lease": "accdf7a7d6202f8ce957576e"
+}
