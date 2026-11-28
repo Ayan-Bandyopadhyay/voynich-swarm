@@ -1,0 +1,1207 @@
+{
+  "program": "J",
+  "title": "Tied stopwords break substitution invariance of the directional-pair test",
+  "on_path": true,
+  "hard": false,
+  "statement": "In one constructed 5,000-token book with 20 equally frequent types, each of 20 cyclic bijective relabellings yields exactly the same type counts and ordering structure. The lexicographic tie-break changes which original type is discarded and changes one-sided shuffle p values from .01 to .55 (compress) and .01 to .54 (barrier), crossing .05. Choosing the first occurring tied type keeps the discarded original type, score and seeded p value unchanged under all 20 relabellings. This demonstrates a tie-breaking artifact, not a calibrated alternative.",
+  "check": "For real and synthetic inputs with ties and no ties, compare substitution-invariant tie rules and explicitly valid conditional randomization schemes. In particular, a first-occurrence selection depends on order: either recompute the complete selection statistic in each null draw or derive the appropriate conditional test. Evaluate type-I error and power on multiple independent documents and structured non-language controls before manuscript use.",
+  "method": "Construct a deliberately heterogeneous book: 250 alternations of w00,w01 followed by 4,500 tokens comprising 250 each of w02\u2013w19 shuffled with seed 731. Every type occurs exactly 250 times. Cut into consecutive 80-token blocks, last 40. Apply all 20 cyclic label permutations, each a bijection of whole tokens, and remove one most frequent type using either lexicographic label or first appearance. For each 99 within-block shuffles from seed 921, keep the chosen removed type fixed and use the P-J-039 directional imbalance threshold >5 and add-one upper-tail p value. Compression and barrier policies are measured separately. All permutations share the same text and shuffle seeds, so the 20 outputs are transformations of one example, not independent trials.",
+  "limitations": "This deliberately artificial book was constructed to make tied types have different local order. The fixed-stopword shuffle for the first-appearance rule is a diagnostic, not generally exchangeable under the null because the choice itself uses order. A change in p does not show a difference in underlying language or evidence of a cipher. No historical or manuscript data are used.",
+  "summary_results": {
+    "lex": {
+      "compress": {
+        "p_min": 0.01,
+        "p_max": 0.55,
+        "p_le_005": 9,
+        "score_min": 0.45774647887323944,
+        "score_max": 0.5390070921985816
+      },
+      "barrier": {
+        "p_min": 0.01,
+        "p_max": 0.54,
+        "p_le_005": 12,
+        "score_min": 0.425531914893617,
+        "score_max": 0.5460992907801419
+      }
+    },
+    "first": {
+      "compress": {
+        "p_min": 0.53,
+        "p_max": 0.53,
+        "p_le_005": 0,
+        "score_min": 0.45806451612903226,
+        "score_max": 0.45806451612903226
+      },
+      "barrier": {
+        "p_min": 0.54,
+        "p_max": 0.54,
+        "p_le_005": 0,
+        "score_min": 0.45806451612903226,
+        "score_max": 0.45806451612903226
+      }
+    }
+  },
+  "individual_results": [
+    {
+      "shift": 0,
+      "removed_original_lex": 0,
+      "results": {
+        "lex": {
+          "compress": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12393,
+              "instance_ratio": 0.005729040587428387
+            },
+            "p": 0.53,
+            "null_mean": 0.4631827395272864
+          },
+          "barrier": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12390,
+              "instance_ratio": 0.005730427764326069
+            },
+            "p": 0.54,
+            "null_mean": 0.46566843287521287
+          }
+        },
+        "first": {
+          "compress": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12393,
+              "instance_ratio": 0.005729040587428387
+            },
+            "p": 0.53,
+            "null_mean": 0.4631827395272864
+          },
+          "barrier": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12390,
+              "instance_ratio": 0.005730427764326069
+            },
+            "p": 0.54,
+            "null_mean": 0.46566843287521287
+          }
+        }
+      }
+    },
+    {
+      "shift": 1,
+      "removed_original_lex": 19,
+      "results": {
+        "lex": {
+          "compress": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.5106382978723404,
+              "skewed_types": 72,
+              "pair_types": 141,
+              "pair_occurrences": 12640,
+              "instance_ratio": 0.00569620253164557
+            },
+            "p": 0.02,
+            "null_mean": 0.430673307344983
+          },
+          "barrier": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.475177304964539,
+              "skewed_types": 67,
+              "pair_types": 141,
+              "pair_occurrences": 11420,
+              "instance_ratio": 0.005866900175131348
+            },
+            "p": 0.08,
+            "null_mean": 0.4196004335305742
+          }
+        },
+        "first": {
+          "compress": {
+            "stop": "w01",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12393,
+              "instance_ratio": 0.005729040587428387
+            },
+            "p": 0.53,
+            "null_mean": 0.4631827395272864
+          },
+          "barrier": {
+            "stop": "w01",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12390,
+              "instance_ratio": 0.005730427764326069
+            },
+            "p": 0.54,
+            "null_mean": 0.46566843287521287
+          }
+        }
+      }
+    },
+    {
+      "shift": 2,
+      "removed_original_lex": 18,
+      "results": {
+        "lex": {
+          "compress": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.5177304964539007,
+              "skewed_types": 73,
+              "pair_types": 141,
+              "pair_occurrences": 12619,
+              "instance_ratio": 0.0057849274902924165
+            },
+            "p": 0.02,
+            "null_mean": 0.42909835452896133
+          },
+          "barrier": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.48226950354609927,
+              "skewed_types": 68,
+              "pair_types": 141,
+              "pair_occurrences": 11390,
+              "instance_ratio": 0.005970149253731343
+            },
+            "p": 0.03,
+            "null_mean": 0.41665946683127436
+          }
+        },
+        "first": {
+          "compress": {
+            "stop": "w02",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12393,
+              "instance_ratio": 0.005729040587428387
+            },
+            "p": 0.53,
+            "null_mean": 0.4631827395272864
+          },
+          "barrier": {
+            "stop": "w02",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12390,
+              "instance_ratio": 0.005730427764326069
+            },
+            "p": 0.54,
+            "null_mean": 0.46566843287521287
+          }
+        }
+      }
+    },
+    {
+      "shift": 3,
+      "removed_original_lex": 17,
+      "results": {
+        "lex": {
+          "compress": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.4714285714285714,
+              "skewed_types": 66,
+              "pair_types": 140,
+              "pair_occurrences": 12615,
+              "instance_ratio": 0.005231866825208086
+            },
+            "p": 0.16,
+            "null_mean": 0.4273105218721854
+          },
+          "barrier": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.48905109489051096,
+              "skewed_types": 67,
+              "pair_types": 137,
+              "pair_occurrences": 11403,
+              "instance_ratio": 0.00587564675962466
+            },
+            "p": 0.03,
+            "null_mean": 0.4189231086884146
+          }
+        },
+        "first": {
+          "compress": {
+            "stop": "w03",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12393,
+              "instance_ratio": 0.005729040587428387
+            },
+            "p": 0.53,
+            "null_mean": 0.4631827395272864
+          },
+          "barrier": {
+            "stop": "w03",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12390,
+              "instance_ratio": 0.005730427764326069
+            },
+            "p": 0.54,
+            "null_mean": 0.46566843287521287
+          }
+        }
+      }
+    },
+    {
+      "shift": 4,
+      "removed_original_lex": 16,
+      "results": {
+        "lex": {
+          "compress": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.5177304964539007,
+              "skewed_types": 73,
+              "pair_types": 141,
+              "pair_occurrences": 12609,
+              "instance_ratio": 0.00578951542548973
+            },
+            "p": 0.01,
+            "null_mean": 0.4288777646265447
+          },
+          "barrier": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.46808510638297873,
+              "skewed_types": 66,
+              "pair_types": 141,
+              "pair_occurrences": 11423,
+              "instance_ratio": 0.005777816685634246
+            },
+            "p": 0.09,
+            "null_mean": 0.4166870445634798
+          }
+        },
+        "first": {
+          "compress": {
+            "stop": "w04",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12393,
+              "instance_ratio": 0.005729040587428387
+            },
+            "p": 0.53,
+            "null_mean": 0.4631827395272864
+          },
+          "barrier": {
+            "stop": "w04",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12390,
+              "instance_ratio": 0.005730427764326069
+            },
+            "p": 0.54,
+            "null_mean": 0.46566843287521287
+          }
+        }
+      }
+    },
+    {
+      "shift": 5,
+      "removed_original_lex": 15,
+      "results": {
+        "lex": {
+          "compress": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.49645390070921985,
+              "skewed_types": 70,
+              "pair_types": 141,
+              "pair_occurrences": 12620,
+              "instance_ratio": 0.005546751188589541
+            },
+            "p": 0.04,
+            "null_mean": 0.42664638335796873
+          },
+          "barrier": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.48936170212765956,
+              "skewed_types": 69,
+              "pair_types": 141,
+              "pair_occurrences": 11374,
+              "instance_ratio": 0.006066467381747846
+            },
+            "p": 0.03,
+            "null_mean": 0.4143165404553041
+          }
+        },
+        "first": {
+          "compress": {
+            "stop": "w05",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12393,
+              "instance_ratio": 0.005729040587428387
+            },
+            "p": 0.53,
+            "null_mean": 0.4631827395272864
+          },
+          "barrier": {
+            "stop": "w05",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12390,
+              "instance_ratio": 0.005730427764326069
+            },
+            "p": 0.54,
+            "null_mean": 0.46566843287521287
+          }
+        }
+      }
+    },
+    {
+      "shift": 6,
+      "removed_original_lex": 14,
+      "results": {
+        "lex": {
+          "compress": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.48936170212765956,
+              "skewed_types": 69,
+              "pair_types": 141,
+              "pair_occurrences": 12613,
+              "instance_ratio": 0.005470546261793388
+            },
+            "p": 0.06,
+            "null_mean": 0.42789594109495654
+          },
+          "barrier": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.49645390070921985,
+              "skewed_types": 70,
+              "pair_types": 141,
+              "pair_occurrences": 11427,
+              "instance_ratio": 0.006125842303316706
+            },
+            "p": 0.02,
+            "null_mean": 0.4158798418351061
+          }
+        },
+        "first": {
+          "compress": {
+            "stop": "w06",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12393,
+              "instance_ratio": 0.005729040587428387
+            },
+            "p": 0.53,
+            "null_mean": 0.4631827395272864
+          },
+          "barrier": {
+            "stop": "w06",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12390,
+              "instance_ratio": 0.005730427764326069
+            },
+            "p": 0.54,
+            "null_mean": 0.46566843287521287
+          }
+        }
+      }
+    },
+    {
+      "shift": 7,
+      "removed_original_lex": 13,
+      "results": {
+        "lex": {
+          "compress": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.46808510638297873,
+              "skewed_types": 66,
+              "pair_types": 141,
+              "pair_occurrences": 12613,
+              "instance_ratio": 0.00523269642432411
+            },
+            "p": 0.15,
+            "null_mean": 0.43220928873479386
+          },
+          "barrier": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.45390070921985815,
+              "skewed_types": 64,
+              "pair_types": 141,
+              "pair_occurrences": 11381,
+              "instance_ratio": 0.005623407433441701
+            },
+            "p": 0.26,
+            "null_mean": 0.42375738029903753
+          }
+        },
+        "first": {
+          "compress": {
+            "stop": "w07",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12393,
+              "instance_ratio": 0.005729040587428387
+            },
+            "p": 0.53,
+            "null_mean": 0.4631827395272864
+          },
+          "barrier": {
+            "stop": "w07",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12390,
+              "instance_ratio": 0.005730427764326069
+            },
+            "p": 0.54,
+            "null_mean": 0.46566843287521287
+          }
+        }
+      }
+    },
+    {
+      "shift": 8,
+      "removed_original_lex": 12,
+      "results": {
+        "lex": {
+          "compress": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.45774647887323944,
+              "skewed_types": 65,
+              "pair_types": 142,
+              "pair_occurrences": 12627,
+              "instance_ratio": 0.0051476993743565375
+            },
+            "p": 0.2,
+            "null_mean": 0.42929641010002156
+          },
+          "barrier": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.5179856115107914,
+              "skewed_types": 72,
+              "pair_types": 139,
+              "pair_occurrences": 11462,
+              "instance_ratio": 0.006281626243238528
+            },
+            "p": 0.02,
+            "null_mean": 0.42100676167407336
+          }
+        },
+        "first": {
+          "compress": {
+            "stop": "w08",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12393,
+              "instance_ratio": 0.005729040587428387
+            },
+            "p": 0.53,
+            "null_mean": 0.4631827395272864
+          },
+          "barrier": {
+            "stop": "w08",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12390,
+              "instance_ratio": 0.005730427764326069
+            },
+            "p": 0.54,
+            "null_mean": 0.46566843287521287
+          }
+        }
+      }
+    },
+    {
+      "shift": 9,
+      "removed_original_lex": 11,
+      "results": {
+        "lex": {
+          "compress": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.5390070921985816,
+              "skewed_types": 76,
+              "pair_types": 141,
+              "pair_occurrences": 12623,
+              "instance_ratio": 0.006020755763289234
+            },
+            "p": 0.01,
+            "null_mean": 0.42639172163957006
+          },
+          "barrier": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.48936170212765956,
+              "skewed_types": 69,
+              "pair_types": 141,
+              "pair_occurrences": 11398,
+              "instance_ratio": 0.006053693630461485
+            },
+            "p": 0.03,
+            "null_mean": 0.418492983295926
+          }
+        },
+        "first": {
+          "compress": {
+            "stop": "w09",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12393,
+              "instance_ratio": 0.005729040587428387
+            },
+            "p": 0.53,
+            "null_mean": 0.4631827395272864
+          },
+          "barrier": {
+            "stop": "w09",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12390,
+              "instance_ratio": 0.005730427764326069
+            },
+            "p": 0.54,
+            "null_mean": 0.46566843287521287
+          }
+        }
+      }
+    },
+    {
+      "shift": 10,
+      "removed_original_lex": 10,
+      "results": {
+        "lex": {
+          "compress": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.524822695035461,
+              "skewed_types": 74,
+              "pair_types": 141,
+              "pair_occurrences": 12607,
+              "instance_ratio": 0.0058697548980725
+            },
+            "p": 0.01,
+            "null_mean": 0.42704259413544166
+          },
+          "barrier": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.5035460992907801,
+              "skewed_types": 71,
+              "pair_types": 141,
+              "pair_occurrences": 11411,
+              "instance_ratio": 0.006222066427131715
+            },
+            "p": 0.03,
+            "null_mean": 0.41728381416360555
+          }
+        },
+        "first": {
+          "compress": {
+            "stop": "w10",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12393,
+              "instance_ratio": 0.005729040587428387
+            },
+            "p": 0.53,
+            "null_mean": 0.4631827395272864
+          },
+          "barrier": {
+            "stop": "w10",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12390,
+              "instance_ratio": 0.005730427764326069
+            },
+            "p": 0.54,
+            "null_mean": 0.46566843287521287
+          }
+        }
+      }
+    },
+    {
+      "shift": 11,
+      "removed_original_lex": 9,
+      "results": {
+        "lex": {
+          "compress": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.5319148936170213,
+              "skewed_types": 75,
+              "pair_types": 141,
+              "pair_occurrences": 12616,
+              "instance_ratio": 0.005944831959416614
+            },
+            "p": 0.01,
+            "null_mean": 0.43170994999583184
+          },
+          "barrier": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.425531914893617,
+              "skewed_types": 60,
+              "pair_types": 141,
+              "pair_occurrences": 11396,
+              "instance_ratio": 0.005265005265005265
+            },
+            "p": 0.4,
+            "null_mean": 0.42098694119794416
+          }
+        },
+        "first": {
+          "compress": {
+            "stop": "w11",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12393,
+              "instance_ratio": 0.005729040587428387
+            },
+            "p": 0.53,
+            "null_mean": 0.4631827395272864
+          },
+          "barrier": {
+            "stop": "w11",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12390,
+              "instance_ratio": 0.005730427764326069
+            },
+            "p": 0.54,
+            "null_mean": 0.46566843287521287
+          }
+        }
+      }
+    },
+    {
+      "shift": 12,
+      "removed_original_lex": 8,
+      "results": {
+        "lex": {
+          "compress": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.48226950354609927,
+              "skewed_types": 68,
+              "pair_types": 141,
+              "pair_occurrences": 12618,
+              "instance_ratio": 0.005389126644476145
+            },
+            "p": 0.11,
+            "null_mean": 0.43164416188041466
+          },
+          "barrier": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.44680851063829785,
+              "skewed_types": 63,
+              "pair_types": 141,
+              "pair_occurrences": 11364,
+              "instance_ratio": 0.0055438225976768745
+            },
+            "p": 0.27,
+            "null_mean": 0.4196928357163279
+          }
+        },
+        "first": {
+          "compress": {
+            "stop": "w12",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12393,
+              "instance_ratio": 0.005729040587428387
+            },
+            "p": 0.53,
+            "null_mean": 0.4631827395272864
+          },
+          "barrier": {
+            "stop": "w12",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12390,
+              "instance_ratio": 0.005730427764326069
+            },
+            "p": 0.54,
+            "null_mean": 0.46566843287521287
+          }
+        }
+      }
+    },
+    {
+      "shift": 13,
+      "removed_original_lex": 7,
+      "results": {
+        "lex": {
+          "compress": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.48226950354609927,
+              "skewed_types": 68,
+              "pair_types": 141,
+              "pair_occurrences": 12602,
+              "instance_ratio": 0.005395968893826377
+            },
+            "p": 0.11,
+            "null_mean": 0.43066191583068325
+          },
+          "barrier": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.5035460992907801,
+              "skewed_types": 71,
+              "pair_types": 141,
+              "pair_occurrences": 11366,
+              "instance_ratio": 0.0062467006862572585
+            },
+            "p": 0.01,
+            "null_mean": 0.41664560971738096
+          }
+        },
+        "first": {
+          "compress": {
+            "stop": "w13",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12393,
+              "instance_ratio": 0.005729040587428387
+            },
+            "p": 0.53,
+            "null_mean": 0.4631827395272864
+          },
+          "barrier": {
+            "stop": "w13",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12390,
+              "instance_ratio": 0.005730427764326069
+            },
+            "p": 0.54,
+            "null_mean": 0.46566843287521287
+          }
+        }
+      }
+    },
+    {
+      "shift": 14,
+      "removed_original_lex": 6,
+      "results": {
+        "lex": {
+          "compress": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.5106382978723404,
+              "skewed_types": 72,
+              "pair_types": 141,
+              "pair_occurrences": 12628,
+              "instance_ratio": 0.005701615457713019
+            },
+            "p": 0.02,
+            "null_mean": 0.4276522507198752
+          },
+          "barrier": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.475177304964539,
+              "skewed_types": 67,
+              "pair_types": 141,
+              "pair_occurrences": 11399,
+              "instance_ratio": 0.005877708570927274
+            },
+            "p": 0.06,
+            "null_mean": 0.41599834211126346
+          }
+        },
+        "first": {
+          "compress": {
+            "stop": "w14",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12393,
+              "instance_ratio": 0.005729040587428387
+            },
+            "p": 0.53,
+            "null_mean": 0.4631827395272864
+          },
+          "barrier": {
+            "stop": "w14",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12390,
+              "instance_ratio": 0.005730427764326069
+            },
+            "p": 0.54,
+            "null_mean": 0.46566843287521287
+          }
+        }
+      }
+    },
+    {
+      "shift": 15,
+      "removed_original_lex": 5,
+      "results": {
+        "lex": {
+          "compress": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.49645390070921985,
+              "skewed_types": 70,
+              "pair_types": 141,
+              "pair_occurrences": 12599,
+              "instance_ratio": 0.005555996507659338
+            },
+            "p": 0.06,
+            "null_mean": 0.42707240262103185
+          },
+          "barrier": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.5460992907801419,
+              "skewed_types": 77,
+              "pair_types": 141,
+              "pair_occurrences": 11379,
+              "instance_ratio": 0.006766851217154407
+            },
+            "p": 0.01,
+            "null_mean": 0.4143063196734936
+          }
+        },
+        "first": {
+          "compress": {
+            "stop": "w15",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12393,
+              "instance_ratio": 0.005729040587428387
+            },
+            "p": 0.53,
+            "null_mean": 0.4631827395272864
+          },
+          "barrier": {
+            "stop": "w15",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12390,
+              "instance_ratio": 0.005730427764326069
+            },
+            "p": 0.54,
+            "null_mean": 0.46566843287521287
+          }
+        }
+      }
+    },
+    {
+      "shift": 16,
+      "removed_original_lex": 4,
+      "results": {
+        "lex": {
+          "compress": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.48226950354609927,
+              "skewed_types": 68,
+              "pair_types": 141,
+              "pair_occurrences": 12625,
+              "instance_ratio": 0.005386138613861386
+            },
+            "p": 0.09,
+            "null_mean": 0.4272954600418078
+          },
+          "barrier": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.48936170212765956,
+              "skewed_types": 69,
+              "pair_types": 141,
+              "pair_occurrences": 11426,
+              "instance_ratio": 0.006038858743217224
+            },
+            "p": 0.04,
+            "null_mean": 0.4187457112266964
+          }
+        },
+        "first": {
+          "compress": {
+            "stop": "w16",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12393,
+              "instance_ratio": 0.005729040587428387
+            },
+            "p": 0.53,
+            "null_mean": 0.4631827395272864
+          },
+          "barrier": {
+            "stop": "w16",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12390,
+              "instance_ratio": 0.005730427764326069
+            },
+            "p": 0.54,
+            "null_mean": 0.46566843287521287
+          }
+        }
+      }
+    },
+    {
+      "shift": 17,
+      "removed_original_lex": 3,
+      "results": {
+        "lex": {
+          "compress": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.48226950354609927,
+              "skewed_types": 68,
+              "pair_types": 141,
+              "pair_occurrences": 12606,
+              "instance_ratio": 0.005394256703157227
+            },
+            "p": 0.08,
+            "null_mean": 0.4294244380064862
+          },
+          "barrier": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.475177304964539,
+              "skewed_types": 67,
+              "pair_types": 141,
+              "pair_occurrences": 11411,
+              "instance_ratio": 0.005871527473490491
+            },
+            "p": 0.05,
+            "null_mean": 0.41656798279856283
+          }
+        },
+        "first": {
+          "compress": {
+            "stop": "w17",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12393,
+              "instance_ratio": 0.005729040587428387
+            },
+            "p": 0.53,
+            "null_mean": 0.4631827395272864
+          },
+          "barrier": {
+            "stop": "w17",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12390,
+              "instance_ratio": 0.005730427764326069
+            },
+            "p": 0.54,
+            "null_mean": 0.46566843287521287
+          }
+        }
+      }
+    },
+    {
+      "shift": 18,
+      "removed_original_lex": 2,
+      "results": {
+        "lex": {
+          "compress": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.5177304964539007,
+              "skewed_types": 73,
+              "pair_types": 141,
+              "pair_occurrences": 12607,
+              "instance_ratio": 0.005790433885936384
+            },
+            "p": 0.04,
+            "null_mean": 0.4346603294890851
+          },
+          "barrier": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.48936170212765956,
+              "skewed_types": 69,
+              "pair_types": 141,
+              "pair_occurrences": 11354,
+              "instance_ratio": 0.006077153426105338
+            },
+            "p": 0.04,
+            "null_mean": 0.41898690551806256
+          }
+        },
+        "first": {
+          "compress": {
+            "stop": "w18",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12393,
+              "instance_ratio": 0.005729040587428387
+            },
+            "p": 0.53,
+            "null_mean": 0.4631827395272864
+          },
+          "barrier": {
+            "stop": "w18",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12390,
+              "instance_ratio": 0.005730427764326069
+            },
+            "p": 0.54,
+            "null_mean": 0.46566843287521287
+          }
+        }
+      }
+    },
+    {
+      "shift": 19,
+      "removed_original_lex": 1,
+      "results": {
+        "lex": {
+          "compress": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12393,
+              "instance_ratio": 0.005729040587428387
+            },
+            "p": 0.55,
+            "null_mean": 0.4647926996505694
+          },
+          "barrier": {
+            "stop": "w00",
+            "stat": {
+              "type_ratio": 0.46405228758169936,
+              "skewed_types": 71,
+              "pair_types": 153,
+              "pair_occurrences": 12387,
+              "instance_ratio": 0.005731815613142811
+            },
+            "p": 0.48,
+            "null_mean": 0.4663000904768736
+          }
+        },
+        "first": {
+          "compress": {
+            "stop": "w19",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12393,
+              "instance_ratio": 0.005729040587428387
+            },
+            "p": 0.53,
+            "null_mean": 0.4631827395272864
+          },
+          "barrier": {
+            "stop": "w19",
+            "stat": {
+              "type_ratio": 0.45806451612903226,
+              "skewed_types": 71,
+              "pair_types": 155,
+              "pair_occurrences": 12390,
+              "instance_ratio": 0.005730427764326069
+            },
+            "p": 0.54,
+            "null_mean": 0.46566843287521287
+          }
+        }
+      }
+    }
+  ],
+  "reproduction_python": "import collections,json,random\ndef stat(blocks,stop,policy):\n c=collections.Counter()\n for b in blocks:\n  if policy=='compress': seq=[w for w in b if w not in stop]\n  else:seq=[None if w in stop else w for w in b]\n  for i,a in enumerate(seq):\n   if a is None:continue\n   for v in seq[i+1:i+4]:\n    if v is None: break\n    if a!=v:c[a,v]+=1\n pairs={tuple(sorted((a,b))) for a,b in c};skew=sum(abs(c[a,b]-c[b,a])>5 for a,b in pairs);n=sum(c.values());return {'type_ratio':skew/len(pairs) if pairs else 0,'skewed_types':skew,'pair_types':len(pairs),'pair_occurrences':n,'instance_ratio':skew/n if n else 0}\n\nrng=random.Random(731); special=['w00','w01']*250;rest=[f'w{i:02}' for i in range(2,20) for _ in range(250)];rng.shuffle(rest);seq=special+rest;blocks=[seq[i:i+80] for i in range(0,5000,80)]\ndef trial(blocks,rule,policy):\n flat=[x for b in blocks for x in b];freq=collections.Counter(flat);m=max(freq.values());tied={w for w,n in freq.items() if n==m};stop=min(tied) if rule=='lex' else next(w for w in flat if w in tied)\n obs=stat(blocks,{stop},policy);r=random.Random(921);null=[]\n for _ in range(99):\n  sh=[]\n  for b in blocks:\n   x=b.copy();r.shuffle(x);sh.append(x)\n  null.append(stat(sh,{stop},policy)['type_ratio'])\n return {'stop':stop,'stat':obs,'p':(1+sum(x>=obs['type_ratio'] for x in null))/100,'null_mean':sum(null)/99}\nout=[]\nfor shift in range(20):\n mapping={f'w{i:02}':f'w{(i+shift)%20:02}' for i in range(20)};mapped=[[mapping[w] for w in b] for b in blocks]\n out.append({'shift':shift,'removed_original_lex':(20-shift)%20,'results':{rule:{policy:trial(mapped,rule,policy) for policy in ('compress','barrier')} for rule in ('lex','first')}})\nprint(json.dumps(out,indent=2))\n"
+}

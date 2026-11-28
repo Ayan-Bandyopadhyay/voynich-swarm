@@ -1,0 +1,938 @@
+{
+  "program": "G",
+  "title": "A grammar rejection gate trades length fit for fewer wheel exceptions",
+  "hard": false,
+  "on_path": false,
+  "statement": "With a 10% acceptance probability for out-of-grammar candidate words, median exception mass falls from .381 to .057 in ZL and .381 to .058 in IT; the real evaluation fractions are .051 and .047. Median token-length total variation rises from .052 to .104 and .042 to .092, respectively. Length-matched one-edit rates increase from .0247 to .0287 and .0214 to .0262, still below the corresponding real matched values of .0446 and .0433 for the filtered draws. Median candidate attempts per emitted token are about 1.51. Ten seeded draws quantify simulation variation, not uncertainty over manuscript pages.",
+  "check": "Consider a fixed, compact rejection rule that does not require a full manuscript-fitted grammar; fit only on training pages and independently evaluate length distributions, rare support, adjacency and computational or description-length costs. Use a folio-clustered uncertainty analysis and held-out evaluation only after a reviewed scorer primitive exists.",
+  "method": "Use the unchanged banks, ZL-training fitted length weights clipped to [0.25,4], and 10% previous-fragment sharing from P-G-032. After selecting a bank, weighted triple and optional shared fragment, classify the complete candidate with Stolfi NormalWord. In the filtered model accept a normal candidate unconditionally and an abnormal candidate with probability 0.1, otherwise redraw bank, triple, and optional sharing from scratch using the same preceding accepted token. The baseline emits all proposals. Reset adjacency at every valid sequence. Both models are run at 10 seeds 41001–41010, with lengths and sequence segmentation from each public evaluation transliteration. The 0.1 gate was chosen before these runs to approximately reduce .38 abnormal mass to .06; it directly uses a grammar derived from the manuscript and is an explicitly added global rule, not a blind discovery.",
+  "metrics": "Measure token and observed-type EVA-basic length total variation, abnormal mass, repeated and exact one-edit adjacent rates. Following P-G-032, sample synthetic adjacent pairs conditional on the real adjacent pair length stratum, omitting unsupported strata, and compare to the retained real pairs and independent real samples of the same lengths. Report medians and min/max across simulation seeds as well as every draw.",
+  "reproduction": "Extract the registry item P-G-024 to /tmp/p-g-024.json; obtain the Stolfi grammar from https://www.ic.unicamp.br/~stolfi/EXPORT/voynich/00-06-07-word-grammar/txt.n.html at /tmp/stolfi-grammar.html. Run the embedded script from the repository root with PYTHONPATH=. and pinned corpus files available. Input and script SHA-256 values are recorded below.",
+  "input_sha256": {
+    "registry_item": "df21ed0d0b628ee0a12e60b38a007830b8ce51c632b3643e14e45729d5f46400",
+    "grammar_html": "a74a5224544d50f131f5b133023c835ad971dfef4098d4aa883026c7fb42bd55",
+    "script": "2cce4574c250d9577ee055689b66a2b780026c860517207177b83c1abdf3d142"
+  },
+  "limitations": "The gate uses a complex hand-specified grammar and rejection, so it is not an independently spinning physical-wheel mechanism. The shared-fragment rule may modify length and changes acceptance rates; a model-complexity budget and page-bootstrap uncertainty remain open. Fixed training-fitted inventories may miss rare true forms, and these practice results are not a held-out verdict.",
+  "summaries": {
+    "zl_baseline": {
+      "attempts_per_token": {
+        "median": 1.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "token_tv": {
+        "median": 0.052097,
+        "min": 0.045047,
+        "max": 0.058231
+      },
+      "type_tv": {
+        "median": 0.051386,
+        "min": 0.040837,
+        "max": 0.070681
+      },
+      "repeat": {
+        "median": 0.00146,
+        "min": 0.000626,
+        "max": 0.002085
+      },
+      "edit1": {
+        "median": 0.016264,
+        "min": 0.01251,
+        "max": 0.017515
+      },
+      "abnormal": {
+        "median": 0.3807,
+        "min": 0.373375,
+        "max": 0.392785
+      },
+      "support": {
+        "median": 0.995097,
+        "min": 0.993115,
+        "max": 0.998748
+      },
+      "matched_real_repeat": {
+        "median": 0.009854,
+        "min": 0.009818,
+        "max": 0.009874
+      },
+      "matched_real_edit1": {
+        "median": 0.040941,
+        "min": 0.040872,
+        "max": 0.044561
+      },
+      "matched_repeat": {
+        "median": 0.001678,
+        "min": 0.000629,
+        "max": 0.005019
+      },
+      "matched_edit1": {
+        "median": 0.024702,
+        "min": 0.015475,
+        "max": 0.02811
+      },
+      "iid_repeat": {
+        "median": 0.004602,
+        "min": 0.002936,
+        "max": 0.005875
+      },
+      "iid_edit1": {
+        "median": 0.026486,
+        "min": 0.022866,
+        "max": 0.030531
+      }
+    },
+    "zl_filtered": {
+      "attempts_per_token": {
+        "median": 1.505768,
+        "min": 1.487457,
+        "max": 1.53232
+      },
+      "token_tv": {
+        "median": 0.10401,
+        "min": 0.090643,
+        "max": 0.109504
+      },
+      "type_tv": {
+        "median": 0.100533,
+        "min": 0.095749,
+        "max": 0.112854
+      },
+      "repeat": {
+        "median": 0.002189,
+        "min": 0.00146,
+        "max": 0.002919
+      },
+      "edit1": {
+        "median": 0.028044,
+        "min": 0.022102,
+        "max": 0.031902
+      },
+      "abnormal": {
+        "median": 0.057041,
+        "min": 0.052005,
+        "max": 0.060978
+      },
+      "support": {
+        "median": 0.991654,
+        "min": 0.989151,
+        "max": 0.996453
+      },
+      "matched_real_repeat": {
+        "median": 0.009888,
+        "min": 0.009841,
+        "max": 0.009914
+      },
+      "matched_real_edit1": {
+        "median": 0.044635,
+        "min": 0.041009,
+        "max": 0.044842
+      },
+      "matched_repeat": {
+        "median": 0.001787,
+        "min": 0.001261,
+        "max": 0.006726
+      },
+      "matched_edit1": {
+        "median": 0.028731,
+        "min": 0.022283,
+        "max": 0.034548
+      },
+      "iid_repeat": {
+        "median": 0.004622,
+        "min": 0.003164,
+        "max": 0.006947
+      },
+      "iid_edit1": {
+        "median": 0.027467,
+        "min": 0.02404,
+        "max": 0.034396
+      }
+    },
+    "it_baseline": {
+      "attempts_per_token": {
+        "median": 1.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "token_tv": {
+        "median": 0.041528,
+        "min": 0.027253,
+        "max": 0.050426
+      },
+      "type_tv": {
+        "median": 0.042701,
+        "min": 0.036152,
+        "max": 0.052055
+      },
+      "repeat": {
+        "median": 0.001055,
+        "min": 0.000422,
+        "max": 0.002321
+      },
+      "edit1": {
+        "median": 0.01635,
+        "min": 0.012869,
+        "max": 0.019409
+      },
+      "abnormal": {
+        "median": 0.380701,
+        "min": 0.364664,
+        "max": 0.390063
+      },
+      "support": {
+        "median": 0.998312,
+        "min": 0.996412,
+        "max": 0.999578
+      },
+      "matched_real_repeat": {
+        "median": 0.010148,
+        "min": 0.010135,
+        "max": 0.010167
+      },
+      "matched_real_edit1": {
+        "median": 0.043248,
+        "min": 0.042706,
+        "max": 0.043763
+      },
+      "matched_repeat": {
+        "median": 0.001269,
+        "min": 0.000211,
+        "max": 0.003804
+      },
+      "matched_edit1": {
+        "median": 0.021353,
+        "min": 0.019015,
+        "max": 0.02389
+      },
+      "iid_repeat": {
+        "median": 0.004334,
+        "min": 0.00296,
+        "max": 0.00592
+      },
+      "iid_edit1": {
+        "median": 0.026867,
+        "min": 0.025148,
+        "max": 0.02833
+      }
+    },
+    "it_filtered": {
+      "attempts_per_token": {
+        "median": 1.513163,
+        "min": 1.484613,
+        "max": 1.522803
+      },
+      "token_tv": {
+        "median": 0.091583,
+        "min": 0.085465,
+        "max": 0.100482
+      },
+      "type_tv": {
+        "median": 0.097463,
+        "min": 0.086948,
+        "max": 0.105849
+      },
+      "repeat": {
+        "median": 0.001899,
+        "min": 0.000844,
+        "max": 0.002954
+      },
+      "edit1": {
+        "median": 0.028692,
+        "min": 0.023418,
+        "max": 0.031224
+      },
+      "abnormal": {
+        "median": 0.058491,
+        "min": 0.055617,
+        "max": 0.061735
+      },
+      "support": {
+        "median": 0.995146,
+        "min": 0.993668,
+        "max": 0.996412
+      },
+      "matched_real_repeat": {
+        "median": 0.01018,
+        "min": 0.010167,
+        "max": 0.010195
+      },
+      "matched_real_edit1": {
+        "median": 0.043261,
+        "min": 0.042788,
+        "max": 0.043968
+      },
+      "matched_repeat": {
+        "median": 0.001909,
+        "min": 0.000848,
+        "max": 0.00446
+      },
+      "matched_edit1": {
+        "median": 0.026179,
+        "min": 0.018436,
+        "max": 0.030297
+      },
+      "iid_repeat": {
+        "median": 0.004773,
+        "min": 0.004236,
+        "max": 0.005518
+      },
+      "iid_edit1": {
+        "median": 0.026201,
+        "min": 0.019754,
+        "max": 0.029025
+      }
+    }
+  },
+  "individual_results": {
+    "zl_baseline": [
+      {
+        "seed": 41001,
+        "attempts_per_token": 1.0,
+        "token_tv": 0.055850576817432704,
+        "type_tv": 0.053776292494328214,
+        "repeat": 0.002085070892410342,
+        "edit1": 0.016055045871559634,
+        "abnormal": 0.37337483977293534,
+        "support": 0.9972877112455665,
+        "matched_real_repeat": 0.009832635983263598,
+        "matched_real_edit1": 0.044560669456066945,
+        "matched_repeat": 0.0012552301255230125,
+        "matched_edit1": 0.02594142259414226,
+        "iid_repeat": 0.004393305439330544,
+        "iid_edit1": 0.02782426778242678
+      },
+      {
+        "seed": 41002,
+        "attempts_per_token": 1.0,
+        "token_tv": 0.05658304339864493,
+        "type_tv": 0.07068099799249643,
+        "repeat": 0.002085070892410342,
+        "edit1": 0.017097581317764805,
+        "abnormal": 0.3927852041750595,
+        "support": 0.9931149593156687,
+        "matched_real_repeat": 0.009873949579831932,
+        "matched_real_edit1": 0.04096638655462185,
+        "matched_repeat": 0.0027310924369747898,
+        "matched_edit1": 0.026260504201680673,
+        "iid_repeat": 0.0035714285714285713,
+        "iid_edit1": 0.023739495798319327
+      },
+      {
+        "seed": 41003,
+        "attempts_per_token": 1.0,
+        "token_tv": 0.04504669474455228,
+        "type_tv": 0.04083684075902895,
+        "repeat": 0.0006255212677231026,
+        "edit1": 0.015012510425354461,
+        "abnormal": 0.3834462552646036,
+        "support": 0.9954099728771124,
+        "matched_real_repeat": 0.009851184238105219,
+        "matched_real_edit1": 0.04087193460490463,
+        "matched_repeat": 0.0006287989939216097,
+        "matched_edit1": 0.02200796478725634,
+        "iid_repeat": 0.004820792286732341,
+        "iid_edit1": 0.028505554391112974
+      },
+      {
+        "seed": 41004,
+        "attempts_per_token": 1.0,
+        "token_tv": 0.05090642739425014,
+        "type_tv": 0.05184415101780141,
+        "repeat": 0.0012510425354462051,
+        "edit1": 0.017097581317764805,
+        "abnormal": 0.37392418970884456,
+        "support": 0.9947840600876278,
+        "matched_real_repeat": 0.00985738255033557,
+        "matched_real_edit1": 0.04089765100671141,
+        "matched_repeat": 0.0018875838926174498,
+        "matched_edit1": 0.022231543624161073,
+        "iid_repeat": 0.002936241610738255,
+        "iid_edit1": 0.024538590604026845
+      },
+      {
+        "seed": 41005,
+        "attempts_per_token": 1.0,
+        "token_tv": 0.057864859915766356,
+        "type_tv": 0.05099330402162074,
+        "repeat": 0.0016680567139282735,
+        "edit1": 0.01626355296080067,
+        "abnormal": 0.3889397546236953,
+        "support": 0.994366784894638,
+        "matched_real_repeat": 0.009861519093579522,
+        "matched_real_edit1": 0.040914813260595886,
+        "matched_repeat": 0.002727654217373059,
+        "matched_edit1": 0.023919429290809903,
+        "iid_repeat": 0.005874947545111205,
+        "iid_edit1": 0.027696181284095678
+      },
+      {
+        "seed": 41006,
+        "attempts_per_token": 1.0,
+        "token_tv": 0.05328694378318989,
+        "type_tv": 0.060776071010013866,
+        "repeat": 0.0014595496246872393,
+        "edit1": 0.01751459549624687,
+        "abnormal": 0.3801501556491485,
+        "support": 0.9977049864385562,
+        "matched_real_repeat": 0.009828523630280217,
+        "matched_real_edit1": 0.04454203262233375,
+        "matched_repeat": 0.00439146800501882,
+        "matched_edit1": 0.02613969050606441,
+        "iid_repeat": 0.004809703053115851,
+        "iid_edit1": 0.03053115851108323
+      },
+      {
+        "seed": 41007,
+        "attempts_per_token": 1.0,
+        "token_tv": 0.04559604468046146,
+        "type_tv": 0.04985435020029957,
+        "repeat": 0.001042535446205171,
+        "edit1": 0.01626355296080067,
+        "abnormal": 0.3810657388756638,
+        "support": 0.9987481744210307,
+        "matched_real_repeat": 0.00981825778149154,
+        "matched_real_edit1": 0.04449550866931272,
+        "matched_repeat": 0.0014622937121370379,
+        "matched_edit1": 0.02465009400459578,
+        "iid_repeat": 0.005013578441612701,
+        "iid_edit1": 0.025276791309797368
+      },
+      {
+        "seed": 41008,
+        "attempts_per_token": 1.0,
+        "token_tv": 0.05823109320637247,
+        "type_tv": 0.05088913883399641,
+        "repeat": 0.0014595496246872393,
+        "edit1": 0.012510425354462052,
+        "abnormal": 0.3803332722944516,
+        "support": 0.9977049864385562,
+        "matched_real_repeat": 0.009828523630280217,
+        "matched_real_edit1": 0.04454203262233375,
+        "matched_repeat": 0.005018820577164366,
+        "matched_edit1": 0.01547469677959013,
+        "iid_repeat": 0.00439146800501882,
+        "iid_edit1": 0.028021748222501044
+      },
+      {
+        "seed": 41009,
+        "attempts_per_token": 1.0,
+        "token_tv": 0.047060977842885904,
+        "type_tv": 0.04933547908793373,
+        "repeat": 0.0008340283569641367,
+        "edit1": 0.0164720600500417,
+        "abnormal": 0.3741073063541476,
+        "support": 0.994575422491133,
+        "matched_real_repeat": 0.009859450388084749,
+        "matched_real_edit1": 0.04090623033354311,
+        "matched_repeat": 0.0006293266205160479,
+        "matched_edit1": 0.02475351374029788,
+        "iid_repeat": 0.005034612964128383,
+        "iid_edit1": 0.022865533878749737
+      },
+      {
+        "seed": 41010,
+        "attempts_per_token": 1.0,
+        "token_tv": 0.04834279436000734,
+        "type_tv": 0.051779101528624576,
+        "repeat": 0.0014595496246872393,
+        "edit1": 0.01626355296080067,
+        "abnormal": 0.3902215711408167,
+        "support": 0.994575422491133,
+        "matched_real_repeat": 0.009859450388084749,
+        "matched_real_edit1": 0.04090623033354311,
+        "matched_repeat": 0.0014684287812041115,
+        "matched_edit1": 0.028109922383050136,
+        "iid_repeat": 0.003775959723096287,
+        "iid_edit1": 0.02328508495909377
+      }
+    ],
+    "zl_filtered": [
+      {
+        "seed": 41001,
+        "attempts_per_token": 1.4967954587071965,
+        "token_tv": 0.10401025453213697,
+        "type_tv": 0.09702638565969914,
+        "repeat": 0.0022935779816513763,
+        "edit1": 0.028565471226021686,
+        "abnormal": 0.05603369346273576,
+        "support": 0.9891508449822658,
+        "matched_real_repeat": 0.009913520354355622,
+        "matched_real_edit1": 0.041130563172326516,
+        "matched_repeat": 0.0016874077198903185,
+        "matched_edit1": 0.026154819658299938,
+        "iid_repeat": 0.003163889474794347,
+        "iid_edit1": 0.024889263868382198
+      },
+      {
+        "seed": 41002,
+        "attempts_per_token": 1.5099798571690166,
+        "token_tv": 0.10950375389122871,
+        "type_tv": 0.10120584653725875,
+        "repeat": 0.0027105921601334446,
+        "edit1": 0.027731442869057547,
+        "abnormal": 0.06097784288591833,
+        "support": 0.9912372209472147,
+        "matched_real_repeat": 0.009892654178067775,
+        "matched_real_edit1": 0.044832666806988004,
+        "matched_repeat": 0.005472532098505577,
+        "matched_edit1": 0.03115133656072406,
+        "iid_repeat": 0.004630604083350874,
+        "iid_edit1": 0.030309408545569353
+      },
+      {
+        "seed": 41003,
+        "attempts_per_token": 1.4975279252884086,
+        "token_tv": 0.09851675517304521,
+        "type_tv": 0.0985524401604638,
+        "repeat": 0.0014595496246872393,
+        "edit1": 0.03190158465387823,
+        "abnormal": 0.05639992675334188,
+        "support": 0.9904026705612351,
+        "matched_real_repeat": 0.009900990099009901,
+        "matched_real_edit1": 0.04107857594270065,
+        "matched_repeat": 0.0016852749104697704,
+        "matched_edit1": 0.028649673477986096,
+        "iid_repeat": 0.003581209184748262,
+        "iid_edit1": 0.02612176111228144
+      },
+      {
+        "seed": 41004,
+        "attempts_per_token": 1.511078557040835,
+        "token_tv": 0.10053103827137887,
+        "type_tv": 0.09574886476475246,
+        "repeat": 0.0014595496246872393,
+        "edit1": 0.022101751459549623,
+        "abnormal": 0.06061160959531221,
+        "support": 0.992489046526184,
+        "matched_real_repeat": 0.009880176581879336,
+        "matched_real_edit1": 0.04477611940298507,
+        "matched_repeat": 0.0012612991381122556,
+        "matched_edit1": 0.022282951439983184,
+        "iid_repeat": 0.006516712213579987,
+        "iid_edit1": 0.02922009669960059
+      },
+      {
+        "seed": 41005,
+        "attempts_per_token": 1.5323200878959897,
+        "token_tv": 0.10401025453213697,
+        "type_tv": 0.10019825660817673,
+        "repeat": 0.002085070892410342,
+        "edit1": 0.027731442869057547,
+        "abnormal": 0.056583043398644936,
+        "support": 0.9910285833507197,
+        "matched_real_repeat": 0.009894736842105263,
+        "matched_real_edit1": 0.04484210526315789,
+        "matched_repeat": 0.004210526315789474,
+        "matched_edit1": 0.024421052631578948,
+        "iid_repeat": 0.006947368421052632,
+        "iid_edit1": 0.024421052631578948
+      },
+      {
+        "seed": 41006,
+        "attempts_per_token": 1.4874565097967405,
+        "token_tv": 0.1091375206006226,
+        "type_tv": 0.11285388674929472,
+        "repeat": 0.0022935779816513763,
+        "edit1": 0.02627189324437031,
+        "abnormal": 0.06006225965940304,
+        "support": 0.9893594825787607,
+        "matched_real_repeat": 0.009911429776465626,
+        "matched_real_edit1": 0.04112188949810207,
+        "matched_repeat": 0.001687051876845213,
+        "matched_edit1": 0.029945170814002532,
+        "iid_repeat": 0.004428511176718684,
+        "iid_edit1": 0.024040489245044285
+      },
+      {
+        "seed": 41007,
+        "attempts_per_token": 1.5063175242629554,
+        "token_tv": 0.10785570408350119,
+        "type_tv": 0.10886959173106613,
+        "repeat": 0.0018765638031693077,
+        "edit1": 0.02835696413678065,
+        "abnormal": 0.052005127266068485,
+        "support": 0.9964531608595869,
+        "matched_real_repeat": 0.009840871021775544,
+        "matched_real_edit1": 0.04459798994974874,
+        "matched_repeat": 0.0016750418760469012,
+        "matched_edit1": 0.034547738693467334,
+        "iid_repeat": 0.004815745393634841,
+        "iid_edit1": 0.032244556113902846
+      },
+      {
+        "seed": 41008,
+        "attempts_per_token": 1.505218824391137,
+        "token_tv": 0.10364402124153085,
+        "type_tv": 0.10086785409483612,
+        "repeat": 0.0029190992493744786,
+        "edit1": 0.02731442869057548,
+        "abnormal": 0.05548434352682659,
+        "support": 0.9926976841226789,
+        "matched_real_repeat": 0.009878100042034469,
+        "matched_real_edit1": 0.04476670870113493,
+        "matched_repeat": 0.006725514922236234,
+        "matched_edit1": 0.024800336275746113,
+        "iid_repeat": 0.004413619167717529,
+        "iid_edit1": 0.02459016393442623
+      },
+      {
+        "seed": 41009,
+        "attempts_per_token": 1.5000915583226515,
+        "token_tv": 0.09064273942501372,
+        "type_tv": 0.09590323085040563,
+        "repeat": 0.0022935779816513763,
+        "edit1": 0.03148457047539616,
+        "abnormal": 0.0602453763047061,
+        "support": 0.9920717713331942,
+        "matched_real_repeat": 0.009884332281808622,
+        "matched_real_edit1": 0.04100946372239748,
+        "matched_repeat": 0.0018927444794952682,
+        "matched_edit1": 0.028811777076761302,
+        "iid_repeat": 0.00483701366982124,
+        "iid_edit1": 0.028811777076761302
+      },
+      {
+        "seed": 41010,
+        "attempts_per_token": 1.523530488921443,
+        "token_tv": 0.10803882072880425,
+        "type_tv": 0.10443154271066038,
+        "repeat": 0.0014595496246872393,
+        "edit1": 0.030025020850708923,
+        "abnormal": 0.057498626625160226,
+        "support": 0.9947840600876278,
+        "matched_real_repeat": 0.00985738255033557,
+        "matched_real_edit1": 0.04467281879194631,
+        "matched_repeat": 0.0018875838926174498,
+        "matched_edit1": 0.03208892617449664,
+        "iid_repeat": 0.004614093959731544,
+        "iid_edit1": 0.034395973154362415
+      }
+    ],
+    "it_baseline": [
+      {
+        "seed": 41001,
+        "attempts_per_token": 1.0,
+        "token_tv": 0.03207267334074899,
+        "type_tv": 0.04524012454123255,
+        "repeat": 0.0018987341772151898,
+        "edit1": 0.014978902953586498,
+        "abnormal": 0.3646644419725621,
+        "support": 0.9964119881806669,
+        "matched_real_repeat": 0.01016733742851091,
+        "matched_real_edit1": 0.04278754501165007,
+        "matched_repeat": 0.0025418343571277273,
+        "matched_edit1": 0.019275577208218597,
+        "iid_repeat": 0.003177292946409659,
+        "iid_edit1": 0.02690108027960178
+      },
+      {
+        "seed": 41002,
+        "attempts_per_token": 1.0,
+        "token_tv": 0.029477196885428256,
+        "type_tv": 0.041481161029679754,
+        "repeat": 0.0010548523206751054,
+        "edit1": 0.016244725738396623,
+        "abnormal": 0.3824619948090471,
+        "support": 0.9983115238497257,
+        "matched_real_repeat": 0.01014799154334038,
+        "matched_real_edit1": 0.04376321353065539,
+        "matched_repeat": 0.0012684989429175475,
+        "matched_edit1": 0.021775898520084568,
+        "iid_repeat": 0.005919661733615222,
+        "iid_edit1": 0.0266384778012685
+      },
+      {
+        "seed": 41003,
+        "attempts_per_token": 1.0,
+        "token_tv": 0.027252502780867646,
+        "type_tv": 0.03615214617856818,
+        "repeat": 0.0006329113924050633,
+        "edit1": 0.01540084388185654,
+        "abnormal": 0.3809788654060067,
+        "support": 0.9981004643309414,
+        "matched_real_repeat": 0.010150137449777965,
+        "matched_real_edit1": 0.042715161767815604,
+        "matched_repeat": 0.0012687671812222456,
+        "matched_edit1": 0.021357580883907802,
+        "iid_repeat": 0.004652146331148234,
+        "iid_edit1": 0.027067033199407908
+      },
+      {
+        "seed": 41004,
+        "attempts_per_token": 1.0,
+        "token_tv": 0.049314052651093815,
+        "type_tv": 0.03805735318317221,
+        "repeat": 0.0010548523206751054,
+        "edit1": 0.016455696202531647,
+        "abnormal": 0.38153503893214685,
+        "support": 0.9983115238497257,
+        "matched_real_repeat": 0.01014799154334038,
+        "matched_real_edit1": 0.0427061310782241,
+        "matched_repeat": 0.0006342494714587737,
+        "matched_edit1": 0.021141649048625793,
+        "iid_repeat": 0.005285412262156448,
+        "iid_edit1": 0.028329809725158563
+      },
+      {
+        "seed": 41005,
+        "attempts_per_token": 1.0,
+        "token_tv": 0.0385613644790508,
+        "type_tv": 0.037942324730239306,
+        "repeat": 0.0010548523206751054,
+        "edit1": 0.01729957805907173,
+        "abnormal": 0.39006303299962924,
+        "support": 0.99852258336851,
+        "matched_real_repeat": 0.010145846544071021,
+        "matched_real_edit1": 0.04375396322130628,
+        "matched_repeat": 0.002113718030014796,
+        "matched_edit1": 0.02134855210314944,
+        "iid_repeat": 0.0057070386810399495,
+        "iid_edit1": 0.027266962587190868
+      },
+      {
+        "seed": 41006,
+        "attempts_per_token": 1.0,
+        "token_tv": 0.049499443826473866,
+        "type_tv": 0.048515656630320814,
+        "repeat": 0.0004219409282700422,
+        "edit1": 0.019409282700421943,
+        "abnormal": 0.3689284390063033,
+        "support": 0.9983115238497257,
+        "matched_real_repeat": 0.01014799154334038,
+        "matched_real_edit1": 0.0427061310782241,
+        "matched_repeat": 0.00021141649048625792,
+        "matched_edit1": 0.023890063424947146,
+        "iid_repeat": 0.002959830866807611,
+        "iid_edit1": 0.026004228329809725
+      },
+      {
+        "seed": 41007,
+        "attempts_per_token": 1.0,
+        "token_tv": 0.02762328513162774,
+        "type_tv": 0.043865758685255614,
+        "repeat": 0.0010548523206751054,
+        "edit1": 0.017721518987341773,
+        "abnormal": 0.37727104189840566,
+        "support": 0.9995778809624314,
+        "matched_real_repeat": 0.010135135135135136,
+        "matched_real_edit1": 0.04370777027027027,
+        "matched_repeat": 0.0023226351351351353,
+        "matched_edit1": 0.023015202702702704,
+        "iid_repeat": 0.00316722972972973,
+        "iid_edit1": 0.02681587837837838
+      },
+      {
+        "seed": 41008,
+        "attempts_per_token": 1.0,
+        "token_tv": 0.04783092324805339,
+        "type_tv": 0.05205541139665336,
+        "repeat": 0.0004219409282700422,
+        "edit1": 0.014135021097046414,
+        "abnormal": 0.37449017426770487,
+        "support": 0.9989447024060785,
+        "matched_real_repeat": 0.010141559264736952,
+        "matched_real_edit1": 0.04373547432917811,
+        "matched_repeat": 0.001267694908092119,
+        "matched_edit1": 0.019015423621381786,
+        "iid_repeat": 0.003380519754912318,
+        "iid_edit1": 0.026832875554616522
+      },
+      {
+        "seed": 41009,
+        "attempts_per_token": 1.0,
+        "token_tv": 0.05042639970337414,
+        "type_tv": 0.04654276762295499,
+        "repeat": 0.002320675105485232,
+        "edit1": 0.012869198312236287,
+        "abnormal": 0.3804226918798665,
+        "support": 0.9987336428872943,
+        "matched_real_repeat": 0.01014370245139476,
+        "matched_real_edit1": 0.0437447168216399,
+        "matched_repeat": 0.0038038884192730348,
+        "matched_edit1": 0.019653423499577344,
+        "iid_repeat": 0.004437869822485207,
+        "iid_edit1": 0.02514792899408284
+      },
+      {
+        "seed": 41010,
+        "attempts_per_token": 1.0,
+        "token_tv": 0.04449388209121246,
+        "type_tv": 0.04153577661431063,
+        "repeat": 0.0004219409282700422,
+        "edit1": 0.017932489451476793,
+        "abnormal": 0.38950685947348906,
+        "support": 0.997889404812157,
+        "matched_real_repeat": 0.01015228426395939,
+        "matched_real_edit1": 0.04272419627749577,
+        "matched_repeat": 0.00021150592216582064,
+        "matched_edit1": 0.023688663282571912,
+        "iid_repeat": 0.004230118443316413,
+        "iid_edit1": 0.028130287648054145
+      }
+    ],
+    "it_filtered": [
+      {
+        "seed": 41001,
+        "attempts_per_token": 1.5022246941045607,
+        "token_tv": 0.08824619948090472,
+        "type_tv": 0.09852617918595441,
+        "repeat": 0.002531645569620253,
+        "edit1": 0.029957805907172997,
+        "abnormal": 0.06173526140155729,
+        "support": 0.9945124525116082,
+        "matched_real_repeat": 0.010186757215619695,
+        "matched_real_edit1": 0.042869269949066216,
+        "matched_repeat": 0.00233446519524618,
+        "matched_edit1": 0.027589134125636672,
+        "iid_repeat": 0.0055178268251273345,
+        "iid_edit1": 0.02631578947368421
+      },
+      {
+        "seed": 41002,
+        "attempts_per_token": 1.5163144234334445,
+        "token_tv": 0.10048201705598815,
+        "type_tv": 0.10104212052598872,
+        "repeat": 0.002953586497890295,
+        "edit1": 0.0310126582278481,
+        "abnormal": 0.059881349647756765,
+        "support": 0.9936682144364711,
+        "matched_real_repeat": 0.010195412064570943,
+        "matched_real_edit1": 0.04396771452846219,
+        "matched_repeat": 0.0044604927782497875,
+        "matched_edit1": 0.02655055225148683,
+        "iid_repeat": 0.005310110450297366,
+        "iid_edit1": 0.0197536108751062
+      },
+      {
+        "seed": 41003,
+        "attempts_per_token": 1.5131627734519837,
+        "token_tv": 0.09492028179458657,
+        "type_tv": 0.09640025200408421,
+        "repeat": 0.002320675105485232,
+        "edit1": 0.027848101265822784,
+        "abnormal": 0.05617352614015573,
+        "support": 0.9962009286618827,
+        "matched_real_repeat": 0.010169491525423728,
+        "matched_real_edit1": 0.04385593220338983,
+        "matched_repeat": 0.002754237288135593,
+        "matched_edit1": 0.030296610169491527,
+        "iid_repeat": 0.004661016949152543,
+        "iid_edit1": 0.02563559322033898
+      },
+      {
+        "seed": 41004,
+        "attempts_per_token": 1.5168705969595848,
+        "token_tv": 0.09010011123470524,
+        "type_tv": 0.10584903584877839,
+        "repeat": 0.0018987341772151898,
+        "edit1": 0.024894514767932488,
+        "abnormal": 0.05747126436781609,
+        "support": 0.9959898691430984,
+        "matched_real_repeat": 0.010171646535282899,
+        "matched_real_edit1": 0.043653316380589106,
+        "matched_repeat": 0.0014833651197287562,
+        "matched_edit1": 0.018436109345200253,
+        "iid_repeat": 0.004450095359186269,
+        "iid_edit1": 0.027760118669209577
+      },
+      {
+        "seed": 41005,
+        "attempts_per_token": 1.5196514645902854,
+        "token_tv": 0.08972932888394511,
+        "type_tv": 0.09225520648900953,
+        "repeat": 0.0012658227848101266,
+        "edit1": 0.02341772151898734,
+        "abnormal": 0.060252131998516874,
+        "support": 0.9951456310679612,
+        "matched_real_repeat": 0.010180275715800637,
+        "matched_real_edit1": 0.04284199363732768,
+        "matched_repeat": 0.000848356309650053,
+        "matched_edit1": 0.019300106044538707,
+        "iid_repeat": 0.005090137857900318,
+        "iid_edit1": 0.02608695652173913
+      },
+      {
+        "seed": 41006,
+        "attempts_per_token": 1.4905450500556174,
+        "token_tv": 0.0886169818316648,
+        "type_tv": 0.10421678222725345,
+        "repeat": 0.0027426160337552744,
+        "edit1": 0.024472573839662448,
+        "abnormal": 0.059510567296996664,
+        "support": 0.9962009286618827,
+        "matched_real_repeat": 0.010169491525423728,
+        "matched_real_edit1": 0.04385593220338983,
+        "matched_repeat": 0.002754237288135593,
+        "matched_edit1": 0.023940677966101696,
+        "iid_repeat": 0.005084745762711864,
+        "iid_edit1": 0.02902542372881356
+      },
+      {
+        "seed": 41007,
+        "attempts_per_token": 1.5005561735261401,
+        "token_tv": 0.09306637004078609,
+        "type_tv": 0.0951142259463676,
+        "repeat": 0.0018987341772151898,
+        "edit1": 0.031223628691983123,
+        "abnormal": 0.05710048201705599,
+        "support": 0.9949345715491769,
+        "matched_real_repeat": 0.010182435299109036,
+        "matched_real_edit1": 0.04391175222740772,
+        "matched_repeat": 0.0010606703436571913,
+        "matched_edit1": 0.026304624522698345,
+        "iid_repeat": 0.004242681374628765,
+        "iid_edit1": 0.02694102672889266
+      },
+      {
+        "seed": 41008,
+        "attempts_per_token": 1.4846125324434556,
+        "token_tv": 0.0943641082684464,
+        "type_tv": 0.10155197359229556,
+        "repeat": 0.0008438818565400844,
+        "edit1": 0.029535864978902954,
+        "abnormal": 0.05617352614015573,
+        "support": 0.9947235120303926,
+        "matched_real_repeat": 0.010184595798854232,
+        "matched_real_edit1": 0.0428601739868449,
+        "matched_repeat": 0.0023339698705707617,
+        "matched_edit1": 0.030129429238277106,
+        "iid_repeat": 0.0046679397411415234,
+        "iid_edit1": 0.027795459367706343
+      },
+      {
+        "seed": 41009,
+        "attempts_per_token": 1.5131627734519837,
+        "token_tv": 0.08546533185020394,
+        "type_tv": 0.09274568629881048,
+        "repeat": 0.0016877637130801688,
+        "edit1": 0.030168776371308017,
+        "abnormal": 0.06099369670003708,
+        "support": 0.9964119881806669,
+        "matched_real_repeat": 0.01016733742851091,
+        "matched_real_edit1": 0.04278754501165007,
+        "matched_repeat": 0.0010590976488032196,
+        "matched_edit1": 0.026053802160559202,
+        "iid_repeat": 0.004236390595212879,
+        "iid_edit1": 0.02478288498199534
+      },
+      {
+        "seed": 41010,
+        "attempts_per_token": 1.5228031145717464,
+        "token_tv": 0.09621802002224693,
+        "type_tv": 0.08694751663306818,
+        "repeat": 0.0008438818565400844,
+        "edit1": 0.026582278481012658,
+        "abnormal": 0.05561735261401557,
+        "support": 0.9951456310679612,
+        "matched_real_repeat": 0.010180275715800637,
+        "matched_real_edit1": 0.04284199363732768,
+        "matched_repeat": 0.0012725344644750796,
+        "matched_edit1": 0.020572640509013786,
+        "iid_repeat": 0.004878048780487805,
+        "iid_edit1": 0.025874867444326616
+      }
+    ]
+  },
+  "reproduction_python": "import re,html,json,random,collections,itertools,statistics,hashlib\nfrom vs import corpus,ivtff\nfrom functools import lru_cache\nfrom pathlib import Path\nreg=json.load(open('/tmp/p-g-024.json'))['detail']['evidence'];fit=reg['frozen_fit'];banks=fit['schedule'];pbank=fit['exception_bank_draw_probability']\nsrc=html.unescape(re.sub(r'<[^>]+>','',Path('/tmp/stolfi-grammar.html').read_text()))\nsrc=src[src.index('NormalWord:'):src.index('AbnormalWord:')]\ngram={};cur=None\nfor line in src.splitlines():\n m=re.match(r'^([A-Za-z][A-Za-z0-9]*):\\s*$',line)\n if m:cur=m[1];gram[cur]=[];continue\n m=re.match(r'^\\s*\\d+\\s+[\\d.]+\\s+[\\d.]+\\s+(\\S+)',line)\n if m and cur:gram[cur].append(m[1])\n@lru_cache(None)\ndef pattern(n):\n if n not in gram:return re.escape(n)\n return '(?:'+'|'.join(''.join(pattern(x) for x in alt.split('.') if x) for alt in gram[n])+')'\nnormal=re.compile('^'+pattern('NormalWord')+'$')\ndef eligible(w):return bool(re.fullmatch('[a-z]+',w))\ndef sequences(pages):\n seq=[]\n for page in pages:\n  for line in page.lines:\n   if line.unit!='P':continue\n   part=[]\n   for w in line.words:\n    if eligible(w):part.append(w)\n    elif part:seq.append(part);part=[]\n   if part:seq.append(part)\n return seq\ndef glen(w):return len(ivtff.segment(w,'eva-basic'))\ndef edit1(a,b):\n a=ivtff.segment(a,'eva-basic');b=ivtff.segment(b,'eva-basic')\n if abs(len(a)-len(b))>1:return False\n if len(a)==len(b):return sum(x!=y for x,y in zip(a,b))==1\n if len(a)>len(b):a,b=b,a\n i=0\n while i<len(a) and a[i]==b[i]:i+=1\n return a[i:]==b[i+1:]\ndef tv(a,b):\n aa=sum(a.values());bb=sum(b.values());return sum(abs(a.get(k,0)/aa-b.get(k,0)/bb) for k in set(a)|set(b))/2\ntrain,_=corpus.split_pages('practice');tr=[w for seq in sequences(train) for w in seq]; trset=set(tr)\n# Freeze: fit only ZL training length ratios; clip inverse-frequency weights to [0.25,4],\n# shared fragment probability 0.10, same bank/role only, uniform if no previous slot;\n# independent random draw 0.0531926 specialist; seed 31001-31010.\ntriples={};hist=collections.Counter()\nfor b,slots in banks.items():\n triples[b]=[(tuple(t),' '.join([]).join(sum((list(x) for x in t),[]))) for t in itertools.product(*slots)]\n for t,w in triples[b]:hist[glen(w)]+=(pbank if b=='exception_bank' else 1-pbank)/len(triples[b])\ntarget=collections.Counter(map(glen,tr));total=sum(target.values())\nweights={n:min(4,max(.25,(target[n]/total)/v)) for n,v in hist.items() if v}\nprint('training',len(tr),'abnormal',sum(not bool(normal.fullmatch(w)) for w in tr)/len(tr),'weights',weights,flush=True)\nsupport={w for t in triples.values() for _,w in t};ab_unseen={w for w in support if w not in trset and not normal.fullmatch(w)}\nprint('support',len(support),'abnormal-unseen',len(ab_unseen),flush=True)\nfor trans in ('zl','it'):\n _,ev=corpus.split_pages('practice',trans); seqs=sequences(ev); real=[w for seq in seqs for w in seq]; pairs=[(a,b) for seq in seqs for a,b in zip(seq,seq[1:])]; bylen=collections.defaultdict(list)\n for w in real:bylen[glen(w)].append(w)\n realpairs=[(a,b) for a,b in pairs if glen(a) in hist and glen(b) in hist]\n print('real',trans,len(real),len(pairs),'abnormal',sum(not bool(normal.fullmatch(w)) for w in real)/len(real),'repeat',sum(a==b for a,b in realpairs)/len(realpairs),'edit1',sum(edit1(a,b) for a,b in realpairs)/len(realpairs),'coverage',len({w for w in real if not normal.fullmatch(w) and w not in trset}&support),flush=True)\n for weighted in (True,):\n  for share in (True,):\n   for filter_on in (False,True):\n    results=[]\n    for seed in range(41001,41011):\n     rng=random.Random(seed); generated=[];gp=[]; prev=None; attempts=0\n     dist={b:list(itertools.accumulate(weights[glen(w)] if weighted else 1 for t,w in vals)) for b,vals in triples.items()}\n     for seq in seqs:\n      oldw=None;prev=None\n      for _ in seq:\n       while True:\n        attempts+=1\n        bank='exception_bank' if rng.random()<pbank else 'baseline'; ts=triples[bank];ix=rng.choices(range(len(ts)),cum_weights=dist[bank],k=1)[0];t=list(ts[ix][0]);\n        if share and prev and prev[0]==bank and rng.random()<.1:\n         role=rng.randrange(3);t[role]=prev[1][role]\n        w=''.join(sum((list(f) for f in t),[]))\n        if not filter_on or normal.fullmatch(w) or rng.random()<.1:break\n       generated.append(w)\n       if oldw is not None:gp.append((oldw,w))\n       oldw=w;prev=(bank,t)\n     strata=collections.defaultdict(list)\n     for a,b in gp:strata[(glen(a),glen(b))].append((a,b))\n     rp=[(a,b) for a,b in realpairs if (glen(a),glen(b)) in strata]\n     matched=[rng.choice(strata[(glen(a),glen(b))]) for a,b in rp]\n     realind=[(rng.choice(bylen[glen(a)]),rng.choice(bylen[glen(b)])) for a,b in rp]\n     results.append({'seed':seed,'attempts_per_token':attempts/len(generated),'token_tv':tv(collections.Counter(map(glen,real)),collections.Counter(map(glen,generated))),'type_tv':tv(collections.Counter(map(glen,set(real))),collections.Counter(map(glen,set(generated)))),'repeat':sum(a==b for a,b in gp)/len(gp),'edit1':sum(edit1(a,b) for a,b in gp)/len(gp),'abnormal':sum(not bool(normal.fullmatch(w)) for w in generated)/len(generated),'support':len(rp)/len(realpairs),'matched_real_repeat':sum(a==b for a,b in rp)/len(rp),'matched_real_edit1':sum(edit1(a,b) for a,b in rp)/len(rp),'matched_repeat':sum(a==b for a,b in matched)/len(matched),'matched_edit1':sum(edit1(a,b) for a,b in matched)/len(matched),'iid_repeat':sum(a==b for a,b in realind)/len(realind),'iid_edit1':sum(edit1(a,b) for a,b in realind)/len(realind)})\n    print('model',trans,weighted,share,filter_on,json.dumps(results),flush=True)\n"
+}

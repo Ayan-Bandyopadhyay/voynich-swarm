@@ -47,41 +47,67 @@ LEAD_STALE_HOURS = 2      # after this long without a lead dispatch, rules choos
 PIC_AGREEMENT_FLOOR = 0.25   # below this share of AGREED among compared folios, new annotations wait
 PIC_MIN_COMPARED = 10        # ...once at least this many folios have been compared
 TRIED_ENOUGH = 3             # an agent-proposed step with this many submissions has been worked
+SATURATED = 0.9              # share of established facts one meaningless procedure reproduces, at and above
+SATURATED_MIN_FACTS = 10     # which (with this many facts) more text statistics are no longer a priority
+ONE_TO_MANY = ("syllabic", "verbose", "nomenclator", "table-cipher", "abbreviation", "letter-words")   # not word-for-word letters
+ENCIPHERED_WANTED = 3        # enciphered-language tests on the record before that step stops being a top pick
+PIC_TEXT_MIN_FOLIOS = 5      # AGREED folios needed before the picture-text tests are worth running
+PERIOD_LANGUAGES = ("latin", "italian", "german", "french", "spanish", "catalan", "old_catalan", "occitan",
+                    "old_occitan", "hebrew", "greek", "czech", "medieval_czech", "dutch", "middle_dutch", "english")
+TOP_PER_PROGRAM = 2          # the top picks are spread over the fronts
 
 
 def rules_top(steps, reasons=None):
     """The scripted lead: when no lead seat has posted recently, rank open steps by rules that read
     the record, not by category alone.
-    1 an established fact no attack has reproduced;
-    2 the shared generator test, while no single procedure reproduces every established fact
-      (the best result so far is named, with the facts it misses);
+    1 an established fact no attack has reproduced, including the best generator on the record,
+      which the scorer runs against every new fact (detail.best_generator);
+    2 the tests that can tell the hypotheses apart: a real language through a period cipher against
+      every fact (while fewer than ENCIPHERED_WANTED are on the record), and the picture-text tests
+      (once PIC_TEXT_MIN_FOLIOS folios are AGREED and no picture fact is registered); and the shared
+      generator test, until one meaningless procedure reproduces SATURATED of the facts (then 6:
+      the last facts change nothing; the best result is named, with the facts it misses);
     3 invented-language tests; picture annotations, unless annotations are not reaching AGREED
       (then they wait, rank 8, until the annotation format changes);
     4 anchors and other picture steps; 5 test power;
-    6 everything else agent-proposed, including other generator variants;
-    grid cells last. Within a rank, steps fewer people have submitted to come first, and an
+    4 and 5 also: cells of the grid the search has power in that are not closed, in families that
+      are not word-for-word letters (ONE_TO_MANY); period languages first (4), the rest 5; 6 everything else agent-proposed, including
+      other generator variants; 8 new text statistics (front L2) once the facts are saturated;
+    other grid cells last. At most TOP_PER_PROGRAM top picks come from one front. Within a rank, steps fewer people have submitted to come first, and an
     agent-proposed step that already has TRIED_ENOUGH submissions drops three ranks (never below 8).
     `reasons`, if given, is filled with {step id: why it was picked}."""
     from collections import Counter
     from . import registry
     reasons = {} if reasons is None else reasons
     facts = [i["id"] for i in registry.read("fact") if i["verdict"] == "ESTABLISHED"]
-    hit, best = set(), None
+    hit, best, enciphered = set(), None, 0
     for a in registry.read("attack"):
         if a["verdict"] == "SUCCEEDED":
             hit.add(a.get("target"))
+        if (a.get("detail") or {}).get("hypothesis") == "enciphered_language":
+            enciphered += 1   # real language through a cipher: what it reproduces is not a refutation
+            continue
         per_fact = (a.get("detail") or {}).get("per_fact") or {}
         covered = {k for k, v in per_fact.items() if v}
         hit |= covered
         if per_fact:
             score = len(covered & set(facts))
             if best is None or score > best[0]:
-                best = (score, a["id"], [f for f in facts if f not in covered])
+                best = (score, a["id"], [f for f in facts if f not in covered], len(set(per_fact) & set(facts)))
+    by_best = {i["id"]: i["detail"]["best_generator"]["attack"] for i in registry.read("fact")
+               if i["verdict"] == "ESTABLISHED" and ((i.get("detail") or {}).get("best_generator") or {}).get("reproduced")}
+    hit |= set(by_best)
     generator_done = bool(facts) and best is not None and best[0] == len(facts)
+    # measured on the facts that procedure was scored on (later facts are run against it one by one)
+    saturated = best is not None and best[3] >= SATURATED_MIN_FACTS and best[0] >= SATURATED * best[3]
+    sat_why = f"{best[1]} reproduces {best[0]} of the {best[3]} facts it was run against" if best else ""
     pics = registry.read("picture")
     agreed = sum(p["verdict"] == "AGREED" for p in pics)
     compared = agreed + sum(p["verdict"] == "DISAGREE" for p in pics)
     pics_stalled = compared >= PIC_MIN_COMPARED and agreed / compared < PIC_AGREEMENT_FLOOR
+    agreed_folios = len({str((p.get("detail") or {}).get("folio")) for p in pics if p["verdict"] == "AGREED"})
+    pic_fact = any("picture_label" in (((f.get("detail") or {}).get("spec") or {}).get("statistic") or {})
+                   for f in registry.read("fact"))
     tried = Counter((i.get("provenance") or {}).get("step") for i in registry.read())
     open_ = [s for s in steps if s.get("status", "open") == "open" and s.get("kind") != "mandate"]
 
@@ -90,13 +116,27 @@ def rules_top(steps, reasons=None):
         t = (s.get("title") or "").lower()
         if i.startswith("R-attack-") and i[len("R-attack-"):] in facts and i[len("R-attack-"):] not in hit:
             return 1, f"{i[len('R-attack-'):]} is established and no attack has reproduced it"
+        if i.startswith("R-attack-") and i[len("R-attack-"):] in by_best:
+            return 7, f"{i[len('R-attack-'):]} is already reproduced by {by_best[i[len('R-attack-'):]]}, the best generator on the record"
         if i == "G-every-fact":
             if generator_done:
                 return 7, f"{best[1]} already reproduces all {len(facts)} established facts"
             if best:
-                return 2, (f"best single procedure so far: {best[1]}, {best[0]} of {len(facts)} facts; "
-                           f"misses {', '.join(best[2]) or 'none'}")
+                return 6 if saturated else 2, (f"best single procedure so far: {best[1]}, {best[0]} of {len(facts)} facts; "
+                                               f"misses {', '.join(best[2]) or 'none'}"
+                                               + ("; the facts are saturated, the last ones change nothing" if saturated else ""))
             return 2, "no generator has been run against the established facts"
+        if i == "G-enciphered-language":
+            if enciphered >= ENCIPHERED_WANTED:
+                return 6, f"{enciphered} enciphered-language tests are on the record"
+            return 2, (f"{enciphered} enciphered-language tests on the record: which facts does real language "
+                       "through a period cipher miss?")
+        if t.startswith("picture-text statistics"):
+            if pic_fact:
+                return 4, "a picture-text fact is on the record"
+            if agreed_folios >= PIC_TEXT_MIN_FOLIOS:
+                return 2, f"{agreed_folios} folios have AGREED picture data and no picture-text fact is registered"
+            return 4, f"waits for agreed picture data ({agreed_folios} folios AGREED, {PIC_TEXT_MIN_FOLIOS} needed)"
         if "invented-language" in t:
             return 3, "an invented language against every fact"
         if "generator test" in t:
@@ -109,8 +149,15 @@ def rules_top(steps, reasons=None):
             return 4, "anchors and pictures"
         if i.startswith("M-J-") or s.get("program") == "J":
             return 5, "test power"
+        if i.startswith(("L3-first-", "L3-close-")) and i.endswith(ONE_TO_MANY):
+            lang = next(i[len(pre):-len(fam) - 1] for pre in ("L3-first-", "L3-close-") if i.startswith(pre)
+                        for fam in ONE_TO_MANY if i.endswith(fam))
+            return (4 if lang in PERIOD_LANGUAGES else 5,
+                    "the search has power in this cell, it is not a word-for-word letter cipher, and it is not closed")
         if i.startswith(("L3-first-", "L3-close-", "J-power-")):
             return 9, "grid cell"
+        if saturated and s.get("program") == "L2":
+            return 8, f"text statistics are saturated ({sat_why}); a new one is unlikely to tell the hypotheses apart"
         return 6, "agent-proposed step"
 
     def key(s):
@@ -121,7 +168,16 @@ def rules_top(steps, reasons=None):
         return r, n, s["id"], why
 
     ranked = sorted((key(s) for s in open_), key=lambda k: k[:3])
-    top = [k for k in ranked if k[0] < 9][:TOP_MAX]
+    top, per_program = [], Counter()
+    by_id = {s["id"]: s for s in open_}
+    for k in ranked:
+        prog = by_id[k[2]].get("program")
+        if k[0] >= 9 or len(top) == TOP_MAX:
+            break
+        if per_program[prog] >= TOP_PER_PROGRAM:
+            continue
+        per_program[prog] += 1
+        top.append(k)
     for _, _, i, why in top:
         reasons[i] = why
     return [i for _, _, i, _ in top]
@@ -139,6 +195,11 @@ def derived_steps():
                     "title": f"Generator test: one procedure against all {len(established)} established facts",
                     "statement": "Write meaningless text with ONE historically plausible procedure (tables, grilles, dice, copying nearby words; fitted on public pages only) and send it once as attack.json {\"attack\": \"generator\", \"title\", \"method\", \"cut\": \"lines\", \"lines\": [...]}. The scorer runs it against every established fact and records how many it reproduces. The procedure may not contain a rule that names a target pattern (that is a weak refutation). Reproducing all of them would be strong evidence the text needs no language; a fact no general procedure reproduces is the strongest public evidence of structure. One generator test per contributor per day.",
                     "check": 'attack.json {"attack": "generator", ...}', "on_path": True, "hard": True,
+                    "added_by": "rule:established-fact", "how": "rule", "from": established[-1], "status": "open"})
+        out.append({"id": "G-enciphered-language", "program": "G", "kind": "step",
+                    "title": f"Enciphered-language test: a real language through a period cipher against all {len(established)} established facts",
+                    "statement": "Take real text in a period language (Latin, Italian, German, ...; a pinned corpus or any open text, never the manuscript) and encipher it with ONE historically plausible cipher that does not keep words as words: letters or letter pairs written as whole Voynich-like words, with homophones and with spaces that are not word breaks (Greshko's Naibbe cipher, K-006, is the published example). Send the result once as attack.json {\"attack\": \"generator\", \"hypothesis\": \"enciphered_language\", \"language_name\", \"encoding\", \"title\", \"method\", \"cut\": \"lines\", \"lines\": [...]}. The scorer runs it against every established fact. What matters is which facts it MISSES: a fact that meaningless procedures reproduce and enciphered language cannot is evidence against that cipher class; the reverse would be the first evidence for it. The cipher may not contain a rule that names a target pattern. One per contributor per day.",
+                    "check": 'attack.json {"attack": "generator", "hypothesis": "enciphered_language", ...}', "on_path": True, "hard": True,
                     "added_by": "rule:established-fact", "how": "rule", "from": established[-1], "status": "open"})
     # every cell the search can provably crack but no key has been judged in: an open step
     judged = {(i.get("language"), i.get("family")) for i in grid_items}
@@ -209,7 +270,7 @@ def derived_steps():
             nth = "a second, independent" if done.get(f) else "a first"
             out.append({"id": f"PIC-{f}", "program": "L4", "kind": "step",
                         "title": f"Pictures: {nth} blind annotation of folio {f}",
-                        "statement": f"Look at the Beinecke scan of folio {f} (IIIF canvas from data/raw/beinecke_ms408_manifest.json) and record every drawn object: its kind, its visible features (e.g. leaf shape, root form, flower colour, number of parts, posture, container shape) and which label points at it (the ZL locus id of the label line, e.g. f99r.3, read from the transcription's line ids only). Annotate blind: do not read the transcription's words or any other annotation of this folio first. Two independent annotations that agree make the folio's picture data usable for the picture-text tests.",
+                        "statement": f"Look at the Beinecke scan of folio {f} (IIIF canvas from data/raw/beinecke_ms408_manifest.json) and record every drawn object: its kind, its visible features (the compared ones take a value from the closed vocabulary in join.txt, e.g. colour, ring, posture, container; anything else is kept as description) and which label points at it (the ZL locus id of the label line, e.g. f99r.3, read from the transcription's line ids only). Annotate blind: do not read the transcription's words or any other annotation of this folio first. Two independent annotations that agree make the folio's picture data usable for the picture-text tests.",
                         "check": "picture.json {\"folio\", \"canvas\", \"blind\": true, \"objects\": [{\"id\", \"kind\", \"features\": {...}, \"label\": locus or null}]}",
                         "on_path": True, "hard": False, "added_by": "rule:labelled-folio", "how": "rule", "from": f, "status": "open"})
     except Exception:

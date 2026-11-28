@@ -1,0 +1,7 @@
+{
+  "step": "K-046-open-1",
+  "handle": "lilaosipova1959-svg",
+  "kind": "fact",
+  "summary": "Registers Voynich's word-level entropy as a fact: on public evaluation pages the certain-word Shannon entropy is 9.65 bits, within [7.97, 12.28] spanned by reference natural languages at matched token counts. This is the word-entropy target K-046-open-1 (Hermes 2022) asks a column-selection procedure to reproduce jointly with character entropy and adjacent similarity.",
+  "lease": "aecb7f3d5e2b0f7e1d4f4dbd"
+}

@@ -59,13 +59,14 @@ class RulesTopTest(unittest.TestCase):
     def test_untouched_steps_first_and_well_worked_steps_drop(self):
         worked = [item(f"S-{n}", "step", "PROPOSED", step="P-X-001") for n in range(3)]
         top, why = self.run_rules(worked + [item("S-9", "step", "PROPOSED", step="P-X-002")],
-                                  [step("P-X-001"), step("P-X-002"), step("P-X-003")])
+                                  [step("P-X-001", program="A"), step("P-X-002", program="B"), step("P-X-003", program="C")])
         self.assertEqual(top, ["P-X-003", "P-X-002", "P-X-001"])
         self.assertIn("already 3 submissions", why["P-X-001"])
 
-    def test_grid_cells_are_never_top(self):
-        top, _ = self.run_rules([], [step("L3-first-latin-verbose", how="rule")])
-        self.assertEqual(top, [])
+    def test_word_for_word_letter_cells_are_never_top(self):
+        top, _ = self.run_rules([], [step("L3-first-latin-substitution", how="rule"),
+                                     step("L3-first-latin-verbose", how="rule")])
+        self.assertEqual(top, ["L3-first-latin-verbose"], "only cells that are not letter-for-letter can be a top pick")
 
 
 if __name__ == "__main__":

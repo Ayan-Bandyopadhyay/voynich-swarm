@@ -1,0 +1,772 @@
+{
+  "program": "J",
+  "title": "Test row reuse and out-of-range periods before interpreting lag-search confirmations",
+  "on_path": true,
+  "hard": false,
+  "statement": "In three historical texts and three shared row seeds, a frozen 2–160 lag search selects and confirms the true period in all nine runs with distinct rows at periods 100 and 131. With reused rows it selects and confirms wrong lags in two of nine period-100 runs. At out-of-range periods 161, 199 and 257 it confirms respectively two, one and two wrong in-range lags out of nine runs each. Each set of three runs per book uses the same plaintext passage, while row schedules repeat across the books; these are not 27 independent texts or keys.",
+  "check": "Extend P-J-038 with independently sampled texts and row schedules, nonperiodic correlated plaintexts, more noise and schedule shifts, and a predeclared period search that includes realistic unknown periods. Compare confidence and false alarms against matched structured nulls; benchmark unknown-key plaintext recovery against a known-column oracle before drawing exclusions.",
+  "method": "Use the P-J-038 shortest-significant-lag procedure unchanged: exact ciphertext-word equality at lags 2–160 on 4,000 words, 49 global permutation maxima, choose shortest lag at add-one p <= .05, then confirm that lag on the next 4,000 words with 49 independent permutations. The training p reported is for the largest observed lag rate, not necessarily the selected lag. Use Erasmus, Dante and Walther pinned texts, take normalized table-alphabet characters 4,001–12,000. Source and table hashes are checked. Each character maps through a fixed cyclic sequence of sampled P.III table rows. Periods 100 and 131 use either distinct rows or independent row draws with replacement; 161, 199 and 257 use replacement because the table has only 131 rows. Three seeds 1103, 2207, 3301 generate rows, independently of plaintext. No text noise or manuscript data are used.",
+  "table_source": "Jürgen Hermes, Polygraphia III, https://ceur-ws.org/Vol-3313/paper7.pdf; table https://github.com/hermesj/R_Voynich_Stats/blob/0ef1439fa9d90aeab42951a51d0d5a0e27db1f8f/R%20code/Historical_ciphers/keys/ciphers_poly_III_in_order.csv ; SHA-256 fe3f24a46dbc6b655eab8dbbd75addf84ee4a7dbd387ad802af75d02edfe5b4d.",
+  "limitations": "The schedule is an engineered extension with replacement, not an asserted historical implementation; row collisions and plaintext autocorrelation may both contribute to false confirmations and are not isolated here. The three row seeds are shared across texts, and multiple lags and conditions are explored; counts do not estimate a general false-alarm rate. Distinct versus replacement is confounded with row collision. No manuscript evaluation, decoder recovery or noise sensitivity was tested.",
+  "environment": "Python standard library plus NumPy 2.5.4; fixed pseudorandom seeds.",
+  "summary_results": {
+    "100-distinct": {
+      "selected": {
+        "100": 9
+      },
+      "confirmed": 9,
+      "runs": 9
+    },
+    "100-replacement": {
+      "selected": {
+        "100": 7,
+        "34": 1,
+        "17": 1
+      },
+      "confirmed": 9,
+      "runs": 9
+    },
+    "131-distinct": {
+      "selected": {
+        "131": 9
+      },
+      "confirmed": 9,
+      "runs": 9
+    },
+    "131-replacement": {
+      "selected": {
+        "131": 6,
+        "114": 1,
+        "19": 2
+      },
+      "confirmed": 6,
+      "runs": 9
+    },
+    "161-replacement": {
+      "selected": {
+        "None": 6,
+        "29": 1,
+        "49": 1,
+        "132": 1
+      },
+      "confirmed": 2,
+      "runs": 9
+    },
+    "199-replacement": {
+      "selected": {
+        "155": 1,
+        "49": 1,
+        "None": 5,
+        "35": 1,
+        "105": 1
+      },
+      "confirmed": 1,
+      "runs": 9
+    },
+    "257-replacement": {
+      "selected": {
+        "None": 7,
+        "29": 1,
+        "49": 1
+      },
+      "confirmed": 2,
+      "runs": 9
+    }
+  },
+  "individual_results": [
+    {
+      "book": "la_erasmus",
+      "period": 100,
+      "mode": "distinct",
+      "seed": 1103,
+      "unique_rows": 100,
+      "selected_lag": 100,
+      "train_maxp": 0.02,
+      "eval_score": 0.07487179487179488,
+      "eval_p": 0.02
+    },
+    {
+      "book": "la_erasmus",
+      "period": 100,
+      "mode": "distinct",
+      "seed": 2207,
+      "unique_rows": 100,
+      "selected_lag": 100,
+      "train_maxp": 0.02,
+      "eval_score": 0.07487179487179488,
+      "eval_p": 0.02
+    },
+    {
+      "book": "la_erasmus",
+      "period": 100,
+      "mode": "distinct",
+      "seed": 3301,
+      "unique_rows": 100,
+      "selected_lag": 100,
+      "train_maxp": 0.02,
+      "eval_score": 0.07487179487179488,
+      "eval_p": 0.02
+    },
+    {
+      "book": "la_erasmus",
+      "period": 100,
+      "mode": "replacement",
+      "seed": 1103,
+      "unique_rows": 68,
+      "selected_lag": 100,
+      "train_maxp": 0.02,
+      "eval_score": 0.07487179487179488,
+      "eval_p": 0.02
+    },
+    {
+      "book": "la_erasmus",
+      "period": 100,
+      "mode": "replacement",
+      "seed": 2207,
+      "unique_rows": 69,
+      "selected_lag": 100,
+      "train_maxp": 0.02,
+      "eval_score": 0.07487179487179488,
+      "eval_p": 0.02
+    },
+    {
+      "book": "la_erasmus",
+      "period": 100,
+      "mode": "replacement",
+      "seed": 3301,
+      "unique_rows": 68,
+      "selected_lag": 100,
+      "train_maxp": 0.02,
+      "eval_score": 0.07487179487179488,
+      "eval_p": 0.02
+    },
+    {
+      "book": "la_erasmus",
+      "period": 131,
+      "mode": "distinct",
+      "seed": 1103,
+      "unique_rows": 131,
+      "selected_lag": 131,
+      "train_maxp": 0.02,
+      "eval_score": 0.0798655983458258,
+      "eval_p": 0.02
+    },
+    {
+      "book": "la_erasmus",
+      "period": 131,
+      "mode": "distinct",
+      "seed": 2207,
+      "unique_rows": 131,
+      "selected_lag": 131,
+      "train_maxp": 0.02,
+      "eval_score": 0.07960713362626001,
+      "eval_p": 0.02
+    },
+    {
+      "book": "la_erasmus",
+      "period": 131,
+      "mode": "distinct",
+      "seed": 3301,
+      "unique_rows": 131,
+      "selected_lag": 131,
+      "train_maxp": 0.02,
+      "eval_score": 0.07960713362626001,
+      "eval_p": 0.02
+    },
+    {
+      "book": "la_erasmus",
+      "period": 131,
+      "mode": "replacement",
+      "seed": 1103,
+      "unique_rows": 80,
+      "selected_lag": 131,
+      "train_maxp": 0.02,
+      "eval_score": 0.07960713362626001,
+      "eval_p": 0.02
+    },
+    {
+      "book": "la_erasmus",
+      "period": 131,
+      "mode": "replacement",
+      "seed": 2207,
+      "unique_rows": 84,
+      "selected_lag": 131,
+      "train_maxp": 0.02,
+      "eval_score": 0.0798655983458258,
+      "eval_p": 0.02
+    },
+    {
+      "book": "la_erasmus",
+      "period": 131,
+      "mode": "replacement",
+      "seed": 3301,
+      "unique_rows": 81,
+      "selected_lag": 131,
+      "train_maxp": 0.02,
+      "eval_score": 0.07960713362626001,
+      "eval_p": 0.02
+    },
+    {
+      "book": "la_erasmus",
+      "period": 161,
+      "mode": "replacement",
+      "seed": 1103,
+      "unique_rows": 90,
+      "selected_lag": null,
+      "train_maxp": 0.06,
+      "eval_score": null,
+      "eval_p": null
+    },
+    {
+      "book": "la_erasmus",
+      "period": 161,
+      "mode": "replacement",
+      "seed": 2207,
+      "unique_rows": 94,
+      "selected_lag": 29,
+      "train_maxp": 0.02,
+      "eval_score": 0.0025182573659027953,
+      "eval_p": 0.02
+    },
+    {
+      "book": "la_erasmus",
+      "period": 161,
+      "mode": "replacement",
+      "seed": 3301,
+      "unique_rows": 90,
+      "selected_lag": null,
+      "train_maxp": 0.9,
+      "eval_score": null,
+      "eval_p": null
+    },
+    {
+      "book": "la_erasmus",
+      "period": 199,
+      "mode": "replacement",
+      "seed": 1103,
+      "unique_rows": 98,
+      "selected_lag": 155,
+      "train_maxp": 0.02,
+      "eval_score": 0.0023407022106631988,
+      "eval_p": 0.02
+    },
+    {
+      "book": "la_erasmus",
+      "period": 199,
+      "mode": "replacement",
+      "seed": 2207,
+      "unique_rows": 104,
+      "selected_lag": 49,
+      "train_maxp": 0.02,
+      "eval_score": 0.0020248038471273096,
+      "eval_p": 0.06
+    },
+    {
+      "book": "la_erasmus",
+      "period": 199,
+      "mode": "replacement",
+      "seed": 3301,
+      "unique_rows": 98,
+      "selected_lag": null,
+      "train_maxp": 0.94,
+      "eval_score": null,
+      "eval_p": null
+    },
+    {
+      "book": "la_erasmus",
+      "period": 257,
+      "mode": "replacement",
+      "seed": 1103,
+      "unique_rows": 110,
+      "selected_lag": null,
+      "train_maxp": 0.16,
+      "eval_score": null,
+      "eval_p": null
+    },
+    {
+      "book": "la_erasmus",
+      "period": 257,
+      "mode": "replacement",
+      "seed": 2207,
+      "unique_rows": 110,
+      "selected_lag": 29,
+      "train_maxp": 0.02,
+      "eval_score": 0.002266431629312516,
+      "eval_p": 0.02
+    },
+    {
+      "book": "la_erasmus",
+      "period": 257,
+      "mode": "replacement",
+      "seed": 3301,
+      "unique_rows": 108,
+      "selected_lag": null,
+      "train_maxp": 0.64,
+      "eval_score": null,
+      "eval_p": null
+    },
+    {
+      "book": "it_dante",
+      "period": 100,
+      "mode": "distinct",
+      "seed": 1103,
+      "unique_rows": 100,
+      "selected_lag": 100,
+      "train_maxp": 0.02,
+      "eval_score": 0.0782051282051282,
+      "eval_p": 0.02
+    },
+    {
+      "book": "it_dante",
+      "period": 100,
+      "mode": "distinct",
+      "seed": 2207,
+      "unique_rows": 100,
+      "selected_lag": 100,
+      "train_maxp": 0.02,
+      "eval_score": 0.0782051282051282,
+      "eval_p": 0.02
+    },
+    {
+      "book": "it_dante",
+      "period": 100,
+      "mode": "distinct",
+      "seed": 3301,
+      "unique_rows": 100,
+      "selected_lag": 100,
+      "train_maxp": 0.02,
+      "eval_score": 0.0782051282051282,
+      "eval_p": 0.02
+    },
+    {
+      "book": "it_dante",
+      "period": 100,
+      "mode": "replacement",
+      "seed": 1103,
+      "unique_rows": 68,
+      "selected_lag": 100,
+      "train_maxp": 0.02,
+      "eval_score": 0.07871794871794872,
+      "eval_p": 0.02
+    },
+    {
+      "book": "it_dante",
+      "period": 100,
+      "mode": "replacement",
+      "seed": 2207,
+      "unique_rows": 69,
+      "selected_lag": 100,
+      "train_maxp": 0.02,
+      "eval_score": 0.0782051282051282,
+      "eval_p": 0.02
+    },
+    {
+      "book": "it_dante",
+      "period": 100,
+      "mode": "replacement",
+      "seed": 3301,
+      "unique_rows": 68,
+      "selected_lag": 34,
+      "train_maxp": 0.02,
+      "eval_score": 0.0035300050428643467,
+      "eval_p": 0.02
+    },
+    {
+      "book": "it_dante",
+      "period": 131,
+      "mode": "distinct",
+      "seed": 1103,
+      "unique_rows": 131,
+      "selected_lag": 131,
+      "train_maxp": 0.02,
+      "eval_score": 0.08141638666322047,
+      "eval_p": 0.02
+    },
+    {
+      "book": "it_dante",
+      "period": 131,
+      "mode": "distinct",
+      "seed": 2207,
+      "unique_rows": 131,
+      "selected_lag": 131,
+      "train_maxp": 0.02,
+      "eval_score": 0.08141638666322047,
+      "eval_p": 0.02
+    },
+    {
+      "book": "it_dante",
+      "period": 131,
+      "mode": "distinct",
+      "seed": 3301,
+      "unique_rows": 131,
+      "selected_lag": 131,
+      "train_maxp": 0.02,
+      "eval_score": 0.08167485138278625,
+      "eval_p": 0.02
+    },
+    {
+      "book": "it_dante",
+      "period": 131,
+      "mode": "replacement",
+      "seed": 1103,
+      "unique_rows": 80,
+      "selected_lag": 114,
+      "train_maxp": 0.02,
+      "eval_score": 0.001544004117344313,
+      "eval_p": 0.4
+    },
+    {
+      "book": "it_dante",
+      "period": 131,
+      "mode": "replacement",
+      "seed": 2207,
+      "unique_rows": 84,
+      "selected_lag": 19,
+      "train_maxp": 0.02,
+      "eval_score": 0.0025119316754584277,
+      "eval_p": 0.1
+    },
+    {
+      "book": "it_dante",
+      "period": 131,
+      "mode": "replacement",
+      "seed": 3301,
+      "unique_rows": 81,
+      "selected_lag": 131,
+      "train_maxp": 0.02,
+      "eval_score": 0.08141638666322047,
+      "eval_p": 0.02
+    },
+    {
+      "book": "it_dante",
+      "period": 161,
+      "mode": "replacement",
+      "seed": 1103,
+      "unique_rows": 90,
+      "selected_lag": null,
+      "train_maxp": 0.08,
+      "eval_score": null,
+      "eval_p": null
+    },
+    {
+      "book": "it_dante",
+      "period": 161,
+      "mode": "replacement",
+      "seed": 2207,
+      "unique_rows": 94,
+      "selected_lag": 49,
+      "train_maxp": 0.02,
+      "eval_score": 0.001771703366236396,
+      "eval_p": 0.08
+    },
+    {
+      "book": "it_dante",
+      "period": 161,
+      "mode": "replacement",
+      "seed": 3301,
+      "unique_rows": 90,
+      "selected_lag": null,
+      "train_maxp": 0.48,
+      "eval_score": null,
+      "eval_p": null
+    },
+    {
+      "book": "it_dante",
+      "period": 199,
+      "mode": "replacement",
+      "seed": 1103,
+      "unique_rows": 98,
+      "selected_lag": null,
+      "train_maxp": 0.42,
+      "eval_score": null,
+      "eval_p": null
+    },
+    {
+      "book": "it_dante",
+      "period": 199,
+      "mode": "replacement",
+      "seed": 2207,
+      "unique_rows": 104,
+      "selected_lag": null,
+      "train_maxp": 0.14,
+      "eval_score": null,
+      "eval_p": null
+    },
+    {
+      "book": "it_dante",
+      "period": 199,
+      "mode": "replacement",
+      "seed": 3301,
+      "unique_rows": 98,
+      "selected_lag": null,
+      "train_maxp": 0.08,
+      "eval_score": null,
+      "eval_p": null
+    },
+    {
+      "book": "it_dante",
+      "period": 257,
+      "mode": "replacement",
+      "seed": 1103,
+      "unique_rows": 110,
+      "selected_lag": null,
+      "train_maxp": 0.6,
+      "eval_score": null,
+      "eval_p": null
+    },
+    {
+      "book": "it_dante",
+      "period": 257,
+      "mode": "replacement",
+      "seed": 2207,
+      "unique_rows": 110,
+      "selected_lag": null,
+      "train_maxp": 0.32,
+      "eval_score": null,
+      "eval_p": null
+    },
+    {
+      "book": "it_dante",
+      "period": 257,
+      "mode": "replacement",
+      "seed": 3301,
+      "unique_rows": 108,
+      "selected_lag": null,
+      "train_maxp": 0.52,
+      "eval_score": null,
+      "eval_p": null
+    },
+    {
+      "book": "de_walther",
+      "period": 100,
+      "mode": "distinct",
+      "seed": 1103,
+      "unique_rows": 100,
+      "selected_lag": 100,
+      "train_maxp": 0.02,
+      "eval_score": 0.07717948717948718,
+      "eval_p": 0.02
+    },
+    {
+      "book": "de_walther",
+      "period": 100,
+      "mode": "distinct",
+      "seed": 2207,
+      "unique_rows": 100,
+      "selected_lag": 100,
+      "train_maxp": 0.02,
+      "eval_score": 0.07717948717948718,
+      "eval_p": 0.02
+    },
+    {
+      "book": "de_walther",
+      "period": 100,
+      "mode": "distinct",
+      "seed": 3301,
+      "unique_rows": 100,
+      "selected_lag": 100,
+      "train_maxp": 0.02,
+      "eval_score": 0.07717948717948718,
+      "eval_p": 0.02
+    },
+    {
+      "book": "de_walther",
+      "period": 100,
+      "mode": "replacement",
+      "seed": 1103,
+      "unique_rows": 68,
+      "selected_lag": 17,
+      "train_maxp": 0.02,
+      "eval_score": 0.003263871453678132,
+      "eval_p": 0.02
+    },
+    {
+      "book": "de_walther",
+      "period": 100,
+      "mode": "replacement",
+      "seed": 2207,
+      "unique_rows": 69,
+      "selected_lag": 100,
+      "train_maxp": 0.02,
+      "eval_score": 0.07743589743589743,
+      "eval_p": 0.02
+    },
+    {
+      "book": "de_walther",
+      "period": 100,
+      "mode": "replacement",
+      "seed": 3301,
+      "unique_rows": 68,
+      "selected_lag": 100,
+      "train_maxp": 0.02,
+      "eval_score": 0.07717948717948718,
+      "eval_p": 0.02
+    },
+    {
+      "book": "de_walther",
+      "period": 131,
+      "mode": "distinct",
+      "seed": 1103,
+      "unique_rows": 131,
+      "selected_lag": 131,
+      "train_maxp": 0.02,
+      "eval_score": 0.06823468596536572,
+      "eval_p": 0.02
+    },
+    {
+      "book": "de_walther",
+      "period": 131,
+      "mode": "distinct",
+      "seed": 2207,
+      "unique_rows": 131,
+      "selected_lag": 131,
+      "train_maxp": 0.02,
+      "eval_score": 0.06823468596536572,
+      "eval_p": 0.02
+    },
+    {
+      "book": "de_walther",
+      "period": 131,
+      "mode": "distinct",
+      "seed": 3301,
+      "unique_rows": 131,
+      "selected_lag": 131,
+      "train_maxp": 0.02,
+      "eval_score": 0.06823468596536572,
+      "eval_p": 0.02
+    },
+    {
+      "book": "de_walther",
+      "period": 131,
+      "mode": "replacement",
+      "seed": 1103,
+      "unique_rows": 80,
+      "selected_lag": 131,
+      "train_maxp": 0.02,
+      "eval_score": 0.0684931506849315,
+      "eval_p": 0.02
+    },
+    {
+      "book": "de_walther",
+      "period": 131,
+      "mode": "replacement",
+      "seed": 2207,
+      "unique_rows": 84,
+      "selected_lag": 19,
+      "train_maxp": 0.02,
+      "eval_score": 0.001004772670183371,
+      "eval_p": 0.72
+    },
+    {
+      "book": "de_walther",
+      "period": 131,
+      "mode": "replacement",
+      "seed": 3301,
+      "unique_rows": 81,
+      "selected_lag": 131,
+      "train_maxp": 0.02,
+      "eval_score": 0.06823468596536572,
+      "eval_p": 0.02
+    },
+    {
+      "book": "de_walther",
+      "period": 161,
+      "mode": "replacement",
+      "seed": 1103,
+      "unique_rows": 90,
+      "selected_lag": null,
+      "train_maxp": 0.14,
+      "eval_score": null,
+      "eval_p": null
+    },
+    {
+      "book": "de_walther",
+      "period": 161,
+      "mode": "replacement",
+      "seed": 2207,
+      "unique_rows": 94,
+      "selected_lag": 132,
+      "train_maxp": 0.02,
+      "eval_score": 0.003360910031023785,
+      "eval_p": 0.02
+    },
+    {
+      "book": "de_walther",
+      "period": 161,
+      "mode": "replacement",
+      "seed": 3301,
+      "unique_rows": 90,
+      "selected_lag": null,
+      "train_maxp": 0.9,
+      "eval_score": null,
+      "eval_p": null
+    },
+    {
+      "book": "de_walther",
+      "period": 199,
+      "mode": "replacement",
+      "seed": 1103,
+      "unique_rows": 98,
+      "selected_lag": 35,
+      "train_maxp": 0.02,
+      "eval_score": 0.0017654476670870113,
+      "eval_p": 0.1
+    },
+    {
+      "book": "de_walther",
+      "period": 199,
+      "mode": "replacement",
+      "seed": 2207,
+      "unique_rows": 104,
+      "selected_lag": null,
+      "train_maxp": 0.06,
+      "eval_score": null,
+      "eval_p": null
+    },
+    {
+      "book": "de_walther",
+      "period": 199,
+      "mode": "replacement",
+      "seed": 3301,
+      "unique_rows": 98,
+      "selected_lag": 105,
+      "train_maxp": 0.02,
+      "eval_score": 0.0012836970474967907,
+      "eval_p": 0.28
+    },
+    {
+      "book": "de_walther",
+      "period": 257,
+      "mode": "replacement",
+      "seed": 1103,
+      "unique_rows": 110,
+      "selected_lag": null,
+      "train_maxp": 0.58,
+      "eval_score": null,
+      "eval_p": null
+    },
+    {
+      "book": "de_walther",
+      "period": 257,
+      "mode": "replacement",
+      "seed": 2207,
+      "unique_rows": 110,
+      "selected_lag": 49,
+      "train_maxp": 0.04,
+      "eval_score": 0.002277904328018223,
+      "eval_p": 0.02
+    },
+    {
+      "book": "de_walther",
+      "period": 257,
+      "mode": "replacement",
+      "seed": 3301,
+      "unique_rows": 108,
+      "selected_lag": null,
+      "train_maxp": 0.36,
+      "eval_score": null,
+      "eval_p": null
+    }
+  ],
+  "reproduction_python": "import csv,hashlib,json,random\nfrom collections import Counter,defaultdict\nimport numpy as np\nfrom vs import refcorpus\nraw=open('/tmp/voy-piii.csv','rb').read();assert hashlib.sha256(raw).hexdigest()=='fe3f24a46dbc6b655eab8dbbd75addf84ee4a7dbd387ad802af75d02edfe5b4d'\ntable=list(csv.DictReader(raw.decode('utf-8-sig').splitlines()));alphabet=list(table[0]);allowed=set(alphabet)\nfor row in table:\n for c in row:row[c]=row[c].strip()\nBOOKS=('la_augustine','es_lucanor','de_nibelunge');SEEDS=(1103,2207,3301);PERIODS=(10,24,131);MODES=('cyclic','noise2','gap1','phasejump','random','repeat10','markov')\ndef score(a,lag):return float(np.mean(a[:-lag]==a[lag:]))\ndef infer(a,seed):\n rates=np.array([score(a,k) for k in range(2,161)]);r=np.random.default_rng(seed);null=[]\n for j in range(49):\n  b=r.permutation(a);null.append(max(score(b,k) for k in range(2,161)))\n sig=[i+2 for i,v in enumerate(rates) if (1+sum(n>=v for n in null))/50<=.05]\n return (min(sig) if sig else None),(1+sum(n>=max(rates) for n in null))/50\n\ndef test_lag(a,lag,seed):\n r=np.random.default_rng(seed);v=score(a,lag);null=[score(r.permutation(a),lag) for i in range(49)];return v,(1+sum(x>=v for x in null))/50\n\nimport sys\ndef make(plain,period,seed,mode):\n r=random.Random(seed)\n rows=(r.sample(range(len(table)),period) if mode=='distinct' else r.choices(range(len(table)),k=period))\n words=[table[rows[i%period]][c] for i,c in enumerate(plain)]\n codes={w:i for i,w in enumerate(sorted(set(words)))}\n return np.array([codes[w] for w in words],dtype=np.int32), len(set(rows))\nout=[]\nfor book in ('la_erasmus','it_dante','de_walther'):\n pin=next(x for x in refcorpus.pins() if x['id']==book);assert hashlib.sha256(open(pin['file'],'rb').read()).hexdigest()==pin['sha256']\n text=''.join(c for b in refcorpus.blocks_of(book) for c in b if c in allowed);assert len(text)>=12000; plain=text[4000:12000]\n for period in (100,131,161,199,257):\n  for mode in (('distinct','replacement') if period<=len(table) else ('replacement',)):\n   for seed in (1103,2207,3301):\n    a,n=make(plain,period,seed,mode); lag,p=infer(a[:4000],seed+10000); ev,ep=(None,None) if lag is None else test_lag(a[4000:],lag,seed+20000)\n    out.append(dict(book=book,period=period,mode=mode,seed=seed,unique_rows=n,selected_lag=lag,train_maxp=p,eval_score=ev,eval_p=ep))\n print('done',book,file=sys.stderr,flush=True)\nprint(json.dumps(out,indent=2))\n"
+}

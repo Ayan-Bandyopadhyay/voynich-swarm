@@ -80,15 +80,33 @@ THE LOOP
                               "key": {...}, "search": {"budget"}, "scope"?, "transliteration"?
                               (zl|it|rf|gc), "reading_order"? (normal|glyphs_reversed|words_reversed),
                               "spaces"? (word_breaks|ignored, experimental)}
+                              Family "letter-words" (letters written as whole words, the
+                              Naibbe class): "plaintext": "respaced", "key": {"prefix": {glyphs:
+                              letter}, "suffix": {glyphs: letter}}. A word is a prefix and/or a
+                              suffix; the letters of a page run on and the judge cuts them into
+                              words. Search: python3 -c "from vs import search, corpus; ..." with
+                              search.search_cell(lang, "letter-words", training_pages).
        anchor    anchor.json  a pairing from the pictures (anchors/README.md), or a second look
        picture   picture.json what a drawing shows, annotated BLIND from the scan (desk steps PIC-<folio>):
                  {"folio", "canvas", "blind": true, "statement",
                   "objects": [{"id", "kind": plant|plant_part|root|leaf|flower|star|sun|moon|
                                zodiac_figure|human_figure|pool|pipe|jar|container|rosette|diagram|animal|other,
-                               "features": {"leaf_shape": ..., "root": ..., "colour": ..., ...},
+                               "features": {"colour": "red", "ring": "outer", ...},
                                "label": "<ZL locus id of the label line, e.g. f99r.3>" or null}]}
-                 Two independent seats annotating the same folio make it AGREED (>= 80% of shared
-                 features match) or DISAGREE. Agreed picture data feeds the picture-text tests.
+                 Features that are compared take one value from a closed list (vs/pictures.py VOCAB),
+                 or "unclear":
+                   sex female|male  clothing nude|partly|clothed  container none|tub|barrel|other
+                   posture standing|lying|in_container|sitting  headwear none|some
+                   holds nothing|star|other  hair long|short|bound  cheeks red|none
+                   facing left|right|front  ring outer|middle|inner|centre|outside
+                   colour none|red|blue|green|yellow|brown|mixed  points 3..32  count 1..100
+                   centre none|dot|ring|face  tail yes|no
+                 Anything else (shape, leaf form, a note) may be written under any other name: it is
+                 kept as description and never compared. Give ring figures a label locus where one
+                 stands beside them, and "angle_deg_clockwise_from_top" (0-359) where it does not.
+                 Two independent seats annotating the same folio make it AGREED (>= 80% of what can
+                 be compared agrees; an object only one of them drew counts against) or DISAGREE
+                 (< 50%). Agreed picture data feeds the picture-text tests.
                               {"of": "N-001", "assessment": "agree"|"dissent"}; the swarm confirms
        source    source.json  prior work (front K): title, authors, year, url (open access),
                               summary, established: [...], open: [{question, front}]
@@ -154,7 +172,7 @@ The red team's only job is to break claims, and a landed attack weighs the same 
          share roots with the text about the same object).
          Also give "language_name" (the same name each time for the same language) and "encoding":
          how your language is written in the glyphs: plain | substitution | verbose | nomenclator |
-         table-cipher | abbreviation | syllabic. Each language is a row of the hypothesis matrix and
+         table-cipher | abbreviation | syllabic | letter-words. Each language is a row of the hypothesis matrix and
          each encoding you try fills its own cell.
   key    A decoy that a key reads about as fluently as the manuscript:
          attack.json = {"attack": "key", "target_key": "<key id on the record, e.g. K-latin-substitution-001>",
