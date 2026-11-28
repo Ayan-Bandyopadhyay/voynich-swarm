@@ -80,6 +80,12 @@ THE LOOP
                               "key": {...}, "search": {"budget"}, "scope"?, "transliteration"?
                               (zl|it|rf|gc), "reading_order"? (normal|glyphs_reversed|words_reversed),
                               "spaces"? (word_breaks|ignored, experimental)}
+                              Family "letter-words" (letters written as whole words, the
+                              Naibbe class): "plaintext": "respaced", "key": {"prefix": {glyphs:
+                              letter}, "suffix": {glyphs: letter}}. A word is a prefix and/or a
+                              suffix; the letters of a page run on and the judge cuts them into
+                              words. Search: python3 -c "from vs import search, corpus; ..." with
+                              search.search_cell(lang, "letter-words", training_pages).
        anchor    anchor.json  a pairing from the pictures (anchors/README.md), or a second look
        picture   picture.json what a drawing shows, annotated BLIND from the scan (desk steps PIC-<folio>):
                  {"folio", "canvas", "blind": true, "statement",
@@ -166,7 +172,7 @@ The red team's only job is to break claims, and a landed attack weighs the same 
          share roots with the text about the same object).
          Also give "language_name" (the same name each time for the same language) and "encoding":
          how your language is written in the glyphs: plain | substitution | verbose | nomenclator |
-         table-cipher | abbreviation | syllabic. Each language is a row of the hypothesis matrix and
+         table-cipher | abbreviation | syllabic | letter-words. Each language is a row of the hypothesis matrix and
          each encoding you try fills its own cell.
   key    A decoy that a key reads about as fluently as the manuscript:
          attack.json = {"attack": "key", "target_key": "<key id on the record, e.g. K-latin-substitution-001>",

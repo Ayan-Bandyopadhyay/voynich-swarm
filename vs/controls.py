@@ -80,7 +80,7 @@ def make(lang, kind="simple", seed=0, words_per_line=8, lines_per_page=10, homop
         enc = {c: [g] for c, g in zip(letters, glyphs)}
     elif kind == "simple":
         enc = {l: [glyphs[i]] for i, l in enumerate(letters)}
-    elif kind == "codebook":
+    elif kind in ("codebook", "letter-words"):
         enc = {}
     elif cipher_kind in ("homophonic", "nomenclator", "abbreviation", "syllabic"):
         # the most frequent letters get `homophones` glyphs, the rest one; needs few letters
@@ -181,6 +181,42 @@ def make(lang, kind="simple", seed=0, words_per_line=8, lines_per_page=10, homop
             units.append(abbreviated[suffix])
         return "".join(noisy(units, rng))
 
+    if kind == "letter-words":
+        # Letters as whole words: the plaintext's letters run on without its spaces and are dealt
+        # one or two to a cipher word. A prefix stands for the first letter and a suffix for the
+        # second (or either alone for a single letter), each letter with `homophones` prefixes
+        # and `homophones` suffixes. Prefixes and suffixes are spelled with disjoint glyphs.
+        # Sized like the manuscript: about 38,000 cipher words.
+        lw_rng = random.Random(f"control/{lang}/letter-words/{seed}/{corpus_id}")
+        noise_rng = random.Random(f"control/{lang}/letter-words-noise/{seed}/{corpus_id}")
+        front, back = ["q", "o", "k", "t", "p", "f", "ch", "sh", "cth", "ckh"], ["e", "y", "a", "d", "i", "l", "r", "n", "m", "s"]
+
+        def stock(alphabet, count):
+            out = set()
+            while len(out) < count:
+                out.add("".join(lw_rng.choice(alphabet) for _ in range(lw_rng.choice((1, 2, 2, 3)))))
+            out = sorted(out)
+            lw_rng.shuffle(out)
+            return out
+        pre, suf = stock(front, homophones * len(letters)), stock(back, homophones * len(letters))
+        lw_prefix = {l: pre[i * homophones:(i + 1) * homophones] for i, l in enumerate(letters)}
+        lw_suffix = {l: suf[i * homophones:(i + 1) * homophones] for i, l in enumerate(letters)}
+        stream = [c for w in words for c in w if c in lw_prefix][:57000]
+
+        def pick(table, letter, pool):
+            unit = lw_rng.choice(table[letter])
+            return noise_rng.choice([x for x in pool if x != unit]) if noise_rng.random() < noise else unit
+        ciphertext, i = [], 0
+        while i < len(stream):
+            if i + 1 < len(stream) and lw_rng.random() < 0.5:
+                ciphertext.append(pick(lw_prefix, stream[i], pre) + pick(lw_suffix, stream[i + 1], suf))
+                i += 2
+            else:
+                table, pool = (lw_prefix, pre) if lw_rng.random() < 0.5 else (lw_suffix, suf)
+                ciphertext.append(pick(table, stream[i], pool))
+                i += 1
+        words = ciphertext
+
     if kind == "nulls":
         null_stock = {}
         ciphertext = [cipher(word) for word in words]
@@ -205,7 +241,7 @@ def make(lang, kind="simple", seed=0, words_per_line=8, lines_per_page=10, homop
         pg = Page(pid, n, {"I": "H", "L": None, "H": None})
         for k in range(lines_per_page):
             ws = words[i:i + words_per_line]
-            if kind != "nulls":
+            if kind not in ("nulls", "letter-words"):
                 ws = [cipher(w) for w in ws]
             i += words_per_line
             ws = [w for w in ws if w]
@@ -235,6 +271,10 @@ def make(lang, kind="simple", seed=0, words_per_line=8, lines_per_page=10, homop
         true_key["key"]["map"].update({"q" + label: syllable for syllable, labels in sign_map.items() for label in labels})
     if kind == "nulls":
         true_key.update(family=kind, key={"map": dec, "null_words": list(null_stock), "null_glyphs": []})
+    if kind == "letter-words":
+        true_key.update(family=kind, plaintext="respaced",
+                        key={"prefix": {u: l for l, us in lw_prefix.items() for u in us},
+                             "suffix": {u: l for l, us in lw_suffix.items() for u in us}})
     return tr, ev, true_key
 
 
