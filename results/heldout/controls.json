@@ -13624,5 +13624,422 @@
   "true_key_passes_noisy": false,
   "search_cracks_control": false,
   "added_with": "medieval_czech_01473c19"
+ },
+ {
+  "language": "latin",
+  "family": "letter-words",
+  "control": "letter-words",
+  "control_tokens": 5440,
+  "true_key": {
+   "submission": "control-latin-letter-words",
+   "family": "letter-words",
+   "target": {
+    "language": "latin",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07948,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-latin-letter-words-control",
+   "family": "letter-words",
+   "target": {
+    "language": "latin",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.0857,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "italian",
+  "family": "letter-words",
+  "control": "letter-words",
+  "control_tokens": 5440,
+  "true_key": {
+   "submission": "control-italian-letter-words",
+   "family": "letter-words",
+   "target": {
+    "language": "italian",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04152,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-italian-letter-words-control",
+   "family": "letter-words",
+   "target": {
+    "language": "italian",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.05176,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": true
+ },
+ {
+  "language": "spanish",
+  "family": "letter-words",
+  "control": "letter-words",
+  "control_tokens": 5440,
+  "true_key": {
+   "submission": "control-spanish-letter-words",
+   "family": "letter-words",
+   "target": {
+    "language": "spanish",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07641,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-spanish-letter-words-control",
+   "family": "letter-words",
+   "target": {
+    "language": "spanish",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.08049,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "french",
+  "family": "letter-words",
+  "control": "letter-words",
+  "control_tokens": 5440,
+  "true_key": {
+   "submission": "control-french-letter-words",
+   "family": "letter-words",
+   "target": {
+    "language": "french",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.02863,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-french-letter-words-control",
+   "family": "letter-words",
+   "target": {
+    "language": "french",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.03288,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "catalan",
+  "family": "letter-words",
+  "control": "letter-words",
+  "control_tokens": 4000,
+  "true_key": {
+   "submission": "control-catalan-letter-words",
+   "family": "letter-words",
+   "target": {
+    "language": "catalan",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures",
+    "d_not_illusion"
+   ],
+   "passes_without_anchors": false,
+   "savings": -0.00812,
+   "killed_by": []
+  },
+  "true_key_passes": false,
+  "search_key": {
+   "submission": "grid-catalan-letter-words-control",
+   "family": "letter-words",
+   "target": {
+    "language": "catalan",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "a_compresses",
+    "c_pictures"
+   ],
+   "passes_without_anchors": false,
+   "savings": 0.00344,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": false,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "german",
+  "family": "letter-words",
+  "control": "letter-words",
+  "control_tokens": 4000,
+  "true_key": {
+   "submission": "control-german-letter-words",
+   "family": "letter-words",
+   "target": {
+    "language": "german",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.04245,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-german-letter-words-control",
+   "family": "letter-words",
+   "target": {
+    "language": "german",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.0514,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "english",
+  "family": "letter-words",
+  "control": "letter-words",
+  "control_tokens": 5440,
+  "true_key": {
+   "submission": "control-english-letter-words",
+   "family": "letter-words",
+   "target": {
+    "language": "english",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07586,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-english-letter-words-control",
+   "family": "letter-words",
+   "target": {
+    "language": "english",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.07269,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "czech",
+  "family": "letter-words",
+  "control": "letter-words",
+  "control_tokens": 5440,
+  "true_key": {
+   "submission": "control-czech-letter-words",
+   "family": "letter-words",
+   "target": {
+    "language": "czech",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.13053,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-czech-letter-words-control",
+   "family": "letter-words",
+   "target": {
+    "language": "czech",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.13326,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
+ },
+ {
+  "language": "hebrew",
+  "family": "letter-words",
+  "control": "letter-words",
+  "control_tokens": 5440,
+  "true_key": {
+   "submission": "control-hebrew-letter-words",
+   "family": "letter-words",
+   "target": {
+    "language": "hebrew",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.03975,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-hebrew-letter-words-control",
+   "family": "letter-words",
+   "target": {
+    "language": "hebrew",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.03975,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": false,
+  "search_cracks_control": false
+ },
+ {
+  "language": "greek",
+  "family": "letter-words",
+  "control": "letter-words",
+  "control_tokens": 5440,
+  "true_key": {
+   "submission": "control-greek-letter-words",
+   "family": "letter-words",
+   "target": {
+    "language": "greek",
+    "period": "control"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.14412,
+   "killed_by": []
+  },
+  "true_key_passes": true,
+  "search_key": {
+   "submission": "grid-greek-letter-words-control",
+   "family": "letter-words",
+   "target": {
+    "language": "greek",
+    "period": "grid search"
+   },
+   "verdict": "FAIL",
+   "failed": [
+    "c_pictures"
+   ],
+   "passes_without_anchors": true,
+   "savings": 0.13662,
+   "killed_by": []
+  },
+  "search_cracks_control_clean": true,
+  "noise": 0.02,
+  "true_key_passes_noisy": true,
+  "search_cracks_control": true
  }
 ]

@@ -34,7 +34,13 @@ with a positive control proving it (true key passes, red-team keys fail) is the 
 noisy German control; step J-power-german-substitution. (2) Verbose ciphers have demonstrated
 power only in Latin and English: extend to Italian, Spanish and French before any verbose key
 there counts. (3) Syllabic / Naibbe-style ciphers (Greshko 2025, on the record): a cipher family
-(code PR to vs/families/) with a positive control the search cracks at 2% noise. Until a family
+(code PR to vs/families/) with a positive control the search cracks at 2% noise. DONE in a first
+form: the `letter-words` family (one Voynich word is a prefix and/or a suffix, each one letter,
+with homophones; the plaintext's spaces are not kept, vs/respace.py) has a manuscript-sized
+control the search cracks at 2% noise in Latin, Italian, Spanish, English, Czech and Greek. Open:
+French, German and Hebrew (the TRUE key fails criterion (a) at 2% noise there: its margin is only
+3-4% clean); a cut that lets one glyph serve in both prefix and suffix (vs/search_letter_words.py
+labels each glyph one way); Greshko's exact tables as a second control. Until a family
 has power in a language, keys there are INCONCLUSIVE by rule, so this unlocks those cells.
 
 **The candidate-language list.** Which languages have been proposed for the manuscript, and by

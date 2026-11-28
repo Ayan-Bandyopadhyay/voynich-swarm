@@ -58,8 +58,11 @@ confirmed yet, so no key can pass the full judge: this is deliberate.
   that no key exists.
 - **Reference corpora are only partly period-appropriate**, and some include modern editorial
   matter. Each pin carries its period.
-- **Word-level families only.** Ciphers that cross word boundaries (transposition, spaces as
-  nulls) need line-level families: planned, not built.
+- **Mostly word-level families.** Ciphers that cross word boundaries (transposition, spaces as
+  nulls) need line-level families: planned, not built. One family does not keep words as words:
+  `letter-words` (letters written as whole words, the Naibbe class), read as a letter stream the
+  judge cuts into words itself (vs/respace.py), every band taken from genuine text put through
+  the same treatment.
 - **The fact battery's operationalizations can be weak.** F04/F05 (precedence grammar) and
   F16 (JSD of small samples) are refuted partly because the tests are blunt. They stay
   refuted as stated; sharper versions are new claims with new ids.

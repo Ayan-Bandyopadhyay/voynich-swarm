@@ -8,6 +8,9 @@ A key may declare
                      EXPERIMENTAL: the kill tests handle it; criterion (a) recovers such lines with a
                      line-level, space-aware preimage code (judge.line_preimage_bits), proven on a
                      positive control in tests/test_line_preimage.py.
+  "plaintext":       "words" (default) | "respaced"   (the decoded letters run on without the
+                     plaintext's spaces and the judge cuts them into words itself: vs/respace.py.
+                     Required by the letter-words family, and only that family may use it)
 The view is applied to training and evaluation pages alike, before any scoring.
 """
 from .ivtff import Page, Line
@@ -20,6 +23,19 @@ def check(sub):
     for k, allowed in OPTIONS.items():
         if sub.get(k, allowed[0]) not in allowed:
             raise SystemExit(f"{k} must be one of {allowed}")
+    respaced = sub.get("plaintext", "words")
+    if respaced not in ("words", "respaced"):
+        raise SystemExit("plaintext must be one of ('words', 'respaced')")
+    if (sub.get("family") == "letter-words") != (respaced == "respaced"):
+        raise SystemExit('the letter-words family reads with "plaintext": "respaced", and no other family does')
+    if sub.get("family") == "letter-words":
+        key = sub.get("key")
+        tables = [key.get(k) for k in ("prefix", "suffix")] if isinstance(key, dict) else [None]
+        if not all(isinstance(t, dict) and all(isinstance(a, str) and a and isinstance(b, str) for a, b in t.items())
+                   for t in tables):
+            raise SystemExit('a letter-words key is {"prefix": {glyphs: letters}, "suffix": {glyphs: letters}}')
+        if sub.get("spaces", "word_breaks") != "word_breaks" or sub.get("reading_order", "normal") == "glyphs_reversed":
+            raise SystemExit("letter-words reads whole words in their written form (spaces word_breaks; glyphs not reversed)")
 
 
 def apply(pages, sub):
