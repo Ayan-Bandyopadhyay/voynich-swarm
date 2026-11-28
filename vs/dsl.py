@@ -50,7 +50,25 @@ statistics:
                                                            length >= L (default 4) with a word at edit distance exactly 1 on the
                                                            previous numbered line, minus the share with one four lines back
   {"repeat_ngram": n}                                      share of word n-grams (n<=6) that occur at least twice
+  {"repeated_pair_types": true}                            share of distinct directed within-line word pairs appearing
+                                                           at least twice; certain P words, with gaps as barriers.
+                                                           shuffle_within_line permutes within each certain run.
   {"hapax_share": true} | {"zipf_slope": ranks} | {"mean_length": true}
+  {"directional_pairs": {"window": W, "drop_top": K, "excess": T}}
+                                                           Fraction of observed unordered, distinct word-type pairs
+                                                           whose forward/reverse occurrence counts differ by more than T.
+                                                           Count pairs up to W positions apart after removing the K
+                                                           most frequent types (including all types tied at the cutoff).
+                                                           Count only within original contiguous selected line runs;
+                                                           stop-word removal may close gaps within a run, but never
+                                                           bridges uncertain/unselected tokens or line boundaries.
+                                                           Requires 30 retained tokens and 30 observed pair types.
+                                                           This fixes one convention for ambiguities in the published
+                                                           denominator and filtering; it is not an exact paper replay.
+  {"filtered_vocab": {"measure": M, "drop_top": K}}          M is type_token or singleton_token: distinct types, or
+                                                           singleton types, divided by retained token count. Frequency
+                                                           filtering uses the same explicit K and tie rule as above.
+                                                           These are distinct definitions of 'unique word ratio'.
   {"near_copy": {"window": k, "min_length": L}}            share of words of length >= L within edit distance exactly 1
                                                            of one of the previous k (1..50) on the page
   {"page_similarity": {"within": d, "min_words": m}}       median cosine of word-count vectors of two pages at most d pages
@@ -437,6 +455,40 @@ def _matched_rightwardness(toks, arg, with_counts=False):
         sum(groups[1]) / len(groups[1]) - sum(groups[0]) / len(groups[0])
     return (value, counts) if with_counts else value
 
+def _stop_types(toks, k):
+    """K most frequent types, including every tie at the cutoff; invariant to type renaming."""
+    if not k:
+        return set()
+    counts = Counter(t['w'] for t in toks)
+    if k > len(counts):
+        return set(counts)
+    threshold = sorted(counts.values(), reverse=True)[k - 1]
+    return {word for word, count in counts.items() if count >= threshold}
+
+
+def _directional_pair_counts(toks, arg):
+    stops = _stop_types(toks, arg['drop_top'])
+    directed = Counter()
+    kept = 0
+    for run in runs_of(toks):
+        words = [t['w'] for t in run if t['w'] not in stops]
+        kept += len(words)
+        for i, a in enumerate(words):
+            for b in words[i + 1:i + 1 + arg['window']]:
+                if a != b:
+                    directed[a, b] += 1
+    unordered = {tuple(sorted((a, b))) for a, b in directed}
+    skewed = sum(abs(directed[a, b] - directed[b, a]) > arg['excess'] for a, b in unordered)
+    return {'retained_tokens': kept, 'removed_types': len(stops),
+            'pair_types': len(unordered), 'skewed_types': skewed}
+
+
+def _filtered_vocab_counts(toks, arg):
+    stops = _stop_types(toks, arg['drop_top'])
+    counts = Counter(t['w'] for t in toks if t['w'] not in stops)
+    return {'retained_tokens': sum(counts.values()), 'removed_types': len(stops),
+            'distinct_types': len(counts), 'singleton_types': sum(v == 1 for v in counts.values())}
+
 
 # Fixed pool used by the released Parisel grille tokenizer. Longest matches first.
 _BOUNDARY_UNITS = tuple(sorted({"o", "a", "q", "d", "s", "t", "k", "p", "f", "c", "ch", "sh", "ck", "cth", "cph", "ok", "ot", "ol", "or", "k2", "t2", "p2", "f2", "d2", "s2", "ch2", "sh2", "ckh", "cth2", "cfh", "dy", "dl", "dm", "ds", "dar", "dal", "iin", "in", "ir", "iir", "iiir", "al", "am", "an", "ar", "ain", "aiin", "ey", "ed", "es", "edy", "eey", "eedy", "ly", "ry", "ny", "my", "ldy"}, key=lambda x: (-len(x), x)))
@@ -501,7 +553,7 @@ def check_statistic(st):
         _int(arg, 1, 6, "repeat_ngram n")
     elif name == "zipf_slope":
         _int(arg, 3, 100_000, "zipf_slope ranks")
-    elif name in ("edge_mi", "edge_mi_break", "edge_length_cmi", "hapax_share", "mean_length", "line_repeat_excess"):
+    elif name in ("edge_mi", "edge_mi_break", "edge_length_cmi", "hapax_share", "mean_length", "line_repeat_excess", "repeated_pair_types"):
         if arg is not True:
             raise SpecError(f"{name} takes true")
     elif name == "line_near_excess":
@@ -534,6 +586,16 @@ def check_statistic(st):
         hi = _int(arg["max_line"], 3, 200, "max_line")
         if lo > hi:
             raise SpecError("min_line must not exceed max_line")
+    elif name == "directional_pairs":
+        _keys(arg, {"window", "drop_top", "excess"}, name, ("window", "drop_top", "excess"))
+        _int(arg['window'], 1, 10, 'directional_pairs window')
+        _int(arg['drop_top'], 0, 20, 'directional_pairs drop_top')
+        _int(arg['excess'], 0, 1000, 'directional_pairs excess')
+    elif name == "filtered_vocab":
+        _keys(arg, {"measure", "drop_top"}, name, ("measure", "drop_top"))
+        if arg['measure'] not in ('type_token', 'singleton_token'):
+            raise SpecError('filtered_vocab.measure is type_token | singleton_token')
+        _int(arg['drop_top'], 0, 20, 'filtered_vocab drop_top')
     elif name == "picture_label":
         _keys(arg, {"test", "min_objects"}, name, ("test",))
         if arg["test"] not in PICTURE_TESTS:
@@ -571,8 +633,21 @@ def statistic(st, toks, all_toks):
         return _matched_rightwardness(toks, arg)
     if len(toks) < MIN_TOKENS:
         return NAN
+    if name == "repeated_pair_types":
+        eligible = [t for t in toks if t['unit'] == 'P' and t['w'] and not UNCERTAIN(t['w'])]
+        pairs = Counter((a['w'], b['w']) for run in runs_of(eligible) for a, b in zip(run, run[1:]))
+        if sum(pairs.values()) < MIN_TOKENS:
+            return NAN
+        return sum(n >= 2 for n in pairs.values()) / len(pairs)
     if name == "paragraph_gap_corr":
         return _paragraph_gap_value(all_toks, arg["symbol"])[0]
+    if name == "directional_pairs":
+        c = _directional_pair_counts(toks, arg)
+        return c['skewed_types'] / c['pair_types'] if min(c['retained_tokens'], c['pair_types']) >= MIN_TOKENS else NAN
+    if name == "filtered_vocab":
+        c = _filtered_vocab_counts(toks, arg)
+        numerator = c['distinct_types'] if arg['measure'] == 'type_token' else c['singleton_types']
+        return numerator / c['retained_tokens'] if c['retained_tokens'] >= MIN_TOKENS else NAN
     if name == "rate":
         vals = set(arg["in"])
         return sum(any(v in vals for v in feature(arg["feature"], t["w"])) for t in toks) / len(toks)
@@ -904,7 +979,7 @@ def _shuffle_picture_labels(all_toks, rng):
 # statistics whose features mean the same thing in another script, so a reference language can be measured
 LAYOUT_FREE = {"entropy", "hapax_share", "zipf_slope", "mean_length", "repeat_ngram", "cond_entropy", "adjacent_mi",
                "edge_mi", "near_copy", "glyph_cond_entropy", "page_reuse", "line_repeat_excess",
-               "line_near_excess"}
+               "line_near_excess", "directional_pairs", "filtered_vocab"}
 MIN_REFERENCES = 3
 
 _NULL_KEY = {"shuffle_within_line": lambda t: t["line"], "shuffle_within_page": lambda t: t["page"],
@@ -976,6 +1051,17 @@ def _shuffled(all_toks, how, rng, statistic_name=None):
             rng.shuffle(ws)
             for i, w in zip(indices, ws):
                 words[i] = w
+        return [dict(t, w=w) for t, w in zip(all_toks, words)]
+    if statistic_name == "repeated_pair_types" and how == "shuffle_within_line":
+        eligible = [t for t in all_toks if t['unit'] == 'P' and t['w'] and not UNCERTAIN(t['w'])]
+        indexes = {(t['line'], t['k']): i for i, t in enumerate(all_toks)}
+        words = [t['w'] for t in all_toks]
+        for run in runs_of(eligible):
+            idx = [indexes[t['line'], t['k']] for t in run]
+            shuffled = [words[i] for i in idx]
+            rng.shuffle(shuffled)
+            for i, word in zip(idx, shuffled):
+                words[i] = word
         return [dict(t, w=w) for t, w in zip(all_toks, words)]
     if statistic_name == "paragraph_gap_corr" and how in ("shuffle_within_paragraph", "shuffle_within_line"):
         groups = (_paragraph_gap_groups(all_toks) if how == "shuffle_within_paragraph"
@@ -1126,6 +1212,11 @@ def check(spec):
         raise SpecError("scope values are strings")
     check_select(spec.get("select"))
     name = check_statistic(spec["statistic"])
+    if name == "repeated_pair_types":
+        sel = spec.get("select") or {}
+        if (set(sel.get("unit") or []) != {"P"} or sel.get("position", "any") != "any"
+                or not sel.get("certain", True) or "language" in sel):
+            raise SpecError("repeated_pair_types requires all certain paragraph words")
     if name in ("edge_length_cmi", "boundary_class_rate"):
         sel = spec.get("select") or {}
         if (set(sel.get("unit") or []) != {"P"} or sel.get("position", "any") != "any"
@@ -1170,6 +1261,8 @@ def check(spec):
                 raise SpecError("boundary_class_rate uses only shuffle_within_line")
             if name == "paragraph_gap_corr" and c["null"] not in ("shuffle_within_paragraph", "shuffle_within_line"):
                 raise SpecError("paragraph_gap_corr uses shuffle_within_paragraph or shuffle_within_line")
+            if name == "repeated_pair_types" and c["null"] != "shuffle_within_line":
+                raise SpecError("repeated_pair_types uses only shuffle_within_line")
             if c["null"] == "shuffle_within_paragraph" and name != "paragraph_gap_corr":
                 raise SpecError("shuffle_within_paragraph is defined only for paragraph_gap_corr")
             if c.get("direction", "greater") not in ("greater", "less"):
@@ -1207,6 +1300,9 @@ def canonical(spec):
         arg = {"min_length": arg.get("min_length", 1)}
     elif name == "line_near_excess":
         arg = {"min_length": arg.get("min_length", 4)}
+    elif name == "directional_pairs":
+        # Pair-level excess is a tunable threshold, not a new measurement.
+        arg = {"window": arg["window"], "drop_top": arg["drop_top"]}
     elif name == "page_group_similarity":
         arg = {"by": arg["by"], "min_words": arg.get("min_words", 40)}
     elif name == "picture_label":
@@ -1267,6 +1363,10 @@ def evaluate(spec, pages, train_pages=None):
         detail.update(adjacent_pairs=len(_edge_length_pairs(toks)), potentially_movable_pairs=movable)
         if any(c.get("null") == "shuffle_within_line_length" for c in spec["compare"]) and movable < MIN_TOKENS:
             raise SpecError("shuffle_within_line_length needs at least 30 potentially movable adjacent pairs")
+    if name == 'directional_pairs':
+        detail['directional_pairs'] = _directional_pair_counts(toks, st[name])
+    elif name == 'filtered_vocab':
+        detail['filtered_vocab'] = _filtered_vocab_counts(toks, st[name])
     if "paragraph_gap_corr" in st:
         _value, support = _paragraph_gap_value(all_toks, st["paragraph_gap_corr"]["symbol"])
         detail["pairs_by_lag"] = support

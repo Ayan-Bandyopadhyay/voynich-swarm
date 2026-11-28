@@ -259,6 +259,36 @@ def run_attack(spec, split):
     raise SystemExit("attack must be key, fact, generator or claim")
 
 
+def best_generator(attacks=None):
+    """The meaningless whole-book generator on the record that reproduces the most established
+    facts (ties: the earlier one), as its registry item, or None. Invented-language and
+    enciphered-language tests are not generators of meaningless text and are left out."""
+    from . import registry
+    attacks = registry.read("attack") if attacks is None else attacks
+    facts = {i["id"] for i in registry.read("fact") if i["verdict"] == "ESTABLISHED"}
+    best = None
+    for a in attacks:
+        d, sub = a.get("detail") or {}, (a.get("submitted") or {}).get("attack.json") or {}
+        if d.get("attack") != "generator" or d.get("hypothesis") in ("invented_language", "enciphered_language") or not sub.get("lines"):
+            continue
+        n = sum(1 for k, v in (d.get("per_fact") or {}).items() if v and k in facts)
+        if best is None or n > best[0]:
+            best = (n, a)
+    return best[1] if best else None
+
+
+def against_best_generator(fact_item, split):
+    """Run the best generator on the record against one new fact, as an attack on it would be run.
+    Only the outcome is returned (no hidden values): {"attack": id, "reproduced": bool} or None."""
+    g = best_generator()
+    if g is None:
+        return None
+    sub = g["submitted"]["attack.json"]
+    r = fact_attack(fact_item["id"], sub["lines"], split, fact_item, cut=sub.get("cut", "lines"),
+                    first_lines=sub.get("first_lines"))
+    return {"attack": g["id"], "reproduced": bool(r.get("success")) and not r.get("refused")}
+
+
 def generator_test(lines, split, cut="lines", facts_on_record=None, first_lines=None):
     """Program G's scoreboard: one body of synthetic text from one procedure, run against EVERY
     established fact at once. The score is how many it reproduces. A procedure that reproduces

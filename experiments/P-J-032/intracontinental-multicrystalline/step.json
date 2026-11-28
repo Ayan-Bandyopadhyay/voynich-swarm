@@ -1,0 +1,1934 @@
+{
+  "title": "Held-out lag checks catch a phase-jump artifact but not periodic plaintext",
+  "program": "J",
+  "on_path": true,
+  "hard": true,
+  "statement": "On three previously unused books, a fixed shortest-significant-lag search selects the planted period in all nine settings per book under clean cycling, 2% word-level character substitution and 1% step holds. With one phase jump it selects 130 instead of 131 in four cases; fixed-lag tests on the subsequent 4,000 ciphertext words do not confirm those four. However, a repeated ten-character plaintext with independently random row choices triggers and confirms the search in every run, so holdout confirmation does not establish a cyclic column schedule.",
+  "check": "Calibrate against additional genuinely independent books and periodic, repeated-passage, nonperiodic correlated and adversarial plaintexts, row-table collisions, multiple noise levels and schedule changes. Test unknown periods outside the scanned range, several change-point times and partial or gradual shifts, and compare honest false alarm rates by independent text. Develop and benchmark an uncertainty-aware unknown-key decoder against known-column oracles before using period evidence to exclude any language or cipher family.",
+  "method": "Freeze the P-J-032 exploratory rule before running these three books: on the first 4,000 ciphertext words, compute exact-word equality rates at lags 2–160, obtain the maximum equality rate on each of 49 global token shuffles, and choose the smallest lag whose add-one maximum-calibrated tail is <=.05. If no lag qualifies, report none. On the following 4,000 ciphertext words independently shuffle 49 times and test only the selected lag; this is a fixed-lag confirmation check, not a new scan. Both stages use exact word strings and independent seeded shuffles. The method was originally chosen after inspecting P-J-026’s pilot, so this follow-up tests a previously adaptive rule on new texts but is not an independently published preregistration.",
+  "cipher": "Use hash-verified Hermes P.III table SHA-256 fe3f24a46dbc6b655eab8dbbd75addf84ee4a7dbd387ad802af75d02edfe5b4d. For each plaintext source (Augustine Confessiones, El conde Lucanor, Nibelungenlied), retain normalized table-alphabet characters, use the first 4,000 as a Markov reference and the next 8,000 as plaintext. For each requested period 10, 24 and 131 and seed 1103, 2207 or 3301, sample distinct table rows. Baseline advances cyclically once per character; noise2 substitutes one random lowercase character in 2% of ciphertext words; gap1 holds instead of advancing with 1% independent probability; phasejump makes one extra row advance at position 2,000; random selects rows independently. The separate Markov control samples characters from an add-one bigram trained on the source reference and selects rows randomly. A repeated 10-character uniformly sampled motif with random rows tests periodic plaintext confounding. Three seeds per book reuse each source passage and are not independent texts.",
+  "results_interpretation": "For each of the three books and nine period/seed combinations, clean, noise2 and gap1 each recover all nine exact periods and confirm the selected lag on the later segment. Phasejump recovers 9/9, 6/9 and 8/9 by book; all four errors are lag 130 for true period 131, and none is significant on the later segment. No random-row historical or sampled Markov control produces a significant training lag. Every repeated-motif trial selects and confirms a lag even though rows are independently random. The repeat motif and cipher schedule are determined only by period and seed, so its nine period/seed cases are duplicated across the three book labels and must not be counted as 27 independent controls.",
+  "limitations": "The exact 2% substitution and 1% hold scenarios are narrow, as are a single phase jump, three periods, three books and three row keys per period. Exact-word matching may be brittle under different transcription noise; a static subsequent segment cannot establish robustness under later changes. Random-row and Markov controls are not exhaustive, and the ten-character motif is deliberately artificial. Global shuffle destroys dependence and can produce false significance for structured plaintext, including after holdout confirmation. NumPy default_rng and Python random algorithms are version-dependent; full script and NumPy version are included. No period search gives an unknown-column key or plaintext recovery, and no manuscript or season-heldout data were measured.",
+  "results": {
+    "books": [
+      "la_augustine",
+      "es_lucanor",
+      "de_nibelunge"
+    ],
+    "periods": [
+      10,
+      24,
+      131
+    ],
+    "seeds": [
+      1103,
+      2207,
+      3301
+    ],
+    "modes": [
+      "cyclic",
+      "noise2",
+      "gap1",
+      "phasejump",
+      "random",
+      "repeat10",
+      "markov"
+    ],
+    "rows": [
+      {
+        "book": "la_augustine",
+        "period": 10,
+        "seed": 1103,
+        "mode": "cyclic",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.07669172932330827,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 10,
+        "seed": 1103,
+        "mode": "noise2",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.07192982456140351,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 10,
+        "seed": 1103,
+        "mode": "gap1",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.06992481203007518,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 10,
+        "seed": 1103,
+        "mode": "phasejump",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.07669172932330827,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 10,
+        "seed": 1103,
+        "mode": "random",
+        "selected_lag": null,
+        "train_maxp": 0.62,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "la_augustine",
+        "period": 10,
+        "seed": 1103,
+        "mode": "repeat10",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.09649122807017543,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 10,
+        "seed": 1103,
+        "mode": "markov",
+        "selected_lag": null,
+        "train_maxp": 0.2,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "la_augustine",
+        "period": 10,
+        "seed": 2207,
+        "mode": "cyclic",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.07669172932330827,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 10,
+        "seed": 2207,
+        "mode": "noise2",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.07468671679197995,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 10,
+        "seed": 2207,
+        "mode": "gap1",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.07067669172932331,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 10,
+        "seed": 2207,
+        "mode": "phasejump",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.07669172932330827,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 10,
+        "seed": 2207,
+        "mode": "random",
+        "selected_lag": null,
+        "train_maxp": 0.82,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "la_augustine",
+        "period": 10,
+        "seed": 2207,
+        "mode": "repeat10",
+        "selected_lag": 3,
+        "train_maxp": 0.02,
+        "eval_score": 0.03402551913935452,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 10,
+        "seed": 2207,
+        "mode": "markov",
+        "selected_lag": null,
+        "train_maxp": 0.66,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "la_augustine",
+        "period": 10,
+        "seed": 3301,
+        "mode": "cyclic",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.07669172932330827,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 10,
+        "seed": 3301,
+        "mode": "noise2",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.07443609022556391,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 10,
+        "seed": 3301,
+        "mode": "gap1",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.06967418546365915,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 10,
+        "seed": 3301,
+        "mode": "phasejump",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.07669172932330827,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 10,
+        "seed": 3301,
+        "mode": "random",
+        "selected_lag": null,
+        "train_maxp": 0.4,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "la_augustine",
+        "period": 10,
+        "seed": 3301,
+        "mode": "repeat10",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.10225563909774436,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 10,
+        "seed": 3301,
+        "mode": "markov",
+        "selected_lag": null,
+        "train_maxp": 0.84,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "la_augustine",
+        "period": 24,
+        "seed": 1103,
+        "mode": "cyclic",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.07394366197183098,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 24,
+        "seed": 1103,
+        "mode": "noise2",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.07042253521126761,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 24,
+        "seed": 1103,
+        "mode": "gap1",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.05835010060362173,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 24,
+        "seed": 1103,
+        "mode": "phasejump",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.07394366197183098,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 24,
+        "seed": 1103,
+        "mode": "random",
+        "selected_lag": null,
+        "train_maxp": 0.46,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "la_augustine",
+        "period": 24,
+        "seed": 1103,
+        "mode": "repeat10",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.043859649122807015,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 24,
+        "seed": 1103,
+        "mode": "markov",
+        "selected_lag": null,
+        "train_maxp": 0.36,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "la_augustine",
+        "period": 24,
+        "seed": 2207,
+        "mode": "cyclic",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.07394366197183098,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 24,
+        "seed": 2207,
+        "mode": "noise2",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.07117706237424547,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 24,
+        "seed": 2207,
+        "mode": "gap1",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.06388329979879276,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 24,
+        "seed": 2207,
+        "mode": "phasejump",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.07394366197183098,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 24,
+        "seed": 2207,
+        "mode": "random",
+        "selected_lag": null,
+        "train_maxp": 0.86,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "la_augustine",
+        "period": 24,
+        "seed": 2207,
+        "mode": "repeat10",
+        "selected_lag": 3,
+        "train_maxp": 0.02,
+        "eval_score": 0.011508631473605204,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 24,
+        "seed": 2207,
+        "mode": "markov",
+        "selected_lag": null,
+        "train_maxp": 0.68,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "la_augustine",
+        "period": 24,
+        "seed": 3301,
+        "mode": "cyclic",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.07394366197183098,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 24,
+        "seed": 3301,
+        "mode": "noise2",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.07117706237424547,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 24,
+        "seed": 3301,
+        "mode": "gap1",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.05658953722334004,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 24,
+        "seed": 3301,
+        "mode": "phasejump",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.07394366197183098,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 24,
+        "seed": 3301,
+        "mode": "random",
+        "selected_lag": null,
+        "train_maxp": 0.88,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "la_augustine",
+        "period": 24,
+        "seed": 3301,
+        "mode": "repeat10",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.040852130325814535,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 24,
+        "seed": 3301,
+        "mode": "markov",
+        "selected_lag": null,
+        "train_maxp": 0.96,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "la_augustine",
+        "period": 131,
+        "seed": 1103,
+        "mode": "cyclic",
+        "selected_lag": 131,
+        "train_maxp": 0.02,
+        "eval_score": 0.08451796329800983,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 131,
+        "seed": 1103,
+        "mode": "noise2",
+        "selected_lag": 131,
+        "train_maxp": 0.02,
+        "eval_score": 0.08167485138278625,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 131,
+        "seed": 1103,
+        "mode": "gap1",
+        "selected_lag": 131,
+        "train_maxp": 0.02,
+        "eval_score": 0.026621866115275266,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 131,
+        "seed": 1103,
+        "mode": "phasejump",
+        "selected_lag": 131,
+        "train_maxp": 0.02,
+        "eval_score": 0.08451796329800983,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 131,
+        "seed": 1103,
+        "mode": "random",
+        "selected_lag": null,
+        "train_maxp": 0.38,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "la_augustine",
+        "period": 131,
+        "seed": 1103,
+        "mode": "repeat10",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.010776942355889725,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 131,
+        "seed": 1103,
+        "mode": "markov",
+        "selected_lag": null,
+        "train_maxp": 0.38,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "la_augustine",
+        "period": 131,
+        "seed": 2207,
+        "mode": "cyclic",
+        "selected_lag": 131,
+        "train_maxp": 0.02,
+        "eval_score": 0.08451796329800983,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 131,
+        "seed": 2207,
+        "mode": "noise2",
+        "selected_lag": 131,
+        "train_maxp": 0.02,
+        "eval_score": 0.08038252778495736,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 131,
+        "seed": 2207,
+        "mode": "gap1",
+        "selected_lag": 131,
+        "train_maxp": 0.02,
+        "eval_score": 0.03825277849573533,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 131,
+        "seed": 2207,
+        "mode": "phasejump",
+        "selected_lag": 131,
+        "train_maxp": 0.02,
+        "eval_score": 0.08451796329800983,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 131,
+        "seed": 2207,
+        "mode": "random",
+        "selected_lag": null,
+        "train_maxp": 0.18,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "la_augustine",
+        "period": 131,
+        "seed": 2207,
+        "mode": "repeat10",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.005513784461152882,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 131,
+        "seed": 2207,
+        "mode": "markov",
+        "selected_lag": null,
+        "train_maxp": 0.2,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "la_augustine",
+        "period": 131,
+        "seed": 3301,
+        "mode": "cyclic",
+        "selected_lag": 131,
+        "train_maxp": 0.02,
+        "eval_score": 0.08451796329800983,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 131,
+        "seed": 3301,
+        "mode": "noise2",
+        "selected_lag": 131,
+        "train_maxp": 0.02,
+        "eval_score": 0.08167485138278625,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 131,
+        "seed": 3301,
+        "mode": "gap1",
+        "selected_lag": 131,
+        "train_maxp": 0.02,
+        "eval_score": 0.01783406565003877,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 131,
+        "seed": 3301,
+        "mode": "phasejump",
+        "selected_lag": 131,
+        "train_maxp": 0.02,
+        "eval_score": 0.08451796329800983,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 131,
+        "seed": 3301,
+        "mode": "random",
+        "selected_lag": null,
+        "train_maxp": 0.98,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "la_augustine",
+        "period": 131,
+        "seed": 3301,
+        "mode": "repeat10",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.010275689223057645,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "la_augustine",
+        "period": 131,
+        "seed": 3301,
+        "mode": "markov",
+        "selected_lag": null,
+        "train_maxp": 0.82,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "es_lucanor",
+        "period": 10,
+        "seed": 1103,
+        "mode": "cyclic",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.08020050125313283,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 10,
+        "seed": 1103,
+        "mode": "noise2",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.07543859649122807,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 10,
+        "seed": 1103,
+        "mode": "gap1",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.07318295739348371,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 10,
+        "seed": 1103,
+        "mode": "phasejump",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.08020050125313283,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 10,
+        "seed": 1103,
+        "mode": "random",
+        "selected_lag": null,
+        "train_maxp": 0.24,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "es_lucanor",
+        "period": 10,
+        "seed": 1103,
+        "mode": "repeat10",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.09649122807017543,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 10,
+        "seed": 1103,
+        "mode": "markov",
+        "selected_lag": null,
+        "train_maxp": 0.28,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "es_lucanor",
+        "period": 10,
+        "seed": 2207,
+        "mode": "cyclic",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.08020050125313283,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 10,
+        "seed": 2207,
+        "mode": "noise2",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.07669172932330827,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 10,
+        "seed": 2207,
+        "mode": "gap1",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.07493734335839598,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 10,
+        "seed": 2207,
+        "mode": "phasejump",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.08020050125313283,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 10,
+        "seed": 2207,
+        "mode": "random",
+        "selected_lag": null,
+        "train_maxp": 0.12,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "es_lucanor",
+        "period": 10,
+        "seed": 2207,
+        "mode": "repeat10",
+        "selected_lag": 3,
+        "train_maxp": 0.02,
+        "eval_score": 0.03402551913935452,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 10,
+        "seed": 2207,
+        "mode": "markov",
+        "selected_lag": null,
+        "train_maxp": 0.2,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "es_lucanor",
+        "period": 10,
+        "seed": 3301,
+        "mode": "cyclic",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.08020050125313283,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 10,
+        "seed": 3301,
+        "mode": "noise2",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.07669172932330827,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 10,
+        "seed": 3301,
+        "mode": "gap1",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.07218045112781955,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 10,
+        "seed": 3301,
+        "mode": "phasejump",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.08020050125313283,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 10,
+        "seed": 3301,
+        "mode": "random",
+        "selected_lag": null,
+        "train_maxp": 0.1,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "es_lucanor",
+        "period": 10,
+        "seed": 3301,
+        "mode": "repeat10",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.10225563909774436,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 10,
+        "seed": 3301,
+        "mode": "markov",
+        "selected_lag": null,
+        "train_maxp": 0.68,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "es_lucanor",
+        "period": 24,
+        "seed": 1103,
+        "mode": "cyclic",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.08073440643863179,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 24,
+        "seed": 1103,
+        "mode": "noise2",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.07821931589537223,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 24,
+        "seed": 1103,
+        "mode": "gap1",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.062122736418511064,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 24,
+        "seed": 1103,
+        "mode": "phasejump",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.08073440643863179,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 24,
+        "seed": 1103,
+        "mode": "random",
+        "selected_lag": null,
+        "train_maxp": 0.4,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "es_lucanor",
+        "period": 24,
+        "seed": 1103,
+        "mode": "repeat10",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.043859649122807015,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 24,
+        "seed": 1103,
+        "mode": "markov",
+        "selected_lag": null,
+        "train_maxp": 0.82,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "es_lucanor",
+        "period": 24,
+        "seed": 2207,
+        "mode": "cyclic",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.08073440643863179,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 24,
+        "seed": 2207,
+        "mode": "noise2",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.07696177062374246,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 24,
+        "seed": 2207,
+        "mode": "gap1",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.07042253521126761,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 24,
+        "seed": 2207,
+        "mode": "phasejump",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.08073440643863179,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 24,
+        "seed": 2207,
+        "mode": "random",
+        "selected_lag": null,
+        "train_maxp": 0.22,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "es_lucanor",
+        "period": 24,
+        "seed": 2207,
+        "mode": "repeat10",
+        "selected_lag": 3,
+        "train_maxp": 0.02,
+        "eval_score": 0.011508631473605204,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 24,
+        "seed": 2207,
+        "mode": "markov",
+        "selected_lag": null,
+        "train_maxp": 0.66,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "es_lucanor",
+        "period": 24,
+        "seed": 3301,
+        "mode": "cyclic",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.08073440643863179,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 24,
+        "seed": 3301,
+        "mode": "noise2",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.0789738430583501,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 24,
+        "seed": 3301,
+        "mode": "gap1",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.05960764587525151,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 24,
+        "seed": 3301,
+        "mode": "phasejump",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.08073440643863179,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 24,
+        "seed": 3301,
+        "mode": "random",
+        "selected_lag": null,
+        "train_maxp": 0.14,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "es_lucanor",
+        "period": 24,
+        "seed": 3301,
+        "mode": "repeat10",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.040852130325814535,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 24,
+        "seed": 3301,
+        "mode": "markov",
+        "selected_lag": null,
+        "train_maxp": 0.62,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "es_lucanor",
+        "period": 131,
+        "seed": 1103,
+        "mode": "cyclic",
+        "selected_lag": 131,
+        "train_maxp": 0.02,
+        "eval_score": 0.08064099250452313,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 131,
+        "seed": 1103,
+        "mode": "noise2",
+        "selected_lag": 131,
+        "train_maxp": 0.02,
+        "eval_score": 0.07650555699147066,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 131,
+        "seed": 1103,
+        "mode": "gap1",
+        "selected_lag": 131,
+        "train_maxp": 0.02,
+        "eval_score": 0.02843111915223572,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 131,
+        "seed": 1103,
+        "mode": "phasejump",
+        "selected_lag": 130,
+        "train_maxp": 0.02,
+        "eval_score": 0.0,
+        "eval_fixed_lag_p": 1.0
+      },
+      {
+        "book": "es_lucanor",
+        "period": 131,
+        "seed": 1103,
+        "mode": "random",
+        "selected_lag": null,
+        "train_maxp": 0.84,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "es_lucanor",
+        "period": 131,
+        "seed": 1103,
+        "mode": "repeat10",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.010776942355889725,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 131,
+        "seed": 1103,
+        "mode": "markov",
+        "selected_lag": null,
+        "train_maxp": 0.82,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "es_lucanor",
+        "period": 131,
+        "seed": 2207,
+        "mode": "cyclic",
+        "selected_lag": 131,
+        "train_maxp": 0.02,
+        "eval_score": 0.08064099250452313,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 131,
+        "seed": 2207,
+        "mode": "noise2",
+        "selected_lag": 131,
+        "train_maxp": 0.02,
+        "eval_score": 0.07805634530886534,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 131,
+        "seed": 2207,
+        "mode": "gap1",
+        "selected_lag": 131,
+        "train_maxp": 0.02,
+        "eval_score": 0.033600413543551304,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 131,
+        "seed": 2207,
+        "mode": "phasejump",
+        "selected_lag": 130,
+        "train_maxp": 0.02,
+        "eval_score": 0.00025839793281653745,
+        "eval_fixed_lag_p": 0.88
+      },
+      {
+        "book": "es_lucanor",
+        "period": 131,
+        "seed": 2207,
+        "mode": "random",
+        "selected_lag": null,
+        "train_maxp": 0.78,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "es_lucanor",
+        "period": 131,
+        "seed": 2207,
+        "mode": "repeat10",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.005513784461152882,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 131,
+        "seed": 2207,
+        "mode": "markov",
+        "selected_lag": null,
+        "train_maxp": 0.6,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "es_lucanor",
+        "period": 131,
+        "seed": 3301,
+        "mode": "cyclic",
+        "selected_lag": 131,
+        "train_maxp": 0.02,
+        "eval_score": 0.08064099250452313,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 131,
+        "seed": 3301,
+        "mode": "noise2",
+        "selected_lag": 131,
+        "train_maxp": 0.02,
+        "eval_score": 0.07883173946756268,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 131,
+        "seed": 3301,
+        "mode": "gap1",
+        "selected_lag": 131,
+        "train_maxp": 0.02,
+        "eval_score": 0.016024812613078313,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 131,
+        "seed": 3301,
+        "mode": "phasejump",
+        "selected_lag": 130,
+        "train_maxp": 0.02,
+        "eval_score": 0.0,
+        "eval_fixed_lag_p": 1.0
+      },
+      {
+        "book": "es_lucanor",
+        "period": 131,
+        "seed": 3301,
+        "mode": "random",
+        "selected_lag": null,
+        "train_maxp": 0.78,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "es_lucanor",
+        "period": 131,
+        "seed": 3301,
+        "mode": "repeat10",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.010275689223057645,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "es_lucanor",
+        "period": 131,
+        "seed": 3301,
+        "mode": "markov",
+        "selected_lag": null,
+        "train_maxp": 0.48,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 10,
+        "seed": 1103,
+        "mode": "cyclic",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.08320802005012531,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 10,
+        "seed": 1103,
+        "mode": "noise2",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.0786967418546366,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 10,
+        "seed": 1103,
+        "mode": "gap1",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.07468671679197995,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 10,
+        "seed": 1103,
+        "mode": "phasejump",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.08320802005012531,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 10,
+        "seed": 1103,
+        "mode": "random",
+        "selected_lag": null,
+        "train_maxp": 0.22,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 10,
+        "seed": 1103,
+        "mode": "repeat10",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.09649122807017543,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 10,
+        "seed": 1103,
+        "mode": "markov",
+        "selected_lag": null,
+        "train_maxp": 0.6,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 10,
+        "seed": 2207,
+        "mode": "cyclic",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.08320802005012531,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 10,
+        "seed": 2207,
+        "mode": "noise2",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.08020050125313283,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 10,
+        "seed": 2207,
+        "mode": "gap1",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.0761904761904762,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 10,
+        "seed": 2207,
+        "mode": "phasejump",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.08320802005012531,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 10,
+        "seed": 2207,
+        "mode": "random",
+        "selected_lag": null,
+        "train_maxp": 0.58,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 10,
+        "seed": 2207,
+        "mode": "repeat10",
+        "selected_lag": 3,
+        "train_maxp": 0.02,
+        "eval_score": 0.03402551913935452,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 10,
+        "seed": 2207,
+        "mode": "markov",
+        "selected_lag": null,
+        "train_maxp": 0.42,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 10,
+        "seed": 3301,
+        "mode": "cyclic",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.08320802005012531,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 10,
+        "seed": 3301,
+        "mode": "noise2",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.08020050125313283,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 10,
+        "seed": 3301,
+        "mode": "gap1",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.07268170426065163,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 10,
+        "seed": 3301,
+        "mode": "phasejump",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.08320802005012531,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 10,
+        "seed": 3301,
+        "mode": "random",
+        "selected_lag": null,
+        "train_maxp": 0.36,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 10,
+        "seed": 3301,
+        "mode": "repeat10",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.10225563909774436,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 10,
+        "seed": 3301,
+        "mode": "markov",
+        "selected_lag": null,
+        "train_maxp": 0.78,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 24,
+        "seed": 1103,
+        "mode": "cyclic",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.0744466800804829,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 24,
+        "seed": 1103,
+        "mode": "noise2",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.0721830985915493,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 24,
+        "seed": 1103,
+        "mode": "gap1",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.059104627766599596,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 24,
+        "seed": 1103,
+        "mode": "phasejump",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.0744466800804829,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 24,
+        "seed": 1103,
+        "mode": "random",
+        "selected_lag": null,
+        "train_maxp": 0.28,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 24,
+        "seed": 1103,
+        "mode": "repeat10",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.043859649122807015,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 24,
+        "seed": 1103,
+        "mode": "markov",
+        "selected_lag": null,
+        "train_maxp": 0.48,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 24,
+        "seed": 2207,
+        "mode": "cyclic",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.0744466800804829,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 24,
+        "seed": 2207,
+        "mode": "noise2",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.07017102615694165,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 24,
+        "seed": 2207,
+        "mode": "gap1",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.06262575452716297,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 24,
+        "seed": 2207,
+        "mode": "phasejump",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.0744466800804829,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 24,
+        "seed": 2207,
+        "mode": "random",
+        "selected_lag": null,
+        "train_maxp": 0.62,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 24,
+        "seed": 2207,
+        "mode": "repeat10",
+        "selected_lag": 3,
+        "train_maxp": 0.02,
+        "eval_score": 0.011508631473605204,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 24,
+        "seed": 2207,
+        "mode": "markov",
+        "selected_lag": null,
+        "train_maxp": 0.62,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 24,
+        "seed": 3301,
+        "mode": "cyclic",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.0744466800804829,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 24,
+        "seed": 3301,
+        "mode": "noise2",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.07193158953722334,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 24,
+        "seed": 3301,
+        "mode": "gap1",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.05709255533199195,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 24,
+        "seed": 3301,
+        "mode": "phasejump",
+        "selected_lag": 24,
+        "train_maxp": 0.02,
+        "eval_score": 0.0744466800804829,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 24,
+        "seed": 3301,
+        "mode": "random",
+        "selected_lag": null,
+        "train_maxp": 0.3,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 24,
+        "seed": 3301,
+        "mode": "repeat10",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.040852130325814535,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 24,
+        "seed": 3301,
+        "mode": "markov",
+        "selected_lag": null,
+        "train_maxp": 0.36,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 131,
+        "seed": 1103,
+        "mode": "cyclic",
+        "selected_lag": 131,
+        "train_maxp": 0.02,
+        "eval_score": 0.07934866890669423,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 131,
+        "seed": 1103,
+        "mode": "noise2",
+        "selected_lag": 131,
+        "train_maxp": 0.02,
+        "eval_score": 0.07547169811320754,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 131,
+        "seed": 1103,
+        "mode": "gap1",
+        "selected_lag": 131,
+        "train_maxp": 0.02,
+        "eval_score": 0.02558800723701215,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 131,
+        "seed": 1103,
+        "mode": "phasejump",
+        "selected_lag": 131,
+        "train_maxp": 0.02,
+        "eval_score": 0.07883173946756268,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 131,
+        "seed": 1103,
+        "mode": "random",
+        "selected_lag": null,
+        "train_maxp": 0.18,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 131,
+        "seed": 1103,
+        "mode": "repeat10",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.010776942355889725,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 131,
+        "seed": 1103,
+        "mode": "markov",
+        "selected_lag": null,
+        "train_maxp": 0.56,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 131,
+        "seed": 2207,
+        "mode": "cyclic",
+        "selected_lag": 131,
+        "train_maxp": 0.02,
+        "eval_score": 0.07883173946756268,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 131,
+        "seed": 2207,
+        "mode": "noise2",
+        "selected_lag": 131,
+        "train_maxp": 0.02,
+        "eval_score": 0.07624709227190489,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 131,
+        "seed": 2207,
+        "mode": "gap1",
+        "selected_lag": 131,
+        "train_maxp": 0.02,
+        "eval_score": 0.03437580770224864,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 131,
+        "seed": 2207,
+        "mode": "phasejump",
+        "selected_lag": 130,
+        "train_maxp": 0.02,
+        "eval_score": 0.0007751937984496124,
+        "eval_fixed_lag_p": 0.44
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 131,
+        "seed": 2207,
+        "mode": "random",
+        "selected_lag": null,
+        "train_maxp": 0.32,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 131,
+        "seed": 2207,
+        "mode": "repeat10",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.005513784461152882,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 131,
+        "seed": 2207,
+        "mode": "markov",
+        "selected_lag": null,
+        "train_maxp": 0.14,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 131,
+        "seed": 3301,
+        "mode": "cyclic",
+        "selected_lag": 131,
+        "train_maxp": 0.02,
+        "eval_score": 0.07934866890669423,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 131,
+        "seed": 3301,
+        "mode": "noise2",
+        "selected_lag": 131,
+        "train_maxp": 0.02,
+        "eval_score": 0.07650555699147066,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 131,
+        "seed": 3301,
+        "mode": "gap1",
+        "selected_lag": 131,
+        "train_maxp": 0.02,
+        "eval_score": 0.01835099508917033,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 131,
+        "seed": 3301,
+        "mode": "phasejump",
+        "selected_lag": 131,
+        "train_maxp": 0.02,
+        "eval_score": 0.07883173946756268,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 131,
+        "seed": 3301,
+        "mode": "random",
+        "selected_lag": null,
+        "train_maxp": 0.26,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 131,
+        "seed": 3301,
+        "mode": "repeat10",
+        "selected_lag": 10,
+        "train_maxp": 0.02,
+        "eval_score": 0.010275689223057645,
+        "eval_fixed_lag_p": 0.02
+      },
+      {
+        "book": "de_nibelunge",
+        "period": 131,
+        "seed": 3301,
+        "mode": "markov",
+        "selected_lag": null,
+        "train_maxp": 0.7,
+        "eval_score": null,
+        "eval_fixed_lag_p": null
+      }
+    ]
+  },
+  "reproducibility": {
+    "script": "import csv,hashlib,json,random\nfrom collections import Counter,defaultdict\nimport numpy as np\nfrom vs import refcorpus\nraw=open('/tmp/voy-piii.csv','rb').read();assert hashlib.sha256(raw).hexdigest()=='fe3f24a46dbc6b655eab8dbbd75addf84ee4a7dbd387ad802af75d02edfe5b4d'\ntable=list(csv.DictReader(raw.decode('utf-8-sig').splitlines()));alphabet=list(table[0]);allowed=set(alphabet)\nfor row in table:\n for c in row:row[c]=row[c].strip()\nBOOKS=('la_augustine','es_lucanor','de_nibelunge');SEEDS=(1103,2207,3301);PERIODS=(10,24,131);MODES=('cyclic','noise2','gap1','phasejump','random','repeat10','markov')\ndef score(a,lag):return float(np.mean(a[:-lag]==a[lag:]))\ndef infer(a,seed):\n rates=np.array([score(a,k) for k in range(2,161)]);r=np.random.default_rng(seed);null=[]\n for j in range(49):\n  b=r.permutation(a);null.append(max(score(b,k) for k in range(2,161)))\n sig=[i+2 for i,v in enumerate(rates) if (1+sum(n>=v for n in null))/50<=.05]\n return (min(sig) if sig else None),(1+sum(n>=max(rates) for n in null))/50\n\ndef test_lag(a,lag,seed):\n r=np.random.default_rng(seed);v=score(a,lag);null=[score(r.permutation(a),lag) for i in range(49)];return v,(1+sum(x>=v for x in null))/50\n\ndef markov(ref,seed,n):\n r=random.Random(seed);cnt=Counter(zip(ref,ref[1:]));rows=defaultdict(list)\n for a in alphabet:rows[a]=[cnt[a,b]+1 for b in alphabet]\n x=[r.choice(alphabet)]\n for i in range(n-1):x.append(r.choices(alphabet,weights=rows[x[-1]],k=1)[0])\n return ''.join(x)\ndef make(plain,period,mode,seed):\n r=random.Random(seed);rows=r.sample(range(len(table)),period);gate=random.Random(seed+777);noise=random.Random(seed+888);pos=0;out=[];valid=[]\n for i,c in enumerate(plain):\n  if mode in ('random','repeat10','markov'):cidx=r.randrange(period)\n  else:\n   if i:\n    if mode=='gap1' and gate.random()<.01:pass\n    else:pos=(pos+1)%period\n   if mode=='phasejump' and i==2000:pos=(pos+1)%period\n   cidx=pos\n  w=table[rows[cidx]][c]\n  if mode=='noise2' and noise.random()<.02:\n   k=noise.randrange(len(w));rep=noise.choice([x for x in 'abcdefghijklmnopqrstuvwxyz' if x!=w[k]]);w=w[:k]+rep+w[k+1:]\n  out.append(w)\n codes={w:i for i,w in enumerate(sorted(set(out)))};return np.array([codes[w] for w in out],dtype=np.int32)\nout={'books':BOOKS,'periods':PERIODS,'seeds':SEEDS,'modes':MODES,'rows':[]}\nfor book in BOOKS:\n pin=next(x for x in refcorpus.pins() if x['id']==book);assert hashlib.sha256(open(pin['file'],'rb').read()).hexdigest()==pin['sha256'];plain=''.join(c for b in refcorpus.blocks_of(book) for c in b if c in allowed);assert len(plain)>=12000;ref=plain[:4000];test=plain[4000:12000]\n for period in PERIODS:\n  for seed in SEEDS:\n   for mode in MODES:\n    use=test\n    if mode=='repeat10':\n     rr=random.Random(seed+55);motif=rr.choices(alphabet,k=10);use=''.join(motif[i%10] for i in range(8000))\n    elif mode=='markov':use=markov(ref,seed+44,8000)\n    arr=make(use,period,mode,seed);lag,p=infer(arr[:4000],seed+10000)\n    ev,ep=(None,None) if lag is None else test_lag(arr[4000:],lag,seed+20000)\n    out['rows'].append({'book':book,'period':period,'seed':seed,'mode':mode,'selected_lag':lag,'train_maxp':p,'eval_score':ev,'eval_fixed_lag_p':ep})\n print('done '+book,flush=True,file=__import__('sys').stderr)\nprint(json.dumps(out,indent=2))\n",
+    "numpy_version": "2.5.4"
+  }
+}

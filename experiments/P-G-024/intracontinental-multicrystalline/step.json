@@ -1,0 +1,152 @@
+{
+  "title": "Length-weighted fragment wheels improve size distributions but retain excess grammar exceptions and too few near neighbors",
+  "program": "G",
+  "on_path": false,
+  "hard": true,
+  "statement": "Using the previously published two literal 24-position-by-three-wheel banks, weight each complete spin by the clipped ratio of its ZL public-training word-length frequency to the independent two-bank spin probability, and independently try a 10% chance of copying one uniformly selected wheel fragment from the preceding word when the bank is unchanged. In ten matched-size seeded draws, length weighting reduced median token-length total variation from 0.274 to 0.054 in ZL and 0.260 to 0.043 in IT without sharing. With both mechanisms, token TV was 0.052 and 0.040, type-length TV 0.051 and 0.042. Length-matched exact-one-edit rates rose from 0.0189 to 0.0232 in ZL and 0.0151 to 0.0246 in IT when sharing was added to weighting, but real matched rates were 0.0437 and 0.0427; exact repeats remained 0.0022 and 0.0027 versus about 0.010. Length-matched independent real controls gave one-edit 0.0270 and 0.0256. Out-of-grammar generated token mass remained 0.384 and 0.380, versus observed 0.0507 and 0.0467. The unchanged union of wheel inventories supported 32 ZL and 33 IT evaluation exception types absent from ZL training, matching the preceding report. These are public practice estimates, not held-out findings.",
+  "check": "Evaluate a prespecified mechanism that reduces generated outside-grammar mass while retaining length and near-neighbor fits with the same fixed inventories. Freeze or validate independently the full conditional length-stratum comparison and quantify uncertainty over more seeds. Account for model complexity and use held-out scoring only after a reviewed primitive exists.",
+  "design": {
+    "banks": "P-G-024 detail.evidence.frozen_fit.schedule: baseline and exception_bank; exception selection probability 0.053192576196151885",
+    "weights": "For each reparsed glyph length, clip ZL training token probability divided by independent mixture probability to [0.25,4]; draw a whole triple proportionally to the weight for its length.",
+    "sharing": "After drawing, with probability 0.10 and only when the previous word used the same bank, replace one randomly chosen role with the previous word’s fragment at that role. Reset at every eligible text run; no extra wheel entries.",
+    "ablations": "2 x 2 weighting and sharing; 10 seeds 31001–31010. Each synthetic text matches the eligible sequence lengths of the target public evaluation witness.",
+    "scope": "Certain ASCII-lowercase paragraph tokens with invalid tokens breaking adjacency; public practice training ZL and corresponding practice evaluation ZL and IT. EVA-basic is used for lengths and Levenshtein distance.",
+    "matching": "For each generated draw, retain real adjacent length strata observed among generated pairs and sample generated pairs with replacement within the real pair strata. The random-length matched real reference samples words independently from the evaluation witness conditional on length. Median across draws; report retained real pairs. This matched analysis was added after inspecting an initial unmatched run and is exploratory.",
+    "grammar": "Stolfi NormalWord productions, downloaded from https://www.ic.unicamp.br/~stolfi/EXPORT/voynich/00-06-07-word-grammar/txt.n.html. Parsing all listed productions reproduces the earlier exact ZL training outside-grammar fraction.",
+    "reproduction": "Extract the P-G-024 registry JSON line into /tmp/p-g-024.json and download the cited grammar to /tmp/stolfi-grammar.html; run the embedded Python with PYTHONPATH pointing at the repository root and pinned raw data present. Script SHA-256 f5931c92cec32bb93fc8f9b1badbef3de128ea7b0c5a2448aa8737791a9e7ddf. The first unmatched version had hash 79a458b2959614e81fea1e2f87556f113f23d84f8e1ffbbc05688e146ed6d2e1.",
+    "limitations": "Drawing complete triples with inverse-length weights is a probabilistic global wheel rule, not three independently spun physical wheels; preserving a fragment changes the resulting length distribution. Finite generated samples omit rare pair strata (retained fraction recorded), and weighted models do not change formal support because each weight is positive. The selected weights use only ZL training; neither transliteration evaluation set sets them."
+  },
+  "metrics": {
+    "zl": {
+      "weighted_False_share_False": {
+        "token_tv": 0.273668,
+        "type_tv": 0.161719,
+        "repeat": 0.000209,
+        "edit1": 0.004379,
+        "abnormal": 0.49002,
+        "support": 0.972356,
+        "matched_real_repeat": 0.009986,
+        "matched_real_edit1": 0.040133,
+        "matched_repeat": 0.000108,
+        "matched_edit1": 0.013636,
+        "iid_repeat": 0.003113,
+        "iid_edit1": 0.024382
+      },
+      "weighted_False_share_True": {
+        "token_tv": 0.278612,
+        "type_tv": 0.159496,
+        "repeat": 0.000417,
+        "edit1": 0.007089,
+        "abnormal": 0.49469,
+        "support": 0.975485,
+        "matched_real_repeat": 0.010014,
+        "matched_real_edit1": 0.040531,
+        "matched_repeat": 0.001186,
+        "matched_edit1": 0.017782,
+        "iid_repeat": 0.003546,
+        "iid_edit1": 0.024569
+      },
+      "weighted_True_share_False": {
+        "token_tv": 0.053928,
+        "type_tv": 0.052824,
+        "repeat": 0.000626,
+        "edit1": 0.011155,
+        "abnormal": 0.384362,
+        "support": 0.994888,
+        "matched_real_repeat": 0.009856,
+        "matched_real_edit1": 0.040919,
+        "matched_repeat": 0.000839,
+        "matched_edit1": 0.018861,
+        "iid_repeat": 0.003881,
+        "iid_edit1": 0.02705
+      },
+      "weighted_True_share_True": {
+        "token_tv": 0.051547,
+        "type_tv": 0.051268,
+        "repeat": 0.00146,
+        "edit1": 0.016785,
+        "abnormal": 0.383904,
+        "support": 0.995201,
+        "matched_real_repeat": 0.009853,
+        "matched_real_edit1": 0.043743,
+        "matched_repeat": 0.002202,
+        "matched_edit1": 0.023249,
+        "iid_repeat": 0.004812,
+        "iid_edit1": 0.026984
+      }
+    },
+    "it": {
+      "weighted_False_share_False": {
+        "token_tv": 0.260197,
+        "type_tv": 0.165102,
+        "repeat": 0.000211,
+        "edit1": 0.004114,
+        "abnormal": 0.490452,
+        "support": 0.987125,
+        "matched_real_repeat": 0.010242,
+        "matched_real_edit1": 0.041836,
+        "matched_repeat": 0.000107,
+        "matched_edit1": 0.01253,
+        "iid_repeat": 0.00441,
+        "iid_edit1": 0.023966
+      },
+      "weighted_False_share_True": {
+        "token_tv": 0.264831,
+        "type_tv": 0.166143,
+        "repeat": 0.000527,
+        "edit1": 0.00654,
+        "abnormal": 0.495458,
+        "support": 0.986176,
+        "matched_real_repeat": 0.010205,
+        "matched_real_edit1": 0.041822,
+        "matched_repeat": 0.000861,
+        "matched_edit1": 0.015299,
+        "iid_repeat": 0.003668,
+        "iid_edit1": 0.024554
+      },
+      "weighted_True_share_False": {
+        "token_tv": 0.042547,
+        "type_tv": 0.042811,
+        "repeat": 0.000633,
+        "edit1": 0.010232,
+        "abnormal": 0.384594,
+        "support": 0.9981,
+        "matched_real_repeat": 0.01015,
+        "matched_real_edit1": 0.042724,
+        "matched_repeat": 0.001163,
+        "matched_edit1": 0.015123,
+        "iid_repeat": 0.004125,
+        "iid_edit1": 0.025801
+      },
+      "weighted_True_share_True": {
+        "token_tv": 0.040137,
+        "type_tv": 0.042335,
+        "repeat": 0.001582,
+        "edit1": 0.016878,
+        "abnormal": 0.380423,
+        "support": 0.998312,
+        "matched_real_repeat": 0.010148,
+        "matched_real_edit1": 0.042729,
+        "matched_repeat": 0.002747,
+        "matched_edit1": 0.024633,
+        "iid_repeat": 0.004015,
+        "iid_edit1": 0.02556
+      }
+    }
+  },
+  "output": [
+    "training 29365 abnormal 0.053192576196151885 weights {1: 4, 2: 4, 3: 2.3878176788091867, 4: 1.3673305561287121, 5: 0.9331754722511872, 6: 0.6287431494678574, 7: 0.4793085332630368, 8: 0.2838148211211555, 9: 0.39908432184952575, 10: 0.7497360803677844}",
+    "support 18665 abnormal-unseen 12423",
+    "real zl 5461 4796 abnormal 0.05072331074894708 repeat 0.009805967035259754 edit1 0.044439808053411224 coverage 32",
+    "model zl False False {\"token_tv\": 0.273668, \"type_tv\": 0.161719, \"repeat\": 0.000209, \"edit1\": 0.004379, \"abnormal\": 0.49002, \"support\": 0.972356, \"matched_real_repeat\": 0.009986, \"matched_real_edit1\": 0.040133, \"matched_repeat\": 0.000108, \"matched_edit1\": 0.013636, \"iid_repeat\": 0.003113, \"iid_edit1\": 0.024382}",
+    "model zl False True {\"token_tv\": 0.278612, \"type_tv\": 0.159496, \"repeat\": 0.000417, \"edit1\": 0.007089, \"abnormal\": 0.49469, \"support\": 0.975485, \"matched_real_repeat\": 0.010014, \"matched_real_edit1\": 0.040531, \"matched_repeat\": 0.001186, \"matched_edit1\": 0.017782, \"iid_repeat\": 0.003546, \"iid_edit1\": 0.024569}",
+    "model zl True False {\"token_tv\": 0.053928, \"type_tv\": 0.052824, \"repeat\": 0.000626, \"edit1\": 0.011155, \"abnormal\": 0.384362, \"support\": 0.994888, \"matched_real_repeat\": 0.009856, \"matched_real_edit1\": 0.040919, \"matched_repeat\": 0.000839, \"matched_edit1\": 0.018861, \"iid_repeat\": 0.003881, \"iid_edit1\": 0.02705}",
+    "model zl True True {\"token_tv\": 0.051547, \"type_tv\": 0.051268, \"repeat\": 0.00146, \"edit1\": 0.016785, \"abnormal\": 0.383904, \"support\": 0.995201, \"matched_real_repeat\": 0.009853, \"matched_real_edit1\": 0.043743, \"matched_repeat\": 0.002202, \"matched_edit1\": 0.023249, \"iid_repeat\": 0.004812, \"iid_edit1\": 0.026984}",
+    "real it 5394 4740 abnormal 0.04671857619577308 repeat 0.010130856901646263 edit1 0.043689320388349516 coverage 33",
+    "model it False False {\"token_tv\": 0.260197, \"type_tv\": 0.165102, \"repeat\": 0.000211, \"edit1\": 0.004114, \"abnormal\": 0.490452, \"support\": 0.987125, \"matched_real_repeat\": 0.010242, \"matched_real_edit1\": 0.041836, \"matched_repeat\": 0.000107, \"matched_edit1\": 0.01253, \"iid_repeat\": 0.00441, \"iid_edit1\": 0.023966}",
+    "model it False True {\"token_tv\": 0.264831, \"type_tv\": 0.166143, \"repeat\": 0.000527, \"edit1\": 0.00654, \"abnormal\": 0.495458, \"support\": 0.986176, \"matched_real_repeat\": 0.010205, \"matched_real_edit1\": 0.041822, \"matched_repeat\": 0.000861, \"matched_edit1\": 0.015299, \"iid_repeat\": 0.003668, \"iid_edit1\": 0.024554}",
+    "model it True False {\"token_tv\": 0.042547, \"type_tv\": 0.042811, \"repeat\": 0.000633, \"edit1\": 0.010232, \"abnormal\": 0.384594, \"support\": 0.9981, \"matched_real_repeat\": 0.01015, \"matched_real_edit1\": 0.042724, \"matched_repeat\": 0.001163, \"matched_edit1\": 0.015123, \"iid_repeat\": 0.004125, \"iid_edit1\": 0.025801}",
+    "model it True True {\"token_tv\": 0.040137, \"type_tv\": 0.042335, \"repeat\": 0.001582, \"edit1\": 0.016878, \"abnormal\": 0.380423, \"support\": 0.998312, \"matched_real_repeat\": 0.010148, \"matched_real_edit1\": 0.042729, \"matched_repeat\": 0.002747, \"matched_edit1\": 0.024633, \"iid_repeat\": 0.004015, \"iid_edit1\": 0.02556}"
+  ],
+  "python_script": "import re,html,json,random,collections,itertools,statistics,hashlib\nfrom vs import corpus,ivtff\nfrom functools import lru_cache\nfrom pathlib import Path\nreg=json.load(open('/tmp/p-g-024.json'))['detail']['evidence'];fit=reg['frozen_fit'];banks=fit['schedule'];pbank=fit['exception_bank_draw_probability']\nsrc=html.unescape(re.sub(r'<[^>]+>','',Path('/tmp/stolfi-grammar.html').read_text()))\nsrc=src[src.index('NormalWord:'):src.index('AbnormalWord:')]\ngram={};cur=None\nfor line in src.splitlines():\n m=re.match(r'^([A-Za-z][A-Za-z0-9]*):\\s*$',line)\n if m:cur=m[1];gram[cur]=[];continue\n m=re.match(r'^\\s*\\d+\\s+[\\d.]+\\s+[\\d.]+\\s+(\\S+)',line)\n if m and cur:gram[cur].append(m[1])\n@lru_cache(None)\ndef pattern(n):\n if n not in gram:return re.escape(n)\n return '(?:'+'|'.join(''.join(pattern(x) for x in alt.split('.') if x) for alt in gram[n])+')'\nnormal=re.compile('^'+pattern('NormalWord')+'$')\ndef eligible(w):return bool(re.fullmatch('[a-z]+',w))\ndef sequences(pages):\n seq=[]\n for page in pages:\n  for line in page.lines:\n   if line.unit!='P':continue\n   part=[]\n   for w in line.words:\n    if eligible(w):part.append(w)\n    elif part:seq.append(part);part=[]\n   if part:seq.append(part)\n return seq\ndef glen(w):return len(ivtff.segment(w,'eva-basic'))\ndef edit1(a,b):\n a=ivtff.segment(a,'eva-basic');b=ivtff.segment(b,'eva-basic')\n if abs(len(a)-len(b))>1:return False\n if len(a)==len(b):return sum(x!=y for x,y in zip(a,b))==1\n if len(a)>len(b):a,b=b,a\n i=0\n while i<len(a) and a[i]==b[i]:i+=1\n return a[i:]==b[i+1:]\ndef tv(a,b):\n aa=sum(a.values());bb=sum(b.values());return sum(abs(a.get(k,0)/aa-b.get(k,0)/bb) for k in set(a)|set(b))/2\ntrain,_=corpus.split_pages('practice');tr=[w for seq in sequences(train) for w in seq]; trset=set(tr)\n# Freeze: fit only ZL training length ratios; clip inverse-frequency weights to [0.25,4],\n# shared fragment probability 0.10, same bank/role only, uniform if no previous slot;\n# independent random draw 0.0531926 specialist; seed 31001-31010.\ntriples={};hist=collections.Counter()\nfor b,slots in banks.items():\n triples[b]=[(tuple(t),' '.join([]).join(sum((list(x) for x in t),[]))) for t in itertools.product(*slots)]\n for t,w in triples[b]:hist[glen(w)]+=(pbank if b=='exception_bank' else 1-pbank)/len(triples[b])\ntarget=collections.Counter(map(glen,tr));total=sum(target.values())\nweights={n:min(4,max(.25,(target[n]/total)/v)) for n,v in hist.items() if v}\nprint('training',len(tr),'abnormal',sum(not bool(normal.fullmatch(w)) for w in tr)/len(tr),'weights',weights,flush=True)\nsupport={w for t in triples.values() for _,w in t};ab_unseen={w for w in support if w not in trset and not normal.fullmatch(w)}\nprint('support',len(support),'abnormal-unseen',len(ab_unseen),flush=True)\nfor trans in ('zl','it'):\n _,ev=corpus.split_pages('practice',trans); seqs=sequences(ev); real=[w for seq in seqs for w in seq]; pairs=[(a,b) for seq in seqs for a,b in zip(seq,seq[1:])]; bylen=collections.defaultdict(list)\n for w in real:bylen[glen(w)].append(w)\n realpairs=[(a,b) for a,b in pairs if glen(a) in hist and glen(b) in hist]\n print('real',trans,len(real),len(pairs),'abnormal',sum(not bool(normal.fullmatch(w)) for w in real)/len(real),'repeat',sum(a==b for a,b in realpairs)/len(realpairs),'edit1',sum(edit1(a,b) for a,b in realpairs)/len(realpairs),'coverage',len({w for w in real if not normal.fullmatch(w) and w not in trset}&support),flush=True)\n for weighted in (False,True):\n  for share in (False,True):\n   results=[]\n   for seed in range(31001,31011):\n    rng=random.Random(seed); generated=[];gp=[]; prev=None\n    dist={b:list(itertools.accumulate(weights[glen(w)] if weighted else 1 for t,w in vals)) for b,vals in triples.items()}\n    for seq in seqs:\n     oldw=None;prev=None\n     for _ in seq:\n      bank='exception_bank' if rng.random()<pbank else 'baseline'; ts=triples[bank];ix=rng.choices(range(len(ts)),cum_weights=dist[bank],k=1)[0];t=list(ts[ix][0]);\n      if share and prev and prev[0]==bank and rng.random()<.1:\n       role=rng.randrange(3);t[role]=prev[1][role]\n      w=''.join(sum((list(f) for f in t),[]));generated.append(w)\n      if oldw is not None:gp.append((oldw,w))\n      oldw=w;prev=(bank,t)\n    strata=collections.defaultdict(list)\n    for a,b in gp:strata[(glen(a),glen(b))].append((a,b))\n    rp=[(a,b) for a,b in realpairs if (glen(a),glen(b)) in strata]\n    matched=[rng.choice(strata[(glen(a),glen(b))]) for a,b in rp]\n    realind=[(rng.choice(bylen[glen(a)]),rng.choice(bylen[glen(b)])) for a,b in rp]\n    results.append({'token_tv':tv(collections.Counter(map(glen,real)),collections.Counter(map(glen,generated))),'type_tv':tv(collections.Counter(map(glen,set(real))),collections.Counter(map(glen,set(generated)))),'repeat':sum(a==b for a,b in gp)/len(gp),'edit1':sum(edit1(a,b) for a,b in gp)/len(gp),'abnormal':sum(not bool(normal.fullmatch(w)) for w in generated)/len(generated),'support':len(rp)/len(realpairs),'matched_real_repeat':sum(a==b for a,b in rp)/len(rp),'matched_real_edit1':sum(edit1(a,b) for a,b in rp)/len(rp),'matched_repeat':sum(a==b for a,b in matched)/len(matched),'matched_edit1':sum(edit1(a,b) for a,b in matched)/len(matched),'iid_repeat':sum(a==b for a,b in realind)/len(realind),'iid_edit1':sum(edit1(a,b) for a,b in realind)/len(realind)})\n   print('model',trans,weighted,share,json.dumps({k:round(statistics.median(x[k] for x in results),6) for k in results[0]}),flush=True)\n"
+}

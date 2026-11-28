@@ -111,6 +111,12 @@ def validate(d):
             if not isinstance(o, dict) or not o.get("id") or o.get("kind") not in PICTURE_KINDS or not isinstance(o.get("features", {}), dict):
                 errs.append(f"each object is {{\"id\", \"kind\": one of {sorted(PICTURE_KINDS)}, \"features\": {{...}}, \"label\": ZL locus id or null}}")
                 break
+        from .pictures import check_features
+        for o in objs if isinstance(objs, list) else []:
+            for err in check_features(o["features"] if isinstance(o, dict) and isinstance(o.get("features"), dict) else None):
+                errs.append(f"object {o.get('id')!r}: {err}")
+                if len(errs) > 20:
+                    break
     if e.get("kind") == "step":
         st = json.load(open(os.path.join(d, "step.json")))
         for k in ("title", "statement", "program", "check"):

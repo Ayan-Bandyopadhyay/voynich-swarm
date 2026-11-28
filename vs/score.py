@@ -137,7 +137,8 @@ def score(d, pr=None):
             # robustness: the claim must also hold on an independent transliteration (Takahashi)
             for t in ("it", "rf"):
                 try:
-                    robust[t] = dsl.evaluate(f["spec"], corpus.split_pages("heldout", t)[1], train)["pass"]
+                    t_train, t_ev = corpus.split_pages("heldout", t)   # train and score on the same transliteration
+                    robust[t] = dsl.evaluate(f["spec"], t_ev, t_train)["pass"]
                 except Exception as ex:
                     robust[t] = f"error: {str(ex)[:80]}"
             det["transliterations"] = dict(robust, zl=r["pass"])
@@ -150,6 +151,16 @@ def score(d, pr=None):
         item = {"id": registry.next_id("F"), "type": "fact", "title": f["title"], "statement": f["statement"],
                 "verdict": verdict, "value": r["value"], "detail": det,
                 "program": "L2", "source": f.get("source", "")}
+        if verdict == "ESTABLISHED":
+            # the best meaningless generator on the record is run against every new fact at once:
+            # a fact it already reproduces is no evidence of structure and is not a top attack target
+            from . import redteam
+            try:
+                bg = redteam.against_best_generator(item, "heldout")
+            except Exception as ex:   # the fact stands; the check is recorded as not run
+                bg = {"error": str(ex)[:120]}
+            if bg:
+                item["detail"]["best_generator"] = bg
         kind = verdict.lower()
     elif e["kind"] == "key":
         sub = judge.load_key(os.path.join(d, "key.json"))
@@ -186,10 +197,10 @@ def score(d, pr=None):
                 and i["provenance"]["added_by"] == _ow(e["handle"]) and str(i["provenance"].get("at", "")).startswith(day)
                 for i in registry.read()):
             return {"verdict": "REFUSED", "errors": ["one attack per fact per contributor per day (the hidden layout must not be probed)"]}
-        hyp = spec.get("hypothesis") if spec.get("hypothesis") in ("invented_language",) else "meaningless"
+        hyp = spec.get("hypothesis") if spec.get("hypothesis") in ("invented_language", "enciphered_language") else "meaningless"
         if spec.get("attack") == "generator" and any(
                 i["type"] == "attack" and i.get("target") == "*"
-                and ((i.get("detail") or {}).get("hypothesis") if (i.get("detail") or {}).get("hypothesis") in ("invented_language",) else "meaningless") == hyp
+                and ((i.get("detail") or {}).get("hypothesis") if (i.get("detail") or {}).get("hypothesis") in ("invented_language", "enciphered_language") else "meaningless") == hyp
                 and i["provenance"]["added_by"] == _ow(e["handle"]) and str(i["provenance"].get("at", "")).startswith(day)
                 for i in registry.read()):
             return {"verdict": "REFUSED", "errors": [f"one {hyp.replace('_', '-')} generator test per contributor per day (each verdict carries a bit per fact about the hidden pages)"]}
@@ -201,16 +212,16 @@ def score(d, pr=None):
         verdict = "SUCCEEDED" if r["success"] else "FAILED"
         if spec["attack"] == "generator" and not r.get("refused"):
             verdict = f"{r['reproduced']}/{r['of']}"
-            if spec.get("hypothesis") in ("invented_language", "meaningless"):
+            if spec.get("hypothesis") in ("invented_language", "enciphered_language", "meaningless"):
                 r["hypothesis"] = spec["hypothesis"]
-                if spec.get("hypothesis") == "invented_language":
+                if spec.get("hypothesis") in ("invented_language", "enciphered_language"):
                     from .season import GRID_FAMILIES
                     enc = spec.get("encoding", "plain")
-                    r["encoding"] = enc if enc in GRID_FAMILIES or enc == "plain" else "plain"
+                    r["encoding"] = enc if enc in GRID_FAMILIES or enc == "plain" else ("other" if spec["hypothesis"] == "enciphered_language" else "plain")
                     r["language_name"] = str(spec.get("language_name") or spec.get("title") or "")[:60]
         typ = "audit" if spec["attack"] == "claim" else "attack"
         item = {"id": registry.next_id("A" if typ == "audit" else "R"), "type": typ,
-                "title": (spec.get("claimant") or ((f"Invented-language test: {spec.get('title') or 'a constructed language'}, against every established fact" if spec.get("hypothesis") == "invented_language" else f"Generator test: {spec.get('title') or 'a procedure'}, against every established fact") if spec["attack"] == "generator" else f"{spec['attack']} attack on {r.get('target')}"))[:160],
+                "title": (spec.get("claimant") or ((f"Enciphered-language test: {spec.get('title') or 'a real language through a cipher'}, against every established fact" if spec.get("hypothesis") == "enciphered_language" else f"Invented-language test: {spec.get('title') or 'a constructed language'}, against every established fact" if spec.get("hypothesis") == "invented_language" else f"Generator test: {spec.get('title') or 'a procedure'}, against every established fact") if spec["attack"] == "generator" else f"{spec['attack']} attack on {r.get('target')}"))[:160],
                 "statement": spec.get("method") or e.get("summary", ""), "verdict": verdict if typ == "attack" else ("FAIL" if r["success"] else "PASS"),
                 "value": None, "detail": {k: v for k, v in r.items() if k != "lines"}, "program": "R", "target": r.get("target")}
         kind = "attack_succeeded" if r["success"] else "attack_failed"

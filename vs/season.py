@@ -23,9 +23,9 @@ def _langs():
 
 
 LANGS = _langs()
-FAMILIES = ["substitution", "verbose", "nomenclator", "table-cipher", "abbreviation", "syllabic", "nulls"]
-CONTROL_FOR = {"substitution": "homophonic", "verbose": "verbose", "nomenclator": "nomenclator", "table-cipher": "table-cipher", "abbreviation": "abbreviation", "syllabic": "syllabic", "nulls": "nulls"}
-GRID_FAMILIES = ["substitution", "verbose", "nomenclator", "table-cipher", "abbreviation", "syllabic", "nulls"]
+FAMILIES = ["substitution", "verbose", "nomenclator", "table-cipher", "abbreviation", "syllabic", "nulls", "letter-words"]
+CONTROL_FOR = {"substitution": "homophonic", "verbose": "verbose", "nomenclator": "nomenclator", "table-cipher": "table-cipher", "abbreviation": "abbreviation", "syllabic": "syllabic", "nulls": "nulls", "letter-words": "letter-words"}
+GRID_FAMILIES = ["substitution", "verbose", "nomenclator", "table-cipher", "abbreviation", "syllabic", "nulls", "letter-words"]
 
 
 def _save(split, name, obj):

@@ -1,0 +1,77 @@
+{
+  "id": "K-english-syllabic-001",
+  "family": "syllabic",
+  "segmentation": "eva-basic",
+  "target": {
+    "language": "english",
+    "period": "Middle English Chaucer and 15th-century Paston Letters with modern editorial matter"
+  },
+  "key": {
+    "marker": "q",
+    "map": {
+      "*": "a",
+      "?": "d",
+      "a": "r",
+      "b": "e",
+      "c": "d",
+      "cfh": "a",
+      "ch": "a",
+      "ckh": "e",
+      "cph": "a",
+      "cth": "a",
+      "d": "e",
+      "e": "l",
+      "f": "e",
+      "g": "e",
+      "h": "r",
+      "i": "e",
+      "j": "e",
+      "k": "e",
+      "l": "e",
+      "m": "e",
+      "n": "d",
+      "o": "r",
+      "p": "e",
+      "r": "e",
+      "s": "e",
+      "sh": "a",
+      "t": "e",
+      "u": "t",
+      "v": "s",
+      "x": "a",
+      "y": "s",
+      "z": "e",
+      "qo": "qu",
+      "qe": "be",
+      "qk": "he",
+      "qy": "be",
+      "qcth": "wa",
+      "qckh": "wa",
+      "qa": "qu",
+      "q*": "qu",
+      "q?": "we",
+      "qch": "he",
+      "qcph": "pa"
+    }
+  },
+  "search": {
+    "budget": {
+      "syllable_candidates": 64,
+      "sign_limit": 24,
+      "lexical_sweeps": 5,
+      "restarts": 4,
+      "iterations": 6000,
+      "seed": 1404,
+      "bpe_merges": 30,
+      "verbose_segmentations": [
+        "bpe-greedy",
+        "fixed-2"
+      ],
+      "verbose_min_unit_share": 0.0005,
+      "substitution_group_swap": 0.2
+    }
+  },
+  "transliteration": "zl",
+  "reading_order": "normal",
+  "spaces": "word_breaks"
+}
