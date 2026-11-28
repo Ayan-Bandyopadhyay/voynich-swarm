@@ -1,0 +1,2134 @@
+{
+  "program": "J",
+  "title": "Block width controls both lag-search power and periodic-plaintext false alarms",
+  "hard": false,
+  "on_path": true,
+  "statement": "Across three additional historical texts and three row seeds per text, block widths 16 and 25 confirm all nine planted period-10 cases but also confirm nine and eight of nine ten-character repeated-plaintext cases with random cipher rows. Widths 40, 50, 80 and 100 confirm none of either set. All six widths confirm all nine planted period-24 and period-131 cases. Width 25 sometimes confirms a multiple of the plaintext motif instead of lag 10. These controls expose an alignment-sensitive power/false-signal tradeoff, not a validated manuscript null.",
+  "check": "Vary block offsets, noisy and drifting schedules, unrelated longer-range plaintext structures, row reuse and more independent books; explicitly define which dependencies are null and validate power and false-alarm rates under that null. Do not use these cases alone to select a manuscript hypothesis or rule out a cipher.",
+  "method": "Freeze the P-J-042 scan and confirmation rule: exact word equality at lags 2\u2013160, 49 block-permutation maximum null replicates for choosing the shortest significant lag on the first 4,000 words, then 49 fixed-lag block permutations on the next 4,000 words. Permute intact consecutive blocks of widths 16,25,40,50,80,100, all dividing 4,000 exactly. Use distinct pinned French Roman de la Rose, English Chaucer and Spanish El conde Lucanor, normalized by the reference corpus; characters 4,001\u201312,000 in the Hermes table alphabet. For each text, three per-book-offset seeds select distinct cyclic rows at periods 10,24,131. An independently sampled 10-character motif with independently random row selection supplies a structured plaintext control. Inputs and table are hash-verified.",
+  "limitations": "Each source passage is reused for three seeds and six widths; period and block settings share data and are correlated. Texts have been used elsewhere in the project. Block offsets were fixed at segment starts; other offsets, transcription noise and schedule variation remain untested. A block null that preserves part of a signal may lose power, and smaller blocks can preserve too little plaintext structure. No manuscript data or key recovery is tested.",
+  "environment": "Python and NumPy 2.5.4; Hermes table https://github.com/hermesj/R_Voynich_Stats/blob/0ef1439fa9d90aeab42951a51d0d5a0e27db1f8f/R%20code/Historical_ciphers/keys/ciphers_poly_III_in_order.csv, SHA-256 fe3f24a46dbc6b655eab8dbbd75addf84ee4a7dbd387ad802af75d02edfe5b4d.",
+  "summary_results": {
+    "cyclic-10-16": {
+      "selected_lags": {
+        "10": 9
+      },
+      "confirmed": 9,
+      "runs": 9
+    },
+    "cyclic-10-25": {
+      "selected_lags": {
+        "10": 9
+      },
+      "confirmed": 9,
+      "runs": 9
+    },
+    "cyclic-10-40": {
+      "selected_lags": {
+        "None": 9
+      },
+      "confirmed": 0,
+      "runs": 9
+    },
+    "cyclic-10-50": {
+      "selected_lags": {
+        "None": 9
+      },
+      "confirmed": 0,
+      "runs": 9
+    },
+    "cyclic-10-80": {
+      "selected_lags": {
+        "None": 9
+      },
+      "confirmed": 0,
+      "runs": 9
+    },
+    "cyclic-10-100": {
+      "selected_lags": {
+        "None": 9
+      },
+      "confirmed": 0,
+      "runs": 9
+    },
+    "cyclic-24-16": {
+      "selected_lags": {
+        "24": 9
+      },
+      "confirmed": 9,
+      "runs": 9
+    },
+    "cyclic-24-25": {
+      "selected_lags": {
+        "24": 9
+      },
+      "confirmed": 9,
+      "runs": 9
+    },
+    "cyclic-24-40": {
+      "selected_lags": {
+        "24": 9
+      },
+      "confirmed": 9,
+      "runs": 9
+    },
+    "cyclic-24-50": {
+      "selected_lags": {
+        "24": 9
+      },
+      "confirmed": 9,
+      "runs": 9
+    },
+    "cyclic-24-80": {
+      "selected_lags": {
+        "24": 9
+      },
+      "confirmed": 9,
+      "runs": 9
+    },
+    "cyclic-24-100": {
+      "selected_lags": {
+        "24": 9
+      },
+      "confirmed": 9,
+      "runs": 9
+    },
+    "cyclic-131-16": {
+      "selected_lags": {
+        "131": 9
+      },
+      "confirmed": 9,
+      "runs": 9
+    },
+    "cyclic-131-25": {
+      "selected_lags": {
+        "131": 9
+      },
+      "confirmed": 9,
+      "runs": 9
+    },
+    "cyclic-131-40": {
+      "selected_lags": {
+        "131": 9
+      },
+      "confirmed": 9,
+      "runs": 9
+    },
+    "cyclic-131-50": {
+      "selected_lags": {
+        "131": 9
+      },
+      "confirmed": 9,
+      "runs": 9
+    },
+    "cyclic-131-80": {
+      "selected_lags": {
+        "131": 9
+      },
+      "confirmed": 9,
+      "runs": 9
+    },
+    "cyclic-131-100": {
+      "selected_lags": {
+        "131": 9
+      },
+      "confirmed": 9,
+      "runs": 9
+    },
+    "motif-131-16": {
+      "selected_lags": {
+        "10": 9
+      },
+      "confirmed": 9,
+      "runs": 9
+    },
+    "motif-131-25": {
+      "selected_lags": {
+        "10": 3,
+        "50": 1,
+        "20": 3,
+        "30": 1,
+        "40": 1
+      },
+      "confirmed": 8,
+      "runs": 9
+    },
+    "motif-131-40": {
+      "selected_lags": {
+        "None": 8,
+        "20": 1
+      },
+      "confirmed": 0,
+      "runs": 9
+    },
+    "motif-131-50": {
+      "selected_lags": {
+        "None": 9
+      },
+      "confirmed": 0,
+      "runs": 9
+    },
+    "motif-131-80": {
+      "selected_lags": {
+        "None": 9
+      },
+      "confirmed": 0,
+      "runs": 9
+    },
+    "motif-131-100": {
+      "selected_lags": {
+        "None": 9
+      },
+      "confirmed": 0,
+      "runs": 9
+    }
+  },
+  "individual_results": [
+    {
+      "book": "fr_rose",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 16,
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 25,
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 40,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "fr_rose",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 50,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "fr_rose",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 80,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "fr_rose",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 100,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "fr_rose",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 16,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 25,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 40,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 50,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 80,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 100,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 16,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 25,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 40,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 50,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 80,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 100,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 5501,
+      "mode": "motif",
+      "period": 131,
+      "width": 16,
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 5501,
+      "mode": "motif",
+      "period": 131,
+      "width": 25,
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 5501,
+      "mode": "motif",
+      "period": 131,
+      "width": 40,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "fr_rose",
+      "seed": 5501,
+      "mode": "motif",
+      "period": 131,
+      "width": 50,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "fr_rose",
+      "seed": 5501,
+      "mode": "motif",
+      "period": 131,
+      "width": 80,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "fr_rose",
+      "seed": 5501,
+      "mode": "motif",
+      "period": 131,
+      "width": 100,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "fr_rose",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 16,
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 25,
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 40,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "fr_rose",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 50,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "fr_rose",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 80,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "fr_rose",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 100,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "fr_rose",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 16,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 25,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 40,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 50,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 80,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 100,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 16,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 25,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 40,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 50,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 80,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 100,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 6601,
+      "mode": "motif",
+      "period": 131,
+      "width": 16,
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 6601,
+      "mode": "motif",
+      "period": 131,
+      "width": 25,
+      "lag": 50,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 6601,
+      "mode": "motif",
+      "period": 131,
+      "width": 40,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "fr_rose",
+      "seed": 6601,
+      "mode": "motif",
+      "period": 131,
+      "width": 50,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "fr_rose",
+      "seed": 6601,
+      "mode": "motif",
+      "period": 131,
+      "width": 80,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "fr_rose",
+      "seed": 6601,
+      "mode": "motif",
+      "period": 131,
+      "width": 100,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "fr_rose",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 16,
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 25,
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 40,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "fr_rose",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 50,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "fr_rose",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 80,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "fr_rose",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 100,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "fr_rose",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 16,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 25,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 40,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 50,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 80,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 100,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 16,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 25,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 40,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 50,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 80,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 100,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 7701,
+      "mode": "motif",
+      "period": 131,
+      "width": 16,
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 7701,
+      "mode": "motif",
+      "period": 131,
+      "width": 25,
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "fr_rose",
+      "seed": 7701,
+      "mode": "motif",
+      "period": 131,
+      "width": 40,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "fr_rose",
+      "seed": 7701,
+      "mode": "motif",
+      "period": 131,
+      "width": 50,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "fr_rose",
+      "seed": 7701,
+      "mode": "motif",
+      "period": 131,
+      "width": 80,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "fr_rose",
+      "seed": 7701,
+      "mode": "motif",
+      "period": 131,
+      "width": 100,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 16,
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 25,
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 40,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 50,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 80,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 100,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 16,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 25,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 40,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 50,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 80,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 100,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 16,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 25,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 40,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 50,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 80,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 100,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 5501,
+      "mode": "motif",
+      "period": 131,
+      "width": 16,
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 5501,
+      "mode": "motif",
+      "period": 131,
+      "width": 25,
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 5501,
+      "mode": "motif",
+      "period": 131,
+      "width": 40,
+      "lag": 20,
+      "eval_p": 0.74
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 5501,
+      "mode": "motif",
+      "period": 131,
+      "width": 50,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 5501,
+      "mode": "motif",
+      "period": 131,
+      "width": 80,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 5501,
+      "mode": "motif",
+      "period": 131,
+      "width": 100,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 16,
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 25,
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 40,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 50,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 80,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 100,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 16,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 25,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 40,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 50,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 80,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 100,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 16,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 25,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 40,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 50,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 80,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 100,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 6601,
+      "mode": "motif",
+      "period": 131,
+      "width": 16,
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 6601,
+      "mode": "motif",
+      "period": 131,
+      "width": 25,
+      "lag": 20,
+      "eval_p": 0.24
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 6601,
+      "mode": "motif",
+      "period": 131,
+      "width": 40,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 6601,
+      "mode": "motif",
+      "period": 131,
+      "width": 50,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 6601,
+      "mode": "motif",
+      "period": 131,
+      "width": 80,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 6601,
+      "mode": "motif",
+      "period": 131,
+      "width": 100,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 16,
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 25,
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 40,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 50,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 80,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 100,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 16,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 25,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 40,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 50,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 80,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 100,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 16,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 25,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 40,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 50,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 80,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 100,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 7701,
+      "mode": "motif",
+      "period": 131,
+      "width": 16,
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 7701,
+      "mode": "motif",
+      "period": 131,
+      "width": 25,
+      "lag": 20,
+      "eval_p": 0.02
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 7701,
+      "mode": "motif",
+      "period": 131,
+      "width": 40,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 7701,
+      "mode": "motif",
+      "period": 131,
+      "width": 50,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 7701,
+      "mode": "motif",
+      "period": 131,
+      "width": 80,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "en_chaucer",
+      "seed": 7701,
+      "mode": "motif",
+      "period": 131,
+      "width": 100,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 16,
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 25,
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 40,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 50,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 80,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 100,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 16,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 25,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 40,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 50,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 80,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 100,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 16,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 25,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 40,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 50,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 80,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 5501,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 100,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 5501,
+      "mode": "motif",
+      "period": 131,
+      "width": 16,
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 5501,
+      "mode": "motif",
+      "period": 131,
+      "width": 25,
+      "lag": 30,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 5501,
+      "mode": "motif",
+      "period": 131,
+      "width": 40,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 5501,
+      "mode": "motif",
+      "period": 131,
+      "width": 50,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 5501,
+      "mode": "motif",
+      "period": 131,
+      "width": 80,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 5501,
+      "mode": "motif",
+      "period": 131,
+      "width": 100,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 16,
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 25,
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 40,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 50,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 80,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 100,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 16,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 25,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 40,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 50,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 80,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 100,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 16,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 25,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 40,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 50,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 80,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 6601,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 100,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 6601,
+      "mode": "motif",
+      "period": 131,
+      "width": 16,
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 6601,
+      "mode": "motif",
+      "period": 131,
+      "width": 25,
+      "lag": 20,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 6601,
+      "mode": "motif",
+      "period": 131,
+      "width": 40,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 6601,
+      "mode": "motif",
+      "period": 131,
+      "width": 50,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 6601,
+      "mode": "motif",
+      "period": 131,
+      "width": 80,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 6601,
+      "mode": "motif",
+      "period": 131,
+      "width": 100,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 16,
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 25,
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 40,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 50,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 80,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 10,
+      "width": 100,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 16,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 25,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 40,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 50,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 80,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 24,
+      "width": 100,
+      "lag": 24,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 16,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 25,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 40,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 50,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 80,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 7701,
+      "mode": "cyclic",
+      "period": 131,
+      "width": 100,
+      "lag": 131,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 7701,
+      "mode": "motif",
+      "period": 131,
+      "width": 16,
+      "lag": 10,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 7701,
+      "mode": "motif",
+      "period": 131,
+      "width": 25,
+      "lag": 40,
+      "eval_p": 0.02
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 7701,
+      "mode": "motif",
+      "period": 131,
+      "width": 40,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 7701,
+      "mode": "motif",
+      "period": 131,
+      "width": 50,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 7701,
+      "mode": "motif",
+      "period": 131,
+      "width": 80,
+      "lag": null,
+      "eval_p": null
+    },
+    {
+      "book": "es_lucanor",
+      "seed": 7701,
+      "mode": "motif",
+      "period": 131,
+      "width": 100,
+      "lag": null,
+      "eval_p": null
+    }
+  ],
+  "reproduction_python": "import random,json,hashlib,csv\nimport numpy as np\nfrom vs import refcorpus\nraw=open('/tmp/voy-piii.csv','rb').read();assert hashlib.sha256(raw).hexdigest()=='fe3f24a46dbc6b655eab8dbbd75addf84ee4a7dbd387ad802af75d02edfe5b4d'\ntable=list(csv.DictReader(raw.decode('utf-8-sig').splitlines()));allowed=set(table[0]);alphabet=list(table[0])\nfor row in table:\n for c in row:row[c]=row[c].strip()\ndef score(a,k):return float(np.mean(a[:-k]==a[k:]))\ndef shuffle(a,r,kind):\n if kind=='global':return r.permutation(a)\n return r.permutation(a.reshape(-1,BLOCK),axis=0).reshape(-1)\ndef infer(a,seed,kind):\n rates=[score(a,k) for k in range(2,161)];rng=np.random.default_rng(seed);null=[]\n for _ in range(49):\n  b=shuffle(a,rng,kind);null.append(max(score(b,k) for k in range(2,161)))\n return next((i+2 for i,v in enumerate(rates) if (1+sum(z>=v for z in null))/50<=.05),None)\ndef confirm(a,k,seed,kind):\n rng=np.random.default_rng(seed);v=score(a,k);return (1+sum(score(shuffle(a,rng,kind),k)>=v for _ in range(49)))/50\ndef make(plain,period,mode,seed):\n r=random.Random(seed);rows=r.sample(range(len(table)),period);words=[]\n for i,c in enumerate(plain):words.append(table[rows[r.randrange(period) if mode=='random' else i%period]][c])\n codes={w:i for i,w in enumerate(sorted(set(words)))};return np.array([codes[w] for w in words],dtype=np.int32)\nout=[]\nfor bi,book in enumerate(('fr_rose','en_chaucer','es_lucanor')):\n pin=next(x for x in refcorpus.pins() if x['id']==book);assert hashlib.sha256(open(pin['file'],'rb').read()).hexdigest()==pin['sha256']\n plain=''.join(c for b in refcorpus.blocks_of(book) for c in b if c in allowed)[4000:12000];assert len(plain)==8000\n for seed in (5501,6601,7701):\n  ss=seed+10000*bi\n  for mode,period in (('cyclic',10),('cyclic',24),('cyclic',131),('motif',131)):\n   use=plain\n   if mode=='motif':\n    rng=random.Random(ss+77);motif=rng.choices(alphabet,k=10);use=''.join(motif[i%10] for i in range(8000))\n   a=make(use,period,'random' if mode=='motif' else mode,ss)\n   for width in (16,25,40,50,80,100):\n    BLOCK=width;k=infer(a[:4000],ss+100,'block');p=confirm(a[4000:],k,ss+200,'block') if k else None\n    out.append({'book':book,'seed':seed,'mode':mode,'period':period,'width':width,'lag':k,'eval_p':p})\nprint(json.dumps(out,indent=2))\n",
+  "script_sha256": "4b2eb9ceea81e6eff7cf5c587299ada1f6f20c4567d1053f15401866ceba5670"
+}

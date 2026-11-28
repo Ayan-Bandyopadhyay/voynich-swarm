@@ -1,0 +1,4016 @@
+{
+  "title": "Polygraphia row reuse raises one-edit matches but leaves a large glyph-entropy gap",
+  "program": "L3",
+  "on_path": true,
+  "hard": true,
+  "statement": "Using a row for multiple successive plaintext letters sharply increases the one-edit share of adjacent Polygraphia III ciphertext words. In an exploratory follow-up with a one-eighth chance of staying on the current row, the 40- and 48-row settings overlap the public-training sample’s word entropy and adjacent one-edit rate, but their within-word conditional raw-character entropy is 2.276–2.483 bits versus the sample’s 1.536. These settings and controls were chosen after earlier exploratory results and do not constitute a joint fit, a historical reconstruction or an unknown-key recovery.",
+  "check": "Independently fix row counts, row-selection procedure, exact tokenizer, metric definitions, uncertainty and acceptance ranges before using new plaintext and cipher keys. Compare all four statistics jointly, using public evaluation and independent texts only after choices are frozen; add relevant historical selection rules and noise. Develop a trusted declarative evaluator and calibrated unknown-key search with planted positives and matched search budgets, including the cost and recoverability of the row schedule. Do not register a hidden-page claim or exclude a language/cipher cell based on these descriptive pilots.",
+  "common_method": "Use the first 5,000 certain lowercase ASCII paragraph tokens of ZL public practice-training pages as the fixed layout and baseline. Never join across line ends or uncertain tokens. Calculate plug-in word entropy, raw-character entropy, H(next raw character | previous raw character) within words, and the share of adjacent unequal words at Levenshtein distance one. Take three previously unused plaintext works, Villani, Roman de la Rose and Chaucer, verify pinned hashes and normalize with vs.refcorpus.blocks_of, retaining only symbols present in the 24-letter Hermes table. These three works are distinct but their windows and per-key outputs are not independent texts.",
+  "block_experiment": "For each of 10, 24 and 120 fixed initial table rows, advance to the next row after every 1, 2, 4, 8 or 16 plaintext letters, cyclically. Use three nonoverlapping 5,000-letter windows at offsets 0, 5,000 and 10,000 of each book. The same word layout is used for every sample. For each setting the evaluator knows all rows and the schedule and exactly inverts all 5,000 characters; this is not unknown-key recovery.",
+  "random_experiment": "After seeing the block experiment, explore independent random decisions to stay on the current row with probabilities 1/8, 1/4 or 1/2, otherwise advance one row cyclically. Use the next, disjoint 5,000-letter window at offset 15,000, three fixed seeds (113, 271, 449), and initially the same 10, 24 and 120 rows. After inspecting those outputs, add 40, 48 and 64 rows at probability 1/8 on the same windows and seeds. Thus those values are adaptively selected on this public comparison and cannot serve as independent validation. Knowing the actual random schedule and table exactly recovers the plaintext; the cost and unknown-key recoverability of that schedule are not measured.",
+  "source": "Hermes P.III CSV at https://github.com/hermesj/R_Voynich_Stats/blob/0ef1439fa9d90aeab42951a51d0d5a0e27db1f8f/R%20code/Historical_ciphers/keys/ciphers_poly_III_in_order.csv, SHA-256 fe3f24a46dbc6b655eab8dbbd75addf84ee4a7dbd387ad802af75d02edfe5b4d. The complete metric and input validation script is embedded below.",
+  "limitations": "The previous cyclic pilot and this adaptation were motivated by observed public manuscript patterns; choices are not preregistered, and this is not a statistical test or a hidden-page result. The two overlapping metrics do not correct the substantial conditional-glyph gap, and conditional entropy here is in raw characters, not EVA-basic units. Three texts and correlated seeds/window samples cannot support general power or uncertainty claims. The stochastic rule is synthetic, not demonstrated historical practice. A known-key round-trip does not establish unknown-key search power. Several required declarative scorer and multi-metric registration pieces remain unimplemented.",
+  "block_results": {
+    "practice_training_baseline": {
+      "tokens": 5000,
+      "types": 1744,
+      "word_entropy": 9.295011634503703,
+      "glyph_entropy": 3.8356971401522757,
+      "glyph_conditional_entropy": 1.5360209985735187,
+      "adjacent_pairs": 4266,
+      "adjacent_edit1_share": 0.04406938584153774
+    },
+    "config": {
+      "books": [
+        "it_villani",
+        "fr_rose",
+        "en_chaucer"
+      ],
+      "row_counts": [
+        10,
+        24,
+        120
+      ],
+      "run_lengths": [
+        1,
+        2,
+        4,
+        8,
+        16
+      ],
+      "offsets": [
+        0,
+        5000,
+        10000
+      ],
+      "layout": "first 5000 certain ZL practice-training paragraph words",
+      "source": "fixed first rows of Hermes P.III table"
+    },
+    "rows": [
+      {
+        "book": "it_villani",
+        "rows": 10,
+        "run_length": 1,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 200,
+          "word_entropy": 7.227525206912665,
+          "glyph_entropy": 3.5276478990791755,
+          "glyph_conditional_entropy": 1.7963388655309478,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.0046882325363338025
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 10,
+        "run_length": 1,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 200,
+          "word_entropy": 7.243324781258897,
+          "glyph_entropy": 3.5312062231316483,
+          "glyph_conditional_entropy": 1.7897407967111052,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.0032817627754336614
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 10,
+        "run_length": 1,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 200,
+          "word_entropy": 7.190808617322515,
+          "glyph_entropy": 3.5293218697817377,
+          "glyph_conditional_entropy": 1.7953020558661992,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.0035161744022503515
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 10,
+        "run_length": 2,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 200,
+          "word_entropy": 7.229406956590931,
+          "glyph_entropy": 3.527914743849995,
+          "glyph_conditional_entropy": 1.7961393734505267,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.18799812470698546
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 10,
+        "run_length": 2,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 199,
+          "word_entropy": 7.2382531725396015,
+          "glyph_entropy": 3.5361039387175994,
+          "glyph_conditional_entropy": 1.8095468412607403,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.19549929676511954
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 10,
+        "run_length": 2,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 199,
+          "word_entropy": 7.188381920939719,
+          "glyph_entropy": 3.531605730941952,
+          "glyph_conditional_entropy": 1.8024680780381699,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.18612283169245195
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 10,
+        "run_length": 4,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 200,
+          "word_entropy": 7.228582108204698,
+          "glyph_entropy": 3.529156701586994,
+          "glyph_conditional_entropy": 1.7978067262115758,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.2819971870604782
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 10,
+        "run_length": 4,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 200,
+          "word_entropy": 7.240603708490207,
+          "glyph_entropy": 3.5344971243558096,
+          "glyph_conditional_entropy": 1.8081112749396917,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.2864510079699953
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 10,
+        "run_length": 4,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 198,
+          "word_entropy": 7.185939616036378,
+          "glyph_entropy": 3.531231167909078,
+          "glyph_conditional_entropy": 1.7972134729537128,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.27918424753867793
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 10,
+        "run_length": 8,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 200,
+          "word_entropy": 7.222880924294722,
+          "glyph_entropy": 3.528063205595666,
+          "glyph_conditional_entropy": 1.7926220059229712,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.3265353961556493
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 10,
+        "run_length": 8,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 200,
+          "word_entropy": 7.235684438076476,
+          "glyph_entropy": 3.5355454738955956,
+          "glyph_conditional_entropy": 1.7991066364972559,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.3302859821847164
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 10,
+        "run_length": 8,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 198,
+          "word_entropy": 7.186231351018383,
+          "glyph_entropy": 3.5302460558937567,
+          "glyph_conditional_entropy": 1.7973217780411126,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.3274730426629161
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 10,
+        "run_length": 16,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 198,
+          "word_entropy": 7.223587733023606,
+          "glyph_entropy": 3.532080718731786,
+          "glyph_conditional_entropy": 1.7885281261433938,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.35138302859821846
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 10,
+        "run_length": 16,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 200,
+          "word_entropy": 7.234246774242537,
+          "glyph_entropy": 3.529401706352439,
+          "glyph_conditional_entropy": 1.7953295323160177,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.3525550867323019
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 10,
+        "run_length": 16,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 199,
+          "word_entropy": 7.185617506394547,
+          "glyph_entropy": 3.5283962531663233,
+          "glyph_conditional_entropy": 1.8005314713817242,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.349507735583685
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 24,
+        "run_length": 1,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 463,
+          "word_entropy": 8.443896485565823,
+          "glyph_entropy": 3.762208337007668,
+          "glyph_conditional_entropy": 2.1306249394471544,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.0007032348804500703
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 24,
+        "run_length": 1,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 463,
+          "word_entropy": 8.46216686870868,
+          "glyph_entropy": 3.7589392003087054,
+          "glyph_conditional_entropy": 2.123017717185056,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.001875293014533521
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 24,
+        "run_length": 1,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 449,
+          "word_entropy": 8.410428870461972,
+          "glyph_entropy": 3.757784671115951,
+          "glyph_conditional_entropy": 2.1274784955681803,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.0007032348804500703
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 24,
+        "run_length": 2,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 462,
+          "word_entropy": 8.444152645680672,
+          "glyph_entropy": 3.754200975777008,
+          "glyph_conditional_entropy": 2.1216208982425715,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.19010782934833567
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 24,
+        "run_length": 2,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 463,
+          "word_entropy": 8.466353292610751,
+          "glyph_entropy": 3.7606128518569197,
+          "glyph_conditional_entropy": 2.1298244053169424,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.19760900140646975
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 24,
+        "run_length": 2,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 458,
+          "word_entropy": 8.41706246398181,
+          "glyph_entropy": 3.7585465574997463,
+          "glyph_conditional_entropy": 2.129535943987022,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.18682606657290202
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 24,
+        "run_length": 4,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 458,
+          "word_entropy": 8.43659757092832,
+          "glyph_entropy": 3.7664666271231386,
+          "glyph_conditional_entropy": 2.1276966887959743,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.28246601031411156
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 24,
+        "run_length": 4,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 465,
+          "word_entropy": 8.463678329289838,
+          "glyph_entropy": 3.763673830983795,
+          "glyph_conditional_entropy": 2.128006419236349,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.2890295358649789
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 24,
+        "run_length": 4,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 454,
+          "word_entropy": 8.417594915291907,
+          "glyph_entropy": 3.75833605111692,
+          "glyph_conditional_entropy": 2.1210319450327706,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.28363806844819506
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 24,
+        "run_length": 8,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 463,
+          "word_entropy": 8.449543596101293,
+          "glyph_entropy": 3.761597327908888,
+          "glyph_conditional_entropy": 2.126453522502683,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.33145804031879983
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 24,
+        "run_length": 8,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 459,
+          "word_entropy": 8.460676912213405,
+          "glyph_entropy": 3.764190061928818,
+          "glyph_conditional_entropy": 2.128278853758148,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.33098921706516643
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 24,
+        "run_length": 8,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 451,
+          "word_entropy": 8.418904738967802,
+          "glyph_entropy": 3.7573717075722484,
+          "glyph_conditional_entropy": 2.123239073734678,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.3321612751992499
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 24,
+        "run_length": 16,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 463,
+          "word_entropy": 8.454167766804543,
+          "glyph_entropy": 3.7613107776492942,
+          "glyph_conditional_entropy": 2.1160172357394575,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.3553680262541022
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 24,
+        "run_length": 16,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 459,
+          "word_entropy": 8.454907114395398,
+          "glyph_entropy": 3.7574865224666527,
+          "glyph_conditional_entropy": 2.1187578874578517,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.35700890764181903
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 24,
+        "run_length": 16,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 454,
+          "word_entropy": 8.413980233286205,
+          "glyph_entropy": 3.7578048762040135,
+          "glyph_conditional_entropy": 2.1335444206675223,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.35466479137365214
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 120,
+        "run_length": 1,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1667,
+          "word_entropy": 10.383574572353943,
+          "glyph_entropy": 3.940326465175082,
+          "glyph_conditional_entropy": 2.4725737746459817,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.00023441162681669012
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 120,
+        "run_length": 1,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1703,
+          "word_entropy": 10.416645032925043,
+          "glyph_entropy": 3.947555227367473,
+          "glyph_conditional_entropy": 2.478456183508367,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.0007032348804500703
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 120,
+        "run_length": 1,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1647,
+          "word_entropy": 10.371377081270658,
+          "glyph_entropy": 3.943493201447057,
+          "glyph_conditional_entropy": 2.475572263040738,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.00023441162681669012
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 120,
+        "run_length": 2,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1658,
+          "word_entropy": 10.384016227929497,
+          "glyph_entropy": 3.9433306710388765,
+          "glyph_conditional_entropy": 2.4644333059817303,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.1896390060947023
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 120,
+        "run_length": 2,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1661,
+          "word_entropy": 10.397765419082845,
+          "glyph_entropy": 3.9445722182407343,
+          "glyph_conditional_entropy": 2.4747202473846723,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.196671354899203
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 120,
+        "run_length": 2,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1620,
+          "word_entropy": 10.348645622165794,
+          "glyph_entropy": 3.943694347798466,
+          "glyph_conditional_entropy": 2.479315661714935,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.18635724331926865
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 120,
+        "run_length": 4,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1625,
+          "word_entropy": 10.36549906326742,
+          "glyph_entropy": 3.9429735111196553,
+          "glyph_conditional_entropy": 2.4834256798420427,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.28316924519456166
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 120,
+        "run_length": 4,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1673,
+          "word_entropy": 10.402466861762353,
+          "glyph_entropy": 3.94297228613509,
+          "glyph_conditional_entropy": 2.4730501520292743,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.2906704172526957
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 120,
+        "run_length": 4,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1618,
+          "word_entropy": 10.365618597918585,
+          "glyph_entropy": 3.9394705838279998,
+          "glyph_conditional_entropy": 2.471162150291029,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.2819971870604782
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 120,
+        "run_length": 8,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1652,
+          "word_entropy": 10.391241762760396,
+          "glyph_entropy": 3.9424980987619396,
+          "glyph_conditional_entropy": 2.4774595186699404,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.33497421472105016
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 120,
+        "run_length": 8,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1674,
+          "word_entropy": 10.409591215654023,
+          "glyph_entropy": 3.9432117888968166,
+          "glyph_conditional_entropy": 2.481911255792867,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.33145804031879983
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 120,
+        "run_length": 8,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1644,
+          "word_entropy": 10.379321221791228,
+          "glyph_entropy": 3.93872977268993,
+          "glyph_conditional_entropy": 2.4635360870606258,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.33145804031879983
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 120,
+        "run_length": 16,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1656,
+          "word_entropy": 10.375948561189174,
+          "glyph_entropy": 3.949082644533319,
+          "glyph_conditional_entropy": 2.4860794716858905,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.35443037974683544
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 120,
+        "run_length": 16,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1653,
+          "word_entropy": 10.391700359551853,
+          "glyph_entropy": 3.951802805662374,
+          "glyph_conditional_entropy": 2.479434752332029,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.35794655414908577
+        }
+      },
+      {
+        "book": "it_villani",
+        "rows": 120,
+        "run_length": 16,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1616,
+          "word_entropy": 10.352597705189288,
+          "glyph_entropy": 3.947013410663347,
+          "glyph_conditional_entropy": 2.474495924947104,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.3553680262541022
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 10,
+        "run_length": 1,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 212,
+          "word_entropy": 7.163756090445345,
+          "glyph_entropy": 3.54781353974458,
+          "glyph_conditional_entropy": 1.840528749879919,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.0035161744022503515
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 10,
+        "run_length": 1,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 207,
+          "word_entropy": 7.1455404241651355,
+          "glyph_entropy": 3.5560307780456,
+          "glyph_conditional_entropy": 1.850693479638859,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.0025785278949835913
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 10,
+        "run_length": 1,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 203,
+          "word_entropy": 7.186112333492305,
+          "glyph_entropy": 3.5527245469330215,
+          "glyph_conditional_entropy": 1.8454523191191563,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.0023441162681669013
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 10,
+        "run_length": 2,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 210,
+          "word_entropy": 7.161142492537375,
+          "glyph_entropy": 3.547661769503889,
+          "glyph_conditional_entropy": 1.8356042863665714,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.1584622597280825
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 10,
+        "run_length": 2,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 205,
+          "word_entropy": 7.146793010390401,
+          "glyph_entropy": 3.5576112732304637,
+          "glyph_conditional_entropy": 1.8578777175018333,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.14978902953586498
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 10,
+        "run_length": 2,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 205,
+          "word_entropy": 7.1892268139391,
+          "glyph_entropy": 3.5566459378509925,
+          "glyph_conditional_entropy": 1.8443152914867986,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.17885607126113456
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 10,
+        "run_length": 4,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 211,
+          "word_entropy": 7.162685951929069,
+          "glyph_entropy": 3.547840162351505,
+          "glyph_conditional_entropy": 1.8277734009360258,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.23417721518987342
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 10,
+        "run_length": 4,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 207,
+          "word_entropy": 7.14537435302209,
+          "glyph_entropy": 3.5588447912713774,
+          "glyph_conditional_entropy": 1.8524943882077403,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.22573839662447256
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 10,
+        "run_length": 4,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 207,
+          "word_entropy": 7.186119700693535,
+          "glyph_entropy": 3.556938724830759,
+          "glyph_conditional_entropy": 1.8605425120441295,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.25668073136427566
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 10,
+        "run_length": 8,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 214,
+          "word_entropy": 7.16640430474772,
+          "glyph_entropy": 3.5536670741657264,
+          "glyph_conditional_entropy": 1.8444721532995736,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.27308954524144397
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 10,
+        "run_length": 8,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 210,
+          "word_entropy": 7.148615847179943,
+          "glyph_entropy": 3.553370492428284,
+          "glyph_conditional_entropy": 1.8544972847552312,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.26441631504922647
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 10,
+        "run_length": 8,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 205,
+          "word_entropy": 7.18370478717458,
+          "glyph_entropy": 3.5544074661254323,
+          "glyph_conditional_entropy": 1.8480361260413813,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.3030942334739803
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 10,
+        "run_length": 16,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 215,
+          "word_entropy": 7.1694364098669405,
+          "glyph_entropy": 3.5512425288061062,
+          "glyph_conditional_entropy": 1.8452447350927388,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.2918424753867792
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 10,
+        "run_length": 16,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 208,
+          "word_entropy": 7.152834915987315,
+          "glyph_entropy": 3.5565365252608196,
+          "glyph_conditional_entropy": 1.849989293654895,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.2848101265822785
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 10,
+        "run_length": 16,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 207,
+          "word_entropy": 7.187112824914985,
+          "glyph_entropy": 3.553214374720842,
+          "glyph_conditional_entropy": 1.8441491592892345,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.319971870604782
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 24,
+        "run_length": 1,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 473,
+          "word_entropy": 8.380879870938468,
+          "glyph_entropy": 3.7843191645993417,
+          "glyph_conditional_entropy": 2.185316343474145,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.002109704641350211
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 24,
+        "run_length": 1,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 464,
+          "word_entropy": 8.361569556599791,
+          "glyph_entropy": 3.7892449295190462,
+          "glyph_conditional_entropy": 2.184563227575928,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.00046882325363338024
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 24,
+        "run_length": 1,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 453,
+          "word_entropy": 8.404842275347432,
+          "glyph_entropy": 3.7842886201717394,
+          "glyph_conditional_entropy": 2.1921486272094746,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.0009376465072667605
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 24,
+        "run_length": 2,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 473,
+          "word_entropy": 8.380570812680302,
+          "glyph_entropy": 3.787417457512198,
+          "glyph_conditional_entropy": 2.1855134142571546,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.15799343647444913
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 24,
+        "run_length": 2,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 465,
+          "word_entropy": 8.366350284737551,
+          "glyph_entropy": 3.7939096749563554,
+          "glyph_conditional_entropy": 2.20693308321616,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.15072667604313175
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 24,
+        "run_length": 2,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 454,
+          "word_entropy": 8.403089369205214,
+          "glyph_entropy": 3.791071328850628,
+          "glyph_conditional_entropy": 2.199821399526701,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.180028129395218
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 24,
+        "run_length": 4,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 476,
+          "word_entropy": 8.386510539386329,
+          "glyph_entropy": 3.7889125578980387,
+          "glyph_conditional_entropy": 2.192482747712434,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.2346460384435068
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 24,
+        "run_length": 4,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 459,
+          "word_entropy": 8.35949018411683,
+          "glyph_entropy": 3.7871381198306495,
+          "glyph_conditional_entropy": 2.190602470452976,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.22784810126582278
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 24,
+        "run_length": 4,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 456,
+          "word_entropy": 8.405861479533037,
+          "glyph_entropy": 3.7901913178422704,
+          "glyph_conditional_entropy": 2.1933812770014005,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.25902484763244255
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 24,
+        "run_length": 8,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 474,
+          "word_entropy": 8.38485068533295,
+          "glyph_entropy": 3.7883612599119676,
+          "glyph_conditional_entropy": 2.1869258301251464,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.2742616033755274
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 24,
+        "run_length": 8,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 463,
+          "word_entropy": 8.369242583321322,
+          "glyph_entropy": 3.7870124647447003,
+          "glyph_conditional_entropy": 2.189952805754938,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.2674636661978434
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 24,
+        "run_length": 8,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 458,
+          "word_entropy": 8.41230461731221,
+          "glyph_entropy": 3.7834290543614406,
+          "glyph_conditional_entropy": 2.1922808725972778,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.30426629160806373
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 24,
+        "run_length": 16,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 473,
+          "word_entropy": 8.384965139027738,
+          "glyph_entropy": 3.7888174465726303,
+          "glyph_conditional_entropy": 2.194192685440368,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.2944210032817628
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 24,
+        "run_length": 16,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 457,
+          "word_entropy": 8.369574249053354,
+          "glyph_entropy": 3.787260120618907,
+          "glyph_conditional_entropy": 2.1806889106358582,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.2880918893577121
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 24,
+        "run_length": 16,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 460,
+          "word_entropy": 8.41234238383202,
+          "glyph_entropy": 3.785394716099416,
+          "glyph_conditional_entropy": 2.183694666223183,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.32184716361931553
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 120,
+        "run_length": 1,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1657,
+          "word_entropy": 10.330865649911361,
+          "glyph_entropy": 3.9758349943243014,
+          "glyph_conditional_entropy": 2.5275199295951936,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.00046882325363338024
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 120,
+        "run_length": 1,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1624,
+          "word_entropy": 10.315254335376428,
+          "glyph_entropy": 3.9820762434822674,
+          "glyph_conditional_entropy": 2.5410688157301973,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.0
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 120,
+        "run_length": 1,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1624,
+          "word_entropy": 10.360620726114197,
+          "glyph_entropy": 3.9744020435819536,
+          "glyph_conditional_entropy": 2.5270445311887073,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.00023441162681669012
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 120,
+        "run_length": 2,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1666,
+          "word_entropy": 10.350501812865295,
+          "glyph_entropy": 3.979125926229871,
+          "glyph_conditional_entropy": 2.5327652527797184,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.15729020159399906
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 120,
+        "run_length": 2,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1635,
+          "word_entropy": 10.315928012287667,
+          "glyph_entropy": 3.9792992560843756,
+          "glyph_conditional_entropy": 2.5287400461202134,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.15119549929676512
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 120,
+        "run_length": 2,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1629,
+          "word_entropy": 10.356608553402847,
+          "glyph_entropy": 3.9735737163462628,
+          "glyph_conditional_entropy": 2.530459733129084,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.17885607126113456
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 120,
+        "run_length": 4,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1670,
+          "word_entropy": 10.346703433256748,
+          "glyph_entropy": 3.97671152692316,
+          "glyph_conditional_entropy": 2.537897303284386,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.23534927332395686
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 120,
+        "run_length": 4,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1628,
+          "word_entropy": 10.324343166906463,
+          "glyph_entropy": 3.977717535408746,
+          "glyph_conditional_entropy": 2.5273137770720364,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.22691045475855603
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 120,
+        "run_length": 4,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1633,
+          "word_entropy": 10.36518583481048,
+          "glyph_entropy": 3.971323872574717,
+          "glyph_conditional_entropy": 2.5272661464055854,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.2578527894983591
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 120,
+        "run_length": 8,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1684,
+          "word_entropy": 10.351548441930204,
+          "glyph_entropy": 3.9744950191197908,
+          "glyph_conditional_entropy": 2.534985570235004,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.2742616033755274
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 120,
+        "run_length": 8,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1640,
+          "word_entropy": 10.33374160307869,
+          "glyph_entropy": 3.9752097806355606,
+          "glyph_conditional_entropy": 2.538698170103199,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.2651195499296765
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 120,
+        "run_length": 8,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1665,
+          "word_entropy": 10.390451882497146,
+          "glyph_entropy": 3.9712837511969172,
+          "glyph_conditional_entropy": 2.5196519400326096,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.30426629160806373
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 120,
+        "run_length": 16,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1656,
+          "word_entropy": 10.315927374416672,
+          "glyph_entropy": 3.985919721351125,
+          "glyph_conditional_entropy": 2.545870267455733,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.29535864978902954
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 120,
+        "run_length": 16,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1620,
+          "word_entropy": 10.315008467771582,
+          "glyph_entropy": 3.9843079985847196,
+          "glyph_conditional_entropy": 2.542580465444235,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.28785747773089543
+        }
+      },
+      {
+        "book": "fr_rose",
+        "rows": 120,
+        "run_length": 16,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1643,
+          "word_entropy": 10.37595409249427,
+          "glyph_entropy": 3.9830855728380574,
+          "glyph_conditional_entropy": 2.541285936812315,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.32184716361931553
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 10,
+        "run_length": 1,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 226,
+          "word_entropy": 7.35661755650955,
+          "glyph_entropy": 3.564457888314526,
+          "glyph_conditional_entropy": 1.8592412885789122,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.0023441162681669013
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 10,
+        "run_length": 1,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 219,
+          "word_entropy": 7.3845699837845205,
+          "glyph_entropy": 3.5695667864996112,
+          "glyph_conditional_entropy": 1.8633977987740118,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.001875293014533521
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 10,
+        "run_length": 1,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 226,
+          "word_entropy": 7.391078647942349,
+          "glyph_entropy": 3.5748064645345923,
+          "glyph_conditional_entropy": 1.8771204937433694,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.0009376465072667605
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 10,
+        "run_length": 2,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 225,
+          "word_entropy": 7.355960684487958,
+          "glyph_entropy": 3.5668288170081417,
+          "glyph_conditional_entropy": 1.8654310851848082,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.16502578527894984
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 10,
+        "run_length": 2,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 219,
+          "word_entropy": 7.383068556492063,
+          "glyph_entropy": 3.5758205597604027,
+          "glyph_conditional_entropy": 1.8659958443412412,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.15752461322081576
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 10,
+        "run_length": 2,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 222,
+          "word_entropy": 7.3853143663449,
+          "glyph_entropy": 3.5714466487568433,
+          "glyph_conditional_entropy": 1.8675574079197426,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.16033755274261605
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 10,
+        "run_length": 4,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 225,
+          "word_entropy": 7.355327058507158,
+          "glyph_entropy": 3.5672943501442127,
+          "glyph_conditional_entropy": 1.8583864812664372,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.2463666197843413
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 10,
+        "run_length": 4,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 220,
+          "word_entropy": 7.385349269373805,
+          "glyph_entropy": 3.5749730921013656,
+          "glyph_conditional_entropy": 1.8742760718093643,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.23652133145804033
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 10,
+        "run_length": 4,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 224,
+          "word_entropy": 7.388691792643604,
+          "glyph_entropy": 3.5721642484026455,
+          "glyph_conditional_entropy": 1.8670793485096993,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.24613220815752462
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 10,
+        "run_length": 8,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 225,
+          "word_entropy": 7.355197302990518,
+          "glyph_entropy": 3.564816991417338,
+          "glyph_conditional_entropy": 1.8550972734756255,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.2883263009845288
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 10,
+        "run_length": 8,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 220,
+          "word_entropy": 7.386254080862724,
+          "glyph_entropy": 3.5778812786677503,
+          "glyph_conditional_entropy": 1.8759430032891369,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.27543366150961085
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 10,
+        "run_length": 8,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 224,
+          "word_entropy": 7.395297590685474,
+          "glyph_entropy": 3.5791394901145446,
+          "glyph_conditional_entropy": 1.8721244839102424,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.2838724800750117
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 10,
+        "run_length": 16,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 221,
+          "word_entropy": 7.350074934666291,
+          "glyph_entropy": 3.5622203160018406,
+          "glyph_conditional_entropy": 1.8519002599884007,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.3061415846225973
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 10,
+        "run_length": 16,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 218,
+          "word_entropy": 7.386574464178991,
+          "glyph_entropy": 3.568379343256725,
+          "glyph_conditional_entropy": 1.86307674706481,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.2941865916549461
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 10,
+        "run_length": 16,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 226,
+          "word_entropy": 7.397243574703178,
+          "glyph_entropy": 3.572072074232764,
+          "glyph_conditional_entropy": 1.8656953732309867,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.3040318799812471
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 24,
+        "run_length": 1,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 517,
+          "word_entropy": 8.57552164148552,
+          "glyph_entropy": 3.7899265429328866,
+          "glyph_conditional_entropy": 2.1838573826152468,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.00023441162681669012
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 24,
+        "run_length": 1,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 501,
+          "word_entropy": 8.598893975561744,
+          "glyph_entropy": 3.7928852636379644,
+          "glyph_conditional_entropy": 2.180284404929307,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.00023441162681669012
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 24,
+        "run_length": 1,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 509,
+          "word_entropy": 8.6021522723472,
+          "glyph_entropy": 3.7907738354008464,
+          "glyph_conditional_entropy": 2.186564959534359,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.0
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 24,
+        "run_length": 2,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 512,
+          "word_entropy": 8.564961642543853,
+          "glyph_entropy": 3.7884840904956727,
+          "glyph_conditional_entropy": 2.183282061378568,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.16526019690576652
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 24,
+        "run_length": 2,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 498,
+          "word_entropy": 8.59637468814646,
+          "glyph_entropy": 3.792406480326321,
+          "glyph_conditional_entropy": 2.181423212237439,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.15752461322081576
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 24,
+        "run_length": 2,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 509,
+          "word_entropy": 8.603563861930313,
+          "glyph_entropy": 3.796202773283154,
+          "glyph_conditional_entropy": 2.187929386386137,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.15986872948898265
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 24,
+        "run_length": 4,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 515,
+          "word_entropy": 8.57158541403016,
+          "glyph_entropy": 3.7882975639644547,
+          "glyph_conditional_entropy": 2.1758447206667144,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.24706985466479137
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 24,
+        "run_length": 4,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 495,
+          "word_entropy": 8.594124764743782,
+          "glyph_entropy": 3.7898579335139955,
+          "glyph_conditional_entropy": 2.1877151108956845,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.23792780121894047
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 24,
+        "run_length": 4,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 506,
+          "word_entropy": 8.607759963653233,
+          "glyph_entropy": 3.793438165225449,
+          "glyph_conditional_entropy": 2.1986592394767244,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.24753867791842477
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 24,
+        "run_length": 8,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 516,
+          "word_entropy": 8.571688297011749,
+          "glyph_entropy": 3.7865988777564388,
+          "glyph_conditional_entropy": 2.1830439280023795,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.2885607126113455
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 24,
+        "run_length": 8,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 497,
+          "word_entropy": 8.592957798384655,
+          "glyph_entropy": 3.7881131379034008,
+          "glyph_conditional_entropy": 2.1783435848150683,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.27848101265822783
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 24,
+        "run_length": 8,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 509,
+          "word_entropy": 8.607147829369877,
+          "glyph_entropy": 3.791143850934995,
+          "glyph_conditional_entropy": 2.1928718886289658,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.28574777308954524
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 24,
+        "run_length": 16,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 518,
+          "word_entropy": 8.573334214824705,
+          "glyph_entropy": 3.794919929760499,
+          "glyph_conditional_entropy": 2.1901602316849136,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.3098921706516643
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 24,
+        "run_length": 16,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 501,
+          "word_entropy": 8.598617218832942,
+          "glyph_entropy": 3.792748066728254,
+          "glyph_conditional_entropy": 2.1797905493487733,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.2981715893108298
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 24,
+        "run_length": 16,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 508,
+          "word_entropy": 8.608628289161185,
+          "glyph_entropy": 3.795629880699569,
+          "glyph_conditional_entropy": 2.1856430771088027,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.3068448195030474
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 120,
+        "run_length": 1,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1794,
+          "word_entropy": 10.465208645673064,
+          "glyph_entropy": 3.9750473749821955,
+          "glyph_conditional_entropy": 2.5424658198521755,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.0
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 120,
+        "run_length": 1,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1792,
+          "word_entropy": 10.5035460408925,
+          "glyph_entropy": 3.9718062934326688,
+          "glyph_conditional_entropy": 2.518182318525964,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.0
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 120,
+        "run_length": 1,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1805,
+          "word_entropy": 10.495181324385808,
+          "glyph_entropy": 3.971523448433406,
+          "glyph_conditional_entropy": 2.5279992747750493,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.0
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 120,
+        "run_length": 2,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1781,
+          "word_entropy": 10.467170999114456,
+          "glyph_entropy": 3.9719780163674137,
+          "glyph_conditional_entropy": 2.5249570791024265,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.1636193155180497
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 120,
+        "run_length": 2,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1817,
+          "word_entropy": 10.519051412679442,
+          "glyph_entropy": 3.9771431489766966,
+          "glyph_conditional_entropy": 2.531489607567991,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.15729020159399906
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 120,
+        "run_length": 2,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1782,
+          "word_entropy": 10.49558594621391,
+          "glyph_entropy": 3.9722350737287733,
+          "glyph_conditional_entropy": 2.523457518352722,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.15939990623534928
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 120,
+        "run_length": 4,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1801,
+          "word_entropy": 10.489689972658116,
+          "glyph_entropy": 3.9726238867367574,
+          "glyph_conditional_entropy": 2.531336505831862,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.24800750117205814
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 120,
+        "run_length": 4,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1823,
+          "word_entropy": 10.527885913698539,
+          "glyph_entropy": 3.9714396219258714,
+          "glyph_conditional_entropy": 2.528319058753363,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.2369901547116737
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 120,
+        "run_length": 4,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1812,
+          "word_entropy": 10.521874327432574,
+          "glyph_entropy": 3.9725878759350395,
+          "glyph_conditional_entropy": 2.5222901090424577,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.24753867791842477
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 120,
+        "run_length": 8,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1803,
+          "word_entropy": 10.495840992960533,
+          "glyph_entropy": 3.9704749747078303,
+          "glyph_conditional_entropy": 2.5214411002151076,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.28949835911861227
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 120,
+        "run_length": 8,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1812,
+          "word_entropy": 10.528062517631612,
+          "glyph_entropy": 3.969816953803431,
+          "glyph_conditional_entropy": 2.522442748818542,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.27894983591186123
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 120,
+        "run_length": 8,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1834,
+          "word_entropy": 10.535596480742518,
+          "glyph_entropy": 3.968712140609883,
+          "glyph_conditional_entropy": 2.52469251303307,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.28527894983591184
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 120,
+        "run_length": 16,
+        "offset": 0,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1808,
+          "word_entropy": 10.487335384357703,
+          "glyph_entropy": 3.9804388774512782,
+          "glyph_conditional_entropy": 2.535950817035424,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.30918893577121426
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 120,
+        "run_length": 16,
+        "offset": 5000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1821,
+          "word_entropy": 10.524558022019255,
+          "glyph_entropy": 3.9790991123289645,
+          "glyph_conditional_entropy": 2.532442609683284,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.2969995311767464
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "rows": 120,
+        "run_length": 16,
+        "offset": 10000,
+        "known_key_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1803,
+          "word_entropy": 10.50622232050144,
+          "glyph_entropy": 3.9830260717459516,
+          "glyph_conditional_entropy": 2.5331698044269473,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.30872011251758086
+        }
+      }
+    ]
+  },
+  "random_results": {
+    "practice_training_baseline": {
+      "tokens": 5000,
+      "types": 1744,
+      "word_entropy": 9.295011634503703,
+      "glyph_entropy": 3.8356971401522757,
+      "glyph_conditional_entropy": 1.5360209985735187,
+      "adjacent_pairs": 4266,
+      "adjacent_edit1_share": 0.04406938584153774
+    },
+    "config": {
+      "books": [
+        "it_villani",
+        "fr_rose",
+        "en_chaucer"
+      ],
+      "row_counts": [
+        10,
+        24,
+        120
+      ],
+      "stay_probabilities": [
+        0.125,
+        0.25,
+        0.5
+      ],
+      "selection_seeds": [
+        113,
+        271,
+        449
+      ],
+      "plaintext_offset": 15000
+    },
+    "rows": [
+      {
+        "book": "it_villani",
+        "row_count": 10,
+        "stay_prob": 0.125,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 199,
+          "word_entropy": 7.1756057678938125,
+          "glyph_entropy": 3.5287136247167306,
+          "glyph_conditional_entropy": 1.8032251555386773,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.051336146272855133
+        }
+      },
+      {
+        "book": "it_villani",
+        "row_count": 10,
+        "stay_prob": 0.125,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 200,
+          "word_entropy": 7.177199197408346,
+          "glyph_entropy": 3.532830849766518,
+          "glyph_conditional_entropy": 1.7965601430506188,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.04430379746835443
+        }
+      },
+      {
+        "book": "it_villani",
+        "row_count": 10,
+        "stay_prob": 0.125,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 200,
+          "word_entropy": 7.175034496188859,
+          "glyph_entropy": 3.5347127537558714,
+          "glyph_conditional_entropy": 1.7976294570111948,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.04781997187060478
+        }
+      },
+      {
+        "book": "it_villani",
+        "row_count": 10,
+        "stay_prob": 0.25,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 198,
+          "word_entropy": 7.175954947086023,
+          "glyph_entropy": 3.5295080451181895,
+          "glyph_conditional_entropy": 1.7965256564536185,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.0874355368026254
+        }
+      },
+      {
+        "book": "it_villani",
+        "row_count": 10,
+        "stay_prob": 0.25,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 199,
+          "word_entropy": 7.177385715960966,
+          "glyph_entropy": 3.533021595658956,
+          "glyph_conditional_entropy": 1.7991006745789733,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.09118612283169245
+        }
+      },
+      {
+        "book": "it_villani",
+        "row_count": 10,
+        "stay_prob": 0.25,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 200,
+          "word_entropy": 7.179920716360123,
+          "glyph_entropy": 3.537251923124253,
+          "glyph_conditional_entropy": 1.7989087101170833,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.09118612283169245
+        }
+      },
+      {
+        "book": "it_villani",
+        "row_count": 10,
+        "stay_prob": 0.5,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 200,
+          "word_entropy": 7.168889885229838,
+          "glyph_entropy": 3.5347471523965943,
+          "glyph_conditional_entropy": 1.7949733758281257,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.18377871542428503
+        }
+      },
+      {
+        "book": "it_villani",
+        "row_count": 10,
+        "stay_prob": 0.5,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 199,
+          "word_entropy": 7.174154965311459,
+          "glyph_entropy": 3.531223947209723,
+          "glyph_conditional_entropy": 1.7985184952206632,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.1828410689170183
+        }
+      },
+      {
+        "book": "it_villani",
+        "row_count": 10,
+        "stay_prob": 0.5,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 199,
+          "word_entropy": 7.172816297814498,
+          "glyph_entropy": 3.53468265770009,
+          "glyph_conditional_entropy": 1.8012059798049576,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.1847163619315518
+        }
+      },
+      {
+        "book": "it_villani",
+        "row_count": 24,
+        "stay_prob": 0.125,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 461,
+          "word_entropy": 8.39669898435427,
+          "glyph_entropy": 3.762570164779487,
+          "glyph_conditional_entropy": 2.123488285211148,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.04781997187060478
+        }
+      },
+      {
+        "book": "it_villani",
+        "row_count": 24,
+        "stay_prob": 0.125,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 457,
+          "word_entropy": 8.39960657841859,
+          "glyph_entropy": 3.764040398524517,
+          "glyph_conditional_entropy": 2.127003689979148,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.04360056258790436
+        }
+      },
+      {
+        "book": "it_villani",
+        "row_count": 24,
+        "stay_prob": 0.125,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 450,
+          "word_entropy": 8.397193571510247,
+          "glyph_entropy": 3.7612220515101873,
+          "glyph_conditional_entropy": 2.1361544083556807,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.047116736990154715
+        }
+      },
+      {
+        "book": "it_villani",
+        "row_count": 24,
+        "stay_prob": 0.25,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 461,
+          "word_entropy": 8.4022479029729,
+          "glyph_entropy": 3.761938002252468,
+          "glyph_conditional_entropy": 2.137801370554772,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.08649789029535865
+        }
+      },
+      {
+        "book": "it_villani",
+        "row_count": 24,
+        "stay_prob": 0.25,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 458,
+          "word_entropy": 8.400491093732784,
+          "glyph_entropy": 3.7650790706663964,
+          "glyph_conditional_entropy": 2.133896101414633,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.09048288795124239
+        }
+      },
+      {
+        "book": "it_villani",
+        "row_count": 24,
+        "stay_prob": 0.25,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 452,
+          "word_entropy": 8.398139182053217,
+          "glyph_entropy": 3.76715469356375,
+          "glyph_conditional_entropy": 2.1281323378962225,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.09118612283169245
+        }
+      },
+      {
+        "book": "it_villani",
+        "row_count": 24,
+        "stay_prob": 0.5,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 451,
+          "word_entropy": 8.392554585761033,
+          "glyph_entropy": 3.7609395398637866,
+          "glyph_conditional_entropy": 2.1305256003833413,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.18401312705110173
+        }
+      },
+      {
+        "book": "it_villani",
+        "row_count": 24,
+        "stay_prob": 0.5,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 449,
+          "word_entropy": 8.398466741453491,
+          "glyph_entropy": 3.7637510551399656,
+          "glyph_conditional_entropy": 2.125750660450998,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.18190342240975152
+        }
+      },
+      {
+        "book": "it_villani",
+        "row_count": 24,
+        "stay_prob": 0.5,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 457,
+          "word_entropy": 8.396046068655513,
+          "glyph_entropy": 3.7700907165122626,
+          "glyph_conditional_entropy": 2.1468207082158988,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.18401312705110173
+        }
+      },
+      {
+        "book": "it_villani",
+        "row_count": 120,
+        "stay_prob": 0.125,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1641,
+          "word_entropy": 10.353830047713124,
+          "glyph_entropy": 3.941945409017749,
+          "glyph_conditional_entropy": 2.4801056752758637,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.04758556024378809
+        }
+      },
+      {
+        "book": "it_villani",
+        "row_count": 120,
+        "stay_prob": 0.125,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1603,
+          "word_entropy": 10.323003645797225,
+          "glyph_entropy": 3.9469448518869856,
+          "glyph_conditional_entropy": 2.4753158906913635,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.0426629160806376
+        }
+      },
+      {
+        "book": "it_villani",
+        "row_count": 120,
+        "stay_prob": 0.125,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1636,
+          "word_entropy": 10.3451900528136,
+          "glyph_entropy": 3.944527636742154,
+          "glyph_conditional_entropy": 2.4834439613530233,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.046413502109704644
+        }
+      },
+      {
+        "book": "it_villani",
+        "row_count": 120,
+        "stay_prob": 0.25,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1628,
+          "word_entropy": 10.335551473759192,
+          "glyph_entropy": 3.9453044222601603,
+          "glyph_conditional_entropy": 2.469191930503005,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.08649789029535865
+        }
+      },
+      {
+        "book": "it_villani",
+        "row_count": 120,
+        "stay_prob": 0.25,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1641,
+          "word_entropy": 10.353980084476085,
+          "glyph_entropy": 3.9423158576922086,
+          "glyph_conditional_entropy": 2.482607740618162,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.09095171120487576
+        }
+      },
+      {
+        "book": "it_villani",
+        "row_count": 120,
+        "stay_prob": 0.25,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1613,
+          "word_entropy": 10.339101538877452,
+          "glyph_entropy": 3.9492626231563013,
+          "glyph_conditional_entropy": 2.497759159162415,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.09118612283169245
+        }
+      },
+      {
+        "book": "it_villani",
+        "row_count": 120,
+        "stay_prob": 0.5,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1609,
+          "word_entropy": 10.318891758875445,
+          "glyph_entropy": 3.94756120215277,
+          "glyph_conditional_entropy": 2.463141866858817,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.18565400843881857
+        }
+      },
+      {
+        "book": "it_villani",
+        "row_count": 120,
+        "stay_prob": 0.5,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1615,
+          "word_entropy": 10.332312387176932,
+          "glyph_entropy": 3.939922718102683,
+          "glyph_conditional_entropy": 2.455144919975715,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.18330989217065166
+        }
+      },
+      {
+        "book": "it_villani",
+        "row_count": 120,
+        "stay_prob": 0.5,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1629,
+          "word_entropy": 10.330046408746957,
+          "glyph_entropy": 3.950929076563405,
+          "glyph_conditional_entropy": 2.4927592175363404,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.1849507735583685
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 10,
+        "stay_prob": 0.125,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 204,
+          "word_entropy": 7.187082945631321,
+          "glyph_entropy": 3.5517580498843433,
+          "glyph_conditional_entropy": 1.8456572387626102,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.04195968120018753
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 10,
+        "stay_prob": 0.125,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 204,
+          "word_entropy": 7.185795828021079,
+          "glyph_entropy": 3.551280162844747,
+          "glyph_conditional_entropy": 1.8438599129511783,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.0403187998124707
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 10,
+        "stay_prob": 0.125,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 204,
+          "word_entropy": 7.188371701844331,
+          "glyph_entropy": 3.5483037946182687,
+          "glyph_conditional_entropy": 1.8332877989279175,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.04594467885607126
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 10,
+        "stay_prob": 0.25,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 205,
+          "word_entropy": 7.190321784172309,
+          "glyph_entropy": 3.5544760977329486,
+          "glyph_conditional_entropy": 1.8469717599151925,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.07805907172995781
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 10,
+        "stay_prob": 0.25,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 203,
+          "word_entropy": 7.18189664499422,
+          "glyph_entropy": 3.5507668467361135,
+          "glyph_conditional_entropy": 1.8381312245996129,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.07852789498359118
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 10,
+        "stay_prob": 0.25,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 204,
+          "word_entropy": 7.182009111414627,
+          "glyph_entropy": 3.553821082856669,
+          "glyph_conditional_entropy": 1.845737344148675,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.08977965307079232
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 10,
+        "stay_prob": 0.5,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 203,
+          "word_entropy": 7.180010867048471,
+          "glyph_entropy": 3.5552332496810863,
+          "glyph_conditional_entropy": 1.8424666786108,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.1704172526957337
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 10,
+        "stay_prob": 0.5,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 203,
+          "word_entropy": 7.182833327384738,
+          "glyph_entropy": 3.550439845735909,
+          "glyph_conditional_entropy": 1.8397498055866612,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.16268166901078293
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 10,
+        "stay_prob": 0.5,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 204,
+          "word_entropy": 7.184421969340954,
+          "glyph_entropy": 3.548238863499189,
+          "glyph_conditional_entropy": 1.8382916032050791,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.1680731364275668
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 24,
+        "stay_prob": 0.125,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 466,
+          "word_entropy": 8.409774832552865,
+          "glyph_entropy": 3.787013596716763,
+          "glyph_conditional_entropy": 2.195357869057212,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.040787623066104076
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 24,
+        "stay_prob": 0.125,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 460,
+          "word_entropy": 8.406489631614761,
+          "glyph_entropy": 3.7863009742108877,
+          "glyph_conditional_entropy": 2.1776388954420534,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.038209095171120484
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 24,
+        "stay_prob": 0.125,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 458,
+          "word_entropy": 8.40060786878389,
+          "glyph_entropy": 3.7855035768916716,
+          "glyph_conditional_entropy": 2.181431630716377,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.04477262072198781
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 24,
+        "stay_prob": 0.25,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 460,
+          "word_entropy": 8.40309727463377,
+          "glyph_entropy": 3.7880981042566786,
+          "glyph_conditional_entropy": 2.183235016794609,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.07759024847632442
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 24,
+        "stay_prob": 0.25,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 461,
+          "word_entropy": 8.400707901316428,
+          "glyph_entropy": 3.7847718486846205,
+          "glyph_conditional_entropy": 2.1627285736747646,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.07805907172995781
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 24,
+        "stay_prob": 0.25,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 462,
+          "word_entropy": 8.398838783615204,
+          "glyph_entropy": 3.786138221413286,
+          "glyph_conditional_entropy": 2.1857220099340036,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.090014064697609
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 24,
+        "stay_prob": 0.5,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 467,
+          "word_entropy": 8.407730076859185,
+          "glyph_entropy": 3.7848430124174324,
+          "glyph_conditional_entropy": 2.1899522386441608,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.17158931082981715
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 24,
+        "stay_prob": 0.5,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 465,
+          "word_entropy": 8.398686692444082,
+          "glyph_entropy": 3.782142501347929,
+          "glyph_conditional_entropy": 2.159824559339247,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.16408813877168307
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 24,
+        "stay_prob": 0.5,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 469,
+          "word_entropy": 8.408264448693725,
+          "glyph_entropy": 3.7939310615875406,
+          "glyph_conditional_entropy": 2.198968660696487,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.16783872480075013
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 120,
+        "stay_prob": 0.125,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1650,
+          "word_entropy": 10.350061297816927,
+          "glyph_entropy": 3.975516809543493,
+          "glyph_conditional_entropy": 2.5258720412637636,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.04008438818565401
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 120,
+        "stay_prob": 0.125,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1628,
+          "word_entropy": 10.341446609961134,
+          "glyph_entropy": 3.9736354454250638,
+          "glyph_conditional_entropy": 2.517911747378694,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.037740271917487106
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 120,
+        "stay_prob": 0.125,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1624,
+          "word_entropy": 10.335358771849057,
+          "glyph_entropy": 3.972767714928908,
+          "glyph_conditional_entropy": 2.5219721715947188,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.04430379746835443
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 120,
+        "stay_prob": 0.25,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1647,
+          "word_entropy": 10.35307790081396,
+          "glyph_entropy": 3.975068468346149,
+          "glyph_conditional_entropy": 2.52744564585959,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.07759024847632442
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 120,
+        "stay_prob": 0.25,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1644,
+          "word_entropy": 10.341921574624696,
+          "glyph_entropy": 3.9736763257604175,
+          "glyph_conditional_entropy": 2.528876304346479,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.07641819034224097
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 120,
+        "stay_prob": 0.25,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1634,
+          "word_entropy": 10.33940774010889,
+          "glyph_entropy": 3.9778315080636175,
+          "glyph_conditional_entropy": 2.533613264100187,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.08977965307079232
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 120,
+        "stay_prob": 0.5,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1650,
+          "word_entropy": 10.348949001195646,
+          "glyph_entropy": 3.975697174032153,
+          "glyph_conditional_entropy": 2.528025999420631,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.17158931082981715
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 120,
+        "stay_prob": 0.5,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1644,
+          "word_entropy": 10.343844931818301,
+          "glyph_entropy": 3.970777091695578,
+          "glyph_conditional_entropy": 2.5022356638936056,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.1631504922644163
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 120,
+        "stay_prob": 0.5,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1643,
+          "word_entropy": 10.338036477630913,
+          "glyph_entropy": 3.9803126252485623,
+          "glyph_conditional_entropy": 2.5477832052886216,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.16666666666666666
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 10,
+        "stay_prob": 0.125,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 219,
+          "word_entropy": 7.375449843491776,
+          "glyph_entropy": 3.5665937934057825,
+          "glyph_conditional_entropy": 1.869842648658202,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.04172526957337084
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 10,
+        "stay_prob": 0.125,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 219,
+          "word_entropy": 7.3724601390473845,
+          "glyph_entropy": 3.571652313380158,
+          "glyph_conditional_entropy": 1.866834194698146,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.03914674167838725
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 10,
+        "stay_prob": 0.125,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 220,
+          "word_entropy": 7.380569605295033,
+          "glyph_entropy": 3.5731684963190706,
+          "glyph_conditional_entropy": 1.8664857233203138,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.0473511486169714
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 10,
+        "stay_prob": 0.25,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 220,
+          "word_entropy": 7.377723600507309,
+          "glyph_entropy": 3.570900007240152,
+          "glyph_conditional_entropy": 1.868862628883662,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.0808720112517581
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 10,
+        "stay_prob": 0.25,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 218,
+          "word_entropy": 7.37502398012851,
+          "glyph_entropy": 3.577358515845349,
+          "glyph_conditional_entropy": 1.8710457744031954,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.08227848101265822
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 10,
+        "stay_prob": 0.25,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 217,
+          "word_entropy": 7.3716600197655175,
+          "glyph_entropy": 3.5763833023698557,
+          "glyph_conditional_entropy": 1.8662932600792268,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.08790436005625879
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 10,
+        "stay_prob": 0.5,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 222,
+          "word_entropy": 7.372257634884168,
+          "glyph_entropy": 3.572005500518709,
+          "glyph_conditional_entropy": 1.8584875253484792,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.15752461322081576
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 10,
+        "stay_prob": 0.5,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 219,
+          "word_entropy": 7.379580596100407,
+          "glyph_entropy": 3.5675443093264367,
+          "glyph_conditional_entropy": 1.8694910975931327,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.1631504922644163
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 10,
+        "stay_prob": 0.5,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 220,
+          "word_entropy": 7.376598398597162,
+          "glyph_entropy": 3.567941640338291,
+          "glyph_conditional_entropy": 1.8563659581020433,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.16619784341303329
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 24,
+        "stay_prob": 0.125,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 508,
+          "word_entropy": 8.599867103240836,
+          "glyph_entropy": 3.783885784323407,
+          "glyph_conditional_entropy": 2.1739303307281803,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.04125644631973746
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 24,
+        "stay_prob": 0.125,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 504,
+          "word_entropy": 8.589984445406454,
+          "glyph_entropy": 3.7953857737504224,
+          "glyph_conditional_entropy": 2.1733113335912972,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.0379746835443038
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 24,
+        "stay_prob": 0.125,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 503,
+          "word_entropy": 8.598064962377734,
+          "glyph_entropy": 3.7863975138763215,
+          "glyph_conditional_entropy": 2.19109851894857,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.04617909048288795
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 24,
+        "stay_prob": 0.25,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 506,
+          "word_entropy": 8.593533841225357,
+          "glyph_entropy": 3.7906080010944785,
+          "glyph_conditional_entropy": 2.1699805768727836,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.08204406938584154
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 24,
+        "stay_prob": 0.25,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 505,
+          "word_entropy": 8.590013760917488,
+          "glyph_entropy": 3.7890269577769975,
+          "glyph_conditional_entropy": 2.165668336008944,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.08204406938584154
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 24,
+        "stay_prob": 0.25,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 501,
+          "word_entropy": 8.59255291356026,
+          "glyph_entropy": 3.7941868867537916,
+          "glyph_conditional_entropy": 2.179124843575375,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.08837318330989218
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 24,
+        "stay_prob": 0.5,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 505,
+          "word_entropy": 8.593336478718975,
+          "glyph_entropy": 3.783949311456096,
+          "glyph_conditional_entropy": 2.158728127954538,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.15986872948898265
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 24,
+        "stay_prob": 0.5,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 505,
+          "word_entropy": 8.593025819540197,
+          "glyph_entropy": 3.7903849990037584,
+          "glyph_conditional_entropy": 2.1736446185170273,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.163384903891233
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 24,
+        "stay_prob": 0.5,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 503,
+          "word_entropy": 8.597075413097963,
+          "glyph_entropy": 3.7952253132128133,
+          "glyph_conditional_entropy": 2.185428380002333,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.16666666666666666
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 120,
+        "stay_prob": 0.125,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1808,
+          "word_entropy": 10.512517252376625,
+          "glyph_entropy": 3.963748720899308,
+          "glyph_conditional_entropy": 2.508118117182085,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.04055321143928739
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 120,
+        "stay_prob": 0.125,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1769,
+          "word_entropy": 10.485545990109793,
+          "glyph_entropy": 3.967120641778085,
+          "glyph_conditional_entropy": 2.5174299940384417,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.03680262541022035
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 120,
+        "stay_prob": 0.125,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1795,
+          "word_entropy": 10.503959739272869,
+          "glyph_entropy": 3.9649711271494703,
+          "glyph_conditional_entropy": 2.514324107423695,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.04547585560243788
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 120,
+        "stay_prob": 0.25,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1799,
+          "word_entropy": 10.49953434983487,
+          "glyph_entropy": 3.9678576046405563,
+          "glyph_conditional_entropy": 2.5125476043147534,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.08227848101265822
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 120,
+        "stay_prob": 0.25,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1777,
+          "word_entropy": 10.491521645464482,
+          "glyph_entropy": 3.9674576420138865,
+          "glyph_conditional_entropy": 2.5296659233155196,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.08157524613220815
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 120,
+        "stay_prob": 0.25,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1787,
+          "word_entropy": 10.504067454408471,
+          "glyph_entropy": 3.9669058223327274,
+          "glyph_conditional_entropy": 2.526606728531645,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.08813877168307548
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 120,
+        "stay_prob": 0.5,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1805,
+          "word_entropy": 10.502033769181153,
+          "glyph_entropy": 3.968524698233521,
+          "glyph_conditional_entropy": 2.517504322714842,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.15963431786216598
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 120,
+        "stay_prob": 0.5,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1792,
+          "word_entropy": 10.502179097089723,
+          "glyph_entropy": 3.968456853582606,
+          "glyph_conditional_entropy": 2.503654556802746,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.16455696202531644
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 120,
+        "stay_prob": 0.5,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1774,
+          "word_entropy": 10.478747502838619,
+          "glyph_entropy": 3.973725471900049,
+          "glyph_conditional_entropy": 2.530804436859275,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.16690107829348336
+        }
+      }
+    ]
+  },
+  "adapted_row_results": {
+    "practice_training_baseline": {
+      "tokens": 5000,
+      "types": 1744,
+      "word_entropy": 9.295011634503703,
+      "glyph_entropy": 3.8356971401522757,
+      "glyph_conditional_entropy": 1.5360209985735187,
+      "adjacent_pairs": 4266,
+      "adjacent_edit1_share": 0.04406938584153774
+    },
+    "config": {
+      "books": [
+        "it_villani",
+        "fr_rose",
+        "en_chaucer"
+      ],
+      "row_counts": [
+        40,
+        48,
+        64
+      ],
+      "stay_probabilities": [
+        0.125
+      ],
+      "selection_seeds": [
+        113,
+        271,
+        449
+      ],
+      "plaintext_offset": 15000
+    },
+    "rows": [
+      {
+        "book": "it_villani",
+        "row_count": 40,
+        "stay_prob": 0.125,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 715,
+          "word_entropy": 9.094091759915209,
+          "glyph_entropy": 3.8653913933074993,
+          "glyph_conditional_entropy": 2.2940904766438317,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.04805438349742147
+        }
+      },
+      {
+        "book": "it_villani",
+        "row_count": 40,
+        "stay_prob": 0.125,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 714,
+          "word_entropy": 9.079190248655834,
+          "glyph_entropy": 3.863430759839867,
+          "glyph_conditional_entropy": 2.2756441689237192,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.0426629160806376
+        }
+      },
+      {
+        "book": "it_villani",
+        "row_count": 40,
+        "stay_prob": 0.125,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 712,
+          "word_entropy": 9.083262623918417,
+          "glyph_entropy": 3.867905114358206,
+          "glyph_conditional_entropy": 2.27903411613754,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.04688232536333802
+        }
+      },
+      {
+        "book": "it_villani",
+        "row_count": 48,
+        "stay_prob": 0.125,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 822,
+          "word_entropy": 9.28460171549298,
+          "glyph_entropy": 3.9082597307665763,
+          "glyph_conditional_entropy": 2.438170659131501,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.04664791373652133
+        }
+      },
+      {
+        "book": "it_villani",
+        "row_count": 48,
+        "stay_prob": 0.125,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 811,
+          "word_entropy": 9.278099272079672,
+          "glyph_entropy": 3.9102047820477512,
+          "glyph_conditional_entropy": 2.4341795186561095,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.04289732770745429
+        }
+      },
+      {
+        "book": "it_villani",
+        "row_count": 48,
+        "stay_prob": 0.125,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 817,
+          "word_entropy": 9.293855014772056,
+          "glyph_entropy": 3.909102717139379,
+          "glyph_conditional_entropy": 2.43917848159698,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.04571026722925457
+        }
+      },
+      {
+        "book": "it_villani",
+        "row_count": 64,
+        "stay_prob": 0.125,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1030,
+          "word_entropy": 9.652296407841964,
+          "glyph_entropy": 3.942266315729517,
+          "glyph_conditional_entropy": 2.4293677803192484,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.04758556024378809
+        }
+      },
+      {
+        "book": "it_villani",
+        "row_count": 64,
+        "stay_prob": 0.125,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1034,
+          "word_entropy": 9.6633431823945,
+          "glyph_entropy": 3.946565143964317,
+          "glyph_conditional_entropy": 2.435812822539676,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.0426629160806376
+        }
+      },
+      {
+        "book": "it_villani",
+        "row_count": 64,
+        "stay_prob": 0.125,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1045,
+          "word_entropy": 9.67351434862382,
+          "glyph_entropy": 3.9446027287735044,
+          "glyph_conditional_entropy": 2.447659735972632,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.046413502109704644
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 40,
+        "stay_prob": 0.125,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 731,
+          "word_entropy": 9.096477353045053,
+          "glyph_entropy": 3.8877360524100535,
+          "glyph_conditional_entropy": 2.316697514103108,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.0403187998124707
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 40,
+        "stay_prob": 0.125,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 724,
+          "word_entropy": 9.08707674137103,
+          "glyph_entropy": 3.8842961139215055,
+          "glyph_conditional_entropy": 2.3112861311733446,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.03844350679793718
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 40,
+        "stay_prob": 0.125,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 720,
+          "word_entropy": 9.08206402560608,
+          "glyph_entropy": 3.888285907111617,
+          "glyph_conditional_entropy": 2.331955965694091,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.04453820909517112
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 48,
+        "stay_prob": 0.125,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 841,
+          "word_entropy": 9.301970684207399,
+          "glyph_entropy": 3.934005099471874,
+          "glyph_conditional_entropy": 2.4821765542709078,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.04055321143928739
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 48,
+        "stay_prob": 0.125,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 836,
+          "word_entropy": 9.305296425353717,
+          "glyph_entropy": 3.9367112983191586,
+          "glyph_conditional_entropy": 2.4834413455102506,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.0379746835443038
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 48,
+        "stay_prob": 0.125,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 827,
+          "word_entropy": 9.297582494775455,
+          "glyph_entropy": 3.9309808100320245,
+          "glyph_conditional_entropy": 2.4738169617177417,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.04453820909517112
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 64,
+        "stay_prob": 0.125,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1067,
+          "word_entropy": 9.680792630767675,
+          "glyph_entropy": 3.974537978073091,
+          "glyph_conditional_entropy": 2.498054820449352,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.04055321143928739
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 64,
+        "stay_prob": 0.125,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1065,
+          "word_entropy": 9.685709234330533,
+          "glyph_entropy": 3.97350549235356,
+          "glyph_conditional_entropy": 2.4958585886062616,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.0379746835443038
+        }
+      },
+      {
+        "book": "fr_rose",
+        "row_count": 64,
+        "stay_prob": 0.125,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1053,
+          "word_entropy": 9.669013910093778,
+          "glyph_entropy": 3.9684032803076423,
+          "glyph_conditional_entropy": 2.489799027034681,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.04453820909517112
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 40,
+        "stay_prob": 0.125,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 809,
+          "word_entropy": 9.296118849824964,
+          "glyph_entropy": 3.881720081415312,
+          "glyph_conditional_entropy": 2.3212559977744456,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.040787623066104076
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 40,
+        "stay_prob": 0.125,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 796,
+          "word_entropy": 9.2738933129347,
+          "glyph_entropy": 3.885827499951059,
+          "glyph_conditional_entropy": 2.3233016591622833,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.037037037037037035
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 40,
+        "stay_prob": 0.125,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 810,
+          "word_entropy": 9.296520109716063,
+          "glyph_entropy": 3.885320658613938,
+          "glyph_conditional_entropy": 2.328495686245853,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.04547585560243788
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 48,
+        "stay_prob": 0.125,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 924,
+          "word_entropy": 9.478973877529599,
+          "glyph_entropy": 3.9301415953040046,
+          "glyph_conditional_entropy": 2.465390114750983,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.040787623066104076
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 48,
+        "stay_prob": 0.125,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 916,
+          "word_entropy": 9.472743720475473,
+          "glyph_entropy": 3.931670077579902,
+          "glyph_conditional_entropy": 2.474297877589374,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.03727144866385373
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 48,
+        "stay_prob": 0.125,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 908,
+          "word_entropy": 9.484106329597395,
+          "glyph_entropy": 3.925902765818347,
+          "glyph_conditional_entropy": 2.4745843219892554,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.04594467885607126
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 64,
+        "stay_prob": 0.125,
+        "seed": 113,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1169,
+          "word_entropy": 9.85144709067089,
+          "glyph_entropy": 3.9629266863874855,
+          "glyph_conditional_entropy": 2.4700741615484016,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.0403187998124707
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 64,
+        "stay_prob": 0.125,
+        "seed": 271,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1179,
+          "word_entropy": 9.857425352461728,
+          "glyph_entropy": 3.965844362220699,
+          "glyph_conditional_entropy": 2.4810825576394624,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.03680262541022035
+        }
+      },
+      {
+        "book": "en_chaucer",
+        "row_count": 64,
+        "stay_prob": 0.125,
+        "seed": 449,
+        "known_schedule_roundtrip": true,
+        "metrics": {
+          "tokens": 5000,
+          "types": 1180,
+          "word_entropy": 9.86552806026392,
+          "glyph_entropy": 3.9664947669494017,
+          "glyph_conditional_entropy": 2.486029779414734,
+          "adjacent_pairs": 4266,
+          "adjacent_edit1_share": 0.04547585560243788
+        }
+      }
+    ]
+  },
+  "reproducibility": {
+    "block_script": "import importlib.util,json,hashlib\nfrom vs import corpus,ivtff,refcorpus\nsp=importlib.util.spec_from_file_location('joint','/tmp/voy_k046_joint.py');j=importlib.util.module_from_spec(sp);sp.loader.exec_module(j)\nN=5000;books=('it_villani','fr_rose','en_chaucer');sizes=(10,24,120);runs=(1,2,4,8,16);offsets=(0,5000,10000)\ntrain,_=corpus.split_pages('practice','zl');ws=[];adj=[]\nfor p in train:\n for line in p.lines:\n  if line.unit!='P':continue\n  last=None\n  for k,w in enumerate(line.words):\n   if len(ws)>=N:break\n   if ivtff.uncertain(w) or not(w.isascii() and w.isalpha() and w.islower()):last=None;continue\n   i=len(ws);ws.append(w)\n   if last is not None and last[0]==k-1:adj.append((last[1],i))\n   last=(k,i)\nassert len(ws)==N\npins={e['id']:e for e in refcorpus.pins()}\nout={'practice_training_baseline':j.values(ws,adj),'config':{'books':books,'row_counts':sizes,'run_lengths':runs,'offsets':offsets,'layout':'first 5000 certain ZL practice-training paragraph words','source':'fixed first rows of Hermes P.III table'},'rows':[]}\nfor book in books:\n p=pins[book];assert hashlib.sha256(open(p['file'],'rb').read()).hexdigest()==p['sha256'];text=''.join(c for part in refcorpus.blocks_of(book) for c in part if c in j.allowed);assert len(text)>=15000\n for size in sizes:\n  inverse=[{v:k for k,v in row.items()} for row in j.table[:size]]\n  for n in runs:\n   for offset in offsets:\n    plain=text[offset:offset+N];encoded=[j.table[(i//n)%size][ch] for i,ch in enumerate(plain)];decoded=''.join(inverse[(i//n)%size][w] for i,w in enumerate(encoded));assert decoded==plain\n    out['rows'].append({'book':book,'rows':size,'run_length':n,'offset':offset,'known_key_roundtrip':True,'metrics':j.values(encoded,adj)})\nprint(json.dumps(out,indent=2))\n",
+    "random_script": "import importlib.util,hashlib,json,random\nfrom vs import corpus,ivtff,refcorpus\nsp=importlib.util.spec_from_file_location('joint','/tmp/voy_k046_joint.py');j=importlib.util.module_from_spec(sp);sp.loader.exec_module(j)\nN=5000;books=('it_villani','fr_rose','en_chaucer');sizes=(10,24,120);stay=(.125,.25,.5);seeds=(113,271,449)\ntrain,_=corpus.split_pages('practice','zl');ws=[];adj=[]\nfor p in train:\n for line in p.lines:\n  if line.unit!='P':continue\n  last=None\n  for k,w in enumerate(line.words):\n   if len(ws)>=N:break\n   if ivtff.uncertain(w) or not(w.isascii() and w.isalpha() and w.islower()):last=None;continue\n   i=len(ws);ws.append(w)\n   if last is not None and last[0]==k-1:adj.append((last[1],i))\n   last=(k,i)\nassert len(ws)==N\npins={e['id']:e for e in refcorpus.pins()};out={'practice_training_baseline':j.values(ws,adj),'config':{'books':books,'row_counts':sizes,'stay_probabilities':stay,'selection_seeds':seeds,'plaintext_offset':15000},'rows':[]}\nfor book in books:\n pin=pins[book];assert hashlib.sha256(open(pin['file'],'rb').read()).hexdigest()==pin['sha256'];text=''.join(c for part in refcorpus.blocks_of(book) for c in part if c in j.allowed);plain=text[15000:20000];assert len(plain)==N\n for size in sizes:\n  inv=[{v:k for k,v in row.items()} for row in j.table[:size]]\n  for prob in stay:\n   for seed in seeds:\n    rng=random.Random(seed);column=0;which=[]\n    for i in range(N):\n     if i and rng.random()>=prob:column=(column+1)%size\n     which.append(column)\n    enc=[j.table[c][ch] for c,ch in zip(which,plain)];assert ''.join(inv[c][w] for c,w in zip(which,enc))==plain\n    out['rows'].append({'book':book,'row_count':size,'stay_prob':prob,'seed':seed,'known_schedule_roundtrip':True,'metrics':j.values(enc,adj)})\nprint(json.dumps(out,indent=2))\n",
+    "adapted_row_script": "import importlib.util,hashlib,json,random\nfrom vs import corpus,ivtff,refcorpus\nsp=importlib.util.spec_from_file_location('joint','/tmp/voy_k046_joint.py');j=importlib.util.module_from_spec(sp);sp.loader.exec_module(j)\nN=5000;books=('it_villani','fr_rose','en_chaucer');sizes=(40,48,64);stay=(.125,);seeds=(113,271,449)\ntrain,_=corpus.split_pages('practice','zl');ws=[];adj=[]\nfor p in train:\n for line in p.lines:\n  if line.unit!='P':continue\n  last=None\n  for k,w in enumerate(line.words):\n   if len(ws)>=N:break\n   if ivtff.uncertain(w) or not(w.isascii() and w.isalpha() and w.islower()):last=None;continue\n   i=len(ws);ws.append(w)\n   if last is not None and last[0]==k-1:adj.append((last[1],i))\n   last=(k,i)\nassert len(ws)==N\npins={e['id']:e for e in refcorpus.pins()};out={'practice_training_baseline':j.values(ws,adj),'config':{'books':books,'row_counts':sizes,'stay_probabilities':stay,'selection_seeds':seeds,'plaintext_offset':15000},'rows':[]}\nfor book in books:\n pin=pins[book];assert hashlib.sha256(open(pin['file'],'rb').read()).hexdigest()==pin['sha256'];text=''.join(c for part in refcorpus.blocks_of(book) for c in part if c in j.allowed);plain=text[15000:20000];assert len(plain)==N\n for size in sizes:\n  inv=[{v:k for k,v in row.items()} for row in j.table[:size]]\n  for prob in stay:\n   for seed in seeds:\n    rng=random.Random(seed);column=0;which=[]\n    for i in range(N):\n     if i and rng.random()>=prob:column=(column+1)%size\n     which.append(column)\n    enc=[j.table[c][ch] for c,ch in zip(which,plain)];assert ''.join(inv[c][w] for c,w in zip(which,enc))==plain\n    out['rows'].append({'book':book,'row_count':size,'stay_prob':prob,'seed':seed,'known_schedule_roundtrip':True,'metrics':j.values(enc,adj)})\nprint(json.dumps(out,indent=2))\n",
+    "metric_helpers": "\"\"\"Fixed cyclic Polygraphia III: exact round trips and public-practice metric comparison.\"\"\"\nimport csv,json,hashlib,math,importlib.util\nfrom collections import Counter\nfrom vs import corpus,ivtff,refcorpus,dsl\n\nN=5000; COLS=(10,24,120); SOURCES=('la_augustine','la_erasmus','la_vulg_daniel'); CONTROL=('la_patrick','la_vulg_esther_a'); OFFSETS=(0,5000,10000)\nraw=open('/tmp/voy-piii.csv','rb').read();assert hashlib.sha256(raw).hexdigest()=='fe3f24a46dbc6b655eab8dbbd75addf84ee4a7dbd387ad802af75d02edfe5b4d'\ntable=list(csv.DictReader(raw.decode('utf-8-sig').splitlines())); alphabet=list(table[0]); allowed=set(alphabet)\nfor row in table:\n for c in row: row[c]=row[c].strip()\nassert all(len(set(row.values()))==len(row) for row in table[:max(COLS)])\npins={e['id']:e for e in refcorpus.pins()}\nfor b in SOURCES+CONTROL:\n with open(pins[b]['file'],'rb') as f:assert hashlib.sha256(f.read()).hexdigest()==pins[b]['sha256']\n\ndef entropy(c):\n n=sum(c.values());return -sum((v/n)*math.log2(v/n) for v in c.values()) if n else 0\n\ndef values(words,adj):\n chars=Counter(''.join(words));pairs=Counter((a,b) for w in words for a,b in zip(w,w[1:]));prev=Counter(a for a,b in pairs)\n return {'tokens':len(words),'types':len(set(words)),'word_entropy':entropy(Counter(words)),\n  'glyph_entropy':entropy(chars),'glyph_conditional_entropy':entropy(pairs)-entropy(prev),\n  'adjacent_pairs':len(adj),'adjacent_edit1_share':sum(dsl._edit1(words[i],words[j]) for i,j in adj)/len(adj)}\n\ndef witness(name):\n expected={'zl':'bf5b6d4ac1e3a51b1847a9c388318d609020441ccd56984c901c32b09beccafc','it':'7f27a8b0feed8f6de0a99900df6bf912dd1d295c38e5f830bac8b41c3f536fb5'}\n fn={'zl':'ZL3b-n.txt','it':'IT2a-n.txt'}[name]\n with open('data/raw/'+fn,'rb') as f:assert hashlib.sha256(f.read()).hexdigest()==expected[name]\n _,ev=corpus.split_pages('practice',name);ws=[];adj=[]\n for p in ev:\n  for line in p.lines:\n   if line.unit!='P':continue\n   last=None\n   for k,w in enumerate(line.words):\n    if ivtff.uncertain(w) or not(w.isascii() and w.isalpha() and w.islower()):last=None;continue\n    if len(ws)==N:return ws,adj\n    i=len(ws);ws.append(w)\n    if last is not None and last[0]==k-1:adj.append((last[1],i))\n    last=(k,i)\n assert len(ws)==N\n return ws,adj\n\ndef text(b):return ''.join(c for part in refcorpus.blocks_of(b) for c in part if c in allowed)\n\ndef encode(plain,n):\n inv=[{word:c for c,word in row.items()} for row in table[:n]]\n enc=[table[i%n][c] for i,c in enumerate(plain)]\n assert ''.join(inv[i%n][w] for i,w in enumerate(enc))==plain\n return enc\n\ndef run():\n witnesses={w:witness(w) for w in ('zl','it')}; result={'n':N,'column_counts':COLS,'sources':SOURCES,'offsets':OFFSETS,\n  'witnesses':{w:values(*x) for w,x in witnesses.items()},'planted':{},'unknown_key_controls':[]}\n for book in SOURCES:\n  plain=text(book);result['planted'][book]={}\n  for n in COLS:\n   result['planted'][book][str(n)]={}\n   for offset in OFFSETS:\n    src=plain[offset:offset+N];assert len(src)==N;enc=encode(src,n)\n    result['planted'][book][str(n)][str(offset)]={'roundtrip_exact':True,'by_layout':{w:values(enc,pairs) for w,(ws,pairs) in witnesses.items()}}\n # Separately benchmark the existing unknown-key suffix+bigram search, which\n # chooses random row subsets and therefore is not the same planted key.\n spec=importlib.util.spec_from_file_location('unknown','/tmp/voy_piii_unknown.py');mod=importlib.util.module_from_spec(spec);spec.loader.exec_module(mod)\n for b in CONTROL:\n  for n in COLS:\n   for seed in (41,71,103): result['unknown_key_controls'].append(mod.experiment(b,n,'sequential',seed,'real'))\n return result\n\nif __name__=='__main__':print(json.dumps(run(),indent=2))\n"
+  }
+}

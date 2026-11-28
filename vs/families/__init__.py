@@ -2,14 +2,15 @@
 decode_word(word: str, key: dict, seg: callable) -> str, a deterministic function of ONE
 Voynich word. The word-level interface is deliberate: a decoder cannot tell whether a
 word came from a real page or from a word-shuffled decoy, so the word-order kill test
-cannot be dodged. Line-level families are planned for a later season.
+cannot be dodged. The letter-words family keeps that interface (one word, one or two letters)
+but its plaintext is respaced: see vs/respace.py.
 
 A new family is added by pull request and must be reviewed and merged before any key that
 uses it is scored on the held-out pages.
 """
 import importlib, os
 
-FAMILIES = ["substitution", "verbose", "codebook", "nomenclator", "table-cipher", "abbreviation", "syllabic", "nulls", "constant", "hashlex"]
+FAMILIES = ["substitution", "verbose", "codebook", "nomenclator", "table-cipher", "abbreviation", "syllabic", "nulls", "letter-words", "constant", "hashlex"]
 
 
 def load(name):

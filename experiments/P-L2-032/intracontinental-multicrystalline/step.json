@@ -1,0 +1,6215 @@
+{
+  "title": "Known-state and known-model controls temper synthetic latent-line false alarms",
+  "program": "L2",
+  "on_path": false,
+  "hard": true,
+  "statement": "In the same binary latent-line family, conditioning word shuffles on the true state rejects 0–3 of 30 null books across the tested settings, while the known-model posterior-predictive null rejects 0–3. Conditioning on four observed proxy words still rejects 19–30, whereas 16- or 32-word count proxies reject 0–4 in these trials; all methods reject all 30 examples of one strong planted transition. True states and the exact generator parameters are oracle information, and these small synthetic results do not validate a manuscript null.",
+  "check": "Calibrate an estimated, rather than known, latent model on independent simulations and external texts, including misspecified state counts, nonbinary vocabularies, dependent endpoints, varying line lengths, missing data and page effects. Compare posterior predictive checks with exact-word conditional nulls, enforce movement and support gates, and quantify uncertainty over fitted parameters. Freeze the eight intended edge pairs and aggregate test before held-out evaluation; no null rejection should be interpreted as proof of direct transitions without establishing robustness to latent mixtures.",
+  "simulation": "For each of 30 seeds, make six pages of 36 lines. Each line independently has a binary latent state. At each word, first and last bits independently equal that state with probability p (otherwise flip), so there is no direct cross-word dependence given the state. Use p=.7,.8,.9, and probe lengths 4, 16 and 32; leave eight subsequent words for seven equality-of-edge tests. An independent-word condition chooses both bits independently and uniformly. The positive alternative uses p=.8, but its target first bit copies the preceding target word’s last bit with probability .85. All methods use 39 simulated nulls and one-sided add-one p-values with threshold .05.",
+  "conditional_shuffle": "Within each page and exact target position shuffle complete target words jointly across lines, stratifying either on the generator’s true latent bit (oracle) or on the count of ones in the last bits of the probe words. This preserves each complete-word multiset per cell and hence overlapping word boundaries; every shuffle asserts exact Counter equality. Refuse a replicate with fewer than 30 cells containing more than one word value; none of the reported cases was refused. Proxy majority error rates are measured using the hidden synthetic state and cannot be known for real manuscript lines. The latent-null and positive simulations reuse seed indices across settings and use only 30 books each.",
+  "posterior_predictive": "The follow-up parametric null assumes the correct latent model, prior P(state=1)=1/2 and known p, and computes P(state=1 | probe) from the count of probe end bits. Independently sample a state from that posterior for each line, generate eight target words from the known conditionally independent emissions, and compare the same seven-edge count against 39 such samples. This integrates latent-state uncertainty and preserves shared words within each generated line; unlike the permutation, it does not preserve the exact observed word or edge marginals. The independent-word condition uses known p=.5. No model fitting, prior uncertainty or misspecification is included.",
+  "limitations": "The true-state oracle and the known-model posterior predictive check use information unavailable in the manuscript. More probe words leave less text to test and count strata may become sparse on real folios. The simulation assumes binary symbols, stationary p and independent emissions; it does not cover mixed page rates, uncertain tokens, variable line lengths, genuine vocabulary or model misspecification. Thirty books and 39 null samples provide low-resolution uncertainty; zero to three rejections is not proof of nominal size. Parameter choices were exploratory follow-ups to prior results. The score is a surrogate equality statistic rather than the full eight-pair aggregate. No manuscript data were examined.",
+  "conditional_results": {
+    "independent_0.8_4": {
+      "oracle": {
+        "runs": [
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.44907407407407407,
+            "p": 0.625
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.44907407407407407,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5092592592592593,
+            "p": 0.5
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5509259259259259,
+            "p": 0.9
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5648148148148148,
+            "p": 0.75
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5277777777777778,
+            "p": 0.8
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5648148148148148,
+            "p": 0.75
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.49537037037037035,
+            "p": 0.6
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5185185185185185,
+            "p": 0.9
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.4861111111111111,
+            "p": 0.925
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.48148148148148145,
+            "p": 0.525
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5370370370370371,
+            "p": 0.65
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5601851851851852,
+            "p": 0.6
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5138888888888888,
+            "p": 0.325
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.48148148148148145,
+            "p": 0.825
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.4675925925925926,
+            "p": 0.3
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5231481481481481,
+            "p": 0.65
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5046296296296297,
+            "p": 0.7
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.4537037037037037,
+            "p": 0.85
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5277777777777778,
+            "p": 0.75
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.49074074074074076,
+            "p": 1.0
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5,
+            "p": 0.75
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5,
+            "p": 0.325
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.4675925925925926,
+            "p": 0.625
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5231481481481481,
+            "p": 0.75
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5185185185185185,
+            "p": 0.65
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.4351851851851852,
+            "p": 0.275
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.49537037037037035,
+            "p": 0.225
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.47685185185185186,
+            "p": 0.5
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5648148148148148,
+            "p": 1.0
+          }
+        ],
+        "refused": 0,
+        "reject": 1,
+        "min_movable": 96,
+        "mean_proxy_error": 0.5046296296296297
+      },
+      "count": {
+        "runs": [
+          {
+            "refused": false,
+            "movable": 193,
+            "proxy_error": 0.44907407407407407,
+            "p": 0.45
+          },
+          {
+            "refused": false,
+            "movable": 198,
+            "proxy_error": 0.44907407407407407,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 190,
+            "proxy_error": 0.5092592592592593,
+            "p": 0.65
+          },
+          {
+            "refused": false,
+            "movable": 222,
+            "proxy_error": 0.5509259259259259,
+            "p": 0.8
+          },
+          {
+            "refused": false,
+            "movable": 205,
+            "proxy_error": 0.5648148148148148,
+            "p": 0.775
+          },
+          {
+            "refused": false,
+            "movable": 197,
+            "proxy_error": 0.5277777777777778,
+            "p": 0.975
+          },
+          {
+            "refused": false,
+            "movable": 205,
+            "proxy_error": 0.5648148148148148,
+            "p": 0.825
+          },
+          {
+            "refused": false,
+            "movable": 206,
+            "proxy_error": 0.49537037037037035,
+            "p": 0.75
+          },
+          {
+            "refused": false,
+            "movable": 182,
+            "proxy_error": 0.5185185185185185,
+            "p": 0.775
+          },
+          {
+            "refused": false,
+            "movable": 209,
+            "proxy_error": 0.4861111111111111,
+            "p": 0.9
+          },
+          {
+            "refused": false,
+            "movable": 210,
+            "proxy_error": 0.48148148148148145,
+            "p": 0.225
+          },
+          {
+            "refused": false,
+            "movable": 186,
+            "proxy_error": 0.5370370370370371,
+            "p": 0.525
+          },
+          {
+            "refused": false,
+            "movable": 214,
+            "proxy_error": 0.5601851851851852,
+            "p": 0.55
+          },
+          {
+            "refused": false,
+            "movable": 195,
+            "proxy_error": 0.5138888888888888,
+            "p": 0.375
+          },
+          {
+            "refused": false,
+            "movable": 194,
+            "proxy_error": 0.48148148148148145,
+            "p": 0.6
+          },
+          {
+            "refused": false,
+            "movable": 220,
+            "proxy_error": 0.4675925925925926,
+            "p": 0.375
+          },
+          {
+            "refused": false,
+            "movable": 195,
+            "proxy_error": 0.5231481481481481,
+            "p": 0.3
+          },
+          {
+            "refused": false,
+            "movable": 200,
+            "proxy_error": 0.5046296296296297,
+            "p": 0.8
+          },
+          {
+            "refused": false,
+            "movable": 202,
+            "proxy_error": 0.4537037037037037,
+            "p": 0.925
+          },
+          {
+            "refused": false,
+            "movable": 189,
+            "proxy_error": 0.5277777777777778,
+            "p": 0.875
+          },
+          {
+            "refused": false,
+            "movable": 181,
+            "proxy_error": 0.49074074074074076,
+            "p": 1.0
+          },
+          {
+            "refused": false,
+            "movable": 211,
+            "proxy_error": 0.5,
+            "p": 0.775
+          },
+          {
+            "refused": false,
+            "movable": 207,
+            "proxy_error": 0.5,
+            "p": 0.35
+          },
+          {
+            "refused": false,
+            "movable": 190,
+            "proxy_error": 0.4675925925925926,
+            "p": 0.825
+          },
+          {
+            "refused": false,
+            "movable": 201,
+            "proxy_error": 0.5231481481481481,
+            "p": 0.775
+          },
+          {
+            "refused": false,
+            "movable": 193,
+            "proxy_error": 0.5185185185185185,
+            "p": 0.35
+          },
+          {
+            "refused": false,
+            "movable": 206,
+            "proxy_error": 0.4351851851851852,
+            "p": 0.325
+          },
+          {
+            "refused": false,
+            "movable": 214,
+            "proxy_error": 0.49537037037037035,
+            "p": 0.425
+          },
+          {
+            "refused": false,
+            "movable": 204,
+            "proxy_error": 0.47685185185185186,
+            "p": 0.575
+          },
+          {
+            "refused": false,
+            "movable": 215,
+            "proxy_error": 0.5648148148148148,
+            "p": 1.0
+          }
+        ],
+        "refused": 0,
+        "reject": 1,
+        "min_movable": 181,
+        "mean_proxy_error": 0.5046296296296297
+      }
+    },
+    "independent_0.8_16": {
+      "oracle": {
+        "runs": [
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.49074074074074076,
+            "p": 0.725
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5,
+            "p": 0.55
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.49074074074074076,
+            "p": 0.85
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5277777777777778,
+            "p": 0.85
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.4537037037037037,
+            "p": 0.425
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.4583333333333333,
+            "p": 0.55
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5462962962962963,
+            "p": 0.45
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.46296296296296297,
+            "p": 0.8
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5370370370370371,
+            "p": 0.5
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.4583333333333333,
+            "p": 0.125
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.49537037037037035,
+            "p": 0.175
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5370370370370371,
+            "p": 0.775
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.4861111111111111,
+            "p": 0.575
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5092592592592593,
+            "p": 0.175
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.4675925925925926,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5231481481481481,
+            "p": 0.725
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.4583333333333333,
+            "p": 0.6
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5462962962962963,
+            "p": 0.675
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5648148148148148,
+            "p": 0.675
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.4074074074074074,
+            "p": 0.225
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5324074074074074,
+            "p": 0.975
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.46296296296296297,
+            "p": 0.35
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.4722222222222222,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5324074074074074,
+            "p": 0.725
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.4722222222222222,
+            "p": 0.55
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.49537037037037035,
+            "p": 0.975
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5092592592592593,
+            "p": 0.7
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.4722222222222222,
+            "p": 1.0
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5185185185185185,
+            "p": 0.325
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5324074074074074,
+            "p": 0.325
+          }
+        ],
+        "refused": 0,
+        "reject": 2,
+        "min_movable": 96,
+        "mean_proxy_error": 0.49737654320987656
+      },
+      "count": {
+        "runs": [
+          {
+            "refused": false,
+            "movable": 309,
+            "proxy_error": 0.49074074074074076,
+            "p": 0.575
+          },
+          {
+            "refused": false,
+            "movable": 287,
+            "proxy_error": 0.5,
+            "p": 0.925
+          },
+          {
+            "refused": false,
+            "movable": 304,
+            "proxy_error": 0.49074074074074076,
+            "p": 0.875
+          },
+          {
+            "refused": false,
+            "movable": 295,
+            "proxy_error": 0.5277777777777778,
+            "p": 0.625
+          },
+          {
+            "refused": false,
+            "movable": 322,
+            "proxy_error": 0.4537037037037037,
+            "p": 0.6
+          },
+          {
+            "refused": false,
+            "movable": 328,
+            "proxy_error": 0.4583333333333333,
+            "p": 0.525
+          },
+          {
+            "refused": false,
+            "movable": 296,
+            "proxy_error": 0.5462962962962963,
+            "p": 0.125
+          },
+          {
+            "refused": false,
+            "movable": 316,
+            "proxy_error": 0.46296296296296297,
+            "p": 0.825
+          },
+          {
+            "refused": false,
+            "movable": 288,
+            "proxy_error": 0.5370370370370371,
+            "p": 0.775
+          },
+          {
+            "refused": false,
+            "movable": 316,
+            "proxy_error": 0.4583333333333333,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 323,
+            "proxy_error": 0.49537037037037035,
+            "p": 0.075
+          },
+          {
+            "refused": false,
+            "movable": 311,
+            "proxy_error": 0.5370370370370371,
+            "p": 0.475
+          },
+          {
+            "refused": false,
+            "movable": 329,
+            "proxy_error": 0.4861111111111111,
+            "p": 0.775
+          },
+          {
+            "refused": false,
+            "movable": 306,
+            "proxy_error": 0.5092592592592593,
+            "p": 0.35
+          },
+          {
+            "refused": false,
+            "movable": 305,
+            "proxy_error": 0.4675925925925926,
+            "p": 0.05
+          },
+          {
+            "refused": false,
+            "movable": 331,
+            "proxy_error": 0.5231481481481481,
+            "p": 0.925
+          },
+          {
+            "refused": false,
+            "movable": 311,
+            "proxy_error": 0.4583333333333333,
+            "p": 0.85
+          },
+          {
+            "refused": false,
+            "movable": 322,
+            "proxy_error": 0.5462962962962963,
+            "p": 0.375
+          },
+          {
+            "refused": false,
+            "movable": 331,
+            "proxy_error": 0.5648148148148148,
+            "p": 0.85
+          },
+          {
+            "refused": false,
+            "movable": 310,
+            "proxy_error": 0.4074074074074074,
+            "p": 0.325
+          },
+          {
+            "refused": false,
+            "movable": 323,
+            "proxy_error": 0.5324074074074074,
+            "p": 0.575
+          },
+          {
+            "refused": false,
+            "movable": 309,
+            "proxy_error": 0.46296296296296297,
+            "p": 0.375
+          },
+          {
+            "refused": false,
+            "movable": 317,
+            "proxy_error": 0.4722222222222222,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 283,
+            "proxy_error": 0.5324074074074074,
+            "p": 0.775
+          },
+          {
+            "refused": false,
+            "movable": 294,
+            "proxy_error": 0.4722222222222222,
+            "p": 0.325
+          },
+          {
+            "refused": false,
+            "movable": 329,
+            "proxy_error": 0.49537037037037035,
+            "p": 0.875
+          },
+          {
+            "refused": false,
+            "movable": 317,
+            "proxy_error": 0.5092592592592593,
+            "p": 0.775
+          },
+          {
+            "refused": false,
+            "movable": 309,
+            "proxy_error": 0.4722222222222222,
+            "p": 0.9
+          },
+          {
+            "refused": false,
+            "movable": 314,
+            "proxy_error": 0.5185185185185185,
+            "p": 0.425
+          },
+          {
+            "refused": false,
+            "movable": 300,
+            "proxy_error": 0.5324074074074074,
+            "p": 0.475
+          }
+        ],
+        "refused": 0,
+        "reject": 3,
+        "min_movable": 283,
+        "mean_proxy_error": 0.49737654320987656
+      }
+    },
+    "independent_0.8_32": {
+      "oracle": {
+        "runs": [
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.4675925925925926,
+            "p": 0.45
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5046296296296297,
+            "p": 0.75
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.49537037037037035,
+            "p": 0.675
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5416666666666666,
+            "p": 0.075
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5092592592592593,
+            "p": 0.6
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5555555555555556,
+            "p": 0.775
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.49537037037037035,
+            "p": 0.725
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.4675925925925926,
+            "p": 0.425
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5370370370370371,
+            "p": 0.625
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5370370370370371,
+            "p": 0.625
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5555555555555556,
+            "p": 0.075
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5,
+            "p": 1.0
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5324074074074074,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5416666666666666,
+            "p": 0.7
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5092592592592593,
+            "p": 0.1
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5185185185185185,
+            "p": 0.675
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.4583333333333333,
+            "p": 0.75
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5231481481481481,
+            "p": 0.55
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5,
+            "p": 0.625
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.49074074074074076,
+            "p": 0.275
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5231481481481481,
+            "p": 0.775
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5185185185185185,
+            "p": 0.325
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.49074074074074076,
+            "p": 0.425
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5277777777777778,
+            "p": 0.1
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.6018518518518519,
+            "p": 0.125
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.49537037037037035,
+            "p": 0.95
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5046296296296297,
+            "p": 0.5
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.46296296296296297,
+            "p": 0.4
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5416666666666666,
+            "p": 0.15
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.5416666666666666,
+            "p": 0.775
+          }
+        ],
+        "refused": 0,
+        "reject": 1,
+        "min_movable": 96,
+        "mean_proxy_error": 0.5149691358024692
+      },
+      "count": {
+        "runs": [
+          {
+            "refused": false,
+            "movable": 367,
+            "proxy_error": 0.4675925925925926,
+            "p": 0.4
+          },
+          {
+            "refused": false,
+            "movable": 351,
+            "proxy_error": 0.5046296296296297,
+            "p": 0.475
+          },
+          {
+            "refused": false,
+            "movable": 343,
+            "proxy_error": 0.49537037037037035,
+            "p": 0.55
+          },
+          {
+            "refused": false,
+            "movable": 349,
+            "proxy_error": 0.5416666666666666,
+            "p": 0.075
+          },
+          {
+            "refused": false,
+            "movable": 386,
+            "proxy_error": 0.5092592592592593,
+            "p": 0.775
+          },
+          {
+            "refused": false,
+            "movable": 400,
+            "proxy_error": 0.5555555555555556,
+            "p": 0.95
+          },
+          {
+            "refused": false,
+            "movable": 366,
+            "proxy_error": 0.49537037037037035,
+            "p": 0.975
+          },
+          {
+            "refused": false,
+            "movable": 394,
+            "proxy_error": 0.4675925925925926,
+            "p": 0.3
+          },
+          {
+            "refused": false,
+            "movable": 384,
+            "proxy_error": 0.5370370370370371,
+            "p": 0.125
+          },
+          {
+            "refused": false,
+            "movable": 360,
+            "proxy_error": 0.5370370370370371,
+            "p": 0.2
+          },
+          {
+            "refused": false,
+            "movable": 358,
+            "proxy_error": 0.5555555555555556,
+            "p": 0.1
+          },
+          {
+            "refused": false,
+            "movable": 339,
+            "proxy_error": 0.5,
+            "p": 0.65
+          },
+          {
+            "refused": false,
+            "movable": 402,
+            "proxy_error": 0.5324074074074074,
+            "p": 0.075
+          },
+          {
+            "refused": false,
+            "movable": 359,
+            "proxy_error": 0.5416666666666666,
+            "p": 0.5
+          },
+          {
+            "refused": false,
+            "movable": 371,
+            "proxy_error": 0.5092592592592593,
+            "p": 0.2
+          },
+          {
+            "refused": false,
+            "movable": 377,
+            "proxy_error": 0.5185185185185185,
+            "p": 0.35
+          },
+          {
+            "refused": false,
+            "movable": 365,
+            "proxy_error": 0.4583333333333333,
+            "p": 0.6
+          },
+          {
+            "refused": false,
+            "movable": 355,
+            "proxy_error": 0.5231481481481481,
+            "p": 0.65
+          },
+          {
+            "refused": false,
+            "movable": 392,
+            "proxy_error": 0.5,
+            "p": 0.6
+          },
+          {
+            "refused": false,
+            "movable": 353,
+            "proxy_error": 0.49074074074074076,
+            "p": 0.225
+          },
+          {
+            "refused": false,
+            "movable": 375,
+            "proxy_error": 0.5231481481481481,
+            "p": 0.6
+          },
+          {
+            "refused": false,
+            "movable": 377,
+            "proxy_error": 0.5185185185185185,
+            "p": 0.2
+          },
+          {
+            "refused": false,
+            "movable": 381,
+            "proxy_error": 0.49074074074074076,
+            "p": 0.525
+          },
+          {
+            "refused": false,
+            "movable": 346,
+            "proxy_error": 0.5277777777777778,
+            "p": 0.05
+          },
+          {
+            "refused": false,
+            "movable": 379,
+            "proxy_error": 0.6018518518518519,
+            "p": 0.6
+          },
+          {
+            "refused": false,
+            "movable": 350,
+            "proxy_error": 0.49537037037037035,
+            "p": 0.975
+          },
+          {
+            "refused": false,
+            "movable": 377,
+            "proxy_error": 0.5046296296296297,
+            "p": 0.675
+          },
+          {
+            "refused": false,
+            "movable": 398,
+            "proxy_error": 0.46296296296296297,
+            "p": 0.7
+          },
+          {
+            "refused": false,
+            "movable": 372,
+            "proxy_error": 0.5416666666666666,
+            "p": 0.5
+          },
+          {
+            "refused": false,
+            "movable": 354,
+            "proxy_error": 0.5416666666666666,
+            "p": 0.725
+          }
+        ],
+        "refused": 0,
+        "reject": 1,
+        "min_movable": 339,
+        "mean_proxy_error": 0.5149691358024692
+      }
+    },
+    "latent_0.7_4": {
+      "oracle": {
+        "runs": [
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.23148148148148148,
+            "p": 0.1
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.21296296296296297,
+            "p": 0.725
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.19444444444444445,
+            "p": 0.325
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.2222222222222222,
+            "p": 0.875
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.2962962962962963,
+            "p": 0.575
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.2037037037037037,
+            "p": 0.25
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.2175925925925926,
+            "p": 0.275
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.21296296296296297,
+            "p": 0.575
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.2824074074074074,
+            "p": 0.5
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.1712962962962963,
+            "p": 0.275
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.19907407407407407,
+            "p": 0.975
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.2175925925925926,
+            "p": 0.55
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.19907407407407407,
+            "p": 0.65
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.17592592592592593,
+            "p": 0.7
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.19907407407407407,
+            "p": 0.6
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.25,
+            "p": 0.7
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.25,
+            "p": 0.925
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.21296296296296297,
+            "p": 0.725
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.2037037037037037,
+            "p": 0.15
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.2175925925925926,
+            "p": 0.225
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.2222222222222222,
+            "p": 0.675
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.24074074074074073,
+            "p": 0.225
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.25462962962962965,
+            "p": 0.55
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.2222222222222222,
+            "p": 1.0
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.24074074074074073,
+            "p": 0.2
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.1574074074074074,
+            "p": 0.55
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.20833333333333334,
+            "p": 0.525
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.21296296296296297,
+            "p": 0.45
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.19444444444444445,
+            "p": 0.85
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.25925925925925924,
+            "p": 0.25
+          }
+        ],
+        "refused": 0,
+        "reject": 0,
+        "min_movable": 96,
+        "mean_proxy_error": 0.21944444444444444
+      },
+      "count": {
+        "runs": [
+          {
+            "refused": false,
+            "movable": 232,
+            "proxy_error": 0.23148148148148148,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 233,
+            "proxy_error": 0.21296296296296297,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 232,
+            "proxy_error": 0.19444444444444445,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 233,
+            "proxy_error": 0.2222222222222222,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 235,
+            "proxy_error": 0.2962962962962963,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 231,
+            "proxy_error": 0.2037037037037037,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 225,
+            "proxy_error": 0.2175925925925926,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 225,
+            "proxy_error": 0.21296296296296297,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 225,
+            "proxy_error": 0.2824074074074074,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 225,
+            "proxy_error": 0.1712962962962963,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 233,
+            "proxy_error": 0.19907407407407407,
+            "p": 0.15
+          },
+          {
+            "refused": false,
+            "movable": 229,
+            "proxy_error": 0.2175925925925926,
+            "p": 0.05
+          },
+          {
+            "refused": false,
+            "movable": 233,
+            "proxy_error": 0.19907407407407407,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 227,
+            "proxy_error": 0.17592592592592593,
+            "p": 0.1
+          },
+          {
+            "refused": false,
+            "movable": 227,
+            "proxy_error": 0.19907407407407407,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 227,
+            "proxy_error": 0.25,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 224,
+            "proxy_error": 0.25,
+            "p": 0.05
+          },
+          {
+            "refused": false,
+            "movable": 230,
+            "proxy_error": 0.21296296296296297,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 222,
+            "proxy_error": 0.2037037037037037,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 234,
+            "proxy_error": 0.2175925925925926,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 236,
+            "proxy_error": 0.2222222222222222,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 223,
+            "proxy_error": 0.24074074074074073,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 223,
+            "proxy_error": 0.25462962962962965,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 229,
+            "proxy_error": 0.2222222222222222,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 233,
+            "proxy_error": 0.24074074074074073,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 234,
+            "proxy_error": 0.1574074074074074,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 236,
+            "proxy_error": 0.20833333333333334,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 226,
+            "proxy_error": 0.21296296296296297,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 223,
+            "proxy_error": 0.19444444444444445,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 232,
+            "proxy_error": 0.25925925925925924,
+            "p": 0.025
+          }
+        ],
+        "refused": 0,
+        "reject": 28,
+        "min_movable": 222,
+        "mean_proxy_error": 0.21944444444444444
+      }
+    },
+    "latent_0.7_16": {
+      "oracle": {
+        "runs": [
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.046296296296296294,
+            "p": 0.375
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.018518518518518517,
+            "p": 0.375
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.032407407407407406,
+            "p": 0.225
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.046296296296296294,
+            "p": 0.05
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.041666666666666664,
+            "p": 0.125
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.041666666666666664,
+            "p": 0.95
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.05092592592592592,
+            "p": 0.975
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.041666666666666664,
+            "p": 0.4
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.032407407407407406,
+            "p": 0.625
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.05092592592592592,
+            "p": 0.425
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.041666666666666664,
+            "p": 0.925
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.046296296296296294,
+            "p": 0.775
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.046296296296296294,
+            "p": 0.7
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.032407407407407406,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.05555555555555555,
+            "p": 0.3
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.041666666666666664,
+            "p": 0.55
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.06018518518518518,
+            "p": 0.35
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.018518518518518517,
+            "p": 0.875
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.037037037037037035,
+            "p": 0.775
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.05092592592592592,
+            "p": 0.725
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.05555555555555555,
+            "p": 0.9
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.05092592592592592,
+            "p": 0.925
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0787037037037037,
+            "p": 0.9
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.041666666666666664,
+            "p": 0.55
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.05092592592592592,
+            "p": 0.375
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.046296296296296294,
+            "p": 0.35
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.06018518518518518,
+            "p": 0.4
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.023148148148148147,
+            "p": 0.5
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.06944444444444445,
+            "p": 0.575
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.06018518518518518,
+            "p": 0.25
+          }
+        ],
+        "refused": 0,
+        "reject": 2,
+        "min_movable": 96,
+        "mean_proxy_error": 0.04567901234567901
+      },
+      "count": {
+        "runs": [
+          {
+            "refused": false,
+            "movable": 393,
+            "proxy_error": 0.046296296296296294,
+            "p": 0.1
+          },
+          {
+            "refused": false,
+            "movable": 379,
+            "proxy_error": 0.018518518518518517,
+            "p": 0.375
+          },
+          {
+            "refused": false,
+            "movable": 390,
+            "proxy_error": 0.032407407407407406,
+            "p": 0.1
+          },
+          {
+            "refused": false,
+            "movable": 419,
+            "proxy_error": 0.046296296296296294,
+            "p": 0.125
+          },
+          {
+            "refused": false,
+            "movable": 380,
+            "proxy_error": 0.041666666666666664,
+            "p": 0.225
+          },
+          {
+            "refused": false,
+            "movable": 407,
+            "proxy_error": 0.041666666666666664,
+            "p": 0.7
+          },
+          {
+            "refused": false,
+            "movable": 382,
+            "proxy_error": 0.05092592592592592,
+            "p": 0.55
+          },
+          {
+            "refused": false,
+            "movable": 386,
+            "proxy_error": 0.041666666666666664,
+            "p": 0.3
+          },
+          {
+            "refused": false,
+            "movable": 392,
+            "proxy_error": 0.032407407407407406,
+            "p": 0.6
+          },
+          {
+            "refused": false,
+            "movable": 410,
+            "proxy_error": 0.05092592592592592,
+            "p": 0.7
+          },
+          {
+            "refused": false,
+            "movable": 380,
+            "proxy_error": 0.041666666666666664,
+            "p": 0.6
+          },
+          {
+            "refused": false,
+            "movable": 397,
+            "proxy_error": 0.046296296296296294,
+            "p": 0.775
+          },
+          {
+            "refused": false,
+            "movable": 367,
+            "proxy_error": 0.046296296296296294,
+            "p": 0.55
+          },
+          {
+            "refused": false,
+            "movable": 421,
+            "proxy_error": 0.032407407407407406,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 385,
+            "proxy_error": 0.05555555555555555,
+            "p": 0.075
+          },
+          {
+            "refused": false,
+            "movable": 366,
+            "proxy_error": 0.041666666666666664,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 396,
+            "proxy_error": 0.06018518518518518,
+            "p": 0.575
+          },
+          {
+            "refused": false,
+            "movable": 340,
+            "proxy_error": 0.018518518518518517,
+            "p": 0.725
+          },
+          {
+            "refused": false,
+            "movable": 405,
+            "proxy_error": 0.037037037037037035,
+            "p": 0.25
+          },
+          {
+            "refused": false,
+            "movable": 387,
+            "proxy_error": 0.05092592592592592,
+            "p": 0.375
+          },
+          {
+            "refused": false,
+            "movable": 368,
+            "proxy_error": 0.05555555555555555,
+            "p": 0.4
+          },
+          {
+            "refused": false,
+            "movable": 394,
+            "proxy_error": 0.05092592592592592,
+            "p": 0.825
+          },
+          {
+            "refused": false,
+            "movable": 416,
+            "proxy_error": 0.0787037037037037,
+            "p": 0.725
+          },
+          {
+            "refused": false,
+            "movable": 375,
+            "proxy_error": 0.041666666666666664,
+            "p": 0.7
+          },
+          {
+            "refused": false,
+            "movable": 392,
+            "proxy_error": 0.05092592592592592,
+            "p": 0.375
+          },
+          {
+            "refused": false,
+            "movable": 351,
+            "proxy_error": 0.046296296296296294,
+            "p": 0.45
+          },
+          {
+            "refused": false,
+            "movable": 417,
+            "proxy_error": 0.06018518518518518,
+            "p": 0.6
+          },
+          {
+            "refused": false,
+            "movable": 400,
+            "proxy_error": 0.023148148148148147,
+            "p": 0.75
+          },
+          {
+            "refused": false,
+            "movable": 397,
+            "proxy_error": 0.06944444444444445,
+            "p": 0.05
+          },
+          {
+            "refused": false,
+            "movable": 408,
+            "proxy_error": 0.06018518518518518,
+            "p": 0.025
+          }
+        ],
+        "refused": 0,
+        "reject": 4,
+        "min_movable": 340,
+        "mean_proxy_error": 0.04567901234567901
+      }
+    },
+    "latent_0.7_32": {
+      "oracle": {
+        "runs": [
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.027777777777777776,
+            "p": 0.175
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.25
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.625
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.013888888888888888,
+            "p": 0.475
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.018518518518518517,
+            "p": 0.225
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.7
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.018518518518518517,
+            "p": 0.925
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.018518518518518517,
+            "p": 0.375
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.575
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.6
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.013888888888888888,
+            "p": 0.8
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.575
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.013888888888888888,
+            "p": 0.75
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.275
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.875
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.725
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.825
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.023148148148148147,
+            "p": 0.675
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.725
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.625
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.013888888888888888,
+            "p": 0.575
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.023148148148148147,
+            "p": 0.875
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.018518518518518517,
+            "p": 0.725
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.013888888888888888,
+            "p": 0.6
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.35
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.013888888888888888,
+            "p": 0.25
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.013888888888888888,
+            "p": 0.8
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.013888888888888888,
+            "p": 0.375
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.425
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.018518518518518517,
+            "p": 0.2
+          }
+        ],
+        "refused": 0,
+        "reject": 0,
+        "min_movable": 96,
+        "mean_proxy_error": 0.012808641975308642
+      },
+      "count": {
+        "runs": [
+          {
+            "refused": false,
+            "movable": 373,
+            "proxy_error": 0.027777777777777776,
+            "p": 0.125
+          },
+          {
+            "refused": false,
+            "movable": 385,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.575
+          },
+          {
+            "refused": false,
+            "movable": 386,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.825
+          },
+          {
+            "refused": false,
+            "movable": 383,
+            "proxy_error": 0.013888888888888888,
+            "p": 0.675
+          },
+          {
+            "refused": false,
+            "movable": 414,
+            "proxy_error": 0.018518518518518517,
+            "p": 0.2
+          },
+          {
+            "refused": false,
+            "movable": 392,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.425
+          },
+          {
+            "refused": false,
+            "movable": 370,
+            "proxy_error": 0.018518518518518517,
+            "p": 0.525
+          },
+          {
+            "refused": false,
+            "movable": 400,
+            "proxy_error": 0.018518518518518517,
+            "p": 0.175
+          },
+          {
+            "refused": false,
+            "movable": 416,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.65
+          },
+          {
+            "refused": false,
+            "movable": 372,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.65
+          },
+          {
+            "refused": false,
+            "movable": 391,
+            "proxy_error": 0.013888888888888888,
+            "p": 0.65
+          },
+          {
+            "refused": false,
+            "movable": 405,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.55
+          },
+          {
+            "refused": false,
+            "movable": 358,
+            "proxy_error": 0.013888888888888888,
+            "p": 0.875
+          },
+          {
+            "refused": false,
+            "movable": 374,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.225
+          },
+          {
+            "refused": false,
+            "movable": 377,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.55
+          },
+          {
+            "refused": false,
+            "movable": 379,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.425
+          },
+          {
+            "refused": false,
+            "movable": 386,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.575
+          },
+          {
+            "refused": false,
+            "movable": 390,
+            "proxy_error": 0.023148148148148147,
+            "p": 0.75
+          },
+          {
+            "refused": false,
+            "movable": 379,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.6
+          },
+          {
+            "refused": false,
+            "movable": 361,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.675
+          },
+          {
+            "refused": false,
+            "movable": 399,
+            "proxy_error": 0.013888888888888888,
+            "p": 0.45
+          },
+          {
+            "refused": false,
+            "movable": 381,
+            "proxy_error": 0.023148148148148147,
+            "p": 0.7
+          },
+          {
+            "refused": false,
+            "movable": 382,
+            "proxy_error": 0.018518518518518517,
+            "p": 0.825
+          },
+          {
+            "refused": false,
+            "movable": 352,
+            "proxy_error": 0.013888888888888888,
+            "p": 0.95
+          },
+          {
+            "refused": false,
+            "movable": 383,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.4
+          },
+          {
+            "refused": false,
+            "movable": 351,
+            "proxy_error": 0.013888888888888888,
+            "p": 0.45
+          },
+          {
+            "refused": false,
+            "movable": 363,
+            "proxy_error": 0.013888888888888888,
+            "p": 0.85
+          },
+          {
+            "refused": false,
+            "movable": 388,
+            "proxy_error": 0.013888888888888888,
+            "p": 0.275
+          },
+          {
+            "refused": false,
+            "movable": 422,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.6
+          },
+          {
+            "refused": false,
+            "movable": 374,
+            "proxy_error": 0.018518518518518517,
+            "p": 0.225
+          }
+        ],
+        "refused": 0,
+        "reject": 0,
+        "min_movable": 351,
+        "mean_proxy_error": 0.012808641975308642
+      }
+    },
+    "latent_0.8_4": {
+      "oracle": {
+        "runs": [
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.09722222222222222,
+            "p": 0.125
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.1111111111111111,
+            "p": 0.55
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0787037037037037,
+            "p": 0.575
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.10648148148148148,
+            "p": 0.95
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.10185185185185185,
+            "p": 0.875
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.09259259259259259,
+            "p": 0.125
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.08796296296296297,
+            "p": 0.5
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.10648148148148148,
+            "p": 0.35
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.13425925925925927,
+            "p": 0.85
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.09259259259259259,
+            "p": 0.075
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0787037037037037,
+            "p": 0.9
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.12037037037037036,
+            "p": 0.4
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.09259259259259259,
+            "p": 0.75
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.10648148148148148,
+            "p": 0.725
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.10185185185185185,
+            "p": 0.225
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.09722222222222222,
+            "p": 0.525
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.1388888888888889,
+            "p": 0.95
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.10648148148148148,
+            "p": 0.775
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.10185185185185185,
+            "p": 0.5
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.10648148148148148,
+            "p": 0.425
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.11574074074074074,
+            "p": 0.8
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.1111111111111111,
+            "p": 0.075
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.09722222222222222,
+            "p": 0.05
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.12962962962962962,
+            "p": 0.775
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.1111111111111111,
+            "p": 0.075
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0787037037037037,
+            "p": 0.425
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.08796296296296297,
+            "p": 0.675
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.11574074074074074,
+            "p": 0.9
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.10185185185185185,
+            "p": 0.775
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.10648148148148148,
+            "p": 0.475
+          }
+        ],
+        "refused": 0,
+        "reject": 1,
+        "min_movable": 96,
+        "mean_proxy_error": 0.10385802469135802
+      },
+      "count": {
+        "runs": [
+          {
+            "refused": false,
+            "movable": 230,
+            "proxy_error": 0.09722222222222222,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 224,
+            "proxy_error": 0.1111111111111111,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 213,
+            "proxy_error": 0.0787037037037037,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 229,
+            "proxy_error": 0.10648148148148148,
+            "p": 0.05
+          },
+          {
+            "refused": false,
+            "movable": 232,
+            "proxy_error": 0.10185185185185185,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 230,
+            "proxy_error": 0.09259259259259259,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 231,
+            "proxy_error": 0.08796296296296297,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 225,
+            "proxy_error": 0.10648148148148148,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 232,
+            "proxy_error": 0.13425925925925927,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 231,
+            "proxy_error": 0.09259259259259259,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 230,
+            "proxy_error": 0.0787037037037037,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 229,
+            "proxy_error": 0.12037037037037036,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 230,
+            "proxy_error": 0.09259259259259259,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 232,
+            "proxy_error": 0.10648148148148148,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 225,
+            "proxy_error": 0.10185185185185185,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 230,
+            "proxy_error": 0.09722222222222222,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 234,
+            "proxy_error": 0.1388888888888889,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 230,
+            "proxy_error": 0.10648148148148148,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 233,
+            "proxy_error": 0.10185185185185185,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 223,
+            "proxy_error": 0.10648148148148148,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 228,
+            "proxy_error": 0.11574074074074074,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 230,
+            "proxy_error": 0.1111111111111111,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 231,
+            "proxy_error": 0.09722222222222222,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 229,
+            "proxy_error": 0.12962962962962962,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 234,
+            "proxy_error": 0.1111111111111111,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 233,
+            "proxy_error": 0.0787037037037037,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 219,
+            "proxy_error": 0.08796296296296297,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 235,
+            "proxy_error": 0.11574074074074074,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 231,
+            "proxy_error": 0.10185185185185185,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 230,
+            "proxy_error": 0.10648148148148148,
+            "p": 0.025
+          }
+        ],
+        "refused": 0,
+        "reject": 30,
+        "min_movable": 213,
+        "mean_proxy_error": 0.10385802469135802
+      }
+    },
+    "latent_0.8_16": {
+      "oracle": {
+        "runs": [
+          {
+            "refused": false,
+            "movable": 95,
+            "proxy_error": 0.0,
+            "p": 0.7
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.925
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.65
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.05
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.4
+          },
+          {
+            "refused": false,
+            "movable": 95,
+            "proxy_error": 0.0,
+            "p": 0.9
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.675
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.15
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.25
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.013888888888888888,
+            "p": 0.375
+          },
+          {
+            "refused": false,
+            "movable": 95,
+            "proxy_error": 0.0,
+            "p": 0.525
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.5
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.9
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.075
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.375
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.375
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.175
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.9
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.875
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.875
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.95
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.7
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.425
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.15
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.225
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.35
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.275
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.7
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.8
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.325
+          }
+        ],
+        "refused": 0,
+        "reject": 1,
+        "min_movable": 95,
+        "mean_proxy_error": 0.004012345679012345
+      },
+      "count": {
+        "runs": [
+          {
+            "refused": false,
+            "movable": 306,
+            "proxy_error": 0.0,
+            "p": 0.625
+          },
+          {
+            "refused": false,
+            "movable": 305,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.975
+          },
+          {
+            "refused": false,
+            "movable": 315,
+            "proxy_error": 0.0,
+            "p": 0.825
+          },
+          {
+            "refused": false,
+            "movable": 340,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.2
+          },
+          {
+            "refused": false,
+            "movable": 292,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.4
+          },
+          {
+            "refused": false,
+            "movable": 326,
+            "proxy_error": 0.0,
+            "p": 0.825
+          },
+          {
+            "refused": false,
+            "movable": 316,
+            "proxy_error": 0.0,
+            "p": 0.625
+          },
+          {
+            "refused": false,
+            "movable": 341,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.4
+          },
+          {
+            "refused": false,
+            "movable": 334,
+            "proxy_error": 0.0,
+            "p": 0.4
+          },
+          {
+            "refused": false,
+            "movable": 342,
+            "proxy_error": 0.013888888888888888,
+            "p": 0.1
+          },
+          {
+            "refused": false,
+            "movable": 333,
+            "proxy_error": 0.0,
+            "p": 0.475
+          },
+          {
+            "refused": false,
+            "movable": 336,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.375
+          },
+          {
+            "refused": false,
+            "movable": 324,
+            "proxy_error": 0.0,
+            "p": 0.775
+          },
+          {
+            "refused": false,
+            "movable": 330,
+            "proxy_error": 0.0,
+            "p": 0.175
+          },
+          {
+            "refused": false,
+            "movable": 333,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.5
+          },
+          {
+            "refused": false,
+            "movable": 318,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.55
+          },
+          {
+            "refused": false,
+            "movable": 344,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.125
+          },
+          {
+            "refused": false,
+            "movable": 306,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.9
+          },
+          {
+            "refused": false,
+            "movable": 322,
+            "proxy_error": 0.0,
+            "p": 1.0
+          },
+          {
+            "refused": false,
+            "movable": 308,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.925
+          },
+          {
+            "refused": false,
+            "movable": 291,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.9
+          },
+          {
+            "refused": false,
+            "movable": 320,
+            "proxy_error": 0.0,
+            "p": 0.675
+          },
+          {
+            "refused": false,
+            "movable": 301,
+            "proxy_error": 0.0,
+            "p": 0.625
+          },
+          {
+            "refused": false,
+            "movable": 316,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.25
+          },
+          {
+            "refused": false,
+            "movable": 341,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.275
+          },
+          {
+            "refused": false,
+            "movable": 341,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.475
+          },
+          {
+            "refused": false,
+            "movable": 329,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.7
+          },
+          {
+            "refused": false,
+            "movable": 294,
+            "proxy_error": 0.0,
+            "p": 0.65
+          },
+          {
+            "refused": false,
+            "movable": 314,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.575
+          },
+          {
+            "refused": false,
+            "movable": 310,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.55
+          }
+        ],
+        "refused": 0,
+        "reject": 0,
+        "min_movable": 291,
+        "mean_proxy_error": 0.004012345679012345
+      }
+    },
+    "latent_0.8_32": {
+      "oracle": {
+        "runs": [
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.375
+          },
+          {
+            "refused": false,
+            "movable": 95,
+            "proxy_error": 0.0,
+            "p": 0.425
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.45
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.925
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.4
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.3
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.85
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.575
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.45
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.725
+          },
+          {
+            "refused": false,
+            "movable": 95,
+            "proxy_error": 0.0,
+            "p": 0.95
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 1.0
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.05
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.325
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.8
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.825
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.75
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.925
+          },
+          {
+            "refused": false,
+            "movable": 95,
+            "proxy_error": 0.0,
+            "p": 0.125
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.7
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.85
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.475
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.575
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.325
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.8
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 1.0
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.2
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.225
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.05
+          }
+        ],
+        "refused": 0,
+        "reject": 3,
+        "min_movable": 95,
+        "mean_proxy_error": 0.00015432098765432098
+      },
+      "count": {
+        "runs": [
+          {
+            "refused": false,
+            "movable": 297,
+            "proxy_error": 0.0,
+            "p": 0.375
+          },
+          {
+            "refused": false,
+            "movable": 326,
+            "proxy_error": 0.0,
+            "p": 0.8
+          },
+          {
+            "refused": false,
+            "movable": 349,
+            "proxy_error": 0.0,
+            "p": 0.9
+          },
+          {
+            "refused": false,
+            "movable": 311,
+            "proxy_error": 0.0,
+            "p": 0.8
+          },
+          {
+            "refused": false,
+            "movable": 328,
+            "proxy_error": 0.0,
+            "p": 0.65
+          },
+          {
+            "refused": false,
+            "movable": 333,
+            "proxy_error": 0.0,
+            "p": 0.2
+          },
+          {
+            "refused": false,
+            "movable": 285,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.725
+          },
+          {
+            "refused": false,
+            "movable": 315,
+            "proxy_error": 0.0,
+            "p": 0.25
+          },
+          {
+            "refused": false,
+            "movable": 316,
+            "proxy_error": 0.0,
+            "p": 0.15
+          },
+          {
+            "refused": false,
+            "movable": 316,
+            "proxy_error": 0.0,
+            "p": 0.125
+          },
+          {
+            "refused": false,
+            "movable": 302,
+            "proxy_error": 0.0,
+            "p": 0.7
+          },
+          {
+            "refused": false,
+            "movable": 325,
+            "proxy_error": 0.0,
+            "p": 0.65
+          },
+          {
+            "refused": false,
+            "movable": 320,
+            "proxy_error": 0.0,
+            "p": 1.0
+          },
+          {
+            "refused": false,
+            "movable": 284,
+            "proxy_error": 0.0,
+            "p": 0.05
+          },
+          {
+            "refused": false,
+            "movable": 336,
+            "proxy_error": 0.0,
+            "p": 0.825
+          },
+          {
+            "refused": false,
+            "movable": 299,
+            "proxy_error": 0.0,
+            "p": 0.675
+          },
+          {
+            "refused": false,
+            "movable": 318,
+            "proxy_error": 0.0,
+            "p": 0.4
+          },
+          {
+            "refused": false,
+            "movable": 279,
+            "proxy_error": 0.0,
+            "p": 0.825
+          },
+          {
+            "refused": false,
+            "movable": 300,
+            "proxy_error": 0.0,
+            "p": 0.975
+          },
+          {
+            "refused": false,
+            "movable": 316,
+            "proxy_error": 0.0,
+            "p": 0.4
+          },
+          {
+            "refused": false,
+            "movable": 326,
+            "proxy_error": 0.0,
+            "p": 0.975
+          },
+          {
+            "refused": false,
+            "movable": 358,
+            "proxy_error": 0.0,
+            "p": 0.7
+          },
+          {
+            "refused": false,
+            "movable": 307,
+            "proxy_error": 0.0,
+            "p": 0.4
+          },
+          {
+            "refused": false,
+            "movable": 350,
+            "proxy_error": 0.0,
+            "p": 0.675
+          },
+          {
+            "refused": false,
+            "movable": 320,
+            "proxy_error": 0.0,
+            "p": 0.35
+          },
+          {
+            "refused": false,
+            "movable": 333,
+            "proxy_error": 0.0,
+            "p": 0.8
+          },
+          {
+            "refused": false,
+            "movable": 305,
+            "proxy_error": 0.0,
+            "p": 0.95
+          },
+          {
+            "refused": false,
+            "movable": 331,
+            "proxy_error": 0.0,
+            "p": 0.075
+          },
+          {
+            "refused": false,
+            "movable": 343,
+            "proxy_error": 0.0,
+            "p": 0.775
+          },
+          {
+            "refused": false,
+            "movable": 310,
+            "proxy_error": 0.0,
+            "p": 0.65
+          }
+        ],
+        "refused": 0,
+        "reject": 1,
+        "min_movable": 279,
+        "mean_proxy_error": 0.00015432098765432098
+      }
+    },
+    "latent_0.9_4": {
+      "oracle": {
+        "runs": [
+          {
+            "refused": false,
+            "movable": 90,
+            "proxy_error": 0.027777777777777776,
+            "p": 0.525
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.018518518518518517,
+            "p": 0.225
+          },
+          {
+            "refused": false,
+            "movable": 93,
+            "proxy_error": 0.018518518518518517,
+            "p": 0.925
+          },
+          {
+            "refused": false,
+            "movable": 92,
+            "proxy_error": 0.027777777777777776,
+            "p": 0.5
+          },
+          {
+            "refused": false,
+            "movable": 93,
+            "proxy_error": 0.046296296296296294,
+            "p": 0.35
+          },
+          {
+            "refused": false,
+            "movable": 92,
+            "proxy_error": 0.018518518518518517,
+            "p": 0.1
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.027777777777777776,
+            "p": 0.65
+          },
+          {
+            "refused": false,
+            "movable": 94,
+            "proxy_error": 0.018518518518518517,
+            "p": 0.45
+          },
+          {
+            "refused": false,
+            "movable": 95,
+            "proxy_error": 0.027777777777777776,
+            "p": 0.525
+          },
+          {
+            "refused": false,
+            "movable": 94,
+            "proxy_error": 0.032407407407407406,
+            "p": 0.275
+          },
+          {
+            "refused": false,
+            "movable": 94,
+            "proxy_error": 0.023148148148148147,
+            "p": 0.5
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.041666666666666664,
+            "p": 0.875
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.041666666666666664,
+            "p": 0.5
+          },
+          {
+            "refused": false,
+            "movable": 94,
+            "proxy_error": 0.018518518518518517,
+            "p": 0.85
+          },
+          {
+            "refused": false,
+            "movable": 95,
+            "proxy_error": 0.023148148148148147,
+            "p": 0.75
+          },
+          {
+            "refused": false,
+            "movable": 94,
+            "proxy_error": 0.032407407407407406,
+            "p": 0.125
+          },
+          {
+            "refused": false,
+            "movable": 95,
+            "proxy_error": 0.023148148148148147,
+            "p": 0.825
+          },
+          {
+            "refused": false,
+            "movable": 92,
+            "proxy_error": 0.032407407407407406,
+            "p": 0.25
+          },
+          {
+            "refused": false,
+            "movable": 94,
+            "proxy_error": 0.027777777777777776,
+            "p": 0.65
+          },
+          {
+            "refused": false,
+            "movable": 91,
+            "proxy_error": 0.013888888888888888,
+            "p": 0.6
+          },
+          {
+            "refused": false,
+            "movable": 94,
+            "proxy_error": 0.041666666666666664,
+            "p": 0.75
+          },
+          {
+            "refused": false,
+            "movable": 95,
+            "proxy_error": 0.023148148148148147,
+            "p": 0.425
+          },
+          {
+            "refused": false,
+            "movable": 93,
+            "proxy_error": 0.041666666666666664,
+            "p": 0.325
+          },
+          {
+            "refused": false,
+            "movable": 95,
+            "proxy_error": 0.032407407407407406,
+            "p": 0.975
+          },
+          {
+            "refused": false,
+            "movable": 95,
+            "proxy_error": 0.037037037037037035,
+            "p": 0.125
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.027777777777777776,
+            "p": 0.65
+          },
+          {
+            "refused": false,
+            "movable": 95,
+            "proxy_error": 0.037037037037037035,
+            "p": 0.9
+          },
+          {
+            "refused": false,
+            "movable": 93,
+            "proxy_error": 0.013888888888888888,
+            "p": 0.6
+          },
+          {
+            "refused": false,
+            "movable": 95,
+            "proxy_error": 0.018518518518518517,
+            "p": 0.75
+          },
+          {
+            "refused": false,
+            "movable": 93,
+            "proxy_error": 0.027777777777777776,
+            "p": 0.15
+          }
+        ],
+        "refused": 0,
+        "reject": 0,
+        "min_movable": 90,
+        "mean_proxy_error": 0.028086419753086418
+      },
+      "count": {
+        "runs": [
+          {
+            "refused": false,
+            "movable": 177,
+            "proxy_error": 0.027777777777777776,
+            "p": 0.125
+          },
+          {
+            "refused": false,
+            "movable": 168,
+            "proxy_error": 0.018518518518518517,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 157,
+            "proxy_error": 0.018518518518518517,
+            "p": 0.7
+          },
+          {
+            "refused": false,
+            "movable": 162,
+            "proxy_error": 0.027777777777777776,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 176,
+            "proxy_error": 0.046296296296296294,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 153,
+            "proxy_error": 0.018518518518518517,
+            "p": 0.05
+          },
+          {
+            "refused": false,
+            "movable": 180,
+            "proxy_error": 0.027777777777777776,
+            "p": 0.05
+          },
+          {
+            "refused": false,
+            "movable": 178,
+            "proxy_error": 0.018518518518518517,
+            "p": 0.05
+          },
+          {
+            "refused": false,
+            "movable": 166,
+            "proxy_error": 0.027777777777777776,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 162,
+            "proxy_error": 0.032407407407407406,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 168,
+            "proxy_error": 0.023148148148148147,
+            "p": 0.075
+          },
+          {
+            "refused": false,
+            "movable": 197,
+            "proxy_error": 0.041666666666666664,
+            "p": 0.05
+          },
+          {
+            "refused": false,
+            "movable": 165,
+            "proxy_error": 0.041666666666666664,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 168,
+            "proxy_error": 0.018518518518518517,
+            "p": 0.45
+          },
+          {
+            "refused": false,
+            "movable": 169,
+            "proxy_error": 0.023148148148148147,
+            "p": 0.075
+          },
+          {
+            "refused": false,
+            "movable": 180,
+            "proxy_error": 0.032407407407407406,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 174,
+            "proxy_error": 0.023148148148148147,
+            "p": 0.425
+          },
+          {
+            "refused": false,
+            "movable": 166,
+            "proxy_error": 0.032407407407407406,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 165,
+            "proxy_error": 0.027777777777777776,
+            "p": 0.325
+          },
+          {
+            "refused": false,
+            "movable": 155,
+            "proxy_error": 0.013888888888888888,
+            "p": 0.1
+          },
+          {
+            "refused": false,
+            "movable": 180,
+            "proxy_error": 0.041666666666666664,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 169,
+            "proxy_error": 0.023148148148148147,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 176,
+            "proxy_error": 0.041666666666666664,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 173,
+            "proxy_error": 0.032407407407407406,
+            "p": 0.225
+          },
+          {
+            "refused": false,
+            "movable": 195,
+            "proxy_error": 0.037037037037037035,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 174,
+            "proxy_error": 0.027777777777777776,
+            "p": 0.075
+          },
+          {
+            "refused": false,
+            "movable": 182,
+            "proxy_error": 0.037037037037037035,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 175,
+            "proxy_error": 0.013888888888888888,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 168,
+            "proxy_error": 0.018518518518518517,
+            "p": 0.3
+          },
+          {
+            "refused": false,
+            "movable": 173,
+            "proxy_error": 0.027777777777777776,
+            "p": 0.025
+          }
+        ],
+        "refused": 0,
+        "reject": 19,
+        "min_movable": 153,
+        "mean_proxy_error": 0.028086419753086418
+      }
+    },
+    "latent_0.9_16": {
+      "oracle": {
+        "runs": [
+          {
+            "refused": false,
+            "movable": 90,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 95,
+            "proxy_error": 0.0,
+            "p": 0.35
+          },
+          {
+            "refused": false,
+            "movable": 94,
+            "proxy_error": 0.0,
+            "p": 0.6
+          },
+          {
+            "refused": false,
+            "movable": 92,
+            "proxy_error": 0.0,
+            "p": 0.225
+          },
+          {
+            "refused": false,
+            "movable": 94,
+            "proxy_error": 0.0,
+            "p": 0.35
+          },
+          {
+            "refused": false,
+            "movable": 93,
+            "proxy_error": 0.0,
+            "p": 0.525
+          },
+          {
+            "refused": false,
+            "movable": 95,
+            "proxy_error": 0.0,
+            "p": 0.625
+          },
+          {
+            "refused": false,
+            "movable": 94,
+            "proxy_error": 0.0,
+            "p": 0.05
+          },
+          {
+            "refused": false,
+            "movable": 92,
+            "proxy_error": 0.0,
+            "p": 0.05
+          },
+          {
+            "refused": false,
+            "movable": 95,
+            "proxy_error": 0.0,
+            "p": 0.2
+          },
+          {
+            "refused": false,
+            "movable": 92,
+            "proxy_error": 0.0,
+            "p": 0.25
+          },
+          {
+            "refused": false,
+            "movable": 91,
+            "proxy_error": 0.0,
+            "p": 0.95
+          },
+          {
+            "refused": false,
+            "movable": 92,
+            "proxy_error": 0.0,
+            "p": 0.85
+          },
+          {
+            "refused": false,
+            "movable": 93,
+            "proxy_error": 0.0,
+            "p": 0.35
+          },
+          {
+            "refused": false,
+            "movable": 92,
+            "proxy_error": 0.0,
+            "p": 0.075
+          },
+          {
+            "refused": false,
+            "movable": 93,
+            "proxy_error": 0.0,
+            "p": 0.95
+          },
+          {
+            "refused": false,
+            "movable": 95,
+            "proxy_error": 0.0,
+            "p": 0.3
+          },
+          {
+            "refused": false,
+            "movable": 90,
+            "proxy_error": 0.0,
+            "p": 0.725
+          },
+          {
+            "refused": false,
+            "movable": 95,
+            "proxy_error": 0.0,
+            "p": 0.85
+          },
+          {
+            "refused": false,
+            "movable": 93,
+            "proxy_error": 0.0,
+            "p": 0.725
+          },
+          {
+            "refused": false,
+            "movable": 94,
+            "proxy_error": 0.0,
+            "p": 1.0
+          },
+          {
+            "refused": false,
+            "movable": 94,
+            "proxy_error": 0.0,
+            "p": 0.35
+          },
+          {
+            "refused": false,
+            "movable": 93,
+            "proxy_error": 0.0,
+            "p": 0.6
+          },
+          {
+            "refused": false,
+            "movable": 95,
+            "proxy_error": 0.0,
+            "p": 0.85
+          },
+          {
+            "refused": false,
+            "movable": 94,
+            "proxy_error": 0.0,
+            "p": 0.425
+          },
+          {
+            "refused": false,
+            "movable": 94,
+            "proxy_error": 0.0,
+            "p": 0.45
+          },
+          {
+            "refused": false,
+            "movable": 93,
+            "proxy_error": 0.0,
+            "p": 0.65
+          },
+          {
+            "refused": false,
+            "movable": 92,
+            "proxy_error": 0.0,
+            "p": 0.65
+          },
+          {
+            "refused": false,
+            "movable": 94,
+            "proxy_error": 0.0,
+            "p": 0.675
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.1
+          }
+        ],
+        "refused": 0,
+        "reject": 3,
+        "min_movable": 90,
+        "mean_proxy_error": 0.0
+      },
+      "count": {
+        "runs": [
+          {
+            "refused": false,
+            "movable": 198,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 204,
+            "proxy_error": 0.0,
+            "p": 0.575
+          },
+          {
+            "refused": false,
+            "movable": 230,
+            "proxy_error": 0.0,
+            "p": 0.45
+          },
+          {
+            "refused": false,
+            "movable": 212,
+            "proxy_error": 0.0,
+            "p": 0.325
+          },
+          {
+            "refused": false,
+            "movable": 208,
+            "proxy_error": 0.0,
+            "p": 0.475
+          },
+          {
+            "refused": false,
+            "movable": 224,
+            "proxy_error": 0.0,
+            "p": 0.8
+          },
+          {
+            "refused": false,
+            "movable": 221,
+            "proxy_error": 0.0,
+            "p": 0.7
+          },
+          {
+            "refused": false,
+            "movable": 218,
+            "proxy_error": 0.0,
+            "p": 0.075
+          },
+          {
+            "refused": false,
+            "movable": 207,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 209,
+            "proxy_error": 0.0,
+            "p": 0.375
+          },
+          {
+            "refused": false,
+            "movable": 214,
+            "proxy_error": 0.0,
+            "p": 0.275
+          },
+          {
+            "refused": false,
+            "movable": 207,
+            "proxy_error": 0.0,
+            "p": 0.8
+          },
+          {
+            "refused": false,
+            "movable": 221,
+            "proxy_error": 0.0,
+            "p": 0.75
+          },
+          {
+            "refused": false,
+            "movable": 213,
+            "proxy_error": 0.0,
+            "p": 0.65
+          },
+          {
+            "refused": false,
+            "movable": 205,
+            "proxy_error": 0.0,
+            "p": 0.05
+          },
+          {
+            "refused": false,
+            "movable": 195,
+            "proxy_error": 0.0,
+            "p": 0.975
+          },
+          {
+            "refused": false,
+            "movable": 197,
+            "proxy_error": 0.0,
+            "p": 0.175
+          },
+          {
+            "refused": false,
+            "movable": 197,
+            "proxy_error": 0.0,
+            "p": 0.975
+          },
+          {
+            "refused": false,
+            "movable": 203,
+            "proxy_error": 0.0,
+            "p": 0.95
+          },
+          {
+            "refused": false,
+            "movable": 206,
+            "proxy_error": 0.0,
+            "p": 0.8
+          },
+          {
+            "refused": false,
+            "movable": 206,
+            "proxy_error": 0.0,
+            "p": 0.975
+          },
+          {
+            "refused": false,
+            "movable": 218,
+            "proxy_error": 0.0,
+            "p": 0.65
+          },
+          {
+            "refused": false,
+            "movable": 213,
+            "proxy_error": 0.0,
+            "p": 0.875
+          },
+          {
+            "refused": false,
+            "movable": 199,
+            "proxy_error": 0.0,
+            "p": 0.925
+          },
+          {
+            "refused": false,
+            "movable": 217,
+            "proxy_error": 0.0,
+            "p": 0.225
+          },
+          {
+            "refused": false,
+            "movable": 198,
+            "proxy_error": 0.0,
+            "p": 0.4
+          },
+          {
+            "refused": false,
+            "movable": 224,
+            "proxy_error": 0.0,
+            "p": 0.65
+          },
+          {
+            "refused": false,
+            "movable": 191,
+            "proxy_error": 0.0,
+            "p": 0.375
+          },
+          {
+            "refused": false,
+            "movable": 214,
+            "proxy_error": 0.0,
+            "p": 0.75
+          },
+          {
+            "refused": false,
+            "movable": 220,
+            "proxy_error": 0.0,
+            "p": 0.1
+          }
+        ],
+        "refused": 0,
+        "reject": 3,
+        "min_movable": 191,
+        "mean_proxy_error": 0.0
+      }
+    },
+    "latent_0.9_32": {
+      "oracle": {
+        "runs": [
+          {
+            "refused": false,
+            "movable": 94,
+            "proxy_error": 0.0,
+            "p": 0.85
+          },
+          {
+            "refused": false,
+            "movable": 94,
+            "proxy_error": 0.0,
+            "p": 0.725
+          },
+          {
+            "refused": false,
+            "movable": 95,
+            "proxy_error": 0.0,
+            "p": 0.325
+          },
+          {
+            "refused": false,
+            "movable": 93,
+            "proxy_error": 0.0,
+            "p": 0.85
+          },
+          {
+            "refused": false,
+            "movable": 92,
+            "proxy_error": 0.0,
+            "p": 0.275
+          },
+          {
+            "refused": false,
+            "movable": 87,
+            "proxy_error": 0.0,
+            "p": 0.4
+          },
+          {
+            "refused": false,
+            "movable": 95,
+            "proxy_error": 0.0,
+            "p": 0.825
+          },
+          {
+            "refused": false,
+            "movable": 92,
+            "proxy_error": 0.0,
+            "p": 0.25
+          },
+          {
+            "refused": false,
+            "movable": 92,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 91,
+            "proxy_error": 0.0,
+            "p": 0.875
+          },
+          {
+            "refused": false,
+            "movable": 92,
+            "proxy_error": 0.0,
+            "p": 1.0
+          },
+          {
+            "refused": false,
+            "movable": 91,
+            "proxy_error": 0.0,
+            "p": 1.0
+          },
+          {
+            "refused": false,
+            "movable": 91,
+            "proxy_error": 0.0,
+            "p": 0.825
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.2
+          },
+          {
+            "refused": false,
+            "movable": 95,
+            "proxy_error": 0.0,
+            "p": 0.525
+          },
+          {
+            "refused": false,
+            "movable": 89,
+            "proxy_error": 0.0,
+            "p": 0.85
+          },
+          {
+            "refused": false,
+            "movable": 92,
+            "proxy_error": 0.0,
+            "p": 0.95
+          },
+          {
+            "refused": false,
+            "movable": 95,
+            "proxy_error": 0.0,
+            "p": 0.825
+          },
+          {
+            "refused": false,
+            "movable": 95,
+            "proxy_error": 0.0,
+            "p": 0.65
+          },
+          {
+            "refused": false,
+            "movable": 93,
+            "proxy_error": 0.0,
+            "p": 0.1
+          },
+          {
+            "refused": false,
+            "movable": 95,
+            "proxy_error": 0.0,
+            "p": 0.725
+          },
+          {
+            "refused": false,
+            "movable": 89,
+            "proxy_error": 0.0,
+            "p": 0.5
+          },
+          {
+            "refused": false,
+            "movable": 94,
+            "proxy_error": 0.0,
+            "p": 0.3
+          },
+          {
+            "refused": false,
+            "movable": 93,
+            "proxy_error": 0.0,
+            "p": 0.325
+          },
+          {
+            "refused": false,
+            "movable": 92,
+            "proxy_error": 0.0,
+            "p": 0.925
+          },
+          {
+            "refused": false,
+            "movable": 94,
+            "proxy_error": 0.0,
+            "p": 0.8
+          },
+          {
+            "refused": false,
+            "movable": 93,
+            "proxy_error": 0.0,
+            "p": 1.0
+          },
+          {
+            "refused": false,
+            "movable": 92,
+            "proxy_error": 0.0,
+            "p": 0.375
+          },
+          {
+            "refused": false,
+            "movable": 95,
+            "proxy_error": 0.0,
+            "p": 0.8
+          },
+          {
+            "refused": false,
+            "movable": 95,
+            "proxy_error": 0.0,
+            "p": 0.175
+          }
+        ],
+        "refused": 0,
+        "reject": 1,
+        "min_movable": 87,
+        "mean_proxy_error": 0.0
+      },
+      "count": {
+        "runs": [
+          {
+            "refused": false,
+            "movable": 207,
+            "proxy_error": 0.0,
+            "p": 0.85
+          },
+          {
+            "refused": false,
+            "movable": 215,
+            "proxy_error": 0.0,
+            "p": 0.575
+          },
+          {
+            "refused": false,
+            "movable": 230,
+            "proxy_error": 0.0,
+            "p": 0.9
+          },
+          {
+            "refused": false,
+            "movable": 196,
+            "proxy_error": 0.0,
+            "p": 0.9
+          },
+          {
+            "refused": false,
+            "movable": 222,
+            "proxy_error": 0.0,
+            "p": 0.3
+          },
+          {
+            "refused": false,
+            "movable": 188,
+            "proxy_error": 0.0,
+            "p": 0.1
+          },
+          {
+            "refused": false,
+            "movable": 203,
+            "proxy_error": 0.0,
+            "p": 0.85
+          },
+          {
+            "refused": false,
+            "movable": 210,
+            "proxy_error": 0.0,
+            "p": 0.525
+          },
+          {
+            "refused": false,
+            "movable": 207,
+            "proxy_error": 0.0,
+            "p": 0.05
+          },
+          {
+            "refused": false,
+            "movable": 196,
+            "proxy_error": 0.0,
+            "p": 0.85
+          },
+          {
+            "refused": false,
+            "movable": 231,
+            "proxy_error": 0.0,
+            "p": 0.95
+          },
+          {
+            "refused": false,
+            "movable": 215,
+            "proxy_error": 0.0,
+            "p": 0.95
+          },
+          {
+            "refused": false,
+            "movable": 202,
+            "proxy_error": 0.0,
+            "p": 1.0
+          },
+          {
+            "refused": false,
+            "movable": 215,
+            "proxy_error": 0.0,
+            "p": 0.525
+          },
+          {
+            "refused": false,
+            "movable": 217,
+            "proxy_error": 0.0,
+            "p": 0.225
+          },
+          {
+            "refused": false,
+            "movable": 214,
+            "proxy_error": 0.0,
+            "p": 0.85
+          },
+          {
+            "refused": false,
+            "movable": 202,
+            "proxy_error": 0.0,
+            "p": 0.9
+          },
+          {
+            "refused": false,
+            "movable": 221,
+            "proxy_error": 0.0,
+            "p": 0.825
+          },
+          {
+            "refused": false,
+            "movable": 210,
+            "proxy_error": 0.0,
+            "p": 0.65
+          },
+          {
+            "refused": false,
+            "movable": 228,
+            "proxy_error": 0.0,
+            "p": 0.1
+          },
+          {
+            "refused": false,
+            "movable": 197,
+            "proxy_error": 0.0,
+            "p": 0.4
+          },
+          {
+            "refused": false,
+            "movable": 218,
+            "proxy_error": 0.0,
+            "p": 0.425
+          },
+          {
+            "refused": false,
+            "movable": 219,
+            "proxy_error": 0.0,
+            "p": 0.55
+          },
+          {
+            "refused": false,
+            "movable": 214,
+            "proxy_error": 0.0,
+            "p": 0.7
+          },
+          {
+            "refused": false,
+            "movable": 197,
+            "proxy_error": 0.0,
+            "p": 0.65
+          },
+          {
+            "refused": false,
+            "movable": 238,
+            "proxy_error": 0.0,
+            "p": 0.95
+          },
+          {
+            "refused": false,
+            "movable": 227,
+            "proxy_error": 0.0,
+            "p": 1.0
+          },
+          {
+            "refused": false,
+            "movable": 204,
+            "proxy_error": 0.0,
+            "p": 0.675
+          },
+          {
+            "refused": false,
+            "movable": 206,
+            "proxy_error": 0.0,
+            "p": 0.75
+          },
+          {
+            "refused": false,
+            "movable": 223,
+            "proxy_error": 0.0,
+            "p": 0.3
+          }
+        ],
+        "refused": 0,
+        "reject": 1,
+        "min_movable": 188,
+        "mean_proxy_error": 0.0
+      }
+    },
+    "markov_0.8_4": {
+      "oracle": {
+        "runs": [
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.05555555555555555,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.1111111111111111,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0787037037037037,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.11574074074074074,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.1388888888888889,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 95,
+            "proxy_error": 0.09259259259259259,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.11574074074074074,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.08796296296296297,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.10185185185185185,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0787037037037037,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.08796296296296297,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.09722222222222222,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.10185185185185185,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.1111111111111111,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.09722222222222222,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.1388888888888889,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.10648148148148148,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.1111111111111111,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.10648148148148148,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.125,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.1111111111111111,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.08796296296296297,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.13425925925925927,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.08796296296296297,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.07407407407407407,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.12962962962962962,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.09722222222222222,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.08333333333333333,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.09259259259259259,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.10648148148148148,
+            "p": 0.025
+          }
+        ],
+        "refused": 0,
+        "reject": 30,
+        "min_movable": 95,
+        "mean_proxy_error": 0.1021604938271605
+      },
+      "count": {
+        "runs": [
+          {
+            "refused": false,
+            "movable": 229,
+            "proxy_error": 0.05555555555555555,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 228,
+            "proxy_error": 0.1111111111111111,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 229,
+            "proxy_error": 0.0787037037037037,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 236,
+            "proxy_error": 0.11574074074074074,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 235,
+            "proxy_error": 0.1388888888888889,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 224,
+            "proxy_error": 0.09259259259259259,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 233,
+            "proxy_error": 0.11574074074074074,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 228,
+            "proxy_error": 0.08796296296296297,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 231,
+            "proxy_error": 0.10185185185185185,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 234,
+            "proxy_error": 0.0787037037037037,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 229,
+            "proxy_error": 0.08796296296296297,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 232,
+            "proxy_error": 0.09722222222222222,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 228,
+            "proxy_error": 0.10185185185185185,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 232,
+            "proxy_error": 0.1111111111111111,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 231,
+            "proxy_error": 0.09722222222222222,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 231,
+            "proxy_error": 0.1388888888888889,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 234,
+            "proxy_error": 0.10648148148148148,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 228,
+            "proxy_error": 0.1111111111111111,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 230,
+            "proxy_error": 0.10648148148148148,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 230,
+            "proxy_error": 0.125,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 220,
+            "proxy_error": 0.1111111111111111,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 232,
+            "proxy_error": 0.08796296296296297,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 233,
+            "proxy_error": 0.13425925925925927,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 238,
+            "proxy_error": 0.08796296296296297,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 229,
+            "proxy_error": 0.07407407407407407,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 238,
+            "proxy_error": 0.12962962962962962,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 227,
+            "proxy_error": 0.09722222222222222,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 234,
+            "proxy_error": 0.08333333333333333,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 237,
+            "proxy_error": 0.09259259259259259,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 237,
+            "proxy_error": 0.10648148148148148,
+            "p": 0.025
+          }
+        ],
+        "refused": 0,
+        "reject": 30,
+        "min_movable": 220,
+        "mean_proxy_error": 0.1021604938271605
+      }
+    },
+    "markov_0.8_16": {
+      "oracle": {
+        "runs": [
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.018518518518518517,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.013888888888888888,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.013888888888888888,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.013888888888888888,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.013888888888888888,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.013888888888888888,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          }
+        ],
+        "refused": 0,
+        "reject": 30,
+        "min_movable": 96,
+        "mean_proxy_error": 0.005246913580246914
+      },
+      "count": {
+        "runs": [
+          {
+            "refused": false,
+            "movable": 341,
+            "proxy_error": 0.018518518518518517,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 305,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 338,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 331,
+            "proxy_error": 0.013888888888888888,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 303,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 351,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 336,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 309,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 336,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 354,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 313,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 355,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 329,
+            "proxy_error": 0.013888888888888888,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 338,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 329,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 331,
+            "proxy_error": 0.013888888888888888,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 310,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 340,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 315,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 341,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 340,
+            "proxy_error": 0.013888888888888888,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 354,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 338,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 313,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 357,
+            "proxy_error": 0.013888888888888888,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 365,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 356,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 364,
+            "proxy_error": 0.004629629629629629,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 360,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 341,
+            "proxy_error": 0.0,
+            "p": 0.025
+          }
+        ],
+        "refused": 0,
+        "reject": 30,
+        "min_movable": 303,
+        "mean_proxy_error": 0.005246913580246914
+      }
+    },
+    "markov_0.8_32": {
+      "oracle": {
+        "runs": [
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 96,
+            "proxy_error": 0.0,
+            "p": 0.025
+          }
+        ],
+        "refused": 0,
+        "reject": 30,
+        "min_movable": 96,
+        "mean_proxy_error": 0.00030864197530864197
+      },
+      "count": {
+        "runs": [
+          {
+            "refused": false,
+            "movable": 326,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 328,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 323,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 375,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 356,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 328,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 350,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 306,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 346,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 358,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 378,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 335,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 351,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 331,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 343,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 325,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 333,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 360,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 337,
+            "proxy_error": 0.009259259259259259,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 346,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 395,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 316,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 328,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 363,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 386,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 335,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 349,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 328,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 373,
+            "proxy_error": 0.0,
+            "p": 0.025
+          },
+          {
+            "refused": false,
+            "movable": 363,
+            "proxy_error": 0.0,
+            "p": 0.025
+          }
+        ],
+        "refused": 0,
+        "reject": 30,
+        "min_movable": 306,
+        "mean_proxy_error": 0.00030864197530864197
+      }
+    }
+  },
+  "posterior_predictive_results": {
+    "independent_0.5_4": {
+      "pvalues": [
+        0.625,
+        0.025,
+        0.5,
+        0.9,
+        0.9,
+        0.875,
+        0.775,
+        0.675,
+        0.7,
+        0.85,
+        0.35,
+        0.625,
+        0.575,
+        0.4,
+        0.825,
+        0.325,
+        0.35,
+        0.875,
+        0.975,
+        0.75,
+        1.0,
+        0.725,
+        0.2,
+        0.625,
+        0.775,
+        0.425,
+        0.225,
+        0.25,
+        0.6,
+        1.0
+      ],
+      "reject": 1
+    },
+    "independent_0.5_16": {
+      "pvalues": [
+        0.75,
+        0.4,
+        0.85,
+        0.725,
+        0.525,
+        0.65,
+        0.225,
+        0.85,
+        0.4,
+        0.175,
+        0.1,
+        0.9,
+        0.475,
+        0.05,
+        0.075,
+        0.575,
+        0.5,
+        0.8,
+        0.675,
+        0.2,
+        0.8,
+        0.5,
+        0.025,
+        0.75,
+        0.35,
+        0.875,
+        0.625,
+        0.925,
+        0.5,
+        0.275
+      ],
+      "reject": 2
+    },
+    "independent_0.5_32": {
+      "pvalues": [
+        0.375,
+        0.675,
+        0.4,
+        0.075,
+        0.55,
+        0.825,
+        0.75,
+        0.7,
+        0.4,
+        0.65,
+        0.1,
+        0.925,
+        0.075,
+        0.725,
+        0.125,
+        0.525,
+        0.475,
+        0.575,
+        0.6,
+        0.3,
+        0.7,
+        0.5,
+        0.2,
+        0.1,
+        0.3,
+        0.675,
+        0.525,
+        0.5,
+        0.125,
+        0.625
+      ],
+      "reject": 0
+    },
+    "latent_0.7_4": {
+      "pvalues": [
+        0.275,
+        0.6,
+        0.45,
+        0.85,
+        0.75,
+        0.225,
+        0.6,
+        0.75,
+        0.375,
+        0.125,
+        1.0,
+        0.4,
+        0.275,
+        0.675,
+        0.875,
+        0.9,
+        0.925,
+        0.8,
+        0.1,
+        0.225,
+        0.475,
+        0.375,
+        0.25,
+        0.75,
+        0.125,
+        0.95,
+        0.4,
+        0.425,
+        0.85,
+        0.55
+      ],
+      "reject": 0
+    },
+    "latent_0.7_16": {
+      "pvalues": [
+        0.15,
+        0.3,
+        0.075,
+        0.175,
+        0.175,
+        1.0,
+        1.0,
+        0.6,
+        0.525,
+        0.5,
+        0.9,
+        0.725,
+        0.4,
+        0.025,
+        0.25,
+        0.275,
+        0.825,
+        0.45,
+        0.775,
+        0.85,
+        0.75,
+        0.775,
+        1.0,
+        0.4,
+        0.85,
+        0.45,
+        0.425,
+        0.375,
+        0.35,
+        0.35
+      ],
+      "reject": 1
+    },
+    "latent_0.7_32": {
+      "pvalues": [
+        0.3,
+        0.25,
+        0.4,
+        0.25,
+        0.625,
+        0.225,
+        0.55,
+        0.5,
+        0.45,
+        0.9,
+        0.9,
+        0.425,
+        0.75,
+        0.05,
+        0.875,
+        0.9,
+        0.4,
+        0.625,
+        0.35,
+        0.75,
+        0.85,
+        0.875,
+        0.825,
+        0.4,
+        0.4,
+        0.725,
+        0.9,
+        0.625,
+        0.5,
+        0.175
+      ],
+      "reject": 1
+    },
+    "latent_0.8_4": {
+      "pvalues": [
+        0.45,
+        0.575,
+        0.575,
+        1.0,
+        1.0,
+        0.175,
+        0.9,
+        0.275,
+        0.85,
+        0.325,
+        0.725,
+        0.35,
+        0.5,
+        0.65,
+        0.725,
+        0.575,
+        1.0,
+        0.825,
+        0.5,
+        0.325,
+        0.925,
+        0.3,
+        0.1,
+        0.6,
+        0.5,
+        0.85,
+        0.65,
+        0.9,
+        0.65,
+        0.5
+      ],
+      "reject": 0
+    },
+    "latent_0.8_16": {
+      "pvalues": [
+        0.225,
+        0.8,
+        0.3,
+        0.325,
+        0.55,
+        0.95,
+        0.85,
+        0.7,
+        0.625,
+        0.2,
+        0.5,
+        0.5,
+        0.8,
+        0.4,
+        0.15,
+        0.4,
+        0.875,
+        0.325,
+        0.825,
+        0.825,
+        0.85,
+        0.9,
+        0.775,
+        0.375,
+        0.925,
+        0.7,
+        0.325,
+        0.8,
+        0.275,
+        0.525
+      ],
+      "reject": 0
+    },
+    "latent_0.8_32": {
+      "pvalues": [
+        0.45,
+        0.35,
+        0.45,
+        0.575,
+        0.8,
+        0.025,
+        0.325,
+        0.275,
+        0.075,
+        0.475,
+        1.0,
+        0.7,
+        0.975,
+        0.05,
+        0.85,
+        0.875,
+        0.65,
+        0.525,
+        0.8,
+        0.125,
+        0.725,
+        0.8,
+        0.725,
+        0.4,
+        0.6,
+        0.95,
+        0.975,
+        0.925,
+        0.225,
+        0.125
+      ],
+      "reject": 2
+    },
+    "latent_0.9_4": {
+      "pvalues": [
+        0.95,
+        0.9,
+        0.675,
+        0.475,
+        0.875,
+        0.25,
+        1.0,
+        0.5,
+        0.275,
+        0.125,
+        0.475,
+        0.875,
+        0.675,
+        0.35,
+        0.95,
+        0.85,
+        0.425,
+        0.075,
+        0.575,
+        0.225,
+        0.45,
+        0.5,
+        0.325,
+        0.65,
+        0.725,
+        0.85,
+        0.9,
+        0.4,
+        0.475,
+        0.25
+      ],
+      "reject": 0
+    },
+    "latent_0.9_16": {
+      "pvalues": [
+        0.025,
+        0.7,
+        0.55,
+        0.675,
+        0.675,
+        0.875,
+        0.725,
+        0.775,
+        0.025,
+        0.325,
+        0.075,
+        0.425,
+        0.725,
+        0.675,
+        0.075,
+        0.625,
+        0.45,
+        0.025,
+        0.775,
+        0.225,
+        0.925,
+        0.725,
+        0.85,
+        0.575,
+        0.75,
+        0.75,
+        0.7,
+        0.55,
+        0.4,
+        0.5
+      ],
+      "reject": 3
+    },
+    "latent_0.9_32": {
+      "pvalues": [
+        0.075,
+        0.475,
+        0.725,
+        0.75,
+        0.525,
+        0.025,
+        0.5,
+        0.125,
+        0.05,
+        0.5,
+        1.0,
+        0.875,
+        0.725,
+        0.1,
+        0.7,
+        0.725,
+        0.4,
+        0.35,
+        0.425,
+        0.225,
+        0.65,
+        0.425,
+        0.5,
+        0.725,
+        0.625,
+        0.85,
+        0.825,
+        0.575,
+        0.7,
+        0.5
+      ],
+      "reject": 2
+    },
+    "markov_0.8_4": {
+      "pvalues": [
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025
+      ],
+      "reject": 30
+    },
+    "markov_0.8_16": {
+      "pvalues": [
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025
+      ],
+      "reject": 30
+    },
+    "markov_0.8_32": {
+      "pvalues": [
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025,
+        0.025
+      ],
+      "reject": 30
+    }
+  },
+  "reproducibility": {
+    "conditional_script": "import random,collections,json,statistics\n\ndef simulate(seed,mode,p,nprobe):\n r=random.Random(seed);book=[]\n for page in range(6):\n  for row in range(36):\n   latent=r.randrange(2);ws=[]\n   for j in range(nprobe+8):\n    def draw():return latent if r.random()<p else 1-latent\n    a,b=draw(),draw()\n    if mode=='independent':a=r.randrange(2);b=r.randrange(2)\n    if mode=='markov' and j>=nprobe+1:a=ws[-1][1] if r.random()<.85 else 1-ws[-1][1]\n    ws.append((a,b))\n   book.append((page,latent,ws))\n return book\n\ndef evaluate(book,style,nprobe,seed):\n groups=collections.defaultdict(list);errors=0\n for row,(page,latent,words) in enumerate(book):\n  vote=sum(w[1] for w in words[:nprobe]);errors+=((vote>=nprobe/2)!=bool(latent));state=latent if style=='oracle' else vote\n  for j in range(nprobe,nprobe+8):groups[page,j,state].append((row,j))\n def stat(b):return sum(b[row][2][j][1]==b[row][2][j+1][0] for row in range(len(b)) for j in range(nprobe,nprobe+7))\n movable=sum(len({book[row][2][j] for row,j in cells})>1 for cells in groups.values())\n if movable<30:return {'refused':True,'movable':movable,'proxy_error':errors/len(book)}\n obs=stat(book);r=random.Random(seed);null=[]\n for k in range(39):\n  cand=[(page,lat,list(ws)) for page,lat,ws in book]\n  for cells in groups.values():\n   vals=[book[row][2][j] for row,j in cells];r.shuffle(vals)\n   for (row,j),v in zip(cells,vals):cand[row][2][j]=v\n   assert collections.Counter(vals)==collections.Counter(cand[row][2][j] for row,j in cells)\n  null.append(stat(cand))\n return {'refused':False,'movable':movable,'proxy_error':errors/len(book),'p':(1+sum(v>=obs for v in null))/40}\nout={}\nfor mode,p in [('independent',.8),('latent',.7),('latent',.8),('latent',.9),('markov',.8)]:\n for nprobe in (4,16,32):\n  key=f'{mode}_{p}_{nprobe}';one={style:[evaluate(simulate(seed,mode,p,nprobe),style,nprobe,30000+seed) for seed in range(30)] for style in ('oracle','count')}\n  out[key]={style:{'runs':vals,'refused':sum(v['refused'] for v in vals),'reject':sum(not v['refused'] and v['p']<=.05 for v in vals),'min_movable':min(v['movable'] for v in vals),'mean_proxy_error':statistics.mean(v['proxy_error'] for v in vals)} for style,vals in one.items()}\nprint(json.dumps(out,indent=2))\n",
+    "posterior_script": "import math,random,json,statistics\nsrc=open('/tmp/voy_pl2032.py').read().split('out={}')[0];exec(compile(src,'/tmp/voy_pl2032.py','exec'))\ndef test(book,p,nprobe,seed):\n rng=random.Random(seed)\n def statistic(words):return sum(words[j][1]==words[j+1][0] for j in range(nprobe,nprobe+7))\n obs=sum(statistic(row[2]) for row in book); probs=[]\n for page,latent,ws in book:\n  k=sum(w[1] for w in ws[:nprobe]);a=(2*k-nprobe)*math.log(p/(1-p)) if p!=.5 else 0;probs.append(1/(1+math.exp(-a)))\n null=[]\n for rep in range(39):\n  tot=0\n  for (_,_,words),prob in zip(book,probs):\n   state=int(rng.random()<prob);arr=[]\n   for j in range(8):\n    draw=lambda: state if rng.random()<p else 1-state\n    arr.append((draw(),draw()))\n   tot+=sum(arr[j][1]==arr[j+1][0] for j in range(7))\n  null.append(tot)\n return (1+sum(n>=obs for n in null))/40\nout={}\nfor mode,p in [('independent',.5),('latent',.7),('latent',.8),('latent',.9),('markov',.8)]:\n for n in (4,16,32):\n  vals=[test(simulate(seed,mode,p,n),p,n,90000+seed) for seed in range(30)]\n  out[f'{mode}_{p}_{n}']={'pvalues':vals,'reject':sum(v<=.05 for v in vals)}\nprint(json.dumps(out,indent=2))\n"
+  }
+}

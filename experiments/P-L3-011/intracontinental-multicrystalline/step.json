@@ -1,0 +1,69 @@
+{
+  "title": "A training-selected ternary escape reaches only one public word type",
+  "program": "L3",
+  "on_path": true,
+  "hard": true,
+  "statement": "Choosing the three escape digits by training-data support makes a reversible bounded EVA-only escape syntactically possible on public text, but it hits only one word type: 28 of 29,365 ZL training tokens and five of 5,461 ZL practice-evaluation tokens. A 25,000-token planted Italian sample with a 1,000-entry dictionary and this escape refuses nine words over 16 letters. A syntactically valid token or dictionary hit is not a reading; no unknown key has been recovered.",
+  "check": "Before a hidden-page test, establish a historically motivated channel, pre-register its syntax on independent training data, and compare against disjoint planted samples and other plausible non-language processes. Use a normalized plaintext model, fully specified prefix codes for transmitted ciphertext, codec and dictionary, and preimages; give every refused word a paid lossless fallback. Calibrate unknown-key recovery and false positives on independent keys, samples and books; compare dictionary-only, escape-only and combined variants at matched complete cost. No such recovery, full charge, or hidden-page claim is supplied here.",
+  "codec": "Reserved initial y distinguishes escape words from dictionary words, which cannot start with y. Given ordered digits akr, map each lowercase ASCII letter a–z to its integer 0–25 and write exactly three base-3 digits, most significant first, replacing 0,1,2 by a,k,r. Prefix y once. Accept words of 1–16 letters only, reject other plaintext; decode checks prefix, payload length divisible by three, digits, bounds, and the unused ternary triple of value 26. Round-trip tested on every encodable word in the planted test, and on a, z, hello and 16 x characters. This is a synthetic code with no documented historical origin.",
+  "selection": "From certain lowercase ASCII paragraph words on ZL public practice-training pages, evaluate all ordered triples of distinct characters present in that training text. Count training tokens of exactly four characters matching y plus one valid base-3 triple; maximize token count and choose lexicographically first among ties. The selected ordered triple is akr with six equal-scoring orders. Freeze it before counting valid syntax on ZL and IT practice evaluation. Selection maximizes tokens, not distinct types, so it overfits a frequent word; the same witnesses are not statistically independent.",
+  "planted": "Normalize the pinned Villani chronicle with vs.refcorpus.blocks_of; use its first 50,000 tokens to select 1,000 most frequent plaintext types with lexical tie-break and its next 25,000 to test. Shuffle the 5,797 distinct non-y-initial public training word types using random.Random(19), assign the first 1,000 to the plaintext types, and assert bijectivity. All outputs starting with y are escaped, the rest dictionary-encoded. The source file hash agrees with pinned SHA-256 3acf82f4b25b636048d915961bb8cec2262e9b7cf9ff860ff056ab4bf1e1fd6e.",
+  "accounting": "Dictionary-only refuses every out-of-vocabulary word; escape-only and combined refuse plaintext words longer than 16. Cipher character counts exclude the nine refusals and cannot be taken as complete compression scores. Compressed canonical dictionary JSON costs 50,032 bits under judge.compressed_bits, but does not include codec, model, encoding overhead or a lossless fallback, so it is not a full key or MDL cost. Encoder, decoder, selection algorithm and data-dependent digit choice must be charged; this pilot does not provide a normalized model or independent recovery. A dictionary literal match and valid escape syntax do not test a plaintext translation.",
+  "results": {
+    "digits": "akr",
+    "training_4char_hits": 28,
+    "tie_count": 6,
+    "shapes": {
+      "train": {
+        "tokens": 29365,
+        "valid_tokens": 28,
+        "valid_types": 1,
+        "dictionary_hits": 5121
+      },
+      "zl_practice": {
+        "tokens": 5461,
+        "valid_tokens": 5,
+        "valid_types": 1,
+        "dictionary_hits": 823
+      },
+      "it_practice": {
+        "tokens": 5394,
+        "valid_tokens": 5,
+        "valid_types": 1,
+        "dictionary_hits": 802
+      }
+    },
+    "dictionary_compressed_bits": 50032,
+    "codec_alphabet_fixed_bits": 15,
+    "dictionary_source_count": 5797,
+    "variants": {
+      "dictionary_only": {
+        "total": 25000,
+        "refused": 5025,
+        "dictionary_tokens": 19975,
+        "escape_tokens": 0,
+        "encoded_character_count": 125034,
+        "max_encoded_word": 13
+      },
+      "escape_only": {
+        "total": 25000,
+        "refused": 9,
+        "dictionary_tokens": 0,
+        "escape_tokens": 24991,
+        "encoded_character_count": 378172,
+        "max_encoded_word": 49
+      },
+      "combined": {
+        "total": 25000,
+        "refused": 9,
+        "dictionary_tokens": 19975,
+        "escape_tokens": 5016,
+        "encoded_character_count": 245817,
+        "max_encoded_word": 49
+      }
+    }
+  },
+  "reproducibility": {
+    "script": "import itertools,random,json,math,collections,hashlib\nfrom vs import corpus,ivtff,refcorpus,judge\n\ndef ws(pgs):\n return [w for p in pgs for l in p.lines if l.unit=='P' for w in l.words if not ivtff.uncertain(w) and w.isascii() and w.isalpha() and w.islower()]\ntr,ev=corpus.split_pages('practice','zl'); counts=collections.Counter(ws(tr))\n# Fix base-three digits by maximizing supported 4-char words in training, alphabetical tie-break.\ndef valid(w,a):\n if not (w.startswith('y') and 4<=len(w)<=49 and (len(w)-1)%3==0 and set(w[1:])<=set(a)):return False\n return all(sum(a.index(w[i+j])*3**(2-j) for j in range(3))<26 for i in range(1,len(w),3))\ndef enc(w,a):\n if not (1<=len(w)<=16 and w.isascii() and w.isalpha() and w.islower()):raise ValueError()\n return 'y'+''.join(''.join(a[ord(c)%97//3**d%3] for d in (2,1,0)) for c in w)\ndef dec(w,a):\n if not valid(w,a):raise ValueError()\n return ''.join(chr(97+sum(a.index(w[i+j])*3**(2-j) for j in range(3))) for i in range(1,len(w),3))\nfor s in ['a','z','hello','x'*16]:assert dec(enc(s,'abc'),'abc')==s\nabc=''.join(sorted(set(''.join(counts))))\noptions=[]\nfor chars in itertools.combinations(abc,3):\n for perm in itertools.permutations(chars):\n  a=''.join(perm); hit=sum(n for w,n in counts.items() if len(w)==4 and valid(w,a));options.append((hit,a))\nbest=max(q[0] for q in options); a=min(a for n,a in options if n==best)\ncodes=sorted(w for w in counts if not w.startswith('y')); words=' '.join(refcorpus.blocks_of('it_villani')).split(); train=words[:50000];test=words[50000:75000]; assert len(test)==25000\ncommon=[w for w,n in sorted(collections.Counter(train).items(),key=lambda x:(-x[1],x[0]))[:1000]]\nrandom.Random(19).shuffle(codes);lookup=dict(zip(common,codes)); assert len(lookup)==1000 and len(set(lookup.values()))==1000\nfor w in test:\n if 1<=len(w)<=16:assert dec(enc(w,a),a)==w\nshapes={}\nfor name,w in [('train',ws(tr)),('zl_practice',ws(ev)),('it_practice',ws(corpus.split_pages('practice','it')[1]))]:\n shapes[name]={'tokens':len(w),'valid_tokens':sum(valid(x,a) for x in w),'valid_types':len({x for x in w if valid(x,a)}),'dictionary_hits':sum(x in lookup.values() for x in w)}\nvariants={}\nfor name in ('dictionary_only','escape_only','combined'):\n out=[];refused=0; nmap=0; nesc=0\n for w in test:\n  if name!='escape_only' and w in lookup: out.append(lookup[w]);nmap+=1\n  elif name!='dictionary_only' and len(w)<=16:out.append(enc(w,a));nesc+=1\n  else:refused+=1\n variants[name]={'total':len(test),'refused':refused,'dictionary_tokens':nmap,'escape_tokens':nesc,'encoded_character_count':sum(map(len,out)),'max_encoded_word':max(map(len,out))}\nprint(json.dumps({'digits':a,'training_4char_hits':best,'tie_count':sum(n==best for n,a in options),'shapes':shapes,'dictionary_compressed_bits':judge.compressed_bits(judge.canonical({'map':{v:k for k,v in lookup.items()}})),'codec_alphabet_fixed_bits':15,'dictionary_source_count':len(codes),'variants':variants},indent=2))\n"
+  }
+}

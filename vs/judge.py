@@ -77,6 +77,15 @@ def canonical(obj):
     return json.dumps(obj, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()
 
 
+def is_respaced(sub):
+    """The decoded letters run on without the plaintext's spaces (vs/respace.py)."""
+    return sub.get("plaintext") == "respaced"
+
+
+def _params_key():
+    return tuple((k, tuple(v) if isinstance(v, list) else v) for k, v in sorted(PARAMS.items()))
+
+
 def seg_fn(name):
     return lambda w: ivtff.segment(w, name)
 
@@ -388,7 +397,11 @@ def description_length(dec, base, train_pages, eval_pages, lang):
     the cheaper of two codes (one flag bit): adaptive choice among the training words with
     the same reading, or, for substitution keys, an exact glyph-by-glyph preimage code (line-level,
     space-aware, for keys that ignore the manuscript's spaces). The nulls family also
-    codes where raw words with no plaintext reading occur."""
+    codes where raw words with no plaintext reading occur. A respaced reading (letters as whole
+    words, "plaintext": "respaced") is coded by vs/respace.py instead."""
+    if is_respaced(dec.sub):
+        from . import respace
+        return respace.description_length(dec, base, train_pages, eval_pages, lang, PARAMS)
     fam = dec.sub["family"]
     has_word_nulls = fam == "nulls"
     prog_bits = program_bits(families.source_file(fam))
@@ -685,6 +698,18 @@ def evaluate(sub, train_pages, eval_pages, split_name):
          "program_bits": prog_bits, "key_bits": key_bits, "bootstrap_lo95_bits": round(lo95, 1), "baseline": base_info, "candidate": dl_info}
 
     # (b) reading, per section
+    respaced = is_respaced(sub)
+    if respaced:
+        # letters run on without spaces: every measure and every band is taken on page streams
+        # (vs/respace.py), the bands from genuine text dealt into pages of this reading's sizes
+        from . import respace
+        streams = {pid: (lines[0][0] if lines else "") for pid, lines in plain.items()}
+        page_sizes = tuple(len(streams[p.id]) for p in eval_pages if streams[p.id])
+        try:
+            cal = respace.calibration(lang, page_sizes, _params_key())
+        except ValueError as ex:
+            return {"verdict": "NOT JUDGEABLE", "reason": str(ex)}
+        metric = lambda chunk: respace.metrics(lang, chunk)
     pmap = {p.id: p for p in eval_pages}
     by_sec = defaultdict(list)
     for pid, lines in plain.items():
@@ -693,30 +718,45 @@ def evaluate(sub, train_pages, eval_pages, split_name):
     secs, judged = {}, 0
     n = PARAMS["chunk_tokens"]
     for s, ws in sorted(by_sec.items()):
-        cs = chunks(ws, n)
+        cs = respace.chunked(ws, 5 * n) if respaced else chunks(ws, n)
         if not cs:
             secs[s] = {"tokens": len(ws), "judged": False}
             continue
         judged += 1
-        ms = [text_metrics(lang, c) for c in cs]
+        ms = [metric(c) if respaced else text_metrics(lang, c) for c in cs]
         H = sum(m["H"] for m in ms) / len(ms)
         cov = sum(m["cov"] for m in ms) / len(ms)
         ttr = sum(m["ttr"] for m in ms) / len(ms)
         ok = H <= cal["H_max"] and cov >= cal["cov_min"] and cal["ttr_lo"] <= ttr <= cal["ttr_hi"]
         secs[s] = {"tokens": len(ws), "judged": True, "H": round(H, 4), "coverage": round(cov, 4), "ttr": round(ttr, 4), "pass": ok}
     allw = [w for s in by_sec.values() for w in s]
+    if respaced:
+        allw = [w for stream in allw for w in respace.cut(stream, lang)]
     b = {"pass": judged > 0 and all(v["pass"] for v in secs.values() if v.get("judged")),
          "sections": secs, "calibration": {k: round(v, 4) for k, v in cal.items()}, "output_tokens": len(allw),
          "voynich_tokens": sum(len(ln.words) for p in eval_pages for ln in p.lines)}
 
     # (3) kill tests
     real_lines = [l for pid in plain for l in plain[pid]]
-    real = text_metrics(lang, [w for l in real_lines for w in l])
+    if respaced:
+        real = dict(respace.metrics(lang, [streams[p.id] for p in eval_pages]), wb=0.0)
+        lines_per_page = [sum(1 for ln in p.lines if ln.words) for p in eval_pages]
+    else:
+        real = text_metrics(lang, [w for l in real_lines for w in l])
     kills = {}
     for name, lines in decoys(eval_pages, base, lang, seg).items():
-        ws = dec.words([w for l in lines for w in l])
-        m = text_metrics(lang, ws)
-        if name.startswith("D1"):
+        if respaced:
+            it = iter(lines)
+            decoy_pages = ["".join(dec.raw(w).replace(" ", "") for _ in range(k) for w in next(it)) for k in lines_per_page]
+            m = respace.metrics(lang, decoy_pages)
+        else:
+            ws = dec.words([w for l in lines for w in l])
+            m = text_metrics(lang, ws)
+        if name.startswith("D1") and respaced:
+            gap = m["H"] - real["H"]   # shuffled groups of letters: the stream itself reads worse
+            killed = gap < PARAMS["kill_order_frac"] * cal["order_gap"]
+            kills[name] = {"letter_bits_gap": round(gap, 4), "needed": round(PARAMS["kill_order_frac"] * cal["order_gap"], 4), "killed": killed}
+        elif name.startswith("D1"):
             gap = m["wb"] - real["wb"]
             killed = gap < PARAMS["kill_order_frac"] * cal["order_gap"]
             kills[name] = {"word_bits_gap": round(gap, 4), "needed": round(PARAMS["kill_order_frac"] * cal["order_gap"], 4), "killed": killed}
@@ -730,18 +770,20 @@ def evaluate(sub, train_pages, eval_pages, split_name):
     c = judge_anchors(dec, lang)
 
     # (d) not an illusion
-    d = not_an_illusion(sub, dec, lang, allw, train_pages, eval_pages, a["savings"])
+    d = not_an_illusion(sub, dec, lang, allw, train_pages, eval_pages, a["savings"],
+                        streams=(page_sizes, [streams[p.id] for p in eval_pages]) if respaced else None)
 
     passed = a["pass"] and b["pass"] and k["pass"] and c["pass"] and d["pass"]
     pages_pass = []
     if passed:
         for p in eval_pages:
             ws = [w for l in plain[p.id] for w in l]
-            if ws and text_metrics(lang, ws)["H"] <= cal["H_max"] and base_pages[p.id] > cand_pages[p.id]:
+            page_h = (respace.metrics(lang, ws)["H"] if respaced else text_metrics(lang, ws)["H"]) if ws else None
+            if ws and page_h <= cal["H_max"] and base_pages[p.id] > cand_pages[p.id]:
                 pages_pass.append(p.id)
     failed = [n for n, r in (("a_compresses", a), ("b_reads", b), ("kill_tests", k), ("c_pictures", c), ("d_not_illusion", d)) if not r["pass"]]
     # a decoded held-out line could reveal which pages are held out: withheld until the reveal
-    sample = " ".join(w for l in real_lines[:3] for w in l)[:300] if split_name != "heldout" else "(withheld on held-out pages until the reveal)"
+    sample = (" ".join(allw[:60]) if respaced else " ".join(w for l in real_lines[:3] for w in l))[:300] if split_name != "heldout" else "(withheld on held-out pages until the reveal)"
     return {
         "submission": sub.get("id"), "family": sub["family"], "target": sub["target"], "split": split_name,
         "verdict": "PASS" if passed else "FAIL", "failed": failed,
@@ -775,14 +817,18 @@ def _shape_calib(lang, n):
     return rows
 
 
-def not_an_illusion(sub, dec, lang, words, train_pages, eval_pages, savings):
+def not_an_illusion(sub, dec, lang, words, train_pages, eval_pages, savings, streams=None):
     """Criterion (d), from prior work on the 'decipherment illusion' (Schwartz 2026) and on phrase
     repetition (Voynich Text Examination 2026). A flexible key can make anything look like a language;
     these checks ask whether the output is shaped like the language, repeats like it, belongs to it
     rather than to a rival, and beats what the same freedom achieves on meaningless text."""
     out = {}
     n = max(len(words), 1)
-    cal = _shape_calib(lang, min(n, 3000)) or [(0, 0, 0)]
+    if streams:   # a respaced reading: `words` is the cut of its page streams, and so is the calibration
+        from . import respace
+        cal = respace.shape_rows(lang, min(n, 3000), streams[0], _params_key()) or [(0, 0, 0)]
+    else:
+        cal = _shape_calib(lang, min(n, 3000)) or [(0, 0, 0)]
     lo, hi = PARAMS["shape_band"]
     letters = Counter(ch for x in words for ch in x)
     tot = sum(letters.values()) or 1
@@ -801,13 +847,23 @@ def not_an_illusion(sub, dec, lang, words, train_pages, eval_pages, savings):
                                 "language_mean": round(sum(r[2] for r in cal) / len(cal), 5),
                                 "pass": rep >= floor - 4.0 / n}  # allow for a repeated phrase or two missed by chance (one repeat = 2 occurrences)
     # exclusivity: the output must read better as the declared language than as any rival
-    stream = lm.char_stream(words[:3000])
-    own = target_models(lang)[0].bits(stream) / max(len(stream), 1)
+    if streams:
+        letters = "".join(streams[1])[:15000]
+        own = respace.stream_model(lang).bits(list(letters)) / max(len(letters), 1)
+    else:
+        stream = lm.char_stream(words[:3000])
+        own = target_models(lang)[0].bits(stream) / max(len(stream), 1)
     rivals = {}
     for r in refcorpus.languages():
         if r == lang:
             continue
         try:
+            if streams:   # the same letters under each rival's spaceless model
+                rl = refcorpus.normalize(letters, r).replace(" ", "")
+                if len(rl) < 0.8 * len(letters):
+                    continue
+                rivals[r] = respace.stream_model(r).bits(list(rl)) / max(len(rl), 1)
+                continue
             src = " ".join(words[:3000])
             rw = refcorpus.normalize(src, r).split()
             if sum(map(len, rw)) < 0.8 * sum(map(len, words[:3000])):
@@ -821,7 +877,7 @@ def not_an_illusion(sub, dec, lang, words, train_pages, eval_pages, savings):
                         "rival_bits_per_char": round(best, 4), "pass": own <= best - PARAMS["exclusive_margin"]}
     # matched freedom: the same family, searched at the same budget, on meaningless text shaped like the pages
     fam = sub["family"]
-    if (fam in ("substitution", "verbose", "nomenclator", "table-cipher", "abbreviation", "syllabic", "nulls")
+    if (fam in ("substitution", "verbose", "nomenclator", "table-cipher", "abbreviation", "syllabic", "nulls", "letter-words")
             and sub.get("search", {}).get("budget")):
         from . import search, generators
         try:

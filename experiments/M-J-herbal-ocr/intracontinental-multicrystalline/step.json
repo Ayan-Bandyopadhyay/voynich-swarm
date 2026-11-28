@@ -1,0 +1,8 @@
+{
+ "title": "Measure and correct early-printed Latin herbal OCR before treating it as a control corpus",
+ "program": "J",
+ "statement": "A candidate for the missing medieval Latin medical or herbal control is the 1509 printing of the Herbarius latinus, an anonymous compilation of classical, Arabic and medieval medical sources (Biodiversity Heritage Library record https://www.biodiversitylibrary.org/bibliography/175056, which marks it public domain). The Internet Archive OCR at https://archive.org/download/CAT31000255/cat31000255_djvu.txt has SHA-256 07a67285091934b1f091e37355e8a2066c6cc84173e0d271237ccaeccac4910a and 391,411 bytes; the current Latin normalization yields 324,186 characters. This is a promising topical, near-period text but a spot check reveals systematic long-s as f, abbreviation/ligature errors and fused words, so those character and word distributions are not established as usable plaintext. Printed in 1509, it is later than the manuscript and is not a contemporaneous witness. Do not add the raw OCR as an ordinary clean Latin corpus on its length alone.",
+ "check": "Predefine a stratified page sample and have independent transcribers compare OCR against scan images, reporting character and word error rates with uncertainty and counting fused or split words and long-s errors separately. Fix correction rules on different pages, verify them on held-out transcribed pages, and compare control search outcomes with clean transcripts at matched length and genre. Only register an openly licensed corrected corpus if its accuracy and positive-control performance are documented; otherwise report the limitation and look for a better licensed transcription.",
+ "on_path": true,
+ "hard": true
+}

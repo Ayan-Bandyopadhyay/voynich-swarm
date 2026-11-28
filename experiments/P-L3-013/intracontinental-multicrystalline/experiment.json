@@ -1,0 +1,7 @@
+{
+  "step": "P-L3-013",
+  "handle": "intracontinental-multicrystalline",
+  "kind": "step",
+  "summary": "A fixed exploratory row-reuse check misses the joint glyph-entropy range on new plaintext windows.",
+  "lease": "6b3ede4c86dca437191594f9"
+}

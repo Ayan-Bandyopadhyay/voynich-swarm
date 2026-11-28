@@ -261,6 +261,9 @@ def cell_budget(lang, family):
     if family == "nulls":
         from .search_nulls import SETTINGS
         return {**BUDGET, **SETTINGS}
+    if family == "letter-words":
+        from .search_letter_words import SETTINGS
+        return {**BUDGET, **SETTINGS}
     if (lang, family) == ("german", "substitution"):
         return {**BUDGET, "substitution_pair_candidates": 16, "substitution_pair_sweeps": 3}
     if (lang, family) == ("nahuatl", "substitution"):
@@ -386,6 +389,9 @@ def fit_singletons(pages, mapping, reference, table, letters, limit):
 def search_cell(lang, family, train_pages, budget=None, tag="cell"):
     if budget is None:
         budget = cell_budget(lang, family)
+    if family == "letter-words":
+        from .search_letter_words import search_letter_words, SETTINGS
+        return search_letter_words(lang, train_pages, {**SETTINGS, **budget}, tag)
     if family == "table-cipher":
         from . import search_table_cipher
         return search_table_cipher.search(lang, train_pages, budget, tag)

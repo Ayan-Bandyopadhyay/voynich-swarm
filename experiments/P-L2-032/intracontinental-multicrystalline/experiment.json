@@ -1,0 +1,7 @@
+{
+  "step": "P-L2-032",
+  "handle": "intracontinental-multicrystalline",
+  "kind": "step",
+  "summary": "Compare oracle, longer-probe, and model-based controls for synthetic latent-line confounding.",
+  "lease": "32c48585114fe3bfc0bb52c8"
+}

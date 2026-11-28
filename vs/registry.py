@@ -54,8 +54,9 @@ def read(type=None, include_withdrawn=False):
             else:
                 i["verdict"] = {"confirmed": "CONFIRMED", "disputed": "DISPUTED"}.get(anchor_status(i, anchors), "DRAFT")
     # pictures: a folio's annotation is AGREED once a second, independent seat annotated the same
-    # folio and their objects (matched by label locus, or by kind and order) agree on kind and on
-    # at least 80% of the features both recorded; DISAGREE below 50%; else DRAFT
+    # folio and the two agree on at least 80% of what they can compare on the closed vocabulary
+    # (vs/pictures.py: objects matched by label locus, else by kind, ring and clock angle; free
+    # wording is never compared; an object only one seat drew counts against); DISAGREE below 50%
     if type in (None, "picture"):
         pics = [i for i in out if i["type"] == "picture"]
         by_folio = {}
@@ -164,26 +165,6 @@ def board_summary():
 
 
 def picture_agreement(a, b):
-    """Share of compared features on which two annotations of one folio agree (objects matched by
-    label locus where both give one, else by kind in order); None if nothing is comparable."""
-    def objs(d):
-        return [o for o in (d.get("objects") or []) if isinstance(o, dict)]
-    A, B = objs(a), objs(b)
-    pairs, used = [], set()
-    for o in A:
-        lab = o.get("label")
-        m = next((k for k, q in enumerate(B) if k not in used and lab and q.get("label") == lab), None)
-        if m is None:
-            m = next((k for k, q in enumerate(B) if k not in used and q.get("kind") == o.get("kind")), None)
-        if m is not None:
-            used.add(m)
-            pairs.append((o, B[m]))
-    same = tot = 0
-    for o, q in pairs:
-        tot += 1
-        same += o.get("kind") == q.get("kind")
-        fo, fq = o.get("features") or {}, q.get("features") or {}
-        for k in set(fo) & set(fq):
-            tot += 1
-            same += str(fo[k]).strip().lower() == str(fq[k]).strip().lower()
-    return same / tot if tot else None
+    """Agreement of two annotations of one folio on the closed picture vocabulary (vs/pictures.py)."""
+    from .pictures import agreement
+    return agreement(a, b)
